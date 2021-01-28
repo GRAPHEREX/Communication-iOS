@@ -149,6 +149,11 @@ NSString *const OWSContactsManagerKeyNextFullIntersectionDate = @"OWSContactsMan
     [self.systemContactsFetcher fetchOnceIfAlreadyAuthorized];
 }
 
+- (void)update:(SignalAccount *)signalAccount
+{
+    [self updateWithContacts:@[signalAccount.contact] didLoad:YES isUserRequested:YES shouldClearStaleCache:YES];
+}
+
 - (AnyPromise *)userRequestedSystemContactsRefresh
 {
     return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve) {
@@ -450,31 +455,14 @@ NSString *const OWSContactsManagerKeyNextFullIntersectionDate = @"OWSContactsMan
     OWSAssertDebug(successParameter);
     OWSAssertDebug(failureParameter);
 
-    void (^success)(NSSet<SignalRecipient *> *) = ^(NSSet<SignalRecipient *> *registeredRecipients) {
+    void (^success)(NSArray<SignalRecipient *> *) = ^(NSArray<SignalRecipient *> *registeredRecipients) {
         OWSLogInfo(@"Successfully intersected contacts.");
-        successParameter(registeredRecipients);
+        successParameter([NSSet setWithArray:registeredRecipients]);
     };
     void (^failure)(NSError *) = ^(NSError *error) {
-        double delay = retryDelaySeconds;
-        BOOL isRateLimitingError = NO;
-        BOOL shouldRetry = YES;
-
-        if ([error isKindOfClass:[OWSContactDiscoveryError class]]) {
-            OWSContactDiscoveryError *cdsError = (OWSContactDiscoveryError *)error;
-            isRateLimitingError = (cdsError.code == OWSContactDiscoveryErrorCodeRateLimit);
-            shouldRetry = cdsError.retrySuggested;
-            if (cdsError.retryAfterDate) {
-                delay = MAX(cdsError.retryAfterDate.timeIntervalSinceNow, delay);
-            }
-        }
-
-        if (isRateLimitingError) {
+        if ([error.domain isEqualToString:OWSSignalServiceKitErrorDomain]
+            && error.code == OWSErrorCodeContactsUpdaterRateLimit) {
             OWSLogError(@"Contact intersection hit rate limit with error: %@", error);
-            failureParameter(error);
-            return;
-        }
-        if (!shouldRetry) {
-            OWSLogError(@"ContactDiscoveryError suggests not to retry. Aborting without rescheduling.");
             failureParameter(error);
             return;
         }
@@ -484,18 +472,18 @@ NSString *const OWSContactsManagerKeyNextFullIntersectionDate = @"OWSContactsMan
         // Retry with exponential backoff.
         //
         // TODO: Abort if another contact intersection succeeds in the meantime.
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self intersectContacts:phoneNumbers
-                  retryDelaySeconds:retryDelaySeconds * 2.0
-                            success:successParameter
-                            failure:failureParameter];
-        });
+        dispatch_after(
+            dispatch_time(DISPATCH_TIME_NOW, (int64_t)(retryDelaySeconds * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self intersectContacts:phoneNumbers
+                      retryDelaySeconds:retryDelaySeconds * 2.0
+                                success:successParameter
+                                failure:failureParameter];
+            });
     };
-    OWSContactDiscoveryTask *discoveryTask = [[OWSContactDiscoveryTask alloc] initWithPhoneNumbers:phoneNumbers];
-    [discoveryTask performAtQoS:QOS_CLASS_USER_INITIATED
-                  callbackQueue:dispatch_get_main_queue()
-                        success:success
-                        failure:failure];
+    
+    if (TSAccountManager.shared.isRegisteredAndReady) {
+        [[ContactsUpdater sharedUpdater] lookupIdentifiers:phoneNumbers.allObjects success:success failure:failure];
+    }
 }
 
 - (void)startObserving

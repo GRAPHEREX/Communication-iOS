@@ -71,9 +71,10 @@ public class SignalServiceProfile: NSObject {
         self.supportsGroupsV2 = Self.parseCapabilityFlag(capabilityKey: "gv2",
                                                          params: params,
                                                          requireCapability: true)
-        self.supportsGroupsV2Migration = Self.parseCapabilityFlag(capabilityKey: "gv1-migration",
-                                                                  params: params,
-                                                                  requireCapability: true)
+        self.supportsGroupsV2Migration = true
+//        self.supportsGroupsV2Migration = Self.parseCapabilityFlag(capabilityKey: "gv1-migration",
+//                                                                  params: params,
+//                                                                  requireCapability: true)
 
         self.credential = try params.optionalBase64EncodedData(key: "credential")
     }
