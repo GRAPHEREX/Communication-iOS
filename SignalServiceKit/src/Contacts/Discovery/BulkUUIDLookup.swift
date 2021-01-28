@@ -17,7 +17,11 @@ public class BulkUUIDLookup: NSObject {
         return SSKEnvironment.shared.reachabilityManager
     }
 
-    // MARK: - 
+    private var contactsUpdater: ContactsUpdater {
+        return SSKEnvironment.shared.contactsUpdater
+    }
+
+    // MARK: -
 
     private let serialQueue = DispatchQueue(label: "BulkUUIDLookup")
 
@@ -48,8 +52,7 @@ public class BulkUUIDLookup: NSObject {
     private var lastOutcomeMap = [String: UpdateOutcome]()
 
     // This property should only be accessed on serialQueue.
-    // Next CDS fetch may be performed on or after this date
-    private var rateLimitExpirationDate: Date = .distantPast
+    private var lastRateLimitErrorDate: Date?
 
     @objc
     public required override init() {
@@ -86,6 +89,8 @@ public class BulkUUIDLookup: NSObject {
     }
 
     private func process() {
+//        return
+        
         assertOnQueue(serialQueue)
 
         guard !CurrentAppContext().isRunningTests else { return }
@@ -99,6 +104,11 @@ public class BulkUUIDLookup: NSObject {
         guard tsAccountManager.isRegisteredAndReady else {
             return
         }
+//        guard FeatureFlags.useOnlyModernContactDiscovery ||
+//            FeatureFlags.compareLegacyContactDiscoveryAgainstModern else {
+//                // Can't fill in UUIDs using legacy contact intersections.
+//                return
+//        }
 
         // Only one update in flight at a time.
         guard !self.isUpdateInFlight else {
@@ -119,51 +129,64 @@ public class BulkUUIDLookup: NSObject {
 
         // Perform update.
         isUpdateInFlight = true
-        firstly { () -> Promise<Void> in
-            let discoveryTask = ContactDiscoveryTask(phoneNumbers: phoneNumbers)
-            let promise = discoveryTask.perform(targetQueue: self.serialQueue)
-            return promise.asVoid()
-        }.done(on: self.serialQueue) {
-            self.isUpdateInFlight = false
-            let outcome = UpdateOutcome(.success)
-            for phoneNumber in phoneNumbers {
-                self.lastOutcomeMap[phoneNumber] = outcome
-            }
-            self.process()
-        }.catch(on: self.serialQueue) { error in
-            self.isUpdateInFlight = false
-
-            let outcome: UpdateOutcome
-            if IsNetworkConnectivityFailure(error) {
-                Logger.warn("Error: \(error)")
-                outcome = UpdateOutcome(.networkFailure)
-
-            } else if let cdsError = error as? ContactDiscoveryError {
-                if let nextRetryDate = cdsError.retryAfterDate {
-                    self.rateLimitExpirationDate = max(nextRetryDate, self.rateLimitExpirationDate)
+        firstly {
+            return contactsUpdater.lookupIdentifiersPromise(phoneNumbers: Array(phoneNumbers)).asVoid()
+        }.done {
+            self.serialQueue.async {
+                self.isUpdateInFlight = false
+                let outcome = UpdateOutcome(.success)
+                for phoneNumber in phoneNumbers {
+                    self.lastOutcomeMap[phoneNumber] = outcome
                 }
+                self.process()
+            }
+        }.catch { error in
+            self.serialQueue.async {
+                self.isUpdateInFlight = false
 
-                switch cdsError.kind {
-                case .rateLimit:
-                    Logger.warn("Error: \(error)")
-                    outcome = UpdateOutcome(.retryLimit)
-                case .genericClientError, .genericServerError, .timeout, .unauthorized:
+                let outcome: UpdateOutcome
+                let nsError = error as NSError
+                if nsError.domain == OWSSignalServiceKitErrorDomain &&
+                    nsError.code == OWSErrorCode.contactsUpdaterRateLimit.rawValue {
                     Logger.error("Error: \(error)")
-                    outcome = UpdateOutcome(.serviceError)
-                default:
-                    owsFailDebug("Error: \(error)")
-                    outcome = UpdateOutcome(.unknownError)
+                    outcome = UpdateOutcome(.retryLimit)
+                    self.lastRateLimitErrorDate = Date()
+                } else {
+                    switch error {
+                    case ContactDiscoveryService.ServiceError.error4xx,
+                         ContactDiscoveryService.ServiceError.error5xx:
+                        owsFailDebug("Error: \(error)")
+                        outcome = UpdateOutcome(.serviceError)
+                    case ContactDiscoveryService.ServiceError.tooManyRequests:
+                        Logger.error("Error: \(error)")
+                        outcome = UpdateOutcome(.retryLimit)
+                        self.lastRateLimitErrorDate = Date()
+                    default:
+                        if IsNetworkConnectivityFailure(error) {
+                            Logger.warn("Error: \(error)")
+                            outcome = UpdateOutcome(.networkFailure)
+                        } else if error.httpStatusCode == 413 {
+                            Logger.error("Error: \(error)")
+                            outcome = UpdateOutcome(.retryLimit)
+                            self.lastRateLimitErrorDate = Date()
+                        } else if let httpStatusCode = error.httpStatusCode,
+                            httpStatusCode >= 400,
+                            httpStatusCode <= 599 {
+                            owsFailDebug("Error: \(error)")
+                            outcome = UpdateOutcome(.serviceError)
+                        } else {
+                            owsFailDebug("Error: \(error)")
+                            outcome = UpdateOutcome(.unknownError)
+                        }
+                    }
                 }
-            } else {
-                owsFailDebug("Error: \(error)")
-                outcome = UpdateOutcome(.unknownError)
-            }
 
-            for phoneNumber in phoneNumbers {
-                self.lastOutcomeMap[phoneNumber] = outcome
-            }
+                for phoneNumber in phoneNumbers {
+                    self.lastOutcomeMap[phoneNumber] = outcome
+                }
 
-            self.process()
+                self.process()
+            }
         }
     }
 
@@ -174,9 +197,13 @@ public class BulkUUIDLookup: NSObject {
             return false
         }
 
-        // Skip if we're rate limited
-        if rateLimitExpirationDate.timeIntervalSinceNow > 0 {
-            return false
+        // Skip if we've recently had a rate limit error.
+        if let lastRateLimitErrorDate = self.lastRateLimitErrorDate {
+            let minElapsedSeconds = 5 * kMinuteInterval
+            let elapsedSeconds = lastRateLimitErrorDate.timeIntervalSinceNow
+            guard elapsedSeconds >= minElapsedSeconds else {
+                return false
+            }
         }
 
         guard let lastOutcome = lastOutcomeMap[phoneNumber] else {

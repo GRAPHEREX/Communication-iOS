@@ -80,6 +80,8 @@ extern NSString *const OWSContactsManagerSignalAccountsDidChangeNotification;
 // contacts haven't changed, and will clear out any stale cached SignalAccounts
 - (AnyPromise *)userRequestedSystemContactsRefresh;
 
+- (void)update:(SignalAccount *)signalAccount;
+
 #pragma mark - Util
 
 - (BOOL)isSystemContactWithPhoneNumber:(NSString *)phoneNumber;

@@ -46,74 +46,75 @@ class ModernContactDiscoveryOperation: ContactDiscovering {
     // It might be worthwhile to audit and see if we can move these onto the queue passed into `perform(on:)`
 
     private func makeContactDiscoveryRequest(e164sToLookup: [String]) -> Promise<Set<CDSRegisteredContact>> {
-        firstly { () -> Promise<RemoteAttestation.CDSAttestation> in
-            RemoteAttestation.performForCDS()
-
-        }.then(on: .global()) { (attestation: RemoteAttestation.CDSAttestation) -> Promise<(RemoteAttestation.CDSAttestation, ContactDiscoveryService.IntersectionResponse)> in
-            let service = ContactDiscoveryService()
-            let query = try self.buildIntersectionQuery(e164sToLookup: e164sToLookup,
-                                                        remoteAttestations: attestation.remoteAttestations)
-            return service.getRegisteredSignalUsers(
-                query: query,
-                cookies: attestation.cookies,
-                authUsername: attestation.auth.username,
-                authPassword: attestation.auth.password,
-                enclaveName: attestation.enclaveConfig.enclaveName,
-                host: attestation.enclaveConfig.host,
-                censorshipCircumventionPrefix: attestation.enclaveConfig.censorshipCircumventionPrefix
-            ).map {(attestation, $0)}
-
-        }.map(on: .global()) { attestation, response -> Set<CDSRegisteredContact> in
-            let allEnclaveAttestations = attestation.remoteAttestations
-            let respondingEnclaveAttestation = allEnclaveAttestations.first(where: { $1.requestId == response.requestId })
-
-            guard let responseAttestion = respondingEnclaveAttestation?.value else {
-                throw ContactDiscoveryError.assertionError(description: "Invalid responding enclave for requestId: \(response.requestId)")
-            }
-            guard let plaintext = Cryptography.decryptAESGCM(
-                withInitializationVector: response.iv,
-                ciphertext: response.data,
-                additionalAuthenticatedData: nil,
-                authTag: response.mac,
-                key: responseAttestion.keys.serverKey) else {
-                throw ContactDiscoveryError.assertionError(description: "decryption failed")
-            }
-
-            // 16 bytes per UUID
-            let contactCount = UInt(e164sToLookup.count)
-            guard plaintext.count == contactCount * 16 else {
-                throw ContactDiscoveryError.assertionError(description: "failed check: invalid byte count")
-            }
-            let dataParser = OWSDataParser(data: plaintext)
-            let uuidsData = try dataParser.nextData(length: contactCount * 16, name: "uuids")
-
-            guard dataParser.isEmpty else {
-                throw ContactDiscoveryError.assertionError(description: "failed check: dataParse.isEmpty")
-            }
-
-            let uuids = type(of: self).uuidArray(from: uuidsData)
-
-            guard uuids.count == contactCount else {
-                throw ContactDiscoveryError.assertionError(description: "failed check: uuids.count == contactCount")
-            }
-
-            let unregisteredUuid = UUID(uuid: (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
-
-            var registeredContacts: Set<CDSRegisteredContact> = Set()
-
-            for (index, e164PhoneNumber) in e164sToLookup.enumerated() {
-                guard uuids[index] != unregisteredUuid else {
-                    Logger.verbose("not a signal user: \(e164PhoneNumber)")
-                    continue
-                }
-
-                Logger.verbose("signal user: \(e164PhoneNumber)")
-                registeredContacts.insert(CDSRegisteredContact(signalUuid: uuids[index],
-                                                               e164PhoneNumber: e164PhoneNumber))
-            }
-
-            return registeredContacts
-        }
+        return Promise.value([])
+//        firstly { () -> Promise<RemoteAttestation.CDSAttestation> in
+//            RemoteAttestation.performForCDS()
+//
+//        }.then(on: .global()) { (attestation: RemoteAttestation.CDSAttestation) -> Promise<(RemoteAttestation.CDSAttestation, ContactDiscoveryService.IntersectionResponse)> in
+//            let service = ContactDiscoveryService()
+//            let query = try self.buildIntersectionQuery(e164sToLookup: e164sToLookup,
+//                                                        remoteAttestations: attestation.remoteAttestations)
+//            return service.getRegisteredSignalUsers(
+//                query: query,
+//                cookies: attestation.cookies,
+//                authUsername: attestation.auth.username,
+//                authPassword: attestation.auth.password,
+//                enclaveName: attestation.enclaveConfig.enclaveName,
+//                host: attestation.enclaveConfig.host,
+//                censorshipCircumventionPrefix: attestation.enclaveConfig.censorshipCircumventionPrefix
+//            ).map {(attestation, $0)}
+//
+//        }.map(on: .global()) { attestation, response -> Set<CDSRegisteredContact> in
+//            let allEnclaveAttestations = attestation.remoteAttestations
+//            let respondingEnclaveAttestation = allEnclaveAttestations.first(where: { $1.requestId == response.requestId })
+//
+//            guard let responseAttestion = respondingEnclaveAttestation?.value else {
+//                throw ContactDiscoveryError.assertionError(description: "Invalid responding enclave for requestId: \(response.requestId)")
+//            }
+//            guard let plaintext = Cryptography.decryptAESGCM(
+//                withInitializationVector: response.iv,
+//                ciphertext: response.data,
+//                additionalAuthenticatedData: nil,
+//                authTag: response.mac,
+//                key: responseAttestion.keys.serverKey) else {
+//                throw ContactDiscoveryError.assertionError(description: "decryption failed")
+//            }
+//
+//            // 16 bytes per UUID
+//            let contactCount = UInt(e164sToLookup.count)
+//            guard plaintext.count == contactCount * 16 else {
+//                throw ContactDiscoveryError.assertionError(description: "failed check: invalid byte count")
+//            }
+//            let dataParser = OWSDataParser(data: plaintext)
+//            let uuidsData = try dataParser.nextData(length: contactCount * 16, name: "uuids")
+//
+//            guard dataParser.isEmpty else {
+//                throw ContactDiscoveryError.assertionError(description: "failed check: dataParse.isEmpty")
+//            }
+//
+//            let uuids = type(of: self).uuidArray(from: uuidsData)
+//
+//            guard uuids.count == contactCount else {
+//                throw ContactDiscoveryError.assertionError(description: "failed check: uuids.count == contactCount")
+//            }
+//
+//            let unregisteredUuid = UUID(uuid: (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+//
+//            var registeredContacts: Set<CDSRegisteredContact> = Set()
+//
+//            for (index, e164PhoneNumber) in e164sToLookup.enumerated() {
+//                guard uuids[index] != unregisteredUuid else {
+//                    Logger.verbose("not a signal user: \(e164PhoneNumber)")
+//                    continue
+//                }
+//
+//                Logger.verbose("signal user: \(e164PhoneNumber)")
+//                registeredContacts.insert(CDSRegisteredContact(signalUuid: uuids[index],
+//                                                               e164PhoneNumber: e164PhoneNumber))
+//            }
+//
+//            return registeredContacts
+//        }
     }
 
     func buildIntersectionQuery(e164sToLookup: [String], remoteAttestations: [RemoteAttestation.CDSAttestation.Id: RemoteAttestation]) throws -> ContactDiscoveryService.IntersectionQuery {
@@ -153,7 +154,7 @@ class ModernContactDiscoveryOperation: ContactDiscovering {
                                                          data: encryptionResult.ciphertext,
                                                          iv: encryptionResult.initializationVector,
                                                          mac: encryptionResult.authTag,
-                                                         envelopes: queryEnvelopes)
+                                                         envelopes: Array(queryEnvelopes.values))
     }
 
     class func encodePhoneNumbers(_ phoneNumbers: [String]) throws -> Data {
@@ -196,63 +197,64 @@ class ModernContactDiscoveryOperation: ContactDiscovering {
             return error
         }
 
-        if let statusCode = error.httpStatusCode {
-            switch statusCode {
-            case 401:
-                return ContactDiscoveryError(
-                    kind: .unauthorized,
-                    debugDescription: "User is unauthorized",
-                    retryable: false,
-                    retryAfterDate: error.httpRetryAfterDate)
-            case 404:
-                return ContactDiscoveryError(
-                    kind: .unexpectedResponse,
-                    debugDescription: "Unknown enclaveID",
-                    retryable: false,
-                    retryAfterDate: error.httpRetryAfterDate)
-            case 408:
-                return ContactDiscoveryError(
-                    kind: .timeout,
-                    debugDescription: "Server rejected due to a timeout",
-                    retryable: true,
-                    retryAfterDate: error.httpRetryAfterDate)
-            case 409:
-                // Conflict on a discovery request indicates that the requestId specified by the client
-                // has been dropped due to a delay or high request rate since the preceding corresponding
-                // attestation request. The client should not retry the request automatically
-                return ContactDiscoveryError(
-                    kind: .genericClientError,
-                    debugDescription: "RequestID conflict",
-                    retryable: false,
-                    retryAfterDate: error.httpRetryAfterDate)
-            case 429:
-                return ContactDiscoveryError(
-                    kind: .rateLimit,
-                    debugDescription: "Rate limit",
-                    retryable: true,
-                    retryAfterDate: error.httpRetryAfterDate)
-            case 400..<500:
-                return ContactDiscoveryError(
-                    kind: .genericClientError,
-                    debugDescription: "Client error (\(statusCode)): \(error.localizedDescription)",
-                    retryable: false,
-                    retryAfterDate: error.httpRetryAfterDate)
-            case 500..<600:
-                return ContactDiscoveryError(
-                    kind: .genericServerError,
-                    debugDescription: "Server error (\(statusCode)): \(error.localizedDescription)",
-                    retryable: true,
-                    retryAfterDate: error.httpRetryAfterDate)
-            default:
-                return ContactDiscoveryError(
-                    kind: .generic,
-                    debugDescription: "Unknown error (\(statusCode)): \(error.localizedDescription)",
-                    retryable: false,
-                    retryAfterDate: error.httpRetryAfterDate)
-            }
-
-        } else {
-            return error
-        }
+//        if let statusCode = error.httpStatusCode {
+//            switch statusCode {
+//            case 401:
+//                return ContactDiscoveryError(
+//                    kind: .unauthorized,
+//                    debugDescription: "User is unauthorized",
+//                    retryable: false,
+//                    retryAfterDate: error.httpRetryAfterDate)
+//            case 404:
+//                return ContactDiscoveryError(
+//                    kind: .unexpectedResponse,
+//                    debugDescription: "Unknown enclaveID",
+//                    retryable: false,
+//                    retryAfterDate: error.httpRetryAfterDate)
+//            case 408:
+//                return ContactDiscoveryError(
+//                    kind: .timeout,
+//                    debugDescription: "Server rejected due to a timeout",
+//                    retryable: true,
+//                    retryAfterDate: error.httpRetryAfterDate)
+//            case 409:
+//                // Conflict on a discovery request indicates that the requestId specified by the client
+//                // has been dropped due to a delay or high request rate since the preceding corresponding
+//                // attestation request. The client should not retry the request automatically
+//                return ContactDiscoveryError(
+//                    kind: .genericClientError,
+//                    debugDescription: "RequestID conflict",
+//                    retryable: false,
+//                    retryAfterDate: error.httpRetryAfterDate)
+//            case 429:
+//                return ContactDiscoveryError(
+//                    kind: .rateLimit,
+//                    debugDescription: "Rate limit",
+//                    retryable: true,
+//                    retryAfterDate: error.httpRetryAfterDate)
+//            case 400..<500:
+//                return ContactDiscoveryError(
+//                    kind: .genericClientError,
+//                    debugDescription: "Client error (\(statusCode)): \(error.localizedDescription)",
+//                    retryable: false,
+//                    retryAfterDate: error.httpRetryAfterDate)
+//            case 500..<600:
+//                return ContactDiscoveryError(
+//                    kind: .genericServerError,
+//                    debugDescription: "Server error (\(statusCode)): \(error.localizedDescription)",
+//                    retryable: true,
+//                    retryAfterDate: error.httpRetryAfterDate)
+//            default:
+//                return ContactDiscoveryError(
+//                    kind: .generic,
+//                    debugDescription: "Unknown error (\(statusCode)): \(error.localizedDescription)",
+//                    retryable: false,
+//                    retryAfterDate: error.httpRetryAfterDate)
+//            }
+//
+//        } else {
+//            return error
+//        }
+        return error
     }
 }

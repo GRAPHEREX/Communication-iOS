@@ -54,9 +54,9 @@ public class ContactDiscoveryTask: NSObject {
         guard e164FetchSet.count > 0 else {
             return .value(Set())
         }
-        if let retryAfterDate = Self.rateLimiter.currentRetryAfterDate(forCriticalPriority: isCriticalPriority) {
-            return Promise(error: ContactDiscoveryError.rateLimit(expiryDate: retryAfterDate))
-        }
+//        if let retryAfterDate = Self.rateLimiter.currentRetryAfterDate(forCriticalPriority: isCriticalPriority) {
+//            return Promise(error: ContactDiscoveryError.rateLimit(expiryDate: retryAfterDate))
+//        }
 
         let workQueue = DispatchQueue(
             label: "org.whispersystems.signal.\(type(of: self))",
@@ -88,9 +88,9 @@ public class ContactDiscoveryTask: NSObject {
             } else {
                 Logger.error("ContactDiscoverTask failure: \(error)")
             }
-            if let retryAfterDate = (error as? ContactDiscoveryError)?.retryAfterDate {
-                Self.rateLimiter.updateRetryAfter(with: retryAfterDate, criticalPriority: self.isCriticalPriority)
-            }
+//            if let retryAfterDate = (error as? ContactDiscoveryError)?.retryAfterDate {
+//                Self.rateLimiter.updateRetryAfter(with: retryAfterDate, criticalPriority: self.isCriticalPriority)
+//            }
             throw error
         }
     }

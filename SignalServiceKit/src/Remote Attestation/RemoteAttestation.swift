@@ -52,7 +52,7 @@ extension RemoteAttestation {
         let cookies: [HTTPCookie]
         let auth: RemoteAttestationAuth
         let enclaveConfig: EnclaveConfig
-        let remoteAttestations: [Id: RemoteAttestation]
+        let remoteAttestations: [RemoteAttestation]
     }
 
     public static func performForCDS() -> Promise<CDSAttestation> {
@@ -65,7 +65,7 @@ extension RemoteAttestation {
                 censorshipCircumventionPrefix: TSConstants.contactDiscoveryCensorshipPrefix
             )
         ).map { attestationResponse -> CDSAttestation in
-            let attestationBody: [CDSAttestation.Id: [String: Any]] = try attestationResponse.responseBody.required(key: "attestations")
+            let attestationBody: [[String: Any]] = try attestationResponse.responseBody.required(key: "attestations")
 
             // The client MUST reject server responses with more than 3 Remote Attestation Responses attached,
             // for security reasons.
@@ -73,7 +73,7 @@ extension RemoteAttestation {
                 throw ParamParser.ParseError.invalidFormat("attestations", description: "invalid attestation count: \(attestationBody.count)")
             }
 
-            let attestations: [CDSAttestation.Id: RemoteAttestation] = try attestationBody.mapValues { attestationParams in
+            let attestations: [RemoteAttestation] = try attestationBody.map { attestationParams in
                 let parser = ParamParser(dictionary: attestationParams)
                 return try parseAttestation(params: parser,
                                             clientEphemeralKeyPair: attestationResponse.clientEphemeralKeyPair,

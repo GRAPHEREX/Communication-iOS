@@ -8,6 +8,7 @@
 #import "OWSBlockingManager.h"
 #import "OWSDisappearingMessagesJob.h"
 #import "OWSFakeCallMessageHandler.h"
+#import "OWSFakeContactsUpdater.h"
 #import "OWSFakeMessageSender.h"
 #import "OWSFakeNetworkManager.h"
 #import "OWSFakeProfileManager.h"
@@ -118,6 +119,7 @@ NS_ASSUME_NONNULL_BEGIN
                pendingReadReceiptRecorder:[NoopPendingReadReceiptRecorder new]
                            profileManager:[OWSFakeProfileManager new]
                            primaryStorage:primaryStorage
+                          contactsUpdater:[OWSFakeContactsUpdater new]
                            networkManager:networkManager
                            messageManager:messageManager
                           blockingManager:blockingManager

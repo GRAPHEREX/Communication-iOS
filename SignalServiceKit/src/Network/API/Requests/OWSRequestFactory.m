@@ -203,7 +203,7 @@ NSString *const OWSRequestKey_AuthKey = @"AuthKey";
 
 + (TSRequest *)allocAttachmentRequestV3
 {
-    return [TSRequest requestWithUrl:[NSURL URLWithString:@"v3/attachments/form/upload"] method:@"GET" parameters:@{}];
+    return [TSRequest requestWithUrl:[NSURL URLWithString:@"v4/attachments/form/upload"] method:@"GET" parameters:@{}];
 }
 
 + (TSRequest *)availablePreKeysCountRequest
