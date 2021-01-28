@@ -215,18 +215,29 @@ public class OnboardingController: NSObject {
             milestones.append(.verifiedLinkedDevice)
         }
 
+        // TODO: SKYTECH: Revert this to enable phoneNumberDiscoverability
+        #if true
+        milestones.append(.phoneNumberDiscoverability)
+        #else
         if !FeatureFlags.phoneNumberDiscoverability || tsAccountManager.hasDefinedIsDiscoverableByPhoneNumber() {
             milestones.append(.phoneNumberDiscoverability)
         }
+        #endif
 
         if profileManager.hasProfileName {
             milestones.append(.setupProfile)
         }
 
+        // TODO: SKYTECH: Revert this to enable pin-code protection
+        #if true
+        milestones.append(.restorePin)
+        milestones.append(.setupPin)
+        #else
         if KeyBackupService.hasMasterKey {
             milestones.append(.restorePin)
             milestones.append(.setupPin)
         }
+        #endif
 
         return milestones
     }
