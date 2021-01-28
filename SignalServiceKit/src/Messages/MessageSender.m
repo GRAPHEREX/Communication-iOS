@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
 //
 
 #import "MessageSender.h"
@@ -1017,11 +1017,11 @@ NSString *const MessageSenderRateLimitedException = @"RateLimitedException";
 
     // A prior CDS lookup would've resolved the UUID for this recipient if it was registered
     // If we have no UUID, consider the recipient unregistered.
-    BOOL isInvalidRecipient = (address.uuid == nil);
-    if (isInvalidRecipient) {
-        [self failSendForUnregisteredRecipient:messageSend];
-        return;
-    }
+//    BOOL isInvalidRecipient = (address.uuid == nil);
+//    if (isInvalidRecipient) {
+//        [self failSendForUnregisteredRecipient:messageSend];
+//        return;
+//    }
 
     // Consume an attempt.
     messageSend.remainingAttempts = messageSend.remainingAttempts - 1;
