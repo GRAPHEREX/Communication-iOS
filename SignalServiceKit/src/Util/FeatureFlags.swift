@@ -166,7 +166,7 @@ public class FeatureFlags: BaseFlags {
     public static let linkedPhones = build.includes(.qa)
 
     @objc
-    public static let isUsingProductionService = false
+    public static let isUsingProductionService = true
 
     @objc
     public static let useOrphanDataCleaner = true
@@ -197,9 +197,6 @@ public class FeatureFlags: BaseFlags {
 
     @objc
     public static let supportAnimatedStickers_AnimatedWebp = true
-    
-    @objc
-    public static let sslPinningCertName = isUsingProductionService ? "grapherex_prod" : "grapherex_dev"
 
     public static func buildFlagMap() -> [String: Any] {
         BaseFlags.buildFlagMap(for: FeatureFlags.self) { (key: String) -> Any? in

@@ -31,6 +31,8 @@ private protocol TSConstantsProtocol: class {
     var applicationGroup: String { get }
 
     var serverPublicParamsBase64: String { get }
+    
+    var sslPinningCertName: String { get }
 }
 
 public struct KeyBackupEnclave: Equatable {
@@ -143,11 +145,14 @@ public class TSConstants: NSObject {
     private static var shared: TSConstantsProtocol {
         switch environment {
         case .production:
-            return TSConstantsProduction()
+            return TSConstantsStaging() //TSConstantsProduction()
         case .staging:
             return TSConstantsStaging()
         }
     }
+    
+    @objc
+    public static var sslPinningCertName: String { return shared.sslPinningCertName }
 }
 
 // MARK: -
@@ -195,6 +200,8 @@ private class TSConstantsProduction: TSConstantsProtocol {
     // We need to discard all profile key credentials if these values ever change.
     // See: GroupsV2Impl.verifyServerPublicParams(...)
     public let serverPublicParamsBase64 = "AMhf5ywVwITZMsff/eCyudZx9JDmkkkbV6PInzG4p8x3VqVJSFiMvnvlEKWuRob/1eaIetR31IYeAbm0NdOuHH8Qi+Rexi1wLlpzIo1gstHWBfZzy1+qHRV5A4TqPp15YzBPm0WSggW6PbSn+F4lf57VCnHF7p8SvzAA2ZZJPYJURt8X7bbg+H3i+PEjH9DXItNEqs2sNcug37xZQDLm7X0=="
+    
+    public let sslPinningCertName = "grapherex_prod"
 }
 
 // MARK: -
@@ -243,4 +250,6 @@ private class TSConstantsStaging: TSConstantsProtocol {
     // We need to discard all profile key credentials if these values ever change.
     // See: GroupsV2Impl.verifyServerPublicParams(...)
     public let serverPublicParamsBase64 = "DDZM414H2QbA3brAa6NCMaZIN1ZRY+B46PWDvw4LmwrY6CEQArF4OF/yHdBL7HW/JPgjjauzJau+cpikvqH3dDZQ7KFKgx/MGsbw49ATUj6fhBXko9iyPwVwC3+kjNY6PGZuSoYpD4SJJIgzTJ8Gnuk23tSbX1aQWAWNlc8WiyWIHm/A+22w/D1zQmGuFCEGImU4blMK+HhNfC7jM5leBQ=="
+    
+    public let sslPinningCertName = "grapherex_dev"
 }

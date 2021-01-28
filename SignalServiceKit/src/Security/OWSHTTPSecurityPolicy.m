@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     if (self) {
         self.pinnedCertificates = [NSSet setWithArray:@[
-            [self.class certificateDataForService:SSKFeatureFlags.sslPinningCertName]
+            [self.class certificateDataForService:TSConstants.sslPinningCertName]
         ]];
     }
 
@@ -102,7 +102,7 @@ _out:
 
 NSData *SSKTextSecureServiceCertificateData()
 {
-    return [OWSHTTPSecurityPolicy dataFromCertificateFileForService:SSKFeatureFlags.sslPinningCertName];
+    return [OWSHTTPSecurityPolicy dataFromCertificateFileForService:TSConstants.sslPinningCertName];
 }
 
 @end
