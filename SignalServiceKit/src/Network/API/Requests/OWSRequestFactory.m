@@ -151,7 +151,7 @@ NSString *const OWSRequestKey_AuthKey = @"AuthKey";
 {
     OWSAssertDebug(address.isValid);
 
-    NSString *path = [NSString stringWithFormat:@"v1/profile/%@", address.serviceIdentifier];
+    NSString *path = [NSString stringWithFormat:@"v2/profile/%@", address.serviceIdentifier];
     TSRequest *request = [TSRequest requestWithUrl:[NSURL URLWithString:path] method:@"GET" parameters:@{}];
     if (udAccessKey != nil) {
         [self useUDAuthWithRequest:request accessKey:udAccessKey];
@@ -174,14 +174,14 @@ NSString *const OWSRequestKey_AuthKey = @"AuthKey";
     // GET /v1/profile/{uuid}/{version}/{profile_key_credential_request}
     NSString *path;
     if (profileKeyVersion.length > 0 && credentialRequest.length > 0) {
-        path = [NSString stringWithFormat:@"v1/profile/%@/%@/%@",
+        path = [NSString stringWithFormat:@"v2/profile/%@/%@/%@",
                          uuidParam,
                          profileKeyVersionParam,
                          credentialRequestParam];
     } else if (profileKeyVersion.length > 0) {
-        path = [NSString stringWithFormat:@"v1/profile/%@/%@", uuidParam, profileKeyVersionParam];
+        path = [NSString stringWithFormat:@"v2/profile/%@/%@", uuidParam, profileKeyVersionParam];
     } else {
-        path = [NSString stringWithFormat:@"v1/profile/%@", uuidParam];
+        path = [NSString stringWithFormat:@"v2/profile/%@", uuidParam];
     }
 
     TSRequest *request = [TSRequest requestWithUrl:[NSURL URLWithString:path] method:@"GET" parameters:@{}];
@@ -796,7 +796,7 @@ NSString *const OWSRequestKey_AuthKey = @"AuthKey";
         OWSAssertDebug(encryptedPaddedName == nil);
         urlEncodedName = @"";
     }
-    NSString *urlString = [NSString stringWithFormat:@"v1/profile/name/%@", urlEncodedName];
+    NSString *urlString = [NSString stringWithFormat:@"v2/profile/name/%@", urlEncodedName];
 
     NSURL *url = [NSURL URLWithString:urlString];
     TSRequest *request = [[TSRequest alloc] initWithURL:url];

@@ -380,7 +380,7 @@ public class ProfileFetcherJob: NSObject {
     private var shouldUseVersionedFetchForUuids: Bool {
         switch options.fetchType {
         case .default:
-            return true
+            return false
         case .versioned:
             return true
         case .unversioned:
