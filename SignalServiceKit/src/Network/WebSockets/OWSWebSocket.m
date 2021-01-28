@@ -805,18 +805,19 @@ NSNotificationName const NSNotificationWebSocketStateDidChange = @"NSNotificatio
             BOOL success = NO;
             @try {
                 BOOL useSignalingKey = NO;
-                uint64_t serverDeliveryTimestamp = 0;
+                uint64_t serverDeliveryTimestamp = [NSDate ows_millisecondTimeStamp];
                 for (NSString *header in message.headers) {
                     if ([header isEqualToString:@"X-Signal-Key: true"]) {
                         useSignalingKey = YES;
-                    } else if ([header hasPrefix:@"X-Signal-Timestamp:"]) {
-                        NSArray<NSString *> *components = [header componentsSeparatedByString:@":"];
-                        if (components.count == 2) {
-                            serverDeliveryTimestamp = (uint64_t)[components[1] longLongValue];
-                        } else {
-                            OWSFailDebug(@"Invalidly formatted timestamp header %@", header);
-                        }
                     }
+//                    else if ([header hasPrefix:@"X-Signal-Timestamp:"]) {
+//                        NSArray<NSString *> *components = [header componentsSeparatedByString:@":"];
+//                        if (components.count == 2) {
+//                            serverDeliveryTimestamp = (uint64_t)[components[1] longLongValue];
+//                        } else {
+//                            OWSFailDebug(@"Invalidly formatted timestamp header %@", header);
+//                        }
+//                    }
                 }
 
                 if (serverDeliveryTimestamp == 0) {

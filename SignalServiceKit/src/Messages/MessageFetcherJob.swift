@@ -317,12 +317,13 @@ public class MessageFetcherJob: NSObject {
             self.networkManager.makeRequest(
                 request,
                 success: { task, responseObject -> Void in
-                    guard let httpResponse = task.response as? HTTPURLResponse,
-                        let timestampString = httpResponse.allHeaderFields["x-signal-timestamp"] as? String,
-                        let serverDeliveryTimestamp = UInt64(timestampString) else {
-                            return resolver.reject(OWSAssertionError("Unable to parse server delivery timestamp."))
-                    }
+//                    guard let httpResponse = task.response as? HTTPURLResponse,
+//                        let timestampString = httpResponse.allHeaderFields["x-signal-timestamp"] as? String,
+//                        let serverDeliveryTimestamp = UInt64(timestampString) else {
+//                            return resolver.reject(OWSAssertionError("Unable to parse server delivery timestamp."))
+//                    }
 
+                    let serverDeliveryTimestamp = Date.ows_millisecondTimestamp()
                     guard let (envelopes, more) = self.parseMessagesResponse(responseObject: responseObject) else {
                         Logger.error("response object had unexpected content")
                         return resolver.reject(OWSErrorMakeUnableToProcessServerResponseError())
