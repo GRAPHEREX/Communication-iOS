@@ -4,6 +4,7 @@
 
 #import "OWSHTTPSecurityPolicy.h"
 #import <AssertMacros.h>
+#import <SignalServiceKit/SignalServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     if (self) {
         self.pinnedCertificates = [NSSet setWithArray:@[
-            [self.class certificateDataForService:@"textsecure"]
+            [self.class certificateDataForService:SSKFeatureFlags.sslPinningCertName]
         ]];
     }
 
@@ -101,7 +102,7 @@ _out:
 
 NSData *SSKTextSecureServiceCertificateData()
 {
-    return [OWSHTTPSecurityPolicy dataFromCertificateFileForService:@"textsecure"];
+    return [OWSHTTPSecurityPolicy dataFromCertificateFileForService:SSKFeatureFlags.sslPinningCertName];
 }
 
 @end

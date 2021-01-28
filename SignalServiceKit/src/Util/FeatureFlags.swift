@@ -197,6 +197,9 @@ public class FeatureFlags: BaseFlags {
 
     @objc
     public static let supportAnimatedStickers_AnimatedWebp = true
+    
+    @objc
+    public static let sslPinningCertName = isUsingProductionService ? "grapherex_prod" : "grapherex_dev"
 
     public static func buildFlagMap() -> [String: Any] {
         BaseFlags.buildFlagMap(for: FeatureFlags.self) { (key: String) -> Any? in
