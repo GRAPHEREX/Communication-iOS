@@ -1264,6 +1264,8 @@ private func createV1Schema(db: Database) throws {
         table.column("encryptionKey", .blob)
         table.column("serverId", .integer)
             .notNull()
+        table.column("credentionals", .text)
+        table.column("bucket", .text)
         table.column("sourceFilename", .text)
         table.column("cachedAudioDurationSeconds", .double)
         table.column("cachedImageHeight", .double)
@@ -1424,6 +1426,8 @@ private func createV1Schema(db: Database) throws {
         table.column("recipientPhoneNumber", .text)
         table.column("recipientUUID", .text)
         table.column("username", .text)
+        table.column("credentials", .text)
+        table.column("bucket", .text)
     }
     try db.create(index: "index_model_OWSUserProfile_on_uniqueId", on: "model_OWSUserProfile", columns: ["uniqueId"])
 

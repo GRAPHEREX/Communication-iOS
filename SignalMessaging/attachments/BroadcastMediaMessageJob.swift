@@ -229,6 +229,8 @@ public enum BroadcastMediaUploader {
                 }
 
                 let serverId = uploadedAttachment.serverId
+                let credentionals = uploadedAttachment.credentionals
+                let bucket = uploadedAttachment.bucket
                 let cdnKey = uploadedAttachment.cdnKey
                 let cdnNumber = uploadedAttachment.cdnNumber
                 let uploadTimestamp = uploadedAttachment.uploadTimestamp
@@ -253,6 +255,8 @@ public enum BroadcastMediaUploader {
                     correspondingAttachment.updateAsUploaded(withEncryptionKey: encryptionKey,
                                                              digest: digest,
                                                              serverId: serverId,
+                                                             bucket: bucket,
+                                                             credentionals: credentionals,
                                                              cdnKey: cdnKey,
                                                              cdnNumber: cdnNumber,
                                                              uploadTimestamp: uploadTimestamp,

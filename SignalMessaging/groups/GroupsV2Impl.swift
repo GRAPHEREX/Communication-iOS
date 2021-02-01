@@ -514,11 +514,11 @@ public class GroupsV2Impl: NSObject, GroupsV2Swift {
                 throw OWSAssertionError("Invalid responseObject.")
             }
             return try GroupsProtoAvatarUploadAttributes(serializedData: protoData)
-        }.map(on: .global()) { (avatarUploadAttributes: GroupsProtoAvatarUploadAttributes) throws -> OWSUploadFormV2 in
-            try OWSUploadFormV2.parse(proto: avatarUploadAttributes)
-        }.then(on: .global()) { (uploadForm: OWSUploadFormV2) -> Promise<String> in
+        }.map(on: .global()) { (avatarUploadAttributes: GroupsProtoAvatarUploadAttributes) throws -> OWSUploadFormV4 in
+            try OWSUploadFormV4.parse(proto: avatarUploadAttributes)
+        }.then(on: .global()) { (uploadForm: OWSUploadFormV4) -> Promise<String> in
             let encryptedData = try groupV2Params.encryptGroupAvatar(avatarData)
-            return OWSUpload.uploadV2(data: encryptedData, uploadForm: uploadForm, uploadUrlPath: "")
+            return OWSUpload.uploadV4(data: encryptedData, uploadForm: uploadForm, uploadUrlPath: "")
         }
     }
 

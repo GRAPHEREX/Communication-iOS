@@ -172,16 +172,16 @@ public class VersionedProfilesImpl: NSObject, VersionedProfilesSwift {
 
     private func parseFormAndUpload(formResponseObject: Any?,
                                     profileAvatarData: Data) -> Promise<VersionedProfileUpdate> {
-        return firstly { () throws -> Promise<OWSUploadFormV2> in
+        return firstly { () throws -> Promise<OWSUploadFormV4> in
             guard let response = formResponseObject as? [AnyHashable: Any] else {
                 throw OWSAssertionError("Unexpected response.")
             }
-            guard let form = OWSUploadFormV2.parseDictionary(response) else {
+            guard let form = OWSUploadFormV4.parseDictionary(response) else {
                 throw OWSAssertionError("Could not parse response.")
             }
             return Promise.value(form)
-        }.then(on: DispatchQueue.global()) { (uploadForm: OWSUploadFormV2) -> Promise<String> in
-            OWSUpload.uploadV2(data: profileAvatarData, uploadForm: uploadForm, uploadUrlPath: "")
+        }.then(on: DispatchQueue.global()) { (uploadForm: OWSUploadFormV4) -> Promise<String> in
+            OWSUpload.uploadV4(data: profileAvatarData, uploadForm: uploadForm, uploadUrlPath: "")
         }.map(on: DispatchQueue.global()) { (avatarUrlPath: String) -> VersionedProfileUpdate in
             return VersionedProfileUpdate(avatarUrlPath: avatarUrlPath)
         }

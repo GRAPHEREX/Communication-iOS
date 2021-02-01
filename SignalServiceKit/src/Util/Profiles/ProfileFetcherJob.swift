@@ -603,6 +603,8 @@ public class ProfileFetcherJob: NSObject {
                                      username: profile.username,
                                      isUuidCapable: true,
                                      avatarUrlPath: profile.avatarUrlPath,
+                                     credentials: profile.credentials,
+                                     bucket: profile.bucket,
                                      optionalDecryptedAvatarData: optionalAvatarData,
                                      lastFetch: Date())
 

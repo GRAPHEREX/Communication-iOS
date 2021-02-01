@@ -1485,6 +1485,8 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
 - (void)setProfileGivenName:(nullable NSString *)givenName
                  familyName:(nullable NSString *)familyName
               avatarUrlPath:(nullable NSString *)avatarUrlPath
+                credentials:(nullable NSString *)credentials
+                     bucket:(nullable NSString *)bucket
                  forAddress:(SignalServiceAddress *)addressParam
         wasLocallyInitiated:(BOOL)wasLocallyInitiated
                 transaction:(SDSAnyWriteTransaction *)transaction
@@ -1496,6 +1498,8 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
     [userProfile updateWithGivenName:givenName
                           familyName:familyName
                        avatarUrlPath:avatarUrlPath
+                         credentials:credentials
+                              bucket:bucket
                  wasLocallyInitiated:wasLocallyInitiated
                          transaction:transaction
                           completion:nil];
@@ -1647,6 +1651,26 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
     return userProfile.avatarUrlPath;
 }
 
+- (nullable NSString *)profileAvatarCredentialsForAddress:(SignalServiceAddress *)address
+                                              transaction:(SDSAnyReadTransaction *)transaction
+{
+    OWSAssertDebug(address.isValid);
+
+    OWSUserProfile *_Nullable userProfile = [self getUserProfileForAddress:address transaction:transaction];
+
+    return userProfile.credentials;
+}
+
+- (nullable NSString *)profileAvatarBucketForAddress:(SignalServiceAddress *)address
+                                         transaction:(SDSAnyReadTransaction *)transaction
+{
+    OWSAssertDebug(address.isValid);
+
+    OWSUserProfile *_Nullable userProfile = [self getUserProfileForAddress:address transaction:transaction];
+    
+    return userProfile.bucket;
+}
+
 - (nullable NSString *)usernameForAddress:(SignalServiceAddress *)address
                               transaction:(SDSAnyReadTransaction *)transaction
 {
@@ -1711,7 +1735,7 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
                 shouldDownload = NO;
                 return;
             }
-            avatarUrlPathAtStart = currentUserProfile.avatarUrlPath;
+            avatarUrlPathAtStart = [NSString stringWithFormat:@"api/v1/osp/objects/%@/%@", userProfile.bucket, userProfile.avatarUrlPath]; //currentUserProfile.avatarUrlPath;
             profileKeyAtStart = currentUserProfile.profileKey;
             if (profileKeyAtStart.keyData.length < 1 || avatarUrlPathAtStart.length < 1) {
                 OWSLogVerbose(@"Aborting; avatarUrlPath or profileKey are not known.");
@@ -1794,6 +1818,8 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
                        username:(nullable NSString *)username
                   isUuidCapable:(BOOL)isUuidCapable
                   avatarUrlPath:(nullable NSString *)avatarUrlPath
+                    credentials:(nullable NSString *)credentials
+                         bucket:(nullable NSString *)bucket
     optionalDecryptedAvatarData:(nullable NSData *)optionalDecryptedAvatarData
                   lastFetchDate:(NSDate *)lastFetchDate
 {
@@ -1855,6 +1881,8 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
                                         username:username
                                    isUuidCapable:isUuidCapable
                                    avatarUrlPath:avatarUrlPath
+                                     credentials:credentials
+                                          bucket:bucket
                                   avatarFileName:avatarFileName
                                    lastFetchDate:lastFetchDate
                                      transaction:transaction
@@ -1867,6 +1895,8 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
                                         username:username
                                    isUuidCapable:isUuidCapable
                                    avatarUrlPath:avatarUrlPath
+                                     credentials:credentials
+                                          bucket:bucket
                                    lastFetchDate:lastFetchDate
                                      transaction:transaction
                                       completion:nil];

@@ -1185,7 +1185,7 @@ public extension OWSAttachmentDownloads {
             }
             urlPath = "attachments/\(encodedKey)"
         } else {
-            urlPath = String(format: "attachments/%llu", attachmentPointer.serverId)
+            urlPath = String(format: "api/v1/osp/objects/%@/%llu", attachmentPointer.bucket, attachmentPointer.serverId)
         }
         return urlPath
     }

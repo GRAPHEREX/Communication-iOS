@@ -2815,6 +2815,16 @@ struct SignalServiceProtos_AttachmentPointer {
   /// Clears the value of `cdnID`. Subsequent reads from it will return its default value.
   mutating func clearCdnID() {self._cdnID = nil}
 
+    var credentionals: String {
+      get {return _credentionals ?? ""}
+      set {_credentionals = newValue}
+    }
+      
+    var bucket: String {
+      get {return _bucket ?? ""}
+      set {_bucket = newValue}
+    }
+    
   var cdnKey: String {
     get {return _cdnKey ?? String()}
     set {_cdnKey = newValue}
@@ -2974,6 +2984,8 @@ struct SignalServiceProtos_AttachmentPointer {
 
   fileprivate var _cdnID: UInt64?
   fileprivate var _cdnKey: String?
+    fileprivate var _credentionals: String?
+    fileprivate var _bucket: String?
   fileprivate var _contentType: String?
   fileprivate var _key: Data?
   fileprivate var _size: UInt32?
@@ -5839,7 +5851,9 @@ extension SignalServiceProtos_AttachmentPointer: SwiftProtobuf.Message, SwiftPro
     11: .same(proto: "caption"),
     12: .same(proto: "blurHash"),
     13: .same(proto: "uploadTimestamp"),
-    14: .same(proto: "cdnNumber")
+    14: .same(proto: "cdnNumber"),
+    16: .same(proto: "credentionals"),
+    17: .same(proto: "bucket")
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -5860,6 +5874,8 @@ extension SignalServiceProtos_AttachmentPointer: SwiftProtobuf.Message, SwiftPro
       case 13: try decoder.decodeSingularUInt64Field(value: &self._uploadTimestamp)
       case 14: try decoder.decodeSingularUInt32Field(value: &self._cdnNumber)
       case 15: try decoder.decodeSingularStringField(value: &self._cdnKey)
+      case 16: try decoder.decodeSingularStringField(value: &self._credentionals)
+      case 17: try decoder.decodeSingularStringField(value: &self._bucket)
       default: break
       }
     }
@@ -5911,12 +5927,20 @@ extension SignalServiceProtos_AttachmentPointer: SwiftProtobuf.Message, SwiftPro
     if let v = self._cdnKey {
       try visitor.visitSingularStringField(value: v, fieldNumber: 15)
     }
+    if let v = self._credentionals {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 16)
+    }
+    if let v = self._bucket {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 17)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SignalServiceProtos_AttachmentPointer, rhs: SignalServiceProtos_AttachmentPointer) -> Bool {
     if lhs._cdnID != rhs._cdnID {return false}
     if lhs._cdnKey != rhs._cdnKey {return false}
+    if lhs._credentionals != rhs._credentionals {return false}
+    if lhs._bucket != rhs._bucket {return false}
     if lhs._contentType != rhs._contentType {return false}
     if lhs._key != rhs._key {return false}
     if lhs._size != rhs._size {return false}

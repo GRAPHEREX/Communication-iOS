@@ -38,6 +38,8 @@ extern NSString *const kLocalProfileInvariantPhoneNumber;
 @property (atomic, readonly, nullable) NSString *username;
 @property (atomic, readonly) BOOL isUuidCapable;
 @property (atomic, readonly, nullable) NSString *avatarUrlPath;
+@property (atomic, readonly, nullable) NSString *credentials;
+@property (atomic, readonly, nullable) NSString *bucket;
 // This filename is relative to OWSProfileManager.profileAvatarsDirPath.
 @property (atomic, readonly, nullable) NSString *avatarFileName;
 @property (atomic, readonly, nullable) NSDate *lastFetchDate;
@@ -78,7 +80,9 @@ extern NSString *const kLocalProfileInvariantPhoneNumber;
             recipientPhoneNumber:(nullable NSString *)recipientPhoneNumber
                    recipientUUID:(nullable NSString *)recipientUUID
                         username:(nullable NSString *)username
-NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:avatarFileName:avatarUrlPath:bio:bioEmoji:familyName:isUuidCapable:lastFetchDate:lastMessagingDate:profileKey:profileName:recipientPhoneNumber:recipientUUID:username:));
+                   credentials:(nullable NSString *)credentials
+                        bucket:(nullable NSString *)bucket
+NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:avatarFileName:avatarUrlPath:bio:bioEmoji:familyName:isUuidCapable:lastFetchDate:lastMessagingDate:profileKey:profileName:recipientPhoneNumber:recipientUUID:username:credentials:bucket:));
 
 // clang-format on
 
@@ -105,6 +109,8 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:avatarFileName:avat
 - (void)updateWithGivenName:(nullable NSString *)givenName
                  familyName:(nullable NSString *)familyName
               avatarUrlPath:(nullable NSString *)avatarUrlPath
+                credentials:(nullable NSString *)credentials
+                     bucket:(nullable NSString *)bucket
              avatarFileName:(nullable NSString *)avatarFileName
                 transaction:(SDSAnyWriteTransaction *)transaction
                  completion:(nullable OWSUserProfileCompletion)completion;
@@ -116,6 +122,8 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:avatarFileName:avat
                    username:(nullable NSString *)username
               isUuidCapable:(BOOL)isUuidCapable
               avatarUrlPath:(nullable NSString *)avatarUrlPath
+                credentials:(nullable NSString *)credentials
+                     bucket:(nullable NSString *)bucket
               lastFetchDate:(NSDate *)lastFetchDate
                 transaction:(SDSAnyWriteTransaction *)transaction
                  completion:(nullable OWSUserProfileCompletion)completion;
@@ -127,6 +135,8 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:avatarFileName:avat
                    username:(nullable NSString *)username
               isUuidCapable:(BOOL)isUuidCapable
               avatarUrlPath:(nullable NSString *)avatarUrlPath
+                credentials:(nullable NSString *)credentials
+                     bucket:(nullable NSString *)bucket
              avatarFileName:(nullable NSString *)avatarFileName
               lastFetchDate:(NSDate *)lastFetchDate
                 transaction:(SDSAnyWriteTransaction *)transaction
@@ -148,6 +158,8 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:avatarFileName:avat
 - (void)updateWithGivenName:(nullable NSString *)givenName
                  familyName:(nullable NSString *)familyName
               avatarUrlPath:(nullable NSString *)avatarUrlPath
+                credentials:(nullable NSString *)credentials
+                     bucket:(nullable NSString *)bucket
         wasLocallyInitiated:(BOOL)wasLocallyInitiated
                 transaction:(SDSAnyWriteTransaction *)transaction
                  completion:(nullable OWSUserProfileCompletion)completion;

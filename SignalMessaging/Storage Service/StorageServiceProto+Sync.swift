@@ -676,6 +676,8 @@ extension StorageServiceProtoAccountRecord {
         let localGivenName = profileManager.unfilteredGivenName(for: localAddress, transaction: transaction)
         let localFamilyName = profileManager.unfilteredFamilyName(for: localAddress, transaction: transaction)
         let localAvatarUrl = profileManager.profileAvatarURLPath(for: localAddress, transaction: transaction)
+        let credentials = profileManager.profileAvatarCredentials(for: localAddress, transaction: transaction)
+        let bucket = profileManager.profileAvatarBucket(for: localAddress, transaction: transaction)
 
         // If our local profile key record differs from what's on the service, use the service's value.
         if let profileKey = profileKey, localProfileKey?.keyData != profileKey {
@@ -696,6 +698,8 @@ extension StorageServiceProtoAccountRecord {
                 givenName,
                 familyName: familyName,
                 avatarUrlPath: avatarURL,
+                credentials: credentials,
+                bucket: bucket,
                 for: localAddress,
                 wasLocallyInitiated: false,
                 transaction: transaction

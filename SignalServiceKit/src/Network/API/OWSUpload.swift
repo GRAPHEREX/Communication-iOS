@@ -77,16 +77,14 @@ public extension OWSUpload {
                                          parameters: nil,
                                          constructingBodyWith: { (formData: AFMultipartFormData) -> Void in
 
+                                            formData.appendPart(withFileData: data, name: "file", fileName: "file", mimeType: "")
+                                            
                                             // We have to build up the form manually vs. simply passing in a parameters dict
                                             // because AWS is sensitive to the order of the form params (at least the "key"
                                             // field must occur early on).
                                             //
                                             // For consistency, all fields are ordered here in a known working order.
                                             uploadForm.append(toForm: formData)
-
-                                            AppendMultipartFormV4Path(formData, "Content-Type", OWSMimeTypeApplicationOctetStream)
-
-                                            formData.appendPart(withForm: data, name: "file")
             },
                                          progress: { progress in
                                             Logger.verbose("progress: \(progress.fractionCompleted)")

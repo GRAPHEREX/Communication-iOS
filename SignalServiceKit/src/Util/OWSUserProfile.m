@@ -121,6 +121,8 @@ NSUInteger const kUserProfileSchemaVersion = 1;
             recipientPhoneNumber:(nullable NSString *)recipientPhoneNumber
                    recipientUUID:(nullable NSString *)recipientUUID
                         username:(nullable NSString *)username
+                   credentials:(nullable NSString *)credentials
+                        bucket:(nullable NSString *)bucket
 {
     self = [super initWithGrdbId:grdbId
                         uniqueId:uniqueId];
@@ -142,6 +144,8 @@ NSUInteger const kUserProfileSchemaVersion = 1;
     _recipientPhoneNumber = recipientPhoneNumber;
     _recipientUUID = recipientUUID;
     _username = username;
+    _credentials = credentials;
+    _bucket = bucket;
 
     return self;
 }
@@ -326,6 +330,20 @@ NSUInteger const kUserProfileSchemaVersion = 1;
         }
 
         _avatarUrlPath = avatarUrlPath;
+    }
+}
+
+- (void)setCredentials:(nullable NSString *)credentials
+{
+    @synchronized (self) {
+        _credentials = credentials;
+    }
+}
+
+- (void)setBucket:(nullable NSString *)bucket
+{
+    @synchronized (self) {
+        _bucket = bucket;
     }
 }
 
@@ -566,6 +584,8 @@ NSUInteger const kUserProfileSchemaVersion = 1;
 - (void)updateWithGivenName:(nullable NSString *)givenName
                  familyName:(nullable NSString *)familyName
               avatarUrlPath:(nullable NSString *)avatarUrlPath
+                credentials:(nullable NSString *)credentials
+                     bucket:(nullable NSString *)bucket
              avatarFileName:(nullable NSString *)avatarFileName
                 transaction:(SDSAnyWriteTransaction *)transaction
                  completion:(nullable OWSUserProfileCompletion)completion
@@ -576,6 +596,8 @@ NSUInteger const kUserProfileSchemaVersion = 1;
                    [userProfile setFamilyName:familyName];
                    // Update the avatar properties in lockstep.
                    [userProfile setAvatarUrlPath:avatarUrlPath avatarFileName:avatarFileName];
+                   [userProfile setCredentials:credentials];
+                   [userProfile setBucket:bucket];
                }
                functionName:__PRETTY_FUNCTION__
         wasLocallyInitiated:YES
@@ -590,6 +612,8 @@ NSUInteger const kUserProfileSchemaVersion = 1;
                    username:(nullable NSString *)username
               isUuidCapable:(BOOL)isUuidCapable
               avatarUrlPath:(nullable NSString *)avatarUrlPath
+                credentials:(nullable NSString *)credentials
+                     bucket:(nullable NSString *)bucket
               lastFetchDate:(NSDate *)lastFetchDate
                 transaction:(SDSAnyWriteTransaction *)transaction
                  completion:(nullable OWSUserProfileCompletion)completion
@@ -603,6 +627,8 @@ NSUInteger const kUserProfileSchemaVersion = 1;
                    [userProfile setUsername:username];
                    [userProfile setIsUuidCapable:isUuidCapable];
                    [userProfile setAvatarUrlPath:avatarUrlPath];
+                   [userProfile setCredentials:credentials];
+                   [userProfile setBucket:bucket];
                    [userProfile setLastFetchDate:lastFetchDate];
                }
                functionName:__PRETTY_FUNCTION__
@@ -618,6 +644,8 @@ NSUInteger const kUserProfileSchemaVersion = 1;
                    username:(nullable NSString *)username
               isUuidCapable:(BOOL)isUuidCapable
               avatarUrlPath:(nullable NSString *)avatarUrlPath
+                credentials:(nullable NSString *)credentials
+                     bucket:(nullable NSString *)bucket
              avatarFileName:(nullable NSString *)avatarFileName
               lastFetchDate:(NSDate *)lastFetchDate
                 transaction:(SDSAnyWriteTransaction *)transaction
@@ -633,6 +661,8 @@ NSUInteger const kUserProfileSchemaVersion = 1;
                    [userProfile setIsUuidCapable:isUuidCapable];
                    // Update the avatar properties in lockstep.
                    [userProfile setAvatarUrlPath:avatarUrlPath avatarFileName:avatarFileName];
+                   [userProfile setCredentials:credentials];
+                   [userProfile setBucket:bucket];
                    [userProfile setLastFetchDate:lastFetchDate];
                }
                functionName:__PRETTY_FUNCTION__
@@ -666,6 +696,8 @@ NSUInteger const kUserProfileSchemaVersion = 1;
                    [userProfile setFamilyName:nil];
                    // Update the avatar properties in lockstep.
                    [userProfile setAvatarUrlPath:nil avatarFileName:nil];
+                   [userProfile setCredentials:nil];
+                   [userProfile setBucket:nil];
                }
                functionName:__PRETTY_FUNCTION__
         wasLocallyInitiated:wasLocallyInitiated
@@ -710,6 +742,8 @@ NSUInteger const kUserProfileSchemaVersion = 1;
 - (void)updateWithGivenName:(nullable NSString *)givenName
                  familyName:(nullable NSString *)familyName
               avatarUrlPath:(nullable NSString *)avatarUrlPath
+                credentials:(nullable NSString *)credentials
+                     bucket:(nullable NSString *)bucket
         wasLocallyInitiated:(BOOL)wasLocallyInitiated
                 transaction:(SDSAnyWriteTransaction *)transaction
                  completion:(nullable OWSUserProfileCompletion)completion
@@ -719,6 +753,8 @@ NSUInteger const kUserProfileSchemaVersion = 1;
                    [userProfile setGivenName:givenName];
                    [userProfile setFamilyName:familyName];
                    [userProfile setAvatarUrlPath:avatarUrlPath];
+                   [userProfile setCredentials:credentials];
+                   [userProfile setBucket:bucket];
                }
                functionName:__PRETTY_FUNCTION__
         wasLocallyInitiated:wasLocallyInitiated

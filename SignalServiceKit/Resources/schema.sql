@@ -194,6 +194,8 @@ CREATE
             ,"contentType" TEXT NOT NULL
             ,"encryptionKey" BLOB
             ,"serverId" INTEGER NOT NULL
+            ,"credentionals" TEXT
+            ,"bucket" TEXT
             ,"sourceFilename" TEXT
             ,"cachedAudioDurationSeconds" DOUBLE
             ,"cachedImageHeight" DOUBLE
@@ -343,6 +345,8 @@ CREATE
             ,"lastMessagingDate" DOUBLE
             ,"bio" TEXT
             ,"bioEmoji" TEXT
+            ,"credentials" TEXT
+            ,"bucket" TEXT
         )
 ;
 

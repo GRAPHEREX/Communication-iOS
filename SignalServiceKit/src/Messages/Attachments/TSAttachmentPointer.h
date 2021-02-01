@@ -54,6 +54,8 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value);
 - (nullable OWSBackupFragment *)lazyRestoreFragmentWithTransaction:(SDSAnyReadTransaction *)transaction;
 
 - (instancetype)initWithServerId:(UInt64)serverId
+                   credentionals:(NSString *)credentionals
+                          bucket:(NSString *)bucket
                           cdnKey:(NSString *)cdnKey
                        cdnNumber:(UInt32)cdnNumber
                    encryptionKey:(NSData *)encryptionKey
@@ -86,6 +88,8 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value);
                    contentType:(NSString *)contentType
                  encryptionKey:(nullable NSData *)encryptionKey
                       serverId:(unsigned long long)serverId
+                 credentionals:(NSString *)credentionals
+                        bucket:(NSString *)bucket
                         cdnKey:(NSString *)cdnKey
                      cdnNumber:(unsigned int)cdnNumber
                 sourceFilename:(nullable NSString *)sourceFilename
@@ -94,6 +98,8 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value);
 - (nullable instancetype)initWithCoder:(NSCoder *)coder NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithServerId:(UInt64)serverId
+                   credentionals:(NSString *)credentionals
+                          bucket:(NSString *)bucket
                           cdnKey:(NSString *)cdnKey
                        cdnNumber:(UInt32)cdnNumber
                              key:(NSData *)key
@@ -128,6 +134,8 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value);
                      contentType:(NSString *)contentType
                    encryptionKey:(nullable NSData *)encryptionKey
                         serverId:(unsigned long long)serverId
+                 credentionals:(NSString *)credentionals
+                        bucket:(NSString *)bucket
                   sourceFilename:(nullable NSString *)sourceFilename
                  uploadTimestamp:(unsigned long long)uploadTimestamp
                           digest:(nullable NSData *)digest
@@ -135,7 +143,7 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value);
                        mediaSize:(CGSize)mediaSize
                      pointerType:(TSAttachmentPointerType)pointerType
                            state:(TSAttachmentPointerState)state
-NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:albumMessageId:attachmentType:blurHash:byteCount:caption:cdnKey:cdnNumber:contentType:encryptionKey:serverId:sourceFilename:uploadTimestamp:digest:lazyRestoreFragmentId:mediaSize:pointerType:state:));
+NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:albumMessageId:attachmentType:blurHash:byteCount:caption:cdnKey:cdnNumber:contentType:encryptionKey:serverId:credentionals:bucket:sourceFilename:uploadTimestamp:digest:lazyRestoreFragmentId:mediaSize:pointerType:state:));
 
 // clang-format on
 

@@ -42,6 +42,8 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
 // This constructor is used for new instances of TSAttachmentPointer,
 // i.e. undownloaded incoming attachments.
 - (instancetype)initWithServerId:(UInt64)serverId
+                   credentionals:(NSString *)credentionals
+                          bucket:(NSString *)bucket
                           cdnKey:(NSString *)cdnKey
                        cdnNumber:(UInt32)cdnNumber
                    encryptionKey:(NSData *)encryptionKey
@@ -72,6 +74,8 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
     }
 
     _serverId = serverId;
+    _credentionals = credentionals;
+    _bucket = bucket;
     _cdnKey = cdnKey;
     _cdnNumber = cdnNumber;
     _encryptionKey = encryptionKey;
@@ -245,6 +249,8 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
                      contentType:(NSString *)contentType
                    encryptionKey:(nullable NSData *)encryptionKey
                         serverId:(unsigned long long)serverId
+                 credentionals:(NSString *)credentionals
+                        bucket:(NSString *)bucket
                   sourceFilename:(nullable NSString *)sourceFilename
                  uploadTimestamp:(unsigned long long)uploadTimestamp
 {
@@ -265,6 +271,8 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
     _contentType = contentType;
     _encryptionKey = encryptionKey;
     _serverId = serverId;
+    _credentionals = credentionals;
+    _bucket = bucket;
     _sourceFilename = sourceFilename;
     _uploadTimestamp = uploadTimestamp;
 

@@ -344,6 +344,8 @@ extension OWSProfileManager {
         attempt.userProfile.updateWith(givenName: attempt.update.profileGivenName,
                                        familyName: attempt.update.profileFamilyName,
                                        avatarUrlPath: attempt.avatarUrlPath,
+                                       credentials: attempt.credentials,
+                                       bucket: attempt.bucket,
                                        avatarFileName: attempt.avatarFilename,
                                        transaction: transaction,
                                        completion: nil)
@@ -492,6 +494,8 @@ private class ProfileUpdateAttempt {
     // These properties are populated during the update process.
     var avatarFilename: String?
     var avatarUrlPath: String?
+    var credentials: String?
+    var bucket: String?
 
     init(update: PendingProfileUpdate, userProfile: OWSUserProfile) {
         self.update = update

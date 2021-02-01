@@ -91,6 +91,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setProfileGivenName:(nullable NSString *)firstName
                  familyName:(nullable NSString *)lastName
               avatarUrlPath:(nullable NSString *)avatarUrlPath
+                credentials:(nullable NSString *)credentials
+                     bucket:(nullable NSString *)bucket
                  forAddress:(nonnull SignalServiceAddress *)address
         wasLocallyInitiated:(BOOL)wasLocallyInitiated
                 transaction:(nonnull SDSAnyWriteTransaction *)transaction
@@ -283,6 +285,8 @@ NS_ASSUME_NONNULL_BEGIN
                        username:(nullable NSString *)username
                   isUuidCapable:(BOOL)isUuidCapable
                   avatarUrlPath:(nullable NSString *)avatarUrlPath
+                    credentials:(nullable NSString *)credentials
+                         bucket:(nullable NSString *)bucket
     optionalDecryptedAvatarData:(nullable NSData *)optionalDecryptedAvatarData
                   lastFetchDate:(NSDate *)lastFetchDate
 {
@@ -328,6 +332,7 @@ NS_ASSUME_NONNULL_BEGIN
 {
     // Do nothing.
 }
+
 
 - (void)migrateWhitelistedGroupsWithTransaction:(SDSAnyWriteTransaction *)transaction
 {

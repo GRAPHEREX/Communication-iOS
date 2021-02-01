@@ -1138,6 +1138,8 @@ public extension DebugUIScreenshots {
         attachment.updateAsUploaded(withEncryptionKey: Randomness.generateRandomBytes(1),
                                     digest: Randomness.generateRandomBytes(1),
                                     serverId: 1,
+                                    bucket:"",
+                                    credentionals:"",
                                     cdnKey: "",
                                     cdnNumber: 0,
                                     uploadTimestamp: Date.ows_millisecondTimestamp(),

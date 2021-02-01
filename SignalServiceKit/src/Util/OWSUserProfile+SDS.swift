@@ -37,6 +37,8 @@ public struct UserProfileRecord: SDSRecord {
     public let username: String?
     public let familyName: String?
     public let isUuidCapable: Bool
+    public let credentials: String?
+    public let bucket: String?
     public let lastFetchDate: Double?
     public let lastMessagingDate: Double?
     public let bio: String?
@@ -55,6 +57,8 @@ public struct UserProfileRecord: SDSRecord {
         case username
         case familyName
         case isUuidCapable
+        case credentials
+        case bucket
         case lastFetchDate
         case lastMessagingDate
         case bio
@@ -94,10 +98,12 @@ public extension UserProfileRecord {
         username = row[9]
         familyName = row[10]
         isUuidCapable = row[11]
-        lastFetchDate = row[12]
-        lastMessagingDate = row[13]
-        bio = row[14]
-        bioEmoji = row[15]
+        credentials = row[12]
+        bucket = row[13]
+        lastFetchDate = row[14]
+        lastMessagingDate = row[15]
+        bio = row[16]
+        bioEmoji = row[17]
     }
 }
 
@@ -145,7 +151,9 @@ extension OWSUserProfile {
             let recipientPhoneNumber: String? = record.recipientPhoneNumber
             let recipientUUID: String? = record.recipientUUID
             let username: String? = record.username
-
+            let credentials: String? = record.credentials
+            let bucket: String? = record.bucket
+            
             return OWSUserProfile(grdbId: recordId,
                                   uniqueId: uniqueId,
                                   avatarFileName: avatarFileName,
@@ -160,7 +168,9 @@ extension OWSUserProfile {
                                   profileName: profileName,
                                   recipientPhoneNumber: recipientPhoneNumber,
                                   recipientUUID: recipientUUID,
-                                  username: username)
+                                  username: username,
+                                  credentials: credentials,
+                                  bucket: bucket)
 
         default:
             owsFailDebug("Unexpected record type: \(record.recordType)")
@@ -236,6 +246,8 @@ extension OWSUserProfile: DeepCopyable {
             let recipientPhoneNumber: String? = modelToCopy.recipientPhoneNumber
             let recipientUUID: String? = modelToCopy.recipientUUID
             let username: String? = modelToCopy.username
+            let credentials: String? = modelToCopy.credentials
+            let bucket: String? = modelToCopy.bucket
 
             return OWSUserProfile(grdbId: id,
                                   uniqueId: uniqueId,
@@ -251,7 +263,9 @@ extension OWSUserProfile: DeepCopyable {
                                   profileName: profileName,
                                   recipientPhoneNumber: recipientPhoneNumber,
                                   recipientUUID: recipientUUID,
-                                  username: username)
+                                  username: username,
+                                  credentials: credentials,
+                                  bucket: bucket)
         }
 
     }
@@ -276,6 +290,8 @@ extension OWSUserProfileSerializer {
     static let usernameColumn = SDSColumnMetadata(columnName: "username", columnType: .unicodeString, isOptional: true)
     static let familyNameColumn = SDSColumnMetadata(columnName: "familyName", columnType: .unicodeString, isOptional: true)
     static let isUuidCapableColumn = SDSColumnMetadata(columnName: "isUuidCapable", columnType: .int)
+    static let credentialsColumn = SDSColumnMetadata(columnName: "credentials", columnType: .unicodeString, isOptional: true)
+    static let bucketColumn = SDSColumnMetadata(columnName: "bucket", columnType: .unicodeString, isOptional: true)
     static let lastFetchDateColumn = SDSColumnMetadata(columnName: "lastFetchDate", columnType: .double, isOptional: true)
     static let lastMessagingDateColumn = SDSColumnMetadata(columnName: "lastMessagingDate", columnType: .double, isOptional: true)
     static let bioColumn = SDSColumnMetadata(columnName: "bio", columnType: .unicodeString, isOptional: true)
@@ -298,6 +314,8 @@ extension OWSUserProfileSerializer {
         usernameColumn,
         familyNameColumn,
         isUuidCapableColumn,
+        credentialsColumn,
+        bucketColumn,
         lastFetchDateColumn,
         lastMessagingDateColumn,
         bioColumn,
@@ -726,12 +744,14 @@ class OWSUserProfileSerializer: SDSSerializer {
         let username: String? = model.username
         let familyName: String? = model.familyName
         let isUuidCapable: Bool = model.isUuidCapable
+        let credentials: String? = model.credentials
+        let bucket: String? = model.bucket
         let lastFetchDate: Double? = archiveOptionalDate(model.lastFetchDate)
         let lastMessagingDate: Double? = archiveOptionalDate(model.lastMessagingDate)
         let bio: String? = model.bio
         let bioEmoji: String? = model.bioEmoji
-
-        return UserProfileRecord(delegate: model, id: id, recordType: recordType, uniqueId: uniqueId, avatarFileName: avatarFileName, avatarUrlPath: avatarUrlPath, profileKey: profileKey, profileName: profileName, recipientPhoneNumber: recipientPhoneNumber, recipientUUID: recipientUUID, username: username, familyName: familyName, isUuidCapable: isUuidCapable, lastFetchDate: lastFetchDate, lastMessagingDate: lastMessagingDate, bio: bio, bioEmoji: bioEmoji)
+        
+        return UserProfileRecord(delegate: model, id: id, recordType: recordType, uniqueId: uniqueId, avatarFileName: avatarFileName, avatarUrlPath: avatarUrlPath, profileKey: profileKey, profileName: profileName, recipientPhoneNumber: recipientPhoneNumber, recipientUUID: recipientUUID, username: username, familyName: familyName, isUuidCapable: isUuidCapable, credentials: credentials, bucket: bucket, lastFetchDate: lastFetchDate, lastMessagingDate: lastMessagingDate, bio: bio, bioEmoji: bioEmoji)
     }
 }
 
