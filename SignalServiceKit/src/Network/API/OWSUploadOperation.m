@@ -116,16 +116,17 @@ NSString *const kAttachmentUploadAttachmentIDKey = @"kAttachmentUploadAttachment
     
     [self fireNotificationWithProgress:0];
 
-    OWSAttachmentUploadV2 *upload = [[OWSAttachmentUploadV2 alloc] initWithAttachmentStream:attachmentStream
-                                                                                   canUseV3:self.canUseV3];
+    OWSAttachmentUploadV4 *upload = [OWSAttachmentUploadV4 new];
     [BlurHash ensureBlurHashForAttachmentStream:attachmentStream]
         .catchInBackground(^{
             // Swallow these errors; blurHashes are strictly optional.
             OWSLogWarn(@"Error generating blurHash.");
         })
         .thenInBackground(^{
-            return [upload uploadWithProgressBlock:^(
-                NSProgress *uploadProgress) { [self fireNotificationWithProgress:uploadProgress.fractionCompleted]; }];
+            return [upload uploadAttachmentToService:attachmentStream
+                                       progressBlock:^(NSProgress *uploadProgress) {
+                                           [self fireNotificationWithProgress:uploadProgress.fractionCompleted];
+                                       }];
         })
         .thenInBackground(^{
             DatabaseStorageWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {

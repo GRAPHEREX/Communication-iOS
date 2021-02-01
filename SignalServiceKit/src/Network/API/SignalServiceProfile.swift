@@ -20,6 +20,8 @@ public class SignalServiceProfile: NSObject {
     public let bioEmojiEncrypted: Data?
     public let username: String?
     public let avatarUrlPath: String?
+    public let credentials: String?
+    public let bucket: String?
     public let unidentifiedAccessVerifier: Data?
     public let hasUnrestrictedUnidentifiedAccess: Bool
     public let supportsGroupsV2: Bool
@@ -61,8 +63,10 @@ public class SignalServiceProfile: NSObject {
 
         self.username = try params.optional(key: "username")
 
-        let avatarUrlPath: String? = try params.optional(key: "avatar")
-        self.avatarUrlPath = avatarUrlPath
+        let avatar = ParamParser(responseObject: try params.optional(key: "avatar"))
+        self.avatarUrlPath = try avatar?.optional(key: "attachmentId")
+        self.bucket = try avatar?.optional(key: "bucket")
+        self.credentials = try avatar?.optional(key: "credential")
 
         self.unidentifiedAccessVerifier = try params.optionalBase64EncodedData(key: "unidentifiedAccess")
 
