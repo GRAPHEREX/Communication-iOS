@@ -181,7 +181,7 @@ public class VersionedProfilesImpl: NSObject, VersionedProfilesSwift {
             }
             return Promise.value(form)
         }.then(on: DispatchQueue.global()) { (uploadForm: OWSUploadFormV4) -> Promise<String> in
-            OWSUpload.uploadV4(data: profileAvatarData, uploadForm: uploadForm, uploadUrlPath: "")
+            OWSUpload.uploadV4(data: profileAvatarData, uploadForm: uploadForm, uploadUrlPath: "/api/v1/osp/objects")
         }.map(on: DispatchQueue.global()) { (avatarUrlPath: String) -> VersionedProfileUpdate in
             return VersionedProfileUpdate(avatarUrlPath: avatarUrlPath)
         }
