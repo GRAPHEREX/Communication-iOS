@@ -66,6 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 
         OWSPreferences *preferences = [OWSPreferences new];
 
+        OWSIdentityManager *identityManager = [[OWSIdentityManager alloc] initWithDatabaseStorage:databaseStorage];
         TSNetworkManager *networkManager = [[TSNetworkManager alloc] initDefault];
         OWSContactsManager *contactsManager = [OWSContactsManager new];
         OWSLinkPreviewManager *linkPreviewManager = [OWSLinkPreviewManager new];
@@ -76,7 +77,6 @@ NS_ASSUME_NONNULL_BEGIN
         OWSProfileManager *profileManager = [[OWSProfileManager alloc] initWithDatabaseStorage:databaseStorage];
         OWSMessageManager *messageManager = [OWSMessageManager new];
         OWSBlockingManager *blockingManager = [OWSBlockingManager new];
-        OWSIdentityManager *identityManager = [[OWSIdentityManager alloc] initWithDatabaseStorage:databaseStorage];
         id<RemoteConfigManager> remoteConfigManager = [ServiceRemoteConfigManager new];
         SSKSessionStore *sessionStore = [SSKSessionStore new];
         SSKSignedPreKeyStore *signedPreKeyStore = [SSKSignedPreKeyStore new];
