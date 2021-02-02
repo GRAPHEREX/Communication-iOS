@@ -249,7 +249,7 @@ private class TSConstantsStaging: TSConstantsProtocol {
 
     // We need to discard all profile key credentials if these values ever change.
     // See: GroupsV2Impl.verifyServerPublicParams(...)
-    public let serverPublicParamsBase64 = "ABSY21VckQcbSXVNCGRYJcfWHiAMZmpTtTELcDmxgdFbtp/bWsSxZdMKzfCp8rvIs8ocCU3B37fT3r4Mi5qAemeGeR2X+/YmOGR5ofui7tD5mDQfstAI9i+4WpMtIe8KC3wU5w3Inq3uNWVmoGtpKndsNfwJrCg0Hd9zmObhypUnSkfYn2ooMOOnBpfdanRtrvetZUayDMSC5iSRcXKpdls=="
+    public let serverPublicParamsBase64 = "ALRbOPkWOmalFte5ILZa4zeCyxE0e3IlPpKOWPgR3dMrRLeXssRKNsvUg/m+IugL1skJqi8WPQE9Nfk8ujsSWDOcSn5+444FYgHJ7ofg7P4QRDPkEtC0fsSGlyCfnus2Unp+qDmfd4lHTBBmpXdl4gSMpwS8cXGfwII6iY7JObE+tuVY5R4MeH0IHRw5DYiH9t1EZs9oNeqk7EEN2bM5InU=="
     
     public let sslPinningCertName = "grapherex_dev"
 }
