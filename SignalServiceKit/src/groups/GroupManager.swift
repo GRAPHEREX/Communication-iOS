@@ -241,25 +241,27 @@ public class GroupManager: NSObject {
     public static func doesUserSupportGroupsV2(address: SignalServiceAddress,
                                                transaction: SDSAnyReadTransaction) -> Bool {
 
-        guard address.isValid else {
-            Logger.warn("Invalid address: \(address).")
-            return false
-        }
-        guard address.uuid != nil else {
-            Logger.warn("Member without UUID.")
-            return false
-        }
-        guard doesUserHaveGroupsV2Capability(address: address,
-                                             transaction: transaction) else {
-                                                Logger.warn("Member without Groups v2 capability.")
-                                                return false
-        }
-        // NOTE: We do consider users to support groups v2 even if:
-        //
-        // * We don't know their profile key.
-        // * They've never done a versioned profile update.
-        // * We don't have a profile key credential for them.
-        return true
+        return false
+        
+//        guard address.isValid else {
+//            Logger.warn("Invalid address: \(address).")
+//            return false
+//        }
+//        guard address.uuid != nil else {
+//            Logger.warn("Member without UUID.")
+//            return false
+//        }
+//        guard doesUserHaveGroupsV2Capability(address: address,
+//                                             transaction: transaction) else {
+//                                                Logger.warn("Member without Groups v2 capability.")
+//                                                return false
+//        }
+//        // NOTE: We do consider users to support groups v2 even if:
+//        //
+//        // * We don't know their profile key.
+//        // * They've never done a versioned profile update.
+//        // * We don't have a profile key credential for them.
+//        return true
     }
 
     @objc
