@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-const CGFloat kOWSTable_DefaultCellHeight = 45.f;
+const CGFloat kOWSTable_DefaultCellHeight = 56.f;
 
 @interface OWSTableContents ()
 
@@ -172,6 +172,18 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     item.actionBlock = actionBlock;
     item.customCellBlock = customCellBlock;
     item.customRowHeight = @(UITableViewAutomaticDimension);
+    return item;
+}
+
++ (OWSTableItem *)itemWithCustomCellBlock:(OWSTableCustomCellBlock)customCellBlock
+                          customRowHeight:(CGFloat)customRowHeight
+                              actionBlock:(nullable OWSTableActionBlock)actionBlock {
+    OWSAssertDebug(customCellBlock);
+
+    OWSTableItem *item = [OWSTableItem new];
+    item.actionBlock = actionBlock;
+    item.customCellBlock = customCellBlock;
+    item.customRowHeight = @(customRowHeight);
     return item;
 }
 
@@ -853,6 +865,28 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
     }
 }
 
+#pragma mark - Edit Actions
+
+- (nullable NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.editActionDelegate editActionsForRowAtIndexPath:indexPath];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.willDisplayDelegate willDisplayCell:cell forRowAtIndexPath:indexPath];
+}
+
+- (nullable UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.swipeActionsConfigurationDelegate leadingSwipeActionsConfigurationForRowAt:indexPath];
+}
+
+- (nullable UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.swipeActionsConfigurationDelegate trailingSwipeActionsConfigurationForRowAt:indexPath];
+}
+
 #pragma mark Index
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
@@ -897,7 +931,11 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    [self.delegate tableViewWillBeginDragging];
+    [self.draggingDelegate tableViewWillBeginDragging];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.scrollDelegate tableViewDidScroll];
 }
 
 #pragma mark - Theme
@@ -940,6 +978,10 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.editActionDelegate != nil || self.swipeActionsConfigurationDelegate != nil) {
+        return [self.editActionDelegate canEditRowAtIndexPath:indexPath] || [self.swipeActionsConfigurationDelegate canEditRowAtIndexPath:indexPath];
+    }
+    
     OWSTableItem *item = [self itemForIndexPath:indexPath];
     return item.deleteAction != nil;
 }

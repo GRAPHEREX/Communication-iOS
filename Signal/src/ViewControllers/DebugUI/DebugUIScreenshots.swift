@@ -967,7 +967,9 @@ public extension DebugUIScreenshots {
                                            contactAvatarJpegData: nil,
                                            multipleAccountLabelText: "",
                                            recipientPhoneNumber: phoneNumber,
-                                           recipientUUID: uuidString)
+                                           recipientUUID: uuidString,
+                                           st_userID: nil,
+                                           isDeleted: false)
             newAccount.anyInsert(transaction: transaction)
         }
         return address

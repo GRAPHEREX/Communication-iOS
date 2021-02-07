@@ -14,6 +14,7 @@
 #import "SignalApp.h"
 #import "ViewControllerUtils.h"
 #import "YDBLegacyMigration.h"
+#import "Firebase.h"
 #import <Intents/Intents.h>
 #import <PromiseKit/AnyPromise.h>
 #import <SignalCoreKit/iOSVersions.h>
@@ -165,6 +166,8 @@ void uncaughtExceptionHandler(NSException *exception)
     OWSLogWarn(@"application: didFinishLaunchingWithOptions.");
     [Cryptography seedRandom];
 
+    [FIRApp configure];
+    
     // This *must* happen before we try and access or verify the database, since we
     // may be in a state where the database has been partially restored from transfer
     // (e.g. the key was replaced, but the database files haven't been moved into place)
@@ -243,7 +246,8 @@ void uncaughtExceptionHandler(NSException *exception)
     self.window = mainWindow;
     CurrentAppContext().mainWindow = mainWindow;
     // Show LoadingViewController until the async database view registrations are complete.
-    mainWindow.rootViewController = [LoadingViewController new];
+    UIViewController *controller = [[UIStoryboard storyboardWithName:@"LoadingViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"LoadingViewController"];
+    mainWindow.rootViewController = controller;
     [mainWindow makeKeyAndVisible];
 
     // This must happen in appDidFinishLaunching or earlier to ensure we don't
@@ -579,6 +583,15 @@ void uncaughtExceptionHandler(NSException *exception)
     // Ensure that all windows have the correct frame.
     [self.windowManager updateWindowFrames];
 
+    [AppReadiness runNowOrWhenAppDidBecomeReady:^{
+        if ([self.tsAccountManager isRegistered]) {
+            OWSSyncPushTokensJob *job =
+                [[OWSSyncPushTokensJob alloc] initWithAccountManager:AppEnvironment.shared.accountManager
+                                                         preferences:Environment.shared.preferences];
+            [job run];
+        }
+    }];
+    
     OWSLogInfo(@"applicationDidBecomeActive completed.");
 }
 
@@ -993,7 +1006,7 @@ void uncaughtExceptionHandler(NSException *exception)
     if (!rootViewController) {
         return UIDevice.currentDevice.defaultSupportedOrienations;
     }
-    return rootViewController.supportedInterfaceOrientations;
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (BOOL)hasCall

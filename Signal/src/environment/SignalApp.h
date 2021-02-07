@@ -9,8 +9,11 @@ NS_ASSUME_NONNULL_BEGIN
 @class OnboardingController;
 @class SignalServiceAddress;
 @class TSThread;
+@class RootViewController;
 
 @interface SignalApp : NSObject
+
+@property (nonatomic, nullable, weak) RootViewController *rootViewController;
 
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

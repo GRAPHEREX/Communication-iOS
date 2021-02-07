@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CountryCodeViewController () <OWSTableViewControllerDelegate, UISearchBarDelegate>
+@interface CountryCodeViewController () <OWSTableViewControllerDraggingDelegate, UISearchBarDelegate>
 
 @property (nonatomic, readonly) UISearchBar *searchBar;
 
@@ -157,7 +157,7 @@ NS_ASSUME_NONNULL_BEGIN
     [self updateTableContents];
 }
 
-#pragma mark - OWSTableViewControllerDelegate
+#pragma mark - OWSTableViewControllerDraggingDelegate
 
 - (void)tableViewWillBeginDragging
 {

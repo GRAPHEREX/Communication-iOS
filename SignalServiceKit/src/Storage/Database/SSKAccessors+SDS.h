@@ -152,6 +152,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (atomic, nullable, readonly) NSString *recipientPhoneNumber;
 @property (atomic, nullable, readonly) NSString *recipientUUID;
+@property (atomic, nullable, readonly) NSString *st_userID;
 @property (atomic, nullable, readonly) NSString *profileName;
 
 @end

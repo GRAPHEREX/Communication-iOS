@@ -23,13 +23,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// A UUID identifying the signal account.
 @property (nullable, nonatomic, readonly) NSString *recipientUUID;
 
+/// Grapherex ID identifying the signal account.
+@property (nullable, nonatomic) NSString *st_userID;
+
+@property BOOL isDeleted;
+
 /// An address representing the signal account. This will be
 /// the UUID, if defined, otherwise it will be the E164 number.
 @property (nonatomic, readonly) SignalServiceAddress *recipientAddress;
 
 // This property is optional and will not be set for
 // non-contact account.
-@property (nonatomic, nullable, readonly) Contact *contact;
+@property (nonatomic, nullable) Contact *contact;
 
 // We cache the contact avatar data on this class.
 //
@@ -81,7 +86,9 @@ NS_ASSUME_NONNULL_BEGIN
           contactAvatarJpegData:(nullable NSData *)contactAvatarJpegData
        multipleAccountLabelText:(NSString *)multipleAccountLabelText
            recipientPhoneNumber:(nullable NSString *)recipientPhoneNumber
-                  recipientUUID:(nullable NSString *)recipientUUID NS_DESIGNATED_INITIALIZER;
+                  recipientUUID:(nullable NSString *)recipientUUID
+                      st_userID:(nullable NSString *)st_userID
+                      isDeleted:(BOOL)isDeleted NS_DESIGNATED_INITIALIZER;
 
 // --- CODE GENERATION MARKER
 
@@ -97,7 +104,9 @@ NS_ASSUME_NONNULL_BEGIN
         multipleAccountLabelText:(NSString *)multipleAccountLabelText
             recipientPhoneNumber:(nullable NSString *)recipientPhoneNumber
                    recipientUUID:(nullable NSString *)recipientUUID
-NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:contact:contactAvatarHash:contactAvatarJpegData:multipleAccountLabelText:recipientPhoneNumber:recipientUUID:));
+                     st_userID:(nullable NSString *)st_userID
+                     isDeleted:(BOOL)isDeleted
+NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:contact:contactAvatarHash:contactAvatarJpegData:multipleAccountLabelText:recipientPhoneNumber:recipientUUID:st_userID:isDeleted:));
 
 // clang-format on
 

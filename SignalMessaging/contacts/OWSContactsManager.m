@@ -133,6 +133,28 @@ NSString *const OWSContactsManagerKeyNextFullIntersectionDate = @"OWSContactsMan
 
 #pragma mark - System Contact Fetching
 
+- (void)restoreSignalAccount:(SignalAccount *)signalAccount
+{
+    DatabaseStorageWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
+        [signalAccount anyUpdateWithTransaction:transaction block:^(SignalAccount *signalAcc) {
+            signalAcc.isDeleted = NO;
+        }];
+    });
+    
+    [self userRequestedSystemContactsRefresh];
+}
+
+- (void)deleteSignalAccount:(SignalAccount *)signalAccount
+{
+    DatabaseStorageWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
+        [signalAccount anyUpdateWithTransaction:transaction block:^(SignalAccount *signalAcc) {
+            signalAcc.isDeleted = YES;
+        }];
+    });
+
+    [self userRequestedSystemContactsRefresh];
+}
+
 // Request contacts access if you haven't asked recently.
 - (void)requestSystemContactsOnce
 {

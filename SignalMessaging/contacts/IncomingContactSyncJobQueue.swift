@@ -279,7 +279,9 @@ public class IncomingContactSyncOperation: OWSOperation, DurableOperation {
                                            contactAvatarJpegData: contactAvatarJpegData,
                                            multipleAccountLabelText: "",
                                            recipientPhoneNumber: contactDetails.address.phoneNumber,
-                                           recipientUUID: contactDetails.address.uuidString)
+                                           recipientUUID: contactDetails.address.uuidString,
+                                           st_userID: "ID", // TODO: SkyTech - Fix ID
+                                           isDeleted: false)
             newAccount.anyInsert(transaction: transaction)
         }
 

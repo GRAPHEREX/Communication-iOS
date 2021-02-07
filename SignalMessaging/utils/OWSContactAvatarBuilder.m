@@ -262,10 +262,27 @@ NS_ASSUME_NONNULL_BEGIN
     return image;
 }
 
+- (nullable UIImage *)buildMainDefaultImage
+{
+    UIColor *color = [OWSConversationColor conversationColorOrDefaultForColorName:self.colorName].themeColor;
+    OWSAssertDebug(color);
+
+    UIImage *_Nullable image  =  [OWSAvatarBuilder avatarImageWithDiameter:self.diameter
+                                               backgroundColor:color
+                                                     drawBlock:^(CGContextRef context) {}];
+ 
+    if (!image) {
+        OWSFailDebug(@"Could not generate avatar.");
+        return nil;
+    }
+
+    return image;
+}
+
 - (nullable UIImage *)noteToSelfImageWithConversationColorName:(ConversationColorName)conversationColorName
                                                       diameter:(CGFloat)diameter
 {
-    UIImage *iconImage = [[UIImage imageNamed:@"note-112"] asTintedImageWithColor:UIColor.whiteColor];
+    UIImage *iconImage = [UIImage imageNamed: Theme.isDarkThemeEnabled ? @"note-112dark" : @"note-112"];
     UIColor *backgroundColor = [OWSConversationColor conversationColorOrDefaultForColorName:conversationColorName].themeColor;
 
     CGFloat circleWidth = diameter;
@@ -278,7 +295,7 @@ NS_ASSUME_NONNULL_BEGIN
     [backgroundColor setFill];
     CGContextFillRect(context, CGRectMake(0, 0, circleWidth, circleWidth));
 
-    CGFloat iconWidth = diameter * (CGFloat)0.625;
+    CGFloat iconWidth = diameter * (CGFloat)0.8;
     CGFloat iconOffset = (circleWidth - iconWidth) / 2;
     CGRect iconRect = CGRectMake(iconOffset, iconOffset, iconWidth, iconWidth);
     [iconImage drawInRect:iconRect];

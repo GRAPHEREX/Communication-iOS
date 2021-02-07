@@ -26,7 +26,8 @@ typedef NS_ENUM(NSInteger, TSInfoMessageType) {
     TSInfoMessageUnknownProtocolVersion,
     TSInfoMessageUserJoinedSignal,
     TSInfoMessageSyncedThread,
-    TSInfoMessageProfileUpdate
+    TSInfoMessageProfileUpdate,
+    TSInfoMessageSuccessTransaction
 };
 
 

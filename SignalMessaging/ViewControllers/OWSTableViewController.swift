@@ -20,10 +20,18 @@ public extension OWSTableItem {
     }
 
     static func buildCell(name: String, iconView: UIView) -> UITableViewCell {
-        return buildCell(name: name, iconView: iconView, iconSpacing: self.iconSpacing)
+        return buildCell(name: name, iconView: iconView, textColor: Theme.primaryTextColor, iconSpacing: self.iconSpacing)
+    }
+    
+    static func buildCell(name: String, iconView: UIView, textColor: UIColor) -> UITableViewCell {
+        return buildCell(name: name, iconView: iconView, textColor: Theme.primaryTextColor, iconSpacing: self.iconSpacing)
     }
 
     static func buildCell(name: String, iconView: UIView, iconSpacing: CGFloat) -> UITableViewCell {
+        return buildCell(name: name, iconView: iconView, textColor: Theme.primaryTextColor, iconSpacing: self.iconSpacing)
+    }
+    
+    static func buildCell(name: String, iconView: UIView, textColor: UIColor, iconSpacing: CGFloat) -> UITableViewCell {
         assert(name.count > 0)
 
         let cell = OWSTableItem.newCell()
@@ -32,7 +40,7 @@ public extension OWSTableItem {
 
         let rowLabel = UILabel()
         rowLabel.text = name
-        rowLabel.textColor = Theme.primaryTextColor
+        rowLabel.textColor = textColor
         rowLabel.font = OWSTableItem.primaryLabelFont
         rowLabel.lineBreakMode = .byTruncatingTail
 

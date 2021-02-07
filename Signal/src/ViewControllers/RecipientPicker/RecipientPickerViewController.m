@@ -41,7 +41,7 @@ const NSUInteger kMinimumSearchLength = 2;
 
 @interface RecipientPickerViewController () <UISearchBarDelegate,
     ContactsViewHelperObserver,
-    OWSTableViewControllerDelegate,
+OWSTableViewControllerDraggingDelegate,
     FindByPhoneNumberDelegate,
     MFMessageComposeViewControllerDelegate>
 
@@ -131,7 +131,7 @@ const NSUInteger kMinimumSearchLength = 2;
     }
 
     _tableViewController = [OWSTableViewController new];
-    _tableViewController.delegate = self;
+    _tableViewController.draggingDelegate = self;
     _tableViewController.tableViewStyle = UITableViewStylePlain;
 
     [self addChildViewController:self.tableViewController];
@@ -1082,7 +1082,7 @@ const NSUInteger kMinimumSearchLength = 2;
                   }];
 }
 
-#pragma mark - OWSTableViewControllerDelegate
+#pragma mark - OWSTableViewControllerDraggingDelegate
 
 - (void)tableViewWillBeginDragging
 {

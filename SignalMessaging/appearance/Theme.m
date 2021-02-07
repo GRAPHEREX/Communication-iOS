@@ -273,14 +273,29 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 #pragma mark -
 
++ (UIColor *)walletBubbleColor
+{
+    return (!Theme.isDarkThemeEnabled ? [UIColor ows_gray05Color] : [UIColor ows_gray95Color]);
+}
+
++ (UIColor *)inversedBackgroundColor
+{
+    return (!Theme.isDarkThemeEnabled ? UIColor.st_accentBlack : UIColor.ows_whiteColor);
+}
+
++ (UIColor *)inversedPrimaryTextColor
+{
+    return (!Theme.isDarkThemeEnabled ? Theme.darkThemePrimaryColor : Theme.lightThemePrimaryColor);
+}
+
 + (UIColor *)backgroundColor
 {
-    return (Theme.isDarkThemeEnabled ? Theme.darkThemeBackgroundColor : UIColor.ows_whiteColor);
+    return (Theme.isDarkThemeEnabled ? UIColor.st_accentBlack : UIColor.ows_whiteColor);
 }
 
 + (UIColor *)secondaryBackgroundColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray80Color : UIColor.ows_gray02Color);
+    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray80Color : UIColor.st_neutralGrayMessege);
 }
 
 + (UIColor *)washColor
@@ -305,7 +320,7 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)secondaryTextAndIconColor
 {
-    return (Theme.isDarkThemeEnabled ? Theme.darkThemeSecondaryTextAndIconColor : UIColor.ows_gray60Color);
+    return (Theme.isDarkThemeEnabled ? Theme.darkThemeSecondaryTextAndIconColor : UIColor.st_neutralGray);
 }
 
 + (UIColor *)darkThemeSecondaryTextAndIconColor
@@ -397,7 +412,7 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)cursorColor
 {
-    return Theme.isDarkThemeEnabled ? UIColor.ows_whiteColor : UIColor.ows_accentBlueColor;
+    return Theme.isDarkThemeEnabled ? UIColor.st_otherBlueLink : UIColor.ows_accentBlueColor;
 }
 
 + (UIColor *)accentBlueColor
@@ -432,17 +447,17 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)galleryHighlightColor
 {
-    return [UIColor colorWithRGBHex:0x1f8fe8];
+    return UIColor.st_accentGreen;
 }
 
 + (UIColor *)conversationButtonBackgroundColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray80Color : UIColor.ows_gray02Color);
+    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray80Color : UIColor.st_neutralGrayMessege);
 }
 
 + (UIColor *)conversationButtonTextColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.ows_gray05Color : UIColor.ows_accentBlueColor);
+    return (Theme.isDarkThemeEnabled ? UIColor.st_otherBlue : UIColor.st_otherBlueLink);
 }
 
 

@@ -99,6 +99,25 @@ NS_ASSUME_NONNULL_BEGIN
     [self layoutSubviews];
 }
 
+- (void)configureWithCall:(TSCall *)call shouldUseShortName:(BOOL)shouldUseShortName
+{
+    [OWSTableItem configureCell:self];
+    
+    self.cellView.asCallView = shouldUseShortName;
+    [self.cellView configureWithCall:call];
+    
+    [self layoutSubviews];
+}
+
+- (void)configureWithCall:(TSCall *)call
+{
+    [OWSTableItem configureCell:self];
+    
+    [self.cellView configureWithCall:call];
+    
+    [self layoutSubviews];
+}
+
 - (void)setAccessoryMessage:(nullable NSString *)accessoryMessage
 {
     OWSAssertDebug(self.cellView);
@@ -158,6 +177,12 @@ NS_ASSUME_NONNULL_BEGIN
     [self.cellView prepareForReuse];
 
     self.accessoryType = UITableViewCellAccessoryNone;
+}
+
+- (void)configureCallAction:(nullable CallAction)handler
+{
+    self.cellView.userInteractionEnabled = YES;
+    [self.cellView configureCallAction:handler];
 }
 
 - (BOOL)hasAccessoryText

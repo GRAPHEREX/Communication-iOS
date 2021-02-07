@@ -29,8 +29,6 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
 
 @property (nonatomic) NSString *multipleAccountLabelText;
 
-@property (nonatomic, nullable) Contact *contact;
-
 @end
 
 #pragma mark -
@@ -77,6 +75,7 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
 {
     OWSAssertDebug(serviceAddress.isValid);
     if (self = [super init]) {
+        _isDeleted = NO;
         _recipientUUID = serviceAddress.uuidString;
         _recipientPhoneNumber = serviceAddress.phoneNumber;
         _accountSchemaVersion = SignalAccountSchemaVersion;
@@ -93,6 +92,7 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
         return self;
     }
 
+    _isDeleted = NO;
     // Migrating from an everyone has a phone number world to a
     // world in which we have UUIDs
     if (_accountSchemaVersion == 0) {
@@ -113,6 +113,8 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
        multipleAccountLabelText:(NSString *)multipleAccountLabelText
            recipientPhoneNumber:(nullable NSString *)recipientPhoneNumber
                   recipientUUID:(nullable NSString *)recipientUUID
+                      st_userID:(nullable NSString *)st_userID
+                      isDeleted:(BOOL)isDeleted
 {
     self = [super init];
     if (!self) {
@@ -127,7 +129,9 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
     _multipleAccountLabelText = multipleAccountLabelText;
     _recipientPhoneNumber = recipientPhoneNumber;
     _recipientUUID = recipientUUID;
+    _st_userID = st_userID;
     _accountSchemaVersion = SignalAccountSchemaVersion;
+    _isDeleted = isDeleted;
 
     return self;
 }
@@ -146,6 +150,8 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
         multipleAccountLabelText:(NSString *)multipleAccountLabelText
             recipientPhoneNumber:(nullable NSString *)recipientPhoneNumber
                    recipientUUID:(nullable NSString *)recipientUUID
+                     st_userID:(nullable NSString *)st_userID
+                     isDeleted:(BOOL)isDeleted
 {
     self = [super initWithGrdbId:grdbId
                         uniqueId:uniqueId];
@@ -160,6 +166,8 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
     _multipleAccountLabelText = multipleAccountLabelText;
     _recipientPhoneNumber = recipientPhoneNumber;
     _recipientUUID = recipientUUID;
+    _st_userID = st_userID;
+    _isDeleted = isDeleted;
 
     return self;
 }

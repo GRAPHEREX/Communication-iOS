@@ -7,8 +7,11 @@ NS_ASSUME_NONNULL_BEGIN
 @class SDSAnyReadTransaction;
 @class SignalServiceAddress;
 @class TSThread;
+@class TSCall;
 
 @interface ContactTableViewCell : UITableViewCell
+
+typedef void (^CallAction)(SignalServiceAddress*);
 
 @property (assign, nonatomic) BOOL forceDarkAppearance;
 
@@ -28,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)configureWithRecipientAddress:(SignalServiceAddress *)address transaction:(SDSAnyReadTransaction *)transaction;
 
 - (void)configureWithThread:(TSThread *)thread transaction:(SDSAnyReadTransaction *)transaction;
+
+- (void)configureWithCall:(TSCall *)call;
+- (void)configureWithCall:(TSCall *)call shouldUseShortName:(BOOL)shouldUseShortName;
 
 // This method should be called _before_ the configure... methods.
 - (void)setAccessoryMessage:(nullable NSString *)accessoryMessage;
@@ -50,6 +56,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)hasAccessoryText;
 
 - (void)ows_setAccessoryView:(UIView *)accessoryView;
+
+-(void)configureCallAction:(nullable CallAction)handler;
 
 @end
 

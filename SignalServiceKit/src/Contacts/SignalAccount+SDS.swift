@@ -34,6 +34,8 @@ public struct SignalAccountRecord: SDSRecord {
     public let multipleAccountLabelText: String
     public let recipientPhoneNumber: String?
     public let recipientUUID: String?
+    public let st_userID: String?
+    public let isDeleted: Bool
 
     public enum CodingKeys: String, CodingKey, ColumnExpression, CaseIterable {
         case id
@@ -45,6 +47,8 @@ public struct SignalAccountRecord: SDSRecord {
         case multipleAccountLabelText
         case recipientPhoneNumber
         case recipientUUID
+        case st_userID
+        case isDeleted
     }
 
     public static func columnName(_ column: SignalAccountRecord.CodingKeys, fullyQualified: Bool = false) -> String {
@@ -77,6 +81,8 @@ public extension SignalAccountRecord {
         multipleAccountLabelText = row[6]
         recipientPhoneNumber = row[7]
         recipientUUID = row[8]
+        st_userID = row[9]
+        isDeleted = row[10]
     }
 }
 
@@ -115,6 +121,8 @@ extension SignalAccount {
             let multipleAccountLabelText: String = record.multipleAccountLabelText
             let recipientPhoneNumber: String? = record.recipientPhoneNumber
             let recipientUUID: String? = record.recipientUUID
+            let st_userID: String? = record.st_userID
+            let isDeleted: Bool = record.isDeleted
 
             return SignalAccount(grdbId: recordId,
                                  uniqueId: uniqueId,
@@ -123,7 +131,9 @@ extension SignalAccount {
                                  contactAvatarJpegData: contactAvatarJpegData,
                                  multipleAccountLabelText: multipleAccountLabelText,
                                  recipientPhoneNumber: recipientPhoneNumber,
-                                 recipientUUID: recipientUUID)
+                                 recipientUUID: recipientUUID,
+                                 st_userID: st_userID,
+                                 isDeleted: isDeleted)
 
         default:
             owsFailDebug("Unexpected record type: \(record.recordType)")
@@ -192,6 +202,8 @@ extension SignalAccount: DeepCopyable {
             let multipleAccountLabelText: String = modelToCopy.multipleAccountLabelText
             let recipientPhoneNumber: String? = modelToCopy.recipientPhoneNumber
             let recipientUUID: String? = modelToCopy.recipientUUID
+            let st_userID: String? = modelToCopy.st_userID
+            let isDeleted: Bool = modelToCopy.isDeleted
 
             return SignalAccount(grdbId: id,
                                  uniqueId: uniqueId,
@@ -200,7 +212,9 @@ extension SignalAccount: DeepCopyable {
                                  contactAvatarJpegData: contactAvatarJpegData,
                                  multipleAccountLabelText: multipleAccountLabelText,
                                  recipientPhoneNumber: recipientPhoneNumber,
-                                 recipientUUID: recipientUUID)
+                                 recipientUUID: recipientUUID,
+                                 st_userID: st_userID,
+                                 isDeleted: isDeleted)
         }
 
     }
@@ -222,6 +236,8 @@ extension SignalAccountSerializer {
     static let multipleAccountLabelTextColumn = SDSColumnMetadata(columnName: "multipleAccountLabelText", columnType: .unicodeString)
     static let recipientPhoneNumberColumn = SDSColumnMetadata(columnName: "recipientPhoneNumber", columnType: .unicodeString, isOptional: true)
     static let recipientUUIDColumn = SDSColumnMetadata(columnName: "recipientUUID", columnType: .unicodeString, isOptional: true)
+    static let st_userIdColumn = SDSColumnMetadata(columnName: "st_userID", columnType: .unicodeString, isOptional: true)
+    static let isDelectedColumn = SDSColumnMetadata(columnName: "isDeleted", columnType: .bool, isOptional: false)
 
     // TODO: We should decide on a naming convention for
     //       tables that store models.
@@ -236,7 +252,9 @@ extension SignalAccountSerializer {
         contactAvatarJpegDataColumn,
         multipleAccountLabelTextColumn,
         recipientPhoneNumberColumn,
-        recipientUUIDColumn
+        recipientUUIDColumn,
+        st_userIdColumn,
+        isDelectedColumn
         ])
 }
 
@@ -658,8 +676,10 @@ class SignalAccountSerializer: SDSSerializer {
         let multipleAccountLabelText: String = model.multipleAccountLabelText
         let recipientPhoneNumber: String? = model.recipientPhoneNumber
         let recipientUUID: String? = model.recipientUUID
+        let st_userID: String? = model.st_userID
+        let isDelected: Bool = model.isDeleted
 
-        return SignalAccountRecord(delegate: model, id: id, recordType: recordType, uniqueId: uniqueId, contact: contact, contactAvatarHash: contactAvatarHash, contactAvatarJpegData: contactAvatarJpegData, multipleAccountLabelText: multipleAccountLabelText, recipientPhoneNumber: recipientPhoneNumber, recipientUUID: recipientUUID)
+        return SignalAccountRecord(delegate: model, id: id, recordType: recordType, uniqueId: uniqueId, contact: contact, contactAvatarHash: contactAvatarHash, contactAvatarJpegData: contactAvatarJpegData, multipleAccountLabelText: multipleAccountLabelText, recipientPhoneNumber: recipientPhoneNumber, recipientUUID: recipientUUID, st_userID: st_userID, isDeleted: isDelected)
     }
 }
 

@@ -7,6 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 extern const NSUInteger kSmallAvatarSize;
 extern const NSUInteger kStandardAvatarSize;
 extern const NSUInteger kMediumAvatarSize;
+extern const NSUInteger kBigAvatarSize;
 extern const NSUInteger kLargeAvatarSize;
 
 @class SDSAnyReadTransaction;
@@ -14,6 +15,8 @@ extern const NSUInteger kLargeAvatarSize;
 @class UIImage;
 
 @interface OWSAvatarBuilder : NSObject
+
+typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
 
 + (nullable UIImage *)buildImageForThread:(TSThread *)thread
                                  diameter:(NSUInteger)diameter NS_SWIFT_NAME(buildImage(thread:diameter:));
@@ -33,6 +36,10 @@ extern const NSUInteger kLargeAvatarSize;
 + (nullable UIImage *)avatarImageWithInitials:(NSString *)initials
                               backgroundColor:(UIColor *)backgroundColor
                                      diameter:(NSUInteger)diameter;
+
++ (nullable UIImage *)avatarImageWithDiameter:(NSUInteger)diameter
+                              backgroundColor:(UIColor *)backgroundColor
+                                    drawBlock:(OWSAvatarDrawBlock)drawBlock;
 
 + (nullable UIImage *)avatarImageWithIcon:(UIImage *)icon
                                  iconSize:(CGSize)iconSize

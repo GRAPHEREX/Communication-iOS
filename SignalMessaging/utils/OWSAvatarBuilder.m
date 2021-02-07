@@ -18,9 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 const NSUInteger kSmallAvatarSize = 40;
 const NSUInteger kStandardAvatarSize = 48;
 const NSUInteger kMediumAvatarSize = 68;
+const NSUInteger kBigAvatarSize = 80;
 const NSUInteger kLargeAvatarSize = 96;
-
-typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
 
 @implementation OWSAvatarBuilder
 

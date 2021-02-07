@@ -338,6 +338,7 @@ CREATE
             ,"profileName" TEXT
             ,"recipientPhoneNumber" TEXT
             ,"recipientUUID" TEXT
+            ,"st_userID" TEXT
             ,"username" TEXT
             ,"familyName" TEXT
             ,"isUuidCapable" BOOLEAN NOT NULL DEFAULT 0
@@ -563,6 +564,8 @@ CREATE
             ,"multipleAccountLabelText" TEXT NOT NULL
             ,"recipientPhoneNumber" TEXT
             ,"recipientUUID" TEXT
+            ,"st_userID" TEXT
+            ,"isDeleted" BOOLEAN NOT NULL DEFAULT 0
         )
 ;
 

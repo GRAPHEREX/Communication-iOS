@@ -84,6 +84,10 @@ typedef BOOL (^OWSTableSwitchBlock)(void);
 + (OWSTableItem *)itemWithCustomCellBlock:(OWSTableCustomCellBlock)customCellBlock
                               actionBlock:(nullable OWSTableActionBlock)actionBlock;
 
++ (OWSTableItem *)itemWithCustomCellBlock:(OWSTableCustomCellBlock)customCellBlock
+                          customRowHeight:(CGFloat)customRowHeight
+                              actionBlock:(nullable OWSTableActionBlock)actionBlock;
+
 + (OWSTableItem *)disclosureItemWithText:(NSString *)text actionBlock:(nullable OWSTableActionBlock)actionBlock;
 
 + (OWSTableItem *)disclosureItemWithText:(NSString *)text
@@ -174,17 +178,49 @@ typedef BOOL (^OWSTableSwitchBlock)(void);
 
 #pragma mark -
 
-@protocol OWSTableViewControllerDelegate <NSObject>
+@protocol OWSTableViewControllerDraggingDelegate <NSObject>
 
 - (void)tableViewWillBeginDragging;
 
 @end
 
+@protocol OWSTableViewControllerScrollDelegate <NSObject>
+
+- (void)tableViewDidScroll;
+
+@end
+
+@protocol OWSTableViewControllerEditActionDelegate <NSObject>
+
+- (BOOL)canEditRowAtIndexPath:(NSIndexPath *)indexPath;
+- (NSArray *)editActionsForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+@protocol OWSTableViewControllerSwipeActionsConfigurationDelegate <NSObject>
+
+- (BOOL)canEditRowAtIndexPath:(NSIndexPath *)indexPath;
+- (nonnull UISwipeActionsConfiguration *)leadingSwipeActionsConfigurationForRowAt:(NSIndexPath *)indexPath;
+- (nonnull UISwipeActionsConfiguration *)trailingSwipeActionsConfigurationForRowAt:(NSIndexPath *)indexPath;
+
+@end
+
+@protocol OWSTableViewControllerWillDisplayDelegate <NSObject>
+
+- (void)willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+
 #pragma mark -
 
 @interface OWSTableViewController : OWSViewController
 
-@property (nonatomic, weak) id<OWSTableViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<OWSTableViewControllerDraggingDelegate> draggingDelegate;
+@property (nonatomic, weak) id<OWSTableViewControllerScrollDelegate> scrollDelegate;
+@property (nonatomic, weak) id<OWSTableViewControllerEditActionDelegate> editActionDelegate;
+@property (nonatomic, weak) id<OWSTableViewControllerSwipeActionsConfigurationDelegate> swipeActionsConfigurationDelegate;
+@property (nonatomic, weak) id<OWSTableViewControllerWillDisplayDelegate> willDisplayDelegate;
 
 @property (nonatomic) OWSTableContents *contents;
 @property (nonatomic, readonly) UITableView *tableView;

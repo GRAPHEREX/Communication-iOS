@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Loading View Controller-->
+        <scene sceneID="Qio-BE-H9H">
+            <objects>
+                <viewController storyboardIdentifier="LoadingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ou9-LT-iFV" customClass="LoadingViewController" customModule="Signal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jdw-oR-JPw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Liu-Xi-nxv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ApE-7J-8S4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="eaa-GL-g2l">
+                                <rect key="frame" x="20" y="209.5" width="374" height="397.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="onboarding.splash.logo_black" translatesAutoresizingMaskIntoConstraints="NO" id="cyS-rE-QbG">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="336"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91C-J3-6yy">
+                                        <rect key="frame" x="0.0" y="360" width="374" height="37.5"/>
+                                        <string key="text">Secure communication
+platform</string>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eaa-GL-g2l" firstAttribute="centerX" secondItem="ApE-7J-8S4" secondAttribute="centerX" id="JF3-XA-0dd"/>
+                            <constraint firstItem="eaa-GL-g2l" firstAttribute="leading" secondItem="ApE-7J-8S4" secondAttribute="leadingMargin" id="RPu-le-PIp"/>
+                            <constraint firstItem="eaa-GL-g2l" firstAttribute="centerY" secondItem="ApE-7J-8S4" secondAttribute="centerY" constant="-40" id="UdW-KJ-tNa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eaa-GL-g2l" secondAttribute="trailing" id="zqL-EZ-SLB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GRd-2d-53e"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p2Y-Sr-nRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-262" y="40"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding.splash.logo_black" width="336" height="336"/>
+    </resources>
+</document>

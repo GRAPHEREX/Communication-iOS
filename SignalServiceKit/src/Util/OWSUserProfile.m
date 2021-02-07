@@ -50,6 +50,9 @@ NSUInteger const kUserProfileSchemaVersion = 1;
 @property (atomic, nullable, readonly) NSString *recipientPhoneNumber;
 @property (atomic, nullable, readonly) NSString *recipientUUID;
 
+/// Grapherex ID identifying the signal account.
+@property (atomic, nullable) NSString *st_userID;
+
 @end
 
 #pragma mark -
@@ -121,6 +124,7 @@ NSUInteger const kUserProfileSchemaVersion = 1;
             recipientPhoneNumber:(nullable NSString *)recipientPhoneNumber
                    recipientUUID:(nullable NSString *)recipientUUID
                         username:(nullable NSString *)username
+                     st_userID:(nullable NSString *)st_userID
                    credentials:(nullable NSString *)credentials
                         bucket:(nullable NSString *)bucket
 {
@@ -144,6 +148,7 @@ NSUInteger const kUserProfileSchemaVersion = 1;
     _recipientPhoneNumber = recipientPhoneNumber;
     _recipientUUID = recipientUUID;
     _username = username;
+    _st_userID = st_userID;
     _credentials = credentials;
     _bucket = bucket;
 

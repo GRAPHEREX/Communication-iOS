@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
                        diameter:(NSUInteger)diameter
                     transaction:(SDSAnyReadTransaction *)transaction;
 
+- (nullable UIImage *)buildMainDefaultImage;
+
 /**
  * Build an avatar for a non-Signal recipient
  */

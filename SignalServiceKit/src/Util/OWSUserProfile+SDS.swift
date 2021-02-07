@@ -34,6 +34,7 @@ public struct UserProfileRecord: SDSRecord {
     public let profileName: String?
     public let recipientPhoneNumber: String?
     public let recipientUUID: String?
+    public let st_userID: String?
     public let username: String?
     public let familyName: String?
     public let isUuidCapable: Bool
@@ -54,6 +55,7 @@ public struct UserProfileRecord: SDSRecord {
         case profileName
         case recipientPhoneNumber
         case recipientUUID
+        case st_userID
         case username
         case familyName
         case isUuidCapable
@@ -95,15 +97,16 @@ public extension UserProfileRecord {
         profileName = row[6]
         recipientPhoneNumber = row[7]
         recipientUUID = row[8]
-        username = row[9]
-        familyName = row[10]
-        isUuidCapable = row[11]
-        credentials = row[12]
-        bucket = row[13]
-        lastFetchDate = row[14]
-        lastMessagingDate = row[15]
-        bio = row[16]
-        bioEmoji = row[17]
+        st_userID = row[9]
+        username = row[10]
+        familyName = row[11]
+        isUuidCapable = row[12]
+        credentials = row[13]
+        bucket = row[14]
+        lastFetchDate = row[15]
+        lastMessagingDate = row[16]
+        bio = row[17]
+        bioEmoji = row[18]
     }
 }
 
@@ -151,6 +154,7 @@ extension OWSUserProfile {
             let recipientPhoneNumber: String? = record.recipientPhoneNumber
             let recipientUUID: String? = record.recipientUUID
             let username: String? = record.username
+            let st_userID: String? = record.st_userID
             let credentials: String? = record.credentials
             let bucket: String? = record.bucket
             
@@ -169,6 +173,7 @@ extension OWSUserProfile {
                                   recipientPhoneNumber: recipientPhoneNumber,
                                   recipientUUID: recipientUUID,
                                   username: username,
+                                  st_userID: st_userID,
                                   credentials: credentials,
                                   bucket: bucket)
 
@@ -246,6 +251,7 @@ extension OWSUserProfile: DeepCopyable {
             let recipientPhoneNumber: String? = modelToCopy.recipientPhoneNumber
             let recipientUUID: String? = modelToCopy.recipientUUID
             let username: String? = modelToCopy.username
+            let st_userID: String? = modelToCopy.st_userID
             let credentials: String? = modelToCopy.credentials
             let bucket: String? = modelToCopy.bucket
 
@@ -264,6 +270,7 @@ extension OWSUserProfile: DeepCopyable {
                                   recipientPhoneNumber: recipientPhoneNumber,
                                   recipientUUID: recipientUUID,
                                   username: username,
+                                  st_userID: st_userID,
                                   credentials: credentials,
                                   bucket: bucket)
         }
@@ -287,6 +294,7 @@ extension OWSUserProfileSerializer {
     static let profileNameColumn = SDSColumnMetadata(columnName: "profileName", columnType: .unicodeString, isOptional: true)
     static let recipientPhoneNumberColumn = SDSColumnMetadata(columnName: "recipientPhoneNumber", columnType: .unicodeString, isOptional: true)
     static let recipientUUIDColumn = SDSColumnMetadata(columnName: "recipientUUID", columnType: .unicodeString, isOptional: true)
+    static let st_userIDColumn = SDSColumnMetadata(columnName: "st_userID", columnType: .unicodeString, isOptional: true)
     static let usernameColumn = SDSColumnMetadata(columnName: "username", columnType: .unicodeString, isOptional: true)
     static let familyNameColumn = SDSColumnMetadata(columnName: "familyName", columnType: .unicodeString, isOptional: true)
     static let isUuidCapableColumn = SDSColumnMetadata(columnName: "isUuidCapable", columnType: .int)
@@ -311,6 +319,7 @@ extension OWSUserProfileSerializer {
         profileNameColumn,
         recipientPhoneNumberColumn,
         recipientUUIDColumn,
+        st_userIDColumn,
         usernameColumn,
         familyNameColumn,
         isUuidCapableColumn,
@@ -741,6 +750,7 @@ class OWSUserProfileSerializer: SDSSerializer {
         let profileName: String? = model.profileName
         let recipientPhoneNumber: String? = model.recipientPhoneNumber
         let recipientUUID: String? = model.recipientUUID
+        let st_userID: String? = model.st_userID
         let username: String? = model.username
         let familyName: String? = model.familyName
         let isUuidCapable: Bool = model.isUuidCapable
@@ -751,7 +761,7 @@ class OWSUserProfileSerializer: SDSSerializer {
         let bio: String? = model.bio
         let bioEmoji: String? = model.bioEmoji
         
-        return UserProfileRecord(delegate: model, id: id, recordType: recordType, uniqueId: uniqueId, avatarFileName: avatarFileName, avatarUrlPath: avatarUrlPath, profileKey: profileKey, profileName: profileName, recipientPhoneNumber: recipientPhoneNumber, recipientUUID: recipientUUID, username: username, familyName: familyName, isUuidCapable: isUuidCapable, credentials: credentials, bucket: bucket, lastFetchDate: lastFetchDate, lastMessagingDate: lastMessagingDate, bio: bio, bioEmoji: bioEmoji)
+        return UserProfileRecord(delegate: model, id: id, recordType: recordType, uniqueId: uniqueId, avatarFileName: avatarFileName, avatarUrlPath: avatarUrlPath, profileKey: profileKey, profileName: profileName, recipientPhoneNumber: recipientPhoneNumber, recipientUUID: recipientUUID, st_userID: st_userID, username: username, familyName: familyName, isUuidCapable: isUuidCapable, credentials: credentials, bucket: bucket, lastFetchDate: lastFetchDate, lastMessagingDate: lastMessagingDate, bio: bio, bioEmoji: bioEmoji)
     }
 }
 

@@ -72,32 +72,32 @@ NS_ASSUME_NONNULL_BEGIN
         return;
     }
 
-    if ([self isVersion:lastCompletedLaunchAppVersion atLeast:@"1.0.2" andLessThan:@"2.0"]) {
-        OWSLogError(@"Migrating from RedPhone no longer supported. Quitting.");
-        // Not translating these as so few are affected.
-        ActionSheetController *actionSheet = [[ActionSheetController alloc]
-            initWithTitle:@"You must reinstall Signal"
-                  message:@"Sorry, your installation is too old for us to update. You'll have to start fresh."];
-
-        ActionSheetAction *quitAction = [[ActionSheetAction alloc] initWithTitle:@"Quit"
-                                                                           style:ActionSheetActionStyleDefault
-                                                                         handler:^(ActionSheetAction *_Nonnull action) {
-                                                                             OWSFail(@"Obsolete install.");
-                                                                         }];
-        [actionSheet addAction:quitAction];
-
-        [CurrentAppContext().frontmostViewController presentActionSheet:actionSheet];
-    }
-
-    if ([self isVersion:lastCompletedLaunchAppVersion atLeast:@"2.0.0" andLessThan:@"2.1.70"] &&
-        [self.tsAccountManager isRegistered]) {
-        [self clearVideoCache];
-    }
-
-    if ([self isVersion:lastCompletedLaunchAppVersion atLeast:@"2.0.0" andLessThan:@"2.3.0"] &&
-        [self.tsAccountManager isRegistered]) {
-        [self clearBloomFilterCache];
-    }
+//    if ([self isVersion:lastCompletedLaunchAppVersion atLeast:@"1.0.2" andLessThan:@"2.0"]) {
+//        OWSLogError(@"Migrating from RedPhone no longer supported. Quitting.");
+//        // Not translating these as so few are affected.
+//        ActionSheetController *actionSheet = [[ActionSheetController alloc]
+//            initWithTitle:@"You must reinstall Signal"
+//                  message:@"Sorry, your installation is too old for us to update. You'll have to start fresh."];
+//
+//        ActionSheetAction *quitAction = [[ActionSheetAction alloc] initWithTitle:@"Quit"
+//                                                                           style:ActionSheetActionStyleDefault
+//                                                                         handler:^(ActionSheetAction *_Nonnull action) {
+//                                                                             OWSFail(@"Obsolete install.");
+//                                                                         }];
+//        [actionSheet addAction:quitAction];
+//
+//        [CurrentAppContext().frontmostViewController presentActionSheet:actionSheet];
+//    }
+//
+//    if ([self isVersion:lastCompletedLaunchAppVersion atLeast:@"2.0.0" andLessThan:@"2.1.70"] &&
+//        [self.tsAccountManager isRegistered]) {
+//        [self clearVideoCache];
+//    }
+//
+//    if ([self isVersion:lastCompletedLaunchAppVersion atLeast:@"2.0.0" andLessThan:@"2.3.0"] &&
+//        [self.tsAccountManager isRegistered]) {
+//        [self clearBloomFilterCache];
+//    }
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if (self.databaseStorage.canReadFromGrdb) {

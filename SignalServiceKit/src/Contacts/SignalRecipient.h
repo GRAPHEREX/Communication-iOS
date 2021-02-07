@@ -75,6 +75,9 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:devices:recipientPh
 @property (nonatomic, nullable) NSString *recipientPhoneNumber;
 @property (nonatomic, nullable) NSString *recipientUUID;
 
+/// Grapherex ID identifying the signal account.
+@property (nonatomic, nullable) NSString *st_userID;
+
 @property (nonatomic, readonly) SignalServiceAddress *address;
 
 - (NSComparisonResult)compare:(SignalRecipient *)other;

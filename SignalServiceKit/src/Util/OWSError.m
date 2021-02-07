@@ -40,6 +40,13 @@ NSError *OWSErrorMakeNoSuchSignalRecipientError()
             @"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT", @"Error message when attempting to send message"));
 }
 
+NSError *OWSErrorMakeNetworkError()
+{
+    return OWSErrorWithCodeDescription(OWSErrorCodeUserError,
+        NSLocalizedString(
+            @"ERROR_DESCRIPTION_NO_INTERNET", @"Error"));
+}
+
 NSError *OWSErrorMakeAssertionError(NSString *descriptionFormat, ...)
 {
     va_list args;

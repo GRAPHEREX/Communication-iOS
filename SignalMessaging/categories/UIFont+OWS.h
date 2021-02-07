@@ -18,6 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIFont *)ows_monospacedDigitFontWithSize:(CGFloat)size;
 
+#pragma mark - SkyTech Fonts
+
++ (UIFont *)st_sfUiTextRegularFontWithSize:(CGFloat)size;
+
++ (UIFont *)st_sfUiTextSemiboldFontWithSize:(CGFloat)size;
+
++ (UIFont *)st_robotoRegularFontWithSize:(CGFloat)size;
+
 #pragma mark - Icon Fonts
 
 + (UIFont *)ows_fontAwesomeFont:(CGFloat)size;

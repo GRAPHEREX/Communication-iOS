@@ -33,6 +33,9 @@ NSString *NSStringFromCallType(RPRecentCallType callType);
 @property (nonatomic, readonly) RPRecentCallType callType;
 @property (nonatomic, readonly) TSRecentCallOfferType offerType;
 
+- (NSString *)previewText;
+- (NSString *)shortPreviewText;
+
 - (instancetype)initWithUniqueId:(NSString *)uniqueId
                        timestamp:(uint64_t)timestamp
                           thread:(TSThread *)thread NS_UNAVAILABLE;

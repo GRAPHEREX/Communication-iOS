@@ -51,16 +51,111 @@ public extension UIColor {
 @objc
 public extension UIColor {
 
+    // MARK:- SkyTech
+    
+    // ACCENT COLORS
+    @objc(st_accentGreen)
+    class var st_accentGreen: UIColor {
+        return UIColor(rgbHex: 0x4BDC9B)
+    }
+    
+    @objc(st_accentBlack)
+    class var st_accentBlack: UIColor {
+        return UIColor(rgbHex: 0x030303)
+    }
+    
+    @objc(st_accentWhite)
+    class var st_accentWhite: UIColor {
+        return UIColor(rgbHex: 0xFFFFFF)
+    }
+    
+    @objc(st_accentGraySmallBackground)
+    class var st_accentGraySmallBackground: UIColor {
+        return UIColor(rgbHex: 0xF9F9F9)
+    }
+    
+    // NEUTRAL COLORS
+    @objc(st_neutralGray)
+    class var st_neutralGray: UIColor {
+        return UIColor(rgbHex: 0xB3B3B3)
+    }
+    
+    @objc(st_neutralGrayLines)
+    class var st_neutralGrayLines: UIColor {
+        return UIColor(rgbHex: 0xEBEFF3)
+    }
+    
+    @objc(st_neutralGrayMessege)
+    class var st_neutralGrayMessege: UIColor {
+        return UIColor(rgbHex: 0xF0F0F0)
+    }
+    
+    @objc(st_neutralGrayBackground)
+    class var st_neutralGrayBackground: UIColor {
+        return UIColor(rgbHex: 0xF5F5F5)
+    }
+    
+    @objc(st_neutralIcon1)
+    class var st_neutralIcon1: UIColor {
+        return UIColor(rgbHex: 0x808080)
+    }
+    
+    @objc(st_neutralIcon2)
+    class var st_neutralIcon2: UIColor {
+        return UIColor(rgbHex: 0xCCCCCC)
+    }
+    
+    // OTHER COLORS
+    @objc(st_otherRed)
+    class var st_otherRed: UIColor {
+        return UIColor(rgbHex: 0xF95148)
+    }
+    
+    @objc(st_otherYellowSearch)
+    class var st_otherYellowSearch: UIColor {
+        return UIColor(rgbHex: 0xFFD614)
+    }
+    
+    @objc(st_otherYellowIcon)
+    class var st_otherYellowIcon: UIColor {
+        return UIColor(rgbHex: 0xF5B423)
+    }
+    
+    @objc(st_otherBlueLink)
+    class var st_otherBlueLink: UIColor {
+        return UIColor(rgbHex: 0x0C12FE)
+    }
+    
+    @objc(st_otherPink)
+    class var st_otherPink: UIColor {
+        return UIColor(rgbHex: 0xFE9B91)
+    }
+    
+    @objc(st_otherBlue)
+    class var st_otherBlue: UIColor {
+        return UIColor(rgbHex: 0x6B6BFF)
+    }
+    
+    @objc(st_otherOrange)
+    class var st_otherOrange: UIColor {
+        return UIColor(rgbHex: 0xFF840C)
+    }
+    
+    @objc(st_otherGreenDark)
+    class var st_otherGreenDark: UIColor {
+        return UIColor(rgbHex: 0x669073)
+    }
+    
     // MARK: Brand Colors
 
     @objc(ows_signalBlueColor)
     class var ows_signalBlue: UIColor {
-        return UIColor(rgbHex: 0x3A76F0)
+        return UIColor(rgbHex: 0x4bdc9b) // it's grapherex green
     }
 
     @objc(ows_signalBlueDarkColor)
     class var ows_signalBlueDark: UIColor {
-        return UIColor(rgbHex: 0x1851B4)
+        return UIColor(rgbHex: 0x4bdc9b) // it's grapherex green
     }
 
     // MARK: Accent Colors
@@ -69,18 +164,18 @@ public extension UIColor {
     @objc(ows_accentBlueColor)
     class var ows_accentBlue: UIColor {
         // Ultramarine UI
-        return UIColor(rgbHex: 0x2C6BED)
+        return UIColor(rgbHex: 0x4bdc9b) // it's grapherex green
     }
 
     @objc(ows_accentBlueDarkColor)
     class var ows_accentBlueDark: UIColor {
         // Ultramarine UI Light
-        return UIColor(rgbHex: 0x6191F3)
+        return UIColor(rgbHex: 0x4bdc9b) // it's grapherex green
     }
 
     @objc(ows_accentBlueTintColor)
     class var ows_accentBlueTint: UIColor {
-        return UIColor(rgbHex: 0xB0C8F9)
+        return UIColor(rgbHex: 0x4bdc9b) // it's grapherex green
     }
 
     /// Making calls, success states

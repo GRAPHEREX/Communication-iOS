@@ -208,6 +208,8 @@ public class GRDBSchemaMigrator: NSObject {
                             ,"multipleAccountLabelText" TEXT NOT NULL
                             ,"recipientPhoneNumber" TEXT
                             ,"recipientUUID" TEXT
+                            ,"st_userID" TEXT
+                            ,"isDeleted": BOOLEAN NOT NULL DEFAULT 0
                         );
             """
                 try database.execute(sql: sql)
@@ -1389,6 +1391,7 @@ private func createV1Schema(db: Database) throws {
             .notNull()
         table.column("recipientPhoneNumber", .text)
         table.column("recipientUUID", .text)
+        table.column("st_userID", .text)
     }
     try db.create(index: "index_model_SignalRecipient_on_uniqueId", on: "model_SignalRecipient", columns: ["uniqueId"])
 
@@ -1408,6 +1411,8 @@ private func createV1Schema(db: Database) throws {
             .notNull()
         table.column("recipientPhoneNumber", .text)
         table.column("recipientUUID", .text)
+        table.column("st_userID", .text)
+        table.column("isDeleted", .boolean)
     }
     try db.create(index: "index_model_SignalAccount_on_uniqueId", on: "model_SignalAccount", columns: ["uniqueId"])
 
@@ -1425,6 +1430,7 @@ private func createV1Schema(db: Database) throws {
         table.column("profileName", .text)
         table.column("recipientPhoneNumber", .text)
         table.column("recipientUUID", .text)
+        table.column("st_userID", .text)
         table.column("username", .text)
         table.column("credentials", .text)
         table.column("bucket", .text)

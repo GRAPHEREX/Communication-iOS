@@ -8,6 +8,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 extern NSNotificationName const kNSNotificationNameProfileKeyDidChange;
 
+extern const NSInteger kOWSProfileManager_NameDataLength;
 extern const NSUInteger kOWSProfileManager_MaxAvatarDiameter;
 extern const NSString *kNSNotificationKey_WasLocallyInitiated;
 

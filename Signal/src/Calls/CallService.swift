@@ -562,6 +562,20 @@ public final class CallService: NSObject {
         AssertIsOnMainThread()
         self.updateIsVideoEnabled()
     }
+    
+    @objc public func getCallsList() -> [TSCall] {
+        databaseStorage.uiRead(block: { transaction in
+            let all = TSCall.anyFetchAll(transaction: transaction)
+            let call = all.filter { $0.isKind(of: TSCall.self) } as! [TSCall]
+            return call
+        })
+    }
+    
+    @objc public func removeCall(_ call: TSCall) {
+        databaseStorage.write { transaction in
+            call.anyRemove(transaction: transaction)
+        }
+    }
 
     // MARK: -
 

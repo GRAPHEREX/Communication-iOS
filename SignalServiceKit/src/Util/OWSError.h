@@ -78,5 +78,6 @@ extern NSError *OWSErrorMakeAssertionError(NSString *descriptionFormat, ...);
 extern NSError *OWSErrorMakeGenericError(NSString *descriptionFormat, ...);
 extern NSError *OWSErrorMakeMessageSendDisabledDueToPreKeyUpdateFailuresError(void);
 extern NSError *OWSErrorMakeMessageSendFailedDueToBlockListError(void);
+extern NSError *OWSErrorMakeNetworkError(void);
 
 NS_ASSUME_NONNULL_END

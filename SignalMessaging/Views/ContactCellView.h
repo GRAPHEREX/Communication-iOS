@@ -9,8 +9,11 @@ extern const CGFloat kContactCellAvatarTextMargin;
 @class SDSAnyReadTransaction;
 @class SignalServiceAddress;
 @class TSThread;
+@class TSCall;
 
 @interface ContactCellView : UIStackView
+
+typedef void (^CallAction)(SignalServiceAddress*); //_Nonnull
 
 @property (assign, nonatomic) BOOL forceDarkAppearance;
 
@@ -20,7 +23,12 @@ extern const CGFloat kContactCellAvatarTextMargin;
 
 @property (nonatomic, nullable) UIImage *customAvatar;
 
+/// Default is "NO"
 @property (nonatomic) BOOL useSmallAvatars;
+/// Default is "NO"
+@property (nonatomic) BOOL shouldShowStatus;
+/// Default is "NO"
+@property (nonatomic) BOOL asCallView;
 
 - (void)configureWithRecipientAddressWithSneakyTransaction:(SignalServiceAddress *)address
     NS_SWIFT_NAME(configureWithSneakyTransaction(recipientAddress:));
@@ -29,7 +37,11 @@ extern const CGFloat kContactCellAvatarTextMargin;
 
 - (void)configureWithThread:(TSThread *)thread transaction:(SDSAnyReadTransaction *)transaction;
 
+- (void)configureWithCall:(TSCall *)call;
+
 - (void)prepareForReuse;
+
+- (void)configureCallAction:(nullable CallAction)handler;
 
 - (NSAttributedString *)verifiedSubtitle;
 

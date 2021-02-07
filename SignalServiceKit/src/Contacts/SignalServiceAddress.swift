@@ -50,6 +50,17 @@ public class SignalServiceAddress: NSObject, NSCopying, NSSecureCoding, Codable 
     public var uuidString: String? {
         return uuid?.uuidString
     }
+    
+    @objc
+    public var isMyAddress: Bool {
+        var isNoteToSelf: Bool = false
+        SDSDatabaseStorage.shared.read { transaction in
+            let thread = TSContactThread.getWithContactAddress(self, transaction: transaction)
+            isNoteToSelf =  thread?.isNoteToSelf ?? false
+        }
+        
+        return isNoteToSelf
+    }
 
     // MARK: - Initializers
 

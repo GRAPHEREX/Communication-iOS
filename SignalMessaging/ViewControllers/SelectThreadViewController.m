@@ -24,7 +24,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SelectThreadViewController () <OWSTableViewControllerDelegate,
+@interface SelectThreadViewController () <OWSTableViewControllerDraggingDelegate,
     ThreadViewHelperDelegate,
     ContactsViewHelperObserver,
     UISearchBarDelegate,
@@ -104,7 +104,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     // Table
     _tableViewController = [OWSTableViewController new];
-    _tableViewController.delegate = self;
+    _tableViewController.draggingDelegate = self;
     _tableViewController.customSectionHeaderFooterBackgroundColor = Theme.backgroundColor;
     [self.view addSubview:self.tableViewController.view];
     [self.tableViewController.view autoPinEdgeToSuperviewSafeArea:ALEdgeLeading];
@@ -429,7 +429,7 @@ NS_ASSUME_NONNULL_BEGIN
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - OWSTableViewControllerDelegate
+#pragma mark - OWSTableViewControllerDraggingDelegate
 
 - (void)tableViewWillBeginDragging
 {

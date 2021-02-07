@@ -14,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) UIView *bottomLayoutView;
 @property (nonatomic) NSLayoutConstraint *bottomLayoutConstraint;
 @property (nonatomic) BOOL shouldAnimateBottomLayout;
-
+@property (nonatomic) UIView *customStatusBar;
+@property (nonatomic) CGFloat keyboardInset;
+@property (nonatomic) BOOL saveInset;
 @end
 
 #pragma mark -
@@ -33,12 +35,44 @@ NS_ASSUME_NONNULL_BEGIN
 {
     self = [super initWithNibName:nil bundle:nil];
     if (!self) {
+        self.keyboardInset = 0;
         self.shouldUseTheme = YES;
+        self.saveInset = YES;
         return self;
     }
     
     [self observeActivation];
     
+    return self;
+}
+
+- (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (!self) {
+        self.keyboardInset = 0;
+        self.shouldUseTheme = YES;
+        self.saveInset = YES;
+        return self;
+    }
+    
+    [self observeActivation];
+    
+    return self;
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (!self) {
+        self.keyboardInset = 0;
+        self.shouldUseTheme = YES;
+         self.saveInset = YES;
+        return self;
+    }
+
+    [self observeActivation];
+
     return self;
 }
 
@@ -83,6 +117,11 @@ NS_ASSUME_NONNULL_BEGIN
 }
 #endif
 
+- (void)setup
+{
+    
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -97,9 +136,69 @@ NS_ASSUME_NONNULL_BEGIN
     if (self.shouldUseTheme) {
         self.view.backgroundColor = Theme.backgroundColor;
     }
+    
+    [self setup];
+}
+
+- (void)setupStatusBar:(CGSize)size color:(UIColor*)color
+{
+    UIView *customStatusBar = [UIView new];
+    [self.view addSubview:customStatusBar];
+    customStatusBar.backgroundColor = color;
+    customStatusBar.frame = CGRectMake(0, 0, size.width, size.height);
+    self.customStatusBar = customStatusBar;
+}
+
+- (void)updateStatusBarAppearance:(UIColor*)color
+{
+    self.customStatusBar.backgroundColor = color;
 }
 
 #pragma mark -
+- (void)autoPinViewToBottomOfViewControllerOrKeyboard:(UIView *)view avoidNotch:(BOOL)avoidNotch withInset:(CGFloat)inset saveInset:(BOOL)saveInset
+{
+    self.saveInset = saveInset;
+    [self autoPinViewToBottomOfViewControllerOrKeyboard:view avoidNotch:avoidNotch withInset:inset];
+}
+
+- (void)autoPinViewToBottomOfViewControllerOrKeyboard:(UIView *)view avoidNotch:(BOOL)avoidNotch withInset:(CGFloat)inset
+{
+    OWSAssertDebug(view);
+    OWSAssertDebug(!self.bottomLayoutConstraint);
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillChangeFrame:)
+                                                 name:UIKeyboardWillChangeFrameNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidChangeFrame:)
+                                                 name:UIKeyboardDidChangeFrameNotification
+                                               object:nil];
+
+    self.bottomLayoutView = view;
+    self.keyboardInset = inset;
+    if (avoidNotch) {
+        self.bottomLayoutConstraint = [view autoPinToBottomLayoutGuideOfViewController:self withInset:inset];
+    } else {
+        self.bottomLayoutConstraint = [view autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view];
+    }
+}
 
 - (void)autoPinViewToBottomOfViewControllerOrKeyboard:(UIView *)view avoidNotch:(BOOL)avoidNotch
 {
@@ -132,6 +231,7 @@ NS_ASSUME_NONNULL_BEGIN
                                                object:nil];
 
     self.bottomLayoutView = view;
+    self.keyboardInset = 0.0;
     if (avoidNotch) {
         self.bottomLayoutConstraint = [view autoPinToBottomLayoutGuideOfViewController:self withInset:0.f];
     } else {
@@ -211,7 +311,7 @@ NS_ASSUME_NONNULL_BEGIN
     // clears the floating "home button". But because the keyboard includes it's own buffer, we subtract the length
     // (height) of the bottomLayoutGuide, else we'd have an unnecessary buffer between the popped keyboard and the input
     // bar.
-    CGFloat offset = -MAX(0, (self.view.height - self.bottomLayoutGuide.length - keyboardEndFrameConverted.origin.y));
+    CGFloat offset = -MAX(self.keyboardInset, (self.view.height - self.bottomLayoutGuide.length - keyboardEndFrameConverted.origin.y + (self.saveInset ? self.keyboardInset : 0) ));
 
     dispatch_block_t updateLayout = ^{
         if (self.shouldBottomViewReserveSpaceForKeyboard && offset >= 0) {

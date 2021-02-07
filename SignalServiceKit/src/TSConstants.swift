@@ -5,6 +5,7 @@
 private protocol TSConstantsProtocol: class {
     var textSecureWebSocketAPI: String { get }
     var textSecureServerURL: String { get }
+    var walletServerURL: String { get }
     var textSecureCDN0ServerURL: String { get }
     var textSecureCDN2ServerURL: String { get }
     var contactDiscoveryURL: String { get }
@@ -56,6 +57,8 @@ public class TSConstants: NSObject {
     public static var textSecureWebSocketAPI: String { return shared.textSecureWebSocketAPI }
     @objc
     public static var textSecureServerURL: String { return shared.textSecureServerURL }
+    @objc
+    public static var walletServerURL: String { return shared.walletServerURL }
     @objc
     public static var textSecureCDN0ServerURL: String { return shared.textSecureCDN0ServerURL }
     @objc
@@ -161,6 +164,7 @@ private class TSConstantsProduction: TSConstantsProtocol {
 
     public let textSecureWebSocketAPI = "wss://textsecure-service.whispersystems.org/v1/websocket/"
     public let textSecureServerURL = "https://textsecure-service.whispersystems.org/"
+    public let walletServerURL = "https://crypto.grapherextests.com/"
     public let textSecureCDN0ServerURL = "https://cdn.signal.org"
     public let textSecureCDN2ServerURL = "https://cdn2.signal.org"
     public let contactDiscoveryURL = "https://api.directory.signal.org"

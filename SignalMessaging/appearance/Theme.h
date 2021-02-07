@@ -35,7 +35,10 @@ extern NSString *const ThemeDidChangeNotification;
 
 #pragma mark - Global App Colors
 
+@property (class, readonly, nonatomic) UIColor *walletBubbleColor;
 @property (class, readonly, nonatomic) UIColor *backgroundColor;
+@property (class, readonly, nonatomic) UIColor *inversedBackgroundColor;
+@property (class, readonly, nonatomic) UIColor *inversedPrimaryTextColor;
 @property (class, readonly, nonatomic) UIColor *secondaryBackgroundColor;
 @property (class, readonly, nonatomic) UIColor *washColor;
 @property (class, readonly, nonatomic) UIColor *primaryTextColor;

@@ -125,3 +125,6 @@
 #import <WebRTC/RTCAudioSession.h>
 #import <WebRTC/RTCCameraPreviewView.h>
 #import <YYImage/YYImage.h>
+#import "SDWebImage.h"
+#import "RegistrationUtils.h"
+#import "ProfileRegistrationViewController.h"

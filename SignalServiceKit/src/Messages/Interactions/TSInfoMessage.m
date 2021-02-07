@@ -273,6 +273,8 @@ NSUInteger TSInfoMessageSchemaVersion = 2;
             return @"";
         case TSInfoMessageProfileUpdate:
             return [self profileChangeDescriptionWithTransaction:transaction];
+        case TSInfoMessageSuccessTransaction:
+            return @"Success transaction";
     }
 
     OWSFailDebug(@"Unknown info message type");
@@ -297,6 +299,7 @@ NSUInteger TSInfoMessageSchemaVersion = 2;
         case TSInfoMessageUnknownProtocolVersion:
         case TSInfoMessageSyncedThread:
         case TSInfoMessageProfileUpdate:
+        case TSInfoMessageSuccessTransaction:
             return NO;
         case TSInfoMessageUserJoinedSignal:
             // In the conversation list, we want conversations with an unread "new user" notification to

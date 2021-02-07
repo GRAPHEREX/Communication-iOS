@@ -80,9 +80,10 @@ extern NSString *const kLocalProfileInvariantPhoneNumber;
             recipientPhoneNumber:(nullable NSString *)recipientPhoneNumber
                    recipientUUID:(nullable NSString *)recipientUUID
                         username:(nullable NSString *)username
+                     st_userID:(nullable NSString *)st_userID
                    credentials:(nullable NSString *)credentials
                         bucket:(nullable NSString *)bucket
-NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:avatarFileName:avatarUrlPath:bio:bioEmoji:familyName:isUuidCapable:lastFetchDate:lastMessagingDate:profileKey:profileName:recipientPhoneNumber:recipientUUID:username:credentials:bucket:));
+NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:avatarFileName:avatarUrlPath:bio:bioEmoji:familyName:isUuidCapable:lastFetchDate:lastMessagingDate:profileKey:profileName:recipientPhoneNumber:recipientUUID:username:st_userID:credentials:bucket:));
 
 // clang-format on
 

@@ -19,7 +19,6 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
 
 @interface SignalApp ()
 
-@property (nonatomic, nullable, weak) ConversationSplitViewController *conversationSplitViewController;
 @property (nonatomic) BOOL hasInitialRootViewController;
 
 @end
@@ -53,6 +52,10 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
     [AppReadiness runNowOrWhenAppDidBecomeReady:^{ [self warmCachesAsync]; }];
 
     return self;
+}
+
+- (ConversationSplitViewController *)conversationSplitViewController {
+    return [self.rootViewController conversationSplitViewController];
 }
 
 #pragma mark - Crash Detection
@@ -252,6 +255,7 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
     OWSLogInfo(@"");
     [DDLog flushLog];
 
+    [WalletCredentialsManager reset];
     [self.databaseStorage resetAllStorage];
     [OWSUserProfile resetProfileStorage];
     [Environment.shared.preferences removeAllValues];
@@ -268,12 +272,12 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
 
 - (void)showConversationSplitView
 {
-    ConversationSplitViewController *splitViewController = [ConversationSplitViewController new];
+    RootViewController *rootViewController = [RootViewController new];
 
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    appDelegate.window.rootViewController = splitViewController;
+    appDelegate.window.rootViewController = rootViewController;
 
-    self.conversationSplitViewController = splitViewController;
+    self.rootViewController = rootViewController;
 }
 
 - (void)showOnboardingView:(OnboardingController *)onboardingController
@@ -281,23 +285,23 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
     OnboardingNavigationController *navController =
         [[OnboardingNavigationController alloc] initWithOnboardingController:onboardingController];
 
-#if TESTABLE_BUILD
-    AccountManager *accountManager = AppEnvironment.shared.accountManager;
-    UITapGestureRecognizer *registerGesture =
-        [[UITapGestureRecognizer alloc] initWithTarget:accountManager action:@selector(fakeRegistration)];
-    registerGesture.numberOfTapsRequired = 8;
-    [navController.view addGestureRecognizer:registerGesture];
-#else
-    UITapGestureRecognizer *submitLogGesture = [[UITapGestureRecognizer alloc] initWithTarget:[Pastelog class]
-                                                                                       action:@selector(submitLogs)];
-    submitLogGesture.numberOfTapsRequired = 8;
-    [navController.view addGestureRecognizer:submitLogGesture];
-#endif
+//#if TESTABLE_BUILD
+//    AccountManager *accountManager = AppEnvironment.shared.accountManager;
+//    UITapGestureRecognizer *registerGesture =
+//        [[UITapGestureRecognizer alloc] initWithTarget:accountManager action:@selector(fakeRegistration)];
+//    registerGesture.numberOfTapsRequired = 8;
+//    [navController.view addGestureRecognizer:registerGesture];
+//#else
+//    UITapGestureRecognizer *submitLogGesture = [[UITapGestureRecognizer alloc] initWithTarget:[Pastelog class]
+//                                                                                       action:@selector(submitLogs)];
+//    submitLogGesture.numberOfTapsRequired = 8;
+//    [navController.view addGestureRecognizer:submitLogGesture];
+//#endif
 
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.window.rootViewController = navController;
 
-    self.conversationSplitViewController = nil;
+    self.rootViewController = nil;
 }
 
 - (void)showBackupRestoreView
@@ -309,7 +313,7 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.window.rootViewController = navController;
 
-    self.conversationSplitViewController = nil;
+    self.rootViewController = nil;
 }
 
 - (void)ensureRootViewController:(NSTimeInterval)launchStartedAt
@@ -341,7 +345,7 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
 
     [AppUpdateNag.shared showAppUpgradeNagIfNecessary];
 
-    [UIViewController attemptRotationToDeviceOrientation];
+//    [UIViewController attemptRotationToDeviceOrientation];
 }
 
 - (BOOL)receivedVerificationCode:(NSString *)verificationCode

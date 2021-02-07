@@ -34,6 +34,23 @@ NS_ASSUME_NONNULL_BEGIN
     return [self monospacedDigitSystemFontOfSize:size weight:UIFontWeightRegular];
 }
 
+#pragma mark - SkyTech Fonts
+
++ (UIFont *)st_sfUiTextRegularFontWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"SFUIText-Regular" size:size];
+}
+
++ (UIFont *)st_sfUiTextSemiboldFontWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"SFUIText-Semibold" size:size];
+}
+
++ (UIFont *)st_robotoRegularFontWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"Roboto-Regular" size:size];
+}
+
 #pragma mark - Icon Fonts
 
 + (UIFont *)ows_fontAwesomeFont:(CGFloat)size

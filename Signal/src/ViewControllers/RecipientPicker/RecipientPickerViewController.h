@@ -22,6 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL allowsSelectingUnregisteredPhoneNumbers;
 /// Defaults to `YES`
 @property (nonatomic) BOOL shouldShowGroups;
+/// Defaults to `YES`
+@property (nonatomic) BOOL shouldShowMyself;
+/// Defaults to `YES`
+@property (nonatomic) BOOL shouldShowCreateGroup;
 /// Defaults to `NO`
 @property (nonatomic) BOOL shouldShowInvites;
 /// Defaults to `YES`
@@ -30,6 +34,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL shouldShowNewGroup;
 /// Defaults to `NO`
 @property (nonatomic) BOOL showUseAsyncSelection;
+/// Defaults to `NO`
+@property (nonatomic) BOOL shouldShowDeletedAccounts;
+
+@property (nonatomic) BOOL shouldUseDefaultTitle;
 
 @property (nonatomic, nullable) NSString *findByPhoneNumberButtonTitle;
 

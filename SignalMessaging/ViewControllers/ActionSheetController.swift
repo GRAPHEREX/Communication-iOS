@@ -7,9 +7,12 @@ import UIKit
 @objc
 open class ActionSheetController: OWSViewController {
 
-    private let contentView = UIView()
-    private let stackView = UIStackView()
-    private let scrollView = UIScrollView()
+    public let topSpace: CGFloat = {
+        return UIDevice().isIPhone5OrShorter ? 20 : 40
+    }()
+    public let contentView = UIView()
+    public let stackView = UIStackView()
+    public let scrollView = UIScrollView()
     private var hasCompletedFirstLayout = false
 
     @objc
@@ -147,6 +150,7 @@ open class ActionSheetController: OWSViewController {
         let topMargin: CGFloat = 18
 
         scrollView.addSubview(contentView)
+        contentView.backgroundColor = Theme.backgroundColor
         contentView.autoPinWidthToSuperview()
         contentView.autoPinEdge(toSuperviewEdge: .top, withInset: topMargin)
         contentView.autoPinEdge(toSuperviewEdge: .bottom)
@@ -216,6 +220,49 @@ open class ActionSheetController: OWSViewController {
         let bottomInset = scrollView.adjustedContentInset.bottom
         scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.height + bottomInset)
     }
+    
+    public func setupCenterHeader(title: String, close: Selector?) {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = Theme.backgroundColor
+        
+        let titleLabel = UILabel()
+        titleLabel.textColor = Theme.primaryTextColor
+        titleLabel.font = UIFont.st_sfUiTextSemiboldFont(withSize: 18)
+        titleLabel.numberOfLines = 0
+        titleLabel.lineBreakMode = .byWordWrapping
+        titleLabel.textAlignment = .center
+        titleLabel.text = title
+        titleLabel.setCompressionResistanceVerticalHigh()
+        
+        backgroundView.addSubview(titleLabel)
+        titleLabel.autoPinEdge(.bottom, to: .bottom, of: backgroundView)
+        titleLabel.autoPinEdge(.top, to: .top, of: backgroundView)
+        titleLabel.autoPinEdge(.leading, to: .leading, of: backgroundView)
+        titleLabel.autoPinEdge(.trailing, to: .trailing, of: backgroundView)
+        
+        if close != nil {
+            let button = UIButton()
+            button.tintColor = Theme.primaryTextColor
+            button.setImage(#imageLiteral(resourceName: "icon.delete").withRenderingMode(.alwaysTemplate), for: .normal)
+            button.addTarget(self, action: close!, for: .touchUpInside)
+            let buttonWidth: CGFloat = 40.0
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -(buttonWidth-24))
+            
+            backgroundView.addSubview(button)
+            button.autoPinEdge(.bottom, to: .bottom, of: backgroundView)
+            button.autoPinEdge(.top, to: .top, of: backgroundView)
+            button.autoPinEdge(.trailing, to: .trailing, of: backgroundView)
+            button.autoSetDimension(.width, toSize: buttonWidth)
+        }
+        
+        customHeader = backgroundView
+    }
+
+    public func setupMargins(margin: CGFloat) {
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = .init(top: margin, leading: margin,
+                                        bottom: margin, trailing: margin)
+    }
 
     @objc func didTapBackdrop(_ sender: UITapGestureRecognizer) {
         guard isCancelable else { return }
@@ -231,6 +278,22 @@ open class ActionSheetController: OWSViewController {
         }
     }
 
+    func addImage(image: UIImage?) {
+        if image == nil { return }
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .center
+        
+        let screenSize = UIScreen.main.bounds.size.height
+        
+        if let lastSubview = stackView.arrangedSubviews.last {
+            stackView.setCustomSpacing(16, after: lastSubview)
+        }
+        
+        imageView.autoSetDimension(.height, toSize: screenSize * 0.2)
+        stackView.setCustomSpacing(16, after: imageView)
+        stackView.addArrangedSubview(imageView)
+    }
+    
     func createHeader(title: String? = nil, message: String? = nil) {
         guard title != nil || message != nil else { return }
 
@@ -252,7 +315,7 @@ open class ActionSheetController: OWSViewController {
         // Title
         if let title = title {
             let titleLabel = UILabel()
-            titleLabel.textColor = theme.headerTitleColor
+            titleLabel.textColor = Theme.primaryTextColor
             titleLabel.font = UIFont.ows_dynamicTypeSubheadlineClamped.ows_semibold
             titleLabel.numberOfLines = 0
             titleLabel.lineBreakMode = .byWordWrapping
@@ -269,7 +332,7 @@ open class ActionSheetController: OWSViewController {
             messageLabel.numberOfLines = 0
             messageLabel.textAlignment = .center
             messageLabel.lineBreakMode = .byWordWrapping
-            messageLabel.textColor = theme.headerMessageColor
+            messageLabel.textColor = Theme.primaryTextColor
             messageLabel.font = .ows_dynamicTypeSubheadlineClamped
             messageLabel.text = message
             messageLabel.setCompressionResistanceVerticalHigh()
@@ -376,7 +439,7 @@ public class ActionSheetAction: NSObject {
                 if let trailingIcon = trailingIcon {
                     trailingIconView.setTemplateImage(
                         Theme.iconImage(trailingIcon),
-                        tintColor: Theme.ActionSheet.default.buttonTextColor
+                        tintColor: Theme.primaryTextColor
                     )
                 }
 
@@ -391,7 +454,7 @@ public class ActionSheetAction: NSObject {
                 if let leadingIcon = leadingIcon {
                     leadingIconView.setTemplateImage(
                         Theme.iconImage(leadingIcon),
-                        tintColor: Theme.ActionSheet.default.buttonTextColor
+                        tintColor: Theme.primaryTextColor
                     )
                 }
 
@@ -421,7 +484,8 @@ public class ActionSheetAction: NSObject {
             style = action.style
             super.init(frame: .zero)
 
-            setBackgroundImage(UIImage(color: Theme.ActionSheet.default.buttonHighlightColor), for: .highlighted)
+            setBackgroundImage(UIImage(color: Theme.backgroundColor), for: .init())
+            setBackgroundImage(UIImage(color: Theme.cellSelectedColor), for: .highlighted)
 
             [leadingIconView, trailingIconView].forEach { iconView in
                 addSubview(iconView)
@@ -441,13 +505,13 @@ public class ActionSheetAction: NSObject {
             switch action.style {
             case .default:
                 titleLabel?.font = .ows_dynamicTypeBodyClamped
-                setTitleColor(Theme.ActionSheet.default.buttonTextColor, for: .init())
+                setTitleColor(Theme.primaryTextColor, for: .init())
             case .cancel:
                 titleLabel?.font = UIFont.ows_dynamicTypeBodyClamped.ows_semibold
-                setTitleColor(Theme.ActionSheet.default.buttonTextColor, for: .init())
+                setTitleColor(Theme.primaryTextColor, for: .init())
             case .destructive:
                 titleLabel?.font = .ows_dynamicTypeBodyClamped
-                setTitleColor(Theme.ActionSheet.default.destructiveButtonTextColor, for: .init())
+                setTitleColor(.ows_accentRed, for: .init())
             }
 
             autoSetDimension(.height, toSize: ActionSheetController.minimumRowHeight, relation: .greaterThanOrEqual)
