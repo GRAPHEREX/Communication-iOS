@@ -9,7 +9,7 @@ import PromiseKit
 @objcMembers class SupportConstants: NSObject {
     static let supportURL = URL(string: "https://support.signal.org/")!
     static let debugLogsInfoURL = URL(string: "https://support.signal.org/hc/articles/360007318591")!
-    static let supportEmail = "support@signal.org"
+    static let supportEmail = "support@grapherex.com"
 }
 
 @objc(OWSContactSupportViewController)

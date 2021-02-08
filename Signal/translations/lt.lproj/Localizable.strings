@@ -26,10 +26,10 @@
 "ACCESSIBILITY_LABEL_STICKER" = "Lipdukas";
 
 /* Label for 'audio call' button in contact view. */
-"ACTION_AUDIO_CALL" = "Signal skambutis";
+"ACTION_AUDIO_CALL" = "Grapherex skambutis";
 
 /* Label for 'invite' button in contact view. */
-"ACTION_INVITE" = "Pakviesti į Signal";
+"ACTION_INVITE" = "Pakviesti į Grapherex";
 
 /* Label for button that lets you send a message to a contact. */
 "ACTION_SEND_MESSAGE" = "Siųsti žinutę";
@@ -119,7 +119,7 @@
 "APN_Message" = "Nauja žinutė!";
 
 /* Message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Nepavyksta paleisti Signal. Prašome išsiųsti derinimo žurnalą į support@signal.org, kad galėtume pašalinti su šia problema susijusius nesklandumus.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Nepavyksta paleisti Grapherex. Prašome išsiųsti derinimo žurnalą į support@grapherex.com, kad galėtume pašalinti su šia problema susijusius nesklandumus.";
 
 /* Title for the 'app launch failed' alert. */
 "APP_LAUNCH_FAILURE_ALERT_TITLE" = "Klaida";
@@ -128,13 +128,13 @@
 "APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE" = "Nepavyko įkelti duomenų bazės";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
-"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Atsinaujinkite į naujausią Signal versiją.";
+"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Atsinaujinkite į naujausią Grapherex versiją.";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Nežinoma duomenų bazės versija.";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Nepavyko atkurti iš jūsų senojo įrenginio perkeltų duomenų. Prašome išsiųsti derinimo žurnalą į support@signal.org, kad galėtume pašalinti šios problemos sukeltus nesklandumus. Jeigu įsidiegsite Signal iš naujo, jūsų žinučių istorija gali būti prarasta.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Nepavyko atkurti iš jūsų senojo įrenginio perkeltų duomenų. Prašome išsiųsti derinimo žurnalą į support@grapherex.com, kad galėtume pašalinti šios problemos sukeltus nesklandumus. Jeigu įsidiegsite Grapherex iš naujo, jūsų žinučių istorija gali būti prarasta.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Nepavyko užbaigti perkėlimo";
@@ -149,7 +149,7 @@
 "APP_UPDATE_NAG_ALERT_MESSAGE_FORMAT" = "Versija %@ yra prieinama App Store.";
 
 /* Title for the 'new app version available' alert. */
-"APP_UPDATE_NAG_ALERT_TITLE" = "Yra prieinama nauja Signal versija";
+"APP_UPDATE_NAG_ALERT_TITLE" = "Yra prieinama nauja Grapherex versija";
 
 /* Label for the 'update' button in the 'new app version available' alert. */
 "APP_UPDATE_NAG_ALERT_UPDATE_BUTTON" = "Atnaujinti";
@@ -164,7 +164,7 @@
 "APPEARANCE_SETTINGS_SYSTEM_THEME_NAME" = "Sisteminis";
 
 /* Name of application */
-"APPLICATION_NAME" = "Signal";
+"APPLICATION_NAME" = "Grapherex";
 
 /* Label for the archive button for conversations list view */
 "ARCHIVE_ACTION" = "Archyvuoti";
@@ -181,7 +181,7 @@
 /* Error that outgoing attachments could not be exported. */
 "ATTACHMENT_APPROVAL_FAILED_TO_EXPORT" = "Nepavyko eksportuoti priedo.";
 
-/* alert text when Signal was unable to save a copy of the attachment to the system photo library */
+/* alert text when Grapherex was unable to save a copy of the attachment to the system photo library */
 "ATTACHMENT_APPROVAL_FAILED_TO_SAVE" = "Nepavyko įrašyti";
 
 /* Format string for file extension label in call interstitial view */
@@ -473,7 +473,7 @@
 "CALL_AUDIO_MISSED_NOTIFICATION_BODY" = "📞 Praleistas garso skambutis";
 
 /* Alert message when calling and permissions for microphone are missing */
-"CALL_AUDIO_PERMISSION_MESSAGE" = "Norėdami Signal skambinti ir įrašinėti balso žinutes, iOS nustatymų programėlėje galite įjungti prieigą prie mikrofono.";
+"CALL_AUDIO_PERMISSION_MESSAGE" = "Norėdami Grapherex skambinti ir įrašinėti balso žinutes, iOS nustatymų programėlėje galite įjungti prieigą prie mikrofono.";
 
 /* Alert title when calling and permissions for microphone are missing */
 "CALL_AUDIO_PERMISSION_TITLE" = "Reikalinga prieiga prie mikrofono";
@@ -488,7 +488,7 @@
 "CALL_SCREEN_STATUS_NO_ANSWER" = "Nėra atsakymo";
 
 /* embeds {{Call Status}} in call screen label. For ongoing calls, {{Call Status}} is a seconds timer like 01:23, otherwise {{Call Status}} is a short text like 'Ringing', 'Busy', or 'Failed Call' */
-"CALL_STATUS_FORMAT" = "Signal %@";
+"CALL_STATUS_FORMAT" = "Grapherex %@";
 
 /* Label for call button for alert offering to call a user. */
 "CALL_USER_ALERT_CALL_BUTTON" = "Skambinti";
@@ -542,7 +542,7 @@
 "CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "Jūsų kamera išjungta";
 
 /* The generic name used for calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Signal naudotojas";
+"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Grapherex naudotojas";
 
 /* Accessibility hint describing what you can do with the camera button */
 "CAMERA_BUTTON_HINT" = "Padaryti nuotrauką, o tuomet ją išsiųsti";
@@ -572,13 +572,13 @@
 "CHECK_FOR_BACKUP_RESTORE" = "Atkurti";
 
 /* Error indicating that the app could not determine that user's iCloud account status */
-"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Signal nepavyko nustatyti jūsų iCloud paskyros būsenos. iOS nustatymų programėlėje prisijunkite prie savo iCloud paskyros, norėdami pasidaryti atsarginę Signal duomenų kopiją.";
+"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Grapherex nepavyko nustatyti jūsų iCloud paskyros būsenos. iOS nustatymų programėlėje prisijunkite prie savo iCloud paskyros, norėdami pasidaryti atsarginę Grapherex duomenų kopiją.";
 
 /* Error indicating that user does not have an iCloud account. */
-"CLOUDKIT_STATUS_NO_ACCOUNT" = "Nėra iCloud paskyros. iOS nustatymų programėlėje prisijunkite prie savo iCloud paskyros, norėdami pasidaryti atsarginę Signal duomenų kopiją.";
+"CLOUDKIT_STATUS_NO_ACCOUNT" = "Nėra iCloud paskyros. iOS nustatymų programėlėje prisijunkite prie savo iCloud paskyros, norėdami pasidaryti atsarginę Grapherex duomenų kopiją.";
 
 /* Error indicating that the app was prevented from accessing the user's iCloud account. */
-"CLOUDKIT_STATUS_RESTRICTED" = "Norint daryti atsargines kopijas, Signal buvo uždrausta prieiga prie jūsų iCloud paskyros. Norėdami pasidaryti atsarginę savo Signal duomenų kopiją, iOS nustatymų programėlėje suteikite Signal prieigą prie savo iCloud paskyros.";
+"CLOUDKIT_STATUS_RESTRICTED" = "Norint daryti atsargines kopijas, Grapherex buvo uždrausta prieiga prie jūsų iCloud paskyros. Norėdami pasidaryti atsarginę savo Grapherex duomenų kopiją, iOS nustatymų programėlėje suteikite Grapherex prieigą prie savo iCloud paskyros.";
 
 /* The first of two messages demonstrating the chosen conversation color, by rendering this message in an outgoing message bubble. */
 "COLOR_PICKER_DEMO_MESSAGE_1" = "Pasirinkite šiame pokalbyje išsiunčiamų žinučių spalvą.";
@@ -593,7 +593,7 @@
 "COMPARE_SAFETY_NUMBER_ACTION" = "Palyginti su iškarpine";
 
 /* Accessibility hint describing what you can do with the compose button */
-"COMPOSE_BUTTON_HINT" = "Pasirinkti ar ieškoti Signal naudotojų, su kuriais pradėti pokalbį.";
+"COMPOSE_BUTTON_HINT" = "Pasirinkti ar ieškoti Grapherex naudotojų, su kuriais pradėti pokalbį.";
 
 /* Accessibility label from compose button. */
 "COMPOSE_BUTTON_LABEL" = "Rašyti";
@@ -611,7 +611,7 @@
 "COMPOSE_MESSAGE_USERNAME_SEARCH_SECTION_TITLE" = "Ieškoti naudotojo vardo";
 
 /* Multi-line label explaining why compose-screen contact picker is empty. */
-"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Norėdami matyti, kurie iš jūsų adresatų yra Signal naudotojai, iOS nustatymų programėlėje galite įjungti prieigą prie adresatų.";
+"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Norėdami matyti, kurie iš jūsų adresatų yra Grapherex naudotojai, iOS nustatymų programėlėje galite įjungti prieigą prie adresatų.";
 
 /* No comment provided by engineer. */
 "CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Tai atstatys programėlę, ištrinant jūsų žinutes ir išregistruojant jus iš serverio. Užbaigus šį procesą, programėlė bus užverta.";
@@ -742,11 +742,11 @@
 /* Error indicating that at least one contact field must be selected before sharing a contact. */
 "CONTACT_SHARE_NO_FIELDS_SELECTED" = "Nepažymėti jokie adresato laukeliai.";
 
-/* Button text to initiate an email to signal support staff */
+/* Button text to initiate an email to Grapherex support staff */
 "CONTACT_SUPPORT" = "Susisiekti su palaikymu";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Signal nepavyko užbaigti jūsų palaikymo užklausos.";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Grapherex nepavyko užbaigti jūsų palaikymo užklausos.";
 
 /* button text */
 "CONTACT_SUPPORT_PROMPT_ERROR_TRY_AGAIN" = "Bandyti dar kartą";
@@ -1079,9 +1079,9 @@
 "DEREGISTRATION_REREGISTER_WITH_SAME_PHONE_NUMBER" = "Iš naujo registruoti šį telefono numerį";
 
 /* Label warning the user that they have been de-registered. */
-"DEREGISTRATION_WARNING" = "Įrenginys daugiau nebėra registruotas. Jūsų telefono numeris gali būti registruojamas su Signal kitame įrenginyje. Bakstelėkite, norėdami registruoti iš naujo.";
+"DEREGISTRATION_WARNING" = "Įrenginys daugiau nebėra registruotas. Jūsų telefono numeris gali būti registruojamas su Grapherex kitame įrenginyje. Bakstelėkite, norėdami registruoti iš naujo.";
 
-/* {{Short Date}} when device last communicated with Signal Server. */
+/* {{Short Date}} when device last communicated with Grapherex Server. */
 "DEVICE_LAST_ACTIVE_AT_LABEL" = "Paskutinį kartą aktyvus: %@";
 
 /* {{Short Date}} when device was linked. */
@@ -1103,7 +1103,7 @@
 "DEVICE_TRANSFER_CHOICE_EXPLANATION" = "Jei turite seną iOS įrenginį, galite saugiai perkelti savo paskyrą ir žinutes į šį įrenginį.";
 
 /* The explanation for the device transfer 'choice' view when linking a device */
-"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Jei anksčiau naudojote Signal susietame iPad įrenginyje, tuomet galite saugiai perkelti savo paskyrą ir žinutes į šį įrenginį.";
+"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Jei anksčiau naudojote Grapherex susietame iPad įrenginyje, tuomet galite saugiai perkelti savo paskyrą ir žinutes į šį įrenginį.";
 
 /* The body for the device transfer 'choice' view 'register' option */
 "DEVICE_TRANSFER_CHOICE_REGISTER_BODY" = "Tęsti neperkeliant savo paskyros ir žinučių";
@@ -1133,7 +1133,7 @@
 "DEVICE_TRANSFER_CHOICE_TRANSFER_TITLE" = "Perkelti iš kito iOS įrenginio";
 
 /* A warning for the device transfer 'choice' view indicating you can only have one device registered with your number */
-"DEVICE_TRANSFER_CHOICE_WARNING" = "Jei tęsite, Signal bus išjungta bet kuriame kitame, šiuo metu su tuo pačiu numeriu susietame, įrenginyje.";
+"DEVICE_TRANSFER_CHOICE_WARNING" = "Jei tęsite, Grapherex bus išjungta bet kuriame kitame, šiuo metu su tuo pačiu numeriu susietame, įrenginyje.";
 
 /* An error indicating that we were unable to verify the indentity of the new device to complete the transfer */
 "DEVICE_TRANSFER_ERROR_CERTIFICATE_MISMATCH" = "Nepavyko patvirtinti jūsų naujojo įrenginio, bandykite dar kartą";
@@ -1151,16 +1151,16 @@
 "DEVICE_TRANSFER_ERROR_NOT_ENOUGH_SPACE" = "Perkėlimo užbaigimui trūksta laisvos vietos";
 
 /* An error indicating the user must update their device before trying to transfer. */
-"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Atnaujinkite į naujausią Signal versiją ir bandykite dar kartą";
+"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Atnaujinkite į naujausią Grapherex versiją ir bandykite dar kartą";
 
 /* The explanation on the action sheet prompting the user if they want to transfer their device. */
-"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Perkelkite savo Signal paskyrą į naują iOS įrenginį. Užtikrinkite, kad jūsų įrenginys būtų šalia ir būtų įjungtas.";
+"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Perkelkite savo Grapherex paskyrą į naują iOS įrenginį. Užtikrinkite, kad jūsų įrenginys būtų šalia ir būtų įjungtas.";
 
 /* The title on the acttion sheet prompting the user if they want to transfer their device. */
 "DEVICE_TRANSFER_PROMPT_TITLE" = "Perkelti paskyrą";
 
 /* The explanation for the device transfer qr code view */
-"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Atverkite Signal savo senajame įrenginyje, atneškite jį arčiau ir įsitikinkite, kad abiejuose įrenginiuose yra įjungtas belaidis (Wi-Fi) ir Bluetooth ryšys.";
+"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Atverkite Grapherex savo senajame įrenginyje, atneškite jį arčiau ir įsitikinkite, kad abiejuose įrenginiuose yra įjungtas belaidis (Wi-Fi) ir Bluetooth ryšys.";
 
 /* The second explanation for the device transfer qr code view */
 "DEVICE_TRANSFER_QRCODE_EXPLANATION2" = "Patalpinkite šį QR kodą į savo kito įrenginio ekraną.";
@@ -1172,7 +1172,7 @@
 "DEVICE_TRANSFER_QRCODE_TITLE" = "Laukiama kito įrenginio...";
 
 /* The explanation on the view that shows receiving progress */
-"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Laikykite abu įrenginius vieną šalia kito. Neišjunkite nei vieno įrenginio ir palikite Signal atvertą. Perkėlimai yra šifruoti ištisiniu būdu.";
+"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Laikykite abu įrenginius vieną šalia kito. Neišjunkite nei vieno įrenginio ir palikite Grapherex atvertą. Perkėlimai yra šifruoti ištisiniu būdu.";
 
 /* The title on the view that shows receiving progress */
 "DEVICE_TRANSFER_RECEIVING_TITLE" = "Gaunami duomenys";
@@ -1187,7 +1187,7 @@
 "DEVICE_TRANSFER_SCANNING_TITLE" = "Laikykite savo naują įrenginį kameros vaizde";
 
 /* The explanation on the action sheet that shows transfer progress */
-"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Laikykite abu įrenginius vieną šalia kito. Neišjunkite nei vieno įrenginio ir palikite Signal atvertą.";
+"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Laikykite abu įrenginius vieną šalia kito. Neišjunkite nei vieno įrenginio ir palikite Grapherex atvertą.";
 
 /* The title on the action sheet that shows transfer progress */
 "DEVICE_TRANSFER_TRANSFERRING_TITLE" = "Perkeliami duomenys";
@@ -1213,11 +1213,11 @@
 /* Section title for the 'domain fronting country' view. */
 "DOMAIN_FRONTING_COUNTRY_VIEW_SECTION_HEADER" = "Cenzūravimo apėjimo vieta";
 
-/* Alert body for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+/* Alert body for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_BODY" = "Prieigą galite įjungti iOS nustatymų programėlėje.";
 
-/* Alert title for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
-"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Norint taisyti adresato informaciją, Signal reikia adresatų prieigos";
+/* Alert title for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
+"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Norint taisyti adresato informaciją, Grapherex reikia adresatų prieigos";
 
 /* The 'clear avatar' button in the 'edit group' view. */
 "EDIT_GROUP_CLEAR_AVATAR" = "Šalinti nuotrauką";
@@ -1226,7 +1226,7 @@
 "EDIT_GROUP_DEFAULT_TITLE" = "Taisyti grupę";
 
 /* Error message indicating the a user can't be added to a group. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Šis naudotojas negali būti pridėtas į grupę tol, kol neatnaujins Signal programėlės.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Šis naudotojas negali būti pridėtas į grupę tol, kol neatnaujins Grapherex programėlės.";
 
 /* Format for the 'group full' error alert when a user can't be added to a group because the group is full. Embeds {{ the maximum number of members in a group }}. */
 "EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "Pasiekta didžiausios grupės iš %@ narių riba.";
@@ -1249,14 +1249,14 @@
 /* Short name for edit menu item to copy contents of media message. */
 "EDIT_ITEM_COPY_ACTION" = "Kopijuoti";
 
-/* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
-"EMAIL_INVITE_BODY" = "Labas,\n\nPaskutiniu metu, tam kad savo iPhone telefone išlaikyčiau pokalbius privačius, aš naudoju Signal. Norėčiau, kad ir tu įsidiegtum šią programėlę, taigi, tokiu būdu mes galėtume būti tikri, kad tik tu ir aš galime skaityti savo žinutes ir girdėti savo skambučius.\n\nSignal yra prieinama iPhone ir Android telefonams. Atsisiųsk ją iš čia: %@\n\nSignal veikia panašiai kaip tavo dabartinė susirašinėjimo programėlė. Mes galime siųsti paveikslus ir vaizdo įrašus, skambinti ir pradėti grupės pokalbius. Geriausia yra tai, kad niekas negali to pamatyti, netgi žmonės, kurie sukūrė Signal!\n\nGali daugiau paskaityti apie Open Whisper Systems (žmones, kurie sukūrė Signal) čia: %@";
+/* body of email sent to contacts when inviting to install Grapherex. Embeds {{link to install Grapherex}} and {{link to the Grapherex home page}} */
+"EMAIL_INVITE_BODY" = "Labas,\n\nPaskutiniu metu, tam kad savo iPhone telefone išlaikyčiau pokalbius privačius, aš naudoju Grapherex. Norėčiau, kad ir tu įsidiegtum šią programėlę, taigi, tokiu būdu mes galėtume būti tikri, kad tik tu ir aš galime skaityti savo žinutes ir girdėti savo skambučius.\n\nGrapherex yra prieinama iPhone ir Android telefonams. Atsisiųsk ją iš čia: %@\n\nGrapherex veikia panašiai kaip tavo dabartinė susirašinėjimo programėlė. Mes galime siųsti paveikslus ir vaizdo įrašus, skambinti ir pradėti grupės pokalbius. Geriausia yra tai, kad niekas negali to pamatyti, netgi žmonės, kurie sukūrė Grapherex!\n\nGali daugiau paskaityti apie Open Whisper Systems (žmones, kurie sukūrė Grapherex) čia: %@";
 
-/* subject of email sent to contacts when inviting to install Signal */
-"EMAIL_INVITE_SUBJECT" = "Persijunkime į Signal";
+/* subject of email sent to contacts when inviting to install Grapherex */
+"EMAIL_INVITE_SUBJECT" = "Persijunkime į Grapherex";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Jūsų įrenginys nėra sukonfigūruotas siųsti el. laiškus. Norėdami siųsti palaikymo užklausą, nusistatykite įrenginyje el. paštą arba siųskite el. laišką, adresu support@signal.org";
+"EMAIL_SIGNAL_MESSAGE" = "Jūsų įrenginys nėra sukonfigūruotas siųsti el. laiškus. Norėdami siųsti palaikymo užklausą, nusistatykite įrenginyje el. paštą arba siųskite el. laišką, adresu support@grapherex.com";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "El. paštas neprieinamas";
@@ -1289,7 +1289,7 @@
 "EMOJI_CATEGORY_TRAVEL_NAME" = "Kelionės ir vietos";
 
 /* Full width label displayed when attempting to compose message */
-"EMPTY_CONTACTS_LABEL_LINE1" = "Nei vienas iš jūsų adresatų neturi Signal.";
+"EMPTY_CONTACTS_LABEL_LINE1" = "Nei vienas iš jūsų adresatų neturi Grapherex.";
 
 /* Full width label displayed when attempting to compose message */
 "EMPTY_CONTACTS_LABEL_LINE2" = "Kodėl gi jums ko nors nepakvietus?";
@@ -1327,8 +1327,8 @@
 /* Error message indicating that message send failed due to block list */
 "ERROR_DESCRIPTION_MESSAGE_SEND_FAILED_DUE_TO_BLOCK_LIST" = "Nepavyko išsiųsti naudotojui žinutės, kadangi jūs jį užblokavote.";
 
-/* Generic error used whenever Signal can't contact the server */
-"ERROR_DESCRIPTION_NO_INTERNET" = "Signal nepavyko prisijungti prie interneto. Bandykite dar kartą.";
+/* Generic error used whenever Grapherex can't contact the server */
+"ERROR_DESCRIPTION_NO_INTERNET" = "Grapherex nepavyko prisijungti prie interneto. Bandykite dar kartą.";
 
 /* Error indicating that an outgoing message had no valid recipients. */
 "ERROR_DESCRIPTION_NO_VALID_RECIPIENTS" = "Žinutės išsiuntimas nepavyko dėl teisingų gavėjų trūkumo.";
@@ -1343,7 +1343,7 @@
 "ERROR_DESCRIPTION_RESPONSE_FAILED" = "Neteisingas atsakymas iš paslaugos.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Šis įrenginys daugiau nebėra registruotas su jūsų telefono numeriu. Įdiekite Signal iš naujo.";
+"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Šis įrenginys daugiau nebėra registruotas su jūsų telefono numeriu. Įdiekite Grapherex iš naujo.";
 
 /* Generic server error */
 "ERROR_DESCRIPTION_SERVER_FAILURE" = "Serverio klaida. Prašome vėliau bandyti dar kartą.";
@@ -1352,13 +1352,13 @@
 "ERROR_DESCRIPTION_UNKNOWN_ERROR" = "Įvyko nežinoma klaida.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Adresatas nėra Signal naudotojas.";
+"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Adresatas nėra Grapherex naudotojas.";
 
 /* Error message indicating that attachment download(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_DOWNLOAD_FAILED" = "Nepavyko atsisiųsti priedo.";
 
 /* Error message when unable to receive an attachment because the sending client is too old. */
-"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Priedo nesėkmė: Paprašykite šio adresato, kad atsinaujintų Signal į naujausią versiją ir išsiųstų savo žinutę dar kartą.";
+"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Priedo nesėkmė: Paprašykite šio adresato, kad atsinaujintų Grapherex į naujausią versiją ir išsiųstų savo žinutę dar kartą.";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_DUPLICATE_MESSAGE" = "Gauta dviguba žinutė.";
@@ -1375,10 +1375,10 @@
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_NO_SESSION" = "Nėra adresatui prieinamo seanso.";
 
-/* Shown when signal users safety numbers changed */
+/* Shown when Grapherex users safety numbers changed */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE" = "Saugumo numeris pasikeitė.";
 
-/* Shown when signal users safety numbers changed, embeds the user's {{name or phone number}} */
+/* Shown when Grapherex users safety numbers changed, embeds the user's {{name or phone number}} */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE_FORMAT" = "Jūsų saugumo numeris su %@ pasikeitė.";
 
 /* Text notifying the user that their secure session has been reset */
@@ -1400,19 +1400,19 @@
 "ERROR_SENDING_DEREGISTERED" = "Jūsų įrenginys daugiau nebėra registruotas. Norėdami siųsti žinutes, užregistruokite jį iš naujo.";
 
 /* Error indicating a send failure due to an expired application. */
-"ERROR_SENDING_EXPIRED" = "Jūsų Signal versija nebegalioja. Atnaujinkite programėlę, norėdami siųsti tolimesnes žinutes.";
+"ERROR_SENDING_EXPIRED" = "Jūsų Grapherex versija nebegalioja. Atnaujinkite programėlę, norėdami siųsti tolimesnes žinutes.";
 
-/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or signal id}}. */
+/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or Grapherex id}}. */
 "ERROR_UNREGISTERED_USER_FORMAT" = "Neregistruotas naudotojas: %@";
 
 /* Label notifying the user that the app has expired. */
-"EXPIRATION_ERROR" = "Jūsų Signal versija nebegalioja! Bakstelėkite, kad atnaujintumėte į naujausią versiją.";
+"EXPIRATION_ERROR" = "Jūsų Grapherex versija nebegalioja! Bakstelėkite, kad atnaujintumėte į naujausią versiją.";
 
 /* Label warning the user that the app will expire soon. */
-"EXPIRATION_WARNING_SOON" = "Jūsų Signal versija nustos galioti po %d dienų. Bakstelėkite, norėdami atnaujinti į naujausią versiją.";
+"EXPIRATION_WARNING_SOON" = "Jūsų Grapherex versija nustos galioti po %d dienų. Bakstelėkite, norėdami atnaujinti į naujausią versiją.";
 
 /* Label warning the user that the app will expire today. */
-"EXPIRATION_WARNING_TODAY" = "Šiandien nustos galioti jūsų Signal versija. Bakstelėkite, kad atnaujintumėte į naujausią versiją.";
+"EXPIRATION_WARNING_TODAY" = "Šiandien nustos galioti jūsų Grapherex versija. Bakstelėkite, kad atnaujintumėte į naujausią versiją.";
 
 /* action sheet header when re-sending message which failed because of too many attempts */
 "FAILED_SENDING_BECAUSE_RATE_LIMIT" = "Per daug nesėkmių su šiuo adresatu. Bandykite dar kartą vėliau.";
@@ -1487,7 +1487,7 @@
 "GO_TO_SETTINGS_BUTTON" = "Pereiti į nustatymus";
 
 /* Body message of notification shown during GRDB migration indicating that user may need to open app to view their content. */
-"GRDB_MIGRATION_NOTIFICATION_BODY" = "Į šią Signal versiją įeina duomenų bazės optimizavimai ir našumo patobulinimai. Norint užbaigti procesą, jums gali tekti atverti programėlę.";
+"GRDB_MIGRATION_NOTIFICATION_BODY" = "Į šią Grapherex versiją įeina duomenų bazės optimizavimai ir našumo patobulinimai. Norint užbaigti procesą, jums gali tekti atverti programėlę.";
 
 /* Title of notification shown during GRDB migration indicating that user may need to open app to view their content. */
 "GRDB_MIGRATION_NOTIFICATION_TITLE" = "Optimizuojama duomenų bazė";
@@ -1802,7 +1802,7 @@
 "GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Neteisinga nuoroda";
 
 /* Error message indicating that the local user does not support groups v2. */
-"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Norėdami prisijungti prie šios grupės, atnaujinkite Signal šiame įrenginyje.";
+"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Norėdami prisijungti prie šios grupės, atnaujinkite Grapherex šiame įrenginyje.";
 
 /* Explanation of the 'approve new group members' switch. */
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Reikalauti, kad administratorius patvirtintų naujus, per grupės nuorodą prisijungiančius, narius.";
@@ -1867,8 +1867,8 @@
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "QR kodas";
 
-/* Label for the 'share group link via Signal' button in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Bendrinti per Signal";
+/* Label for the 'share group link via Grapherex' button in the 'group link' view. */
+"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Bendrinti per Grapherex";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Kiekvienas, turintis šią nuorodą, gali prisijungti prie grupės arba siųsti prašymą prisijungti. Bendrinkite ją su žmonėmis, kuriais pasitikite.";
@@ -2201,13 +2201,13 @@
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_1_TITLE" = "Kas yra pasenusios grupės?";
 
 /* Body text for the second section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Pasenusios grupės negali būti naujintos į naująsias grupes, bet galite sukurti naująją grupę su tais pačiais nariais, jeigu jie naudoja naujausią Signal versiją.\n\nAteityje Signal pateiks būdą kaip naujinti pasenusias grupes į naująsias.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Pasenusios grupės negali būti naujintos į naująsias grupes, bet galite sukurti naująją grupę su tais pačiais nariais, jeigu jie naudoja naujausią Grapherex versiją.\n\nAteityje Grapherex pateiks būdą kaip naujinti pasenusias grupes į naująsias.";
 
 /* Title for the second section of the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_2_TITLE" = "Ar galiu naujinti pasenusią grupę?";
 
 /* Body text for the third section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Norint sukurti naująją grupę, visi nariai turėtų atsinaujinti į naujausią Signal versiją.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Norint sukurti naująją grupę, visi nariai turėtų atsinaujinti į naujausią Grapherex versiją.";
 
 /* Title for the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Pasenusios grupės lyginant su naujosiomis";
@@ -2222,28 +2222,28 @@
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TOO_MANY_MEMBERS_FORMAT" = "Ši grupė negali būti naujinta į naująją grupę, nes joje yra per daug narių. Didžiausias grupės, kurią galima naujinti, dydis yra %@.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Kai visi dabartiniai grupės nariai naudos Signal versiją, galinčią prisijungti prie naujųjų grupių, tuomet šį grupė bus atnaujinta.";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Kai visi dabartiniai grupės nariai naudos Grapherex versiją, galinčią prisijungti prie naujųjų grupių, tuomet šį grupė bus atnaujinta.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_2" = "Visa prieš naujinimą buvusi žinučių istorija ir medija bus išsaugota.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Ši grupė negali būti sukurta, nes 1 narys naudoja seną Signal versiją. Šiam žmogui atnaujinus Signal, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, pašalinkite šį žmogų.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Ši grupė negali būti sukurta, nes 1 narys naudoja seną Grapherex versiją. Šiam žmogui atnaujinus Grapherex, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, pašalinkite šį žmogų.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Ši grupė negali būti sukurta, nes %@ nariai(-ių) naudoja seną Signal versiją. Šiems žmonėms atnaujinus Signal, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, pašalinkite šiuos žmones.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Ši grupė negali būti sukurta, nes %@ nariai(-ių) naudoja seną Grapherex versiją. Šiems žmonėms atnaujinus Grapherex, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, pašalinkite šiuos žmones.";
 
 /* Indicates that a new group cannot be created because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Ši grupė negali būti sukurta, nes 1 narys naudoja seną Signal versiją. Šiam žmogui atnaujinus Signal, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, pašalinkite šį žmogų. %@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Ši grupė negali būti sukurta, nes 1 narys naudoja seną Grapherex versiją. Šiam žmogui atnaujinus Grapherex, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, pašalinkite šį žmogų. %@";
 
 /* Indicates that a new group cannot be created because multiple members do not support v2 groups. Embeds {{ %1$@ the number of members who do not support v2 groups, %2$@ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Ši grupė negali būti sukurta, nes %1$@ nariai(-ių) naudoja seną Signal versiją. Šiems žmonėms atnaujinus Signal, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, pašalinkite šiuos žmones. %2$@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Ši grupė negali būti sukurta, nes %1$@ nariai(-ių) naudoja seną Grapherex versiją. Šiems žmonėms atnaujinus Grapherex, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, pašalinkite šiuos žmones. %2$@";
 
 /* Title for alert that explains that a new group will be a legacy group because 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Kadangi 1 narys naudoja seną Signal versiją, tai bus sukurta pasenusi grupė. Šiam žmogui atnaujinus Signal, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, galite pašalinti šį žmogų.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Kadangi 1 narys naudoja seną Grapherex versiją, tai bus sukurta pasenusi grupė. Šiam žmogui atnaujinus Grapherex, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, galite pašalinti šį žmogų.";
 
 /* Title for alert that explains that a new group will be a legacy group because multiple members do not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Kadangi %@ nariai naudoja seną Signal versiją, tai bus sukurta pasenusi grupė. Šiems žmonėms atnaujinus Signal, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, galite pašalinti šiuos žmones.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Kadangi %@ nariai naudoja seną Grapherex versiją, tai bus sukurta pasenusi grupė. Šiems žmonėms atnaujinus Grapherex, galėsite sukurti naujojo stiliaus grupę arba, prieš sukurdami grupę, galite pašalinti šiuos žmones.";
 
 /* Indicates that a new group will be a legacy group because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
 "GROUPS_LEGACY_GROUP_CREATION_WARNING_FORMAT_1" = "1 narys nepalaiko naujųjų grupių, todėl tai bus pasenusi grupė. %@";
@@ -2363,7 +2363,7 @@
 "GROUPS_REPLACE_ADMIN_BUTTON" = "Pasirinkti naują administratorių";
 
 /* Format for the alert warning the user that they've reached the recommended limit on how many members can be in a group when creating a new group. Embeds {{ the maximum number of recommended members in a group }}. */
-"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Signal grupės geriausiai veikia, kai jose yra %@ ar mažiau narių. Pridėjus daugiau narių, žinučių išsiuntimas ir gavimas bus uždelsiamas.";
+"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Grapherex grupės geriausiai veikia, kai jose yra %@ ar mažiau narių. Pridėjus daugiau narių, žinučių išsiuntimas ir gavimas bus uždelsiamas.";
 
 /* Title for alert warning the user that they've reached the recommended limit on how many members can be in a group. */
 "GROUPS_TOO_MANY_MEMBERS_ALERT_TITLE" = "Pasiekta rekomenduojamo narių skaičiaus riba";
@@ -2380,7 +2380,7 @@
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "Susisiekti su mumis";
 
-/* Help item that takes the user to the Signal support website */
+/* Help item that takes the user to the Grapherex support website */
 "HELP_SUPPORT_CENTER" = "Palaikymo centras";
 
 /* Label for 'archived conversations' button. */
@@ -2395,16 +2395,16 @@
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "Juodraštis: ";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Signal contact.  Embeds {{The name of 1 of your Signal contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Kai kurie jūsų adresatai, įskaitant %@, jau yra Signal.";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Grapherex contact.  Embeds {{The name of 1 of your Grapherex contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Kai kurie jūsų adresatai, įskaitant %@, jau yra Grapherex.";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Signal contacts.  Embeds {{The names of 2 of your Signal contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Kai kurie jūsų adresatai, įskaitant %@ ir %@, jau yra Signal";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Grapherex contacts.  Embeds {{The names of 2 of your Grapherex contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Kai kurie jūsų adresatai, įskaitant %@ ir %@, jau yra Grapherex";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Signal contacts.  Embeds {{The names of 3 of your Signal contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Kai kurie jūsų adresatai, įskaitant %@, %@ ir %@, jau yra Signal";
+/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Grapherex contacts.  Embeds {{The names of 3 of your Grapherex contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Kai kurie jūsų adresatai, įskaitant %@, %@ ir %@, jau yra Grapherex";
 
-/* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
+/* A label offering to start a new conversation with your contacts, if you have no Grapherex contacts. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Čia pradėkite savo pirmąjį pokalbį.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
@@ -2420,7 +2420,7 @@
 "HOME_VIEW_TITLE_ARCHIVE" = "Archyvuoti";
 
 /* Title for the conversation list's default mode. */
-"HOME_VIEW_TITLE_INBOX" = "Signal";
+"HOME_VIEW_TITLE_INBOX" = "Grapherex";
 
 /* The image editor hint that you can draw blur */
 "IMAGE_EDITOR_BLUR_HINT" = "Pieškite ten, kur norite sulieti";
@@ -2434,11 +2434,11 @@
 /* Momentarily shown to the user when attempting to select more images than is allowed. Embeds {{max number of items}} that can be shared. */
 "IMAGE_PICKER_CAN_SELECT_NO_MORE_TOAST_FORMAT" = "Negalite dalintis daugiau nei %@ elementais.";
 
-/* Button that will present a view for the user to change the photos Signal has access to. */
+/* Button that will present a view for the user to change the photos Grapherex has access to. */
 "IMAGE_PICKER_CHANGE_PHOTOS" = "Keisti nuotraukas";
 
 /* Explanation showing that the user has granted limited access to their photos and can change that in the Settings app. */
-"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Suteikite Nustatymuose (angl. Settings) pilną prieigą arba pakeiskite tai, prie kurių nuotraukų Signal gali gauti prieigą.";
+"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Suteikite Nustatymuose (angl. Settings) pilną prieigą arba pakeiskite tai, prie kurių nuotraukų Grapherex gali gauti prieigą.";
 
 /* Title show that the user has granted limited access to their photos and can change that in the Settings app. */
 "IMAGE_PICKER_CHANGE_PHOTOS_TITLE" = "Nematote savo nuotraukų?";
@@ -2488,8 +2488,8 @@
 /* Shown in inbox and conversation after syncing as a placeholder indicating why your message history is missing. */
 "INFO_MESSAGE_SYNCED_THREAD" = "Galite siųsti ar gauti sinchronizuotas žinutes iš savo telefono ar iPad. ↵Jūsų saugumui, pokalbių istorija nėra perkeliama į naujai susietus įrenginius.";
 
-/* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
-"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ atėjo į Signal!";
+/* Shown in inbox and conversation when a user joins Grapherex, embeds the new user's {{contact name}} */
+"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ atėjo į Grapherex!";
 
 /* accessibility label for the button which shows the sticker picker */
 "INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL" = "Lipdukai";
@@ -2500,14 +2500,14 @@
 /* Message for the alert indicating that an audio file is invalid. */
 "INVALID_AUDIO_FILE_ALERT_ERROR_MESSAGE" = "Neteisingas garso failas.";
 
-/* Alert body when contacts disabled while trying to invite contacts to signal */
-"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Norėdami kviesti savo draugus prisijungti prie Signal, iOS nustatymų programėlėje galite įjungti prieigą prie adresatų.";
+/* Alert body when contacts disabled while trying to invite contacts to Grapherex */
+"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Norėdami kviesti savo draugus prisijungti prie Grapherex, iOS nustatymų programėlėje galite įjungti prieigą prie adresatų.";
 
-/* Alert title when contacts disabled while trying to invite contacts to signal */
+/* Alert title when contacts disabled while trying to invite contacts to Grapherex */
 "INVITE_FLOW_REQUIRES_CONTACT_ACCESS_TITLE" = "Leisti adresatų prieigą";
 
 /* Label for the cell that presents the 'invite contacts' workflow. */
-"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Pakviesti draugus į Signal";
+"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Pakviesti draugus į Grapherex";
 
 /* Search */
 "INVITE_FRIENDS_PICKER_SEARCHBAR_PLACEHOLDER" = "Ieškoti";
@@ -2624,7 +2624,7 @@
 "LINKPREVIEWS_MEGAPHONE_TITLE" = "Peržiūrėkite bet kurią nuorodą";
 
 /* Body for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Norėdami perkelti savo Signal paskyrą, turite abiejuose įrenginiuose įjungti prieigą prie vietinio tinklo.";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Norėdami perkelti savo Grapherex paskyrą, turite abiejuose įrenginiuose įjungti prieigą prie vietinio tinklo.";
 
 /* A button asking the user if they need further help getting their transfer working. */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_NEED_HELP" = "Reikia pagalbos?";
@@ -2636,7 +2636,7 @@
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_THREE" = "Įjunkite Vietinį tinklą (angl. Local Network)";
 
 /* Second step for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Pereikite į Signal";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Pereikite į Grapherex";
 
 /* Title for local network permission action sheet */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_TITLE" = "Įjunkite prieigą prie vietinio tinklo";
@@ -2699,7 +2699,7 @@
 "MESSAGE_ACTION_DELETE_FOR_EVERYONE" = "Ištrinti visiems";
 
 /* A one-time confirmation that you want to delete for everyone */
-"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Ši žinutė šiame pokalbyje bus ištrinta visiems žmonėms tuo atveju, jeigu jie naudoja paskiausią Signal versiją. Jie galės matyti, kad ištrynėte žinutę.";
+"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Ši žinutė šiame pokalbyje bus ištrinta visiems žmonėms tuo atveju, jeigu jie naudoja paskiausią Grapherex versiją. Jie galės matyti, kad ištrynėte žinutę.";
 
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "Kam norėtumėte ištrinti šią žinutę?";
@@ -2816,7 +2816,7 @@
 "MESSAGE_REQUEST_LEAVE_AND_DELETE_GROUP_TITLE" = "Ištrinti ir išeiti iš grupės?";
 
 /* Banner label notifying user that a new message is from a user with the same name as an existing contact */
-"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Atidžiai peržiūrėkite prašymus. Signal rado kitą adresatą tokiu pačiu vardu.";
+"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Atidžiai peržiūrėkite prašymus. Grapherex rado kitą adresatą tokiu pačiu vardu.";
 
 /* A header string above a known contact's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Jūsų adresatas";
@@ -2902,7 +2902,7 @@
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "Perskaitytos";
 
-/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Signal account. */
+/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Grapherex account. */
 "MESSAGE_STATUS_RECIPIENT_SKIPPED" = "Praleista";
 
 /* Label indicating that a message failed to send. */
@@ -2942,22 +2942,22 @@
 "MISSED_CALL" = "Praleistas skambutis";
 
 /* Alert body */
-"MISSING_CAMERA_PERMISSION_MESSAGE" = "Norėdami Signal atlikti vaizdo skambučius, iOS nustatymų programėlėje galite įjungti prieigą prie kameros.";
+"MISSING_CAMERA_PERMISSION_MESSAGE" = "Norėdami Grapherex atlikti vaizdo skambučius, iOS nustatymų programėlėje galite įjungti prieigą prie kameros.";
 
 /* Alert title */
-"MISSING_CAMERA_PERMISSION_TITLE" = "Signal reikalinga prieiga prie jūsų kameros.";
+"MISSING_CAMERA_PERMISSION_TITLE" = "Grapherex reikalinga prieiga prie jūsų kameros.";
 
 /* Alert body indicating the user has denied location permissios */
 "MISSING_LOCATION_PERMISSION_MESSAGE" = "Šį leidimą galite įjungti iOS nustatymų programėlėje.";
 
 /* Alert title indicating the user has denied location permissios */
-"MISSING_LOCATION_PERMISSION_TITLE" = "Norint naudoti šią ypatybę, Signal reikia prieigos prie jūsų buvimo vietos.";
+"MISSING_LOCATION_PERMISSION_TITLE" = "Norint naudoti šią ypatybę, Grapherex reikia prieigos prie jūsų buvimo vietos.";
 
 /* Alert body when user has previously denied media library access */
 "MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE" = "Šį leidimą galite įjungti iOS nustatymų programėlėje.";
 
 /* Alert title when user has previously denied media library access */
-"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Norint naudoti šią ypatybę, Signal reikia prieigos prie jūsų nuotraukų.";
+"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Norint naudoti šią ypatybę, Grapherex reikia prieigos prie jūsų nuotraukų.";
 
 /* alert title: cannot link - reached max linked devices */
 "MULTIDEVICE_PAIRING_MAX_DESC" = "Jūs nebegalite susieti daugiau įrenginių.";
@@ -3056,12 +3056,12 @@
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Pasirinkite adresatą ar grupę, kad pradėtumėte pokalbį.";
 
 /* Title welcoming to the app */
-"NO_SELECTED_CONVERSATION_TITLE" = "Sveiki atvykę į Signal";
+"NO_SELECTED_CONVERSATION_TITLE" = "Sveiki atvykę į Grapherex";
 
 /* A string prompting the user to send a new mesaage to a user */
 "NON_CONTACT_TABLE_CELL_NEW_MESSAGE" = "Nauja žinutė, skirta:";
 
-/* A string asking the user if they'd like to invite a number to signal via SMS. */
+/* A string asking the user if they'd like to invite a number to Grapherex via SMS. */
 "NON_CONTACT_TABLE_CELL_SEND_SMS" = "Nerasta jokio naudotojo. Pakviesti per SMS žinutę?";
 
 /* Label for 1:1 conversation with yourself. */
@@ -3103,7 +3103,7 @@
 /* No comment provided by engineer. */
 "NOTIFICATIONS_NONE" = "Jokio vardo ar turinio";
 
-/* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
+/* Table cell switch label. When disabled, Grapherex will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Groti, kol programėlė atverta";
 
 /* Label for settings UI that allows user to change the notification sound. */
@@ -3167,7 +3167,7 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "Susieti iPhone";
 
 /* explanation to the user they're switching from linking to registering flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Bakstelėjus „Registruoti iPad“ jums bus leista susikurti visiškai naują Signal paskyrą arba perkelti esamą paskyrą į šį iPad. Tai išjungs Signal bet kuriame kitame įrenginyje, kuris šiuo metu yra užregistruotas naudojant tą patį numerį.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Bakstelėjus „Registruoti iPad“ jums bus leista susikurti visiškai naują Grapherex paskyrą arba perkelti esamą paskyrą į šį iPad. Tai išjungs Grapherex bet kuriame kitame įrenginyje, kuris šiuo metu yra užregistruotas naudojant tą patį numerį.";
 
 /* explanation to the user they're switching from registering to linking flow */
 "ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Bakstelėjus „Susieti iPhone“ jums bus leista prijungti savo telefoną prie esamos paskyros. Paprastai, telefono susiejimas nerekomenduojamas ir ribos kai kurį funkcionalumą, tokį kaip skambučius.";
@@ -3179,7 +3179,7 @@
 "ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "Susieti šį iPhone";
 
 /* warning to the user that registering an ipad is not recommended */
-"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Šio iPad registravimas išjungs Signal bet kuriame kitame, šiuo metu su tuo pačiu numeriu susietame, įrenginyje.";
+"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Šio iPad registravimas išjungs Grapherex bet kuriame kitame, šiuo metu su tuo pačiu numeriu susietame, įrenginyje.";
 
 /* warning to the user that linking a phone is not recommended */
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "iPhone susiejimas nėra rekomenduojamas ir apribos pagrindinį funkcionalumą.";
@@ -3194,7 +3194,7 @@
 "ONBOARDING_PERMISSIONS_TITLE" = "Gaukite žinutę";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Pasirinkite kas, naudodamas jūsų telefono numerį %@, gali rasti jus Signal programėlėje.";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Pasirinkite kas, naudodamas jūsų telefono numerį %@, gali rasti jus Grapherex programėlėje.";
 
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Kas, naudodamas jūsų numerį, gali jus rasti?";
@@ -3206,7 +3206,7 @@
 "ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Neteisingas numeris";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Jums nebeliko PIN kodo spėjimų, bet vis dar galite gauti prieigą prie savo Signal paskyros, susikurdami naują PIN kodą. Siekiant apsaugoti jūsų privatumą, saugumo sumetimais jūsų paskyra bus atkurta be įrašytos profilio informacijos ir įrašytų nustatymų.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Jums nebeliko PIN kodo spėjimų, bet vis dar galite gauti prieigą prie savo Grapherex paskyros, susikurdami naują PIN kodą. Siekiant apsaugoti jūsų privatumą, saugumo sumetimais jūsų paskyra bus atkurta be įrašytos profilio informacijos ir įrašytų nustatymų.";
 
 /* Label for the 'learn more' link when reglock is disabled in the 'onboarding pin attempts exhausted' view. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_LEARN_MORE" = "Sužinokite daugiau apie PIN kodus";
@@ -3242,7 +3242,7 @@
 "ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Aš negavau kodo (prieinama po %@)";
 
 /* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Susisiekti su Signal palaikymu";
+"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Susisiekti su Grapherex palaikymu";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Šis kodas yra neteisingas";
@@ -3280,8 +3280,8 @@
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ nustatė išnykstančių žinučių laiką į %@.";
 
-/* Label warning the user that the Signal service may be down. */
-"OUTAGE_WARNING" = "Signal patiria techninius nesklandumus. Mes sunkiai dirbame, kad kaip įmanoma greičiau atkurtume paslaugą.";
+/* Label warning the user that the Grapherex service may be down. */
+"OUTAGE_WARNING" = "Grapherex patiria techninius nesklandumus. Mes sunkiai dirbame, kad kaip įmanoma greičiau atkurtume paslaugą.";
 
 /* info message text in conversation view. {embeds callee name} */
 "OUTGOING_CALL_FORMAT" = "Jūs skambinote naudotojui %@";
@@ -3389,13 +3389,13 @@
 "PHONE_NUMBER_DISCOVERABILITY_EVERYBODY" = "Visi";
 
 /* A user friendly description of the 'everybody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Bet kuris žmogus, turintis jūsų telefono numerį savo adresatuose, matys jus kaip Signal adresatą. Kiti žmonės galės rasti jus paieškoje.";
+"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Bet kuris žmogus, turintis jūsų telefono numerį savo adresatuose, matys jus kaip Grapherex adresatą. Kiti žmonės galės rasti jus paieškoje.";
 
 /* A user friendly name for the 'nobody' phone number discoverability mode. */
 "PHONE_NUMBER_DISCOVERABILITY_NOBODY" = "Niekas";
 
 /* A user friendly description of the 'nobody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Niekas Signal programėlėje negalės jūsų rasti naudodamas jūsų telefono numerį. Jūs nebūsite rodomi kaip adresatas tiems žmonėms, kurie turi jūsų telefono numerį savo adresatuose, be to, kiti žmonės negalės rasti jūsų telefono numerį paieškoje.";
+"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Niekas Grapherex programėlėje negalės jūsų rasti naudodamas jūsų telefono numerį. Jūs nebūsite rodomi kaip adresatas tiems žmonėms, kurie turi jūsų telefono numerį savo adresatuose, be to, kiti žmonės negalės rasti jūsų telefono numerį paieškoje.";
 
 /* A format for a label showing an example phone number. Embeds {{the example phone number}}. */
 "PHONE_NUMBER_EXAMPLE_FORMAT" = "Pavyzdys: %@";
@@ -3404,19 +3404,19 @@
 "PHONE_NUMBER_SHARING_CONTACTS_ONLY" = "Mano adresatai";
 
 /* A user friendly description of the 'contacts only' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Jūsų telefono numerį Signal programėlėje matys tik jūsų adresatai.";
+"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Jūsų telefono numerį Grapherex programėlėje matys tik jūsų adresatai.";
 
 /* A user friendly name for the 'everybody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_EVERYBODY" = "Visi";
 
 /* A user friendly description of the 'everybody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Jūsų telefono numeris bus matomas žmonėms, kuriems rašysite žinutes ir grupėms, kuriose rašysite žinutes. Žmonės, turintys jūsų numerį savo telefono adresatuose taip pat matys jį ir Signal programėlėje.";
+"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Jūsų telefono numeris bus matomas žmonėms, kuriems rašysite žinutes ir grupėms, kuriose rašysite žinutes. Žmonės, turintys jūsų numerį savo telefono adresatuose taip pat matys jį ir Grapherex programėlėje.";
 
 /* A user friendly name for the 'nobody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_NOBODY" = "Niekas";
 
 /* A user friendly description of the 'nobody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Niekas nematys jūsų telefono numerio Signal programėlėje.";
+"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Niekas nematys jūsų telefono numerio Grapherex programėlėje.";
 
 /* Format for phone number label with an index. Embeds {{Phone number label (e.g. 'home')}} and {{index, e.g. 2}}. */
 "PHONE_NUMBER_TYPE_AND_INDEX_NAME_FORMAT" = "%@ %@";
@@ -3491,7 +3491,7 @@
 "PIN_CREATION_DISABLE_CONFIRMATION_ACTION" = "Išjungti PIN kodą";
 
 /* Message of the 'pin disable' action sheet. */
-"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Jei išjungsite PIN kodą, tuomet registruodamiesi iš naujo Signal programėlėje, prarasite visus duomenis, nebent perkelsite juos iš kito iOS įrenginio. Tol, kol PIN kodas yra išjungtas, negalėsite įjungti Registracijos užrakto.";
+"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Jei išjungsite PIN kodą, tuomet registruodamiesi iš naujo Grapherex programėlėje, prarasite visus duomenis, nebent perkelsite juos iš kito iOS įrenginio. Tol, kol PIN kodas yra išjungtas, negalėsite įjungti Registracijos užrakto.";
 
 /* Title of the 'pin disable' action sheet. */
 "PIN_CREATION_DISABLE_CONFIRMATION_TITLE" = "Įspėjimas";
@@ -3503,7 +3503,7 @@
 "PIN_CREATION_ERROR_TITLE" = "PIN kodo sukūrimas nepavyko";
 
 /* The explanation in the 'pin creation' view. */
-"PIN_CREATION_EXPLANATION" = "PIN kodai šifruotu pavidalu saugo informaciją, kuri yra laikoma Signal programėlėje, taigi, tik jūs galite gauti prieigą prie jos. Jums įdiegus Signal iš naujo, jūsų profilis, nustatymai ir adresatai bus atkurti. Norint atverti programėlę jums nereikės įvesti PIN kodo.";
+"PIN_CREATION_EXPLANATION" = "PIN kodai šifruotu pavidalu saugo informaciją, kuri yra laikoma Grapherex programėlėje, taigi, tik jūs galite gauti prieigą prie jos. Jums įdiegus Grapherex iš naujo, jūsų profilis, nustatymai ir adresatai bus atkurti. Norint atverti programėlę jums nereikės įvesti PIN kodo.";
 
 /* Learn more action on the pin creation view */
 "PIN_CREATION_LEARN_MORE" = "Sužinokite daugiau apie PIN kodus";
@@ -3566,7 +3566,7 @@
 "PIN_REMINDER_MEGAPHONE_FEW_DAYS_TOAST" = "Po kelių dienų priminsime jums dar kartą.";
 
 /* Title for PIN reminder megaphone */
-"PIN_REMINDER_MEGAPHONE_TITLE" = "Patvirtinkite savo Signal PIN kodą";
+"PIN_REMINDER_MEGAPHONE_TITLE" = "Patvirtinkite savo Grapherex PIN kodą";
 
 /* Toast indicating that we'll ask you for your PIN again tomorrow. */
 "PIN_REMINDER_MEGAPHONE_TOMORROW_TOAST" = "Rytoj priminsime jums dar kartą.";
@@ -3581,7 +3581,7 @@
 "PIN_REMINDER_MISMATCH_ERROR" = "Neteisingas PIN, bandykite dar kartą.";
 
 /* The title for the 'pin reminder' dialog. */
-"PIN_REMINDER_TITLE" = "Įveskite savo Signal PIN";
+"PIN_REMINDER_TITLE" = "Įveskite savo Grapherex PIN";
 
 /* Label indicating that the attempted PIN is too short */
 "PIN_REMINDER_TOO_SHORT_ERROR" = "PIN kode privalo būti bent 4 skaitmenys.";
@@ -3596,7 +3596,7 @@
 "PINS_MEGAPHONE_ACTION" = "Susikurkite PIN kodą";
 
 /* Body for PIN megaphone when user doesn't have a PIN */
-"PINS_MEGAPHONE_BODY" = "PIN kodai šifruotu pavidalu saugo informaciją, kuri yra laikoma Signal";
+"PINS_MEGAPHONE_BODY" = "PIN kodai šifruotu pavidalu saugo informaciją, kuri yra laikoma Grapherex";
 
 /* Toast indication that the user will be reminded later to setup their PIN. Embeds {{time until mandatory}} */
 "PINS_MEGAPHONE_SNOOZE_TOAST_FORMAT" = "Priminsime jums vėliau. PIN kodo sukūrimas po %ld dienų taps privalomu.";
@@ -3635,19 +3635,19 @@
 "PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "Jūsų iškarpinėje esantis numeris nepanašus į teisingą šio pokalbio saugumo numerį.";
 
 /* Alert body for user error */
-"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Signal nepavyko jūsų iškarpinėje rasti jokio saugumo numerio. Ar jūs teisingai jį nukopijavote?";
+"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Grapherex nepavyko jūsų iškarpinėje rasti jokio saugumo numerio. Ar jūs teisingai jį nukopijavote?";
 
 /* Alert body when verifying with {{contact name}} */
-"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Kiekviena Signal naudotojų pora dalinasi individualiu saugumo numeriu. Pakartotinai patikrinkite ar %@ rodo *jūsų* individualų saugumo numerį.";
+"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Kiekviena Grapherex naudotojų pora dalinasi individualiu saugumo numeriu. Pakartotinai patikrinkite ar %@ rodo *jūsų* individualų saugumo numerį.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Jūs naudojate seną Signal versiją. Prieš galėdami patvirtinti, turite atnaujinti programėlę.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Jūs naudojate seną Grapherex versiją. Prieš galėdami patvirtinti, turite atnaujinti programėlę.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Jūsų bičiulis naudoja seną Signal versiją. Prieš jums galint patvirtinti, jis turi atnaujinti programėlę.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Jūsų bičiulis naudoja seną Grapherex versiją. Prieš jums galint patvirtinti, jis turi atnaujinti programėlę.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Nuskenuotas kodas nėra panašus į saugumo numerį. Ar judu naudojate naujausią Signal versiją?";
+"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Nuskenuotas kodas nėra panašus į saugumo numerį. Ar judu naudojate naujausią Grapherex versiją?";
 
 /* Paragraph(s) shown alongside the safety number when verifying privacy with {{contact name}} */
 "PRIVACY_VERIFICATION_INSTRUCTIONS" = "Jeigu norite patvirtinti savo ištisinio perdavimo šifravimo su %@ saugumą, tuomet palyginkite aukščiau esančius skaičius su jo/jos įrenginyje esančiais skaičiais.\n\nKitu atveju, galite nuskenuoti jo/jos telefone esantį kodą arba paprašyti, kad jis/ji nuskenuotų jūsų kodą.";
@@ -3950,25 +3950,25 @@
 "REREGISTER_FOR_PUSH" = "Iš naujo užsiregistruoti push pranešimams";
 
 /* Body for research megaphone */
-"RESEARCH_MEGAPHONE_BODY" = "Norėdami padaryti Signal geriausia susirašinėjimo programėle pasaulyje, norėtume išgirsti jūsų atsiliepimus.";
+"RESEARCH_MEGAPHONE_BODY" = "Norėdami padaryti Grapherex geriausia susirašinėjimo programėle pasaulyje, norėtume išgirsti jūsų atsiliepimus.";
 
 /* Title for research megaphone */
-"RESEARCH_MEGAPHONE_TITLE" = "Pasakykite Signal ką galvojate";
+"RESEARCH_MEGAPHONE_TITLE" = "Pasakykite Grapherex ką galvojate";
 
 /* Text for the research modal footer */
-"RESEARCH_MODAL_FOOTER" = "Apklausą talpina Surveygizmo, saugioje srityje surveys.signalusers.org";
+"RESEARCH_MODAL_FOOTER" = "Apklausą talpina Surveygizmo, saugioje srityje surveys.grapherexusers.com";
 
 /* Button text for declining the research modal */
 "RESEARCH_MODAL_NO_THANKS" = "Ne, ačiū";
 
 /* Text explaining why the user should take the survey */
-"RESEARCH_MODAL_PLEA" = "<bold>Mes tikime privatumu.</bold>\n\nSignal neseka jūsų ir nerenka jokių jūsų duomenų. Norėdami visiems patobulinti Signal, remiamės naudotojų atsiliepimais<bold>ir norėtume išgirsti jūsų atsiliepimą</bold>.\n\nMes vykdome apklausą, kad suprastume kaip naudojatės Signal. Apklausoje mes nerenkame jokių duomenų, galinčių jus identifikuoti. Jei pageidaujate pateikti papildomą atsiliepimą, turėsite galimybę pateikti kontaktinę informaciją.\n\nJei turite kelias minutes ir norėtumėte pateikti atsiliepimą, mes su malonumu jus išklausysime.";
+"RESEARCH_MODAL_PLEA" = "<bold>Mes tikime privatumu.</bold>\n\nGrapherex neseka jūsų ir nerenka jokių jūsų duomenų. Norėdami visiems patobulinti Grapherex, remiamės naudotojų atsiliepimais<bold>ir norėtume išgirsti jūsų atsiliepimą</bold>.\n\nMes vykdome apklausą, kad suprastume kaip naudojatės Grapherex. Apklausoje mes nerenkame jokių duomenų, galinčių jus identifikuoti. Jei pageidaujate pateikti papildomą atsiliepimą, turėsite galimybę pateikti kontaktinę informaciją.\n\nJei turite kelias minutes ir norėtumėte pateikti atsiliepimą, mes su malonumu jus išklausysime.";
 
 /* Button text for taking the research survey */
 "RESEARCH_MODAL_TAKE_SURVEY" = "Dalyvauti apklausoje";
 
 /* Title for the research megaphone modal */
-"RESEARCH_MODAL_TITLE" = "Signal tyrimas";
+"RESEARCH_MODAL_TITLE" = "Grapherex tyrimas";
 
 /* Generic text for button that retries whatever the last action was. */
 "RETRY_BUTTON_TEXT" = "Pakartoti";
@@ -3998,7 +3998,7 @@
 "SAFETY_NUMBER_CONFIRMATION_VIEW_ACTION" = "Rodyti";
 
 /* Snippet to share {{safety number}} with a friend. sent e.g. via SMS */
-"SAFETY_NUMBER_SHARE_FORMAT" = "Mūsų Signal saugumo numeris:\n%@";
+"SAFETY_NUMBER_SHARE_FORMAT" = "Mūsų Grapherex saugumo numeris:\n%@";
 
 /* Action sheet heading */
 "SAFETY_NUMBERS_ACTIONSHEET_TITLE" = "Jūsų saugumo numeris, skirtas adresatui %@ pasikeitė. Jūs, tikriausiai, norėtumėte jį patvirtinti.";
@@ -4030,14 +4030,14 @@
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Norėdami naudotis Ekrano užraktu, privalote iOS nustatymuose įjungti slaptą kodą.";
 
-/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
-"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Norėdami atverti Signal, patvirtinkite tapatybę.";
+/* Description of how and why Grapherex iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
+"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Norėdami atverti Grapherex, patvirtinkite tapatybę.";
 
 /* Title for alert indicating that screen lock could not be unlocked. */
 "SCREEN_LOCK_UNLOCK_FAILED" = "Tapatybės nustatymas nepavyko";
 
-/* Label for button on lock screen that lets users unlock Signal. */
-"SCREEN_LOCK_UNLOCK_SIGNAL" = "Atrakinti Signal";
+/* Label for button on lock screen that lets users unlock Grapherex. */
+"SCREEN_LOCK_UNLOCK_SIGNAL" = "Atrakinti Grapherex";
 
 /* This is a contact's name. Replace the name for a more common name in your locale if this sounds too foreign. This should be a unique non-public figure's name. This will have a female profile photo. */
 "SCREENSHOT_NAME_CONTACT_EIGHT" = "Eglė Patričiūtė";
@@ -4087,7 +4087,7 @@
 /* This is for a group chat for people who want weather updates. */
 "SCREENSHOT_NAME_GROUP_TWO" = "Orų prognozės";
 
-/* This appears in Signal > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
+/* This appears in Grapherex > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
 "SCREENSHOT_NAME_LOCAL_PROFILE" = "Pirmininkė Frėja";
 
 /* This is a message expressing support/happiness/awe/shock. */
@@ -4196,13 +4196,13 @@
 "SECONDARY_DEVICE_ERROR_FETCHING_LINKING_CODE" = "Nepavyko gauti susiejimo kodo";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Norėdami susieti Signal programėlę su savo telefonu, atnaujinkite ją šiame įrenginyje.";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Norėdami susieti Grapherex programėlę su savo telefonu, atnaujinkite ją šiame įrenginyje.";
 
 /* Title for error alert indicating that a linked device must be upgraded before it can be linked. */
 "SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Nepalaikoma versija";
 
 /* alert message for outdated linking device */
-"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Jūsų kitame įrenginyje yra naudojama pasenusi Signal versija, kuri nepalaiko iPad QR kodų skenavimo. Įsidiekite naujausią Signal laidą ir bandykite dar kartą.";
+"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Jūsų kitame įrenginyje yra naudojama pasenusi Grapherex versija, kuri nepalaiko iPad QR kodų skenavimo. Įsidiekite naujausią Grapherex laidą ir bandykite dar kartą.";
 
 /* alert title for outdated linking device */
 "SECONDARY_LINKING_ERROR_OLD_VERSION_TITLE" = "Atnaujinkite skenavimo įrenginį";
@@ -4223,19 +4223,19 @@
 "SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS" = "Užbaigti susiejimą";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Norėdami susieti šį iPad su savo paskyra, paleiskite Signal savo telefone";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Norėdami susieti šį iPad su savo paskyra, paleiskite Grapherex savo telefone";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
-"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Aš neturiu Signal programėlės savo telefone…";
+"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Aš neturiu Grapherex programėlės savo telefone…";
 
 /* alert body */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Pereikite savo telefone į programėlių parduotuvę (App Store), įsidiekite Signal, užbaikite registracijos procesą, o tuomet galite susieti savo iPad su ta pačia paskyra.";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Pereikite savo telefone į programėlių parduotuvę (App Store), įsidiekite Grapherex, užbaikite registracijos procesą, o tuomet galite susieti savo iPad su ta pačia paskyra.";
 
 /* alert title */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Įsidiekite Signal savo telefone";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Įsidiekite Grapherex savo telefone";
 
 /* body text while displaying a QR code which, when scanned, will link this device. */
-"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Bakstelėkite ant savo profilio paveikslo, kad atvertumėte Signal nustatymus savo telefone. Tuomet „Susieti įrenginiai“ ir tada „Susieti naują įrenginį“ norėdami savo telefonu nuskenuoti šį kodą:";
+"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Bakstelėkite ant savo profilio paveikslo, kad atvertumėte Grapherex nustatymus savo telefone. Tuomet „Susieti įrenginiai“ ir tada „Susieti naują įrenginį“ norėdami savo telefonu nuskenuoti šį kodą:";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
 "SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Čia gaukite pagalbos kaip susieti savo iPad";
@@ -4244,7 +4244,7 @@
 "SECONDARY_ONBOARDING_SCAN_CODE_TITLE" = "Nuskenuokite QR kodą savo telefonu";
 
 /* header text before the user can transfer to this device */
-"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Norėdami perkelti savo paskyrą, paleiskite Signal savo senajame iPad įrenginyje";
+"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Norėdami perkelti savo paskyrą, paleiskite Grapherex savo senajame iPad įrenginyje";
 
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "Saugusis seansas buvo atstatytas.";
@@ -4268,7 +4268,7 @@
 "SEND_INVITE_FAILURE" = "Pakvietimo išsiuntimas nepavyko, prašome vėliau bandyti dar kartą.";
 
 /* Alert body after invite succeeded */
-"SEND_INVITE_SUCCESS" = "Jūs pakvietėte savo draugą naudotis Signal!";
+"SEND_INVITE_SUCCESS" = "Jūs pakvietėte savo draugą naudotis Grapherex!";
 
 /* alert action, confirming the user wants to exit the media flow and abandon any photos they've taken */
 "SEND_MEDIA_CONFIRM_ABANDON_ALBUM" = "Atmesti mediją";
@@ -4283,10 +4283,10 @@
 "SEND_SMS_CONFIRM_TITLE" = "Pakviesti draugą, naudojant nesaugiąją SMS?";
 
 /* No comment provided by engineer. */
-"SEND_SMS_INVITE_TITLE" = "Ar norėtumėte pakviesti šį numerį į Signal: ";
+"SEND_SMS_INVITE_TITLE" = "Ar norėtumėte pakviesti šį numerį į Grapherex: ";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "Signal programėlė naudoja ištisinį šifravimą ir jai kartais gali tekti atnaujinti jūsų pokalbio seansą. Tai neįtakoja jūsų pokalbio saugumo, bet gali būti, kad praleidote ir negavote žinutės nuo šio adresato, todėl galite jo paprašyti, kad išsiųstų žinutę dar kartą.";
+"SESSION_REFRESH_ALERT_MESSAGE" = "Grapherex programėlė naudoja ištisinį šifravimą ir jai kartais gali tekti atnaujinti jūsų pokalbio seansą. Tai neįtakoja jūsų pokalbio saugumo, bet gali būti, kad praleidote ir negavote žinutės nuo šio adresato, todėl galite jo paprašyti, kad išsiųstų žinutę dar kartą.";
 
 /* Title for the session refresh alert */
 "SESSION_REFRESH_ALERT_TITLE" = "Pokalbio seansas atnaujintas";
@@ -4313,7 +4313,7 @@
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Vieta: %@";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Jei įjungta, Signal bandys apeiti cenzūravimą. Neįjunkite šios ypatybės, nebent esate vietoje, kurioje Signal yra cenzūruojama.";
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Jei įjungta, Grapherex bandys apeiti cenzūravimą. Neįjunkite šios ypatybės, nebent esate vietoje, kurioje Grapherex yra cenzūruojama.";
 
 /* Table footer for the 'censorship circumvention' section shown when censorship circumvention has been auto-enabled based on local phone number. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_AUTO_ENABLED" = "Cenzūravimo apėjimas buvo aktyvuotas pagal jūsų paskyros telefono numerį.";
@@ -4324,8 +4324,8 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "Cenzūravimo apėjimas gali būti aktyvuotas tik prisijungus prie interneto.";
 
-/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Cenzūravimo apėjimas nėra būtinas; jūs jau esate prisijungę prie Signal paslaugos.";
+/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Grapherex service. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Cenzūravimo apėjimas nėra būtinas; jūs jau esate prisijungę prie Grapherex paslaugos.";
 
 /* Table header for the 'censorship circumvention' section. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Cenzūravimo apėjimas";
@@ -4346,7 +4346,7 @@
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Įjungti PIN kodą";
 
 /* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "Signal PIN kodas";
+"SETTINGS_ADVANCED_PINS_HEADER" = "Grapherex PIN kodas";
 
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Pateikti derinimo žurnalą";
@@ -4426,8 +4426,8 @@
 /* An explanation of the 'blocked' setting */
 "SETTINGS_BLOCK_LIST_FOOTER" = "Jūsų užblokuotų adresatų ir grupių sąrašas.";
 
-/* A label that indicates the user has no Signal contacts. */
-"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Jūs neturite Signal adresatų.";
+/* A label that indicates the user has no Grapherex contacts. */
+"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Jūs neturite Grapherex adresatų.";
 
 /* A label that indicates the user's search has no matching results. */
 "SETTINGS_BLOCK_LIST_NO_SEARCH_RESULTS" = "Nėra paieškos rezultatų";
@@ -4439,13 +4439,13 @@
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE" = "Visada retransliuoti skambučius";
 
 /* User settings section footer, a detailed explanation */
-"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Retransliuoti visus skambučius per Signal serverį, kad išvengtumėte savo IP adreso atskleidimo savo adresatui. Įjungus, pablogės skambučio kokybė.";
+"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Retransliuoti visus skambučius per Grapherex serverį, kad išvengtumėte savo IP adreso atskleidimo savo adresatui. Įjungus, pablogės skambučio kokybė.";
 
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Išvalyti pokalbių istoriją";
 
 /* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Autorių teisės Signal pokalbių programėlė \n Licencijuota pagal GPLv3";
+"SETTINGS_COPYRIGHT" = "Autorių teisės Grapherex pokalbių programėlė \n Licencijuota pagal GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Duomenų naudojimas";
@@ -4483,8 +4483,8 @@
 /* Confirmation text for button which deletes all message, calling, attachments, etc. */
 "SETTINGS_DELETE_HISTORYLOG_CONFIRMATION_BUTTON" = "Ištrinti viską";
 
-/* Title for the 'donate to signal' link in settings. */
-"SETTINGS_DONATE" = "Paaukokite Signal programėlei";
+/* Title for the 'donate to Grapherex' link in settings. */
+"SETTINGS_DONATE" = "Paaukokite Grapherex programėlei";
 
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Pagalba";
@@ -4499,7 +4499,7 @@
 "SETTINGS_INVITE_TITLE" = "Pakvieskite savo draugus";
 
 /* content of tweet when inviting via twitter - please do not translate URL */
-"SETTINGS_INVITE_TWITTER_TEXT" = "Dabar galite su manimi susisiekti, naudojant @signalapp. Atsisiųskite dabar: https://signal.org/download/";
+"SETTINGS_INVITE_TWITTER_TEXT" = "Dabar galite su manimi susisiekti, naudojant @grapherexapp. Atsisiųskite dabar: https://grapherex.com";
 
 /* Label for settings view that allows user to change the notification sound. */
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "Žinutės garsas";
@@ -4543,7 +4543,7 @@
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Nustatymai";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Skaičiuoti pokalbius su išjungtais pranešimais";
 
 /* table section header */
@@ -4555,8 +4555,8 @@
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Pranešimų turinys";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Adresatas prisijungė prie Signal";
+/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Adresatas prisijungė prie Grapherex";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Įvykiai";
@@ -4580,19 +4580,19 @@
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_ACTION" = "Išjungti priminimus";
 
 /* The explanation for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Įsiminkite arba laikykite savo PIN kodą saugioje vietoje, nes jo neįmanoma atkurti. Jei užmiršite savo PIN kodą, galite prarasti duomenis, kai iš naujo registruosite savo Signal paskyrą.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Įsiminkite arba laikykite savo PIN kodą saugioje vietoje, nes jo neįmanoma atkurti. Jei užmiršite savo PIN kodą, galite prarasti duomenis, kai iš naujo registruosite savo Grapherex paskyrą.";
 
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Patvirtinkite savo Signal PIN kodą";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Patvirtinkite savo Grapherex PIN kodą";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
+/* Footer for the 'pin reminder' section of the privacy settings when Grapherex PINs are available. */
 "SETTINGS_PIN_REMINDER_FOOTER" = "Priminimai padeda jums įsiminti PIN kodą, nes jo neįmanoma atkurti. Bėgant laikui, jūsų bus klausiama vis rečiau.";
 
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN kodo priminimai";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PIN kodai šifruotu pavidalu saugo informaciją, kuri yra laikoma Signal, taigi, tik jūs galite gauti prieigą prie jos. Jums įdiegus Signal iš naujo, jūsų profilis, nustatymai ir adresatai bus atkurti.";
+"SETTINGS_PINS_FOOTER" = "PIN kodai šifruotu pavidalu saugo informaciją, kuri yra laikoma Grapherex, taigi, tik jūs galite gauti prieigą prie jos. Jums įdiegus Grapherex iš naujo, jūsų profilis, nustatymai ir adresatai bus atkurti.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Keisti PIN kodą";
@@ -4601,7 +4601,7 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Sukurti PIN kodą";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "SIGNAL PIN KODAS";
+"SETTINGS_PINS_TITLE" = "Grapherex PIN KODAS";
 
 /* Settings table section footer. */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Rodyti skambučius iOS telefono programėlės „Paskiausiųjų“ sąraše.";
@@ -4628,7 +4628,7 @@
 "SETTINGS_REGISTRATION_LOCK_TURN_ON" = "Įjungti";
 
 /* Body for the alert confirming that the user wants to turn on registration lock. */
-"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Jeigu registruodamiesi su Signal, vėl užmiršite savo Signal PIN kodą, tuomet 7 dienoms būsite užblokuoti nuo savo paskyros.";
+"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Jeigu registruodamiesi su Grapherex, vėl užmiršite savo Grapherex PIN kodą, tuomet 7 dienoms būsite užblokuoti nuo savo paskyros.";
 
 /* Title for the alert confirming that the user wants to turn on registration lock. */
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_TITLE" = "Įjungti registracijos užraktą?";
@@ -4643,7 +4643,7 @@
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Ekrano užrakto laiko limitas";
 
 /* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Atrakinkite Signal ekraną, naudodami Touch ID, Face ID ar savo iOS įrenginio slaptą kodą. Kol yra įjungtas Ekrano užraktas, vis dar galite atsiliepti į gaunamuosius skambučius ir gauti pranešimus apie skambučius bei žinutes. Signal programėlės pranešimų nustatymai leidžia jums tinkinti informaciją, kuri bus rodoma.";
+"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Atrakinkite Grapherex ekraną, naudodami Touch ID, Face ID ar savo iOS įrenginio slaptą kodą. Kol yra įjungtas Ekrano užraktas, vis dar galite atsiliepti į gaunamuosius skambučius ir gauti pranešimus apie skambučius bei žinutes. Grapherex programėlės pranešimų nustatymai leidžia jums tinkinti informaciją, kuri bus rodoma.";
 
 /* Title for the 'screen lock' section of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Ekrano užraktas";
@@ -4655,7 +4655,7 @@
 "SETTINGS_SCREEN_SECURITY" = "Įjungti ekrano saugumą";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Neleisti Signal peržiūroms atsirasti programėlių perjungiklyje.";
+"SETTINGS_SCREEN_SECURITY_DETAIL" = "Neleisti Grapherex peržiūroms atsirasti programėlių perjungiklyje.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Garsai";
@@ -4670,13 +4670,13 @@
 "SETTINGS_SHARING_SUGGESTIONS" = "Show in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal chats are displayed as suggestions when sharing from other apps.";
+"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Grapherex chats are displayed as suggestions when sharing from other apps.";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Registracijos užraktas";
 
-/* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Papildomam saugumui, įjunkite Registracijos užraktą, kuris, norint vėl registruoti šį telefono numerį su Signal, reikalaus Signal PIN kodo.";
+/* Footer for the 'two factor auth' section of the privacy settings when Grapherex PINs are available. */
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Papildomam saugumui, įjunkite Registracijos užraktą, kuris, norint vėl registruoti šį telefono numerį su Grapherex, reikalaus Grapherex PIN kodo.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Rašymo indikatoriai";
@@ -4721,13 +4721,13 @@
 "SHARE_EXTENSION_LOADING" = "Įkeliama…";
 
 /* Message indicating that the share extension cannot be used until the user has registered in the main app. */
-"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Norėdami registruoti, paleiskite Signal programėlę.";
+"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Norėdami registruoti, paleiskite Grapherex programėlę.";
 
 /* Title indicating that the share extension cannot be used until the user has registered in the main app. */
 "SHARE_EXTENSION_NOT_REGISTERED_TITLE" = "Neregistruota";
 
 /* Message indicating that the share extension cannot be used until the main app has been launched at least once. */
-"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Norėdami atnaujinti ar registruoti, paleiskite Signal programėlę.";
+"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Norėdami atnaujinti ar registruoti, paleiskite Grapherex programėlę.";
 
 /* Title indicating that the share extension cannot be used until the main app has been launched at least once. */
 "SHARE_EXTENSION_NOT_YET_MIGRATED_TITLE" = "Nepasiruošę";
@@ -4741,17 +4741,17 @@
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "Nusiunčiama…";
 
-/* Shown when trying to share content to a Signal user for the share extension. Followed by failure details. */
+/* Shown when trying to share content to a Grapherex user for the share extension. Followed by failure details. */
 "SHARE_EXTENSION_UNABLE_TO_BUILD_ATTACHMENT_ALERT_TITLE" = "Nepavyko paruošti priedo";
 
 /* Title for the 'share extension' view. */
-"SHARE_EXTENSION_VIEW_TITLE" = "Bendrinti į Signal";
+"SHARE_EXTENSION_VIEW_TITLE" = "Bendrinti į Grapherex";
 
 /* Title of alert indicating sharing suggestions failed to deactivate */
 "SHARING_SUGGESTIONS_DISABLE_ERROR" = "Failed to disable sharing suggestions.";
 
 /* Body for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Signal chats can now be displayed as suggestions when sharing from other apps.";
+"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Grapherex chats can now be displayed as suggestions when sharing from other apps.";
 
 /* Title for sharing suggestions megaphone */
 "SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Sharing Made Easier";
@@ -4768,8 +4768,8 @@
 /* notification action */
 "SHOW_THREAD_BUTTON_TITLE" = "Rodyti pokalbį";
 
-/* body sent to contacts when inviting to Install Signal */
-"SMS_INVITE_BODY" = "Siūlau tau įdiegti Signal! Štai čia yra nuoroda:";
+/* body sent to contacts when inviting to Install Grapherex */
+"SMS_INVITE_BODY" = "Siūlau tau įdiegti Grapherex! Štai čia yra nuoroda:";
 
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "Nėra";
@@ -4796,7 +4796,7 @@
 "STICKERS_INSTALL_BUTTON" = "Įdiegti";
 
 /* Title for the 'available built-in stickers' section of the 'manage stickers' view. */
-"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Signal menininkų serija";
+"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Grapherex menininkų serija";
 
 /* Title for the 'available known stickers' section of the 'manage stickers' view. */
 "STICKERS_MANAGE_VIEW_AVAILABLE_KNOWN_PACKS_SECTION_TITLE" = "Jūsų gauti lipdukai";
@@ -4847,7 +4847,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Papasakokite apie problemą:";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Išsiųskite savo palaikymo užklausą el. paštu, adresu support@signal.org";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Išsiųskite savo palaikymo užklausą el. paštu, adresu support@grapherex.com";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Filtras: %@";
@@ -4870,16 +4870,16 @@
 /* Localized label for support request email debug log URL. Embeds {{debug log url}}. */
 "SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "Žurnalo URL: %@";
 
-/* Localized label for support request email signal version string. Embeds {{signal version}}. */
-"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Signal versija: %@";
+/* Localized label for support request email Grapherex version string. Embeds {{Grapherex version}}. */
+"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Grapherex versija: %@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Signal iOS palaikymo užklausa (Support Request)";
+"SUPPORT_EMAIL_SUBJECT" = "Grapherex iOS palaikymo užklausa (Support Request)";
 
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "Kaip jaučiatės? (Nebūtina)";
 
-/* Label in support request informing user about Signal FAQ */
+/* Label in support request informing user about Grapherex FAQ */
 "SUPPORT_FAQ_PROMPT" = "Ar jau esate skaitę DUK?";
 
 /* Label describing support switch to attach debug logs */
@@ -4988,25 +4988,25 @@
 "UNKNOWN_COUNTRY_NAME" = "Nežinoma šalis";
 
 /* Info message recorded in conversation history when local user receives an unknown message from a linked device and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Vienas iš jūsų įrenginių išsiuntė žinutę, kuri negali būti apdorota ar parodyta čia, nes ji naudoja naująją Signal ypatybę.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Vienas iš jūsų įrenginių išsiuntė žinutę, kuri negali būti apdorota ar parodyta čia, nes ji naudoja naująją Grapherex ypatybę.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ išsiuntė jums žinutę, kurios nepavyksta apdoroti ar parodyti, nes žinutė naudoja naująją Signal ypatybę.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ išsiuntė jums žinutę, kurios nepavyksta apdoroti ar parodyti, nes žinutė naudoja naująją Grapherex ypatybę.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Jūs gavote žinutę, kurios nepavyksta apdoroti ar parodyti, nes žinutė naudoja naująją Signal ypatybę.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Jūs gavote žinutę, kurios nepavyksta apdoroti ar parodyti, nes žinutė naudoja naująją Grapherex ypatybę.";
 
 /* Label for button that lets users upgrade the app. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Atnaujinti Signal dabar";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Atnaujinti Grapherex dabar";
 
 /* Info message recorded in conversation history when local user has received an unknown unknown message from a linked device and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Atsinaujinote į naujausią Signal versiją. Dabar, savo įrenginyje galite gauti šio tipo žinutes.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Atsinaujinote į naujausią Grapherex versiją. Dabar, savo įrenginyje galite gauti šio tipo žinutes.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Dabar, kai naudojate atnaujintą Signal versiją, galite paprašyti, kad %@ jums iš naujo išsiųstų šią žinutę.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Dabar, kai naudojate atnaujintą Grapherex versiją, galite paprašyti, kad %@ jums iš naujo išsiųstų šią žinutę.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Dabar, kai naudojate atnaujintą Signal versiją, galite paprašyti, kad siuntėjas jums iš naujo išsiųstų šią žinutę.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Dabar, kai naudojate atnaujintą Grapherex versiją, galite paprašyti, kad siuntėjas jums iš naujo išsiųstų šią žinutę.";
 
 /* Label indicating an unknown user. */
 "UNKNOWN_USER" = "Nežinoma";
@@ -5030,10 +5030,10 @@
 "UNLINK_CONFIRMATION_ALERT_TITLE" = "Atsieti „%@“?";
 
 /* Label warning the user that they have been unlinked from their primary device. */
-"UNLINKED_WARNING" = "Jūsų įrenginys daugiau nebėra susietas. Norėdami tęsti susirašinėjimą, iš naujo susiekite Signal su savo telefonu.";
+"UNLINKED_WARNING" = "Jūsų įrenginys daugiau nebėra susietas. Norėdami tęsti susirašinėjimą, iš naujo susiekite Grapherex su savo telefonu.";
 
 /* Alert title when unlinking device fails */
-"UNLINKING_FAILED_ALERT_TITLE" = "Signal nepavyko atsieti jūsų įrenginio.";
+"UNLINKING_FAILED_ALERT_TITLE" = "Grapherex nepavyko atsieti jūsų įrenginio.";
 
 /* Label text in device manager for a device with no name */
 "UNNAMED_DEVICE" = "Įrenginys be pavadinimo";
@@ -5048,7 +5048,7 @@
 "UNREAD_ACTION" = "Neskaityta";
 
 /* No comment provided by engineer. */
-"UNREGISTER_SIGNAL_FAIL" = "Nepavyko išregistruoti iš Signal.";
+"UNREGISTER_SIGNAL_FAIL" = "Nepavyko išregistruoti iš Grapherex.";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Gautas nepalaikomas priedo tipas.";
@@ -5072,7 +5072,7 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_LEARN_MORE" = "Sužinokite daugiau apie PIN kodus";
 
 /* Body text for PINs splash screen */
-"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PIN kodai šifruotu pavidalu saugo informaciją, kuri yra laikoma Signal programėlėje, taigi, tik jūs galite gauti prieigą prie jos. Jums įdiegus Signal iš naujo, jūsų profilis, nustatymai ir adresatai bus atkurti. Norint atverti programėlę jums nereikės įvesti PIN kodo.";
+"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PIN kodai šifruotu pavidalu saugo informaciją, kuri yra laikoma Grapherex programėlėje, taigi, tik jūs galite gauti prieigą prie jos. Jums įdiegus Grapherex iš naujo, jūsų profilis, nustatymai ir adresatai bus atkurti. Norint atverti programėlę jums nereikės įvesti PIN kodo.";
 
 /* Header for PINs splash screen */
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_TITLE" = "Pristatome PIN kodus";
@@ -5081,13 +5081,13 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SKIP" = "Išjungti PIN kodą";
 
 /* Message for the alert indicating that user should upgrade iOS. */
-"UPGRADE_IOS_ALERT_MESSAGE" = "Greitu metu Signal reikalaus iOS 11 ar naujesnės versijos. Atsinaujinkite perėję į Nustatymų (angl. Settings) programėlę >> Bendra (angl. General) >> Programinės įrangos atnaujinimas (angl. Software Update).";
+"UPGRADE_IOS_ALERT_MESSAGE" = "Greitu metu Grapherex reikalaus iOS 11 ar naujesnės versijos. Atsinaujinkite perėję į Nustatymų (angl. Settings) programėlę >> Bendra (angl. General) >> Programinės įrangos atnaujinimas (angl. Software Update).";
 
 /* Title for the alert indicating that user should upgrade iOS. */
 "UPGRADE_IOS_ALERT_TITLE" = "Atnaujinkite iOS";
 
 /* An explanation of how usernames work on the username view. */
-"USERNAME_DESCRIPTION" = "Naudotojo vardai Signal programėlėje yra nebūtini. Jei pasirinksite susikurti naudotojo vardą, kiti Signal naudotojai galės jus rasti pagal tą naudotojo vardą ir su jumis susisiekti, nežinant jūsų telefono numerio.";
+"USERNAME_DESCRIPTION" = "Naudotojo vardai Grapherex programėlėje yra nebūtini. Jei pasirinksite susikurti naudotojo vardą, kiti Grapherex naudotojai galės jus rasti pagal tą naudotojo vardą ir su jumis susisiekti, nežinant jūsų telefono numerio.";
 
 /* Label for the username field in the username view. */
 "USERNAME_FIELD" = "Naudotojo vardas";
@@ -5098,10 +5098,10 @@
 /* A message indicating that username lookup failed. */
 "USERNAME_LOOKUP_ERROR" = "Ieškant naudotojo vardo, įvyko klaida. Vėliau bandykite dar kartą.";
 
-/* A message indicating that the given username is not a registered signal account. Embeds {{username}} */
-"USERNAME_NOT_FOUND_FORMAT" = "%@ nėra Signal naudotojas. Įsitikinkite, kad įvedėte pilną naudotojo vardą.";
+/* A message indicating that the given username is not a registered Grapherex account. Embeds {{username}} */
+"USERNAME_NOT_FOUND_FORMAT" = "%@ nėra Grapherex naudotojas. Įsitikinkite, kad įvedėte pilną naudotojo vardą.";
 
-/* A message indicating that the given username was not registered with signal. */
+/* A message indicating that the given username was not registered with Grapherex. */
 "USERNAME_NOT_FOUND_TITLE" = "Naudotojas nerastas";
 
 /* The placeholder for the username text entry in the username view. */
@@ -5177,7 +5177,7 @@
 "VOICE_MESSAGE_TOO_SHORT_ALERT_TITLE" = "Balso žinutė";
 
 /* Activity indicator title, shown upon returning to the device manager, until you complete the provisioning process on desktop */
-"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Užbaikite sąranką darbalaukiui skirtoje Signal programoje.";
+"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Užbaikite sąranką darbalaukiui skirtoje Grapherex programoje.";
 
 /* Placeholder text for header of the wallpaper mini preview */
 "WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Contact Name";

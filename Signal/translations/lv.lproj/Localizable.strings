@@ -29,7 +29,7 @@
 "ACTION_AUDIO_CALL" = "Zvana signāls";
 
 /* Label for 'invite' button in contact view. */
-"ACTION_INVITE" = "Uzaicināt uz Signal";
+"ACTION_INVITE" = "Uzaicināt uz Grapherex";
 
 /* Label for button that lets you send a message to a contact. */
 "ACTION_SEND_MESSAGE" = "Sūtīt ziņu";
@@ -119,7 +119,7 @@
 "APN_Message" = "Jauna ziņa!";
 
 /* Message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Signal nevar palaist. Nosūtiet atkļūdošanas žurnālfailu uz support@signal.org, lai mēs šo problēmu varētu novērst.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Grapherex nevar palaist. Nosūtiet atkļūdošanas žurnālfailu uz support@grapherex.com, lai mēs šo problēmu varētu novērst.";
 
 /* Title for the 'app launch failed' alert. */
 "APP_LAUNCH_FAILURE_ALERT_TITLE" = "Kļūda";
@@ -128,13 +128,13 @@
 "APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE" = "Nevarēja ielādēt datu bāzi";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
-"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Veiciet jaunināšanu uz jaunāko Signal versiju.";
+"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Veiciet jaunināšanu uz jaunāko Grapherex versiju.";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Nezināma datu bāzes versija.";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Nevarēja atjaunot datus no Jūsu vecās ierīces. Lūdzu, nosūtīt kļūdu žurnālu uz support@signal.org, lai mēs varētu novērst šo problēmu. Ja ielādēsiet Signal no jauna, Jūsu ziņojumu vēsture var tikt nozaudēta.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Nevarēja atjaunot datus no Jūsu vecās ierīces. Lūdzu, nosūtīt kļūdu žurnālu uz support@grapherex.com, lai mēs varētu novērst šo problēmu. Ja ielādēsiet Grapherex no jauna, Jūsu ziņojumu vēsture var tikt nozaudēta.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Nevarēja pabeigt pārsūtīšanu";
@@ -149,7 +149,7 @@
 "APP_UPDATE_NAG_ALERT_MESSAGE_FORMAT" = "Versija %@ tagad it pieejama App Store.";
 
 /* Title for the 'new app version available' alert. */
-"APP_UPDATE_NAG_ALERT_TITLE" = "Pieejama jauna Signal versija";
+"APP_UPDATE_NAG_ALERT_TITLE" = "Pieejama jauna Grapherex versija";
 
 /* Label for the 'update' button in the 'new app version available' alert. */
 "APP_UPDATE_NAG_ALERT_UPDATE_BUTTON" = "Atjaunināt";
@@ -164,7 +164,7 @@
 "APPEARANCE_SETTINGS_SYSTEM_THEME_NAME" = "Sistēma";
 
 /* Name of application */
-"APPLICATION_NAME" = "Signal";
+"APPLICATION_NAME" = "Grapherex";
 
 /* Label for the archive button for conversations list view */
 "ARCHIVE_ACTION" = "Arhivēt";
@@ -181,7 +181,7 @@
 /* Error that outgoing attachments could not be exported. */
 "ATTACHMENT_APPROVAL_FAILED_TO_EXPORT" = "Neizdevās eksportēt pielikumu.";
 
-/* alert text when Signal was unable to save a copy of the attachment to the system photo library */
+/* alert text when Grapherex was unable to save a copy of the attachment to the system photo library */
 "ATTACHMENT_APPROVAL_FAILED_TO_SAVE" = "Neizdevās saglabāt";
 
 /* Format string for file extension label in call interstitial view */
@@ -473,7 +473,7 @@
 "CALL_AUDIO_MISSED_NOTIFICATION_BODY" = "☎Neatbildēts audio zvans";
 
 /* Alert message when calling and permissions for microphone are missing */
-"CALL_AUDIO_PERMISSION_MESSAGE" = "Varat iespējot piekļuvi mikrofonam iOS iestatījumu lietotnē, lai veiktu zvanus un ierakstītu balss ziņas lietotnē Signal.";
+"CALL_AUDIO_PERMISSION_MESSAGE" = "Varat iespējot piekļuvi mikrofonam iOS iestatījumu lietotnē, lai veiktu zvanus un ierakstītu balss ziņas lietotnē Grapherex.";
 
 /* Alert title when calling and permissions for microphone are missing */
 "CALL_AUDIO_PERMISSION_TITLE" = "Nepieciešama piekļuve mikrofoniem";
@@ -488,7 +488,7 @@
 "CALL_SCREEN_STATUS_NO_ANSWER" = "Nav atbildes";
 
 /* embeds {{Call Status}} in call screen label. For ongoing calls, {{Call Status}} is a seconds timer like 01:23, otherwise {{Call Status}} is a short text like 'Ringing', 'Busy', or 'Failed Call' */
-"CALL_STATUS_FORMAT" = "Signal %@";
+"CALL_STATUS_FORMAT" = "Grapherex %@";
 
 /* Label for call button for alert offering to call a user. */
 "CALL_USER_ALERT_CALL_BUTTON" = "Zvanīt";
@@ -542,7 +542,7 @@
 "CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "Your camera is off";
 
 /* The generic name used for calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Signal lietotājs";
+"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Grapherex lietotājs";
 
 /* Accessibility hint describing what you can do with the camera button */
 "CAMERA_BUTTON_HINT" = "Uzņemt attēlu un pēc tam nosūtīt";
@@ -572,13 +572,13 @@
 "CHECK_FOR_BACKUP_RESTORE" = "Atjaunot";
 
 /* Error indicating that the app could not determine that user's iCloud account status */
-"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Lietotne Signal nevarēja noteikt iCloud konta statusu. Pierakstieties savā iCloud kontā iOS iestatījumu lietotnē, lai dublētu savus Signal datus.";
+"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Lietotne Grapherex nevarēja noteikt iCloud konta statusu. Pierakstieties savā iCloud kontā iOS iestatījumu lietotnē, lai dublētu savus Grapherex datus.";
 
 /* Error indicating that user does not have an iCloud account. */
-"CLOUDKIT_STATUS_NO_ACCOUNT" = "Nav iCloud konta. Pierakstieties savā iCloud kontā iOS iestatījumu lietotnē, lai dublētu savus Signal datus.";
+"CLOUDKIT_STATUS_NO_ACCOUNT" = "Nav iCloud konta. Pierakstieties savā iCloud kontā iOS iestatījumu lietotnē, lai dublētu savus Grapherex datus.";
 
 /* Error indicating that the app was prevented from accessing the user's iCloud account. */
-"CLOUDKIT_STATUS_RESTRICTED" = "Lietotnei Signal tika liegta piekļuve jūsu iCloud kontam dublēšanai. Piešķiriet lietotnei Signal piekļuvi savā iCloud kontā iOS iestatījumu lietotnē, lai dublētu savus Signal datus.";
+"CLOUDKIT_STATUS_RESTRICTED" = "Lietotnei Grapherex tika liegta piekļuve jūsu iCloud kontam dublēšanai. Piešķiriet lietotnei Grapherex piekļuvi savā iCloud kontā iOS iestatījumu lietotnē, lai dublētu savus Grapherex datus.";
 
 /* The first of two messages demonstrating the chosen conversation color, by rendering this message in an outgoing message bubble. */
 "COLOR_PICKER_DEMO_MESSAGE_1" = "Choose the color of outgoing messages in this chat.";
@@ -593,7 +593,7 @@
 "COMPARE_SAFETY_NUMBER_ACTION" = "Salīdzināt ar starpliktuvi";
 
 /* Accessibility hint describing what you can do with the compose button */
-"COMPOSE_BUTTON_HINT" = "Select or search for a Signal user to start a chat with.";
+"COMPOSE_BUTTON_HINT" = "Select or search for a Grapherex user to start a chat with.";
 
 /* Accessibility label from compose button. */
 "COMPOSE_BUTTON_LABEL" = "Rakstīt";
@@ -611,7 +611,7 @@
 "COMPOSE_MESSAGE_USERNAME_SEARCH_SECTION_TITLE" = "Lietotājvārda meklēšana";
 
 /* Multi-line label explaining why compose-screen contact picker is empty. */
-"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "iOS iestatījumu lietotnē varat iespējot piekļuvi kontaktpersonām, lai redzētu, kuras no jūsu kontaktpersonām ir Signal lietotāji.";
+"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "iOS iestatījumu lietotnē varat iespējot piekļuvi kontaktpersonām, lai redzētu, kuras no jūsu kontaktpersonām ir Grapherex lietotāji.";
 
 /* No comment provided by engineer. */
 "CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Veicot šo darbību, lietotne tiks atiestatīta, dzēšot jūsu ziņas un reģistrāciju no servera. Pēc šī procesa pabeigšanas lietotne tiks aizvērta.";
@@ -742,11 +742,11 @@
 /* Error indicating that at least one contact field must be selected before sharing a contact. */
 "CONTACT_SHARE_NO_FIELDS_SELECTED" = "Nav atlasīts kontaktpersonas lauks.";
 
-/* Button text to initiate an email to signal support staff */
+/* Button text to initiate an email to Grapherex support staff */
 "CONTACT_SUPPORT" = "Sazināties ar atbalstu";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Lietotne Signal nevarēja pabeigt jūsu atbalsta pieprasījumu.";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Lietotne Grapherex nevarēja pabeigt jūsu atbalsta pieprasījumu.";
 
 /* button text */
 "CONTACT_SUPPORT_PROMPT_ERROR_TRY_AGAIN" = "Mēģināt vēlreiz";
@@ -1079,9 +1079,9 @@
 "DEREGISTRATION_REREGISTER_WITH_SAME_PHONE_NUMBER" = "Reģistrēt šo tālruņa numuru atkārtoti";
 
 /* Label warning the user that they have been de-registered. */
-"DEREGISTRATION_WARNING" = "Ierīce vairs nav reģistrēta. Jūsu tālruņa numuru var reģistrēt lietotnē Signal citā ierīcē. Pieskarieties, lai reģistrētu atkārtoti.";
+"DEREGISTRATION_WARNING" = "Ierīce vairs nav reģistrēta. Jūsu tālruņa numuru var reģistrēt lietotnē Grapherex citā ierīcē. Pieskarieties, lai reģistrētu atkārtoti.";
 
-/* {{Short Date}} when device last communicated with Signal Server. */
+/* {{Short Date}} when device last communicated with Grapherex Server. */
 "DEVICE_LAST_ACTIVE_AT_LABEL" = "Pēdējā aktivitātes reize: %@";
 
 /* {{Short Date}} when device was linked. */
@@ -1103,7 +1103,7 @@
 "DEVICE_TRANSFER_CHOICE_EXPLANATION" = "Ja Jums ir pieejama vecā iOS ierīce, varat droši pārnest Jūsu kontu un saraksti uz šo ierīci. ";
 
 /* The explanation for the device transfer 'choice' view when linking a device */
-"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Ja pirms tam esat lietojis Signal sasaitē ar iPad, varat droši pārnest Jūsu kontu un saraksti uz šo ierīci.";
+"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Ja pirms tam esat lietojis Grapherex sasaitē ar iPad, varat droši pārnest Jūsu kontu un saraksti uz šo ierīci.";
 
 /* The body for the device transfer 'choice' view 'register' option */
 "DEVICE_TRANSFER_CHOICE_REGISTER_BODY" = "Turpināt nepārnesot Jūsu kontu un saraksti";
@@ -1133,7 +1133,7 @@
 "DEVICE_TRANSFER_CHOICE_TRANSFER_TITLE" = "Pārnest no iOS ierīces";
 
 /* A warning for the device transfer 'choice' view indicating you can only have one device registered with your number */
-"DEVICE_TRANSFER_CHOICE_WARNING" = "Ja turpināsiet, Signal tiks atspējots no citām aktīvām ierīcēm, ar kurām ir reģistrēts šis telefona numurs.";
+"DEVICE_TRANSFER_CHOICE_WARNING" = "Ja turpināsiet, Grapherex tiks atspējots no citām aktīvām ierīcēm, ar kurām ir reģistrēts šis telefona numurs.";
 
 /* An error indicating that we were unable to verify the indentity of the new device to complete the transfer */
 "DEVICE_TRANSFER_ERROR_CERTIFICATE_MISMATCH" = "Nevar verificēt Jūsu jauno ierīci. Lūdzu, mēģiniet atkārtoti";
@@ -1151,16 +1151,16 @@
 "DEVICE_TRANSFER_ERROR_NOT_ENOUGH_SPACE" = "Nepietiek brīvas vietas, lai pabeigtu pārnešanu";
 
 /* An error indicating the user must update their device before trying to transfer. */
-"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Atjaunojiet Signal līdz jaunākajai versijai un mēģiniet vēlreiz";
+"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Atjaunojiet Grapherex līdz jaunākajai versijai un mēģiniet vēlreiz";
 
 /* The explanation on the action sheet prompting the user if they want to transfer their device. */
-"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Pārnest Jūsu Signal kontu uz jaunu iOS ierīci. Pārliecinieties, ka Jūsu jaunā ierīce atrodas blakus un ir ieslēgta.";
+"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Pārnest Jūsu Grapherex kontu uz jaunu iOS ierīci. Pārliecinieties, ka Jūsu jaunā ierīce atrodas blakus un ir ieslēgta.";
 
 /* The title on the acttion sheet prompting the user if they want to transfer their device. */
 "DEVICE_TRANSFER_PROMPT_TITLE" = "Pārnest kontu";
 
 /* The explanation for the device transfer qr code view */
-"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Atvērt Signal uz Jūsu vecās ierīces, satuviniet iekārtas, un pārliecinieties, ka Wi-Fi un Bluetoot ir ieslēgti uz abām ierīcēm.";
+"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Atvērt Grapherex uz Jūsu vecās ierīces, satuviniet iekārtas, un pārliecinieties, ka Wi-Fi un Bluetoot ir ieslēgti uz abām ierīcēm.";
 
 /* The second explanation for the device transfer qr code view */
 "DEVICE_TRANSFER_QRCODE_EXPLANATION2" = "Pozicionējiet šo QR kodu Jūsu ierīces rāmjos.";
@@ -1172,7 +1172,7 @@
 "DEVICE_TRANSFER_QRCODE_TITLE" = "Gaida otru ierīci...";
 
 /* The explanation on the view that shows receiving progress */
-"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Turiet abas ierīces tuvu vienu otrai. Neslēdziet ārā nevienu no ierīcēm un turiet Signal atvērtu. Pārsūtīšana ir pilnībā šifrēta.";
+"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Turiet abas ierīces tuvu vienu otrai. Neslēdziet ārā nevienu no ierīcēm un turiet Grapherex atvērtu. Pārsūtīšana ir pilnībā šifrēta.";
 
 /* The title on the view that shows receiving progress */
 "DEVICE_TRANSFER_RECEIVING_TITLE" = "Notiek datu saņemšana";
@@ -1187,7 +1187,7 @@
 "DEVICE_TRANSFER_SCANNING_TITLE" = "Turiet Jūsu jauno ierīci pavērstu pret kameru";
 
 /* The explanation on the action sheet that shows transfer progress */
-"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Turiet abas ierīces tuvu vienu otrai. Neslēdz ārā ierīces un turiet Signal atvērtu.";
+"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Turiet abas ierīces tuvu vienu otrai. Neslēdz ārā ierīces un turiet Grapherex atvērtu.";
 
 /* The title on the action sheet that shows transfer progress */
 "DEVICE_TRANSFER_TRANSFERRING_TITLE" = "Notiek datu pārsūtīšana";
@@ -1213,11 +1213,11 @@
 /* Section title for the 'domain fronting country' view. */
 "DOMAIN_FRONTING_COUNTRY_VIEW_SECTION_HEADER" = "Cenzūras apiešanas atrašanās vieta";
 
-/* Alert body for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+/* Alert body for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_BODY" = "Piekļuvi var iespējot iOS iestatījumu lietotnē.";
 
-/* Alert title for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
-"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Lietotnei Signal nepieciešama piekļuve kontaktpersonai, lai rediģētu kontaktinformāciju";
+/* Alert title for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
+"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Lietotnei Grapherex nepieciešama piekļuve kontaktpersonai, lai rediģētu kontaktinformāciju";
 
 /* The 'clear avatar' button in the 'edit group' view. */
 "EDIT_GROUP_CLEAR_AVATAR" = "Noņemt attēlu";
@@ -1226,7 +1226,7 @@
 "EDIT_GROUP_DEFAULT_TITLE" = "Rediģēt grupu";
 
 /* Error message indicating the a user can't be added to a group. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Šo lietotāju nevar pievienot grupai, kamēr viņš nav veicis lietotnes Signal jaunināšanu.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Šo lietotāju nevar pievienot grupai, kamēr viņš nav veicis lietotnes Grapherex jaunināšanu.";
 
 /* Format for the 'group full' error alert when a user can't be added to a group because the group is full. Embeds {{ the maximum number of members in a group }}. */
 "EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "Maximum group size of %@ members reached.";
@@ -1249,14 +1249,14 @@
 /* Short name for edit menu item to copy contents of media message. */
 "EDIT_ITEM_COPY_ACTION" = "Kopēt";
 
-/* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
-"EMAIL_INVITE_BODY" = "Hey,\n\nLately I've been using Signal to keep the chats on my iPhone private. I'd like you to install it too, so we can be confident that only you and I can read our messages or hear our calls.\n\nSignal is available for iPhones and Android. Get it here: %@\n\nSignal works like your existing messaging app. We can send pictures and video, make calls, and start group chats. The best part is, no one else can see any of it, not even the people who make Signal!\n\nYou can read more about Open Whisper Systems, the people who make Signal, here: %@";
+/* body of email sent to contacts when inviting to install Grapherex. Embeds {{link to install Grapherex}} and {{link to the Grapherex home page}} */
+"EMAIL_INVITE_BODY" = "Hey,\n\nLately I've been using Grapherex to keep the chats on my iPhone private. I'd like you to install it too, so we can be confident that only you and I can read our messages or hear our calls.\n\nGrapherex is available for iPhones and Android. Get it here: %@\n\nGrapherex works like your existing messaging app. We can send pictures and video, make calls, and start group chats. The best part is, no one else can see any of it, not even the people who make Grapherex!\n\nYou can read more about Open Whisper Systems, the people who make Grapherex, here: %@";
 
-/* subject of email sent to contacts when inviting to install Signal */
-"EMAIL_INVITE_SUBJECT" = "Sāciet lietot Signal";
+/* subject of email sent to contacts when inviting to install Grapherex */
+"EMAIL_INVITE_SUBJECT" = "Sāciet lietot Grapherex";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Your device isn't configured to send email. To send a support request, set up email on your device or email support@signal.org";
+"EMAIL_SIGNAL_MESSAGE" = "Your device isn't configured to send email. To send a support request, set up email on your device or email support@grapherex.com";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "E-pasts nav pieejams";
@@ -1289,7 +1289,7 @@
 "EMOJI_CATEGORY_TRAVEL_NAME" = "Ceļojumi un Vietas";
 
 /* Full width label displayed when attempting to compose message */
-"EMPTY_CONTACTS_LABEL_LINE1" = "Signal nav nevienai no jūsu kontaktpersonām.";
+"EMPTY_CONTACTS_LABEL_LINE1" = "Grapherex nav nevienai no jūsu kontaktpersonām.";
 
 /* Full width label displayed when attempting to compose message */
 "EMPTY_CONTACTS_LABEL_LINE2" = "Kādēļ kādu neuzaicināt to lietot?";
@@ -1327,8 +1327,8 @@
 /* Error message indicating that message send failed due to block list */
 "ERROR_DESCRIPTION_MESSAGE_SEND_FAILED_DUE_TO_BLOCK_LIST" = "Neizdevās nosūtīt ziņu lietotājam, jo jūs viņu bloķējāt.";
 
-/* Generic error used whenever Signal can't contact the server */
-"ERROR_DESCRIPTION_NO_INTERNET" = "Lietotnei Signal neizdevās izveidot savienojumu ar internetu. Mēģiniet vēlreiz.";
+/* Generic error used whenever Grapherex can't contact the server */
+"ERROR_DESCRIPTION_NO_INTERNET" = "Lietotnei Grapherex neizdevās izveidot savienojumu ar internetu. Mēģiniet vēlreiz.";
 
 /* Error indicating that an outgoing message had no valid recipients. */
 "ERROR_DESCRIPTION_NO_VALID_RECIPIENTS" = "Ziņas nosūtīšana neizdevās, jo trūka derīgu adresātu.";
@@ -1343,7 +1343,7 @@
 "ERROR_DESCRIPTION_RESPONSE_FAILED" = "Nederīga atbilde no pakalpojuma.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Šī ierīce vairs nav reģistrēta ar jūsu tālruņa numuru. Instalējiet Signal vēlreiz.";
+"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Šī ierīce vairs nav reģistrēta ar jūsu tālruņa numuru. Instalējiet Grapherex vēlreiz.";
 
 /* Generic server error */
 "ERROR_DESCRIPTION_SERVER_FAILURE" = "Servera kļūda. Vēlāk mēģiniet vēlreiz.";
@@ -1352,13 +1352,13 @@
 "ERROR_DESCRIPTION_UNKNOWN_ERROR" = "Radās nezināma kļūda.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Kontaktpersona nav Signal lietotājs.";
+"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Kontaktpersona nav Grapherex lietotājs.";
 
 /* Error message indicating that attachment download(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_DOWNLOAD_FAILED" = "Neizdevās lejupielādēt pielikumu.";
 
 /* Error message when unable to receive an attachment because the sending client is too old. */
-"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Pielikuma kļūme: Pēc atjaunināšanas uz jaunāko Signal versiju lūdziet šai kontaktpersonai vēlreiz nosūtīt ziņu.";
+"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Pielikuma kļūme: Pēc atjaunināšanas uz jaunāko Grapherex versiju lūdziet šai kontaktpersonai vēlreiz nosūtīt ziņu.";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_DUPLICATE_MESSAGE" = "Saņemts ziņas dublikāts.";
@@ -1400,19 +1400,19 @@
 "ERROR_SENDING_DEREGISTERED" = "Jūsu ierīce vairs nav reģistrēta. Reģistrējieties vēlreiz, lai turpinātu sūtīt ziņas.";
 
 /* Error indicating a send failure due to an expired application. */
-"ERROR_SENDING_EXPIRED" = "Jūsu Signal versijai ir beidzies derīguma termiņš. Veiciet atjaunināšanu, lai turpinātu sūtīt ziņas.";
+"ERROR_SENDING_EXPIRED" = "Jūsu Grapherex versijai ir beidzies derīguma termiņš. Veiciet atjaunināšanu, lai turpinātu sūtīt ziņas.";
 
 /* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or signal id}}. */
 "ERROR_UNREGISTERED_USER_FORMAT" = "Nereģistrēts lietotājs: %@";
 
 /* Label notifying the user that the app has expired. */
-"EXPIRATION_ERROR" = "Your version of Signal has expired! Tap to update to the most recent version.";
+"EXPIRATION_ERROR" = "Your version of Grapherex has expired! Tap to update to the most recent version.";
 
 /* Label warning the user that the app will expire soon. */
-"EXPIRATION_WARNING_SOON" = "Jūsu Signal versijas derīgums beigsies pēc %d dienām. Pieskarieties, lai veiktu atjaunināšanu uz jaunāko versiju.";
+"EXPIRATION_WARNING_SOON" = "Jūsu Grapherex versijas derīgums beigsies pēc %d dienām. Pieskarieties, lai veiktu atjaunināšanu uz jaunāko versiju.";
 
 /* Label warning the user that the app will expire today. */
-"EXPIRATION_WARNING_TODAY" = "Jūsu Signal versijas derīgums beigsies šodien. Pieskarieties, lai veiktu atjaunināšanu uz jaunāko versiju.";
+"EXPIRATION_WARNING_TODAY" = "Jūsu Grapherex versijas derīgums beigsies šodien. Pieskarieties, lai veiktu atjaunināšanu uz jaunāko versiju.";
 
 /* action sheet header when re-sending message which failed because of too many attempts */
 "FAILED_SENDING_BECAUSE_RATE_LIMIT" = "Pārāk daudz kļūmju ar šo kontaktpersonu. Vēlāk mēģiniet vēlreiz.";
@@ -1487,7 +1487,7 @@
 "GO_TO_SETTINGS_BUTTON" = "Iet uz Iestatījumiem";
 
 /* Body message of notification shown during GRDB migration indicating that user may need to open app to view their content. */
-"GRDB_MIGRATION_NOTIFICATION_BODY" = "Šajā Signal versijā ir iekļauti datu bāzes darbības optimizācijas un veiktspējas uzlabojumi. Lai pabeigtu šo procesu, jums būs jāatver lietotne.";
+"GRDB_MIGRATION_NOTIFICATION_BODY" = "Šajā Grapherex versijā ir iekļauti datu bāzes darbības optimizācijas un veiktspējas uzlabojumi. Lai pabeigtu šo procesu, jums būs jāatver lietotne.";
 
 /* Title of notification shown during GRDB migration indicating that user may need to open app to view their content. */
 "GRDB_MIGRATION_NOTIFICATION_TITLE" = "Uzlabo datu bāzi";
@@ -1802,7 +1802,7 @@
 "GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Invalid Link";
 
 /* Error message indicating that the local user does not support groups v2. */
-"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Update Signal on this device to join this group.";
+"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Update Grapherex on this device to join this group.";
 
 /* Explanation of the 'approve new group members' switch. */
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Require an admin to approve new members joining via the group link.";
@@ -1867,8 +1867,8 @@
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "QR Code";
 
-/* Label for the 'share group link via Signal' button in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Share via Signal";
+/* Label for the 'share group link via Grapherex' button in the 'group link' view. */
+"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Share via Grapherex";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Anyone with this link can join the group, or send a request to join. Share it with people you trust.";
@@ -2201,13 +2201,13 @@
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_1_TITLE" = "Kas ir mantotās grupas?";
 
 /* Body text for the second section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Legacy Groups can't yet be upgraded to New Groups, but you can create a New Group with the same members if they're on the latest version of Signal.\n\nSignal will offer a way to upgrade Legacy Groups in the future.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Legacy Groups can't yet be upgraded to New Groups, but you can create a New Group with the same members if they're on the latest version of Grapherex.\n\nGrapherex will offer a way to upgrade Legacy Groups in the future.";
 
 /* Title for the second section of the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_2_TITLE" = "Can I upgrade a Legacy Group?";
 
 /* Body text for the third section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "To create a New Group, all members should update to the latest version of Signal.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "To create a New Group, all members should update to the latest version of Grapherex.";
 
 /* Title for the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Mantoto grupu salīdzinājums ar jaunajām";
@@ -2222,28 +2222,28 @@
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TOO_MANY_MEMBERS_FORMAT" = "This group can’t be upgraded to a New Group because it has too many members. The maximum group size that can be upgraded is %@.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "When all current group members are using a version of Signal capable of joining a New Group, this group will be upgraded.";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "When all current group members are using a version of Grapherex capable of joining a New Group, this group will be upgraded.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_2" = "All message history and media will be kept from before the upgrade.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "This group cannot be created because 1 member is using an old version of Signal. You can create a New Style Group with them after they update Signal, or remove them before creating the group.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "This group cannot be created because 1 member is using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "This group cannot be created because %@ members are using an old version of Signal. You can create a New Style Group with them after they update Signal, or remove them before creating the group.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "This group cannot be created because %@ members are using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group.";
 
 /* Indicates that a new group cannot be created because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "This group cannot be created because 1 member is using an old version of Signal. You can create a New Style Group with them after they update Signal, or remove them before creating the group. %@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "This group cannot be created because 1 member is using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group. %@";
 
 /* Indicates that a new group cannot be created because multiple members do not support v2 groups. Embeds {{ %1$@ the number of members who do not support v2 groups, %2$@ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "This group cannot be created because %1$@ members are using an old version of Signal. You can create a New Style Group with them after they update Signal, or remove them before creating the group. %2$@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "This group cannot be created because %1$@ members are using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group. %2$@";
 
 /* Title for alert that explains that a new group will be a legacy group because 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "A Legacy Group will be created because 1 member is using an old version of Signal. You can create a New Style Group with them after they update Signal, or remove them before creating the group.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "A Legacy Group will be created because 1 member is using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group.";
 
 /* Title for alert that explains that a new group will be a legacy group because multiple members do not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "A Legacy Group will be created because %@ members are using an old version of Signal. You can create a New Style Group with them after they update Signal, or remove them before creating the group.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "A Legacy Group will be created because %@ members are using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group.";
 
 /* Indicates that a new group will be a legacy group because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
 "GROUPS_LEGACY_GROUP_CREATION_WARNING_FORMAT_1" = "1 member does not support New Groups, so this will be a Legacy Group. %@";
@@ -2363,7 +2363,7 @@
 "GROUPS_REPLACE_ADMIN_BUTTON" = "Izvēlēties jaunu administratoru";
 
 /* Format for the alert warning the user that they've reached the recommended limit on how many members can be in a group when creating a new group. Embeds {{ the maximum number of recommended members in a group }}. */
-"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Signal groups perform best with %@ members or less. Adding more members will cause delays sending and receiving messages.";
+"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Grapherex groups perform best with %@ members or less. Adding more members will cause delays sending and receiving messages.";
 
 /* Title for alert warning the user that they've reached the recommended limit on how many members can be in a group. */
 "GROUPS_TOO_MANY_MEMBERS_ALERT_TITLE" = "Recommended member limit reached";
@@ -2380,7 +2380,7 @@
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "Sazināties ar mums";
 
-/* Help item that takes the user to the Signal support website */
+/* Help item that takes the user to the Grapherex support website */
 "HELP_SUPPORT_CENTER" = "Atbalsta centrs";
 
 /* Label for 'archived conversations' button. */
@@ -2395,16 +2395,16 @@
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "Melnraksts: ";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Signal contact.  Embeds {{The name of 1 of your Signal contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Dažas no jūsu kontaktpersonām jau lieto Signal, tostarp %@.";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Grapherex contact.  Embeds {{The name of 1 of your Grapherex contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Dažas no jūsu kontaktpersonām jau lieto Grapherex, tostarp %@.";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Signal contacts.  Embeds {{The names of 2 of your Signal contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Dažas no jūsu kontaktpersonām jau lieto Signal, tostarp %@ un %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Grapherex contacts.  Embeds {{The names of 2 of your Grapherex contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Dažas no jūsu kontaktpersonām jau lieto Grapherex, tostarp %@ un %@";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Signal contacts.  Embeds {{The names of 3 of your Signal contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Dažas no jūsu kontaktpersonām jau lieto Signal, tostarp %@, %@ un %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Grapherex contacts.  Embeds {{The names of 3 of your Grapherex contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Dažas no jūsu kontaktpersonām jau lieto Grapherex, tostarp %@, %@ un %@";
 
-/* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
+/* A label offering to start a new conversation with your contacts, if you have no Grapherex contacts. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Start your first chat here.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
@@ -2420,7 +2420,7 @@
 "HOME_VIEW_TITLE_ARCHIVE" = "Arhīvs";
 
 /* Title for the conversation list's default mode. */
-"HOME_VIEW_TITLE_INBOX" = "Signal";
+"HOME_VIEW_TITLE_INBOX" = "Grapherex";
 
 /* The image editor hint that you can draw blur */
 "IMAGE_EDITOR_BLUR_HINT" = "Velciet, lai aizkrāsotu";
@@ -2434,11 +2434,11 @@
 /* Momentarily shown to the user when attempting to select more images than is allowed. Embeds {{max number of items}} that can be shared. */
 "IMAGE_PICKER_CAN_SELECT_NO_MORE_TOAST_FORMAT" = "Nav iespējams kopīgot vairāk nekā %@ attēlu.";
 
-/* Button that will present a view for the user to change the photos Signal has access to. */
+/* Button that will present a view for the user to change the photos Grapherex has access to. */
 "IMAGE_PICKER_CHANGE_PHOTOS" = "Change Photos";
 
 /* Explanation showing that the user has granted limited access to their photos and can change that in the Settings app. */
-"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Grant full access in Settings or change which photos Signal can access.";
+"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Grant full access in Settings or change which photos Grapherex can access.";
 
 /* Title show that the user has granted limited access to their photos and can change that in the Settings app. */
 "IMAGE_PICKER_CHANGE_PHOTOS_TITLE" = "Not seeing your photos?";
@@ -2488,8 +2488,8 @@
 /* Shown in inbox and conversation after syncing as a placeholder indicating why your message history is missing. */
 "INFO_MESSAGE_SYNCED_THREAD" = "You can send or receive synchronized messages from your phone or iPad.  For your security, chat history isn't transferred to new linked devices.";
 
-/* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
-"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ lieto Signal!";
+/* Shown in inbox and conversation when a user joins Grapherex, embeds the new user's {{contact name}} */
+"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ lieto Grapherex!";
 
 /* accessibility label for the button which shows the sticker picker */
 "INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL" = "Uzlīmes";
@@ -2500,14 +2500,14 @@
 /* Message for the alert indicating that an audio file is invalid. */
 "INVALID_AUDIO_FILE_ALERT_ERROR_MESSAGE" = "Nederīgs audio fails.";
 
-/* Alert body when contacts disabled while trying to invite contacts to signal */
-"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "iOS iestatījumu lietotnē varat iespējot piekļuvi kontaktpersonām, lai aicinātu draugus sākt lietot Signal.";
+/* Alert body when contacts disabled while trying to invite contacts to Grapherex */
+"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "iOS iestatījumu lietotnē varat iespējot piekļuvi kontaktpersonām, lai aicinātu draugus sākt lietot Grapherex.";
 
-/* Alert title when contacts disabled while trying to invite contacts to signal */
+/* Alert title when contacts disabled while trying to invite contacts to Grapherex */
 "INVITE_FLOW_REQUIRES_CONTACT_ACCESS_TITLE" = "Atļaut piekļuvi kontaktpersonām";
 
 /* Label for the cell that presents the 'invite contacts' workflow. */
-"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Aicināt draugus lietotnē Signal";
+"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Aicināt draugus lietotnē Grapherex";
 
 /* Search */
 "INVITE_FRIENDS_PICKER_SEARCHBAR_PLACEHOLDER" = "Meklēt";
@@ -2624,7 +2624,7 @@
 "LINKPREVIEWS_MEGAPHONE_TITLE" = "Preview Any Link";
 
 /* Body for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "In order to transfer your Signal account, you need to enable local network access on both devices.";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "In order to transfer your Grapherex account, you need to enable local network access on both devices.";
 
 /* A button asking the user if they need further help getting their transfer working. */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_NEED_HELP" = "Vai vajadzīga palīdzība?";
@@ -2636,7 +2636,7 @@
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_THREE" = "Turn on “Local Network”";
 
 /* Second step for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Navigate to Signal";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Navigate to Grapherex";
 
 /* Title for local network permission action sheet */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_TITLE" = "Turn on Local Network Access";
@@ -2699,7 +2699,7 @@
 "MESSAGE_ACTION_DELETE_FOR_EVERYONE" = "Dzēst visiem";
 
 /* A one-time confirmation that you want to delete for everyone */
-"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "This message will be deleted for everyone in the chat if they’re on a recent version of Signal. They will be able to see that you deleted a message.";
+"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "This message will be deleted for everyone in the chat if they’re on a recent version of Grapherex. They will be able to see that you deleted a message.";
 
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "Kuram šo ziņu dzēst?\n ";
@@ -2816,7 +2816,7 @@
 "MESSAGE_REQUEST_LEAVE_AND_DELETE_GROUP_TITLE" = "Vai dzēst un izstāties no grupas?";
 
 /* Banner label notifying user that a new message is from a user with the same name as an existing contact */
-"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Review requests carefully. Signal found another contact with the same name.";
+"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Review requests carefully. Grapherex found another contact with the same name.";
 
 /* A header string above a known contact's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Your contact";
@@ -2902,7 +2902,7 @@
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "Lasīta";
 
-/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Signal account. */
+/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Grapherex account. */
 "MESSAGE_STATUS_RECIPIENT_SKIPPED" = "Izlaista";
 
 /* Label indicating that a message failed to send. */
@@ -2942,22 +2942,22 @@
 "MISSED_CALL" = "Neatbildēts zvans";
 
 /* Alert body */
-"MISSING_CAMERA_PERMISSION_MESSAGE" = "Varat iespējot piekļuvi kamerai iOS iestatījumu lietotnē, lai lietotnē Signal veiktu video zvanus.";
+"MISSING_CAMERA_PERMISSION_MESSAGE" = "Varat iespējot piekļuvi kamerai iOS iestatījumu lietotnē, lai lietotnē Grapherex veiktu video zvanus.";
 
 /* Alert title */
-"MISSING_CAMERA_PERMISSION_TITLE" = "Signal nepieciešama piekļuve jūsu kamerai.";
+"MISSING_CAMERA_PERMISSION_TITLE" = "Grapherex nepieciešama piekļuve jūsu kamerai.";
 
 /* Alert body indicating the user has denied location permissios */
 "MISSING_LOCATION_PERMISSION_MESSAGE" = "Piekļuves atļauju var piešķirt iOS iestatījumu lietotnē.";
 
 /* Alert title indicating the user has denied location permissios */
-"MISSING_LOCATION_PERMISSION_TITLE" = "Lai izmantotu šo funkciju, lietotnei Signal nepieciešama piekļuve jūsu atrašanās vietas informācijai.";
+"MISSING_LOCATION_PERMISSION_TITLE" = "Lai izmantotu šo funkciju, lietotnei Grapherex nepieciešama piekļuve jūsu atrašanās vietas informācijai.";
 
 /* Alert body when user has previously denied media library access */
 "MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE" = "Piekļuves atļauju var piešķirt iOS iestatījumu lietotnē.";
 
 /* Alert title when user has previously denied media library access */
-"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Lai izmantotu šo funkciju, lietotnei Signal nepieciešama piekļuve jūsu fotoattēliem.";
+"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Lai izmantotu šo funkciju, lietotnei Grapherex nepieciešama piekļuve jūsu fotoattēliem.";
 
 /* alert title: cannot link - reached max linked devices */
 "MULTIDEVICE_PAIRING_MAX_DESC" = "Vairs nevar piesaistīt citas ierīces.";
@@ -3056,12 +3056,12 @@
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Izvēlieties kontaktpersonu vai grupu, lai sāktu tērzēšanu.";
 
 /* Title welcoming to the app */
-"NO_SELECTED_CONVERSATION_TITLE" = "Sveiki lietotnē Signal";
+"NO_SELECTED_CONVERSATION_TITLE" = "Sveiki lietotnē Grapherex";
 
 /* A string prompting the user to send a new mesaage to a user */
 "NON_CONTACT_TABLE_CELL_NEW_MESSAGE" = "Jauna ziņa:";
 
-/* A string asking the user if they'd like to invite a number to signal via SMS. */
+/* A string asking the user if they'd like to invite a number to Grapherex via SMS. */
 "NON_CONTACT_TABLE_CELL_SEND_SMS" = "Lietotājs nav atrasts. Vai uzaicināt, nosūtot īsziņu?";
 
 /* Label for 1:1 conversation with yourself. */
@@ -3103,7 +3103,7 @@
 /* No comment provided by engineer. */
 "NOTIFICATIONS_NONE" = "Nav vārda vai satura";
 
-/* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
+/* Table cell switch label. When disabled, Grapherex will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Atskaņot, kad lietotne ir atvērta";
 
 /* Label for settings UI that allows user to change the notification sound. */
@@ -3167,7 +3167,7 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "Piesaistīt iPhone";
 
 /* explanation to the user they're switching from linking to registering flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Pieskaroties “Reģistrēt iPad”, varēsiet izveidot pavisam jaunu Signal kontu vai pastāvošu kontu pārvietot uz šo iPad ierīci. Lietotne Signal tiks atspējota visās ierīcēs, kuras pašlaik reģistrētas ar to pašu tālruņa numuru.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Pieskaroties “Reģistrēt iPad”, varēsiet izveidot pavisam jaunu Grapherex kontu vai pastāvošu kontu pārvietot uz šo iPad ierīci. Lietotne Grapherex tiks atspējota visās ierīcēs, kuras pašlaik reģistrētas ar to pašu tālruņa numuru.";
 
 /* explanation to the user they're switching from registering to linking flow */
 "ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Pieskaroties pie “Piesaistīt iPhone”, tālruni var savienot ar pastāvošu kontu. Tālruņa piesaistīšana parasti nav ieteicama, un tā ierobežos dažas funkcijas, piemēram, zvanīšanu.";
@@ -3179,7 +3179,7 @@
 "ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "Piesaistīt šo iPhone";
 
 /* warning to the user that registering an ipad is not recommended */
-"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Reģistrējot šo iPad ierīci, lietotne Signal tiks atspējota visās ierīcēs, kuras pašlaik reģistrētas ar to pašu tālruņa numuru.";
+"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Reģistrējot šo iPad ierīci, lietotne Grapherex tiks atspējota visās ierīcēs, kuras pašlaik reģistrētas ar to pašu tālruņa numuru.";
 
 /* warning to the user that linking a phone is not recommended */
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "iPhone piesaistīšana nav ieteicama, un tā ierobežos galvenās funkcijas.";
@@ -3194,7 +3194,7 @@
 "ONBOARDING_PERMISSIONS_TITLE" = "Saņemt ziņu";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Choose who can find you on Signal with your phone number %@";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Choose who can find you on Grapherex with your phone number %@";
 
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Who can find you with your number?";
@@ -3206,7 +3206,7 @@
 "ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Nepareizs numurs";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Jums vairs nav neviena PIN minēšanas mēģinājuma, taču joprojām varat piekļūt savam Signal kontam, izveidojot jaunu PIN. Jūsu privātumam un drošībai jūsu konts tiks atjaunots bez saglabātas profila informācijas un iestatījumiem.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Jums vairs nav neviena PIN minēšanas mēģinājuma, taču joprojām varat piekļūt savam Grapherex kontam, izveidojot jaunu PIN. Jūsu privātumam un drošībai jūsu konts tiks atjaunots bez saglabātas profila informācijas un iestatījumiem.";
 
 /* Label for the 'learn more' link when reglock is disabled in the 'onboarding pin attempts exhausted' view. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_LEARN_MORE" = "Uzzināt vairāk par PIN kodiem";
@@ -3242,7 +3242,7 @@
 "ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Es nesaņēmu kodu (pieejams pēc %@)";
 
 /* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Sazināties ar Signal atbalstu";
+"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Sazināties ar Grapherex atbalstu";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Šis kods nav pareizs";
@@ -3280,8 +3280,8 @@
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ iestatīja ziņas dzēšanas intervālu uz %@.";
 
-/* Label warning the user that the Signal service may be down. */
-"OUTAGE_WARNING" = "Signal ir tehniskas grūtības. Mēs darām visu, lai iespējami drīz atjaunotu pakalpojuma darbību.";
+/* Label warning the user that the Grapherex service may be down. */
+"OUTAGE_WARNING" = "Grapherex ir tehniskas grūtības. Mēs darām visu, lai iespējami drīz atjaunotu pakalpojuma darbību.";
 
 /* info message text in conversation view. {embeds callee name} */
 "OUTGOING_CALL_FORMAT" = "Jūs zvanījāt %@";
@@ -3389,13 +3389,13 @@
 "PHONE_NUMBER_DISCOVERABILITY_EVERYBODY" = "Everybody";
 
 /* A user friendly description of the 'everybody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Anyone who has your phone number in their contacts will see you as a contact on Signal. Others will be able to find you in Search.";
+"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Anyone who has your phone number in their contacts will see you as a contact on Grapherex. Others will be able to find you in Search.";
 
 /* A user friendly name for the 'nobody' phone number discoverability mode. */
 "PHONE_NUMBER_DISCOVERABILITY_NOBODY" = "Nobody";
 
 /* A user friendly description of the 'nobody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Nobody on Signal will be able to find you with your phone number. You won’t be visible as contact for people who have your phone number in their contacts and others won’t be able to find you with your phone number in search.";
+"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Nobody on Grapherex will be able to find you with your phone number. You won’t be visible as contact for people who have your phone number in their contacts and others won’t be able to find you with your phone number in search.";
 
 /* A format for a label showing an example phone number. Embeds {{the example phone number}}. */
 "PHONE_NUMBER_EXAMPLE_FORMAT" = "Piemērs: %@";
@@ -3404,19 +3404,19 @@
 "PHONE_NUMBER_SHARING_CONTACTS_ONLY" = "My Contacts";
 
 /* A user friendly description of the 'contacts only' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Only your contacts will see your phone number on Signal.";
+"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Only your contacts will see your phone number on Grapherex.";
 
 /* A user friendly name for the 'everybody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_EVERYBODY" = "Everybody";
 
 /* A user friendly description of the 'everybody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Your phone number will be visible to people and groups you message. People who have your number in their phone contacts will also see it on Signal.";
+"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Your phone number will be visible to people and groups you message. People who have your number in their phone contacts will also see it on Grapherex.";
 
 /* A user friendly name for the 'nobody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_NOBODY" = "Nobody";
 
 /* A user friendly description of the 'nobody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Nobody will see your phone number on Signal.";
+"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Nobody will see your phone number on Grapherex.";
 
 /* Format for phone number label with an index. Embeds {{Phone number label (e.g. 'home')}} and {{index, e.g. 2}}. */
 "PHONE_NUMBER_TYPE_AND_INDEX_NAME_FORMAT" = "%@ %@";
@@ -3491,7 +3491,7 @@
 "PIN_CREATION_DISABLE_CONFIRMATION_ACTION" = "Atspējot PIN";
 
 /* Message of the 'pin disable' action sheet. */
-"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "If you disable the PIN, you will lose all data when you re-register Signal unless you transfer it from another iOS device. You can not turn on Registration Lock while the PIN is disabled.";
+"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "If you disable the PIN, you will lose all data when you re-register Grapherex unless you transfer it from another iOS device. You can not turn on Registration Lock while the PIN is disabled.";
 
 /* Title of the 'pin disable' action sheet. */
 "PIN_CREATION_DISABLE_CONFIRMATION_TITLE" = "Brīdinājums";
@@ -3503,7 +3503,7 @@
 "PIN_CREATION_ERROR_TITLE" = "PIN izveidošana neizdevās";
 
 /* The explanation in the 'pin creation' view. */
-"PIN_CREATION_EXPLANATION" = "PINs keep information stored with Signal encrypted so only you can access it. Your profile, settings, and contacts will restore when you reinstall. You won’t need your PIN to open the app.";
+"PIN_CREATION_EXPLANATION" = "PINs keep information stored with Grapherex encrypted so only you can access it. Your profile, settings, and contacts will restore when you reinstall. You won’t need your PIN to open the app.";
 
 /* Learn more action on the pin creation view */
 "PIN_CREATION_LEARN_MORE" = "Uzzināt vairāk par PIN kodiem";
@@ -3566,7 +3566,7 @@
 "PIN_REMINDER_MEGAPHONE_FEW_DAYS_TOAST" = "Pēc dažām dienām mēs vaicāsim to vēlreiz.";
 
 /* Title for PIN reminder megaphone */
-"PIN_REMINDER_MEGAPHONE_TITLE" = "Signal PIN apstiprināšana";
+"PIN_REMINDER_MEGAPHONE_TITLE" = "Grapherex PIN apstiprināšana";
 
 /* Toast indicating that we'll ask you for your PIN again tomorrow. */
 "PIN_REMINDER_MEGAPHONE_TOMORROW_TOAST" = "Rīt mēs vaicāsim atkal.";
@@ -3581,7 +3581,7 @@
 "PIN_REMINDER_MISMATCH_ERROR" = "Nederīgs PIN, mēģiniet vēlreiz";
 
 /* The title for the 'pin reminder' dialog. */
-"PIN_REMINDER_TITLE" = "Signal PIN ievadīšana";
+"PIN_REMINDER_TITLE" = "Grapherex PIN ievadīšana";
 
 /* Label indicating that the attempted PIN is too short */
 "PIN_REMINDER_TOO_SHORT_ERROR" = "PIN jābūt vismaz 4 ciparus garam.";
@@ -3596,7 +3596,7 @@
 "PINS_MEGAPHONE_ACTION" = "Izveidot PIN";
 
 /* Body for PIN megaphone when user doesn't have a PIN */
-"PINS_MEGAPHONE_BODY" = "PIN kodos ir informācija, kas lietotnē Signal ir šifrēta";
+"PINS_MEGAPHONE_BODY" = "PIN kodos ir informācija, kas lietotnē Grapherex ir šifrēta";
 
 /* Toast indication that the user will be reminded later to setup their PIN. Embeds {{time until mandatory}} */
 "PINS_MEGAPHONE_SNOOZE_TOAST_FORMAT" = "Mēs atgādināsim jums vēlāk. Pēc %ld dienām PIN būs obligāti jāizveido.";
@@ -3635,19 +3635,19 @@
 "PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "The number in your clipboard doesn't look like the correct safety number for this chat.";
 
 /* Alert body for user error */
-"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Lietotne Signal jūsu starpliktuvē nevarēja atrast nevienu drošības numuru. Vai nokopējāt pareizi?";
+"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Lietotne Grapherex jūsu starpliktuvē nevarēja atrast nevienu drošības numuru. Vai nokopējāt pareizi?";
 
 /* Alert body when verifying with {{contact name}} */
-"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Katram Signal lietotāju pārim ir atšķirīgs drošības numurs. Vēlreiz pārbaudiet, vai %@ parāda * jūsu* atšķirīgo drošības numuru.";
+"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Katram Grapherex lietotāju pārim ir atšķirīgs drošības numurs. Vēlreiz pārbaudiet, vai %@ parāda * jūsu* atšķirīgo drošības numuru.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Jūs izmantojat veco Signal versiju. Pirms verificēšanas jums ir jāveic lietotnes atjaunināšana.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Jūs izmantojat veco Grapherex versiju. Pirms verificēšanas jums ir jāveic lietotnes atjaunināšana.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Jūsu partneris izmanto veco Signal versiju. Pirms verificēšanas viņam ir jāveic lietotnes atjaunināšana.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Jūsu partneris izmanto veco Grapherex versiju. Pirms verificēšanas viņam ir jāveic lietotnes atjaunināšana.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Skenētais kods neatgādina drošības numuru. Vai jūs abi izmantojat jaunāko Signal versiju?";
+"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Skenētais kods neatgādina drošības numuru. Vai jūs abi izmantojat jaunāko Grapherex versiju?";
 
 /* Paragraph(s) shown alongside the safety number when verifying privacy with {{contact name}} */
 "PRIVACY_VERIFICATION_INSTRUCTIONS" = "Ja kopā ar %@ vēlaties pārliecināties par pilnīgas šifrēšanas drošību, salīdziniet iepriekš norādītos numurus ar numuriem savās ierīcēs.\n\nVai arī varat skenēt kodu otra lietotāja tālrunī vai palūgt, lai viņš skenē jūsu kodu.";
@@ -3950,25 +3950,25 @@
 "REREGISTER_FOR_PUSH" = "Atkārtoti reģistrēties automātiskajiem paziņojumiem";
 
 /* Body for research megaphone */
-"RESEARCH_MEGAPHONE_BODY" = "To make Signal the best messaging app on the planet, we’d love to hear your feedback.";
+"RESEARCH_MEGAPHONE_BODY" = "To make Grapherex the best messaging app on the planet, we’d love to hear your feedback.";
 
 /* Title for research megaphone */
-"RESEARCH_MEGAPHONE_TITLE" = "Tell Signal what you think";
+"RESEARCH_MEGAPHONE_TITLE" = "Tell Grapherex what you think";
 
 /* Text for the research modal footer */
-"RESEARCH_MODAL_FOOTER" = "The survey is hosted by Surveygizmo at the secure domain surveys.signalusers.org";
+"RESEARCH_MODAL_FOOTER" = "The survey is hosted by Surveygizmo at the secure domain surveys.grapherexusers.com";
 
 /* Button text for declining the research modal */
 "RESEARCH_MODAL_NO_THANKS" = "Nē, paldies";
 
 /* Text explaining why the user should take the survey */
-"RESEARCH_MODAL_PLEA" = "<bold>We believe in privacy.</bold>\n\nSignal doesn’t track you or collect your data. To improve Signal for everyone, we rely on user feedback, <bold>and we’d love yours</bold>.\n\nWe’re running a survey to understand how you use Signal. Our survey doesn't collect any data that will identify you. If you’re interested in sharing additional feedback, you'll have the option to provide contact information.\n\nIf you have a few minutes and feedback to offer, we’d love to hear from you.";
+"RESEARCH_MODAL_PLEA" = "<bold>We believe in privacy.</bold>\n\nGrapherex doesn’t track you or collect your data. To improve Grapherex for everyone, we rely on user feedback, <bold>and we’d love yours</bold>.\n\nWe’re running a survey to understand how you use Grapherex. Our survey doesn't collect any data that will identify you. If you’re interested in sharing additional feedback, you'll have the option to provide contact information.\n\nIf you have a few minutes and feedback to offer, we’d love to hear from you.";
 
 /* Button text for taking the research survey */
 "RESEARCH_MODAL_TAKE_SURVEY" = "Take the survey";
 
 /* Title for the research megaphone modal */
-"RESEARCH_MODAL_TITLE" = "Signal Research";
+"RESEARCH_MODAL_TITLE" = "Grapherex Research";
 
 /* Generic text for button that retries whatever the last action was. */
 "RETRY_BUTTON_TEXT" = "Mēģināt vēlreiz";
@@ -3998,7 +3998,7 @@
 "SAFETY_NUMBER_CONFIRMATION_VIEW_ACTION" = "Skatīt";
 
 /* Snippet to share {{safety number}} with a friend. sent e.g. via SMS */
-"SAFETY_NUMBER_SHARE_FORMAT" = "Mūsu Signal drošības numurs:\n%@";
+"SAFETY_NUMBER_SHARE_FORMAT" = "Mūsu Grapherex drošības numurs:\n%@";
 
 /* Action sheet heading */
 "SAFETY_NUMBERS_ACTIONSHEET_TITLE" = "Jūsu drošības numurs ar %@ ir mainīts. Iespējams, vēlaties to verificēt.";
@@ -4030,14 +4030,14 @@
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Lai izmantotu ekrāna bloķēšanu, iOS iestatījumos ir jāiespējo ieejas kods.";
 
-/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
-"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Autentificējieties, lai atvērtu Signal.";
+/* Description of how and why Grapherex iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
+"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Autentificējieties, lai atvērtu Grapherex.";
 
 /* Title for alert indicating that screen lock could not be unlocked. */
 "SCREEN_LOCK_UNLOCK_FAILED" = "Autentifikācija neizdevās";
 
-/* Label for button on lock screen that lets users unlock Signal. */
-"SCREEN_LOCK_UNLOCK_SIGNAL" = "Atbloķēt Signal";
+/* Label for button on lock screen that lets users unlock Grapherex. */
+"SCREEN_LOCK_UNLOCK_SIGNAL" = "Atbloķēt Grapherex";
 
 /* This is a contact's name. Replace the name for a more common name in your locale if this sounds too foreign. This should be a unique non-public figure's name. This will have a female profile photo. */
 "SCREENSHOT_NAME_CONTACT_EIGHT" = "Ieva Bērniņa";
@@ -4087,7 +4087,7 @@
 /* This is for a group chat for people who want weather updates. */
 "SCREENSHOT_NAME_GROUP_TWO" = "Laika prognozes";
 
-/* This appears in Signal > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
+/* This appears in Grapherex > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
 "SCREENSHOT_NAME_LOCAL_PROFILE" = "Vadītāja Freija";
 
 /* This is a message expressing support/happiness/awe/shock. */
@@ -4196,13 +4196,13 @@
 "SECONDARY_DEVICE_ERROR_FETCHING_LINKING_CODE" = "Nevar ielādēt saistīšanas kodu";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Update Signal on this device to link it with your phone.";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Update Grapherex on this device to link it with your phone.";
 
 /* Title for error alert indicating that a linked device must be upgraded before it can be linked. */
 "SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Neatbalstīta versija";
 
 /* alert message for outdated linking device */
-"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Jūsu otrajā ierīcē darbojas vecāka Signal versija, kas neatbalsta iPad QR kodu skenēšanu. Instalējiet jaunāko Signal laidienu un mēģiniet vēlreiz.";
+"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Jūsu otrajā ierīcē darbojas vecāka Grapherex versija, kas neatbalsta iPad QR kodu skenēšanu. Instalējiet jaunāko Grapherex laidienu un mēģiniet vēlreiz.";
 
 /* alert title for outdated linking device */
 "SECONDARY_LINKING_ERROR_OLD_VERSION_TITLE" = "Atjauniniet skenēšanas ierīci";
@@ -4223,19 +4223,19 @@
 "SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS" = "Pabeigt saistīšanu";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Palaidiet lietotni Signal tālrunī, lai saistītu šo iPad ar savu kontu";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Palaidiet lietotni Grapherex tālrunī, lai saistītu šo iPad ar savu kontu";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
-"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Manā tālrunī nav Signal...";
+"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Manā tālrunī nav Grapherex...";
 
 /* alert body */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Atveriet savā tālrunī App Store, instalējiet Signal un pabeidziet reģistrācijas procesu. Pēc tam varēsiet saistīt savu iPad ar vienu kontu.";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Atveriet savā tālrunī App Store, instalējiet Grapherex un pabeidziet reģistrācijas procesu. Pēc tam varēsiet saistīt savu iPad ar vienu kontu.";
 
 /* alert title */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Signal instalēšana tālrunī";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Grapherex instalēšana tālrunī";
 
 /* body text while displaying a QR code which, when scanned, will link this device. */
-"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Pieskarieties sava profila attēlam, lai tālrunī atvērtu Signal iestatījumus. Pēc tam pieskarieties pie “Saistītās ierīces” un “Saistīt jauno ierīci”, lai ar savu tālruni skenētu šo kodu:";
+"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Pieskarieties sava profila attēlam, lai tālrunī atvērtu Grapherex iestatījumus. Pēc tam pieskarieties pie “Saistītās ierīces” un “Saistīt jauno ierīci”, lai ar savu tālruni skenētu šo kodu:";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
 "SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Palīdzību par iPad saistīšanu saņemiet šeit";
@@ -4244,7 +4244,7 @@
 "SECONDARY_ONBOARDING_SCAN_CODE_TITLE" = "Skenējiet QR kodu ar savu tālruni";
 
 /* header text before the user can transfer to this device */
-"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Palaidiet lietotni Signal vecajā iPad ierīcē, lai pārsūtītu savu kontu";
+"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Palaidiet lietotni Grapherex vecajā iPad ierīcē, lai pārsūtītu savu kontu";
 
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "Drošā sesija tika atiestatīta.";
@@ -4268,7 +4268,7 @@
 "SEND_INVITE_FAILURE" = "Neizdevās nosūtīt ielūgumu. Vēlāk mēģiniet vēlreiz.";
 
 /* Alert body after invite succeeded */
-"SEND_INVITE_SUCCESS" = "Jūs uzaicinājāt savu draugu lietot Signal!";
+"SEND_INVITE_SUCCESS" = "Jūs uzaicinājāt savu draugu lietot Grapherex!";
 
 /* alert action, confirming the user wants to exit the media flow and abandon any photos they've taken */
 "SEND_MEDIA_CONFIRM_ABANDON_ALBUM" = "Atmest multivides saturu";
@@ -4283,10 +4283,10 @@
 "SEND_SMS_CONFIRM_TITLE" = "Vai uzaicināt draugu, izmantojot nedrošu SMS?";
 
 /* No comment provided by engineer. */
-"SEND_SMS_INVITE_TITLE" = "Vai vēlaties uzaicināt šo numuru izmantot Signal: ";
+"SEND_SMS_INVITE_TITLE" = "Vai vēlaties uzaicināt šo numuru izmantot Grapherex: ";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "Signal uses end-to-end encryption and it may need to refresh your chat session sometimes. This doesn’t affect your chat’s security but you may have missed a message from this contact and you can ask them to resend it.";
+"SESSION_REFRESH_ALERT_MESSAGE" = "Grapherex uses end-to-end encryption and it may need to refresh your chat session sometimes. This doesn’t affect your chat’s security but you may have missed a message from this contact and you can ask them to resend it.";
 
 /* Title for the session refresh alert */
 "SESSION_REFRESH_ALERT_TITLE" = "Chat session refreshed";
@@ -4313,7 +4313,7 @@
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Atrašanās vieta: %@";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Ja šī funkcija ir iespējota, Signal mēģinās apiet cenzūru. Neieslēdziet šo funkciju, ja atrodaties vietā, kur Signal tiek cenzēta.";
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Ja šī funkcija ir iespējota, Grapherex mēģinās apiet cenzūru. Neieslēdziet šo funkciju, ja atrodaties vietā, kur Grapherex tiek cenzēta.";
 
 /* Table footer for the 'censorship circumvention' section shown when censorship circumvention has been auto-enabled based on local phone number. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_AUTO_ENABLED" = "Cenzūras apiešana ir aktivizēta, pamatojoties uz jūsu konta tālruņa numuru.";
@@ -4324,8 +4324,8 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "Cenzūras apiešanu var aktivizēt tikai tad, kad ir izveidots savienojums ar internetu.";
 
-/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Cenzūras apiešana nav nepieciešama; jūs jau izveidojāt savienojumu ar Signal pakalpojumu.";
+/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Grapherex service. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Cenzūras apiešana nav nepieciešama; jūs jau izveidojāt savienojumu ar Grapherex pakalpojumu.";
 
 /* Table header for the 'censorship circumvention' section. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Cenzūras apiešana";
@@ -4426,8 +4426,8 @@
 /* An explanation of the 'blocked' setting */
 "SETTINGS_BLOCK_LIST_FOOTER" = "List of contacts and groups you have blocked.";
 
-/* A label that indicates the user has no Signal contacts. */
-"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Jums nav kontaktpersonu lietotnē Signal.";
+/* A label that indicates the user has no Grapherex contacts. */
+"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Jums nav kontaktpersonu lietotnē Grapherex.";
 
 /* A label that indicates the user's search has no matching results. */
 "SETTINGS_BLOCK_LIST_NO_SEARCH_RESULTS" = "Nav meklēšanas rezultātu";
@@ -4439,13 +4439,13 @@
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE" = "Vienmēr pārraidīt zvanus";
 
 /* User settings section footer, a detailed explanation */
-"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Pārraidiet visus zvanus, izmantojot Signal serveri, lai jūsu kontaktpersona neatklātu jūsu IP adresi. Aktivizējot šo funkciju, tiks samazināta zvana kvalitāte.";
+"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Pārraidiet visus zvanus, izmantojot Grapherex serveri, lai jūsu kontaktpersona neatklātu jūsu IP adresi. Aktivizējot šo funkciju, tiks samazināta zvana kvalitāte.";
 
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Clear Chat History";
 
 /* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Autortiesības Signal Messenger \n Licencēta saskaņā ar GPLv3";
+"SETTINGS_COPYRIGHT" = "Autortiesības Grapherex Messenger \n Licencēta saskaņā ar GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Data Usage";
@@ -4483,8 +4483,8 @@
 /* Confirmation text for button which deletes all message, calling, attachments, etc. */
 "SETTINGS_DELETE_HISTORYLOG_CONFIRMATION_BUTTON" = "Dzēst visu";
 
-/* Title for the 'donate to signal' link in settings. */
-"SETTINGS_DONATE" = "Donate to Signal";
+/* Title for the 'donate to Grapherex' link in settings. */
+"SETTINGS_DONATE" = "Donate to Grapherex";
 
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Palīdzība";
@@ -4499,7 +4499,7 @@
 "SETTINGS_INVITE_TITLE" = "Aiciniet draugus";
 
 /* content of tweet when inviting via twitter - please do not translate URL */
-"SETTINGS_INVITE_TWITTER_TEXT" = "Ar mani var sazināties, izmantojot @signalapp. Lejupielādēt tūlīt: https://signal.org/download/";
+"SETTINGS_INVITE_TWITTER_TEXT" = "Ar mani var sazināties, izmantojot @grapherexapp. Lejupielādēt tūlīt: https://grapherex.com";
 
 /* Label for settings view that allows user to change the notification sound. */
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "Ziņu skaņas";
@@ -4543,7 +4543,7 @@
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Iestatījumi";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Count Muted Chats";
 
 /* table section header */
@@ -4555,8 +4555,8 @@
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Paziņojumu saturs";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Sazināties ar jauno Signal lietotāju";
+/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Sazināties ar jauno Grapherex lietotāju";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Notikumi";
@@ -4580,19 +4580,19 @@
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_ACTION" = "Izslēgt atgādinājumus";
 
 /* The explanation for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Pārliecinieties, ka atcerieties vai droši glabājat PIN, jo to nevar atgūt. PIN aizmiršanas gadījumā, iespējams, zaudēsiet datus, atkārtoti reģistrējot Signal kontu.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Pārliecinieties, ka atcerieties vai droši glabājat PIN, jo to nevar atgūt. PIN aizmiršanas gadījumā, iespējams, zaudēsiet datus, atkārtoti reģistrējot Grapherex kontu.";
 
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Apstipriniet Signal PIN";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Apstipriniet Grapherex PIN";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
+/* Footer for the 'pin reminder' section of the privacy settings when Grapherex PINs are available. */
 "SETTINGS_PIN_REMINDER_FOOTER" = "Atgādinājumi jums palīdz atcerēties PIN, jo to nevar atgūt. Laika gaitā atgādināšana būs retāka.";
 
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN atgādinājumi";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PIN kodos ir informācija, kas lietotnē Signal ir šifrēta, lai šai informācijai varētu piekļūt tikai jūs. Jūsu profils, iestatījumi un kontaktpersonas tiks atjaunotas, kad atkārtoti instalēsit lietotni Signal.";
+"SETTINGS_PINS_FOOTER" = "PIN kodos ir informācija, kas lietotnē Grapherex ir šifrēta, lai šai informācijai varētu piekļūt tikai jūs. Jūsu profils, iestatījumi un kontaktpersonas tiks atjaunotas, kad atkārtoti instalēsit lietotni Grapherex.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "PIN maiņa";
@@ -4601,7 +4601,7 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Izveidot PIN";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "SIGNAL PIN";
+"SETTINGS_PINS_TITLE" = "Grapherex PIN";
 
 /* Settings table section footer. */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Rādīt zvanus lietotnes iOS Phone pēdējo zvanu sarakstā.";
@@ -4628,7 +4628,7 @@
 "SETTINGS_REGISTRATION_LOCK_TURN_ON" = "Ieslēgt";
 
 /* Body for the alert confirming that the user wants to turn on registration lock. */
-"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Ja, atkārtoti reģistrējoties lietotnē Signal, aizmirstat savu Signal PIN, jūs 7 dienas nevarēsiet piekļūt savam kontam.";
+"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Ja, atkārtoti reģistrējoties lietotnē Grapherex, aizmirstat savu Grapherex PIN, jūs 7 dienas nevarēsiet piekļūt savam kontam.";
 
 /* Title for the alert confirming that the user wants to turn on registration lock. */
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_TITLE" = "Vai ieslēgt reģistrācijas bloķēšanu?";
@@ -4643,7 +4643,7 @@
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Ekrāna bloķēšanas taimauts";
 
 /* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Atbloķējiet Signal ekrānu, izmantojot Touch ID, Face ID vai savu iOS ierīces piekļuves kodu. Ekrāna bloķēšanas laikā joprojām var atbildēt uz ienākošajiem zvaniem un saņemt paziņojumus par saņemtajiem zvaniem un ziņām. Signal paziņojumu iestatījumos iespējams pielāgot parādīto informāciju.";
+"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Atbloķējiet Grapherex ekrānu, izmantojot Touch ID, Face ID vai savu iOS ierīces piekļuves kodu. Ekrāna bloķēšanas laikā joprojām var atbildēt uz ienākošajiem zvaniem un saņemt paziņojumus par saņemtajiem zvaniem un ziņām. Grapherex paziņojumu iestatījumos iespējams pielāgot parādīto informāciju.";
 
 /* Title for the 'screen lock' section of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Ekrāna bloķēšana";
@@ -4655,7 +4655,7 @@
 "SETTINGS_SCREEN_SECURITY" = "Ieslēgt ekrāna aizsardzību";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Nerādīt Signal priekšskatījumus lietotņu pārslēdzējā.";
+"SETTINGS_SCREEN_SECURITY_DETAIL" = "Nerādīt Grapherex priekšskatījumus lietotņu pārslēdzējā.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Skaņas";
@@ -4670,13 +4670,13 @@
 "SETTINGS_SHARING_SUGGESTIONS" = "Show in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal chats are displayed as suggestions when sharing from other apps.";
+"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Grapherex chats are displayed as suggestions when sharing from other apps.";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Reģistrācijas bloķēšana";
 
-/* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Lielākai drošībai ieslēdziet reģistrācijas bloķēšanu, lai būtu jāievada Signal PIN un vēlreiz reģistrētu jūsu tālruņa numuru lietotnē Signal.";
+/* Footer for the 'two factor auth' section of the privacy settings when Grapherex PINs are available. */
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Lielākai drošībai ieslēdziet reģistrācijas bloķēšanu, lai būtu jāievada Grapherex PIN un vēlreiz reģistrētu jūsu tālruņa numuru lietotnē Grapherex.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Rakstīšanas indikatori";
@@ -4721,13 +4721,13 @@
 "SHARE_EXTENSION_LOADING" = "Ielādē…";
 
 /* Message indicating that the share extension cannot be used until the user has registered in the main app. */
-"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Lai reģistrētos, palaidiet Signal.";
+"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Lai reģistrētos, palaidiet Grapherex.";
 
 /* Title indicating that the share extension cannot be used until the user has registered in the main app. */
 "SHARE_EXTENSION_NOT_REGISTERED_TITLE" = "Nav reģistrēts";
 
 /* Message indicating that the share extension cannot be used until the main app has been launched at least once. */
-"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Lai atjauninātu vai reģistrētos, palaidiet Signal.";
+"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Lai atjauninātu vai reģistrētos, palaidiet Grapherex.";
 
 /* Title indicating that the share extension cannot be used until the main app has been launched at least once. */
 "SHARE_EXTENSION_NOT_YET_MIGRATED_TITLE" = "Nav gatavs";
@@ -4741,17 +4741,17 @@
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "Augšupielādē...";
 
-/* Shown when trying to share content to a Signal user for the share extension. Followed by failure details. */
+/* Shown when trying to share content to a Grapherex user for the share extension. Followed by failure details. */
 "SHARE_EXTENSION_UNABLE_TO_BUILD_ATTACHMENT_ALERT_TITLE" = "Nevarēja sagatavot pielikumu";
 
 /* Title for the 'share extension' view. */
-"SHARE_EXTENSION_VIEW_TITLE" = "Koplietot ar Signal";
+"SHARE_EXTENSION_VIEW_TITLE" = "Koplietot ar Grapherex";
 
 /* Title of alert indicating sharing suggestions failed to deactivate */
 "SHARING_SUGGESTIONS_DISABLE_ERROR" = "Failed to disable sharing suggestions.";
 
 /* Body for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Signal chats can now be displayed as suggestions when sharing from other apps.";
+"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Grapherex chats can now be displayed as suggestions when sharing from other apps.";
 
 /* Title for sharing suggestions megaphone */
 "SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Sharing Made Easier";
@@ -4768,8 +4768,8 @@
 /* notification action */
 "SHOW_THREAD_BUTTON_TITLE" = "Show Chat";
 
-/* body sent to contacts when inviting to Install Signal */
-"SMS_INVITE_BODY" = "Es Tevi aicinu lejupielādēt Signal! Lūk, saite:";
+/* body sent to contacts when inviting to Install Grapherex */
+"SMS_INVITE_BODY" = "Es Tevi aicinu lejupielādēt Grapherex! Lūk, saite:";
 
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "Bez skaņas";
@@ -4796,7 +4796,7 @@
 "STICKERS_INSTALL_BUTTON" = "Instalēt";
 
 /* Title for the 'available built-in stickers' section of the 'manage stickers' view. */
-"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Signal mākslas sērijas";
+"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Grapherex mākslas sērijas";
 
 /* Title for the 'available known stickers' section of the 'manage stickers' view. */
 "STICKERS_MANAGE_VIEW_AVAILABLE_KNOWN_PACKS_SECTION_TITLE" = "Jūsu saņemtās uzlīmes";
@@ -4847,7 +4847,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Tell us about the issue: ";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Please email your support request to support@signal.org";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Please email your support request to support@grapherex.com";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Filter: %@";
@@ -4870,16 +4870,16 @@
 /* Localized label for support request email debug log URL. Embeds {{debug log url}}. */
 "SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "Log URL: %@";
 
-/* Localized label for support request email signal version string. Embeds {{signal version}}. */
-"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Signal Version: %@";
+/* Localized label for support request email Grapherex version string. Embeds {{Grapherex version}}. */
+"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Grapherex Version: %@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Signal iOS Support Request";
+"SUPPORT_EMAIL_SUBJECT" = "Grapherex iOS Support Request";
 
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "Kā jūtaties? (fakultatīvs)";
 
-/* Label in support request informing user about Signal FAQ */
+/* Label in support request informing user about Grapherex FAQ */
 "SUPPORT_FAQ_PROMPT" = "Vai esiet jau izlasījuši BUJ?";
 
 /* Label describing support switch to attach debug logs */
@@ -4988,25 +4988,25 @@
 "UNKNOWN_COUNTRY_NAME" = "Nezināma valsts";
 
 /* Info message recorded in conversation history when local user receives an unknown message from a linked device and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Viena no jūsu ierīcēm nosūtīja ziņu, kuru šeit nevar apstrādāt vai parādīt, jo tajā izmantota jauna Signal funkcija.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Viena no jūsu ierīcēm nosūtīja ziņu, kuru šeit nevar apstrādāt vai parādīt, jo tajā izmantota jauna Grapherex funkcija.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ nosūtīja jums ziņu, kuru nevar apstrādāt vai parādīt, jo tajā izmantota jauna Signal funkcija.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ nosūtīja jums ziņu, kuru nevar apstrādāt vai parādīt, jo tajā izmantota jauna Grapherex funkcija.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Jūs saņēmāt ziņu, kuru šeit nevar apstrādāt vai parādīt, jo tajā tiek izmantota jauna Signal funkcija.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Jūs saņēmāt ziņu, kuru šeit nevar apstrādāt vai parādīt, jo tajā tiek izmantota jauna Grapherex funkcija.";
 
 /* Label for button that lets users upgrade the app. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Atjaunināt Signal tūlīt";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Atjaunināt Grapherex tūlīt";
 
 /* Info message recorded in conversation history when local user has received an unknown unknown message from a linked device and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Tagad jums ir jaunākā Signal versija. Turpmāk varēsiet saņemt šāda veida ziņas savā ierīcē.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Tagad jums ir jaunākā Grapherex versija. Turpmāk varēsiet saņemt šāda veida ziņas savā ierīcē.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Jūs varat lūgt %@ atkārtoti nosūtīt šo ziņu tagad, kad izmantojat jaunāko Signal versiju.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Jūs varat lūgt %@ atkārtoti nosūtīt šo ziņu tagad, kad izmantojat jaunāko Grapherex versiju.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Jūs varat lūgt sūtītājam atkārtoti nosūtīt šo ziņu tagad, kad izmantojat jaunāko Signal versiju.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Jūs varat lūgt sūtītājam atkārtoti nosūtīt šo ziņu tagad, kad izmantojat jaunāko Grapherex versiju.";
 
 /* Label indicating an unknown user. */
 "UNKNOWN_USER" = "Nezināms";
@@ -5030,10 +5030,10 @@
 "UNLINK_CONFIRMATION_ALERT_TITLE" = "Vai atsaistīt \"%@\"?";
 
 /* Label warning the user that they have been unlinked from their primary device. */
-"UNLINKED_WARNING" = "Ierīce vairs nav piesaistīta. Piesaistiet Signal tālrunim, lai turpinātu ziņapmaiņu.";
+"UNLINKED_WARNING" = "Ierīce vairs nav piesaistīta. Piesaistiet Grapherex tālrunim, lai turpinātu ziņapmaiņu.";
 
 /* Alert title when unlinking device fails */
-"UNLINKING_FAILED_ALERT_TITLE" = "Lietotne Signal nevarēja noņemt jūsu ierīces piesaisti.";
+"UNLINKING_FAILED_ALERT_TITLE" = "Lietotne Grapherex nevarēja noņemt jūsu ierīces piesaisti.";
 
 /* Label text in device manager for a device with no name */
 "UNNAMED_DEVICE" = "Ierīce bez nosaukuma";
@@ -5048,7 +5048,7 @@
 "UNREAD_ACTION" = "Nelasītie";
 
 /* No comment provided by engineer. */
-"UNREGISTER_SIGNAL_FAIL" = "Neizdevās pārtraukt reģistrāciju lietotnē Signal.";
+"UNREGISTER_SIGNAL_FAIL" = "Neizdevās pārtraukt reģistrāciju lietotnē Grapherex.";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Saņemts neatbalstīts pielikuma tips.";
@@ -5072,7 +5072,7 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_LEARN_MORE" = "Uzzināt vairāk par PIN kodiem";
 
 /* Body text for PINs splash screen */
-"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PINs keep information stored with Signal encrypted so only you can access it. Your profile, settings, and contacts will restore when you reinstall. You won’t need your PIN to open the app.";
+"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PINs keep information stored with Grapherex encrypted so only you can access it. Your profile, settings, and contacts will restore when you reinstall. You won’t need your PIN to open the app.";
 
 /* Header for PINs splash screen */
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_TITLE" = "Informācija par PIN kodiem";
@@ -5081,13 +5081,13 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SKIP" = "Atspējot PIN";
 
 /* Message for the alert indicating that user should upgrade iOS. */
-"UPGRADE_IOS_ALERT_MESSAGE" = "Lietotnei Signal drīz būs nepieciešama OS iOS 11 vai jaunāka. Jauniniet sadaļā Settings >> General >> Software Update (Iestatījumi > Vispārīgi > Programmatūras atjaunināšana).";
+"UPGRADE_IOS_ALERT_MESSAGE" = "Lietotnei Grapherex drīz būs nepieciešama OS iOS 11 vai jaunāka. Jauniniet sadaļā Settings >> General >> Software Update (Iestatījumi > Vispārīgi > Programmatūras atjaunināšana).";
 
 /* Title for the alert indicating that user should upgrade iOS. */
 "UPGRADE_IOS_ALERT_TITLE" = "Jauniniet iOS";
 
 /* An explanation of how usernames work on the username view. */
-"USERNAME_DESCRIPTION" = "Lietotājvārdi lietotnē Signal nav obligāti. Ja izvēlaties izveidot lietotājvārdu, citi Signal lietotāji jūs varēs atrast ar šo lietotājvārdu un sazināties ar jums, nezinot jūsu tālruņa numuru.";
+"USERNAME_DESCRIPTION" = "Lietotājvārdi lietotnē Grapherex nav obligāti. Ja izvēlaties izveidot lietotājvārdu, citi Grapherex lietotāji jūs varēs atrast ar šo lietotājvārdu un sazināties ar jums, nezinot jūsu tālruņa numuru.";
 
 /* Label for the username field in the username view. */
 "USERNAME_FIELD" = "Lietotājvārds";
@@ -5098,10 +5098,10 @@
 /* A message indicating that username lookup failed. */
 "USERNAME_LOOKUP_ERROR" = "Meklējot lietotājvārdu, radās kļūda. Vēlāk mēģiniet vēlreiz.";
 
-/* A message indicating that the given username is not a registered signal account. Embeds {{username}} */
-"USERNAME_NOT_FOUND_FORMAT" = "%@ nav Signal lietotājs. Pārliecinieties, vai ievadījāt pilnu lietotājvārdu.";
+/* A message indicating that the given username is not a registered Grapherex account. Embeds {{username}} */
+"USERNAME_NOT_FOUND_FORMAT" = "%@ nav Grapherex lietotājs. Pārliecinieties, vai ievadījāt pilnu lietotājvārdu.";
 
-/* A message indicating that the given username was not registered with signal. */
+/* A message indicating that the given username was not registered with Grapherex. */
 "USERNAME_NOT_FOUND_TITLE" = "Lietotājs netika atrasts";
 
 /* The placeholder for the username text entry in the username view. */
@@ -5177,7 +5177,7 @@
 "VOICE_MESSAGE_TOO_SHORT_ALERT_TITLE" = "Balss ziņa";
 
 /* Activity indicator title, shown upon returning to the device manager, until you complete the provisioning process on desktop */
-"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Pabeidziet Signal iestatīšanu datorā.";
+"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Pabeidziet Grapherex iestatīšanu datorā.";
 
 /* Placeholder text for header of the wallpaper mini preview */
 "WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Contact Name";

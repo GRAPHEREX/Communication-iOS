@@ -40,7 +40,7 @@ public class ContentProxy: NSObject {
         return jsonSessionManager
     }
 
-    static let userAgent = "Signal iOS (+https://signal.org/download)"
+    static let userAgent = "Grapherex iOS (+https://grapherex.com)"
 
     public class func configureProxiedRequest(request: inout URLRequest) -> Bool {
         request.addValue(userAgent, forHTTPHeaderField: "User-Agent")

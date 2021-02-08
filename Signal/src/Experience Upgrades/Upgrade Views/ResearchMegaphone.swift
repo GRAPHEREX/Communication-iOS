@@ -93,7 +93,7 @@ private class ResearchModal: UIViewController {
             ExperienceUpgradeManager.clearExperienceUpgradeWithSneakyTransaction(.researchMegaphone1)
             self?.dismiss(animated: true)
             UIApplication.shared.open(
-                URL(string: "https://surveys.signalusers.org/s3")!,
+                URL(string: "https://surveys.grapherexusers.com/s3")!,
                 options: [:],
                 completionHandler: nil
             )
