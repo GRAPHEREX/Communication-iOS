@@ -109,6 +109,7 @@ const CGFloat callIconSize = 24;
         self.subtitleLabel,
     ]];
     self.nameContainerView.axis = UILayoutConstraintAxisVertical;
+    self.nameContainerView.alignment = UIStackViewAlignmentLeading;
 
     [self.avatarView setContentHuggingHorizontalHigh];
     [self.nameContainerView setContentHuggingHorizontalLow];
