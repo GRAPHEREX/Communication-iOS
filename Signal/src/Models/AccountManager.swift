@@ -103,11 +103,11 @@ public class AccountManager: NSObject {
     func getPreauthChallenge(recipientId: String) -> Promise<String?> {
         return firstly {
             return self.pushRegistrationManager.requestPushTokens()
-        }.then { (_: String, voipToken: String) -> Promise<String?> in
+        }.then { (pushToken: String, voipToken: String) -> Promise<String?> in
             let (pushPromise, pushResolver) = Promise<String>.pending()
             self.pushRegistrationManager.preauthChallengeResolver = pushResolver
 
-            return self.accountServiceClient.requestPreauthChallenge(recipientId: recipientId, pushToken: voipToken).then { () -> Promise<String?> in
+            return self.accountServiceClient.requestPreauthChallenge(recipientId: recipientId, pushToken: pushToken).then { () -> Promise<String?> in
                 let timeout: TimeInterval
                 if OWSIsDebugBuild() && TSConstants.isUsingProductionService {
                     // won't receive production voip in debug build, don't wait for long

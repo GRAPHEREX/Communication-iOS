@@ -17,6 +17,10 @@ import SignalMessaging
  */
 final class CallKitCallUIAdaptee: NSObject, CallUIAdaptee, CXProviderDelegate {
 
+    func getProvider() -> CXProvider? {
+        return provider
+    }
+    
     // MARK: - Dependencies
 
     private var contactsManager: OWSContactsManager {
@@ -157,42 +161,44 @@ final class CallKitCallUIAdaptee: NSObject, CallUIAdaptee, CXProviderDelegate {
         AssertIsOnMainThread()
         Logger.info("")
 
-        // Construct a CXCallUpdate describing the incoming call, including the caller.
-        let update = CXCallUpdate()
-
-        if showNamesOnCallScreen {
-            update.localizedCallerName = contactsManager.displayName(for: call.individualCall.remoteAddress)
-            if let phoneNumber = call.individualCall.remoteAddress.phoneNumber {
-                update.remoteHandle = CXHandle(type: .phoneNumber, value: phoneNumber)
-            }
-        } else {
-            let callKitId = CallKitCallManager.kAnonymousCallHandlePrefix + call.individualCall.localId.uuidString
-            update.remoteHandle = CXHandle(type: .generic, value: callKitId)
-            CallKitIdStore.setAddress(call.individualCall.remoteAddress, forCallKitId: callKitId)
-            update.localizedCallerName = NSLocalizedString("CALLKIT_ANONYMOUS_CONTACT_NAME", comment: "The generic name used for calls if CallKit privacy is enabled")
-        }
-
-        update.hasVideo = call.individualCall.offerMediaType == .video
-
-        disableUnsupportedFeatures(callUpdate: update)
-
-        // Report the incoming call to the system
-        provider.reportNewIncomingCall(with: call.individualCall.localId, update: update) { error in
-            /*
-             Only add incoming call to the app's list of calls if the call was allowed (i.e. there was no error)
-             since calls may be "denied" for various legitimate reasons. See CXErrorCodeIncomingCallError.
-             */
-            guard error == nil else {
-                completion(error)
-                Logger.error("failed to report new incoming call, error: \(error!)")
-                return
-            }
-
-            completion(nil)
-
-            self.showCall(call)
-            self.callManager.addCall(call)
-        }
+//        // Construct a CXCallUpdate describing the incoming call, including the caller.
+//        let update = CXCallUpdate()
+//
+//        if showNamesOnCallScreen {
+//            update.localizedCallerName = contactsManager.displayName(for: call.individualCall.remoteAddress)
+//            if let phoneNumber = call.individualCall.remoteAddress.phoneNumber {
+//                update.remoteHandle = CXHandle(type: .phoneNumber, value: phoneNumber)
+//            }
+//        } else {
+//            let callKitId = CallKitCallManager.kAnonymousCallHandlePrefix + call.individualCall.localId.uuidString
+//            update.remoteHandle = CXHandle(type: .generic, value: callKitId)
+//            CallKitIdStore.setAddress(call.individualCall.remoteAddress, forCallKitId: callKitId)
+//            update.localizedCallerName = NSLocalizedString("CALLKIT_ANONYMOUS_CONTACT_NAME", comment: "The generic name used for calls if CallKit privacy is enabled")
+//        }
+//
+//        update.hasVideo = call.individualCall.offerMediaType == .video
+//
+//        disableUnsupportedFeatures(callUpdate: update)
+//
+//        // Report the incoming call to the system
+//        provider.reportNewIncomingCall(with: call.individualCall.localId, update: update) { error in
+//            /*
+//             Only add incoming call to the app's list of calls if the call was allowed (i.e. there was no error)
+//             since calls may be "denied" for various legitimate reasons. See CXErrorCodeIncomingCallError.
+//             */
+//            guard error == nil else {
+//                completion(error)
+//                Logger.error("failed to report new incoming call, error: \(error!)")
+//                return
+//            }
+//
+//            completion(nil)
+//
+//            self.showCall(call)
+//            self.callManager.addCall(call)
+//        }
+        
+        self.callManager.addCall(call)
     }
 
     func answerCall(localId: UUID) {
@@ -335,17 +341,26 @@ final class CallKitCallUIAdaptee: NSObject, CallUIAdaptee, CXProviderDelegate {
         }
     }
 
+    private var waitingCallToBeFetchedBySocketRetryCount = 50
     func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
         AssertIsOnMainThread()
 
         Logger.info("Received \(#function) CXAnswerCallAction")
         // Retrieve the instance corresponding to the action's call UUID
         guard let call = callManager.callWithLocalId(action.callUUID) else {
-            owsFailDebug("call as unexpectedly nil")
-            action.fail()
+            if waitingCallToBeFetchedBySocketRetryCount > 0 {
+                waitingCallToBeFetchedBySocketRetryCount -= 1
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+                    self.provider(provider, perform: action)
+                }
+            } else {
+                owsFailDebug("call as unexpectedly nil")
+                action.fail()
+            }
             return
         }
 
+        self.showCall(call)
         self.callService.individualCallService.handleAcceptCall(call)
         action.fulfill()
     }

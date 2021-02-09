@@ -13,6 +13,7 @@ protocol CallUIAdaptee {
     var notificationPresenter: NotificationPresenter { get }
     var hasManualRinger: Bool { get }
 
+    func getProvider() -> CXProvider?
     func startOutgoingCall(call: SignalCall)
     func reportIncomingCall(_ call: SignalCall, callerName: String, completion: @escaping (Error?) -> Void)
     func reportMissedCall(_ call: SignalCall, callerName: String)
@@ -29,6 +30,12 @@ protocol CallUIAdaptee {
     func setIsMuted(call: SignalCall, isMuted: Bool)
     func setHasLocalVideo(call: SignalCall, hasLocalVideo: Bool)
     func startAndShowOutgoingCall(address: SignalServiceAddress, hasLocalVideo: Bool)
+}
+
+extension CallUIAdaptee {
+    func getProvider() -> CXProvider? {
+        return nil
+    }
 }
 
 // Shared default implementations

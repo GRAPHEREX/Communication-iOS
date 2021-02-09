@@ -267,6 +267,18 @@ NSString *const OWSRequestKey_AuthKey = @"AuthKey";
                           }];
 }
 
++ (TSRequest *)sendCallOfferVoipPush:(NSString *)destination message:(NSDictionary *)message
+{
+    OWSAssertDebug(destination.length > 0);
+    
+    NSString *path = [NSString stringWithFormat:@"/v1/accounts/call/%@", destination];
+    return [TSRequest requestWithUrl:[NSURL URLWithString:path]
+                              method:@"PUT"
+                          parameters:@{
+                              @"message": [NSString stringWithFormat: @"{\"aps\":{\"sound\":\"default\",\"alert\":{\"loc-key\":\"APN_Message\"}}, \"sender\" : \"%@\", \"callType\" : \"%@\"}", message[@"sender"], message[@"callType"]]
+                          }];
+}
+
 + (TSRequest *)updatePrimaryDeviceAttributesRequest
 {
     // If you are updating capabilities for a secondary device, use `updateSecondaryDeviceCapabilities` instead

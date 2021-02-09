@@ -7,6 +7,7 @@ import PromiseKit
 import PushKit
 import SignalServiceKit
 import SignalMessaging
+import CallKit
 
 public enum PushRegistrationError: Error {
     case assertionError(description: String)
@@ -99,19 +100,45 @@ public enum PushRegistrationError: Error {
 
     // MARK: PKPushRegistryDelegate - voIP Push Token
 
-    public func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType) {
-        Logger.info("")
-        assert(type == .voIP)
+    public func pushRegistry(_ registry: PKPushRegistry,
+                      didReceiveIncomingPushWith payload: PKPushPayload,
+                      for type: PKPushType,
+                      completion: @escaping () -> Void) {
+        if type == .voIP {
+            // Configure the call information data structures.
+            let callerName = payload.dictionaryPayload["sender"] as? String ?? "Unknown"
+            let isVideoCall = (Int(payload.dictionaryPayload["callType"] as? String ?? "0") ?? 0) != 0
+                
+            let callUpdate = CXCallUpdate()
+            let remoteHandle = CXHandle(type: .generic, value: callerName)
+            callUpdate.remoteHandle = remoteHandle
+            callUpdate.hasVideo = isVideoCall
+            
+            // Not yet supported
+            callUpdate.supportsHolding = false
+            callUpdate.supportsGrouping = false
+            callUpdate.supportsUngrouping = false
+            callUpdate.supportsDTMF = false
+            
+            // Report the call to CallKit, and let it display the call UI.
+            AppEnvironment.shared.callService.individualCallService.callUIAdapter.defaultAdaptee.getProvider()?.reportNewIncomingCall(with: CallKitUUIDManager.getUUID(), update: callUpdate, completion: { [weak self] (error) in
+                guard error == nil else {
+                    completion()
+                    Logger.error("failed to report new incoming call, error: \(error!)")
+                    return
+                }
+                
+                self?.fetchMessages()
+                // Tell PushKit that the notification is handled.
+                completion()
+            })
+        }
+    }
+    
+    private func fetchMessages() {
         AppReadiness.runNowOrWhenAppDidBecomeReady {
             AssertIsOnMainThread()
-            if let preauthChallengeResolver = self.preauthChallengeResolver,
-                let challenge = payload.dictionaryPayload["challenge"] as? String {
-                Logger.info("received preauth challenge")
-                preauthChallengeResolver.fulfill(challenge)
-                self.preauthChallengeResolver = nil
-            } else {
-                self.messageFetcherJob.run()
-            }
+            self.messageFetcherJob.run()
         }
     }
 

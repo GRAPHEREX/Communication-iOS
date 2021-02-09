@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSString *content;
 @property (nonatomic, readonly) BOOL silent;
 @property (nonatomic, readonly) BOOL online;
+@property (nonatomic, readonly) BOOL voip;
+@property (nonatomic, readonly) NSString *push;
 
 - (instancetype)initWithType:(TSWhisperMessageType)type
                      address:(SignalServiceAddress *)address
@@ -32,7 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
                      content:(NSData *)content
                     isSilent:(BOOL)isSilent
                     isOnline:(BOOL)isOnline
-              registrationId:(int)registrationId;
+              registrationId:(int)registrationId
+                        push:(NSString *)push;
 
 @end
 

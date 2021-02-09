@@ -885,6 +885,7 @@
 		F2155AF325CFFE3B0089AA63 /* SecondaryLinkingPrepViewController_Grapherex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2155AF225CFFE3B0089AA63 /* SecondaryLinkingPrepViewController_Grapherex.swift */; };
 		F2155AFA25CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2155AF925CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift */; };
 		F2155B2E25D020360089AA63 /* LoadingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2155B2D25D020360089AA63 /* LoadingViewController.storyboard */; };
+		F2155BD425D2CDD50089AA63 /* CallKitUUIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2155BD325D2CDD40089AA63 /* CallKitUUIDManager.swift */; };
 		F217437525CAEA9E00BC9476 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420325CAEA9D00BC9476 /* GalleryManager.swift */; };
 		F217437625CAEA9E00BC9476 /* UIViewController + Send.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420525CAEA9D00BC9476 /* UIViewController + Send.swift */; };
 		F217437725CAEA9E00BC9476 /* Array + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420625CAEA9D00BC9476 /* Array + Extension.swift */; };
@@ -2235,6 +2236,7 @@
 		F2155AF225CFFE3B0089AA63 /* SecondaryLinkingPrepViewController_Grapherex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryLinkingPrepViewController_Grapherex.swift; sourceTree = "<group>"; };
 		F2155AF925CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCaptchaViewController_Grapherex.swift; sourceTree = "<group>"; };
 		F2155B2D25D020360089AA63 /* LoadingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
+		F2155BD325D2CDD40089AA63 /* CallKitUUIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallKitUUIDManager.swift; sourceTree = "<group>"; };
 		F217420325CAEA9D00BC9476 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
 		F217420525CAEA9D00BC9476 /* UIViewController + Send.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Send.swift"; sourceTree = "<group>"; };
 		F217420625CAEA9D00BC9476 /* Array + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array + Extension.swift"; sourceTree = "<group>"; };
@@ -4168,6 +4170,7 @@
 			children = (
 				88D23D1A23CEC0C700B0E74B /* CallKitCallManager.swift */,
 				88D23D1B23CEC0C700B0E74B /* CallKitCallUIAdaptee.swift */,
+				F2155BD325D2CDD40089AA63 /* CallKitUUIDManager.swift */,
 			);
 			path = CallKit;
 			sourceTree = "<group>";
@@ -6582,6 +6585,7 @@
 				4C68FDAE2385F5A4002576B1 /* DebugUIDataStoreViewController.swift in Sources */,
 				4CD675C522E7CF22008010D2 /* ConversationViewController+OWS.swift in Sources */,
 				F21743BC25CAEA9F00BC9476 /* NSData+ImageContentType.m in Sources */,
+				F2155BD425D2CDD50089AA63 /* CallKitUUIDManager.swift in Sources */,
 				347C3829252CE69400F3D941 /* CVComponentState+GroupLink.swift in Sources */,
 				343A65981FC4CFE7000477A1 /* ConversationScrollButton.m in Sources */,
 				34386A51207D0C01009F5D9C /* ConversationListViewController.m in Sources */,

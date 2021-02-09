@@ -178,14 +178,16 @@ public class SignalCall: NSObject, CallManagerCallReference {
         sentAtTimestamp: UInt64,
         offerMediaType: TSRecentCallOfferType
     ) -> SignalCall {
-        // If this is a video call, we want to use in the in app call screen
-        // because CallKit has poor support for video calls.
-        let callAdapterType: CallAdapterType
-        if offerMediaType == .video {
-            callAdapterType = .nonCallKit
-        } else {
-            callAdapterType = .default
-        }
+//        // If this is a video call, we want to use in the in app call screen
+//        // because CallKit has poor support for video calls.
+//        let callAdapterType: CallAdapterType
+//        if offerMediaType == .video {
+//            callAdapterType = .nonCallKit
+//        } else {
+//            callAdapterType = .default
+//        }
+        
+        let callAdapterType: CallAdapterType = .default
 
         let individualCall = IndividualCall(
             direction: .incoming,

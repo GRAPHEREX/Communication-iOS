@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
                     isSilent:(BOOL)isSilent
                     isOnline:(BOOL)isOnline
               registrationId:(int)registrationId
+                        push:(NSString *)push
 {
     OWSAssertDebug(address.isValid);
     self = [super init];
@@ -39,7 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
     _content = [content base64EncodedString];
     _silent = isSilent;
     _online = isOnline;
-
+    _push = push;
+    
     return self;
 }
 

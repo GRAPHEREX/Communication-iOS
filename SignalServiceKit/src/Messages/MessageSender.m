@@ -54,6 +54,7 @@
 #import <SignalCoreKit/Threading.h>
 #import <SignalMetadataKit/SignalMetadataKit-Swift.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import "OWSOutgoingCallMessage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -1548,7 +1549,37 @@ NSString *const MessageSenderRateLimitedException = @"RateLimitedException";
         serializedMessage = encryptedMessage.serialized;
         messageType = [self messageTypeForCipherMessage:encryptedMessage];
     }
-
+    
+    BOOL isVoip = NO;
+    if ([message isKindOfClass:[OWSOutgoingCallMessage class]]) {
+        isVoip = ((OWSOutgoingCallMessage *)message).offerMessage != nil;
+    }
+    
+    if (isVoip) {
+        SSKProtoCallMessageOfferType callType = ((OWSOutgoingCallMessage *)message).offerMessage.unwrappedType;
+        BOOL isVideoCall = callType == SSKProtoCallMessageOfferTypeOfferVideoCall;
+        NSString *profileName = [self.contactsManager displayNameForAddress:messageSend.localAddress];
+        NSString *destination = messageSend.address.phoneNumber ?: messageSend.address.uuidString; // SKYTech: check if it works with adresses without phone number
+        TSRequest *request = [OWSRequestFactory sendCallOfferVoipPush:destination message:
+                              @{
+                                  @"sender": profileName,
+                                  @"callType": [NSNumber numberWithBool:isVideoCall]
+                              }];
+        [self.networkManager makeRequest:request success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"Success");
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"Error %@", error);
+        }];
+    }
+    
+    NSString *push = nil;
+    if (message.body.length > 0 || [message hasAttachments]) {
+        push = @"{\\\"aps\\\" : { \\\"alert\\\" : \\\"New message\\\" }}";
+    }
+    else if (message.groupMetaMessage == TSGroupMetaMessageNew) {
+        push = @"{\\\"aps\\\" : { \\\"alert\\\" : \\\"New group\\\" }}";
+    }
+    
     BOOL isSilent = message.isSilent;
     BOOL isOnline = message.isOnline;
     OWSMessageServiceParams *messageParams =
@@ -1558,7 +1589,8 @@ NSString *const MessageSenderRateLimitedException = @"RateLimitedException";
                                               content:serializedMessage
                                              isSilent:isSilent
                                              isOnline:isOnline
-                                       registrationId:[cipher throws_remoteRegistrationId:transaction]];
+                                       registrationId:[cipher throws_remoteRegistrationId:transaction]
+                                                 push:push];
 
     NSError *error;
     NSDictionary *jsonDict = [MTLJSONAdapter JSONDictionaryFromModel:messageParams error:&error];

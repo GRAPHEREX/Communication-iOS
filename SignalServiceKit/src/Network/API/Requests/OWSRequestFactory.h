@@ -66,6 +66,8 @@ typedef NS_ENUM(NSUInteger, TSVerificationTransport) { TSVerificationTransportVo
 
 + (TSRequest *)registerForPushRequestWithPushIdentifier:(NSString *)identifier voipIdentifier:(NSString *)voipId;
 
++ (TSRequest *)sendCallOfferVoipPush:(NSString *)destination message:(NSDictionary *)message;
+
 + (TSRequest *)accountWhoAmIRequest;
 
 + (TSRequest *)unregisterAccountRequest;
