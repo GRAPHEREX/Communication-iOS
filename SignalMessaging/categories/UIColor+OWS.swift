@@ -59,6 +59,11 @@ public extension UIColor {
         return UIColor(rgbHex: 0x4BDC9B)
     }
     
+    @objc(st_messageGreen)
+    class var st_messageGreen: UIColor {
+        return UIColor(rgbHex: 0x43C68B)
+    }
+    
     @objc(st_accentBlack)
     class var st_accentBlack: UIColor {
         return UIColor(rgbHex: 0x030303)

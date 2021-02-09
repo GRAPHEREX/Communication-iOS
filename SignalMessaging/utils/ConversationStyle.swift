@@ -196,18 +196,24 @@ public class ConversationStyle: NSObject {
         if hasWallpaper {
             return isDarkThemeEnabled ? .ows_gray95 : .white
         } else {
-            return isDarkThemeEnabled ? UIColor.ows_gray80 : UIColor.ows_gray05
+            return isDarkThemeEnabled ? UIColor.ows_gray85 : UIColor.ows_gray05
         }
     }
 
     @objc
-    public let bubbleColorOutgoingFailed = UIColor.ows_accentBlue
+    public var bubbleColorOutgoingFailed: UIColor {
+        return Theme.isDarkThemeEnabled ? UIColor.ows_gray75 : UIColor.st_messageGreen
+    }
 
     @objc
-    public let bubbleColorOutgoingSending = UIColor.ows_accentBlue
+    public var bubbleColorOutgoingSending: UIColor {
+        return Theme.isDarkThemeEnabled ? UIColor.ows_gray75 : UIColor.st_messageGreen
+    }
 
     @objc
-    public let bubbleColorOutgoingSent = UIColor.ows_accentBlue
+    public var bubbleColorOutgoingSent: UIColor {
+        return Theme.isDarkThemeEnabled ? UIColor.ows_gray75 : UIColor.st_messageGreen
+    }
 
     @objc
     public let dateBreakTextColor = UIColor.ows_gray60
