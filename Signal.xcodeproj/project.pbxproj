@@ -538,7 +538,6 @@
 		45BD60821DE9547E00A8F436 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BD60811DE9547E00A8F436 /* Contacts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		45C0DC1B1E68FE9000E04C47 /* UIApplication+OWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0DC1A1E68FE9000E04C47 /* UIApplication+OWS.swift */; };
 		45C0DC1E1E69011F00E04C47 /* UIStoryboard+OWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C0DC1D1E69011F00E04C47 /* UIStoryboard+OWS.swift */; };
-		45CB2FA81CB7146C00E1B343 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CB2FA71CB7146C00E1B343 /* Launch Screen.storyboard */; };
 		45CD81EF1DC030E7004C9430 /* SyncPushTokensJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD81EE1DC030E7004C9430 /* SyncPushTokensJob.swift */; };
 		45D231771DC7E8F10034FA89 /* SessionResetJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D231761DC7E8F10034FA89 /* SessionResetJob.swift */; };
 		45D308AD2049A439000189E4 /* PinEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D308AC2049A439000189E4 /* PinEntryView.m */; };
@@ -886,6 +885,7 @@
 		F2155AFA25CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2155AF925CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift */; };
 		F2155B2E25D020360089AA63 /* LoadingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2155B2D25D020360089AA63 /* LoadingViewController.storyboard */; };
 		F2155BD425D2CDD50089AA63 /* CallKitUUIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2155BD325D2CDD40089AA63 /* CallKitUUIDManager.swift */; };
+		F2155DC625D435A20089AA63 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2155DC825D435A20089AA63 /* Launch Screen.storyboard */; };
 		F217437525CAEA9E00BC9476 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420325CAEA9D00BC9476 /* GalleryManager.swift */; };
 		F217437625CAEA9E00BC9476 /* UIViewController + Send.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420525CAEA9D00BC9476 /* UIViewController + Send.swift */; };
 		F217437725CAEA9E00BC9476 /* Array + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420625CAEA9D00BC9476 /* Array + Extension.swift */; };
@@ -1798,7 +1798,6 @@
 		45BD60811DE9547E00A8F436 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		45C0DC1A1E68FE9000E04C47 /* UIApplication+OWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+OWS.swift"; sourceTree = "<group>"; };
 		45C0DC1D1E69011F00E04C47 /* UIStoryboard+OWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+OWS.swift"; sourceTree = "<group>"; };
-		45CB2FA71CB7146C00E1B343 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Signal/src/util/Launch Screen.storyboard"; sourceTree = SOURCE_ROOT; };
 		45CD81EE1DC030E7004C9430 /* SyncPushTokensJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncPushTokensJob.swift; sourceTree = "<group>"; };
 		45D231761DC7E8F10034FA89 /* SessionResetJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionResetJob.swift; sourceTree = "<group>"; };
 		45D308AB2049A439000189E4 /* PinEntryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinEntryView.h; sourceTree = "<group>"; };
@@ -2237,6 +2236,7 @@
 		F2155AF925CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCaptchaViewController_Grapherex.swift; sourceTree = "<group>"; };
 		F2155B2D25D020360089AA63 /* LoadingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
 		F2155BD325D2CDD40089AA63 /* CallKitUUIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallKitUUIDManager.swift; sourceTree = "<group>"; };
+		F2155DC725D435A20089AA63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F217420325CAEA9D00BC9476 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
 		F217420525CAEA9D00BC9476 /* UIViewController + Send.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Send.swift"; sourceTree = "<group>"; };
 		F217420625CAEA9D00BC9476 /* Array + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array + Extension.swift"; sourceTree = "<group>"; };
@@ -3667,7 +3667,7 @@
 		45CD81A41DBFF8CF004C9430 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				45CB2FA71CB7146C00E1B343 /* Launch Screen.storyboard */,
+				F2155DC825D435A20089AA63 /* Launch Screen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -5519,9 +5519,7 @@
 				TargetAttributes = {
 					453518671FC635DD00210559 = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = RWMG9CKL24;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -5547,13 +5545,9 @@
 					};
 					885AC56323AB42430077705E = {
 						CreatedOnToolsVersion = 11.2.1;
-						DevelopmentTeam = RWMG9CKL24;
-						ProvisioningStyle = Automatic;
 					};
 					D221A088169C9E5E00537ABF = {
-						DevelopmentTeam = RWMG9CKL24;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -5760,7 +5754,7 @@
 				34CF0788203E6B78005C4D61 /* ringback_tone_ansi.caf in Resources */,
 				34C3C78F2040A4F70000134C /* sonarping.mp3 in Resources */,
 				34661FB820C1C0D60056EDD6 /* message_sent.aiff in Resources */,
-				45CB2FA81CB7146C00E1B343 /* Launch Screen.storyboard in Resources */,
+				F2155DC625D435A20089AA63 /* Launch Screen.storyboard in Resources */,
 				887CD4872473587300FDD265 /* transfer.json in Resources */,
 				4C0CF6FA2386295400C9F818 /* tap_to_focus.json in Resources */,
 				34CF0787203E6B78005C4D61 /* busy_tone_ansi.caf in Resources */,
@@ -7297,6 +7291,15 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		F2155DC825D435A20089AA63 /* Launch Screen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2155DC725D435A20089AA63 /* Base */,
+			);
+			name = "Launch Screen.storyboard";
+			path = Signal/src/util;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -7318,7 +7321,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = SignalShareExtension/SignalShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1.0.2.67;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -7342,7 +7345,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex.shareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Share Extension Dev";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "SignalShareExtension/SignalShareExtension-Bridging-Header.h";
@@ -7670,7 +7673,7 @@
 				CODE_SIGN_ENTITLEMENTS = Signal/Signal.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.0.2.67;
 				DEVELOPMENT_TEAM = RWMG9CKL24;
 				ENABLE_TESTABILITY = YES;
@@ -7714,7 +7717,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex;
 				PRODUCT_NAME = Signal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Development";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";
@@ -7820,7 +7823,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = SignalShareExtension/SignalShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1.0.2.67;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -7850,7 +7853,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex.shareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Share Extension Dev";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -8226,7 +8229,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Signal/Signal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.0.2.67;
 				DEVELOPMENT_TEAM = RWMG9CKL24;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -8269,7 +8272,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex;
 				PRODUCT_NAME = Signal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Development";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";
@@ -8373,7 +8376,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = SignalShareExtension/SignalShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1.0.2.67;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -8401,7 +8404,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex.shareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Share Extension Dev";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -8589,8 +8592,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = NotificationServiceExtension/NotificationServiceExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1.0.2.67;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -8617,7 +8620,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Notification Service Extension Dev";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -8645,8 +8648,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = NotificationServiceExtension/NotificationServiceExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1.0.2.67;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -8672,7 +8675,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Notification Service Extension Dev";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -8788,8 +8791,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = NotificationServiceExtension/NotificationServiceExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1.0.2.67;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -8816,7 +8819,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Notification Service Extension Dev";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -9010,7 +9013,7 @@
 				CODE_SIGN_ENTITLEMENTS = Signal/Signal.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.0.2.67;
 				DEVELOPMENT_TEAM = RWMG9CKL24;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -9054,7 +9057,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex;
 				PRODUCT_NAME = Signal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Development";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";
