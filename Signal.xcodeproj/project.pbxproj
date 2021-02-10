@@ -633,9 +633,6 @@
 		4C9D347B23679C25006A4307 /* GroupAndContactStreamTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9D347923679C13006A4307 /* GroupAndContactStreamTest.swift */; };
 		4C9D347F23689E06006A4307 /* IncomingContactSyncJobQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9D347E23689E06006A4307 /* IncomingContactSyncJobQueue.swift */; };
 		4C9D34972369F0FC006A4307 /* notificationPermission.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C9D34962369F0FC006A4307 /* notificationPermission.json */; };
-		4C9D349B2369F11F006A4307 /* notificationPermission1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9D34982369F11E006A4307 /* notificationPermission1.png */; };
-		4C9D349C2369F11F006A4307 /* notificationPermission0.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9D34992369F11E006A4307 /* notificationPermission0.png */; };
-		4C9D349D2369F11F006A4307 /* notificationPermission2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9D349A2369F11F006A4307 /* notificationPermission2.png */; };
 		4CA46F4C219CCC630038ABDE /* CaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46F4B219CCC630038ABDE /* CaptionView.swift */; };
 		4CA46F4D219CFDAA0038ABDE /* GalleryRailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46F49219C78050038ABDE /* GalleryRailView.swift */; };
 		4CA485BB2232339F004B9E7D /* PhotoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA485BA2232339F004B9E7D /* PhotoCaptureViewController.swift */; };
@@ -885,7 +882,10 @@
 		F2155AFA25CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2155AF925CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift */; };
 		F2155B2E25D020360089AA63 /* LoadingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2155B2D25D020360089AA63 /* LoadingViewController.storyboard */; };
 		F2155BD425D2CDD50089AA63 /* CallKitUUIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2155BD325D2CDD40089AA63 /* CallKitUUIDManager.swift */; };
-		F2155DC625D435A20089AA63 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2155DC825D435A20089AA63 /* Launch Screen.storyboard */; };
+		F2155E0A25D4412A0089AA63 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2155E0925D4412A0089AA63 /* Launch Screen.storyboard */; };
+		F2155E1B25D44D530089AA63 /* notificationPermission0.png in Resources */ = {isa = PBXBuildFile; fileRef = F2155E1A25D44D530089AA63 /* notificationPermission0.png */; };
+		F2155E2725D44EA20089AA63 /* notificationPermission1.png in Resources */ = {isa = PBXBuildFile; fileRef = F2155E2625D44EA20089AA63 /* notificationPermission1.png */; };
+		F2155E2E25D44EAC0089AA63 /* notificationPermission2.png in Resources */ = {isa = PBXBuildFile; fileRef = F2155E2D25D44EAC0089AA63 /* notificationPermission2.png */; };
 		F217437525CAEA9E00BC9476 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420325CAEA9D00BC9476 /* GalleryManager.swift */; };
 		F217437625CAEA9E00BC9476 /* UIViewController + Send.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420525CAEA9D00BC9476 /* UIViewController + Send.swift */; };
 		F217437725CAEA9E00BC9476 /* Array + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420625CAEA9D00BC9476 /* Array + Extension.swift */; };
@@ -996,13 +996,13 @@
 		F21743F525CAEA9F00BC9476 /* OnboardingSplashViewController_Grapherex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21742F725CAEA9E00BC9476 /* OnboardingSplashViewController_Grapherex.swift */; };
 		F21743F625CAEA9F00BC9476 /* OnboardingSplashViewController_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21742F825CAEA9E00BC9476 /* OnboardingSplashViewController_old.swift */; };
 		F21743FB25CAEA9F00BC9476 /* Onboarding2FAViewController_Grapherex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21742FE25CAEA9E00BC9476 /* Onboarding2FAViewController_Grapherex.swift */; };
-		F21743FC25CAEA9F00BC9476 /* OnboardingVerificationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F217430025CAEA9E00BC9476 /* OnboardingVerificationViewController.storyboard */; };
+		F21743FC25CAEA9F00BC9476 /* OnboardingVerificationViewController_Grapherex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F217430025CAEA9E00BC9476 /* OnboardingVerificationViewController_Grapherex.storyboard */; };
 		F21743FD25CAEA9F00BC9476 /* OnboardingCodeView_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217430225CAEA9E00BC9476 /* OnboardingCodeView_old.swift */; };
 		F21743FE25CAEA9F00BC9476 /* OnboardingVerificationViewController_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217430325CAEA9E00BC9476 /* OnboardingVerificationViewController_old.swift */; };
 		F21743FF25CAEA9F00BC9476 /* OnboardingCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217430425CAEA9E00BC9476 /* OnboardingCodeView.swift */; };
 		F217440025CAEA9F00BC9476 /* OnboardingVerificationViewController_Grapherex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217430525CAEA9E00BC9476 /* OnboardingVerificationViewController_Grapherex.swift */; };
 		F217440125CAEA9F00BC9476 /* OnboardingPhoneNumberViewController_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217430725CAEA9E00BC9476 /* OnboardingPhoneNumberViewController_old.swift */; };
-		F217440225CAEA9F00BC9476 /* OnboardingPhoneNumberViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F217430825CAEA9E00BC9476 /* OnboardingPhoneNumberViewController.storyboard */; };
+		F217440225CAEA9F00BC9476 /* OnboardingPhoneNumberViewController_Grapherex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F217430825CAEA9E00BC9476 /* OnboardingPhoneNumberViewController_Grapherex.storyboard */; };
 		F217440325CAEA9F00BC9476 /* OnboardingPhoneNumberViewController_Grapherex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217430925CAEA9E00BC9476 /* OnboardingPhoneNumberViewController_Grapherex.swift */; };
 		F217440525CAEA9F00BC9476 /* OnboardingPermissionsViewController_Grapherex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217430B25CAEA9E00BC9476 /* OnboardingPermissionsViewController_Grapherex.swift */; };
 		F217440625CAEA9F00BC9476 /* AddNewContactController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F217430E25CAEA9E00BC9476 /* AddNewContactController.storyboard */; };
@@ -1883,9 +1883,6 @@
 		4C9D347923679C13006A4307 /* GroupAndContactStreamTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAndContactStreamTest.swift; sourceTree = "<group>"; };
 		4C9D347E23689E06006A4307 /* IncomingContactSyncJobQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingContactSyncJobQueue.swift; sourceTree = "<group>"; };
 		4C9D34962369F0FC006A4307 /* notificationPermission.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = notificationPermission.json; sourceTree = "<group>"; };
-		4C9D34982369F11E006A4307 /* notificationPermission1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationPermission1.png; sourceTree = "<group>"; };
-		4C9D34992369F11E006A4307 /* notificationPermission0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationPermission0.png; sourceTree = "<group>"; };
-		4C9D349A2369F11F006A4307 /* notificationPermission2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationPermission2.png; sourceTree = "<group>"; };
 		4CA46F49219C78050038ABDE /* GalleryRailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryRailView.swift; sourceTree = "<group>"; };
 		4CA46F4B219CCC630038ABDE /* CaptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionView.swift; sourceTree = "<group>"; };
 		4CA485BA2232339F004B9E7D /* PhotoCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureViewController.swift; sourceTree = "<group>"; };
@@ -2236,7 +2233,10 @@
 		F2155AF925CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCaptchaViewController_Grapherex.swift; sourceTree = "<group>"; };
 		F2155B2D25D020360089AA63 /* LoadingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
 		F2155BD325D2CDD40089AA63 /* CallKitUUIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallKitUUIDManager.swift; sourceTree = "<group>"; };
-		F2155DC725D435A20089AA63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F2155E0925D4412A0089AA63 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "util/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F2155E1A25D44D530089AA63 /* notificationPermission0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationPermission0.png; sourceTree = "<group>"; };
+		F2155E2625D44EA20089AA63 /* notificationPermission1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationPermission1.png; sourceTree = "<group>"; };
+		F2155E2D25D44EAC0089AA63 /* notificationPermission2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationPermission2.png; sourceTree = "<group>"; };
 		F217420325CAEA9D00BC9476 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
 		F217420525CAEA9D00BC9476 /* UIViewController + Send.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Send.swift"; sourceTree = "<group>"; };
 		F217420625CAEA9D00BC9476 /* Array + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array + Extension.swift"; sourceTree = "<group>"; };
@@ -2422,13 +2422,13 @@
 		F21742F725CAEA9E00BC9476 /* OnboardingSplashViewController_Grapherex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSplashViewController_Grapherex.swift; sourceTree = "<group>"; };
 		F21742F825CAEA9E00BC9476 /* OnboardingSplashViewController_old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSplashViewController_old.swift; sourceTree = "<group>"; };
 		F21742FE25CAEA9E00BC9476 /* Onboarding2FAViewController_Grapherex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding2FAViewController_Grapherex.swift; sourceTree = "<group>"; };
-		F217430025CAEA9E00BC9476 /* OnboardingVerificationViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnboardingVerificationViewController.storyboard; sourceTree = "<group>"; };
+		F217430025CAEA9E00BC9476 /* OnboardingVerificationViewController_Grapherex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnboardingVerificationViewController_Grapherex.storyboard; sourceTree = "<group>"; };
 		F217430225CAEA9E00BC9476 /* OnboardingCodeView_old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCodeView_old.swift; sourceTree = "<group>"; };
 		F217430325CAEA9E00BC9476 /* OnboardingVerificationViewController_old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingVerificationViewController_old.swift; sourceTree = "<group>"; };
 		F217430425CAEA9E00BC9476 /* OnboardingCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCodeView.swift; sourceTree = "<group>"; };
 		F217430525CAEA9E00BC9476 /* OnboardingVerificationViewController_Grapherex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingVerificationViewController_Grapherex.swift; sourceTree = "<group>"; };
 		F217430725CAEA9E00BC9476 /* OnboardingPhoneNumberViewController_old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPhoneNumberViewController_old.swift; sourceTree = "<group>"; };
-		F217430825CAEA9E00BC9476 /* OnboardingPhoneNumberViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnboardingPhoneNumberViewController.storyboard; sourceTree = "<group>"; };
+		F217430825CAEA9E00BC9476 /* OnboardingPhoneNumberViewController_Grapherex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnboardingPhoneNumberViewController_Grapherex.storyboard; sourceTree = "<group>"; };
 		F217430925CAEA9E00BC9476 /* OnboardingPhoneNumberViewController_Grapherex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPhoneNumberViewController_Grapherex.swift; sourceTree = "<group>"; };
 		F217430B25CAEA9E00BC9476 /* OnboardingPermissionsViewController_Grapherex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController_Grapherex.swift; sourceTree = "<group>"; };
 		F217430E25CAEA9E00BC9476 /* AddNewContactController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddNewContactController.storyboard; sourceTree = "<group>"; };
@@ -3667,7 +3667,7 @@
 		45CD81A41DBFF8CF004C9430 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				F2155DC825D435A20089AA63 /* Launch Screen.storyboard */,
+				F2155E0925D4412A0089AA63 /* Launch Screen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -3751,9 +3751,9 @@
 		4C9D348B2369EA69006A4307 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				4C9D34992369F11E006A4307 /* notificationPermission0.png */,
-				4C9D34982369F11E006A4307 /* notificationPermission1.png */,
-				4C9D349A2369F11F006A4307 /* notificationPermission2.png */,
+				F2155E1A25D44D530089AA63 /* notificationPermission0.png */,
+				F2155E2625D44EA20089AA63 /* notificationPermission1.png */,
+				F2155E2D25D44EAC0089AA63 /* notificationPermission2.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -4849,7 +4849,7 @@
 		F21742FF25CAEA9E00BC9476 /* OnboardingCodeView */ = {
 			isa = PBXGroup;
 			children = (
-				F217430025CAEA9E00BC9476 /* OnboardingVerificationViewController.storyboard */,
+				F217430025CAEA9E00BC9476 /* OnboardingVerificationViewController_Grapherex.storyboard */,
 				F217430125CAEA9E00BC9476 /* Old */,
 				F217430425CAEA9E00BC9476 /* OnboardingCodeView.swift */,
 				F217430525CAEA9E00BC9476 /* OnboardingVerificationViewController_Grapherex.swift */,
@@ -4870,7 +4870,7 @@
 			isa = PBXGroup;
 			children = (
 				F217430725CAEA9E00BC9476 /* OnboardingPhoneNumberViewController_old.swift */,
-				F217430825CAEA9E00BC9476 /* OnboardingPhoneNumberViewController.storyboard */,
+				F217430825CAEA9E00BC9476 /* OnboardingPhoneNumberViewController_Grapherex.storyboard */,
 				F217430925CAEA9E00BC9476 /* OnboardingPhoneNumberViewController_Grapherex.swift */,
 			);
 			path = OnboardingPhoneNumberViewController;
@@ -5742,7 +5742,7 @@
 				F217451325CAF58800BC9476 /* SFUIText-Regular.ttf in Resources */,
 				34CF078A203E6B78005C4D61 /* end_call_tone_cept.caf in Resources */,
 				34330A5A1E7875FB00DF2FB9 /* fontawesome-webfont.ttf in Resources */,
-				F217440225CAEA9F00BC9476 /* OnboardingPhoneNumberViewController.storyboard in Resources */,
+				F217440225CAEA9F00BC9476 /* OnboardingPhoneNumberViewController_Grapherex.storyboard in Resources */,
 				F217451525CAF58800BC9476 /* Roboto-Regular.ttf in Resources */,
 				A5E7C675248C5443007C949A /* InfoPlist.strings in Resources */,
 				34330A5C1E787A9800DF2FB9 /* dripicons-v2.ttf in Resources */,
@@ -5754,23 +5754,23 @@
 				34CF0788203E6B78005C4D61 /* ringback_tone_ansi.caf in Resources */,
 				34C3C78F2040A4F70000134C /* sonarping.mp3 in Resources */,
 				34661FB820C1C0D60056EDD6 /* message_sent.aiff in Resources */,
-				F2155DC625D435A20089AA63 /* Launch Screen.storyboard in Resources */,
 				887CD4872473587300FDD265 /* transfer.json in Resources */,
 				4C0CF6FA2386295400C9F818 /* tap_to_focus.json in Resources */,
 				34CF0787203E6B78005C4D61 /* busy_tone_ansi.caf in Resources */,
 				F217440625CAEA9F00BC9476 /* AddNewContactController.storyboard in Resources */,
 				347C3855252DF8DC00F3D941 /* splash_groupsv2_iOS_light.json in Resources */,
-				4C9D349C2369F11F006A4307 /* notificationPermission0.png in Resources */,
 				886CB07824E77E5B00753909 /* silence.aiff in Resources */,
 				34330A5E1E787BD800DF2FB9 /* ElegantIcons.ttf in Resources */,
 				F217451425CAF58800BC9476 /* SFUIText-Semibold.ttf in Resources */,
 				45A2F005204473A3002E978A /* NewMessage.aifc in Resources */,
+				F2155E0A25D4412A0089AA63 /* Launch Screen.storyboard in Resources */,
 				45B74A882044AAB600CD42F8 /* aurora.aifc in Resources */,
 				88BFD4732335C2B3001797D7 /* waveformLoading.json in Resources */,
 				88D6E940254CF712003142D9 /* group_call_join.aiff in Resources */,
 				45B74A742044AAB600CD42F8 /* aurora-quiet.aifc in Resources */,
 				45B74A852044AAB600CD42F8 /* bamboo.aifc in Resources */,
 				45B74A782044AAB600CD42F8 /* bamboo-quiet.aifc in Resources */,
+				F2155E2E25D44EAC0089AA63 /* notificationPermission2.png in Resources */,
 				8837F73D23D8DE8500772A32 /* pinCreationSuccess.json in Resources */,
 				F217438225CAEA9E00BC9476 /* GoogleService-Info.plist in Resources */,
 				45B74A7B2044AAB600CD42F8 /* chord.aifc in Resources */,
@@ -5799,15 +5799,15 @@
 				45B74A7A2044AAB600CD42F8 /* keys.aifc in Resources */,
 				F217438F25CAEA9F00BC9476 /* README.md in Resources */,
 				45B74A762044AAB600CD42F8 /* keys-quiet.aifc in Resources */,
+				F2155E2725D44EA20089AA63 /* notificationPermission1.png in Resources */,
 				45B74A862044AAB600CD42F8 /* note.aifc in Resources */,
 				888C828323D795FA0059464B /* pinCreationInProgress.json in Resources */,
 				45B74A7F2044AAB600CD42F8 /* note-quiet.aifc in Resources */,
-				4C9D349B2369F11F006A4307 /* notificationPermission1.png in Resources */,
 				45B74A842044AAB600CD42F8 /* popcorn.aifc in Resources */,
 				45B74A7D2044AAB600CD42F8 /* popcorn-quiet.aifc in Resources */,
+				F2155E1B25D44D530089AA63 /* notificationPermission0.png in Resources */,
 				45B74A822044AAB600CD42F8 /* pulse.aifc in Resources */,
-				F21743FC25CAEA9F00BC9476 /* OnboardingVerificationViewController.storyboard in Resources */,
-				4C9D349D2369F11F006A4307 /* notificationPermission2.png in Resources */,
+				F21743FC25CAEA9F00BC9476 /* OnboardingVerificationViewController_Grapherex.storyboard in Resources */,
 				887CD48A24735D4200FDD265 /* launchApp-iPhone.json in Resources */,
 				45B74A802044AAB600CD42F8 /* pulse-quiet.aifc in Resources */,
 				882F8DE6251AB23600AA4359 /* Settings.bundle in Resources */,
@@ -7290,15 +7290,6 @@
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
-		};
-		F2155DC825D435A20089AA63 /* Launch Screen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F2155DC725D435A20089AA63 /* Base */,
-			);
-			name = "Launch Screen.storyboard";
-			path = Signal/src/util;
-			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 

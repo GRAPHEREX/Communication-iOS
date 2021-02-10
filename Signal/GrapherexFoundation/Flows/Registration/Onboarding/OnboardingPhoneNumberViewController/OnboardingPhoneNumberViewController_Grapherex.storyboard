@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Onboarding Phone Number View Controller-->
+        <!--Onboarding Phone Number View Controller Grapherex-->
         <scene sceneID="hL9-Sx-ttb">
             <objects>
-                <viewController storyboardIdentifier="OnboardingPhoneNumberViewController" id="rBg-i9-7Ke" customClass="OnboardingPhoneNumberViewController" customModule="Signal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingPhoneNumberViewController_Grapherex" id="rBg-i9-7Ke" customClass="OnboardingPhoneNumberViewController_Grapherex" customModule="Signal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1O-AS-mbq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="253"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dPA-kg-eJr" secondAttribute="bottom" id="0yN-CD-i7l"/>
                                     <constraint firstItem="dPA-kg-eJr" firstAttribute="centerY" secondItem="9Uy-Md-3mI" secondAttribute="centerY" id="52c-JF-39T"/>
@@ -48,7 +49,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="EIL-JG-ogk" secondAttribute="bottom" id="92V-TS-iXr"/>
                                     <constraint firstItem="EIL-JG-ogk" firstAttribute="leading" secondItem="WpN-sn-s7h" secondAttribute="trailing" constant="4" id="Ac7-Qy-Dbg"/>
@@ -66,7 +67,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rwj-gA-Bxb" customClass="STPrimaryButton" customModule="SignalMessaging">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rwj-gA-Bxb" customClass="STPrimaryButton" customModule="SignalMessaging">
                                 <rect key="frame" x="16" y="599" width="343" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="Om8-0H-ahF"/>
@@ -76,14 +77,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNd-BQ-fac" userLabel="ButtonsView">
                                 <rect key="frame" x="0.0" y="655" width="375" height="0.0"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8h-GT-oMh" customClass="STGhostButton" customModule="SignalMessaging">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8h-GT-oMh" customClass="STGhostButton" customModule="SignalMessaging">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="64j-Ux-Bqj"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHP-e4-yss" customClass="STGhostButton" customModule="SignalMessaging">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHP-e4-yss" customClass="STGhostButton" customModule="SignalMessaging">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="xB0-rm-gTV"/>
@@ -103,7 +104,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="hpU-3k-Ocx"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstItem="KNd-BQ-fac" firstAttribute="leading" secondItem="hpU-3k-Ocx" secondAttribute="leading" id="5T9-bl-717"/>
                             <constraint firstItem="hpU-3k-Ocx" firstAttribute="trailing" secondItem="5DH-WI-zCp" secondAttribute="trailing" constant="16" id="72E-Dm-r1x"/>
@@ -124,7 +126,6 @@
                             <constraint firstItem="aHv-Ip-FfE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5DH-WI-zCp" secondAttribute="bottom" constant="4" id="vCx-gy-E7R"/>
                             <constraint firstItem="KNd-BQ-fac" firstAttribute="top" secondItem="Rwj-gA-Bxb" secondAttribute="bottom" id="xn1-JD-jRg"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="hpU-3k-Ocx"/>
                     </view>
                     <connections>
                         <outlet property="bottomSpacer" destination="mtf-BV-Fw4" id="Upd-CT-zRu"/>
@@ -145,4 +146,12 @@
             <point key="canvasLocation" x="130.40000000000001" y="128.18590704647679"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

@@ -6,6 +6,20 @@ import UIKit
 import PromiseKit
 
 @objc
+public class OnboardingNavigationController_Grapherex: OWSNavigationController {
+    let onboardingController: OnboardingController_Grapherex
+
+    @objc
+    public init(onboardingController: OnboardingController_Grapherex) {
+        self.onboardingController = onboardingController
+        super.init()
+        if let nextMilestone = onboardingController.nextMilestone {
+            setViewControllers([onboardingController.nextViewController(milestone: nextMilestone)], animated: false)
+        }
+    }
+}
+
+@objc
 public class OnboardingController_Grapherex: NSObject {
 
     // MARK: - Dependencies

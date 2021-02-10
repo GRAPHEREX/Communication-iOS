@@ -49,11 +49,11 @@ public class ProvisioningController_Grapherex: NSObject {
 
     @objc
     public static func presentRelinkingFlow() {
-        let onboardingController = OnboardingController(onboardingMode: .provisioning)
-        let navController = OnboardingNavigationController(onboardingController: onboardingController)
+        let onboardingController = OnboardingController_Grapherex(onboardingMode: .provisioning)
+        let navController = OnboardingNavigationController_Grapherex(onboardingController: onboardingController)
 
-        let provisioningController = ProvisioningController(onboardingController: onboardingController)
-        let vc = SecondaryLinkingQRCodeViewController(provisioningController: provisioningController)
+        let provisioningController = ProvisioningController_Grapherex(onboardingController: onboardingController)
+        let vc = SecondaryLinkingQRCodeViewController_Grapherex(provisioningController: provisioningController)
         navController.setViewControllers([vc], animated: false)
 
         provisioningController.awaitProvisioning(from: vc, navigationController: navController)
@@ -72,14 +72,11 @@ public class ProvisioningController_Grapherex: NSObject {
         let qrCodeViewController = SecondaryLinkingQRCodeViewController_Grapherex(provisioningController: self)
         navigationController.pushViewController(qrCodeViewController, animated: true)
 
-        awaitProvisioning(from: qrCodeViewController)
+        awaitProvisioning(from: qrCodeViewController, navigationController: navigationController)
     }
 
-    func awaitProvisioning(from viewController: SecondaryLinkingQRCodeViewController_Grapherex) {
-        guard let navigationController = viewController.navigationController else {
-            owsFailDebug("navigationController was unexpectedly nil")
-            return
-        }
+    func awaitProvisioning(from viewController: SecondaryLinkingQRCodeViewController_Grapherex,
+                           navigationController: UINavigationController) {
 
         awaitProvisionMessage.done { [weak self, weak navigationController] message in
             guard let self = self else { throw PMKError.cancelled }

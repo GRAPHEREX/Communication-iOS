@@ -94,18 +94,18 @@ NS_ASSUME_NONNULL_BEGIN
                               OWSLogInfo(@"re-registering: send verification code succeeded.");
 
                               [modalActivityIndicator dismissWithCompletion:^{
-                                  OnboardingController *onboardingController = [OnboardingController new];
+                                  OnboardingController_Grapherex *onboardingController = [OnboardingController_Grapherex new];
                                   OnboardingPhoneNumber *onboardingPhoneNumber =
                                       [[OnboardingPhoneNumber alloc] initWithE164:phoneNumber userInput:phoneNumber];
                                   [onboardingController updateWithPhoneNumber:onboardingPhoneNumber];
 
 
-                                  OnboardingVerificationViewController *viewController =
-                                      [[OnboardingVerificationViewController alloc]
-                                          initWithOnboardingController:onboardingController];
-                                  [viewController hideBackLink];
-                                  OnboardingNavigationController *navigationController =
-                                      [[OnboardingNavigationController alloc]
+                                  UIStoryboard *sb = [UIStoryboard storyboardWithName:@"OnboardingVerificationViewController_Grapherex" bundle:nil];
+                                  OnboardingVerificationViewController_Grapherex *viewController = [sb instantiateViewControllerWithIdentifier:@"OnboardingVerificationViewController_Grapherex"];
+                                  viewController.onboardingController = onboardingController;
+//                                  [viewController hideBackLink];
+                                  OnboardingNavigationController_Grapherex *navigationController =
+                                      [[OnboardingNavigationController_Grapherex alloc]
                                           initWithOnboardingController:onboardingController];
                                   [navigationController setViewControllers:@[ viewController ] animated:NO];
                                   navigationController.navigationBarHidden = YES;

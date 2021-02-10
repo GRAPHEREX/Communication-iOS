@@ -1,3 +1,241 @@
+//////////////////////////////////////////// SkyTech ///////////////////////////////////////////
+
+/* Default description for the given name field of the profile view. */
+"PROFILE_VIEW_GIVEN_NAME_DESCRIPTION_TEXT" = "Please enter your Display name,\nit will show for others users";
+
+/* Title for the 'contact delete confirmation' alert. */
+"CONTACT_DELETE_CONFIRMATION_ALERT_TITLE" = "Delete Contact?";
+
+/* Message for the 'contact delete confirmation' alert. */
+"CONTACT_DELETE_CONFIRMATION_ALERT_MESSAGE" = "This contact will be deleted from this device.";
+
+/* action sheet body */
+"REGISTER_RATE_BODY" = "Please wait half a minute before trying again.";
+
+/* No comment provided by engineer. */
+"SETTINGS_SECURITY" = "Security";
+
+/* No comment provided by engineer. */
+"SETTINGS_FAQ" = "F.A.Q";
+
+"MAIN_ALL" = "All";
+"MAIN_OR" = "or";
+"MAIN_USER_KEY" = "User key";
+"MAIN_ADD" = "Add";
+"MAIN_BACK" = "Back";
+"MAIN_MOBILE" = "Phone";
+"MAIN_USER_ID" = "User ID";
+"MAIN_DISPLAY_NAME" = "Display name";
+"MAIN_BLOCK_USER" = "Block user";
+"MAIN_UNBLOCK" = "Unblock";
+"MAIN_PROFILE" = "Profile";
+"MAIN_SENT" = "Sent";
+"MAIN_SEND" = "Send";
+"MAIN_RECEIVE" = "Receive";
+"MAIN_RECEIVED" = "Received";
+"MAIN_TIME" = "Time";
+"MAIN_AMOUNT" = "Amount";
+"MAIN_APPLY" = "Apply";
+"MAIN_INFO" = "Info";
+"MAIN_SYMBOL" = "Symbol";
+"MAIN_CHAIN" = "Chain";
+"MAIN_THANK_YOU" = "Thank you";
+"MAIN_COPY" = "Copy";
+"MAIN_WALLET" = "Wallet";
+"MAIN_RECIPIENT" = "Recipient";
+"MAIN_TOTAL" = "Total";
+"MAIN_FEE" = "Fee";
+"MAIN_TAG" = "Tag";
+"MAIN_DONE" = "Done";
+"MAIN_BALANCE" = "Balance";
+"MAIN_ADDRESS" = "Address";
+"MAIN_PASSWORD" = "Password";
+"MAIN_NEW" = "New";
+"MAIN_CURRENCY" = "Currency";
+"MAIN_CONFIRM" = "Confirm";
+"MAIN_CURRENT" = "Current";
+"MAIN_PIN" = "Pin";
+"MAIN_SAVE" = "Save";
+"MAIN_ENTER" = "Enter";
+"MAIN_SAVED" = "Saved";
+"MAIN_NAME" = "Name";
+"MAIN_PASSWORD" = "Password";
+"MAIN_RESTORE" = "Restore";
+
+"WALLET_CANCEL_PIN" = "Cancel pin";
+"WALLET_SET_PIN" = "Set pin";
+"WALLET_EDIT_PIN" = "Edit pin";
+"WALLET_ENTER_PIN" = "Enter pin";
+"WALLET_PIN_VALIDATION_DESCRIPTION" = "Max pin lenght is 6";
+"WALLET_PINS_DO_NOT_MATCH" = "Pins do not match";
+"WALLET_ERROR_WRONG_PIN" = "Wrong pin";
+"WALLET_ERROR_TOO_LONG" = "Too long pin.\nMax lenght is 6";
+
+"WALLET_SET_PASSWORD" = "Set password";
+"WALLET_EDIT_PASSWORD" = "Edit password";
+"WALLET_ENTER_PASSWORD" = "Enter password";
+"WALLET_PASSWORDS_DO_NOT_MATCH" = "Passwords do not match";
+"WALLET_ERROR_WRONG_PASSWORD" = "Wrong password";
+
+"WALLET_SAVE_IT" = "Save it";
+"WALLET_EXCHANGE_TITLE" = "Exchange";
+"WALLET_NEW_PASSWORD_CONFIRMATION" = "Password for transaction\nconfirmation was changed";
+"WALLET_CODE_FOR_RESTORE_INFO" = "QR code for restore password";
+
+/* Title of the 'onboarding splash' view. */
+"ONBOARDING_SPLASH_TITLE_new" = "Secure communication\nplatform";
+
+"ONBOARDING_SPLASH_BUTTON_TITLE_new" = "Sign up";
+
+/* Title of the 'onboarding phone number' view. */
+"ONBOARDING_PHONE_NUMBER_TITLE_new" = "Enter your Phone number, PIN-code will come on your device";
+
+/* Title of the main button. */
+"ONBOARDING_PHONE_NUMBER_SEND" = "Send";
+
+"ONBOARDING_PHONE_NUMBER_SIGNUP" = "Sign Up";
+
+"ONBOARDING_PHONE_NUMBER_FORGOTRASSWORD" = "Forgot password?";
+
+"CALL_VIEW_MISSED_CALL" = "Missed call";
+
+"CALL_VIEW_INCOMING_CALL" = "Incoming call";
+
+"CALL_VIEW_OUTGOING_CALL" = "Outgoing call";
+
+"CALL_VIEW_CANCELLED_CALL" = "Cancelled call";
+
+"CALL_VIEW_TITLE" = "Calls";
+
+"CALL_VIEW_MISSED" = "Missed";
+
+"NEW_CONTACT_DESCRIPTION" = "Add a new user using a unique\nidentification key";
+
+"NEW_CONTACT_SCAN_INFO" = "Scan the key using the QR-code";
+
+/* Title for the contacts list's default mode. */
+"CONTACTS_VIEW_TITLE" = "Contacts";
+
+/* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
+"ONBOARDING_VERIFICATION_INVALID_CODE_new" = "Wrong PIN, try again";
+
+"ONBOARDING_VERIFICATION_VALID_CODE_new" = "Password is correct";
+
+/// Chats Empty State
+"CHATS_VIEW_EMPTY_TITLE" = "You have no one in the chat";
+
+"CHATS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
+
+"CHATS_VIEW_EMPTY_BUTTON_TITLE" = "Start chat now";
+
+/// Contacts Empty State
+"CONTACTS_VIEW_EMPTY_TITLE" = "You have no contacts";
+
+"CONTACTS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
+
+"CONTACTS_VIEW_EMPTY_BUTTON_TITLE" = "Invite friends";
+
+/// Calls Empty State
+"CALLS_VIEW_EMPTY_TITLE" = "You have no calls";
+
+"CALLS_VIEW_EMPTY_MISSED_TITLE" = "You have no missed calls";
+
+"CALLS_VIEW_EMPTY_SUBTITLE" = "Start new calls";
+
+"CALLS_VIEW_EMPTY_BUTTON_TITLE" = "Start new calls";
+
+"CALL_PICKER_MAIN_TITLE" = "New call";
+
+/* Label for settings view that allows user to change the notification sound. */
+"SETTINGS_ITEM_NOTIFICATION_SOUND_new" = "Notification Sound";
+
+
+// Wallet Main Screen
+"WALLET_VIEW_TITLE" = "Wallets";
+
+// Wallet Main Screen
+"WALLET_MAINHEADER_VIEW_TITLE" = "Total balance";
+
+/* Label indicating that the user is verified. Embeds {{the user's name or phone number}}. */
+"PRIVACY_IDENTITY_IS_VERIFIED_FORMAT_new" = "%@ is verified!";
+
+/* Label indicating that the user is NOT verified. Embeds {{the user's name or phone number}}. */
+"PRIVACY_IDENTITY_IS_NOT_VERIFIED_FORMAT_new" = "%@ is not verified!";
+
+"WALLET_EMPTY_STATE_TITLE" = "You have no wallet yet";
+
+"WALLET_EMPTY_STATE_SUBTITLE" = "Create new wallet now";
+
+"WALLET_EMPTY_STATE_BUTTON_TITLE" = "Create wallet";
+
+"WALLET_NEW_WALLET_TITLE" = "New wallet";
+
+"WALLET_EXCHANGE_MY_ORDERS_TITLE" = "My Orders";
+
+"WALLET_NEW_WALLET_VALIDATION_INFO" = "The password must contain\nnumbers, uppercase and lowercase\nletters and contain at least\n8 characters";
+
+// Attachments Titles
+"ATTACHMENTS_TITLE_MEDIA" = "Media";
+"ATTACHMENTS_TITLE_FILES" = "Files";
+"ATTACHMENTS_TITLE_VOICE" = "Voice";
+"ATTACHMENTS_TITLE_GROUPS" = "Groups";
+"ATTACHMENTS_TITLE_LINKS" = "Links";
+"ATTACHMENTS_TITLE_GIFS" = "GIFs";
+
+"ATTACHMENTS_EMPTY_STATE" = "No %@ here yet...";
+
+"PERSONAL_CODE_VIEW_TITLE" = "This is your personal code";
+"PERSONAL_CODE_VIEW_DESCRIPTION" = "Ask your friend using the app\nto scan it to confirm his subscription";
+
+"CONTACTLIST_VIEW_SEARCHBAR_PLACEHOLDER" = "Search";
+
+/* A button to select a money from the Attachment Keyboard */
+"ATTACHMENT_KEYBOARD_MONEY" = "Money";
+
+/* A button to select a gallery from the Attachment Keyboard */
+"ATTACHMENT_KEYBOARD_GALLERY" = "Gallery";
+
+"USER_ID_VIEW_COPY_MAIN_TITLE" = "Your User ID";
+
+"USER_ID_VIEW_COPY_MAIN_TITLE_SOMEONE" = "%@'s User ID";
+
+"USER_ID_VIEW_COPY_BUTTON_TITLE_NORMAL" = "Copy";
+
+"USER_ID_VIEW_COPY_BUTTON_TITLE_AFTER_CLICK" = "Copied";
+
+"USER_ID_VIEW_COPY_LABEL_INFO" = "You can copy this User ID to phone";
+
+"NEW_USER_NAME_DESCRIPTION_TEXT" = "Please enter Display name for new contact,\nit will show only for you";
+
+"ADD_NEW_CONTACT_ERROR_CONTACT_ALREADY_EXIST" = "This user is already in your contacts";
+
+"ADD_NEW_CONTACT_ERROR_CONTACT_OWN_USERID" = "You can't add yourself";
+
+"WALLET_TOTAL_BALANCE" = "Total balance";
+"WALLET_BUY" = "Buy";
+"WALLET_SELL" = "Sell";
+
+"WALLET_TRANSACTION_EMPTY_STATE_TITLE" = "No transaction yet...";
+"WALLET_ORDERS_EMPTY_STATE_TITLE" = "No orders yet...";
+
+"WALLET_TRANSACTION_TITLE" = "Transactions";
+
+"FILTER_TITLE" = "Filter";
+
+"FILTER_SORT_BY_TITLE" = "Sort by";
+
+"FILTER_TRANSACTION_TYPE_TITLE" = "Transaction type";
+
+/* Label for 'new contact' button in conversation settings view. */
+"NEW_USER_NAME_TITLE" = "New Contact";
+
+"INCORRECT_UUID_ERROR_MESSAGE" = "User Key is incorrect";
+
+"SENT_SUCCEED_TITLE" = "Sent succeed";
+
+"EXCHANGE_CREATED_TITLE" = "Exchange created";
+//////////////////////////////////////////// Grapherex ///////////////////////////////////////////
+
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "ابھی نہیں";
 
