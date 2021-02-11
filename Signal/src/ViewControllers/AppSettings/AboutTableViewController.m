@@ -68,17 +68,26 @@
                                         initWithURL:[NSURL URLWithString:kLegalTermsUrlString]];
                                     [weakSelf presentViewController:safariVC animated:YES completion:nil];
                                 }]];
+    
+    [informationSection
+        addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_SECURITY", @"")
+                             accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"security")
+                                         actionBlock:^{
+                                                SFSafariViewController *safariVC = [[SFSafariViewController alloc]
+                                                    initWithURL:[NSURL URLWithString:@"https://grapherex.com/security/en"]];
+                                             [weakSelf presentViewController:safariVC animated:YES completion:nil];
+                                         }]];
 
     [contents addSection:informationSection];
 
-    UILabel *copyrightLabel = [UILabel new];
-    copyrightLabel.text = NSLocalizedString(@"SETTINGS_COPYRIGHT", @"");
-    copyrightLabel.textColor = Theme.secondaryTextAndIconColor;
-    copyrightLabel.font = [UIFont ows_regularFontWithSize:15.0f];
-    copyrightLabel.numberOfLines = 2;
-    copyrightLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    copyrightLabel.textAlignment = NSTextAlignmentCenter;
-    informationSection.customFooterView = copyrightLabel;
+//    UILabel *copyrightLabel = [UILabel new];
+//    copyrightLabel.text = NSLocalizedString(@"SETTINGS_COPYRIGHT", @"");
+//    copyrightLabel.textColor = Theme.secondaryTextAndIconColor;
+//    copyrightLabel.font = [UIFont ows_regularFontWithSize:15.0f];
+//    copyrightLabel.numberOfLines = 2;
+//    copyrightLabel.lineBreakMode = NSLineBreakByWordWrapping;
+//    copyrightLabel.textAlignment = NSTextAlignmentCenter;
+//    informationSection.customFooterView = copyrightLabel;
     informationSection.customFooterHeight = @(60.f);
 
     if (SSKDebugFlags.verboseAboutView) {

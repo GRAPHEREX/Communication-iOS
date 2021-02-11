@@ -1079,6 +1079,7 @@
 		F217451925CAF58800BC9476 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217451025CAF58800BC9476 /* Throttler.swift */; };
 		F217451A25CAF58800BC9476 /* UIStoryboard+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217451125CAF58800BC9476 /* UIStoryboard+ViewController.swift */; };
 		F217451B25CAF58800BC9476 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217451225CAF58800BC9476 /* BaseView.swift */; };
+		F2A417A825D58F17000BE15E /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A417A725D58F17000BE15E /* WebViewController.swift */; };
 		FC3BD9881A30A790005B96BB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC3BD9871A30A790005B96BB /* Social.framework */; };
 		FCB11D8C1A129A76002F93FB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB11D8B1A129A76002F93FB /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
@@ -2505,6 +2506,7 @@
 		F217451025CAF58800BC9476 /* Throttler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		F217451125CAF58800BC9476 /* UIStoryboard+ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+ViewController.swift"; sourceTree = "<group>"; };
 		F217451225CAF58800BC9476 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		F2A417A725D58F17000BE15E /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		FC3BD9871A30A790005B96BB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FCB11D8B1A129A76002F93FB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		FD351756BE688D00B63E00CD /* Pods-SignalMessaging.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalMessaging.testable release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalMessaging/Pods-SignalMessaging.testable release.xcconfig"; sourceTree = "<group>"; };
@@ -3323,6 +3325,7 @@
 				34D1F0BE1F8EC1760066283D /* Utils */,
 				3434AE1B22AEDE7D002EE04E /* ViewOnceMessageViewController.swift */,
 				88A51B9825BA079500CDB45C /* Wallpapers */,
+				F2A417A725D58F17000BE15E /* WebViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -6896,6 +6899,7 @@
 				4C5250D221E7BD7D00CE3D95 /* PhoneNumberValidator.swift in Sources */,
 				34B3F8771E8DF1700035BE1A /* ContactsPicker.swift in Sources */,
 				F217442125CAEA9F00BC9476 /* SendFromChatView.swift in Sources */,
+				F2A417A825D58F17000BE15E /* WebViewController.swift in Sources */,
 				88D1D40422EF8A9700F472C5 /* ThreadDetailsInteraction.swift in Sources */,
 				F21743C025CAEA9F00BC9476 /* UIImage+MemoryCacheCost.m in Sources */,
 				F21743FF25CAEA9F00BC9476 /* OnboardingCodeView.swift in Sources */,

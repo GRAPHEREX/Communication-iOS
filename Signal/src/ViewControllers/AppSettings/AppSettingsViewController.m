@@ -73,13 +73,7 @@
     [self.navigationItem setHidesBackButton:YES];
 
     OWSAssertDebug([self.navigationController isKindOfClass:[OWSNavigationController class]]);
-
-    self.navigationItem.leftBarButtonItem =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
-                                                      target:self
-                                                      action:@selector(dismissWasPressed:)
-                                     accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"dismiss")];
-    [self updateRightBarButtonForTheme];
+    
     [self observeNotifications];
 
     [self updateTableContents];
@@ -90,8 +84,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    [self.navigationController setNavigationBarHidden:YES];
+    
     [self updateTableContents];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 #pragma mark - Table Contents
@@ -115,12 +116,12 @@
     profileHeaderItem.customRowHeight = @(100.f);
     [section addItem:profileHeaderItem];
 
-    [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_INVITE_TITLE",
-                                                              @"Settings table view cell label")
-                                  accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"invite")
-                                              actionBlock:^{
-                                                  [weakSelf showInviteFlow];
-                                              }]];
+//    [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_INVITE_TITLE",
+//                                                              @"Settings table view cell label")
+//                                  accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"invite")
+//                                              actionBlock:^{
+//                                                  [weakSelf showInviteFlow];
+//                                              }]];
 
         [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_APPEARANCE_TITLE",
                                                                   @"The title for the appearance settings.")
@@ -144,15 +145,15 @@
     // There's actually nothing AFAIK preventing linking another linked device from an
     // existing linked device, but maybe it's not something we want to expose until
     // after unifying the other experiences between secondary/primary devices.
-    if (self.tsAccountManager.isRegisteredPrimaryDevice) {
-        [section
-            addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"LINKED_DEVICES_TITLE",
-                                                             @"Menu item and navbar title for the device manager")
-                                 accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"linked_devices")
-                                             actionBlock:^{
-                                                 [weakSelf showLinkedDevices];
-                                             }]];
-    }
+//    if (self.tsAccountManager.isRegisteredPrimaryDevice) {
+//        [section
+//            addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"LINKED_DEVICES_TITLE",
+//                                                             @"Menu item and navbar title for the device manager")
+//                                 accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"linked_devices")
+//                                             actionBlock:^{
+//                                                 [weakSelf showLinkedDevices];
+//                                             }]];
+//    }
     [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_DATA",
                                                                             @"Label for the 'data' section of the app settings.")
                                   accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"data")
@@ -174,25 +175,35 @@
                                                       [weakSelf showBackup];
                                                   }]];
     }
-    [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_HELP",
-                                                              @"Title for support page in app settings.")
-                                  accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"help")
-                                              actionBlock:^{ [weakSelf showHelp]; }]];
+//    [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_HELP",
+//                                                              @"Title for support page in app settings.")
+//                                  accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"help")
+//                                              actionBlock:^{ [weakSelf showHelp]; }]];
+    [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_SUPPORT", @"")
+                                  accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"suppot")
+                                              actionBlock:^{
+                                                  [weakSelf showSupport];
+                                              }]];
+    [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_FAQ", @"")
+                                  accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"faq")
+                                              actionBlock:^{
+                                                  [weakSelf showFAQ];
+                                              }]];
     [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_ABOUT", @"")
                                   accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"about")
                                               actionBlock:^{
                                                   [weakSelf showAbout];
                                               }]];
-    [section addItem:[OWSTableItem actionItemWithText:NSLocalizedString(@"SETTINGS_DONATE",
-                                                          @"Title for the 'donate to signal' link in settings.")
-                                       accessoryImage:[UIImage imageNamed:@"open-externally-14"]
-                              accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"donate")
-                                          actionBlock:^{
-                                              [UIApplication.sharedApplication
-                                                            openURL:[NSURL URLWithString:@"https://signal.org/donate"]
-                                                            options:@{}
-                                                  completionHandler:nil];
-                                          }]];
+//    [section addItem:[OWSTableItem actionItemWithText:NSLocalizedString(@"SETTINGS_DONATE",
+//                                                          @"Title for the 'donate to signal' link in settings.")
+//                                       accessoryImage:[UIImage imageNamed:@"open-externally-14"]
+//                              accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"donate")
+//                                          actionBlock:^{
+//                                              [UIApplication.sharedApplication
+//                                                            openURL:[NSURL URLWithString:@"https://signal.org/donate"]
+//                                                            options:@{}
+//                                                  completionHandler:nil];
+//                                          }]];
 
 #ifdef USE_DEBUG_UI
     [section addItem:[OWSTableItem disclosureItemWithText:@"Debug UI"
@@ -367,6 +378,22 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)showSupport
+{
+    WebViewController *vc = [[WebViewController alloc] init];
+    [vc setTitle:NSLocalizedString(@"SETTINGS_SUPPORT", nil)];
+    [vc setLink:@"https://grapherex.com/contacts/en"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)showFAQ
+{
+    WebViewController *vc = [[WebViewController alloc] init];
+    [vc setTitle:NSLocalizedString(@"SETTINGS_FAQ", nil)];
+    [vc setLink:@"https://grapherex.com/faq/en"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)showAbout
 {
     AboutTableViewController *vc = [[AboutTableViewController alloc] init];
@@ -414,24 +441,13 @@
 - (void)didPressEnableDarkTheme:(id)sender
 {
     [Theme setCurrentTheme:ThemeMode_Dark];
-    [self updateRightBarButtonForTheme];
     [self updateTableContents];
 }
 
 - (void)didPressDisableDarkTheme:(id)sender
 {
     [Theme setCurrentTheme:ThemeMode_Light];
-    [self updateRightBarButtonForTheme];
     [self updateTableContents];
-}
-
-- (void)updateRightBarButtonForTheme
-{
-    if (@available(iOS 13, *)) {
-        // Don't show the moon button in iOS 13+, theme settings are now in a menu
-        return;
-    }
-    self.navigationItem.rightBarButtonItem = [self darkThemeBarButton];
 }
 
 #pragma mark - Notifications

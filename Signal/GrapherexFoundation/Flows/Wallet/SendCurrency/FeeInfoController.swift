@@ -12,7 +12,7 @@ final class FeeInfoController: ActionSheetController {
     
     override func setup() {
         super.setup()
-        isCancelable = false
+        isCancelable = true
         stackView.spacing = 40
         setupMargins(margin: 20)
         setupContent()

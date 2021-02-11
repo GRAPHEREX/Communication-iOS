@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, TSWhisperMessageType) {
 
 #define textSecureHTTPTimeOut 10
 
-#define kLegalTermsUrlString @"https://signal.org/legal/"
+#define kLegalTermsUrlString @"https://grapherex.com/privacy-policy/en"
 
 #define textSecureAccountsAPI @"v1/accounts"
 #define textSecureAttributesAPI @"v1/accounts/attributes/"

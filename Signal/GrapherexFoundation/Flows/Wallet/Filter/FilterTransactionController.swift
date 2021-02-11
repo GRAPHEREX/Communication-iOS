@@ -53,7 +53,7 @@ final class FilterTransactionController: ActionSheetController {
     
     override func setup() {
         super.setup()
-        isCancelable = false
+        isCancelable = true
         setupCenterHeader(title: NSLocalizedString("FILTER_TITLE", comment: ""), close: #selector(close))
         
         transactionTypes.enumerated().forEach {
