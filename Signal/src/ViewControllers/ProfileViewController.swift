@@ -15,7 +15,7 @@ public enum ProfileViewMode: UInt {
     fileprivate var hasBio: Bool {
         switch self {
         case .appSettings:
-            return true
+            return false // Grapherex does not support bio
         case .registration, .experienceUpgrade:
             return false
         }
@@ -312,8 +312,8 @@ public class ProfileViewController: OWSTableViewController {
 
         // Information Footer
 
-        let infoGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                           action: #selector(didTapInfo))
+//        let infoGestureRecognizer = UITapGestureRecognizer(target: self,
+//                                                           action: #selector(didTapInfo))
         lastSection.customFooterView = { () -> UIView in
 
             let label = UILabel()
@@ -322,20 +322,20 @@ public class ProfileViewController: OWSTableViewController {
             let attributedText = NSMutableAttributedString()
             attributedText.append(NSLocalizedString("PROFILE_VIEW_PROFILE_DESCRIPTION",
                                                     comment: "Description of the user profile."))
-            attributedText.append(" ")
-            attributedText.append(NSAttributedString(string: CommonStrings.learnMore,
-                                                     attributes: [
-                                                        NSAttributedString.Key.foregroundColor: Theme.accentBlueColor,
-                                                        NSAttributedString.Key.underlineStyle: 0
-                                                     ]))
+//            attributedText.append(" ")
+//            attributedText.append(NSAttributedString(string: CommonStrings.learnMore,
+//                                                     attributes: [
+//                                                        NSAttributedString.Key.foregroundColor: Theme.accentBlueColor,
+//                                                        NSAttributedString.Key.underlineStyle: 0
+//                                                     ]))
             label.attributedText = attributedText
             label.numberOfLines = 0
             label.lineBreakMode = .byWordWrapping
 
             label.backgroundColor = Theme.tableViewBackgroundColor
 
-            label.isUserInteractionEnabled = true
-            label.addGestureRecognizer(infoGestureRecognizer)
+//            label.isUserInteractionEnabled = true
+//            label.addGestureRecognizer(infoGestureRecognizer)
 
             let footer = UIView()
             footer.layoutMargins = UIEdgeInsets(hMargin: 20, vMargin: 12)
