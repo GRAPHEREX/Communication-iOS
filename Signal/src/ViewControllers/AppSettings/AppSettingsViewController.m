@@ -82,8 +82,6 @@
     [self updateRightBarButtonForTheme];
     [self observeNotifications];
 
-    self.title = NSLocalizedString(@"SETTINGS_NAV_BAR_TITLE", @"Title for settings activity");
-
     [self updateTableContents];
 
     [self.bulkProfileFetch fetchProfileWithAddress:self.tsAccountManager.localAddress];

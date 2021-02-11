@@ -58,8 +58,6 @@ fileprivate extension CallsMainController {
         tableViewController.view.autoPinEdgesToSuperviewEdges()
         tableViewController.tableView.backgroundColor = .clear
         tableViewController.tableView.allowsSelection = false
-        tableViewController.editActionDelegate = self
-        tableViewController.swipeActionsConfigurationDelegate = self
         self.definesPresentationContext = false
     }
     
@@ -83,8 +81,12 @@ fileprivate extension CallsMainController {
             self?.outboundCallInitiator.initiateCall(address: address)
         })
 
-        section.add(.init(customCell: callCell,
-                          customRowHeight: UITableView.automaticDimension))
+        let item = OWSTableItem(customCell: callCell,
+                                customRowHeight: UITableView.automaticDimension)
+        item.deleteAction = OWSTableItemEditAction(title: "Delete") { [weak self] in
+            self?.removeCall(call)
+        }
+        section.add(item)
     }
     
     func setupNavigationBar() {
@@ -161,7 +163,7 @@ extension CallsMainController: CallServiceObserver {
     }
 }
 
-extension CallsMainController: OWSTableViewControllerEditActionDelegate, OWSTableViewControllerSwipeActionsConfigurationDelegate {
+extension CallsMainController {
     @objc func editButtonTapped() {
         navigationController?.navigationBar.topItem?.leftBarButtonItem = cancelButton
         tableViewController.tableView.setEditing(true, animated: true)
@@ -172,41 +174,16 @@ extension CallsMainController: OWSTableViewControllerEditActionDelegate, OWSTabl
         tableViewController.tableView.setEditing(false, animated: true)
     }
     
-    func leadingSwipeActionsConfigurationForRow(at indexPath: IndexPath) -> UISwipeActionsConfiguration {
-        UISwipeActionsConfiguration.init()
-    }
-    
-    func trailingSwipeActionsConfigurationForRow(at indexPath: IndexPath) -> UISwipeActionsConfiguration {
-        let deleteAction = UIContextualAction(
-            style: .normal, title: "Delete",
-            handler: { [weak self] (action, view, completionHandler) in
-                self?.removeCall(at: indexPath)
-        })
-        deleteAction.backgroundColor = .st_otherRed
-        
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-        return configuration
-    }
-    
-    func canEditRow(at indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func editActionsForRow(at indexPath: IndexPath) -> [Any] {
-        return []
-    }
-    
-    private func removeCall(at indexPath: IndexPath) {
-        guard indexPath.row < calls.count else { return }
-        let index = indexPath.row
-        let call = filteredCalls[index]
-        filteredCalls.remove(at: index)
-        callManager.removeCall(call)
-        if filteredCalls.count == 0 {
-            cancelButtonTapped()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
-            self.setupData()
+    private func removeCall(_ call: TSCall) {
+        if let index = filteredCalls.firstIndex(of: call) {
+            filteredCalls.remove(at: index)
+            callManager.removeCall(call)
+            if filteredCalls.count == 0 {
+                cancelButtonTapped()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+                self.setupData()
+            }
         }
     }
 }
