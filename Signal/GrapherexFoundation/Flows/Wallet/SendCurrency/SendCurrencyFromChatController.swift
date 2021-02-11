@@ -941,6 +941,7 @@ fileprivate extension SendCurrencyFromChatController {
         action.addAction(.init(title: "Default", style: .default, handler: { [weak self] _ in
             self?.feeType = .default
         }))
+        action.isCancelable = true
         self.presentActionSheet(action)
     }
     

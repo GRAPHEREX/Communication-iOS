@@ -179,7 +179,7 @@ final class PasswordController: ActionSheetController {
         setupMargins(margin: Constants.margin)
         infoLabel.autoSetDimension(.width, toSize: UIScreen.main.bounds.size.width - 2*Constants.margin)
         
-        
+        isCancelable = true
         setupCenterHeader(
             title: mode.title,
             close: #selector(close))

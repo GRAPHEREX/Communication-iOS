@@ -325,6 +325,7 @@ fileprivate extension WalletDetailController {
             controller.walletId = self.walletId
             self.presentActionSheet(controller)
         }))
+        action.isCancelable = true
         self.presentActionSheet(action, animated: true)
     }
     

@@ -37,8 +37,7 @@ final class RestorePasswordController: ActionSheetController {
     override func setup() {
         super.setup()
         
-        
-        
+        isCancelable = true
         stackView.spacing = 12
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = .init(top: 16, leading: 16, bottom: 8, trailing: 16)

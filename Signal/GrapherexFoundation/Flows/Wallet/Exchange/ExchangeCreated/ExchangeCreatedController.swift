@@ -24,6 +24,7 @@ final class ExchangeCreatedController: ActionSheetController {
         let topPadding = window?.safeAreaInsets.top ?? 0
         scrollView.autoPinEdge(.top, to: .top, of: view, withOffset: topSpace + topPadding)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(close)))
+        isCancelable = true
     }
     
 }

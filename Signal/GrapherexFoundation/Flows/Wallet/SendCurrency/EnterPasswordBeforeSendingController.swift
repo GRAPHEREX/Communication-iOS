@@ -44,7 +44,7 @@ final class EnterPasswordBeforeSendingController: ActionSheetController {
         sendButton.handleEnabled(false)
         setupCenterHeader(title: "Send to", close: #selector(close))
         
-        
+        isCancelable = true
         stackView.spacing = 16
         setupMargins(margin: 16)
 

@@ -576,7 +576,7 @@ fileprivate extension SendCurrencyFromWalletController {
 fileprivate extension SendCurrencyFromWalletController {
     
     func clearAmountStack() {
-        amountStack.removeAllArrangedSubviews()
+        amountStack.removeAllArrangedSubviews(deactivateConstraints: true)
         
         amountTextField.removeFromSuperview()
         rateAmountTextField.removeFromSuperview()
@@ -783,6 +783,7 @@ fileprivate extension SendCurrencyFromWalletController {
         action.addAction(.init(title: "Default", style: .default, handler: { [weak self] _ in
             self?.feeType = .default
         }))
+        action.isCancelable = true
         self.presentActionSheet(action)
     }
     

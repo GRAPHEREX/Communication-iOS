@@ -16,8 +16,7 @@ final class ReceiveCurrencyController: ActionSheetController {
     override func setup() {
         super.setup()
         
-        
-        
+        isCancelable = true
         stackView.spacing = 4
         setupMargins(margin: Constants.margin)
         setupCenterHeader(title: NSLocalizedString("MAIN_RECEIVE", comment: ""), close: #selector(close))

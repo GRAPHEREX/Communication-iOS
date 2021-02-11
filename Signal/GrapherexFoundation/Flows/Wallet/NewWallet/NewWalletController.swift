@@ -48,7 +48,7 @@ final class NewWalletController: ActionSheetController {
         stackView.spacing = 12
         setupMargins(margin: 16)
         
-        
+        isCancelable = true
         currencyImageView.autoSetDimensions(to: .init(width: 32, height: 32))
         currencyImageView.contentMode = .scaleAspectFit
         setupCenterHeader(title: NSLocalizedString("WALLET_NEW_WALLET_TITLE", comment: ""), close: #selector(close))

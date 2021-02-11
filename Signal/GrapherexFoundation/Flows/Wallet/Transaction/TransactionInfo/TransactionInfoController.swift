@@ -24,6 +24,7 @@ final class TransactionInfoController: ActionSheetController {
         super.setup()
         setupContent()
         setupMargins(margin: Constants.margin)
+        isCancelable = true
     }
 }
 

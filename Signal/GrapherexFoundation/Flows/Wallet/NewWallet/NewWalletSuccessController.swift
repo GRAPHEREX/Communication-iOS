@@ -20,8 +20,7 @@ class NewWalletSuccessController: ActionSheetController {
     override func setup() {
         super.setup()
         
-        
-        
+        isCancelable = true
         stackView.spacing = 8
         setupMargins(margin: 16)
         setupCenterHeader(title: "Success", close: #selector(close))

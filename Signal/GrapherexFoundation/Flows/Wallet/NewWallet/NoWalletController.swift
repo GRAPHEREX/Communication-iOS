@@ -17,7 +17,7 @@ final class NoWalletController: ActionSheetController {
         setupCenterHeader(title: "", close: #selector(close))
         setupContent()
         setupButton()
-        
+        isCancelable = true
         let window = UIApplication.shared.keyWindow
         let topPadding = window?.safeAreaInsets.top ?? 0
         scrollView.autoPinEdge(.top, to: .top, of: view, withOffset: topSpace + topPadding)

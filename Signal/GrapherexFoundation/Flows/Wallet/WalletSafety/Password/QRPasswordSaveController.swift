@@ -20,8 +20,7 @@ final class QRPasswordSaveController: ActionSheetController {
     override func setup() {
         super.setup()
         
-        
-        
+        isCancelable = true
         stackView.spacing = 8
         setupMargins(margin: 16)
         setupCenterHeader(title: "", close: #selector(close))

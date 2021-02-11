@@ -11,6 +11,7 @@ final class InfoCurrencyController: ActionSheetController{
     override func setup() {
         super.setup()
         
+        isCancelable = true
         setupCenterHeader(title: NSLocalizedString("MAIN_INFO", comment: ""), close: #selector(close))
         makeHeader()
         stackView.spacing = 16

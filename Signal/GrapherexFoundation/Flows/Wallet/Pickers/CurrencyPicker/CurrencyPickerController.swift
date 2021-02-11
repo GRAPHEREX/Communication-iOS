@@ -35,7 +35,7 @@ final class CurrencyPickerController: ActionSheetController {
         searchBar.delegate = self
         searchBar.sizeToFit()
         searchBar.placeholder = "Search"
-        
+        isCancelable = true
         let window = UIApplication.shared.keyWindow
         let topPadding = window?.safeAreaInsets.top ?? 0
         scrollView.autoPinEdge(.top, to: .top, of: view, withOffset: topSpace + topPadding)

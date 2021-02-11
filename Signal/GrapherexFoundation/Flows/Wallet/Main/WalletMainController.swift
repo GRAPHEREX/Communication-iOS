@@ -411,7 +411,6 @@ fileprivate extension WalletMainController {
     
     @objc func showMenu() {
         let action = ActionSheetController()
-        action.isCancelable = true
         
         action.addAction(.init(title: "Create new wallet", style: .default, handler: { [weak self] action in
             self?.plusButtonPressed()
@@ -425,7 +424,8 @@ fileprivate extension WalletMainController {
             }))
         }
         
-         self.presentActionSheet(action, animated: true)
+        action.isCancelable = true
+        self.presentActionSheet(action, animated: true)
     }
     
     @objc func themeDidChange() {

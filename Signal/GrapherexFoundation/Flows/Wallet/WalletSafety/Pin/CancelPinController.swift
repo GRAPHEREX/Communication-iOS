@@ -92,7 +92,7 @@ final class CancelPinController: ActionSheetController {
         stackView.spacing = 4
         setupMargins(margin: 16)
         
-        
+        isCancelable = true
         setupCenterHeader(
             title: customTitle,
             close: #selector(close))
