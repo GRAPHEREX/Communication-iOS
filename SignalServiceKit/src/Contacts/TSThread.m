@@ -37,7 +37,7 @@ ConversationColorName const ConversationColorNameBlue = @"blue";
 ConversationColorName const ConversationColorNameIndigo = @"indigo";
 ConversationColorName const ConversationColorNameViolet = @"purple";
 ConversationColorName const ConversationColorNamePlum = @"pink";
-ConversationColorName const ConversationColorNameTaupe = @"blue_grey";
+ConversationColorName const ConversationColorNameRose = @"rose";
 ConversationColorName const ConversationColorNameSteel = @"grey";
 
 ConversationColorName const ConversationColorNameDefault = ConversationColorNameSteel;
@@ -792,7 +792,7 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
         ConversationColorNameIndigo,
         ConversationColorNameViolet,
         ConversationColorNamePlum,
-        ConversationColorNameTaupe,
+        ConversationColorNameRose,
     ];
 }
 
@@ -879,7 +879,7 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
             @"green" : ConversationColorNameForest,
             @"light_green" : ConversationColorNameWintergreen,
             @"lime" : ConversationColorNameWintergreen,
-            @"blue_grey" : ConversationColorNameTaupe,
+            @"rose" : ConversationColorNameRose,
             @"grey" : ConversationColorNameSteel,
         };
     });
@@ -904,7 +904,7 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
             @"indigo" : ConversationColorNameIndigo,
             @"violet" : ConversationColorNameViolet,
             @"plum" : ConversationColorNamePlum,
-            @"taupe" : ConversationColorNameTaupe,
+            @"rose" : ConversationColorNameRose,
             @"steel" : ConversationColorNameSteel,
         };
     });

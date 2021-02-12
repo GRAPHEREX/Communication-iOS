@@ -56,37 +56,37 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIColor *)ows_crimsonColor
 {
-    return [UIColor colorWithRGBHex:0xCC163D];
+    return [UIColor colorWithRGBHex:0xe61541];
 }
 
 + (UIColor *)ows_vermilionColor
 {
-    return [UIColor colorWithRGBHex:0xC73800];
+    return [UIColor colorWithRGBHex:0xF55618];
 }
 
 + (UIColor *)ows_burlapColor
 {
-    return [UIColor colorWithRGBHex:0x746C53];
+    return [UIColor colorWithRGBHex:0xF7CF52];
 }
 
 + (UIColor *)ows_forestColor
 {
-    return [UIColor colorWithRGBHex:0x3B7845];
+    return [UIColor colorWithRGBHex:0x55D469];
 }
 
 + (UIColor *)ows_wintergreenColor
 {
-    return [UIColor colorWithRGBHex:0x1C8260];
+    return [UIColor colorWithRGBHex:0x5ADBB0];
 }
 
 + (UIColor *)ows_tealColor
 {
-    return [UIColor colorWithRGBHex:0x067589];
+    return [UIColor colorWithRGBHex:0x14BDDB];
 }
 
 + (UIColor *)ows_blueColor
 {
-    return [UIColor colorWithRGBHex:0x336BA3];
+    return [UIColor colorWithRGBHex:0x3690EB];
 }
 
 + (UIColor *)ows_indigoColor
@@ -101,12 +101,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIColor *)ows_plumColor
 {
-    return [UIColor colorWithRGBHex:0xA23474];
+    return [UIColor colorWithRGBHex:0xD13690];
 }
 
-+ (UIColor *)ows_taupeColor
++ (UIColor *)ows_roseColor
 {
-    return [UIColor colorWithRGBHex:0x895D66];
+    return [UIColor colorWithRGBHex:0xF0A3b3];
 }
 
 + (UIColor *)ows_steelColor
@@ -166,9 +166,9 @@ NS_ASSUME_NONNULL_BEGIN
     return [UIColor colorWithRGBHex:0xDCB2CA];
 }
 
-+ (UIColor *)ows_taupeTintColor
++ (UIColor *)ows_roseTintColor
 {
-    return [UIColor colorWithRGBHex:0xCFB5BB];
+    return [UIColor colorWithRGBHex:0xFAD7DF];
 }
 
 + (UIColor *)ows_steelTintColor
@@ -180,37 +180,37 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIColor *)ows_crimsonShadeColor
 {
-    return [UIColor colorWithRGBHex:0x8A0F29];
+    return [UIColor colorWithRGBHex:0xAD092B];
 }
 
 + (UIColor *)ows_vermilionShadeColor
 {
-    return [UIColor colorWithRGBHex:0x872600];
+    return [UIColor colorWithRGBHex:0xA62F00];
 }
 
 + (UIColor *)ows_burlapShadeColor
 {
-    return [UIColor colorWithRGBHex:0x58513C];
+    return [UIColor colorWithRGBHex:0xB88B06];
 }
 
 + (UIColor *)ows_forestShadeColor
 {
-    return [UIColor colorWithRGBHex:0x2B5934];
+    return [UIColor colorWithRGBHex:0x167829];
 }
 
 + (UIColor *)ows_wintergreenShadeColor
 {
-    return [UIColor colorWithRGBHex:0x36544A];
+    return [UIColor colorWithRGBHex:0x167D5B];
 }
 
 + (UIColor *)ows_tealShadeColor
 {
-    return [UIColor colorWithRGBHex:0x055968];
+    return [UIColor colorWithRGBHex:0x0C7D91];
 }
 
 + (UIColor *)ows_blueShadeColor
 {
-    return [UIColor colorWithRGBHex:0x285480];
+    return [UIColor colorWithRGBHex:0x155494];
 }
 
 + (UIColor *)ows_indigoShadeColor
@@ -228,9 +228,9 @@ NS_ASSUME_NONNULL_BEGIN
     return [UIColor colorWithRGBHex:0x881B5B];
 }
 
-+ (UIColor *)ows_taupeShadeColor
++ (UIColor *)ows_roseShadeColor
 {
-    return [UIColor colorWithRGBHex:0x6A4E54];
+    return [UIColor colorWithRGBHex:0xB06172];
 }
 
 + (UIColor *)ows_steelShadeColor
@@ -248,51 +248,51 @@ NS_ASSUME_NONNULL_BEGIN
         allConversationColors = @[
             [OWSConversationColor conversationColorWithName:ConversationColorNameCrimson
                                                primaryColor:self.ows_crimsonColor
-                                                 shadeColor:self.ows_crimsonShadeColor
+                                                 shadeColor:self.ows_crimsonColor // ows_crimsonShadeColor
                                                   tintColor:self.ows_crimsonTintColor],
             [OWSConversationColor conversationColorWithName:ConversationColorNameVermilion
                                                primaryColor:self.ows_vermilionColor
-                                                 shadeColor:self.ows_vermilionShadeColor
+                                                 shadeColor:self.ows_vermilionColor // ows_vermilionShadeColor
                                                   tintColor:self.ows_vermilionTintColor],
             [OWSConversationColor conversationColorWithName:ConversationColorNameBurlap
                                                primaryColor:self.ows_burlapColor
-                                                 shadeColor:self.ows_burlapShadeColor
+                                                 shadeColor:self.ows_burlapColor // ows_burlapShadeColor
                                                   tintColor:self.ows_burlapTintColor],
             [OWSConversationColor conversationColorWithName:ConversationColorNameForest
                                                primaryColor:self.ows_forestColor
-                                                 shadeColor:self.ows_forestShadeColor
+                                                 shadeColor:self.ows_forestColor // ows_forestShadeColor
                                                   tintColor:self.ows_forestTintColor],
             [OWSConversationColor conversationColorWithName:ConversationColorNameWintergreen
                                                primaryColor:self.ows_wintergreenColor
-                                                 shadeColor:self.ows_wintergreenShadeColor
+                                                 shadeColor:self.ows_wintergreenColor // ows_wintergreenShadeColor
                                                   tintColor:self.ows_wintergreenTintColor],
             [OWSConversationColor conversationColorWithName:ConversationColorNameTeal
                                                primaryColor:self.ows_tealColor
-                                                 shadeColor:self.ows_tealShadeColor
+                                                 shadeColor:self.ows_tealColor // ows_tealShadeColor
                                                   tintColor:self.ows_tealTintColor],
             [OWSConversationColor conversationColorWithName:ConversationColorNameBlue
                                                primaryColor:self.ows_blueColor
-                                                 shadeColor:self.ows_blueShadeColor
+                                                 shadeColor:self.ows_blueColor // ows_blueShadeColor
                                                   tintColor:self.ows_blueTintColor],
             [OWSConversationColor conversationColorWithName:ConversationColorNameIndigo
                                                primaryColor:self.ows_indigoColor
-                                                 shadeColor:self.ows_indigoShadeColor
+                                                 shadeColor:self.ows_indigoColor // ows_indigoShadeColor
                                                   tintColor:self.ows_indigoTintColor],
             [OWSConversationColor conversationColorWithName:ConversationColorNameViolet
                                                primaryColor:self.ows_violetColor
-                                                 shadeColor:self.ows_violetShadeColor
+                                                 shadeColor:self.ows_violetColor // ows_violetShadeColor
                                                   tintColor:self.ows_violetTintColor],
             [OWSConversationColor conversationColorWithName:ConversationColorNamePlum
                                                primaryColor:self.ows_plumColor
-                                                 shadeColor:self.ows_plumShadeColor
+                                                 shadeColor:self.ows_plumColor // ows_plumShadeColor
                                                   tintColor:self.ows_plumTintColor],
-            [OWSConversationColor conversationColorWithName:ConversationColorNameTaupe
-                                               primaryColor:self.ows_taupeColor
-                                                 shadeColor:self.ows_taupeShadeColor
-                                                  tintColor:self.ows_taupeTintColor],
+            [OWSConversationColor conversationColorWithName:ConversationColorNameRose
+                                               primaryColor:self.ows_roseColor
+                                                 shadeColor:self.ows_roseColor // ows_roseShadeColor
+                                                  tintColor:self.ows_roseTintColor],
             [OWSConversationColor conversationColorWithName:ConversationColorNameSteel
                                                primaryColor:self.ows_steelColor
-                                                 shadeColor:self.ows_steelShadeColor
+                                                 shadeColor:self.ows_steelColor // ows_steelShadeColor
                                                   tintColor:self.ows_steelTintColor],
         ];
     });
