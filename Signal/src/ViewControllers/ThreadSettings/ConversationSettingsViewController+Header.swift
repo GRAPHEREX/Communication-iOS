@@ -8,22 +8,12 @@ import UIKit
 // TODO: We should describe which state updates & when it is committed.
 extension ConversationSettingsViewController {
 
-    private var subtitlePointSize: CGFloat {
-        UIFont.ows_dynamicTypeBody2.pointSize
-    }
-
     private var threadName: String {
-        databaseStorage.read { transaction in
-            self.threadName(transaction: transaction)
-        }
-    }
-
-    private func threadName(transaction: SDSAnyReadTransaction) -> String {
-        var threadName = contactsManager.displayName(for: thread, transaction: transaction)
+        var threadName = contactsManager.displayNameWithSneakyTransaction(thread: thread)
 
         if let contactThread = thread as? TSContactThread {
             if let phoneNumber = contactThread.contactAddress.phoneNumber,
-               phoneNumber == threadName {
+                phoneNumber == threadName {
                 threadName = PhoneNumber.bestEffortFormatPartialUserSpecifiedText(toLookLikeAPhoneNumber: phoneNumber)
             }
         }
@@ -31,260 +21,77 @@ extension ConversationSettingsViewController {
         return threadName
     }
 
-    private struct HeaderBuilder {
-        let viewController: ConversationSettingsViewController
-        let transaction: SDSAnyReadTransaction
-
-        var subviews = [UIView]()
-
-        init(viewController: ConversationSettingsViewController,
-             transaction: SDSAnyReadTransaction) {
-
-            self.viewController = viewController
-            self.transaction = transaction
-
-            addFirstSubviews()
-        }
-
-        mutating func addFirstSubviews() {
-            let avatarView = buildAvatarView()
-
-            let avatarWrapper = UIView.container()
-            avatarWrapper.addSubview(avatarView)
-            avatarView.autoPinEdgesToSuperviewEdges()
-
-            if let groupThread = viewController.thread as? TSGroupThread,
-                groupThread.groupModel.groupAvatarData == nil,
-                viewController.canEditConversationAttributes {
-                let cameraButton = GroupAttributesEditorHelper.buildCameraButtonForCorner()
-                avatarWrapper.addSubview(cameraButton)
-                cameraButton.autoPinEdge(toSuperviewEdge: .trailing)
-                cameraButton.autoPinEdge(toSuperviewEdge: .bottom)
-            }
-
-            subviews.append(avatarWrapper)
-            subviews.append(UIView.spacer(withHeight: 8))
-            subviews.append(buildThreadNameLabel())
-        }
-
-        func buildAvatarView() -> UIView {
-            let avatarSize: UInt = kLargeAvatarSize
-            let avatarImage = OWSAvatarBuilder.buildImage(thread: viewController.thread,
-                                                          diameter: avatarSize,
-                                                          transaction: transaction)
-            let avatarView = AvatarImageView(image: avatarImage)
-            avatarView.autoSetDimensions(to: CGSize(square: CGFloat(avatarSize)))
-            // Track the most recent avatar view.
-            viewController.avatarView = avatarView
-            return avatarView
-        }
-
-        func buildThreadNameLabel() -> UILabel {
-            let label = UILabel()
-            label.text = viewController.threadName(transaction: transaction)
-            label.textColor = Theme.primaryTextColor
-            label.font = UIFont.ows_dynamicTypeTitle2.ows_semibold
-            label.lineBreakMode = .byTruncatingTail
-            return label
-        }
-
-        mutating func addSubtitleLabel(text: String, font: UIFont? = nil) {
-            addSubtitleLabel(attributedText: NSAttributedString(string: text), font: font)
-        }
-
-        mutating func addSubtitleLabel(attributedText: NSAttributedString, font: UIFont? = nil) {
-            subviews.append(UIView.spacer(withHeight: 8))
-            subviews.append(buildHeaderSubtitleLabel(attributedText: attributedText, font: font))
-        }
-
-        mutating func addLegacyGroupView(groupThread: TSGroupThread,
-                                         viewController: ConversationSettingsViewController) {
-            subviews.append(UIView.spacer(withHeight: 12))
-
-            let migrationInfo = GroupsV2Migration.migrationInfoForManualMigration(groupThread: groupThread,
-                                                                                  transaction: transaction)
-            let legacyGroupView = LegacyGroupView(groupThread: groupThread,
-                                                  migrationInfo: migrationInfo,
-                                                  viewController: viewController)
-            legacyGroupView.configure()
-            subviews.append(legacyGroupView)
-        }
-
-        func buildHeaderSubtitleLabel(attributedText: NSAttributedString,
-                                      font: UIFont?) -> UILabel {
-            let label = UILabel()
-
-            // Defaults need to be set *before* assigning the attributed text,
-            // or the attributes will get overriden
-            label.textColor = Theme.secondaryTextAndIconColor
-            label.lineBreakMode = .byTruncatingTail
-            if let font = font {
-                label.font = font
-            } else {
-                label.font = UIFont.ows_regularFont(withSize: viewController.subtitlePointSize)
-            }
-
-            label.attributedText = attributedText
-
-            return label
-        }
-
-        mutating func addLastSubviews() {
-            // TODO Message Request: In order to debug the profile is getting shared in the right moments,
-            // display the thread whitelist state in settings. Eventually we can probably delete this.
-            #if DEBUG
-            let viewController = self.viewController
-            let isThreadInProfileWhitelist = UIView.profileManager.isThread(inProfileWhitelist: viewController.thread,
-                                                                            transaction: transaction)
-            let hasSharedProfile = String(format: "Whitelisted: %@", isThreadInProfileWhitelist ? "Yes" : "No")
-            addSubtitleLabel(text: hasSharedProfile)
-            #endif
-        }
-
-        func build() -> UIView {
-            let header = UIStackView(arrangedSubviews: subviews)
-            header.axis = .vertical
-            header.alignment = .center
-            header.layoutMargins = UIEdgeInsets(top: 8, leading: 18, bottom: 16, trailing: 18)
-            header.isLayoutMarginsRelativeArrangement = true
-
-            header.addGestureRecognizer(UITapGestureRecognizer(target: viewController, action: #selector(conversationNameTouched)))
-
-            header.isUserInteractionEnabled = true
-            header.accessibilityIdentifier = UIView.accessibilityIdentifier(in: viewController, name: "mainSectionHeader")
-            header.addBackgroundView(withBackgroundColor: ConversationSettingsViewController.headerBackgroundColor)
-
-            return header
-        }
-    }
-
     private func buildHeaderForGroup(groupThread: TSGroupThread) -> UIView {
-        databaseStorage.read { transaction in
-            self.buildHeaderForGroup(groupThread: groupThread, transaction: transaction)
-        }
-    }
-
-    private func buildHeaderForGroup(groupThread: TSGroupThread,
-                                     transaction: SDSAnyReadTransaction) -> UIView {
-        var builder = HeaderBuilder(viewController: self,
-                                    transaction: transaction)
-
-        if !groupThread.groupModel.isPlaceholder {
-            let memberCount = groupThread.groupModel.groupMembership.fullMembers.count
-            var groupMembersText = GroupViewUtils.formatGroupMembersLabel(memberCount: memberCount)
-            if groupThread.isGroupV1Thread {
-                groupMembersText.append(" ")
-                groupMembersText.append("•")
-                groupMembersText.append(" ")
-                groupMembersText.append(NSLocalizedString("GROUPS_LEGACY_GROUP_INDICATOR",
-                                                          comment: "Label indicating a legacy group."))
-            }
-            builder.addSubtitleLabel(text: groupMembersText,
-                                     font: .ows_dynamicTypeSubheadline)
-        }
-
-        if groupThread.isGroupV1Thread {
-            builder.addLegacyGroupView(groupThread: groupThread,
-                                       viewController: self)
-        }
-
-        builder.addLastSubviews()
-
-        let header = builder.build()
-
-        // This will not appear in public builds.
-        if DebugFlags.groupsV2showV2Indicator,
-            thread.isGroupV2Thread {
-            let indicatorLabel = UILabel()
-            indicatorLabel.text = thread.isGroupV2Thread ? "v2" : "v1"
-            indicatorLabel.textColor = Theme.secondaryTextAndIconColor
-            indicatorLabel.font = .ows_dynamicTypeBody
-            header.addSubview(indicatorLabel)
-            indicatorLabel.autoPinEdge(toSuperviewMargin: .trailing)
-            indicatorLabel.autoPinEdge(toSuperviewMargin: .bottom)
-        }
-
+        let header = HeaderContactProfileView()
+        let avatar = OWSAvatarBuilder.buildImage(thread: groupThread, diameter: 80)
+        
+        let memberCount = groupThread.groupModel.groupMembership.fullMembers.count
+        let groupMembersText = GroupViewUtils.formatGroupMembersLabel(memberCount: memberCount)
+        
+        header.setup(
+            fullName: groupThread.groupNameOrDefault,
+            subtitle: groupMembersText,
+            image: avatar,
+            options: [
+                ProfileOptionView(option: .search,
+                                  action: { [weak self] in
+                                    self?.tappedConversationSearch()
+                }),
+                ProfileOptionView(option: .leaveGroup,
+                                  action: { [weak self] in
+                                    self?.didTapLeaveGroup()
+                }),
+                ProfileOptionView(option: .gallery,
+                                  action: { [weak self] in
+                                    guard let self = self else { return }
+                                    self.showMediaGallery()
+                })
+        ])
+        
         return header
     }
 
     private func buildHeaderForContact(contactThread: TSContactThread) -> UIView {
-        databaseStorage.read { transaction in
-            self.buildHeaderForContact(contactThread: contactThread, transaction: transaction)
+        let header = HeaderContactProfileView()
+        let threadName = contactsManager.displayNameWithSneakyTransaction(thread: contactThread)
+        
+        let avatar = OWSAvatarBuilder.buildImage(thread: contactThread,
+                                                 diameter: 80)
+        var options: [ProfileOptionView] = [ProfileOptionView(option: .search,
+                                                              action: { [weak self] in
+                                                                self?.tappedConversationSearch() })]
+        
+        if !contactThread.isNoteToSelf {
+            options.append(contentsOf: [
+                ProfileOptionView(option: .call, action: { [weak self] in
+                    guard let self = self else { return }
+                    self.didCallTap(address: contactThread.contactAddress)
+                }),
+                ProfileOptionView(option: .video, action: { [weak self] in
+                    guard let self = self else { return }
+                    self.didCallTap(address: contactThread.contactAddress, isVideo: true)
+                })
+            ])
         }
+        
+        options.append(ProfileOptionView(option: .gallery, action: { [weak self] in
+            guard let self = self else { return }
+            self.showMediaGallery()
+        }))
+        
+        header.setup(
+            fullName: threadName,
+            subtitle: "", //contactThread.isNoteToSelf ? "" : "lastSeen",  // TODO: fix lastSeen
+            image: avatar,
+            options: options
+        )
+        return header
     }
-
-    private func buildHeaderForContact(contactThread: TSContactThread,
-                                       transaction: SDSAnyReadTransaction) -> UIView {
-        var builder = HeaderBuilder(viewController: self,
-                                    transaction: transaction)
-
-        if !contactThread.contactAddress.isLocalAddress,
-            let bioText = profileManager.profileBioForDisplay(for: contactThread.contactAddress,
-                                                             transaction: transaction) {
-            builder.addSubtitleLabel(text: bioText)
-        }
-
-        let threadName = contactsManager.displayName(for: contactThread, transaction: transaction)
-        let recipientAddress = contactThread.contactAddress
-        if let phoneNumber = recipientAddress.phoneNumber {
-            let formattedPhoneNumber =
-                PhoneNumber.bestEffortFormatPartialUserSpecifiedText(toLookLikeAPhoneNumber: phoneNumber)
-            if threadName != formattedPhoneNumber {
-                builder.addSubtitleLabel(text: formattedPhoneNumber)
-            }
-        }
-
-        if let username = profileManager.username(for: recipientAddress, transaction: transaction),
-            username.count > 0 {
-            if let formattedUsername = CommonFormats.formatUsername(username),
-                threadName != formattedUsername {
-                builder.addSubtitleLabel(text: formattedUsername)
-            }
-        }
-
-        if DebugFlags.showProfileKeyAndUuidsIndicator {
-            let uuidText = String(format: "UUID: %@", contactThread.contactAddress.uuid?.uuidString ?? "Unknown")
-            builder.addSubtitleLabel(text: uuidText)
-        }
-
-        let isVerified = identityManager.verificationState(for: recipientAddress,
-                                                           transaction: transaction) == .verified
-        if isVerified {
-            let subtitle = NSMutableAttributedString()
-            subtitle.appendTemplatedImage(named: "check-12", font: UIFont.ows_regularFont(withSize: builder.viewController.subtitlePointSize))
-            subtitle.append(" ")
-            subtitle.append(NSLocalizedString("PRIVACY_IDENTITY_IS_VERIFIED_BADGE",
-                                              comment: "Badge indicating that the user is verified."))
-            builder.addSubtitleLabel(attributedText: subtitle)
-        }
-
-        // This will not appear in public builds.
-        if DebugFlags.showProfileKeyAndUuidsIndicator {
-            let profileKey = profileManager.profileKeyData(for: recipientAddress, transaction: transaction)
-            let text = String(format: "Profile Key: %@", profileKey?.hexadecimalString ?? "Unknown")
-            builder.addSubtitleLabel(attributedText: text.asAttributedString)
-        }
-
-        // This will not appear in public builds.
-        if DebugFlags.showCapabilityIndicators {
-            var capabilities = [String]()
-            if GroupManager.doesUserHaveGroupsV2Capability(address: recipientAddress,
-                                                           transaction: transaction) {
-                capabilities.append("gv2")
-            }
-            if GroupManager.doesUserHaveGroupsV2MigrationCapability(address: recipientAddress,
-                                                                    transaction: transaction) {
-                capabilities.append("migration")
-            }
-            let text = String(format: "Capabilities: %@", capabilities.joined(separator: ", "))
-            builder.addSubtitleLabel(attributedText: text.asAttributedString)
-        }
-
-        builder.addLastSubviews()
-
-        return builder.build()
+    
+    func didCallTap(address: SignalServiceAddress, isVideo: Bool = false) {
+        outboundIndividualCallInitiator.initiateCall(address: address, isVideo: isVideo)
     }
-
+    
     func buildMainHeader() -> UIView {
         if let groupThread = thread as? TSGroupThread {
             return buildHeaderForGroup(groupThread: groupThread)

@@ -177,19 +177,12 @@ class ConversationSettingsViewController: OWSTableViewController {
     }
 
     func updateNavigationBar() {
-        guard canEditConversationAttributes else {
-            navigationItem.rightBarButtonItem = nil
-            return
-        }
-
-        if isGroupThread || contactsManager.isSystemContactsAuthorized {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: NSLocalizedString("CONVERSATION_SETTINGS_EDIT",
-                                         comment: "Label for the 'edit' button in conversation settings view."),
+        if !thread.isNoteToSelf && thread.hasSafetyNumbers() && (thread.isGroupThread || thread.recipientAddresses[0].uuid != nil) {
+            navigationItem.rightBarButtonItem = .init(
+                image: UIImage(imageLiteralResourceName: "icon.verification.active"),
                 style: .plain,
                 target: self,
-                action: #selector(editButtonWasPressed))
-
+                action: #selector(showVerificationView))
         } else {
             navigationItem.rightBarButtonItem = nil
         }
@@ -347,7 +340,7 @@ class ConversationSettingsViewController: OWSTableViewController {
         }
     }
 
-    func showVerificationView() {
+    @objc func showVerificationView() {
         guard let contactThread = thread as? TSContactThread else {
             owsFailDebug("Invalid thread.")
             return

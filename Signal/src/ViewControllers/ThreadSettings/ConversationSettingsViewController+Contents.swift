@@ -119,35 +119,35 @@ extension ConversationSettingsViewController {
             }))
         }
 
-        section.add(OWSTableItem(customCellBlock: { [weak self] in
-            guard let self = self else {
-                owsFailDebug("Missing self")
-                return OWSTableItem.newCell()
-            }
-            return OWSTableItem.buildDisclosureCell(name: MediaStrings.allMedia,
-                                                    icon: .settingsAllMedia,
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "all_media"))
-            },
-                                 actionBlock: { [weak self] in
-                                    self?.showMediaGallery()
-        }))
-
-        if !groupViewHelper.isBlockedByMigration {
-            section.add(OWSTableItem(customCellBlock: { [weak self] in
-                guard let self = self else {
-                    owsFailDebug("Missing self")
-                    return OWSTableItem.newCell()
-                }
-                let title = NSLocalizedString("CONVERSATION_SETTINGS_SEARCH",
-                                              comment: "Table cell label in conversation settings which returns the user to the conversation with 'search mode' activated")
-                return OWSTableItem.buildDisclosureCell(name: title,
-                                                        icon: .settingsSearch,
-                                                        accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "search"))
-            },
-            actionBlock: { [weak self] in
-                self?.tappedConversationSearch()
-            }))
-        }
+//        section.add(OWSTableItem(customCellBlock: { [weak self] in
+//            guard let self = self else {
+//                owsFailDebug("Missing self")
+//                return OWSTableItem.newCell()
+//            }
+//            return OWSTableItem.buildDisclosureCell(name: MediaStrings.allMedia,
+//                                                    icon: .settingsAllMedia,
+//                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "all_media"))
+//            },
+//                                 actionBlock: { [weak self] in
+//                                    self?.showMediaGallery()
+//        }))
+//
+//        if !groupViewHelper.isBlockedByMigration {
+//            section.add(OWSTableItem(customCellBlock: { [weak self] in
+//                guard let self = self else {
+//                    owsFailDebug("Missing self")
+//                    return OWSTableItem.newCell()
+//                }
+//                let title = NSLocalizedString("CONVERSATION_SETTINGS_SEARCH",
+//                                              comment: "Table cell label in conversation settings which returns the user to the conversation with 'search mode' activated")
+//                return OWSTableItem.buildDisclosureCell(name: title,
+//                                                        icon: .settingsSearch,
+//                                                        accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "search"))
+//            },
+//            actionBlock: { [weak self] in
+//                self?.tappedConversationSearch()
+//            }))
+//        }
 
         section.add(OWSTableItem(customCellBlock: { [weak self] in
             guard let self = self else {
@@ -167,23 +167,23 @@ extension ConversationSettingsViewController {
             self?.showWallpaperSettingsView()
         }))
 
-        if !isNoteToSelf && !isGroupThread && thread.hasSafetyNumbers() {
-            // Safety Numbers
-            section.add(OWSTableItem(customCellBlock: { [weak self] in
-                guard let self = self else {
-                    owsFailDebug("Missing self")
-                    return OWSTableItem.newCell()
-                }
-
-                return OWSTableItem.buildDisclosureCell(name: NSLocalizedString("VERIFY_PRIVACY",
-                                                                                comment: "Label for button or row which allows users to verify the safety number of another user."),
-                                                        icon: .settingsViewSafetyNumber,
-                                                        accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "safety_numbers"))
-                },
-                                     actionBlock: { [weak self] in
-                                        self?.showVerificationView()
-            }))
-        }
+//        if !isNoteToSelf && !isGroupThread && thread.hasSafetyNumbers() {
+//            // Safety Numbers
+//            section.add(OWSTableItem(customCellBlock: { [weak self] in
+//                guard let self = self else {
+//                    owsFailDebug("Missing self")
+//                    return OWSTableItem.newCell()
+//                }
+//
+//                return OWSTableItem.buildDisclosureCell(name: NSLocalizedString("VERIFY_PRIVACY",
+//                                                                                comment: "Label for button or row which allows users to verify the safety number of another user."),
+//                                                        icon: .settingsViewSafetyNumber,
+//                                                        accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "safety_numbers"))
+//                },
+//                                     actionBlock: { [weak self] in
+//                                        self?.showVerificationView()
+//            }))
+//        }
 
         // Indicate if the user is in the system contacts
         if !isNoteToSelf && !isGroupThread && hasExistingContact {
