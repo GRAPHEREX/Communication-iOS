@@ -159,7 +159,7 @@ public class AccountManager: NSObject {
                                                                       transaction: transaction)
 
                     // New users also have the onboarding banner cards enabled
-                    GetStartedBannerViewController.enableAllCards(writeTx: transaction)
+//                    GetStartedBannerViewController.enableAllCards(writeTx: transaction)
                 }
 
                 // If the user previously had a PIN, but we don't have record of it,

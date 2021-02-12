@@ -2328,24 +2328,24 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
 
 - (void)presentGetStartedBannerIfNecessary
 {
-    if (self.getStartedBanner || self.conversationListMode != ConversationListMode_Inbox) {
-        return;
-    }
-
-    OWSGetStartedBannerViewController *getStartedVC = [[OWSGetStartedBannerViewController alloc] initWithDelegate:self];
-    if (getStartedVC.hasIncompleteCards) {
-        self.getStartedBanner = getStartedVC;
-
-        [self addChildViewController:getStartedVC];
-        [self.view addSubview:getStartedVC.view];
-        [getStartedVC.view autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeTop];
-
-        // If we're in landscape, the banner covers most of the screen
-        // Hide it until we transition to portrait
-        if (self.view.bounds.size.width > self.view.bounds.size.height) {
-            getStartedVC.view.alpha = 0;
-        }
-    }
+//    if (self.getStartedBanner || self.conversationListMode != ConversationListMode_Inbox) {
+//        return;
+//    }
+//
+//    OWSGetStartedBannerViewController *getStartedVC = [[OWSGetStartedBannerViewController alloc] initWithDelegate:self];
+//    if (getStartedVC.hasIncompleteCards) {
+//        self.getStartedBanner = getStartedVC;
+//
+//        [self addChildViewController:getStartedVC];
+//        [self.view addSubview:getStartedVC.view];
+//        [getStartedVC.view autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeTop];
+//
+//        // If we're in landscape, the banner covers most of the screen
+//        // Hide it until we transition to portrait
+//        if (self.view.bounds.size.width > self.view.bounds.size.height) {
+//            getStartedVC.view.alpha = 0;
+//        }
+//    }
 }
 
 - (void)getStartedBannerDidTapCreateGroup:(OWSGetStartedBannerViewController *)banner
