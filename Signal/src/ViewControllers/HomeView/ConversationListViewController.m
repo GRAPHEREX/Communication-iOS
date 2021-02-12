@@ -373,25 +373,25 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
 
     self.emptyInboxView = [self createEmptyInboxView];
     [self.view addSubview:self.emptyInboxView];
-    [self.emptyInboxView autoPinWidthToSuperviewMargins];
+    [self.emptyInboxView autoPinEdgesToSuperviewSafeArea];
     [self.emptyInboxView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.view withMultiplier:0.85];
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _emptyInboxView);
 
-    [self createFirstConversationCueView];
-    [self.view addSubview:self.firstConversationCueView];
-    [self.firstConversationCueView autoPinToTopLayoutGuideOfViewController:self withInset:0.f];
-    // This inset bakes in assumptions about UINavigationBar layout, but I'm not sure
-    // there's a better way to do it, since it isn't safe to use iOS auto layout with
-    // UINavigationBar contents.
-    [self.firstConversationCueView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:6.f];
-    [self.firstConversationCueView autoPinEdgeToSuperviewEdge:ALEdgeLeading
-                                                    withInset:10
-                                                     relation:NSLayoutRelationGreaterThanOrEqual];
-    [self.firstConversationCueView autoPinEdgeToSuperviewMargin:ALEdgeBottom
-                                                       relation:NSLayoutRelationGreaterThanOrEqual];
-    SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _firstConversationCueView);
-    SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _firstConversationLabel);
-
+//    [self createFirstConversationCueView];
+//    [self.view addSubview:self.firstConversationCueView];
+//    [self.firstConversationCueView autoPinToTopLayoutGuideOfViewController:self withInset:0.f];
+//    // This inset bakes in assumptions about UINavigationBar layout, but I'm not sure
+//    // there's a better way to do it, since it isn't safe to use iOS auto layout with
+//    // UINavigationBar contents.
+//    [self.firstConversationCueView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:6.f];
+//    [self.firstConversationCueView autoPinEdgeToSuperviewEdge:ALEdgeLeading
+//                                                    withInset:10
+//                                                     relation:NSLayoutRelationGreaterThanOrEqual];
+//    [self.firstConversationCueView autoPinEdgeToSuperviewMargin:ALEdgeBottom
+//                                                       relation:NSLayoutRelationGreaterThanOrEqual];
+//    SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _firstConversationCueView);
+//    SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _firstConversationLabel);
+    
     UIRefreshControl *pullToRefreshView = [UIRefreshControl new];
     pullToRefreshView.tintColor = [UIColor grayColor];
     [pullToRefreshView addTarget:self
@@ -403,16 +403,18 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
 
 - (UIView *)createEmptyInboxView
 {
-    UILabel *emptyInboxLabel = [UILabel new];
-    emptyInboxLabel.text = NSLocalizedString(
-        @"INBOX_VIEW_EMPTY_INBOX", @"Message shown in the conversation list when the inbox is empty.");
-    emptyInboxLabel.font = UIFont.ows_dynamicTypeSubheadlineClampedFont;
-    emptyInboxLabel.textColor = Theme.isDarkThemeEnabled ? Theme.darkThemeSecondaryTextAndIconColor : UIColor.ows_gray45Color;
-    emptyInboxLabel.textAlignment = NSTextAlignmentCenter;
-    emptyInboxLabel.numberOfLines = 0;
-    emptyInboxLabel.lineBreakMode = NSLineBreakByWordWrapping;
-
-    return emptyInboxLabel;
+    EmptyStateView *emptyView = [EmptyStateView new];
+    
+    UIImage *image = [UIImage imageNamed:@"Chats"];
+    [emptyView setWithImage:image
+                      title: NSLocalizedString(@"CHATS_VIEW_EMPTY_TITLE", comment: "")
+                   subtitle: NSLocalizedString(@"CHATS_VIEW_EMPTY_SUBTITLE", comment: "")
+                buttonTitle: NSLocalizedString(@"CHATS_VIEW_EMPTY_BUTTON_TITLE", comment: "")
+                     action: ^{
+        __weak ConversationListViewController *weakSelf = self;
+        [weakSelf showNewConversationView];
+    }];
+    return emptyView;
 }
 
 - (void)createFirstConversationCueView
@@ -553,7 +555,7 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
             NSAttributedString *formattedName =
                 [[NSAttributedString alloc] initWithString:contactName
                                                 attributes:@{
-                                                    NSFontAttributeName : self.firstConversationLabel.font.ows_semibold,
+//                                                    NSFontAttributeName : self.firstConversationLabel.font.ows_semibold,
                                                 }];
             [attributedString replaceCharactersInRange:range withAttributedString:formattedName];
         }
@@ -761,32 +763,38 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
     [avatarButton autoSetDimension:ALDimensionWidth toSize:kAvatarSize];
     [avatarButton autoSetDimension:ALDimensionHeight toSize:kAvatarSize];
 
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithCustomView:avatarButton];
-
-    settingsButton.accessibilityLabel = CommonStrings.openSettingsButton;
-    self.navigationItem.leftBarButtonItem = settingsButton;
-    SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, settingsButton);
+//    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithCustomView:avatarButton];
+//    settingsButton.accessibilityLabel = CommonStrings.openSettingsButton;
+//    self.navigationItem.leftBarButtonItem = settingsButton;
+//    SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, settingsButton);
 
     UIBarButtonItem *compose = [[UIBarButtonItem alloc] initWithImage:[Theme iconImage:ThemeIconCompose24]
                                                                 style:UIBarButtonItemStylePlain
                                                                target:self
                                                                action:@selector(showNewConversationView)];
+    UIImage *image = [UIImage imageNamed:@"plus-24"];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
+    compose.image = image;
+    if (@available(iOS 13.0, *)) {
+        [compose setTintColor:[UIColor labelColor]];
+    }
     compose.accessibilityLabel
         = NSLocalizedString(@"COMPOSE_BUTTON_LABEL", @"Accessibility label from compose button.");
     compose.accessibilityHint = NSLocalizedString(
         @"COMPOSE_BUTTON_HINT", @"Accessibility hint describing what you can do with the compose button");
     compose.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"compose");
 
-    UIBarButtonItem *camera = [[UIBarButtonItem alloc] initWithImage:[Theme iconImage:ThemeIconCameraButton]
-                                                               style:UIBarButtonItemStylePlain
-                                                              target:self
-                                                              action:@selector(showCameraView)];
-    camera.accessibilityLabel = NSLocalizedString(@"CAMERA_BUTTON_LABEL", @"Accessibility label for camera button.");
-    camera.accessibilityHint = NSLocalizedString(
-        @"CAMERA_BUTTON_HINT", @"Accessibility hint describing what you can do with the camera button");
-    camera.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"camera");
+//    UIBarButtonItem *camera = [[UIBarButtonItem alloc] initWithImage:[Theme iconImage:ThemeIconCameraButton]
+//                                                               style:UIBarButtonItemStylePlain
+//                                                              target:self
+//                                                              action:@selector(showCameraView)];
+//    camera.accessibilityLabel = NSLocalizedString(@"CAMERA_BUTTON_LABEL", @"Accessibility label for camera button.");
+//    camera.accessibilityHint = NSLocalizedString(
+//        @"CAMERA_BUTTON_HINT", @"Accessibility hint describing what you can do with the camera button");
+//    camera.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"camera");
 
-    self.navigationItem.rightBarButtonItems = @[ compose, camera ];
+    self.navigationItem.rightBarButtonItems = @[ compose ];
 }
 
 - (void)showNewConversationView
