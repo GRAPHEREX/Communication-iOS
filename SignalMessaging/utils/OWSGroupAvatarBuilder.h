@@ -13,8 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithThread:(TSGroupThread *)thread diameter:(NSUInteger)diameter;
 
 + (nullable UIImage *)defaultAvatarForGroupId:(NSData *)groupId
+                                    groupName:(NSString *)groupName
                         conversationColorName:(NSString *)conversationColorName
                                      diameter:(NSUInteger)diameter;
+
++ (nullable UIImage *)selectionAvatarForGroupId:(NSData *)groupId
+                                      groupName:(NSString *)groupName
+                          conversationColorName:(NSString *)conversationColorName
+                                       diameter:(NSUInteger)diameter;
 
 @end
 

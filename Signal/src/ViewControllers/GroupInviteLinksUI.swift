@@ -180,6 +180,7 @@ class GroupInviteLinksActionSheet: ActionSheetController {
 
     private func loadDefaultContent() {
         avatarView.image = OWSGroupAvatarBuilder.defaultAvatar(forGroupId: groupV2ContextInfo.groupId,
+                                                               groupName: TSGroupThread.defaultGroupName,
                                                                conversationColorName: ConversationColorName.default.rawValue,
                                                                diameter: Self.avatarSize)
         groupTitleLabel.text = NSLocalizedString("GROUP_LINK_ACTION_SHEET_VIEW_LOADING_TITLE",

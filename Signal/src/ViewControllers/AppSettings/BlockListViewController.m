@@ -127,6 +127,7 @@ NS_ASSUME_NONNULL_BEGIN
                 NSString *conversationColorName =
                     [TSGroupThread defaultConversationColorNameForGroupId:blockedGroup.groupId];
                 image = [OWSGroupAvatarBuilder defaultAvatarForGroupId:blockedGroup.groupId
+                                                             groupName:blockedGroup.groupNameOrDefault
                                                  conversationColorName:conversationColorName
                                                               diameter:kStandardAvatarSize];
             }
