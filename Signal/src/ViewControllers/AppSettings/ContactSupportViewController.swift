@@ -7,8 +7,8 @@ import PromiseKit
 
 @objc(OWSSupportConstants)
 @objcMembers class SupportConstants: NSObject {
-    static let supportURL = URL(string: "https://support.signal.org/")!
-    static let debugLogsInfoURL = URL(string: "https://support.signal.org/hc/articles/360007318591")!
+    static let supportURL = URL(string: "https://support.grapherex.com/")!
+    static let debugLogsInfoURL = URL(string: "https://support.grapherex.com")!
     static let supportEmail = "support@grapherex.com"
 }
 

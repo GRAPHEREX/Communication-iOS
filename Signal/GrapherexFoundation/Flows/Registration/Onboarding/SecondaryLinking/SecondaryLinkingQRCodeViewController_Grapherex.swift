@@ -84,7 +84,7 @@ public class SecondaryLinkingQRCodeViewController_Grapherex: OnboardingBaseViewC
             return
         }
 
-        UIApplication.shared.open(URL(string: "https://support.signal.org/hc/articles/360007320451")!)
+        UIApplication.shared.open(URL(string: "https://support.grapherex.com")!)
     }
 
     // MARK: -

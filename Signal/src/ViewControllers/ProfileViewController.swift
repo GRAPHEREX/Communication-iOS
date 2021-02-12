@@ -686,7 +686,7 @@ public class ProfileViewController: OWSTableViewController {
 
     @objc
     private func didTapInfo() {
-        let vc = SFSafariViewController(url: URL(string: "https://support.signal.org/hc/articles/360007459591")!)
+        let vc = SFSafariViewController(url: URL(string: "https://support.grapherex.com")!)
         present(vc, animated: true, completion: nil)
     }
 }

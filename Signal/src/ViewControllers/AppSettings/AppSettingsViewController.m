@@ -200,7 +200,7 @@
 //                              accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"donate")
 //                                          actionBlock:^{
 //                                              [UIApplication.sharedApplication
-//                                                            openURL:[NSURL URLWithString:@"https://signal.org/donate"]
+//                                                            openURL:[NSURL URLWithString:@"https://grapherex.com"]
 //                                                            options:@{}
 //                                                  completionHandler:nil];
 //                                          }]];

@@ -102,7 +102,7 @@ class IntroducingPinsSplash: SplashViewController {
         attributedBody.append("  ")
         attributedBody.append(CommonStrings.learnMore,
                                 attributes: [
-                                    .link: URL(string: "https://support.signal.org/hc/articles/360007059792")!,
+                                    .link: URL(string: "https://support.grapherex.com")!,
                                     .font: UIFont.ows_dynamicTypeBody
             ]
         )
@@ -181,7 +181,7 @@ class IntroducingPinsSplash: SplashViewController {
             )
         ) { [weak self] _ in
             guard let self = self else { return }
-            let vc = SFSafariViewController(url: URL(string: "https://support.signal.org/hc/articles/360007059792")!)
+            let vc = SFSafariViewController(url: URL(string: "https://support.grapherex.com")!)
             self.present(vc, animated: true, completion: nil)
         }
         actionSheet.addAction(learnMoreAction)

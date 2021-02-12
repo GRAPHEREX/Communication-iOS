@@ -242,7 +242,7 @@ public class PinSetupViewController: OWSViewController {
             attributedString.append("  ")
             attributedString.append(CommonStrings.learnMore,
                                     attributes: [
-                                        .link: URL(string: "https://support.signal.org/hc/articles/360007059792")!,
+                                        .link: URL(string: "https://support.grapherex.com")!,
                                         .font: UIFont.systemFont(ofSize: 15)
                 ]
             )
@@ -379,7 +379,7 @@ public class PinSetupViewController: OWSViewController {
             )
         ) { [weak self] _ in
             guard let self = self else { return }
-            let vc = SFSafariViewController(url: URL(string: "https://support.signal.org/hc/articles/360007059792")!)
+            let vc = SFSafariViewController(url: URL(string: "https://support.grapherex.com")!)
             self.present(vc, animated: true, completion: nil)
         }
         actionSheet.addAction(learnMoreAction)

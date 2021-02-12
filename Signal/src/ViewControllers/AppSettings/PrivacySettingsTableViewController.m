@@ -256,7 +256,7 @@ NS_ASSUME_NONNULL_BEGIN
         [attributedFooter append:CommonStrings.learnMore
                       attributes:@{
                           NSLinkAttributeName : [NSURL
-                                                 URLWithString:@"https://support.signal.org/hc/articles/360007059792"],
+                                                 URLWithString:@"https://support.grapherex.com"],
                           NSFontAttributeName : UIFont.ows_dynamicTypeCaption1Font
                       }];
         pinsSection.footerAttributedTitle = attributedFooter;
@@ -423,7 +423,7 @@ NS_ASSUME_NONNULL_BEGIN
     [unidentifiedDeliveryFooterText append:CommonStrings.learnMore
                                 attributes:@{
                                     NSLinkAttributeName :
-                                        [NSURL URLWithString:@"https://signal.org/blog/sealed-sender/"],
+                                        [NSURL URLWithString:@"https://support.grapherex.com"],
                                     NSFontAttributeName : UIFont.ows_dynamicTypeCaption1Font
                                 }];
 

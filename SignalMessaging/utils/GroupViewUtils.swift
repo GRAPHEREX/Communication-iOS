@@ -86,7 +86,7 @@ public class GroupViewUtils {
     }
 
     private static func showCantAddMemberView(fromViewController: UIViewController) {
-        guard let url = URL(string: "https://support.signal.org/hc/articles/360007319331") else {
+        guard let url = URL(string: "https://support.grapherex.com") else {
             owsFailDebug("Invalid url.")
             return
         }
