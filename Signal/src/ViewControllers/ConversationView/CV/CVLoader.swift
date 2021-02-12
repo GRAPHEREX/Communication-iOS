@@ -317,11 +317,12 @@ public class CVLoader: NSObject {
         case .unreadIndicator:
             rootComponent = CVComponentUnreadIndicator(itemModel: itemModel)
         case .threadDetails:
-            guard let threadDetails = itemModel.componentState.threadDetails else {
-                owsFailDebug("Missing threadDetails.")
-                return nil
-            }
-            rootComponent = CVComponentThreadDetails(itemModel: itemModel, threadDetails: threadDetails)
+            return nil
+//            guard let threadDetails = itemModel.componentState.threadDetails else {
+//                owsFailDebug("Missing threadDetails.")
+//                return nil
+//            }
+//            rootComponent = CVComponentThreadDetails(itemModel: itemModel, threadDetails: threadDetails)
         case .textOnlyMessage, .audio, .genericAttachment, .contactShare, .bodyMedia, .viewOnce, .stickerMessage:
             rootComponent = CVComponentMessage(itemModel: itemModel)
         case .typingIndicator:
