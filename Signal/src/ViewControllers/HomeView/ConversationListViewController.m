@@ -606,11 +606,11 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
     switch (self.conversationListMode) {
         case ConversationListMode_Inbox:
             // TODO: Should our app name be translated?  Probably not.
-            self.title
+            self.navigationItem.title
                 = NSLocalizedString(@"HOME_VIEW_TITLE_INBOX", @"Title for the conversation list's default mode.");
             break;
         case ConversationListMode_Archive:
-            self.title
+            self.navigationItem.title
                 = NSLocalizedString(@"HOME_VIEW_TITLE_ARCHIVE", @"Title for the conversation list's 'archive' mode.");
             break;
     }
@@ -2072,6 +2072,7 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
         [[ConversationViewController alloc] initWithThreadViewModel:threadViewModel
                                                              action:ConversationViewActionNone
                                                      focusMessageId:nil];
+    vc.hidesBottomBarWhenPushed = YES;
     [vc previewSetup];
     return vc;
 }

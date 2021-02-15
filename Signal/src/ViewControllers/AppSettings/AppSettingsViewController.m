@@ -329,25 +329,25 @@
 - (void)showPrivacy
 {
     PrivacySettingsTableViewController *vc = [[PrivacySettingsTableViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 - (void)showAppearance
 {
     AppearanceSettingsTableViewController *vc = [AppearanceSettingsTableViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 - (void)showNotifications
 {
     NotificationSettingsViewController *vc = [[NotificationSettingsViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 - (void)showLinkedDevices
 {
     LinkedDevicesTableViewController *vc = [LinkedDevicesTableViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 - (void)showProfile
@@ -357,25 +357,25 @@
         [completedVC.navigationController popViewControllerAnimated:YES];
     };
 
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 - (void)showData
 {
     DataSettingsTableViewController *vc = [[DataSettingsTableViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 - (void)showAdvanced
 {
     AdvancedSettingsTableViewController *vc = [[AdvancedSettingsTableViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 - (void)showHelp
 {
     OWSHelpViewController *vc = [[OWSHelpViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 - (void)showSupport
@@ -383,7 +383,7 @@
     WebViewController *vc = [[WebViewController alloc] init];
     [vc setTitle:NSLocalizedString(@"SETTINGS_SUPPORT", nil)];
     [vc setLink:@"https://grapherex.com/contacts/en"];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 - (void)showFAQ
@@ -391,19 +391,19 @@
     WebViewController *vc = [[WebViewController alloc] init];
     [vc setTitle:NSLocalizedString(@"SETTINGS_FAQ", nil)];
     [vc setLink:@"https://grapherex.com/faq/en"];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 - (void)showAbout
 {
     AboutTableViewController *vc = [[AboutTableViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 - (void)showBackup
 {
     OWSBackupSettingsViewController *vc = [OWSBackupSettingsViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushViewController:vc];
 }
 
 #ifdef USE_DEBUG_UI
@@ -448,6 +448,11 @@
 {
     [Theme setCurrentTheme:ThemeMode_Light];
     [self updateTableContents];
+}
+
+- (void)pushViewController:(UIViewController *)vc {
+    [vc setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Notifications
