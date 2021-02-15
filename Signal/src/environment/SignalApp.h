@@ -47,6 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
                             animated:(BOOL)isAnimated;
 
 - (void)presentConversationAndScrollToFirstUnreadMessageForThreadId:(NSString *)threadId animated:(BOOL)isAnimated;
+- (void)openConversationsList;
 
 #pragma mark - Methods
 

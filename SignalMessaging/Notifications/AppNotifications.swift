@@ -190,10 +190,14 @@ public class NotificationPresenter: NSObject, NotificationsProtocol {
 
         AppReadiness.runNowOrWhenAppDidBecomeReady {
             NotificationCenter.default.addObserver(self, selector: #selector(self.handleMessageRead), name: .incomingMessageMarkedAsRead, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.handleAppDidBecomeActive), name: .OWSApplicationDidBecomeActive, object: nil)
+            self.handleAppDidBecomeActive()
         }
         SwiftSingletons.register(self)
     }
 
+    private var appWasJustLaunched = true
+    
     // MARK: - Dependencies
 
     var contactsManager: OWSContactsManager {
@@ -393,6 +397,7 @@ public class NotificationPresenter: NSObject, NotificationsProtocol {
     }
 
     public func canNotify(for incomingMessage: TSIncomingMessage, thread: TSThread, transaction: SDSAnyReadTransaction) -> Bool {
+        guard !appWasJustLaunched else { return false }
         guard thread.isMuted else { return true }
 
         guard let localAddress = TSAccountManager.localAddress else {
@@ -827,4 +832,16 @@ public protocol IndividualCallNotificationInfo {
     var remoteAddress: SignalServiceAddress { get }
     var localId: UUID { get }
     var offerMediaType: TSRecentCallOfferType { get }
+}
+
+extension NotificationPresenter {
+    @objc
+    public func handleAppDidBecomeActive() {
+        AssertIsOnMainThread()
+
+        appWasJustLaunched = true
+        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { [weak self] _ in
+            self?.appWasJustLaunched = false
+        }
+    }
 }

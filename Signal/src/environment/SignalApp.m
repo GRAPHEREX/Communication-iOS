@@ -235,12 +235,16 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
             }
         }
 
-        [self.rootViewController openConversationsList];
+        [self openConversationsList];
         [self.conversationSplitViewController presentThread:thread
                                                      action:ConversationViewActionNone
                                              focusMessageId:nil
                                                    animated:isAnimated];
     });
+}
+
+- (void)openConversationsList {
+    [self.rootViewController openConversationsList];
 }
 
 - (void)didChangeCallLoggingPreference:(NSNotification *)notification

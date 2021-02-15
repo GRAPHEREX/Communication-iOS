@@ -67,6 +67,10 @@ public class UserNotificationActionHandler: NSObject {
 
             return try actionHandler.reply(userInfo: userInfo, replyText: textInputResponse.userText)
         case .showThread:
+            guard (userInfo[AppNotificationUserInfoKey.threadId] as? String) != nil else {
+                SignalApp.shared().openConversationsList()
+                return Promise.value(())
+            }
             return try actionHandler.showThread(userInfo: userInfo)
         case .reactWithThumbsUp:
             return try actionHandler.reactWithThumbsUp(userInfo: userInfo)
