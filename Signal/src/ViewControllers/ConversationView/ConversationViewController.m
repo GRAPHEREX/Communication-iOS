@@ -2644,6 +2644,12 @@ typedef enum : NSUInteger {
     [self chooseFromLibrary];
 }
 
+-(void)moneyButtonPressed
+{
+    [self dismissKeyBoard];
+    [self showSendFromChatWithRecipientAddress:self.thread.recipientAddresses[0]];
+}
+
 - (void)gifButtonPressed
 {
     OWSAssertIsOnMainThread();

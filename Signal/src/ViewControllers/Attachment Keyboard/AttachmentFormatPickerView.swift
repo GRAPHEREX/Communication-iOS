@@ -11,9 +11,11 @@ protocol AttachmentFormatPickerDelegate: class {
     func didTapFile()
     func didTapContact()
     func didTapLocation()
+    func didTapMoney()
 }
 
 class AttachmentFormatPickerView: UICollectionView {
+    public var hideMoney: Bool = false
     weak var attachmentFormatPickerDelegate: AttachmentFormatPickerDelegate?
 
     var itemSize: CGSize = .zero {
@@ -32,14 +34,14 @@ class AttachmentFormatPickerView: UICollectionView {
         delegate = self
         showsHorizontalScrollIndicator = false
 
-        contentInset = UIEdgeInsets(top: 0, leading: 6, bottom: 0, trailing: 6)
+        contentInset = UIEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
 
         backgroundColor = .clear
 
         register(AttachmentFormatCell.self, forCellWithReuseIdentifier: AttachmentFormatCell.reuseIdentifier)
 
         collectionViewFlowLayout.scrollDirection = .horizontal
-        collectionViewFlowLayout.minimumLineSpacing = 6
+        collectionViewFlowLayout.minimumLineSpacing = 8
 
         updateLayout()
     }
@@ -66,13 +68,14 @@ enum AttachmentType: String, CaseIterable {
     case file
     case contact
     case location
+    case money
 }
 
 // MARK: - UICollectionViewDelegate
 
 extension AttachmentFormatPickerView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch AttachmentType.allCases[indexPath.row] {
+        switch AttachmentType.allCases.filter ({ !(hideMoney && $0 == .money) }) [indexPath.row] {
         case .camera:
             attachmentFormatPickerDelegate?.didTapCamera()
         case .contact:
@@ -83,6 +86,8 @@ extension AttachmentFormatPickerView: UICollectionViewDelegate {
             attachmentFormatPickerDelegate?.didTapGif()
         case .location:
             attachmentFormatPickerDelegate?.didTapLocation()
+        case .money:
+            attachmentFormatPickerDelegate?.didTapMoney()
         }
     }
 }
@@ -96,7 +101,7 @@ extension AttachmentFormatPickerView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection sectionIdx: Int) -> Int {
-        return AttachmentType.allCases.count
+        return AttachmentType.allCases.filter{ !(hideMoney && $0 == .money) }.count
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -104,7 +109,7 @@ extension AttachmentFormatPickerView: UICollectionViewDataSource {
             owsFail("cell was unexpectedly nil")
         }
 
-        let type = AttachmentType.allCases[indexPath.item]
+        let type = AttachmentType.allCases.filter{ !(hideMoney && $0 == .money) }[indexPath.item]
         cell.configure(type: type)
         return cell
     }
@@ -112,24 +117,36 @@ extension AttachmentFormatPickerView: UICollectionViewDataSource {
 
 class AttachmentFormatCell: UICollectionViewCell {
 
+    enum Constant {
+        static let height: CGFloat = 100
+        static let width: CGFloat = 72
+    }
+    
     static let reuseIdentifier = "AttachmentFormatCell"
 
     let imageView = UIImageView()
     let label = UILabel()
-
+    let mainView = UIView()
+    
     var attachmentType: AttachmentType?
 
     override init(frame: CGRect) {
 
         super.init(frame: frame)
 
-        backgroundColor = Theme.attachmentKeyboardItemBackgroundColor
-
-        clipsToBounds = true
-        layer.cornerRadius = 4
-
-        contentView.addSubview(imageView)
-        imageView.autoHCenterInSuperview()
+        backgroundColor = .clear
+        mainView.backgroundColor = Theme.attachmentKeyboardItemBackgroundColor
+        
+        contentView.addSubview(mainView)
+        mainView.clipsToBounds = true
+        mainView.layer.cornerRadius = 8
+        mainView.autoPinTopToSuperviewMargin()
+        mainView.autoPinEdge(toSuperviewEdge: .leading)
+        mainView.autoPinEdge(toSuperviewEdge: .trailing)
+        mainView.autoSetDimensions(to: CGSize(square: Constant.width))
+        
+        mainView.addSubview(imageView)
+        imageView.autoCenterInSuperview()
         imageView.autoSetDimensions(to: CGSize(square: 32))
         imageView.contentMode = .scaleAspectFit
 
@@ -138,22 +155,9 @@ class AttachmentFormatCell: UICollectionViewCell {
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         contentView.addSubview(label)
-        label.autoPinEdge(.top, to: .bottom, of: imageView, withOffset: 3)
-        label.autoPinWidthToSuperviewMargins()
-
-        // Vertically center things
-
-        let topSpacer = UILayoutGuide()
-        let bottomSpacer = UILayoutGuide()
-        contentView.addLayoutGuide(topSpacer)
-        contentView.addLayoutGuide(bottomSpacer)
-
-        topSpacer.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        bottomSpacer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        topSpacer.heightAnchor.constraint(equalTo: bottomSpacer.heightAnchor).isActive = true
-
-        imageView.topAnchor.constraint(equalTo: topSpacer.bottomAnchor).isActive = true
-        label.bottomAnchor.constraint(equalTo: bottomSpacer.topAnchor).isActive = true
+        label.autoPinEdge(.top, to: .bottom, of: mainView, withOffset: 4)
+        label.autoPinEdge(toSuperviewEdge: .bottom)
+        label.autoPinLeadingAndTrailingToSuperviewMargin()
     }
 
     @available(*, unavailable, message: "Unimplemented")
@@ -183,14 +187,17 @@ class AttachmentFormatCell: UICollectionViewCell {
         case .location:
             text = NSLocalizedString("ATTACHMENT_KEYBOARD_LOCATION", comment: "A button to select a location from the Attachment Keyboard")
             imageName = Theme.iconName(.attachmentLocation)
+        case .money:
+            text = NSLocalizedString("ATTACHMENT_KEYBOARD_MONEY", comment: "A button to select a wallet from the Attachment Keyboard")
+            imageName = Theme.iconName(.attachmentMoney)
         }
 
         // The light theme images come with a background baked in, so we don't tint them.
-        if Theme.isDarkThemeEnabled {
+//        if Theme.isDarkThemeEnabled {
             imageView.setTemplateImageName(imageName, tintColor: Theme.attachmentKeyboardItemImageColor)
-        } else {
-            imageView.setImage(imageName: imageName)
-        }
+//        } else {
+//            imageView.setImage(imageName: imageName)
+//        }
 
         label.text = text
 
@@ -204,6 +211,6 @@ class AttachmentFormatCell: UICollectionViewCell {
         imageView.image = nil
 
         label.textColor = Theme.attachmentKeyboardItemImageColor
-        backgroundColor = Theme.attachmentKeyboardItemBackgroundColor
+        backgroundColor = .clear
     }
 }

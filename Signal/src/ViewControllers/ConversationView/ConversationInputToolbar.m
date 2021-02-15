@@ -61,10 +61,11 @@ const CGFloat kMaxIPadTextViewHeight = 142;
 
 @property (nonatomic, readonly) ConversationInputTextView *inputTextView;
 @property (nonatomic, readonly) UIButton *cameraButton;
-@property (nonatomic, readonly) LottieToggleButton *attachmentButton;
+@property (nonatomic, readonly) AttachmentToggleButton *attachmentButton;
 @property (nonatomic, readonly) UIButton *sendButton;
 @property (nonatomic, readonly) UIButton *voiceMemoButton;
 @property (nonatomic, readonly) UIButton *stickerButton;
+@property (nonatomic, readonly) UIButton *walletButton;
 @property (nonatomic, readonly) UIView *quotedReplyWrapper;
 @property (nonatomic, readonly) UIView *linkPreviewWrapper;
 @property (nonatomic, readonly) StickerHorizontalListView *suggestedStickerView;
@@ -123,6 +124,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     _conversationStyle = conversationStyle;
     _receivedSafeAreaInsets = UIEdgeInsetsZero;
     _suggestedStickerViewCache = [NSCache new];
+    _isGroupOrNoteToSelf = NO;
 
     self.inputToolbarDelegate = inputToolbarDelegate;
 
@@ -224,7 +226,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     [self.cameraButton autoSetDimensionsToSize:CGSizeMake(40, kMinToolbarItemHeight)];
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _cameraButton);
 
-    _attachmentButton = [[LottieToggleButton alloc] init];
+    _attachmentButton = [[AttachmentToggleButton alloc] init];
     self.attachmentButton.accessibilityLabel
         = NSLocalizedString(@"ATTACHMENT_LABEL", @"Accessibility label for attaching photos");
     self.attachmentButton.accessibilityHint = NSLocalizedString(
@@ -232,15 +234,15 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     [self.attachmentButton addTarget:self
                               action:@selector(attachmentButtonPressed)
                     forControlEvents:UIControlEventTouchUpInside];
-    self.attachmentButton.animationName = Theme.isDarkThemeEnabled ? @"attachment_dark" : @"attachment_light";
-    self.attachmentButton.animationSize = CGSizeMake(28, 28);
+//    self.attachmentButton.animationName = Theme.isDarkThemeEnabled ? @"attachment_dark" : @"attachment_light";
+//    self.attachmentButton.animationSize = CGSizeMake(28, 28);
     [self.attachmentButton autoSetDimensionsToSize:CGSizeMake(55, kMinToolbarItemHeight)];
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _attachmentButton);
 
     _sendButton = [[UIButton alloc] init];
     self.sendButton.accessibilityLabel = MessageStrings.sendButton;
     [self.sendButton addTarget:self action:@selector(sendButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.sendButton setTemplateImageName:@"send-solid-24" tintColor:UIColor.ows_accentBlueColor];
+    [self.sendButton setTemplateImageName:@"icon.send" tintColor:UIColor.st_accentGreen];
     [self.sendButton autoSetDimensionsToSize:CGSizeMake(50, kMinToolbarItemHeight)];
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _sendButton);
 
@@ -256,7 +258,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     self.stickerButton.accessibilityLabel = NSLocalizedString(@"INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL",
         @"accessibility label for the button which shows the sticker picker");
     UIImage *stickerIcon = [Theme iconImage:ThemeIconStickerButton];
-    [self.stickerButton setTemplateImage:stickerIcon tintColor:Theme.primaryIconColor];
+    [self.stickerButton setImage:stickerIcon forState:UIControlStateNormal];
     [self.stickerButton addTarget:self
                            action:@selector(stickerButtonPressed)
                  forControlEvents:UIControlEventTouchUpInside];
@@ -431,6 +433,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
         AttachmentKeyboard *attachmentKeyboard = [AttachmentKeyboard new];
         _attachmentKeyboard = attachmentKeyboard;
         attachmentKeyboard.delegate = self;
+        attachmentKeyboard.hideMoney = self.isGroupOrNoteToSelf;
         [attachmentKeyboard registerWithView:self];
         return attachmentKeyboard;
     } else {
@@ -1189,6 +1192,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
         case KeyboardType_Sticker:
             return self.stickerKeyboard;
         case KeyboardType_Attachment:
+            self.attachmentKeyboard.hideMoney = self.isGroupOrNoteToSelf;
             return self.attachmentKeyboard;
     }
 }
@@ -1615,6 +1619,11 @@ const CGFloat kMaxIPadTextViewHeight = 142;
 - (void)didTapLocation
 {
     [self.inputToolbarDelegate locationButtonPressed];
+}
+
+- (void)didTapMoney
+{
+    [self.inputToolbarDelegate moneyButtonPressed];
 }
 
 - (void)updateConversationStyle:(ConversationStyle *)conversationStyle

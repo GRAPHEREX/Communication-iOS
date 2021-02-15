@@ -42,6 +42,8 @@ public enum ThemeIcon: UInt {
     case attachmentFile
     case attachmentGif
     case attachmentLocation
+    case attachmentMoney
+    case attachmentGallery
 
     case messageActionReply
     case messageActionForward
@@ -64,6 +66,7 @@ public enum ThemeIcon: UInt {
     case info
     case groupMessage
     case profileChangeMessage
+    case gallery
 
     case check16
     case compose16
@@ -111,14 +114,11 @@ public enum ThemeIcon: UInt {
 public extension Theme {
     @objc(launchScreenBackgroundColor)
     class var launchScreenBackground: UIColor {
-        // We only adapt for dark theme on iOS 13+, because only iOS 13 supports
-        // handling dark / light appearance in the launch screen storyboard.
-        guard #available(iOS 13, *) else { return .ows_signalBlue }
-        return Theme.isDarkThemeEnabled ? .ows_signalBlueDark : .ows_signalBlue
+        return Theme.backgroundColor
     }
 
     class var selectedConversationCellColor: UIColor {
-        return Theme.isDarkThemeEnabled ? UIColor.ows_whiteAlpha20 : UIColor.ows_accentBlue.withAlphaComponent(0.15)
+        return Theme.isDarkThemeEnabled ? UIColor.ows_whiteAlpha30 : UIColor.ows_accentBlue.withAlphaComponent(0.15)
     }
 }
 
@@ -127,13 +127,17 @@ public extension Theme {
 @objc
 public extension Theme {
     class func iconImage(_ icon: ThemeIcon) -> UIImage {
+        return iconImage(icon, alwaysTemplate: true)
+    }
+    
+    class func iconImage(_ icon: ThemeIcon, alwaysTemplate: Bool) -> UIImage {
         let name = iconName(icon)
         guard let image = UIImage(named: name) else {
             owsFailDebug("image was unexpectedly nil: \(name)")
             return UIImage()
         }
 
-        return image.withRenderingMode(.alwaysTemplate)
+        return alwaysTemplate ? image.withRenderingMode(.alwaysTemplate) : image
     }
 
     class func iconName(_ icon: ThemeIcon) -> String {
@@ -194,22 +198,26 @@ public extension Theme {
 
         // Input Toolbar
         case .stickerButton:
-            return isDarkThemeEnabled ? "sticker-solid-24" : "sticker-outline-24"
+            return "icon.stikers"
         case .cameraButton:
-            return isDarkThemeEnabled ? "camera-solid-24" : "camera-outline-24"
+            return isDarkThemeEnabled ? "icon.camera.dark" : "icon.camera"
         case .micButton:
-            return isDarkThemeEnabled ? "mic-solid-24" : "mic-outline-24"
+            return isDarkThemeEnabled ? "icon.mic.dark" : "icon.mic"
         case .attachmentCamera:
-            return "camera-outline-32"
+            return "attachment.icon.photo"
         case .attachmentContact:
-            return "contact-outline-32"
+            return "attachment.icon.contact"
         case .attachmentFile:
-            return "file-outline-32"
+            return "attachment.icon.file"
         case .attachmentGif:
             return "gif-outline-32"
         case .attachmentLocation:
             return "location-outline-32"
-
+        case .attachmentGallery:
+            return "attachment.icon.gallery"
+        case .attachmentMoney:
+            return "attachment.icon.wallet"
+            
         case .messageActionReply:
             return isDarkThemeEnabled ? "reply-filled-24" : "reply-outline-24"
         case .messageActionForward:
@@ -252,6 +260,8 @@ public extension Theme {
             return "group-outline-20"
         case .profileChangeMessage:
             return isDarkThemeEnabled ? "profile-solid-20" : "profile-outline-20"
+        case .gallery:
+            return isDarkThemeEnabled ? "icon.album.dark" : "icon.album"
 
         case .check16:
             return isDarkThemeEnabled ? "check-solid-16" : "check-outline-16"

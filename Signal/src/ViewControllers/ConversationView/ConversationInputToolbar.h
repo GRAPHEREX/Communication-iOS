@@ -45,6 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)galleryButtonPressed;
 
+- (void)moneyButtonPressed;
+
 - (void)gifButtonPressed;
 
 - (void)fileButtonPressed;
@@ -70,6 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ConversationInputToolbar : UIView
 
 @property (nonatomic) BOOL isMeasuringKeyboardHeight;
+@property BOOL isGroupOrNoteToSelf;
 
 - (instancetype)initWithConversationStyle:(ConversationStyle *)conversationStyle
                              messageDraft:(nullable MessageBody *)messageDraft

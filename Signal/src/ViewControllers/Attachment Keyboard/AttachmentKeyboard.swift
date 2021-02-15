@@ -11,6 +11,7 @@ protocol AttachmentKeyboardDelegate {
     func didSelectRecentPhoto(asset: PHAsset, attachment: SignalAttachment)
     func didTapGalleryButton()
     func didTapCamera()
+    func didTapMoney()
     func didTapGif()
     func didTapFile()
     func didTapContact()
@@ -21,6 +22,10 @@ class AttachmentKeyboard: CustomKeyboard {
     @objc
     weak var delegate: AttachmentKeyboardDelegate?
 
+    @objc public var hideMoney: Bool = false { didSet {
+        attachmentFormatPickerView.hideMoney = hideMoney
+    }}
+    
     private let mainStackView = UIStackView()
 
     private let recentPhotosCollectionView = RecentPhotosCollectionView()
@@ -117,7 +122,7 @@ class AttachmentKeyboard: CustomKeyboard {
 
     func setupGalleryButton() {
         addSubview(galleryButton)
-        galleryButton.setTemplateImage(#imageLiteral(resourceName: "photo-album-outline-28"), tintColor: .white)
+        galleryButton.setImage(#imageLiteral(resourceName: "icon.album.dark"), for: .normal)
         galleryButton.setBackgroundImage(UIImage(color: UIColor.black.withAlphaComponent(0.7)), for: .normal)
 
         galleryButton.autoSetDimensions(to: CGSize(square: 48))
@@ -141,7 +146,7 @@ class AttachmentKeyboard: CustomKeyboard {
 
         mainStackView.addArrangedSubview(attachmentFormatPickerView)
         NSLayoutConstraint.autoSetPriority(.defaultLow) {
-            attachmentFormatPickerView.autoSetDimension(.height, toSize: 80)
+            attachmentFormatPickerView.autoSetDimension(.height, toSize: AttachmentFormatCell.Constant.height)
         }
 
         attachmentFormatPickerView.setCompressionResistanceLow()
@@ -177,7 +182,8 @@ class AttachmentKeyboard: CustomKeyboard {
         }
 
         // There is only ever one row for the attachment format picker.
-        attachmentFormatPickerView.itemSize = CGSize(square: attachmentFormatPickerView.height)
+        attachmentFormatPickerView.itemSize = CGSize(width: AttachmentFormatCell.Constant.width,
+                                                     height: AttachmentFormatCell.Constant.height)
     }
 
     func checkPermissions(completion: @escaping () -> Void) {
@@ -234,7 +240,11 @@ extension AttachmentKeyboard: AttachmentFormatPickerDelegate {
     func didTapContact() {
         delegate?.didTapContact()
     }
-
+    
+    func didTapMoney() {
+        delegate?.didTapMoney()
+    }
+    
     func didTapLocation() {
         delegate?.didTapLocation()
     }
