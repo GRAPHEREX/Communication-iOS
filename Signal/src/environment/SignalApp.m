@@ -235,6 +235,7 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
             }
         }
 
+        [self.rootViewController openConversationsList];
         [self.conversationSplitViewController presentThread:thread
                                                      action:ConversationViewActionNone
                                              focusMessageId:nil
