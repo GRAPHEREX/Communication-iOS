@@ -44,12 +44,12 @@ NSString *NSStringForScreenLockUIState(ScreenLockUIState value)
     [edgesView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
     [edgesView autoPinWidthToSuperview];
 
-    UIImage *image = [UIImage imageNamed:@"signal-logo-128-launch-screen"];
+    UIImage *image = [UIImage imageNamed:@"onboarding.splash.logo_black"];
     UIImageView *imageView = [UIImageView new];
     imageView.image = image;
     [edgesView addSubview:imageView];
     [imageView autoHCenterInSuperview];
-    [imageView autoSetDimensionsToSize:CGSizeMake(128, 128)];
+    [imageView autoSetDimensionsToSize:CGSizeMake(336, 336)];
 
     const CGFloat kButtonHeight = 40.f;
     OWSFlatButton *button =
