@@ -1123,12 +1123,21 @@ typedef enum : NSUInteger {
         } else {
             name = [self.contactsManager displayNameForAddress:thread.contactAddress];
         }
-
-        // If the user is in the system contacts, show a badge
-        if ([self.contactsManager hasSignalAccountForAddress:thread.contactAddress]) {
-            icon =
-                [[UIImage imageNamed:@"contact-outline-16"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        if (!thread.isNoteToSelf && [thread hasSafetyNumbers] && (thread.isGroupThread || thread.recipientAddresses[0].uuid != nil)) {
+            if ([[OWSIdentityManager shared] verificationStateForAddress:thread.contactAddress] == OWSVerificationStateVerified) {
+                icon = [[UIImage imageNamed:@"icon.verification.active"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            }
+            else {
+                icon = [[UIImage imageNamed:@"icon.verification.nonactive"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+            }
         }
+        
+        // If the user is in the system contacts, show a badge
+//        if ([self.contactsManager hasSignalAccountForAddress:thread.contactAddress]) {
+//            icon =
+//                [[UIImage imageNamed:@"contact-outline-16"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+//        }
     } else if ([self.thread isKindOfClass:TSGroupThread.class]) {
         TSGroupThread *groupThread = (TSGroupThread *)self.thread;
         name = groupThread.groupNameOrDefault;
@@ -1328,17 +1337,17 @@ typedef enum : NSUInteger {
                   attributes:attributes];
     }
 
-    if (isVerified) {
-        if (hasTimer || isMuted) {
-            [subtitleText append:betweenItemSpacer attributes:attributes];
-        }
-
-        [subtitleText appendTemplatedImageNamed:@"check-12" font:subtitleFont];
-        [subtitleText append:iconSpacer attributes:attributes];
-        [subtitleText append:NSLocalizedString(
-                                 @"PRIVACY_IDENTITY_IS_VERIFIED_BADGE", @"Badge indicating that the user is verified.")
-                  attributes:attributes];
-    }
+//    if (isVerified) {
+//        if (hasTimer || isMuted) {
+//            [subtitleText append:betweenItemSpacer attributes:attributes];
+//        }
+//
+//        [subtitleText appendTemplatedImageNamed:@"check-12" font:subtitleFont];
+//        [subtitleText append:iconSpacer attributes:attributes];
+//        [subtitleText append:NSLocalizedString(
+//                                 @"PRIVACY_IDENTITY_IS_VERIFIED_BADGE", @"Badge indicating that the user is verified.")
+//                  attributes:attributes];
+//    }
 
     self.headerView.attributedSubtitle = subtitleText;
 }

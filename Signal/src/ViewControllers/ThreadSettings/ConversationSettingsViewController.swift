@@ -177,9 +177,18 @@ class ConversationSettingsViewController: OWSTableViewController {
     }
 
     func updateNavigationBar() {
-        if !thread.isNoteToSelf && thread.hasSafetyNumbers() && (thread.isGroupThread || thread.recipientAddresses[0].uuid != nil) {
+        if !thread.isNoteToSelf && thread.hasSafetyNumbers() && (thread.isGroupThread || thread.recipientAddresses[0].uuid != nil), let contactThread = thread as? TSContactThread {
+            
+            let icon: UIImage
+            if OWSIdentityManager.shared().verificationState(for: contactThread.contactAddress) == .verified {
+                icon = UIImage(imageLiteralResourceName: "icon.verification.active").withRenderingMode(.alwaysOriginal)
+            }
+            else {
+                icon = UIImage(imageLiteralResourceName: "icon.verification.nonactive").withRenderingMode(.alwaysOriginal)
+            }
+            
             navigationItem.rightBarButtonItem = .init(
-                image: UIImage(imageLiteralResourceName: "icon.verification.active"),
+                image: icon,
                 style: .plain,
                 target: self,
                 action: #selector(showVerificationView))
