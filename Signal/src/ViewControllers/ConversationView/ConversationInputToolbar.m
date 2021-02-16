@@ -174,7 +174,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     // by this much to mask that extra space.
     CGFloat backgroundExtension = 100;
 
-    if (UIAccessibilityIsReduceTransparencyEnabled()) {
+//    if (UIAccessibilityIsReduceTransparencyEnabled()) {
         self.backgroundColor = Theme.toolbarBackgroundColor;
 
         UIView *extendedBackground = [UIView new];
@@ -183,17 +183,17 @@ const CGFloat kMaxIPadTextViewHeight = 142;
         [extendedBackground autoPinWidthToSuperview];
         [extendedBackground autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self];
         [extendedBackground autoSetDimension:ALDimensionHeight toSize:backgroundExtension];
-    } else {
-        CGFloat alpha = OWSNavigationBar.backgroundBlurMutingFactor;
-        self.backgroundColor = [Theme.toolbarBackgroundColor colorWithAlphaComponent:alpha];
-
-        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:Theme.barBlurEffect];
-        blurEffectView.layer.zPosition = -1;
-        [self addSubview:blurEffectView];
-        [blurEffectView autoPinWidthToSuperview];
-        [blurEffectView autoPinEdgeToSuperviewEdge:ALEdgeTop];
-        [blurEffectView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:-backgroundExtension];
-    }
+//    } else {
+//        CGFloat alpha = OWSNavigationBar.backgroundBlurMutingFactor;
+//        self.backgroundColor = [Theme.toolbarBackgroundColor colorWithAlphaComponent:alpha];
+//
+//        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:Theme.barBlurEffect];
+//        blurEffectView.layer.zPosition = -1;
+//        [self addSubview:blurEffectView];
+//        [blurEffectView autoPinWidthToSuperview];
+//        [blurEffectView autoPinEdgeToSuperviewEdge:ALEdgeTop];
+//        [blurEffectView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:-backgroundExtension];
+//    }
 
     self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 
