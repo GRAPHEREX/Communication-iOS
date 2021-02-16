@@ -91,9 +91,9 @@ extension MediaDismissAnimationController: UIViewControllerAnimatedTransitioning
                 return
             }
             toContextProvider = contextProvider
-        case let splitViewController as ConversationSplitViewController:
-            guard let contextProvider = splitViewController.topViewController as? MediaPresentationContextProvider else {
-                owsFailDebug("unexpected context: \(String(describing: splitViewController.topViewController))")
+        case let rootViewController as RootViewController:
+            guard let contextProvider = rootViewController.selectedController.topViewController as? MediaPresentationContextProvider else {
+                owsFailDebug("unexpected context: \(String(describing: rootViewController.selectedController.topViewController))")
                 transitionContext.completeTransition(false)
                 return
             }

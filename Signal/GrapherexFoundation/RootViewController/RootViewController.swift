@@ -66,7 +66,7 @@ extension RootViewController {
         set(selectedTab) { selectedIndex = index(forTab: selectedTab) }
     }
 
-    private func content(forTab tab: MainTab) -> UIViewController {
+    private func content(forTab tab: MainTab) -> OWSNavigationController {
         switch tab {
             case .contactList:
                 return contactListContentController
@@ -159,7 +159,7 @@ extension RootViewController: RootViewControllerProtocol {
         return chatListContentController
     }
     
-    var selectedController: UIViewController {
+    var selectedController: OWSNavigationController {
         return content(forTab: selectedTab)
     }
 }
