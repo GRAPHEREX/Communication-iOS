@@ -248,15 +248,15 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
     OWSAssertDebug(self.tableView);
     OWSAssertDebug(self.searchBar);
 
-    if (self.splitViewController.isCollapsed) {
+//    if (self.splitViewController.isCollapsed) {
         self.view.backgroundColor = Theme.backgroundColor;
         self.tableView.backgroundColor = Theme.backgroundColor;
         [self.searchBar switchToStyle:OWSSearchBarStyle_Default];
-    } else {
-        self.view.backgroundColor = Theme.secondaryBackgroundColor;
-        self.tableView.backgroundColor = Theme.secondaryBackgroundColor;
-        [self.searchBar switchToStyle:OWSSearchBarStyle_SecondaryBar];
-    }
+//    } else {
+//        self.view.backgroundColor = Theme.secondaryBackgroundColor;
+//        self.tableView.backgroundColor = Theme.secondaryBackgroundColor;
+//        [self.searchBar switchToStyle:OWSSearchBarStyle_SecondaryBar];
+//    }
 
     [self updateBarButtonItems];
 }
@@ -1259,11 +1259,11 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
         cell = [UITableViewCell new];
     }
 
-    if (!self.splitViewController.isCollapsed) {
-        cell.selectedBackgroundView.backgroundColor
-            = Theme.isDarkThemeEnabled ? UIColor.ows_gray65Color : UIColor.ows_gray15Color;
-        cell.backgroundColor = Theme.secondaryBackgroundColor;
-    }
+//    if (!self.splitViewController.isCollapsed) {
+//        cell.selectedBackgroundView.backgroundColor
+//            = Theme.isDarkThemeEnabled ? UIColor.ows_gray65Color : UIColor.ows_gray15Color;
+//        cell.backgroundColor = Theme.secondaryBackgroundColor;
+//    }
 
     return cell;
 }
