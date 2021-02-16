@@ -216,7 +216,7 @@ public class ConversationStyle: NSObject {
     }
 
     @objc
-    public let dateBreakTextColor = UIColor.ows_gray60
+    public let dateBreakTextColor = UIColor.clear
 
     @objc
     public func bubbleColor(message: TSMessage) -> UIColor {
@@ -320,19 +320,19 @@ public class ConversationStyle: NSObject {
 
     @objc
     public var quotedReplyBubbleColor: UIColor {
-        isDarkThemeEnabled ? .ows_signalBlueDark : .ows_accentBlueTint
+        isDarkThemeEnabled ? .st_neutralIcon1 : .st_neutralIcon2
     }
 
     @objc
     public func quotedReplyStripeColor(isIncoming: Bool) -> UIColor {
         if isDarkThemeEnabled {
             if isIncoming {
-                return .ows_accentBlueTint
+                return .st_neutralIcon1
             } else {
                 return .ows_black
             }
         } else if isIncoming {
-            return .ows_accentBlue
+            return .st_accentGreen
         } else {
             return .ows_white
         }

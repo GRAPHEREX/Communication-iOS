@@ -631,6 +631,15 @@ typedef enum : NSUInteger {
 
     [super viewWillAppear:animated];
 
+    UINavigationBar *navbar = self.navigationController.navigationBar;
+    if (navbar != nil) {
+        for (UIView *subview in navbar.subviews) {
+            subview.alpha = 1.0;
+        }
+        navbar.translucent = NO;
+        navbar.backgroundColor = Theme.backgroundColor;
+    }
+    
     if (self.inputToolbar == nil) {
         // This will create the input toolbar for the first time.
         // It's important that we do this at the "last moment" to
@@ -2349,7 +2358,7 @@ typedef enum : NSUInteger {
 
 - (NSString *)sendMediaNavApprovalButtonImageName
 {
-    return @"send-solid-24";
+    return @"icon.send";
 }
 
 - (BOOL)sendMediaNavCanSaveAttachments
@@ -2949,7 +2958,7 @@ typedef enum : NSUInteger {
     }
 
     // make sure toolbar extends below iPhoneX home button.
-    self.view.backgroundColor = Theme.toolbarBackgroundColor;
+    self.view.backgroundColor = Theme.backgroundColor;
 
     [self updateWallpaperView];
 
@@ -4009,6 +4018,7 @@ typedef enum : NSUInteger {
                                                inputToolbarDelegate:self
                                               inputTextViewDelegate:self
                                                     mentionDelegate:self];
+    inputToolbar.isGroupOrNoteToSelf = self.thread.isNoteToSelf || self.thread.isGroupThread;
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, inputToolbar);
     return inputToolbar;
 }

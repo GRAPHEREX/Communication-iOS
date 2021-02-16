@@ -20,7 +20,7 @@ public extension ConversationViewController {
         let label = buildBannerLabel(title: title)
         label.textAlignment = .center
 
-        let closeIcon = UIImage(named: "banner_close")!
+        let closeIcon = UIImage(named: "icon.delete")!
         let closeButton = UIImageView(image: closeIcon)
         bannerView.addSubview(closeButton)
         let kBannerCloseButtonPadding: CGFloat = 8
