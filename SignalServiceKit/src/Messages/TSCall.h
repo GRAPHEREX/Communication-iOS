@@ -32,6 +32,7 @@ NSString *NSStringFromCallType(RPRecentCallType callType);
 
 @property (nonatomic, readonly) RPRecentCallType callType;
 @property (nonatomic, readonly) TSRecentCallOfferType offerType;
+@property (nonatomic, readonly) BOOL isIncoming;
 
 - (NSString *)previewText;
 - (NSString *)shortPreviewText;

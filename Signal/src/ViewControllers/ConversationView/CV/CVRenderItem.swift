@@ -130,7 +130,9 @@ extension CVRenderItem: ConversationViewLayoutItem {
             default:
                 return ConversationStyle.defaultMessageSpacing
             }
-        case .call, .info, .error:
+        case .call:
+            return ConversationStyle.systemMessageSpacing
+        case .info, .error:
             if previousInteraction.interactionType() == interaction.interactionType() {
                 switch previousInteraction.interactionType() {
                 case .error:

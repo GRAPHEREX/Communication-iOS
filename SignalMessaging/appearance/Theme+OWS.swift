@@ -61,6 +61,7 @@ public enum ThemeIcon: UInt {
 
     case checkCircle
     case message
+    case phone
     case audioCall
     case videoCall
     case info
@@ -250,6 +251,8 @@ public extension Theme {
             return isDarkThemeEnabled ? "check-circle-solid-24" : "check-circle-outline-24"
         case .message:
             return isDarkThemeEnabled ? "message-solid-24" : "message-outline-24"
+        case .phone:
+            return isDarkThemeEnabled ? "icon.call.main.dark" : "icon.call.main"
         case .audioCall:
             return isDarkThemeEnabled ? "phone-solid-24" : "phone-outline-24"
         case .videoCall:

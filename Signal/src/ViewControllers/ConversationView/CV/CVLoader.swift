@@ -338,6 +338,12 @@ public class CVLoader: NSObject {
                 return nil
             }
             rootComponent = CVComponentSystemMessage(itemModel: itemModel, systemMessage: systemMessage)
+        case .callMessage:
+            guard let callMessage = itemModel.componentState.callMessage else {
+                owsFailDebug("Missing systemMessage.")
+                return nil
+            }
+            rootComponent = CVComponentCallMessage(itemModel: itemModel, callMessage: callMessage)
         case .unknown:
             Logger.warn("Discarding item: \(itemModel.messageCellType).")
             return nil

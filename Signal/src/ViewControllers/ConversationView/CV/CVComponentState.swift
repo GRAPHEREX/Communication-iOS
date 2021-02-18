@@ -176,6 +176,12 @@ public class CVComponentState: Equatable {
         let action: CVMessageAction?
     }
     let systemMessage: SystemMessage?
+    
+    struct CallMessage: Equatable {
+        let call: TSCall
+        let action: CVMessageAction?
+    }
+    let callMessage: CallMessage?
 
     struct DateHeader: Equatable {
     }
@@ -233,6 +239,7 @@ public class CVComponentState: Equatable {
                      contactShare: ContactShare?,
                      linkPreview: LinkPreview?,
                      systemMessage: SystemMessage?,
+                     callMessage: CallMessage?,
                      dateHeader: DateHeader?,
                      unreadIndicator: UnreadIndicator?,
                      reactions: Reactions?,
@@ -255,6 +262,7 @@ public class CVComponentState: Equatable {
         self.contactShare = contactShare
         self.linkPreview = linkPreview
         self.systemMessage = systemMessage
+        self.callMessage = callMessage
         self.dateHeader = dateHeader
         self.unreadIndicator = unreadIndicator
         self.reactions = reactions
@@ -281,6 +289,7 @@ public class CVComponentState: Equatable {
                     lhs.contactShare == rhs.contactShare &&
                     lhs.linkPreview == rhs.linkPreview &&
                     lhs.systemMessage == rhs.systemMessage &&
+                    lhs.callMessage == rhs.callMessage &&
                     lhs.dateHeader == rhs.dateHeader &&
                     lhs.unreadIndicator == rhs.unreadIndicator &&
                     lhs.reactions == rhs.reactions &&
@@ -303,6 +312,7 @@ public class CVComponentState: Equatable {
         typealias QuotedReply = CVComponentState.QuotedReply
         typealias Sticker = CVComponentState.Sticker
         typealias SystemMessage = CVComponentState.SystemMessage
+        typealias CallMessage = CVComponentState.CallMessage
         typealias ContactShare = CVComponentState.ContactShare
         typealias Reactions = CVComponentState.Reactions
         typealias LinkPreview = CVComponentState.LinkPreview
@@ -327,6 +337,7 @@ public class CVComponentState: Equatable {
         var quotedReply: QuotedReply?
         var sticker: Sticker?
         var systemMessage: SystemMessage?
+        var callMessage: CallMessage?
         var contactShare: ContactShare?
         var linkPreview: LinkPreview?
         var dateHeader: DateHeader?
@@ -363,6 +374,7 @@ public class CVComponentState: Equatable {
                                     contactShare: contactShare,
                                     linkPreview: linkPreview,
                                     systemMessage: systemMessage,
+                                    callMessage: callMessage,
                                     dateHeader: dateHeader,
                                     unreadIndicator: unreadIndicator,
                                     reactions: reactions,
@@ -376,11 +388,27 @@ public class CVComponentState: Equatable {
         // MARK: -
 
         lazy var isIncoming: Bool = {
-            interaction as? TSIncomingMessage != nil
+            if interaction as? TSIncomingMessage != nil {
+                return true
+            }
+            
+            if let call = interaction as? TSCall {
+                return call.isIncoming
+            }
+            
+            return false
         }()
 
         lazy var isOutgoing: Bool = {
-            interaction as? TSOutgoingMessage != nil
+            if interaction as? TSOutgoingMessage != nil {
+                return true
+            }
+            
+            if let call = interaction as? TSCall {
+                return !call.isIncoming
+            }
+            
+            return false
         }()
 
         lazy var messageCellType: CVMessageCellType = {
@@ -398,6 +426,9 @@ public class CVComponentState: Equatable {
             }
             if systemMessage != nil {
                 return .systemMessage
+            }
+            if callMessage != nil {
+                return .callMessage
             }
             if let sticker = self.sticker {
                 return .stickerMessage
@@ -621,7 +652,7 @@ fileprivate extension CVComponentState.Builder {
             self.typingIndicator = TypingIndicator(address: typingIndicatorInteraction.address,
                                                    avatar: avatar)
             return build()
-        case .info, .error, .call:
+        case .info, .error:
             let currentCallThreadId = viewStateSnapshot.currentCallThreadId
             self.systemMessage = CVComponentSystemMessage.buildComponentState(interaction: interaction,
                                                                               threadViewModel: threadViewModel,
@@ -634,6 +665,12 @@ fileprivate extension CVComponentState.Builder {
         case .dateHeader:
             dateHeader = CVComponentState.DateHeader()
             return build()
+        case .call:
+            guard let call = interaction as? TSCall else {
+                owsFailDebug("Invalid call.")
+                return build()
+            }
+            return try populateAndBuild(call: call)
         case .incomingMessage, .outgoingMessage:
             guard let message = interaction as? TSMessage else {
                 owsFailDebug("Invalid message.")
@@ -673,6 +710,21 @@ fileprivate extension CVComponentState.Builder {
         return FailedOrPendingDownloads(attachmentPointers: attachmentPointers)
     }
 
+    mutating func populateAndBuild(call: TSCall) throws -> CVComponentState {
+        
+        let action = CVMessageAction(title: "Call message",
+                                     accessibilityIdentifier: "call_message",
+                                     action: .cvc_didTapIndividualCall(call: call))
+        self.callMessage = CallMessage(call: call, action: action)
+        
+        let result = build()
+        if result.messageCellType == .unknown {
+            Logger.verbose("call: \(call.debugDescription)")
+            owsFailDebug("Unknown call cell type.")
+        }
+        return result
+    }
+    
     mutating func populateAndBuild(message: TSMessage) throws -> CVComponentState {
 
         if message.wasRemotelyDeleted {

@@ -141,6 +141,26 @@ NSUInteger TSCallCurrentSchemaVersion = 1;
     return OWSInteractionType_Call;
 }
 
+- (BOOL) isIncoming
+{
+    switch (_callType) {
+        case RPRecentCallTypeIncoming:
+        case RPRecentCallTypeIncomingIncomplete:
+        case RPRecentCallTypeIncomingAnsweredElsewhere:
+        case RPRecentCallTypeIncomingMissed:
+        case RPRecentCallTypeIncomingMissedBecauseOfChangedIdentity:
+        case RPRecentCallTypeIncomingBusyElsewhere:
+        case RPRecentCallTypeIncomingDeclined:
+        case RPRecentCallTypeIncomingDeclinedElsewhere:
+            return YES;
+            
+        case RPRecentCallTypeOutgoing:
+        case RPRecentCallTypeOutgoingIncomplete:
+        case RPRecentCallTypeOutgoingMissed:
+            return NO;
+    }
+}
+
 - (NSString *)previewText
 {
     switch (_callType) {

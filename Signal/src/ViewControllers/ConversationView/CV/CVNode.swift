@@ -23,6 +23,7 @@ public enum CVMessageCellType: Int, CustomStringConvertible, Equatable {
     case typingIndicator
     case threadDetails
     case systemMessage
+    case callMessage
 
     // MARK: - CustomStringConvertible
 
@@ -42,6 +43,7 @@ public enum CVMessageCellType: Int, CustomStringConvertible, Equatable {
             case .typingIndicator: return "typingIndicator"
             case .threadDetails: return "threadDetails"
             case .systemMessage: return "systemMessage"
+            case .callMessage: return "callMessage"
             }
         }
     }
@@ -68,11 +70,27 @@ extension CVNode {
     var interactionType: OWSInteractionType { interaction.interactionType() }
 
     var isIncoming: Bool {
-        interaction as? TSIncomingMessage != nil
+        if interaction as? TSIncomingMessage != nil {
+            return true
+        }
+        
+        if let call = interaction as? TSCall {
+            return call.isIncoming
+        }
+        
+        return false
     }
 
     var isOutgoing: Bool {
-        interaction as? TSOutgoingMessage != nil
+        if interaction as? TSOutgoingMessage != nil {
+            return true
+        }
+        
+        if let call = interaction as? TSCall {
+            return !call.isIncoming
+        }
+        
+        return false
     }
 
     var isFromLinkedDevice: Bool {
