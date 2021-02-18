@@ -234,7 +234,7 @@ class AudioMessageView: OWSStackView {
     // MARK: - Contents
 
     private static var labelFont: UIFont = .ows_dynamicTypeCaption2
-    private static var waveformHeight: CGFloat = 35
+    private static var waveformHeight: CGFloat = 40
     private static var animationSize: CGFloat = 28
     private var iconSize: CGFloat = 24
     private static var vSpacing: CGFloat = 2
@@ -242,7 +242,7 @@ class AudioMessageView: OWSStackView {
         UIEdgeInsets(hMargin: 0, vMargin: 4)
     }
 
-    private lazy var playedColor: UIColor = isIncoming ? .init(rgbHex: 0x92caff) : .ows_white
+    private lazy var playedColor: UIColor = isIncoming ? UIColor.st_accentGreen : .ows_white
     private lazy var unplayedColor: UIColor =
         isIncoming ? Theme.secondaryTextAndIconColor.withAlphaComponent(0.3) : UIColor.ows_white.withAlphaComponent(0.6)
     private lazy var thumbColor: UIColor = isIncoming ? Theme.secondaryTextAndIconColor : .ows_white
