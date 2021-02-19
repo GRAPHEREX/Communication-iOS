@@ -1347,11 +1347,11 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
     cell.accessibilityCustomActions = @[ archiveAction, deleteAction, unreadAction, pinnedAction ];
 
 
-    if ([self isConversationActiveForThread:thread.threadRecord]) {
-        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-    } else {
-        [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    }
+//    if ([self isConversationActiveForThread:thread.threadRecord]) {
+//        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+//    } else {
+//        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//    }
 
     return cell;
 }
