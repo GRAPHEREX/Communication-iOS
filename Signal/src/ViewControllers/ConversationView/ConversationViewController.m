@@ -1036,9 +1036,11 @@ typedef enum : NSUInteger {
     // Clear the "on open" state after the view has been presented.
     self.actionOnOpen = ConversationViewActionNone;
 
-    [self updateInputToolbarLayout];
-    [self configureScrollDownButtons];
-    [self.inputToolbar viewDidAppear];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)0.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self updateInputToolbarLayout];
+        [self configureScrollDownButtons];
+        [self.inputToolbar viewDidAppear];
+    });
 
     if (!self.viewState.hasTriedToMigrateGroup) {
         self.viewState.hasTriedToMigrateGroup = YES;
