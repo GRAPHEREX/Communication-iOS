@@ -7,6 +7,7 @@ public class STPrimaryButton: UIButton {
     
     public enum Constant {
         public static let height: CGFloat = 56
+        static let radius: CGFloat = 12
     }
     
     public enum IconType {
@@ -62,7 +63,7 @@ public class STPrimaryButton: UIButton {
     public var buttonDisabledBackgroundColor: UIColor = Theme.backgroundColor
     
     private func setup() {
-        layer.cornerRadius = Constant.height / 2
+        layer.cornerRadius = Constant.radius
         let imageView = UIImageView(image: image.withRenderingMode(.alwaysTemplate))
         imageView.contentMode = .scaleAspectFit
         addSubview(imageView)

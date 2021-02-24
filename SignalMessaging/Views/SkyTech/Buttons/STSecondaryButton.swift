@@ -10,6 +10,7 @@ public class STSecondaryButton: UIButton {
 
     enum Constant {
         static let height: CGFloat = 56
+        static let radius: CGFloat = 12
     }
     private let image = #imageLiteral(resourceName: "general.icon.enter")
     
@@ -30,7 +31,7 @@ public class STSecondaryButton: UIButton {
 
     private func setup() {
         backgroundColor = .clear
-        layer.cornerRadius = Constant.height / 2
+        layer.cornerRadius = Constant.radius
         // TODO : add color from palette
         addBorder(with: Theme.primaryTextColor)
         setTitleColor(Theme.primaryTextColor, for: .normal)
