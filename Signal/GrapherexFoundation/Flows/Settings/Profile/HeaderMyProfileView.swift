@@ -28,6 +28,9 @@ final class HeaderMyProfileView : HeaderContactProfileView, AvatarViewHelperDele
         imageView.layer.cornerRadius = 24
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .clear
+        imageView.layer.shadowOffset = .zero
+        imageView.layer.shadowOpacity = 0.25
+        imageView.layer.shadowRadius = 4
         return imageView
     }()
     
