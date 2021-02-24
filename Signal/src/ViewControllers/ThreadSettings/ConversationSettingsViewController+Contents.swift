@@ -336,6 +336,7 @@ extension ConversationSettingsViewController {
                 slider.autoPinTrailingToSuperviewMargin()
                 slider.autoPinBottomToSuperviewMargin()
                 slider.isEnabled = canEditConversationAttributes
+                slider.tintColor = UIColor.st_accentGreen
 
                 slider.accessibilityIdentifier = UIView.accessibilityIdentifier(in: self, name: "disappearing_messages_slider")
                 cell.accessibilityIdentifier = UIView.accessibilityIdentifier(in: self, name: "disappearing_messages_duration")
