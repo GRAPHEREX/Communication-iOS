@@ -253,12 +253,12 @@ public extension Theme {
             return isDarkThemeEnabled ? "check-circle-solid-24" : "check-circle-outline-24"
         case .message:
             return isDarkThemeEnabled ? "message-solid-24" : "message-outline-24"
-        case .phone:
+        case .phone, .audioCall:
             return isDarkThemeEnabled ? "icon.call.main.dark" : "icon.call.main"
-        case .audioCall:
-            return isDarkThemeEnabled ? "phone-solid-24" : "phone-outline-24"
+//        case .audioCall:
+//            return isDarkThemeEnabled ? "phone-solid-24" : "phone-outline-24"
         case .videoCall:
-            return isDarkThemeEnabled ? "video-solid-24" : "video-outline-24"
+            return "profileMenu.icon.video" // isDarkThemeEnabled ? "video-solid-24" : "video-outline-24"
         case .info:
             return isDarkThemeEnabled ? "info-solid-24" : "ic_info"
         case .groupMessage:

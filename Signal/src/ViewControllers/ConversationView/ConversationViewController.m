@@ -1934,7 +1934,7 @@ typedef enum : NSUInteger {
 
 - (void)createConversationScrollButtons
 {
-    self.scrollDownButton = [[ConversationScrollButton alloc] initWithIconName:@"chevron-down-20"];
+    self.scrollDownButton = [[ConversationScrollButton alloc] initWithIconName:@"\uf103"];
     [self.scrollDownButton addTarget:self
                               action:@selector(scrollDownButtonTapped)
                     forControlEvents:UIControlEventTouchUpInside];

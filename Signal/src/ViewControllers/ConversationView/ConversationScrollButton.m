@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ConversationScrollButton ()
 
-@property (nonatomic) NSString *iconName;
-@property (nonatomic) UIImageView *iconView;
+@property (nonatomic) NSString *iconText;
+@property (nonatomic) UILabel *iconLabel;
 @property (nonatomic) UIView *circleView;
 @property (nonatomic) UIView *shadowView;
 
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
         return self;
     }
 
-    self.iconName = iconName;
+    self.iconText = iconName;
 
     [self createContents];
 
@@ -62,9 +62,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)createContents
 {
-    UIImageView *iconView = [UIImageView new];
-    self.iconView = iconView;
-    iconView.userInteractionEnabled = NO;
+    UILabel *iconLabel = [UILabel new];
+    self.iconLabel = iconLabel;
+    iconLabel.userInteractionEnabled = NO;
 
     const CGFloat circleSize = self.class.circleSize;
 
@@ -108,8 +108,8 @@ NS_ASSUME_NONNULL_BEGIN
 
     [shadowView autoPinEdgesToEdgesOfView:circleView];
 
-    [circleView addSubview:iconView];
-    [iconView autoCenterInSuperview];
+    [circleView addSubview:iconLabel];
+    [iconLabel autoCenterInSuperview];
 
     [self addSubview:unreadBadge];
 
@@ -138,9 +138,26 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateColors
 {
     self.unreadBadge.backgroundColor = UIColor.ows_accentBlueColor;
-    self.circleView.backgroundColor = Theme.isDarkThemeEnabled ? UIColor.ows_gray65Color : UIColor.ows_gray02Color;
-    [self.iconView setTemplateImageName:self.iconName
-                              tintColor:Theme.isDarkThemeEnabled ? UIColor.ows_gray15Color : UIColor.ows_gray75Color];
+    
+    UIColor *foregroundColor;
+    UIColor *backgroundColor;
+    if (_unreadCount > 0) {
+        foregroundColor = UIColor.st_accentGreen;
+        backgroundColor = UIColor.st_neutralGray;
+    } else {
+        foregroundColor = UIColor.st_accentGreen;
+        backgroundColor = Theme.scrollButtonBackgroundColor;
+    }
+    
+    const CGFloat circleSize = self.class.circleSize;
+    self.circleView.backgroundColor = backgroundColor;
+    self.iconLabel.attributedText = [[NSAttributedString alloc]
+                                     initWithString: self.iconText
+                                     attributes:@{
+                                         NSFontAttributeName : [UIFont ows_fontAwesomeFont:circleSize * 0.8f],
+                                         NSForegroundColorAttributeName : foregroundColor,
+                                         NSBaselineOffsetAttributeName : @(-0.5f),
+                                     }];
 }
 
 @end
