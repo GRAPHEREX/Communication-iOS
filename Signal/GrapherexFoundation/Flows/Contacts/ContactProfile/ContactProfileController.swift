@@ -20,6 +20,16 @@ final class ContactProfileController: OWSViewController {
         makeCells()
         navigationItem.leftBarButtonItem = createOWSBackButton()
         navigationItem.leftBarButtonItem?.imageInsets.left = -8
+        updateRighBarButton()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(identityStateDidChange), name: .identityStateDidChange, object: nil)
+    }
+    
+    @objc func identityStateDidChange() {
+        updateRighBarButton()
+    }
+    
+    private func updateRighBarButton() {
         if canVerification() {
             let icon: UIImage
             if OWSIdentityManager.shared().verificationState(for: address) == .verified {
@@ -36,7 +46,6 @@ final class ContactProfileController: OWSViewController {
         } else {
             navigationItem.rightBarButtonItem = nil
         }
-        
     }
 }
 
