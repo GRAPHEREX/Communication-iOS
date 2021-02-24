@@ -21,8 +21,15 @@ final class ContactProfileController: OWSViewController {
         navigationItem.leftBarButtonItem = createOWSBackButton()
         navigationItem.leftBarButtonItem?.imageInsets.left = -8
         if canVerification() {
+            let icon: UIImage
+            if OWSIdentityManager.shared().verificationState(for: address) == .verified {
+                icon = Theme.iconImage(.verificationActive, alwaysTemplate: false).withRenderingMode(.alwaysOriginal)
+            }
+            else {
+                icon = Theme.iconImage(.verificationNonActive, alwaysTemplate: false).withRenderingMode(.alwaysOriginal)
+            }
             navigationItem.rightBarButtonItem = .init(
-                image: UIImage(imageLiteralResourceName: "icon.verification.active"),
+                image: icon,
                 style: .plain,
                 target: self,
                 action: #selector(showVerificationView))

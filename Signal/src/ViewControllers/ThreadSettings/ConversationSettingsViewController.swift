@@ -181,10 +181,10 @@ class ConversationSettingsViewController: OWSTableViewController {
             
             let icon: UIImage
             if OWSIdentityManager.shared().verificationState(for: contactThread.contactAddress) == .verified {
-                icon = UIImage(imageLiteralResourceName: "icon.verification.active").withRenderingMode(.alwaysOriginal)
+                icon = Theme.iconImage(.verificationActive, alwaysTemplate: false).withRenderingMode(.alwaysOriginal)
             }
             else {
-                icon = UIImage(imageLiteralResourceName: "icon.verification.nonactive").withRenderingMode(.alwaysOriginal)
+                icon = Theme.iconImage(.verificationNonActive, alwaysTemplate: false).withRenderingMode(.alwaysOriginal)
             }
             
             navigationItem.rightBarButtonItem = .init(

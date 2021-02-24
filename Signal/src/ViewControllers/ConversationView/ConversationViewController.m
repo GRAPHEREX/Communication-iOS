@@ -1137,10 +1137,10 @@ typedef enum : NSUInteger {
         
         if (!thread.isNoteToSelf && [thread hasSafetyNumbers] && (thread.isGroupThread || thread.recipientAddresses[0].uuid != nil)) {
             if ([[OWSIdentityManager shared] verificationStateForAddress:thread.contactAddress] == OWSVerificationStateVerified) {
-                icon = [[UIImage imageNamed:@"icon.verification.active"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                icon = [[Theme iconImage:ThemeIconVerificationActive alwaysTemplate:NO] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             }
             else {
-                icon = [[UIImage imageNamed:@"icon.verification.nonactive"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+                icon = [[Theme iconImage:ThemeIconVerificationNonActive alwaysTemplate:NO] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
             }
         }
         

@@ -183,6 +183,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     // Verify/Unverify Button
     self.stateImageView = [UIImageView new];
+    self.stateImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.verificationStateLabel = [UILabel new];
     [self updateVerification];
 
@@ -322,7 +323,7 @@ NS_ASSUME_NONNULL_BEGIN
         [[OWSIdentityManager shared] verificationStateForAddress:self.address] == OWSVerificationStateVerified;
 
     if (isVerified) {
-        UIImage *image= [UIImage imageNamed: @"icon.checked.circle"];
+        UIImage *image = [Theme iconImage:ThemeIconVerificationActive alwaysTemplate:NO];
         self.stateImageView.image = image;
         self.verificationStateLabel.text = [NSString stringWithFormat:NSLocalizedString(@"PRIVACY_IDENTITY_IS_VERIFIED_FORMAT_new",
                                                                                         @"Label indicating that the user is verified. Embeds "
@@ -335,8 +336,8 @@ NS_ASSUME_NONNULL_BEGIN
                                       action:@selector(verifyUnverifyButtonTapped)
                             forControlEvents: UIControlEventTouchUpInside];
     } else {
-        UIImage *image= [UIImage imageNamed: @"icon.delete"];
-        [self.stateImageView setTemplateImage:image tintColor: UIColor.st_otherRed];
+        UIImage *image = [Theme iconImage:ThemeIconVerificationNonActive alwaysTemplate:NO];
+        self.stateImageView.image = image;
         self.verificationStateLabel.text = [NSString
                                             stringWithFormat:NSLocalizedString(@"PRIVACY_IDENTITY_IS_NOT_VERIFIED_FORMAT_new",
                                                                                @"Label indicating that the user is not verified. Embeds {{the user's name or phone "

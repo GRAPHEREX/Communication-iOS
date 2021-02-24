@@ -68,6 +68,8 @@ public enum ThemeIcon: UInt {
     case groupMessage
     case profileChangeMessage
     case gallery
+    case verificationActive
+    case verificationNonActive
 
     case check16
     case compose16
@@ -265,6 +267,11 @@ public extension Theme {
             return isDarkThemeEnabled ? "profile-solid-20" : "profile-outline-20"
         case .gallery:
             return isDarkThemeEnabled ? "icon.album.dark" : "icon.album"
+        
+        case .verificationActive:
+            return isDarkThemeEnabled ? "icon.verification.active.dark" : "icon.verification.active"
+        case .verificationNonActive:
+            return isDarkThemeEnabled ? "icon.verification.nonactive.dark" : "icon.verification.nonactive"
 
         case .check16:
             return isDarkThemeEnabled ? "check-solid-16" : "check-outline-16"
