@@ -48,6 +48,10 @@ extension ConversationSettingsViewController {
                 })
         ])
         
+        header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(conversationNameTouched)))
+        header.isUserInteractionEnabled = true
+        avatarView = header.imageView
+        
         return header
     }
 
@@ -85,6 +89,11 @@ extension ConversationSettingsViewController {
             image: avatar,
             options: options
         )
+        
+        header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(conversationNameTouched)))
+        header.isUserInteractionEnabled = true
+        avatarView = header.imageView
+        
         return header
     }
     
