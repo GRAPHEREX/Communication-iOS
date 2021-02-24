@@ -390,42 +390,44 @@ static NSString *const DATE_FORMAT_WEEKDAY = @"EEEE";
     if (hoursDiff < 1 && minutesDiff < 1) {
         return NSLocalizedString(@"DATE_NOW", @"The present; the current time.");
     }
+    
+    return [[self timeFormatter] stringFromDate:date];
 
-    if (hoursDiff < 1) {
-        NSString *minutesString = [OWSFormat formatInt:minutesDiff];
-        return [NSString stringWithFormat:NSLocalizedString(@"DATE_MINUTES_AGO_FORMAT",
-                                              @"Format string for a relative time, expressed as a certain number of "
-                                              @"minutes in the past. Embeds {{The number of minutes}}."),
-                         minutesString];
-    }
-
-    // Note: we are careful to treat "future" dates as "now".
-    NSInteger yearsDiff = [self yearsFromFirstDate:date toSecondDate:nowDate];
-    if (yearsDiff > 0) {
-        // "Long date" + locale-specific "short" time format.
-        NSString *dayOfWeek = [self.otherYearMessageFormatter stringFromDate:date];
-        NSString *formattedTime = [[self timeFormatter] stringFromDate:date];
-        return [[dayOfWeek stringByAppendingString:@" "] stringByAppendingString:formattedTime];
-    }
-
-    NSInteger daysDiff = [self daysFromFirstDate:date toSecondDate:nowDate];
-    if (daysDiff >= 7) {
-        // "Short date" + locale-specific "short" time format.
-        NSString *dayOfWeek = [self.thisYearMessageFormatter stringFromDate:date];
-        NSString *formattedTime = [[self timeFormatter] stringFromDate:date];
-        return [[dayOfWeek stringByAppendingString:@" "] stringByAppendingString:formattedTime];
-    } else if (daysDiff > 0) {
-        // "Day of week" + locale-specific "short" time format.
-        NSString *dayOfWeek = [self.thisWeekMessageFormatter stringFromDate:date];
-        NSString *formattedTime = [[self timeFormatter] stringFromDate:date];
-        return [[dayOfWeek stringByAppendingString:@" "] stringByAppendingString:formattedTime];
-    } else {
-        NSString *hoursString = [OWSFormat formatInt:hoursDiff];
-        return [NSString stringWithFormat:NSLocalizedString(@"DATE_HOURS_AGO_FORMAT",
-                                              @"Format string for a relative time, expressed as a certain number of "
-                                              @"hours in the past. Embeds {{The number of hours}}."),
-                         hoursString];
-    }
+//    if (hoursDiff < 1) {
+//        NSString *minutesString = [OWSFormat formatInt:minutesDiff];
+//        return [NSString stringWithFormat:NSLocalizedString(@"DATE_MINUTES_AGO_FORMAT",
+//                                              @"Format string for a relative time, expressed as a certain number of "
+//                                              @"minutes in the past. Embeds {{The number of minutes}}."),
+//                         minutesString];
+//    }
+//
+//    // Note: we are careful to treat "future" dates as "now".
+//    NSInteger yearsDiff = [self yearsFromFirstDate:date toSecondDate:nowDate];
+//    if (yearsDiff > 0) {
+//        // "Long date" + locale-specific "short" time format.
+//        NSString *dayOfWeek = [self.otherYearMessageFormatter stringFromDate:date];
+//        NSString *formattedTime = [[self timeFormatter] stringFromDate:date];
+//        return [[dayOfWeek stringByAppendingString:@" "] stringByAppendingString:formattedTime];
+//    }
+//
+//    NSInteger daysDiff = [self daysFromFirstDate:date toSecondDate:nowDate];
+//    if (daysDiff >= 7) {
+//        // "Short date" + locale-specific "short" time format.
+//        NSString *dayOfWeek = [self.thisYearMessageFormatter stringFromDate:date];
+//        NSString *formattedTime = [[self timeFormatter] stringFromDate:date];
+//        return [[dayOfWeek stringByAppendingString:@" "] stringByAppendingString:formattedTime];
+//    } else if (daysDiff > 0) {
+//        // "Day of week" + locale-specific "short" time format.
+//        NSString *dayOfWeek = [self.thisWeekMessageFormatter stringFromDate:date];
+//        NSString *formattedTime = [[self timeFormatter] stringFromDate:date];
+//        return [[dayOfWeek stringByAppendingString:@" "] stringByAppendingString:formattedTime];
+//    } else {
+//        NSString *hoursString = [OWSFormat formatInt:hoursDiff];
+//        return [NSString stringWithFormat:NSLocalizedString(@"DATE_HOURS_AGO_FORMAT",
+//                                              @"Format string for a relative time, expressed as a certain number of "
+//                                              @"hours in the past. Embeds {{The number of hours}}."),
+//                         hoursString];
+//    }
 }
 
 + (BOOL)isTimestampFromLastHour:(uint64_t)timestamp
