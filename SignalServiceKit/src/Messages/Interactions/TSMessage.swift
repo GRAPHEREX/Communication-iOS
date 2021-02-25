@@ -178,10 +178,10 @@ public extension TSMessage {
                 return .invalidDelete
             }
 
-            guard serverTimestamp - messageToDeleteServerTimestamp < kDayInMs else {
-                owsFailDebug("Ignoring message delete sent more than a day after the original message")
-                return .invalidDelete
-            }
+//            guard serverTimestamp - messageToDeleteServerTimestamp < kDayInMs else {
+//                owsFailDebug("Ignoring message delete sent more than a day after the original message")
+//                return .invalidDelete
+//            }
 
             incomingMessageToDelete.markMessageAsRemotelyDeleted(transaction: transaction)
 
