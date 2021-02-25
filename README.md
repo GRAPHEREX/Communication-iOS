@@ -11,8 +11,6 @@ Get Grapherex
 
 For troubleshooting and questions, please visit our [help center](https://https://support.grapherex.com/hc/en-150).
 
-[![Use Grapherex free]<img src="(https://apidev.grapherex.com/api/v1/website-backend/image_content/866b68ed-ad26-467e-a584-e70d3ce3c175)" width="500"/>
-
 ## Contributing Code
 
 Instructions on how to setup your development environment and build Grapherex-iOS can be found in [BUILDING.md]
