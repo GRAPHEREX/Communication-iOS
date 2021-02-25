@@ -662,7 +662,7 @@ fileprivate extension SendCurrencyFromChatController {
 fileprivate extension SendCurrencyFromChatController {
     
     func clearAmountStack() {
-        amountStack.removeAllArrangedSubviews()
+        amountStack.removeAllArrangedSubviews(deactivateConstraints: true)
         
         amountTextField.removeFromSuperview()
         rateAmountTextField.removeFromSuperview()
