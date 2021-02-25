@@ -19,6 +19,8 @@ public class CVComponentCallMessage: CVComponentBase, CVRootComponent {
         self.callMessage = callMessage
         super.init(itemModel: itemModel)
     }
+    
+    private var selectionViewSpacing: CGFloat { ConversationStyle.messageStackSpacing }
 
     public func configure(cellView: UIView,
                           cellMeasurement: CVCellMeasurement,
@@ -27,6 +29,11 @@ public class CVComponentCallMessage: CVComponentBase, CVRootComponent {
                           swipeToReplyState: CVSwipeToReplyState,
                           componentView: CVComponentView) {
 
+        guard let componentView = componentView as? CVComponentViewCallMessage else {
+            owsFailDebug("Unexpected componentView.")
+            return
+        }
+        
         configureForRendering(componentView: componentView,
                               cellMeasurement: cellMeasurement,
                               componentDelegate: componentDelegate)
@@ -43,9 +50,26 @@ public class CVComponentCallMessage: CVComponentBase, CVRootComponent {
             rootView.autoSetDimension(.width, toSize: cellWidth)
         }
         
+        var leadingView: UIView?
+        if isShowingSelectionUI {
+            owsAssertDebug(!isReusing)
+
+            let selectionView = componentView.selectionView
+            selectionView.isSelected = componentDelegate.cvc_isMessageSelected(interaction)
+            cellView.addSubview(selectionView)
+            selectionView.autoPinEdge(toSuperviewEdge: .top)
+            selectionView.autoPinEdge(toSuperviewEdge: .bottom)
+            selectionView.autoPinEdge(.leading, to: .leading, of: cellView, withOffset: conversationStyle.gutterLeading)
+            leadingView = selectionView
+        }
+        
         if isReusing {
         } else if isIncoming {
-            rootView.autoPinEdge(toSuperviewMargin: .leading)
+            if let leadingView = leadingView {
+                rootView.autoPinEdge(.leading, to: .trailing, of: leadingView, withOffset: selectionViewSpacing)
+            } else {
+                rootView.autoPinEdge(toSuperviewMargin: .leading)
+            }
         } else {
             rootView.autoPinEdge(toSuperviewMargin: .trailing)
         }
@@ -133,6 +157,20 @@ public class CVComponentCallMessage: CVComponentBase, CVRootComponent {
             return false
         }
 
+        if isShowingSelectionUI {
+            let selectionView = componentView.selectionView
+            let itemViewModel = CVItemViewModelImpl(renderItem: renderItem)
+            if componentDelegate.cvc_isMessageSelected(interaction) {
+                selectionView.isSelected = false
+                componentDelegate.cvc_didDeselectViewItem(itemViewModel)
+            } else {
+                selectionView.isSelected = true
+                componentDelegate.cvc_didSelectViewItem(itemViewModel)
+            }
+            // Suppress other tap handling during selection mode.
+            return true
+        }
+        
         if let action = callMessage.action {
             let rootView = componentView.rootView
             if rootView.containsGestureLocation(sender) {
@@ -142,6 +180,15 @@ public class CVComponentCallMessage: CVComponentBase, CVRootComponent {
         }
 
         return false
+    }
+    
+    public override func findLongPressHandler(sender: UILongPressGestureRecognizer,
+                                              componentDelegate: CVComponentDelegate,
+                                              componentView: CVComponentView,
+                                              renderItem: CVRenderItem) -> CVLongPressHandler? {
+        return CVLongPressHandler(delegate: componentDelegate,
+                                  renderItem: renderItem,
+                                  gestureLocation: .systemMessage)
     }
 }
 
@@ -237,6 +284,7 @@ extension CVComponentCallMessage {
     public class CVComponentViewCallMessage: NSObject, CVComponentView {
 
         fileprivate let outerStackView = OWSStackView(name: "Call message")
+        fileprivate let selectionView = MessageSelectionView()
         fileprivate let bubbleView = OWSBubbleView()
         fileprivate let innerStackView = OWSStackView(name: "innerStackView")
         fileprivate let vStackView = OWSStackView(name: "vStackView")
