@@ -37,7 +37,7 @@ The form and manner of this distribution makes it eligible for export under the 
 
 Licensed under [GPLv3](http://www.gnu.org/licenses/gpl-3.0.html)
 
-Copyright 2014-2019 Open Whisper Systems
-Copyright 2019-2021 Grapherex Crypto Communication
+- Copyright 2014-2019 Open Whisper Systems
+- Copyright 2019-2021 Grapherex Crypto Communication
 
 _Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc., registered in the U.S. and other countries._
