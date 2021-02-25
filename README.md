@@ -9,15 +9,7 @@ Get Grapherex
 
 ## Questions?
 
-For troubleshooting and questions, please visit our [help center](https://support.signal.org/) (https://grapherex.com/faq).
-
-## Contributing Bug Reports
-
-We use GitHub for bug tracking. Please search [existing issues](https://github.com/signalapp/signal-ios/issues) and create a new one if the issue is not yet tracked. For Android users, please use the [Signal for Android issue tracker](https://github.com/signalapp/signal-android/issues).
-
-## Contributing Translations
-
-Help us translate Signal! The translation effort happens on [Transifex](https://www.transifex.com/signalapp/signal-ios/).
+For troubleshooting and questions, please visit our [help center](https://https://support.grapherex.com/hc/en-150).
 
 ## Contributing Code
 
