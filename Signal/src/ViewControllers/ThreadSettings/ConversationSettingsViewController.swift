@@ -970,10 +970,11 @@ class ConversationSettingsViewController: OWSTableViewController {
         updateTableContents()
     }
 
-    func showMediaGallery() {
+    func showMediaGallery(types: [GalleryType]) {
         Logger.debug("")
 
-        let tileVC = MediaTileViewController(thread: thread)
+        let tileVC = MediaTileViewController()
+        tileVC.configure(types: types, thread: thread)
         navigationController?.pushViewController(tileVC, animated: true)
     }
 

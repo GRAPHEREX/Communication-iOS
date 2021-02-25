@@ -472,7 +472,6 @@
 		4521C3C01F59F3BA00B4C582 /* TextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4521C3BF1F59F3BA00B4C582 /* TextFieldHelper.swift */; };
 		452B999020A34B6B006F2F9E /* AddContactShareToExistingContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452B998F20A34B6B006F2F9E /* AddContactShareToExistingContactViewController.swift */; };
 		452D1AF12081059C00A67F7F /* StringAdditionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452D1AF02081059C00A67F7F /* StringAdditionsTest.swift */; };
-		452EC6DF205E9E30000E787C /* MediaGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452EC6DE205E9E30000E787C /* MediaGallery.swift */; };
 		4535186B1FC635DD00210559 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535186A1FC635DD00210559 /* ShareViewController.swift */; };
 		4535186E1FC635DD00210559 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4535186C1FC635DD00210559 /* MainInterface.storyboard */; };
 		453518721FC635DD00210559 /* SignalShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 453518681FC635DD00210559 /* SignalShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -582,7 +581,6 @@
 		4C10B1C723176DD60099396B /* SDSPerformanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C10B1C623176DD60099396B /* SDSPerformanceTest.swift */; };
 		4C10B1C9231778880099396B /* PerformanceBaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C10B1C8231778880099396B /* PerformanceBaseTest.swift */; };
 		4C13C9F620E57BA30089A98B /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C13C9F520E57BA30089A98B /* ColorPickerViewController.swift */; };
-		4C1885D2218F8E1C00B67051 /* PhotoGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1885D1218F8E1C00B67051 /* PhotoGridViewCell.swift */; };
 		4C19A0FC227B356F007A0C7F /* DebugUIMessages+OWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C19A0FB227B356F007A0C7F /* DebugUIMessages+OWS.swift */; };
 		4C20B2B720CA0034001BAC90 /* ThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542DF51208B82E9007B4E76 /* ThreadViewModel.swift */; };
 		4C20B2B920CA10DE001BAC90 /* ConversationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C20B2B820CA10DE001BAC90 /* ConversationSearchViewController.swift */; };
@@ -1080,6 +1078,17 @@
 		F217451A25CAF58800BC9476 /* UIStoryboard+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217451125CAF58800BC9476 /* UIStoryboard+ViewController.swift */; };
 		F217451B25CAF58800BC9476 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217451225CAF58800BC9476 /* BaseView.swift */; };
 		F24891B925DD4AE60084378D /* CVComponentCallMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24891B825DD4AE50084378D /* CVComponentCallMessage.swift */; };
+		F296F9AB25E796BA00B89378 /* LinkGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9A625E796BA00B89378 /* LinkGridViewCell.swift */; };
+		F296F9AC25E796BA00B89378 /* FileGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9A725E796BA00B89378 /* FileGridViewCell.swift */; };
+		F296F9AD25E796BA00B89378 /* GroupGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9A825E796BA00B89378 /* GroupGridViewCell.swift */; };
+		F296F9AE25E796BA00B89378 /* PhotoGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9A925E796BA00B89378 /* PhotoGridViewCell.swift */; };
+		F296F9AF25E796BA00B89378 /* VoiceGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9AA25E796BA00B89378 /* VoiceGridViewCell.swift */; };
+		F296F9BC25E7989500B89378 /* TZSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9BA25E7989500B89378 /* TZSegmentedControl.swift */; };
+		F296F9BD25E7989500B89378 /* TZScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9BB25E7989500B89378 /* TZScrollView.swift */; };
+		F296F9C825E7997E00B89378 /* MediaGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9C425E7997E00B89378 /* MediaGallery.swift */; };
+		F296F9C925E7997F00B89378 /* MediaGalleryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9C525E7997E00B89378 /* MediaGalleryItem.swift */; };
+		F296F9CA25E7997F00B89378 /* MediaGalleryAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9C625E7997E00B89378 /* MediaGalleryAlbum.swift */; };
+		F296F9CB25E7997F00B89378 /* MediaGalleryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9C725E7997E00B89378 /* MediaGalleryDate.swift */; };
 		F2A417A825D58F17000BE15E /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A417A725D58F17000BE15E /* WebViewController.swift */; };
 		FC3BD9881A30A790005B96BB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC3BD9871A30A790005B96BB /* Social.framework */; };
 		FCB11D8C1A129A76002F93FB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB11D8B1A129A76002F93FB /* CoreMedia.framework */; };
@@ -1715,7 +1724,6 @@
 		4523149F1F7E9E18003A428C /* DirectionalPanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionalPanGestureRecognizer.swift; sourceTree = "<group>"; };
 		452B998F20A34B6B006F2F9E /* AddContactShareToExistingContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactShareToExistingContactViewController.swift; sourceTree = "<group>"; };
 		452D1AF02081059C00A67F7F /* StringAdditionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAdditionsTest.swift; sourceTree = "<group>"; };
-		452EC6DE205E9E30000E787C /* MediaGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGallery.swift; sourceTree = "<group>"; };
 		453518681FC635DD00210559 /* SignalShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SignalShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4535186A1FC635DD00210559 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		4535186D1FC635DD00210559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -1823,7 +1831,6 @@
 		4C10B1C623176DD60099396B /* SDSPerformanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDSPerformanceTest.swift; sourceTree = "<group>"; };
 		4C10B1C8231778880099396B /* PerformanceBaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceBaseTest.swift; sourceTree = "<group>"; };
 		4C13C9F520E57BA30089A98B /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
-		4C1885D1218F8E1C00B67051 /* PhotoGridViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewCell.swift; sourceTree = "<group>"; };
 		4C19A0FB227B356F007A0C7F /* DebugUIMessages+OWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DebugUIMessages+OWS.swift"; sourceTree = "<group>"; };
 		4C1D2333218B692800A0598F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = translations/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C1D2334218B6A1100A0598F /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = translations/az.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -2508,6 +2515,17 @@
 		F217451125CAF58800BC9476 /* UIStoryboard+ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+ViewController.swift"; sourceTree = "<group>"; };
 		F217451225CAF58800BC9476 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		F24891B825DD4AE50084378D /* CVComponentCallMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVComponentCallMessage.swift; sourceTree = "<group>"; };
+		F296F9A625E796BA00B89378 /* LinkGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkGridViewCell.swift; sourceTree = "<group>"; };
+		F296F9A725E796BA00B89378 /* FileGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileGridViewCell.swift; sourceTree = "<group>"; };
+		F296F9A825E796BA00B89378 /* GroupGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupGridViewCell.swift; sourceTree = "<group>"; };
+		F296F9A925E796BA00B89378 /* PhotoGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGridViewCell.swift; sourceTree = "<group>"; };
+		F296F9AA25E796BA00B89378 /* VoiceGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceGridViewCell.swift; sourceTree = "<group>"; };
+		F296F9BA25E7989500B89378 /* TZSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZSegmentedControl.swift; sourceTree = "<group>"; };
+		F296F9BB25E7989500B89378 /* TZScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZScrollView.swift; sourceTree = "<group>"; };
+		F296F9C425E7997E00B89378 /* MediaGallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGallery.swift; sourceTree = "<group>"; };
+		F296F9C525E7997E00B89378 /* MediaGalleryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGalleryItem.swift; sourceTree = "<group>"; };
+		F296F9C625E7997E00B89378 /* MediaGalleryAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGalleryAlbum.swift; sourceTree = "<group>"; };
+		F296F9C725E7997E00B89378 /* MediaGalleryDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaGalleryDate.swift; sourceTree = "<group>"; };
 		F2A417A725D58F17000BE15E /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		FC3BD9871A30A790005B96BB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FCB11D8B1A129A76002F93FB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -3726,9 +3744,9 @@
 		4C4F360E2284516F00A8DF48 /* MediaGallery */ = {
 			isa = PBXGroup;
 			children = (
+				F296F9C325E7997E00B89378 /* Model */,
 				45B9EE9A200E91FB005D2F2D /* MediaDetailViewController.h */,
 				45B9EE9B200E91FB005D2F2D /* MediaDetailViewController.m */,
-				452EC6DE205E9E30000E787C /* MediaGallery.swift */,
 				45F32C1D205718B000A300D5 /* MediaPageViewController.swift */,
 				454A84032059C787008B8C75 /* MediaTileViewController.swift */,
 				4CD675BF22E7BE47008010D2 /* Transitions */,
@@ -3845,6 +3863,7 @@
 		76EB052B18170B33006006FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F296F9A525E796BA00B89378 /* Attachment Grid */,
 				4C2F454E214C00E1004871FF /* AvatarTableViewCell.swift */,
 				4CA46F4B219CCC630038ABDE /* CaptionView.swift */,
 				3434AE1D22AEF5A4002EE04E /* CircularProgressView.swift */,
@@ -3866,7 +3885,6 @@
 				34330AA11E79686200DF2FB9 /* OWSProgressView.h */,
 				34330AA21E79686200DF2FB9 /* OWSProgressView.m */,
 				88A4CC11246CE2F50082211F /* QRCodeView.swift */,
-				4C1885D1218F8E1C00B67051 /* PhotoGridViewCell.swift */,
 				45D308AB2049A439000189E4 /* PinEntryView.h */,
 				45D308AC2049A439000189E4 /* PinEntryView.m */,
 				457F671A20746193000EABCD /* QuotedReplyPreview.swift */,
@@ -5295,6 +5313,31 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		F296F9A525E796BA00B89378 /* Attachment Grid */ = {
+			isa = PBXGroup;
+			children = (
+				F296F9BB25E7989500B89378 /* TZScrollView.swift */,
+				F296F9BA25E7989500B89378 /* TZSegmentedControl.swift */,
+				F296F9A625E796BA00B89378 /* LinkGridViewCell.swift */,
+				F296F9A725E796BA00B89378 /* FileGridViewCell.swift */,
+				F296F9A825E796BA00B89378 /* GroupGridViewCell.swift */,
+				F296F9A925E796BA00B89378 /* PhotoGridViewCell.swift */,
+				F296F9AA25E796BA00B89378 /* VoiceGridViewCell.swift */,
+			);
+			path = "Attachment Grid";
+			sourceTree = "<group>";
+		};
+		F296F9C325E7997E00B89378 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F296F9C425E7997E00B89378 /* MediaGallery.swift */,
+				F296F9C525E7997E00B89378 /* MediaGalleryItem.swift */,
+				F296F9C625E7997E00B89378 /* MediaGalleryAlbum.swift */,
+				F296F9C725E7997E00B89378 /* MediaGalleryDate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FCFA64B11A24F29E0007FB87 /* UI Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -6526,7 +6569,6 @@
 				88C7597324B7EAA600DB03EA /* AdvancedPinSettingsTableViewController.swift in Sources */,
 				4C8A6DFE22E54AFA00469AE7 /* MediaInteractiveDismiss.swift in Sources */,
 				F217441825CAEA9F00BC9476 /* TransactionInfoController.swift in Sources */,
-				452EC6DF205E9E30000E787C /* MediaGallery.swift in Sources */,
 				34386A52207D0C01009F5D9C /* ConversationListCell.m in Sources */,
 				F2155AD025CFFAC90089AA63 /* OnboardingModeSwitchConfirmationViewController_Grapherex.swift in Sources */,
 				34DC9BD921543E0C00FDDCEC /* DebugContactsUtils.m in Sources */,
@@ -6540,7 +6582,6 @@
 				34D8C02B1ED3685800188D7C /* DebugUIContacts.m in Sources */,
 				3496956E21A301A100DCFE74 /* OWSBackupExportJob.m in Sources */,
 				88D23D2823CEC0C700B0E74B /* TurnServerInfo.swift in Sources */,
-				4C1885D2218F8E1C00B67051 /* PhotoGridViewCell.swift in Sources */,
 				F21743CA25CAEA9F00BC9476 /* UIColor+SDHexString.m in Sources */,
 				3470C8822559B23F00F5847C /* CVUpdate.swift in Sources */,
 				F217439425CAEA9F00BC9476 /* SDWebImageOperation.m in Sources */,
@@ -6586,6 +6627,7 @@
 				4CD675C522E7CF22008010D2 /* ConversationViewController+OWS.swift in Sources */,
 				F21743BC25CAEA9F00BC9476 /* NSData+ImageContentType.m in Sources */,
 				F2155BD425D2CDD50089AA63 /* CallKitUUIDManager.swift in Sources */,
+				F296F9AF25E796BA00B89378 /* VoiceGridViewCell.swift in Sources */,
 				347C3829252CE69400F3D941 /* CVComponentState+GroupLink.swift in Sources */,
 				343A65981FC4CFE7000477A1 /* ConversationScrollButton.m in Sources */,
 				34386A51207D0C01009F5D9C /* ConversationListViewController.m in Sources */,
@@ -6598,6 +6640,7 @@
 				F21743CE25CAEA9F00BC9476 /* SDWeakProxy.m in Sources */,
 				45CD81EF1DC030E7004C9430 /* SyncPushTokensJob.swift in Sources */,
 				88ABB8BD25352B8300229EAA /* GroupCallMemberSheet.swift in Sources */,
+				F296F9C825E7997E00B89378 /* MediaGallery.swift in Sources */,
 				88A4CC0E246CD6CC0082211F /* OnboardingTransferProgressViewController.swift in Sources */,
 				F21743B425CAEA9F00BC9476 /* SDImageCache.m in Sources */,
 				4C0C36F8226647FE0083F19A /* ThreadMapping.swift in Sources */,
@@ -6625,6 +6668,7 @@
 				34386A54207D271D009F5D9C /* NeverClearView.swift in Sources */,
 				88A505F423DA16E10005C012 /* ExperienceUpgradeManager.swift in Sources */,
 				F217443B25CAEA9F00BC9476 /* CurrencyPickerView.swift in Sources */,
+				F296F9AE25E796BA00B89378 /* PhotoGridViewCell.swift in Sources */,
 				8811CF842295D8DA00FF6549 /* VolumeButtons.swift in Sources */,
 				3426A36A255D9D7C0036407F /* ConversationViewController+Selection.swift in Sources */,
 				F21743B525CAEA9F00BC9476 /* SDImageGIFCoder.m in Sources */,
@@ -6647,6 +6691,7 @@
 				88EFF4F825AD1F0D000FAFBA /* ForwardMessageNavigationController.swift in Sources */,
 				8813F6E12330082900ADEC6A /* AudioWaveformProgressView.swift in Sources */,
 				3498AC9F25190E8C00B1F315 /* ConversationViewLayout.swift in Sources */,
+				F296F9AB25E796BA00B89378 /* LinkGridViewCell.swift in Sources */,
 				F217444825CAEA9F00BC9476 /* PersonName.swift in Sources */,
 				340FC8AA204DAC8D007AEB0F /* NotificationSettingsViewController.m in Sources */,
 				348815CE25545B1000D4F4C4 /* CVComponentGenericAttachment.swift in Sources */,
@@ -6724,9 +6769,11 @@
 				34E20D4C24256563002C011E /* ConversationSettingsViewController+Header.swift in Sources */,
 				34D1F0521F7E8EA30066283D /* GiphyDownloader.swift in Sources */,
 				F21743C925CAEA9F00BC9476 /* SDWebImageDownloaderRequestModifier.m in Sources */,
+				F296F9CB25E7997F00B89378 /* MediaGalleryDate.swift in Sources */,
 				34995F1B2411838D00C70546 /* NewGroupMembersViewController.swift in Sources */,
 				340FC8BC204DAC8D007AEB0F /* FingerprintViewController.m in Sources */,
 				34A4C61E221613D00042EF2E /* OnboardingVerificationViewController.swift in Sources */,
+				F296F9C925E7997F00B89378 /* MediaGalleryItem.swift in Sources */,
 				F21743AA25CAEA9F00BC9476 /* SDWebImageDownloaderResponseModifier.m in Sources */,
 				884EFBAC251478D0006B9457 /* ResearchMegaphone.swift in Sources */,
 				F217443225CAEA9F00BC9476 /* Wallet.swift in Sources */,
@@ -6810,6 +6857,7 @@
 				3448E15C22133274004B052E /* OnboardingPermissionsViewController.swift in Sources */,
 				88588D18252D312800405414 /* GroupCallViewController.swift in Sources */,
 				8837F74123DA0B0F00772A32 /* MegaphoneView.swift in Sources */,
+				F296F9BC25E7989500B89378 /* TZSegmentedControl.swift in Sources */,
 				88D23D2723CEC0C700B0E74B /* WebRTCCallMessageHandler.swift in Sources */,
 				348BB25D20A0C5530047AEC2 /* ContactShareViewHelper.swift in Sources */,
 				F21743B225CAEA9F00BC9476 /* UIImage+ExtendedCacheData.m in Sources */,
@@ -6833,6 +6881,7 @@
 				4CC1ECFB211A553000CC13BE /* AppUpdateNag.swift in Sources */,
 				4C30E226234FB033009558B7 /* SecondaryLinkingQRCodeViewController.swift in Sources */,
 				3448E16022134C89004B052E /* OnboardingSplashViewController.swift in Sources */,
+				F296F9AD25E796BA00B89378 /* GroupGridViewCell.swift in Sources */,
 				88ABB8BB2535066100229EAA /* GroupCallVideoOverflow.swift in Sources */,
 				34B6A903218B3F63007C4606 /* TypingIndicatorView.swift in Sources */,
 				F217440F25CAEA9F00BC9476 /* QRCreator.swift in Sources */,
@@ -6845,9 +6894,11 @@
 				458E38371D668EBF0094BD24 /* OWSDeviceProvisioningURLParser.m in Sources */,
 				88D23D2323CEC0C700B0E74B /* NonCallKitCallUIAdaptee.swift in Sources */,
 				F21743BA25CAEA9F00BC9476 /* SDWebImageTransition.m in Sources */,
+				F296F9BD25E7989500B89378 /* TZScrollView.swift in Sources */,
 				34B6A905218B4C91007C4606 /* TypingIndicatorInteraction.swift in Sources */,
 				F21743FB25CAEA9F00BC9476 /* Onboarding2FAViewController_Grapherex.swift in Sources */,
 				4517642B1DE939FD00EDB8B9 /* ContactCell.swift in Sources */,
+				F296F9CA25E7997F00B89378 /* MediaGalleryAlbum.swift in Sources */,
 				F217451B25CAF58800BC9476 /* BaseView.swift in Sources */,
 				887CD47F247307D900FDD265 /* DeviceTransferService+Restore.swift in Sources */,
 				880D9025247F8841003D2B14 /* Emoji+Name.swift in Sources */,
@@ -7041,6 +7092,7 @@
 				88B688B0238F0D1000286F82 /* ReactionsDetailSheet.swift in Sources */,
 				344DAEDF248A7526000AD4FA /* DebugUIStress.swift in Sources */,
 				329D42A225AD65C400DCB449 /* GetStartedBannerCell.swift in Sources */,
+				F296F9AC25E796BA00B89378 /* FileGridViewCell.swift in Sources */,
 				348815C9255346A500D4F4C4 /* CVComponent.swift in Sources */,
 				34D1F0861F8678AA0066283D /* ConversationViewController.m in Sources */,
 				3427C64320F500E000EEC730 /* OWSMessageTimerView.m in Sources */,

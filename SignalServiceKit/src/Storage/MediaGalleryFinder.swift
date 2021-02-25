@@ -11,6 +11,7 @@ protocol MediaGalleryFinder {
     func mostRecentMediaAttachment(transaction: ReadTransaction) -> TSAttachment?
     func mediaCount(transaction: ReadTransaction) -> UInt
     func mediaIndex(attachment: TSAttachmentStream, transaction: ReadTransaction) -> Int?
+    func enumerateAllAttachments(range: NSRange, transaction: ReadTransaction, block: @escaping (TSAttachment) -> Void)
     func enumerateMediaAttachments(range: NSRange, transaction: ReadTransaction, block: @escaping (TSAttachment) -> Void)
 }
 
@@ -42,6 +43,15 @@ extension AnyMediaGalleryFinder: MediaGalleryFinder {
                 return nil
             }
             return number.intValue
+        }
+    }
+    
+    public func enumerateAllAttachments(range: NSRange, transaction: SDSAnyReadTransaction, block: @escaping (TSAttachment) -> Void) {
+        switch transaction.readTransaction {
+        case .grdbRead(let grdbRead):
+            return grdbAdapter.enumerateAllAttachments(range: range, transaction: grdbRead, block: block)
+        case .yapRead(let yapRead):
+            return yapAdapter.enumerateMediaAttachments(range: range, transaction: yapRead, block: block)
         }
     }
 
@@ -260,6 +270,29 @@ extension GRDBMediaGalleryFinder: MediaGalleryFinder {
         return try! UInt.fetchOne(transaction.database, sql: sql, arguments: [threadId]) ?? 0
     }
 
+    func enumerateAllAttachments(range: NSRange, transaction: GRDBReadTransaction, block: @escaping (TSAttachment) -> Void) {
+        let sql = """
+            SELECT \(AttachmentRecord.databaseTableName).*
+            FROM "media_gallery_items"
+            INNER JOIN \(AttachmentRecord.databaseTableName)
+                ON media_gallery_items.attachmentId = model_TSAttachment.id
+            INNER JOIN \(InteractionRecord.databaseTableName)
+                ON media_gallery_items.albumMessageId = \(interactionColumnFullyQualified: .id)
+                AND \(interactionColumn: .isViewOnceMessage) = FALSE
+            WHERE media_gallery_items.threadId = ?
+            ORDER BY
+                media_gallery_items.albumMessageId,
+                media_gallery_items.originalAlbumOrder
+            LIMIT \(range.length)
+            OFFSET \(range.lowerBound)
+        """
+
+        let cursor = TSAttachment.grdbFetchCursor(sql: sql, arguments: [threadId], transaction: transaction)
+        while let next = try! cursor.next() {
+            block(next)
+        }
+    }
+    
     func enumerateMediaAttachments(range: NSRange, transaction: GRDBReadTransaction, block: @escaping (TSAttachment) -> Void) {
         let sql = """
             SELECT \(AttachmentRecord.databaseTableName).*

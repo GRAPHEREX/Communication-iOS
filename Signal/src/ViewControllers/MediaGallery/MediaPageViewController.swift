@@ -26,7 +26,7 @@ fileprivate extension MediaDetailViewController {
     }
 }
 
-class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, MediaDetailViewControllerDelegate, MediaGalleryDelegate, InteractivelyDismissableViewController {
+class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, MediaDetailViewControllerDelegate, InteractivelyDismissableViewController {
 
     var mediaInteractiveDismiss: MediaInteractiveDismiss!
 
@@ -87,7 +87,12 @@ class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSou
         modalPresentationCapturesStatusBarAppearance = true
         dataSource = self
         delegate = self
-        transitioningDelegate = self
+        
+        if showingSingleMessage == true {
+            transitioningDelegate = nil
+        } else {
+            transitioningDelegate = self
+        }
 
         let galleryItem: MediaGalleryItem? = databaseStorage.uiRead { transaction in
             self.mediaGallery.buildGalleryItem(attachment: initialMediaAttachment, transaction: transaction)
@@ -97,9 +102,6 @@ class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSou
             owsFailDebug("unexpectedly failed to build initialDetailItem.")
             return
         }
-
-        mediaGallery.ensureLoadedForDetailView(focusedItem: initialItem)
-        mediaGallery.addDelegate(self)
 
         guard let initialPage = buildGalleryPage(galleryItem: initialItem,
                                                  shouldAutoPlayVideo: true) else {
@@ -201,10 +203,8 @@ class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSou
         fakeNavBar.addSubview(headerView)
         headerView.autoCenterInSuperview()
 
-        let isRTL = CurrentAppContext().isRTL
-        let imageName = isRTL ? "NavBarBackRTL" : "NavBarBack"
         let backButton = UIButton(type: .custom)
-        backButton.setTemplateImageName(imageName, tintColor: .white)
+        backButton.setTemplateImageName("compose-cancel", tintColor: .white)
         backButton.addTarget(self, action: #selector(didPressDismissButton(_:)), for: .touchUpInside)
 
         fakeNavBar.addSubview(backButton)
@@ -316,16 +316,6 @@ class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSou
         return forwardBarButton
     }()
 
-    lazy var deleteBarButton: UIBarButtonItem = {
-        let image = #imageLiteral(resourceName: "trash-solid-24")
-        let deleteBarButton = UIBarButtonItem(image: image,
-                                              style: .plain,
-                                              target: self,
-                                              action: #selector(didPressDelete))
-        deleteBarButton.tintColor = Theme.darkThemePrimaryColor
-        return deleteBarButton
-    }()
-
     func buildFlexibleSpace() -> UIBarButtonItem {
         return UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     }
@@ -357,8 +347,6 @@ class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSou
                 buildFlexibleSpace()
             ]
         }
-
-        toolbarItems.append(deleteBarButton)
 
         self.footerBar.setItems(toolbarItems, animated: false)
     }
@@ -417,66 +405,12 @@ class MediaPageViewController: UIPageViewController, UIPageViewControllerDataSou
         ForwardMessageNavigationController.present(for: itemViewModel, from: self, delegate: self)
     }
 
-    @objc
-    public func didPressDelete(_ sender: Any) {
-        guard let currentViewController = self.viewControllers?[0] as? MediaDetailViewController else {
-            owsFailDebug("currentViewController was unexpectedly nil")
-            return
-        }
-
-        let actionSheet = ActionSheetController(title: nil, message: nil)
-        let deleteAction = ActionSheetAction(title: CommonStrings.deleteButton,
-                                         style: .destructive) { _ in
-                                            let deletedItem = currentViewController.galleryItem
-                                            self.mediaGallery.delete(items: [deletedItem], initiatedBy: self, deleteFromDB: true)
-        }
-        actionSheet.addAction(OWSActionSheets.cancelAction)
-        actionSheet.addAction(deleteAction)
-
-        self.presentActionSheet(actionSheet)
-    }
-
     // MARK: MediaGalleryDelegate
-
-    func mediaGallery(_ mediaGallery: MediaGallery, willDelete items: [MediaGalleryItem], initiatedBy: AnyObject) {
-        Logger.debug("")
-
-        guard let currentItem = self.currentItem else {
-            owsFailDebug("currentItem was unexpectedly nil")
-            return
-        }
-
-        guard items.contains(currentItem) else {
-            Logger.debug("irrelevant item")
-            return
-        }
-
-        // If we setCurrentItem with (animated: true) while this VC is in the background, then
-        // the next/previous cache isn't expired, and we're able to swipe back to the just-deleted vc.
-        // So to get the correct behavior, we should only animate these transitions when this
-        // vc is in the foreground
-        let isAnimated = initiatedBy === self
-
-        if showingSingleMessage {
-            // In message details, which doesn't use the slider, so don't swap pages.
-        } else if let nextItem = mediaGallery.galleryItem(after: currentItem) {
-            self.setCurrentItem(nextItem, direction: .forward, animated: isAnimated)
-        } else if let previousItem = mediaGallery.galleryItem(before: currentItem) {
-            self.setCurrentItem(previousItem, direction: .reverse, animated: isAnimated)
-        } else {
-            // else we deleted the last piece of media, return to the conversation view
-            self.dismissSelf(animated: true)
-        }
-    }
 
     func itemIsAllowed(_ item: MediaGalleryItem) -> Bool {
         // Normally, we can show any media item, but if we're limited
         // to showing a single message, don't page beyond that message
         return !showingSingleMessage || currentItem?.message == item.message
-    }
-
-    func mediaGallery(_ mediaGallery: MediaGallery, deletedSections: IndexSet, deletedItems: [IndexPath]) {
-        // no-op
     }
 
     @objc

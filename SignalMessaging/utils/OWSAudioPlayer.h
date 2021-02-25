@@ -35,6 +35,10 @@ typedef NS_ENUM(NSUInteger, OWSAudioBehavior) {
 
 @property (nonatomic, weak) id<OWSAudioPlayerDelegate> delegate;
 
+// This property can be used to associate instances of the player with view
+// or model objects.
+@property (nonatomic, weak) id owner;
+
 @property (nonatomic) BOOL isLooping;
 
 - (instancetype)initWithMediaUrl:(NSURL *)mediaUrl audioBehavior:(OWSAudioBehavior)audioBehavior;

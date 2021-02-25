@@ -1551,7 +1551,7 @@ typedef enum : NSUInteger {
             break;
         }
         case ConversationSettingsPresentationModeShowAllMedia:
-            [viewControllers addObject:[[MediaTileViewController alloc] initWithThread:self.thread]];
+//            [viewControllers addObject:[[MediaTileViewController alloc] initWithThread:self.thread]];
             break;
     }
 

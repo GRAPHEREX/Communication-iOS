@@ -34,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable) UIImage *image;
 
 @property (nonatomic, nullable) OWSVideoPlayer *videoPlayer;
+@property (nonatomic, nullable) OWSAudioPlayer *audioPlayer;
 @property (nonatomic, nullable) UIView *playVideoButton;
 @property (nonatomic, nullable) PlayerProgressBar *videoProgressBar;
 @property (nonatomic, nullable) UIBarButtonItem *videoPlayBarButton;
@@ -70,15 +71,21 @@ NS_ASSUME_NONNULL_BEGIN
 
     // We cache the image data in case the attachment stream is deleted.
     __weak MediaDetailViewController *weakSelf = self;
-    _image = [galleryItemBox.attachmentStream
-        thumbnailImageLargeWithSuccess:^(UIImage *image) {
-            weakSelf.image = image;
-            [weakSelf updateContents];
-            [weakSelf updateMinZoomScale];
-        }
-        failure:^{
-            OWSLogWarn(@"Could not load media.");
-        }];
+    
+    if (galleryItemBox.attachmentStream.isAnimated || galleryItemBox.attachmentStream.isImage || galleryItemBox.attachmentStream.isVideo) {
+        _image = [galleryItemBox.attachmentStream
+            thumbnailImageLargeWithSuccess:^(UIImage *image) {
+                weakSelf.image = image;
+                [weakSelf updateContents];
+                [weakSelf updateMinZoomScale];
+            }
+            failure:^{
+                OWSLogWarn(@"Could not load media.");
+            }];
+    } else {
+        _image = [UIImage imageNamed:@"generic-attachment"];
+    }
+        
 
     return self;
 }
@@ -86,6 +93,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (TSAttachmentStream *)attachmentStream
 {
     return self.galleryItemBox.attachmentStream;
+}
+
+- (BOOL)isImage
+{
+    return self.attachmentStream.isImage;
 }
 
 - (BOOL)isAnimated

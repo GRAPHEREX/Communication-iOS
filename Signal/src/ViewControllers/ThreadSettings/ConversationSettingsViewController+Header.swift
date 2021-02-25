@@ -44,7 +44,7 @@ extension ConversationSettingsViewController {
                 ProfileOptionView(option: .gallery,
                                   action: { [weak self] in
                                     guard let self = self else { return }
-                                    self.showMediaGallery()
+                                    self.showMediaGallery(types: [.media, .files, .voice, .gifs])
                 })
         ])
         
@@ -80,7 +80,10 @@ extension ConversationSettingsViewController {
         
         options.append(ProfileOptionView(option: .gallery, action: { [weak self] in
             guard let self = self else { return }
-            self.showMediaGallery()
+            let types: [GalleryType] = contactThread.isNoteToSelf
+                ? [.media, .files, .voice, .gifs]
+                : [.media, .files, .voice, .groups, .gifs]
+            self.showMediaGallery(types: types)
         }))
         
         header.setup(
