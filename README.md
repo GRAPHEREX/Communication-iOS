@@ -4,13 +4,12 @@ Grapherex is an open source project. Anyone can get access to the code to study,
 
 Get Grapherex
 
-[![Available on the App Store](http://cl.ly/WouG/Download_on_the_App_Store_Badge_US-UK_135x40.svg)](https://itunes.apple.com/us/app/signal-private-messenger/id874139669?mt=8)
+[![Available on the App Store](http://cl.ly/WouG/Download_on_the_App_Store_Badge_US-UK_135x40.svg)](https://apps.apple.com/ru/app/grapherex/id1542360019?l=en)
 
-Also available on [Android](https://github.com/signalapp/signal-android) and [Desktop](https://github.com/signalapp/signal-desktop).
 
 ## Questions?
 
-For troubleshooting and questions, please visit our [support center](https://support.signal.org/) or [unofficial community forum](https://community.signalusers.org/).
+For troubleshooting and questions, please visit our [help center](https://support.signal.org/) (https://grapherex.com/faq).
 
 ## Contributing Bug Reports
 
