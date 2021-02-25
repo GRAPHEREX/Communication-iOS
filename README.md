@@ -1,6 +1,8 @@
-# Signal iOS
+# Grapherex iOS
 
-Signal is a free, open source, messaging app for simple private communication with friends. 
+Grapherex is an open source project. Anyone can get access to the code to study, test and debug the functionality. We use only proven and reliable encryption technologies and algorithms. You can check it out personally.
+
+Get Grapherex
 
 [![Available on the App Store](http://cl.ly/WouG/Download_on_the_App_Store_Badge_US-UK_135x40.svg)](https://itunes.apple.com/us/app/signal-private-messenger/id874139669?mt=8)
 
@@ -20,11 +22,7 @@ Help us translate Signal! The translation effort happens on [Transifex](https://
 
 ## Contributing Code
 
-Instructions on how to setup your development environment and build Signal-iOS can be found in [BUILDING.md](https://github.com/signalapp/Signal-iOS/blob/master/BUILDING.md). Other useful instructions for development can be found in the [Development Guide wiki page](https://github.com/signalapp/Signal-iOS/wiki/Development-Guide). We also recommend reading the [contribution guidelines](https://github.com/signalapp/Signal-iOS/blob/master/CONTRIBUTING.md).
-
-## Contributing Ideas
-
-Have something you want to say about Signal Foundation projects or want to be part of the conversation? Get involved in the [community forum](https://community.signalusers.org).
+Instructions on how to setup your development environment and build Grapherex-iOS can be found in [BUILDING.md]
 
 ## Cryptography Notice
 
@@ -40,5 +38,6 @@ The form and manner of this distribution makes it eligible for export under the 
 Licensed under [GPLv3](http://www.gnu.org/licenses/gpl-3.0.html)
 
 Copyright 2014-2019 Open Whisper Systems
+Copyright 2019-2021 Grapherex Crypto Communication
 
 _Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc., registered in the U.S. and other countries._
