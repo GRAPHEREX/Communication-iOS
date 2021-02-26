@@ -974,30 +974,30 @@ NSNotificationName const kNSNotificationNameIdentityStateDidChange = @"kNSNotifi
                        isLocalChange:(BOOL)isLocalChange
                          transaction:(SDSAnyWriteTransaction *)transaction
 {
-    OWSAssertDebug(address.isValid);
-    OWSAssertDebug(transaction);
-
-    NSMutableArray<TSMessage *> *messages = [NSMutableArray new];
-
-    TSContactThread *contactThread = [TSContactThread getOrCreateThreadWithContactAddress:address
-                                                                              transaction:transaction];
-    OWSAssertDebug(contactThread);
-    [messages addObject:[[OWSVerificationStateChangeMessage alloc] initWithThread:contactThread
-                                                                 recipientAddress:address
-                                                                verificationState:verificationState
-                                                                    isLocalChange:isLocalChange]];
-
-    for (TSGroupThread *groupThread in [TSGroupThread groupThreadsWithAddress:address transaction:transaction]) {
-        [messages addObject:[[OWSVerificationStateChangeMessage alloc] initWithThread:groupThread
-                                                                     recipientAddress:address
-                                                                    verificationState:verificationState
-                                                                        isLocalChange:isLocalChange]];
-    }
-
-    // MJK TODO - why not save in-line, vs storing in an array and saving the array?
-    for (TSMessage *message in messages) {
-        [message anyInsertWithTransaction:transaction];
-    }
+//    OWSAssertDebug(address.isValid);
+//    OWSAssertDebug(transaction);
+//
+//    NSMutableArray<TSMessage *> *messages = [NSMutableArray new];
+//
+//    TSContactThread *contactThread = [TSContactThread getOrCreateThreadWithContactAddress:address
+//                                                                              transaction:transaction];
+//    OWSAssertDebug(contactThread);
+//    [messages addObject:[[OWSVerificationStateChangeMessage alloc] initWithThread:contactThread
+//                                                                 recipientAddress:address
+//                                                                verificationState:verificationState
+//                                                                    isLocalChange:isLocalChange]];
+//
+//    for (TSGroupThread *groupThread in [TSGroupThread groupThreadsWithAddress:address transaction:transaction]) {
+//        [messages addObject:[[OWSVerificationStateChangeMessage alloc] initWithThread:groupThread
+//                                                                     recipientAddress:address
+//                                                                    verificationState:verificationState
+//                                                                        isLocalChange:isLocalChange]];
+//    }
+//
+//    // MJK TODO - why not save in-line, vs storing in an array and saving the array?
+//    for (TSMessage *message in messages) {
+//        [message anyInsertWithTransaction:transaction];
+//    }
 }
 
 #pragma mark - Debug
