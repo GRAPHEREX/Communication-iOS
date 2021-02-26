@@ -37,7 +37,8 @@ public class CVComponentBottomButtons: CVComponentBase, CVComponent {
         stackView.apply(config: stackConfig)
 
         for action in actions {
-            let buttonView = ButtonView(action: action)
+            let textColor = itemModel.conversationStyle.bubbleTextColor(isIncoming: isIncoming)
+            let buttonView = ButtonView(action: action, textColor: textColor)
             stackView.addArrangedSubview(buttonView)
             componentView.buttonViews.append(buttonView)
         }
@@ -66,9 +67,11 @@ public class CVComponentBottomButtons: CVComponentBase, CVComponent {
 
     fileprivate class ButtonView: UILabel {
         fileprivate let action: CVMessageAction
+        fileprivate let textColor_: UIColor
 
-        required init(action: CVMessageAction) {
+        required init(action: CVMessageAction, textColor: UIColor) {
             self.action = action
+            self.textColor_ = textColor
 
             super.init(frame: .zero)
 
@@ -81,11 +84,12 @@ public class CVComponentBottomButtons: CVComponentBase, CVComponent {
 
         private func configure() {
             layoutMargins = .zero
-            backgroundColor = Theme.conversationButtonBackgroundColor
+            backgroundColor = UIColor.ows_whiteAlpha20 //Theme.conversationButtonBackgroundColor
 
             text = action.title
             font = CVComponentBottomButtons.buttonFont
-            textColor = Theme.conversationButtonTextColor
+            textColor = textColor_ //Theme.conversationButtonTextColor
+            
             textAlignment = .center
             autoSetDimension(.height, toSize: CVComponentBottomButtons.buttonHeight)
             setContentHuggingVerticalHigh()
