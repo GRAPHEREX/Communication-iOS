@@ -160,21 +160,21 @@
                                               actionBlock:^{
         [weakSelf showData];
     }]];
-    [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_ADVANCED_TITLE", @"")
-                                  accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"advanced")
-                                              actionBlock:^{
-                                                  [weakSelf showAdvanced];
-                                              }]];
-    BOOL isBackupEnabled = [OWSBackup.shared isBackupEnabled];
-    BOOL showBackup = (OWSBackup.isFeatureEnabled && isBackupEnabled);
-    if (showBackup) {
-        [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_BACKUP",
-                                                                  @"Label for the backup view in app settings.")
-                                      accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"backup")
-                                                  actionBlock:^{
-                                                      [weakSelf showBackup];
-                                                  }]];
-    }
+//    [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_ADVANCED_TITLE", @"")
+//                                  accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"advanced")
+//                                              actionBlock:^{
+//                                                  [weakSelf showAdvanced];
+//                                              }]];
+//    BOOL isBackupEnabled = [OWSBackup.shared isBackupEnabled];
+//    BOOL showBackup = (OWSBackup.isFeatureEnabled && isBackupEnabled);
+//    if (showBackup) {
+//        [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_BACKUP",
+//                                                                  @"Label for the backup view in app settings.")
+//                                      accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"backup")
+//                                                  actionBlock:^{
+//                                                      [weakSelf showBackup];
+//                                                  }]];
+//    }
 //    [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_HELP",
 //                                                              @"Title for support page in app settings.")
 //                                  accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"help")
@@ -184,11 +184,11 @@
                                               actionBlock:^{
                                                   [weakSelf showSupport];
                                               }]];
-    [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_FAQ", @"")
-                                  accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"faq")
-                                              actionBlock:^{
-                                                  [weakSelf showFAQ];
-                                              }]];
+//    [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_FAQ", @"")
+//                                  accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"faq")
+//                                              actionBlock:^{
+//                                                  [weakSelf showFAQ];
+//                                              }]];
     [section addItem:[OWSTableItem disclosureItemWithText:NSLocalizedString(@"SETTINGS_ABOUT", @"")
                                   accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"about")
                                               actionBlock:^{
@@ -382,7 +382,7 @@
 {
     WebViewController *vc = [[WebViewController alloc] init];
     [vc setTitle:NSLocalizedString(@"SETTINGS_SUPPORT", nil)];
-    [vc setLink:@"https://grapherex.com/contacts/en"];
+    [vc setLink:@"https://support.grapherex.com/hc/en-150"];
     [self pushViewController:vc];
 }
 
