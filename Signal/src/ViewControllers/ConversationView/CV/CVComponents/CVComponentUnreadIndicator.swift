@@ -53,7 +53,7 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
         let vStackView = componentView.vStackView
         let hStackView = componentView.hStackView
         let contentView = componentView.contentView
-        let strokeView = componentView.strokeView
+//        let strokeView = componentView.strokeView
         let titleLabel = componentView.titleLabel
         titleLabelConfig.applyForRendering(label: titleLabel)
 
@@ -62,7 +62,7 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
             vStackView.apply(config: vStackConfig)
             hStackView.apply(config: hStackConfig)
 
-            vStackView.addArrangedSubview(strokeView)
+//            vStackView.addArrangedSubview(strokeView)
             vStackView.addArrangedSubview(hStackView)
 
             let leadingSpacer = UIView.hStretchingSpacer()
@@ -100,9 +100,9 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
                 blurView.clipsToBounds = true
                 blurView.layer.cornerRadius = 8
 
-                strokeView.backgroundColor = .ows_blackAlpha80
+//                strokeView.backgroundColor = .ows_blackAlpha80
             } else {
-                strokeView.backgroundColor = .ows_gray45
+//                strokeView.backgroundColor = .ows_gray45
             }
         }
     }
@@ -170,7 +170,7 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
         fileprivate var hasWallpaper = false
         fileprivate var isDarkThemeEnabled = false
 
-        fileprivate let strokeView = UIView()
+//        fileprivate let strokeView = UIView()
 
         public var isDedicatedCellView = false
 
@@ -181,7 +181,7 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
         // MARK: -
 
         override required init() {
-            strokeView.autoSetDimension(.height, toSize: 1)
+//            strokeView.autoSetDimension(.height, toSize: 1)
         }
 
         public func setIsCellVisible(_ isCellVisible: Bool) {}
