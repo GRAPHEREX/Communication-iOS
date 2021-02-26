@@ -184,6 +184,7 @@ public extension TSMessage {
 //            }
 
             incomingMessageToDelete.markMessageAsRemotelyDeleted(transaction: transaction)
+            incomingMessageToDelete.anyRemove(transaction: transaction)
 
             return .success
         } else {

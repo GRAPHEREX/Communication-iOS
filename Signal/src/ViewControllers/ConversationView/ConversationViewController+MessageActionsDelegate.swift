@@ -102,6 +102,7 @@ extension ConversationViewController: MessageActionsDelegate {
                         message.updateWith(recipientAddressStates: deleteMessage.recipientAddressStates, transaction: transaction)
                         message.updateWithRemotelyDeletedAndRemoveRenderableContent(with: transaction)
                         SSKEnvironment.shared.messageSenderJobQueue.add(message: deleteMessage.asPreparer, transaction: transaction)
+                        message.anyRemove(transaction: transaction)
                     }
                 }
             }
