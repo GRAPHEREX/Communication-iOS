@@ -484,7 +484,7 @@ public class ActionSheetAction: NSObject {
             style = action.style
             super.init(frame: .zero)
 
-            setBackgroundImage(UIImage(color: Theme.backgroundColor), for: .init())
+//            setBackgroundImage(UIImage(color: Theme.backgroundColor), for: .init())
             setBackgroundImage(UIImage(color: Theme.cellSelectedColor), for: .highlighted)
 
             [leadingIconView, trailingIconView].forEach { iconView in
