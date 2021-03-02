@@ -70,6 +70,7 @@ extension ConversationViewController: CVLoadCoordinatorDelegate {
                                      focusMessageIdOnOpen: String?) -> CVLoadCoordinator {
         CVLoadCoordinator(delegate: self,
                           componentDelegate: self,
+                          messageActionsDelegate: self,
                           conversationStyle: conversationStyle,
                           focusMessageIdOnOpen: focusMessageIdOnOpen)
     }

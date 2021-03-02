@@ -59,6 +59,7 @@ public class CVLoadCoordinator: NSObject {
 
     private weak var delegate: CVLoadCoordinatorDelegate?
     private weak var componentDelegate: CVComponentDelegate?
+    private weak var messageActionsDelegate: MessageActionsDelegate?
 
     private let viewState: CVViewState
     private var mediaCache: CVMediaCache { viewState.mediaCache }
@@ -95,10 +96,12 @@ public class CVLoadCoordinator: NSObject {
 
     required init(delegate: CVLoadCoordinatorDelegate,
                   componentDelegate: CVComponentDelegate,
+                  messageActionsDelegate: MessageActionsDelegate?,
                   conversationStyle: ConversationStyle,
                   focusMessageIdOnOpen: String?) {
         self.delegate = delegate
         self.componentDelegate = componentDelegate
+        self.messageActionsDelegate = messageActionsDelegate
         self.viewState = delegate.viewState
         let threadViewModel = viewState.threadViewModel
         self.threadUniqueId = threadViewModel.threadRecord.uniqueId
@@ -860,5 +863,139 @@ extension CVLoadCoordinator: CallServiceObserver {
         }
         enqueueReload(canReuseInteractionModels: true,
                       canReuseComponentStates: false)
+    }
+}
+
+// MARK: - UIContextMenu
+
+extension CVLoadCoordinator {
+    @available(iOS 13.0, *)
+    public func collectionView(_ collectionView: UICollectionView,
+                                 contextMenuConfigurationForItemAt indexPath: IndexPath,
+                                 point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        guard let componentDelegate = self.componentDelegate else {
+            owsFailDebug("Missing componentDelegate.")
+            return nil
+        }
+        
+        guard let messageActionsDelegate = self.messageActionsDelegate else {
+            owsFailDebug("Missing messageActionsDelegate.")
+            return nil
+        }
+        
+        guard let renderItem = renderItems[safe: indexPath.row] else {
+            owsFailDebug("Missing renderItem.")
+            return nil
+        }
+        
+        let itemViewModel = CVItemViewModelImpl(renderItem: renderItem)
+
+        let shouldAllowReply = componentDelegate.cvc_shouldAllowReplyForItem(itemViewModel)
+
+        let messageActions: [MessageAction]
+        
+        if renderItem.componentState.quotedReply != nil {
+            messageActions = MessageActions.quotedMessageActions(itemViewModel: itemViewModel, shouldAllowReply: shouldAllowReply, delegate: messageActionsDelegate)
+        } else {
+            switch renderItem.itemModel.messageCellType {
+            case .textOnlyMessage:
+                messageActions = MessageActions.textActions(itemViewModel: itemViewModel, shouldAllowReply: shouldAllowReply, delegate: messageActionsDelegate)
+            case .audio,
+                 .genericAttachment,
+                 .contactShare,
+                 .bodyMedia,
+                 .stickerMessage:
+                messageActions = MessageActions.mediaActions(itemViewModel: itemViewModel, shouldAllowReply: shouldAllowReply, delegate: messageActionsDelegate)
+            case .threadDetails,
+                 .systemMessage,
+                 .callMessage:
+                messageActions = MessageActions.infoMessageActions(itemViewModel: itemViewModel, delegate: messageActionsDelegate)
+            case .dateHeader,
+                 .unreadIndicator,
+                 .typingIndicator,
+                 .viewOnce,
+                 .unknown:
+                return nil
+            }
+        }
+        
+        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil) { suggestedActions in
+            var actions = messageActions.compactMap { messageAction -> UIAction? in
+                switch messageAction.actionType {
+                case .delete, .select:
+                    return nil
+                default:
+                    return UIAction(title: messageAction.title, image: messageAction.image) { _ in
+                        messageAction.block(nil)
+                    }
+                }
+            }
+            
+            let deleteAction = messageActions.first { $0.actionType == .delete }
+            if let deleteAction = deleteAction {
+                actions.append(UIAction(title: deleteAction.title, image: deleteAction.image, attributes: .destructive) { _ in
+                    deleteAction.block(nil)
+                })
+            }
+            let actionsMenu = UIMenu(title: "", options: .displayInline, children: actions)
+            
+            
+            let selectAction = messageActions.first { $0.actionType == .select }
+            if let selectAction = selectAction {
+                let selectAction_ = UIAction(title: selectAction.title, image: selectAction.image) { _ in
+                    selectAction.block(nil)
+                }
+                return UIMenu(title: "", children: [actionsMenu, selectAction_])
+            }
+            
+            return UIMenu(title: "", children: [actionsMenu])
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    public func collectionView(_ collectionView: UICollectionView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        previewForContextMenuWithConfiguration(collectionView, configuration: configuration)
+    }
+    
+    @available(iOS 13.0, *)
+    public func collectionView(_ collectionView: UICollectionView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        previewForContextMenuWithConfiguration(collectionView, configuration: configuration)
+    }
+    
+    @available(iOS 13.0, *)
+    private func previewForContextMenuWithConfiguration(_ collectionView: UICollectionView, configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        guard
+            let indexPath = configuration.identifier as? IndexPath,
+            let cell = collectionView.cellForItem(at: indexPath)
+                as? CVCell,
+            let targetedPreview = cell.componentView?.rootView
+        else {
+            return nil
+        }
+        
+        if let bubbleView = targetedPreview.findBubbleView() {
+            let params = UIPreviewParameters()
+            params.visiblePath = bubbleView.maskPath()
+            return UITargetedPreview(view: bubbleView, parameters: params)
+        }
+        
+        return UITargetedPreview(view: targetedPreview)
+    }
+}
+
+private extension UIView {
+    func findBubbleView() -> OWSBubbleView? {
+        if let slf = self as? OWSBubbleView {
+            return slf
+        }
+        
+        for subview in subviews {
+            if let bubbleView = subview.findBubbleView() {
+                return bubbleView
+            }
+        }
+        
+        return nil
     }
 }

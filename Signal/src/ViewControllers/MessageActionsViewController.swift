@@ -51,6 +51,10 @@ public class MessageAction: NSObject {
             return Theme.iconImage(.messageActionSelect)
         }
     }
+    
+    var title: String {
+        accessibilityLabel ?? ""
+    }
 }
 
 @objc
