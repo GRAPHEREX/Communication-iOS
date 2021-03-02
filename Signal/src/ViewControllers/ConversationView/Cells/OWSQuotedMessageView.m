@@ -631,12 +631,12 @@ const CGFloat kRemotelySourcedContentRowSpacing = 3;
 
 - (UIColor *)quotedAuthorColor
 {
-    return [self.conversationStyle quotedReplyAuthorColor];
+    return [self.conversationStyle quotedReplyAuthorColorWithIsIncoming:!self.isOutgoing];
 }
 
 - (UIColor *)quotedTextColor
 {
-    return [self.conversationStyle quotedReplyTextColor];
+    return [self.conversationStyle quotedReplyTextColorWithIsIncoming:!self.isOutgoing];
 }
 
 - (UIFont *)quotedTextFont

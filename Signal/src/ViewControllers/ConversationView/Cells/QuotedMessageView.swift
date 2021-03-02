@@ -126,8 +126,8 @@ public class QuotedMessageView: UIView {
         let stripeThickness: CGFloat = 4
         let textVMargin: CGFloat = 7
         var quotedAuthorFont: UIFont { UIFont.ows_dynamicTypeSubheadline.ows_semibold }
-        var quotedAuthorColor: UIColor { conversationStyle.quotedReplyAuthorColor() }
-        var quotedTextColor: UIColor { conversationStyle.quotedReplyTextColor() }
+        var quotedAuthorColor: UIColor { conversationStyle.quotedReplyAuthorColor(isIncoming: !isOutgoing) }
+        var quotedTextColor: UIColor { conversationStyle.quotedReplyTextColor(isIncoming: !isOutgoing) }
         var quotedTextFont: UIFont { UIFont.ows_dynamicTypeBody }
         var fileTypeTextColor: UIColor { conversationStyle.quotedReplyAttachmentColor() }
         var fileTypeFont: UIFont { quotedTextFont.ows_italic }

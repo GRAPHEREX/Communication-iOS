@@ -347,13 +347,13 @@ public class ConversationStyle: NSObject {
     }
 
     @objc
-    public func quotedReplyAuthorColor() -> UIColor {
-        quotedReplyTextColor()
+    public func quotedReplyAuthorColor(isIncoming: Bool) -> UIColor {
+        quotedReplyTextColor(isIncoming: isIncoming)
     }
 
     @objc
-    public func quotedReplyTextColor() -> UIColor {
-        .ows_gray05
+    public func quotedReplyTextColor(isIncoming: Bool) -> UIColor {
+        bubbleTextColor(isIncoming: isIncoming)
 //        isDarkThemeEnabled ? .ows_gray05 : .ows_gray90
     }
 
