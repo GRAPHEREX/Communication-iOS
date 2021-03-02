@@ -237,24 +237,24 @@
     [avatarView autoSetDimension:ALDimensionWidth toSize:kMediumAvatarSize];
     [avatarView autoSetDimension:ALDimensionHeight toSize:kMediumAvatarSize];
 
-    if (!localProfileAvatarImage) {
-        UIImageView *cameraImageView = [UIImageView new];
-        [cameraImageView setTemplateImageName:@"camera-outline-24" tintColor:Theme.secondaryTextAndIconColor];
-        [cell.contentView addSubview:cameraImageView];
-
-        [cameraImageView autoSetDimensionsToSize:CGSizeMake(32, 32)];
-        cameraImageView.contentMode = UIViewContentModeCenter;
-        cameraImageView.backgroundColor = Theme.backgroundColor;
-        cameraImageView.layer.cornerRadius = 16;
-        cameraImageView.layer.shadowColor =
-            [(Theme.isDarkThemeEnabled ? Theme.darkThemeWashColor : Theme.primaryTextColor) CGColor];
-        cameraImageView.layer.shadowOffset = CGSizeMake(1, 1);
-        cameraImageView.layer.shadowOpacity = 0.5;
-        cameraImageView.layer.shadowRadius = 4;
-
-        [cameraImageView autoPinTrailingToEdgeOfView:avatarView];
-        [cameraImageView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:avatarView];
-    }
+//    if (!localProfileAvatarImage) {
+//        UIImageView *cameraImageView = [UIImageView new];
+//        [cameraImageView setTemplateImageName:@"camera-outline-24" tintColor:Theme.secondaryTextAndIconColor];
+//        [cell.contentView addSubview:cameraImageView];
+//
+//        [cameraImageView autoSetDimensionsToSize:CGSizeMake(32, 32)];
+//        cameraImageView.contentMode = UIViewContentModeCenter;
+//        cameraImageView.backgroundColor = Theme.backgroundColor;
+//        cameraImageView.layer.cornerRadius = 16;
+//        cameraImageView.layer.shadowColor =
+//            [(Theme.isDarkThemeEnabled ? Theme.darkThemeWashColor : Theme.primaryTextColor) CGColor];
+//        cameraImageView.layer.shadowOffset = CGSizeMake(1, 1);
+//        cameraImageView.layer.shadowOpacity = 0.5;
+//        cameraImageView.layer.shadowRadius = 4;
+//
+//        [cameraImageView autoPinTrailingToEdgeOfView:avatarView];
+//        [cameraImageView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:avatarView];
+//    }
 
     UIView *nameView = [UIView containerView];
     [cell.contentView addSubview:nameView];
