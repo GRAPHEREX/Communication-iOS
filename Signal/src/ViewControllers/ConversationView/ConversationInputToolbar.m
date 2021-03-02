@@ -64,7 +64,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
 @property (nonatomic, readonly) AttachmentToggleButton *attachmentButton;
 @property (nonatomic, readonly) UIButton *sendButton;
 @property (nonatomic, readonly) UIButton *voiceMemoButton;
-@property (nonatomic, readonly) UIButton *stickerButton;
+//@property (nonatomic, readonly) UIButton *stickerButton;
 @property (nonatomic, readonly) UIButton *walletButton;
 @property (nonatomic, readonly) UIView *quotedReplyWrapper;
 @property (nonatomic, readonly) UIView *linkPreviewWrapper;
@@ -254,16 +254,16 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     [self.voiceMemoButton autoSetDimensionsToSize:CGSizeMake(40, kMinToolbarItemHeight)];
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _voiceMemoButton);
 
-    _stickerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.stickerButton.accessibilityLabel = NSLocalizedString(@"INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL",
-        @"accessibility label for the button which shows the sticker picker");
-    UIImage *stickerIcon = [Theme iconImage:ThemeIconStickerButton];
-    [self.stickerButton setImage:stickerIcon forState:UIControlStateNormal];
-    [self.stickerButton addTarget:self
-                           action:@selector(stickerButtonPressed)
-                 forControlEvents:UIControlEventTouchUpInside];
-    [self.stickerButton autoSetDimensionsToSize:CGSizeMake(40, kMinToolbarItemHeight)];
-    SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _stickerButton);
+//    _stickerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    self.stickerButton.accessibilityLabel = NSLocalizedString(@"INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL",
+//        @"accessibility label for the button which shows the sticker picker");
+//    UIImage *stickerIcon = [Theme iconImage:ThemeIconStickerButton];
+//    [self.stickerButton setImage:stickerIcon forState:UIControlStateNormal];
+//    [self.stickerButton addTarget:self
+//                           action:@selector(stickerButtonPressed)
+//                 forControlEvents:UIControlEventTouchUpInside];
+//    [self.stickerButton autoSetDimensionsToSize:CGSizeMake(40, kMinToolbarItemHeight)];
+//    SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, _stickerButton);
 
     // We want to be permissive about the voice message gesture, so we hang
     // the long press GR on the button's wrapper, not the button itself.
@@ -302,7 +302,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     [vStack setCompressionResistanceHorizontalLow];
 
     for (UIView *button in
-        @[ self.cameraButton, self.attachmentButton, self.stickerButton, self.voiceMemoButton, self.sendButton ]) {
+        @[ self.cameraButton, self.attachmentButton, /*self.stickerButton,*/ self.voiceMemoButton, self.sendButton ]) {
         [button setContentHuggingHorizontalHigh];
         [button setCompressionResistanceHorizontalHigh];
     }
@@ -389,9 +389,9 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     self.preservesSuperviewLayoutMargins = NO;
 
     // Input buttons
-    [self addSubview:self.stickerButton];
-    [self.stickerButton autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.inputTextView];
-    [self.stickerButton autoPinEdge:ALEdgeTrailing toEdge:ALEdgeTrailing ofView:vStackRoundingView withOffset:-4];
+//    [self addSubview:self.stickerButton];
+//    [self.stickerButton autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.inputTextView];
+//    [self.stickerButton autoPinEdge:ALEdgeTrailing toEdge:ALEdgeTrailing ofView:vStackRoundingView withOffset:-4];
 
     [self setMessageBody:messageDraft animated:NO doLayout:NO];
 
@@ -632,13 +632,13 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     }
 
     void (^updateBlock)(void) = ^{
-        BOOL hideStickerButton = hasTextInput || self.quotedReply != nil;
-        ensureViewHiddenState(self.stickerButton, hideStickerButton);
-        if (!hideStickerButton) {
-            self.stickerButton.imageView.tintColor
-                = (self.desiredKeyboardType == KeyboardType_Sticker ? UIColor.ows_accentBlueColor
-                                                                    : Theme.primaryIconColor);
-        }
+//        BOOL hideStickerButton = hasTextInput || self.quotedReply != nil;
+//        ensureViewHiddenState(self.stickerButton, hideStickerButton);
+//        if (!hideStickerButton) {
+//            self.stickerButton.imageView.tintColor
+//                = (self.desiredKeyboardType == KeyboardType_Sticker ? UIColor.ows_accentBlueColor
+//                                                                    : Theme.primaryIconColor);
+//        }
 
         [self.attachmentButton setSelected:self.desiredKeyboardType == KeyboardType_Attachment animated:isAnimated];
 
