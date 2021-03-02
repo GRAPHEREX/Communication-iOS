@@ -237,6 +237,13 @@ void uncaughtExceptionHandler(NSException *exception)
         migrationCompletion:^{
             OWSAssertIsOnMainThread();
 
+            // Painful migration from 1.0.0 version
+            // We need to delete all data because backends are not compatible anymore
+            NSString *_Nullable lastCompletedLaunchAppVersion = AppVersion.shared.lastCompletedLaunchAppVersion;
+            if ([VersionMigrations isVersion:lastCompletedLaunchAppVersion atLeast:@"1.0.0" andLessThan:@"1.1.0"]) {
+                [SignalApp resetAppData];
+            }
+        
             [self versionMigrationsDidComplete];
         }];
 
