@@ -320,22 +320,24 @@ public class ConversationStyle: NSObject {
 
     @objc
     public var quotedReplyBubbleColor: UIColor {
-        isDarkThemeEnabled ? .st_neutralIcon1 : .st_neutralIcon2
+        .clear
+//        isDarkThemeEnabled ? .st_neutralIcon1 : .st_neutralIcon2
     }
 
     @objc
     public func quotedReplyStripeColor(isIncoming: Bool) -> UIColor {
-        if isDarkThemeEnabled {
-            if isIncoming {
-                return .st_neutralIcon1
-            } else {
-                return .ows_black
-            }
-        } else if isIncoming {
-            return .st_accentGreen
-        } else {
-            return .ows_white
-        }
+        return .ows_white
+//        if isDarkThemeEnabled {
+//            if isIncoming {
+//                return .st_neutralIcon1
+//            } else {
+//                return .ows_black
+//            }
+//        } else if isIncoming {
+//            return .st_accentGreen
+//        } else {
+//            return .ows_white
+//        }
     }
 
     @objc
@@ -351,7 +353,8 @@ public class ConversationStyle: NSObject {
 
     @objc
     public func quotedReplyTextColor() -> UIColor {
-        isDarkThemeEnabled ? .ows_gray05 : .ows_gray90
+        .ows_gray05
+//        isDarkThemeEnabled ? .ows_gray05 : .ows_gray90
     }
 
     @objc
