@@ -417,33 +417,33 @@ OWSTableViewControllerDraggingDelegate,
                         }]];
     }
 
-    // Find Non-Contacts by Phone Number
-    if (self.allowsAddByPhoneNumber && !isSearching) {
-        [staticSection
-            addItem:[OWSTableItem
-                        itemWithCustomCellBlock:^{
-                            NSString *cellName = NSLocalizedString(@"NEW_CONVERSATION_FIND_BY_PHONE_NUMBER",
-                                @"A label the cell that lets you add a new member to a group.");
-                            UIView *iconView =
-                                [OWSTableItem buildIconInCircleViewWithIcon:ThemeIconComposeFindByPhoneNumber
-                                                              innerIconSize:42];
-                            UITableViewCell *cell = [OWSTableItem buildCellWithName:cellName
-                                                                           iconView:iconView
-                                                                        iconSpacing:kContactCellAvatarTextMargin];
-                            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                            cell.accessibilityIdentifier
-                                = ACCESSIBILITY_IDENTIFIER_WITH_NAME(RecipientPickerViewController, @"find_by_phone");
-
-                            return cell;
-                        }
-                        actionBlock:^{
-                            FindByPhoneNumberViewController *viewController = [[FindByPhoneNumberViewController alloc]
-                                        initWithDelegate:self
-                                              buttonText:self.findByPhoneNumberButtonTitle
-                                requiresRegisteredNumber:!self.allowsSelectingUnregisteredPhoneNumbers];
-                            [weakSelf.navigationController pushViewController:viewController animated:YES];
-                        }]];
-    }
+//    // Find Non-Contacts by Phone Number
+//    if (self.allowsAddByPhoneNumber && !isSearching) {
+//        [staticSection
+//            addItem:[OWSTableItem
+//                        itemWithCustomCellBlock:^{
+//                            NSString *cellName = NSLocalizedString(@"NEW_CONVERSATION_FIND_BY_PHONE_NUMBER",
+//                                @"A label the cell that lets you add a new member to a group.");
+//                            UIView *iconView =
+//                                [OWSTableItem buildIconInCircleViewWithIcon:ThemeIconComposeFindByPhoneNumber
+//                                                              innerIconSize:42];
+//                            UITableViewCell *cell = [OWSTableItem buildCellWithName:cellName
+//                                                                           iconView:iconView
+//                                                                        iconSpacing:kContactCellAvatarTextMargin];
+//                            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//                            cell.accessibilityIdentifier
+//                                = ACCESSIBILITY_IDENTIFIER_WITH_NAME(RecipientPickerViewController, @"find_by_phone");
+//
+//                            return cell;
+//                        }
+//                        actionBlock:^{
+//                            FindByPhoneNumberViewController *viewController = [[FindByPhoneNumberViewController alloc]
+//                                        initWithDelegate:self
+//                                              buttonText:self.findByPhoneNumberButtonTitle
+//                                requiresRegisteredNumber:!self.allowsSelectingUnregisteredPhoneNumbers];
+//                            [weakSelf.navigationController pushViewController:viewController animated:YES];
+//                        }]];
+//    }
 
     if (self.contactsManager.isSystemContactsAuthorized && self.shouldShowInvites && !isSearching) {
         // Invite Contacts
