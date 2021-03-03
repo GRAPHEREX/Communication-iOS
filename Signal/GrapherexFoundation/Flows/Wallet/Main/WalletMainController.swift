@@ -290,12 +290,12 @@ fileprivate extension WalletMainController {
         if !model.currencies.isEmpty {
             //        Hide until implementation
             //
-            navigationItem.leftBarButtonItem = UIBarButtonItem(
-                image: #imageLiteral(resourceName: "icon.swap.h"),
-                style: .plain,
-                target: self,
-                action: #selector(exchangeButtonPressed)
-            )
+//            navigationItem.leftBarButtonItem = UIBarButtonItem(
+//                image: #imageLiteral(resourceName: "icon.swap.h"),
+//                style: .plain,
+//                target: self,
+//                action: #selector(exchangeButtonPressed)
+//            )
                     
             if !TSAccountManager.shared().isDeregistered() {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(
