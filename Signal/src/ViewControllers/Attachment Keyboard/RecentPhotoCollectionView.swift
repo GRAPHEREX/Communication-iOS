@@ -116,8 +116,10 @@ extension RecentPhotosCollectionView: PhotoLibraryDelegate {
 extension RecentPhotosCollectionView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard fetchingAttachmentIndex == nil else { return }
+        guard indexPath.item < collectionContents.assetCount else { return }
+        
         fetchingAttachmentIndex = indexPath
-
+        
         let asset = collectionContents.asset(at: indexPath.item)
         collectionContents.outgoingAttachment(
             for: asset,
