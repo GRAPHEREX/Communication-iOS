@@ -148,7 +148,7 @@ public class TSConstants: NSObject {
     private static var shared: TSConstantsProtocol {
         switch environment {
         case .production:
-            return TSConstantsStaging() //TSConstantsProduction()
+            return TSConstantsProduction()
         case .staging:
             return TSConstantsStaging()
         }
@@ -162,22 +162,22 @@ public class TSConstants: NSObject {
 
 private class TSConstantsProduction: TSConstantsProtocol {
 
-    public let textSecureWebSocketAPI = "wss://textsecure-service.whispersystems.org/v1/websocket/"
-    public let textSecureServerURL = "https://textsecure-service.whispersystems.org/"
-    public let walletServerURL = "https://crypto.grapherextests.com/"
-    public let textSecureCDN0ServerURL = "https://cdn.signal.org"
-    public let textSecureCDN2ServerURL = "https://cdn2.signal.org"
-    public let contactDiscoveryURL = "https://api.directory.signal.org"
-    public let keyBackupURL = "https://api.backup.signal.org"
-    public let storageServiceURL = "https://storage.signal.org"
+    public let textSecureWebSocketAPI = "wss://api.demo.grapherex.com/v1/websocket/"
+    public let textSecureServerURL = "https://api.demo.grapherex.com/"
+    public let walletServerURL = "https://crypto.demo.grapherex.com/"
+    public let textSecureCDN0ServerURL = "https://cdn.demo.grapherex.com"
+    public let textSecureCDN2ServerURL = "https://cdn.demo.grapherex.com"
+    public let contactDiscoveryURL = "https://directory.demo.grapherex.com"
+    public let keyBackupURL = "https://backup.demo.grapherex.com"
+    public let storageServiceURL = "https://storage.demo.grapherex.com"
     public let sfuURL = "https://sfu.voip.signal.org"
-    public let kUDTrustRoot = "BXu6QIKVz5MA8gstzfOgRQGqyLqOwNKHL6INkv3IHWMF"
+    public let kUDTrustRoot = "BX/Mjk0HarJmhgYrNuAbK5MkcWhq+Syv3cRVLlO2XbVI"
 
     public let censorshipReflectorHost = "europe-west1-signal-cdn-reflector.cloudfunctions.net"
 
     public let serviceCensorshipPrefix = "service"
     public let cdn0CensorshipPrefix = "cdn"
-    public let cdn2CensorshipPrefix = "cdn2"
+    public let cdn2CensorshipPrefix = "cdn"
     public let contactDiscoveryCensorshipPrefix = "directory"
     public let keyBackupCensorshipPrefix = "backup"
     public let storageServiceCensorshipPrefix = "storage"
@@ -203,7 +203,7 @@ private class TSConstantsProduction: TSConstantsProtocol {
 
     // We need to discard all profile key credentials if these values ever change.
     // See: GroupsV2Impl.verifyServerPublicParams(...)
-    public let serverPublicParamsBase64 = "AMhf5ywVwITZMsff/eCyudZx9JDmkkkbV6PInzG4p8x3VqVJSFiMvnvlEKWuRob/1eaIetR31IYeAbm0NdOuHH8Qi+Rexi1wLlpzIo1gstHWBfZzy1+qHRV5A4TqPp15YzBPm0WSggW6PbSn+F4lf57VCnHF7p8SvzAA2ZZJPYJURt8X7bbg+H3i+PEjH9DXItNEqs2sNcug37xZQDLm7X0=="
+    public let serverPublicParamsBase64 = "AJ5s6oYLJTKMeGXCIZB52Vh3+aTvM/ulexj2X0OM3uM1Sg0QbMOfWLnGiQwzZEBOXHyjIAOWtfqWkJE8kysABwHe8ODl0xul0NnsQjpTxG6S4RpiRk5STFHPHtRJ/I9UIh7I36P/D3FzqoiUCaU1BkpAhTS05VeXJTwyTWPn2Eh6sE0Fkw12/dKZTBm0ImTiUTs9bd1P0LZjacfmM4kZZi4=="
     
     public let sslPinningCertName = "grapherex_prod"
 }
