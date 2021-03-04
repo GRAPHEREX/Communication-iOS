@@ -162,14 +162,14 @@ public class TSConstants: NSObject {
 
 private class TSConstantsProduction: TSConstantsProtocol {
 
-    public let textSecureWebSocketAPI = "wss://api.demo.grapherex.com/v1/websocket/"
-    public let textSecureServerURL = "https://api.demo.grapherex.com/"
-    public let walletServerURL = "https://wcs.demo.grapherex.com/"
-    public let textSecureCDN0ServerURL = "https://cdn.demo.grapherex.com"
-    public let textSecureCDN2ServerURL = "https://cdn.demo.grapherex.com"
-    public let contactDiscoveryURL = "https://directory.demo.grapherex.com"
-    public let keyBackupURL = "https://backup.demo.grapherex.com"
-    public let storageServiceURL = "https://storage.demo.grapherex.com"
+    public let textSecureWebSocketAPI = "wss://api.grapherex.com/v1/websocket/"
+    public let textSecureServerURL = "https://api.grapherex.com/"
+    public let walletServerURL = "https://wcs.grapherex.com/"
+    public let textSecureCDN0ServerURL = "https://cdn.grapherex.com"
+    public let textSecureCDN2ServerURL = "https://cdn.grapherex.com"
+    public let contactDiscoveryURL = "https://directory.grapherex.com"
+    public let keyBackupURL = "https://backup.grapherex.com"
+    public let storageServiceURL = "https://storage.grapherex.com"
     public let sfuURL = "https://sfu.voip.signal.org"
     public let kUDTrustRoot = "BX/Mjk0HarJmhgYrNuAbK5MkcWhq+Syv3cRVLlO2XbVI"
 
