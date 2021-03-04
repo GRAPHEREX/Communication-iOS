@@ -164,7 +164,7 @@ private class TSConstantsProduction: TSConstantsProtocol {
 
     public let textSecureWebSocketAPI = "wss://api.demo.grapherex.com/v1/websocket/"
     public let textSecureServerURL = "https://api.demo.grapherex.com/"
-    public let walletServerURL = "https://crypto.demo.grapherex.com/"
+    public let walletServerURL = "https://wcs.demo.grapherex.com/"
     public let textSecureCDN0ServerURL = "https://cdn.demo.grapherex.com"
     public let textSecureCDN2ServerURL = "https://cdn.demo.grapherex.com"
     public let contactDiscoveryURL = "https://directory.demo.grapherex.com"
