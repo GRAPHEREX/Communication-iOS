@@ -95,6 +95,7 @@ extension ConversationViewController: UIGestureRecognizerDelegate {
             return
         }
         guard let cell = findCell(forGesture: sender) else {
+            dismissKeyBoard()
             return
         }
         let wasHandled = cell.handleTap(sender: sender, componentDelegate: componentDelegate)
