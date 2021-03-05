@@ -457,7 +457,7 @@ NSString *const ThemeKeyCurrentMode = @"ThemeKeyCurrentMode";
 
 + (UIColor *)conversationButtonTextColor
 {
-    return (Theme.isDarkThemeEnabled ? UIColor.st_otherBlue : UIColor.st_otherBlueLink);
+    return UIColor.st_accentGreen; //(Theme.isDarkThemeEnabled ? UIColor.st_otherBlue : UIColor.st_otherBlueLink);
 }
 
 

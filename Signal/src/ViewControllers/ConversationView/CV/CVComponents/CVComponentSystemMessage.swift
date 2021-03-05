@@ -494,7 +494,7 @@ extension CVComponentSystemMessage {
             switch errorMessage.errorType {
             case .nonBlockingIdentityChange,
                  .wrongTrustedIdentityKey:
-                return Theme.iconImage(.safetyNumber16)
+                return errorMessage.wasIdentityVerified ? Theme.iconImage(.verificationActive) : Theme.iconImage(.verificationNonActive)
             case .sessionRefresh:
                 return Theme.iconImage(.refresh16)
             case .invalidKeyException,
