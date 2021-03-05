@@ -85,6 +85,10 @@ final class UserIDViewController: OWSViewController {
                                                                 target: self,
                                                                 action: #selector(closeButton))
         
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(barButtonSystemItem: .action,
+                                                              target: self,
+                                                              action: #selector(didTapShare(_:)))]
+        
     }
     
     override func setup() {
@@ -152,5 +156,16 @@ fileprivate extension UserIDViewController {
         UIPasteboard.general.string = address?.isMyAddress == true
             ? TSAccountManager.localAddress!.uuidString!
             : (address?.uuidString ?? "nil")
+    }
+}
+
+private extension UserIDViewController {
+    @objc
+    func didTapShare(_ sender: UIBarButtonItem) {
+        let logText = address?.isMyAddress == true
+            ? TSAccountManager.localAddress!.uuidString!
+            : (address?.uuidString ?? "nil")
+        let vc = UIActivityViewController(activityItems: [logText], applicationActivities: [])
+        present(vc, animated: true)
     }
 }
