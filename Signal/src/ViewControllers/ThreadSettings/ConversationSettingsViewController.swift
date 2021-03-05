@@ -337,7 +337,7 @@ class ConversationSettingsViewController: OWSTableViewController {
             } else if isGroupThread {
                 showGroupAttributesView(editAction: .name)
             } else if contactsManager.supportsContactEditing {
-                presentContactViewController()
+//                presentContactViewController()
             }
         }
     }
