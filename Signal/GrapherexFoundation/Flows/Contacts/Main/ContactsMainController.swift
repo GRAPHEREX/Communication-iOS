@@ -100,7 +100,7 @@ fileprivate extension ContactsMainController {
     
     func setupData() {
         contactsViewHelper.addObserver(self)
-        contacts = contactsViewHelper.allSignalAccounts.filter { !$0.isDeleted }
+        search()
     }
     
     func setupEmptyState() {
