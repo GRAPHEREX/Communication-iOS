@@ -103,7 +103,7 @@ extension ConversationSettingsViewController {
         let isNoteToSelf = thread.isNoteToSelf
 
         if let contactThread = thread as? TSContactThread,
-            contactsManager.supportsContactEditing && !hasExistingContact {
+           contactsManager.supportsContactEditing && !hasExistingContact && !isNoteToSelf {
             section.add(OWSTableItem(customCellBlock: { [weak self] in
                 guard let self = self else {
                     owsFailDebug("Missing self")
