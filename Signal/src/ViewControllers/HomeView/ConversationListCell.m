@@ -333,7 +333,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     if (!shouldHideStatusIndicator && [self.thread.lastMessageForInbox isKindOfClass:[TSOutgoingMessage class]]) {
         UIImage *_Nullable statusIndicatorImage = nil;
-        UIColor *messageStatusViewTintColor = self.snippetColor;
+        UIColor *messageStatusViewTintColor = Theme.isDarkThemeEnabled ? UIColor.ows_gray25Color : UIColor.st_accentGreen;
         BOOL shouldAnimateStatusIcon = NO;
 
         TSOutgoingMessage *outgoingMessage = (TSOutgoingMessage *)self.thread.lastMessageForInbox;
