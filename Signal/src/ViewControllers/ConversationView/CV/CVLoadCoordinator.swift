@@ -905,7 +905,8 @@ extension CVLoadCoordinator {
                  .genericAttachment,
                  .contactShare,
                  .bodyMedia,
-                 .stickerMessage:
+                 .stickerMessage,
+                 .viewOnce:
                 messageActions = MessageActions.mediaActions(itemViewModel: itemViewModel, shouldAllowReply: shouldAllowReply, delegate: messageActionsDelegate)
             case .threadDetails,
                  .systemMessage,
@@ -914,7 +915,6 @@ extension CVLoadCoordinator {
             case .dateHeader,
                  .unreadIndicator,
                  .typingIndicator,
-                 .viewOnce,
                  .unknown:
                 return nil
             }
