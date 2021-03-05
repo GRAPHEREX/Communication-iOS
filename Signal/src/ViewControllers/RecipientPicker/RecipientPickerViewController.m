@@ -88,7 +88,7 @@ OWSTableViewControllerDraggingDelegate,
     _allowsSelectingUnregisteredPhoneNumbers = YES;
     _shouldShowGroups = YES;
     _shouldShowInvites = NO;
-    _shouldShowAlphabetSlider = YES;
+    _shouldShowAlphabetSlider = NO;
 
     return self;
 }
@@ -113,10 +113,10 @@ OWSTableViewControllerDraggingDelegate,
     _searchBar = searchBar;
     searchBar.delegate = self;
     if (RemoteConfig.usernames) {
-        searchBar.placeholder = NSLocalizedString(@"SEARCH_BY_NAME_OR_USERNAME_OR_NUMBER_PLACEHOLDER_TEXT",
+        searchBar.placeholder = NSLocalizedString(@"SEARCH_FIELD_PLACE_HOLDER_TEXT",
             @"Placeholder text indicating the user can search for contacts by name, username, or phone number.");
     } else {
-        searchBar.placeholder = NSLocalizedString(@"SEARCH_BYNAMEORNUMBER_PLACEHOLDER_TEXT",
+        searchBar.placeholder = NSLocalizedString(@"SEARCH_FIELD_PLACE_HOLDER_TEXT",
             @"Placeholder text indicating the user can search for contacts by name or phone number.");
     }
     [searchBar sizeToFit];
