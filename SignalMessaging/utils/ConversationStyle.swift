@@ -325,7 +325,10 @@ public class ConversationStyle: NSObject {
     }
 
     @objc
-    public func quotedReplyStripeColor(isIncoming: Bool) -> UIColor {
+    public func quotedReplyStripeColor(isIncoming: Bool, isForPreview: Bool) -> UIColor {
+        if isForPreview {
+            return isDarkThemeEnabled ? .ows_white : .ows_black
+        }
         return .ows_white
 //        if isDarkThemeEnabled {
 //            if isIncoming {
@@ -347,14 +350,16 @@ public class ConversationStyle: NSObject {
     }
 
     @objc
-    public func quotedReplyAuthorColor(isIncoming: Bool) -> UIColor {
-        quotedReplyTextColor(isIncoming: isIncoming)
+    public func quotedReplyAuthorColor(isIncoming: Bool, isForPreview: Bool) -> UIColor {
+        quotedReplyTextColor(isIncoming: isIncoming, isForPreview: isForPreview)
     }
 
     @objc
-    public func quotedReplyTextColor(isIncoming: Bool) -> UIColor {
-        bubbleTextColor(isIncoming: isIncoming)
-//        isDarkThemeEnabled ? .ows_gray05 : .ows_gray90
+    public func quotedReplyTextColor(isIncoming: Bool, isForPreview: Bool) -> UIColor {
+        if isForPreview {
+            return isDarkThemeEnabled ? .ows_gray05 : .ows_gray90
+        }
+        return bubbleTextColor(isIncoming: isIncoming)
     }
 
     @objc

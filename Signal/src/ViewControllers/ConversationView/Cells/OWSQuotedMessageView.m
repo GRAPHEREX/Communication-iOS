@@ -205,11 +205,7 @@ const CGFloat kRemotelySourcedContentRowSpacing = 3;
     hStackView.spacing = self.hSpacing;
 
     UIView *stripeView = [UIView new];
-    if (self.isForPreview) {
-        stripeView.backgroundColor = [self.conversationStyle quotedReplyStripeColorWithIsIncoming:YES];
-    } else {
-        stripeView.backgroundColor = [self.conversationStyle quotedReplyStripeColorWithIsIncoming:!self.isOutgoing];
-    }
+    stripeView.backgroundColor = [self.conversationStyle quotedReplyStripeColorWithIsIncoming:!self.isOutgoing isForPreview:self.isForPreview];
     [stripeView autoSetDimension:ALDimensionWidth toSize:self.stripeThickness];
     [stripeView setContentHuggingHigh];
     [stripeView setCompressionResistanceHigh];
@@ -631,12 +627,12 @@ const CGFloat kRemotelySourcedContentRowSpacing = 3;
 
 - (UIColor *)quotedAuthorColor
 {
-    return [self.conversationStyle quotedReplyAuthorColorWithIsIncoming:!self.isOutgoing];
+    return [self.conversationStyle quotedReplyAuthorColorWithIsIncoming:!self.isOutgoing isForPreview:self.isForPreview];
 }
 
 - (UIColor *)quotedTextColor
 {
-    return [self.conversationStyle quotedReplyTextColorWithIsIncoming:!self.isOutgoing];
+    return  [self.conversationStyle quotedReplyTextColorWithIsIncoming:!self.isOutgoing isForPreview:self.isForPreview];
 }
 
 - (UIFont *)quotedTextFont

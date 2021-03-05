@@ -126,8 +126,8 @@ public class QuotedMessageView: UIView {
         let stripeThickness: CGFloat = 4
         let textVMargin: CGFloat = 7
         var quotedAuthorFont: UIFont { UIFont.ows_dynamicTypeSubheadline.ows_semibold }
-        var quotedAuthorColor: UIColor { conversationStyle.quotedReplyAuthorColor(isIncoming: !isOutgoing) }
-        var quotedTextColor: UIColor { conversationStyle.quotedReplyTextColor(isIncoming: !isOutgoing) }
+        var quotedAuthorColor: UIColor { conversationStyle.quotedReplyAuthorColor(isIncoming: !isOutgoing, isForPreview: isForPreview) }
+        var quotedTextColor: UIColor { conversationStyle.quotedReplyTextColor(isIncoming: !isOutgoing, isForPreview: isForPreview) }
         var quotedTextFont: UIFont { UIFont.ows_dynamicTypeBody }
         var fileTypeTextColor: UIColor { conversationStyle.quotedReplyAttachmentColor() }
         var fileTypeFont: UIFont { quotedTextFont.ows_italic }
@@ -218,11 +218,7 @@ public class QuotedMessageView: UIView {
             hStackView.spacing = hSpacing
 
             let stripeView = UIView()
-            if isForPreview {
-                stripeView.backgroundColor = conversationStyle.quotedReplyStripeColor(isIncoming: true)
-            } else {
-                stripeView.backgroundColor = conversationStyle.quotedReplyStripeColor(isIncoming: !isOutgoing)
-            }
+            stripeView.backgroundColor = conversationStyle.quotedReplyStripeColor(isIncoming: !isOutgoing, isForPreview: isForPreview)
             stripeView.autoSetDimension(.width, toSize: stripeThickness)
             stripeView.setContentHuggingHigh()
             stripeView.setCompressionResistanceHigh()
