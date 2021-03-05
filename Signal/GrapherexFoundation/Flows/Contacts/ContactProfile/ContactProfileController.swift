@@ -152,7 +152,7 @@ fileprivate extension ContactProfileController {
     func showMessage() {
         guard let threadViewModel = self.threadViewModel else { return }
         let controller = ConversationViewController(threadViewModel: threadViewModel,
-                                                    action: .compose,
+                                                    action: .none,
                                                     focusMessageId: nil)
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)

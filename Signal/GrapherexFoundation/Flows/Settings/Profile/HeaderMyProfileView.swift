@@ -54,7 +54,7 @@ final class HeaderMyProfileView : HeaderContactProfileView, AvatarViewHelperDele
                 return ThreadViewModel(thread: self.thread, forConversationList: false, transaction: $0)
             }
             let controller = ConversationViewController(threadViewModel: threadViewModel,
-                                                        action: .compose,
+                                                        action: .none,
                                                         focusMessageId: nil)
             self.fromViewController().navigationController?.pushViewController(controller, animated: true)
         })]

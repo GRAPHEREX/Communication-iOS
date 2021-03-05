@@ -215,7 +215,7 @@ extension MediaTileViewController: UICollectionViewDelegate, UICollectionViewDat
             return ThreadViewModel(thread: thread, forConversationList: false, transaction: $0)
         }
         let controller = ConversationViewController(threadViewModel: threadViewModel,
-                                                    action: .compose,
+                                                    action: .none,
                                                     focusMessageId: nil)
         
         self.navigationController?.pushViewController(controller, animated: true)
