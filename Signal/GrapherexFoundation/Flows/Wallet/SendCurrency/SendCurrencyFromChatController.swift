@@ -84,6 +84,7 @@ final class SendCurrencyFromChatController: OWSViewController, UITextFieldDelega
         amountTextField.maxDigitsCountAfterSeparator = maxDigitsCountAfterSeparator
         gasLimitTextField.maxDigitsCountAfterSeparator = maxDigitsCountAfterSeparator
         gasPriceTextField.maxDigitsCountAfterSeparator = maxDigitsCountAfterSeparator
+        formatter.decimalDigits = maxDigitsCountAfterSeparator ?? 2
         
         var needUpdateContent: Bool = false
         if wallet?.currency != currency {
