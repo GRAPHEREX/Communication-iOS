@@ -1574,10 +1574,10 @@ NSString *const MessageSenderRateLimitedException = @"RateLimitedException";
     
     NSString *push = nil;
     if (message.body.length > 0 || [message hasAttachments]) {
-        push = @"{\\\"aps\\\" : { \\\"alert\\\" : \\\"New message\\\" }}";
+        push = @"{\\\"aps\\\" : { \\\"alert\\\" : \\\"New message\\\", \\\"sound\\\" : \\\"default\\\" }}";
     }
     else if (message.groupMetaMessage == TSGroupMetaMessageNew) {
-        push = @"{\\\"aps\\\" : { \\\"alert\\\" : \\\"New group\\\" }}";
+        push = @"{\\\"aps\\\" : { \\\"alert\\\" : \\\"New group\\\", \\\"sound\\\" : \\\"default\\\" }}";
     }
     
     BOOL isSilent = message.isSilent;
