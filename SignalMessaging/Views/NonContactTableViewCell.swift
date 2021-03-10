@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -11,7 +11,8 @@ public class NonContactTableViewCell: UITableViewCell {
     private let headerLabel = UILabel()
     private let accessoryLabel = UILabel()
 
-    @objc var accessoryMessage: String?
+    @objc
+    public var accessoryMessage: String?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -19,15 +20,14 @@ public class NonContactTableViewCell: UITableViewCell {
         OWSTableItem.configureCell(self)
 
         let stackView = UIStackView()
-        stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
         stackView.spacing = kContactCellAvatarTextMargin
         stackView.addArrangedSubview(iconView)
 
         contentView.addSubview(stackView)
-        stackView.autoPinEdgesToSuperviewEdges()
+        stackView.autoPinWidthToSuperviewMargins()
+        stackView.autoPinHeightToSuperview(withMargin: 7)
 
-        let avatarSize = CGFloat(kStandardAvatarSize)
+        let avatarSize = CGFloat(kSmallAvatarSize)
         iconView.autoSetDimensions(to: CGSize(square: avatarSize))
         iconView.layer.cornerRadius = avatarSize * 0.5
         iconView.clipsToBounds = true

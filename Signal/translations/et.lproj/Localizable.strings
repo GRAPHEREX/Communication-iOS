@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Mitte praegu";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "About Signal";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Kinnita uus turvanumber";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Kontakt";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Kontakt: %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Meedia";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Sõnum";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Sina";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Kleebis";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Häälsõnum";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Häälsõnum %@ sekundit";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "Signali kõne";
@@ -134,7 +143,7 @@
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Tundmatu andmebaasi versioon.";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Sinu vanast seadmest ülekantud andmeid ei saanud taastada. Palun saada silumislogi aadressile support@signal.org, et saaksime seda olukorda uurida. Pärast Signali uuesti paigaldamist võib sõnumite ajalugu kaduda.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Sinu vanast seadmest ülekantud andmeid ei õnnestunud taastada. Palun saada silumislogi aadressile support@signal.org, et saaksime seda olukorda uurida. Pärast Signali uuesti paigaldamist võib sõnumite ajalugu kaduda.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Andmete ülekandmine ei õnnestunud";
@@ -524,7 +533,7 @@
 "CALL_VIEW_MUTE_LABEL" = "Vaigista";
 
 /* Error displayed on the 'call' view when the callee needs to grant permission before we can call them. Embeds {callee short name}. */
-"CALL_VIEW_NEED_PERMISSION_ERROR_FORMAT" = "%@ saab sinult sõnumisoovi. Saad talle helista, kui sinu sõnumisoov on tema poolt vastu võetud. ";
+"CALL_VIEW_NEED_PERMISSION_ERROR_FORMAT" = "%@ saab sinult sõnumitaotluse. Saad talle helista, kui sinu sõnumitaotlus on tema poolt kinnitatud. ";
 
 /* Accessibility label to toggle front- vs. rear-facing camera */
 "CALL_VIEW_SWITCH_CAMERA_DIRECTION" = "Vaheta kaamera suunda";
@@ -746,7 +755,7 @@
 "CONTACT_SUPPORT" = "Võta ühendust kasutajatoega";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Signalil ei õnnestunud su kasutajatoesoovi täita.";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Signalil ei õnnestunud su kasutajatoetaotlust täita.";
 
 /* button text */
 "CONTACT_SUPPORT_PROMPT_ERROR_TRY_AGAIN" = "Proovi uuesti";
@@ -838,9 +847,6 @@
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Blokeeri kasutaja";
 
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Kontakti info";
-
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Vestluse värv";
 
@@ -860,13 +866,13 @@
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_MEMBERS_BUTTON" = "Kõik liikmed";
 
 /* Label for 'edit membership access' action in conversation settings view. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "Kes saab liikmeid lisada";
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "Kes saavad liikmeid lisada";
 
 /* Label for button that sets 'group membership access' to 'administrators-only'. */
 "CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "Ainult administraatorid";
 
 /* Description for the 'edit group membership access' alert. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_DESCRIPTION" = "Vali, kes saab sellesse gruppi liikmeid lisada:";
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_DESCRIPTION" = "Vali, kes saavad sellesse gruppi liikmeid lisada:";
 
 /* Label for button that sets 'group membership access' to 'members-only'. */
 "CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_MEMBERS_BUTTON" = "Kõik liikmed";
@@ -878,13 +884,13 @@
 "CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_BUTTON" = "Tee administraatoriks";
 
 /* Format for title for 'make group admin' confirmation alert. Embeds {user to make an admin}. */
-"CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_TITLE_FORMAT" = "%@ saab muuta seda gruppi ja selle liikmeid ";
+"CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_TITLE_FORMAT" = "%@ saab muuta seda gruppi ja selle liikmeid.";
 
 /* Label for 'member invites' action in conversation settings view. */
-"CONVERSATION_SETTINGS_MEMBER_INVITES" = "Liikmelisuse kutsed";
+"CONVERSATION_SETTINGS_MEMBER_INVITES" = "Liikmekutsed";
 
 /* Label for 'member requests & invites' action in conversation settings view. */
-"CONVERSATION_SETTINGS_MEMBER_REQUESTS_AND_INVITES" = "Liikmelisuse soovid ja kutsed";
+"CONVERSATION_SETTINGS_MEMBER_REQUESTS_AND_INVITES" = "Liikmetaotlused ja -kutsed";
 
 /* Section title of the 'members' section in conversation settings view. */
 "CONVERSATION_SETTINGS_MEMBERS_SECTION_TITLE" = "Liikmed";
@@ -965,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Salvestamata muudatused";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Näita kõiki liikmeid";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "See All";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "See kasutaja on sinu kontaktides";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Lisa kontaktidesse";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ saatis:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Sina saatsid:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Kustuta kõik";
@@ -1082,10 +1094,10 @@
 "DEREGISTRATION_WARNING" = "Seade ei ole enam registreeritud. Sinu telefoninumber võib olla registreeritud Signalis mõne teise seadmega. Klõpsa uuesti registreerimiseks.";
 
 /* {{Short Date}} when device last communicated with Signal Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Viimati aktiivne: %@";
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Last active %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Ühendatud: %@";
+"DEVICE_LINKED_AT_LABEL" = "Linked %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Seadmete nimekirja uuendamine ei õnnestunud.";
@@ -1199,7 +1211,7 @@
 "DISAPPEARING_MESSAGES_CONFIGURATION_GROUP_EXISTING_FORMAT" = "Selle vestluse sõnumid kaovad %@ pärast.";
 
 /* subheading in conversation settings */
-"DISAPPEARING_MESSAGES_DESCRIPTION" = "Kui lubatud, siis kaovad saadetud ja saadud sõnumid pärast nende nägemist.";
+"DISAPPEARING_MESSAGES_DESCRIPTION" = "Kui lubatud, siis kaovad selle vestluse saadetud ja saadud sõnumid pärast nende nägemist.";
 
 /* Accessibility hint that contains current timeout information */
 "DISAPPEARING_MESSAGES_HINT" = "Hetkel kaovad sõnumid pärast %@";
@@ -1256,7 +1268,7 @@
 "EMAIL_INVITE_SUBJECT" = "Lülitume Signalile";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Sinu seade pole seadistatud e-kirjasid saatma. Kasutajatoesoovi saatmiseks seadista oma seadmes e-kirjade saatmine või saada kiri aadressile support@signal.org";
+"EMAIL_SIGNAL_MESSAGE" = "Sinu seade pole seadistatud e-kirjasid saatma. Kasutajatoetaotluse saatmiseks seadista oma seadmes e-kirjade saatmine või saada kiri aadressile support@signal.org";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "E-post pole saadaval";
@@ -1316,7 +1328,7 @@
 "ERROR_DESCRIPTION_COULD_NOT_LAUNCH_EMAIL" = "E-posti rakenduse avamine ei õnnestunud";
 
 /* Error indicating that a support mailto link could not be created. */
-"ERROR_DESCRIPTION_INVALID_SUPPORT_EMAIL" = "Kasutajatoesoovi loomine ei õnnestunud";
+"ERROR_DESCRIPTION_INVALID_SUPPORT_EMAIL" = "Kasutajatoetaotluse loomine ei õnnestunud";
 
 /* Generic error indicating that log upload failed */
 "ERROR_DESCRIPTION_LOG_UPLOAD_FAILED" = "Logide üleslaadimine ei õnnestunud.";
@@ -1850,7 +1862,7 @@
 "GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "Nõua grupilingi kaudu liituvate uute liikmete kinnitamist administraatori poolt.";
 
 /* Title for the 'member requests' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "Liikmelisuse soovid";
+"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "Liikmetaotlused";
 
 /* Label for the 'reset link' button in the 'group link' view. */
 "GROUP_LINK_VIEW_RESET_LINK" = "Lähtesta link";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Jaga Signali kaudu";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Igaüks saab selle lingi kaudu vestlusega liituda või saata sooviavaldust liitumiseks. Jaga seda isikutega, keda usaldad.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Igaüks saab selle lingi kaudu näha grupi nime ja liikmeid ning saata taotluse liitumiseks. Jaga seda isikutega, keda usaldad.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Grupilink";
@@ -1922,13 +1934,13 @@
 "GROUP_LOCAL_USER_REMOVED_BY_UNKNOWN_USER" = "Sind eemaldati grupist.";
 
 /* Message indicating that the local user's request to join the group was approved by another user. Embeds {{ %@ the name of the user who approved the reuqest }}. */
-"GROUP_LOCAL_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%@ kinnitas sinu grupiga liitumise soovi.";
+"GROUP_LOCAL_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%@ kinnitas sinu grupiga liitumise taotluse.";
 
 /* Message indicating that the local user cancelled their request to join the group. */
-"GROUP_LOCAL_USER_REQUEST_CANCELLED_BY_LOCAL_USER" = "Sa katkestasid enda grupiga liitumise soovi.";
+"GROUP_LOCAL_USER_REQUEST_CANCELLED_BY_LOCAL_USER" = "Sa tühistasid enda grupiga liitumise taotluse.";
 
 /* Message indicating that the local user's request to join the group was rejected. */
-"GROUP_LOCAL_USER_REQUEST_REJECTED" = "Sinu grupiga liitumise soovist keelduti.";
+"GROUP_LOCAL_USER_REQUEST_REJECTED" = "Sinu grupiga liitumise taotlusest keelduti.";
 
 /* Message indicating that the local user requested to join the group. */
 "GROUP_LOCAL_USER_REQUESTED_TO_JOIN_TO_THE_GROUP" = "Sa saatsid grupiga liitumise soovi.";
@@ -1974,6 +1986,27 @@
 
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Videokõne";
+
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ group members have similar names.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Üle vaatamiseks koputa";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Liige";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Vaata liikmed üle";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ group members have similar names, review the members below or choose to take action.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ group members have the same name, review the members below or choose to take action.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ group members have the same name.";
 
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Grupi nimi (kohustuslik)";
@@ -2063,28 +2096,25 @@
 "GROUP_REMOTE_USER_REMOVED_FROM_GROUP_BY_REMOTE_USER_FORMAT" = "%1$@ eemaldas kasutaja %2$@.";
 
 /* Message indicating that a remote user's request to join the group was approved by the local user. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_LOCAL_USER_FORMAT" = "Sa kinnitasid isiku %@ soovi grupiga liituda.";
+"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_LOCAL_USER_FORMAT" = "Sa kinnitasid isiku %@ taotluse grupiga liituda.";
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ kinnitas isiku %1$@ soovi grupiga liituda.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "Isiku %@ soov grupiga liituda kinnitati.";
+"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ kinnitas isiku %1$@ taotluse grupiga liituda.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
-"GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ loobus enda grupiga liitumise soovist.";
+"GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ tühistas enda grupiga liitumise taotluse.";
 
 /* Message indicating that a remote user's request to join the group was rejected by the local user. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_LOCAL_USER_FORMAT" = "Sa keeldusid kasutaja %@ soovist grupiga liituda.";
+"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_LOCAL_USER_FORMAT" = "Sa keeldusid kasutaja %@ grupiga liitumise taotlusest.";
 
 /* Message indicating that a remote user's request to join the group was rejected by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
-"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_REMOTE_USER_FORMAT" = "%2$@ tühistas kasutaja %1$@ soovi grupiga liituda.";
+"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_REMOTE_USER_FORMAT" = "%2$@ keeldus kasutaja %1$@ grupiga liitumise taotlusest.";
 
 /* Message indicating that a remote user's request to join the group was rejected. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_REJECTED_FORMAT" = "Kasutaja %@ soovist grupiga liituda keelduti.";
+"GROUP_REMOTE_USER_REQUEST_REJECTED_FORMAT" = "Kasutaja %@ grupiga liitumise taotlusest keelduti.";
 
 /* Message indicating that a remote user requested to join the group. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUESTED_TO_JOIN_THE_GROUP_FORMAT" = "%@ esitas grupilingi kaudu soovi grupiga liituda.";
+"GROUP_REMOTE_USER_REQUESTED_TO_JOIN_THE_GROUP_FORMAT" = "%@ esitas grupilingi kaudu taotluse grupiga liituda.";
 
 /* Message indicating that a remote user had their administrator role revoked. Embeds {{remote user name}}. */
 "GROUP_REMOTE_USER_REVOKED_ADMINISTRATOR" = "Kasutaja %@ administraatoriõigused tühistati.";
@@ -2096,13 +2126,13 @@
 "GROUP_REMOTE_USER_REVOKED_ADMINISTRATOR_BY_REMOTE_USER_FORMAT" = "%1$@ tühistas kasutaja %2$@ administraatoriõigused.";
 
 /* Label for the 'member requests' mode of the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "Liikmelisuse soovid";
+"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "Liikmetaotlused";
 
 /* Label for the 'pending invites' mode of the 'group requests and invites' view. */
 "GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "Ootel kutsed";
 
 /* The title for the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_TITLE" = "Liikmelisuse soovid ja kutsed";
+"GROUP_REQUESTS_AND_INVITES_VIEW_TITLE" = "Liikmetaotlused ja -kutsed";
 
 /* Info message indicating that the group was updated by an unknown user. */
 "GROUP_UPDATED" = "Grupp uuendatud.";
@@ -2372,10 +2402,10 @@
 "GROUPS_TOO_MANY_MEMBERS_CONFIRM" = "Kas ikkagi lisada liige?";
 
 /* Label for button that lets the user view the request to join the group. */
-"GROUPS_VIEW_REQUEST_BUTTON" = "Näita soovi";
+"GROUPS_VIEW_REQUEST_BUTTON" = "Näita taotlust";
 
 /* Label for button that lets the user view the requests to join the group. */
-"GROUPS_VIEW_REQUESTS_BUTTON" = "Näita soove";
+"GROUPS_VIEW_REQUESTS_BUTTON" = "Näita taotlusi";
 
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "Võta meiega ühendust";
@@ -2411,7 +2441,7 @@
 "HOME_VIEW_MESSAGE_REQUEST_ADDED_TO_GROUP_FORMAT" = "%@ lisas sind gruppi";
 
 /* Table cell subtitle label for a conversation the user has not accepted. */
-"HOME_VIEW_MESSAGE_REQUEST_CONVERSATION" = "Sõnumisoov";
+"HOME_VIEW_MESSAGE_REQUEST_CONVERSATION" = "Sõnumitaotlus";
 
 /* Format string when search returns no results. Embeds {{search term}} */
 "HOME_VIEW_SEARCH_NO_RESULTS_FORMAT" = "Otsingule '%@' ei leitud vasteid";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Skanni QR-kood seadme ekraanilt, mida soovid ühendada.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Skanni QR-kood";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scan QR Code to link a new device.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Ühenda uus seade";
@@ -2647,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Vali asukoht";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Logimine";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Debug logs can help Signal fix issues and crashes.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Sõnum";
@@ -2816,13 +2849,13 @@
 "MESSAGE_REQUEST_LEAVE_AND_DELETE_GROUP_TITLE" = "Kas kustutada ja lahkuda grupist?";
 
 /* Banner label notifying user that a new message is from a user with the same name as an existing contact */
-"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Kontrolli soovi hoolega. Signal leidis ka teise sama nimega kontakti.";
+"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Kontrolli taotlust hoolega. Signal leidis ka teise samanimelise kontakti.";
 
 /* A header string above a known contact's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Sinu kontakt";
 
 /* A header string informing the user about name collisions in a message request */
-"MESSAGE_REQUEST_NAME_COLLISON_HEADER" = "Kui sa pole kindel, kellelt soov on, siis kontrolli allpool kontakte ja tegutse vastavalt.";
+"MESSAGE_REQUEST_NAME_COLLISON_HEADER" = "Kui sa pole kindel, kellelt taotlus on, siis kontrolli allpool kontakte ja tegutse vastavalt.";
 
 /* A header string above the requester's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_REQUESTER_HEADER" = "Taotlus";
@@ -2876,13 +2909,13 @@
 "MESSAGE_REQUEST_VIEW_UNBLOCK_BUTTON" = "Eemalda blokeering";
 
 /* Label for button to cancel your request to join the group. */
-"MESSAGE_REQUESTS_CANCEL_REQUEST_BUTTON" = "Tühista soov";
+"MESSAGE_REQUESTS_CANCEL_REQUEST_BUTTON" = "Tühista taotlus";
 
 /* Title for the confirmation alert when cancelling your request to join the group. */
-"MESSAGE_REQUESTS_CANCEL_REQUEST_CONFIRM_TITLE" = "Kas tühistada sinu soov selle grupiga liituda?";
+"MESSAGE_REQUESTS_CANCEL_REQUEST_CONFIRM_TITLE" = "Kas tühistada selle grupiga liitumise taotlus?";
 
 /* Indicator that you have requested to join this group. */
-"MESSAGE_REQUESTS_CONVERSATION_REQUEST_INDICATOR" = "Sinu soov grupiga liituda on saadetud grupi administraatoritele. Sulle antakse teada, kui pead midagi tegema.";
+"MESSAGE_REQUESTS_CONVERSATION_REQUEST_INDICATOR" = "Sinu taotlus grupiga liituda on grupi administraatoritele saadetud. Sulle antakse teada, kui nad vastavad.";
 
 /* message status for message delivered to their recipient. */
 "MESSAGE_STATUS_DELIVERED" = "Edastatud";
@@ -2971,6 +3004,9 @@
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Vaigistatud";
 
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Recently changed their profile name from %1$@ to %2$@.";
+
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Jäta vahele";
 
@@ -3052,6 +3088,9 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Ühised grupid puuduvad";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Muid ühised gruppe pole.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Vestluse alustamiseks vali kontakt või grupp.";
 
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Mängi, kui rakendus on avatud";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Helid";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Lisa kohandatud hääl...";
@@ -3185,13 +3221,13 @@
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "iPhone'i ühendamine ei ole soovitatud ja limiteerib põhifunktsionaalsust.";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Luba õigused";
+"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Õiguste lubamine";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Märguanded võimaldavad sul näha sõnumite saabumist ja saada uuendusi vestluste kohta.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Märguannete ja kontaktide lubamine võimaldavad sul näha sõnumite saabumist ja aitavad leida isikuid, keda tunned. Kontaktid on krüptitud, nii et Signal teenus ei näe neid.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Hangi sõnum";
+"ONBOARDING_PERMISSIONS_TITLE" = "Õiguste lubamine";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Vali, kes saavad sind Signalis otsida telefoninumbri %@ järgi.";
@@ -3199,14 +3235,20 @@
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Kes saavad sind sinu numbri järgi leida?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Sinu telefoninumber";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Palun oota paar minutit enne uuesti proovimist. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Alustamiseks sisesta oma telefoninumber";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Sisesta enda telefoninumber";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Vigane number";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Vigane telefoninumber. Palun sisesta registreerumiseks kehtiv telefoninumber.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "PIN-koodi katsete arv on otsa saanud, kuid pääsed siiski oma Signali konto juurde, luues uue PIN-koodi. Privaatsuse ja turvalisuse huvides taastatakse sinu konto salvestatud profiiliteabe või säteteta.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "PIN-koodi katsete arv on lõppenud, kuid pääsed siiski oma Signali konto juurde, luues uue PIN-koodi. Privaatsuse ja turvalisuse huvides taastatakse sinu konto salvestatud profiiliteabe või säteteta.";
 
 /* Label for the 'learn more' link when reglock is disabled in the 'onboarding pin attempts exhausted' view. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_LEARN_MORE" = "Uuri lähemalt PIN-koodide kohta";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Sisesta PIN-kood";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Sinu profiil";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Perekonnanimi (valikuline)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Eesnimi (kohustuslik)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Tingimused ja privaatsuspoliitika";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Vale number?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Ma ei saanud koodi (saadaval %@ pärast)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Helista mulle";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Võta ühendust Signali kasutajatoega";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Helista mulle %@ pärast";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Koodi valideerimine...";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "See kood ei ole õige";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Ma ei saanud koodi";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Saada kood uuesti";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Palun veendu, et su mobiilteenus töötaks ja saad SMS-sõnumeid vastu võtta.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Pole koodi?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Saada kood uuesti";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Helista mulle";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Ikka pole koodi?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Saada kood uuesti %@ pärast";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Sisesta kood, mille saatsime numbrile %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Saatsime just uuesti koodi numbrile %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Kinnituskood";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Sätted";
@@ -3293,10 +3335,10 @@
 "PENDING_GROUP_MEMBERS_ACCEPT_REQUEST_CONFIRMATION_TITLE_FORMAT" = "Kas lisada “%@” gruppi?";
 
 /* Title of 'deny member request to join group' button. */
-"PENDING_GROUP_MEMBERS_DENY_REQUEST_BUTTON" = "Keeldu soovist";
+"PENDING_GROUP_MEMBERS_DENY_REQUEST_BUTTON" = "Keeldu taotlusest";
 
 /* Title of 'deny member request to join group' confirmation alert. Embeds {{ the name of the requesting group member. }}. */
-"PENDING_GROUP_MEMBERS_DENY_REQUEST_CONFIRMATION_TITLE_FORMAT" = "Kas keelduda isiku “%@” soovist?";
+"PENDING_GROUP_MEMBERS_DENY_REQUEST_CONFIRMATION_TITLE_FORMAT" = "Kas keelduda isiku “%@” taotlusest?";
 
 /* Format for label indicating the a group member has invited 1 other user to the group. Embeds {{ the name of the inviting group member. }}. */
 "PENDING_GROUP_MEMBERS_MEMBER_INVITED_1_USER_FORMAT" = "%@ kutsus 1 isiku";
@@ -3305,7 +3347,7 @@
 "PENDING_GROUP_MEMBERS_MEMBER_INVITED_N_USERS_FORMAT" = "%1$@ kutsus %2$@ inimest";
 
 /* Label indicating that a group has no pending member requests. */
-"PENDING_GROUP_MEMBERS_NO_PENDING_MEMBER_REQUESTS" = "Ootel liikmelisuse soove pole.";
+"PENDING_GROUP_MEMBERS_NO_PENDING_MEMBER_REQUESTS" = "Ootel liikmetaotlusi pole.";
 
 /* Label indicating that a group has no pending members. */
 "PENDING_GROUP_MEMBERS_NO_PENDING_MEMBERS" = "Kutseid pole.";
@@ -3314,13 +3356,13 @@
 "PENDING_GROUP_MEMBERS_REQUEST_APPROVED_FORMAT" = "Lisati isik “%@“.";
 
 /* Format for banner indicating that there are pending member requests to join the group. Embeds {{ the number of pending member requests }}. */
-"PENDING_GROUP_MEMBERS_REQUEST_BANNER_FORMAT" = "%@ ootel liikmelisuse soovi.";
+"PENDING_GROUP_MEMBERS_REQUEST_BANNER_FORMAT" = "%@ ootel liikmetaotlust.";
 
 /* Label for the 'view requests' button in the pending member requests banner. */
-"PENDING_GROUP_MEMBERS_REQUEST_BANNER_VIEW_REQUESTS" = "Näita soove";
+"PENDING_GROUP_MEMBERS_REQUEST_BANNER_VIEW_REQUESTS" = "Näita taotlusi";
 
 /* Message indicating that a request to join the group was successfully denied. Embeds {{ the name of the denied user }}. */
-"PENDING_GROUP_MEMBERS_REQUEST_DENIED_FORMAT" = "Isiku “%@“ liikmelisuse soovist keelduti.";
+"PENDING_GROUP_MEMBERS_REQUEST_DENIED_FORMAT" = "Isiku “%@“ liikmetaotlusest keelduti.";
 
 /* Format for 'revoke invalid 1 invite' item. */
 "PENDING_GROUP_MEMBERS_REVOKE_INVALID_INVITE_1" = "Tühista vigane kutse";
@@ -3335,7 +3377,7 @@
 "PENDING_GROUP_MEMBERS_REVOKE_INVITE_CONFIRMATION_TITLE_1_FORMAT" = "Kas tühistada “%@“ poolt saadetud kutse?";
 
 /* Format for title of 'revoke invite' confirmation alert. Embeds {{ %1$@ the number of users they have invited, %2$@ name of the inviting group member. }}. */
-"PENDING_GROUP_MEMBERS_REVOKE_INVITE_CONFIRMATION_TITLE_N_FORMAT" = "Kas tühistada kasutaja  “%2$@“ poolt saadetud %1$@ grupiga liitumise kutset?";
+"PENDING_GROUP_MEMBERS_REVOKE_INVITE_CONFIRMATION_TITLE_N_FORMAT" = "Kas tühistada %1$@ isiku  “%2$@“ poolt saadetud  grupiga liitumise kutset?";
 
 /* Title of 'revoke invites' button. */
 "PENDING_GROUP_MEMBERS_REVOKE_INVITE_N_BUTTON" = "Tühista kutsed";
@@ -3344,10 +3386,10 @@
 "PENDING_GROUP_MEMBERS_REVOKE_LOCAL_INVITE_CONFIRMATION_TITLE_1_FORMAT" = "Kas tühistada kasutaja “%@“  grupiga liitumise kutse?";
 
 /* Footer for the 'invites by other group members' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_FOOTER_INVITES_FROM_OTHER_MEMBERS" = "Teiste grupiliikmete poolt kutsutud inimeste üksikasju ei kuvata. Kui kutsutud soovivad liituda, jagatakse nende kohta grupile teavet pärast liitumist. Enne liitumist ei näe nad ühtegi grupi sõnumit.";
+"PENDING_GROUP_MEMBERS_SECTION_FOOTER_INVITES_FROM_OTHER_MEMBERS" = "Teiste grupiliikmete poolt kutsutud inimeste üksikasju ei kuvata. Kui kutsutud otsustavad liituda, jagatakse nende kohta grupile teavet pärast liitumist. Enne liitumist ei näe nad ühtegi grupi sõnumit.";
 
 /* Footer for the 'pending member requests' section of the 'member requests and invites' view. Embeds {{ the name of the group }}. */
-"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "Selles nimekirjas olevad isikud soovivad grupilingi kaudu liituda grupiga “%@”.";
+"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "Selles nimekirjas olevad isikud püüavad grupilingi kaudu grupiga “%@” liituda.";
 
 /* Title for the 'invalid invites' section of the 'member requests and invites' view. */
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "Vigased kutsed";
@@ -3356,7 +3398,7 @@
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "Kutsed teiste grupi liikmete poolt";
 
 /* Title for the 'pending member requests' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_PENDING_MEMBER_REQUESTS" = "Ootel liikmelisuse soovid";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_PENDING_MEMBER_REQUESTS" = "Ootel liikmetaotlused";
 
 /* Title for the 'people you invited' section of the 'member requests and invites' view. */
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "Sinu kutsutud inimesed";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ muutis enda profiilinimeks %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Lisa profiilile";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Sinu nimi";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Teave";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Name";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Kasutajanimi";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Määra profiili foto";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Teave";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Eemalda foto";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Loo kasutajanimi";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Sinu perekonnanimi on liiga pikk.";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Sinu eesnimi on liiga pikk.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(valikuline)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Perekonnanimi";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Perekonnanimi (valikuline)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(kohustuslik)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Eesnimi";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Eesnimi (kohustuslik)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Profiili saab uuendada ainult siis, kui oled Internetti ühendatud.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Sinu profiil on otspunktkrüptitud. Sinu profiil ja selle muudatused on nähtavad sinu kontaktidele, kui algatad või nõustud uute vestlustega ja kui liitud uute gruppidega.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Sinu profiil on otspunktkrüptitud. Sinu profiil ja selle muudatused on nähtavad sinu kontaktidele ja kui algatad või nõustud uute vestlustega.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Salvesta";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profiil";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Kasutajanimi";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Märgi loetuks";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Edukalt märguannete saamiseks uuesti registreeritud.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Märguanded";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Sinu kontot pole võimalik aktiveerida enne kui oled kinnitanud koodi, mille sulle saatsime.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Jätkamiseks kontrolli telefoni internetiühendust ja proovi uuesti.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Kontrolli ühendust";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "See telefoninumber pole toetatud, palun võta ühendust kasutajatoega.";
 
@@ -3937,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Telefoninumber puudub";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Kinnituskood saadetakse sellele numbrile. Kas sinu telefoninumber üleval on korrektne?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Numbri kinnitus: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Muuda";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Numbri %@ kinnitamine...";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Keeldu";
 
@@ -3947,7 +3998,7 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "Vali uus administraator";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "Registreeru uuesti märguannete saamiseks";
+"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
 
 /* Body for research megaphone */
 "RESEARCH_MEGAPHONE_BODY" = "Tahame kuulda sinult tagasisidet, et teha Signal planeedi parimaks suhtlusrakenduseks.";
@@ -4300,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Määra taustapildiks";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "Teave";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Account";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Blokeeri";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Tsenseerimisest möödahiilimine";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Asukoht: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Asukoht";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Kui on lubatud, siis püüab Signal tsenseerimisest mööda hiilida. Luba see funktsioon vaid siis, kui oled kohas, kus Signal on tsenseeritud.";
@@ -4327,9 +4378,6 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Tsenseerimisest möödahiilimine pole vajalik, sa oled juba Signali teenusega ühendatud.";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Tsenseerimisest möödahiilimine";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Luba silumislogi";
 
@@ -4345,23 +4393,17 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Luba PIN";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "Signali PIN-kood";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Postita silumislogi";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Täpsemad sätted";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Vealogid";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Kuva kontaktide fotosid telefoniraamatust, kui olemas";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Kasuta telefoniraamatu kontakti fotosid";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use System Contact Photos";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "Teema";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Lisa blokeeritud kasutaja";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Sinu poolt blokeeritud kontaktide ja gruppide nimekiri.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Sul pole Signalis kontakte.";
 
@@ -4441,11 +4480,14 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Vahenda kõik kõned läbi Signali serveri, et hoiduda enda IP-aadressi paljastamisest oma kontaktile. Selle lubamine vähendab kõne kvaliteeti.";
 
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Vestlused";
+
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Tühjenda vestluse ajalugu";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Autoriõigus Signal Messenger \nLitsentsitud GPLv3 litsentsiga";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nLicensed under the GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Andmekasutus";
@@ -4454,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Kasuta vähem andmeid";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Väiksema andmemahu kasutamine võib kehvades võrkudes parendada kõnekvaliteeti.";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Kõned";
@@ -4463,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Häälsõnumid, ühekordne meedia ja kleepsud (alla 100kb) laaditakse alati automaatselt alla.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "MEEDIA ALLALAADIMINE";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Auto-Download";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Lähtesta automaatse allalaadimise sätted";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Abi";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Tühjenda vestluse ajalugu";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Teave";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Kutsu enda sõpru";
 
@@ -4507,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Vestluse taustapilt";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Tingimused ja privaatsuspoliitika";
 
 /* Setting for enabling & disabling link previews. */
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Sõnumside";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "See and share when messages are being read and typed. If disabled, you won’t see read receipts or typing indicators from others.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Sätted";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Tervitussõnumite keelamine";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Include Muted Chats";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Sõnumite arv";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Helistamise ja sõnumite märguanded ilmuvad siis, kui telefon on lukustatud. Sul on võimalik piirata, mida nendes teavitustes näidatakse.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Call and Message notifications can appear while your phone is locked.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Märguande sisu";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Kontakt liitus Signaliga";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Contact Joins Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Sündmused";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notify when…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Märguanded";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Kinnita Signali PIN-kood";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Meeldetuletused aitavad sul PIN-koodi meelde jätta, kuna seda pole võimalik taastada. Aja möödudes küsitakse sult seda harvemini.";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN-koodi meeldetuletused";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PIN-koodid hoiavad Signalis salvestatud teabe krüptituna, seega ainult sinul on sellele juurdepääs. Kui paigaldad Signali uuesti, siis sinu profiil, sätted ja kontaktid taastatakse.";
+"SETTINGS_PINS_FOOTER" = "PINs keep information stored with Signal encrypted so only you can access it. Your PIN cannot be recovered. Your profile, settings, and contacts will restore when you reinstall Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Muuda enda PIN-koodi";
@@ -4601,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Loo PIN-kood";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "SIGNAL PIN-kood";
+"SETTINGS_PINS_TITLE" = "Signali PIN-kood";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Näita kõnesid iOSi telefonirakenduse hiljutiste kõnede hulgas.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Täpsemad sätted";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Näita kõnesid hiljutistes kõnedes";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Privaatsus";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Lugemiskinnitused";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Näe ja näita sõnumite lugemist. See säte on valikuline ja rakendub kõigile vestlustele.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Lülita välja";
@@ -4642,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Ekraaniluku aegumine";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Ava Signali ekraan, kasutades Touch ID-d, Face ID-d või oma iOS seadme salasõna. Kui ekraanilukk on lubatud, on sul võimalik vastata sissetulevatele kõnedele ja saada märguandeid sõnumite kohta. Signali teavituste sätted võimaldavad kuvatavat teavet kohandada.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Ekraanilukk";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Ekraanilukk";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Luba ekraani turvalisus";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Enneta Signali eelvaadete ilmumist rakenduste vahetajas";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Helid";
@@ -4663,11 +4693,23 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Helistamine";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Ekraani turvalisus";
+"SETTINGS_SECURITY_TITLE" = "App Security";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Näita soovitustes";
+"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
 "SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Teistest rakendustest jagades kuvatakse Signali vestlusi soovitustena.";
@@ -4676,22 +4718,16 @@
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Registreerimislukk";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Lisaturvalisuse huvides lülita sisse registreerimislukk, mis nõuab sinu telefoninumbri Signalisse uuesti registreerimiseks Signali PIN-koodi .";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Sisestamisindikaatorid";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Näe ja näita sõnumite sisestamist. See säte on valikuline ja rakendub kõigile vestlustele.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Kaetud saatja";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Kuvamise indikaatorid";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Näita olekuikooni, kui valid \"Rohkem teavet\" sõnumitel, mis saadeti, kasutades kaetud saatjat.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Luba kõigilt";
@@ -4703,7 +4739,7 @@
 "SETTINGS_VERSION" = "Versioon";
 
 /* Label for the 'who can' privacy settings. */
-"SETTINGS_WHO_CAN" = "Kes saab...";
+"SETTINGS_WHO_CAN" = "Kes saab…";
 
 /* action sheet item to open native mail app */
 "SHARE_ACTION_MAIL" = "E-post";
@@ -4847,7 +4883,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Räägi meile oma probleemist: ";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Palun saada kasutajatoesoov aadressile support@signal.org";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Palun saada kasutajatoetaotlus aadressile support@signal.org";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Filter: %@";
@@ -4874,7 +4910,7 @@
 "SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Signali versioon: %@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Signali IOS versiooni kasutajatoesoov";
+"SUPPORT_EMAIL_SUBJECT" = "Signali IOS kasutajatoetaotlus";
 
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "Kuidas sa end tunned? (valikuline)";
@@ -5089,9 +5125,6 @@
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "Kasutajanimed on Signalis vabatahtlikud. Kui otsustad endale Signalis kasutajanime luua, siis saavad teised Signali kasutajad leida sind kasutajanime järgi ja võtta ühendust sinu telefoninumbrit teadmata.";
 
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Kasutajanimi";
-
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Kasutajanimed võivad sisaldada a-z, 0-9 ja _";
 
@@ -5156,7 +5189,7 @@
 "VIDEO_CALL_LABEL" = "Videokõne";
 
 /* Toast alert text shown when tapping on a view-once message that has already been viewed. */
-"VIEW_ONCE_ALREADY_VIEWED_TOAST" = "Sa juba vaatasid seda sõnumit.";
+"VIEW_ONCE_ALREADY_VIEWED_TOAST" = "Sa vaatasid juba seda sõnumit.";
 
 /* Tooltip highlighting the view once messages button. */
 "VIEW_ONCE_MESSAGES_TOOLTIP" = "Koputa siia, et muuta see sõnum haihtuvaks pärast selle vaatamist.";

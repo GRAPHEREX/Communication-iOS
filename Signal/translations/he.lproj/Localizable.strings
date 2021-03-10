@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "לא עכשיו";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "אודות Signal";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "אשר מספר ביטחון חדש";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "איש קשר";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "איש קשר עבור %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "מדיה";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "הודעה";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "את/ה";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "מדבקה";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "הודעה קולית";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "הודעה קולית %@ שניות";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "שיחת Signal";
@@ -838,9 +847,6 @@
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "חסום משתמש";
 
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "פרטי איש קשר";
-
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "צבע התכתבות";
 
@@ -965,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "שינויים בלתי שמורים";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "הצג את כל חברי הקבוצה";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "See All";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "משתמש זה נמצא באנשי הקשר שלך.";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "הוסף אל אנשי קשר";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ שלח/ה:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "את/ה שלחת:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "מחק הכל";
@@ -1082,10 +1094,10 @@
 "DEREGISTRATION_WARNING" = "מכשיר אינו רשום יותר. מספר הטלפון שלך יכול להירשם עם Signal על מכשיר שונה. הקש כדי לרשום מחדש.";
 
 /* {{Short Date}} when device last communicated with Signal Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "פעיל בפעם האחרונה: %@";
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "פעיל בפעם האחרונה %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "קושר: %@";
+"DEVICE_LINKED_AT_LABEL" = "קושר %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "שגיאה בטעינת רשימת מכשירים";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "שתף באמצעות Signal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "כל אחד עם קישור זה יכול להצטרף אל הקבוצה, או לשלוח בקשה להצטרף. שתף אותו עם אנשים שאתה בוטח בהם.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "כל אחד עם קישור זה יכול לראות את שם הקבוצה ואת חברי הקבוצה ולבקש להצטרף. שתף אותו עם אנשים שאתה בוטח בהם.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "קישור קבוצה";
@@ -1975,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "שיחת וידאו";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "אל %@ חברי קבוצה יש שמות דומים.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "הקש כדי לסקור";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "חבר קבוצה";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "סקור חברי קבוצה";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "אל %@ חברי קבוצה יש שמות דומים, סקור את חברי הקבוצה למטה או בחר לנקוט בפעולה.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "אל %@ חברי קבוצה יש אותו שם, סקור את חברי הקבוצה או בחר לנקוט בפעולה.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "אל %@ חברי קבוצה יש אותו שם.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "שם קבוצה (דרוש)";
 
@@ -2067,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ אישר/ה בקשה להצטרף אל הקבוצה מאת %1$@.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "בקשה להצטרף אל הקבוצה מאת %@ אושרה.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ ביטל/ה את בקשתו/בקשתה להצטרף אל הקבוצה.";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "סרוק את קוד ה־QR המוצג על המכשיר שאתה רוצה לקשר.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "סרוק קוד QR";
+"LINK_NEW_DEVICE_SUBTITLE" = "סרוק קוד QR כדי לקשר מכשיר חדש.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "קשר מכשיר חדש";
@@ -2647,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "בחר מיקום";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "רישום יומן";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Debug logs can help Signal fix issues and crashes.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "הודעה";
@@ -2971,6 +3004,9 @@
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "מושתק";
 
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "שינה/שינתה לאחרונה את שם הפרופיל מן %1$@ אל %2$@.";
+
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "דלג";
 
@@ -3052,6 +3088,9 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "אין קבוצות במשותף";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "אין קבוצות אחרות במשותף.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "בחר איש קשר או קבוצה כדי להתחיל שיחה.";
 
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "נגן בזמן שהיישום פתוח";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "צלילים";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "הוסף צליל מותאם אישית…";
@@ -3185,13 +3221,13 @@
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "קישור iPhone שלך אינו מומלץ ויגביל תפקודיות ליבה.";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "אפשר הרשאות";
+"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "התר הרשאות";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "התראות מאפשרות לך לראות מתי הודעות מגיעות ולקבל עדכונים לגבי פעילות חדשה של התכתבות.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "התרה של התראות ואנשי קשר מאפשרת לך לראות מתי הודעות מגיעות ועוזרת לך למצוא אנשים שאתה מכיר. אנשי קשר מוצפנים כך ששירות Signal אינו יכול לראות אותם.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "קבל את ההודעה";
+"ONBOARDING_PERMISSIONS_TITLE" = "התר הרשאות";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "בחר מי יכול למצוא אותך ב־Signal עם המספר שלך %@";
@@ -3199,11 +3235,17 @@
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "מי יכול למצוא אותך עם המספר שלך?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "מספר הטלפון שלך";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "אנא המתן מספר דקות לפני שתנסה שוב. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "הכנס את מספר הטלפון שלך כדי להתחיל";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "הכנס את מספר הטלפון שלך";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "מספר בלתי תקף";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "מספר בלתי תקף של טלפון. אנא הכנס מספר תקף של טלפון כדי להירשם.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "ניחושי PIN אזלו לך, אבל אתה עדין יכול להשיג גישה אל חשבון Signal שלך ע״י יצירת PIN חדש. למען פרטיותך ואבטחתך, חשבונך ישוחזר בלי מידע פרופיל שמור כלשהו או הגדרות שמורות כלשהן.";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "הכנס את ה־PIN שלך";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "הפרופיל שלך";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "שם משפחה (רשותי)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "שם פרטי (דרוש)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "תנאים ומדיניות פרטיות";
 
@@ -3238,44 +3289,35 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "מספר שגוי?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "לא קיבלתי קוד (זמין עוד %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "חייג אלי";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "צור קשר עם תמיכת Signal";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "חייג אליי עוד %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "מוודא קוד…";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "קוד זה אינו נכון";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "לא קיבלתי קוד";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "שלח מחדש קוד";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "אנא וודא שיש לך שירות סלולרי ושאתה יכול לקבל מסרונים.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "אין קוד?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "שלח מחדש קוד";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "חייג אליי במקום";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "עדין אין קוד?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "שלח מחדש קוד עוד %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "הכנס את הקוד ששלחנו אל %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "שלחנו מחדש קוד הרגע אל %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "קוד וידוא";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "הגדרות";
 
 /* Info Message when another user disabled disappearing messages. Embeds {{name of other user}}. */
-"OTHER_DISABLED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ השבית הודעות נעלמות.";
+"OTHER_DISABLED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ השבית/ה הודעות נעלמות.";
 
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ הגדיר את זמן ההודעות הנעלמות אל %@.";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ שינה/שינתה את שם הפרופיל שלו/שלה אל %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "הוסף לפרופיל";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "שמך";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "אודות";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "שם";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "שם משתמש";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "קבע תמונת פרופיל";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "אודות";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "הסר תמונה";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "צור שם משתמש";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "שם המשפחה שלך ארוך מדי.";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "השם הפרטי שלך ארוך מדי.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(רשותי)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "שם משפחה";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "שם משפחה (רשותי)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(דרוש)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "שם פרטי";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "שם פרטי (דרוש)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "פרופיל יכול להתעדכן רק בעת חיבור אל האינטרנט.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "הפרופיל שלך מוצפן מקצה־אל־קצה. הפרופיל שלך ושינויים שלו יהיו גלויים אל אנשי הקשר שלך, כאשר תיזום או תאשר התכתבויות חדשות, וכאשר תצטרף אל קבוצות חדשות.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "הפרופיל שלך מוצפן מקצה־אל־קצה. הפרופיל שלך ושינויים שלו יהיו גלויים אל אנשי הקשר שלך וכאשר תתחיל או תאשר התכתבויות חדשות.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "שמור";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "פרופיל";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "שם משתמש";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "סמן כנקרא";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "נרשם מחדש בהצלחה עבור התראות דחיפה.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "התראות דחיפה";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "אנחנו לא יכולים להפעיל את החשבון שלך עד שלא תוודא את הקוד ששלחנו אליך.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "כדי להמשיך, בדוק את חיבור האינטרנט של הטלפון שלך ונסה שוב.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "בדוק חיבור";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "תסדיר זה של מספר הטלפון אינו נתמך. אנא צור קשר עם התמיכה.";
 
@@ -3937,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "אין מספר טלפון";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "קוד וידוא יישלח אל מספר זה. האם מספר הטלפון שלך למעלה נכון?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "אישור מספר: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "ערוך";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "מוודא את %@…";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "דחה";
 
@@ -3947,7 +3998,7 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "בחר מנהלן חדש";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "הירשם מחדש עבור התראות דחיפה";
+"REREGISTER_FOR_PUSH" = "הירשם מחדש אל התראות דחיפה";
 
 /* Body for research megaphone */
 "RESEARCH_MEGAPHONE_BODY" = "כדי להפוך את Signal ליישום ההתכתבות הטוב ביותר ביקום, נשמח לשמוע את המשוב שלך.";
@@ -4300,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "הגדר טפט";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "אודות";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "חשבון";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "חסום";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "עקיפת צנזורה";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "מיקום: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "מיקום";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "אם מאופשר, Signal ינסה לעקוף צנזורה. אל תאפשר מאפיין זה אלא אם אתה במיקום שבו Signal מצונזר.";
@@ -4319,16 +4370,13 @@
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_AUTO_ENABLED" = "עקיפת צנזורה הופעלה על סמך מספר הטלפון של החשבון שלך.";
 
 /* Table footer for the 'censorship circumvention' section shown when censorship circumvention has been manually disabled. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_MANUALLY_DISABLED" = "הִשְׁבַּת באופן ידני עקיפת צנזורה.";
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_MANUALLY_DISABLED" = "הִשְׁבַּתָּ באופן ידני עקיפת צנזורה.";
 
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "עקיפת צנזורה יכולה להיפעל בעת התחברות אל האינטרנט.";
 
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "עקיפת צנזורה אינה הכרחית; אתה מחובר כבר אל שירות Signal.";
-
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "עקיפת צנזורה";
 
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "אפשר יומן ניפוי תקלים";
@@ -4345,20 +4393,14 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "אפשר PIN";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "PIN של Signal";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "הגש יומן ניפוי תקלים";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "מתקדם";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "יומני שגיאות";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "הצג תמונות אנשי קשר של המערכת אם זמינות";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "הצג תמונות אנשי קשר של המערכת אם זמינות.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
 "SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "השתמש בתמונות אנשי קשר של המערכת";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "הוסף משתמש חסום";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "רשימה של אנשי קשר וקבוצות שחסמת.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "אין לך אנשי קשר ב־Signal.";
 
@@ -4441,11 +4480,14 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "שדר מחדש את כל השיחות דרך שרת Signal כדי למנוע את חשיפת כתובת ה־IP שלך אל אנשי הקשר שלך. אפשור יפחית איכות שיחות.";
 
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "התכתבויות";
+
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "נקה היסטורית התכתבויות";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "זכויות יוצרים Signal Messenger \n ברישיון תחת GPLv3";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "זכויות יוצרים Signal Messenger\nברישיון תחת GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "שימוש בנתונים";
@@ -4454,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "השתמש בפחות נתונים";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "שימוש בפחות נתונים עשוי לשפר שיחות על רשתות גרועות";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "שימוש בפחות נתונים עשוי לשפר שיחות על רשתות גרועות.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "שיחות";
@@ -4463,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "הודעות קוליות, מדיה לצפייה חד־פעמית, ומדבקות (מתחת אל 100 ק״ב) תמיד מורדות באופן אוטומטי.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "הורדה אוטומטית של מדיה";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "הורדה אוטומטית";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "אפס הגדרות הורדה אוטומטית";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "עזרה";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "ניקוי היסטורית התכתבויות";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "מידע";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "הזמן את חבריך";
 
@@ -4507,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "טפט התכתבות";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "תנאים ומדיניות פרטיות";
 
 /* Setting for enabling & disabling link previews. */
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "תכתובת";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "ראה ושתף מתי הודעות נקראות ומוקלדות. אם מושבת, לא תראה אישורי קריאה או מחווני הקלדה מאחרים.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "הגדרות";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "ספור התכתבויות מושתקות";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "כלול התכתבויות מושתקות";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "ספירת גשרים";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "התראות של שיחות והודעות יכולות להופיע בזמן שהטלפון שלך נעול. אתה יכול להגביל מה ייראה בהתראות אלו.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "התראות של שיחה והודעה יכולות להופיע בזמן שהטלפון שלך נעול.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "תוכן התראה";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "איש קשר הצטרף אל Signal";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "איש קשר מצטרף אל Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "אירועים";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "יידע כאשר…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "התראות";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "אשר את ה־PIN של Signal שלך";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "תזכורות עוזרות לך לזכור את ה־PIN שלך מאחר שהוא בלתי ניתן להשבה. תישאל לגביו לעיתים פחות תכופות עם הזמן.";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "תזכורות PIN";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "קודי PIN שומרים על מידע שמאוחסן עם Signal באופן מוצפן כך שרק אתה תוכל להשיג גישה אליו. הפרופיל, ההגדרות ואנשי הקשר שלך ישוחזרו כשתתקין מחדש את Signal.";
+"SETTINGS_PINS_FOOTER" = "קודי PIN שומרים על מידע שמאוחסן ב־Signal מוצפן כך שרק אתה תוכל להשיג גישה אליו. קוד ה־PIN שלך בלתי ניתן להשבה. הפרופיל, ההגדרות ואנשי הקשר שלך ישוחזרו כשתתקין מחדש את Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "שנה את ה־PIN שלך";
@@ -4601,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "צור PIN";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "PIN של SIGNAL";
+"SETTINGS_PINS_TITLE" = "PIN של Signal";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "הראה שיחות ברשימה \"שיחות אחרונות\" ביישום טלפון של iOS.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "מתקדם";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "הראה שיחות בשיחות אחרונות";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "פרטיות";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "אישורי קריאה";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "ראה ושתף מתי הודעות נקראו. הגדרה זו רשותית וחלה על כל ההתכתבויות.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "כבה";
@@ -4642,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "פסק זמן לנעילת מסך";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "בטל נעילה של מסך Signal ע״י שימוש ב־Touch ID, Face ID או קוד גישה של מכשיר iOS שלך. אתה עדין יכול לענות לשיחות נכנסות ולקבל התראות של שיחה והודעה בזמן שנעילת מסך מאופשרת. הגדרות התראה של Signal מתירות לך להתאים אישית את המידע שמוצג.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "נעילת מסך";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "נעילת מסך";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "אפשר אבטחת מסך";
+"SETTINGS_SCREEN_SECURITY" = "הסתר את היישום במחליף היישומים";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "מנע מן תצוגות מקדימות של Signal להופיע במחליף היישומים.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "צלילים";
@@ -4663,11 +4693,23 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "התקשרות";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "השתמש ב־Face ID ,Touch ID או בסיסמת מכשיר iOS שלך כדי לבטל נעילה של Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "אבטחת מסך";
+"SETTINGS_SECURITY_TITLE" = "אבטחת יישום";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "הראה בהצעות";
+"SETTINGS_SHARING_SUGGESTIONS" = "הראה התכתבויות בהצעות";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
 "SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "התכתבויות של Signal מוצגות כהצעות בעת שיתוף מיישומים אחרים.";
@@ -4676,22 +4718,16 @@
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "נעילת הרשמה";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "למען אבטחה יתרה, הפעל נעילת הרשמה, אשר תדרוש את ה־PIN של Signal שלך כדי להירשם שוב עם מספר הטלפון שלך ב־Signal.";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "דרוש את ה־PIN של Signal שלך כדי להירשם שוב עם מספר הטלפון שלך אל Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "מחווני הקלדה";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "ראה ושתף מתי הודעות מוקלדות. הגדרה זו רשותית וחלה על כל ההתכתבויות.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "שולח אטום";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "הצג מחוונים";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "הראה איקון מעמד כאשר אתה בוחר \"עוד מידע\" בהודעות שנמסרו ע״י שימוש בשולח אטום.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "התר מכל אחד";
@@ -5089,9 +5125,6 @@
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "שמות משתמש ב־Signal הם רשותיים. אם אתה בוחר ליצור שם משתמש, משתמשי Signal אחרים יוכלו למצוא אותך לפי שם משתמש זה וליצור איתך קשר בלי לדעת את מספר הטלפון שלך.";
 
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "שם משתמש";
-
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "שמות משתמש יכולים להכיל רק a-z, 0-9 והתו _";
 
@@ -5240,7 +5273,7 @@
 "YOU_DELETED_THIS_MESSAGE" = "מחקת הודעה זו.";
 
 /* Info Message when you disabled disappearing messages. */
-"YOU_DISABLED_DISAPPEARING_MESSAGES_CONFIGURATION" = "הִשְׁבַּת הודעות נעלמות.";
+"YOU_DISABLED_DISAPPEARING_MESSAGES_CONFIGURATION" = "הִשְׁבַּתָּ הודעות נעלמות.";
 
 /* alert body shown when trying to use features in the app before completing registration-related setup. */
 "YOU_MUST_COMPLETE_ONBOARDING_BEFORE_PROCEEDING" = "אתה חייב להשלים הכנה לפני שתמשיך.";

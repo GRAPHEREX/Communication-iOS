@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Non ora";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "Informazioni su Signal";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Accetta nuovo numero sicuro";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Contatto";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Contatto per %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Media";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Messaggio";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Tu";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Adesivo";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Messaggio vocale";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Messaggio vocale %@ secondi";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "Chiamata Signal";
@@ -838,9 +847,6 @@
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Blocca utente";
 
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Info contatto";
-
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Colore chat";
 
@@ -965,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Modifiche non salvate";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Visualizza tutti i membri";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Vedi tutti";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Questo utente è nei tuoi contatti";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Aggiungi ai contatti";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ ha inviato:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Hai inviato:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Elimina tutto";
@@ -1082,10 +1094,10 @@
 "DEREGISTRATION_WARNING" = "Dispositivo non più registrato. Il tuo numero di telefono potrebbe essere registrato con Signal su un altro dispositivo. Fai clic per registrare di nuovo.";
 
 /* {{Short Date}} when device last communicated with Signal Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Ultima attività: %@";
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Ultima attività %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Associato il: %@";
+"DEVICE_LINKED_AT_LABEL" = "Associato il %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Impossibile aggiornare la lista dei dispositivi.";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Condividi tramite Signal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Chiunque con questo link può unirsi al gruppo o inviare una richiesta per farlo. Condividilo con persone di cui ti fidi.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Chiunque con questo link può vedere il nome e i membri del gruppo e inviare una richiesta di unirsi.  Condividilo con persone di cui ti fidi.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Link del gruppo";
@@ -1975,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Videochiamata";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ membri del gruppo hanno nomi simili.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Tocca per controllare";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Membro";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Controlla membri";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ membri del gruppo hanno nomi simili, controlla i membri di seguito e scegli di agire.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ membri del gruppo hanno lo stesso nome, controlla i membri di seguito e scegli di agire.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ membri del gruppo hanno lo stesso nome.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Nome del gruppo (obbligatorio)";
 
@@ -2067,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ ha approvato una richiesta di unirsi al gruppo da %1$@.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "Una richiesta di unirsi al gruppo da %@ è stata approvata.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ ha annullato la sua richiesta di unirsi al gruppo.";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Scansiona il codice QR visualizzato sul dispositivo che vuoi associare.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Scansiona il codice QR";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scansiona il codice QR per associare il nuovo dispositivo.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Associa nuovo dispositivo";
@@ -2647,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Seleziona la posizione";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Registro eventi";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "I log di debug possono aiutare Signal a risolvere errori e crash.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Messaggio";
@@ -2971,6 +3004,9 @@
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Muto";
 
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Ha recentemente cambiato il loro nome profilo da %1$@ a %2$@.";
+
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Salta";
 
@@ -3052,6 +3088,9 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Nessun gruppo in comune";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Nessun altro gruppo in comune.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Per iniziare una chat seleziona un contatto o un gruppo.";
 
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Riproduci mentre l'app è aperta";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Suoni";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Aggiungi suono personalizzato…";
@@ -3185,13 +3221,13 @@
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Associare il tuo iPhone non è consigliato e limiterà le funzionalità di base.";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Attiva le autorizzazioni";
+"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Consenti permessi";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Le notifiche ti consentono di vedere quando arrivano i messaggi e ricevere aggiornamenti su nuove attività delle chat.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Consentire notifiche e contatti ti permette di vedere quando arrivano i messaggi e ti aiuta a trovare le persone che conosci. I contatti sono crittografati in modo che il servizio Signal non possa vederli.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Leggi il messaggio";
+"ONBOARDING_PERMISSIONS_TITLE" = "Consenti permessi";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Scegli chi ti può trovare su Signal con il tuo numero di telefono %@";
@@ -3199,11 +3235,17 @@
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Chi ti può trovare con il tuo numero?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Il tuo numero di telefono";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Attendi qualche minuto prima di riprovare. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Inserisci il tuo numero di telefono per iniziare";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Inserisci il tuo numero di telefono";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Numero non valido";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Numero di telefono non valido. Inserisci un numero di telefono valido per la registrazione.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Hai esaurito i tentativi del PIN, ma puoi comunque accedere al tuo account Signal creando un nuovo PIN. Per la tua privacy e sicurezza il tuo account verrà ripristinato senza alcuna informazione o impostazione del profilo salvata.";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Inserisci il tuo PIN";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Il tuo profilo";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Cognome (facoltativo)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Nome (obbligatorio)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Politica e termini sulla privacy";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Numero errato?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Non ho ricevuto un codice (disponibile in %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Chiamami";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Contatta l'assistenza Signal";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Chiamami tra %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Conferma codice...";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Questo codice è sbagliato";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Non ho ricevuto un codice";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Rinvia codice";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Assicurati di avere un servizio cellulare attivo e che tu possa ricevere messaggi SMS.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Nessun codice?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Rinvia codice";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Preferisco una chiamata";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Ancora nessun codice?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Rinvia codice tra %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Inserisci il codice che abbiamo inviato a %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Abbiamo inviato nuovamente un codice a %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Codice di verifica";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Impostazioni";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ ha cambiato il suo nome profilo in %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Aggiungi al profilo";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Il tuo nome";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Info";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Nome";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Nome utente";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Imposta foto profilo";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Info";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Rimuovi foto";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Crea nome utente";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Il tuo cognome è troppo lungo.";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Il tuo nome è troppo lungo.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Facoltativo)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Cognome";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Cognome (facoltativo)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Obbligatorio)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Nome";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Nome (obbligatorio)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Il profilo può essere aggiornato solo quando si è collegati a Internet.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Il tuo profilo è crittografato end-to-end. Il tuo profilo e le modifiche saranno visibili ai tuoi contatti quando inizi o accetti nuove chat e quando ti unisci a nuovi gruppi.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Il tuo profilo è crittografato end-to-end. Il tuo profilo e le modifiche saranno visibili ai tuoi contatti quando inizi o accetti nuove chat.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Salva";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profilo";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Nome utente";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Segna come letto";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Ri-registrazione delle notifiche push avvenuta con successo.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Notifiche push";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Non possiamo attivare il tuo account fintanto che non verificherai il codice che ti abbiamo inviato.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Per continuare, controlla la connessione a Internet del tuo telefono e riprova.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Controlla connessione";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Il formato di questo numero non è supportato, si prega di contattare l'assistenza.";
 
@@ -3936,6 +3975,18 @@
 
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Nessun numero";
+
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Un codice di verifica verrà inviato a questo numero. Il tuo numero di telefono sopra è corretto?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Conferma numero: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Modifica";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Verifica %@...";
 
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Rifiuta";
@@ -4292,16 +4343,16 @@
 "SESSION_REFRESH_ALERT_TITLE" = "Sessione di chat aggiornata";
 
 /* Title for the wallpaper choose from photos option */
-"SET_WALLPAPER_CHOOSE_PHOTO" = "Scegli da Foto";
+"SET_WALLPAPER_CHOOSE_PHOTO" = "Scegli dalle foto";
 
 /* Title for the wallpaper presets section */
-"SET_WALLPAPER_PRESETS" = "Reimposta";
+"SET_WALLPAPER_PRESETS" = "Predefiniti";
 
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Imposta sfondo";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "Dettagli";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Account";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Blocca";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Raggiro della censura";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Posizione: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Posizione";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Se attivo, Signal cercherà di raggirare la censura. Non attivare questa funzione se non ti trovi in un luogo dove Signal è soggetto a censura.";
@@ -4327,9 +4378,6 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Il raggiro della censura non è necessario; sei già connesso al servizio Signal.";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Raggiro della censura";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Abilita il log di debug";
 
@@ -4345,20 +4393,14 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Abilita PIN";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "PIN di Signal";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Invia il log di debug";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Avanzate";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Log di errore";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Mostra le foto dei contatti di sistema se disponibili";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Mostra le foto dei contatti di sistema se disponibili.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
 "SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Usa le foto dei contatti di sistema";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Aggiungi utente bloccato";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Lista di contatti e gruppi che hai bloccato.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Non hai contatti su Signal.";
 
@@ -4441,11 +4480,14 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Inoltra tutte le chiamate tramite il server Signal per evitare di rivelare il tuo indirizzo IP al tuo contatto. L'attivazione riduce la qualità delle chiamate.";
 
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Chat";
+
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Cancella la cronologia delle chat";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger \n Licenza secondo direttive GPLv3";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nDistribuito con licenza GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Utilizzo dati";
@@ -4454,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Utilizza meno dati";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "L'utilizzo di meno dati può migliorare le chiamate su reti lente";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "L'utilizzo di meno dati può migliorare le chiamate su reti lente.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Chiamate";
@@ -4463,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "I messaggi vocali, i media visualizzabili una volta e gli adesivi (sotto i 100kb) vengono sempre scaricati automaticamente.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Download automatico media";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Download automatico";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Ripristina le impostazioni di download automatico";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Aiuto";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Cancella la cronologia delle chat";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Informazioni";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Invita i tuoi amici";
 
@@ -4507,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Sfondo chat";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Politica e termini sulla privacy";
 
 /* Setting for enabling & disabling link previews. */
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Messaggistica";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "Vedi e condividi quando i messaggi vengono letti e digitati. Se disabilitato, non vedrai le conferme di lettura o gli indicatori di scrittura degli altri.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Impostazioni";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Conta chat silenziate";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Includi chat silenziate";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Conteggio badge";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Notifiche di chiamate e messaggi possono apparire con il \"Blocco Schermo\". Potresti voler limitare cosa mostrare in queste notifiche.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Notifiche di chiamate e messaggi possono apparire mentre il tuo telefono è bloccato.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Contenuto notifica";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Il contatto si è iscritto a Signal";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Un contatto si unisce a Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Eventi";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notificami quando…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Notifiche";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Conferma il tuo PIN di Signal";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "I promemoria ti aiutano a ricordare il tuo PIN poiché non può essere recuperato. Ti verrà chiesto meno frequentemente nel corso del tempo.";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "Promemoria del PIN";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "I PIN mantengono crittografate le informazioni memorizzate con Signal in modo che solo tu possa accedervi. Il profilo, le impostazioni e i contatti verranno ripristinati quando reinstalli Signal.";
+"SETTINGS_PINS_FOOTER" = "I PIN mantengono crittografate le informazioni memorizzate con Signal in modo che solo tu possa accedervi. Il tuo PIN non può essere recuperato. Il tuo profilo, le impostazioni e i contatti verranno ripristinati quando reinstalli Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Cambia il tuo PIN";
@@ -4603,20 +4639,20 @@
 /* Title for the 'PINs' section of the privacy settings. */
 "SETTINGS_PINS_TITLE" = "PIN di Signal";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Mostra le chiamate nella lista dei “Recenti” dell'app Telefono di iOS.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Impostazioni del raggiro della censura, inoltro chiamate e mittente sigillato.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Avanzate";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Mostra chiamate nei recenti";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Privacy";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Ricevute di lettura";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Vedere e condividere quando i messaggi vengono letti. Questa impostazione è opzionale e viene applicata a tutte le chat.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Disattiva";
@@ -4642,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Timeout blocco schermo";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Sblocca Signal utilizzando il Touch ID, il Face ID o il codice di accesso del tuo dispositivo iOS. Puoi comunque rispondere alle chiamate in arrivo e ricevere notifiche di chiamate e messaggi mentre il blocco schermo è abilitato. Le impostazioni delle notifiche di Signal ti permettono di personalizzare le informazioni visualizzate.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Blocco schermo";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Blocco schermo";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Attiva sicurezza schermo";
+"SETTINGS_SCREEN_SECURITY" = "Nascondi schermata nell'elenco applicazioni";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Evita di mostrare l'anteprima di Signal nel passaggio tra app.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Mostra le chiamate nella lista dei “Recenti” dell'app Telefono di iOS.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Suoni";
@@ -4663,11 +4693,23 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Chiamate";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Utilizza Touch ID, Face ID o il codice di accesso del tuo dispositivo iOS per sbloccare Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Usa Face ID per sbloccare Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Usa il codice di accesso del tuo dispositivo per sbloccare Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Usa Touch ID per sbloccare Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Sicurezza schermo";
+"SETTINGS_SECURITY_TITLE" = "Sicurezza app";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Mostra nei suggerimenti";
+"SETTINGS_SHARING_SUGGESTIONS" = "Mostra chat nei suggerimenti";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
 "SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Le chat di Signal vengono visualizzate come suggerimenti durante la condivisione da altre app.";
@@ -4676,22 +4718,16 @@
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Blocco registrazione";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Per maggiore sicurezza, attiva il blocco registrazione, che richiederà il PIN di Signal per registrare nuovamente il tuo numero di telefono con Signal.";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Richiedi il tuo PIN di Signal per registrare nuovamente il tuo numero di telefono con Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Indicatori di scrittura";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Vedere e condividere quando i messaggi vengono digitati. Questa impostazione è opzionale e viene applicata a tutte le chat.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Mittente sigillato";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Mostra indicatori";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Mostra un'icona di stato quando selezioni “Ulteriori informazioni” sui messaggi che sono stati consegnati usando il mittente sigillato.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Mostra icona di stato";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Abilita da chiunque";
@@ -4703,7 +4739,7 @@
 "SETTINGS_VERSION" = "Versione";
 
 /* Label for the 'who can' privacy settings. */
-"SETTINGS_WHO_CAN" = "Chi può...";
+"SETTINGS_WHO_CAN" = "Chi può…";
 
 /* action sheet item to open native mail app */
 "SHARE_ACTION_MAIL" = "Mail";
@@ -5089,9 +5125,6 @@
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "I nomi utente su Signal sono facoltativi. Se scegli di creare un nome utente, gli altri utilizzatori di Signal potranno trovarti con questo nome utente e contattarti senza conoscere il tuo numero di telefono.";
 
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Nome utente";
-
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "I nomi utente possono contenere solo a-z, 0-9, e _";
 
@@ -5183,13 +5216,13 @@
 "WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Nome contatto";
 
 /* Blur button on wallpaper preview. */
-"WALLPAPER_PREVIEW_BLUR_BUTTON" = "Foto sfocata";
+"WALLPAPER_PREVIEW_BLUR_BUTTON" = "Sfocatura foto";
 
 /* The incoming bubble text when setting a photo */
 "WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "Pizzica per ingrandire, trascina per regolare.";
 
 /* The incoming bubble text when setting a preset */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Scorri per vedere altri sfondi";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Scorri per vedere l'anteprima di altri sfondi.";
 
 /* The outgoing bubble text when setting a wallpaper for all chats. */
 "WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "Imposta sfondo per tutte le chat.";
@@ -5219,16 +5252,16 @@
 "WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "Lo sfondo non può essere rimosso, riprova ancora oppure contatta il supporto se l'errore persiste. ";
 
 /* An error indicating to the user that we failed to reset all wallpapers. */
-"WALLPAPER_SETTINGS_FAILED_TO_RESET" = "Gli sfondi non possono essere rimossi, riprova ancora oppure contatta il supporto se l'errore persiste. ";
+"WALLPAPER_SETTINGS_FAILED_TO_RESET" = "Tutti gli sfondi non possono essere resettati, riprova ancora oppure contatta il supporto se l'errore persiste. ";
 
 /* Title for the wallpaper settings preview section. */
 "WALLPAPER_SETTINGS_PREVIEW" = "Anteprima";
 
 /* Reset all wallpapers action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_RESET_ALL" = "Reimposta tutti gli sfondi";
+"WALLPAPER_SETTINGS_RESET_ALL" = "Resetta tutti gli sfondi";
 
 /* Confirmation dialog when resetting all wallpapers. */
-"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "Reimposta tutti gli sfondi, inclusi quelli personalizzati che hai scelto per le tue chat?";
+"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "Resettare tutti gli sfondi, inclusi quelli personalizzati che hai scelto per le tue chat?";
 
 /* Set wallpaper action in wallpaper settings view. */
 "WALLPAPER_SETTINGS_SET_WALLPAPER" = "Imposta sfondo";

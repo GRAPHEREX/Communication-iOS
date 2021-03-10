@@ -25,7 +25,7 @@ public class NewGroupConfirmViewController: OWSViewController {
         return helper.nameTextField
     }
 
-    private let recipientTableView = OWSTableViewController()
+    private let recipientTableView = OWSTableViewController2()
 
     required init(newGroupState: NewGroupState) {
         self.newGroupState = newGroupState
@@ -43,6 +43,18 @@ public class NewGroupConfirmViewController: OWSViewController {
 
     // MARK: - View Lifecycle
 
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        recipientTableView.applyTheme(to: self)
+    }
+
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        recipientTableView.removeTheme(from: self)
+    }
+
     @objc
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +62,10 @@ public class NewGroupConfirmViewController: OWSViewController {
         title = NSLocalizedString("NEW_GROUP_NAME_GROUP_VIEW_TITLE",
                                   comment: "The title for the 'name new group' view.")
 
-        view.backgroundColor = Theme.backgroundColor
+        addChild(recipientTableView)
+        view.addSubview(recipientTableView.view)
+
+        view.backgroundColor = recipientTableView.tableBackgroundColor
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("NEW_GROUP_CREATE_BUTTON",
                                                                                      comment: "The title for the 'create group' button."),
@@ -72,19 +87,27 @@ public class NewGroupConfirmViewController: OWSViewController {
         ])
         firstSection.axis = .horizontal
         firstSection.alignment = .center
-        firstSection.spacing = 12
+        firstSection.spacing = kContactCellAvatarTextMargin
         firstSection.isLayoutMarginsRelativeArrangement = true
+        firstSection.layoutMargins = UIEdgeInsets(
+            hMargin: OWSTableViewController2.cellHInnerMargin,
+            vMargin: OWSTableViewController2.cellVInnerMargin
+        )
         firstSection.preservesSuperviewLayoutMargins = true
+        firstSection.addBackgroundView(
+            withBackgroundColor: recipientTableView.cellBackgroundColor,
+            cornerRadius: OWSTableViewController2.cellRounding
+        )
         view.addSubview(firstSection)
-        firstSection.autoPinWidthToSuperview()
-        firstSection.autoPin(toTopLayoutGuideOf: self, withInset: 8)
+        firstSection.autoPinWidthToSuperview(withMargin: OWSTableViewController2.cellHOuterMargin)
+        firstSection.autoPin(toTopLayoutGuideOf: self, withInset: 20)
 
         var lastSection: UIView = firstSection
 
         let membersDoNotSupportGroupsV2 = self.membersDoNotSupportGroupsV2
         if membersDoNotSupportGroupsV2.count > 0 {
             let legacyGroupSection = UIView()
-            legacyGroupSection.backgroundColor = Theme.secondaryBackgroundColor
+            legacyGroupSection.backgroundColor = recipientTableView.tableBackgroundColor
             legacyGroupSection.preservesSuperviewLayoutMargins = true
             view.addSubview(legacyGroupSection)
             legacyGroupSection.autoPinWidthToSuperview()
@@ -117,7 +140,7 @@ public class NewGroupConfirmViewController: OWSViewController {
             }
             let attributedString = NSMutableAttributedString(string: legacyGroupText)
             attributedString.setAttributes([
-                .foregroundColor: Theme.accentBlueColor
+                .foregroundColor: Theme.primaryTextColor
                 ],
                                            forSubstring: learnMoreText)
 
@@ -135,14 +158,12 @@ public class NewGroupConfirmViewController: OWSViewController {
                                                                            action: #selector(didTapLegacyGroupView)))
         }
 
-        recipientTableView.customSectionHeaderFooterBackgroundColor = Theme.backgroundColor
-        addChild(recipientTableView)
-        view.addSubview(recipientTableView.view)
-
         recipientTableView.view.autoPinEdge(toSuperviewSafeArea: .leading)
         recipientTableView.view.autoPinEdge(toSuperviewSafeArea: .trailing)
         recipientTableView.view.autoPinEdge(.top, to: .bottom, of: lastSection)
         autoPinView(toBottomOfViewControllerOrKeyboard: recipientTableView.view, avoidNotch: false)
+
+        recipientTableView.defaultSeparatorInsetLeading = OWSTableViewController2.cellHInnerMargin + CGFloat(kSmallAvatarSize) + kContactCellAvatarTextMargin
 
         updateTableContents()
     }
@@ -428,7 +449,7 @@ class NewLegacyGroupView: UIView {
 
     private let v1Members: [PickedRecipient]
 
-    private let tableViewController = OWSTableViewController()
+    private let tableViewController = OWSTableViewController2()
 
     weak var actionSheetController: ActionSheetController?
 
@@ -443,7 +464,6 @@ class NewLegacyGroupView: UIView {
     }
 
     func present(fromViewController: UIViewController) {
-
         let wrapViewWithHMargins = { (viewToWrap: UIView) -> UIView in
             let stackView = UIStackView(arrangedSubviews: [viewToWrap])
             stackView.axis = .vertical
@@ -522,7 +542,7 @@ class NewLegacyGroupView: UIView {
         stackView.alignment = .fill
         stackView.layoutMargins = UIEdgeInsets(top: 20, leading: 0, bottom: 38, trailing: 0)
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.addBackgroundView(withBackgroundColor: Theme.backgroundColor)
+        stackView.addBackgroundView(withBackgroundColor: tableViewController.tableBackgroundColor)
 
         layoutMargins = .zero
         addSubview(stackView)

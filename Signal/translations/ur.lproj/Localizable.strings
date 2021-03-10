@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "ابھی نہیں";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "About Signal";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "نیا حفاظتی نمبر قبول کریں";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "رابطہ";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "%@ کے لئے رابطہ کریں";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "میڈیا";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "پیغام";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "آپ";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "اسٹیکر";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "آڈیو پیغام";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "آڈیو پیغام %@ سیکنڈ";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "Signal  کال";
@@ -806,7 +815,7 @@
 "CONVERSATION_SETTINGS" = "چیٹ کی ترتیبات";
 
 /* Label for 'add members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_ADD_MEMBERS" = "اراکین شامل کریں";
+"CONVERSATION_SETTINGS_ADD_MEMBERS" = "ممبران شامل کریں";
 
 /* Label for 'new contact' button in conversation settings view. */
 "CONVERSATION_SETTINGS_ADD_TO_EXISTING_CONTACT" = "موجودہ رابطے میں شمولیت";
@@ -837,9 +846,6 @@
 
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "بلاک صارف";
-
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "رابطے کی معلومات";
 
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "چیٹ کا رنگ";
@@ -965,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "غیر محفوظ تبدیلیاں";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "تمام ممبروں کو دیکھیں";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "See All";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "یہ صارف آپ کے رابطوں میں ہے";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "رابطوں میں شامل کریں";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ بھیجا:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "آپ نے بھیجا:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "تمام حذف کریں";
@@ -1082,10 +1094,10 @@
 "DEREGISTRATION_WARNING" = "ڈیوئس مزید رجسٹر نہیں ہے۔آپ کا فون نمبر مختلف ڈیوائس پر Signal کے ساتھ رجسٹر ہے۔ دوبارہ رجسٹر کیلئے کلک کریں۔";
 
 /* {{Short Date}} when device last communicated with Signal Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "آخری سرگرمی:%@";
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Last active %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "منسلک:%@";
+"DEVICE_LINKED_AT_LABEL" = "Linked %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "ڈیوائس لِسٹ کی تجدید میں ناکامی";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Signal کے ذریعے شیئر کریں";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = " اس لنک کے ساتھ کوئی بھی گروپ میں شامل ہوسکتا ہے ، یا شامل ہونے کی درخواست بھیج سکتا ہے۔ اس پر اپنے اعتماد والے لوگوں کے ساتھ شیئر کریں.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "اس لنک کے ساتھ کوئی بھی اس گروپ کا نام اور ممبر دیکھ سکتا ہے اور شامل ہونے کی درخواست کرسکتا ہے۔ اس پر اپنے اعتماد والے لوگوں کے ساتھ اشتراک کریں۔";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "گروپ لنک";
@@ -1975,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "ویڈیو کال";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ group members have similar names.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "جائزہ لینے کے لئے ٹیپ کریں";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "اراکین";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "ممبران کا جائزہ لیں";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ group members have similar names, review the members below or choose to take action.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ group members have the same name, review the members below or choose to take action.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ group members have the same name.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "گروپ کا نام (ضروری)";
 
@@ -2067,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ نے %1$@ کی اس گروپ میں شامل ہونے کی درخواست منظور کی۔";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "%@ کی گروپ میں شامل ہونے کی درخواست منظور ہوگئی۔";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ نے گروپ میں شامل ہونے کی ان کی درخواست منسوخ کردی۔";
@@ -2480,7 +2510,7 @@
 "INBOX_VIEW_ARCHIVE_MODE_REMINDER" = "یہ چیٹس آرکائو کی گئی ہیں اور صرف ان باکس میں آئیں گی جب نئے پیغامات موصول ہوں گے۔";
 
 /* Message shown in the conversation list when the inbox is empty. */
-"INBOX_VIEW_EMPTY_INBOX" = "No chats yet.\nGet started by messaging a friend.";
+"INBOX_VIEW_EMPTY_INBOX" = "ابھی چیٹس نہیں ہیں۔\nکسی دوست کو میسج کرکے شروع کریں۔";
 
 /* info message text in conversation view. {embeds callee name} */
 "INCOMING_CALL_FORMAT" = "%@ نے آپ کو فون کیا";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "جو لنک آپ ڈیوائس پر ڈسپلیڈ کر رہے ہیں QR کوڈ سکین کریں۔";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "QR کوڈ سکین کریں";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scan QR Code to link a new device.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "نئی ڈیوائس منسلک کریں";
@@ -2647,14 +2677,17 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "مقام منتخب کریں";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "لاگ ہو رہی ہے";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Debug logs can help Signal fix issues and crashes.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "پیغام";
 
 /* A string describing that the user has many groups in common with another user. Embeds {{common group count}} */
-"MANY_GROUPS_IN_COMMON" = "%@ groups in common";
+"MANY_GROUPS_IN_COMMON" = "مشترکہ طور پر %@ گروپس";
 
 /* nav bar button item */
 "MEDIA_DETAIL_VIEW_ALL_MEDIA_BUTTON" = "تمام میڈیا";
@@ -2672,10 +2705,10 @@
 "MEDIA_GALLERY_DELETE_SINGLE_MESSAGE" = "پیغام حذف کریں";
 
 /* Format for an indicator of the number of image items in a media gallery. Embeds {{ the number of items in the media gallery }}. */
-"MEDIA_GALLERY_ITEM_IMAGE_COUNT_FORMAT" = "%@ Photos";
+"MEDIA_GALLERY_ITEM_IMAGE_COUNT_FORMAT" = "%@ فوٹوز";
 
 /* Format for an indicator of the number of image or video items in a media gallery. Embeds {{ the number of items in the media gallery }}. */
-"MEDIA_GALLERY_ITEM_MIXED_COUNT_FORMAT" = "%@ Items";
+"MEDIA_GALLERY_ITEM_MIXED_COUNT_FORMAT" = "%@ اشیاء";
 
 /* Format for the 'more items' indicator for media galleries. Embeds {{the number of additional items}}. */
 "MEDIA_GALLERY_MORE_ITEMS_FORMAT" = "ۤۤۤۤۤۤۤۤۤ+%@";
@@ -2816,13 +2849,13 @@
 "MESSAGE_REQUEST_LEAVE_AND_DELETE_GROUP_TITLE" = "گروپ کو حذف کریں اور چھوڑیں؟";
 
 /* Banner label notifying user that a new message is from a user with the same name as an existing contact */
-"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Review requests carefully. Signal found another contact with the same name.";
+"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "درخواستوں کا بغور جائزہ لیں۔ Signal نے اسی نام کے ساتھ دوسرا رابطہ پایا۔";
 
 /* A header string above a known contact's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "آپ کا رابطہ";
 
 /* A header string informing the user about name collisions in a message request */
-"MESSAGE_REQUEST_NAME_COLLISON_HEADER" = "If you’re not sure who the request is from, review the contacts below and take action.";
+"MESSAGE_REQUEST_NAME_COLLISON_HEADER" = "اگر آپ کو یقین نہیں ہے کہ درخواست کس کی طرف سے ہے تو ، نیچے دیئے گئے رابطوں کا جائزہ لیں اور کارروائی کریں۔";
 
 /* A header string above the requester's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_REQUESTER_HEADER" = "درخواست ";
@@ -2971,6 +3004,9 @@
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "خاموش";
 
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Recently changed their profile name from %1$@ to %2$@.";
+
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "چھوڑ دو";
 
@@ -2978,16 +3014,16 @@
 "NETWORK_ERROR_RECOVERY" = "براہ کرم اگر آپ آن لائن ہیں تو چیک کریں اور دوبارہ کوشش کریں۔";
 
 /* String representing only the cellular interface */
-"NETWORK_INTERFACE_SET_CELLULAR" = "Cellular Only";
+"NETWORK_INTERFACE_SET_CELLULAR" = "صرف سیلولر";
 
 /* String representing the 'never' condition of having no supported network interfaces */
 "NETWORK_INTERFACE_SET_NEVER" = "کبھی نہیں";
 
 /* String representing only the wifi interface */
-"NETWORK_INTERFACE_SET_WIFI" = "Wi-Fi Only";
+"NETWORK_INTERFACE_SET_WIFI" = "صرف Wi-Fi";
 
 /* String representing both wifi and cellular interfaces */
-"NETWORK_INTERFACE_SET_WIFI_CELLULAR" = "Wi-Fi and Cellular";
+"NETWORK_INTERFACE_SET_WIFI_CELLULAR" = "Wi-Fi اور سیلولر";
 
 /* A label the cell that lets you add a new member to a group. */
 "NEW_CONVERSATION_FIND_BY_PHONE_NUMBER" = "فون نمبر کے ذریعے تلاش کریں";
@@ -3052,6 +3088,9 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "مشترکہ طور پر کوئی گروپ نہیں";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "کوئی دوسرا گروہ مشترکہ نہیں۔";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "گفتگو کی ابتداء کیلئے رابطے یا گروپ کا انتخاب کریں۔";
 
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "جب ایپ اوپن ہو تو پلے کریں";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "آوازیں";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "حسب ضرورت آواز شامل کریں…";
@@ -3185,13 +3221,13 @@
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "آپ کے iPhone کو جوڑنے کی سفارش نہیں کی جاتی ہے اور بنیادی فعالیت کو محدود کردے گی۔";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "اجازت نامہ فعال کریں";
+"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "اجازت کو منظور کریں";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "اطلاعات آپ کو دیکھنے کی اجازت دیتی ہیں جب پیغامات آتے ہیں اور نئی چیٹ سرگرمی کے بارے میں اپڈیٹس وصول کرتے ہیں۔";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "اطلاعات اور رابطوں کی اجازت دینا آپ کو یہ دیکھنے دیتا ہے کہ جب پیغامات آتے ہیں اور آپ کو جانتے لوگوں کو تلاش کرنے میں مدد کرتا ہے۔ رابطے کو خفیہ کردیا گیا ہے تاکہ Signal سروس انہیں نہیں دیکھ سکتی ہے۔";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "میسج حاصل کریں";
+"ONBOARDING_PERMISSIONS_TITLE" = "اجازت کو منظور کریں";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "منتخب کریں کہ کون آپ کو اپنے فون نمبر سے Signal پر تلاش کرسکتا ہے%@";
@@ -3199,11 +3235,17 @@
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "آپ کو آپ کے نمبر کے ساتھ کون مل سکتا ہے؟";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "آپ کا فون نمبر";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "دوبارہ کوشش کرنے سے پہلے براہ کرم چند منٹ انتظار کریں۔ (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "شروع کرنے کے لیے اپنا فون نمبر داخل کریں";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "اپنا فون نمبر درج کریں";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "غلط نمبر";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "غلط فون نمبر. برائے کرم رجسٹریشن کے لئے ایک درست فون نمبر درج کریں۔";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "آپ کے پاس PIN کے اندازے ختم ہوچکے ہیں ، لیکن آپ پھر بھی نیا پن بنا کر اپنے Signal اکاؤنٹ تک رسائی حاصل کرسکتے ہیں۔ آپ کی رازداری اور حفاظت کے لئے آپ کا کھاتہ کسی بھی محفوظ شدہ معلومات یا ترتیبات کے بغیر بحال کیا جائے گا۔";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "اپنا پن داخل کریں";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "آپ کی پروفائل";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "آخری نام (اختیاری)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "پہلا نام (ضروری ہے)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "شرائط اور رازداری کی پالیسی";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "غلط نمبر؟";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "مجھے کوئی کوڈ نہیں ملا(%@میں دستیاب ہوگا)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "مجھے فون کرنا";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "signal رابطہ سپورٹ کریں";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "مجھے %@ میں کال کریں";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "توثیقی کوڈ…";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "یہ کوڈ غلط ہے";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "مجھے کوئی کوڈ نہیں ملا";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "کوڈ دوبارہ بھیجیں";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "براہ کرم یقینی بنائیں کہ آپ سیلولر سروس رکھتے ہیں اور ایس ایم ایس پیغامات وصول کر سکتے ہیں۔";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "کوئی کوڈ نہیں؟";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "کوڈ دوبارہ بھیجیں";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "مجھے بعد میں کال کریں";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "اب بھی کوئی کوڈ نہیں؟";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "%@ میں کوڈ دوبارہ بھیجیں";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "%@ہم نے کوڈ بھیجا ہے داخل کریں";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "ہم نے ابھی %@کو دوبارہ کوڈ بھیجا ہے";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "تصدیقی کوڈ";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "ترتیبات";
@@ -3662,34 +3704,34 @@
 "PROCEED_BUTTON" = "آگے بڑھو";
 
 /* Placeholder text for the bio field of the profile bio view. */
-"PROFILE_BIO_VIEW_BIO_PLACEHOLDER" = "Write a few words about yourself…";
+"PROFILE_BIO_VIEW_BIO_PLACEHOLDER" = "اپنے بارے میں کچھ الفاظ لکھیں…";
 
 /* The 'Be kind' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_BE_KIND" = "Be kind";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_BE_KIND" = "مہربانی سے پیش آؤ";
 
 /* The 'Coffee lover' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "Coffee lover";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "کافی کا دیوانہ";
 
 /* The 'Encrypted' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "Encrypted";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "خفیہ کردہ";
 
 /* The 'free to chat' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_FREE_TO_CHAT" = "Free to chat";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_FREE_TO_CHAT" = "چیٹ کرنے کے لئے دستیاب";
 
 /* The 'Speak Freely' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_SPEAK_FREELY" = "Speak Freely";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_SPEAK_FREELY" = "آزادانہ طور پر بولیں";
 
 /* The 'Taking a break' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_TAKING_A_BREAK" = "Taking a break";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_TAKING_A_BREAK" = "وقفہ لینا";
 
 /* The 'Working on something new' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_WORKING_ON_SOMETHING_NEW" = "Working on something new";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_WORKING_ON_SOMETHING_NEW" = "کسی نئی چیز پر کام کرنا";
 
 /* Title for the profile bio view. */
 "PROFILE_BIO_VIEW_TITLE" = "متعلق";
 
 /* Title for the profile bio view. Embeds {{ the number of characters that can be added to the profile bio without hitting the length limit }}. */
-"PROFILE_BIO_VIEW_TITLE_FORMAT" = "About (%@)";
+"PROFILE_BIO_VIEW_TITLE_FORMAT" = " (%@) کے بارے میں";
 
 /* The copy rendered in a conversation when someone in your address book changes their profile name. Embeds {contact name}, {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_CONTACT_FORMAT" = "%@ سے اپنے پروفائل کا نام %@ تبدیل کر کے%@ کر دیا۔";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ نے اپنے پروفائل کا نام %@ رکھ دیا۔";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Add to Profile";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Your Name";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "متعلق";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Name";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "صارف کا نام";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "پروفائل فوٹو سیٹ کریں";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "متعلق";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "تصویر ہٹائیں";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "صارف کام نام بنائیں";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "آپ کا آخری نام بہت لمبا ہے۔";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "آپ کا پہلا نام بہت لمبا ہے۔";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(اختیاری)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "آخری نام";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "آخری نام (اختیاری)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(ضروری)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "پہلا نام";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "پہلا نام (ضروری ہے)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "انٹرنیٹ سے منسلک ہونے پر ہی پروفائل کو اپ ڈیٹ کیا جاسکتا ہے۔";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "آپ کا پروفائل آخر سے آخر میں خفیہ ہے۔ آپ کا پروفائل اور اس میں ہونے والی تبدیلیاں آپ کے رابطوں پر مرئی ہوں گی ، جب آپ نئے چیٹ شروع کریں گے یا قبول کریں گے ، اور جب آپ نئے گروپس میں شامل ہوں گے۔";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "آپ کا پروفائل آخر سے آخر میں خفیہ ہے۔ آپ کا پروفائل اور اس میں ہونے والی تبدیلیاں آپ کے رابطوں پر مرئی ہوں گی اور جب آپ نیا چیٹ شروع کریں گے یا قبول کریں گے۔";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "محفوظ";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "پروفائل ";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "صارف کا نام";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "پڑھے ہوئے کے بطور نشان لگائیں";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "کامیابی سے پش اطلاعات کیلئے دوبارہ رجسٹر ہو گیا۔";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "پش اطلاعات";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "؟";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "جب تک آپ تصدیقی کوڈ جو ھم نے آپ کو بھیجا ہے تصدیق نہیں کرتے ہم اکاؤنٹ ایکٹو نہیں کر سکتے۔";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "جاری رکھنے کے لئے ، اپنے فون کا انٹرنیٹ کنکشن چیک کریں اور دوبارہ کوشش کریں۔";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "کنکشن چیک کریں";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "یہ فارمیٹ نمبر سپورٹ نہیں کر رہا،براہ کرم رابطہ سپورٹ کریں۔";
 
@@ -3937,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "کوئی فون نمبر نہیں";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "اس نمبر پر توثیقی کوڈ بھیجا جائے گا۔ کیا آپ کا فون نمبر اوپر ہے؟";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "نمبر کی تصدیق: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "ترتیب دیں";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "%@ تصدیق ...";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "مسترد کریں";
 
@@ -3947,7 +3998,7 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "نیا ایڈمن منتخب کریں";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "پش نوٹیفیکشن کیلئے دوبارہ رجسٹر کریں";
+"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
 
 /* Body for research megaphone */
 "RESEARCH_MEGAPHONE_BODY" = "Signal کو کرہ ارض کی بہترین میسجنگ ایپ بنانے کے لیئے ، ہم آپ کی رائے سن کر خوش ہوں گے۔";
@@ -4286,22 +4337,22 @@
 "SEND_SMS_INVITE_TITLE" = "کیا آپ مندرجہ ذیل نمبر کو Signal پر مدعو کرنا چاہتے ہیں:";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "Signal uses end-to-end encryption and it may need to refresh your chat session sometimes. This doesn’t affect your chat’s security but you may have missed a message from this contact and you can ask them to resend it.";
+"SESSION_REFRESH_ALERT_MESSAGE" = "Signal میں آخر سے آخر تک خفیہ کاری کا استعمال ہوتا ہے اور اسے کبھی کبھی آپ کے چیٹ سیشن کو تازہ کرنے کی ضرورت پڑسکتی ہے۔ اس سے آپ کے چیٹ کی سیکیورٹی متاثر نہیں ہوتی ہے لیکن ہوسکتا ہے کہ آپ نے اس رابطے سے کوئی پیغام چھوٹ لیا ہو اور آپ ان سے اسے دوبارہ بھیجنے کے لئے کہہ سکتے ہیں۔";
 
 /* Title for the session refresh alert */
 "SESSION_REFRESH_ALERT_TITLE" = "چیٹ سیشن تازہ";
 
 /* Title for the wallpaper choose from photos option */
-"SET_WALLPAPER_CHOOSE_PHOTO" = "Choose from Photos";
+"SET_WALLPAPER_CHOOSE_PHOTO" = "فوٹو میں سے انتخاب کریں";
 
 /* Title for the wallpaper presets section */
-"SET_WALLPAPER_PRESETS" = "Presets";
+"SET_WALLPAPER_PRESETS" = "پریسیٹس";
 
 /* Title for the set wallpaper settings view. */
-"SET_WALLPAPER_TITLE" = "Set Wallpaper";
+"SET_WALLPAPER_TITLE" = "وال پیپر سیٹ کریں";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "متعلق";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Account";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "بلاک";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "بائی پاس کرنے کیلئے سنسر شِپ";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "مقام:%@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "مقام";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "اگر فعال کریں،Signal بائی پاس سنسرشپ کی کوشش کے گا۔ اس خصوصیت کو تب تک فعال نہ کریں جب تک آپ ایک لوکیشن میں ہیں جہاں Signal سنسر ہے۔";
@@ -4327,9 +4378,6 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "بائی پاس سنسرشپ ضروری نہیں ہے؛آپ پہلے سے Signal سروس کیساتھ رابطے میں ہیں۔";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "سنسر شِپ بائی پاس کرنے کیلئے";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "ڈیبگ لاگ فعال کریں";
 
@@ -4345,23 +4393,17 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "PIN کو فعال کریں";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "Signal پن";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "ڈی بَگ لاگ پیش کریں";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "اعلی' درجے کی";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "لاگز میں غلطی";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use system contact photos";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use System Contact Photos";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "موضوع";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "بلاکڈ صارف جمح کریں";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "رابطوں اور گروپوں کی فہرست جو آپ نے مسدود کردی ہیں۔";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "آپ Signal پر کوئی رابطہ نہیں رکھتے۔";
 
@@ -4441,35 +4480,38 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "اپنے رابطوں پر اپنا IP ایڈریس ظاہر کرنے سے بچنے کیلئے Signal سرور کے ذریعے تمام کالوں کو ریلے کریں۔ فعال کرنے سے کال کا معیار کم ہوجائے گا۔";
 
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "باتیں";
+
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "چیٹ کی تاریخ صاف کریں";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "کاپی رائٹ Signal میسنجر\nGPLv3 کے تحت لائسنس یافتہ ہے";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nLicensed under the GPLv3";
 
 /* Label for the 'data' section of the app settings. */
-"SETTINGS_DATA" = "Data Usage";
+"SETTINGS_DATA" = "ڈیٹا کا استعمال";
 
 /* Item title for the low bandwidth call setting */
-"SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Use Less Data";
+"SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "کم ڈیٹا استعمال کریں";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "کم ڈیٹا کا استعمال خراب نیٹ ورکس پر کالوں کو بہتر بنا سکتا ہے";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "کالز";
 
 /* Footer for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Voice messages, view-once media, and stickers (under 100kb) are always auto-downloaded.";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "آڈیو پیغامات ، ایک بار ملاحظہ کریں میڈیا ، اور اسٹیکرز (100kb سے کم) ہمیشہ آٹو ڈاؤن لوڈ ہوتے ہیں۔";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "MEDIA AUTO-DOWNLOAD";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Auto-Download";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Reset Auto-Download Settings";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "آٹو ڈاؤن لوڈ کی ترتیبات کو دوبارہ ترتیب دیں";
 
 /* The title for the data settings. */
-"SETTINGS_DATA_TITLE" = "Data Usage";
+"SETTINGS_DATA_TITLE" = "ڈیٹا کا استعمال";
 
 /* No comment provided by engineer. */
 "SETTINGS_DELETE_ACCOUNT_BUTTON" = "اکاؤنٹ حذف کریں";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "مدد کریں";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "چیٹ کی تاریخ صاف کریں";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "معلومات";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "اپنے دوستوں کو مدعو کریں";
 
@@ -4505,9 +4541,9 @@
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "پیغام کی آواز";
 
 /* Label for settings view that allows user to change the wallpaper. */
-"SETTINGS_ITEM_WALLPAPER" = "Chat Wallpaper";
+"SETTINGS_ITEM_WALLPAPER" = "چیٹ وال پیپر";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "شرائط & رازداری کی پالیسی";
 
 /* Setting for enabling & disabling link previews. */
@@ -4520,7 +4556,7 @@
 "SETTINGS_MEDIA_DOWNLOAD_CONDITION_NEVER" = "کبھی نہیں";
 
 /* Label for the 'wifi and cellular' media attachment download behavior in the media download settings. */
-"SETTINGS_MEDIA_DOWNLOAD_CONDITION_WIFI_AND_CELLULAR" = "Wi-Fi and Cellular";
+"SETTINGS_MEDIA_DOWNLOAD_CONDITION_WIFI_AND_CELLULAR" = "Wi-Fi اور سیلولر";
 
 /* Label for the 'wifi-only' media attachment download behavior in the media download settings. */
 "SETTINGS_MEDIA_DOWNLOAD_CONDITION_WIFI_ONLY" = "Wi-Fi";
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "پیغام رسانی";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "See and share when messages are being read and typed. If disabled, you won’t see read receipts or typing indicators from others.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "ترتیبات";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "خاموش چیٹس گنیں";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Include Muted Chats";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "بیج کی گنتی";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "جب فون لاک ہو تو کال اور پیغام کی اطلاعات پیش کر سکتے ہیں۔ حجم کی خواہش کریں کہ کیا اطلاعات دیکھنا چاہتے ہیں۔";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Call and Message notifications can appear while your phone is locked.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "اطلاعات کا مواد";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "رابطہ Signal میں شامل ہو گیا";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Contact Joins Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "تقریبات";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notify when…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "اطلاعات";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "اپنے Signal پن کی تصدیق کریں";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "یاد دہانیاں آپ کو اپنے پن کو یاد رکھنے میں مدد کرتی ہیں کیونکہ اسے بازیافت نہیں کیا جاسکتا ہے۔ وقت کے ساتھ آپ سے کم پوچھا جائے گا۔";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "پن کی یاد دہانی";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PINs Signal کے ساتھ ذخیرہ شدہ معلومات کو خفیہ شدہ رکھتا ہے لہذا صرف آپ ہی اس تک رسائی حاصل کرسکتے ہیں۔ جب آپ Signal کو دوبارہ انسٹال کرتے ہیں تو آپ کا پروفائل ، ترتیبات اور رابطے بحال ہوجائیں گے۔";
+"SETTINGS_PINS_FOOTER" = "PINs keep information stored with Signal encrypted so only you can access it. Your PIN cannot be recovered. Your profile, settings, and contacts will restore when you reinstall Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "اپنا پن تبدیل کریں";
@@ -4603,20 +4639,20 @@
 /* Title for the 'PINs' section of the privacy settings. */
 "SETTINGS_PINS_TITLE" = "Signal پن";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "iOS فون ایپ کی \"حالیہ\" فہرست میں کالیں دکھائی دیں گی۔";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "اعلی' درجے کی";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "حالیہ کالز میں دیکھیں";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "رازداری";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "رسیدیں پڑھیں";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "جب پیغامات پڑھے جائیں گے تو دیکھیں اور شیئر کریں۔ یہ ترتیب اختیاری ہے اور تمام چیٹس پر لاگو ہوتی ہے۔";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "بند کریں";
@@ -4642,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "سکرین لاک کا ٹائم ختم ہو گیا";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "ٹچ ID ، چہرہ ID ، یا اپنے iOS device پاس کوڈ کا استعمال کرتے ہوئے Signal کی اسکرین کو غیر مقفل کریں۔ آپ اب بھی آنے والی کالوں کا جواب دے سکتے ہیں اور اسکرین لاک کو چالو کرنے کے دوران کال اور میسج کی اطلاعات موصول کرسکتے ہیں۔ Signal کی اطلاع کی ترتیبات آپ کو دکھائے جانے والی معلومات کو اپنی مرضی کے مطابق کرنے کی اجازت دیتی ہیں۔";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "سکرین لاک";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "سکرین لاک";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "سکرین سیکیورٹی فعال کریں";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Signal پیش نظارہ کو روکنے کیلئے ایپ سوئچر متعارف ہو رہا ہے۔";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "آوازیں";
@@ -4663,35 +4693,41 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "کال ہو رہی ہے";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "سکرین سیکیورٹی";
+"SETTINGS_SECURITY_TITLE" = "App Security";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Show in Suggestions";
+"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal chats are displayed as suggestions when sharing from other apps.";
+"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal چیٹس کو دوسرے ایپس سے اشتراک کرتے وقت تجاویز کے بطور ظاہر کیا جاتا ہے۔";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "رجسٹریشن لاک";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "اضافی سیکیورٹی کے لئے رجسٹریشن لاک آن کریں ، جس کے لئے آپ کے فون نمبر کو دوبارہ Signal کے ساتھ رجسٹر کرنے کیلئے آپ کے Signal پن کی ضرورت ہوگی۔";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "ٹائپنگ انڈیکیٹرز";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "جب پیغامات کو ٹائپ کیا جا رہا ہو تو دیکھیں اور شئیر کریں۔ یہ ترتیب اختیاری ہے اور تمام چیٹس پر لاگو ہوتی ہے۔";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "مہر بند بھیجنے والا";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "ڈسپلے انڈیکیٹرز";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "جب آپ مہر بند مرسل کو استعمال کرکے بھیجے گئے پیغامات پر \"پیغام کی تفصیلات\" منتخب کرتے ہیں تو اس وقت ایک سٹیٹس آئیکن دکھائیں۔";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "کسی سے اجازت دیں";
@@ -4703,7 +4739,7 @@
 "SETTINGS_VERSION" = "ورژن";
 
 /* Label for the 'who can' privacy settings. */
-"SETTINGS_WHO_CAN" = "جو کر سکتے ہیں...";
+"SETTINGS_WHO_CAN" = "کون یہ کر سکتے ہیں…";
 
 /* action sheet item to open native mail app */
 "SHARE_ACTION_MAIL" = "میل";
@@ -4736,7 +4772,7 @@
 "SHARE_EXTENSION_SENDING_FAILURE_TITLE" = "اٹیچمنٹ بھیجنے کے قابل نہیں";
 
 /* Send progress for share extension. Embeds {{ %1$@ number of attachments uploaded, %2$@ total number of attachments}} */
-"SHARE_EXTENSION_SENDING_IN_PROGRESS_FORMAT" = "Uploading %1$@ of %2$@…";
+"SHARE_EXTENSION_SENDING_IN_PROGRESS_FORMAT" = "%2$@ کا %1$@ اپ لوڈ ہو رہا ہے";
 
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "اپ لوڈ ہو رہا ہے";
@@ -4748,13 +4784,13 @@
 "SHARE_EXTENSION_VIEW_TITLE" = "Signal کا اشتراک کریں";
 
 /* Title of alert indicating sharing suggestions failed to deactivate */
-"SHARING_SUGGESTIONS_DISABLE_ERROR" = "Failed to disable sharing suggestions.";
+"SHARING_SUGGESTIONS_DISABLE_ERROR" = "اشتراک کی تجاویز کو ناکام کرنے میں ناکام۔";
 
 /* Body for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Signal chats can now be displayed as suggestions when sharing from other apps.";
+"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Signal چیٹس کو اب دوسرے ایپس سے اشتراک کرتے وقت تجاویز کے بطور ظاہر کیا جاسکتا ہے۔";
 
 /* Title for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Sharing Made Easier";
+"SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "بانٹنا آسان بنا دیا گیا";
 
 /* Disable button for sharing suggestions megaphone */
 "SHARING_SUGGESTIOONS_MEGAPHONE_BUTTON_DISABLE" = "معطل کریں";
@@ -4844,25 +4880,25 @@
 "SUPPORT_DESCRIPTION_PLACEHOLDER" = "کیا ہو رہا ہے ہمیں بتائیں";
 
 /* Default prompt for user description in support email requests */
-"SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Tell us about the issue: ";
+"SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "اس مسئلے کے بارے میں ہمیں بتائیں:";
 
 /* Message for alert dialog presented when a support email failed to send */
 "SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "برائے مہربانی اپنی مدد کی درخواست کو ای میل کریںsupport@signal.org";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
-"SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Filter: %@";
+"SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "فلٹر:%@";
 
 /* Localized label for support request email hardware string (e.g. iPhone or iPad). Embeds {{hardware text}}. */
-"SUPPORT_EMAIL_HARDWARE_LABEL_FORMAT" = "Hardware: %@";
+"SUPPORT_EMAIL_HARDWARE_LABEL_FORMAT" = "ہارڈ ویئر:%@";
 
 /* Localized label for support request email HID string (e.g. 12,1). Embeds {{hid text}}. */
 "SUPPORT_EMAIL_HID_LABEL_FORMAT" = "HID: %@";
 
 /* Localized divider for support request emails internal information */
-"SUPPORT_EMAIL_INFO_DIVIDER" = "--- Support Info ---";
+"SUPPORT_EMAIL_INFO_DIVIDER" = "--- مدد کی معلومات ---";
 
 /* Localized label for support request email iOS Version string (e.g. 13.4). Embeds {{ios version}}. */
-"SUPPORT_EMAIL_IOS_VERSION_LABEL_FORMAT" = "iOS Version: %@";
+"SUPPORT_EMAIL_IOS_VERSION_LABEL_FORMAT" = "iOS ورژن:%@";
 
 /* Localized label for support request email locale string. Embeds {{locale}}. */
 "SUPPORT_EMAIL_LOCALE_LABEL_FORMAT" = "Locale: %@";
@@ -4871,7 +4907,7 @@
 "SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "Log URL: %@";
 
 /* Localized label for support request email signal version string. Embeds {{signal version}}. */
-"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Signal Version: %@";
+"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Signal ورژن: %@";
 
 /* Localized subject for support request emails */
 "SUPPORT_EMAIL_SUBJECT" = "Signal iOS کی مدد کی درخواست";
@@ -5089,9 +5125,6 @@
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "Signal پر صارف کا نام آپشنل ہے۔ اگر آپ صارف کا نام بنانا منتخب کرتے ہیں دوسرے Signal صارفین  اس صارف کے نام کے زریعے تلاش کرنے کے قابل ہوں گے اور فون نمبر کے بغیر آپ سے رابطہ کرسکتے ہیں۔";
 
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "صارف کا نام";
-
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "صارف کا نام صرف a-z,اور 0-9 پر مشتمل ہو سکتا ہے۔۔۔";
 
@@ -5180,61 +5213,61 @@
 "WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Signal Desktop سیٹ اپ مکمل ہو گیا۔";
 
 /* Placeholder text for header of the wallpaper mini preview */
-"WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Contact Name";
+"WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "رابطے کا نام";
 
 /* Blur button on wallpaper preview. */
-"WALLPAPER_PREVIEW_BLUR_BUTTON" = "Blur Photo";
+"WALLPAPER_PREVIEW_BLUR_BUTTON" = "تصویر کو دھندلا کرو";
 
 /* The incoming bubble text when setting a photo */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "Pinch to zoom, drag to adjust.";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "زوم کرنے کے لئے pinch ، ایڈجسٹ کرنے کے لئے گھسیٹیں۔";
 
 /* The incoming bubble text when setting a preset */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Swipe to preview more wallpapers.";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "مزید وال پیپرز کا پیش نظارہ کرنے کے لئے سوائپ کریں۔";
 
 /* The outgoing bubble text when setting a wallpaper for all chats. */
-"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "Set wallpaper for all chats.";
+"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "تمام چیٹس کیلئے وال پیپر مرتب کریں۔";
 
 /* The outgoing bubble text when setting a wallpaper for specific chat. Embeds {{chat name}} */
-"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_FORMAT" = "Set wallpaper for %@.";
+"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_FORMAT" = "%@ کے لئے وال پیپر سیٹ کریں۔";
 
 /* The text for the set button on wallpaper preview view. */
-"WALLPAPER_PREVIEW_SET_BUTTON" = "Set";
+"WALLPAPER_PREVIEW_SET_BUTTON" = "سیٹ کریں";
 
 /* Title for the wallpaper preview view. */
-"WALLPAPER_PREVIEW_TITLE" = "Preview";
+"WALLPAPER_PREVIEW_TITLE" = "پیش نظارہ";
 
 /* Clear wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "Clear Wallpaper";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "صاف وال پیپر";
 
 /* Confirmation dialog when clearing the wallpaper for a specific chat. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "Clear wallpaper for this chat?";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "اس چیٹ کے لئے وال پیپر صاف کریں؟";
 
 /* Confirmation dialog when clearing the global wallpaper. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "Clear wallpaper? This will not clear custom wallpapers you’ve set for your chats.";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "وال پیپر صاف کریں؟ اس سے وہ کسٹم وال پیپر صاف نہیں ہوں گے جو آپ نے اپنی چیٹس کے لیئے رکھے ہیں۔";
 
 /* Dim wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_DIM_WALLPAPER" = "Dark Theme Dims Wallpaper";
+"WALLPAPER_SETTINGS_DIM_WALLPAPER" = "ڈارک تھیم Dims وال پیپر";
 
 /* An error indicating to the user that we failed to clear the wallpaper. */
-"WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "The wallpaper could not be cleared, please try again later or contact support if the error persists.";
+"WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "وال پیپر کو صاف نہیں کیا جاسکا ، براہ کرم بعد میں دوبارہ کوشش کریں یا خرابی برقرار رہی تو سپورٹ سے رابطہ کریں۔";
 
 /* An error indicating to the user that we failed to reset all wallpapers. */
-"WALLPAPER_SETTINGS_FAILED_TO_RESET" = "All wallpapers could not be reset, please try again later or contact support if the error persists.";
+"WALLPAPER_SETTINGS_FAILED_TO_RESET" = "تمام وال پیپرز کو دوبارہ ترتیب نہیں دیا جا سکا ، براہ کرم بعد میں دوبارہ کوشش کریں یا خرابی برقرار رہی تو سپورٹ سے رابطہ کریں۔";
 
 /* Title for the wallpaper settings preview section. */
-"WALLPAPER_SETTINGS_PREVIEW" = "Preview";
+"WALLPAPER_SETTINGS_PREVIEW" = "پیش نظارہ";
 
 /* Reset all wallpapers action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_RESET_ALL" = "Reset All Wallpapers";
+"WALLPAPER_SETTINGS_RESET_ALL" = "تمام وال پیپر کو دوبارہ ترتیب دیں";
 
 /* Confirmation dialog when resetting all wallpapers. */
-"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "Reset all wallpapers, including custom wallpapers you’ve set for your chats?";
+"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "آپ نے اپنی چیٹس کیلئے مرتب کردہ کسٹم وال پیپرز سمیت تمام وال پیپرز کو دوبارہ ترتیب دیں۔";
 
 /* Set wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_SET_WALLPAPER" = "Set Wallpaper";
+"WALLPAPER_SETTINGS_SET_WALLPAPER" = "وال پیپر سیٹ کریں";
 
 /* Title for the wallpaper settings view. */
-"WALLPAPER_SETTINGS_TITLE" = "Chat Wallpaper";
+"WALLPAPER_SETTINGS_TITLE" = "چیٹ وال پیپر";
 
 /* text indicating the message was remotely deleted by you */
 "YOU_DELETED_THIS_MESSAGE" = "آپ نے یہ پیغام حذف کردیا۔";

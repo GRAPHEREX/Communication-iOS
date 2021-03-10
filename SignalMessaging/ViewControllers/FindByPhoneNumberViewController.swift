@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -26,7 +26,7 @@ public class FindByPhoneNumberViewController: OWSViewController {
     let phoneNumberRowTitleLabel = UILabel()
 
     @objc
-    init(delegate: FindByPhoneNumberDelegate, buttonText: String?, requiresRegisteredNumber: Bool) {
+    public init(delegate: FindByPhoneNumberDelegate, buttonText: String?, requiresRegisteredNumber: Bool) {
         self.delegate = delegate
         self.buttonText = buttonText
         self.requiresRegisteredNumber = requiresRegisteredNumber
@@ -276,7 +276,7 @@ extension FindByPhoneNumberViewController: CountryCodeViewControllerDelegate {
 
 extension FindByPhoneNumberViewController: UITextFieldDelegate {
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        ViewControllerUtils.phoneNumber(textField, shouldChangeCharactersIn: range, replacementString: string, callingCode: callingCode)
+        ViewControllerUtils.phoneNumber(textField, changeCharactersIn: range, replacementString: string, callingCode: callingCode)
         updateButtonState()
         return false
     }

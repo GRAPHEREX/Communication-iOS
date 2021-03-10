@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Agora não";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "About Signal";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Aceitar novo número de segurança ";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Contato";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Detalhes do contato %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Mídia";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Mensagem";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Você";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Figurinha";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Mensagem de voz";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Mensagem de voz %@ segundos";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "Chamada Signal";
@@ -134,7 +143,7 @@
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Versão do banco de dados desconhecida.";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Os dados transferidos do seu antigo aparelho não puderam ser restaurados. Por favor, envie um registro de debug para support@signal.org para que possamos verificar este problema. Se você reinstalar o Signal, o seu histórico de mensagens poderá ser suprimido.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Os dados transferidos do seu antigo aparelho não puderam ser restaurados. Por favor, envie um registro de depuração para support@signal.org para que possamos verificar este problema. Se você reinstalar o Signal, pode perder seu histórico de mensagens.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Não foi possível completar a transferência";
@@ -524,7 +533,7 @@
 "CALL_VIEW_MUTE_LABEL" = "Mudo";
 
 /* Error displayed on the 'call' view when the callee needs to grant permission before we can call them. Embeds {callee short name}. */
-"CALL_VIEW_NEED_PERMISSION_ERROR_FORMAT" = "%@ receberá um pedido seu. Você poderá ligar assim que seu pedido for aceito.";
+"CALL_VIEW_NEED_PERMISSION_ERROR_FORMAT" = "%@ receberá seu convite para conversar. Você poderá ligar assim que o pedido for aceito.";
 
 /* Accessibility label to toggle front- vs. rear-facing camera */
 "CALL_VIEW_SWITCH_CAMERA_DIRECTION" = "Mudar a direção da câmera";
@@ -743,13 +752,13 @@
 "CONTACT_SHARE_NO_FIELDS_SELECTED" = "Nenhum campo de contato selecionado.";
 
 /* Button text to initiate an email to signal support staff */
-"CONTACT_SUPPORT" = "Entre em contato com o Suporte do Signal";
+"CONTACT_SUPPORT" = "Contactar suporte";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "O Signal não conseguiu completar sua solicitação de ajuda";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "O Signal não conseguiu completar seu pedido de suporte técnico.";
 
 /* button text */
-"CONTACT_SUPPORT_PROMPT_ERROR_TRY_AGAIN" = "Tente novamente";
+"CONTACT_SUPPORT_PROMPT_ERROR_TRY_AGAIN" = "Tentar novamente";
 
 /* Alert body */
 "CONTACT_SUPPORT_PROMPT_TO_INCLUDE_DEBUG_LOG_MESSAGE" = "Os seus registros de depuração nos ajudarão a resolver seu problema mais rápido. Enviá-los é opcional.";
@@ -773,10 +782,10 @@
 "CONTACT_WITHOUT_NAME" = "Contato sem nome";
 
 /* Message for the 'conversation delete confirmation' alert. */
-"CONVERSATION_DELETE_CONFIRMATION_ALERT_MESSAGE" = "Esta conversa será excluída deste dispositivo.";
+"CONVERSATION_DELETE_CONFIRMATION_ALERT_MESSAGE" = "Esta conversa será excluída do dispositivo.";
 
 /* Title for the 'conversation delete confirmation' alert. */
-"CONVERSATION_DELETE_CONFIRMATION_ALERT_TITLE" = "Excluir a Conversa?";
+"CONVERSATION_DELETE_CONFIRMATION_ALERT_TITLE" = "Excluir conversa?";
 
 /* Momentarily shown to the user when attempting to select more conversations than is allowed. Embeds {{max number of conversations}} that can be selected. */
 "CONVERSATION_PICKER_CAN_SELECT_NO_MORE_CONVERSATIONS" = "Você não pode selecionar mais do que %@ conversas.";
@@ -837,9 +846,6 @@
 
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Bloquear esta pessoa";
-
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Informações do contato";
 
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Cor da conversa";
@@ -947,7 +953,7 @@
 "CONVERSATION_SETTINGS_REVOKE_GROUP_ADMIN_TITLE_FORMAT" = "Suprimir %@ como admin do grupo?";
 
 /* Table cell label in conversation settings which returns the user to the conversation with 'search mode' activated */
-"CONVERSATION_SETTINGS_SEARCH" = "Procurar na Conversa";
+"CONVERSATION_SETTINGS_SEARCH" = "Procurar na conversa";
 
 /* Label for 'unblock group' action in conversation settings view. */
 "CONVERSATION_SETTINGS_UNBLOCK_GROUP" = "Desbloquear o grupo";
@@ -965,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Mudanças não salvas";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Ver todos os membros";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "See All";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Esta pessoa está nos seus contatos";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Adicionar aos Contatos";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ enviou:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Você enviou:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Suprimir todas";
@@ -1043,7 +1055,7 @@
 "DEBUG_LOG_ALERT_OPTION_COPY_LINK" = "Copiar link";
 
 /* Label for the 'email debug log' option of the debug log alert. */
-"DEBUG_LOG_ALERT_OPTION_EMAIL" = "Ajuda por e-mail";
+"DEBUG_LOG_ALERT_OPTION_EMAIL" = "Suporte por e-mail";
 
 /* Label for the 'send to self' option of the debug log alert. */
 "DEBUG_LOG_ALERT_OPTION_SEND_TO_SELF" = "Enviar para mim";
@@ -1082,10 +1094,10 @@
 "DEREGISTRATION_WARNING" = "Aparelho não registrado. Seu número de telefone pode estar registrado no Signal em outro aparelho. Toque para se registrar novamente.";
 
 /* {{Short Date}} when device last communicated with Signal Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Última atividade: %@";
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Last active %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Vinculado: %@";
+"DEVICE_LINKED_AT_LABEL" = "Linked %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Falha ao atualizar a lista de aparelhos.";
@@ -1229,7 +1241,7 @@
 "EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Essa pessoa não pode ser adicionada ao grupo até que ela atualize o Signal.";
 
 /* Format for the 'group full' error alert when a user can't be added to a group because the group is full. Embeds {{ the maximum number of members in a group }}. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "O grupo chegou ao tamanho máximo de %@ membros.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "O grupo atingiu a capacidade máxima de %@ membros.";
 
 /* Error message indicating that an avatar image is invalid and cannot be used. */
 "EDIT_GROUP_ERROR_INVALID_AVATAR" = "Foto inválida.";
@@ -1256,7 +1268,7 @@
 "EMAIL_INVITE_SUBJECT" = "Vamos mudar para o Signal!";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "O seu dispositivo não está configurado para enviar e-mails. Para enviar uma solicitação de suporte, configure seu e-mail no seu dispositivo ou envie um e-mail para support@signal.org";
+"EMAIL_SIGNAL_MESSAGE" = "Seu dispositivo não está configurado para enviar e-mails. Para solicitar suporte técnico, configure seu e-mail no dispositivo ou envie uma mensagem para support@signal.org.";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "E-mail indisponível";
@@ -1673,7 +1685,7 @@
 "GROUP_INVALID_INVITES_ADDED_BY_LOCAL_USER_1" = "Você adicionou um convite inválido.";
 
 /* Message indicating that multiple invalid invites were added by the local user. */
-"GROUP_INVALID_INVITES_ADDED_BY_LOCAL_USER_N" = "Você adicionou convites inválidos";
+"GROUP_INVALID_INVITES_ADDED_BY_LOCAL_USER_N" = "Você adicionou convites inválidos.";
 
 /* Message indicating that 1 invalid invite was added by another user. Embeds {{remote user name}}. */
 "GROUP_INVALID_INVITES_ADDED_BY_REMOTE_USER_FORMAT_1" = "%@ adicionou um convite inválido.";
@@ -1799,7 +1811,7 @@
 "GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_MESSAGE" = "Este link do grupo não é válido. Certifique-se de que o link esteja inalterado e correto antes de tentar entrar.";
 
 /* Title for the 'invalid group invite link' alert. */
-"GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Link Inválido";
+"GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Link inválido";
 
 /* Error message indicating that the local user does not support groups v2. */
 "GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Atualize o Signal neste dispositivo para entrar neste grupo.";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Compartilhar via Signal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Qualquer pessoa com este link pode entrar no grupo ou enviar um pedido de participação. Compartilhe-o com pessoas de sua confiança.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Com este link, é possível ver o nome do grupo, quem participa dele e enviar um pedido de participação. Por isso, compartilhe-o com pessoas em quem você confia.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Link do Grupo";
@@ -1913,7 +1925,7 @@
 "GROUP_LOCAL_USER_JOINED_THE_GROUP" = "Você entrou no grupo.";
 
 /* Message indicating that the local user has joined the group. */
-"GROUP_LOCAL_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK" = "Você entrou no grupo via o link do grupo.";
+"GROUP_LOCAL_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK" = "Você entrou no grupo via link do grupo.";
 
 /* Message indicating that the local user was removed from the group by another user. Embeds {{remote user name}}. */
 "GROUP_LOCAL_USER_REMOVED_BY_REMOTE_USER_FORMAT" = "%@ suprimiu você.";
@@ -1975,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Chamada de vídeo";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ group members have similar names.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Toque para revisar";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Membro";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Revisar os Membros";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ group members have similar names, review the members below or choose to take action.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ group members have the same name, review the members below or choose to take action.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ group members have the same name.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Nome do grupo (obrigatório)";
 
@@ -2033,7 +2066,7 @@
 "GROUP_REMOTE_USER_INVITED_1" = "Uma pessoa foi convidada para o grupo.";
 
 /* Message indicating that a single remote user was invited to the group. Embeds {{remote user name}}. */
-"GROUP_REMOTE_USER_INVITED_1_FORMAT" = "%@ foi convidado ao grupo.";
+"GROUP_REMOTE_USER_INVITED_1_FORMAT" = "%@ recebeu um convite para entrar no grupo.";
 
 /* Message indicating that a remote user was invited to the group by the local user. Embeds {{remote user name}}. */
 "GROUP_REMOTE_USER_INVITED_BY_LOCAL_USER_FORMAT" = "Você convidou %@ para o grupo.";
@@ -2051,7 +2084,7 @@
 "GROUP_REMOTE_USER_JOINED_GROUP_FORMAT" = "%@ entrou no grupo.";
 
 /* Message indicating that another user has joined the group. Embeds {{remote user name}}. */
-"GROUP_REMOTE_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK_FORMAT" = "%@ entrou no grupo através do link do grupo.";
+"GROUP_REMOTE_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK_FORMAT" = "%@ entrou no grupo pelo link.";
 
 /* Message indicating that a remote user has left the group. Embeds {{remote user name}}. */
 "GROUP_REMOTE_USER_LEFT_GROUP_FORMAT" = "%@ saiu do grupo.";
@@ -2063,28 +2096,25 @@
 "GROUP_REMOTE_USER_REMOVED_FROM_GROUP_BY_REMOTE_USER_FORMAT" = "%1$@ suprimiu %2$@.";
 
 /* Message indicating that a remote user's request to join the group was approved by the local user. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_LOCAL_USER_FORMAT" = "Você aprovou o pedido de participação no grupo de %@.";
+"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_LOCAL_USER_FORMAT" = "Você aprovou o pedido de %@ para entrar no grupo.";
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ aprovou o pedido de participação no grupo de %1$@.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "O pedido de participação no grupo de %@ foi aprovado.";
+"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ aprovou o pedido de %1$@ para entrar no grupo.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
-"GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ cancelou o pedido de participação no grupo.";
+"GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ cancelou o pedido para entrar no grupo.";
 
 /* Message indicating that a remote user's request to join the group was rejected by the local user. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_LOCAL_USER_FORMAT" = "Você recusou o pedido para entrar no grupo de %@.";
+"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_LOCAL_USER_FORMAT" = "Você recusou o pedido de %@ para entrar no grupo.";
 
 /* Message indicating that a remote user's request to join the group was rejected by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
-"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_REMOTE_USER_FORMAT" = "%2$@ recusou o pedido para entrar no grupo de %1$@.";
+"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_REMOTE_USER_FORMAT" = "%2$@ recusou o pedido de %1$@ para entrar no grupo.";
 
 /* Message indicating that a remote user's request to join the group was rejected. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_REJECTED_FORMAT" = "O pedido de participação no grupo de %@ foi recusado.";
+"GROUP_REMOTE_USER_REQUEST_REJECTED_FORMAT" = "O pedido de %@ para entrar no grupo foi recusado.";
 
 /* Message indicating that a remote user requested to join the group. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUESTED_TO_JOIN_THE_GROUP_FORMAT" = "%@ solicitou entrar via o link do grupo.";
+"GROUP_REMOTE_USER_REQUESTED_TO_JOIN_THE_GROUP_FORMAT" = "%@ solicitou entrar via link do grupo.";
 
 /* Message indicating that a remote user had their administrator role revoked. Embeds {{remote user name}}. */
 "GROUP_REMOTE_USER_REVOKED_ADMINISTRATOR" = "%@ teve seus privilégios de admin revogados.";
@@ -2297,10 +2327,10 @@
 "GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ADD_MEMBERS_BUTTON" = "Adicionar membros";
 
 /* Title for the 're-add dropped group members' alert view. */
-"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ALERT_TITLE_1" = "Adicionar Membro?";
+"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ALERT_TITLE_1" = "Adicionar membro?";
 
 /* Title for the 're-add dropped group members' alert view. */
-"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ALERT_TITLE_N" = "Adicionar Membros?";
+"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ALERT_TITLE_N" = "Adicionar membros?";
 
 /* Label for the 'add members' button in the 're-add dropped groups members' banner. */
 "GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_BUTTON" = "Adicionar membros";
@@ -2369,7 +2399,7 @@
 "GROUPS_TOO_MANY_MEMBERS_ALERT_TITLE" = "O limite recomendado de membros foi alcançado";
 
 /* Message asking the user to confirm that they want to add a member to the group. */
-"GROUPS_TOO_MANY_MEMBERS_CONFIRM" = "Adicionar o membro?";
+"GROUPS_TOO_MANY_MEMBERS_CONFIRM" = "Adicionar mesmo assim?";
 
 /* Label for button that lets the user view the request to join the group. */
 "GROUPS_VIEW_REQUEST_BUTTON" = "Ver a Solicitação";
@@ -2384,7 +2414,7 @@
 "HELP_SUPPORT_CENTER" = "Central de Suporte";
 
 /* Label for 'archived conversations' button. */
-"HOME_VIEW_ARCHIVED_CONVERSATIONS" = "Conversas Arquivadas";
+"HOME_VIEW_ARCHIVED_CONVERSATIONS" = "Conversas arquivadas";
 
 /* Table cell subtitle label for a conversation the user has blocked. */
 "HOME_VIEW_BLOCKED_CONVERSATION" = "Bloqueada";
@@ -2405,7 +2435,7 @@
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Alguns dos seus contatos já estão no Signal, inclusive %@, %@ e %@";
 
 /* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Comece sua primeira conversa aqui.";
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Comece a conversar por aqui.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
 "HOME_VIEW_MESSAGE_REQUEST_ADDED_TO_GROUP_FORMAT" = "%@ adicionou você ao grupo";
@@ -2477,10 +2507,10 @@
 "IN_CALL_TERMINATED" = "Chamada encerrada.";
 
 /* Label reminding the user that they are in archive mode. */
-"INBOX_VIEW_ARCHIVE_MODE_REMINDER" = "Essas conversas são arquivadas e só aparecerão na caixa de entrada se novas mensagens forem recebidas.";
+"INBOX_VIEW_ARCHIVE_MODE_REMINDER" = "Estas conversas estão arquivadas e só aparecerão na caixa de entrada se você receber novas mensagens.";
 
 /* Message shown in the conversation list when the inbox is empty. */
-"INBOX_VIEW_EMPTY_INBOX" = "Ainda não há conversas.\nPara começar, envie uma mensagem para um amigo.";
+"INBOX_VIEW_EMPTY_INBOX" = "Ainda não há conversas.\nComece com uma mensagem para uma de suas amizades.";
 
 /* info message text in conversation view. {embeds callee name} */
 "INCOMING_CALL_FORMAT" = "%@ ligou para você";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Escaneie o código QR exibido pelo aparelho que você deseja vincular.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Escanear o código QR";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scan QR Code to link a new device.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Vincular novo aparelho";
@@ -2647,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Selecionar Localização";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Registros";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Debug logs can help Signal fix issues and crashes.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Mensagem";
@@ -2672,7 +2705,7 @@
 "MEDIA_GALLERY_DELETE_SINGLE_MESSAGE" = "Suprimir mensagem";
 
 /* Format for an indicator of the number of image items in a media gallery. Embeds {{ the number of items in the media gallery }}. */
-"MEDIA_GALLERY_ITEM_IMAGE_COUNT_FORMAT" = "%@ Fotos";
+"MEDIA_GALLERY_ITEM_IMAGE_COUNT_FORMAT" = "%@ fotos";
 
 /* Format for an indicator of the number of image or video items in a media gallery. Embeds {{ the number of items in the media gallery }}. */
 "MEDIA_GALLERY_ITEM_MIXED_COUNT_FORMAT" = "%@ arquivos de mídia";
@@ -2831,7 +2864,7 @@
 "MESSAGE_REQUEST_NAME_COLLISON_TITLE" = "Analisar o Pedido";
 
 /* A button that updates a known contact's information to resolve a name collision */
-"MESSAGE_REQUEST_NAME_COLLISON_UPDATE_CONTACT_ACTION" = "Atualizar o contato";
+"MESSAGE_REQUEST_NAME_COLLISON_UPDATE_CONTACT_ACTION" = "Atualizar contato";
 
 /* Button to allow user to review known name collisions with an incoming message request */
 "MESSAGE_REQUEST_REVIEW_NAME_COLLISION" = "Analisar o Pedido";
@@ -2876,13 +2909,13 @@
 "MESSAGE_REQUEST_VIEW_UNBLOCK_BUTTON" = "Desbloquear";
 
 /* Label for button to cancel your request to join the group. */
-"MESSAGE_REQUESTS_CANCEL_REQUEST_BUTTON" = "Cancelar Pedido";
+"MESSAGE_REQUESTS_CANCEL_REQUEST_BUTTON" = "Cancelar pedido";
 
 /* Title for the confirmation alert when cancelling your request to join the group. */
-"MESSAGE_REQUESTS_CANCEL_REQUEST_CONFIRM_TITLE" = "Cancelar seu pedido para entrar nesse grupo?";
+"MESSAGE_REQUESTS_CANCEL_REQUEST_CONFIRM_TITLE" = "Cancelar o seu pedido para entrar nesse grupo?";
 
 /* Indicator that you have requested to join this group. */
-"MESSAGE_REQUESTS_CONVERSATION_REQUEST_INDICATOR" = "Seu pedido de participação foi enviado ao administrador do grupo. Você será notificado quando a decisão for tomada.";
+"MESSAGE_REQUESTS_CONVERSATION_REQUEST_INDICATOR" = "O seu pedido para entrar no grupo foi enviado ao admin. Você será notificado quando a decisão for tomada.";
 
 /* message status for message delivered to their recipient. */
 "MESSAGE_STATUS_DELIVERED" = "Recebido";
@@ -2971,6 +3004,9 @@
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Silenciado/a";
 
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Recently changed their profile name from %1$@ to %2$@.";
+
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Pular";
 
@@ -3052,6 +3088,9 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Nenhum grupo em comum";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Nenhum outro grupo em comum.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Selecione um contato ou grupo para começar a conversar.";
 
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Tocar com o app aberto";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Sons";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Adicionar som personalizado...";
@@ -3185,13 +3221,13 @@
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Vincular o seu iPhone não é recomendado e irá limitar funcionalidades importantes.";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Habilitar permissões";
+"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Autorizar";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Notificações permitem a você saber quando mensagens chegam e receber atualizações sobre novas atividades em conversas.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Ao autorizar informações e contatos, você poderá ver quando as mensagens chegarem e ficará mais fácil encontrar as pessoas que você conhece. A sua lista de contatos é criptografada e o Signal não pode vê-la.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Veja a mensagem";
+"ONBOARDING_PERMISSIONS_TITLE" = "Autorizar";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Escolha quem pode encontrá-lo no Signal através do seu número de telefone %@";
@@ -3199,11 +3235,17 @@
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Quem pode encontrá-lo com seu número?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Seu número de telefone";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Por favor, espere alguns minutos antes de tentar novamente. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Insira seu número de telefone para começar";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Digite o seu número de telefone";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Número inválido";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Número de telefone inválido. Por favor, digite um número válido para registrar-se.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Vocês esgotou o número de tentativas para adivinhar seu PIN, mas ainda pode acessar sua conta do Signal criando um novo PIN. Porém, para sua privacidade e segurança, sua conta será restaurada sem as informações do perfil e as configurações salvas.";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Digite seu PIN";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Seu perfil";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Sobrenome (opcional)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Nome (obrigatório)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Termos & Política de Privacidade";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Número errado?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Não recebi um código (disponível em %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Ligue para mim";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Entre em contato com o Suporte do Signal";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Ligue para mim daqui a %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Validação do código…";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "O código está incorreto";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Não recebi um código";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Reenviar código";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Por favor, verifique se o seu celular está com sinal e pode receber mensagens de SMS.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Nenhum código?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Reenviar código";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Você poderia me telefonar?";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Nenhum código ainda?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Reenviar código daqui a %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Insira o código que enviamos para %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Acabamos de reenviar um código para %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Código de verificação";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Configurações";
@@ -3347,7 +3389,7 @@
 "PENDING_GROUP_MEMBERS_SECTION_FOOTER_INVITES_FROM_OTHER_MEMBERS" = "Os detalhes das pessoas convidadas por outros membros do grupo não vão aparecer. Se elas optarem por entrar, suas informações serão compartilhadas com o grupo naquele momento. Elas não verão nenhuma mensagem no grupo antes de entrarem.";
 
 /* Footer for the 'pending member requests' section of the 'member requests and invites' view. Embeds {{ the name of the group }}. */
-"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "As pessoas desta lista estão tentando entrar em “%@” através do link do grupo.";
+"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "As pessoas nessa lista estão tentando entrar em “%@” através do link do grupo.";
 
 /* Title for the 'invalid invites' section of the 'member requests and invites' view. */
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "Convites Inválidos";
@@ -3668,7 +3710,7 @@
 "PROFILE_BIO_VIEW_DEFAULT_BIO_BE_KIND" = "Seja gentil";
 
 /* The 'Coffee lover' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "Eu amo café";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "Amante de café";
 
 /* The 'Encrypted' default bio in the profile bio view. */
 "PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "Criptografado";
@@ -3689,7 +3731,7 @@
 "PROFILE_BIO_VIEW_TITLE" = "Sobre mim";
 
 /* Title for the profile bio view. Embeds {{ the number of characters that can be added to the profile bio without hitting the length limit }}. */
-"PROFILE_BIO_VIEW_TITLE_FORMAT" = "Sobre mim (%@)";
+"PROFILE_BIO_VIEW_TITLE_FORMAT" = "Sobre (%@)";
 
 /* The copy rendered in a conversation when someone in your address book changes their profile name. Embeds {contact name}, {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_CONTACT_FORMAT" = "%@ alterou o nome de perfil de %@ para %@.";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ alterou o nome de perfil para %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Adicionar ao perfil";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Seu nome";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Sobre";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Name";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Nome de usuário";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Configurar foto de perfil";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Sobre mim";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Remover foto";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Criar nome de usuário";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "O seu sobrenome é muito longo.";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "O seu primeiro nome é muito longo.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Opcional)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Sobrenome";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Sobrenome (opcional)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Obrigatório)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Nome";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Nome (obrigatório)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "O perfil só pode ser atualizado quando conectado à Internet.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Seu perfil é criptografado de ponta a ponta. Seus contatos poderão vê-lo, bem como as mudanças feitas nele, quando você iniciar ou aceitar uma conversa e quando você entrar para um grupo.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Seu perfil é criptografado de ponta a ponta. Seus contatos poderão ver seu perfil, as  mudanças feitas nele e quando você iniciar ou aceitas novas conversas.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Salvar";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Perfil";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Nome de usuário";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Marcar como Lida";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Êxito ao registrar novamente para envio de notificações.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Envio de notificações";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Não podemos ativar sua conta até que você verifique o código que enviamos.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Para continuar, verifique a conexão à Internet do seu telefone e tente novamente. ";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Verifique a sua conexão";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Este formato de número de telefone não possui suporte. Por favor, contactar o suporte. ";
 
@@ -3937,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Nenhum número de telefone";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Um código de verificação ser enviado para esse número. O seu número de telefone acima está correto?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Número de confirmação: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Editar";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Verificando %@…";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Rejeitar";
 
@@ -3947,7 +3998,7 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "Escolher Novo Admin";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "Rerregistrar para envio de notificações";
+"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
 
 /* Body for research megaphone */
 "RESEARCH_MEGAPHONE_BODY" = "Para fazer do Signal o melhor aplicativo de mensagens do planeta, gostaríamos de ouvir seu feedback.";
@@ -4300,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Definir papel de parede";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "Sobre";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Account";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Bloquear";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Driblagem de Censura";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Lugar: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Local";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Se ativado, Signal tentará contornar a censura. Não habilite esta função ao menos que você esteja em um lugar onde Signal é censurado. ";
@@ -4327,11 +4378,8 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "A driblagem de censura não é necessária. Você já se conectou ao serviço Signal.";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Driblagem de Censura";
-
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_DEBUGLOG" = "Habilitar registro de depuração";
+"SETTINGS_ADVANCED_DEBUGLOG" = "Ativar registro de depuração";
 
 /* Label for the 'advanced pin settings' button. */
 "SETTINGS_ADVANCED_PIN_SETTINGS" = "Configurações Avançadas do PIN";
@@ -4340,28 +4388,22 @@
 "SETTINGS_ADVANCED_PIN_TITLE" = "Configurações Avançadas do PIN";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_PINS_DISABLE_PIN_ACTION" = "Desabilitar PIN";
+"SETTINGS_ADVANCED_PINS_DISABLE_PIN_ACTION" = "Desativar PIN";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Habilitar PIN";
-
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "PIN do Signal";
+"SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Ativar PIN";
 
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Enviar registro de depuração";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Avançado";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Logs de erro";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Exibir fotos de contatos oriundas da lista de contatos do aparelho, se disponíveis";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Usar fotos da lista de contatos do aparelho";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use System Contact Photos";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "Tema";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Adicionar alguém";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Lista de contatos e grupos que você bloqueou.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Você não possui contatos no Signal";
 
@@ -4441,11 +4480,14 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Redirecione todas as ligações através de um servidor do Signal para evitar que seu endereço IP seja revelado ao contato. Habilitar esta opção reduzirá a qualidade das chamadas.";
 
-/* No comment provided by engineer. */
-"SETTINGS_CLEAR_HISTORY" = "Limpar o Histórico de Conversas";
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Conversas";
 
 /* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger \n Licenciado nos termos da GPLv3";
+"SETTINGS_CLEAR_HISTORY" = "Limpar histórico de conversas";
+
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nLicensed under the GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Uso de rede";
@@ -4454,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Usar menos dados";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Usar menos dados pode melhorar as chamadas em redes ruins";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Chamadas";
@@ -4463,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Mensagens de voz, mídia efêmera e figurinhas (com menos de 100 kb) são sempre baixadas automaticamente.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "DOWNLOAD AUTOMÁTICO DE MÍDIA";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Auto-Download";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Redefinir as configurações de download automático";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Ajuda";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Limpar o Histórico de Conversas";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Informações";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Convide sua turma";
 
@@ -4507,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Papel de parede da conversa";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Termos & Política de Privacidade";
 
 /* Setting for enabling & disabling link previews. */
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Mensagens";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "See and share when messages are being read and typed. If disabled, you won’t see read receipts or typing indicators from others.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Configurações";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Contar Conversas Silenciadas";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Include Muted Chats";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Número de notificações";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Notificações de chamadas e mensagens aparecem enquanto o telefone está bloqueado. Você pode limitar o conteúdo mostrado.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Call and Message notifications can appear while your phone is locked.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Conteúdo de Notificação";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Novo contato no Signal";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Contact Joins Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Eventos";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notify when…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Notificações";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Confirme o seu PIN do Signal";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Os lembretes ajudarão você a lembrar seu PIN, que não pode ser recuperado. Os lembretes serão menos frequentes com o passar do tempo.";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "Lembretes de PIN";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "Os PINs mantêm as informações armazenadas no Signal criptografadas, para que você possa acessá-las. Seu perfil, configurações e contatos serão restaurados quando você reinstalar o Signal.";
+"SETTINGS_PINS_FOOTER" = "PINs keep information stored with Signal encrypted so only you can access it. Your PIN cannot be recovered. Your profile, settings, and contacts will restore when you reinstall Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Mude o seu PIN";
@@ -4601,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Crie um PIN";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "PIN DO SIGNAL";
+"SETTINGS_PINS_TITLE" = "PIN do Signal";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Mostrar chamadas em \"Recentes\" no Telefone do iOS.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Avançadas";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Mostrar chamadas em Recentes";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Privacidade";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Confirmações de Leitura";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Veja e compartilhe quando as mensagens tiverem sido lidas. Esta configuração é opcional e se aplica a todas as conversas.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Desabilitar";
@@ -4642,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Tempo de bloqueio de tela";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Desbloqueie a tela do Signal usando Touch ID, Face ID, ou a senha do seu aparelho iOS. Você continuará a atender chamadas e receber notificações enquanto a tela estiver bloqueada. As configurações de notificação do Signal permitem que você personalize as informações serão exibidas.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Bloqueio de Tela";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Bloqueio de tela";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Habilitar Segurança de Tela";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Impedir que pré-visualizações do Signal apareçam no seletor de aplicativos.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Sons";
@@ -4663,11 +4693,23 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Chamando";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Segurança de Tela";
+"SETTINGS_SECURITY_TITLE" = "App Security";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Exibir sugestões de conversas";
+"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
 "SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "As conversas no Signal são exibidas como sugestões ao compartilhar conteúdo a partir de outros aplicativos.";
@@ -4676,22 +4718,16 @@
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Bloqueio de Registro";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Para segurança extra, habilite o Bloqueio de Registro. Este exigirá que o seu PIN do Signal registre novamente seu número de telefone no Signal.";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Indicadores de digitação";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Veja e compartilhe quando as mensagens estiverem sendo digitadas. Esta configuração é opcional e se aplica a todas as conversas.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Remetente Oculto";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Exibir indicadores";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Mostrar ícone de status quando selecionar \"Detalhes\" em mensagens entregues usando remetente oculto.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Permitir a qualquer pessoa";
@@ -4703,7 +4739,7 @@
 "SETTINGS_VERSION" = "Versão";
 
 /* Label for the 'who can' privacy settings. */
-"SETTINGS_WHO_CAN" = "Quem pode...";
+"SETTINGS_WHO_CAN" = "Quem pode…";
 
 /* action sheet item to open native mail app */
 "SHARE_ACTION_MAIL" = "E-mail";
@@ -5088,9 +5124,6 @@
 
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "Nomes de usuário são opcionais no Signal. Se você decidir criar um nome de usuário, outros usuários poderão usá-lo para encontrar você e entrar em contato, mesmo que não saibam o seu número de telefone.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Nome de usuário";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Nomes de usuário podem conter apenas a-z, 0-9, e _";

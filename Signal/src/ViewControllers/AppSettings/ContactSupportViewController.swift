@@ -1,9 +1,10 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
 import PromiseKit
+import SafariServices
 
 @objc(OWSSupportConstants)
 @objcMembers class SupportConstants: NSObject {
@@ -13,7 +14,7 @@ import PromiseKit
 }
 
 @objc(OWSContactSupportViewController)
-final class ContactSupportViewController: OWSTableViewController {
+final class ContactSupportViewController: OWSTableViewController2 {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,6 @@ final class ContactSupportViewController: OWSTableViewController {
         tableView.keyboardDismissMode = .interactive
         tableView.separatorInsetReference = .fromCellEdges
         tableView.separatorInset = .zero
-        useThemeBackgroundColors = false
 
         rebuildTableContents()
         setupNavigationBar()
@@ -68,7 +68,7 @@ final class ContactSupportViewController: OWSTableViewController {
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
 
-    @objc override func applyTheme() {
+    override func applyTheme() {
         super.applyTheme()
         navigationItem.rightBarButtonItem?.tintColor = Theme.accentBlueColor
 
@@ -169,7 +169,7 @@ final class ContactSupportViewController: OWSTableViewController {
 
 // MARK: - <SupportRequestTextViewDelegate>
 
-extension ContactSupportViewController: SupportRequestTextViewDelegate, UIScrollViewDelegate {
+extension ContactSupportViewController: SupportRequestTextViewDelegate {
 
     func textViewDidUpdateSelection(_ textView: SupportRequestTextView) {
         scrollToFocus(animated: true)
@@ -260,8 +260,9 @@ extension ContactSupportViewController {
                     cell.textLabel?.textColor = Theme.accentBlueColor
                     return cell
                 },
-                   actionBlock: {
-                    UIApplication.shared.open(SupportConstants.supportURL, options: [:])
+                   actionBlock: { [weak self] in
+                    let vc = SFSafariViewController(url: SupportConstants.supportURL)
+                    self?.present(vc, animated: true)
                 })
             ]),
 
@@ -287,8 +288,9 @@ extension ContactSupportViewController {
         label.numberOfLines = 0
         label.textColor = Theme.primaryTextColor
 
-        let infoButton = OWSButton(imageName: "help-outline-24", tintColor: Theme.secondaryTextAndIconColor) {
-            UIApplication.shared.open(SupportConstants.debugLogsInfoURL, options: [:])
+        let infoButton = OWSButton(imageName: "help-outline-24", tintColor: Theme.secondaryTextAndIconColor) { [weak self] in
+            let vc = SFSafariViewController(url: SupportConstants.debugLogsInfoURL)
+            self?.present(vc, animated: true)
         }
         infoButton.accessibilityLabel = NSLocalizedString("DEBUG_LOG_INFO_BUTTON",
                                                           comment: "Accessibility label for the ? vector asset used to get info about debug logs")

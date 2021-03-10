@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Pas maintenant";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "About Signal";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Accepter le nouveau numéro de sécurité";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Contact";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Contact pour %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Contenu multimédia";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Message";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Vous";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Autocollant";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Message vocal";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Message vocal de %@ secondes.";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "Appel Signal";
@@ -626,7 +635,7 @@
 "CONFIRM_DELETE_LINKED_DATA_TITLE" = "Voulez-vous vraiment supprimer toutes les données ?";
 
 /* Alert body */
-"CONFIRM_LEAVE_GROUP_DESCRIPTION" = "Vous ne pourrez plus recevoir ni envoyer de messages dans ce groupe.";
+"CONFIRM_LEAVE_GROUP_DESCRIPTION" = "Vous ne pourrez plus ni recevoir ni envoyer de messages dans ce groupe.";
 
 /* Alert title */
 "CONFIRM_LEAVE_GROUP_TITLE" = "Voulez-vous vraiment quitter ce groupe ?";
@@ -838,9 +847,6 @@
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Bloquer l’utilisateur";
 
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Renseignements sur le contact";
-
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Couleur de la conversation";
 
@@ -854,13 +860,13 @@
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "Les administrateurs";
 
 /* Description for the 'edit group attributes access' alert. */
-"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_DESCRIPTION" = "Choisissez qui peut changer le nom, la photo du groupe et les messages éphémères.";
+"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_DESCRIPTION" = "Choisissez qui peut changer le nom, la photo et les messages éphémères du groupe.";
 
 /* Label for button that sets 'group attributes access' to 'members-only'. */
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_MEMBERS_BUTTON" = "Tous les membres";
 
 /* Label for 'edit membership access' action in conversation settings view. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "Qui peut ajouter des membres";
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "Les personnes qui peuvent ajouter des membres";
 
 /* Label for button that sets 'group membership access' to 'administrators-only'. */
 "CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "Les administrateurs";
@@ -965,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Les changements n’ont pas été enregistrés";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Visualiser tous les membres";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "See All";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Cet utilisateur est dans vos contacts.";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Ajouter aux contacts";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ a envoyé :";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Vous avez envoyé :";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Tout supprimer";
@@ -1082,10 +1094,10 @@
 "DEREGISTRATION_WARNING" = "L’appareil n’est plus inscrit. Votre numéro de téléphone est peut-être inscrit à Signal sur un appareil différent. Touchez pour vous inscrire de nouveau.";
 
 /* {{Short Date}} when device last communicated with Signal Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Dernière activité : %@";
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Last active %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Relié : %@";
+"DEVICE_LINKED_AT_LABEL" = "Linked %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Échec de mise à jour de la liste des appareils";
@@ -1109,7 +1121,7 @@
 "DEVICE_TRANSFER_CHOICE_REGISTER_BODY" = "Poursuivre sans transférer ni compte ni messages";
 
 /* The body for the device transfer 'choice' view 'register' option when linking a device */
-"DEVICE_TRANSFER_CHOICE_REGISTER_LINKED_BODY" = "Ajouter cet iPad en tant que nouvel appareil relié sans transférer l’historique des messages";
+"DEVICE_TRANSFER_CHOICE_REGISTER_LINKED_BODY" = "Ajouter cet iPad en tant que nouvel appareil relié, sans transférer l’historique des messages";
 
 /* The title for the device transfer 'choice' view 'register' option when linking a device */
 "DEVICE_TRANSFER_CHOICE_REGISTER_LINKED_TITLE" = "Ajouter en tant que nouvel appareil";
@@ -1616,7 +1628,7 @@
 "GROUP_CALL_SOMEONE_STARTED_MESSAGE" = "Quelqu’un a lancé un appel de groupe";
 
 /* Toast view text informing user about swiping to speaker view */
-"GROUP_CALL_SPEAKER_VIEW_TOAST" = "Faire glisser vers le haut pour changer de vue";
+"GROUP_CALL_SPEAKER_VIEW_TOAST" = "Balayer vers le haut pour changer de vue";
 
 /* Button to start a group call */
 "GROUP_CALL_START_BUTTON" = "Démarrer un appel";
@@ -1703,40 +1715,40 @@
 "GROUP_INVALID_INVITES_REMOVED_N" = "Des invitations invalides ont été révoquées.";
 
 /* Message indicating that the group invite link was disabled. */
-"GROUP_INVITE_LINK_DISABLED" = "Le lien de groupe a été désactivé.";
+"GROUP_INVITE_LINK_DISABLED" = "Le lien du groupe a été désactivé.";
 
 /* Message indicating that the group invite link was disabled by the local user. */
-"GROUP_INVITE_LINK_DISABLED_BY_LOCAL_USER" = "Vous avez désactivé le lien de groupe.";
+"GROUP_INVITE_LINK_DISABLED_BY_LOCAL_USER" = "Vous avez désactivé le lien du groupe.";
 
 /* Message indicating that the group invite link was disabled by a remote user. Embeds {{ user who disabled the group invite link }}. */
-"GROUP_INVITE_LINK_DISABLED_BY_REMOTE_USER_FORMAT" = "%@ a désactivé le lien de groupe.";
+"GROUP_INVITE_LINK_DISABLED_BY_REMOTE_USER_FORMAT" = "%@ a désactivé le lien du groupe.";
 
 /* Message indicating that the group invite link was enabled. */
-"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL" = "Le lien de groupe a été activé et l’approbation d’un administrateur est activée.";
+"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL" = "Le lien du groupe a été activé et l’approbation d’un administrateur est activée.";
 
 /* Message indicating that the group invite link was enabled by the local user. */
-"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL_BY_LOCAL_USER" = "Vous avez activé le lien de groupe et l’approbation d’un administrateur est activée.";
+"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL_BY_LOCAL_USER" = "Vous avez activé le lien du groupe et l’approbation d’un administrateur est activée.";
 
 /* Message indicating that the group invite link was enabled by a remote user. Embeds {{ user who enabled the group invite link }}. */
-"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ a activé le lien de groupe et l’approbation d’un administrateur est activée.";
+"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ a activé le lien du groupe et l’approbation d’un administrateur est activée.";
 
 /* Message indicating that the group invite link was enabled. */
-"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL" = "Le lien de groupe a été activé et l’approbation d’un administrateur est désactivée.";
+"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL" = "Le lien du groupe a été activé et l’approbation d’un administrateur est désactivée.";
 
 /* Message indicating that the group invite link was enabled by the local user. */
-"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL_BY_LOCAL_USER" = "Vous avez activé le lien de groupe et l’approbation d’un administrateur est désactivée.";
+"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL_BY_LOCAL_USER" = "Vous avez activé le lien du groupe et l’approbation d’un administrateur est désactivée.";
 
 /* Message indicating that the group invite link was enabled by a remote user. Embeds {{ user who enabled the group invite link }}. */
-"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ a activé le lien de groupe et l’approbation d’un administrateur est désactivée.";
+"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ a activé le lien du groupe et l’approbation d’un administrateur est désactivée.";
 
 /* Message indicating that the group invite link was reset. */
-"GROUP_INVITE_LINK_RESET" = "Le lien de groupe a été réinitialisé.";
+"GROUP_INVITE_LINK_RESET" = "Le lien du groupe a été réinitialisé.";
 
 /* Message indicating that the group invite link was reset by the local user. */
-"GROUP_INVITE_LINK_RESET_BY_LOCAL_USER" = "Vous avez réinitialisé le lien de groupe.";
+"GROUP_INVITE_LINK_RESET_BY_LOCAL_USER" = "Vous avez réinitialisé le lien du groupe.";
 
 /* Message indicating that the group invite link was reset by a remote user. Embeds {{ user who reset the group invite link }}. */
-"GROUP_INVITE_LINK_RESET_BY_REMOTE_USER_FORMAT" = "%@ a réinitialisé le lien de groupe.";
+"GROUP_INVITE_LINK_RESET_BY_REMOTE_USER_FORMAT" = "%@ a réinitialisé le lien du groupe.";
 
 /* Message indicating that the group invite link was set to not require approval. */
 "GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL" = "L’approbation d’un administrateur a été désactivée pour le lien du groupe.";
@@ -1805,7 +1817,7 @@
 "GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Mettez Signal à jour sur cet appareil pour vous joindre à ce groupe.";
 
 /* Explanation of the 'approve new group members' switch. */
-"GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Exiger qu’un administrateur approuve les nouveaux membres qui se joignent grâce au lien de groupe.";
+"GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Exiger qu’un administrateur approuve les nouveaux membres qui se joignent grâce au lien du groupe.";
 
 /* Label for the 'approve new group members' switch. */
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_SWITCH" = "Approuver les nouveaux membres";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Partager avec Signal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Toute personne disposant de ce lien peut se joindre au groupe ou envoyer une demande pour s’y joindre. Partagez-le avec les personnes en qui vous avez confiance.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Toute personne disposant de ce lien peut visualiser le nom du groupe et ses membres, et demander à s’y joindre. Partagez-le avec les personnes en qui vous avez confiance.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Lien de groupe";
@@ -1913,7 +1925,7 @@
 "GROUP_LOCAL_USER_JOINED_THE_GROUP" = "Vous vous êtes joint au groupe.";
 
 /* Message indicating that the local user has joined the group. */
-"GROUP_LOCAL_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK" = "Vous êtes joint au groupe grâce au lien de groupe.";
+"GROUP_LOCAL_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK" = "Vous vous êtes joint au groupe grâce au lien du groupe.";
 
 /* Message indicating that the local user was removed from the group by another user. Embeds {{remote user name}}. */
 "GROUP_LOCAL_USER_REMOVED_BY_REMOTE_USER_FORMAT" = "Votre suppression du groupe provient de %@.";
@@ -1974,6 +1986,27 @@
 
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Appel vidéo";
+
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ group members have similar names.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Toucher pour examiner";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Membre";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Examiner les membres";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ group members have similar names, review the members below or choose to take action.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ group members have the same name, review the members below or choose to take action.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ group members have the same name.";
 
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Nom du groupe (requis)";
@@ -2051,7 +2084,7 @@
 "GROUP_REMOTE_USER_JOINED_GROUP_FORMAT" = "%@ s’est joint au groupe.";
 
 /* Message indicating that another user has joined the group. Embeds {{remote user name}}. */
-"GROUP_REMOTE_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK_FORMAT" = "%@ s’est joint au groupe grâce au lien de groupe.";
+"GROUP_REMOTE_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK_FORMAT" = "%@s’est joint au groupe grâce au lien du groupe.";
 
 /* Message indicating that a remote user has left the group. Embeds {{remote user name}}. */
 "GROUP_REMOTE_USER_LEFT_GROUP_FORMAT" = "%@ a quitté le groupe.";
@@ -2068,9 +2101,6 @@
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ a approuvé une demande de %1$@ de se joindre au groupe.";
 
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "Une demande de %@ de se joindre au groupe a été approuvée.";
-
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ a annulé sa demande de se joindre au groupe.";
 
@@ -2084,7 +2114,7 @@
 "GROUP_REMOTE_USER_REQUEST_REJECTED_FORMAT" = "Une demande de %@ de se joindre au groupe a été refusée.";
 
 /* Message indicating that a remote user requested to join the group. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUESTED_TO_JOIN_THE_GROUP_FORMAT" = "%@ a demandé à se joindre au groupe grâce au lien de groupe.";
+"GROUP_REMOTE_USER_REQUESTED_TO_JOIN_THE_GROUP_FORMAT" = "%@ a demandé à se joindre au groupe grâce au lien du groupe.";
 
 /* Message indicating that a remote user had their administrator role revoked. Embeds {{remote user name}}. */
 "GROUP_REMOTE_USER_REVOKED_ADMINISTRATOR" = "Les privilèges d’administrateur de %@ ont été révoqués.";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Balayez le code QR affiché sur l’appareil que vous souhaitez relier.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Balayer le code QR";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scan QR Code to link a new device.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Relier un nouvel appareil";
@@ -2647,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Sélectionner un emplacement";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Journalisation";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Debug logs can help Signal fix issues and crashes.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Message";
@@ -2971,6 +3004,9 @@
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "En sourdine";
 
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Recently changed their profile name from %1$@ to %2$@.";
+
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Ignorer";
 
@@ -3052,6 +3088,9 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Aucun groupe en commun";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Aucun autre groupe en commun.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Sélectionnez un contact ou un groupe pour lancer une conversation.";
 
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Jouer pendant que l’appli est ouverte";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Sons";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Ajouter un son personnalisé…";
@@ -3188,10 +3224,10 @@
 "ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Accorder les autorisations";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Les notifications vous signalent l’arrivée de messages et l’activité des conversations.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Autoriser les notifications et les contacts vous permet de savoir qu’un message est reçu et vous aide à trouver les personnes que vous connaissez. Les contacts sont chiffrés et le service Signal ne peut pas les voir.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Obtenir le message";
+"ONBOARDING_PERMISSIONS_TITLE" = "Accorder les autorisations";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Choisissez qui peut vous trouver sur Signal avec votre numéro de téléphone %@";
@@ -3199,11 +3235,17 @@
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Qui peut vous trouver avec votre numéro ?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Votre numéro de téléphone";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Veuillez patienter quelques minutes avant de réessayer. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Saisissez votre numéro de téléphone pour commencer";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Saisissez votre numéro de téléphone";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Le numéro est invalide";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Le numéro de téléphone est invalide. Pour vous inscrire, veuillez saisir un numéro de téléphone valide.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Vous avez épuisé tous vos essais de NIP, mais vous pouvez encore accéder à votre compte Signal en créant un nouveau NIP. Afin de protéger vos données personnelles et votre sécurité, votre compte sera restauré sans renseignements de profil enregistrés ni préférences.";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Saisissez votre NIP";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Votre profil";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Nom de famille (facultatif)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Prénom (requis)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Conditions générales d’utilisation et politique de confidentialité";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Mauvais numéro ?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Je n’ai pas reçu de code (disponible dans %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Appelez-moi";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Contacter l’assistance de Signal";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Appelez-moi dans %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Validation du code…";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Ce code est erroné";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Je n’ai pas reçu de code";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Renvoyer le code";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Assurez-vous que le service de téléphonie mobile est actif et que vous pouvez recevoir des textos.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Aucun code reçu ?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Renvoyer le code.";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Appelez-moi plutôt";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Toujours pas de code ?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Renvoyer le code dans %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Saisir le code envoyé au %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Nous venons de renvoyer un code au %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Code de confirmation";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Paramètres";
@@ -3347,7 +3389,7 @@
 "PENDING_GROUP_MEMBERS_SECTION_FOOTER_INVITES_FROM_OTHER_MEMBERS" = "Les détails des personnes invitées par d’autres membres du groupe ne sont pas affichés. Si les invités choisissent de se joindre au groupe, leurs renseignements seront alors communiqués au groupe. Ils ne verront aucun message dans le groupe avant de s’y être joints.";
 
 /* Footer for the 'pending member requests' section of the 'member requests and invites' view. Embeds {{ the name of the group }}. */
-"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "Les personnes de cette liste tentent de se joindre à « %@ » grâce au lien de groupe.";
+"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "Les personnes de cette liste tentent de se joindre à « %@ » grâce au lien du groupe.";
 
 /* Title for the 'invalid invites' section of the 'member requests and invites' view. */
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "Invitations invalides";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ a changé le nom de son profil en %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Ajouter au profil";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Votre nom";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "À propos";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Name";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Nom d’utilisateur";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Définir une photo de profil";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "À propos";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Supprimer la photo";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Créer un nom d’utilisateur";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Votre nom de famille est trop long.";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Votre prénom est trop long.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Facultatif)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Nom de famille";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Nom de famille (facultatif)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Requis)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Prénom";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Prénom (requis)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Le profil ne peut être mis à jour qu’une fois connecté à Internet.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Votre profil est chiffré de bout en bout. Quand vous lancez ou acceptez de nouvelles conversations, ou vous joignez à de nouveaux groupes, il est visible par vos contacts, avec ses modifications.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Votre profil est chiffré de bout en bout. Avec ses modifications, il est visible par vos contacts et si vous lancez ou acceptez de nouvelles conversations.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Enregistrer";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profil";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Nom d’utilisateur";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Marquer comme lu";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Les notifications poussées ont été réactivées avec succès.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Notifications poussées";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = " ?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Nous ne pouvons pas activer votre compte tant que vous n’aurez pas confirmé le code que nous vous avons envoyé.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Afin de poursuivre, veuillez vérifier la connexion à Internet de votre téléphone et réessayer.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Vérifiez la connexion";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Ce format de numéro de téléphone n’est pas pris en charge, veuillez contacter l’assistance.";
 
@@ -3937,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Aucun numéro de téléphone";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Un code de confirmation sera envoyé à ce numéro. Votre numéro de téléphone est-il correct ci-dessus ?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Confirmation du numéro : %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Modifier";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Confirmation %@…";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Refuser";
 
@@ -3947,7 +3998,7 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "Choisir un nouvel administrateur";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "Réactiver les notifications poussées";
+"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
 
 /* Body for research megaphone */
 "RESEARCH_MEGAPHONE_BODY" = "Pour faire de Signal la meilleure appli de messagerie au monde, nous aimerions avoir votre avis.";
@@ -4022,13 +4073,13 @@
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_LOCKOUT" = "Trop d’essais infructueux d’authentification. Veuillez réessayer plus tard.";
 
 /* Indicates that Touch ID/Face ID/Phone Passcode are not available on this device. */
-"SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_NOT_AVAILABLE" = "Vous devez activer un code dans vos réglages iOS pour utiliser le verrouillage de l’écran.";
+"SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_NOT_AVAILABLE" = "Vous devez activer un code dans vos réglages iOS pour utiliser le verrou d’écran.";
 
 /* Indicates that Touch ID/Face ID/Phone Passcode is not configured on this device. */
-"SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_NOT_ENROLLED" = "Vous devez activer un code dans vos réglages iOS pour utiliser le verrouillage de l’écran.";
+"SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_NOT_ENROLLED" = "Vous devez activer un code dans vos réglages iOS pour utiliser le verrou d’écran.";
 
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
-"SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Vous devez activer un code dans vos réglages iOS pour utiliser le verrouillage de l’écran.";
+"SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Vous devez activer un code dans vos réglages iOS pour utiliser le verrou d’écran.";
 
 /* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
 "SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Authentifiez-vous pour ouvrir Signal.";
@@ -4223,7 +4274,7 @@
 "SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS" = "Terminer la liaison";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Lancez Signal sur votre téléphone pour relier cet iPad à votre compte";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Lancer Signal sur votre téléphone pour relier cet iPad à votre compte";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
 "SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Je n’ai pas Signal sur mon téléphone…";
@@ -4235,7 +4286,7 @@
 "SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Installer Signal sur votre téléphone";
 
 /* body text while displaying a QR code which, when scanned, will link this device. */
-"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Touchez sur votre image de profil pour accéder aux paramètres de Signal sur votre téléphone, puis « Appareils reliés » et « Relier un nouvel appareil » afin de balayer ce code avec votre téléphone :";
+"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Touchez votre image de profil pour accéder aux paramètres de Signal sur votre téléphone, puis « Appareils reliés » et « Relier un nouvel appareil » afin de balayer ce code avec votre téléphone :";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
 "SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Obtenez de l’aide ici pour relier votre iPad";
@@ -4300,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Définir un fond d’écran";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "À propos de Signal";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Account";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Bloquer";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Contournement de la censure";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Lieu : %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Position";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Si cette option est activée, Signal tentera de contourner la censure. N’activez cette fonction que si vous êtes situé en un lieu où Signal est censurée.";
@@ -4327,9 +4378,6 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Le contournement de la censure n’est pas nécessaire ; vous êtes déjà connecté au service Signal.";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Contournement de la censure";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Activer le journal de débogage";
 
@@ -4345,23 +4393,17 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Activer le NIP";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "NIP Signal";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Envoyer le journal de débogage";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Avancés";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Journaux d’erreurs";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Si présentes, afficher les photos des contacts du système";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Utiliser les photos des contacts du système";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use System Contact Photos";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "Thème";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Ajouter un utilisateur bloqué";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Liste des contacts et groupes que vous avez bloqués.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Vous n’avez aucun contact sur Signal.";
 
@@ -4441,11 +4480,14 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Relayez tous les appels par un serveur Signal pour éviter de divulguer votre adresse IP à votre contact. L’activation de cette option réduira la qualité des appels.";
 
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Conversations";
+
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Effacer l’historique des conversations";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Tous droits réservés Messagerie Signal\nSous licence GPLv3";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nLicensed under the GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Utilisations des données";
@@ -4454,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Utiliser moins de données";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Sur les réseaux peu performants, utiliser moins de données pourrait améliorer la qualité des appels";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Appels";
@@ -4463,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Les messages vocaux, médias éphémères et autocollants (inférieurs à 100 ko) sont toujours téléchargés automatiquement.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Téléchargement automatique des médias";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Auto-Download";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Réinitialiser les paramètres de téléchargement automatique";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Aide ";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Effacer l’historique des conversations";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Renseignements";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Invitez vos amis";
 
@@ -4505,9 +4541,9 @@
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "Son de message";
 
 /* Label for settings view that allows user to change the wallpaper. */
-"SETTINGS_ITEM_WALLPAPER" = "Fond d’écran de conversation";
+"SETTINGS_ITEM_WALLPAPER" = "Fond d’écran de la conversation";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Conditions générales et politique de confidentialité";
 
 /* Setting for enabling & disabling link previews. */
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Messagerie";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "See and share when messages are being read and typed. If disabled, you won’t see read receipts or typing indicators from others.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Paramètres";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Compter les conversations en sourdine";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Include Muted Chats";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Pastille de comptage";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Des notifications d’appels et de messages peuvent apparaître quand votre téléphone est verrouillé. Vous souhaiterez peut-être limiter ce qui est indiqué dans ces notifications.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Call and Message notifications can appear while your phone is locked.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Contenu des notifications";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Un contact s’est joint à Signal";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Contact Joins Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Évènements";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notify when…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Notifications";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Confirmer votre NIP Signal";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Les rappels vous aident à vous souvenir de votre NIP, car il ne peut pas être récupéré. Il vous sera demandé de moins en moins souvent.";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "Rappels du NIP";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "Les NIP font en sorte que les renseignements sont enregistrés chiffrés dans Signal afin que vous seul puissiez y accéder. Votre profil, vos paramètres et vos contacts seront restaurés quand vous réinstallerez Signal.";
+"SETTINGS_PINS_FOOTER" = "PINs keep information stored with Signal encrypted so only you can access it. Your PIN cannot be recovered. Your profile, settings, and contacts will restore when you reinstall Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Changer votre NIP";
@@ -4601,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Créer un NIP";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "NIP SIGNAL";
+"SETTINGS_PINS_TITLE" = "NIP Signal";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Affichez les appels dans la liste « Récents » de l’appli iOS Téléphone.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Avancés";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Afficher les appels dans Récents";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Confidentialité";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Accusés de lecture";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Voyez et faites savoir que les messages ont été lus. Ce paramètre est facultatif et s’applique à toutes les conversations.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Désactiver";
@@ -4640,22 +4676,16 @@
 "SETTINGS_REREGISTER_BUTTON" = "S’inscrire de nouveau";
 
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Délai de verrouillage de l’écran";
-
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Déverrouillez l’écran de Signal en utilisant Touch ID, Face ID ou le code de votre appareil iOS. Vous pouvez toujours répondre aux appels entrants et recevoir des notifications d’appels ou de messages alors que le verrouillage de l’écran est activé. Les paramètres de notification de Signal vous permettent de personnaliser les renseignements affichés.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Verrouillage de l’écran";
+"SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Délai avant verrouillage de l’écran";
 
 /* Label for the 'enable screen lock' switch of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Verrouillage de l’écran";
+"SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Verrou d’écran";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Activer la sécurité de l’écran";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Ne pas afficher les aperçus de Signal dans le sélecteur d’applis.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Sons";
@@ -4663,11 +4693,23 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Appel";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Sécurité de l’écran";
+"SETTINGS_SECURITY_TITLE" = "App Security";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Afficher dans Suggestions";
+"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
 "SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Les conversations de Signal sont affichées en tant que suggestions lors d’un partage à partir d’autres applis.";
@@ -4676,22 +4718,16 @@
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Blocage de l’inscription";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Pour une sécurité accrue, activez le blocage de l’inscription, qui exigera votre NIP Signal pour réinscrire votre numéro de téléphone auprès de Signal.";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Indicateurs de saisie";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Voyez et faites savoir que des messages sont en cours de saisie. Ce paramètre est facultatif et s’applique à toutes les conversations.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Expéditeur scellé";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Afficher les indicateurs";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Affichez une icône d’état quand vous sélectionnez « Plus de précisions » pour les messages qui ont été remis avec l’option « expéditeur scellé ».";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Autoriser de tous";
@@ -5089,9 +5125,6 @@
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "Sur Signal, les noms d’utilisateur sont facultatifs. Si vous choisissez de créer un nom d’utilisateur, les autres utilisateurs de Signal pourront vous trouver avec ce nom d’utilisateur et vous contacter sans connaître votre numéro de téléphone.";
 
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Nom d’utilisateur";
-
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Les noms d’utilisateur ne peuvent comprendre que a à z, 0 à 9 et a-z, 0-9 et _.";
 
@@ -5189,7 +5222,7 @@
 "WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "Pincer pour zoomer, glisser pour ajuster.";
 
 /* The incoming bubble text when setting a preset */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Faire glisser pour prévisualiser d’autres fonds d’écran.";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Balayez pour prévisualiser d’autres fonds d’écran.";
 
 /* The outgoing bubble text when setting a wallpaper for all chats. */
 "WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "Définir le fond d’écran pour toutes les conversations.";
@@ -5204,13 +5237,13 @@
 "WALLPAPER_PREVIEW_TITLE" = "Aperçu";
 
 /* Clear wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "Effacer le fond d’écran";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "Réinitialiser le fond d’écran";
 
 /* Confirmation dialog when clearing the wallpaper for a specific chat. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "Effacer le fond d’écran pour cette conversation ?";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "Réinitialiser le fond d’écran de cette conversation ?";
 
 /* Confirmation dialog when clearing the global wallpaper. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "Effacer le fond d’écran ? Les fonds d’écran personnalisés que vous avez définis pour vos conversations ne seront pas effacés.";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "Réinitialiser le fond d’écran ? Les fonds d’écran personnalisés que vous avez définis pour vos conversations ne seront pas réinitialisés.";
 
 /* Dim wallpaper action in wallpaper settings view. */
 "WALLPAPER_SETTINGS_DIM_WALLPAPER" = "Le thème sombre atténue le fond d’écran";
@@ -5234,7 +5267,7 @@
 "WALLPAPER_SETTINGS_SET_WALLPAPER" = "Définir un fond d’écran";
 
 /* Title for the wallpaper settings view. */
-"WALLPAPER_SETTINGS_TITLE" = "Fond d’écran de conversation";
+"WALLPAPER_SETTINGS_TITLE" = "Fond d’écran de la conversation";
 
 /* text indicating the message was remotely deleted by you */
 "YOU_DELETED_THIS_MESSAGE" = "Vous avez supprimé ce message.";

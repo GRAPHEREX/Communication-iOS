@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "ไม่ใช่ตอนนี้";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "About Signal";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "ยอมรับหมายเลขความปลอดภัยใหม่";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "ผู้ติดต่อ";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Contact for %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "สื่อ";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "ข้อความ";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "คุณ";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "สติกเกอร์";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Voice message";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Voice message %@ seconds";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "โทรด้วย Signal";
@@ -838,9 +847,6 @@
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "ปิดกั้นผู้ใช้";
 
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "ข้อมูลผู้ติดต่อ";
-
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Chat Color";
 
@@ -899,7 +905,7 @@
 "CONVERSATION_SETTINGS_MENTION_MODE_NEVER" = "Don’t Notify If Muted";
 
 /* Title of the 'mention notification mode' action sheet. */
-"CONVERSATION_SETTINGS_MENTION_NOTIFICATION_MODE_ACTION_SHEET_TITLE" = "Receive notifications when you’re mentioned in muted chats?";
+"CONVERSATION_SETTINGS_MENTION_NOTIFICATION_MODE_ACTION_SHEET_TITLE" = "รับการแจ้งเตือนเมื่อคุณถูก mentioned ในการพูดคุยที่ปิดเสียงไว้";
 
 /* label for 'mentions' cell in conversation settings */
 "CONVERSATION_SETTINGS_MENTIONS_LABEL" = "การกล่าวถึง";
@@ -965,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "การเปลี่ยนแปลงที่ยังไม่ถูกบันทึก";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "ดูสมาชิกทั้งหมด";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "See All";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "ผู้ใช้รายนี้อยู่ในรายชื่อผู้ติดต่อของคุณ";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "เพิ่มลงในรายชื่อผู้ติดต่อ";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ sent:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "You sent:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "ลบทั้งหมด";
@@ -1082,10 +1094,10 @@
 "DEREGISTRATION_WARNING" = "อุปกรณ์ไม่ได้ลงทะเบียนอีกต่อไป หมายเลขโทรศัพท์นี้อาจจะใช้ลงทะเบียน Signal บนอุปกรณ์อื่น แตะเพื่อลงทะเบียนใหม่";
 
 /* {{Short Date}} when device last communicated with Signal Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "ใช้งานล่าสุด: %@";
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Last active %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "เชื่อมโยง: %@";
+"DEVICE_LINKED_AT_LABEL" = "Linked %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "ปรับปรุงรายการอุปกรณ์ไม่สำเร็จ";
@@ -1538,7 +1550,7 @@
 "GROUP_CALL_BLOCKED_USER_FORMAT" = "%@ is blocked";
 
 /* Button to continue an ongoing group call */
-"GROUP_CALL_CONTINUE_BUTTON" = "Continue Call";
+"GROUP_CALL_CONTINUE_BUTTON" = "ดำเนินการโทรต่อ";
 
 /* Text in conversation view for a group call that has since ended */
 "GROUP_CALL_ENDED_MESSAGE" = "The group call has ended";
@@ -1577,7 +1589,7 @@
 "GROUP_CALL_NO_KEYS_ALERT_TITLE_FORMAT" = "Can't receive audio and video from %@";
 
 /* Text explaining that you are the only person currently in the group call */
-"GROUP_CALL_NO_ONE_HERE" = "No one else is here";
+"GROUP_CALL_NO_ONE_HERE" = "ไม่มีใครที่นี่";
 
 /* Text explaining to the user that nobody has joined this call yet. */
 "GROUP_CALL_NOBODY_IS_IN_YET" = "Nobody is in this call yet.";
@@ -1619,7 +1631,7 @@
 "GROUP_CALL_SPEAKER_VIEW_TOAST" = "Swipe up to change views";
 
 /* Button to start a group call */
-"GROUP_CALL_START_BUTTON" = "Start Call";
+"GROUP_CALL_START_BUTTON" = "เริ่มโทร";
 
 /* Tooltip highlighting group calls. */
 "GROUP_CALL_START_TOOLTIP" = "แตะที่นี่เพื่อเริ่มการโทรแบบกลุ่ม";
@@ -1805,7 +1817,7 @@
 "GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Update Signal on this device to join this group.";
 
 /* Explanation of the 'approve new group members' switch. */
-"GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Require an admin to approve new members joining via the group link.";
+"GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "ผู้ดูแลต้องยอมรับให้สมาชิกใหม่เข้าร่วมกลุ่มผ่านลิงก์กลุ่ม";
 
 /* Label for the 'approve new group members' switch. */
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_SWITCH" = "อนุมัติสมาชิกใหม่";
@@ -1847,7 +1859,7 @@
 "GROUP_LINK_VIEW_MANAGE_AND_SHARE_SECTION_TITLE" = "Manage and Share";
 
 /* Footer for the 'member requests' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "Require an admin to approve new members joining via the group link.";
+"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "ผู้ดูแลต้องยอมรับให้สมาชิกใหม่เข้าร่วมกลุ่มผ่านลิงก์กลุ่ม";
 
 /* Title for the 'member requests' section of the 'group link' view. */
 "GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "Member Requests";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "แบ่งปันผ่าน Signal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Anyone with this link can join the group, or send a request to join. Share it with people you trust.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Anyone with this link can view this group’s name and members and request to join.  Share it with people you trust.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "ลิงก์กลุ่ม";
@@ -1964,7 +1976,7 @@
 "GROUP_MEMBERS_CALL" = "การโทรด้วยเสียง";
 
 /* Label indicating that a new group has no other members. */
-"GROUP_MEMBERS_NO_OTHER_MEMBERS" = "You can add or invite friends after creating this group.";
+"GROUP_MEMBERS_NO_OTHER_MEMBERS" = "คุณสามารถเพิ่มหรือเชิญเพื่อนหลังจากสร้างกลุ่มนี้";
 
 /* Title for the 'members' section of the 'group members' view. */
 "GROUP_MEMBERS_SECTION_TITLE_MEMBERS" = "สมาชิก";
@@ -1974,6 +1986,27 @@
 
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "โทรเห็นหน้า";
+
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ group members have similar names.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "แตะเพื่อทบทวน";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "สมาชิก";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Review Members";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ group members have similar names, review the members below or choose to take action.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ group members have the same name, review the members below or choose to take action.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ group members have the same name.";
 
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "ชื่อกลุ่ม (ต้องมี)";
@@ -2067,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ approved a request to join the group from %1$@.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "A request to join the group from %@ was approved.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ canceled their request to join the group.";
@@ -2210,7 +2240,7 @@
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "To create a New Group, all members should update to the latest version of Signal.";
 
 /* Title for the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Legacy vs. New Groups";
+"GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Lagacy vs. กลุ่มใหม่";
 
 /* Format for indicator that a group cannot be used until it is migrated. Embeds {{ a \"learn more\" link. }}. */
 "GROUPS_LEGACY_GROUP_BLOCKING_MIGRATION_FORMAT" = "Upgrade this group to activate new features like @mentions and admins. Members who have not shared their name or photo in this group will be invited to join. %@.";
@@ -2225,7 +2255,7 @@
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "When all current group members are using a version of Signal capable of joining a New Group, this group will be upgraded.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_2" = "All message history and media will be kept from before the upgrade.";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_2" = "ประวัติข้อความและสื่อทั้งหมดถูกเก็บก่อนการอัปเกรด";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. */
 "GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "This group cannot be created because 1 member is using an old version of Signal. You can create a New Style Group with them after they update Signal, or remove them before creating the group.";
@@ -2279,7 +2309,7 @@
 "GROUPS_LEGACY_GROUP_MIGRATE_GROUP_MIGRATE_BUTTON" = "อัปเกรดกลุ่ม";
 
 /* Title for the the 'migrate group' banner. */
-"GROUPS_LEGACY_GROUP_MIGRATE_GROUP_OFFER_BANNER" = "To access new features like @mentions and admins, upgrade this group.";
+"GROUPS_LEGACY_GROUP_MIGRATE_GROUP_OFFER_BANNER" = "อัปเกรดกลุ่มนี้เพื่อเข้าถึงคุณลักษณะใหม่เช่นการ @mentions และผู้ดูแลกลุ่ม ";
 
 /* Title for the 'migrated group' alert view. */
 "GROUPS_LEGACY_GROUP_MIGRATED_GROUP_ALERT_TITLE" = "อะไรคือกลุ่มใหม่";
@@ -2330,7 +2360,7 @@
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_POSSIBLY_DROPPED_MEMBERS_1" = "This member is not capable of joining New Groups, and will be removed from the group:";
 
 /* Body text for the 'possibly dropped members' section of the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_POSSIBLY_DROPPED_MEMBERS_N" = "These members are not capable of joining New Groups, and will be removed from the group:";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_POSSIBLY_DROPPED_MEMBERS_N" = "สมาชิกเหล่านี้ไม่สามารถเข้าร่วมกลุ่มใหม่ได้ และจะถูกนำออกจากกลุ่ม";
 
 /* Title for the 'upgrade legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_TITLE" = "ปรับรุ่นเป็นกลุ่มใหม่";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "สแกนรหัส QR ที่แสดงบนอุปกรณ์ที่คุณต้องการเชื่อมโยง";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "สแกนรหัส QR";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scan QR Code to link a new device.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "เชื่อมโยงอุปกรณ์ใหม่";
@@ -2647,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "เลือกที่ตั้ง";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "กำลังบันทึก";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Debug logs can help Signal fix issues and crashes.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "ข้อความ";
@@ -2971,6 +3004,9 @@
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Muted";
 
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Recently changed their profile name from %1$@ to %2$@.";
+
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "ข้าม";
 
@@ -3050,7 +3086,10 @@
 "NO_CONTACTS_SEARCH_BY_PHONE_NUMBER" = "ค้นหาผู้ติดต่อด้วยหมายเลขโทรศัพท์";
 
 /* A string describing that the user has no groups in common with another user */
-"NO_GROUPS_IN_COMMON" = "No groups in common";
+"NO_GROUPS_IN_COMMON" = "ไม่มีกลุ่มร่วมกัน";
+
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "No other groups in common.";
 
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "เลือกผู้ติดต่อหรือกลุ่มเพื่อเริ่มต้นการแชต";
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "เล่นขณะที่แอปเปิดอยู่";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "เสียงเรียกเตือน";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "เพิ่มเสียงที่กำหนดเอง…";
@@ -3185,13 +3221,13 @@
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "การเชื่อมโยงโทรศัพท์ไม่เป็นที่แนะนำและจะจำกัดการใช้งานหลัก";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "อนุญาตให้มีสิทธิ์";
+"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Allow Permissions";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Notifications let you see when messages arrive and receive updates about new chat activity.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Allowing notifications and contacts lets you see when messages arrive and helps you find people you know. Contacts are encrypted so the Signal service can't see them.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "รับข้อความ";
+"ONBOARDING_PERMISSIONS_TITLE" = "Allow Permissions";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Choose who can find you on Signal with your phone number %@";
@@ -3199,11 +3235,17 @@
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Who can find you with your number?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Your phone number";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Please wait a few minutes before trying again. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "ใส่หมายเลขโทรศัพท์ของคุณเพื่อเริ่มต้นใช้งาน";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Enter your phone number";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "หมายเลขไม่ถูกต้อง";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Invalid phone number. Please enter a valid phone number to register.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "คุณได้เดารหัส PIN จนครบจำนวนแล้ว แต่คุณยังสามารถเข้าถึงบัญชี Signal ของคุณได้ด้วยการสร้าง รหัส PIN ใหม่ เพื่อความเป็นส่วนตัวและความปลอดภัยของคุณ บัญชีของคุณจะถูกกู้คืนมาโดยปราศจากข้อมูลโปรไฟล์หรือการตั้งค่าที่คุณบันทึกไว้";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "ใส่ PIN ของคุณ";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Your profile";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Last Name (Optional)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "First Name (Required)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "เงื่อนไขและนโยบายความเป็นส่วนตัว";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "หมายเลขไม่ถูกต้องหรือ";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "ฉันไม่ได้รับรหัส (ส่งอีกครั้งภายใน %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Call Me";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "ติดต่อทีมซัพพอร์ตของ Signal";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Call Me in %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Validating Code...";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "รหัสนี้ไม่ถูกต้อง";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "ฉันไม่ได้รับรหัส";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "ส่งรหัสอีกครั้ง";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "กรุณาทำให้แน่ใจว่าคุณมีสัญญาณโทรศัพท์และสามารถรับข้อความทางโทรศัพท์ได้";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "ไม่มีรหัสหรือ?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "ส่งรหัสอีกครั้ง";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "โทรหาฉันแทน";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "ยังไม่มีรหัสหรือ?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Resend Code in %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "ใส่รหัสที่เราส่งไปที่ %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "เราเพิ่งส่งรหัสไปใหม่ที่ %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Verification code";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "การตั้งค่า";
@@ -3590,7 +3632,7 @@
 "PINNED_CONVERSATION_LIMIT" = "You can only pin up to 4 chats.";
 
 /* The title for pinned conversation section on the conversation list */
-"PINNED_SECTION_TITLE" = "Pinned";
+"PINNED_SECTION_TITLE" = "ปักหมุด";
 
 /* Action text for PIN megaphone when user doesn't have a PIN */
 "PINS_MEGAPHONE_ACTION" = "สร้างรหัส PIN";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ changed their profile name to %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Add to Profile";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Your Name";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "เกี่ยวกับ";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Name";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "ชื่อผู้ใช้";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "ตั้งรูปโปรไฟล์";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "เกี่ยวกับ";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "ลบรูป";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "สร้างชื่อผู้ใช้";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "สกุลของคุณยาวเกินไป";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "ชื่อตัวของคุณยาวเกินไป";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(ไม่จำเป็น)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "สกุล";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Last Name (Optional)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(ต้องใช้)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "ชื่อตัว";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "First Name (Required)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "ปรับปรุงโปรไฟล์ได้เมื่อเชื่อมต่อกับอินเทอร์เน็ตอยู่เท่านั้น";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Your profile is end-to-end encrypted. Your profile and changes to it will be visible to your contacts, when you initiate or accept new chats, and when you join new groups.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Your profile is end-to-end encrypted. Your profile and changes to it will be visible to your contacts and when you start or accept new chats.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "บันทึก";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "โปรไฟล์";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "ชื่อผู้ใช้";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "ทำเครื่องหมายว่าอ่านแล้ว";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "ลงทะเบียนใหม่สำหรับการแจ้งเตือนแบบพุชได้สำเร็จ";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "การแจ้งเตือนแบบพุช";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "เราไม่สามารถเปิดใช้งานบัญชีของคุณจนกว่าคุณจะตรวจยืนยันรหัสที่เราส่งให้คุณ";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "To continue, check your phone's Internet connection and try again.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Check Connection";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "ไม่รองรับรูปแบบหมายเลขโทรศัพท์นี้ โปรดติดต่อฝ่ายสนับสนุน";
 
@@ -3937,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "ไม่มีหมายเลขโทรศัพท์";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "A verification code will be sent to this number. Is your phone number above correct?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Number Confirmation: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "แก้ไข";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Verifying %@...";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "ปฏิเสธ";
 
@@ -3947,7 +3998,7 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "เลือกผู้ดูแลใหม่";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "ลงทะเบียนใหม่สำหรับการแจ้งเตือนแบบพุช";
+"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
 
 /* Body for research megaphone */
 "RESEARCH_MEGAPHONE_BODY" = "To make Signal the best messaging app on the planet, we’d love to hear your feedback.";
@@ -4300,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Set Wallpaper";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "เกี่ยวกับ";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Account";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "ปิดกั้น";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "การหลบเลี่ยงการปิดกั้นข้อมูล";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "ตำแหน่งที่ตั้ง: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "ที่ตั้ง";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "หากเปิดใช้ Signal จะพยายามหลบเลี่ยงการปิดกั้นข้อมูล อย่าเปิดใช้ความสามารถนี้ เว้นแต่ว่าคุณอยู่ในที่ที่ Signal ถูกปิดกั้น";
@@ -4327,9 +4378,6 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "ไม่จำเป็นต้องใช้การหลบเลี่ยงการปิดกั้นข้อมูล; คุณเชื่อมต่อกับเซิร์ฟเวอร์ Signal อยู่แล้ว";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "การหลบเลี่ยงการปิดกั้นข้อมูล";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "เปิดใช้งานบันทึกดีบัก";
 
@@ -4345,23 +4393,17 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "เปิดใช้งาน PIN";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "รหัส PIN ของ Signal";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "ส่งบันทึกดีบัก";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "ขั้นสูง";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "ปูมข้อผิดพลาด";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use system contact photos";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use System Contact Photos";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "ธีม";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "เพิ่มผู้ใช้ที่จะถูกปิดกั้น";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "List of contacts and groups you have blocked.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "คุณไม่มีผู้ติดต่อบน Signal";
 
@@ -4441,11 +4480,14 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "ส่งต่อสายทั้งหมดผ่านเซิร์ฟเวอร์ Signal เพื่อหลีกเลี่ยงการเปิดเผยที่อยู่ IP ของคนที่คุณติดต่อด้วย การเปิดใช้งานจะลดคุณภาพการโทรลง";
 
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "การพูดคุย";
+
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Clear Chat History";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "ลิขสิทธิ์ Signal Messenger \n เผยแพร่ภายใต้สัญญาอนุญาต GPLv3";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nLicensed under the GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Data Usage";
@@ -4454,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Use Less Data";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "การโทร";
@@ -4463,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Voice messages, view-once media, and stickers (under 100kb) are always auto-downloaded.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "MEDIA AUTO-DOWNLOAD";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Auto-Download";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Reset Auto-Download Settings";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "ช่วยเหลือ";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Clear Chat History";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "ข้อมูล";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "ชวนเพื่อนของคุณ";
 
@@ -4507,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Chat Wallpaper";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "เงื่อนไขและนโยบายความเป็นส่วนตัว";
 
 /* Setting for enabling & disabling link previews. */
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Messaging";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "See and share when messages are being read and typed. If disabled, you won’t see read receipts or typing indicators from others.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "การตั้งค่า";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Count Muted Chats";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Include Muted Chats";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Badge Count";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "สามารถแสดงการแจ้งเตือนการโทรและข้อความในขณะที่โทรศัพท์ของคุณล็อกอยู่ คุณอาจต้องการจำกัดการแสดงการแจ้งเตือนเหล่านี้";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Call and Message notifications can appear while your phone is locked.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "ข้อความแจ้งเตือน";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "รายชื่อผู้ติดต่อร่วมใช้ Signal";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Contact Joins Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "เหตุการณ์";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notify when…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "การแจ้งเตือน";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "ยืนยันรหัส PIN สำหรับ Signal ของคุณ";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "ตัวช่วยจำจะช่วยให้คุณจำรหัส PIN ได้ เนื่องจากรหัสนี้จะไม่สามารถถูกกู้คืนได้ คุณจะถูกถามน้อยครั้งลงเมื่อเวลาผ่านไป";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "เตือนความจำรหัส PIN";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "รหัส PIN รักษาข้อมูลที่เก็บไว้ใน Signal ที่เข้ารหัส ดังนั้นจึงมีแต่คุณที่เข้าถึงข้อมูลนี้ได้ โปรไฟล์ของคุณ การตั้งค่า และรายชื่อผู้ติดต่อจะถูกกู้คืนเมื่อคุณติดตั้ง Signal อีกครั้ง";
+"SETTINGS_PINS_FOOTER" = "PINs keep information stored with Signal encrypted so only you can access it. Your PIN cannot be recovered. Your profile, settings, and contacts will restore when you reinstall Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "เปลี่ยนรหัส PIN ของคุณ";
@@ -4601,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "สร้างรหัส PIN";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "SIGNAL PIN";
+"SETTINGS_PINS_TITLE" = "รหัส PIN ของ Signal";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "แสดงการโทรในรายการ \"ล่าสุด\" ในแอปโทรศัพท์ iOS";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "ขั้นสูง";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "แสดงการโทรในรายการ ล่าสุด";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "ความเป็นส่วนตัว";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "การตอบรับเมื่ออ่าน";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "See and share when messages have been read. This setting is optional and applies to all chats.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "ปิดกุญแจลงทะเบียน";
@@ -4642,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "หมดเวลาการล็อกหน้าจอ";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "ปลดล็อกหน้าจอ Signal โดยใช้ Touch ID, Face ID หรือรหัสผ่านอุปกรณ์ iOS ของคุณ คุณยังสามารถรับสายและรับการแจ้งเตือนสายและข้อความได้ในขณะที่มีการเปิดใช้การล็อกหน้าจอ ระบบแจ้งเตือนของ Signal เปิดโอกาสให้คุณสามารถตั้งค่าข้อมูลที่แสดงบนหน้าจอได้";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "ล็อกหน้าจอ";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "ล็อกหน้าจอ";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "เปิดใช้งานความปลอดภัยสำหรับหน้าจอ";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "ป้องกัน Signal จากการแสดงตัวอย่างในหน้าสลับแอป";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "เสียง";
@@ -4663,11 +4693,23 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "การโทร";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "ความปลอดภัยหน้าจอ";
+"SETTINGS_SECURITY_TITLE" = "App Security";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Show in Suggestions";
+"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
 "SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal chats are displayed as suggestions when sharing from other apps.";
@@ -4676,22 +4718,16 @@
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "กุญแจลงทะเบียน";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "เพื่อความปลอดภัยที่มากขึ้น เปิดใช้งานรหัส PIN กุญแจลงทะเบียน ซึ่งจะถูกเรียกหาเมื่อมีการลงทะเบียนหมายเลขโทรศัพท์นี้กับ Signal อีกครั้ง";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "แสดงว่ากำลังพิมพ์";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "See and share when messages are being typed. This setting is optional and applies to all chats.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "ผู้ส่งที่ปกปิดตัวตน";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "แสดงสถานะการส่ง";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "แสดงสถานะไอคอนเมื่อคุณเลือก \"ข้อมูลเพิ่มเติม\" ในข้อความที่มาจากผู้ส่งที่ปิดบังตัวตน";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "อนุญาตจากทุกคน";
@@ -4703,7 +4739,7 @@
 "SETTINGS_VERSION" = "เวอร์ชัน";
 
 /* Label for the 'who can' privacy settings. */
-"SETTINGS_WHO_CAN" = "ใครสามารถ...";
+"SETTINGS_WHO_CAN" = "Who can…";
 
 /* action sheet item to open native mail app */
 "SHARE_ACTION_MAIL" = "จดหมาย";
@@ -5088,9 +5124,6 @@
 
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "ชื่อผู้ใช้ใน Signal นั้นจะมีหรือไม่ก็ได้ ถ้าคุณเลือกสร้างชื่อผู้ใช้ ผู้ใช้ Signal คนอื่นจะสามารถหาและติดต่อคุณได้จากชื่อผู้ใช้นี้โดยไม่จำเป็นต้องรู้หมายเลขโทรศัพท์ของคุณ";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "ชื่อผู้ใช้";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "ชื่อผู้ใช้จะมีได้เฉพาะ a-z, 0-9 และ _";

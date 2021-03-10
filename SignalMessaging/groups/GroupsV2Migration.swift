@@ -5,7 +5,7 @@
 import Foundation
 import PromiseKit
 import ZKGroup
-import HKDFKit
+import SignalClient
 
 @objc
 public class GroupsV2Migration: NSObject {
@@ -53,11 +53,19 @@ public extension GroupsV2Migration {
 
     // MARK: -
 
+    private static let groupMigrationTimeoutDuration: TimeInterval = 30
+
     static func tryManualMigration(groupThread: TSGroupThread) -> Promise<TSGroupThread> {
+        Logger.info("request groupId: \(groupThread.groupId.hexadecimalString)")
         guard GroupManager.canManuallyMigrate else {
             return Promise(error: OWSAssertionError("Manual migration not enabled."))
         }
-        return tryToMigrate(groupThread: groupThread, migrationMode: manualMigrationMode)
+        return firstly {
+            self.tryToMigrate(groupThread: groupThread, migrationMode: manualMigrationMode)
+        }.timeout(seconds: Self.groupMigrationTimeoutDuration,
+                  description: "Manual migration") {
+            GroupsV2Error.timeout
+        }
     }
 
     // If there is a v1 group in the database that can be
@@ -302,6 +310,7 @@ public extension GroupsV2Migration {
 // MARK: -
 
 fileprivate extension GroupsV2Migration {
+    public static var verboseLogging: Bool { DebugFlags.internalLogging }
 
     private static let migrationQueue: OperationQueue = {
         let operationQueue = OperationQueue()
@@ -313,6 +322,9 @@ fileprivate extension GroupsV2Migration {
     // Ensure only one migration is in flight at a time.
     static func enqueueMigration(groupId: Data,
                                  migrationMode: GroupsV2MigrationMode) -> Promise<TSGroupThread> {
+        if GroupsV2Migration.verboseLogging {
+            Logger.info("enqueue groupId: \(groupId.hexadecimalString), migrationMode: \(migrationMode)")
+        }
         let operation = MigrateGroupOperation(groupId: groupId, migrationMode: migrationMode)
         migrationQueue.addOperation(operation)
         return operation.promise
@@ -332,12 +344,21 @@ fileprivate extension GroupsV2Migration {
         }
 
         return firstly(on: .global()) { () -> Promise<Void> in
-            GroupManager.ensureLocalProfileHasCommitmentIfNecessary()
+            if Self.verboseLogging {
+                Logger.info("Step 1: groupId: \(groupId.hexadecimalString), mode: \(migrationMode)")
+            }
+            return GroupManager.ensureLocalProfileHasCommitmentIfNecessary()
         }.map(on: .global()) { () -> UnmigratedState in
-            try Self.loadUnmigratedState(groupId: groupId)
+            if Self.verboseLogging {
+                Logger.info("Step 2: groupId: \(groupId.hexadecimalString), mode: \(migrationMode)")
+            }
+            return try Self.loadUnmigratedState(groupId: groupId)
         }.then(on: .global()) { (unmigratedState: UnmigratedState) -> Promise<UnmigratedState> in
-            let groupName = unmigratedState.groupThread.groupModel.groupName ?? "Unnamed group"
-            Logger.verbose("Trying to migrate: \(groupName), mode: \(migrationMode)")
+            if Self.verboseLogging {
+                Logger.info("Step 3: groupId: \(groupId.hexadecimalString), mode: \(migrationMode)")
+                let groupName = unmigratedState.groupThread.groupModel.groupName ?? "Unnamed group"
+                Logger.verbose("Migrating: \(groupName)")
+            }
 
             return firstly {
                 Self.tryToPrepareMembersForMigration(migrationMode: migrationMode,
@@ -346,6 +367,10 @@ fileprivate extension GroupsV2Migration {
                 unmigratedState
             }
         }.then(on: .global()) { (unmigratedState: UnmigratedState) -> Promise<TSGroupThread> in
+            if Self.verboseLogging {
+                Logger.info("Step 4: groupId: \(groupId.hexadecimalString), mode: \(migrationMode)")
+            }
+
             addMigratingGroupId(unmigratedState.migrationMetadata.v1GroupId)
             addMigratingGroupId(unmigratedState.migrationMetadata.v2GroupId)
 
@@ -355,6 +380,9 @@ fileprivate extension GroupsV2Migration {
             }.recover(on: .global()) { (error: Error) -> Promise<TSGroupThread> in
                 if case GroupsV2Error.groupDoesNotExistOnService = error,
                     migrationMode.canMigrateToService {
+                    if Self.verboseLogging {
+                        Logger.info("Step 4: groupId: \(groupId.hexadecimalString), mode: \(migrationMode)")
+                    }
                     // If the group is not already on the service, try to
                     // migrate by creating on the service.
                     return attemptToMigrateByCreatingOnService(unmigratedState: unmigratedState,
@@ -918,7 +946,7 @@ public class GroupsV2MigrationInfo: NSObject {
 
 // MARK: -
 
-public enum GroupsV2MigrationMode: Equatable {
+public enum GroupsV2MigrationMode: String {
     // Manual migration; only available if all users can be
     // added (but not invited).
     case manualMigrationPolite
@@ -1053,17 +1081,11 @@ fileprivate extension GroupsV2Migration {
         guard GroupManager.isValidGroupId(v1GroupId, groupsVersion: .V1) else {
             throw OWSAssertionError("Invalid v1 group id.")
         }
-        guard let migrationInfo: Data = "GV2 Migration".data(using: .utf8) else {
-            throw OWSAssertionError("Couldn't convert info data.")
-        }
-        let salt = Data(repeating: 0, count: 32)
-        let masterKeyLength: Int32 = Int32(GroupMasterKey.SIZE)
-        let masterKey =
-            try HKDFKit.deriveKey(v1GroupId, info: migrationInfo, salt: salt, outputSize: masterKeyLength)
-        guard masterKey.count == masterKeyLength else {
-            throw OWSAssertionError("Invalid master key.")
-        }
-        return masterKey
+        let migrationInfo = "GV2 Migration"
+        let masterKey = try migrationInfo.utf8.withContiguousStorageIfAvailable {
+            try hkdf(outputLength: GroupMasterKey.SIZE, version: 3, inputKeyMaterial: v1GroupId, salt: [], info: $0)
+        }!
+        return Data(masterKey)
     }
 
     // MARK: -
@@ -1149,13 +1171,25 @@ private class MigrateGroupOperation: OWSOperation {
     }
 
     public override func run() {
+        let groupId = self.groupId
+        let migrationMode = self.migrationMode
+        if GroupsV2Migration.verboseLogging {
+            Logger.info("start groupId: \(groupId.hexadecimalString), migrationMode: \(migrationMode)")
+        }
+
         firstly(on: .global()) {
-            GroupsV2Migration.attemptMigration(groupId: self.groupId,
-                                               migrationMode: self.migrationMode)
+            GroupsV2Migration.attemptMigration(groupId: groupId,
+                                               migrationMode: migrationMode)
         }.done(on: .global()) { groupThread in
+            if GroupsV2Migration.verboseLogging {
+                Logger.info("success groupId: \(groupId.hexadecimalString), migrationMode: \(migrationMode)")
+            }
             self.reportSuccess()
             self.resolver.fulfill(groupThread)
         }.catch(on: .global()) { error in
+            if GroupsV2Migration.verboseLogging {
+                Logger.info("failure groupId: \(groupId.hexadecimalString), migrationMode: \(migrationMode), error: \(error)")
+            }
             self.reportError(error.asUnretryableError)
             self.resolver.reject(error)
         }

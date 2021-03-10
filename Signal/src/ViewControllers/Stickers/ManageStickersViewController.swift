@@ -51,7 +51,7 @@ private class StickerPackActionButton: UIView {
 // MARK: -
 
 @objc
-public class ManageStickersViewController: OWSTableViewController {
+public class ManageStickersViewController: OWSTableViewController2 {
 
     // MARK: Initializers
 
@@ -85,6 +85,8 @@ public class ManageStickersViewController: OWSTableViewController {
                                                selector: #selector(packsDidChange),
                                                name: StickerManager.packsDidChange,
                                                object: nil)
+
+        defaultSeparatorInsetLeading = Self.cellHInnerMargin + iconSize + iconSpacing
 
         updateState()
 
@@ -351,6 +353,8 @@ public class ManageStickersViewController: OWSTableViewController {
         return view
     }
 
+    private let iconSize: CGFloat = 56
+    private let iconSpacing: CGFloat = 12
     private func buildTableCell(dataSource: StickerPackDataSource,
                                 actionIconName: String?,
                                 block: @escaping () -> Void) -> UITableViewCell {
@@ -366,7 +370,6 @@ public class ManageStickersViewController: OWSTableViewController {
         let authorNameValue = dataSource.author?.filterForDisplay
 
         let iconView = reusableCoverView(forDataSource: dataSource) ?? UIView()
-        let iconSize: CGFloat = 64
         iconView.autoSetDimensions(to: CGSize(square: iconSize))
 
         let title: String
@@ -435,7 +438,7 @@ public class ManageStickersViewController: OWSTableViewController {
         let stack = UIStackView(arrangedSubviews: subviews)
         stack.axis = .horizontal
         stack.alignment = .center
-        stack.spacing = 12
+        stack.spacing = iconSpacing
 
         cell.contentView.addSubview(stack)
         stack.autoPinEdgesToSuperviewMargins()
@@ -460,14 +463,6 @@ public class ManageStickersViewController: OWSTableViewController {
     private func buildEmptySectionCell(labelText: String) -> UITableViewCell {
         let cell = OWSTableItem.newCell()
 
-        let bubbleView = UIView()
-        bubbleView.backgroundColor = Theme.washColor
-        bubbleView.layer.cornerRadius = 8
-        bubbleView.setCompressionResistanceLow()
-        bubbleView.setContentHuggingLow()
-        cell.contentView.addSubview(bubbleView)
-        bubbleView.autoPinEdgesToSuperviewMargins()
-
         let label = UILabel()
         label.text = labelText
         label.font = UIFont.ows_dynamicTypeCaption1
@@ -478,7 +473,7 @@ public class ManageStickersViewController: OWSTableViewController {
         label.setCompressionResistanceHigh()
         label.setContentHuggingHigh()
         cell.contentView.addSubview(label)
-        label.autoPinEdgesToSuperviewMargins(with: UIEdgeInsets(top: 24, leading: 16, bottom: 24, trailing: 16))
+        label.autoPinEdgesToSuperviewMargins()
 
         return cell
     }

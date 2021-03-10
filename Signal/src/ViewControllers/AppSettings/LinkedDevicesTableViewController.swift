@@ -5,7 +5,7 @@
 import Foundation
 
 @objc
-class LinkedDevicesTableViewController: OWSTableViewController {
+class LinkedDevicesTableViewController: OWSTableViewController2 {
 
     private var devices = [OWSDevice]()
 
@@ -19,8 +19,6 @@ class LinkedDevicesTableViewController: OWSTableViewController {
         super.viewDidLoad()
 
         title = NSLocalizedString("LINKED_DEVICES_TITLE", comment: "Menu item and navbar title for the device manager")
-
-        self.useThemeBackgroundColors = true
 
         refreshControl.addTarget(self, action: #selector(refreshDevices), for: .valueChanged)
 
@@ -50,18 +48,6 @@ class LinkedDevicesTableViewController: OWSTableViewController {
                                                object: nil)
     }
 
-    // TODO: Could we DRY this up in OWSTableViewController when
-    // useThemeBackgroundColors = true?
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        view.backgroundColor = Theme.backgroundColor
-        tableView.backgroundColor = Theme.backgroundColor
-        tableView.separatorColor = Theme.cellSeparatorColor
-
-        updateTableContents()
-    }
-
     // MARK: -
 
     private func updateDeviceList() {
@@ -72,6 +58,12 @@ class LinkedDevicesTableViewController: OWSTableViewController {
                 !$0.isPrimaryDevice()
             }
         }
+
+        if DebugFlags.fakeLinkedDevices {
+            devices.append(.init(uniqueId: "test", createdAt: .distantPast, deviceId: 10, lastSeenAt: Date(), name: "Fake Device"))
+            devices.append(.init(uniqueId: "test2", createdAt: .distantPast, deviceId: 4, lastSeenAt: Date(), name: "Fake Device 2"))
+        }
+
         devices.sort { (left, right) -> Bool in
             left.createdAt.compare(right.createdAt) == .orderedAscending
         }
@@ -80,13 +72,7 @@ class LinkedDevicesTableViewController: OWSTableViewController {
             self.isEditing = false
         }
 
-        // Don't show edit button for an empty table
-        if devices.isEmpty {
-            navigationItem.rightBarButtonItem = nil
-        } else {
-            navigationItem.rightBarButtonItem = editButtonItem
-        }
-
+        updateNavigationItems()
         updateTableContents()
     }
 
@@ -194,43 +180,71 @@ class LinkedDevicesTableViewController: OWSTableViewController {
 
         let contents = OWSTableContents()
 
+        let addDeviceSection = OWSTableSection()
+        addDeviceSection.footerTitle = NSLocalizedString(
+            "LINK_NEW_DEVICE_SUBTITLE",
+            comment: "Subheading for 'Link New Device' navigation"
+        )
+        addDeviceSection.add(.disclosureItem(
+            withText: NSLocalizedString(
+                "LINK_NEW_DEVICE_TITLE",
+                comment: "Navigation title when scanning QR code to add new device."
+            ),
+            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "add_new_linked_device"),
+            actionBlock: { [weak self] in
+                self?.getCameraPermissionsThenShowLinkNewDeviceView()
+            }
+        ))
+        contents.addSection(addDeviceSection)
+
         if !devices.isEmpty {
             let devicesSection = OWSTableSection()
             for device in devices {
-                let item = OWSTableItem(customCellBlock: {
+                let item = OWSTableItem(customCellBlock: { [weak self] in
                     let cell = OWSDeviceTableViewCell()
                     OWSTableItem.configureCell(cell)
-                    cell.configure(with: device)
+                    cell.isEditing = self?.isEditing ?? false
+                    cell.configure(with: device) {
+                        self?.showUnlinkDeviceConfirmAlert(device: device)
+                    }
                     return cell
                 })
-                let deleteTitle = NSLocalizedString("UNLINK_ACTION",
-                                                    comment: "button title for unlinking a device")
-                item.deleteAction = OWSTableItemEditAction(title: deleteTitle) { [weak self] in
-                    self?.showUnlinkDeviceConfirmAlert(device: device)
-                }
                 devicesSection.add(item)
             }
             contents.addSection(devicesSection)
         }
 
-        let addDeviceSection = OWSTableSection()
-        addDeviceSection.add(OWSTableItem(customCellBlock: { () -> UITableViewCell in
-            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "AddNewDevice")
-            OWSTableItem.configureCell(cell)
-            cell.textLabel?.text = NSLocalizedString("LINK_NEW_DEVICE_TITLE",
-                                                    comment: "Navigation title when scanning QR code to add new device.")
-            cell.detailTextLabel?.text = NSLocalizedString("LINK_NEW_DEVICE_SUBTITLE",
-                                                          comment: "Subheading for 'Link New Device' navigation")
-            cell.accessoryType = .disclosureIndicator
-            cell.accessibilityIdentifier = "add_new_linked_device"
-            return cell
-        }) { [weak self] in
-                self?.getCameraPermissionsThenShowLinkNewDeviceView()
-
-            })
-        contents.addSection(addDeviceSection)
-
         self.contents = contents
+    }
+
+    private func updateNavigationItems() {
+        // Don't show edit button for an empty table
+        if devices.isEmpty {
+            navigationItem.rightBarButtonItem = nil
+            didTapDoneEditing()
+        } else {
+            navigationItem.rightBarButtonItem = isEditing
+                ? .init(barButtonSystemItem: .done, target: self, action: #selector(didTapDoneEditing))
+                : .init(barButtonSystemItem: .edit, target: self, action: #selector(didTapStartEditing))
+        }
+    }
+
+    @objc
+    func didTapDoneEditing() {
+        guard isEditing else { return }
+        isEditing = false
+        updateNavigationItems()
+        defaultSeparatorInsetLeading = Self.cellHInnerMargin
+        updateTableContents()
+    }
+
+    @objc
+    func didTapStartEditing() {
+        guard !isEditing else { return }
+        isEditing = true
+        updateNavigationItems()
+        defaultSeparatorInsetLeading = Self.cellHInnerMargin + 24 + OWSTableItem.iconSpacing
+        updateTableContents()
     }
 
     private func showUnlinkDeviceConfirmAlert(device: OWSDevice) {

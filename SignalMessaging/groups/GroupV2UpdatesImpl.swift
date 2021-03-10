@@ -16,8 +16,8 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
         return SDSDatabaseStorage.shared
     }
 
-    private var messageProcessing: MessageProcessing {
-        return SSKEnvironment.shared.messageProcessing
+    private var messageProcessor: MessageProcessor {
+        return SSKEnvironment.shared.messageProcessor
     }
 
     private var groupsV2: GroupsV2Swift {
@@ -70,6 +70,16 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
                                          groupUpdateMode: groupUpdateMode)
     }
 
+    public func tryToRefreshV2GroupUpToCurrentRevisionImmediately(groupId: Data,
+                                                                  groupSecretParamsData: Data,
+                                                                  groupModelOptions: TSGroupModelOptions) -> Promise<TSGroupThread> {
+        let groupUpdateMode = GroupUpdateMode.upToCurrentRevisionImmediately
+        return tryToRefreshV2GroupThread(groupId: groupId,
+                                         groupSecretParamsData: groupSecretParamsData,
+                                         groupUpdateMode: groupUpdateMode,
+                                         groupModelOptions: groupModelOptions)
+    }
+
     @objc
     public func tryToRefreshV2GroupUpToCurrentRevisionAfterMessageProcessingWithThrottling(_ groupThread: TSGroupThread) {
         let groupUpdateMode = GroupUpdateMode.upToCurrentRevisionAfterMessageProcessWithThrottling
@@ -102,6 +112,16 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
     public func tryToRefreshV2GroupThread(groupId: Data,
                                           groupSecretParamsData: Data,
                                           groupUpdateMode: GroupUpdateMode) -> Promise<TSGroupThread> {
+        tryToRefreshV2GroupThread(groupId: groupId,
+                                  groupSecretParamsData: groupSecretParamsData,
+                                  groupUpdateMode: groupUpdateMode,
+                                  groupModelOptions: [])
+    }
+
+    public func tryToRefreshV2GroupThread(groupId: Data,
+                                          groupSecretParamsData: Data,
+                                          groupUpdateMode: GroupUpdateMode,
+                                          groupModelOptions: TSGroupModelOptions) -> Promise<TSGroupThread> {
 
         let isThrottled = serialQueue.sync { () -> Bool in
             guard groupUpdateMode.shouldThrottle else {
@@ -127,7 +147,8 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
         let operation = GroupV2UpdateOperation(groupV2Updates: self,
                                                groupId: groupId,
                                                groupSecretParamsData: groupSecretParamsData,
-                                               groupUpdateMode: groupUpdateMode)
+                                               groupUpdateMode: groupUpdateMode,
+                                               groupModelOptions: groupModelOptions)
         operation.promise.done(on: .global()) { _ in
             Logger.verbose("Group refresh succeeded.")
 
@@ -176,8 +197,8 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
             return TSAccountManager.shared()
         }
 
-        private var messageProcessing: MessageProcessing {
-            return SSKEnvironment.shared.messageProcessing
+        private var messageProcessor: MessageProcessor {
+            return SSKEnvironment.shared.messageProcessor
         }
 
         // MARK: -
@@ -186,6 +207,7 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
         let groupId: Data
         let groupSecretParamsData: Data
         let groupUpdateMode: GroupUpdateMode
+        let groupModelOptions: TSGroupModelOptions
 
         let promise: Promise<TSGroupThread>
         let resolver: Resolver<TSGroupThread>
@@ -195,11 +217,13 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
         required init(groupV2Updates: GroupV2UpdatesImpl,
                       groupId: Data,
                       groupSecretParamsData: Data,
-                      groupUpdateMode: GroupUpdateMode) {
+                      groupUpdateMode: GroupUpdateMode,
+                      groupModelOptions: TSGroupModelOptions) {
             self.groupV2Updates = groupV2Updates
             self.groupId = groupId
             self.groupSecretParamsData = groupSecretParamsData
             self.groupUpdateMode = groupUpdateMode
+            self.groupModelOptions = groupModelOptions
 
             let (promise, resolver) = Promise<TSGroupThread>.pending()
             self.promise = promise
@@ -215,13 +239,14 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
         public override func run() {
             firstly { () -> Promise<Void> in
                 if groupUpdateMode.shouldBlockOnMessageProcessing {
-                    return self.messageProcessing.allMessageFetchingAndProcessingPromise()
+                    return self.messageProcessor.fetchingAndProcessingCompletePromise()
                 } else {
                     return Promise.value(())
                 }
             }.then(on: .global()) { _ in
                 self.groupV2Updates.refreshGroupFromService(groupSecretParamsData: self.groupSecretParamsData,
-                                                            groupUpdateMode: self.groupUpdateMode)
+                                                            groupUpdateMode: self.groupUpdateMode,
+                                                            groupModelOptions: self.groupModelOptions)
             }.done(on: .global()) { (groupThread: TSGroupThread) in
                 Logger.verbose("Group refresh succeeded.")
 
@@ -247,6 +272,9 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
                 } else if case GroupsV2Error.timeout = error {
                     Logger.warn("Group refresh timed out: \(error)")
                     nsError.isRetryable = true
+                } else if case GroupsV2Error.missingGroupChangeProtos = error {
+                    Logger.warn("Group state missing change protos: \(error)")
+                    nsError.isRetryable = false
                 } else {
                     owsFailDebug("Group refresh failed: \(error)")
                     nsError.isRetryable = true
@@ -298,7 +326,8 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
     // * If reachability changes, we should retry network errors
     //   immediately.
     private func refreshGroupFromService(groupSecretParamsData: Data,
-                                         groupUpdateMode: GroupUpdateMode) -> Promise<TSGroupThread> {
+                                         groupUpdateMode: GroupUpdateMode,
+                                         groupModelOptions: TSGroupModelOptions) -> Promise<TSGroupThread> {
 
         return firstly {
             return GroupManager.ensureLocalProfileHasCommitmentIfNecessary()
@@ -306,7 +335,8 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
             // Try to use individual changes.
             return firstly(on: .global()) {
                 self.fetchAndApplyChangeActionsFromService(groupSecretParamsData: groupSecretParamsData,
-                                                           groupUpdateMode: groupUpdateMode)
+                                                           groupUpdateMode: groupUpdateMode,
+                                                           groupModelOptions: groupModelOptions)
             }.recover { (error) throws -> Promise<TSGroupThread> in
                 let shouldTrySnapshot = { () -> Bool in
                     // This should not fail over in the case of networking problems.
@@ -327,6 +357,10 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
                     case GroupsV2Error.cantApplyChangesToPlaceholder:
                         // We can only update placeholder groups using a snapshot.
                         return true
+                    case GroupsV2Error.missingGroupChangeProtos:
+                        // If the service returns a group state without change protos,
+                        // fail over to the snapshot.
+                        return true
                     default:
                         owsFailDebug("Error: \(error)")
                         return false
@@ -339,7 +373,8 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
 
                 // Failover to applying latest snapshot.
                 return self.fetchAndApplyCurrentGroupV2SnapshotFromService(groupSecretParamsData: groupSecretParamsData,
-                                                                           groupUpdateMode: groupUpdateMode)
+                                                                           groupUpdateMode: groupUpdateMode,
+                                                                           groupModelOptions: groupModelOptions)
             }
         }
     }
@@ -357,10 +392,11 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
         guard groupThread.groupModel.groupsVersion == .V2 else {
             throw OWSAssertionError("Invalid groupsVersion.")
         }
-        let changedGroupModel = try GroupsV2Changes.applyChangesToGroupModel(groupThread: groupThread,
-                                                                             changeActionsProto: changeActionsProto,
-                                                                             downloadedAvatars: downloadedAvatars,
-                                                                             transaction: transaction)
+        let changedGroupModel = try GroupsV2IncomingChanges.applyChangesToGroupModel(groupThread: groupThread,
+                                                                                     changeActionsProto: changeActionsProto,
+                                                                                     downloadedAvatars: downloadedAvatars,
+                                                                                     groupModelOptions: [],
+                                                                                     transaction: transaction)
         guard changedGroupModel.newGroupModel.revision > changedGroupModel.oldGroupModel.revision else {
             throw OWSAssertionError("Invalid groupV2Revision: \(changedGroupModel.newGroupModel.revision).")
         }
@@ -388,7 +424,8 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
     }
 
     private func fetchAndApplyChangeActionsFromService(groupSecretParamsData: Data,
-                                                       groupUpdateMode: GroupUpdateMode) -> Promise<TSGroupThread> {
+                                                       groupUpdateMode: GroupUpdateMode,
+                                                       groupModelOptions: TSGroupModelOptions) -> Promise<TSGroupThread> {
         return firstly { () -> Promise<[GroupV2Change]> in
             self.fetchChangeActionsFromService(groupSecretParamsData: groupSecretParamsData,
                                                groupUpdateMode: groupUpdateMode)
@@ -397,10 +434,11 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
             return self.tryToApplyGroupChangesFromService(groupId: groupId,
                                                           groupSecretParamsData: groupSecretParamsData,
                                                           groupChanges: groupChanges,
-                                                          groupUpdateMode: groupUpdateMode)
+                                                          groupUpdateMode: groupUpdateMode,
+                                                          groupModelOptions: groupModelOptions)
         }.timeout(seconds: GroupManager.groupUpdateTimeoutDuration,
                   description: "Update via changes") {
-                    GroupsV2Error.timeout
+            GroupsV2Error.timeout
         }
     }
 
@@ -522,10 +560,11 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
     private func tryToApplyGroupChangesFromService(groupId: Data,
                                                    groupSecretParamsData: Data,
                                                    groupChanges: [GroupV2Change],
-                                                   groupUpdateMode: GroupUpdateMode) -> Promise<TSGroupThread> {
+                                                   groupUpdateMode: GroupUpdateMode,
+                                                   groupModelOptions: TSGroupModelOptions) -> Promise<TSGroupThread> {
         return firstly { () -> Promise<Void> in
             if groupUpdateMode.shouldBlockOnMessageProcessing {
-                return self.messageProcessing.allMessageFetchingAndProcessingPromise()
+                return self.messageProcessor.fetchingAndProcessingCompletePromise()
             } else {
                 return Promise.value(())
             }
@@ -533,14 +572,16 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
             return self.tryToApplyGroupChangesFromServiceNow(groupId: groupId,
                                                              groupSecretParamsData: groupSecretParamsData,
                                                              groupChanges: groupChanges,
-                                                             upToRevision: groupUpdateMode.upToRevision)
+                                                             upToRevision: groupUpdateMode.upToRevision,
+                                                             groupModelOptions: groupModelOptions)
         }
     }
 
     private func tryToApplyGroupChangesFromServiceNow(groupId: Data,
                                                       groupSecretParamsData: Data,
                                                       groupChanges: [GroupV2Change],
-                                                      upToRevision: UInt32?) -> Promise<TSGroupThread> {
+                                                      upToRevision: UInt32?,
+                                                      groupModelOptions: TSGroupModelOptions) -> Promise<TSGroupThread> {
 
         let localProfileKey = profileManager.localProfileKey()
         guard let localUuid = tsAccountManager.localUuid else {
@@ -634,16 +675,18 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
                 let newProfileKeys: [UUID: Data]
 
                 if let snapshot = groupChange.snapshot {
-                    let builder = try TSGroupModelBuilder.builderForSnapshot(groupV2Snapshot: snapshot,
+                    var builder = try TSGroupModelBuilder.builderForSnapshot(groupV2Snapshot: snapshot,
                                                                              transaction: transaction)
+                    builder.apply(options: groupModelOptions)
                     newGroupModel = try builder.build(transaction: transaction)
                     newDisappearingMessageToken = snapshot.disappearingMessageToken
                     newProfileKeys = snapshot.profileKeys
                 } else {
-                    let changedGroupModel = try GroupsV2Changes.applyChangesToGroupModel(groupThread: groupThread,
-                                                                                         changeActionsProto: changeActionsProto,
-                                                                                         downloadedAvatars: diff.downloadedAvatars,
-                                                                                         transaction: transaction)
+                    let changedGroupModel = try GroupsV2IncomingChanges.applyChangesToGroupModel(groupThread: groupThread,
+                                                                                                 changeActionsProto: changeActionsProto,
+                                                                                                 downloadedAvatars: diff.downloadedAvatars,
+                                                                                                 groupModelOptions: groupModelOptions,
+                                                                                                 transaction: transaction)
                     newGroupModel = changedGroupModel.newGroupModel
                     newDisappearingMessageToken = changedGroupModel.newDisappearingMessageToken
                     newProfileKeys = changedGroupModel.profileKeys
@@ -681,7 +724,7 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
                 // If the group state includes a stale profile key for the
                 // local user, schedule an update to fix that.
                 if let profileKey = newProfileKeys[localUuid],
-                    profileKey != localProfileKey.keyData {
+                   profileKey != localProfileKey.keyData {
                     shouldUpdateProfileKeyInGroup = true
                 }
 
@@ -833,12 +876,14 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
     // MARK: - Current Snapshot
 
     private func fetchAndApplyCurrentGroupV2SnapshotFromService(groupSecretParamsData: Data,
-                                                                groupUpdateMode: GroupUpdateMode) -> Promise<TSGroupThread> {
+                                                                groupUpdateMode: GroupUpdateMode,
+                                                                groupModelOptions: TSGroupModelOptions) -> Promise<TSGroupThread> {
         return firstly {
             self.groupsV2.fetchCurrentGroupV2Snapshot(groupSecretParamsData: groupSecretParamsData)
         }.then(on: .global()) { groupV2Snapshot in
             return self.tryToApplyCurrentGroupV2SnapshotFromService(groupV2Snapshot: groupV2Snapshot,
-                                                                    groupUpdateMode: groupUpdateMode)
+                                                                    groupUpdateMode: groupUpdateMode,
+                                                                    groupModelOptions: groupModelOptions)
         }.timeout(seconds: GroupManager.groupUpdateTimeoutDuration,
                   description: "Update via snapshot") {
             GroupsV2Error.timeout
@@ -846,28 +891,44 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
     }
 
     private func tryToApplyCurrentGroupV2SnapshotFromService(groupV2Snapshot: GroupV2Snapshot,
-                                                             groupUpdateMode: GroupUpdateMode) -> Promise<TSGroupThread> {
+                                                             groupUpdateMode: GroupUpdateMode,
+                                                             groupModelOptions: TSGroupModelOptions) -> Promise<TSGroupThread> {
         return firstly { () -> Promise<Void> in
             if groupUpdateMode.shouldBlockOnMessageProcessing {
-                return self.messageProcessing.allMessageFetchingAndProcessingPromise()
+                return self.messageProcessor.fetchingAndProcessingCompletePromise()
             } else {
                 return Promise.value(())
             }
         }.then(on: .global()) { _ in
-            return self.tryToApplyCurrentGroupV2SnapshotFromServiceNow(groupV2Snapshot: groupV2Snapshot)
+            self.tryToApplyCurrentGroupV2SnapshotFromServiceNow(groupV2Snapshot: groupV2Snapshot,
+                                                                groupModelOptions: groupModelOptions)
         }
     }
 
-    private func tryToApplyCurrentGroupV2SnapshotFromServiceNow(groupV2Snapshot: GroupV2Snapshot) -> Promise<TSGroupThread> {
+    private func tryToApplyCurrentGroupV2SnapshotFromServiceNow(groupV2Snapshot: GroupV2Snapshot,
+                                                                groupModelOptions: TSGroupModelOptions) -> Promise<TSGroupThread> {
         let localProfileKey = profileManager.localProfileKey()
         guard let localUuid = tsAccountManager.localUuid else {
             return Promise(error: OWSAssertionError("Missing localUuid."))
         }
 
         return databaseStorage.write(.promise) { (transaction: SDSAnyWriteTransaction) throws -> TSGroupThread in
-            let builder = try TSGroupModelBuilder.builderForSnapshot(groupV2Snapshot: groupV2Snapshot,
+            var builder = try TSGroupModelBuilder.builderForSnapshot(groupV2Snapshot: groupV2Snapshot,
                                                                      transaction: transaction)
-            let newGroupModel = try builder.build(transaction: transaction)
+            builder.apply(options: groupModelOptions)
+
+            if let groupId = builder.groupId,
+               let groupThread = TSGroupThread.fetch(groupId: groupId, transaction: transaction),
+               let oldGroupModel = groupThread.groupModel as? TSGroupModelV2,
+               oldGroupModel.revision == builder.groupV2Revision {
+                // Perserve certain transient properties if overwriting a model
+                // at the same revision.
+                if oldGroupModel.didJustAddSelfViaGroupLink {
+                    builder.didJustAddSelfViaGroupLink = true
+                }
+            }
+
+            let newGroupModel = try builder.buildAsV2(transaction: transaction)
             let newDisappearingMessageToken = groupV2Snapshot.disappearingMessageToken
             // groupUpdateSourceAddress is nil because we don't know the
             // author(s) of changes reflected in the snapshot.
@@ -884,7 +945,7 @@ public class GroupV2UpdatesImpl: NSObject, GroupV2UpdatesSwift {
             // If the group state includes a stale profile key for the
             // local user, schedule an update to fix that.
             if let profileKey = groupV2Snapshot.profileKeys[localUuid],
-                profileKey != localProfileKey.keyData {
+               profileKey != localProfileKey.keyData {
                 self.groupsV2.updateLocalProfileKeyInGroup(groupId: newGroupModel.groupId, transaction: transaction)
             }
 

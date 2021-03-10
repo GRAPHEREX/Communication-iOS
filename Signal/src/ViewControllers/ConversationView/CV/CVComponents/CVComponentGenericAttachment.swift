@@ -72,10 +72,6 @@ public class CVComponentGenericAttachment: CVComponentBase, CVComponent {
         let bottomLabel = componentView.bottomLabel
         bottomLabelConfig.applyForRendering(label: bottomLabel)
         vStackView.addArrangedSubview(bottomLabel)
-
-        let accessibilityDescription = NSLocalizedString("ACCESSIBILITY_LABEL_ATTACHMENT",
-                                                         comment: "Accessibility label for attachment.")
-        hStackView.accessibilityLabel = accessibilityLabel(description: accessibilityDescription)
     }
 
     private var hStackLayoutMargins: UIEdgeInsets {
@@ -177,26 +173,31 @@ public class CVComponentGenericAttachment: CVComponentBase, CVComponent {
 
     private func tryToBuildDownloadView() -> UIView? {
 
-        guard let attachmentPointer = self.attachmentPointer else {
+        let direction: CVAttachmentProgressView.Direction
+        switch CVAttachmentProgressView.progressType(forAttachment: attachment,
+                                                     interaction: interaction) {
+        case .none:
             return nil
-        }
-
-        switch attachmentPointer.pointerType {
+        case .uploading:
+            // We currently only show progress for downloads here.
+            return nil
+        case .pendingDownload(let attachmentPointer):
+            direction = .download(attachmentPointer: attachmentPointer)
+        case .downloading(let attachmentPointer):
+            direction = .download(attachmentPointer: attachmentPointer)
         case .restoring:
-            // TODO: Show "restoring" indicator and possibly progress.
+            // TODO: We could easily show progress for restores.
+            owsFailDebug("Restoring progress type.")
             return nil
-        case .unknown, .incoming:
-            break
-        @unknown default:
-            owsFailDebug("Invalid value.")
+        case .unknown:
+            owsFailDebug("Unknown progress type.")
             return nil
         }
 
         let downloadViewSize = min(iconSize.width, iconSize.height)
-        let progressView = CVAttachmentProgressView(direction: .download(attachmentPointer: attachmentPointer),
-                                                    style: .withoutCircle(diameter: downloadViewSize),
-                                                    conversationStyle: conversationStyle)
-        return progressView
+        return CVAttachmentProgressView(direction: direction,
+                                        style: .withoutCircle(diameter: downloadViewSize),
+                                        conversationStyle: conversationStyle)
     }
 
     private let hSpacing: CGFloat = 8
@@ -229,7 +230,12 @@ public class CVComponentGenericAttachment: CVComponentBase, CVComponent {
                                    renderItem: CVRenderItem) -> Bool {
 
         if attachmentStream != nil {
-            componentDelegate.cvc_didTapGenericAttachment(self, in: componentView)
+            switch componentDelegate.cvc_didTapGenericAttachment(self) {
+            case .handledByDelegate:
+                break
+            case .default:
+                showShareUI(from: componentView.rootView)
+            }
         } else if let attachmentPointer = attachmentPointer {
             switch attachmentPointer.state {
             case .failed, .pendingMessageRequest, .pendingManualDownload:
@@ -252,6 +258,7 @@ public class CVComponentGenericAttachment: CVComponentBase, CVComponent {
 
     @objc
     public var canQuickLook: Bool {
+        guard #available(iOS 13, *) else { return false }
         guard let url = attachmentStream?.originalMediaURL else {
             return false
         }
@@ -313,5 +320,16 @@ extension CVComponentGenericAttachment: QLPreviewControllerDataSource {
 
     private class UnavailableItem: NSObject, QLPreviewItem {
         var previewItemURL: URL? { nil }
+    }
+}
+
+// MARK: -
+
+extension CVComponentGenericAttachment: CVAccessibilityComponent {
+    public var accessibilityDescription: String {
+        // TODO: We could include information about the attachment format,
+        //       and/or filename, and download state.
+        NSLocalizedString("ACCESSIBILITY_LABEL_ATTACHMENT",
+                          comment: "Accessibility label for attachment.")
     }
 }

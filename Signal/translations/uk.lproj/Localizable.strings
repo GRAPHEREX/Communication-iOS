@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Не зараз";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "Про Signal";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Прийняти новий код безпеки";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Контакт";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Контакт для %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Медіа";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Повідомлення";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Ви";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Стікер";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Голосове повідомлення";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Голосове повідомлення %@ секунд";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "Виклик Signal";
@@ -482,7 +491,7 @@
 "CALL_MISSED_BECAUSE_OF_IDENTITY_CHANGE_NOTIFICATION_BODY" = "Виклик пропущено, оскільки код безпеки особи, що телефонує, змінився.";
 
 /* Button to return to the current call */
-"CALL_RETURN_BUTTON" = "Return To Call";
+"CALL_RETURN_BUTTON" = "Повернутись до виклику";
 
 /* Call setup status label after outgoing call times out */
 "CALL_SCREEN_STATUS_NO_ANSWER" = "Без відповіді";
@@ -539,7 +548,7 @@
 "CALLBACK_BUTTON_TITLE" = "Перетелефонувати";
 
 /* Indicates to the user that their camera is currently off. */
-"CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "Your camera is off";
+"CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "Камера вимкнена";
 
 /* The generic name used for calls if CallKit privacy is enabled */
 "CALLKIT_ANONYMOUS_CONTACT_NAME" = "Користувач Signal";
@@ -581,7 +590,7 @@
 "CLOUDKIT_STATUS_RESTRICTED" = "SIgnal не має доступу до вашого акаунта iCloud для резервного копіювання. Надайте доступ до вашого акаунта iCloud у Параметрах, щоб мати змогу створити резервну копію даних Signal.";
 
 /* The first of two messages demonstrating the chosen conversation color, by rendering this message in an outgoing message bubble. */
-"COLOR_PICKER_DEMO_MESSAGE_1" = "Choose the color of outgoing messages in this chat.";
+"COLOR_PICKER_DEMO_MESSAGE_1" = "Оберіть колір для надісланих повідомлень у цьому чаті.";
 
 /* The second of two messages demonstrating the chosen conversation color, by rendering this message in an incoming message bubble. */
 "COLOR_PICKER_DEMO_MESSAGE_2" = "Лише ви бачитимете вибраний вами колір.";
@@ -593,7 +602,7 @@
 "COMPARE_SAFETY_NUMBER_ACTION" = "Порівняти із буфером обміну";
 
 /* Accessibility hint describing what you can do with the compose button */
-"COMPOSE_BUTTON_HINT" = "Select or search for a Signal user to start a chat with.";
+"COMPOSE_BUTTON_HINT" = "Оберіть або знайдіть користувача Signal, щоб почати з ним листування.";
 
 /* Accessibility label from compose button. */
 "COMPOSE_BUTTON_LABEL" = "Написати";
@@ -695,7 +704,7 @@
 "CONTACT_FIELD_ORGANIZATION" = "Організація";
 
 /* Body for contact permission action sheet */
-"CONTACT_PERMISSION_ACTION_SHEET_BODY" = "To see contact names and photos in your chats:";
+"CONTACT_PERMISSION_ACTION_SHEET_BODY" = "Щоб бачити імена та фото контактів у своїх чатах:";
 
 /* First step for contact permission action sheet */
 "CONTACT_PERMISSION_ACTION_SHEET_STEP_ONE" = "Натисніть Налаштування нижче";
@@ -713,7 +722,7 @@
 "CONTACT_PERMISSION_REMINDER_MEGAPHONE_ACTION" = "Увімкнути";
 
 /* Body for contact permission reminder megaphone */
-"CONTACT_PERMISSION_REMINDER_MEGAPHONE_BODY" = "See contact names and photos in your chats.";
+"CONTACT_PERMISSION_REMINDER_MEGAPHONE_BODY" = "Бачити імена контактів та фотографії у чатах.";
 
 /* Title for contact permission reminder megaphone */
 "CONTACT_PERMISSION_REMINDER_MEGAPHONE_TITLE" = "Увімкнути Контакти?";
@@ -779,7 +788,7 @@
 "CONVERSATION_DELETE_CONFIRMATION_ALERT_TITLE" = "Видалити чат?";
 
 /* Momentarily shown to the user when attempting to select more conversations than is allowed. Embeds {{max number of conversations}} that can be selected. */
-"CONVERSATION_PICKER_CAN_SELECT_NO_MORE_CONVERSATIONS" = "You can't select more than %@ chats.";
+"CONVERSATION_PICKER_CAN_SELECT_NO_MORE_CONVERSATIONS" = "Не можна обирати більше %@ чатів.";
 
 /* table section header for section containing groups */
 "CONVERSATION_PICKER_SECTION_GROUPS" = "Групи";
@@ -806,7 +815,7 @@
 "CONVERSATION_SETTINGS" = "Налаштування чату";
 
 /* Label for 'add members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_ADD_MEMBERS" = "Додати учасників";
+"CONVERSATION_SETTINGS_ADD_MEMBERS" = "Додати Учасників";
 
 /* Label for 'new contact' button in conversation settings view. */
 "CONVERSATION_SETTINGS_ADD_TO_EXISTING_CONTACT" = "Додати до наявного контакту";
@@ -824,10 +833,10 @@
 "CONVERSATION_SETTINGS_ATTRIBUTES_ACCESS_NONE" = "Вимкнено";
 
 /* Footer for the 'attributes access' section in conversation settings view. */
-"CONVERSATION_SETTINGS_ATTRIBUTES_ACCESS_SECTION_FOOTER" = "Choose who can edit the group name, photo, and disappearing messages timer.";
+"CONVERSATION_SETTINGS_ATTRIBUTES_ACCESS_SECTION_FOOTER" = "Оберіть, хто може редагувати ім'я, фото та час видалення повідомлень з групи.";
 
 /* Footer text for the 'block and leave' section of contact conversation settings view. */
-"CONVERSATION_SETTINGS_BLOCK_AND_LEAVE_SECTION_CONTACT_FOOTER" = "You will no longer receive messages or updates from this user.";
+"CONVERSATION_SETTINGS_BLOCK_AND_LEAVE_SECTION_CONTACT_FOOTER" = "Ви більше не отримуватимете повідомлень чи оновлень від цього користувача.";
 
 /* Footer text for the 'block and leave' section of group conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_AND_LEAVE_SECTION_FOOTER" = "Ви більше не отримуватимете повідомлень чи оновлень з цієї групи.";
@@ -837,9 +846,6 @@
 
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Заблокувати Користувача";
-
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Інформація контакту";
 
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Колір чату";
@@ -854,7 +860,7 @@
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "Тільки Адміністратори";
 
 /* Description for the 'edit group attributes access' alert. */
-"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_DESCRIPTION" = "Choose who can change the group name, photo, and disappearing messages:";
+"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_DESCRIPTION" = "Оберіть, хто може редагувати ім'я групи, фото та час видалення повідомлень:";
 
 /* Label for button that sets 'group attributes access' to 'members-only'. */
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_MEMBERS_BUTTON" = "Всі Учасники";
@@ -872,7 +878,7 @@
 "CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_MEMBERS_BUTTON" = "Всі Учасники";
 
 /* Label for 'group link' action in conversation settings view. */
-"CONVERSATION_SETTINGS_GROUP_LINK" = "Group Link";
+"CONVERSATION_SETTINGS_GROUP_LINK" = "Посилання групи";
 
 /* Label for 'make group admin' button in conversation settings view. */
 "CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_BUTTON" = "Зробити Адміністратором";
@@ -896,10 +902,10 @@
 "CONVERSATION_SETTINGS_MENTION_MODE_AlWAYS" = "Завжди повідомляти";
 
 /* label for 'never' option for mention notifications in conversation settings */
-"CONVERSATION_SETTINGS_MENTION_MODE_NEVER" = "Don’t Notify If Muted";
+"CONVERSATION_SETTINGS_MENTION_MODE_NEVER" = "Не сповіщати, якщо сповіщення вимкнені";
 
 /* Title of the 'mention notification mode' action sheet. */
-"CONVERSATION_SETTINGS_MENTION_NOTIFICATION_MODE_ACTION_SHEET_TITLE" = "Receive notifications when you’re mentioned in muted chats?";
+"CONVERSATION_SETTINGS_MENTION_NOTIFICATION_MODE_ACTION_SHEET_TITLE" = "Отримувати сповіщення, якщо вас згадали у чатах з вимкнутими сповіщеннями?";
 
 /* label for 'mentions' cell in conversation settings */
 "CONVERSATION_SETTINGS_MENTIONS_LABEL" = "Згадати";
@@ -947,7 +953,7 @@
 "CONVERSATION_SETTINGS_REVOKE_GROUP_ADMIN_TITLE_FORMAT" = "Видалити %@ як адміністратора групи?";
 
 /* Table cell label in conversation settings which returns the user to the conversation with 'search mode' activated */
-"CONVERSATION_SETTINGS_SEARCH" = "Search Chat";
+"CONVERSATION_SETTINGS_SEARCH" = "Пошук у чаті";
 
 /* Label for 'unblock group' action in conversation settings view. */
 "CONVERSATION_SETTINGS_UNBLOCK_GROUP" = "Розблокувати Групу";
@@ -959,13 +965,13 @@
 "CONVERSATION_SETTINGS_UNMUTE_ACTION" = "Сповіщати";
 
 /* The alert message if user tries to exit conversation settings view without saving changes. */
-"CONVERSATION_SETTINGS_UNSAVED_CHANGES_MESSAGE" = "Would you like to save the changes that you made to this chat?";
+"CONVERSATION_SETTINGS_UNSAVED_CHANGES_MESSAGE" = "Бажаєте зберігти зміни, які ви зробили у цьому чаті?";
 
 /* The alert title if user tries to exit conversation settings view without saving changes. */
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Незбережені зміни";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Переглянути всіх учасників";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Дивитись усіх";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Цей користувач є в контактах";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Додати до контактів";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ надіслав:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Ви надіслали:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Видалити Все";
@@ -1061,10 +1073,10 @@
 "DEBUG_LOG_GITHUB_ISSUE_ALERT_TITLE" = "Спрямування на GitHub";
 
 /* Accessibility label for the ? vector asset used to get info about debug logs */
-"DEBUG_LOG_INFO_BUTTON" = "Info about debug logs";
+"DEBUG_LOG_INFO_BUTTON" = "Інформація про журнал налагодження";
 
 /* action sheet body */
-"DELETE_ALL_MESSAGES_IN_CONVERSATION_ALERT_BODY" = "Delete all messages in the chat?";
+"DELETE_ALL_MESSAGES_IN_CONVERSATION_ALERT_BODY" = "Видалити усі повідомлення у чаті?";
 
 /* button text */
 "DELETE_ALL_MESSAGES_IN_CONVERSATION_BUTTON" = "Видалити Всі Повідомлення";
@@ -1082,10 +1094,10 @@
 "DEREGISTRATION_WARNING" = "Пристрій не зареєстровано. Можливо, ви зареєстрували цей номер телефону в Signal на іншому пристрої. Натисніть, щоб зареєструватися знову.";
 
 /* {{Short Date}} when device last communicated with Signal Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Остання активність: %@";
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Остання активність %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Прив’язано %@";
+"DEVICE_LINKED_AT_LABEL" = "Прив'язаний %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Не вдалося оновити список пристроїв.";
@@ -1166,7 +1178,7 @@
 "DEVICE_TRANSFER_QRCODE_EXPLANATION2" = "Помістіть цей QR-код в кадр свого іншого пристрою.";
 
 /* A prompt to provide further explanation if the user is not seeing the transfer on both devices. */
-"DEVICE_TRANSFER_QRCODE_NOT_SEEING" = "Not seeing the prompt on your old device?";
+"DEVICE_TRANSFER_QRCODE_NOT_SEEING" = "Не бачите підказок на своєму старому пристрої?";
 
 /* The title for the device transfer qr code view */
 "DEVICE_TRANSFER_QRCODE_TITLE" = "Очікування Іншого Пристрою...";
@@ -1196,10 +1208,10 @@
 "DISAPPEARING_MESSAGES" = "Зникаючі повідомлення";
 
 /* Info Message when added to a group which has enabled disappearing messages. Embeds {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
-"DISAPPEARING_MESSAGES_CONFIGURATION_GROUP_EXISTING_FORMAT" = "Messages in this chat will disappear after %@.";
+"DISAPPEARING_MESSAGES_CONFIGURATION_GROUP_EXISTING_FORMAT" = "Повідомлення у цьому чаті зникатимуть через %@.";
 
 /* subheading in conversation settings */
-"DISAPPEARING_MESSAGES_DESCRIPTION" = "When enabled, messages sent and received in this chat will disappear after they have been seen.";
+"DISAPPEARING_MESSAGES_DESCRIPTION" = "Якщо увімкнути, надіслані та отримані повідомлення у цьому чаті зникатимуть після перегляду.";
 
 /* Accessibility hint that contains current timeout information */
 "DISAPPEARING_MESSAGES_HINT" = "Наразі повідомлення зникатимуть за %@";
@@ -1229,7 +1241,7 @@
 "EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Цей користувач не може бути доданий у групу, поки він не оновить Signal.";
 
 /* Format for the 'group full' error alert when a user can't be added to a group because the group is full. Embeds {{ the maximum number of members in a group }}. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "Maximum group size of %@ members reached.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "Досягнуто максимальної кількості користувачів у чаті — %@.";
 
 /* Error message indicating that an avatar image is invalid and cannot be used. */
 "EDIT_GROUP_ERROR_INVALID_AVATAR" = "Невірне фото";
@@ -1250,16 +1262,16 @@
 "EDIT_ITEM_COPY_ACTION" = "Копіювати";
 
 /* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
-"EMAIL_INVITE_BODY" = "Hey,\n\nLately I've been using Signal to keep the chats on my iPhone private. I'd like you to install it too, so we can be confident that only you and I can read our messages or hear our calls.\n\nSignal is available for iPhones and Android. Get it here: %@\n\nSignal works like your existing messaging app. We can send pictures and video, make calls, and start group chats. The best part is, no one else can see any of it, not even the people who make Signal!\n\nYou can read more about Open Whisper Systems, the people who make Signal, here: %@";
+"EMAIL_INVITE_BODY" = "Привіт,\n\nОстаннім часом я користуюсь Signal, щоб усі чати на моєму iPhone залишались приватними. Хотів би бачити його встановленим і на твоєму пристрої, щоб бути впевненими, що лише ми вдвох маємо доступ до наших повідомлень та дзвінків.\n\nSignal доступний для iPhone та Android. Завантажувати тут: %@\n\nSignal працює як твій поточний месенджер. Ми можемо: відправити фото та відео, дзвонити один одному та створювати групові дзвінки. А найкраще те, що ніхто окрім нас цього не бачитиме чи чутиме, навіть творці Signal!\n\nБільше про Open Whisper Systems — людей, які створюють Signal, тут: %@";
 
 /* subject of email sent to contacts when inviting to install Signal */
 "EMAIL_INVITE_SUBJECT" = "Перейдімо на Signal";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Your device isn't configured to send email. To send a support request, set up email on your device or email support@signal.org";
+"EMAIL_SIGNAL_MESSAGE" = "На вашому пристрої не налаштовано та з нього не можна відправити електронну пошту. Щоб відправити запит на підтримку, налаштуйте електронну пошту на своєму пристрої, або напишіть на support@signal.org";
 
 /* Title for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_TITLE" = "Email unavailable";
+"EMAIL_SIGNAL_TITLE" = "Email недоступний";
 
 /* The name for the emoji category 'Activities' */
 "EMOJI_CATEGORY_ACTIVITIES_NAME" = "Активність";
@@ -1313,13 +1325,13 @@
 "ERROR_DESCRIPTION_CLIENT_SENDING_FAILURE" = "Не вдалося надіслати повідомлення.";
 
 /* Error indicating that openURL for a mailto: URL failed. */
-"ERROR_DESCRIPTION_COULD_NOT_LAUNCH_EMAIL" = "Failed to open email app";
+"ERROR_DESCRIPTION_COULD_NOT_LAUNCH_EMAIL" = "Не вдалось відкрити застосунок Пошта";
 
 /* Error indicating that a support mailto link could not be created. */
-"ERROR_DESCRIPTION_INVALID_SUPPORT_EMAIL" = "Could not create support request";
+"ERROR_DESCRIPTION_INVALID_SUPPORT_EMAIL" = "Не вдалось створити запит на підтримку";
 
 /* Generic error indicating that log upload failed */
-"ERROR_DESCRIPTION_LOG_UPLOAD_FAILED" = "Failed to upload logs.";
+"ERROR_DESCRIPTION_LOG_UPLOAD_FAILED" = "Не вдилось вивантажити логи.";
 
 /* Error message indicating that message send is disabled due to prekey update failures */
 "ERROR_DESCRIPTION_MESSAGE_SEND_DISABLED_PREKEY_UPDATE_FAILURES" = "Не вдалося надіслати через застарілі дані prekey.";
@@ -1382,7 +1394,7 @@
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE_FORMAT" = "Ваш код безпеки із %@ змінився.";
 
 /* Text notifying the user that their secure session has been reset */
-"ERROR_MESSAGE_SESSION_REFRESH" = "Chat session refreshed";
+"ERROR_MESSAGE_SESSION_REFRESH" = "Сесію чату оновлено";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_UNKNOWN_ERROR" = "Виникла невідома помилка.";
@@ -1406,7 +1418,7 @@
 "ERROR_UNREGISTERED_USER_FORMAT" = "Незареєстрований користувач: %@";
 
 /* Label notifying the user that the app has expired. */
-"EXPIRATION_ERROR" = "Your version of Signal has expired! Tap to update to the most recent version.";
+"EXPIRATION_ERROR" = "Ваша версія Signal застаріла! Торкніться, щоб оновитись до найновішої версії.";
 
 /* Label warning the user that the app will expire soon. */
 "EXPIRATION_WARNING_SOON" = "Вашу версію Signal перестануть підтримувати за %d днів. Торкніться, щоб оновити до останньої версії.";
@@ -1439,7 +1451,7 @@
 "FORWARD_MESSAGE" = "Переслати повідомлення";
 
 /* Label indicating media gallery is empty */
-"GALLERY_TILES_EMPTY_GALLERY" = "You don't have any media in this chat.";
+"GALLERY_TILES_EMPTY_GALLERY" = "У цьому чаті немає медіа-файлів.";
 
 /* Label indicating loading is in progress */
 "GALLERY_TILES_LOADING_MORE_RECENT_LABEL" = "Довантаження медіа...";
@@ -1526,133 +1538,133 @@
 "GROUP_ACCESS_MEMBERS_UPDATED_FORMAT" = "Членство в групі може бути змінено \"%@\".";
 
 /* Message indicating that a feature can only be used by group admins. */
-"GROUP_ADMIN_ONLY_WARNING" = "Only admins can change this option.";
+"GROUP_ADMIN_ONLY_WARNING" = "Лише адміни можуть змінювати це налаштування.";
 
 /* Message body for alert explaining that a group call participant is blocked */
-"GROUP_CALL_BLOCKED_ALERT_MESSAGE" = "You won’t receive their audio or video and they won’t receive yours.";
+"GROUP_CALL_BLOCKED_ALERT_MESSAGE" = "Ви не отримаєте аудіо та відео від цього користувача, а користувач не отримає ваші.";
 
 /* Title for alert explaining that a group call participant is blocked. Embeds {{ user's name }} */
-"GROUP_CALL_BLOCKED_ALERT_TITLE_FORMAT" = "%@ is blocked";
+"GROUP_CALL_BLOCKED_ALERT_TITLE_FORMAT" = "%@ заблоковано";
 
 /* String displayed in group call grid cell when a user is blocked. Embeds {user's name} */
-"GROUP_CALL_BLOCKED_USER_FORMAT" = "%@ is blocked";
+"GROUP_CALL_BLOCKED_USER_FORMAT" = "%@ заблоковано";
 
 /* Button to continue an ongoing group call */
-"GROUP_CALL_CONTINUE_BUTTON" = "Continue Call";
+"GROUP_CALL_CONTINUE_BUTTON" = "Продовжити дзвінок";
 
 /* Text in conversation view for a group call that has since ended */
-"GROUP_CALL_ENDED_MESSAGE" = "The group call has ended";
+"GROUP_CALL_ENDED_MESSAGE" = "Груповий дзвінок завершено";
 
 /* A button to receive more info about not seeing a participant in group call grid */
 "GROUP_CALL_ERROR_DETAILS" = "Детальніше";
 
 /* An error displayed to the user when the group call ends because it has exceeded the max devices. Embeds {{max device count}}. */
-"GROUP_CALL_HAS_MAX_DEVICES_FORMAT" = "The maximum number of %ld participants has been reached for this call. Try again later.";
+"GROUP_CALL_HAS_MAX_DEVICES_FORMAT" = "Максимальну кількість учасників — %ld — досягнуто для цього дзвінка. Спробуйте пізніше.";
 
 /* An error displayed to the user when the group call ends because it has exceeded the max devices. */
-"GROUP_CALL_HAS_MAX_DEVICES_UNKNOWN_COUNT" = "The maximum number of participants has been reached for this call. Try again later.";
+"GROUP_CALL_HAS_MAX_DEVICES_UNKNOWN_COUNT" = "Досягнуто максимальної кількості учасників для цього дзвінка. Спробуйте пізніше.";
 
 /* Text explaining the group call is full */
-"GROUP_CALL_IS_FULL" = "Call is Full";
+"GROUP_CALL_IS_FULL" = "Дзвінок повний";
 
 /* Button to join an ongoing group call */
-"GROUP_CALL_JOIN_BUTTON" = "Join Call";
+"GROUP_CALL_JOIN_BUTTON" = "Приєднатись";
 
 /* Button to leave a group call */
-"GROUP_CALL_LEAVE_BUTTON" = "Leave Call";
+"GROUP_CALL_LEAVE_BUTTON" = "Покинути дзвінок";
 
 /* String indicating how many people are current in the call */
-"GROUP_CALL_MANY_IN_THIS_CALL_FORMAT" = "In this call · %ld people";
+"GROUP_CALL_MANY_IN_THIS_CALL_FORMAT" = "У цій розмові · %ld осіб";
 
 /* Text explaining that there are more than three people in the group call. Embeds {{ %1$@ participant1, %2$@ participant2, %3$@ participantCount-2 }} */
-"GROUP_CALL_MANY_PEOPLE_HERE_FORMAT" = "%1$@, %2$@, and %3$@ others are in this call";
+"GROUP_CALL_MANY_PEOPLE_HERE_FORMAT" = "%1$@, %2$@ та інші %3$@ у цьому дзвінку";
 
 /* String displayed in cell when media from a user can't be displayed in group call grid. Embeds {user's name} */
-"GROUP_CALL_MISSING_MEDIA_KEYS_FORMAT" = "Can't receive audio & video from %@";
+"GROUP_CALL_MISSING_MEDIA_KEYS_FORMAT" = "Неможливо отримати аудіо та відео від %@";
 
 /* Message body for alert explaining that a group call participant cannot be displayed because of missing keys */
-"GROUP_CALL_NO_KEYS_ALERT_MESSAGE" = "This may be because they have not verified your safety number change, there's a problem with their device, or they have blocked you.";
+"GROUP_CALL_NO_KEYS_ALERT_MESSAGE" = "Це могло статись через те, що користувач не підтвердив вашу зміну коду безпеки, виникла проблема з пристроєм користувача, або цей користувач вас заблокував.";
 
 /* Title for alert explaining that a group call participant cannot be displayed because of missing keys. Embeds {{ user's name }} */
-"GROUP_CALL_NO_KEYS_ALERT_TITLE_FORMAT" = "Can't receive audio and video from %@";
+"GROUP_CALL_NO_KEYS_ALERT_TITLE_FORMAT" = "Неможливо отримати аудіо та відео від %@";
 
 /* Text explaining that you are the only person currently in the group call */
-"GROUP_CALL_NO_ONE_HERE" = "No one else is here";
+"GROUP_CALL_NO_ONE_HERE" = "Тут більше нікого немає";
 
 /* Text explaining to the user that nobody has joined this call yet. */
-"GROUP_CALL_NOBODY_IS_IN_YET" = "Nobody is in this call yet.";
+"GROUP_CALL_NOBODY_IS_IN_YET" = "Ще ніхто не приєднався до цього виклику.";
 
 /* Copy explaining that many new users have joined the group call. Embeds {first member name}, {second member name}, {number of additional members} */
-"GROUP_CALL_NOTIFICATION_MANY_JOINED_FORMAT" = "%@, %@, and %ld others joined the call";
+"GROUP_CALL_NOTIFICATION_MANY_JOINED_FORMAT" = "%@, %@ та інші %ld приєднались до дзвінка";
 
 /* Copy explaining that many users have left the group call. Embeds {first member name}, {second member name}, {number of additional members} */
-"GROUP_CALL_NOTIFICATION_MANY_LEFT_FORMAT" = "%@, %@, and %ld others left the call";
+"GROUP_CALL_NOTIFICATION_MANY_LEFT_FORMAT" = "%@, %@ та %ld залишили дзвінок";
 
 /* Copy explaining that a user has joined the group call. Embeds {member name} */
-"GROUP_CALL_NOTIFICATION_ONE_JOINED_FORMAT" = "%@ joined the call";
+"GROUP_CALL_NOTIFICATION_ONE_JOINED_FORMAT" = "%@ приєднався до дзвінка";
 
 /* Copy explaining that a user has left the group call. Embeds {member name} */
-"GROUP_CALL_NOTIFICATION_ONE_LEFT_FORMAT" = "%@ left the call";
+"GROUP_CALL_NOTIFICATION_ONE_LEFT_FORMAT" = "%@ залишив дзвінок";
 
 /* Copy explaining that two users have joined the group call. Embeds {first member name}, {second member name} */
-"GROUP_CALL_NOTIFICATION_TWO_JOINED_FORMAT" = "%@ and %@ joined the call";
+"GROUP_CALL_NOTIFICATION_TWO_JOINED_FORMAT" = "%@ та %@ приєднались до дзвінка";
 
 /* Copy explaining that two users have left the group call. Embeds {first member name}, {second member name} */
-"GROUP_CALL_NOTIFICATION_TWO_LEFT_FORMAT" = "%@ and %@ left the call";
+"GROUP_CALL_NOTIFICATION_TWO_LEFT_FORMAT" = "%@ та %@ залишили дзвінок";
 
 /* String indicating one person is currently in the call */
-"GROUP_CALL_ONE_IN_THIS_CALL" = "In this call · 1 person";
+"GROUP_CALL_ONE_IN_THIS_CALL" = "У цьому дзвінку · 1 особа";
 
 /* Text explaining that there is one person in the group call. Embeds {member name} */
-"GROUP_CALL_ONE_PERSON_HERE_FORMAT" = "%@ is in this call";
+"GROUP_CALL_ONE_PERSON_HERE_FORMAT" = "%@ у цьому дзвінку";
 
 /* Text indicating that the user has lost their connection to the call and we are reconnecting. */
-"GROUP_CALL_RECONNECTING" = "Reconnecting";
+"GROUP_CALL_RECONNECTING" = "Перепідключення";
 
 /* notification body when a group call participant joins with an untrusted safety number */
-"GROUP_CALL_SAFETY_NUMBER_CHANGE_BODY" = "Someone has joined this call with a safety number that has changed.";
+"GROUP_CALL_SAFETY_NUMBER_CHANGE_BODY" = "Хтось щойно приєднався до дзвінка зі зміненим кодом безпеки.";
 
 /* Text in conversation view for a group call that someone started. We don't know who */
-"GROUP_CALL_SOMEONE_STARTED_MESSAGE" = "Someone started a group call";
+"GROUP_CALL_SOMEONE_STARTED_MESSAGE" = "Хтось почав груповий дзвінок";
 
 /* Toast view text informing user about swiping to speaker view */
-"GROUP_CALL_SPEAKER_VIEW_TOAST" = "Swipe up to change views";
+"GROUP_CALL_SPEAKER_VIEW_TOAST" = "Потягніть вгору для зміни вигляду";
 
 /* Button to start a group call */
-"GROUP_CALL_START_BUTTON" = "Start Call";
+"GROUP_CALL_START_BUTTON" = "Почати дзвінок";
 
 /* Tooltip highlighting group calls. */
 "GROUP_CALL_START_TOOLTIP" = "Натисніть сюди, щоб почати груповий дзвінок";
 
 /* Text explaining that you started a group call. */
-"GROUP_CALL_STARTED_BY_YOU" = "You started a group call";
+"GROUP_CALL_STARTED_BY_YOU" = "Ви розпочали груповий дзвінок";
 
 /* Text explaining that someone started a group call. Embeds {{call creator display name}} */
-"GROUP_CALL_STARTED_MESSAGE_FORMAT" = "%@ started a group call";
+"GROUP_CALL_STARTED_MESSAGE_FORMAT" = "%@ розпочав груповий дзвінок";
 
 /* Text explaining that there are three people in the group call. Embeds {{ %1$@ participant1, %2$@ participant2 }} */
-"GROUP_CALL_THREE_PEOPLE_HERE_FORMAT" = "%1$@, %2$@, and 1 other is in this call";
+"GROUP_CALL_THREE_PEOPLE_HERE_FORMAT" = "%1$@, %2$@ та ще один користувач у цьому дзвінку";
 
 /* Text explaining that there are two people in the group call. Embeds {{ %1$@ participant1, %2$@ participant2 }} */
-"GROUP_CALL_TWO_PEOPLE_HERE_FORMAT" = "%1$@ and %2$@ are in this call";
+"GROUP_CALL_TWO_PEOPLE_HERE_FORMAT" = "%1$@ та %2$@ у цьому дзвінку";
 
 /* An error displayed to the user when the group call unexpectedly ends. */
-"GROUP_CALL_UNEXPECTEDLY_ENDED" = "You were disconnected from the call. Check your connection and try again.";
+"GROUP_CALL_UNEXPECTEDLY_ENDED" = "Дзвінок було перервано. Перевірте з'єднання та спробуйте знов.";
 
 /* Text describing the local user as a participant in a group call. */
 "GROUP_CALL_YOU" = "Ви";
 
 /* Text explaining that you are in the group call. */
-"GROUP_CALL_YOU_ARE_HERE" = "You are in the group call";
+"GROUP_CALL_YOU_ARE_HERE" = "Ви у груповому дзвінку";
 
 /* Text describing the local user in the group call members sheet when connected from another device. */
-"GROUP_CALL_YOU_ON_ANOTHER_DEVICE" = "You (on another device)";
+"GROUP_CALL_YOU_ON_ANOTHER_DEVICE" = "Ви (на іншому пристрої)";
 
 /* Body for group calls megaphone */
-"GROUP_CALLS_MEGAPHONE_BODY" = "Open a New Group to start a free encrypted group call";
+"GROUP_CALLS_MEGAPHONE_BODY" = "Створіть Нову групу, щоб розпочати безкоштовний і захищений груповий дзвінок";
 
 /* Title for group calls megaphone */
-"GROUP_CALLS_MEGAPHONE_TITLE" = "Introducing Group Calls";
+"GROUP_CALLS_MEGAPHONE_TITLE" = "Представляємо Групові дзвінки";
 
 /* Message indicating that group was created by the local user. */
 "GROUP_CREATED_BY_LOCAL_USER" = "Ви створили групу.";
@@ -1667,49 +1679,49 @@
 "GROUP_CREATION_FAILED" = "Не всіх учасників можна додати до групи. Натисніть, щоб спробувати знову.";
 
 /* Message indicating that 1 invalid invite was added to the group. */
-"GROUP_INVALID_INVITES_ADDED_1" = "An invalid invite was added.";
+"GROUP_INVALID_INVITES_ADDED_1" = "Додано хибне запрошення.";
 
 /* Message indicating that 1 invalid invite was added by the local user. */
-"GROUP_INVALID_INVITES_ADDED_BY_LOCAL_USER_1" = "You added an invalid invite.";
+"GROUP_INVALID_INVITES_ADDED_BY_LOCAL_USER_1" = "Ви додали хибне запрошення.";
 
 /* Message indicating that multiple invalid invites were added by the local user. */
-"GROUP_INVALID_INVITES_ADDED_BY_LOCAL_USER_N" = "You added invalid invites.";
+"GROUP_INVALID_INVITES_ADDED_BY_LOCAL_USER_N" = "Ви додали хибні запрошення.";
 
 /* Message indicating that 1 invalid invite was added by another user. Embeds {{remote user name}}. */
-"GROUP_INVALID_INVITES_ADDED_BY_REMOTE_USER_FORMAT_1" = "%@ added an invalid invite.";
+"GROUP_INVALID_INVITES_ADDED_BY_REMOTE_USER_FORMAT_1" = "%@ додав хибне запрошення.";
 
 /* Message indicating that multiple invalid invites were added by another user. Embeds {{remote user name}}. */
-"GROUP_INVALID_INVITES_ADDED_BY_REMOTE_USER_FORMAT_N" = "%@ added invalid invites.";
+"GROUP_INVALID_INVITES_ADDED_BY_REMOTE_USER_FORMAT_N" = "%@ додав хибні запрошення.";
 
 /* Message indicating that multiple invalid invites were added to the group. */
-"GROUP_INVALID_INVITES_ADDED_N" = "Invalid invites were added.";
+"GROUP_INVALID_INVITES_ADDED_N" = "Додані хибні запрошення.";
 
 /* Message indicating that 1 invalid invite was revoked. */
-"GROUP_INVALID_INVITES_REMOVED_1" = "An invalid invite was revoked.";
+"GROUP_INVALID_INVITES_REMOVED_1" = "Хибне запрошення було відкликано.";
 
 /* Message indicating that 1 invalid invite was revoked by the local user. */
-"GROUP_INVALID_INVITES_REMOVED_BY_LOCAL_USER_1" = "You revoked an invalid invite.";
+"GROUP_INVALID_INVITES_REMOVED_BY_LOCAL_USER_1" = "Ви відкликали хибне запрошення.";
 
 /* Message indicating that multiple invalid invites were revoked by the local user. */
-"GROUP_INVALID_INVITES_REMOVED_BY_LOCAL_USER_N" = "You revoked invalid invites.";
+"GROUP_INVALID_INVITES_REMOVED_BY_LOCAL_USER_N" = "Ви відкликали хибні запрошення.";
 
 /* Message indicating that 1 invalid invite was revoked by another user. Embeds {{remote user name}}. */
-"GROUP_INVALID_INVITES_REMOVED_BY_REMOTE_USER_FORMAT_1" = "%@ revoked an invalid invite.";
+"GROUP_INVALID_INVITES_REMOVED_BY_REMOTE_USER_FORMAT_1" = "%@ відкликав хибне запрошення.";
 
 /* Message indicating that multiple invalid invites were revoked by another user. Embeds {{remote user name}}. */
-"GROUP_INVALID_INVITES_REMOVED_BY_REMOTE_USER_FORMAT_N" = "%@ revoked invalid invites.";
+"GROUP_INVALID_INVITES_REMOVED_BY_REMOTE_USER_FORMAT_N" = "%@ відкликав хибні запрошення.";
 
 /* Message indicating that multiple invalid invites were revoked. */
-"GROUP_INVALID_INVITES_REMOVED_N" = "Invalid invites were revoked.";
+"GROUP_INVALID_INVITES_REMOVED_N" = "Хибні запрошення були відкликані.";
 
 /* Message indicating that the group invite link was disabled. */
-"GROUP_INVITE_LINK_DISABLED" = "The group link was turned off.";
+"GROUP_INVITE_LINK_DISABLED" = "Посилання на групу було вимкнуто.";
 
 /* Message indicating that the group invite link was disabled by the local user. */
-"GROUP_INVITE_LINK_DISABLED_BY_LOCAL_USER" = "You turned off the group link.";
+"GROUP_INVITE_LINK_DISABLED_BY_LOCAL_USER" = "Ви вимкнули посилання на групу.";
 
 /* Message indicating that the group invite link was disabled by a remote user. Embeds {{ user who disabled the group invite link }}. */
-"GROUP_INVITE_LINK_DISABLED_BY_REMOTE_USER_FORMAT" = "%@ turned off the group link.";
+"GROUP_INVITE_LINK_DISABLED_BY_REMOTE_USER_FORMAT" = "%@ вимкнув посилання на групу.";
 
 /* Message indicating that the group invite link was enabled. */
 "GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL" = "The group link was turned on with admin approval on.";
@@ -1730,13 +1742,13 @@
 "GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ turned on the group link with admin approval off.";
 
 /* Message indicating that the group invite link was reset. */
-"GROUP_INVITE_LINK_RESET" = " The group link was reset.";
+"GROUP_INVITE_LINK_RESET" = "Посилання на групу було скинуто.";
 
 /* Message indicating that the group invite link was reset by the local user. */
-"GROUP_INVITE_LINK_RESET_BY_LOCAL_USER" = "You reset the group link.";
+"GROUP_INVITE_LINK_RESET_BY_LOCAL_USER" = "Ви скинули посилання на групу.";
 
 /* Message indicating that the group invite link was reset by a remote user. Embeds {{ user who reset the group invite link }}. */
-"GROUP_INVITE_LINK_RESET_BY_REMOTE_USER_FORMAT" = "%@ reset the group link.";
+"GROUP_INVITE_LINK_RESET_BY_REMOTE_USER_FORMAT" = "%@ скинув посилання на групу.";
 
 /* Message indicating that the group invite link was set to not require approval. */
 "GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL" = "Admin approval was turned off for the group link.";
@@ -1772,16 +1784,16 @@
 "GROUP_INVITES_VIEW_TITLE" = "Запрошення Учасника";
 
 /* Subtitle indicating that the group invite link has expired in the 'group invite link' action sheet. */
-"GROUP_LINK_ACTION_SHEET_VIEW_EXPIRED_LINK_SUBTITLE" = "This group link is no longer valid.";
+"GROUP_LINK_ACTION_SHEET_VIEW_EXPIRED_LINK_SUBTITLE" = "Це посилання групи більше недійсне.";
 
 /* Title indicating that the group invite link has expired in the 'group invite link' action sheet. */
-"GROUP_LINK_ACTION_SHEET_VIEW_EXPIRED_LINK_TITLE" = "Can’t join group";
+"GROUP_LINK_ACTION_SHEET_VIEW_EXPIRED_LINK_TITLE" = "Неможливо приєднатись до групи";
 
 /* Indicator for group conversations in the 'group invite link' action sheet. */
-"GROUP_LINK_ACTION_SHEET_VIEW_GROUP_INDICATOR" = "Group";
+"GROUP_LINK_ACTION_SHEET_VIEW_GROUP_INDICATOR" = "Група";
 
 /* Label for the 'join' button in the 'group invite link' action sheet. */
-"GROUP_LINK_ACTION_SHEET_VIEW_JOIN_BUTTON" = "Join";
+"GROUP_LINK_ACTION_SHEET_VIEW_JOIN_BUTTON" = "Приєднатись";
 
 /* Label indicating that the group info is being loaded in the 'group invite link' action sheet. */
 "GROUP_LINK_ACTION_SHEET_VIEW_LOADING_TITLE" = "Завантаження...";
@@ -1793,16 +1805,16 @@
 "GROUP_LINK_COULD_NOT_REQUEST_TO_JOIN_GROUP_DUE_TO_NETWORK_ERROR_MESSAGE" = "Переконайтеся, що ви в мережі і спробуйте знову.";
 
 /* Error message the attempt to request to join the group failed. */
-"GROUP_LINK_COULD_NOT_REQUEST_TO_JOIN_GROUP_ERROR_MESSAGE" = "Please try again.";
+"GROUP_LINK_COULD_NOT_REQUEST_TO_JOIN_GROUP_ERROR_MESSAGE" = "Спробуйте ще, будь ласка.";
 
 /* Message for the 'invalid group invite link' alert. */
 "GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_MESSAGE" = "This is not a valid group link. Make sure the entire link is intact and correct before attempting to join.";
 
 /* Title for the 'invalid group invite link' alert. */
-"GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Invalid Link";
+"GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Хибне посилання";
 
 /* Error message indicating that the local user does not support groups v2. */
-"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Update Signal on this device to join this group.";
+"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Оновіть Signal на цьому пристрої щоб приєднатись до цієї групи.";
 
 /* Explanation of the 'approve new group members' switch. */
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Потрібно, щоб адміністратор затвердив нових членів, які приєднуються за посиланням групи.";
@@ -1811,28 +1823,28 @@
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_SWITCH" = "Затвердити Нових Учасників";
 
 /* Label for the 'enable and share link' button in the 'group link promotion' alert view. */
-"GROUP_LINK_PROMOTION_ALERT_ENABLE_AND_SHARE_LINK" = "Enable and Share Link";
+"GROUP_LINK_PROMOTION_ALERT_ENABLE_AND_SHARE_LINK" = "Увімкнути та ділитись посиланням";
 
 /* Label for the 'share link' button in the 'group link promotion' alert view. */
-"GROUP_LINK_PROMOTION_ALERT_SHARE_LINK" = "Share Link";
+"GROUP_LINK_PROMOTION_ALERT_SHARE_LINK" = "Поділитись посиланням";
 
 /* Subtitle for the 'group link promotion' alert view. */
-"GROUP_LINK_PROMOTION_ALERT_SUBTITLE" = "Share this link with friends to let them quickly join this group.";
+"GROUP_LINK_PROMOTION_ALERT_SUBTITLE" = "Поділиться цим посиланням з друзями, щоб вони змогли швидко приєднатись до групи.";
 
 /* Title for the 'group link promotion' alert view. */
 "GROUP_LINK_PROMOTION_ALERT_TITLE" = "Запросити друзів";
 
 /* Suggestion to invite more group members via the group invite link. */
-"GROUP_LINK_PROMOTION_UPDATE" = "Invite friends to your group via the group link";
+"GROUP_LINK_PROMOTION_UPDATE" = "Запрошуйте друзів до вашої групи використовуючи посилання групи";
 
 /* Description text in the 'group link QR code' view. */
 "GROUP_LINK_QR_CODE_VIEW_DESCRIPTION" = "Люди, які сканують цей код, зможуть приєднатися до вашої групи. Адміністраторам все одно доведеться затверджувати нових учасників, якщо ви ввімкнули це налаштування.";
 
 /* Label for the 'share code' button in the 'group link QR code' view. */
-"GROUP_LINK_QR_CODE_VIEW_SHARE_CODE_BUTTON" = "Share Code";
+"GROUP_LINK_QR_CODE_VIEW_SHARE_CODE_BUTTON" = "Поділитись кодом";
 
 /* The title for the 'group link QR code' view. */
-"GROUP_LINK_QR_CODE_VIEW_TITLE" = "QR Code";
+"GROUP_LINK_QR_CODE_VIEW_TITLE" = "QR-код";
 
 /* Label for the 'approve new members' switch in the 'group link' view. */
 "GROUP_LINK_VIEW_APPROVE_NEW_MEMBERS_SWITCH" = "Затвердити Нових Учасників";
@@ -1841,10 +1853,10 @@
 "GROUP_LINK_VIEW_COPY_LINK" = "Копіювати посилання";
 
 /* Label for the 'enable group link' switch in the 'group link' view. */
-"GROUP_LINK_VIEW_ENABLE_GROUP_LINK_SWITCH" = "Group Link";
+"GROUP_LINK_VIEW_ENABLE_GROUP_LINK_SWITCH" = "Посилання групи";
 
 /* Title for the 'manage and share' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MANAGE_AND_SHARE_SECTION_TITLE" = "Manage and Share";
+"GROUP_LINK_VIEW_MANAGE_AND_SHARE_SECTION_TITLE" = "Керувати та ділитись";
 
 /* Footer for the 'member requests' section of the 'group link' view. */
 "GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "Потрібно, щоб адміністратор затвердив нових членів, які приєднуються за посиланням групи.";
@@ -1853,7 +1865,7 @@
 "GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "Запити Учасника";
 
 /* Label for the 'reset link' button in the 'group link' view. */
-"GROUP_LINK_VIEW_RESET_LINK" = "Reset Link";
+"GROUP_LINK_VIEW_RESET_LINK" = "Скинути посилання";
 
 /* Title for the 'confirm reset link' alert in the 'group link' view. */
 "GROUP_LINK_VIEW_RESET_LINK_CONFIRM_ALERT_TITLE" = "Are you sure you want to reset the group link? People will no longer be able to join the group using the current link.";
@@ -1865,16 +1877,16 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_IOS_SHARING" = "Поділитися";
 
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "QR Code";
+"GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "QR-код";
 
 /* Label for the 'share group link via Signal' button in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Share via Signal";
+"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Поділитись через Signal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Anyone with this link can join the group, or send a request to join. Share it with people you trust.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Anyone with this link can view this group’s name and members and request to join.  Share it with people you trust.";
 
 /* The title for the 'group link' view. */
-"GROUP_LINK_VIEW_TITLE" = "Group Link";
+"GROUP_LINK_VIEW_TITLE" = "Посилання групи";
 
 /* Message indicating that the local user was added to the group by another user. Embeds {{remote user name}}. */
 "GROUP_LOCAL_USER_ADDED_TO_GROUP_BY_REMOTE_USER_FORMAT" = "%@ додав(-а) вас.";
@@ -1913,7 +1925,7 @@
 "GROUP_LOCAL_USER_JOINED_THE_GROUP" = "Ви приєдналися до групи.";
 
 /* Message indicating that the local user has joined the group. */
-"GROUP_LOCAL_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK" = "You joined the group via the group link.";
+"GROUP_LOCAL_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK" = "Ви приєднались до групи за допомогою посилання.";
 
 /* Message indicating that the local user was removed from the group by another user. Embeds {{remote user name}}. */
 "GROUP_LOCAL_USER_REMOVED_BY_REMOTE_USER_FORMAT" = "%@ видалив(-а) тебе.";
@@ -1922,16 +1934,16 @@
 "GROUP_LOCAL_USER_REMOVED_BY_UNKNOWN_USER" = "Ви були видалені з групи.";
 
 /* Message indicating that the local user's request to join the group was approved by another user. Embeds {{ %@ the name of the user who approved the reuqest }}. */
-"GROUP_LOCAL_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%@ approved your request to join the group.";
+"GROUP_LOCAL_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%@ схвалив ваш запит на приєднання до групи.";
 
 /* Message indicating that the local user cancelled their request to join the group. */
-"GROUP_LOCAL_USER_REQUEST_CANCELLED_BY_LOCAL_USER" = "You canceled your request to join the group.";
+"GROUP_LOCAL_USER_REQUEST_CANCELLED_BY_LOCAL_USER" = "Ви скасували надіслання запиту на приєднання до групи.";
 
 /* Message indicating that the local user's request to join the group was rejected. */
-"GROUP_LOCAL_USER_REQUEST_REJECTED" = "Your request to join the group was denied.";
+"GROUP_LOCAL_USER_REQUEST_REJECTED" = "Ваш запит на приєднання до групи було відхилено.";
 
 /* Message indicating that the local user requested to join the group. */
-"GROUP_LOCAL_USER_REQUESTED_TO_JOIN_TO_THE_GROUP" = "You sent a request to join the group.";
+"GROUP_LOCAL_USER_REQUESTED_TO_JOIN_TO_THE_GROUP" = "Ви надіслали запит на приєднання до групи.";
 
 /* Message indicating that the local user had their administrator role revoked. */
 "GROUP_LOCAL_USER_REVOKED_ADMINISTRATOR" = "Ваші привілеї адміністратора були відкликані.";
@@ -1964,7 +1976,7 @@
 "GROUP_MEMBERS_CALL" = "Голосовий дзвінок";
 
 /* Label indicating that a new group has no other members. */
-"GROUP_MEMBERS_NO_OTHER_MEMBERS" = "You can add or invite friends after creating this group.";
+"GROUP_MEMBERS_NO_OTHER_MEMBERS" = "Після створення групи ви зможете додати чи запросити до неї друзів.";
 
 /* Title for the 'members' section of the 'group members' view. */
 "GROUP_MEMBERS_SECTION_TITLE_MEMBERS" = "Учасники";
@@ -1974,6 +1986,27 @@
 
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Відеовиклик";
+
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ group members have similar names.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Натисніть для перегляду";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Учасник";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Перегляд учасників";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ group members have similar names, review the members below or choose to take action.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ group members have the same name, review the members below or choose to take action.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ group members have the same name.";
 
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Ім'я групи (обов'язково)";
@@ -2033,7 +2066,7 @@
 "GROUP_REMOTE_USER_INVITED_1" = "1 людина була запрошена в групу.";
 
 /* Message indicating that a single remote user was invited to the group. Embeds {{remote user name}}. */
-"GROUP_REMOTE_USER_INVITED_1_FORMAT" = "%@ was invited to the group.";
+"GROUP_REMOTE_USER_INVITED_1_FORMAT" = "%@ було запрошено до групи.";
 
 /* Message indicating that a remote user was invited to the group by the local user. Embeds {{remote user name}}. */
 "GROUP_REMOTE_USER_INVITED_BY_LOCAL_USER_FORMAT" = "Ви запросили %@ в групу.";
@@ -2051,7 +2084,7 @@
 "GROUP_REMOTE_USER_JOINED_GROUP_FORMAT" = "%@ приєднується до групи.";
 
 /* Message indicating that another user has joined the group. Embeds {{remote user name}}. */
-"GROUP_REMOTE_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK_FORMAT" = "%@ joined the group via the group link.";
+"GROUP_REMOTE_USER_JOINED_THE_GROUP_VIA_GROUP_INVITE_LINK_FORMAT" = "%@ приєднався до групи за допомогою посилання.";
 
 /* Message indicating that a remote user has left the group. Embeds {{remote user name}}. */
 "GROUP_REMOTE_USER_LEFT_GROUP_FORMAT" = "%@ покинув (-а) групу.";
@@ -2063,28 +2096,25 @@
 "GROUP_REMOTE_USER_REMOVED_FROM_GROUP_BY_REMOTE_USER_FORMAT" = "%1$@ видалив(-ла) %2$@.";
 
 /* Message indicating that a remote user's request to join the group was approved by the local user. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_LOCAL_USER_FORMAT" = "You approved a request to join the group from %@.";
+"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_LOCAL_USER_FORMAT" = "Ви схвалили запит на приєднання до групи від %@.";
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ approved a request to join the group from %1$@.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "A request to join the group from %@ was approved.";
+"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ схвалив запит на приєднання до групи від %1$@.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
-"GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ canceled their request to join the group.";
+"GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ скасував надіслання запиту на приєднання до групи.";
 
 /* Message indicating that a remote user's request to join the group was rejected by the local user. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_LOCAL_USER_FORMAT" = "You denied a request to join the group from %@.";
+"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_LOCAL_USER_FORMAT" = "Ви відхилили запит на приєднання до групи від %@.";
 
 /* Message indicating that a remote user's request to join the group was rejected by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
-"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_REMOTE_USER_FORMAT" = "%2$@ denied a request to join the group from %1$@.";
+"GROUP_REMOTE_USER_REQUEST_REJECTED_BY_REMOTE_USER_FORMAT" = "%2$@ відхилив запит на приєднання до групи від %1$@.";
 
 /* Message indicating that a remote user's request to join the group was rejected. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_REJECTED_FORMAT" = "A request to join the group from %@ was denied.";
+"GROUP_REMOTE_USER_REQUEST_REJECTED_FORMAT" = "Запит на приєднання до групи від %@ було відхилено.";
 
 /* Message indicating that a remote user requested to join the group. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUESTED_TO_JOIN_THE_GROUP_FORMAT" = "%@ requested to join via the group link.";
+"GROUP_REMOTE_USER_REQUESTED_TO_JOIN_THE_GROUP_FORMAT" = "%@ бажає приєднатись за допомогою посилання.";
 
 /* Message indicating that a remote user had their administrator role revoked. Embeds {{remote user name}}. */
 "GROUP_REMOTE_USER_REVOKED_ADMINISTRATOR" = "Привілеї адміністратора у %@ були відкликані.";
@@ -2099,7 +2129,7 @@
 "GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "Запити Учасника";
 
 /* Label for the 'pending invites' mode of the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "Pending Invites";
+"GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "Очікуючі запрошення";
 
 /* The title for the 'group requests and invites' view. */
 "GROUP_REQUESTS_AND_INVITES_VIEW_TITLE" = "Запити і Запрошення Учасника";
@@ -2117,7 +2147,7 @@
 "GROUP_UPDATED_AVATAR_REMOVED_BY_REMOTE_USER_FORMAT" = "%@ видалив фото.";
 
 /* Message indicating that the group's avatar was changed. */
-"GROUP_UPDATED_AVATAR_UPDATED" = "The group photo was updated.";
+"GROUP_UPDATED_AVATAR_UPDATED" = "Фото групи було оновлено.";
 
 /* Message indicating that the group's avatar was changed. */
 "GROUP_UPDATED_AVATAR_UPDATED_BY_LOCAL_USER" = "Ви оновили фото.";
@@ -2150,7 +2180,7 @@
 "GROUP_UPDATED_NAME_UPDATED_FORMAT" = "Назва групи тепер \"%@\".";
 
 /* Message indicating that the group was migrated. */
-"GROUP_WAS_MIGRATED" = "This group was upgraded to a New Group.";
+"GROUP_WAS_MIGRATED" = "Цю групу було оновлено до Нової групи.";
 
 /* Message indicating that 1 user was dropped while migrating the group. */
 "GROUP_WAS_MIGRATED_USERS_DROPPED_1" = "A member couldn’t be added to the New Group and has been removed from the group.";
@@ -2198,25 +2228,25 @@
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_1_BODY" = "Legacy Groups are groups that are not compatible with New Group features like admins and more descriptive group updates.";
 
 /* Title for the first section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_1_TITLE" = "What are Legacy Groups?";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_1_TITLE" = "Що таке Спадковані групи?";
 
 /* Body text for the second section of the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Спадкові Групи ще не можна оновити до Нових Груп, але ви можете створити Нову Групу з тими ж учасниками, якщо вони користуються найновішою версією Signal. Signal запропонує спосіб оновлення Спадкових Груп у майбутньому.";
 
 /* Title for the second section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_TITLE" = "Can I upgrade a Legacy Group?";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_TITLE" = "Чи можу я оновити спадковану групу?";
 
 /* Body text for the third section of the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Щоб створити Нову Групу, всі учасники повинні оновитися до останної версії Signal.";
 
 /* Title for the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Legacy vs. New Groups";
+"GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Старі та Нові групи";
 
 /* Format for indicator that a group cannot be used until it is migrated. Embeds {{ a \"learn more\" link. }}. */
 "GROUPS_LEGACY_GROUP_BLOCKING_MIGRATION_FORMAT" = "Upgrade this group to activate new features like @mentions and admins. Members who have not shared their name or photo in this group will be invited to join. %@.";
 
 /* Title for the 'can't upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TITLE" = "Can’t Upgrade to New Group";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TITLE" = "Неможливо оновитись до Нової групи";
 
 /* Text indicating that a legacy group can't be upgraded because it has too many members. Embeds {{ The maximum number of members allowed in a group. }}. */
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TOO_MANY_MEMBERS_FORMAT" = "This group can’t be upgraded to a New Group because it has too many members. The maximum group size that can be upgraded is %@.";
@@ -2276,13 +2306,13 @@
 "GROUPS_LEGACY_GROUP_LOCAL_USER_INVITED" = "You will need to accept an invite to join this group again, and will not receive group messages until you accept.";
 
 /* Label for the 'migrate' button in the 'migrate group' banner. */
-"GROUPS_LEGACY_GROUP_MIGRATE_GROUP_MIGRATE_BUTTON" = "Upgrade Group";
+"GROUPS_LEGACY_GROUP_MIGRATE_GROUP_MIGRATE_BUTTON" = "Оновити групу";
 
 /* Title for the the 'migrate group' banner. */
 "GROUPS_LEGACY_GROUP_MIGRATE_GROUP_OFFER_BANNER" = "To access new features like @mentions and admins, upgrade this group.";
 
 /* Title for the 'migrated group' alert view. */
-"GROUPS_LEGACY_GROUP_MIGRATED_GROUP_ALERT_TITLE" = "What are New Groups?";
+"GROUPS_LEGACY_GROUP_MIGRATED_GROUP_ALERT_TITLE" = "Що таке Нові Групи?";
 
 /* Explanation of group migration for a migrated group in the 'legacy group' alert views. */
 "GROUPS_LEGACY_GROUP_MIGRATED_GROUP_DESCRIPTION" = "All message history and media has been kept from before the upgrade.";
@@ -2291,16 +2321,16 @@
 "GROUPS_LEGACY_GROUP_NEW_GROUP_DESCRIPTION" = "New Groups have features like @mentions and group admins, and will support more features in the future.";
 
 /* Title for the 'new groups' alert view. */
-"GROUPS_LEGACY_GROUP_NEW_GROUPS_ALERT_TITLE" = "New Groups";
+"GROUPS_LEGACY_GROUP_NEW_GROUPS_ALERT_TITLE" = "Нові Групи";
 
 /* Label for the 'add members' button in the 're-add dropped group members' alert view. */
 "GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ADD_MEMBERS_BUTTON" = "Додати Учасників";
 
 /* Title for the 're-add dropped group members' alert view. */
-"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ALERT_TITLE_1" = "Add Member?";
+"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ALERT_TITLE_1" = "Додати користувача?";
 
 /* Title for the 're-add dropped group members' alert view. */
-"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ALERT_TITLE_N" = "Add Members?";
+"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ALERT_TITLE_N" = "Додати користувачів?";
 
 /* Label for the 'add members' button in the 're-add dropped groups members' banner. */
 "GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_BUTTON" = "Додати Учасників";
@@ -2333,10 +2363,10 @@
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_POSSIBLY_DROPPED_MEMBERS_N" = "These members are not capable of joining New Groups, and will be removed from the group:";
 
 /* Title for the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_TITLE" = "Upgrade to New Group";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_TITLE" = "Оновити до Нової групи";
 
 /* Label for the 'upgrade this group' button in the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_BUTTON" = "Upgrade this Group";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_BUTTON" = "Оновити цю групу";
 
 /* Message for error alert indicating the group update failed. */
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_MESSAGE" = "This group couldn’t be upgraded to a New Group right now.";
@@ -2345,13 +2375,13 @@
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_MESSAGE_NETWORK" = "This group couldn’t be upgraded to a New Group because you’re not connected to the Internet. Try again later.";
 
 /* Title for error alert indicating the group update failed. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_TITLE" = "Couldn’t Complete Upgrade";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_TITLE" = "Неможливо завершити оновлення";
 
 /* Message indicating the group update succeeded. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_SUCCEEDED" = "Upgraded to New Group.";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_SUCCEEDED" = "Оновлено до Нової групи.";
 
 /* An \"upgrade\" link for upgrading legacy groups to new groups. */
-"GROUPS_LEGACY_GROUP_UPGRADE_LINK" = "upgrade this group";
+"GROUPS_LEGACY_GROUP_UPGRADE_LINK" = "оновлення цієї групи";
 
 /* Message for the 'replace group admin' alert. */
 "GROUPS_REPLACE_ADMIN_ALERT_MESSAGE" = "Перш ніж покинути цю групу, виберіть для неї нового адміністратора.";
@@ -2366,25 +2396,25 @@
 "GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Signal groups perform best with %@ members or less. Adding more members will cause delays sending and receiving messages.";
 
 /* Title for alert warning the user that they've reached the recommended limit on how many members can be in a group. */
-"GROUPS_TOO_MANY_MEMBERS_ALERT_TITLE" = "Recommended member limit reached";
+"GROUPS_TOO_MANY_MEMBERS_ALERT_TITLE" = "Досягнуто ліміт на рекомендовану кількість користувачів у групі";
 
 /* Message asking the user to confirm that they want to add a member to the group. */
-"GROUPS_TOO_MANY_MEMBERS_CONFIRM" = "Add member anyway?";
+"GROUPS_TOO_MANY_MEMBERS_CONFIRM" = "Все одно додати користувача?";
 
 /* Label for button that lets the user view the request to join the group. */
-"GROUPS_VIEW_REQUEST_BUTTON" = "View Request";
+"GROUPS_VIEW_REQUEST_BUTTON" = "Переглянути запит";
 
 /* Label for button that lets the user view the requests to join the group. */
-"GROUPS_VIEW_REQUESTS_BUTTON" = "View Requests";
+"GROUPS_VIEW_REQUESTS_BUTTON" = "Переглянути запити";
 
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "Зв’язатися з нами";
 
 /* Help item that takes the user to the Signal support website */
-"HELP_SUPPORT_CENTER" = "Support Center";
+"HELP_SUPPORT_CENTER" = "Центр підтримки";
 
 /* Label for 'archived conversations' button. */
-"HOME_VIEW_ARCHIVED_CONVERSATIONS" = "Archived Chats";
+"HOME_VIEW_ARCHIVED_CONVERSATIONS" = "Архівні чати";
 
 /* Table cell subtitle label for a conversation the user has blocked. */
 "HOME_VIEW_BLOCKED_CONVERSATION" = "Заблоковані";
@@ -2405,7 +2435,7 @@
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Дехто з ваших контактів вже користується Signal, включаючи %@, %@ та %@.";
 
 /* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Start your first chat here.";
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Розпочати свій перший чат.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
 "HOME_VIEW_MESSAGE_REQUEST_ADDED_TO_GROUP_FORMAT" = "%@ додав(-ла) вас в групу";
@@ -2435,13 +2465,13 @@
 "IMAGE_PICKER_CAN_SELECT_NO_MORE_TOAST_FORMAT" = "Ви не можете поділитись більше ніж %@ зображеннями";
 
 /* Button that will present a view for the user to change the photos Signal has access to. */
-"IMAGE_PICKER_CHANGE_PHOTOS" = "Change Photos";
+"IMAGE_PICKER_CHANGE_PHOTOS" = "Доступ до фото";
 
 /* Explanation showing that the user has granted limited access to their photos and can change that in the Settings app. */
-"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Grant full access in Settings or change which photos Signal can access.";
+"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Надайте повний доступ у Налаштуваннях або оберіть фотографії, до яких Signal матиме доступ.";
 
 /* Title show that the user has granted limited access to their photos and can change that in the Settings app. */
-"IMAGE_PICKER_CHANGE_PHOTOS_TITLE" = "Not seeing your photos?";
+"IMAGE_PICKER_CHANGE_PHOTOS_TITLE" = "Не бачите своїх фотографій?";
 
 /* alert title */
 "IMAGE_PICKER_FAILED_TO_PROCESS_ATTACHMENTS" = "Не вдалося обрати вкладення.";
@@ -2477,16 +2507,16 @@
 "IN_CALL_TERMINATED" = "Виклик завершено.";
 
 /* Label reminding the user that they are in archive mode. */
-"INBOX_VIEW_ARCHIVE_MODE_REMINDER" = "These chats are archived and will only appear in the Inbox if new messages are received.";
+"INBOX_VIEW_ARCHIVE_MODE_REMINDER" = "Ці чати було заархівовано, отже ви побачите їх у Вхідних лише коли в них з'являться нові повідомлення.";
 
 /* Message shown in the conversation list when the inbox is empty. */
-"INBOX_VIEW_EMPTY_INBOX" = "No chats yet.\nGet started by messaging a friend.";
+"INBOX_VIEW_EMPTY_INBOX" = "Ще немає чатів.\nСтворіть перший, почав листування з другом.";
 
 /* info message text in conversation view. {embeds callee name} */
 "INCOMING_CALL_FORMAT" = "%@ телефонував вам";
 
 /* Shown in inbox and conversation after syncing as a placeholder indicating why your message history is missing. */
-"INFO_MESSAGE_SYNCED_THREAD" = "You can send or receive synchronized messages from your phone or iPad.  For your security, chat history isn't transferred to new linked devices.";
+"INFO_MESSAGE_SYNCED_THREAD" = "Ви зможете відправити та отримати синхронізовані повідомлення з вашого телефону чи iPad.\nДля вашої безпеки історію переписки не буде перенесено до нових прив'язаних пристроїв.";
 
 /* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
 "INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ тепер в Signal!";
@@ -2519,7 +2549,7 @@
 "INVITE_WARNING_MULTIPLE_INVITES_BY_TEXT" = "Якщо запросити кілька користувачів одночасно, то створиться група й одержувачі зможуть побачити одне одного.";
 
 /* Button to join an active group call */
-"JOIN_CALL_PILL_BUTTON" = "Join";
+"JOIN_CALL_PILL_BUTTON" = "Приєднатись";
 
 /* Slider label embeds {{TIME_AMOUNT}}, e.g. '2 hours'. See *_TIME_AMOUNT strings for examples. */
 "KEEP_MESSAGES_DURATION" = "Повідомлення зникнуть за %@.";
@@ -2531,13 +2561,13 @@
 "KEY_COMMAND_ALL_MEDIA" = "Переглянути усі медіа";
 
 /* A keyboard command to archive the current coversation. */
-"KEY_COMMAND_ARCHIVE" = "Archive Chat";
+"KEY_COMMAND_ARCHIVE" = "Заархівувати чат";
 
 /* A keyboard command to open the current conversation's attachment picker. */
 "KEY_COMMAND_ATTACHMENTS" = "Показати вкладення";
 
 /* A keyboard command to open the current conversation's settings. */
-"KEY_COMMAND_CONVERSATION_INFO" = "Go to Chat Info";
+"KEY_COMMAND_CONVERSATION_INFO" = "Перейти до налаштуваннь чату";
 
 /* A keyboard command to focus the current conversation's input field. */
 "KEY_COMMAND_FOCUS_COMPOSER" = "Перемістити фокус на поле введення";
@@ -2552,10 +2582,10 @@
 "KEY_COMMAND_NEW_MESSAGE" = "Нове повідомлення";
 
 /* A keyboard command to jump to the next conversation in the list. */
-"KEY_COMMAND_NEXT_CONVERSATION" = "Go to Next Chat";
+"KEY_COMMAND_NEXT_CONVERSATION" = "Перейти до наступного чату";
 
 /* A keyboard command to jump to the previous conversation in the list. */
-"KEY_COMMAND_PREVIOUS_CONVERSATION" = "Go to Previous Chat";
+"KEY_COMMAND_PREVIOUS_CONVERSATION" = "Перейти до попереднього чату";
 
 /* A keyboard command to begin a search on the conversation list. */
 "KEY_COMMAND_SEARCH" = "Пошук";
@@ -2567,7 +2597,7 @@
 "KEY_COMMAND_STICKERS" = "Показати наліпки";
 
 /* A keyboard command to unarchive the current coversation. */
-"KEY_COMMAND_UNARCHIVE" = "Unarchive Chat";
+"KEY_COMMAND_UNARCHIVE" = "Розархівувати чат";
 
 /* Label for the 'learn more' button. */
 "LEARN_MORE" = "Дізнатися більше";
@@ -2588,7 +2618,7 @@
 "LINK_DEVICE_INVALID_CODE_TITLE" = "Не вдалося прив’язати пристрій";
 
 /* confirm the users intent to link a new device */
-"LINK_DEVICE_PERMISSION_ALERT_BODY" = "This device will be able to see your groups and contacts, access your chats, and send messages in your name.";
+"LINK_DEVICE_PERMISSION_ALERT_BODY" = "Цей пристрій отримає доступ до ваших груп, контактів та розмов, зможе відправити повідомлення від вашого імені.";
 
 /* confirm the users intent to link a new device */
 "LINK_DEVICE_PERMISSION_ALERT_TITLE" = "Прив’язати пристрій?";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Відскануйте OR-код на пристрої, який ви хочете прив’язати.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Сканувати QR-код";
+"LINK_NEW_DEVICE_SUBTITLE" = "Відскануйте QR-код щоб прив'язати новий пристрій.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Прив’язати новий пристрій";
@@ -2615,13 +2645,13 @@
 "LINKING_DEVICE_FAILED_TITLE" = "Не вдалося прив’язати пристрій";
 
 /* Body for link previews megaphone */
-"LINKPREVIEWS_MEGAPHONE_BODY" = "Link previews will now be generated for all sites.";
+"LINKPREVIEWS_MEGAPHONE_BODY" = "Попередній перегляд посилань відтепер генеруватиметься для усіх сайтів.";
 
 /* Disable button for link previews megaphone */
 "LINKPREVIEWS_MEGAPHONE_BUTTON_DISABLE" = "Вимкнути";
 
 /* Title for link previews megaphone */
-"LINKPREVIEWS_MEGAPHONE_TITLE" = "Preview Any Link";
+"LINKPREVIEWS_MEGAPHONE_TITLE" = "Попередній перегляд будь-якого посилання";
 
 /* Body for local network permission action sheet */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "In order to transfer your Signal account, you need to enable local network access on both devices.";
@@ -2630,10 +2660,10 @@
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_NEED_HELP" = "Потрібна Допомога?";
 
 /* First step for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_ONE" = "On each device, open Settings";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_ONE" = "На усіх пристроях відкрийте Налаштування";
 
 /* Third step for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_THREE" = "Turn on “Local Network”";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_THREE" = "Увімкніть «Локальна мережа»";
 
 /* Second step for local network permission action sheet */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Navigate to Signal";
@@ -2647,14 +2677,17 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Обрати місце";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Логування";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Журнали відладки можуть допомогти представникам Signal виправити помилки та аварійні завершення роботи.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Повідомлення";
 
 /* A string describing that the user has many groups in common with another user. Embeds {{common group count}} */
-"MANY_GROUPS_IN_COMMON" = "%@ groups in common";
+"MANY_GROUPS_IN_COMMON" = "Спільних груп %@";
 
 /* nav bar button item */
 "MEDIA_DETAIL_VIEW_ALL_MEDIA_BUTTON" = "Усі медіа";
@@ -2672,10 +2705,10 @@
 "MEDIA_GALLERY_DELETE_SINGLE_MESSAGE" = "Видалити повідомлення";
 
 /* Format for an indicator of the number of image items in a media gallery. Embeds {{ the number of items in the media gallery }}. */
-"MEDIA_GALLERY_ITEM_IMAGE_COUNT_FORMAT" = "%@ Photos";
+"MEDIA_GALLERY_ITEM_IMAGE_COUNT_FORMAT" = "Фото %@";
 
 /* Format for an indicator of the number of image or video items in a media gallery. Embeds {{ the number of items in the media gallery }}. */
-"MEDIA_GALLERY_ITEM_MIXED_COUNT_FORMAT" = "%@ Items";
+"MEDIA_GALLERY_ITEM_MIXED_COUNT_FORMAT" = "Елементів %@";
 
 /* Format for the 'more items' indicator for media galleries. Embeds {{the number of additional items}}. */
 "MEDIA_GALLERY_MORE_ITEMS_FORMAT" = "+ %@";
@@ -2801,7 +2834,7 @@
 "MESSAGE_REQUEST_DELETE_CONVERSATION_ACTION" = "Видалити";
 
 /* Action sheet message to confirm deleting a conversation via a message request. */
-"MESSAGE_REQUEST_DELETE_CONVERSATION_MESSAGE" = "This chat will be deleted from all of your devices.";
+"MESSAGE_REQUEST_DELETE_CONVERSATION_MESSAGE" = "Цей чат буде видалено з усіх ваших пристроїв.";
 
 /* Action sheet title to confirm deleting a conversation via a message request. */
 "MESSAGE_REQUEST_DELETE_CONVERSATION_TITLE" = "Видалити чат?";
@@ -2819,22 +2852,22 @@
 "MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Review requests carefully. Signal found another contact with the same name.";
 
 /* A header string above a known contact's contact info */
-"MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Your contact";
+"MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Серед ваших контактів";
 
 /* A header string informing the user about name collisions in a message request */
 "MESSAGE_REQUEST_NAME_COLLISON_HEADER" = "If you’re not sure who the request is from, review the contacts below and take action.";
 
 /* A header string above the requester's contact info */
-"MESSAGE_REQUEST_NAME_COLLISON_REQUESTER_HEADER" = "Request";
+"MESSAGE_REQUEST_NAME_COLLISON_REQUESTER_HEADER" = "Запит";
 
 /* A title string for a view that allows a user to review name collisions for an incoming message request */
-"MESSAGE_REQUEST_NAME_COLLISON_TITLE" = "Review Request";
+"MESSAGE_REQUEST_NAME_COLLISON_TITLE" = "Переглянути запит";
 
 /* A button that updates a known contact's information to resolve a name collision */
-"MESSAGE_REQUEST_NAME_COLLISON_UPDATE_CONTACT_ACTION" = "Update contact";
+"MESSAGE_REQUEST_NAME_COLLISON_UPDATE_CONTACT_ACTION" = "Оновити контакт";
 
 /* Button to allow user to review known name collisions with an incoming message request */
-"MESSAGE_REQUEST_REVIEW_NAME_COLLISION" = "Review Request";
+"MESSAGE_REQUEST_REVIEW_NAME_COLLISION" = "Переглянути запит";
 
 /* A button used to accept a user on an incoming message request. */
 "MESSAGE_REQUEST_VIEW_ACCEPT_BUTTON" = "Прийняти";
@@ -2858,19 +2891,19 @@
 "MESSAGE_REQUEST_VIEW_DELETE_BUTTON" = "Видалити";
 
 /* A prompt notifying that the user must share their profile with this conversation. Embeds {{contact name}}. */
-"MESSAGE_REQUEST_VIEW_EXISTING_CONTACT_PROMPT_FORMAT" = "Continue this chat with %@ and share your name and photo with them?";
+"MESSAGE_REQUEST_VIEW_EXISTING_CONTACT_PROMPT_FORMAT" = "Продовжити спілкування з %@ та поділитись іменем та фотографією?";
 
 /* A prompt notifying that the user must share their profile with this group. */
 "MESSAGE_REQUEST_VIEW_EXISTING_GROUP_PROMPT" = "Продовжувати спілкуватися з цією групою та ділитися своїм ім’ям та фото з її учасниками?";
 
 /* A prompt asking if the user wants to accept a conversation invite. Embeds {{contact name}}. */
-"MESSAGE_REQUEST_VIEW_NEW_CONTACT_PROMPT_FORMAT" = "Let %@ message you and share your name and photo with them? They won’t know you’ve seen their message until you accept.";
+"MESSAGE_REQUEST_VIEW_NEW_CONTACT_PROMPT_FORMAT" = "Дозволити %@ писати вам та ділитись з ним своїм ім'ям та фото? Користувач не знатиме, що ви бачили його повідомлення, допоки ви не схвалите запит.";
 
 /* A prompt asking if the user wants to accept a group invite. */
 "MESSAGE_REQUEST_VIEW_NEW_GROUP_PROMPT" = "Приєднатися до цієї групи та поділитися своїм ім’ям та фото з її учасниками? Вони не знатимуть, що ви бачили їхні повідомлення, поки ви не приймете.";
 
 /* A prompt asking if the user wants to accept a group invite. */
-"MESSAGE_REQUEST_VIEW_NEW_GROUP_PROMPT_V2" = "Join this group? They won’t know you’ve seen their messages until you accept.";
+"MESSAGE_REQUEST_VIEW_NEW_GROUP_PROMPT_V2" = "Приєднатись до групи? Вони не дізнаються, що ви бачили їх повідомлення, допоки ви не приймете запит.";
 
 /* A button used to unlock a blocked conversation. */
 "MESSAGE_REQUEST_VIEW_UNBLOCK_BUTTON" = "Розблокувати";
@@ -2879,10 +2912,10 @@
 "MESSAGE_REQUESTS_CANCEL_REQUEST_BUTTON" = "Відмінити запрос";
 
 /* Title for the confirmation alert when cancelling your request to join the group. */
-"MESSAGE_REQUESTS_CANCEL_REQUEST_CONFIRM_TITLE" = "Cancel your request to join this group?";
+"MESSAGE_REQUESTS_CANCEL_REQUEST_CONFIRM_TITLE" = "Скасувати ваш запит на приєднання до цієї групи?";
 
 /* Indicator that you have requested to join this group. */
-"MESSAGE_REQUESTS_CONVERSATION_REQUEST_INDICATOR" = "Your request to join has been sent to the group admin. You’ll be notified when they take action.";
+"MESSAGE_REQUESTS_CONVERSATION_REQUEST_INDICATOR" = "Ваш запит на приєднання надіслано до адміністраторів групи. Ви отримаєте повідомлення, коли вони відреагують.";
 
 /* message status for message delivered to their recipient. */
 "MESSAGE_STATUS_DELIVERED" = "Доставлено";
@@ -2897,7 +2930,7 @@
 "MESSAGE_STATUS_FAILED_SHORT" = "Не вдалося";
 
 /* Label indicating that a message was only sent to some recipients. */
-"MESSAGE_STATUS_PARTIALLY_SENT" = "Partially sent, tap for details";
+"MESSAGE_STATUS_PARTIALLY_SENT" = "Частково надіслано, торкніться для деталей";
 
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "Прочитано";
@@ -2966,10 +2999,13 @@
 "MULTIDEVICE_PAIRING_MAX_RECOVERY" = "Ви досягли максимальної кількості пристроїв, які можна прив’язати до свого акаунта. Вилучте один із них та спробуйте знову.";
 
 /* An explanation of the consequences of muting a thread. */
-"MUTE_BEHAVIOR_EXPLANATION" = "You will not receive notifications for muted chats.";
+"MUTE_BEHAVIOR_EXPLANATION" = "Ви не отримуватимете сповіщень у розмовах з вимкненими сповіщеннями.";
 
 /* Badge indicating that the user is muted. */
-"MUTED_BADGE" = "Muted";
+"MUTED_BADGE" = "Сповіщення вимкнені";
+
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Нещодавно змінив ім'я профілю з %1$@ на %2$@.";
 
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Пропустити";
@@ -2978,16 +3014,16 @@
 "NETWORK_ERROR_RECOVERY" = "Переконайтеся, що ви в мережі і спробуйте знову.";
 
 /* String representing only the cellular interface */
-"NETWORK_INTERFACE_SET_CELLULAR" = "Cellular Only";
+"NETWORK_INTERFACE_SET_CELLULAR" = "Лише стільникові дані";
 
 /* String representing the 'never' condition of having no supported network interfaces */
 "NETWORK_INTERFACE_SET_NEVER" = "Ніколи";
 
 /* String representing only the wifi interface */
-"NETWORK_INTERFACE_SET_WIFI" = "Wi-Fi Only";
+"NETWORK_INTERFACE_SET_WIFI" = "Лише Wi-Fi";
 
 /* String representing both wifi and cellular interfaces */
-"NETWORK_INTERFACE_SET_WIFI_CELLULAR" = "Wi-Fi and Cellular";
+"NETWORK_INTERFACE_SET_WIFI_CELLULAR" = "Wi-Fi та стільникові дані";
 
 /* A label the cell that lets you add a new member to a group. */
 "NEW_CONVERSATION_FIND_BY_PHONE_NUMBER" = "Знайти за номером телефону";
@@ -3008,7 +3044,7 @@
 "NEW_GROUP_CREATION_FAILED_DUE_TO_NETWORK" = "Не вдалось створити нову групу. Перевірте ваше підключення до інтернету і спробуйте ще раз.";
 
 /* Indicates that a group member does not support New Groups. */
-"NEW_GROUP_CREATION_MEMBER_DOES_NOT_SUPPORT_NEW_GROUPS" = "Does not support New Groups";
+"NEW_GROUP_CREATION_MEMBER_DOES_NOT_SUPPORT_NEW_GROUPS" = "Нові групи не підтримуються";
 
 /* Message for error alert indicating that a group name is required. */
 "NEW_GROUP_CREATION_MISSING_NAME_ALERT_MESSAGE" = "Ім'я групи обов'язково.";
@@ -3050,7 +3086,10 @@
 "NO_CONTACTS_SEARCH_BY_PHONE_NUMBER" = "Знайти контакти за номером телефону";
 
 /* A string describing that the user has no groups in common with another user */
-"NO_GROUPS_IN_COMMON" = "No groups in common";
+"NO_GROUPS_IN_COMMON" = "Спільних груп немає";
+
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Інших спільних груп немає.";
 
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Оберіть контакт чи групу щоб почати спілкування.";
@@ -3071,19 +3110,19 @@
 "NOTIFICATION_BODY_PHONE_LOCKED_FORMAT" = "Поки ваш %@ перезапускався, ви могли одержати повідомлення.";
 
 /* Body for notification permission action sheet */
-"NOTIFICATION_PERMISSION_ACTION_SHEET_BODY" = "To receive notifications for new messages:";
+"NOTIFICATION_PERMISSION_ACTION_SHEET_BODY" = "Щоб отримувати сповіщення про нові повідомлення:";
 
 /* First step for notification permission action sheet */
 "NOTIFICATION_PERMISSION_ACTION_SHEET_STEP_ONE" = "Натисніть Налаштування нижче";
 
 /* Third step for notification permission action sheet */
-"NOTIFICATION_PERMISSION_ACTION_SHEET_STEP_THREE" = "Turn on “Allow Notifications”";
+"NOTIFICATION_PERMISSION_ACTION_SHEET_STEP_THREE" = "Увімкніть «Дозволити сповіщення»";
 
 /* Second step for notification permission action sheet */
-"NOTIFICATION_PERMISSION_ACTION_SHEET_STEP_TWO" = "Tap Notifications";
+"NOTIFICATION_PERMISSION_ACTION_SHEET_STEP_TWO" = "Торкніться Сповіщення";
 
 /* Title for notification permission action sheet */
-"NOTIFICATION_PERMISSION_ACTION_SHEET_TITLE" = "Turn on Notifications";
+"NOTIFICATION_PERMISSION_ACTION_SHEET_TITLE" = "Увімкніть Сповіщення";
 
 /* Snooze action text for contact permission reminder megaphone */
 "NOTIFICATION_PERMISSION_NOT_NOW_ACTION" = "Не зараз";
@@ -3095,7 +3134,7 @@
 "NOTIFICATION_PERMISSION_REMINDER_MEGAPHONE_BODY" = "Ніколи не пропускайте повідомлення від ваших контактів та груп.";
 
 /* Title for notification permission reminder megaphone */
-"NOTIFICATION_PERMISSION_REMINDER_MEGAPHONE_TITLE" = "Turn on Notifications?";
+"NOTIFICATION_PERMISSION_REMINDER_MEGAPHONE_TITLE" = "Увімкнути сповіщення?";
 
 /* No comment provided by engineer. */
 "NOTIFICATIONS_FOOTER_WARNING" = "Можливі дії \"Позначити як прочитано\", \"Відповісти\" та \"Передзвонити\".";
@@ -3106,11 +3145,8 @@
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Відтворювати, коли програма відкрита";
 
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Звуки";
-
 /* Label for settings UI that allows user to add a new notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Add custom sound…";
+"NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Додати власний звук…";
 
 /* No comment provided by engineer. */
 "NOTIFICATIONS_SENDER_AND_MESSAGE" = "Ім'я, вміст та дії";
@@ -3185,25 +3221,31 @@
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Прив'язка вашого iPhone не рекомендована і обмежить основну функціональність.";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Дати дозвіл";
+"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Надати дозвіл";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Notifications let you see when messages arrive and receive updates about new chat activity.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Allowing notifications and contacts lets you see when messages arrive and helps you find people you know. Contacts are encrypted so the Signal service can't see them.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Отримати повідомлення";
+"ONBOARDING_PERMISSIONS_TITLE" = "Надати дозвіл";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Choose who can find you on Signal with your phone number %@";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Оберіть, хто зможе знайти вас у Signal за номером телефону %@";
 
 /* Title of the 'onboarding phone number discoverability' view. */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Who can find you with your number?";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Хто може шукати вас за номером телефону?";
+
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Ваш номер телефону";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Будь ласка, зачекайте декілька хвилин перед наступною спробою. (%@)";
 
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Введіть Ваш номер телефону щоб почати";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Введіть ваш номер телефону";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Невірний номер";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Хибний мобільний номер. Будь ласка, введіть дійсний номер телефону щоб зареєструватись.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "У вас закінчилися спроби введення PIN-коду, але ви все одно можете отримати доступ до свого облікового запису Signal, створивши новий PIN-код. Для вашої конфіденційності та безпеки ваш обліковий запис буде відновлена без будь-якої збереженої інформації профілю або налаштувань.";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Введіть свій PIN-код";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Ваш профіль";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Прізвище (за бажанням)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Ім'я (обов'язково)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Умови використання та політика конфіденційності";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Невірний номер?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Я не отримав код (доступний до %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Подзвони мені";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Зверніться в службу підтримки Signal";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Зателефонуйте мені за %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Підтвердження коду...";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Цей код є невірним";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Я не отримав код";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Надіслати код знову";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Будь ласка, переконайтеся, що ви в зоні доступу мобільної мережі і можете приймати SMS-повідомлення.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Немає коду?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Надіслати код знову";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Зателефонувати мені";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Досі немає коду?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Повторно надіслати код за %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Введіть код, який ми відправили на %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Ми тільки що відправили код ще раз на %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Код підтвердження";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Налаштування";
@@ -3284,19 +3326,19 @@
 "OUTAGE_WARNING" = "Наразі в Signal виникли технічні неполадки. Ми намагаємося відновити сервіс якомога швидше.";
 
 /* info message text in conversation view. {embeds callee name} */
-"OUTGOING_CALL_FORMAT" = "You called %@";
+"OUTGOING_CALL_FORMAT" = "Ви телефонували %@";
 
 /* Title of 'accept member request to join group' button. */
 "PENDING_GROUP_MEMBERS_ACCEPT_REQUEST_BUTTON" = "Додати в групу";
 
 /* Title of 'accept member request to join group' confirmation alert. Embeds {{ the name of the requesting group member. }}. */
-"PENDING_GROUP_MEMBERS_ACCEPT_REQUEST_CONFIRMATION_TITLE_FORMAT" = "Add “%@” to the group?";
+"PENDING_GROUP_MEMBERS_ACCEPT_REQUEST_CONFIRMATION_TITLE_FORMAT" = "Додати «%@» до групи?";
 
 /* Title of 'deny member request to join group' button. */
-"PENDING_GROUP_MEMBERS_DENY_REQUEST_BUTTON" = "Deny Request";
+"PENDING_GROUP_MEMBERS_DENY_REQUEST_BUTTON" = "Відхилити запит";
 
 /* Title of 'deny member request to join group' confirmation alert. Embeds {{ the name of the requesting group member. }}. */
-"PENDING_GROUP_MEMBERS_DENY_REQUEST_CONFIRMATION_TITLE_FORMAT" = "Deny request from “%@”?";
+"PENDING_GROUP_MEMBERS_DENY_REQUEST_CONFIRMATION_TITLE_FORMAT" = "Відхилити запит від «%@»?";
 
 /* Format for label indicating the a group member has invited 1 other user to the group. Embeds {{ the name of the inviting group member. }}. */
 "PENDING_GROUP_MEMBERS_MEMBER_INVITED_1_USER_FORMAT" = "%@ запросив(-ла) 1 людину";
@@ -3311,22 +3353,22 @@
 "PENDING_GROUP_MEMBERS_NO_PENDING_MEMBERS" = "Немає запрошень.";
 
 /* Message indicating that a request to join the group was successfully approved. Embeds {{ the name of the approved user }}. */
-"PENDING_GROUP_MEMBERS_REQUEST_APPROVED_FORMAT" = "Added “%@“.";
+"PENDING_GROUP_MEMBERS_REQUEST_APPROVED_FORMAT" = "Додано «%@».";
 
 /* Format for banner indicating that there are pending member requests to join the group. Embeds {{ the number of pending member requests }}. */
 "PENDING_GROUP_MEMBERS_REQUEST_BANNER_FORMAT" = "%@ запитів учасників, що очікують розгляду";
 
 /* Label for the 'view requests' button in the pending member requests banner. */
-"PENDING_GROUP_MEMBERS_REQUEST_BANNER_VIEW_REQUESTS" = "View Requests";
+"PENDING_GROUP_MEMBERS_REQUEST_BANNER_VIEW_REQUESTS" = "Переглянути запити";
 
 /* Message indicating that a request to join the group was successfully denied. Embeds {{ the name of the denied user }}. */
-"PENDING_GROUP_MEMBERS_REQUEST_DENIED_FORMAT" = "Denied “%@“.";
+"PENDING_GROUP_MEMBERS_REQUEST_DENIED_FORMAT" = "Відхилено «%@».";
 
 /* Format for 'revoke invalid 1 invite' item. */
-"PENDING_GROUP_MEMBERS_REVOKE_INVALID_INVITE_1" = "Revoke invalid invite";
+"PENDING_GROUP_MEMBERS_REVOKE_INVALID_INVITE_1" = "Відкликати хибне запрошення";
 
 /* Format for 'revoke invalid N invites' item. Embeds {{ the number of invalid invites. }}. */
-"PENDING_GROUP_MEMBERS_REVOKE_INVALID_INVITES_N_FORMAT" = "Revoke %@ invalid invites";
+"PENDING_GROUP_MEMBERS_REVOKE_INVALID_INVITES_N_FORMAT" = "Відкликати хибні запрошення: %@";
 
 /* Title of 'revoke invite' button. */
 "PENDING_GROUP_MEMBERS_REVOKE_INVITE_1_BUTTON" = "Відкликати Запрошення";
@@ -3347,10 +3389,10 @@
 "PENDING_GROUP_MEMBERS_SECTION_FOOTER_INVITES_FROM_OTHER_MEMBERS" = "Деталі людей не показуються, запрошених іншими учасниками групи. Якщо запрошені вирішать приєднатися, їх інформація з того часу стане доступна групі. Вони не зможуть бачити ніяких повідомлень в групі до того, як приєднаються.";
 
 /* Footer for the 'pending member requests' section of the 'member requests and invites' view. Embeds {{ the name of the group }}. */
-"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "People on this list are attempting to join “%@” via the group link.";
+"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "Люди з цього списку намагаються приєднатись до «%@» через посилання.";
 
 /* Title for the 'invalid invites' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "Invalid Invites";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "Хибні запрошення";
 
 /* Title for the 'invites by other group members' section of the 'member requests and invites' view. */
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "Запрошення від інших учасників групи";
@@ -3386,13 +3428,13 @@
 "PER_MESSAGE_EXPIRATION_VIEWED" = "Переглянуто";
 
 /* A user friendly name for the 'everybody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY" = "Everybody";
+"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY" = "Усі";
 
 /* A user friendly description of the 'everybody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Anyone who has your phone number in their contacts will see you as a contact on Signal. Others will be able to find you in Search.";
+"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Усі, у кого збережено ваш номер телефону, побачать вас у списку контактів Signal. Інші зможуть вас відшукати у Пошуку.";
 
 /* A user friendly name for the 'nobody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_NOBODY" = "Nobody";
+"PHONE_NUMBER_DISCOVERABILITY_NOBODY" = "Ніхто";
 
 /* A user friendly description of the 'nobody' phone number discoverability mode. */
 "PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Nobody on Signal will be able to find you with your phone number. You won’t be visible as contact for people who have your phone number in their contacts and others won’t be able to find you with your phone number in search.";
@@ -3401,22 +3443,22 @@
 "PHONE_NUMBER_EXAMPLE_FORMAT" = "Зразок: %@";
 
 /* A user friendly name for the 'contacts only' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_CONTACTS_ONLY" = "My Contacts";
+"PHONE_NUMBER_SHARING_CONTACTS_ONLY" = "Мої контакти";
 
 /* A user friendly description of the 'contacts only' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Only your contacts will see your phone number on Signal.";
+"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Лише ваші контакти бачитимуть ваш номер телефону у Signal.";
 
 /* A user friendly name for the 'everybody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_EVERYBODY" = "Everybody";
+"PHONE_NUMBER_SHARING_EVERYBODY" = "Усі";
 
 /* A user friendly description of the 'everybody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Your phone number will be visible to people and groups you message. People who have your number in their phone contacts will also see it on Signal.";
 
 /* A user friendly name for the 'nobody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_NOBODY" = "Nobody";
+"PHONE_NUMBER_SHARING_NOBODY" = "Ніхто";
 
 /* A user friendly description of the 'nobody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Nobody will see your phone number on Signal.";
+"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Ніхто не бачитиме ваш номер телефону у Signal.";
 
 /* Format for phone number label with an index. Embeds {{Phone number label (e.g. 'home')}} and {{index, e.g. 2}}. */
 "PHONE_NUMBER_TYPE_AND_INDEX_NAME_FORMAT" = "%@ %@";
@@ -3467,7 +3509,7 @@
 "PHOTO_PICKER_UNNAMED_COLLECTION" = "Альбом без назви";
 
 /* Pressing this button pins a thread */
-"PIN_ACTION" = "Pin";
+"PIN_ACTION" = "Закріпити";
 
 /* Label indicating the user must use at least 4 characters */
 "PIN_CREATION_ALPHANUMERIC_HINT" = "PIN-код повинен бути не коротшим 4-х символів";
@@ -3488,7 +3530,7 @@
 "PIN_CREATION_CREATE_NUMERIC" = "Створити цифровий PIN-код";
 
 /* Action of the 'pin disable' action sheet. */
-"PIN_CREATION_DISABLE_CONFIRMATION_ACTION" = "Disable PIN";
+"PIN_CREATION_DISABLE_CONFIRMATION_ACTION" = "Вимкнути PIN";
 
 /* Message of the 'pin disable' action sheet. */
 "PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "If you disable the PIN, you will lose all data when you re-register Signal unless you transfer it from another iOS device. You can not turn on Registration Lock while the PIN is disabled.";
@@ -3503,10 +3545,10 @@
 "PIN_CREATION_ERROR_TITLE" = "Не вдалося створити PIN-код";
 
 /* The explanation in the 'pin creation' view. */
-"PIN_CREATION_EXPLANATION" = "PINs keep information stored with Signal encrypted so only you can access it. Your profile, settings, and contacts will restore when you reinstall. You won’t need your PIN to open the app.";
+"PIN_CREATION_EXPLANATION" = "PIN-коди зберігають інформацію в Signal зашифрованою, тому тільки ви можете отримати до неї доступ. Ваш профіль, налаштування та контакти буде відновлено, коли ви встановите застосунок знов. PIN-код не потрібен, щоб відкрити застосунок.";
 
 /* Learn more action on the pin creation view */
-"PIN_CREATION_LEARN_MORE" = "Learn More About PINs";
+"PIN_CREATION_LEARN_MORE" = "Дізнатись більше про PIN";
 
 /* Label indicating that the attempted PIN does not match the first PIN */
 "PIN_CREATION_MISMATCH_ERROR" = "PIN-коди не співпадають. Спробуйте ще раз.";
@@ -3530,13 +3572,13 @@
 "PIN_CREATION_REGLOCK_CONFIRMATION_ACTION" = "Відключити";
 
 /* Message of the 'pin disable' reglock action sheet. */
-"PIN_CREATION_REGLOCK_CONFIRMATION_MESSAGE" = "To disable your PIN, you first have to turn off Registration Lock.";
+"PIN_CREATION_REGLOCK_CONFIRMATION_MESSAGE" = "Щоб вимкнути PIN-код, спочатку потрібно вимкнути блокування реєстрації.";
 
 /* Title of the 'pin disable' reglock action sheet. */
 "PIN_CREATION_REGLOCK_CONFIRMATION_TITLE" = "Відключити Блокування Реєстрації?";
 
 /* Skip action on the pin creation view */
-"PIN_CREATION_SKIP" = "Disable PIN";
+"PIN_CREATION_SKIP" = "Вимкнути PIN";
 
 /* Title of the 'pin creation' view. */
 "PIN_CREATION_TITLE" = "Створити PIN-код";
@@ -3545,10 +3587,10 @@
 "PIN_CREATION_WEAK_ERROR" = "Виберіть більш надійний PIN-код";
 
 /* Error body indicating that the attempt to disable a PIN failed. */
-"PIN_DISABLE_ERROR_MESSAGE" = "Your PIN was not able to be disabled. We’ll prompt you again later.";
+"PIN_DISABLE_ERROR_MESSAGE" = "Не вдалось вимкнути PIN-код. Ми нагадаємо про це пізніше.";
 
 /* Error title indicating that the attempt to disable a PIN failed. */
-"PIN_DISABLE_ERROR_TITLE" = "PIN Disable Failed";
+"PIN_DISABLE_ERROR_TITLE" = "Помилка вимкнення PIN";
 
 /* The explanation for the 'pin reminder' dialog. */
 "PIN_REMINDER_EXPLANATION" = "Щоб допомогти вам запам'ятати свій PIN-код, ми будемо просити вас періодично вводити його. Згодом це буде відбуватися рідше.";
@@ -3572,7 +3614,7 @@
 "PIN_REMINDER_MEGAPHONE_TOMORROW_TOAST" = "Ми нагадаємо знову завтра.";
 
 /* Toast indicating that we'll ask you for your PIN again in 2 weeks. */
-"PIN_REMINDER_MEGAPHONE_TWO_WEEK_TOAST" = "We’ll remind you again in a couple of weeks.";
+"PIN_REMINDER_MEGAPHONE_TWO_WEEK_TOAST" = "Ми нагадаємо вам знов за пару тижнів.";
 
 /* Toast indicating that we'll ask you for your PIN again in a week. */
 "PIN_REMINDER_MEGAPHONE_WEEK_TOAST" = "Ми нагадаємо знову через тижнь.";
@@ -3587,10 +3629,10 @@
 "PIN_REMINDER_TOO_SHORT_ERROR" = "ПІН повинен містити щонайменше 4 цифри.";
 
 /* An explanation that you have already pinned the maximum number of conversations. */
-"PINNED_CONVERSATION_LIMIT" = "You can only pin up to 4 chats.";
+"PINNED_CONVERSATION_LIMIT" = "Ви можете закріпити до 4-х чатів.";
 
 /* The title for pinned conversation section on the conversation list */
-"PINNED_SECTION_TITLE" = "Pinned";
+"PINNED_SECTION_TITLE" = "Закріплено";
 
 /* Action text for PIN megaphone when user doesn't have a PIN */
 "PINS_MEGAPHONE_ACTION" = "Створити PIN-код";
@@ -3608,7 +3650,7 @@
 "PINS_MEGAPHONE_TOAST" = "PIN-код створено. Ви можете змінити його в налаштуваннях.";
 
 /* Toast indicating that a PIN has been disabled. */
-"PINS_MEGAPHONE_TOAST_DISABLED" = "PIN Disabled.";
+"PINS_MEGAPHONE_TOAST_DISABLED" = "PIN вимкнено.";
 
 /* Accessibility label for button to start media playback */
 "PLAY_BUTTON_ACCESSABILITY_LABEL" = "Відтворити медіа";
@@ -3632,7 +3674,7 @@
 "PRIVACY_VERIFICATION_FAILED_I_HAVE_WRONG_KEY_FOR_THEM" = "Це не схоже на ваш код безпеки із %@. Ви завіряєте саме той контакт, який хотіли?";
 
 /* Alert body */
-"PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "The number in your clipboard doesn't look like the correct safety number for this chat.";
+"PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "Цифри у вашому буфері обміну не схожі на вірний код безпеки для цієї розмови.";
 
 /* Alert body for user error */
 "PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Signal не зміг знайти код безпеки у вашому буфері обміну. Ви правильно його скопіювали?";
@@ -3662,55 +3704,58 @@
 "PROCEED_BUTTON" = "Продовжити";
 
 /* Placeholder text for the bio field of the profile bio view. */
-"PROFILE_BIO_VIEW_BIO_PLACEHOLDER" = "Write a few words about yourself…";
+"PROFILE_BIO_VIEW_BIO_PLACEHOLDER" = "Напишіть декілька слів про себе...";
 
 /* The 'Be kind' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_BE_KIND" = "Be kind";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_BE_KIND" = "Будьте милими";
 
 /* The 'Coffee lover' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "Coffee lover";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "Люблю каву";
 
 /* The 'Encrypted' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "Encrypted";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "Зашифровано";
 
 /* The 'free to chat' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_FREE_TO_CHAT" = "Free to chat";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_FREE_TO_CHAT" = "Вільний щоб листуватись";
 
 /* The 'Speak Freely' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_SPEAK_FREELY" = "Speak Freely";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_SPEAK_FREELY" = "Готовий до розмов";
 
 /* The 'Taking a break' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_TAKING_A_BREAK" = "Taking a break";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_TAKING_A_BREAK" = "На перерві";
 
 /* The 'Working on something new' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_WORKING_ON_SOMETHING_NEW" = "Working on something new";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_WORKING_ON_SOMETHING_NEW" = "Працюю над чимось новим";
 
 /* Title for the profile bio view. */
 "PROFILE_BIO_VIEW_TITLE" = "Про додаток";
 
 /* Title for the profile bio view. Embeds {{ the number of characters that can be added to the profile bio without hitting the length limit }}. */
-"PROFILE_BIO_VIEW_TITLE_FORMAT" = "About (%@)";
+"PROFILE_BIO_VIEW_TITLE_FORMAT" = "Про (%@)";
 
 /* The copy rendered in a conversation when someone in your address book changes their profile name. Embeds {contact name}, {old profile name}, {new profile name} */
-"PROFILE_NAME_CHANGE_SYSTEM_CONTACT_FORMAT" = "%@ changed their profile name from %@ to %@.";
+"PROFILE_NAME_CHANGE_SYSTEM_CONTACT_FORMAT" = "У %@ ім'я профілю змінено з %@ на %@.";
 
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
-"PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ changed their profile name to %@.";
+"PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "У %@ ім'я профілю змінено на %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Add to Profile";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Ваше ім'я";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Про додаток";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Ім'я";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Ім'я користувача";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Встановити фото профілю";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Про додаток";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Видалити фото";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Створити ім'я користувача";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Ваше прізвище задовге.";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Ваше ім'я задовге.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Необов'язково)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Прізвище";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Прізвище (за бажанням)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Обов'язково)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Ім'я";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Ім'я (обов'язково)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Профіль може бути оновлено лише за наявності підключення до інтернету.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Your profile is end-to-end encrypted. Your profile and changes to it will be visible to your contacts, when you initiate or accept new chats, and when you join new groups.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Ваш профіль захищено наскрізним шифрованням. Ваш профіль та зміни у ньому будуть доступні для ваших контактів, коли ви починаєте нові чати чи приєднуєтесь до створених.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Зберегти";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Профіль";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Ім'я користувача";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Позначити прочитаним";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Успішна перереєстрація для одержання push-сповіщень.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Push-сповіщення";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Ми не активуємо ваш акаунт, допоки ви не введете код, який ми вам надіслали.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Для продовження перевірте чи підключений ваш телефон до інтернету та спробуйте ще раз.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Перевірити з'єднання";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Цей формат номеру телефону не підтримується, зверніться до служби підтримки.";
 
@@ -3937,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Немає номера телефону.";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Код підтвердження буде надіслано на цей номер. Ви вірно його вказали вище?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Підтвердження номеру: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Редагувати";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Перевірка %@...";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Відхилити";
 
@@ -3947,16 +3998,16 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "Виберіть Нового Адміністратора";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "Перереєструватися для одержання push-сповіщень";
+"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
 
 /* Body for research megaphone */
-"RESEARCH_MEGAPHONE_BODY" = "To make Signal the best messaging app on the planet, we’d love to hear your feedback.";
+"RESEARCH_MEGAPHONE_BODY" = "Щоб зробити Signal найкращим застосунком для листування на планеті, ми б хотіли почути ваш відгук.";
 
 /* Title for research megaphone */
-"RESEARCH_MEGAPHONE_TITLE" = "Tell Signal what you think";
+"RESEARCH_MEGAPHONE_TITLE" = "Поділиться думкою з Signal";
 
 /* Text for the research modal footer */
-"RESEARCH_MODAL_FOOTER" = "The survey is hosted by Surveygizmo at the secure domain surveys.signalusers.org";
+"RESEARCH_MODAL_FOOTER" = "Опитування проводиться сайтом Surveygizmo на захищеному домені surveys.signalusers.org";
 
 /* Button text for declining the research modal */
 "RESEARCH_MODAL_NO_THANKS" = "Ні, дякую";
@@ -3965,16 +4016,16 @@
 "RESEARCH_MODAL_PLEA" = "<bold>We believe in privacy.</bold>\n\nSignal doesn’t track you or collect your data. To improve Signal for everyone, we rely on user feedback, <bold>and we’d love yours</bold>.\n\nWe’re running a survey to understand how you use Signal. Our survey doesn't collect any data that will identify you. If you’re interested in sharing additional feedback, you'll have the option to provide contact information.\n\nIf you have a few minutes and feedback to offer, we’d love to hear from you.";
 
 /* Button text for taking the research survey */
-"RESEARCH_MODAL_TAKE_SURVEY" = "Take the survey";
+"RESEARCH_MODAL_TAKE_SURVEY" = "Пройти опитування";
 
 /* Title for the research megaphone modal */
-"RESEARCH_MODAL_TITLE" = "Signal Research";
+"RESEARCH_MODAL_TITLE" = "Дослідження Signal";
 
 /* Generic text for button that retries whatever the last action was. */
 "RETRY_BUTTON_TEXT" = "Повторити";
 
 /* Button to return to current group call */
-"RETURN_CALL_PILL_BUTTON" = "Return";
+"RETURN_CALL_PILL_BUTTON" = "Повернутись";
 
 /* button title to confirm adding a recipient to a group when their safety number has recently changed */
 "SAFETY_NUMBER_CHANGED_CONFIRM_ADD_TO_GROUP_ACTION" = "Усе одно додати до групи";
@@ -3986,13 +4037,13 @@
 "SAFETY_NUMBER_CHANGED_CONFIRM_SEND_ACTION" = "Усе одно надіслати";
 
 /* Message for the 'safety number confirmation' view */
-"SAFETY_NUMBER_CONFIRMATION_MESSAGE" = "The following people may have reinstalled or changed devices. Verify your safety number with them to ensure privacy.";
+"SAFETY_NUMBER_CONFIRMATION_MESSAGE" = "Ці користувачі, ймовірно, перевстановили застосунок чи змінили пристрої. Підтвердіть ваші коди безпеки, щоб впевнитись у приватності.";
 
 /* Text explaining that the given contact previously had their safety number verified. */
-"SAFETY_NUMBER_CONFIRMATION_PREVIOUSLY_VERIFIED" = "Previously Verified";
+"SAFETY_NUMBER_CONFIRMATION_PREVIOUSLY_VERIFIED" = "Підтверджені раніше";
 
 /* Title for the 'safety number confirmation' view */
-"SAFETY_NUMBER_CONFIRMATION_TITLE" = "Safety Number Changes";
+"SAFETY_NUMBER_CONFIRMATION_TITLE" = "Змінені коди безпеки";
 
 /* View safety number action for the 'safety number confirmation' view */
 "SAFETY_NUMBER_CONFIRMATION_VIEW_ACTION" = "Детальніше";
@@ -4196,10 +4247,10 @@
 "SECONDARY_DEVICE_ERROR_FETCHING_LINKING_CODE" = "Не Вдалось Отримати Код Прив'язки";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Update Signal on this device to link it with your phone.";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Оновити Signal на цьому пристрої, щоб з'єднати його з вашим телефоном.";
 
 /* Title for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Unsupported Version";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Версія не підтримується";
 
 /* alert message for outdated linking device */
 "SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "На іншому пристрої працює стара версія Signal, яка не підтримує сканування QR-кодів iPad. Будь ласка, встановіть останню версію Signal і спробуйте ще раз.";
@@ -4286,22 +4337,22 @@
 "SEND_SMS_INVITE_TITLE" = "Ви хочете запросити цей номер до Signal:";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "Signal uses end-to-end encryption and it may need to refresh your chat session sometimes. This doesn’t affect your chat’s security but you may have missed a message from this contact and you can ask them to resend it.";
+"SESSION_REFRESH_ALERT_MESSAGE" = "Signal використовує наскрізне шифровання, що подекуди призводить до оновлення сесій чатів. Це не впливає на безпеку чату, хоча надіслане контактом повідомлення може не дійти і вам потрібно буде попросити надіслати його знов.";
 
 /* Title for the session refresh alert */
-"SESSION_REFRESH_ALERT_TITLE" = "Chat session refreshed";
+"SESSION_REFRESH_ALERT_TITLE" = "Сесію чату оновлено";
 
 /* Title for the wallpaper choose from photos option */
-"SET_WALLPAPER_CHOOSE_PHOTO" = "Choose from Photos";
+"SET_WALLPAPER_CHOOSE_PHOTO" = "Обрати з Фотографій";
 
 /* Title for the wallpaper presets section */
-"SET_WALLPAPER_PRESETS" = "Presets";
+"SET_WALLPAPER_PRESETS" = "Шаблони";
 
 /* Title for the set wallpaper settings view. */
-"SET_WALLPAPER_TITLE" = "Set Wallpaper";
+"SET_WALLPAPER_TITLE" = "Задати шпалери";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "Про додаток";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Обліковий запис";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Заблокувати";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Обхід цензури";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Розташування %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Розташування";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Якщо увімкнено, Signal намагатиметься обійти цензуру. Не вмикайте цю функцію, якщо ви не в місці, де Signal заблоковано.";
@@ -4327,41 +4378,32 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Обхід цензури не потрібен. З'єднання з Signal вже встановлено.";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Обхід цензури";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Вести журнал відладки";
 
 /* Label for the 'advanced pin settings' button. */
-"SETTINGS_ADVANCED_PIN_SETTINGS" = "Advanced PIN Settings";
+"SETTINGS_ADVANCED_PIN_SETTINGS" = "Розширені налаштування PIN";
 
 /* The title for the advanced pin settings. */
-"SETTINGS_ADVANCED_PIN_TITLE" = "Advanced PIN Settings";
+"SETTINGS_ADVANCED_PIN_TITLE" = "Розширені налаштування PIN";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_PINS_DISABLE_PIN_ACTION" = "Disable PIN";
+"SETTINGS_ADVANCED_PINS_DISABLE_PIN_ACTION" = "Вимкнути PIN";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Enable PIN";
-
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "PIN Signal";
+"SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Ввімкнути PIN";
 
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Відіслати журнал відладки";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Додаткові функції";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Журнали Помилок";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "За можливості відображати системні фото контактів.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use system contact photos";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Використовувати системні фото контактів";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "Тема";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Додати заблокованого користувача";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "List of contacts and groups you have blocked.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "У вас немає контактів у Signal.";
 
@@ -4441,35 +4480,38 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Ретранслювати усі виклики через сервери Signal, щоб не розкривати власну IP-адресу вашим контактам. Ввімкнення погіршить якість дзвінка.";
 
-/* No comment provided by engineer. */
-"SETTINGS_CLEAR_HISTORY" = "Clear Chat History";
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Чати";
 
 /* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Усі права застережено Signal Messenger \n Ліцензія GPLv3";
+"SETTINGS_CLEAR_HISTORY" = "Очистити історію чату";
+
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Права захищено Signal Messenger\nЛіцензовано за GPLv3";
 
 /* Label for the 'data' section of the app settings. */
-"SETTINGS_DATA" = "Data Usage";
+"SETTINGS_DATA" = "Споживання даних";
 
 /* Item title for the low bandwidth call setting */
-"SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Use Less Data";
+"SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Споживати менше даних";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Виклики";
 
 /* Footer for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Voice messages, view-once media, and stickers (under 100kb) are always auto-downloaded.";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Голосові повідомлення, зникаючі медіа-файли та стікери (менше 100 кб) завжди автоматично завантажуються.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "MEDIA AUTO-DOWNLOAD";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Автоматичне завантаження";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Reset Auto-Download Settings";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Скинути налаштування автозавантаження";
 
 /* The title for the data settings. */
-"SETTINGS_DATA_TITLE" = "Data Usage";
+"SETTINGS_DATA_TITLE" = "Споживання даних";
 
 /* No comment provided by engineer. */
 "SETTINGS_DELETE_ACCOUNT_BUTTON" = "Видалити акаунт";
@@ -4484,16 +4526,10 @@
 "SETTINGS_DELETE_HISTORYLOG_CONFIRMATION_BUTTON" = "Видалити все";
 
 /* Title for the 'donate to signal' link in settings. */
-"SETTINGS_DONATE" = "Donate to Signal";
+"SETTINGS_DONATE" = "Підтримати Signal";
 
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Допомога";
-
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Clear Chat History";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Інформація";
 
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Запросити ваших друзів";
@@ -4505,13 +4541,13 @@
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "Звук повідомлення";
 
 /* Label for settings view that allows user to change the wallpaper. */
-"SETTINGS_ITEM_WALLPAPER" = "Chat Wallpaper";
+"SETTINGS_ITEM_WALLPAPER" = "Шпалери чату";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Умови використання та політика конфіденційності";
 
 /* Setting for enabling & disabling link previews. */
-"SETTINGS_LINK_PREVIEWS" = "Generate Link Previews";
+"SETTINGS_LINK_PREVIEWS" = "Генерувати попередній перегляд посилань";
 
 /* Footer for setting for enabling & disabling link previews. */
 "SETTINGS_LINK_PREVIEWS_FOOTER" = "Retrieve link previews directly from websites for messages you send.";
@@ -4520,7 +4556,7 @@
 "SETTINGS_MEDIA_DOWNLOAD_CONDITION_NEVER" = "Ніколи";
 
 /* Label for the 'wifi and cellular' media attachment download behavior in the media download settings. */
-"SETTINGS_MEDIA_DOWNLOAD_CONDITION_WIFI_AND_CELLULAR" = "Wi-Fi and Cellular";
+"SETTINGS_MEDIA_DOWNLOAD_CONDITION_WIFI_AND_CELLULAR" = "Wi-Fi та стільникові дані";
 
 /* Label for the 'wifi-only' media attachment download behavior in the media download settings. */
 "SETTINGS_MEDIA_DOWNLOAD_CONDITION_WIFI_ONLY" = "Wi-Fi";
@@ -4532,25 +4568,28 @@
 "SETTINGS_MEDIA_DOWNLOAD_TYPE_DOCUMENT" = "Документи";
 
 /* Label for the 'photo' attachment type in the media download settings. */
-"SETTINGS_MEDIA_DOWNLOAD_TYPE_PHOTO" = "Photos";
+"SETTINGS_MEDIA_DOWNLOAD_TYPE_PHOTO" = "Фото";
 
 /* Label for the 'video' attachment type in the media download settings. */
-"SETTINGS_MEDIA_DOWNLOAD_TYPE_VIDEO" = "Videos";
+"SETTINGS_MEDIA_DOWNLOAD_TYPE_VIDEO" = "Відео";
 
 /* Label for the 'messaging' privacy settings. */
-"SETTINGS_MESSAGING" = "Messaging";
+"SETTINGS_MESSAGING" = "Листування";
+
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "Бачити та відправляти сповіщення про набір повідомлень. Вимкнене налаштування не дозволить бачити звіти про прочитані повідомлення та про повідомлення, що набирають інші користувачі.";
 
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Налаштування";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Count Muted Chats";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Враховувати чати з вимкненими сповіщеннями";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Badge Count";
+"SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Кількість непрочитаних повідомлень";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Сповіщення про виклики і повідомлення відображаються коли ваш телефон замкнено. Можна обмежити інформацію, що відображається у цих сповіщеннях.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Сповіщення про виклики та повідомлення відображаються коли ваш телефон замкнено.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Вміст сповіщень";
@@ -4559,22 +4598,22 @@
 "SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Контакт приєднався до Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Події";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Сповіщати коли...";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Сповіщення";
 
 /* Label for the 'phone number discoverability' setting. */
-"SETTINGS_PHONE_NUMBER_DISCOVERABILITY" = "Find Me by Phone Number";
+"SETTINGS_PHONE_NUMBER_DISCOVERABILITY" = "Шукати мене за номером телефону";
 
 /* The title for the phone number discoverability settings. */
-"SETTINGS_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Find Me by Phone Number";
+"SETTINGS_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Шукати мене за номером телефону";
 
 /* Label for the 'phone number sharing' setting. */
-"SETTINGS_PHONE_NUMBER_SHARING" = "See My Phone Number";
+"SETTINGS_PHONE_NUMBER_SHARING" = "Бачити мій номер телефону";
 
 /* The title for the phone number sharing settings. */
-"SETTINGS_PHONE_NUMBER_SHARING_TITLE" = "See My Phone Number";
+"SETTINGS_PHONE_NUMBER_SHARING_TITLE" = "Бачити мій номер телефону";
 
 /* The button text for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_ACTION" = "Відключити Нагадування";
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Підтвердіть свій PIN-код Signal";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Нагадування допомагають вам запам'ятати свій PIN-код, так як він не може бути відновлений. Нагадування будуть з'являтися рідше з плином часу.";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "Нагадування PIN-коду";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PIN-коди зберігають інформацію в сервісі Signal зашифрованою, так що тільки ви можете отримати до неї доступ.";
+"SETTINGS_PINS_FOOTER" = "PINs keep information stored with Signal encrypted so only you can access it. Your PIN cannot be recovered. Your profile, settings, and contacts will restore when you reinstall Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Змінити PIN-код";
@@ -4601,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Створіть PIN-код";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "PIN-код SIGNAL";
+"SETTINGS_PINS_TITLE" = "PIN Signal";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Показувати виклики у розділі Недавні у застосунку Контакти iOS.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Налаштування обходу цензури, ретрансляції дзвінків та прихованого відправника.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Додаткові функції";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Показувати виклики у розділі Недавні";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Конфіденційність";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Звіти про прочитання";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "See and share when messages have been read. This setting is optional and applies to all chats.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Відключити";
@@ -4642,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Затримка блокування екрану";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Вимагати Touch ID, Face ID або код-пароль вашого пристрою iOS для відкриття Signal. Ви як і раніше зможете відповідати на вхідні дзвінки та отримувати повідомлення про дзвінки й повідомлення при включеному \"Блокування екрану\". Налаштування повідомлень Signal дозволяють вам налаштовувати інформацію яка відображається.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Блокування екрану";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Блокування екрану";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Увімкнути захист екрану";
+"SETTINGS_SCREEN_SECURITY" = "Приховувати екран у перемикачі застосунків";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Не дозволяти бачити вміст Signal у переліку відкритих застосунків.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Відображати виклики у розділі «Недавні» застосунку Телефон iOS.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Звуки";
@@ -4663,35 +4693,41 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Телефонуємо";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Використовувати Touch ID, Face ID або код допуску пристрою для розблокування Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Використовувати Face ID для розблокування Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Використовувати код доступу пристрою для розблокування Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Використовувати Touch ID для розблокування Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Екран безпеки";
+"SETTINGS_SECURITY_TITLE" = "Конфіденційність";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Show in Suggestions";
+"SETTINGS_SHARING_SUGGESTIONS" = "Показувати чати у пропозиціях";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal chats are displayed as suggestions when sharing from other apps.";
+"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Чати Signal відображаються як пропозиції під час поширення з інших застосунків.";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Блокування реєстрації";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Для додаткової безпеки включіть блокування реєстрації, яка вимагатиме ваш PIN-код Signal при повторній реєстрації вашого номеру телефону в Signal.";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Сповіщення про набір тексту";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "See and share when messages are being typed. This setting is optional and applies to all chats.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Прихований відправник";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Показувати сповіщення";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Показувати значок, коли ви натискаєте на \"Детальніше\" в повідомленнях, доставлених з використанням запечатаного відправника.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Дозволити від усіх";
@@ -4703,7 +4739,7 @@
 "SETTINGS_VERSION" = "Версія";
 
 /* Label for the 'who can' privacy settings. */
-"SETTINGS_WHO_CAN" = "Who can...";
+"SETTINGS_WHO_CAN" = "Хто може..";
 
 /* action sheet item to open native mail app */
 "SHARE_ACTION_MAIL" = "Пошта";
@@ -4736,7 +4772,7 @@
 "SHARE_EXTENSION_SENDING_FAILURE_TITLE" = "Неможливо надіслати долучення";
 
 /* Send progress for share extension. Embeds {{ %1$@ number of attachments uploaded, %2$@ total number of attachments}} */
-"SHARE_EXTENSION_SENDING_IN_PROGRESS_FORMAT" = "Uploading %1$@ of %2$@…";
+"SHARE_EXTENSION_SENDING_IN_PROGRESS_FORMAT" = "Вивантаження %1$@ з %2$@...";
 
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "Завантажується...";
@@ -4748,13 +4784,13 @@
 "SHARE_EXTENSION_VIEW_TITLE" = "Поділитись у Signal";
 
 /* Title of alert indicating sharing suggestions failed to deactivate */
-"SHARING_SUGGESTIONS_DISABLE_ERROR" = "Failed to disable sharing suggestions.";
+"SHARING_SUGGESTIONS_DISABLE_ERROR" = "Не вдалось вимкнути пропозиції поширення.";
 
 /* Body for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Signal chats can now be displayed as suggestions when sharing from other apps.";
+"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Чати Signal відтепер відображатимуться як пропозиції під час поширення з інших застосунків.";
 
 /* Title for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Sharing Made Easier";
+"SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Ділитись стало легше";
 
 /* Disable button for sharing suggestions megaphone */
 "SHARING_SUGGESTIOONS_MEGAPHONE_BUTTON_DISABLE" = "Вимкнути";
@@ -4766,7 +4802,7 @@
 "SHOW_SAFETY_NUMBER_ACTION" = "Показати номер безпеки";
 
 /* notification action */
-"SHOW_THREAD_BUTTON_TITLE" = "Show Chat";
+"SHOW_THREAD_BUTTON_TITLE" = "Показати чат";
 
 /* body sent to contacts when inviting to Install Signal */
 "SMS_INVITE_BODY" = "Запрошую тебе встановити Signal! Ось посилання:";
@@ -4775,7 +4811,7 @@
 "SOUNDS_NONE" = "Жодного";
 
 /* Footer for 'groups v2 and mentions' splash screen */
-"SPLASH_MEGAPHONE_GROUPS_V2_MENTIONS_NAMES_SPLASH_FOOTER" = "Existing groups will automatically get these features in the coming weeks.";
+"SPLASH_MEGAPHONE_GROUPS_V2_MENTIONS_NAMES_SPLASH_FOOTER" = "Існуючі групи автоматично отримають ці можливості протягом наступних тижнів.";
 
 /* Instructions for 'groups v2 and mentions' splash screen */
 "SPLASH_MEGAPHONE_GROUPS_V2_MENTIONS_NAMES_SPLASH_INSTRUCTIONS" = "Нова група";
@@ -4784,10 +4820,10 @@
 "SPLASH_MEGAPHONE_GROUPS_V2_MENTIONS_NAMES_SPLASH_INSTRUCTIONS_JOINER" = "+";
 
 /* Header for 'groups v2 and mentions' splash screen */
-"SPLASH_MEGAPHONE_GROUPS_V2_MENTIONS_NAMES_SPLASH_TITLE" = "New Groups are here!";
+"SPLASH_MEGAPHONE_GROUPS_V2_MENTIONS_NAMES_SPLASH_TITLE" = "Нові Групи вже тут!";
 
 /* Body text for 'groups v2 and mentions' splash screen */
-"SPLASH_MEGAPHONE_GROUPS_V2_MENTIONS_SPLASH_BODY" = "New Group features include @mentions, admins, and more. Try it out by tapping:";
+"SPLASH_MEGAPHONE_GROUPS_V2_MENTIONS_SPLASH_BODY" = "Можливості Нових груп: @згадки, адміністратори, та інше. Торкніться та спробуйте:";
 
 /* Preview text shown in notifications and conversation list for sticker messages. */
 "STICKER_MESSAGE_PREVIEW" = "Повідомлення зі Cтікером";
@@ -4841,49 +4877,49 @@
 "SUPPORT_CONTACT_US_HEADER" = "Зв’язатися з нами";
 
 /* Placeholder string for support description */
-"SUPPORT_DESCRIPTION_PLACEHOLDER" = "Tell us what's going on";
+"SUPPORT_DESCRIPTION_PLACEHOLDER" = "Опишіть, що сталось";
 
 /* Default prompt for user description in support email requests */
-"SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Tell us about the issue: ";
+"SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Опишіть проблему, що виникла:";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Please email your support request to support@signal.org";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Будь ласка, надішліть запит на підтримку до support@signal.org";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
-"SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Filter: %@";
+"SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Фільтр: %@";
 
 /* Localized label for support request email hardware string (e.g. iPhone or iPad). Embeds {{hardware text}}. */
-"SUPPORT_EMAIL_HARDWARE_LABEL_FORMAT" = "Hardware: %@";
+"SUPPORT_EMAIL_HARDWARE_LABEL_FORMAT" = "Пристрій: %@";
 
 /* Localized label for support request email HID string (e.g. 12,1). Embeds {{hid text}}. */
-"SUPPORT_EMAIL_HID_LABEL_FORMAT" = "HID: %@";
+"SUPPORT_EMAIL_HID_LABEL_FORMAT" = "ЛІП: %@";
 
 /* Localized divider for support request emails internal information */
-"SUPPORT_EMAIL_INFO_DIVIDER" = "--- Support Info ---";
+"SUPPORT_EMAIL_INFO_DIVIDER" = "--- Допоміжна інформація ---";
 
 /* Localized label for support request email iOS Version string (e.g. 13.4). Embeds {{ios version}}. */
-"SUPPORT_EMAIL_IOS_VERSION_LABEL_FORMAT" = "iOS Version: %@";
+"SUPPORT_EMAIL_IOS_VERSION_LABEL_FORMAT" = "Версія iOS: %@";
 
 /* Localized label for support request email locale string. Embeds {{locale}}. */
-"SUPPORT_EMAIL_LOCALE_LABEL_FORMAT" = "Locale: %@";
+"SUPPORT_EMAIL_LOCALE_LABEL_FORMAT" = "Мова: %@";
 
 /* Localized label for support request email debug log URL. Embeds {{debug log url}}. */
-"SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "Log URL: %@";
+"SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "Журнал URL: %@";
 
 /* Localized label for support request email signal version string. Embeds {{signal version}}. */
-"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Signal Version: %@";
+"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Версія Signal: %@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Signal iOS Support Request";
+"SUPPORT_EMAIL_SUBJECT" = "Запит на підтримку Signal на iOS";
 
 /* Header for emoji mood selection */
-"SUPPORT_EMOJI_PROMPT" = "How do you feel? (Optional)";
+"SUPPORT_EMOJI_PROMPT" = "Який у вас настрій? (За бажанням)";
 
 /* Label in support request informing user about Signal FAQ */
-"SUPPORT_FAQ_PROMPT" = "Have you read our FAQ yet?";
+"SUPPORT_FAQ_PROMPT" = "Розведіть чи зведіть два пальці для зміни масштабу, потягніть для зміни положення.";
 
 /* Label describing support switch to attach debug logs */
-"SUPPORT_INCLUDE_DEBUG_LOG" = "Include debug log";
+"SUPPORT_INCLUDE_DEBUG_LOG" = "Долучити журнал налагодження";
 
 /* A string in the navigation bar indicating that the support request is uploading logs */
 "SUPPORT_LOG_UPLOAD_IN_PROGRESS" = "Завантаження";
@@ -4904,7 +4940,7 @@
 "THREAD_DETAILS_MORE_MUTUAL_GROUP" = "Полягає в %@,%@, та %lu в додаткових групах";
 
 /* Subtitle appearing at the top of the users 'note to self' conversation */
-"THREAD_DETAILS_NOTE_TO_SELF_EXPLANATION" = "You can add notes for yourself in this chat. If your account has any linked devices, new notes will be synced.";
+"THREAD_DETAILS_NOTE_TO_SELF_EXPLANATION" = "Ви можете додавати нотатки для себе у цьому чаті. Якщо у вас є прив'язані пристрої — нотатки будуть синхронізовані.";
 
 /* A string indicating a mutual group the user shares with this contact. Embeds {{mutual group name}} */
 "THREAD_DETAILS_ONE_MUTUAL_GROUP" = "Полягає в %@";
@@ -4949,13 +4985,13 @@
 "TIME_AMOUNT_SINGLE_MINUTE" = "%@ хвилина";
 
 /* {{1 second}} embedded in strings, e.g. 'Alice updated disappearing messages expiration to {{1 second}}'. See other *_TIME_AMOUNT strings */
-"TIME_AMOUNT_SINGLE_SECOND" = "%@ second";
+"TIME_AMOUNT_SINGLE_SECOND" = "%@ секунд";
 
 /* {{1 week}} embedded in strings, e.g. 'Alice updated disappearing messages expiration to {{1 week}}'. See other *_TIME_AMOUNT strings */
 "TIME_AMOUNT_SINGLE_WEEK" = "%@ тиждень";
 
 /* {{1 year}} embedded in strings, e.g. 'Alice updated disappearing messages expiration to {{1 year}}'. See other *_TIME_AMOUNT strings */
-"TIME_AMOUNT_SINGLE_YEAR" = "%@ year";
+"TIME_AMOUNT_SINGLE_YEAR" = "%@ рік";
 
 /* {{number of weeks}}, embedded in strings, e.g. 'Alice updated disappearing messages expiration to {{5 weeks}}'. See other *_TIME_AMOUNT strings */
 "TIME_AMOUNT_WEEKS" = "%@ тижнів";
@@ -4964,10 +5000,10 @@
 "TIME_AMOUNT_WEEKS_SHORT_FORMAT" = "%@т";
 
 /* {{N years}} embedded in strings, e.g. 'Alice updated disappearing messages expiration to {{5 years}}'. Embeds: {{ the number of years }}.  See other *_TIME_AMOUNT strings */
-"TIME_AMOUNT_YEARS_FORMAT" = "%@ years";
+"TIME_AMOUNT_YEARS_FORMAT" = "%@ років";
 
 /* Indicates that a duration of time is zero seconds. See other *_TIME_AMOUNT strings */
-"TIME_AMOUNT_ZERO_SECONDS" = "0 seconds";
+"TIME_AMOUNT_ZERO_SECONDS" = "0 секунд";
 
 /* Label for the cancel button in an alert or action sheet. */
 "TXT_CANCEL_TITLE" = "Скасувати";
@@ -5039,7 +5075,7 @@
 "UNNAMED_DEVICE" = "Неназваний пристрій";
 
 /* Pressing this button upins a thread */
-"UNPIN_ACTION" = "Unpin";
+"UNPIN_ACTION" = "Відкріпити";
 
 /* The title for unpinned conversation section on the conversation list */
 "UNPINNED_SECTION_TITLE" = "Чати";
@@ -5057,28 +5093,28 @@
 "UNSUPPORTED_FEATURE_ERROR" = "Ваш пристрій не підтримує цю функцію.";
 
 /* Action sheet item */
-"UPDATE_CONTACT_ACTION" = "Update Contact";
+"UPDATE_CONTACT_ACTION" = "Оновити контакт";
 
 /* Error indicating that a group could not be updated. */
 "UPDATE_GROUP_FAILED" = "Не вдалось оновити групу.";
 
 /* Error indicating that a group could not be updated due to network connectivity problems. */
-"UPDATE_GROUP_FAILED_DUE_TO_NETWORK" = "Group could not be updated. Check your internet connection and try again.";
+"UPDATE_GROUP_FAILED_DUE_TO_NETWORK" = "Групу не можна оновити. Перевірте з'єднання з інтернетом та спробуйте знову.";
 
 /* Button to start a create pin flow from the one time splash screen that appears after upgrading */
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_CREATE_BUTTON" = "Створити PIN-код";
 
 /* Learn more action on the one time splash screen that appears after upgrading */
-"UPGRADE_EXPERIENCE_INTRODUCING_PINS_LEARN_MORE" = "Learn More About PINs";
+"UPGRADE_EXPERIENCE_INTRODUCING_PINS_LEARN_MORE" = "Дізнатись більше про PIN";
 
 /* Body text for PINs splash screen */
-"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PINs keep information stored with Signal encrypted so only you can access it. Your profile, settings, and contacts will restore when you reinstall. You won’t need your PIN to open the app.";
+"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PIN-коди зберігають інформацію в Signal зашифрованою, тому тільки ви можете отримати до неї доступ. Ваш профіль, налаштування та контакти буде відновлено, коли ви встановите застосунок знов. PIN-код не потрібен, щоб відкрити застосунок.";
 
 /* Header for PINs splash screen */
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_TITLE" = "Представляємо PIN-коди";
 
 /* Skip action on the one time splash screen that appears after upgrading */
-"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SKIP" = "Disable PIN";
+"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SKIP" = "Вимкнути PIN";
 
 /* Message for the alert indicating that user should upgrade iOS. */
 "UPGRADE_IOS_ALERT_MESSAGE" = "Незабаром Signal буде працювати тільки на iOS 11 і вище. Будь ласка, поновіть iOS, перейшовши в додаток Налаштування >> Основні >> Оновлення ПО.";
@@ -5088,9 +5124,6 @@
 
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "Імена користувачів в Signal необов'язкові. Якщо ви вирішите створити ім'я користувача, інші користувачі Signal зможуть знайти вас по цьому імені і зв'язатися з вами, не знаючи ваш номер телефону.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Ім'я користувача";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Ім'я користувача може містити лише a-z, 0-9, та _";
@@ -5180,61 +5213,61 @@
 "WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Завершити установку Signal на настільному комп’ютері";
 
 /* Placeholder text for header of the wallpaper mini preview */
-"WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Contact Name";
+"WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Ім'я контакту";
 
 /* Blur button on wallpaper preview. */
-"WALLPAPER_PREVIEW_BLUR_BUTTON" = "Blur Photo";
+"WALLPAPER_PREVIEW_BLUR_BUTTON" = "Розмити фото";
 
 /* The incoming bubble text when setting a photo */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "Pinch to zoom, drag to adjust.";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "Розведіть чи зведіть два пальці для зміни масштабу, потягніть для зміни положення.";
 
 /* The incoming bubble text when setting a preset */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Swipe to preview more wallpapers.";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Гортайте, щоб побачити більше шпалер.";
 
 /* The outgoing bubble text when setting a wallpaper for all chats. */
-"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "Set wallpaper for all chats.";
+"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "Встановити шпалери для усіх чатів.";
 
 /* The outgoing bubble text when setting a wallpaper for specific chat. Embeds {{chat name}} */
-"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_FORMAT" = "Set wallpaper for %@.";
+"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_FORMAT" = "Задати шпалери для %@.";
 
 /* The text for the set button on wallpaper preview view. */
-"WALLPAPER_PREVIEW_SET_BUTTON" = "Set";
+"WALLPAPER_PREVIEW_SET_BUTTON" = "Задати";
 
 /* Title for the wallpaper preview view. */
-"WALLPAPER_PREVIEW_TITLE" = "Preview";
+"WALLPAPER_PREVIEW_TITLE" = "Попередній перегляд";
 
 /* Clear wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "Clear Wallpaper";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "Видалити шпалери";
 
 /* Confirmation dialog when clearing the wallpaper for a specific chat. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "Clear wallpaper for this chat?";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "Видалити шпалери для цього чату?";
 
 /* Confirmation dialog when clearing the global wallpaper. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "Clear wallpaper? This will not clear custom wallpapers you’ve set for your chats.";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "Видалити шпалеру? Це не видалить встановлені для інших чатів шпалери.";
 
 /* Dim wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_DIM_WALLPAPER" = "Dark Theme Dims Wallpaper";
+"WALLPAPER_SETTINGS_DIM_WALLPAPER" = "Темний вигляд затемнює шпалеру";
 
 /* An error indicating to the user that we failed to clear the wallpaper. */
-"WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "The wallpaper could not be cleared, please try again later or contact support if the error persists.";
+"WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "Шпалери не вдається скинути, будь ласка, спробуйте пізніше чи зв'яжіться зі службою підтримки, якщо помилка не зникає.";
 
 /* An error indicating to the user that we failed to reset all wallpapers. */
-"WALLPAPER_SETTINGS_FAILED_TO_RESET" = "All wallpapers could not be reset, please try again later or contact support if the error persists.";
+"WALLPAPER_SETTINGS_FAILED_TO_RESET" = "Не вдається скинути усі шпалери, будь ласка, спробуйте пізініше чи зв'яжіться зі службою підтримки, якщо помилка не зникає.";
 
 /* Title for the wallpaper settings preview section. */
-"WALLPAPER_SETTINGS_PREVIEW" = "Preview";
+"WALLPAPER_SETTINGS_PREVIEW" = "Попередній перегляд";
 
 /* Reset all wallpapers action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_RESET_ALL" = "Reset All Wallpapers";
+"WALLPAPER_SETTINGS_RESET_ALL" = "Скинути усі шпалери";
 
 /* Confirmation dialog when resetting all wallpapers. */
-"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "Reset all wallpapers, including custom wallpapers you’ve set for your chats?";
+"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "Скинути усі шпалери, у тому числі ті, що ви задали для своїх чатів?";
 
 /* Set wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_SET_WALLPAPER" = "Set Wallpaper";
+"WALLPAPER_SETTINGS_SET_WALLPAPER" = "Задати шпалери";
 
 /* Title for the wallpaper settings view. */
-"WALLPAPER_SETTINGS_TITLE" = "Chat Wallpaper";
+"WALLPAPER_SETTINGS_TITLE" = "Шпалери чату";
 
 /* text indicating the message was remotely deleted by you */
 "YOU_DELETED_THIS_MESSAGE" = "Ви видалили це повідомлення.";

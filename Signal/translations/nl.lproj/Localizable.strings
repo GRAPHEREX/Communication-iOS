@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Niet nu";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "Over Signal";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Nieuw veiligheidsnummer aanvaarden";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Contactpersoon";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Contactinformatie over %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Media";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Bericht";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Jij";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Sticker";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Audiobericht";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Audiobericht %@ seconden";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "Signal-oproep";
@@ -389,7 +398,7 @@
 "BLOCK_LIST_UNBLOCK_BUTTON" = "Deblokkeren";
 
 /* An explanation of what unblocking a contact means. */
-"BLOCK_LIST_UNBLOCK_CONTACT_MESSAGE" = "Jullie zullen elkaar weer berichten kunnen sturen en elkaar kunnen bellen via Signal.";
+"BLOCK_LIST_UNBLOCK_CONTACT_MESSAGE" = "Jullie zullen weer berichten aan elkaar kunnen verzenden en elkaar weer kunnen bellen via Signal.";
 
 /* Action sheet body when confirming you want to unblock a group */
 "BLOCK_LIST_UNBLOCK_GROUP_BODY" = "Bestaande leden kunnen je weer aan de groep toevoegen.";
@@ -806,7 +815,7 @@
 "CONVERSATION_SETTINGS" = "Gespreksinstellingen";
 
 /* Label for 'add members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_ADD_MEMBERS" = "Leden toevoegen";
+"CONVERSATION_SETTINGS_ADD_MEMBERS" = "Groepsleden toevoegen";
 
 /* Label for 'new contact' button in conversation settings view. */
 "CONVERSATION_SETTINGS_ADD_TO_EXISTING_CONTACT" = "Aan bestaand contactpersoon toevoegen";
@@ -824,7 +833,7 @@
 "CONVERSATION_SETTINGS_ATTRIBUTES_ACCESS_NONE" = "Uitgeschakeld";
 
 /* Footer for the 'attributes access' section in conversation settings view. */
-"CONVERSATION_SETTINGS_ATTRIBUTES_ACCESS_SECTION_FOOTER" = "Kies wie de groepsnaam, groepsafbeelding en de timer voor verlopende berichten mag aanpassen.";
+"CONVERSATION_SETTINGS_ATTRIBUTES_ACCESS_SECTION_FOOTER" = "Kies wie de groepsnaam, groepsafbeelding en de tijdsspanne voor verlopende berichten mag aanpassen.";
 
 /* Footer text for the 'block and leave' section of contact conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_AND_LEAVE_SECTION_CONTACT_FOOTER" = "Je zult niet langer berichten of meldingen van deze persoon ontvangen.";
@@ -837,9 +846,6 @@
 
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Persoon blokkeren";
-
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Contactinformatie";
 
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Gesprekskleur";
@@ -854,7 +860,7 @@
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "Uitsluitend beheerders";
 
 /* Description for the 'edit group attributes access' alert. */
-"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_DESCRIPTION" = "Kies wie de groepsnaam, groepsafbeelding en de timer voor verlopende berichten mag aanpassen:";
+"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_DESCRIPTION" = "Kies wie de groepsnaam, groepsafbeelding en de tijdsspanne voor verlopende berichten mag aanpassen:";
 
 /* Label for button that sets 'group attributes access' to 'members-only'. */
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_MEMBERS_BUTTON" = "Alle groepsleden";
@@ -878,7 +884,7 @@
 "CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_BUTTON" = "Beheerder maken";
 
 /* Format for title for 'make group admin' confirmation alert. Embeds {user to make an admin}. */
-"CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_TITLE_FORMAT" = "%@ zal deze groep en lidmaatschap van anderen kunnen aanpassen";
+"CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_TITLE_FORMAT" = "%@ zal de groepsinformatie en groepslidmaatschap kunnen aanpassen";
 
 /* Label for 'member invites' action in conversation settings view. */
 "CONVERSATION_SETTINGS_MEMBER_INVITES" = "Lidmaatschap uitnodigingen";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Aan contactenlijst toevoegen";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ stuurde:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Jij stuurde:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Alles wissen";
@@ -1133,7 +1145,7 @@
 "DEVICE_TRANSFER_CHOICE_TRANSFER_TITLE" = "Overzetten van een ander iOS apparaat";
 
 /* A warning for the device transfer 'choice' view indicating you can only have one device registered with your number */
-"DEVICE_TRANSFER_CHOICE_WARNING" = "Als je doorgaat dan zal de Signal-app worden uitgeschakeld op andere apparaten welke momenteel met het zelfde telefoonnummer bij Signal zijn geregistreerd.";
+"DEVICE_TRANSFER_CHOICE_WARNING" = "Als je doorgaat dan zal de Signal-app worden uitgeschakeld op andere apparaten welke momenteel met hetzelfde telefoonnummer bij Signal zijn geregistreerd.";
 
 /* An error indicating that we were unable to verify the indentity of the new device to complete the transfer */
 "DEVICE_TRANSFER_ERROR_CERTIFICATE_MISMATCH" = "Kon de identiteit van het nieuwe apparaat niet verifiëren, probeer het opnieuw";
@@ -1592,7 +1604,7 @@
 "GROUP_CALL_NOTIFICATION_ONE_JOINED_FORMAT" = "%@ neemt deel aan het gesprek";
 
 /* Copy explaining that a user has left the group call. Embeds {member name} */
-"GROUP_CALL_NOTIFICATION_ONE_LEFT_FORMAT" = "%@ heeft het gesprek verlaten";
+"GROUP_CALL_NOTIFICATION_ONE_LEFT_FORMAT" = "%@ heeft de oproep verlaten";
 
 /* Copy explaining that two users have joined the group call. Embeds {first member name}, {second member name} */
 "GROUP_CALL_NOTIFICATION_TWO_JOINED_FORMAT" = "%@ en %@ nemen deel aan het gesprek";
@@ -1706,28 +1718,28 @@
 "GROUP_INVITE_LINK_DISABLED" = "De groepsverwijzing is uitgeschakeld.";
 
 /* Message indicating that the group invite link was disabled by the local user. */
-"GROUP_INVITE_LINK_DISABLED_BY_LOCAL_USER" = "Je hebt de groepserwijzing uitgeschakeld.";
+"GROUP_INVITE_LINK_DISABLED_BY_LOCAL_USER" = "Je hebt de groepsverwijzing uitgeschakeld.";
 
 /* Message indicating that the group invite link was disabled by a remote user. Embeds {{ user who disabled the group invite link }}. */
 "GROUP_INVITE_LINK_DISABLED_BY_REMOTE_USER_FORMAT" = "%@ heeft de groepsverwijzing uitgeschakeld.";
 
 /* Message indicating that the group invite link was enabled. */
-"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL" = "De groepsverwijzing met beheerderstoestemming is ingeschakeld.";
+"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL" = "De groepsverwijzing is ingeschakeld met beheerderstoestemming-vereiste om lid te mogen worden ook ingeschakeld.";
 
 /* Message indicating that the group invite link was enabled by the local user. */
-"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL_BY_LOCAL_USER" = "Je hebt de groepsverwijzing met beheerderstoestemming ingeschakeld.";
+"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL_BY_LOCAL_USER" = "Je hebt de groepsverwijzing ingeschakeld met beheerderstoestemming-vereiste om lid te mogen worden ook ingeschakeld.";
 
 /* Message indicating that the group invite link was enabled by a remote user. Embeds {{ user who enabled the group invite link }}. */
-"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ heeft de groepsverwijzing met beheerderstoestemming ingeschakeld.";
+"GROUP_INVITE_LINK_ENABLED_WITH_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ heeft de groepsverwijzing ingeschakeld met beheerderstoestemming-vereiste om lid te mogen worden ook ingeschakeld.";
 
 /* Message indicating that the group invite link was enabled. */
-"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL" = "De groepsverwijzing zonder beheerderstoestemming is ingeschakeld.";
+"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL" = "De groepsverwijzing is ingeschakeld zonder beheerderstoestemming-vereiste om lid te mogen worden.";
 
 /* Message indicating that the group invite link was enabled by the local user. */
-"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL_BY_LOCAL_USER" = "Je hebt de groepsverwijzing ingeschakeld,  beheerderstoestemming is uitgeschakeld.";
+"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL_BY_LOCAL_USER" = "Je hebt de groepsverwijzingen ingeschakeld zonder beheerderstoestemming-vereiste om lid te mogen worden.";
 
 /* Message indicating that the group invite link was enabled by a remote user. Embeds {{ user who enabled the group invite link }}. */
-"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ heeft de groepsverwijzing zonder beheerderstoestemming ingeschakeld.";
+"GROUP_INVITE_LINK_ENABLED_WITHOUT_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ heeft de groepsverwijzing ingeschakeld zonder beheerderstoestemming-vereiste om lid te mogen worden.";
 
 /* Message indicating that the group invite link was reset. */
 "GROUP_INVITE_LINK_RESET" = "De groepsverwijzing is vernieuwd.";
@@ -1739,25 +1751,25 @@
 "GROUP_INVITE_LINK_RESET_BY_REMOTE_USER_FORMAT" = "%@ heeft de groepsverwijzing vernieuwd.";
 
 /* Message indicating that the group invite link was set to not require approval. */
-"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL" = "Beheerderstoestemming is uitgeschakeld voor de groepsverwijzing.";
+"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL" = "De beheerderstoestemming-vereiste om via de groepsverwijzing lid te mogen worden van de groep is uitgeschakeld.";
 
 /* Message indicating that the group invite link was set to not require approval by the local user. */
-"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL_BY_LOCAL_USER" = "Je schakelde beheerderstoestemming uit voor de groepsverwijzing.";
+"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL_BY_LOCAL_USER" = "Je hebt de beheerderstoestemming-vereiste om via de groepsverwijzing lid te mogen worden uitgeschakeld.";
 
 /* Message indicating that the group invite link was set to not require approval by a remote user. Embeds {{ user who set the group invite link to not require approval }}. */
-"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@heeft beheerderstoestemming uitgeschakeld voor de groepsverwijzing.";
+"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ heeft de beheerderstoestemming-vereiste om via de groepsverwijzing lid te mogen worden van de groep uitgeschakeld.";
 
 /* Message indicating that the group invite link was set to require approval. */
-"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL" = "Beheerderstoestemming is ingeschakeld voor de groepsverwijzing.";
+"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL" = "De beheerderstoestemming-vereiste om via de groepsverwijzing lid te mogen worden van de groep is uitgeschakeld.";
 
 /* Message indicating that the group invite link was set to require approval by the local user. */
-"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL_BY_LOCAL_USER" = "Je schakelde beheerderstoestemming in voor de groepsverwijzing.";
+"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL_BY_LOCAL_USER" = "Je hebt de beheerderstoestemming-vereiste om via de groepsverwijzing lid te mogen worden van de groep ingeschakeld.";
 
 /* Message indicating that the group invite link was set to require approval by a remote user. Embeds {{ user who set the group invite link to require approval }}. */
-"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@heeft beheerderstoestemming ingeschakeld voor de groepsverwijzing.";
+"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ heeft de beheerderstoestemming-vereiste om via de groepsverwijzing lid te mogen worden van de groep uitgeschakeld.";
 
 /* Format for the message for an alert indicating that a member was invited to a group. Embeds: {{ the number of invites sent. }} */
-"GROUP_INVITES_SENT_ALERT_MESSAGE_1_FORMAT" = "%@ personen kunnen door jou niet direct worden toegevoegd aan de groep, vanwege de voorkeuren welke zij voor zichzelf hebben ingesteld. Ze hebben een uitnodiging ontvangen om lid te worden van de groep, en ze zullen geen groepsberichten ontvangen voordat ze de uitnodiging hebben aanvaard.";
+"GROUP_INVITES_SENT_ALERT_MESSAGE_1_FORMAT" = "%@ personen kunnen door jou niet direct aan de groep worden toegevoerd, vanwege de voorkeuren welke ze voor zichzelf hebben ingesteld. Ze zijn uitgenodigd om lid te worden van de groep, en ze zullen geen groepsberichten ontvangen totdat ze de uitnodiging aanvaard hebben.";
 
 /* Title for an alert indicating that a member was invited to a group. */
 "GROUP_INVITES_SENT_ALERT_TITLE_1" = "Uitnodiging verzonden";
@@ -1769,7 +1781,7 @@
 "GROUP_INVITES_SENT_ALERT_TITLE_N_MESSAGE" = "Deze personen kunnen door jou niet direct aan de groep worden toegevoerd, vanwege de voorkeuren welke ze voor zichzelf hebben ingesteld. Ze zijn uitgenodigd om lid te worden van de groep, en ze zullen geen groepsberichten ontvangen totdat ze de uitnodiging aanvaard hebben.";
 
 /* The title for the 'group invites' view. */
-"GROUP_INVITES_VIEW_TITLE" = "Lidmaatschap uitnodigingen";
+"GROUP_INVITES_VIEW_TITLE" = "Lidmaatschap-uitnodigingen";
 
 /* Subtitle indicating that the group invite link has expired in the 'group invite link' action sheet. */
 "GROUP_LINK_ACTION_SHEET_VIEW_EXPIRED_LINK_SUBTITLE" = "De groepsverwijzing is niet langer geldig.";
@@ -1805,10 +1817,10 @@
 "GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Je moet Signal op dit apparaat bijwerken om te kunnen deelnemen aan deze groep.";
 
 /* Explanation of the 'approve new group members' switch. */
-"GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Vereis voor iedere persoon wie via de groepsverwijzing lid wil worden eerst toestemming van een beheerder.";
+"GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Vereis voor iedere persoon die via de groepsverwijzing lid wil worden eerst toestemming van een beheerder.";
 
 /* Label for the 'approve new group members' switch. */
-"GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_SWITCH" = "Nieuwe groepsleden goedkeuren";
+"GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_SWITCH" = "Nieuwe groepsleden toelaten";
 
 /* Label for the 'enable and share link' button in the 'group link promotion' alert view. */
 "GROUP_LINK_PROMOTION_ALERT_ENABLE_AND_SHARE_LINK" = "Groepsverwijzing inschakelen en delen";
@@ -1826,7 +1838,7 @@
 "GROUP_LINK_PROMOTION_UPDATE" = "Nodig vrienden en kennissen uit voor deze groep via een groepsverwijzing.";
 
 /* Description text in the 'group link QR code' view. */
-"GROUP_LINK_QR_CODE_VIEW_DESCRIPTION" = "Personen die deze code scannen zullen in staat zijn lid te worden van je groep. Beheerders moeten deze personen nog steeds goedkeuren als deze instelling aan staat.";
+"GROUP_LINK_QR_CODE_VIEW_DESCRIPTION" = "Personen die deze code scannen zullen in staat zijn lid te worden van je groep. Als de optie ‘Beheerderstoestemming vereisen’ is ingeschakeld moet een beheerder eerst nog toestemming geven voor iemand lid mag worden van de groep.";
 
 /* Label for the 'share code' button in the 'group link QR code' view. */
 "GROUP_LINK_QR_CODE_VIEW_SHARE_CODE_BUTTON" = "Deel code";
@@ -1835,7 +1847,7 @@
 "GROUP_LINK_QR_CODE_VIEW_TITLE" = "QR-code";
 
 /* Label for the 'approve new members' switch in the 'group link' view. */
-"GROUP_LINK_VIEW_APPROVE_NEW_MEMBERS_SWITCH" = "Nieuwe groepsleden goedkeuren";
+"GROUP_LINK_VIEW_APPROVE_NEW_MEMBERS_SWITCH" = "Nieuwe groepsleden toelaten";
 
 /* Label for the 'copy link' button in the 'group link' view. */
 "GROUP_LINK_VIEW_COPY_LINK" = "Verwijzing kopiëren";
@@ -1847,7 +1859,7 @@
 "GROUP_LINK_VIEW_MANAGE_AND_SHARE_SECTION_TITLE" = "Beheren en delen";
 
 /* Footer for the 'member requests' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "Vereis dat een beheerder nodig is om nieuwe leden goed te keuren.";
+"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "Vereis voor iedere persoon die via de groepsverwijzing lid wil worden eerst toestemming van een beheerder.";
 
 /* Title for the 'member requests' section of the 'group link' view. */
 "GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "Lidmaatschapsverzoeken";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Delen via Signal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Iedereen met deze verwijzing kan deelnemen aan de groep of een verzoek zenden om deel te nemen. Deel dit enkel met mensen die je vertrouwt.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Ieder die over deze verwijzing beschikt kan de naam, afbeelding en het aantal leden van deze groep zien en kan ook een verzoek indienen om lid te mogen worden. Deel deze verwijzing alleen met personen die je vertrouwt.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Groepsverwijzing";
@@ -1975,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Video-oproep";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ groepsleden hebben een vergelijkbare naam.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Tik hier om te evalueren";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Lid";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Groepsleden evalueren";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ groepsleden hebben vergelijkbare namen. Evalueer de groepsleden hieronder en neem actie indien nodig.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ groepsleden hebben dezelfde naam. Evalueer de groepsleden hieronder en neem actie indien nodig.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ groepsleden hebben dezelfde naam.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Groepsnaam (vereist)";
 
@@ -2000,7 +2033,7 @@
 "GROUP_REMOTE_USER_DECLINED_INVITE" = "Één persoon heeft een uitnodiging om lid te worden van de groep verworpen.";
 
 /* Message indicating that a remote user has declined their invite. Embeds {{ user who invited them }}. */
-"GROUP_REMOTE_USER_DECLINED_INVITE_FORMAT" = "Één persoon, wie door %@ was uitgenodigd om lid te worden van de groep, heeft de uitnodiging verworpen.";
+"GROUP_REMOTE_USER_DECLINED_INVITE_FORMAT" = "Één persoon, die door %@ was uitgenodigd om lid te worden van de groep, heeft de uitnodiging verworpen.";
 
 /* Message indicating that a remote user has declined an invite to the group from the local user. Embeds {{remote user name}}. */
 "GROUP_REMOTE_USER_DECLINED_INVITE_FROM_LOCAL_USER_FORMAT" = "%@ heeft je uitnodiging om lid te worden van de groep verworpen.";
@@ -2063,13 +2096,10 @@
 "GROUP_REMOTE_USER_REMOVED_FROM_GROUP_BY_REMOTE_USER_FORMAT" = "%1$@ heeft %2$@ verwijderd van de groep.";
 
 /* Message indicating that a remote user's request to join the group was approved by the local user. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_LOCAL_USER_FORMAT" = "Je hebt het verzoek van %@ om lid te worden van de groep toegestaan.";
+"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_LOCAL_USER_FORMAT" = "Je hebt het verzoek van %@ om lid te worden van de groep gehonoreerd.";
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ heeft het verzoek van %1$@ om lid te worden van de groep toegestaan.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "Een verzoek van %@ om lid te worden van de groep is toegestaan.";
+"GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ heeft het verzoek van %1$@ om lid te worden van de groep gehonoreerd.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ heeft het verzoek om lid te worden van de groep ingetrokken.";
@@ -2165,7 +2195,7 @@
 "GROUP_WAS_MIGRATED_USERS_INVITED_1" = "Een lid kon niet direct toegevoegd worden tot de nieuwe groep en heeft daarom een uitnodiging gekregen om opnieuw lid te worden.";
 
 /* Message indicating that the local user was invited while migrating the group. */
-"GROUP_WAS_MIGRATED_USERS_INVITED_LOCAL_USER" = "Je kon niet toegevoegd worden tot de nieuwe groep en je hebt daarom een uitnodiging gekregen om opnieuw lid te worden.";
+"GROUP_WAS_MIGRATED_USERS_INVITED_LOCAL_USER" = "Je kon niet toegevoegd worden aan de nieuwe groep en je hebt daarom een uitnodiging gekregen om opnieuw lid te worden.";
 
 /* Message indicating that N users were invited while migrating the group. Embeds {{ the number of invited users }}. */
 "GROUP_WAS_MIGRATED_USERS_INVITED_N_FORMAT" = "%@ groepsleden konden niet direct toegevoegd worden tot de nieuwe groep en hebben daarom een uitnodiging gekregen om opnieuw lid te worden.";
@@ -2411,7 +2441,7 @@
 "HOME_VIEW_MESSAGE_REQUEST_ADDED_TO_GROUP_FORMAT" = "%@ heeft je aan de groep toegevoegd";
 
 /* Table cell subtitle label for a conversation the user has not accepted. */
-"HOME_VIEW_MESSAGE_REQUEST_CONVERSATION" = "Gespreksverzoeken";
+"HOME_VIEW_MESSAGE_REQUEST_CONVERSATION" = "Gespreksverzoek";
 
 /* Format string when search returns no results. Embeds {{search term}} */
 "HOME_VIEW_SEARCH_NO_RESULTS_FORMAT" = "Geen resultaten voor ‘%@’ gevonden";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Scan de QR-code die wordt weergegeven op het apparaat dat je wilt koppelen.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "QR-code scannen";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scan een QR-code om een nieuw apparaat te koppelen.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Nieuw apparaat koppelen";
@@ -2647,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Selecteer een locatie";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Log bijhouden";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Met het foutopsporingslog kun je de ontwikkelaars helpen om fouten en crashes op te lossen.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Bericht";
@@ -2699,7 +2732,7 @@
 "MESSAGE_ACTION_DELETE_FOR_EVERYONE" = "Voor iedereen wissen";
 
 /* A one-time confirmation that you want to delete for everyone */
-"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Dit bericht zal voor iedereen wie momenteel aan het gesprek deelneemt gewist worden, mits ze een recente versie van Signal gebruiken. Ze zullen wel kunnen zien dat je een bericht hebt gewist.";
+"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Dit bericht zal voor iedereen die momenteel aan het gesprek deelneemt gewist worden, mits ze een recente versie van Signal gebruiken. Ze zullen wel kunnen zien dat je een bericht hebt gewist.";
 
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "Voor wie wil je dit bericht verwijderen?";
@@ -2971,6 +3004,9 @@
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Gedempt";
 
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "%1$@ heeft recentelijk zijn of haar profielnaam naar %2$@ gewijzigd.";
+
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Overslaan";
 
@@ -3052,6 +3088,9 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Geen gemeenschappelijke groepen";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Geen andere gemeenschappelijke groepen.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Kies een groep of contactpersoon om een gesprek te beginnen.";
 
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Afspelen terwijl app geopend is";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Geluiden";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Zelfgekozen geluid toevoegen …";
@@ -3167,7 +3203,7 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "iPhone koppelen";
 
 /* explanation to the user they're switching from linking to registering flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Door te tikken op ‘iPad registreren’ kun je een nieuw Signal met een nieuw telefoonnummer registreren of je kunt Signal registreren met een telefoonnummer welke je al eerder voor Signal hebt gebruikt en je gesprekken naar deze iPad overplaatsen. Als je die laatst optie kiest, dan zal je daarmee Signal uitschakelen op elk ander apparaat welke momenteel met het zelfde telefoonnummer geregistreerd staat.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Door te tikken op ‘iPad registreren’ kun je een nieuw Signal met een nieuw telefoonnummer registreren of je kunt Signal registreren met een telefoonnummer welke je al eerder voor Signal hebt gebruikt en je gesprekken naar deze iPad overplaatsen. Als je die laatst optie kiest, dan zal je daarmee Signal uitschakelen op elk ander apparaat welke momenteel met hetzelfde telefoonnummer geregistreerd staat.";
 
 /* explanation to the user they're switching from registering to linking flow */
 "ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Door op ‘iPhone koppelen’ te tikken kun je je gesprekken synchroniseren met Signal op een ander apparaat. Het koppelen van je telefoon wordt over het algemeen afgeraden omdat het sommige functionaliteit beperkt, zoals bellen via Signal.";
@@ -3179,7 +3215,7 @@
 "ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "Deze iPhone koppelen";
 
 /* warning to the user that registering an ipad is not recommended */
-"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Als je Signal registreerd op deze iPad dan zal Signal worden uitgeschakeld op elk ander apparaat waarop het momenteel geregistreerd staat met het zelfde telefoonnummer.";
+"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Als je Signal registreerd op deze iPad dan zal Signal worden uitgeschakeld op elk ander apparaat waarop het momenteel geregistreerd staat met hetzelfde telefoonnummer.";
 
 /* warning to the user that linking a phone is not recommended */
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Het wordt afgeraden om je iPhone te koppelen omdat dit kernfunctionaliteit zal beperken.";
@@ -3188,22 +3224,28 @@
 "ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Geef toestemmingen";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Notificaties laten je zien wanneer berichten binnenkomen en houden je op de hoogte van nieuwe gebeurtenissen in je gesprekken.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Door meldingen toe te staan kan Signal je laten weten wanneer je een bericht hebt ontvangen. Door het lezen van je adresboek toe te staan kan Signal je contactpersonen weergeven als je een gesprek met ze wil starten. Alle informatie over je contactpersonen blijft altijd versleuteld, zelf Signal's ontwikkelaars kunnen de telefoonnummers en andere informatie over je contactpersonen nooit lezen.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Krijg het bericht door";
+"ONBOARDING_PERMISSIONS_TITLE" = "Geef toestemmingen";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Kies wie je kan vinden op Signal via je telefoonnummer %@";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Kies wie jou op Signal via je telefoonnummer kunnen vinden %@";
 
 /* Title of the 'onboarding phone number discoverability' view. */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Wie kan je vinden via je telefoonnummer?";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Wie kunnen jou vinden via je telefoonnummer?";
+
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Voer je telefoonnummer in";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Wacht een paar minuten voor je het opnieuw probeert. (%@)";
 
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Voer je telefoonnummer in om te beginnen";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Voer je telefoonnummer in";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Ongeldig nummer";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Dat telefoonnummer is ongeldig. Vul een geldig telefoonnummer in om je te registreren.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Je hebt geen pogingen resterend om je pincode te raden, maar je kunt nog wel gebruik blijven maken van Signal door een nieuwe pincode aan te maken. Ter beveiliging van je profielinformatie, zullen je instellingen, profielnaam en profielfoto niet worden herstelt.";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Voer je pincode in";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Je profielinformatie";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Achternaam (optioneel)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Voornaam (vereist)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Voorwaarden en privacybeleid";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Verkeerd nummer?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Ik heb geen code ontvangen (beschikbaar na %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Bel Me";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Contact opnemen met Signal-ondersteuning";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Bel me (beschikbaar na %@)";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "De code wordt gevalideerd …";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Deze code is onjuist";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Ik heb geen code ontvangen";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Stuur code opnieuw";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Ga na dat je mobiel bereik hebt en dat je sms-berichten kunt ontvangen.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Geen code?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Stuur code opnieuw";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Bel me";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Nog steeds geen code?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Stuur code opnieuw (beschikbaar na %@)";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Voer de code in die we hebben verzonden naar %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "We hebben zojuist opnieuw een code verzonden naar %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Verificatiecode";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Instellingen";
@@ -3278,7 +3320,7 @@
 "OTHER_DISABLED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ heeft verlopende berichten uitgeschakeld.";
 
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
-"OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ heeft de timer voor verlopende berichten op %@ ingesteld.";
+"OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ heeft de tijdsspanne voor verlopende berichten op %@ ingesteld.";
 
 /* Label warning the user that the Signal service may be down. */
 "OUTAGE_WARNING" = "Signal ondervindt momenteel technische problemen. We zijn hard aan het werk om zo snel als mogelijk de bereikbaarheid te hervatten.";
@@ -3344,10 +3386,10 @@
 "PENDING_GROUP_MEMBERS_REVOKE_LOCAL_INVITE_CONFIRMATION_TITLE_1_FORMAT" = "Uitnodiging voor de groep “%@” intrekken?";
 
 /* Footer for the 'invites by other group members' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_FOOTER_INVITES_FROM_OTHER_MEMBERS" = "Profielinformatie van personen wie zijn uitgenodigd voor de groep wordt niet weergegeven. Als een genodigde er voor kiest de uitnodiging te aanvaarden, dan zullen op dat moment zijn of haar profielnaam, -foto en -omschrijving zichtbaar worden voor de groep. Deze personen zullen nog geen groepsberichten ontvangen, totdat ze de uitnodiging hebben aanvaard.";
+"PENDING_GROUP_MEMBERS_SECTION_FOOTER_INVITES_FROM_OTHER_MEMBERS" = "Profielinformatie van personen die zijn uitgenodigd voor de groep wordt niet weergegeven. Als een genodigde er voor kiest de uitnodiging te aanvaarden, dan zullen op dat moment zijn of haar profielnaam, -foto en -omschrijving zichtbaar worden voor de groep. Deze personen zullen nog geen groepsberichten ontvangen, totdat ze de uitnodiging hebben aanvaard.";
 
 /* Footer for the 'pending member requests' section of the 'member requests and invites' view. Embeds {{ the name of the group }}. */
-"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "Personen in deze lijst proberen via de groepsverwijzing lid te worden van \"%@\".";
+"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "Personen in deze lijst proberen via de groepsverwijzing lid te worden van “%@”.";
 
 /* Title for the 'invalid invites' section of the 'member requests and invites' view. */
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "Ongeldige uitnodigingen";
@@ -3359,7 +3401,7 @@
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_PENDING_MEMBER_REQUESTS" = "Openstaande lidmaatschapsverzoeken";
 
 /* Title for the 'people you invited' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "Personen wie jij hebt uitgenodigd";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "Personen die jij hebt uitgenodigd";
 
 /* Label for view-once messages that have invalid content. */
 "PER_MESSAGE_EXPIRATION_INVALID_CONTENT" = "Fout bij het verwerken van een inkomend bericht";
@@ -3389,7 +3431,7 @@
 "PHONE_NUMBER_DISCOVERABILITY_EVERYBODY" = "Iedereen";
 
 /* A user friendly description of the 'everybody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Iedereen die je telefoonnummer in zijn contactenlijst heeft zal je als een contact in Signal zien. Anderen zullen je kunnen vinden in Zoeken.";
+"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Iedereen die je telefoonnummer in zijn contactenlijst heeft zal jou in Signal als een contactpersoon zien. Anderen zullen je kunnen vinden via de zoekfunctie.";
 
 /* A user friendly name for the 'nobody' phone number discoverability mode. */
 "PHONE_NUMBER_DISCOVERABILITY_NOBODY" = "Niemand";
@@ -3635,10 +3677,10 @@
 "PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "Het nummer in je klembord lijkt niet het juiste veiligheidsnummer te zijn voor dit gesprek.";
 
 /* Alert body for user error */
-"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Signal kon geen veiligheidsnummer vinden in je klembord. Heb je het wel juist gekopieerd?";
+"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Signal kon geen veiligheidsnummer vinden in je klembord. Heb je het veiligheidsnummer wel juist gekopieerd?";
 
 /* Alert body when verifying with {{contact name}} */
-"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Elk paar Signal-gebruikers deelt een apart veiligheidsnummer. Controleer dat %@ het zelfde veiligheidsnummer ziet als jij.";
+"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Elk paar Signal-gebruikers deelt een apart veiligheidsnummer. Controleer dat %@ hetzelfde veiligheidsnummer ziet als jij.";
 
 /* alert body */
 "PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Je gebruikt een oude versie van Signal. Om te kunnen verifiëren moet je Signal eerst bijwerken.";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ heeft zijn of haar profielnaam naar %@ gewijzigd.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Toevoegen aan je profiel";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Je naam";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Over mij";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Naam";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Gebruikersnaam";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Profielfoto instellen";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Over mij";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Profielfoto verwijderen";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Gebruikersnaam aanmaken";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Je achternaam is te lang.";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Je voornaam is te lang.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Optioneel)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Achternaam";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Achternaam (optioneel)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Vereist)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Voornaam";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Voornaam (vereist)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Je profiel kan alleen worden bijgewerkt als je bent verbonden met het internet.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Signal-profielen worden eind-tot-eind-versleuteld uitgewisseld. Deze gegevens zijn alleen zichtbaar voor personen wie zijn opgeslagen in jouw contactenlijst, personen naar wie je zelf een nieuwe gesprek initieert en alle leden van een groep waarvan jij een uitnodiging aanvaard.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Signal-profielen worden eind-tot-eind-versleuteld uitgewisseld. Deze gegevens zijn alleen zichtbaar voor personen die zijn opgeslagen in jouw contactenlijst, personen naar wie je zelf een nieuw gesprek initieert, personen van wie je een gesprek aanvaard en alle leden van een groep waarvan jij lid bent.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Opslaan";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profiel";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Gebruikersnaam";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Markeren als gelezen";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Opnieuw registreren voor pushmeldingen geslaagd.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Pushmeldingen";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Je kunt Signal niet gebruiken tot je de code verifieert die we je hebben gestuurd.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Om verder te kunnen, ga na dat je netwerkverbinding werkt en probeer het opnieuw.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Ga na dat je netwerkverbinding werkt.";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Deze opmaak van een telefoonnummer wordt niet ondersteund, neem contact op met support.";
 
@@ -3937,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Geen telefoonnummer";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Is dit telefoonnummer juist? Als je aangeeft dat het juist is dan zal er verificatiecode naar je worden gestuurd.";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Telefoonnummer bevestigen: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Aanpassen";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "%@ aan het verifiëren …";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Weigeren";
 
@@ -3947,7 +3998,7 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "Kies een nieuwe beheerder";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "Herregistreren voor pushmeldingen";
+"REREGISTER_FOR_PUSH" = "Pushmeldingen opnieuw registreren";
 
 /* Body for research megaphone */
 "RESEARCH_MEGAPHONE_BODY" = "Om Signal de beste berichtenapp op deze planeet te maken, horen we graag ook van jou wat je van Signal vindt.";
@@ -4300,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Gespreksachtergrond kiezen";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "Over";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Registratie";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Blokkeer";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Censuuromzeiling";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Locatie: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Locatie";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Indien ingeschakeld zal Signal proberen censuur te omzeilen. Schakel deze functie niet in tenzij je je op een locatie bevindt waar Signal gecensureerd wordt.";
@@ -4327,9 +4378,6 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Censuuromzeiling is niet nodig, je bent al verbonden met Signal's servers.";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Censuuromzeiling";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Foutopsporingslog inschakelen";
 
@@ -4345,23 +4393,17 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Pincode inschakelen";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "Signal-pincode";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Foutopsporingslog indienen";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Geavanceerd";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Foutlogs";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Gebruik indien beschikbaar de profielfoto uit je eigen systeemadresboek weer, in plaats van de profielfoto welke anderen voor zichzelf hebben ingesteld.";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Foto's uit systeemcontactenlijst weergeven als die beschikbaar zijn.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Gebruik profielfoto van systeemadresboek";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Foto's uit systeemcontactenlijst gebruiken";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "Thema";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Contactpersoon aan blokkeerlijst toevoegen";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Lijst van contactpersonen en groepen die je hebt geblokkeerd.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Je hebt geen contactpersonen op Signal.";
 
@@ -4439,13 +4478,16 @@
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE" = "Oproepen altijd omleiden";
 
 /* User settings section footer, a detailed explanation */
-"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Om te voorkomen dat je gesprekspartner je IP-adres kan achterhalen worden Signal-oproepen met niet-contactpersonen altijd omgeleid via de Signal-server. Door deze optie in te schakelen wordt dat ook gedaan voor Signal-oproepen met contacten wie wel in je contactenlijst staan. Dit leidt echter tot een verminderde geluids- en videokwaliteit.";
+"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Om te voorkomen dat je gesprekspartner je IP-adres kan achterhalen worden Signal-oproepen met niet-contactpersonen altijd omgeleid via de Signal-server. Door deze optie in te schakelen wordt dat ook gedaan voor Signal-oproepen met contacten die wel in je contactenlijst staan. Dit leidt echter tot een verminderde geluids- en videokwaliteit.";
+
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Gesprekken";
 
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Gespreksgeschiedenis wissen";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Auteursrecht Signal-berichtenapp\n Gelicentieerd onder de GPLv3";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Auteursrecht Signal-berichtenapp\nGelicentieerd onder de GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Gegevensgebruik";
@@ -4454,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Minder gegevensoverdracht bij oproepen";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Gebruik maken van minder gegevensoverdracht bij oproepen kan de kwaliteit van oproepen verbeteren";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Gebruik maken van minder gegevensoverdracht bij oproepen kan de kwaliteit van oproepen verbeteren op een slecht netwerk.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Oproepen";
@@ -4463,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Spraakberichten, eenmaligeweergave-media en stickers (minder dan 100kb) worden altijd automatisch gedownload.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "MEDIA AUTOMATISCH DOWNLOADEN";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Automatisch downloaden";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Herstel automatischedownload-instellingen";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Hulp";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Gespreksgeschiedenis wissen";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Informatie";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Nodig kennissen uit";
 
@@ -4507,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Gespreksachtergrond";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Voorwaarden en privacybeleid";
 
 /* Setting for enabling & disabling link previews. */
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Berichtenverkeer";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "Als leesbewijzen of typindicatoren zijn uitgeschakeld kunnen anderen niet zien of je aan het typen bent of dat je hun berichten leest, maar je zult ook niet kunnen zien wanneer anderen aan het typen zijn of wanneer ze jou berichten lezen.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Instellingen";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Tel gedempte gesprekken mee";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Gedempte gesprekken meetellen";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Reacties-teller";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Oproep- en berichtmeldingen kunnen verschijnen wanneer je telefoon vergrendeld is. Als je wilt, kun je beperken wat in deze meldingen zichtbaar is.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Meldingen over oproepen en berichten kunnen verschijnen terwijl je telefoon is vergrendeld.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Meldingsinhoud";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Contactpersoon gebruikt nu Signal";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Nieuw persoon bereikbaar via Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Gebeurtenissen";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Geef me een melding wanneer …";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Meldingen";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Je Signal-pincode bevestigen";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Herinneringen helpen je om je Signal-pincode te onthouden. Dit is belangrijk, omdat je je pincode later niet opnieuw in kunt stellen. Zonder je pincode verlies je misschien Signal-gegevens wanneer je je telefoonnummer opnieuw registreert. Naarmate tijd verstrijkt krijg je minder herinneringen te zien.";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "Pincode-herinneringen";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "Met een pincode wordt informatie versleuteld opgeslagen op Signal's servers zodat alleen jij er toegang toe hebt. Zelfs Signal's ontwikkelaars kunnen je informatie niet inzien. Je kunt dan je profielnaam, -foto en -omschrijving, je instellingen en je contacten herstellen wanneer je Signal opnieuw installeert.";
+"SETTINGS_PINS_FOOTER" = "Met een pincode wordt informatie versleuteld opgeslagen op Signal's servers zodat alleen jij er toegang toe hebt. Zelfs Signal's ontwikkelaars kunnen je informatie niet inzien. Je kunt dan je profielnaam en -foto, je instellingen en je contacten herstellen wanneer je Signal opnieuw installeert.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Wijzig je pincode";
@@ -4603,20 +4639,20 @@
 /* Title for the 'PINs' section of the privacy settings. */
 "SETTINGS_PINS_TITLE" = "Signal-pincode";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Toon oproepen in de lijst ‘Recent’ in de Telefoon-app van iOS.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Instellingen voor censuur omzeilen, oproepen omleiden en verzegelde afzender.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Geavanceerd";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Toon oproepen in recente-oproepenlijst";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Privacy";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Leesbevestigingen";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Als leesbevestigingen zijn uitgeschakeld kunnen anderen niet zien of je hun berichten hebt gelezen, maar je zult ook niet kunnen zien of anderen jouw berichten hebben gelezen.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Uitschakelen";
@@ -4640,22 +4676,16 @@
 "SETTINGS_REREGISTER_BUTTON" = "Opnieuw registreren.";
 
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Schermvergrendelingstime-out";
-
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Ontgrendel Signal door middel van aanraak-identificatie, gezichtsherkenning of het wachtwoord voor je iOS-apparaat. Zolang Signal's schermvergrendeling is ingeschakeld kun je nog steeds inkomende oproepen beantwoorden en notificaties zien voor oproepen en berichten zonder te ontgrendelen. Signal's instellingen voor meldingen maken het mogelijk de hoeveelheid informatie die wordt weergegeven in meldingen aan te passen.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Schermvergrendeling";
+"SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Schermvergrendeling-tijdsspanne";
 
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Schermvergrendeling";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Meekijkpreventie";
+"SETTINGS_SCREEN_SECURITY" = "Verberg Signal bij wisselen tussen apps";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Verberg Signal-voorbeeldweergaven in het overzicht van open apps en blokkeer schermafdrukken.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Signal-oproepen weergeven in de “Recentelijk”-lijst in de iOS-telefoonapp.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Geluiden";
@@ -4663,11 +4693,23 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Bellen";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Vingerscan, gezichtsherkenning of het wachtwoord van je iOS apparaat gebruiken om Signal te ontgrendelen.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Gezichtsherkenning gebruiken om Signal te ontgrendelen.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Het wachtwoord voor je apparaat gebruiken om Signal te ontgrendelen.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Vingerscan gebruiken om Signal te ontgrendelen.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Beveiliging tegen schermafdrukken";
+"SETTINGS_SECURITY_TITLE" = "Meekijkpreventie";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Weergeven in suggesties";
+"SETTINGS_SHARING_SUGGESTIONS" = "Gesprekken weergeven als optie om naar te verzenden vanuit een andere app";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
 "SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal-gesprekken worden weergegeven als suggesties bij het delen vanuit andere apps.";
@@ -4676,34 +4718,28 @@
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Registratievergrendeling";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Gebruik je pincode voor twee-factor-authenticatie. Ieder wie je telefoonnummer opnieuw probeert te registreren bij Signal moet verplicht je Signal-pincode invoeren. Hierdoor kan niemand behalve jij Signal-berichten verzenden of ontvangen met jouw telefoonnummer.";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Gebruik je pincode voor twee-factor-authenticatie. Ieder die je telefoonnummer opnieuw probeert te registreren bij Signal moet verplicht je Signal-pincode invoeren. Hierdoor kan niemand behalve jij Signal-berichten verzenden of ontvangen met jouw telefoonnummer.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Typindicatoren";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Als typindicatoren zijn uitgeschakeld kunnen anderen niet zien of je aan het typen bent, maar je zult ook niet kunnen zien wanneer anderen aan het typen zijn.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Verzegelde afzender";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Toon verzegelde afzender indicator";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Laat een statuspictogram zien wanneer je drukt op ‘Meer informatie’ bij berichten die zijn afgeleverd met een verzegelde afzender.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Toon ‘verzegelde afzender’-pictogram";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Van iedereen toestaan";
 
 /* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS_FOOTER" = "Sta toe dat je berichten met een verzegelde afzender ontvangt welke afkomstig zijn van niet-contactpersonen voor wie je ook je profiel niet zichtbaar hebt gemaakt. Dit verhoogt de kans dat je ongewenste berichten ontvangt.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS_FOOTER" = "Sta toe dat je berichten met een verzegelde afzender ontvangt welke afkomstig zijn van personen naar wie je nog nooit een bericht hebt verzonden en ook nooit mee in hetzelfde groepsgesprek zat. Hierdoor kunnen Signal's servers nog iets minder zien, maar dit verhoogt de kans dat je ongewenste berichten ontvangt.";
 
 /* No comment provided by engineer. */
 "SETTINGS_VERSION" = "Versie";
 
 /* Label for the 'who can' privacy settings. */
-"SETTINGS_WHO_CAN" = "Wie kan …";
+"SETTINGS_WHO_CAN" = "Wie mag …";
 
 /* action sheet item to open native mail app */
 "SHARE_ACTION_MAIL" = "E-mail";
@@ -5015,7 +5051,7 @@
 "UNKNOWN_USER_DISABLED_DISAPPEARING_MESSAGES_CONFIGURATION" = "Verlopende berichten zijn uitgeschakeld.";
 
 /* Info Message when an unknown user enabled disappearing messages. Embeds {{time amount}} before messages disappear. see the *_TIME_AMOUNT strings for context. */
-"UNKNOWN_USER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "De timer voor verlopende berichten is op %@ ingesteld.";
+"UNKNOWN_USER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "De tijdsspanne voor verlopende berichten is op %@ ingesteld.";
 
 /* Indicates an unknown or unrecognizable value. */
 "UNKNOWN_VALUE" = "Onbekend";
@@ -5088,9 +5124,6 @@
 
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "Gebruikersnamen zijn optioneel op Signal. Als je er voor kiest om een gebruikersnaam aan te maken, dan kunnen andere Signal-gebruikers je vinden via die gebruikersnaam en kunnen ze contact met je opnemen zonder je telefoonnummer te kennen.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Gebruikersnaam";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Gebruikersnamen mogen alleen uit de karakters a-z, 0-9 en _ bestaan.";
@@ -5246,4 +5279,4 @@
 "YOU_MUST_COMPLETE_ONBOARDING_BEFORE_PROCEEDING" = "Je moet de configuratie voltooien voor je verder kunt gaan.";
 
 /* Info Message when you update disappearing messages duration. Embeds a {{time amount}} before messages disappear. see the *_TIME_AMOUNT strings for context. */
-"YOU_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "Je hebt de timer voor verlopende berichten op %@ ingesteld.";
+"YOU_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "Je hebt de tijdsspanne voor verlopende berichten op %@ ingesteld.";

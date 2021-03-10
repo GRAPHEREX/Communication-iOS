@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "나중에";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "About Signal";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "새 안전 번호 수락";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "연락처";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "%@ 연락처";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "미디어";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "메시지";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "나";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "스티커";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "음성 메시지";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "음성 메시지 %@초";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "Signal 통화";
@@ -838,9 +847,6 @@
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "사용자 차단";
 
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "연락처 정보";
-
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "대화 색";
 
@@ -965,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "저장하지 않은 변경사항";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "모든 멤버 보기";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "See All";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "내 연락처에 있는 사용자";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "연락처에 추가";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ 보냄:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "보낸 메시지:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "모두 삭제";
@@ -1082,10 +1094,10 @@
 "DEREGISTRATION_WARNING" = "기기가 등록 해지되었습니다. 이 전화번호가 다른 기기의 Signal에서 등록되어 있을 수 있습니다. 탭하여 재등록하세요.";
 
 /* {{Short Date}} when device last communicated with Signal Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "최근 접속: %@";
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Last active %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "연결됨: %@";
+"DEVICE_LINKED_AT_LABEL" = "Linked %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "기기 목록 업데이트에 실패했습니다.";
@@ -1382,7 +1394,7 @@
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE_FORMAT" = "%@ 님과의 안전 번호가 변경되었습니다.";
 
 /* Text notifying the user that their secure session has been reset */
-"ERROR_MESSAGE_SESSION_REFRESH" = "Chat session refreshed";
+"ERROR_MESSAGE_SESSION_REFRESH" = "챗 세션 새로고침됨";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_UNKNOWN_ERROR" = "알 수 없는 오류가 발생했습니다.";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Signal로 공유";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "이 링크를 가지고 있는 모두가 그룹에 참가하거나 참가 요청을 보낼 수 있습니다. 믿을 수 있는 사람들에게 공유하세요.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "이 링크를 가지고 있는 모두가 그룹 이름을 보거나 참가 요청을 보낼 수 있습니다. 믿을 수 있는 사람들에게 공유하세요.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "그룹 링크";
@@ -1975,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "영상 통화";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ group members have similar names.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "탭하여 검토하세요.";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "멤버";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "멤버 검토";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ group members have similar names, review the members below or choose to take action.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ group members have the same name, review the members below or choose to take action.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ group members have the same name.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "그룹 이름 (필수)";
 
@@ -2067,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ 님이 %1$@ 님의 그룹 참가 요청을 승인했습니다.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "%@ 님의 그룹 참가 요청이 승인되었습니다.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ 님이 그룹 참가 요청을 취소했습니다.";
@@ -2480,7 +2510,7 @@
 "INBOX_VIEW_ARCHIVE_MODE_REMINDER" = "이 대화들은 보관 처리되었으며 새 메시지를 받을 때에만 받은 메시지에 표시됩니다.";
 
 /* Message shown in the conversation list when the inbox is empty. */
-"INBOX_VIEW_EMPTY_INBOX" = "No chats yet.\nGet started by messaging a friend.";
+"INBOX_VIEW_EMPTY_INBOX" = "아직 채팅이 없습니다.\n친구에게 메시지를 보내며 시작해 보세요.";
 
 /* info message text in conversation view. {embeds callee name} */
 "INCOMING_CALL_FORMAT" = "%@ 님의 전화";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "연결하고자 하는 기기의 QR 코드를 스캔하세요.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "QR 코드 스캔";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scan QR Code to link a new device.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "새 기기 연결";
@@ -2647,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "위치 선택";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "로깅";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Debug logs can help Signal fix issues and crashes.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "메시지";
@@ -2675,7 +2708,7 @@
 "MEDIA_GALLERY_ITEM_IMAGE_COUNT_FORMAT" = "사진 %@개";
 
 /* Format for an indicator of the number of image or video items in a media gallery. Embeds {{ the number of items in the media gallery }}. */
-"MEDIA_GALLERY_ITEM_MIXED_COUNT_FORMAT" = "%@ Items";
+"MEDIA_GALLERY_ITEM_MIXED_COUNT_FORMAT" = "%@개 항목";
 
 /* Format for the 'more items' indicator for media galleries. Embeds {{the number of additional items}}. */
 "MEDIA_GALLERY_MORE_ITEMS_FORMAT" = "+%@";
@@ -2971,6 +3004,9 @@
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "알림 끄기";
 
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Recently changed their profile name from %1$@ to %2$@.";
+
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "건너뛰기";
 
@@ -3052,6 +3088,9 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "공통 그룹 없음";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "공통된 다른 그룹이 없습니다.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "연락처 또는 그룹을 선택해 대화를 시작하세요.";
 
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "앱이 열려 있을 때 재생";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "소리";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "사용자 설정 소리 추가하기...";
@@ -3185,13 +3221,13 @@
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "iPhone을 연결하면 각종 주요 기능이 제한되기에 추천해 드리지 않습니다.";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "접근 권한 허용";
+"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "권한 허용";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "알림을 통해 새 대화 활동에 관한 소식을 받아볼 수 있습니다.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "알림과 연락처를 허용하면 메시지가 왔을 때 바로 확인할 수 있고 내가 아는 사람이 나를 찾을 수 있습니다. 연락처는 암호화되므로 Signal 팀이 볼 수 없습니다.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "메시지 수신";
+"ONBOARDING_PERMISSIONS_TITLE" = "권한 허용";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "%@ 휴대전화 번호로 나를 찾을 수 있는 사람들을 선택하세요";
@@ -3199,11 +3235,17 @@
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "내 번호로 나를 찾을 수 있는 사람";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "전화번호";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "몇 분 후 다시 시도해 주세요(%@).";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "시작하려면 전화번호를 입력하세요";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "전화번호를 입력하세요.";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "잘못된 전화번호";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "잘못된 전화번호입니다. 올바른 전화번호 입력 후 가입하세요";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "PIN 시도 횟수 제한에 도달했으나 새로운 PIN을 만들어 Signal 계정에 계속 접근할 수 있습니다. 개인정보와 보안을 위해 저장된 프로필 정보 또는 설정은 삭제된 채로 복원됩니다.";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "PIN을 입력하세요";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "프로필";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "성(선택 사항)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "이름(필수)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "이용약관 및 개인정보 처리방침";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "번호가 잘못되었나요?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "코드를 받지 못하셨나요? (%@ 후 다시 받을 수 있음)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "나에게 전화";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Signal 지원에 문의";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "%@ 후 나에게 전화";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "코드 확인 중...";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "코드가 올바르지 않습니다";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "코드를 받지 못하셨나요?";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "코드 다시 보내기";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "통신사 서비스와 연결되어 있는지, SMS 메시지를 받을 수 있는지 확인해주세요.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "코드를 받지 못하셨나요?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "코드 다시 보내기";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "전화로 대신하기";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "아직도 코드를 받지 못하셨나요?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "%@ 후 코드 다시 보내기";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "%@ 번호로 보낸 코드를 입력해주세요";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "%@ 번호로 코드를 다시 보냈습니다";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "확인 코드";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "설정";
@@ -3662,34 +3704,34 @@
 "PROCEED_BUTTON" = "진행";
 
 /* Placeholder text for the bio field of the profile bio view. */
-"PROFILE_BIO_VIEW_BIO_PLACEHOLDER" = "Write a few words about yourself…";
+"PROFILE_BIO_VIEW_BIO_PLACEHOLDER" = "자신에 대해 간략하게 소개해보세요...";
 
 /* The 'Be kind' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_BE_KIND" = "Be kind";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_BE_KIND" = "친절함";
 
 /* The 'Coffee lover' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "Coffee lover";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "커피 애호가";
 
 /* The 'Encrypted' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "Encrypted";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "암호화됨";
 
 /* The 'free to chat' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_FREE_TO_CHAT" = "Free to chat";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_FREE_TO_CHAT" = "채팅 해도 됨";
 
 /* The 'Speak Freely' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_SPEAK_FREELY" = "Speak Freely";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_SPEAK_FREELY" = "자유롭게 말하다";
 
 /* The 'Taking a break' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_TAKING_A_BREAK" = "Taking a break";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_TAKING_A_BREAK" = "쉬는 중";
 
 /* The 'Working on something new' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_WORKING_ON_SOMETHING_NEW" = "Working on something new";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_WORKING_ON_SOMETHING_NEW" = "새로운 것에 도전하는 중";
 
 /* Title for the profile bio view. */
 "PROFILE_BIO_VIEW_TITLE" = "정보";
 
 /* Title for the profile bio view. Embeds {{ the number of characters that can be added to the profile bio without hitting the length limit }}. */
-"PROFILE_BIO_VIEW_TITLE_FORMAT" = "About (%@)";
+"PROFILE_BIO_VIEW_TITLE_FORMAT" = "정보(%@)";
 
 /* The copy rendered in a conversation when someone in your address book changes their profile name. Embeds {contact name}, {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_CONTACT_FORMAT" = "%@ 님이 프로필 이름을 %@에서 %@(으)로 바꾸었습니다.";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ 님이 프로필 이름을 %@(으)로 바꾸었습니다. ";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Add to Profile";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Your Name";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "정보";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Name";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "사용자 이름";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "프로필 사진 설정";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "정보";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "사진 제거";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "사용자 이름 생성";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "성이 너무 깁니다.";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "이름이 너무 깁니다.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(선택)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "성";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "성(선택 사항)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(필수)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "이름";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "이름(필수)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "프로필은 인터넷에 연결됐을 때만 업데이트할 수 있습니다.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "프로필은 단대단 암호화됩니다. 새로운 대화를 시작하거나 수락할 때, 새 그룹에 참가할 때, 그리고 내 연락처에게 내 프로필 및 프로필 변경사항이 표시됩니다.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "프로필은 단대단 암호화됩니다. 프로필 및 변경 사항은 새 대화를 시작하거나 수락할 때 연락처에 표시됩니다.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "저장";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "프로필";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "사용자 이름";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "읽음으로 표시";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "푸시 알림을 재등록했습니다.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "푸시 알림";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "보내드린 코드를 확인하기 전까진 계정을 활성화할 수 없습니다.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "계속하려면 휴대전화의 인터넷 연결을 확인한 후 다시 시도해 주세요.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "연결 확인";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "지원되지 않는 전화번호 형식입니다. 지원 팀에 문의하세요.";
 
@@ -3937,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "전화번호 없음";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "전화번호로 확인 코드를 보냈습니다. 위 전화번호가 맞나요?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "전화번호 확인: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "수정";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "%@ 확인 중..";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "거절";
 
@@ -3947,7 +3998,7 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "새 관리자 선택";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "푸시 알림 재등록";
+"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
 
 /* Body for research megaphone */
 "RESEARCH_MEGAPHONE_BODY" = "Signal을 세계 최고의 메시징 앱으로 만드려면 당신의 피드백이 필요합니다.";
@@ -4286,22 +4337,22 @@
 "SEND_SMS_INVITE_TITLE" = "다음과 같은 번호를 Signal로 초대하겠습니까:";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "Signal uses end-to-end encryption and it may need to refresh your chat session sometimes. This doesn’t affect your chat’s security but you may have missed a message from this contact and you can ask them to resend it.";
+"SESSION_REFRESH_ALERT_MESSAGE" = "Signal은 단대단 암호화를 사용하며, 대화 세션을 때때로 새로 고침해야 할 수도 있습니다. 이는 대화 보안에 영향을 미치지는 않지만, 이로 인해 연락처로부터 메시지를 수신하지 못할 수도 있습니다. 이때 상대방에게 메시지 재발송을 요청할 수 있습니다.";
 
 /* Title for the session refresh alert */
-"SESSION_REFRESH_ALERT_TITLE" = "Chat session refreshed";
+"SESSION_REFRESH_ALERT_TITLE" = "챗 세션 새로고침됨";
 
 /* Title for the wallpaper choose from photos option */
-"SET_WALLPAPER_CHOOSE_PHOTO" = "Choose from Photos";
+"SET_WALLPAPER_CHOOSE_PHOTO" = "갤러리에서 선택";
 
 /* Title for the wallpaper presets section */
-"SET_WALLPAPER_PRESETS" = "Presets";
+"SET_WALLPAPER_PRESETS" = "프리셋";
 
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "배경 설정";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "정보";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Account";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "차단";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "검열 우회";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "위치 : %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "위치";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "이 기능을 켠다면 Signal이 검열 우회를 시도합니다. Signal이 검열된 곳이 아니라면 이 기능을 켜지 마십시오.";
@@ -4327,9 +4378,6 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "검열 우회는 필수가 아닙니다. Signal 서비스에 연결되어 있다면 필요하지 않습니다.";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "검열 우회";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "디버그 파일 활성화시키기";
 
@@ -4345,23 +4393,17 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "PIN 사용하기";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "Signal 번호";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "디버그 로그 보내기";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "고급";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "오류 로그";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use system contact photos";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use System Contact Photos";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "테마";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "차단한 사용자 추가";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "내가 차단한 연락처와 그룹의 목록입니다.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Signal에 연락처가 없습니다.";
 
@@ -4441,20 +4480,23 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "내 연락처에게 IP 주소가 표시되지 않도록 모든 통화를 Signal 서버로 중계합니다. 전화 품질이 떨어질 수 있습니다.";
 
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "대화";
+
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "대화 기록 삭제";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nGPL v3에 따라 라이선스 부여됨";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nLicensed under the GPLv3";
 
 /* Label for the 'data' section of the app settings. */
-"SETTINGS_DATA" = "Data Usage";
+"SETTINGS_DATA" = "데이터 사용량";
 
 /* Item title for the low bandwidth call setting */
-"SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Use Less Data";
+"SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "데이터 덜 사용";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "전화";
@@ -4463,13 +4505,13 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "음성 메시지, 한 번만 볼 수 있는 미디어와 스티커(100KB 이하)는 항상 자동 다운로드됩니다.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "미디어 자동 다운로드";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Auto-Download";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "자동 다운로드 설정 초기화";
 
 /* The title for the data settings. */
-"SETTINGS_DATA_TITLE" = "Data Usage";
+"SETTINGS_DATA_TITLE" = "데이터 사용량";
 
 /* No comment provided by engineer. */
 "SETTINGS_DELETE_ACCOUNT_BUTTON" = "계정 삭제";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "도움말";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "대화 기록 삭제";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "정보";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "친구 초대";
 
@@ -4507,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "대화 배경";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "이용약관 및 개인정보 처리방침";
 
 /* Setting for enabling & disabling link previews. */
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "메시징";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "See and share when messages are being read and typed. If disabled, you won’t see read receipts or typing indicators from others.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "설정";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "알림이 꺼진 대화 포함";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Include Muted Chats";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "배지 숫자";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "휴대전화가 잠겨 있을 때 전화와 메시지 알림을 표시합니다. 어떤 것을 알림에 표시할지 제한하는 것을 추천합니다.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Call and Message notifications can appear while your phone is locked.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "알림 내용";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "내 연락처가 Signal에 가입함";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Contact Joins Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "이벤트";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notify when…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "알림";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Signal PIN 확인";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "리마인더는 내가 PIN을 기억하고 있는지 도와줍니다. 가끔 여쭤보겠습니다.";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN 리마인더";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PIN은 Signal에 저장된 정보를 암호화하여 오직 나만 볼 수 있게 합니다. 내 프로필, 설정, 그리고 연락처는 Signal을 다시 설치할 때 복원됩니다.";
+"SETTINGS_PINS_FOOTER" = "PINs keep information stored with Signal encrypted so only you can access it. Your PIN cannot be recovered. Your profile, settings, and contacts will restore when you reinstall Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "PIN 변경";
@@ -4601,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "PIN 만들기";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "SIGNAL PIN";
+"SETTINGS_PINS_TITLE" = "Signal 번호";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "iOS 전화 앱에서 Signal \"최근\" 목록의 전화를 표시합니다.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "고급";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "최근 목록에서 통화 표시";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "개인정보";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "읽음 표시";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "메시지 열람 여부 상태를 보거나 공유할 수 있습니다. 이 설정은 선택 가능하며, 모든 대화에 적용됩니다.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "끄기";
@@ -4642,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "화면 잠금 시간";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Touch ID, Face ID 또는 iOS 기기 암호로 Signal 화면을 잠금 해제할 수 있습니다. 화면 잠금이 켜져 있어도 수신 전화, 전화 및 메시지 알림을 받을 수 있습니다. Signal 알림 설정으로 어떤 정보가 표시될지 설정할 수 있습니다.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "화면 잠금";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "화면 잠금";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "화면 보호 켜기";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Signal 앱 화면의 미리보기가 앱 전환 화면에서 나타나지 않도록 설정합니다.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "소리";
@@ -4663,35 +4693,41 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "통화";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "화면 보호";
+"SETTINGS_SECURITY_TITLE" = "App Security";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Show in Suggestions";
+"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal chats are displayed as suggestions when sharing from other apps.";
+"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal 채팅은 다른 앱에서 공유할 때 제안으로 표시됩니다.";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "등록 잠금";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "등록 잠금으로 보안을 더욱 철저하게 지키세요. 내 전화번호로 Signal에 다시 등록할 때 Signal PIN이 필요합니다.";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "입력 안내";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "메시지 입력 여부 상태를 보거나 공유할 수 있습니다. 이 설정은 선택 가능하며, 모든 대화에 적용됩니다.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "발신자 암호화";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "안내 표시";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "발신자 암호화 기능을 이용하여 전달된 메시지에서 \"자세한 정보\"를 선택하면 상태 아이콘을 표시합니다.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "모든 사람으로부터 허용";
@@ -4703,7 +4739,7 @@
 "SETTINGS_VERSION" = "버전";
 
 /* Label for the 'who can' privacy settings. */
-"SETTINGS_WHO_CAN" = "나를 볼 수 있는 사람";
+"SETTINGS_WHO_CAN" = "누가...";
 
 /* action sheet item to open native mail app */
 "SHARE_ACTION_MAIL" = "메일";
@@ -4736,7 +4772,7 @@
 "SHARE_EXTENSION_SENDING_FAILURE_TITLE" = "첨부 파일을 보낼 수 없음";
 
 /* Send progress for share extension. Embeds {{ %1$@ number of attachments uploaded, %2$@ total number of attachments}} */
-"SHARE_EXTENSION_SENDING_IN_PROGRESS_FORMAT" = "Uploading %1$@ of %2$@…";
+"SHARE_EXTENSION_SENDING_IN_PROGRESS_FORMAT" = "%1$@/%2$@ 업로드 중..";
 
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "업로드 중…";
@@ -4748,13 +4784,13 @@
 "SHARE_EXTENSION_VIEW_TITLE" = "Signal에 공유";
 
 /* Title of alert indicating sharing suggestions failed to deactivate */
-"SHARING_SUGGESTIONS_DISABLE_ERROR" = "Failed to disable sharing suggestions.";
+"SHARING_SUGGESTIONS_DISABLE_ERROR" = "제안 공유를 비활성화하지 못했습니다.";
 
 /* Body for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Signal chats can now be displayed as suggestions when sharing from other apps.";
+"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Signal 채팅은 다른 앱에서 공유할 때 제안으로 표시됩니다.";
 
 /* Title for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Sharing Made Easier";
+"SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "공유를 통해 더 쉽게";
 
 /* Disable button for sharing suggestions megaphone */
 "SHARING_SUGGESTIOONS_MEGAPHONE_BUTTON_DISABLE" = "끄기";
@@ -5089,9 +5125,6 @@
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "Signal 사용자 이름은 선택 사항입니다. 사용자 이름을 만든다면 다른 Signal 사용자들이 사용자 이름으로 나를 찾을 수 있으며, 전화번호를 몰라도 연락할 수 있습니다.";
 
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "사용자 이름";
-
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "사용자 이름은 오직 a-z, 0-9, _만 등록할 수 있습니다";
 
@@ -5180,55 +5213,55 @@
 "WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Signal Desktop 설정이 완료되었습니다.";
 
 /* Placeholder text for header of the wallpaper mini preview */
-"WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Contact Name";
+"WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "연락처 이름";
 
 /* Blur button on wallpaper preview. */
-"WALLPAPER_PREVIEW_BLUR_BUTTON" = "Blur Photo";
+"WALLPAPER_PREVIEW_BLUR_BUTTON" = "블러 처리된 사진";
 
 /* The incoming bubble text when setting a photo */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "Pinch to zoom, drag to adjust.";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "확대하기 위해서는 화면 위에 두 손가락을 모으거나 멀어지게 조작하시고, 조정하기 위해서는 손가락으로 끌어보세요.";
 
 /* The incoming bubble text when setting a preset */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Swipe to preview more wallpapers.";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "스와이프하여 더 많은 배경을 미리 보세요.";
 
 /* The outgoing bubble text when setting a wallpaper for all chats. */
-"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "Set wallpaper for all chats.";
+"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "모든 채팅방에 배경 설정하기.";
 
 /* The outgoing bubble text when setting a wallpaper for specific chat. Embeds {{chat name}} */
-"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_FORMAT" = "Set wallpaper for %@.";
+"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_FORMAT" = "%@ 배경으로 설정했습니다.";
 
 /* The text for the set button on wallpaper preview view. */
-"WALLPAPER_PREVIEW_SET_BUTTON" = "Set";
+"WALLPAPER_PREVIEW_SET_BUTTON" = "설정";
 
 /* Title for the wallpaper preview view. */
 "WALLPAPER_PREVIEW_TITLE" = "미리보기";
 
 /* Clear wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "Clear Wallpaper";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "배경 삭제";
 
 /* Confirmation dialog when clearing the wallpaper for a specific chat. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "Clear wallpaper for this chat?";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "이 채팅방의 배경을 제거하시겠습니까?";
 
 /* Confirmation dialog when clearing the global wallpaper. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "Clear wallpaper? This will not clear custom wallpapers you’ve set for your chats.";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "배경을 제거하시겠습니까? 귀하의 채팅방에 임의로 설정한 배경들은 제거되지 않습니다.";
 
 /* Dim wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_DIM_WALLPAPER" = "Dark Theme Dims Wallpaper";
+"WALLPAPER_SETTINGS_DIM_WALLPAPER" = "어두운 테마는 배경을 흐립니다.";
 
 /* An error indicating to the user that we failed to clear the wallpaper. */
-"WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "The wallpaper could not be cleared, please try again later or contact support if the error persists.";
+"WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "배경을 삭제할 수 없습니다. 오류가 계속되면 다시 시도하거나 지원팀에 문의하세요.";
 
 /* An error indicating to the user that we failed to reset all wallpapers. */
-"WALLPAPER_SETTINGS_FAILED_TO_RESET" = "All wallpapers could not be reset, please try again later or contact support if the error persists.";
+"WALLPAPER_SETTINGS_FAILED_TO_RESET" = "모든 배경을 재설정할 수 없습니다. 오류가 계속되면 다시 시도하거나 지원팀에 문의하세요";
 
 /* Title for the wallpaper settings preview section. */
 "WALLPAPER_SETTINGS_PREVIEW" = "미리보기";
 
 /* Reset all wallpapers action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_RESET_ALL" = "Reset All Wallpapers";
+"WALLPAPER_SETTINGS_RESET_ALL" = "모든 배경 재설정";
 
 /* Confirmation dialog when resetting all wallpapers. */
-"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "Reset all wallpapers, including custom wallpapers you’ve set for your chats?";
+"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "귀하의 채팅방에 임의로 설정한 배경들을 포함한 모든 배경들을 초기화하시겠습니까?";
 
 /* Set wallpaper action in wallpaper settings view. */
 "WALLPAPER_SETTINGS_SET_WALLPAPER" = "배경 설정";

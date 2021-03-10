@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Ne sada";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "O Signalu";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Prihvati novi sigurnosni broj";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Kontakt";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Kontakt za %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Medijski zapis";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Poruka";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Vi";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Naljepnica";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Glasovna poruka";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Glasovna poruka od %@ sekundi";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "Signal poziv";
@@ -838,9 +847,6 @@
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Blokiraj korisnika";
 
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Informacije o kontaktu";
-
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Boja razgovora";
 
@@ -965,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Nespremljene promjene";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Prikaži sve članove";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Prikaži sve";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Ovaj korisnik je u vašim kontaktima";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Dodaj u kontakte";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ je poslao:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Vi ste poslali:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Izbriši sve";
@@ -1082,10 +1094,10 @@
 "DEREGISTRATION_WARNING" = "Uređaj više nije registriran. Vaš broj telefona se sada može registrirati na Signal s drugim uređajem. Pritisnite za ponovnu registraciju.";
 
 /* {{Short Date}} when device last communicated with Signal Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Zadnje aktivno: %@";
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Zadnje aktivno %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Povezano: %@";
+"DEVICE_LINKED_AT_LABEL" = "Povezano %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Ažuriranje popisa uređaja nije uspjelo.";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Podijeli putem Signala";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Bilo tko s ovom poveznicom može se pridružiti grupi ili poslati zahtjev za pridruživanje. Podijelite s osobama kojima vjerujete.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Bilo tko s ovom poveznicom može vidjeti naziv grupe i članove kao i poslati zahtjev za pridruživanje. Podijelite s osobama kojima vjerujete.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Poveznica grupe";
@@ -1975,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Video poziv";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ člana/ova grupe imaju slično ime.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Pritisnite za pregled";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Član";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Pregled članova";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ člana/ova grupe imaju slično ime, pregledajte članove u nastavku i odaberite poduzeti radnju.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ člana/ova grupe imaju isto ime, pregledajte članove u nastavku i odaberite poduzeti radnju.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ člana/ova grupe imaju slično ime.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Naziv grupe (obavezno)";
 
@@ -2067,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ je prihvatio/la zahtjev za pridruživanje u grupu od %1$@.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "Prihvatili ste zahtjev za pridruživanje u grupu od %@.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ je odbio njihov zahtjev za pridruživanje ovoj grupi.";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Skenirajte QR kôd prikazan na uređaju kojeg želite povezati.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Skeniraj QR kôd";
+"LINK_NEW_DEVICE_SUBTITLE" = "Skenirajte QR kôd za povezivanje novog uređaja.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Poveži novi uređaj";
@@ -2647,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Odaberite lokaciju";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Zapisnici";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Zapisnici pogreške pomažu Signalu popraviti probleme i rušenja aplikacije.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Poruka";
@@ -2971,6 +3004,9 @@
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Utišano";
 
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Nedavno su promijenili ime svog profila iz %1$@ u %2$@.";
+
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Preskoči";
 
@@ -3052,6 +3088,9 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Nema zajedničkih grupa";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Nema drugih zajedničkih grupa.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Odaberite kontakt ili grupu za početak razgovora.";
 
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Sviraj dok je aplikacija otvorena";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Zvukovi";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Dodaj prilagođeni zvuk...";
@@ -3185,13 +3221,13 @@
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Povezivanje vašeg iPhonea se ne preporučuje i ograničiti će osnovne funkcionalnosti.";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Omogućite dozvole";
+"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Omogući dozvole";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Obavijesti vam omogućavaju da vidite kada vam stignu poruke kao i nove aktivnostima u razgovorima.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Omogućavanje obavijesti i kontakata dopušta vam da vidite kada stižu poruke i pomaže vam pronaći osobe koje poznajete. Kontakti su šifrirani, tako da ih Signal ne može vidjeti.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Primite poruku";
+"ONBOARDING_PERMISSIONS_TITLE" = "Omogući dozvole";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Odaberite tko vas može pronaći na Signalu s vašim brojem telefona %@";
@@ -3199,11 +3235,17 @@
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Tko vas može pronaći s vašim brojem telefona?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Vaš broj telefona";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Molimo pričekajte nekoliko minuta prije novog pokušaja. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Unesite broj telefona za početak";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Unesite vaš broj telefona";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Nevažeći broj";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Nevažeći broj telefona. Unesite valjani broj telefona za registraciju.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Ponestalo vam je pokušaja za unos PIN-a, ali i dalje možete pristupiti svom Signal računu stvaranjem novog PIN-a. Radi vaše privatnosti i sigurnosti, vaš će se račun oporaviti bez ikakvih spremljenih podataka ili postavki profila.";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Unesite svoj PIN";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Vaš profil";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Prezime (neobavezno)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Ime (obavezno)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Uvjeti i pravila o privatnosti";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Pogrešan broj?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Nisam dobio/la kôd (dostupno za %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Nazovi me";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Kontaktirajte Signalovu podršku";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Nazovi me za %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Provjera kôda...";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Ovaj kôd je nevažeći";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Nisam dobio/la kôd";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Ponovno pošalji kôd";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Provjerite imate li mobilnu uslugu i možete li primati SMS poruke.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Nema kôda?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Ponovno pošalji kôd";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Potvrdite pozivom";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Još uvijek nema kôda?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Ponovno pošalji kôd za %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Unesite kôd koji smo poslali na %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Upravo smo ponovno poslali kôd na %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Potvrdni kôd";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Postavke";
@@ -3668,7 +3710,7 @@
 "PROFILE_BIO_VIEW_DEFAULT_BIO_BE_KIND" = "Budite ljubazni";
 
 /* The 'Coffee lover' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "Ljubitelj kave";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "Ljubitelj/ica kave";
 
 /* The 'Encrypted' default bio in the profile bio view. */
 "PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "Šifrirano";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ je promijenio/la ime na profilu u %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Dodaj u profil";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Vaše ime";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Opis";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Ime";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Korisničko ime";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Postavite profilnu sliku";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Opis";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Ukloni sliku";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Stvorite korisničko ime";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Vaše prezime je predugo.";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Vaše je ime predugo.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(neobavezno)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Prezime";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Prezime (neobavezno)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(obavezno)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Ime";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Ime (obavezno)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Profil se može ažurirati samo ako ste povezani s internetom.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Vaš profil je end-to-end šifriran. Vaš profil kao i promjene na njemu biti će vidljive vašim kontaktima kada započinjete ili prihvaćate nove razgovore i kada se pridružite novim grupama.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Vaš profil je end-to-end šifriran. Vaš profil kao i promjene na njemu biti će vidljive vašim kontaktima kada započinjete ili prihvaćate nove razgovore.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Spremi";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profil";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Korisničko ime";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Označi kao pročitano";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Ponovna registracija push obavijesti je uspješna.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Push obavijesti";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Ne možemo aktivirati vaš račun dok ne potvrdite kôd koji smo vam poslali.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Da biste nastavili, provjerite internetsku vezu uređaja i pokušajte ponovo.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Provjerite vašu mrežnu vezu";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Format ovog broja telefona nije podržan. Molimo kontaktirajte službu za podršku.";
 
@@ -3936,6 +3975,18 @@
 
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Nema broja telefona";
+
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Potvrdni kôd će biti poslan na ovaj broj. Je li vaš navedeni broj telefona točan?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Broj za potvrdu: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Uredi";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Potvrđivanje %@...";
 
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Odbij";
@@ -4300,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Postavi pozadinu";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "O aplikaciji";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Račun";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Blokiraj";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Zaobilaženje cenzure";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Lokacija: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Lokacija";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Ako je omogućeno, Signal će pokušati zaobići cenzuru. Omogućite ovu značajku samo ako ste u mjestu gdje je Signal cenzuriran.";
@@ -4327,9 +4378,6 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Zaobilaženje cenzure nije potrebno. Već ste povezani s Signalom.";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Zaobilaženje cenzure";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Omogući zapisnike pogreške";
 
@@ -4345,20 +4393,14 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Omogući PIN";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "Signal PIN";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Pošalji zapisnik pogreške";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Napredno";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Zapisnici pogrešaka";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Prikaži fotografije kontakata iz imenika ako su dostupne";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Prikaži fotografije kontakata iz imenika ako su dostupne.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
 "SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Koristi fotografije kontakata iz imenika";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Dodaj kontakt za blokiranje";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Popis kontakata i grupa koje ste blokirali.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Nemate kontakte na Signalu.";
 
@@ -4441,10 +4480,13 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Preusmjerite sve pozive putem Signalnog poslužitelja kako biste izbjegli otkrivanje vaše IP adrese vašim kontaktima. Omogućavanje opcije će smanjiti kvalitetu poziva.";
 
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Razgovori";
+
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Izbriši povijest razgovora";
 
-/* No comment provided by engineer. */
+/* Footer for the 'about' help section */
 "SETTINGS_COPYRIGHT" = "Copyright Signal Messenger \nGPLv3 licenca";
 
 /* Label for the 'data' section of the app settings. */
@@ -4454,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Koristi manje mobilnih podataka";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Korištenjem manje mobilnih podataka mogu se poboljšati pozivi na lošim mrežama";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Korištenjem manje mobilnih podataka mogu se poboljšati pozivi na lošim mrežama.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Pozivi";
@@ -4463,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Glasovne poruke, jednom vidljivi medijski zapisi i naljepnice (manje od 100 kb) se uvijek automatski preuzimaju.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "AUTOMATSKO PREUZIMANJE MEDIJSKIH ZAPISA";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Automatsko preuzimanje";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Poništi postavke automatskog preuzimanja";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Pomoć";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Izbriši povijest razgovora";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Informacije";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Pozovite svoje prijatelje";
 
@@ -4507,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Pozadina razgovora";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Uvjeti i pravila o privatnosti";
 
 /* Setting for enabling & disabling link previews. */
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Razmjena poruka";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "Pregledajte i dijelite kada se poruke tipkaju. Ako je onemogućeno, nećete moći vidjeti potvrde čitanja kao ni kada drugi tipkaju.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Postavke";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+/* A setting controlling whether muted conversations are shown in the badge count */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Uračunaj i utišane razgovore";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Bedž obavijesti";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Obavijesti o pozivima i porukama mogu se pojaviti dok je telefon zaključan. Možete ograničiti ono što je prikazano u ovim obavijestima.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Obavijesti o pozivima i porukama mogu se pojaviti dok je telefon zaključan.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Sadržaj obavijesti";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Kontakt se pridružio Signalu";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Kontakt se pridružio/la Signalu";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Događaji";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Obavijesti me kada...";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Obavijesti";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Potvrdite svoj Signal PIN";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Podsjetnici vam pomažu da zapamtite svoj PIN jer ga nije moguće vratiti. S vremenom ćemo vas rijeđe tražiti. ";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN podsjetnici";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PIN-ovi čuvaju šifrirane podatke spremljenima na Signalu tako da im samo vi možete pristupiti. Vaš profil, postavke i kontakti će biti vraćeni nakon ponovne instalacije.";
+"SETTINGS_PINS_FOOTER" = "PIN-ovi čuvaju šifrirane podatke spremljenima na Signalu tako da im samo vi možete pristupiti. Vaš PIN se ne može oporaviti. Vaš profil, postavke i kontakti će biti vraćeni nakon ponovne instalacije.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Promijenite PIN";
@@ -4601,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Stvorite PIN";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "SIGNAL PIN";
+"SETTINGS_PINS_TITLE" = "Signal PIN";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Prikaži pozive u kartici \"Lista poziva\" u Telefon aplikaciji iOS-a.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Postavke za zaobilaženje cenzure, preusmjeravanje poziva i zapečaćene pošiljatelje.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Napredno";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Prikaži pozive u listi poziva";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Privatnost";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Potvrde o čitanju";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Pregledajte i podijelite kada su poruke pročitane. Ova je postavka neobavezna i primjenjuje se na sve razgovore.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Isključi";
@@ -4642,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Zaključaj zaslon nakon";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Otključajte zaslon Signala koristeći Touch ID, Face ID ili lozinku vašeg iOS uređaja. I dalje možete odgovarati na dolazne pozive i primati obavijesti o pozivima i porukama dok je Zaključavanje zaslona omogućeno. Postavke obavijesti Signala omogućuju vam prilagođavanje prikazanih informacija.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Zaključavanje zaslona";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Zaključavanje zaslona";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Omogući sigurnost zaslona";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Spriječava prikaz pregleda Signala prilikom promjene aplikacija.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Zvukovi";
@@ -4663,11 +4693,23 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Uspostava poziva";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Sigurnost zaslona";
+"SETTINGS_SECURITY_TITLE" = "App Security";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Prikaži u prijedlozima";
+"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
 "SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Razgovori u Signalu se prikazuju kao prijedlozi prilikom dijeljenja iz drugih aplikacija.";
@@ -4676,22 +4718,16 @@
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Zaključavanje registracije";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Zbog dodatne sigurnosti, omogućite Zaključavanje registracije koje će zahtijevati vaš Signal PIN za ponovnu registriraciju vašeg broja telefona na Signal.";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Prikaži tipkanje";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Pregledajte i dijelite kada se poruke tipkaju. Ova je postavka neobavezna i primjenjuje se na sve razgovore.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Zapečaćeni pošiljatelj";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Prikaži ikonu";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Prikazuje ikonu statusa kada odaberete \"Više informacija\" na porukama koje su isporučene pomoću zapečaćenog pošiljatelja.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Dopusti od svih";
@@ -5088,9 +5124,6 @@
 
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "Korisnička imena na Signalu su neobavezna. Ako odlučite stvoriti korisničko ime, drugi korisnici Signala će vas moći pronaći prema tom korisničkom imenu i kontaktirati vas bez poznavanja vašeg broja telefona.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Korisničko ime";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Korisnička imena smiju sadržavati samo a-z, 0-9 i _";

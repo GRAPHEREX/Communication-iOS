@@ -64,6 +64,8 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
 {
     if (self = [super init]) {
         _items = [NSMutableArray new];
+        _hasSeparators = YES;
+        _hasBackground = YES;
     }
     return self;
 }
@@ -111,13 +113,25 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
 @property (nonatomic, nullable) OWSTableActionBlock actionBlock;
 
 @property (nonatomic) OWSTableCustomCellBlock customCellBlock;
-@property (nonatomic) UITableViewCell *customCell;
+@property (nonatomic, nullable) UITableViewCell *customCell;
 
 @end
 
 #pragma mark -
 
 @implementation OWSTableItem
+
+- (instancetype)init
+{
+    self = [super init];
+    if (!self) {
+        return self;
+    }
+
+    self.customRowHeight = @(UITableViewAutomaticDimension);
+
+    return self;
+}
 
 + (UITableViewCell *)newCell
 {
@@ -223,11 +237,12 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     OWSTableItem *item = [OWSTableItem new];
     item.actionBlock = actionBlock;
     item.customCellBlock = ^{
-        UITableViewCell *cell = [OWSTableItem newCell];
-        cell.textLabel.text = text;
-        cell.accessoryType = accessoryType;
-        cell.accessibilityIdentifier = accessibilityIdentifier;
-        return cell;
+        return [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                           textColor:nil
+                                                       accessoryText:nil
+                                                       accessoryType:accessoryType
+                                                      accessoryImage:nil
+                                             accessibilityIdentifier:accessibilityIdentifier];
     };
     return item;
 }
@@ -273,14 +288,12 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     OWSTableItem *item = [OWSTableItem new];
     item.actionBlock = actionBlock;
     item.customCellBlock = ^{
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-                                                       reuseIdentifier:@"UITableViewCellStyleValue1"];
-        [OWSTableItem configureCell:cell];
-        cell.textLabel.text = text;
-        cell.detailTextLabel.text = detailText;
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-        cell.accessibilityIdentifier = accessibilityIdentifier;
-        return cell;
+        return [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                           textColor:nil
+                                                       accessoryText:detailText
+                                                       accessoryType:UITableViewCellAccessoryDisclosureIndicator
+                                                      accessoryImage:nil
+                                             accessibilityIdentifier:accessibilityIdentifier];
     };
     item.customRowHeight = @(UITableViewAutomaticDimension);
     return item;
@@ -303,10 +316,12 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
         }
     };
     item.customCellBlock = ^{
-        UITableViewCell *cell = [OWSTableItem newCell];
-        cell.textLabel.text = text;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        return cell;
+        return [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                           textColor:nil
+                                                       accessoryText:nil
+                                                       accessoryType:UITableViewCellAccessoryDisclosureIndicator
+                                                      accessoryImage:nil
+                                             accessibilityIdentifier:nil];
     };
     return item;
 }
@@ -348,13 +363,12 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     OWSTableItem *item = [OWSTableItem new];
     item.actionBlock = actionBlock;
     item.customCellBlock = ^{
-        UITableViewCell *cell = [OWSTableItem newCell];
-        cell.textLabel.text = text;
-        if (textColor) {
-            cell.textLabel.textColor = textColor;
-        }
-        cell.accessibilityIdentifier = accessibilityIdentifier;
-        return cell;
+        return [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                           textColor:textColor
+                                                       accessoryText:nil
+                                                       accessoryType:UITableViewCellAccessoryNone
+                                                      accessoryImage:nil
+                                             accessibilityIdentifier:accessibilityIdentifier];
     };
     return item;
 }
@@ -370,19 +384,12 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     OWSTableItem *item = [OWSTableItem new];
     item.actionBlock = actionBlock;
     item.customCellBlock = ^{
-        UITableViewCell *cell = [OWSTableItem newCell];
-        cell.textLabel.text = text;
-        cell.accessibilityIdentifier = accessibilityIdentifier;
-
-        UIImageView *accessoryImageView = [UIImageView new];
-        accessoryImageView.image = [accessoryImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        // Match the OS accessory view colors
-        accessoryImageView.tintColor
-            = Theme.isDarkThemeEnabled ? [UIColor colorWithRGBHex:0x46464a] : [UIColor colorWithRGBHex:0xc4c4c7];
-        [accessoryImageView sizeToFit];
-        cell.accessoryView = accessoryImageView;
-
-        return cell;
+        return [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                           textColor:nil
+                                                       accessoryText:nil
+                                                       accessoryType:UITableViewCellAccessoryNone
+                                                      accessoryImage:accessoryImage
+                                             accessibilityIdentifier:accessibilityIdentifier];
     };
     return item;
 }
@@ -394,16 +401,19 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     OWSTableItem *item = [OWSTableItem new];
     item.customCellBlock = ^{
         UITableViewCell *cell = [OWSTableItem newCell];
-        cell.textLabel.text = text;
+        UILabel *textLabel = [UILabel new];
+        textLabel.text = text;
         // These cells look quite different.
         //
         // Smaller font.
-        cell.textLabel.font = OWSTableItem.primaryLabelFont;
+        textLabel.font = OWSTableItem.primaryLabelFont;
         // Soft color.
         // TODO: Theme, review with design.
-        cell.textLabel.textColor = Theme.middleGrayColor;
+        textLabel.textColor = Theme.middleGrayColor;
         // Centered.
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        textLabel.textAlignment = NSTextAlignmentCenter;
+        [cell.contentView addSubview:textLabel];
+        [textLabel autoPinEdgesToSuperviewMargins];
         cell.userInteractionEnabled = NO;
         return cell;
     };
@@ -425,8 +435,12 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
 
     OWSTableItem *item = [OWSTableItem new];
     item.customCellBlock = ^{
-        UITableViewCell *cell = [OWSTableItem newCell];
-        cell.textLabel.text = text;
+        UITableViewCell *cell = [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                                            textColor:nil
+                                                                        accessoryText:nil
+                                                                        accessoryType:UITableViewCellAccessoryNone
+                                                                       accessoryImage:nil
+                                                              accessibilityIdentifier:nil];
         cell.userInteractionEnabled = NO;
         return cell;
     };
@@ -440,17 +454,12 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
 
     OWSTableItem *item = [OWSTableItem new];
     item.customCellBlock = ^{
-        UITableViewCell *cell = [OWSTableItem newCell];
-        cell.textLabel.text = text;
-
-        UILabel *accessoryLabel = [UILabel new];
-        accessoryLabel.text = accessoryText;
-        accessoryLabel.textColor = Theme.secondaryTextAndIconColor;
-        accessoryLabel.font = OWSTableItem.accessoryLabelFont;
-        accessoryLabel.textAlignment = NSTextAlignmentRight;
-        [accessoryLabel sizeToFit];
-        cell.accessoryView = accessoryLabel;
-
+        UITableViewCell *cell = [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                                            textColor:nil
+                                                                        accessoryText:accessoryText
+                                                                        accessoryType:UITableViewCellAccessoryNone
+                                                                       accessoryImage:nil
+                                                              accessibilityIdentifier:nil];
         cell.userInteractionEnabled = NO;
         return cell;
     };
@@ -465,9 +474,13 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     item.customCellBlock = ^{
         UITableViewCell *cell = [OWSTableItem newCell];
 
-        cell.textLabel.text = text;
-        cell.textLabel.numberOfLines = 0;
-        cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        UILabel *textLabel = [UILabel new];
+        textLabel.text = text;
+        textLabel.numberOfLines = 0;
+        textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        [cell.contentView addSubview:textLabel];
+        [textLabel autoPinEdgesToSuperviewMargins];
+
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
         return cell;
@@ -519,8 +532,12 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     OWSTableItem *item = [OWSTableItem new];
     __weak id weakTarget = target;
     item.customCellBlock = ^{
-        UITableViewCell *cell = [OWSTableItem newCell];
-        cell.textLabel.text = text;
+        UITableViewCell *cell = [OWSTableItem buildCellWithAccessoryLabelWithItemName:text
+                                                                            textColor:nil
+                                                                        accessoryText:nil
+                                                                        accessoryType:UITableViewCellAccessoryNone
+                                                                       accessoryImage:nil
+                                                              accessibilityIdentifier:accessibilityIdentifier];
 
         UISwitch *cellSwitch = [UISwitch new];
         cell.accessoryView = cellSwitch;
@@ -537,7 +554,7 @@ const CGFloat kOWSTable_DefaultCellHeight = 45.f;
     return item;
 }
 
-- (nullable UITableViewCell *)customCell
+- (nullable UITableViewCell *)getOrBuildCustomCell
 {
     if (_customCell) {
         return _customCell;
@@ -617,6 +634,7 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kOWSTableCellIdentifier];
 
+    [self configureTableLayoutMargins];
     [self applyContents];
     [self applyTheme];
 
@@ -699,7 +717,7 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
 
     item.tableViewController = self;
 
-    UITableViewCell *_Nullable customCell = [item customCell];
+    UITableViewCell *_Nullable customCell = [item getOrBuildCustomCell];
     if (customCell != nil) {
         if (self.useThemeBackgroundColors) {
             customCell.backgroundColor = Theme.tableCellBackgroundColor;
@@ -739,17 +757,26 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
         UITextView *textView = [LinkingTextView new];
         textView.textColor = Theme.secondaryTextAndIconColor;
         textView.font = UIFont.ows_dynamicTypeCaption1Font;
-
-        CGFloat tableEdgeInsets = UIDevice.currentDevice.isPlusSizePhone ? 20 : 16;
-        textView.textContainerInset = UIEdgeInsetsMake(16, tableEdgeInsets, 6, tableEdgeInsets);
-
         if (section.headerAttributedTitle.length > 0) {
             textView.attributedText = section.headerAttributedTitle;
         } else {
             textView.text = [section.headerTitle uppercaseString];
         }
 
-        return textView;
+        UIView *sectionView = [[UIView alloc] init];
+        [sectionView addSubview:textView];
+        [textView autoPinHeightToSuperview];
+
+        if (self.layoutMarginsRelativeTableContent) {
+            sectionView.preservesSuperviewLayoutMargins = YES;
+            [textView autoPinWidthToSuperviewMargins];
+            textView.textContainerInset = UIEdgeInsetsMake(16, 0, 6, 0);
+        } else {
+            [textView autoPinWidthToSuperview];
+            CGFloat tableEdgeInsets = UIDevice.currentDevice.isPlusSizePhone ? 20 : 16;
+            textView.textContainerInset = UIEdgeInsetsMake(16, tableEdgeInsets, 6, tableEdgeInsets);
+        }
+        return sectionView;
     }
 
     return nil;
@@ -765,10 +792,6 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
         UITextView *textView = [LinkingTextView new];
         textView.textColor = UIColor.ows_gray45Color;
         textView.font = UIFont.ows_dynamicTypeCaption1Font;
-
-        CGFloat tableEdgeInsets = UIDevice.currentDevice.isPlusSizePhone ? 20 : 16;
-        textView.textContainerInset = UIEdgeInsetsMake(6, tableEdgeInsets, 12, tableEdgeInsets);
-
         textView.linkTextAttributes = @{
             NSForegroundColorAttributeName : Theme.accentBlueColor,
             NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone),
@@ -781,7 +804,20 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
             textView.text = section.footerTitle;
         }
 
-        return textView;
+        UIView *sectionView = [[UIView alloc] init];
+        [sectionView addSubview:textView];
+        [textView autoPinHeightToSuperview];
+
+        if (self.layoutMarginsRelativeTableContent) {
+            sectionView.preservesSuperviewLayoutMargins = YES;
+            [textView autoPinWidthToSuperviewMargins];
+            textView.textContainerInset = UIEdgeInsetsMake(6, 0, 12, 0);
+        } else {
+            [textView autoPinWidthToSuperview];
+            CGFloat tableEdgeInsets = UIDevice.currentDevice.isPlusSizePhone ? 20 : 16;
+            textView.textContainerInset = UIEdgeInsetsMake(6, tableEdgeInsets, 12, tableEdgeInsets);
+        }
+        return sectionView;
     }
 
     return nil;
@@ -925,6 +961,15 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
     self.view.backgroundColor = backgroundColor;
     self.tableView.backgroundColor = backgroundColor;
     self.tableView.separatorColor = Theme.cellSeparatorColor;
+}
+
+- (void)configureTableLayoutMargins
+{
+    if (!self.layoutMarginsRelativeTableContent) {
+        return;
+    }
+    self.tableView.preservesSuperviewLayoutMargins = YES;
+    self.tableView.layoutMargins = UIEdgeInsetsZero;
 }
 
 #pragma mark - Editing

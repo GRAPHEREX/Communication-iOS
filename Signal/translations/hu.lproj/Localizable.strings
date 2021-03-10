@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Most nem";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "Az alkalmazásról";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Új biztonsági azonosító elfogadása";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Névjegy";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Névjegy hozzá: %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Média";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Üzenet";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Te";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Matrica";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Hangüzenet";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Hangüzenet %@ másodperc";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "Signal hívás";
@@ -119,7 +128,7 @@
 "APN_Message" = "Új üzenet!";
 
 /* Message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Signal indítási hiba. Kérlek küldj egy debug naplófájlt a support@signal.org címre, hogy megvizsgálhassuk, mi történt.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Signal indítási hiba. Kérlek küldj egy hibanapló fájlt a support@signal.org címre, hogy megvizsgálhassuk, mi történt.";
 
 /* Title for the 'app launch failed' alert. */
 "APP_LAUNCH_FAILURE_ALERT_TITLE" = "Hiba";
@@ -134,7 +143,7 @@
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Ismeretlen adatbázis verzió.";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "A régi eszközödről hozott adat nem helyreállítható. Kérlek küldj egy debug naplófájlt a support@signal.org címre, hogy megvizsgálhassuk, mi történt. Ha újra telepíted a Signalt, az üzenet előzményeid elveszhetnek.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "A régi eszközödről hozott adat nem helyreállítható. Kérlek küldj egy hibanapló fájlt a support@signal.org címre, hogy megvizsgálhassuk, mi történt. Ha újra telepíted a Signalt, az üzenet előzményeid elveszhetnek.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Az adatok visszaállítása sikertelen.";
@@ -755,7 +764,7 @@
 "CONTACT_SUPPORT_PROMPT_TO_INCLUDE_DEBUG_LOG_MESSAGE" = "A hibanapló fájlok segítenek a hibák gyorsabb javításában. Beküldésük opcionális.";
 
 /* Alert title */
-"CONTACT_SUPPORT_PROMPT_TO_INCLUDE_DEBUG_LOG_TITLE" = "Hibakeresési napló beküldése?";
+"CONTACT_SUPPORT_PROMPT_TO_INCLUDE_DEBUG_LOG_TITLE" = "Hibanapló beküldése?";
 
 /* Button text */
 "CONTACT_SUPPORT_SUBMIT_WITH_LOG" = "Beküldés hibanaplóval együtt";
@@ -837,9 +846,6 @@
 
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Felhasználó letiltása";
-
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Kontakt részletek";
 
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Beszélgetés színe";
@@ -965,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Mentetlen változtatások";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Összes tag megtekintés";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Összes megtekintése";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Ez a felhasználó ismert kontakt";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Hozzáadás a kontaktokhoz";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ küldte:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Te küldted:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Minden törlése";
@@ -1061,7 +1073,7 @@
 "DEBUG_LOG_GITHUB_ISSUE_ALERT_TITLE" = "Github átirányítás";
 
 /* Accessibility label for the ? vector asset used to get info about debug logs */
-"DEBUG_LOG_INFO_BUTTON" = "Bővebben a hibakeresési naplóról";
+"DEBUG_LOG_INFO_BUTTON" = "Bővebben a hibanaplóról";
 
 /* action sheet body */
 "DELETE_ALL_MESSAGES_IN_CONVERSATION_ALERT_BODY" = "Minden üzenetet törölsz a beszélgetésben?";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Megosztás Signallal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Ennek a linknek a birtokában bárki beléphet, vagy belépési kéréssel fordulhat a csoport felé. Azokkal oszd csak meg, akikben megbízol.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Ennek a linknek a birtokában bárki láthatja a csoportnevet és a tagok listáját, továbbá belépési kéréssel fordulhat a csoport felé. Azokkal oszd csak meg, akikben megbízol.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Csoporthivatkozás";
@@ -1975,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Videóhívás";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ csoport tag hasonló névvel szerepel.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Koppints az áttekintéshez";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Tag";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Tagok áttekintése";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ csoporttag hasonló névvel szerepel. Tekintsd át a lenti listát, és dönts a továbbiakról!";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ csoporttag azonos névvel szerepel. Tekintsd át a lenti listát, és dönts a továbbiakról!";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ csoport tag azonos névvel szerepel.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Csoport neve (kötelező)";
 
@@ -2067,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ jóváhagyott egy csoport belépési igényt tőle: %1$@.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "%@ csoport belépési igénye elfogadásra került.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ visszavonta csoport belépési igényét.";
@@ -2288,7 +2318,7 @@
 "GROUPS_LEGACY_GROUP_MIGRATED_GROUP_DESCRIPTION" = "Megtartottuk a frissítés előtti üzenet-előzményeket és médiafájlokat.";
 
 /* Explanation of new groups in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_NEW_GROUP_DESCRIPTION" = "Az új típusú csoportok olyan képességekkel rendelkeznek, mint példáui @említések, csoportadminok, továbbá a jövőben újabb képességek hozzáadása várható.";
+"GROUPS_LEGACY_GROUP_NEW_GROUP_DESCRIPTION" = "Az új típusú csoportok olyan képességekkel rendelkeznek, mint például @említések, csoportadminok, továbbá a jövőben újabb képességek hozzáadása várható.";
 
 /* Title for the 'new groups' alert view. */
 "GROUPS_LEGACY_GROUP_NEW_GROUPS_ALERT_TITLE" = "Új csoportok";
@@ -2600,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Olvasd be a társítani kívánt eszköz képernyőjén látható QR kódot.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "QR Kód beolvasása";
+"LINK_NEW_DEVICE_SUBTITLE" = "Olvasd be a QR kódot egy új eszköz párosításához.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Új Készülék Társítása";
@@ -2647,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Hely kiválasztása";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Naplózás";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Hibanaplók segítségével könnyebb a Signal hibák és összeomlások nyomozása.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Üzenet";
@@ -2971,6 +3004,9 @@
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Némítva";
 
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Nemrég megváltoztatta profilnevét erről: %1$@ erre: %2$@.";
+
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Kihagyás";
 
@@ -3052,6 +3088,9 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Nincsenek közös csoportok";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Nincs egyéb közös csoportotok.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Válassz ki egy kontaktot vagy csoportot a beszélgetés elkezdéséhez!";
 
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Hang megnyitott alkalmazásnál";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Hangok";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Egyedi értesítőhang hozzáadása...";
@@ -3188,10 +3224,10 @@
 "ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Jogosultságok engedélyezése";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Az értesítések segítségével értesülsz az új üzenetek érkezéséről, valamint a beszélgetésekben történt változásokról.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Az értesítések és a kapcsolatok engedélyezésével láthatod mikor érkeznek az üzenetek, és segít ismerősöket találni. A kapcsolatok titkosítottak, így a Signal szolgáltatás nem látja őket.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Fogadott üzenet";
+"ONBOARDING_PERMISSIONS_TITLE" = "Jogosultságok engedélyezése";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Válassz, hogy az alábbi telefonszámod alapján ki találhat meg Signalon: %@";
@@ -3199,11 +3235,17 @@
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Ki találhat meg telefonszámod alapján?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "A telefonszámod";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Kérlek várj egy pár percet mielőtt újra megpróbálnád. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Add meg a telefonszámodat a kezdéshez";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Add meg telefonszámodat";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Érvénytelen telefonszám";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Érvénytelen telefonszám. Adj meg egy valós telefonszámot a regisztrációhoz.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Kifogytál a PIN megadási lehetőségekből, de továbbra is hozzáférhetsz Signal fiókodhoz, amennyiben létrehozol egy új PIN-t. A magánszférád védelmének és saját biztonságod érdekében fiókod csak a mentett profilbeállítások nélkül állítható vissza.";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Add meg PIN kódodat";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Profilod";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Vezetéknév (opcionális)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Keresztnév (opcionális)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Adatvédelmi és Általános Szerződési Feltételek";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Helytelen telefonszám?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Nem kaptam meg a kódot (elérhető %@ múlva)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Hívj fel!";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Signal segítség";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Hívj fel: %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Kód ellenőrzése...";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Helytelen ellenőrző kód";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Nem kaptam ellenőrző kódot";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Ellenőrző kód újraküldése";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Ellenőrizd, hogy eléred -e a mobilhálózatot és képes vagy sms-t fogadni.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Nem jött kód?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Ellenőrző kód újraküldése";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Inkább hívj";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Továbbra sem jött kód?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Kód újra küldése: %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Add meg a kódot amelyet az alábbi számra küldtünk: %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Újraküldtük a kódot erre a számra: %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Ellenőrző kód";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Beállítások";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ megváltoztatta a profilnevét erre: %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Hozzáadás profilhoz";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Neved";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Névjegy";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Név";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Felhasználónév";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Profilkép beállítása";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Névjegy";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Avatár eltávolítása";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Felhasználónév létrehozása";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Az utónév túl hosszú";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Az keresztnév túl hosszú.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Opcionális)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Családnév";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Vezetéknév (opcionális)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Szükséges)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Keresztnév";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Keresztnév (opcionális)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "A profil frissítéséhez aktív internetkapcsolat szükséges.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Signal profilod végpontok közt titkosítva kerül továbbításra. Kontaktjaid számára akkor lesz látható, mikor új beszélgetést kezdeményezel vagy elfogadsz rá egy felkérést, illetve ha csatlakozol egy csoporthoz.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "A profilod a végpontok közt titkosítva kerül továbbításra. Kontaktjaid számára akkor lesz látható, mikor új beszélgetést kezdeményezel vagy elfogadsz.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Mentés";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profil";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Felhasználónév";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Megjelőlés olvasottként";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Push értesítések újraregisztrálása sikeresen megtörtént.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Azonnali értesítések";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "A fiókod nem aktiválható amíg a neked küldött ellenőrző kódot meg nem adod.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "A folytatáshoz ellenőrizd a telefonod internet kapcsolatát és próbáld újra.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Ellenőrizd hálózati kapcsolatod";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Telefonszám formátum nem támogatott, vedd fel a kapcsolatot a supporttal.";
 
@@ -3936,6 +3975,18 @@
 
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Hiányzó telefonszám";
+
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Az ellenőrző kód erre a számra kerül kiküldésre. Helyes a fenti telefonszámod?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Szám megerősítés: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Szerkesztés";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Ellenőrzés %@...";
 
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Elutasít";
@@ -4300,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Háttérkép beállítása";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "Az alkalmazásról";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Fiók";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Letiltás";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Cenzúra megkerülése";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Hely: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Hely";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Ha engedélyezed, a Signal megpróbálja megkerülni az állami blokkolást. Ne engedélyezd ezt a funkciót, ha a tartózkodási helyeden a Signal nincs cenzúrázva.";
@@ -4327,11 +4378,8 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Cenzúra megkerülés funkció nem szükséges; a Signal szolgáltatás aktív.";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Cenzúra megkerülés funkció";
-
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_DEBUGLOG" = "Debug Log engedélyezés";
+"SETTINGS_ADVANCED_DEBUGLOG" = "Hibanapló engedélyezés";
 
 /* Label for the 'advanced pin settings' button. */
 "SETTINGS_ADVANCED_PIN_SETTINGS" = "További PIN beállítások";
@@ -4345,20 +4393,14 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "PIN engedélyezése";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "Signal PIN";
+/* No comment provided by engineer. */
+"SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Hibanapló továbbítása";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Debug Log továbbítása";
-
-/* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Haladó";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Hibanaplók";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Telefon kontaktokban tárolt profilkép használata";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Telefon kontaktokban tárolt profilkép használata.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
 "SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Profilképek a telefon kontaktlistából";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Felhasználó letiltása";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Letiltott kontaktok és csoportok listája.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Nincsenek Signal felhasználó kontaktjaid.";
 
@@ -4441,10 +4480,13 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Minden hívás a Signal kiszolgálón keresztül haladjon - ezzel elfedhető IP címed a hívott fél számára. A funkció engedélyezése csökkentheti a hívásminőséget.";
 
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Beszélgetések";
+
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Összes beszélgetés törlése";
 
-/* No comment provided by engineer. */
+/* Footer for the 'about' help section */
 "SETTINGS_COPYRIGHT" = "Copyright Signal Messenger \nLicenc típusa: GPLv3";
 
 /* Label for the 'data' section of the app settings. */
@@ -4454,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Adattakarékos mód";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "A kevesebb adat használatának beállítása javíthatja a hívások minőségét gyenge hálózatokon";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Mérsékeltebb adathasználat javíthatja a hívások minőségét gyenge hálózatokon.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Hívások";
@@ -4463,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Hangüzenetek, egyszeri média és a 100 KB alatti matricák mindig automatikusan letöltődnek.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "MÉDIA AUTO-LETÖLTÉS";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Automatikus letöltés";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Auto-letöltés alaphelyzetbe";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Súgó";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Összes beszélgetés törlése";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Információ";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Hívd meg barátaidat";
 
@@ -4507,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Beszélgetés háttérkép";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Adatvédelmi & Ált. Szerződési Feltételek";
 
 /* Setting for enabling & disabling link previews. */
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Üzenetküldés";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "Láthatod és mutathatod üzenetek olvasott állapotát és a gépelést jelző indikátort. Ha letiltod, te sem látod majd az olvasott állapotjelzőket és a gépelési indikátort.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Beállítások";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+/* A setting controlling whether muted conversations are shown in the badge count */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Némítottak jelölése is";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Jelölő számláló";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Hívás és üzenet értesítések érkezhetnek a készülék zárolási képernyőjére. Hogy mi jelenjen meg bennük, azt itt szabályozhatod.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Hívás és üzenet értesítések érkezhetnek a készülék zárolási képernyőjére.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Értesítés tartalma";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Ismerős csatlakozott a Signalhoz";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Ismerős csatlakozott Signalon";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Események";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Értesítsen mikor...";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Értesítések";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Erősítsd meg Signal PIN kódodat";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Az emlékeztetők a PIN kód megjegyzését segítik, ugyanis a PIN-t nem lehet visszaállítani. Az idő múlásával egyre kevesebbszer fogunk kérni a megadására.";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN emlékeztetők";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "A PIN-nek köszönhetően a Signal által tárolt információk titkosítva vannak, így csak te férhetsz hozzájuk. Újratelepítés esetén profilod, beállításaid és kontaktjaid visszaállításra kerülnek.";
+"SETTINGS_PINS_FOOTER" = "A PIN kódnak köszönhetően a Signal által tárolt információk titkosítva vannak, így csak te férhetsz hozzájuk. A PIN nem visszaállítható, de általad felülírható. Újratelepítés esetén profilod, beállításaid és kontaktjaid visszaállításra kerülnek.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Adj meg egy új PIN kódot";
@@ -4601,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "PIN létrehozása";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "SIGNAL PIN";
+"SETTINGS_PINS_TITLE" = "Signal PIN";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "A Signal hívások meg fognak jelenni az iOS hívás Előzményekben.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Cenzúra megkerülés, hívások átjátszása, biztonságos feladó kijelzés beállítások.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Haladó";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Hívások az Előzményekben";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Adatvédelem";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Olvasott nyugták küldése";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Bekapcsolt állapotban ismerőseid értesítést kapnak, amint elolvastad az üzenetüket. Ez a beállítás opcionális és minden beszélgetésre vonatkozik.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Kikapcsolás";
@@ -4642,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Kijelző zárolási ideje";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Oldd fel a Signal zárolási képernyőjét Touch ID, Face ID, vagy iOS jelkód segítségével. Hívásokat fogadni, üzenet- és hívási értesítőket kapni aktív képernyőzár mellett is tudni fogsz. A Signal értesítési beállításainak finomhangolásával később is eldöntheted, hogy mit engedj megjelenni a kijelzőn.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Kijelző zárolás";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Kijelző zárolás";
 
 /* No comment provided by engineer. */
 "SETTINGS_SCREEN_SECURITY" = "Képernyővédelem engedélyezése";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Nem jelenik meg a Signal képernyőjének tartalma az appok közötti váltáskor.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "A Signal hívások meg fognak jelenni az iOS hívás Előzményekben.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Hangok";
@@ -4663,11 +4693,23 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Hívás";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Touch ID, FaceID, jelkód használata a Signal feloldásához.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Face ID használata a Signal feloldásához.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Jelkód használata a Signal feloldásához.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Touch ID használata a Signal feloldásához.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Biztonságos képernyő";
+"SETTINGS_SECURITY_TITLE" = "Biztonság";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Megjelenítés javasolatok közt";
+"SETTINGS_SHARING_SUGGESTIONS" = "Beszélgetések megjelenítése javasoltak között";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
 "SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal beszélgetések megjelennek a más alkalmazásokból történő megosztási javaslatok közt.";
@@ -4676,22 +4718,16 @@
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Regisztrációs zár";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Növeld a biztonságot azáltal, hogy a telefonszámod regisztrációját Signal PIN kódod megadásához kötöd.";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Telefonszámod újraregisztrációját Signal PIN kódod megadásához kötheted.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Gépelés mutatása";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Ezzel az opcióval láthatod, ha a másik fél éppen gépel. A funkció bekapcsolásával a te gépelésed is láthatóvá válik a másik fél számára. Opcionális funkció és az összes beszélgetésre érvényes lesz.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Rejtett feladó";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Állapotjelzők megjelenítése";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Jelenítsen meg egy státuszikont a rejtett feladóval kézbesített üzenetek \"Üzenet részletei\" menüpontjában.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Státusz ikon mutatása";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Engedélyezés mindenkitől";
@@ -4703,7 +4739,7 @@
 "SETTINGS_VERSION" = "Verzió";
 
 /* Label for the 'who can' privacy settings. */
-"SETTINGS_WHO_CAN" = "Ki tud...";
+"SETTINGS_WHO_CAN" = "Ki tudja...";
 
 /* action sheet item to open native mail app */
 "SHARE_ACTION_MAIL" = "Email";
@@ -4883,7 +4919,7 @@
 "SUPPORT_FAQ_PROMPT" = "Láttad már a GYIK-et?";
 
 /* Label describing support switch to attach debug logs */
-"SUPPORT_INCLUDE_DEBUG_LOG" = "Hibakeresési napló csatolása";
+"SUPPORT_INCLUDE_DEBUG_LOG" = "Hibanapló csatolása";
 
 /* A string in the navigation bar indicating that the support request is uploading logs */
 "SUPPORT_LOG_UPLOAD_IN_PROGRESS" = "Betöltés";
@@ -5088,9 +5124,6 @@
 
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "Signalban a felhasználónév nem kötelező. Ha mégis beállítod, más felhasználók a jövőben név alapján is megtalálhatnak, a telefonszámod ismerete nélkül.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Felhasználónév";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "A felhasználónevek csak az alábbi karaktereket tartalmazhatják: a-z, 0-9, _";

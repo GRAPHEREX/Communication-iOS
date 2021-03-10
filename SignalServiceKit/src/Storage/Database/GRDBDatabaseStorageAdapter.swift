@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -57,7 +57,11 @@ public class GRDBDatabaseStorageAdapter: NSObject {
 
         super.init()
 
-        AppReadiness.runNowOrWhenAppWillBecomeReady {
+        AppReadiness.runNowOrWhenAppWillBecomeReady { [weak self] in
+            // This adapter may have been discarded after running
+            // schema migrations.            
+            guard let self = self else { return }
+
             BenchEventStart(title: "GRDB Setup", eventId: "GRDB Setup")
             defer { BenchEventComplete(eventId: "GRDB Setup") }
             do {
@@ -66,10 +70,6 @@ public class GRDBDatabaseStorageAdapter: NSObject {
                 owsFail("unable to setup database: \(error)")
             }
         }
-    }
-
-    func newDatabaseQueue() -> GRDBDatabaseQueue {
-        return GRDBDatabaseQueue(storageAdapter: self)
     }
 
     public func add(function: DatabaseFunction) {
@@ -140,7 +140,7 @@ public class GRDBDatabaseStorageAdapter: NSObject {
     }
 
     func setup() throws {
-        GRDBMediaGalleryFinder.setup(storage: self)
+        MediaGalleryManager.setup(storage: self)
         try setupUIDatabase()
     }
 
@@ -289,7 +289,7 @@ extension GRDBDatabaseStorageAdapter: SDSDatabaseStorageAdapter {
     }
 
     // TODO readThrows/writeThrows flavors
-    public func uiReadThrows(block: @escaping (GRDBReadTransaction) throws -> Void) rethrows {
+    public func uiReadThrows(block: (GRDBReadTransaction) throws -> Void) rethrows {
         assertCanRead()
 
         #if TESTABLE_BUILD
@@ -315,7 +315,7 @@ extension GRDBDatabaseStorageAdapter: SDSDatabaseStorageAdapter {
     }
 
     @discardableResult
-    public func read<T>(block: @escaping (GRDBReadTransaction) throws -> T) throws -> T {
+    public func read<T>(block: (GRDBReadTransaction) throws -> T) throws -> T {
         assertCanRead()
 
         #if TESTABLE_BUILD
@@ -340,7 +340,7 @@ extension GRDBDatabaseStorageAdapter: SDSDatabaseStorageAdapter {
     }
 
     @discardableResult
-    public func write<T>(block: @escaping (GRDBWriteTransaction) throws -> T) throws -> T {
+    public func write<T>(block: (GRDBWriteTransaction) throws -> T) throws -> T {
 
         var value: T!
         var thrown: Error?
@@ -358,7 +358,7 @@ extension GRDBDatabaseStorageAdapter: SDSDatabaseStorageAdapter {
     }
 
     @objc
-    public func uiRead(block: @escaping (GRDBReadTransaction) -> Void) throws {
+    public func uiRead(block: (GRDBReadTransaction) -> Void) throws {
         assertCanRead()
         AssertIsOnMainThread()
 
@@ -389,7 +389,7 @@ extension GRDBDatabaseStorageAdapter: SDSDatabaseStorageAdapter {
     }
 
     @objc
-    public func read(block: @escaping (GRDBReadTransaction) -> Void) throws {
+    public func read(block: (GRDBReadTransaction) -> Void) throws {
         assertCanRead()
 
         #if TESTABLE_BUILD
@@ -432,7 +432,7 @@ extension GRDBDatabaseStorageAdapter: SDSDatabaseStorageAdapter {
     }
 
     @objc
-    public func write(block: @escaping (GRDBWriteTransaction) -> Void) throws {
+    public func write(block: (GRDBWriteTransaction) -> Void) throws {
         assertCanWrite()
 
         #if TESTABLE_BUILD

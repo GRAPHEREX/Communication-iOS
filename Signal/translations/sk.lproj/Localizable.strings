@@ -1,6 +1,9 @@
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Teraz nie";
 
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "About Signal";
+
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Potvrdiť nové bezpečnostné číslo";
 
@@ -13,17 +16,23 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Kontakt";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Kontakt pre %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Médiá";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Správa";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Vy";
 
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Nálepka";
+
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Hlasová správa";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Hlasová správa %@ sekúnd";
 
 /* Label for 'audio call' button in contact view. */
 "ACTION_AUDIO_CALL" = "Signal hovor";
@@ -620,7 +629,7 @@
 "CONFIRM_ACCOUNT_DESTRUCTION_TITLE" = "Naozaj chcete vymazať svoj účet?";
 
 /* No comment provided by engineer. */
-"CONFIRM_DELETE_LINKED_DATA_TEXT" = "Toto zresetuje aplikáciu prostredníctvom vymazania všetkých vašich správ z tohto zariadenia. Stále budete môcť váš telefón pripojiť, ale vymazané správy to neobnoví. Po dokončení tohto procesu sa aplikácia zatvorí. ";
+"CONFIRM_DELETE_LINKED_DATA_TEXT" = "Toto zresetuje aplikáciu prostredníctvom vymazania všetkých vašich správ z tohto zariadenia. Stále budete môcť váš telefón prepojiť, ale vymazané správy sa neobnovia. Po dokončení tohto procesu sa aplikácia zatvorí. ";
 
 /* No comment provided by engineer. */
 "CONFIRM_DELETE_LINKED_DATA_TITLE" = "Ste si istý/á, že chcete vymazať všetky dáta?";
@@ -632,7 +641,7 @@
 "CONFIRM_LEAVE_GROUP_TITLE" = "Naozaj chcete odísť?";
 
 /* Button text */
-"CONFIRM_LINK_NEW_DEVICE_ACTION" = "Pripojiť nové zariadenie";
+"CONFIRM_LINK_NEW_DEVICE_ACTION" = "Prepojiť nové zariadenie";
 
 /* No comment provided by engineer. */
 "CONFIRMATION_TITLE" = "Potvrdiť";
@@ -838,9 +847,6 @@
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Blokovať používateľa";
 
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Informácie o kontakte";
-
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Farba chatu";
 
@@ -965,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Neuložené zmeny";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Zobraziť všetkých členov";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "See All";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Tento používateľ je vo vašich kontaktoch";
@@ -981,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Pridať ku kontaktom";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ odoslal(a):";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Odoslali ste:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Vymazať všetko";
@@ -1082,10 +1094,10 @@
 "DEREGISTRATION_WARNING" = "Zariadenie už nie je registrované. Vaše telefónne číslo môže byť registrované v Signale na inom zariadení. Ťukniťe pre opätovnú registráciu.";
 
 /* {{Short Date}} when device last communicated with Signal Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Posledná aktivita: %@";
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Last active %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Pripojené: %@";
+"DEVICE_LINKED_AT_LABEL" = "Linked %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Nepodarilo sa aktualizovať zoznam zariadení.";
@@ -1103,13 +1115,13 @@
 "DEVICE_TRANSFER_CHOICE_EXPLANATION" = "Ak máte vaše staré iOS zariadenie, môžete si z neho bezpečne preniesť účet a správy do tohto zariadenia.";
 
 /* The explanation for the device transfer 'choice' view when linking a device */
-"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Ak ste predtým používali Signal na pripojenom iPade,  môžete si z neho bezpečne preniesť účet a správy do tohto zariadenia.";
+"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Ak ste predtým používali Signal na prepojenom iPade,  môžete si z neho bezpečne preniesť účet a správy do tohto zariadenia.";
 
 /* The body for the device transfer 'choice' view 'register' option */
 "DEVICE_TRANSFER_CHOICE_REGISTER_BODY" = "Pokračovať bez prenosu účtu a správ";
 
 /* The body for the device transfer 'choice' view 'register' option when linking a device */
-"DEVICE_TRANSFER_CHOICE_REGISTER_LINKED_BODY" = "Pridať tento iPad ako nové pripojené zariadenie bez prenosu histórie konverzácií";
+"DEVICE_TRANSFER_CHOICE_REGISTER_LINKED_BODY" = "Pridať tento iPad ako nové prepojené zariadenie bez prenosu histórie konverzácií";
 
 /* The title for the device transfer 'choice' view 'register' option when linking a device */
 "DEVICE_TRANSFER_CHOICE_REGISTER_LINKED_TITLE" = "Pridať ako nové zariadenie";
@@ -1142,7 +1154,7 @@
 "DEVICE_TRANSFER_ERROR_GENERIC" = "Prenos sa nepodarilo dokončiť, prosím, uistite sa, že vaše zariadenia sú blízko seba, a skúste to znovu";
 
 /* An error indicating the user must scan this code with a linked device to transfer. */
-"DEVICE_TRANSFER_ERROR_MODE_MISMATCH_LINKED" = "Pre nastavenie tohto  iPadu ako pripojené zariadenie, musíte skenovať s vaším starým iPadom";
+"DEVICE_TRANSFER_ERROR_MODE_MISMATCH_LINKED" = "Pre nastavenie tohto  iPadu ako prepojené zariadenie musíte skenovať s vaším starým iPadom";
 
 /* An error indicating the user must scan this code with a primary device to transfer. */
 "DEVICE_TRANSFER_ERROR_MODE_MISMATCH_PRIMARY" = "Na prenos vášho účtu, musíte skenovať s vaším iPhoneom";
@@ -1394,7 +1406,7 @@
 "ERROR_NETWORK_FAILURE" = "Chyba siete";
 
 /* Error indicating a send failure due to a delinked application. */
-"ERROR_SENDING_DELINKED" = "Vaše zariadenie už nie je pripojené. Pre odosielanie ďalších správ ho, prosím, znovu pripojte.";
+"ERROR_SENDING_DELINKED" = "Vaše zariadenie už nie je prepojené. Pre odosielanie ďalších správ ho, prosím, znovu prepojte.";
 
 /* Error indicating a send failure due to a deregistered application. */
 "ERROR_SENDING_DEREGISTERED" = "Vaše zariadenie už nie je registrované. Pre odosielanie ďalších správ ho, prosím, znovu zaregistrujte.";
@@ -1871,7 +1883,7 @@
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Zdieľať cez Signal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Každý s týmto odkazom sa môže pridať do skupiny, alebo odoslať žiadosť o členstvo. Zdieľajte ho s ľuďmi, ktorým dôverujete.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Každý, kto má tento odkaz, môže vidieť názov a členov tejto skupiny a a požiadať o členstvo. Zdieľajte ho s ľuďmi, ktorým dôverujete.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Odkaz do skupiny";
@@ -1975,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Videohovor";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ group members have similar names.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Ťuknite pre kontrolu";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Člen";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Overiť členov";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ group members have similar names, review the members below or choose to take action.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ group members have the same name, review the members below or choose to take action.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ group members have the same name.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Názov skupiny (povinné)";
 
@@ -2067,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ schválil(a) žiadosť o členstvo v skupine od %1$@.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "Žiadosť o členstvo v skupine od %@ bola schválená.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ zrušil(a) svoju žiadosť o členstvo v skupine.";
@@ -2486,7 +2516,7 @@
 "INCOMING_CALL_FORMAT" = "%@ vám volal(a)";
 
 /* Shown in inbox and conversation after syncing as a placeholder indicating why your message history is missing. */
-"INFO_MESSAGE_SYNCED_THREAD" = "Môžete prijímať alebo odosielať synchronizované správy zo svojho telefónu alebo iPadu. Kvôli vašej bezpečnosti sa história chatov do nových pripojených zariadení neprenáša.";
+"INFO_MESSAGE_SYNCED_THREAD" = "Môžete prijímať alebo odosielať synchronizované správy zo svojho telefónu alebo iPadu. Kvôli vašej bezpečnosti sa história chatov do nových prepojených zariadení neprenáša.";
 
 /* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
 "INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ používa Signal!";
@@ -2582,16 +2612,16 @@
 "LEAVE_GROUP_FAILED" = "Pri opúšťaní skupiny došlo ku chybe.";
 
 /* report an invalid linking code */
-"LINK_DEVICE_INVALID_CODE_BODY" = "Tento QR kód je neplatný. Prosím, uistite sa, že skenujete QR kód zobrazený na zariadení, ktoré chcete pripojiť.";
+"LINK_DEVICE_INVALID_CODE_BODY" = "Tento QR kód je neplatný. Prosím, uistite sa, že skenujete QR kód zobrazený na zariadení, ktoré chcete prepojiť.";
 
 /* report an invalid linking code */
-"LINK_DEVICE_INVALID_CODE_TITLE" = "Pripojenie zariadenia zlyhalo";
+"LINK_DEVICE_INVALID_CODE_TITLE" = "Prepojenie zariadenia zlyhalo";
 
 /* confirm the users intent to link a new device */
 "LINK_DEVICE_PERMISSION_ALERT_BODY" = "Toto zariadenie bude vidieť vaše skupiny a kontakty, bude mať prístup k vašim chatom a bude môcť odosielať správy vo vašom mene.";
 
 /* confirm the users intent to link a new device */
-"LINK_DEVICE_PERMISSION_ALERT_TITLE" = "Pripojiť toto zariadenie?";
+"LINK_DEVICE_PERMISSION_ALERT_TITLE" = "Prepojiť toto zariadenie?";
 
 /* attempt another linking */
 "LINK_DEVICE_RESTART" = "Skúsiť znovu";
@@ -2600,22 +2630,22 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Naskenujte QR kód zobrazený na zariadení, ktoré chcete prepojiť.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Skenovať QR kód";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scan QR Code to link a new device.";
 
 /* Navigation title when scanning QR code to add new device. */
-"LINK_NEW_DEVICE_TITLE" = "Pripojiť nové zariadenie";
+"LINK_NEW_DEVICE_TITLE" = "Prepojiť nové zariadenie";
 
 /* Label for link previews with an unknown host. */
-"LINK_PREVIEW_UNKNOWN_DOMAIN" = "Ukážka stránky";
+"LINK_PREVIEW_UNKNOWN_DOMAIN" = "Náhľad stránky";
 
 /* Menu item and navbar title for the device manager */
-"LINKED_DEVICES_TITLE" = "Pripojené zariadenia";
+"LINKED_DEVICES_TITLE" = "Prepojené zariadenia";
 
 /* Alert Title */
-"LINKING_DEVICE_FAILED_TITLE" = "Pripojenie zariadenia zlyhalo";
+"LINKING_DEVICE_FAILED_TITLE" = "Prepojenie zariadenia zlyhalo";
 
 /* Body for link previews megaphone */
-"LINKPREVIEWS_MEGAPHONE_BODY" = "Ukážky stránok sa odteraz budú generovať pre všetky odkazy.";
+"LINKPREVIEWS_MEGAPHONE_BODY" = "Náhľady stránok sa odteraz budú generovať pre všetky odkazy.";
 
 /* Disable button for link previews megaphone */
 "LINKPREVIEWS_MEGAPHONE_BUTTON_DISABLE" = "Zrušiť";
@@ -2647,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Vybrať umiestnenie";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Logovanie";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Debug logs can help Signal fix issues and crashes.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Správa";
@@ -2960,16 +2993,19 @@
 "MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Signal vyžaduje pre túto funkciu prístup k vašim fotkám.";
 
 /* alert title: cannot link - reached max linked devices */
-"MULTIDEVICE_PAIRING_MAX_DESC" = "Nemôžete pripojiť viac zariadení.";
+"MULTIDEVICE_PAIRING_MAX_DESC" = "Nemôžete prepojiť viac zariadení.";
 
 /* alert body: cannot link - reached max linked devices */
-"MULTIDEVICE_PAIRING_MAX_RECOVERY" = "Dosiahli ste maximálny počet zariadení, ktoré môžete k vášmu účtu momentálne pripojiť. Prosím, odstráňte nejaké zariadenie a skúste to znovu.";
+"MULTIDEVICE_PAIRING_MAX_RECOVERY" = "Dosiahli ste maximálny počet zariadení, ktoré s vašim účtom môžete momentálne prepojiť. Prosím, odstráňte nejaké zariadenie a skúste to znovu.";
 
 /* An explanation of the consequences of muting a thread. */
 "MUTE_BEHAVIOR_EXPLANATION" = "O stlmených chatoch nebudete dostávať hlásenia.";
 
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Stlmený/á";
+
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Recently changed their profile name from %1$@ to %2$@.";
 
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Preskočiť";
@@ -3052,6 +3088,9 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Žiadne spoločné skupiny";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Žiadne ďalšie spoločné skupiny.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Vyberte si kontakt alebo skupinu a zahájte rozhovor.";
 
@@ -3105,9 +3144,6 @@
 
 /* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Prehrať keď je aplikácia otvorená";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Zvuky";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Pridať vlastný zvuk…";
@@ -3164,34 +3200,34 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_PROVISIONING" = "Registrovať iPad";
 
 /* button indicating that the user will link their phone */
-"ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "Pripojiť iPhone";
+"ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "Prepojiť iPhone";
 
 /* explanation to the user they're switching from linking to registering flow */
 "ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Ťuknutím na  “Registrovať iPad” budete môcť vytvoriť čisto nový Signal účet, alebo presunúť existujúci účet na tento iPad. Toto vypne Signal na akomkoľvek inom zariadení, ktoré je momentálne registrované prostredníctvom tohto istého telefónneho čísla.";
 
 /* explanation to the user they're switching from registering to linking flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Ťuknutím na “Pripojiť iPhone” budete môcť spojiť váš telefón s existujúcim účtom. Vo všeobecnosti sa to neodporúča a obmedzí to niektoré funkcie, ako uskutočňovanie hovorov.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Ťuknutím na “Prepojiť iPhone” budete môcť spojiť váš telefón s existujúcim účtom. Vo všeobecnosti sa to neodporúča a obmedzí to niektoré funkcie, ako uskutočňovanie hovorov.";
 
 /* header text indicating to the user they're switching from linking to registering flow */
 "ONBOARDING_MODE_SWITCH_TITLE_PROVISIONING" = "Registrovať tento iPad";
 
 /* header text indicating to the user they're switching from registering to linking flow */
-"ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "Pripojiť tento iPhone";
+"ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "Prepojiť tento iPhone";
 
 /* warning to the user that registering an ipad is not recommended */
 "ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Registrácia tohto iPadu vypne Signal na akomkoľvek inom zariadení, ktoré je momentálne registrované prostredníctvom tohto istého telefónneho čísla.";
 
 /* warning to the user that linking a phone is not recommended */
-"ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Pripojenie vášho iPhonu sa neodporúča a obmedzí to základnú funkcionalitu.";
+"ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Prepojenie vášho iPhonu sa neodporúča a obmedzí to základnú funkcionalitu.";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
 "ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Povoliť povolenia";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Hlásenia vám umožnia vidieť, keď správy dorazia, ako aj prijímať aktualizácie o novej aktivite v chatoch.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Povolenie hlásení a kontaktov vám umožní  vidieť prichádzajúce správy a nájsť osoby, ktoré poznáte. Kontakty sú zašifrované, a tak ich služba Signal nevidí.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Získať správu";
+"ONBOARDING_PERMISSIONS_TITLE" = "Povoliť povolenia";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Zvoľte, kto vás môže nájsť v službe Signal podľa vášho telefónneho čísla %@";
@@ -3199,11 +3235,17 @@
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Kto vás môže nájsť podľa vášho telefónneho čísla?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Vaše telefónne číslo";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Prosím, počkajte pár minút, než to znovu skúsite. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Pre začatie, zadajte svoje telefónne číslo";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Zadajte svoje telefónne číslo";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Neplatné číslo";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Neplatné telefónne číslo. Pre registráciu zadajte, prosím, platné telefónne číslo.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Pokusy na uhádnutie PIN kódu ste si vyčerpali, ale ešte stále môžete získať prístup k vášmu účtu Signal, ak si vytvoríte nový PIN. Kvôli vášmu súkromiu a vašej bezpečnosti sa váš účet obnoví bez akýchkoľvek uložených informácií o profile či nastavení.";
@@ -3229,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Zadajte svoj PIN";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Váš profil";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Priezvisko (nepovinné)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Krstné meno (povinné)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Podmienky a Ochrana osobných údajov";
 
@@ -3238,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Zlé číslo?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Nedostal(a) som kód (dostupné o %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Zavolať mi";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Kontaktovať podporu Signal";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Zavolať mi o %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Overuje sa kód...";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Tento kód je nesprávny";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Nedostal(a) som kód";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Znovu poslať kód";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Uistite sa, prosím, že ste pripojený/á k mobilnej sieti a môžete prijímať SMS správy.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Žiaden kód?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Znovu poslať kód";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Radšej mi zavolajte";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Ešte stále žiadny kód?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Znovu odoslať kód o %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Zadajte kód, ktorý sme odoslali na %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Práve sme znovu odoslali kód na %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Overovací kód";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Nastavenia";
@@ -3697,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ si zmenil(a) názov profilu na %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Pridať do profilu";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Your Name";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Informácie";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Name";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Používateľské meno";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Nastaviť profilovú fotku";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Informácie";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Odstrániť fotku";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Vytvoriť používateľské meno";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Vaše priezvisko je pridlhé.";
@@ -3722,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Vaše krstné meno je pridlhé.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Nepovinné)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Priezvisko";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Priezvisko (nepovinné)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Povinné)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Krstné meno";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Krstné meno (povinné)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Profil je možné aktualizovať len pri pripojení na internet.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Váš profil využíva koncové šifrovanie. Váš profil a jeho zmeny sa zobrazia vašim kontaktom, keď začnete alebo prijmete nové chaty a keď sa pridáte do nových skupín.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Váš profil využíva koncové šifrovanie. Váš profil a jeho zmeny budú vidieť vaše kontakty, keď začnete alebo prijmete nové chaty.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Uložiť";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profil";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Používateľské meno";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Označiť ako prečítané";
@@ -3759,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Push notifikácie boli úspešne znovu zaregistrované.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Push notifikácie";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -3907,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Nemôžeme aktivovať váš účet, kým nepotvrdíte kód, ktorý sme vám poslali.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Pre pokračovanie skontrolujte internetové pripojenie vášho telefónu a skúste to znovu.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Skontrolovať pripojenie";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Tento formát telefónneho čísla nie je podporovaný, kontaktuje podporu prosím.";
 
@@ -3937,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Žiadne telefónne číslo";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Na toto číslo bude odoslaný overovací kód. Je telefónne číslo zobrazené vyššie správne?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Potvrdenie čísla: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Upraviť";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Overuje sa %@...";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Odmietnuť";
 
@@ -3947,7 +3998,7 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "Vybrať nového administrátora";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "Znovu zaregistrovať push notifikácie";
+"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
 
 /* Body for research megaphone */
 "RESEARCH_MEGAPHONE_BODY" = "Aby sme zo Signalu mohli spraviť najlepšiu aplikáciu na posielanie správ na planéte, radi by sme počuli vašu spätnú väzbu.";
@@ -4193,7 +4244,7 @@
 "SEARCH_SECTION_MESSAGES" = "Správy";
 
 /* alert title */
-"SECONDARY_DEVICE_ERROR_FETCHING_LINKING_CODE" = "Nepodarilo sa získať kód pre pripájanie";
+"SECONDARY_DEVICE_ERROR_FETCHING_LINKING_CODE" = "Nepodarilo sa získať kód pre prepájanie";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
 "SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Na prepojenie Signalu s vašim telefónom, aktualizujte Signal na tomto zariadení.";
@@ -4208,37 +4259,37 @@
 "SECONDARY_LINKING_ERROR_OLD_VERSION_TITLE" = "Aktualizácia skenovacieho zariadenia";
 
 /* alert title */
-"SECONDARY_LINKING_ERROR_WAITING_FOR_SCAN" = "Vaše zariadenie sa nepodarilo pripojiť";
+"SECONDARY_LINKING_ERROR_WAITING_FOR_SCAN" = "Vaše zariadenie sa nepodarilo prepojiť";
 
 /* header text when this device is being added as a secondary */
 "SECONDARY_ONBOARDING_CHOOSE_DEVICE_NAME" = "Zvoľte názov pre toto zariadenie";
 
 /* label text */
-"SECONDARY_ONBOARDING_CHOOSE_DEVICE_NAME_EXPLANATION" = "Tento názov sa zobrazí v sekcii \"Pripojené zariadenia.\"";
+"SECONDARY_ONBOARDING_CHOOSE_DEVICE_NAME_EXPLANATION" = "Tento názov sa zobrazí v sekcii \"Prepojené zariadenia.\"";
 
 /* text field placeholder */
 "SECONDARY_ONBOARDING_CHOOSE_DEVICE_NAME_PLACEHOLDER" = "Zvoľte názov";
 
 /* body text while displaying a QR code which, when scanned, will link this device. */
-"SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS" = "Dokončiť pripájanie";
+"SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS" = "Dokončiť prepájanie";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Pre pripojenie tohto iPadu k vášmu účtu spustite Signal na vašom telefóne.";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Pre prepojenie tohto iPadu k vášmu účtu spustite Signal na vašom telefóne.";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
 "SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Nemám Signal na svojom telefóne…";
 
 /* alert body */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Choďte do App Store na vašom telefóne, nainštalujte Signal, dokončite proces registrácie a potom budete môcť pripojiť váš iPad k tomu istému účtu.";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Choďte do App Store na vašom telefóne, nainštalujte Signal, dokončite proces registrácie a potom budete môcť prepojiť váš iPad s tým istým účtom.";
 
 /* alert title */
 "SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Inštalovať Signal na váš telefón";
 
 /* body text while displaying a QR code which, when scanned, will link this device. */
-"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Ťuknite na váš profilový obrázok pre otvorenie Nastavení Signal vo vašom telefóne. Potom na \"Pripojené zariadenia\" a \"Pripojiť nové zariadenie\" pre naskenovanie tohto kódu pomocou vášho telefónu:";
+"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Ťuknite na váš profilový obrázok pre otvorenie Nastavení Signal vo vašom telefóne. Potom na \"Prepojené zariadenia\" a \"Prepojiť nové zariadenie\" pre naskenovanie tohto kódu pomocou vášho telefónu:";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
-"SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Získajte tu pomoc s pripojením vášho iPadu";
+"SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Získajte tu pomoc s prepojením vášho iPadu";
 
 /* header text while displaying a QR code which, when scanned, will link this device. */
 "SECONDARY_ONBOARDING_SCAN_CODE_TITLE" = "Zoskenujte QR kód pomocou vášho telefónu";
@@ -4300,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Nastaviť pozadie";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "O aplikácii";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Account";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Blokovať";
@@ -4309,8 +4360,8 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Obchádzanie cenzúry";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Poloha: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Poloha";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Keď je povolené, Signal sa pokúsi obísť cenzúru. Nepovoľujte v umiestneniach, kde Signal nie je cenzurovaný.";
@@ -4327,9 +4378,6 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Obchádzanie cenzúry nie je nutné; už ste pripojený k službe Signal.";
 
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Obchádzanie cenzúry";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Povoliť denník ladenia";
 
@@ -4345,23 +4393,17 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Zapnúť PIN";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "PIN kód Signalu";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Odoslať denník ladenia";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Pokročilé";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Chybové záznamy";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Zobraziť systémové fotky kontaktov, ak sú dostupné";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Použiť systémové fotky kontaktov";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use System Contact Photos";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "Motív";
@@ -4423,9 +4465,6 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Pridať blokovaného používateľa";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Zoznam vami blokovaných kontaktov a skupín.";
-
 /* A label that indicates the user has no Signal contacts. */
 "SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Nemáte žiadne kontakty v Signale.";
 
@@ -4441,11 +4480,14 @@
 /* User settings section footer, a detailed explanation */
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Smerovať všetky hovory cez server Signal pre zabránenie, aby váš kontakt odhalil vašu IP adresu. Zapnutie zníži kvalitu hovoru.";
 
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Chat";
+
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Vymazať históriu chatov";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger \n Licencované pod GPLv3";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nLicensed under the GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Využitie dát";
@@ -4454,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Využívať menej dát";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Využívanie menej dát môže zlepšiť hovory na zlých sieťach";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Volania";
@@ -4463,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Hlasové správy, médiá na jedno zobrazenie a nálepky (pod 100kb) sa vždy stiahnu automaticky.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "AUTOMATICKÉ SŤAHOVANIE MÉDIÍ";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Auto-Download";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Resetovať nastavenia automatického sťahovania médií";
@@ -4489,12 +4531,6 @@
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Pomocník";
 
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Vymazať históriu chatov";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Informácie";
-
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Pozvite svojich priateľov";
 
@@ -4507,14 +4543,14 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Pozadie chatu";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Podmienky a Ochrana osobných údajov";
 
 /* Setting for enabling & disabling link previews. */
-"SETTINGS_LINK_PREVIEWS" = "Generovať ukážky stránok";
+"SETTINGS_LINK_PREVIEWS" = "Generovať náhľady stránok";
 
 /* Footer for setting for enabling & disabling link previews. */
-"SETTINGS_LINK_PREVIEWS_FOOTER" = "Získať ukážky stránok priamo z webových prepojení pre správy, ktoré odošlete.";
+"SETTINGS_LINK_PREVIEWS_FOOTER" = "Získať náhľady stránok priamo z webových prepojení pre správy, ktoré odošlete.";
 
 /* Label for the 'never' media attachment download behavior in the media download settings. */
 "SETTINGS_MEDIA_DOWNLOAD_CONDITION_NEVER" = "Nikdy";
@@ -4540,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Odosielanie správ";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "See and share when messages are being read and typed. If disabled, you won’t see read receipts or typing indicators from others.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Nastavenia";
 
-/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Počítať stlmené chaty";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Include Muted Chats";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Počet odznakov";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Hlásenia o hovoroch a správach sa môžu zobraziť, keď je váš telefón zamknutý. Môžete obmedziť, čo sa v týchto hláseniach ukáže.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Call and Message notifications can appear while your phone is locked.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Obsah hlásení";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Kontakt začal používať Signal";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Contact Joins Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Udalosti";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notify when…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Hlásenia";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4585,14 +4624,11 @@
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Overte váš PIN pre Signal";
 
-/* Footer for the 'pin reminder' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Upomienky vám pomôžu zapamätať si PIN, keďže ho nie je možné obnoviť. Postupom času vás oň budeme žiadať zriedkavejšie.";
-
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN upomienky";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PIN kódy udržiavajú informácie uložené v Signale zašifrované, aby ste k nim mali prístup iba vy. Váš profil, vaše nastavenia a kontakty sa po opätovnej inštalácii Signalu obnovia.";
+"SETTINGS_PINS_FOOTER" = "PINs keep information stored with Signal encrypted so only you can access it. Your PIN cannot be recovered. Your profile, settings, and contacts will restore when you reinstall Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Zmente si PIN";
@@ -4601,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Vytvoriť PIN";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "PIN pre SIGNAL";
+"SETTINGS_PINS_TITLE" = "PIN kód Signal";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Zobraziť hovory v zozname \"Posledné\" v iOS aplikácii Telefón.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Pokročilé";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Zobraziť hovory v Posledných";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Súkromie";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Potvrdenia o prečítaní";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Zistite a zdieľajte, keď si niekto prečíta správu. Toto nastavenie je voliteľné a vzťahuje sa na všetky chaty.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Vypnúť";
@@ -4634,7 +4670,7 @@
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_TITLE" = "Zapnúť registračný zámok?";
 
 /* Label for re-link button. */
-"SETTINGS_RELINK_BUTTON" = "Opätovne pripojiť";
+"SETTINGS_RELINK_BUTTON" = "Opätovne prepojiť";
 
 /* Label for re-registration button. */
 "SETTINGS_REREGISTER_BUTTON" = "Znovu zaregistrovať";
@@ -4642,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Časový limit pred uzamknutím";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Odomknite obrazovku aplikácie Signal pomocou Touch ID, Face ID, alebo kódového zámku na vašom iOS zariadení. Pri zamknutej obrazovke budete aj naďalej môcť prijímať prichádzajúce hovory a dostávať hlásenia o správach a hovoroch. Nastavenia hlásení Signalu vám umožňujú zobrazené informácie prispôsobiť.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Zámok obrazovky";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Zámok obrazovky";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Zapnúť zabezpečenie obrazovky";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Zabrániť, aby sa ukážky zo Signalu zobrazovali v prepínači aplikácií.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Zvuky";
@@ -4663,11 +4693,23 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Uskutočňovanie hovorov";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Zabezpečenie obrazovky";
+"SETTINGS_SECURITY_TITLE" = "App Security";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Zobraziť v návrhoch";
+"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
 "SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Pri zdieľaní z iných aplikácií sa Signalovské chaty zobrazujú ako návrhy.";
@@ -4676,22 +4718,16 @@
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Registračný zámok";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Pre zvýšenú bezpečnosť povoľte registračný zámok, ktorý vás pri opätovnej registrácii tohto telefónneho čísla do Signalu požiada o váš PIN.";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Indikátory písania";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Zistite a zdieľajte, keď niekto píše správu. Toto nastavenie je voliteľné a vzťahuje sa na všetky chaty.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Šifrovaný odosielateľ";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Zobraziť indikátory";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Zobraziť stavovú ikonu v detailoch správ, ktoré boli doručené s použitím zapečateného odosielateľa.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Povoliť od každého";
@@ -4904,7 +4940,7 @@
 "THREAD_DETAILS_MORE_MUTUAL_GROUP" = "Člen %@, %@, a %lu ďalších skupín";
 
 /* Subtitle appearing at the top of the users 'note to self' conversation */
-"THREAD_DETAILS_NOTE_TO_SELF_EXPLANATION" = "V tomto chate si môžete pridávať poznámky. Ak máte vo vašom účte nejaké pripojené zariadenia, nové poznámky sa budú synchronizovať.";
+"THREAD_DETAILS_NOTE_TO_SELF_EXPLANATION" = "V tomto chate si môžete pridávať poznámky. Ak máte vo vašom účte nejaké prepojené zariadenia, nové poznámky sa budú synchronizovať.";
 
 /* A string indicating a mutual group the user shares with this contact. Embeds {{mutual group name}} */
 "THREAD_DETAILS_ONE_MUTUAL_GROUP" = "Člen %@";
@@ -5030,7 +5066,7 @@
 "UNLINK_CONFIRMATION_ALERT_TITLE" = "Odpojiť \"%@\"?";
 
 /* Label warning the user that they have been unlinked from their primary device. */
-"UNLINKED_WARNING" = "Zariadenie už nie je pripojené. Pre pokračovanie znovu pripojte Signal k vášmu telefónu.";
+"UNLINKED_WARNING" = "Zariadenie už nie je prepojené. Pre pokračovanie znovu prepojte Signal s vašim telefónom.";
 
 /* Alert title when unlinking device fails */
 "UNLINKING_FAILED_ALERT_TITLE" = "Signal nedokázal odpojiť vaše zariadenie.";
@@ -5088,9 +5124,6 @@
 
 /* An explanation of how usernames work on the username view. */
 "USERNAME_DESCRIPTION" = "Používateľské mená sú v aplikácii Signal voliteľné. Ak sa rozhodnete vytvoriť používateľské meno, ostatní používatelia Signalu vás budú môcť podľa neho nájsť a spojiť sa s vami bez toho, že by poznali vaše telefónne číslo.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Používateľské meno";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Používateľské mená môžu obsahovať iba znaky a-Z, 0-9 a _";

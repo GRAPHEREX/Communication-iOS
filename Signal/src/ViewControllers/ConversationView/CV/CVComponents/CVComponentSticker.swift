@@ -65,18 +65,31 @@ public class CVComponentSticker: CVComponentBase, CVComponent {
             reusableMediaView.owner = componentView
             componentView.reusableMediaView = reusableMediaView
             let mediaView = reusableMediaView.mediaView
-            mediaView.accessibilityLabel = NSLocalizedString("ACCESSIBILITY_LABEL_STICKER",
-                                                             comment: "Accessibility label for stickers.")
             containerView.addArrangedSubview(mediaView)
             componentView.layoutConstraints.append(contentsOf: mediaView.autoSetDimensions(to: .square(stickerSize)))
 
-            if isOutgoing, !attachmentStream.isUploaded, !isFromLinkedDevice {
+            switch CVAttachmentProgressView.progressType(forAttachment: attachmentStream,
+                                                         interaction: interaction) {
+            case .none:
+                break
+            case .uploading:
                 let progressView = CVAttachmentProgressView(direction: .upload(attachmentStream: attachmentStream),
                                                             style: .withCircle,
                                                             conversationStyle: conversationStyle)
                 containerView.addSubview(progressView)
                 progressView.autoAlignAxis(.horizontal, toSameAxisOf: mediaView)
                 progressView.autoAlignAxis(.vertical, toSameAxisOf: mediaView)
+            case .pendingDownload:
+                break
+            case .downloading:
+                break
+            case .restoring:
+                // TODO: We could easily show progress for restores.
+                owsFailDebug("Restoring progress type.")
+                break
+            case .unknown:
+                owsFailDebug("Unknown progress type.")
+                break
             }
         } else if let attachmentPointer = self.attachmentPointer {
             let placeholderView = UIView()
@@ -94,10 +107,6 @@ public class CVComponentSticker: CVComponentBase, CVComponent {
             owsFailDebug("Invalid attachment.")
             return
         }
-
-        let accessibilityDescription = NSLocalizedString("ACCESSIBILITY_LABEL_STICKER",
-                                                         comment: "Accessibility label for stickers.")
-        componentView.rootView.accessibilityLabel = accessibilityLabel(description: accessibilityDescription)
     }
 
     private var containerViewConfig: CVStackViewConfig {
@@ -178,5 +187,15 @@ public class CVComponentSticker: CVComponentBase, CVComponent {
                 reusableMediaView.owner = nil
             }
         }
+    }
+}
+
+// MARK: -
+
+extension CVComponentSticker: CVAccessibilityComponent {
+    public var accessibilityDescription: String {
+        // NOTE: We could include the strings used for sticker suggestion.
+        NSLocalizedString("ACCESSIBILITY_LABEL_STICKER",
+                          comment: "Accessibility label for stickers.")
     }
 }

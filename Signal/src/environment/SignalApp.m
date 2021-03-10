@@ -50,7 +50,7 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
 
     [self handleCrashDetection];
 
-    [AppReadiness runNowOrWhenAppDidBecomeReady:^{ [self warmCachesAsync]; }];
+    AppReadinessRunNowOrWhenAppDidBecomeReadySync(^{ [self warmCachesAsync]; });
 
     return self;
 }
@@ -189,7 +189,12 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
     DispatchMainThreadSafe(^{
         if (self.conversationSplitViewController.visibleThread) {
             if ([self.conversationSplitViewController.visibleThread.uniqueId isEqualToString:thread.uniqueId]) {
-                [self.conversationSplitViewController.selectedConversationViewController popKeyBoard];
+                ConversationViewController *conversationView
+                    = self.conversationSplitViewController.selectedConversationViewController;
+                [conversationView popKeyBoard];
+                if (action == ConversationViewActionUpdateDraft) {
+                    [conversationView reloadDraft];
+                }
                 return;
             }
         }
@@ -286,11 +291,13 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
     UITapGestureRecognizer *registerGesture =
         [[UITapGestureRecognizer alloc] initWithTarget:accountManager action:@selector(fakeRegistration)];
     registerGesture.numberOfTapsRequired = 8;
+    registerGesture.delaysTouchesEnded = NO;
     [navController.view addGestureRecognizer:registerGesture];
 #else
     UITapGestureRecognizer *submitLogGesture = [[UITapGestureRecognizer alloc] initWithTarget:[Pastelog class]
                                                                                        action:@selector(submitLogs)];
     submitLogGesture.numberOfTapsRequired = 8;
+    submitLogGesture.delaysTouchesEnded = NO;
     [navController.view addGestureRecognizer:submitLogGesture];
 #endif
 
