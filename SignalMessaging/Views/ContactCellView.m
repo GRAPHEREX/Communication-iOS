@@ -17,7 +17,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-const CGFloat kContactCellAvatarTextMargin = 8;
+const CGFloat kContactCellAvatarTextMargin = 12;
 const CGFloat statusSize = 12;
 const CGFloat callViewContainerWidth = 60;
 const CGFloat callIconSize = 24;
@@ -128,14 +128,14 @@ const CGFloat callIconSize = 24;
 
 - (void)configureFontsAndColors
 {
-    self.nameLabel.font = [UIFont st_sfUiTextSemiboldFontWithSize:17].ows_semibold;
-    self.subtitleLabel.font = [UIFont ows_dynamicTypeSubheadlineFont];
-    self.accessoryLabel.font = [UIFont ows_semiboldFontWithSize:12.f];
+    self.nameLabel.font = OWSTableItem.primaryLabelFont;
+    self.subtitleLabel.font = [UIFont ows_dynamicTypeCaption1ClampedFont];
+    self.accessoryLabel.font = [UIFont ows_dynamicTypeSubheadlineClampedFont];
 
     self.nameLabel.textColor = self.forceDarkAppearance ? Theme.darkThemePrimaryColor : Theme.primaryTextColor;
     self.subtitleLabel.textColor
         = self.forceDarkAppearance ? Theme.darkThemeSecondaryTextAndIconColor : Theme.secondaryTextAndIconColor;
-    self.accessoryLabel.textColor = Theme.middleGrayColor;
+    self.accessoryLabel.textColor = Theme.isDarkThemeEnabled ? UIColor.ows_gray25Color : UIColor.ows_gray45Color;
 
     if (self.nameLabel.attributedText.string.length > 0) {
         NSString *nameLabelText = self.nameLabel.attributedText.string;
@@ -389,7 +389,7 @@ const CGFloat callIconSize = 24;
 
 - (NSUInteger)avatarSize
 {
-    return self.useSmallAvatars ? kSmallAvatarSize : kStandardAvatarSize;
+    return self.useLargeAvatars ? kStandardAvatarSize : kSmallAvatarSize;
 }
 
 - (UIColor*)statusViewColor:(BOOL)isOnline
@@ -441,7 +441,7 @@ const CGFloat callIconSize = 24;
     }
     [NSLayoutConstraint deactivateConstraints:self.layoutConstraints];
     self.layoutConstraints = nil;
-    self.useSmallAvatars = NO;
+    self.useLargeAvatars = NO;
 }
 
 - (void)otherUsersProfileDidChange:(NSNotification *)notification

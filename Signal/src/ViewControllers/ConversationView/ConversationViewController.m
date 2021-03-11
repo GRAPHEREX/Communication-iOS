@@ -678,9 +678,10 @@ typedef enum : NSUInteger {
 
 - (void)setUserHasScrolled:(BOOL)userHasScrolled
 {
-    _userHasScrolled = userHasScrolled;
-
-    [self ensureBannerState];
+    if (_userHasScrolled != userHasScrolled) {
+        _userHasScrolled = userHasScrolled;
+        [self ensureBannerState];
+    }
 }
 
 // Returns a collection of the group members who are "no longer verified".
@@ -776,7 +777,7 @@ typedef enum : NSUInteger {
 
         UIView *_Nullable droppedGroupMembersBanner;
         droppedGroupMembersBanner = [self createDroppedGroupMembersBannerIfNecessaryWithViewState:self.viewState];
-        if (droppedGroupMembersBanner != nil) {
+        if (droppedGroupMembersBanner != nil && !self.viewState.isDroppedGroupMembersBannerHidden) {
             [banners addObject:droppedGroupMembersBanner];
         }
     }
@@ -785,6 +786,12 @@ typedef enum : NSUInteger {
     messageRequestNameCollisionBanner = [self createMessageRequestNameCollisionBannerIfNecessaryWithViewState:self.viewState];
     if (messageRequestNameCollisionBanner != nil) {
         [banners addObject:messageRequestNameCollisionBanner];
+    }
+
+    UIView *_Nullable groupMembershipNameCollisionBanner;
+    groupMembershipNameCollisionBanner = [self createGroupMembershipCollisionBannerIfNecessary];
+    if (groupMembershipNameCollisionBanner != nil) {
+        [banners addObject:groupMembershipNameCollisionBanner];
     }
 
     if (banners.count < 1) {
@@ -1023,8 +1030,12 @@ typedef enum : NSUInteger {
         case ConversationViewActionGroupCallLobby:
             [self showGroupLobbyOrActiveCall];
             break;
-        case ConversationViewActionNewGroupActionSheet:
+        case ConversationViewActionNewGroupActionSheet: {
             dispatch_async(dispatch_get_main_queue(), ^{ [self showGroupLinkPromotionActionSheet]; });
+            break;
+        }
+        case ConversationViewActionUpdateDraft:
+            // Do nothing; input toolbar was just created with the latest draft.
             break;
     }
 
@@ -1466,7 +1477,10 @@ typedef enum : NSUInteger {
 {
     if (self.thread.isGroupV2Thread) {
         TSGroupThread *groupThread = (TSGroupThread *)self.thread;
-        [self.callService peekCallAndUpdateThread:groupThread];
+        // We dispatch async in an effort to avoid "bad food" crashes when
+        // presenting the view. peekCallAndUpdateThread() uses a write
+        // transaction.
+        dispatch_async(dispatch_get_main_queue(), ^{ [self.callService peekCallAndUpdateThread:groupThread]; });
     }
 }
 
@@ -4343,8 +4357,7 @@ typedef enum : NSUInteger {
     [self presentViewController:pageVC animated:YES completion:nil];
 }
 
-- (void)cvc_didTapGenericAttachment:(CVComponentGenericAttachment *_Nonnull)attachment
-                    inComponentView:(id <CVComponentView> _Nonnull)componentView
+- (CVAttachmentTapAction)cvc_didTapGenericAttachment:(CVComponentGenericAttachment *_Nonnull)attachment
 {
     OWSAssertIsOnMainThread();
 
@@ -4352,8 +4365,9 @@ typedef enum : NSUInteger {
         QLPreviewController *previewController = [[QLPreviewController alloc] init];
         previewController.dataSource = attachment;
         [self presentViewController:previewController animated:YES completion:nil];
+        return CVAttachmentTapActionHandledByDelegate;
     } else {
-        [attachment showShareUIFromView:componentView.rootView];
+        return CVAttachmentTapActionDefault;
     }
 }
 

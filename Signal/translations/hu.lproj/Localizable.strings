@@ -1,250 +1,8 @@
-//////////////////////////////////////////// SkyTech ///////////////////////////////////////////
-
-"PRIVACY_VERIFICATION_BUTTON" = "Verification";
-
-"PROFILE_VIEW_EDIT_BUTTON" = "Edit";
-
-/* Default description for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DESCRIPTION_TEXT" = "Please enter your Display name,\nit will show for others users";
-
-/* Title for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_TITLE" = "Delete Contact?";
-
-/* Message for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_MESSAGE" = "This contact will be deleted from this device.";
-
-/* action sheet body */
-"REGISTER_RATE_BODY" = "Please wait half a minute before trying again.";
-
-/* No comment provided by engineer. */
-"SETTINGS_SUPPORT" = "Support";
-
-/* No comment provided by engineer. */
-"SETTINGS_SECURITY" = "Security";
-
-/* No comment provided by engineer. */
-"SETTINGS_FAQ" = "F.A.Q";
-
-"MAIN_ALL" = "All";
-"MAIN_OR" = "or";
-"MAIN_USER_KEY" = "User key";
-"MAIN_ADD" = "Add";
-"MAIN_BACK" = "Back";
-"MAIN_MOBILE" = "Phone";
-"MAIN_USER_ID" = "User ID";
-"MAIN_DISPLAY_NAME" = "Display name";
-"MAIN_BLOCK_USER" = "Block user";
-"MAIN_UNBLOCK" = "Unblock";
-"MAIN_PROFILE" = "Profile";
-"MAIN_SENT" = "Sent";
-"MAIN_SEND" = "Send";
-"MAIN_RECEIVE" = "Receive";
-"MAIN_RECEIVED" = "Received";
-"MAIN_TIME" = "Time";
-"MAIN_AMOUNT" = "Amount";
-"MAIN_APPLY" = "Apply";
-"MAIN_INFO" = "Info";
-"MAIN_SYMBOL" = "Symbol";
-"MAIN_CHAIN" = "Chain";
-"MAIN_THANK_YOU" = "Thank you";
-"MAIN_COPY" = "Copy";
-"MAIN_WALLET" = "Wallet";
-"MAIN_RECIPIENT" = "Recipient";
-"MAIN_TOTAL" = "Total";
-"MAIN_FEE" = "Fee";
-"MAIN_TAG" = "Tag";
-"MAIN_DONE" = "Done";
-"MAIN_BALANCE" = "Balance";
-"MAIN_ADDRESS" = "Address";
-"MAIN_PASSWORD" = "Password";
-"MAIN_NEW" = "New";
-"MAIN_CURRENCY" = "Currency";
-"MAIN_CONFIRM" = "Confirm";
-"MAIN_CURRENT" = "Current";
-"MAIN_PIN" = "Pin";
-"MAIN_SAVE" = "Save";
-"MAIN_ENTER" = "Enter";
-"MAIN_SAVED" = "Saved";
-"MAIN_NAME" = "Name";
-"MAIN_PASSWORD" = "Password";
-"MAIN_RESTORE" = "Restore";
-
-"WALLET_CANCEL_PIN" = "Cancel pin";
-"WALLET_SET_PIN" = "Set pin";
-"WALLET_EDIT_PIN" = "Edit pin";
-"WALLET_ENTER_PIN" = "Enter pin";
-"WALLET_PIN_VALIDATION_DESCRIPTION" = "Max pin lenght is 6";
-"WALLET_PINS_DO_NOT_MATCH" = "Pins do not match";
-"WALLET_ERROR_WRONG_PIN" = "Wrong pin";
-"WALLET_ERROR_TOO_LONG" = "Too long pin.\nMax lenght is 6";
-
-"WALLET_SET_PASSWORD" = "Set password";
-"WALLET_EDIT_PASSWORD" = "Edit password";
-"WALLET_ENTER_PASSWORD" = "Enter password";
-"WALLET_PASSWORDS_DO_NOT_MATCH" = "Passwords do not match";
-"WALLET_ERROR_WRONG_PASSWORD" = "Wrong password";
-
-"WALLET_SAVE_IT" = "Save it";
-"WALLET_EXCHANGE_TITLE" = "Exchange";
-"WALLET_NEW_PASSWORD_CONFIRMATION" = "Password for transaction\nconfirmation was changed";
-"WALLET_CODE_FOR_RESTORE_INFO" = "QR code for restore password";
-
-/* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE_new" = "Secure communication\nplatform";
-
-"ONBOARDING_SPLASH_BUTTON_TITLE_new" = "Sign up";
-
-/* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE_new" = "Enter your Phone number, PIN-code will come on your device";
-
-/* Title of the main button. */
-"ONBOARDING_PHONE_NUMBER_SEND" = "Send";
-
-"ONBOARDING_PHONE_NUMBER_SIGNUP" = "Sign Up";
-
-"ONBOARDING_PHONE_NUMBER_FORGOTRASSWORD" = "Forgot password?";
-
-"CALL_VIEW_MISSED_CALL" = "Missed call";
-
-"CALL_VIEW_INCOMING_CALL" = "Incoming call";
-
-"CALL_VIEW_OUTGOING_CALL" = "Outgoing call";
-
-"CALL_VIEW_CANCELLED_CALL" = "Cancelled call";
-
-"CALL_VIEW_TITLE" = "Calls";
-
-"CALL_VIEW_MISSED" = "Missed";
-
-"NEW_CONTACT_DESCRIPTION" = "Add a new user using a unique\nidentification key";
-
-"NEW_CONTACT_SCAN_INFO" = "Scan the key using the QR-code";
-
-/* Title for the contacts list's default mode. */
-"CONTACTS_VIEW_TITLE" = "Contacts";
-
-/* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_INVALID_CODE_new" = "Wrong PIN, try again";
-
-"ONBOARDING_VERIFICATION_VALID_CODE_new" = "Password is correct";
-
-/// Chats Empty State
-"CHATS_VIEW_EMPTY_TITLE" = "You have no one in the chat";
-
-"CHATS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CHATS_VIEW_EMPTY_BUTTON_TITLE" = "Start chat now";
-
-/// Contacts Empty State
-"CONTACTS_VIEW_EMPTY_TITLE" = "You have no contacts";
-
-"CONTACTS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CONTACTS_VIEW_EMPTY_BUTTON_TITLE" = "Invite friends";
-
-/// Calls Empty State
-"CALLS_VIEW_EMPTY_TITLE" = "You have no calls";
-
-"CALLS_VIEW_EMPTY_MISSED_TITLE" = "You have no missed calls";
-
-"CALLS_VIEW_EMPTY_SUBTITLE" = "Start new calls";
-
-"CALLS_VIEW_EMPTY_BUTTON_TITLE" = "Start new calls";
-
-"CALL_PICKER_MAIN_TITLE" = "New call";
-
-/* Label for settings view that allows user to change the notification sound. */
-"SETTINGS_ITEM_NOTIFICATION_SOUND_new" = "Notification Sound";
-
-
-// Wallet Main Screen
-"WALLET_VIEW_TITLE" = "Wallets";
-
-// Wallet Main Screen
-"WALLET_MAINHEADER_VIEW_TITLE" = "Total balance";
-
-/* Label indicating that the user is verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_VERIFIED_FORMAT_new" = "%@ is verified!";
-
-/* Label indicating that the user is NOT verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_NOT_VERIFIED_FORMAT_new" = "%@ is not verified!";
-
-"WALLET_EMPTY_STATE_TITLE" = "You have no wallet yet";
-
-"WALLET_EMPTY_STATE_SUBTITLE" = "Create new wallet now";
-
-"WALLET_EMPTY_STATE_BUTTON_TITLE" = "Create wallet";
-
-"WALLET_NEW_WALLET_TITLE" = "New wallet";
-
-"WALLET_EXCHANGE_MY_ORDERS_TITLE" = "My Orders";
-
-"WALLET_NEW_WALLET_VALIDATION_INFO" = "The password must contain\nnumbers, uppercase and lowercase\nletters and contain at least\n8 characters";
-
-// Attachments Titles
-"ATTACHMENTS_TITLE_MEDIA" = "Media";
-"ATTACHMENTS_TITLE_FILES" = "Files";
-"ATTACHMENTS_TITLE_VOICE" = "Voice";
-"ATTACHMENTS_TITLE_GROUPS" = "Groups";
-"ATTACHMENTS_TITLE_LINKS" = "Links";
-"ATTACHMENTS_TITLE_GIFS" = "GIFs";
-
-"ATTACHMENTS_EMPTY_STATE" = "No %@ here yet...";
-
-"PERSONAL_CODE_VIEW_TITLE" = "This is your personal code";
-"PERSONAL_CODE_VIEW_DESCRIPTION" = "Ask your friend using the app\nto scan it to confirm his subscription";
-
-"CONTACTLIST_VIEW_SEARCHBAR_PLACEHOLDER" = "Search";
-
-/* A button to select a money from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_MONEY" = "Money";
-
-/* A button to select a gallery from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_GALLERY" = "Gallery";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE" = "Your User ID";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE_SOMEONE" = "%@'s User ID";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_NORMAL" = "Copy";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_AFTER_CLICK" = "Copied";
-
-"USER_ID_VIEW_COPY_LABEL_INFO" = "You can copy this User ID to phone";
-
-"NEW_USER_NAME_DESCRIPTION_TEXT" = "Please enter Display name for new contact,\nit will show only for you";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_ALREADY_EXIST" = "This user is already in your contacts";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_OWN_USERID" = "You can't add yourself";
-
-"WALLET_TOTAL_BALANCE" = "Total balance";
-"WALLET_BUY" = "Buy";
-"WALLET_SELL" = "Sell";
-
-"WALLET_TRANSACTION_EMPTY_STATE_TITLE" = "No transaction yet...";
-"WALLET_ORDERS_EMPTY_STATE_TITLE" = "No orders yet...";
-
-"WALLET_TRANSACTION_TITLE" = "Transactions";
-
-"FILTER_TITLE" = "Filter";
-
-"FILTER_SORT_BY_TITLE" = "Sort by";
-
-"FILTER_TRANSACTION_TYPE_TITLE" = "Transaction type";
-
-/* Label for 'new contact' button in conversation settings view. */
-"NEW_USER_NAME_TITLE" = "New Contact";
-
-"INCORRECT_UUID_ERROR_MESSAGE" = "User Key is incorrect";
-
-"SENT_SUCCEED_TITLE" = "Sent succeed";
-
-"EXCHANGE_CREATED_TITLE" = "Exchange created";
-//////////////////////////////////////////// Grapherex ///////////////////////////////////////////
-
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Most nem";
+
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "Az alkalmazásról";
 
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Új biztonsági azonosító elfogadása";
@@ -258,11 +16,11 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Névjegy";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Névjegy hozzá: %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Média";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Üzenet";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Te";
@@ -270,11 +28,17 @@
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Matrica";
 
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Hangüzenet";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Hangüzenet %@ másodperc";
+
 /* Label for 'audio call' button in contact view. */
-"ACTION_AUDIO_CALL" = "Grapherex hívás";
+"ACTION_AUDIO_CALL" = "Signal hívás";
 
 /* Label for 'invite' button in contact view. */
-"ACTION_INVITE" = "Meghívás Grapherexba";
+"ACTION_INVITE" = "Meghívás Signalba";
 
 /* Label for button that lets you send a message to a contact. */
 "ACTION_SEND_MESSAGE" = "Üzenet küldése";
@@ -364,7 +128,7 @@
 "APN_Message" = "Új üzenet!";
 
 /* Message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Grapherex indítási hiba. Kérlek küldj egy debug naplófájlt a support@grapherex.com címre, hogy megvizsgálhassuk, mi történt.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Signal indítási hiba. Kérlek küldj egy hibanapló fájlt a support@signal.org címre, hogy megvizsgálhassuk, mi történt.";
 
 /* Title for the 'app launch failed' alert. */
 "APP_LAUNCH_FAILURE_ALERT_TITLE" = "Hiba";
@@ -373,13 +137,13 @@
 "APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE" = "Adatbázis betöltési hiba";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
-"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Kérlek frissíts a legújabb Grapherex verzióra.";
+"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Kérlek frissíts a legújabb Signal verzióra.";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Ismeretlen adatbázis verzió.";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "A régi eszközödről hozott adat nem helyreállítható. Kérlek küldj egy debug naplófájlt a support@grapherex.com címre, hogy megvizsgálhassuk, mi történt. Ha újra telepíted a Grapherext, az üzenet előzményeid elveszhetnek.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "A régi eszközödről hozott adat nem helyreállítható. Kérlek küldj egy hibanapló fájlt a support@signal.org címre, hogy megvizsgálhassuk, mi történt. Ha újra telepíted a Signalt, az üzenet előzményeid elveszhetnek.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Az adatok visszaállítása sikertelen.";
@@ -394,7 +158,7 @@
 "APP_UPDATE_NAG_ALERT_MESSAGE_FORMAT" = "A %@ verzió elérhető az App Store-ban.";
 
 /* Title for the 'new app version available' alert. */
-"APP_UPDATE_NAG_ALERT_TITLE" = "Új Grapherex verzió elérhető";
+"APP_UPDATE_NAG_ALERT_TITLE" = "Új Signal verzió elérhető";
 
 /* Label for the 'update' button in the 'new app version available' alert. */
 "APP_UPDATE_NAG_ALERT_UPDATE_BUTTON" = "Frissítés";
@@ -409,7 +173,7 @@
 "APPEARANCE_SETTINGS_SYSTEM_THEME_NAME" = "Rendszer";
 
 /* Name of application */
-"APPLICATION_NAME" = "Grapherex";
+"APPLICATION_NAME" = "Signal";
 
 /* Label for the archive button for conversations list view */
 "ARCHIVE_ACTION" = "Archiválás";
@@ -426,7 +190,7 @@
 /* Error that outgoing attachments could not be exported. */
 "ATTACHMENT_APPROVAL_FAILED_TO_EXPORT" = "Nem sikerült a csatolmány exportálása.";
 
-/* alert text when Grapherex was unable to save a copy of the attachment to the system photo library */
+/* alert text when Signal was unable to save a copy of the attachment to the system photo library */
 "ATTACHMENT_APPROVAL_FAILED_TO_SAVE" = "Mentés sikertelen";
 
 /* Format string for file extension label in call interstitial view */
@@ -718,7 +482,7 @@
 "CALL_AUDIO_MISSED_NOTIFICATION_BODY" = "📞 Nem fogadott hanghívás";
 
 /* Alert message when calling and permissions for microphone are missing */
-"CALL_AUDIO_PERMISSION_MESSAGE" = "A hanghívások és hangüzenetekek küldéséhez az iOS beállításokban mikrofon hozzáférés adása szükséges a Grapherex alkalmazás számára.";
+"CALL_AUDIO_PERMISSION_MESSAGE" = "A hanghívások és hangüzenetekek küldéséhez az iOS beállításokban mikrofon hozzáférés adása szükséges a Signal alkalmazás számára.";
 
 /* Alert title when calling and permissions for microphone are missing */
 "CALL_AUDIO_PERMISSION_TITLE" = "Mikrofon hozzáférés szükséges";
@@ -733,7 +497,7 @@
 "CALL_SCREEN_STATUS_NO_ANSWER" = "Sikertelen hívás";
 
 /* embeds {{Call Status}} in call screen label. For ongoing calls, {{Call Status}} is a seconds timer like 01:23, otherwise {{Call Status}} is a short text like 'Ringing', 'Busy', or 'Failed Call' */
-"CALL_STATUS_FORMAT" = "Grapherex %@";
+"CALL_STATUS_FORMAT" = "Signal %@";
 
 /* Label for call button for alert offering to call a user. */
 "CALL_USER_ALERT_CALL_BUTTON" = "Hívás";
@@ -787,7 +551,7 @@
 "CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "A kamerád ki van kapcsolva";
 
 /* The generic name used for calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Grapherex felhasználó";
+"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Signal felhasználó";
 
 /* Accessibility hint describing what you can do with the camera button */
 "CAMERA_BUTTON_HINT" = "Készíts egy képet és küldd el";
@@ -823,7 +587,7 @@
 "CLOUDKIT_STATUS_NO_ACCOUNT" = "Nincs aktív iCloud bejelentkezés. iOS Beállítások alatt jelentkezz be az iCloud-ba. Ez előfeltétele a biztonsági mentés készítésének.";
 
 /* Error indicating that the app was prevented from accessing the user's iCloud account. */
-"CLOUDKIT_STATUS_RESTRICTED" = "A Grapherex nem képes hozzáférni az iCloud azonosítódhoz. Az iOS Beállítások alatt kérlek adj jogosultságot a Grapherex számára, hogy hozzáférhessen. Ez előfeltétele a biztonsági mentés készítésének.";
+"CLOUDKIT_STATUS_RESTRICTED" = "A Signal nem képes hozzáférni az iCloud azonosítódhoz. Az iOS Beállítások alatt kérlek adj jogosultságot a Signal számára, hogy hozzáférhessen. Ez előfeltétele a biztonsági mentés készítésének.";
 
 /* The first of two messages demonstrating the chosen conversation color, by rendering this message in an outgoing message bubble. */
 "COLOR_PICKER_DEMO_MESSAGE_1" = "Válassz színt ebben a beszélgetésben a kimenő üzenetek számára.";
@@ -838,7 +602,7 @@
 "COMPARE_SAFETY_NUMBER_ACTION" = "Összehasonlítás vágólappal";
 
 /* Accessibility hint describing what you can do with the compose button */
-"COMPOSE_BUTTON_HINT" = "Válassz egyet a Grapherex kontaktok közül akivel beszélgetést kezdeményeznél.";
+"COMPOSE_BUTTON_HINT" = "Válassz egyet a Signal kontaktok közül akivel beszélgetést kezdeményeznél.";
 
 /* Accessibility label from compose button. */
 "COMPOSE_BUTTON_LABEL" = "Új üzenet írása";
@@ -856,10 +620,10 @@
 "COMPOSE_MESSAGE_USERNAME_SEARCH_SECTION_TITLE" = "Felhasználónév keresés";
 
 /* Multi-line label explaining why compose-screen contact picker is empty. */
-"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Engedélyezd a kontaktokhoz való hozzáférést az iOS Beállításokban, hogy lásd kik Grapherex felhasználók közülük.";
+"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Engedélyezd a kontaktokhoz való hozzáférést az iOS Beállításokban, hogy lásd kik Signal felhasználók közülük.";
 
 /* No comment provided by engineer. */
-"CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Ezzel minden üzeneted törlődik és megszűnik a regisztrált Grapherex fiókod is. Az alkalmazás ezt követően bezáródik.";
+"CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Ezzel minden üzeneted törlődik és megszűnik a regisztrált Signal fiókod is. Az alkalmazás ezt követően bezáródik.";
 
 /* No comment provided by engineer. */
 "CONFIRM_ACCOUNT_DESTRUCTION_TITLE" = "Biztosan törölni akarod a fiókod?";
@@ -987,11 +751,11 @@
 /* Error indicating that at least one contact field must be selected before sharing a contact. */
 "CONTACT_SHARE_NO_FIELDS_SELECTED" = "Nincs kontakt kiválasztva.";
 
-/* Button text to initiate an email to Grapherex support staff */
+/* Button text to initiate an email to signal support staff */
 "CONTACT_SUPPORT" = "Segítségkérés";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "A Grapherex nem volt képes segítségkérésed elküldésére.";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "A Signal nem volt képes segítségkérésed elküldésére.";
 
 /* button text */
 "CONTACT_SUPPORT_PROMPT_ERROR_TRY_AGAIN" = "Újrapróbálkozás";
@@ -1000,7 +764,7 @@
 "CONTACT_SUPPORT_PROMPT_TO_INCLUDE_DEBUG_LOG_MESSAGE" = "A hibanapló fájlok segítenek a hibák gyorsabb javításában. Beküldésük opcionális.";
 
 /* Alert title */
-"CONTACT_SUPPORT_PROMPT_TO_INCLUDE_DEBUG_LOG_TITLE" = "Hibakeresési napló beküldése?";
+"CONTACT_SUPPORT_PROMPT_TO_INCLUDE_DEBUG_LOG_TITLE" = "Hibanapló beküldése?";
 
 /* Button text */
 "CONTACT_SUPPORT_SUBMIT_WITH_LOG" = "Beküldés hibanaplóval együtt";
@@ -1082,9 +846,6 @@
 
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Felhasználó letiltása";
-
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Kontakt részletek";
 
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Beszélgetés színe";
@@ -1210,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Mentetlen változtatások";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Összes tag megtekintés";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Összes megtekintése";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Ez a felhasználó ismert kontakt";
@@ -1226,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Hozzáadás a kontaktokhoz";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ küldte:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Te küldted:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Minden törlése";
@@ -1306,7 +1073,7 @@
 "DEBUG_LOG_GITHUB_ISSUE_ALERT_TITLE" = "Github átirányítás";
 
 /* Accessibility label for the ? vector asset used to get info about debug logs */
-"DEBUG_LOG_INFO_BUTTON" = "Bővebben a hibakeresési naplóról";
+"DEBUG_LOG_INFO_BUTTON" = "Bővebben a hibanaplóról";
 
 /* action sheet body */
 "DELETE_ALL_MESSAGES_IN_CONVERSATION_ALERT_BODY" = "Minden üzenetet törölsz a beszélgetésben?";
@@ -1324,9 +1091,9 @@
 "DEREGISTRATION_REREGISTER_WITH_SAME_PHONE_NUMBER" = "Telefonszám újraregisztrálása";
 
 /* Label warning the user that they have been de-registered. */
-"DEREGISTRATION_WARNING" = "Ez az eszköz nincs regisztrálva. A telefonszámod - mint egyedi azonosítód - azonban más eszközeiden ettől függetlenül még regisztrálva lehet a Grapherex alkalmazás számára. Koppints az újraregisztráláshoz.";
+"DEREGISTRATION_WARNING" = "Ez az eszköz nincs regisztrálva. A telefonszámod - mint egyedi azonosítód - azonban más eszközeiden ettől függetlenül még regisztrálva lehet a Signal alkalmazás számára. Koppints az újraregisztráláshoz.";
 
-/* {{Short Date}} when device last communicated with Grapherex Server. */
+/* {{Short Date}} when device last communicated with Signal Server. */
 "DEVICE_LAST_ACTIVE_AT_LABEL" = "Utoljára aktív: %@";
 
 /* {{Short Date}} when device was linked. */
@@ -1348,7 +1115,7 @@
 "DEVICE_TRANSFER_CHOICE_EXPLANATION" = "Régi iOS eszközödről biztonságosan átmozgathatod azonosítódat és üzeneteidet erre az eszközre.";
 
 /* The explanation for the device transfer 'choice' view when linking a device */
-"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Ha korábban egy társított iPad eszközön használtad a Grapherext, akkor biztonságosan átmozgathatod róla azonosítódat és üzeneteidet erre az eszközre.";
+"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Ha korábban egy társított iPad eszközön használtad a Signalt, akkor biztonságosan átmozgathatod róla azonosítódat és üzeneteidet erre az eszközre.";
 
 /* The body for the device transfer 'choice' view 'register' option */
 "DEVICE_TRANSFER_CHOICE_REGISTER_BODY" = "Folytatás az azonosító és régi üzenetek átmozgatása nélkül";
@@ -1378,7 +1145,7 @@
 "DEVICE_TRANSFER_CHOICE_TRANSFER_TITLE" = "Átmozgatás iOS eszközről";
 
 /* A warning for the device transfer 'choice' view indicating you can only have one device registered with your number */
-"DEVICE_TRANSFER_CHOICE_WARNING" = "A folytatással letiltod a Grapherext a másik eszközön ami ugyanezzel a telefonszámmal került regisztrálásra.";
+"DEVICE_TRANSFER_CHOICE_WARNING" = "A folytatással letiltod a Signalt a másik eszközön ami ugyanezzel a telefonszámmal került regisztrálásra.";
 
 /* An error indicating that we were unable to verify the indentity of the new device to complete the transfer */
 "DEVICE_TRANSFER_ERROR_CERTIFICATE_MISMATCH" = "Nem sikerült ellenőrizni az eszközödet. Kérlek próbáld újra!";
@@ -1396,16 +1163,16 @@
 "DEVICE_TRANSFER_ERROR_NOT_ENOUGH_SPACE" = "Nincs elég szabad terület a teljes átmozgatáshoz";
 
 /* An error indicating the user must update their device before trying to transfer. */
-"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Frissíts a legújabb Grapherex verzióra és próbáld újra";
+"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Frissíts a legújabb Signal verzióra és próbáld újra";
 
 /* The explanation on the action sheet prompting the user if they want to transfer their device. */
-"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Grapherex fiókod átvitele új iOS eszközre. Figyelj rá, hogy az eszköz a közelben legyen és be legyen kapcsolva.";
+"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Signal fiókod átvitele új iOS eszközre. Figyelj rá, hogy az eszköz a közelben legyen és be legyen kapcsolva.";
 
 /* The title on the acttion sheet prompting the user if they want to transfer their device. */
 "DEVICE_TRANSFER_PROMPT_TITLE" = "Fiók átmozgatása";
 
 /* The explanation for the device transfer qr code view */
-"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Nyisd meg a Grapherex-t a régi eszközödön, hozd közelbe és ellenőrizd hogy a Wi-Fi és a Bluetooth bekapcsolt mindké eszközön.";
+"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Nyisd meg a Signal-t a régi eszközödön, hozd közelbe és ellenőrizd hogy a Wi-Fi és a Bluetooth bekapcsolt mindké eszközön.";
 
 /* The second explanation for the device transfer qr code view */
 "DEVICE_TRANSFER_QRCODE_EXPLANATION2" = "Igazítsd a QR kódot a keretbe a másik eszközön";
@@ -1417,7 +1184,7 @@
 "DEVICE_TRANSFER_QRCODE_TITLE" = "Várakozás a másik eszközre...";
 
 /* The explanation on the view that shows receiving progress */
-"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Tartsd a két eszközt egymás közelében. Ne kapcsold ki egyik eszközt sem és tartsd a Grapherex-t nyitva. Az adatvitel a végpontok között titkosított.";
+"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Tartsd a két eszközt egymás közelében. Ne kapcsold ki egyik eszközt sem és tartsd a Signal-t nyitva. Az adatvitel a végpontok között titkosított.";
 
 /* The title on the view that shows receiving progress */
 "DEVICE_TRANSFER_RECEIVING_TITLE" = "Adat fogadása";
@@ -1432,7 +1199,7 @@
 "DEVICE_TRANSFER_SCANNING_TITLE" = "Tartsd fel új eszközödet a kamera elé";
 
 /* The explanation on the action sheet that shows transfer progress */
-"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Tartsd a két eszközt egymás közelében. Ne kapcsold ki egyik eszközt sem és tartsd a Grapherex-t nyitva.";
+"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Tartsd a két eszközt egymás közelében. Ne kapcsold ki egyik eszközt sem és tartsd a Signal-t nyitva.";
 
 /* The title on the action sheet that shows transfer progress */
 "DEVICE_TRANSFER_TRANSFERRING_TITLE" = "Adat átvitele";
@@ -1458,11 +1225,11 @@
 /* Section title for the 'domain fronting country' view. */
 "DOMAIN_FRONTING_COUNTRY_VIEW_SECTION_HEADER" = "Cenzúra megkerülése innen";
 
-/* Alert body for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
+/* Alert body for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_BODY" = "Hozzáférés az iOS Beállításokban adható.";
 
-/* Alert title for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
-"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "A Grapherexnak hozzáférésre van szüksége Kontakt listádhoz hogy szerkeszthesd az elemeit";
+/* Alert title for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "A Signalnak hozzáférésre van szüksége Kontakt listádhoz hogy szerkeszthesd az elemeit";
 
 /* The 'clear avatar' button in the 'edit group' view. */
 "EDIT_GROUP_CLEAR_AVATAR" = "Avatár eltávolítása";
@@ -1471,7 +1238,7 @@
 "EDIT_GROUP_DEFAULT_TITLE" = "Csoport szerkesztése";
 
 /* Error message indicating the a user can't be added to a group. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "A felhasználó nem adható a csoporthoz, amíg nem frissíti a Grapherext.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "A felhasználó nem adható a csoporthoz, amíg nem frissíti a Signalt.";
 
 /* Format for the 'group full' error alert when a user can't be added to a group because the group is full. Embeds {{ the maximum number of members in a group }}. */
 "EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "A csoport elérte a maximális, %@ fős tag létszámot.";
@@ -1494,14 +1261,14 @@
 /* Short name for edit menu item to copy contents of media message. */
 "EDIT_ITEM_COPY_ACTION" = "Másolás";
 
-/* body of email sent to contacts when inviting to install Grapherex. Embeds {{link to install Grapherex}} and {{link to the Grapherex home page}} */
-"EMAIL_INVITE_BODY" = "Szia,\n\nújabban privát csevegéseimet a Grapherex üzenetküldő alkalmazással bonyolítom iPhone-on. Örülnék, ha te is telepítenéd, így biztosak lehetünk benne, hogy amit írunk, vagy mondunk a telefonba, az köztünk marad.\n\nA Grapherex elérhető iPhone és Android telefonokra is innen: %@\n\nA Grapherex az ismert csevegőprogramokhoz hasonlóan működik: küldhetünk képeket, videókat, hívhatjuk egymást, csoportos csevegést indíthatunk. A legjobb, hogy a fentiekbe senkinek, még a Grapherex fejlesztőinek sincs semmilyen betekintési, belehallgatási lehetősége.\n\nHa érdekel a készítő gárda (az Open Whisper Systems), vagy hogy kik is az emberek, akik a Grapherex fejlesztését végzik, akkor látogass el ide: %@";
+/* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
+"EMAIL_INVITE_BODY" = "Szia,\n\nújabban privát csevegéseimet a Signal üzenetküldő alkalmazással bonyolítom iPhone-on. Örülnék, ha te is telepítenéd, így biztosak lehetünk benne, hogy amit írunk, vagy mondunk a telefonba, az köztünk marad.\n\nA Signal elérhető iPhone és Android telefonokra is innen: %@\n\nA Signal az ismert csevegőprogramokhoz hasonlóan működik: küldhetünk képeket, videókat, hívhatjuk egymást, csoportos csevegést indíthatunk. A legjobb, hogy a fentiekbe senkinek, még a Signal fejlesztőinek sincs semmilyen betekintési, belehallgatási lehetősége.\n\nHa érdekel a készítő gárda (az Open Whisper Systems), vagy hogy kik is az emberek, akik a Signal fejlesztését végzik, akkor látogass el ide: %@";
 
-/* subject of email sent to contacts when inviting to install Grapherex */
-"EMAIL_INVITE_SUBJECT" = "Váltsunk Grapherex-ra";
+/* subject of email sent to contacts when inviting to install Signal */
+"EMAIL_INVITE_SUBJECT" = "Váltsunk Signal-ra";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Készülékeden nincs beállítva levelező kliens. Vagy állítsd be, vagy támogatási kérelmedet emailben küldd el erre a címre: support@grapherex.com";
+"EMAIL_SIGNAL_MESSAGE" = "Készülékeden nincs beállítva levelező kliens. Vagy állítsd be, vagy támogatási kérelmedet emailben küldd el erre a címre: support@signal.org";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "Email küldés nem elérhető";
@@ -1534,7 +1301,7 @@
 "EMOJI_CATEGORY_TRAVEL_NAME" = "Utazás és Helyek";
 
 /* Full width label displayed when attempting to compose message */
-"EMPTY_CONTACTS_LABEL_LINE1" = "Nincs kontaktlistádban Grapherex felhasználó";
+"EMPTY_CONTACTS_LABEL_LINE1" = "Nincs kontaktlistádban Signal felhasználó";
 
 /* Full width label displayed when attempting to compose message */
 "EMPTY_CONTACTS_LABEL_LINE2" = "Miért nem hívsz meg valakit?";
@@ -1572,8 +1339,8 @@
 /* Error message indicating that message send failed due to block list */
 "ERROR_DESCRIPTION_MESSAGE_SEND_FAILED_DUE_TO_BLOCK_LIST" = "Letiltott felhasználónak próbáltál volna üzenetet küldeni.";
 
-/* Generic error used whenever Grapherex can't contact the server */
-"ERROR_DESCRIPTION_NO_INTERNET" = "A Grapherex nem tudott kapcsolódni az internethez. Kérlek, próbáld újra!";
+/* Generic error used whenever Signal can't contact the server */
+"ERROR_DESCRIPTION_NO_INTERNET" = "A Signal nem tudott kapcsolódni az internethez. Kérlek, próbáld újra!";
 
 /* Error indicating that an outgoing message had no valid recipients. */
 "ERROR_DESCRIPTION_NO_VALID_RECIPIENTS" = "Érvénytelen címzettnek próbáltál volna üzenetet küldeni.";
@@ -1588,7 +1355,7 @@
 "ERROR_DESCRIPTION_RESPONSE_FAILED" = "Érvénytelen szerver válasz.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Ez az eszköz a telefonszámoddal többé nincs regisztrálva. Telepítsd újra a Grapherex alkalmazást.";
+"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Ez az eszköz a telefonszámoddal többé nincs regisztrálva. Telepítsd újra a Signal alkalmazást.";
 
 /* Generic server error */
 "ERROR_DESCRIPTION_SERVER_FAILURE" = "Szerver hiba. Próbálkozz újra később.";
@@ -1597,13 +1364,13 @@
 "ERROR_DESCRIPTION_UNKNOWN_ERROR" = "Ismeretlen hiba történt.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Ez a kontakt nem Grapherex felhasználó.";
+"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Ez a kontakt nem Signal felhasználó.";
 
 /* Error message indicating that attachment download(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_DOWNLOAD_FAILED" = "Melléklet letöltése sikertelen.";
 
 /* Error message when unable to receive an attachment because the sending client is too old. */
-"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Csatolmány fogadása sikertelen. A küldő fél Grapherex alkalmazása frissítésre szorul. Az üzenet újraküldése a frissítés után javasolt.";
+"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Csatolmány fogadása sikertelen. A küldő fél Signal alkalmazása frissítésre szorul. Az üzenet újraküldése a frissítés után javasolt.";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_DUPLICATE_MESSAGE" = "Duplikált üzenet érkezett.";
@@ -1620,10 +1387,10 @@
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_NO_SESSION" = "Nincs elérhető munkamenet a kontakthoz.";
 
-/* Shown when Grapherex users safety numbers changed */
+/* Shown when signal users safety numbers changed */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE" = "A biztonsági azonosító megváltozott.";
 
-/* Shown when Grapherex users safety numbers changed, embeds the user's {{name or phone number}} */
+/* Shown when signal users safety numbers changed, embeds the user's {{name or phone number}} */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE_FORMAT" = "%@ biztonsági azonosítója megváltozott.";
 
 /* Text notifying the user that their secure session has been reset */
@@ -1639,25 +1406,25 @@
 "ERROR_NETWORK_FAILURE" = "Hálózati hiba";
 
 /* Error indicating a send failure due to a delinked application. */
-"ERROR_SENDING_DELINKED" = "Ez az eszköz többé nincs társítva. Végezd el újra a társítást a Grapherex használatának folytatásához.";
+"ERROR_SENDING_DELINKED" = "Ez az eszköz többé nincs társítva. Végezd el újra a társítást a Signal használatának folytatásához.";
 
 /* Error indicating a send failure due to a deregistered application. */
-"ERROR_SENDING_DEREGISTERED" = "Ez az eszköz többé nincs regisztrálva. Regisztráld újra a Grapherex használatának folytatásához.";
+"ERROR_SENDING_DEREGISTERED" = "Ez az eszköz többé nincs regisztrálva. Regisztráld újra a Signal használatának folytatásához.";
 
 /* Error indicating a send failure due to an expired application. */
-"ERROR_SENDING_EXPIRED" = "Elavult Grapherex verziót használsz, kérlek frissíts a további használat érdekében.";
+"ERROR_SENDING_EXPIRED" = "Elavult Signal verziót használsz, kérlek frissíts a további használat érdekében.";
 
-/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or Grapherex id}}. */
+/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or signal id}}. */
 "ERROR_UNREGISTERED_USER_FORMAT" = "Nem regisztrált felhasználó: %@";
 
 /* Label notifying the user that the app has expired. */
-"EXPIRATION_ERROR" = "A Grapherex verziója elavult. Koppints ide a legfrissebb verzióra történő frissítéshez.";
+"EXPIRATION_ERROR" = "A Signal verziója elavult. Koppints ide a legfrissebb verzióra történő frissítéshez.";
 
 /* Label warning the user that the app will expire soon. */
-"EXPIRATION_WARNING_SOON" = "Ez a Grapherex verzió %d nap múlva lejár. Koppints a legújabb verzióra történő frissítéshez.";
+"EXPIRATION_WARNING_SOON" = "Ez a Signal verzió %d nap múlva lejár. Koppints a legújabb verzióra történő frissítéshez.";
 
 /* Label warning the user that the app will expire today. */
-"EXPIRATION_WARNING_TODAY" = "Ez a Grapherex verzió ma lejár. Koppints a legújabb verzióra történő frissítéshez.";
+"EXPIRATION_WARNING_TODAY" = "Ez a Signal verzió ma lejár. Koppints a legújabb verzióra történő frissítéshez.";
 
 /* action sheet header when re-sending message which failed because of too many attempts */
 "FAILED_SENDING_BECAUSE_RATE_LIMIT" = "Túl sok sikertelen küldési kísérlet. Kérlek próbáld újra később.";
@@ -1732,7 +1499,7 @@
 "GO_TO_SETTINGS_BUTTON" = "Ugrás Beállításokhoz";
 
 /* Body message of notification shown during GRDB migration indicating that user may need to open app to view their content. */
-"GRDB_MIGRATION_NOTIFICATION_BODY" = "A Grapherex ezen verziója adatbázis optimalizálásokat és teljesítményt növelő változtatásokat tartalmaz. A folyamat befejezéséhez nyisd meg az alkalmazást.";
+"GRDB_MIGRATION_NOTIFICATION_BODY" = "A Signal ezen verziója adatbázis optimalizálásokat és teljesítményt növelő változtatásokat tartalmaz. A folyamat befejezéséhez nyisd meg az alkalmazást.";
 
 /* Title of notification shown during GRDB migration indicating that user may need to open app to view their content. */
 "GRDB_MIGRATION_NOTIFICATION_TITLE" = "Adatbázis optimalizálása";
@@ -2047,7 +1814,7 @@
 "GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Érvénytelen hivatkozás";
 
 /* Error message indicating that the local user does not support groups v2. */
-"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "A csoportba való belépéshez frissítened kell a Grapherexod.";
+"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "A csoportba való belépéshez frissítened kell a Signalod.";
 
 /* Explanation of the 'approve new group members' switch. */
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Admin általi jóváhagyás elvárása csoporthivatkozással belépő tagok felvételéhez.";
@@ -2112,11 +1879,11 @@
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "QR kód";
 
-/* Label for the 'share group link via Grapherex' button in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Megosztás Grapherexlal";
+/* Label for the 'share group link via Signal' button in the 'group link' view. */
+"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Megosztás Signallal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Ennek a linknek a birtokában bárki beléphet, vagy belépési kéréssel fordulhat a csoport felé. Azokkal oszd csak meg, akikben megbízol.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Ennek a linknek a birtokában bárki láthatja a csoportnevet és a tagok listáját, továbbá belépési kéréssel fordulhat a csoport felé. Azokkal oszd csak meg, akikben megbízol.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Csoporthivatkozás";
@@ -2220,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Videóhívás";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ csoport tag hasonló névvel szerepel.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Koppints az áttekintéshez";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Tag";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Tagok áttekintése";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ csoporttag hasonló névvel szerepel. Tekintsd át a lenti listát, és dönts a továbbiakról!";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ csoporttag azonos névvel szerepel. Tekintsd át a lenti listát, és dönts a továbbiakról!";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ csoport tag azonos névvel szerepel.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Csoport neve (kötelező)";
 
@@ -2312,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ jóváhagyott egy csoport belépési igényt tőle: %1$@.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "%@ csoport belépési igénye elfogadásra került.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ visszavonta csoport belépési igényét.";
@@ -2446,13 +2231,13 @@
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_1_TITLE" = "Mik azok a régi típusú csoportok?";
 
 /* Body text for the second section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "A régi típusú csoportokat nem lehet új típusúvá alakítani, viszont lehetőséged van egy új típusú csoport létrehozására a régivel megegyező csoporttagsággal.\n\nEgy jövőbeli Grapherex verzióban lesz mód a régiek újra alakítására.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "A régi típusú csoportokat nem lehet új típusúvá alakítani, viszont lehetőséged van egy új típusú csoport létrehozására a régivel megegyező csoporttagsággal.\n\nEgy jövőbeli Signal verzióban lesz mód a régiek újra alakítására.";
 
 /* Title for the second section of the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_2_TITLE" = "Tudom frissíteni a régi csoport típusomat újra?";
 
 /* Body text for the third section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Az új típusú csoport létrehozásához az összes tagnak frissítenie kell a Grapherex legújabb verziójára.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Az új típusú csoport létrehozásához az összes tagnak frissítenie kell a Signal legújabb verziójára.";
 
 /* Title for the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Régi vs. új csoportok";
@@ -2467,28 +2252,28 @@
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TOO_MANY_MEMBERS_FORMAT" = "Sajnos nem lehet új típusú csoportra frissíteni, mert túl nagy a csoport létszáma. A maximális taglétszám új típusú csoportban %@ fő.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Amikor minden csoport tag frissített új típusú csoportokat kezelni képes Grapherex verzióra, akkor a konverzió automatikusan megtörténik.";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Amikor minden csoport tag frissített új típusú csoportokat kezelni képes Signal verzióra, akkor a konverzió automatikusan megtörténik.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_2" = "Megtartottuk a frissítés előtti üzenet-előzményeket és médiafájlokat.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Ez a csoport sajnos nem hozható létre, mivel 1 tag még a Grapherex egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ő is frissítette a Grapherext, vagy ha eltávolítod őt a felvételre kerülő tagok közül.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Ez a csoport sajnos nem hozható létre, mivel 1 tag még a Signal egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ő is frissítette a Signalt, vagy ha eltávolítod őt a felvételre kerülő tagok közül.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Ez a csoport sajnos nem hozható létre, mivel %@ tag még a Grapherex egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ők is frissítették a Grapherext, vagy ha eltávolítod őket a felvételre kerülő tagok közül.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Ez a csoport sajnos nem hozható létre, mivel %@ tag még a Signal egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ők is frissítették a Signalt, vagy ha eltávolítod őket a felvételre kerülő tagok közül.";
 
 /* Indicates that a new group cannot be created because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Ez a csoport sajnos nem hozható létre, mivel 1 tag még a Grapherex egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ő is frissítette a Grapherext, vagy ha eltávolítod őt a felvételre kerülő tagok közül. %@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Ez a csoport sajnos nem hozható létre, mivel 1 tag még a Signal egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ő is frissítette a Signalt, vagy ha eltávolítod őt a felvételre kerülő tagok közül. %@";
 
 /* Indicates that a new group cannot be created because multiple members do not support v2 groups. Embeds {{ %1$@ the number of members who do not support v2 groups, %2$@ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Ez a csoport sajnos nem hozható létre, mivel %1$@ tag még a Grapherex egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ők is frissítették a Grapherext, vagy ha eltávolítod őket a felvételre kerülő tagok közül. %2$@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Ez a csoport sajnos nem hozható létre, mivel %1$@ tag még a Signal egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ők is frissítették a Signalt, vagy ha eltávolítod őket a felvételre kerülő tagok közül. %2$@";
 
 /* Title for alert that explains that a new group will be a legacy group because 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Régi típusú csoport lesz létrehozva, mivel 1 tag a Grapherex egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ő is frissítette a Grapherext, vagy ha eltávolítod őt a felvételre kerülő tagok közül.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Régi típusú csoport lesz létrehozva, mivel 1 tag a Signal egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ő is frissítette a Signalt, vagy ha eltávolítod őt a felvételre kerülő tagok közül.";
 
 /* Title for alert that explains that a new group will be a legacy group because multiple members do not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Régi típusú csoport lesz létrehozva, mivel %@ tag a Grapherex egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ők is frissítették a Grapherext, vagy ha eltávolítod őket a felvételre kerülő tagok közül.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Régi típusú csoport lesz létrehozva, mivel %@ tag a Signal egy régi verzióját használja. Új típusú csoportot csak azután fogsz tudni létrehozni, hogy ők is frissítették a Signalt, vagy ha eltávolítod őket a felvételre kerülő tagok közül.";
 
 /* Indicates that a new group will be a legacy group because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
 "GROUPS_LEGACY_GROUP_CREATION_WARNING_FORMAT_1" = "1 tag nem támogatja az új típusú csoportokat, ezért a csoport továbbra is régi típusú marad. %@";
@@ -2533,7 +2318,7 @@
 "GROUPS_LEGACY_GROUP_MIGRATED_GROUP_DESCRIPTION" = "Megtartottuk a frissítés előtti üzenet-előzményeket és médiafájlokat.";
 
 /* Explanation of new groups in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_NEW_GROUP_DESCRIPTION" = "Az új típusú csoportok olyan képességekkel rendelkeznek, mint példáui @említések, csoportadminok, továbbá a jövőben újabb képességek hozzáadása várható.";
+"GROUPS_LEGACY_GROUP_NEW_GROUP_DESCRIPTION" = "Az új típusú csoportok olyan képességekkel rendelkeznek, mint például @említések, csoportadminok, továbbá a jövőben újabb képességek hozzáadása várható.";
 
 /* Title for the 'new groups' alert view. */
 "GROUPS_LEGACY_GROUP_NEW_GROUPS_ALERT_TITLE" = "Új csoportok";
@@ -2608,7 +2393,7 @@
 "GROUPS_REPLACE_ADMIN_BUTTON" = "Új admin választása";
 
 /* Format for the alert warning the user that they've reached the recommended limit on how many members can be in a group when creating a new group. Embeds {{ the maximum number of recommended members in a group }}. */
-"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "A Grapherex csoportok %@ vagy kevesebb taggal működnek hatékonyan. Ennél több tag esetén lassulások tapasztalhatóak az üzenetek küldése és fogadása során.";
+"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "A Signal csoportok %@ vagy kevesebb taggal működnek hatékonyan. Ennél több tag esetén lassulások tapasztalhatóak az üzenetek küldése és fogadása során.";
 
 /* Title for alert warning the user that they've reached the recommended limit on how many members can be in a group. */
 "GROUPS_TOO_MANY_MEMBERS_ALERT_TITLE" = "Elérted a javasolt létszám limitet";
@@ -2625,7 +2410,7 @@
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "Kapcsolat";
 
-/* Help item that takes the user to the Grapherex support website */
+/* Help item that takes the user to the Signal support website */
 "HELP_SUPPORT_CENTER" = "Támogatási Központ";
 
 /* Label for 'archived conversations' button. */
@@ -2640,17 +2425,17 @@
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "Vázlat: ";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Grapherex contact.  Embeds {{The name of 1 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "A kontaklistádból %@ szintén Grapherex felhasználó.";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Signal contact.  Embeds {{The name of 1 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "A kontaklistádból %@ szintén Signal felhasználó.";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Grapherex contacts.  Embeds {{The names of 2 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "A kontaktlistádból többen is Grapherex felhasználók, mint például %@ és %@.";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Signal contacts.  Embeds {{The names of 2 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "A kontaktlistádból többen is Signal felhasználók, mint például %@ és %@.";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Grapherex contacts.  Embeds {{The names of 3 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "A kontaktlistádból többen is Grapherex felhasználók, mint például %@, %@ és %@.";
+/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Signal contacts.  Embeds {{The names of 3 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "A kontaktlistádból többen is Signal felhasználók, mint például %@, %@ és %@.";
 
-/* A label offering to start a new conversation with your contacts, if you have no Grapherex contacts. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Indítsd el első Grapherex beszélgetésed!";
+/* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Indítsd el első Signal beszélgetésed!";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
 "HOME_VIEW_MESSAGE_REQUEST_ADDED_TO_GROUP_FORMAT" = "%@ hozzáadott a csoporthoz";
@@ -2665,7 +2450,7 @@
 "HOME_VIEW_TITLE_ARCHIVE" = "Archiválás";
 
 /* Title for the conversation list's default mode. */
-"HOME_VIEW_TITLE_INBOX" = "Grapherex";
+"HOME_VIEW_TITLE_INBOX" = "Signal";
 
 /* The image editor hint that you can draw blur */
 "IMAGE_EDITOR_BLUR_HINT" = "Rajzolj bárhová az elhomályosításhoz";
@@ -2679,11 +2464,11 @@
 /* Momentarily shown to the user when attempting to select more images than is allowed. Embeds {{max number of items}} that can be shared. */
 "IMAGE_PICKER_CAN_SELECT_NO_MORE_TOAST_FORMAT" = "A maximum megosztási limit %@ db.";
 
-/* Button that will present a view for the user to change the photos Grapherex has access to. */
+/* Button that will present a view for the user to change the photos Signal has access to. */
 "IMAGE_PICKER_CHANGE_PHOTOS" = "Fotók módosítása";
 
 /* Explanation showing that the user has granted limited access to their photos and can change that in the Settings app. */
-"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Teljes hozzáférés adása a beálltásoknál vagy annak megadása mely fotókhoz férhet hozzá a Grapherex.";
+"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Teljes hozzáférés adása a beálltásoknál vagy annak megadása mely fotókhoz férhet hozzá a Signal.";
 
 /* Title show that the user has granted limited access to their photos and can change that in the Settings app. */
 "IMAGE_PICKER_CHANGE_PHOTOS_TITLE" = "Nem látod a fotóid?";
@@ -2733,8 +2518,8 @@
 /* Shown in inbox and conversation after syncing as a placeholder indicating why your message history is missing. */
 "INFO_MESSAGE_SYNCED_THREAD" = "Társított telefonodról, vagy iPad-edről is tudsz üzeneteket küldeni.\nBiztonsági okokból a beszélgetéseid előzményei nem kerültek átszinkronizálásra.";
 
-/* Shown in inbox and conversation when a user joins Grapherex, embeds the new user's {{contact name}} */
-"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ már elérhető Grapherexon!";
+/* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
+"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ már elérhető Signalon!";
 
 /* accessibility label for the button which shows the sticker picker */
 "INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL" = "Matricák";
@@ -2745,10 +2530,10 @@
 /* Message for the alert indicating that an audio file is invalid. */
 "INVALID_AUDIO_FILE_ALERT_ERROR_MESSAGE" = "Érvénytelen hangfájl.";
 
-/* Alert body when contacts disabled while trying to invite contacts to Grapherex */
-"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Engedélyezheted a kontaktokhoz való hozzáférést az iOS Beállításokban, így barátaidat is meghívhatod, hogy csatlakozzanak a Grapherex közösséghez.";
+/* Alert body when contacts disabled while trying to invite contacts to signal */
+"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Engedélyezheted a kontaktokhoz való hozzáférést az iOS Beállításokban, így barátaidat is meghívhatod, hogy csatlakozzanak a Signal közösséghez.";
 
-/* Alert title when contacts disabled while trying to invite contacts to Grapherex */
+/* Alert title when contacts disabled while trying to invite contacts to signal */
 "INVITE_FLOW_REQUIRES_CONTACT_ACCESS_TITLE" = "Kontaktokhoz hozzáférés engedélyezése";
 
 /* Label for the cell that presents the 'invite contacts' workflow. */
@@ -2833,7 +2618,7 @@
 "LINK_DEVICE_INVALID_CODE_TITLE" = "Készülék társítása sikertelen";
 
 /* confirm the users intent to link a new device */
-"LINK_DEVICE_PERMISSION_ALERT_BODY" = "Ez az eszköz a továbbiakban hozzáfér a Grapherex beszélgetéseidhez, a kontakt és csoportlistádhoz, valamint képes lesz üzenetet küldeni a nevedben.";
+"LINK_DEVICE_PERMISSION_ALERT_BODY" = "Ez az eszköz a továbbiakban hozzáfér a Signal beszélgetéseidhez, a kontakt és csoportlistádhoz, valamint képes lesz üzenetet küldeni a nevedben.";
 
 /* confirm the users intent to link a new device */
 "LINK_DEVICE_PERMISSION_ALERT_TITLE" = "Társítod ezt a készüléket?";
@@ -2845,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Olvasd be a társítani kívánt eszköz képernyőjén látható QR kódot.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "QR Kód beolvasása";
+"LINK_NEW_DEVICE_SUBTITLE" = "Olvasd be a QR kódot egy új eszköz párosításához.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Új Készülék Társítása";
@@ -2869,7 +2654,7 @@
 "LINKPREVIEWS_MEGAPHONE_TITLE" = "Link előnézet bármire";
 
 /* Body for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Hogy át tudd mozgatni Grapherex azonosítódat, mindkét eszközön engedélyezd a helyi hálózathoz való hozzáférést.";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Hogy át tudd mozgatni Signal azonosítódat, mindkét eszközön engedélyezd a helyi hálózathoz való hozzáférést.";
 
 /* A button asking the user if they need further help getting their transfer working. */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_NEED_HELP" = "Segítség?";
@@ -2881,7 +2666,7 @@
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_THREE" = "Kapcsold be: \"Helyi hálózat\"";
 
 /* Second step for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Keresd meg a Grapherex alkalmazást";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Keresd meg a Signal alkalmazást";
 
 /* Title for local network permission action sheet */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_TITLE" = "Helyi hálózati hozzáférés bekapcsolása";
@@ -2892,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Hely kiválasztása";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Naplózás";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Hibanaplók segítségével könnyebb a Signal hibák és összeomlások nyomozása.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Üzenet";
@@ -3061,7 +2849,7 @@
 "MESSAGE_REQUEST_LEAVE_AND_DELETE_GROUP_TITLE" = "Csoport törlése és elhagyása?";
 
 /* Banner label notifying user that a new message is from a user with the same name as an existing contact */
-"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Légy óvatos a csevegési felkérésekkel. A Grapherex talált egy újabb kontaktot azonos névvel.";
+"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Légy óvatos a csevegési felkérésekkel. A Signal talált egy újabb kontaktot azonos névvel.";
 
 /* A header string above a known contact's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Saját profil";
@@ -3147,7 +2935,7 @@
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "Elolvasva";
 
-/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Grapherex account. */
+/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Signal account. */
 "MESSAGE_STATUS_RECIPIENT_SKIPPED" = "Kihagyva";
 
 /* Label indicating that a message failed to send. */
@@ -3187,22 +2975,22 @@
 "MISSED_CALL" = "Nem fogadott hívás";
 
 /* Alert body */
-"MISSING_CAMERA_PERMISSION_MESSAGE" = "Videóhívások indításához az iOS beállításokban kamera hozzáférés adása szükséges a Grapherex alkalmazás számára.";
+"MISSING_CAMERA_PERMISSION_MESSAGE" = "Videóhívások indításához az iOS beállításokban kamera hozzáférés adása szükséges a Signal alkalmazás számára.";
 
 /* Alert title */
-"MISSING_CAMERA_PERMISSION_TITLE" = "A Grapherex szeretne hozzáférni a kamerádhoz.";
+"MISSING_CAMERA_PERMISSION_TITLE" = "A Signal szeretne hozzáférni a kamerádhoz.";
 
 /* Alert body indicating the user has denied location permissios */
 "MISSING_LOCATION_PERMISSION_MESSAGE" = "Engedélyezheted az iOS Beállításokban.";
 
 /* Alert title indicating the user has denied location permissios */
-"MISSING_LOCATION_PERMISSION_TITLE" = "Ehhez a művelethez a Grapherexnak helymeghatározási hozzáférés kell.";
+"MISSING_LOCATION_PERMISSION_TITLE" = "Ehhez a művelethez a Signalnak helymeghatározási hozzáférés kell.";
 
 /* Alert body when user has previously denied media library access */
 "MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE" = "Engedélyezheted az iOS Beállításokban.";
 
 /* Alert title when user has previously denied media library access */
-"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "A Grapherex hozzáférést igényel a fotóidhoz.";
+"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "A Signal hozzáférést igényel a fotóidhoz.";
 
 /* alert title: cannot link - reached max linked devices */
 "MULTIDEVICE_PAIRING_MAX_DESC" = "Nem lehetséges több eszköz társítása.";
@@ -3215,6 +3003,9 @@
 
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Némítva";
+
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Nemrég megváltoztatta profilnevét erről: %1$@ erre: %2$@.";
 
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Kihagyás";
@@ -3297,16 +3088,19 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Nincsenek közös csoportok";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Nincs egyéb közös csoportotok.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Válassz ki egy kontaktot vagy csoportot a beszélgetés elkezdéséhez!";
 
 /* Title welcoming to the app */
-"NO_SELECTED_CONVERSATION_TITLE" = "Üdvözöl a Grapherex!";
+"NO_SELECTED_CONVERSATION_TITLE" = "Üdvözöl a Signal!";
 
 /* A string prompting the user to send a new mesaage to a user */
 "NON_CONTACT_TABLE_CELL_NEW_MESSAGE" = "Új üzenet neki:";
 
-/* A string asking the user if they'd like to invite a number to Grapherex via SMS. */
+/* A string asking the user if they'd like to invite a number to signal via SMS. */
 "NON_CONTACT_TABLE_CELL_SEND_SMS" = "Nincs ilyen felhasználó. Meghívod SMS-ben?";
 
 /* Label for 1:1 conversation with yourself. */
@@ -3348,11 +3142,8 @@
 /* No comment provided by engineer. */
 "NOTIFICATIONS_NONE" = "Se név, se szöveg";
 
-/* Table cell switch label. When disabled, Grapherex will not play notification sounds while the app is in the foreground. */
+/* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Hang megnyitott alkalmazásnál";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Hangok";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Egyedi értesítőhang hozzáadása...";
@@ -3412,7 +3203,7 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "iPhone társítása";
 
 /* explanation to the user they're switching from linking to registering flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Az \"iPad regisztrálása\" menüponttal egy új Grapherex fiókot hozhatsz létre, vagy mozgathatsz át egy meglevőt erre az eszközre. Ez a művelet a többi meglevő eszközödön letiltja ezzel a telefonszámmal korábban regisztrált Grapherex fiókjaidat.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Az \"iPad regisztrálása\" menüponttal egy új Signal fiókot hozhatsz létre, vagy mozgathatsz át egy meglevőt erre az eszközre. Ez a művelet a többi meglevő eszközödön letiltja ezzel a telefonszámmal korábban regisztrált Signal fiókjaidat.";
 
 /* explanation to the user they're switching from registering to linking flow */
 "ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Az \"iPhone társítása\" menüponttal egy meglevő fiókhoz társíthatod készüléked. Telefon társítása jelenleg nem ajánlott, mivel jelentősen lekorlátozza az alkalmazás képességeit (mint pl. a hang és videóhívás).";
@@ -3424,7 +3215,7 @@
 "ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "iPhone társítása";
 
 /* warning to the user that registering an ipad is not recommended */
-"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Ezen iPad regisztrálása letiltja a Grapherext az ezzel a telefonszámmal regisztrált egyéb eszközökön.";
+"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Ezen iPad regisztrálása letiltja a Signalt az ezzel a telefonszámmal regisztrált egyéb eszközökön.";
 
 /* warning to the user that linking a phone is not recommended */
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Ezen iPhone társítása nem javasolt - erősen korlátozná az alkalmazás teljeskörű működését.";
@@ -3433,25 +3224,31 @@
 "ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Jogosultságok engedélyezése";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Az értesítések segítségével értesülsz az új üzenetek érkezéséről, valamint a beszélgetésekben történt változásokról.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Az értesítések és a kapcsolatok engedélyezésével láthatod mikor érkeznek az üzenetek, és segít ismerősöket találni. A kapcsolatok titkosítottak, így a Signal szolgáltatás nem látja őket.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Fogadott üzenet";
+"ONBOARDING_PERMISSIONS_TITLE" = "Jogosultságok engedélyezése";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Válassz, hogy az alábbi telefonszámod alapján ki találhat meg Grapherexon: %@";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Válassz, hogy az alábbi telefonszámod alapján ki találhat meg Signalon: %@";
 
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Ki találhat meg telefonszámod alapján?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "A telefonszámod";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Kérlek várj egy pár percet mielőtt újra megpróbálnád. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Add meg a telefonszámodat a kezdéshez";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Add meg telefonszámodat";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Érvénytelen telefonszám";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Érvénytelen telefonszám. Adj meg egy valós telefonszámot a regisztrációhoz.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Kifogytál a PIN megadási lehetőségekből, de továbbra is hozzáférhetsz Grapherex fiókodhoz, amennyiben létrehozol egy új PIN-t. A magánszférád védelmének és saját biztonságod érdekében fiókod csak a mentett profilbeállítások nélkül állítható vissza.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Kifogytál a PIN megadási lehetőségekből, de továbbra is hozzáférhetsz Signal fiókodhoz, amennyiben létrehozol egy új PIN-t. A magánszférád védelmének és saját biztonságod érdekében fiókod csak a mentett profilbeállítások nélkül állítható vissza.";
 
 /* Label for the 'learn more' link when reglock is disabled in the 'onboarding pin attempts exhausted' view. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_LEARN_MORE" = "Bővebben a PIN kódokról";
@@ -3474,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Add meg PIN kódodat";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Profilod";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Vezetéknév (opcionális)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Keresztnév (opcionális)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Adatvédelmi és Általános Szerződési Feltételek";
 
@@ -3483,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Helytelen telefonszám?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Nem kaptam meg a kódot (elérhető %@ múlva)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Hívj fel!";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Grapherex segítség";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Hívj fel: %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Kód ellenőrzése...";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Helytelen ellenőrző kód";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Nem kaptam ellenőrző kódot";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Ellenőrző kód újraküldése";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Ellenőrizd, hogy eléred -e a mobilhálózatot és képes vagy sms-t fogadni.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Nem jött kód?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Ellenőrző kód újraküldése";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Inkább hívj";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Továbbra sem jött kód?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Kód újra küldése: %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Add meg a kódot amelyet az alábbi számra küldtünk: %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Újraküldtük a kódot erre a számra: %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Ellenőrző kód";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Beállítások";
@@ -3525,8 +3322,8 @@
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ beállította az eltűnő üzenetek idejét erre: %@";
 
-/* Label warning the user that the Grapherex service may be down. */
-"OUTAGE_WARNING" = "A Grapherex technikai nehézségekkel küzd. Keményen dolgozunk a gyors helyreállásért.";
+/* Label warning the user that the Signal service may be down. */
+"OUTAGE_WARNING" = "A Signal technikai nehézségekkel küzd. Keményen dolgozunk a gyors helyreállásért.";
 
 /* info message text in conversation view. {embeds callee name} */
 "OUTGOING_CALL_FORMAT" = "Hívtad: %@";
@@ -3634,13 +3431,13 @@
 "PHONE_NUMBER_DISCOVERABILITY_EVERYBODY" = "Mindenki";
 
 /* A user friendly description of the 'everybody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Bárkinek, akinek benne vagy a telefonja kontaktlistájában megjelensz a Grapherex kontaktjai között is. Akiknek pedig nincs meg a számod, azok megtalálhatnak a Keresés funkció használatával.";
+"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Bárkinek, akinek benne vagy a telefonja kontaktlistájában megjelensz a Signal kontaktjai között is. Akiknek pedig nincs meg a számod, azok megtalálhatnak a Keresés funkció használatával.";
 
 /* A user friendly name for the 'nobody' phone number discoverability mode. */
 "PHONE_NUMBER_DISCOVERABILITY_NOBODY" = "Senki";
 
 /* A user friendly description of the 'nobody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Telefonszámod alapján senki nem fog megtalálni Signalon. Azok számára sem jelensz meg Grapherex kontaktként, akiknél telefonszámoddal szerepelsz készülékük kontaktlistájában. Továbbá senki számára nem jelensz meg a Keresés funkció találatai között.";
+"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Telefonszámod alapján senki nem fog megtalálni Signalon. Azok számára sem jelensz meg Signal kontaktként, akiknél telefonszámoddal szerepelsz készülékük kontaktlistájában. Továbbá senki számára nem jelensz meg a Keresés funkció találatai között.";
 
 /* A format for a label showing an example phone number. Embeds {{the example phone number}}. */
 "PHONE_NUMBER_EXAMPLE_FORMAT" = "Például: %@";
@@ -3649,19 +3446,19 @@
 "PHONE_NUMBER_SHARING_CONTACTS_ONLY" = "Kontaktjaim";
 
 /* A user friendly description of the 'contacts only' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Csak kontaktjaid láthatják Grapherexban a telefonszámodat.";
+"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Csak kontaktjaid láthatják Signalban a telefonszámodat.";
 
 /* A user friendly name for the 'everybody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_EVERYBODY" = "Mindenki";
 
 /* A user friendly description of the 'everybody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Telefonszámod látható lesz az ismerősök és csoportok számára, akikkel üzenetet váltasz. Azoknál, akinél szerepelsz készülékük kontaktlistájában, megjelensz Grapherex kontakjaik között is.";
+"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Telefonszámod látható lesz az ismerősök és csoportok számára, akikkel üzenetet váltasz. Azoknál, akinél szerepelsz készülékük kontaktlistájában, megjelensz Signal kontakjaik között is.";
 
 /* A user friendly name for the 'nobody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_NOBODY" = "Senki";
 
 /* A user friendly description of the 'nobody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Telefonszámodat Grapherexban senki nem láthatja.";
+"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Telefonszámodat Signalban senki nem láthatja.";
 
 /* Format for phone number label with an index. Embeds {{Phone number label (e.g. 'home')}} and {{index, e.g. 2}}. */
 "PHONE_NUMBER_TYPE_AND_INDEX_NAME_FORMAT" = "%@ %@";
@@ -3736,7 +3533,7 @@
 "PIN_CREATION_DISABLE_CONFIRMATION_ACTION" = "PIN letiltása";
 
 /* Message of the 'pin disable' action sheet. */
-"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Ha letiltod a PIN kódot, a Grapherex újraregisztrálásakor minden adatot elvesztesz, hacsak nem közvetlenül az adatátvitel funkcióval költöztetted át adataidat régi telefonodról. A Regisztrációs zár funkciót csak bekapcsolt PIN funkcióval használhatod. A PIN használata az üzenetek megőrzését nem biztosítja (csak kontaktlistádat, beállításaidat), azokat régi telefonodról viheted csak át újraregisztráláskor.";
+"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Ha letiltod a PIN kódot, a Signal újraregisztrálásakor minden adatot elvesztesz, hacsak nem közvetlenül az adatátvitel funkcióval költöztetted át adataidat régi telefonodról. A Regisztrációs zár funkciót csak bekapcsolt PIN funkcióval használhatod. A PIN használata az üzenetek megőrzését nem biztosítja (csak kontaktlistádat, beállításaidat), azokat régi telefonodról viheted csak át újraregisztráláskor.";
 
 /* Title of the 'pin disable' action sheet. */
 "PIN_CREATION_DISABLE_CONFIRMATION_TITLE" = "Figyelmeztetés";
@@ -3748,7 +3545,7 @@
 "PIN_CREATION_ERROR_TITLE" = "PIN létrehozása sikertelen.";
 
 /* The explanation in the 'pin creation' view. */
-"PIN_CREATION_EXPLANATION" = "A PIN-nek köszönhetően a Grapherex által tárolt információk titkosítva lesznek, így csak te férhetsz hozzájuk. Újratelepítés esetén profilod, beállításaid és kontaktjaid visszaállításra kerülnek. Az alkalmazás megnyitásához nincs szükség a PIN kódra.";
+"PIN_CREATION_EXPLANATION" = "A PIN-nek köszönhetően a Signal által tárolt információk titkosítva lesznek, így csak te férhetsz hozzájuk. Újratelepítés esetén profilod, beállításaid és kontaktjaid visszaállításra kerülnek. Az alkalmazás megnyitásához nincs szükség a PIN kódra.";
 
 /* Learn more action on the pin creation view */
 "PIN_CREATION_LEARN_MORE" = "Bővebben a PIN kódokról";
@@ -3811,7 +3608,7 @@
 "PIN_REMINDER_MEGAPHONE_FEW_DAYS_TOAST" = "Pár napon belül újra emlékeztetünk.";
 
 /* Title for PIN reminder megaphone */
-"PIN_REMINDER_MEGAPHONE_TITLE" = "Grapherex PIN kód hitelesítése";
+"PIN_REMINDER_MEGAPHONE_TITLE" = "Signal PIN kód hitelesítése";
 
 /* Toast indicating that we'll ask you for your PIN again tomorrow. */
 "PIN_REMINDER_MEGAPHONE_TOMORROW_TOAST" = "Holnap újra emlékeztetünk.";
@@ -3826,7 +3623,7 @@
 "PIN_REMINDER_MISMATCH_ERROR" = "Hibás PIN, próbáld újra.";
 
 /* The title for the 'pin reminder' dialog. */
-"PIN_REMINDER_TITLE" = "Add meg Grapherex PIN kódodat";
+"PIN_REMINDER_TITLE" = "Add meg Signal PIN kódodat";
 
 /* Label indicating that the attempted PIN is too short */
 "PIN_REMINDER_TOO_SHORT_ERROR" = "A PIN kódnak legalább 4 számjegyből kell állnia.";
@@ -3841,7 +3638,7 @@
 "PINS_MEGAPHONE_ACTION" = "PIN létrehozása";
 
 /* Body for PIN megaphone when user doesn't have a PIN */
-"PINS_MEGAPHONE_BODY" = "A PIN-nek köszönhetően a Grapherex által tárolt információk titkosítva vannak.";
+"PINS_MEGAPHONE_BODY" = "A PIN-nek köszönhetően a Signal által tárolt információk titkosítva vannak.";
 
 /* Toast indication that the user will be reminded later to setup their PIN. Embeds {{time until mandatory}} */
 "PINS_MEGAPHONE_SNOOZE_TOAST_FORMAT" = "Később újra emlékeztetünk. PIN kódod létrehozása %ld nap múlva kötelezővé válik.";
@@ -3880,19 +3677,19 @@
 "PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "A vágólapon levő szám nem hasonlít ehhez a beszélgetéshez passzoló biztonsági azonosítóra.";
 
 /* Alert body for user error */
-"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "A Grapherex nem talált semmilyen biztonsági azonosítót a vágólapodon. Biztos elvégezted a másolást?";
+"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "A Signal nem talált semmilyen biztonsági azonosítót a vágólapodon. Biztos elvégezted a másolást?";
 
 /* Alert body when verifying with {{contact name}} */
-"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Minden Grapherex felhasználó-pár egyedi biztonsági azonosító páron osztozik. Kérlek ellenőrizd, hogy %@ ismerősöd a *te* egyedi azonosítódat jelzi ki.";
+"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Minden Signal felhasználó-pár egyedi biztonsági azonosító páron osztozik. Kérlek ellenőrizd, hogy %@ ismerősöd a *te* egyedi azonosítódat jelzi ki.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "A Grapherex egy régebbi verzióját használod. A megerősítéshez frissítsd az alkalmazást.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "A Signal egy régebbi verzióját használod. A megerősítéshez frissítsd az alkalmazást.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "A kontaktod a Grapherex egy régebbi verzióját futtatja. Kérd meg, hogy frissítsen a biztonsági szám ellenőrzése előtt.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "A kontaktod a Signal egy régebbi verzióját futtatja. Kérd meg, hogy frissítsen a biztonsági szám ellenőrzése előtt.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "A beolvasott QR kód nem hasonlít biztonsági azonosítóra. Mindketten a Grapherex legújabb verzióját használjátok?";
+"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "A beolvasott QR kód nem hasonlít biztonsági azonosítóra. Mindketten a Signal legújabb verzióját használjátok?";
 
 /* Paragraph(s) shown alongside the safety number when verifying privacy with {{contact name}} */
 "PRIVACY_VERIFICATION_INSTRUCTIONS" = "Ha szeretnéd ellenőrizni a végpontok közti titkosítás biztonságát %@ ismerősöddel, hasonlítsd össze a fenti számokat az ő készülékén található számokkal. Gyorsabb alternatívaként, be is olvashatod a QR kódot a telefonján, vagy megkérheted, hogy olvassa be ő a te kódodat.";
@@ -3942,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ megváltoztatta a profilnevét erre: %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Hozzáadás profilhoz";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Neved";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Névjegy";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Név";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Felhasználónév";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Profilkép beállítása";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Névjegy";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Avatár eltávolítása";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Felhasználónév létrehozása";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Az utónév túl hosszú";
@@ -3967,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Az keresztnév túl hosszú.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Opcionális)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Családnév";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Vezetéknév (opcionális)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Szükséges)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Keresztnév";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Keresztnév (opcionális)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "A profil frissítéséhez aktív internetkapcsolat szükséges.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Grapherex profilod végpontok közt titkosítva kerül továbbításra. Kontaktjaid számára akkor lesz látható, mikor új beszélgetést kezdeményezel vagy elfogadsz rá egy felkérést, illetve ha csatlakozol egy csoporthoz.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "A profilod a végpontok közt titkosítva kerül továbbításra. Kontaktjaid számára akkor lesz látható, mikor új beszélgetést kezdeményezel vagy elfogadsz.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Mentés";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profil";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Felhasználónév";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Megjelőlés olvasottként";
@@ -4004,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Push értesítések újraregisztrálása sikeresen megtörtént.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Azonnali értesítések";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -4096,10 +3884,10 @@
 "REGISTER_2FA_FORGOT_PIN_ALERT_TITLE" = "Segítség?";
 
 /* Alert body for a forgotten SVR (V2) PIN */
-"REGISTER_2FA_FORGOT_SVR_PIN_ALERT_MESSAGE" = "Grapherex PIN kódod 4+ karakter hosszú és szám, vagy alfanumerikus formátumú. Ha nem emlékszel rá, sajnos 7 napot várnod kell, míg újraregisztrálhatod a fiókodat.";
+"REGISTER_2FA_FORGOT_SVR_PIN_ALERT_MESSAGE" = "Signal PIN kódod 4+ karakter hosszú és szám, vagy alfanumerikus formátumú. Ha nem emlékszel rá, sajnos 7 napot várnod kell, míg újraregisztrálhatod a fiókodat.";
 
 /* Alert body for a forgotten SVR (V2) PIN when the user doesn't have reglock */
-"REGISTER_2FA_FORGOT_SVR_PIN_WITHOUT_REGLOCK_ALERT_MESSAGE" = "Grapherex PIN kódod egy általad létrehozott 4+ jegyű kód, amely lehet numerikus és alfanumerikus is. Amennyiben nem emlékszel PIN kódodra, lehetőséged van létrehozni egy újat. Ezután regisztrálhatsz, majd használhatod a fiókodat, de mentett beállításaid egy része, mint például a profilinformációid elvesznek.";
+"REGISTER_2FA_FORGOT_SVR_PIN_WITHOUT_REGLOCK_ALERT_MESSAGE" = "Signal PIN kódod egy általad létrehozott 4+ jegyű kód, amely lehet numerikus és alfanumerikus is. Amennyiben nem emlékszel PIN kódodra, lehetőséged van létrehozni egy újat. Ezután regisztrálhatsz, majd használhatod a fiókodat, de mentett beállításaid egy része, mint például a profilinformációid elvesznek.";
 
 /* Alert body for a forgotten V1 PIN */
 "REGISTER_2FA_FORGOT_V1_PIN_ALERT_MESSAGE" = "Létrehozott PIN kódod egy 4+ karakter hosszú számsor. Ha nem emlékszel rá, sajnos 7 napot várnod kell, míg újraregisztrálhatod a fiókodat.";
@@ -4152,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "A fiókod nem aktiválható amíg a neked küldött ellenőrző kódot meg nem adod.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "A folytatáshoz ellenőrizd a telefonod internet kapcsolatát és próbáld újra.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Ellenőrizd hálózati kapcsolatod";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Telefonszám formátum nem támogatott, vedd fel a kapcsolatot a supporttal.";
 
@@ -4182,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Hiányzó telefonszám";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Az ellenőrző kód erre a számra kerül kiküldésre. Helyes a fenti telefonszámod?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Szám megerősítés: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Szerkesztés";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Ellenőrzés %@...";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Elutasít";
 
@@ -4198,22 +4004,22 @@
 "RESEARCH_MEGAPHONE_BODY" = "A legjobb csevegőalkalmazás címének eléréséhez szívesen vennének a visszajelzéseidet.";
 
 /* Title for research megaphone */
-"RESEARCH_MEGAPHONE_TITLE" = "Üzenj a Grapherex fejlesztőknek";
+"RESEARCH_MEGAPHONE_TITLE" = "Üzenj a Signal fejlesztőknek";
 
 /* Text for the research modal footer */
-"RESEARCH_MODAL_FOOTER" = "A kérdőív a Surveygizmo jóvoltából érhető el a surveys.grapherexusers.com biztonságos domain alatt.";
+"RESEARCH_MODAL_FOOTER" = "A kérdőív a Surveygizmo jóvoltából érhető el a surveys.signalusers.org biztonságos domain alatt.";
 
 /* Button text for declining the research modal */
 "RESEARCH_MODAL_NO_THANKS" = "Nem, köszönöm";
 
 /* Text explaining why the user should take the survey */
-"RESEARCH_MODAL_PLEA" = "<bold>Hiszünk a személyes adatok privát birtoklásának jogában.</bold>\n\nA Grapherex nem gyűjt senkiről semmilyen felhasználói viselkedést érintő adatot. Ezért hogy valahogy képbe kerüljünk az igényeket illetően, szükségünk lenne a programot használók véleményére - <bold>például a tiédre</bold>.\n\nElindítottunk egy kérdőíves felmérést, hogy megértsük a felhasználói szokásokat. A kitöltés során semmilyen téged beazonosító adat nem kerül birtokunkba. Viszont ha a jövőben is szeretnél további visszajezéssel a segítségünkre lenni, akkor megadhatsz magadról kapcsolattartáshoz szükséges információkat is.\n\nHa van pár perced, örömmel vennénk, ha segítenél a kérdőív kitöltésével.";
+"RESEARCH_MODAL_PLEA" = "<bold>Hiszünk a személyes adatok privát birtoklásának jogában.</bold>\n\nA Signal nem gyűjt senkiről semmilyen felhasználói viselkedést érintő adatot. Ezért hogy valahogy képbe kerüljünk az igényeket illetően, szükségünk lenne a programot használók véleményére - <bold>például a tiédre</bold>.\n\nElindítottunk egy kérdőíves felmérést, hogy megértsük a felhasználói szokásokat. A kitöltés során semmilyen téged beazonosító adat nem kerül birtokunkba. Viszont ha a jövőben is szeretnél további visszajezéssel a segítségünkre lenni, akkor megadhatsz magadról kapcsolattartáshoz szükséges információkat is.\n\nHa van pár perced, örömmel vennénk, ha segítenél a kérdőív kitöltésével.";
 
 /* Button text for taking the research survey */
 "RESEARCH_MODAL_TAKE_SURVEY" = "Kérdőív kitöltése";
 
 /* Title for the research megaphone modal */
-"RESEARCH_MODAL_TITLE" = "Grapherex kutatás";
+"RESEARCH_MODAL_TITLE" = "Signal kutatás";
 
 /* Generic text for button that retries whatever the last action was. */
 "RETRY_BUTTON_TEXT" = "Újra";
@@ -4231,7 +4037,7 @@
 "SAFETY_NUMBER_CHANGED_CONFIRM_SEND_ACTION" = "Küldés ennek ellenére";
 
 /* Message for the 'safety number confirmation' view */
-"SAFETY_NUMBER_CONFIRMATION_MESSAGE" = "A következő személyek lehet, hogy újratelepítették a Grapherext vagy készüléket cseréltek. Ellenőrizd biztonsági számotokat a privacy biztosítása érdekében!";
+"SAFETY_NUMBER_CONFIRMATION_MESSAGE" = "A következő személyek lehet, hogy újratelepítették a Signalt vagy készüléket cseréltek. Ellenőrizd biztonsági számotokat a privacy biztosítása érdekében!";
 
 /* Text explaining that the given contact previously had their safety number verified. */
 "SAFETY_NUMBER_CONFIRMATION_PREVIOUSLY_VERIFIED" = "Már Ellenőrzött";
@@ -4243,7 +4049,7 @@
 "SAFETY_NUMBER_CONFIRMATION_VIEW_ACTION" = "Megtekintés";
 
 /* Snippet to share {{safety number}} with a friend. sent e.g. via SMS */
-"SAFETY_NUMBER_SHARE_FORMAT" = "Grapherex biztonsági azonosítónk:\n%@";
+"SAFETY_NUMBER_SHARE_FORMAT" = "Signal biztonsági azonosítónk:\n%@";
 
 /* Action sheet heading */
 "SAFETY_NUMBERS_ACTIONSHEET_TITLE" = "Biztonsági azonosítód megváltozott a következő ismerősöddel: %@. Érdemes lenne leellenőrizni.";
@@ -4275,14 +4081,14 @@
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Engedélyezned kell a jelkód használatát az iOS Beállításokban a képernyőzár használatához.";
 
-/* Description of how and why Grapherex iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
-"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Grapherex: azonosítás szükséges";
+/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
+"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Signal: azonosítás szükséges";
 
 /* Title for alert indicating that screen lock could not be unlocked. */
 "SCREEN_LOCK_UNLOCK_FAILED" = "A hitelesítés sikertelen";
 
-/* Label for button on lock screen that lets users unlock Grapherex. */
-"SCREEN_LOCK_UNLOCK_SIGNAL" = "Grapherex feloldása";
+/* Label for button on lock screen that lets users unlock Signal. */
+"SCREEN_LOCK_UNLOCK_SIGNAL" = "Signal feloldása";
 
 /* This is a contact's name. Replace the name for a more common name in your locale if this sounds too foreign. This should be a unique non-public figure's name. This will have a female profile photo. */
 "SCREENSHOT_NAME_CONTACT_EIGHT" = "Tina Ukuku";
@@ -4332,7 +4138,7 @@
 /* This is for a group chat for people who want weather updates. */
 "SCREENSHOT_NAME_GROUP_TWO" = "Időjárás előrejelzés";
 
-/* This appears in Grapherex > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
+/* This appears in Signal > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
 "SCREENSHOT_NAME_LOCAL_PROFILE" = "Freya elnökasszony";
 
 /* This is a message expressing support/happiness/awe/shock. */
@@ -4441,16 +4247,16 @@
 "SECONDARY_DEVICE_ERROR_FETCHING_LINKING_CODE" = "Társító kód lekérése sikertelen";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "A telefonod párosításához frissítsd a Grapherext ezen az eszközön!";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "A telefonod párosításához frissítsd a Signalt ezen az eszközön!";
 
 /* Title for error alert indicating that a linked device must be upgraded before it can be linked. */
 "SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Nem támogatott verzió";
 
 /* alert message for outdated linking device */
-"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Ez az eszköz a Grapherex egy régebbi verzióját futtatja, ami még nem képes iOS QR kód beolvasására. Kérlek frissíts a legújabb verzióra és próbáld újra.";
+"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Ez az eszköz a Signal egy régebbi verzióját futtatja, ami még nem képes iOS QR kód beolvasására. Kérlek frissíts a legújabb verzióra és próbáld újra.";
 
 /* alert title for outdated linking device */
-"SECONDARY_LINKING_ERROR_OLD_VERSION_TITLE" = "Frissítsd a Grapherext a társítandó eszközön";
+"SECONDARY_LINKING_ERROR_OLD_VERSION_TITLE" = "Frissítsd a Signalt a társítandó eszközön";
 
 /* alert title */
 "SECONDARY_LINKING_ERROR_WAITING_FOR_SCAN" = "Nem sikerült a készülék társítása";
@@ -4468,19 +4274,19 @@
 "SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS" = "Társítás véglegesítése";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Nyisd meg a telefonodon a Grapherext ezen iPad társításához";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Nyisd meg a telefonodon a Signalt ezen iPad társításához";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
-"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Nincs Grapherex a telefonomon...";
+"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Nincs Signal a telefonomon...";
 
 /* alert body */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Telepítsd a Grapherex alkalmazást az App Store alól, végezd el a regisztrációs folyamatot, ez után már képes leszel ugyan ahhoz a fiókhoz társítani az iPad készüléked.";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Telepítsd a Signal alkalmazást az App Store alól, végezd el a regisztrációs folyamatot, ez után már képes leszel ugyan ahhoz a fiókhoz társítani az iPad készüléked.";
 
 /* alert title */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Telepítsd a Grapherext a telefonodra";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Telepítsd a Signalt a telefonodra";
 
 /* body text while displaying a QR code which, when scanned, will link this device. */
-"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Koppints a telefonod Grapherex alkalmazásában a profilképedre, majd a \"Társított eszközök\", végül az \"Új Készülék Társítása\" menüpontra. A megnyíló kameranézetben olvasd be ezt a QR kódot.";
+"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Koppints a telefonod Signal alkalmazásában a profilképedre, majd a \"Társított eszközök\", végül az \"Új Készülék Társítása\" menüpontra. A megnyíló kameranézetben olvasd be ezt a QR kódot.";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
 "SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Segítség az iPad társításához";
@@ -4489,7 +4295,7 @@
 "SECONDARY_ONBOARDING_SCAN_CODE_TITLE" = "Olvasd be a QR kódot a telefonoddal";
 
 /* header text before the user can transfer to this device */
-"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Indítsd el a Grapherext régi Ipad-eden a fiók átmozgatásához";
+"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Indítsd el a Signalt régi Ipad-eden a fiók átmozgatásához";
 
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "Biztonságos munkamenet alaphelyzetbe állítva.";
@@ -4528,10 +4334,10 @@
 "SEND_SMS_CONFIRM_TITLE" = "Szeretnéd meghívni egy barátodat nem-biztonságos SMS-en keresztül?";
 
 /* No comment provided by engineer. */
-"SEND_SMS_INVITE_TITLE" = "Szeretnél Grapherex meghívót küldeni az alábbi számok tulajdonosainak?";
+"SEND_SMS_INVITE_TITLE" = "Szeretnél Signal meghívót küldeni az alábbi számok tulajdonosainak?";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "A Grapherex végpontok közti titkosítást használ és nagy ritkán újra be kell állítania a két végpont közti adatkapcsolatot. Ennek nincs hatása a biztonságra, de előfordulhat, hogy pont ezalatt nem kaptál meg egy üzenetet ettől a kontakttól. Ilyenkor az újraküldés kérése ajánlott.";
+"SESSION_REFRESH_ALERT_MESSAGE" = "A Signal végpontok közti titkosítást használ és nagy ritkán újra be kell állítania a két végpont közti adatkapcsolatot. Ennek nincs hatása a biztonságra, de előfordulhat, hogy pont ezalatt nem kaptál meg egy üzenetet ettől a kontakttól. Ilyenkor az újraküldés kérése ajánlott.";
 
 /* Title for the session refresh alert */
 "SESSION_REFRESH_ALERT_TITLE" = "A munkamenet alaphelyzetbe állt";
@@ -4545,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Háttérkép beállítása";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "Az alkalmazásról";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Fiók";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Letiltás";
@@ -4554,11 +4360,11 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Cenzúra megkerülése";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Hely: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Hely";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Ha engedélyezed, a Grapherex megpróbálja megkerülni az állami blokkolást. Ne engedélyezd ezt a funkciót, ha a tartózkodási helyeden a Grapherex nincs cenzúrázva.";
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Ha engedélyezed, a Signal megpróbálja megkerülni az állami blokkolást. Ne engedélyezd ezt a funkciót, ha a tartózkodási helyeden a Signal nincs cenzúrázva.";
 
 /* Table footer for the 'censorship circumvention' section shown when censorship circumvention has been auto-enabled based on local phone number. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_AUTO_ENABLED" = "A cenzúra megkerülés funkció aktiválva lett a telefonszámod alapján.";
@@ -4569,14 +4375,11 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "A cenzúra megkerülés funkció csak aktív internetkapcsolat esetén aktiválható.";
 
-/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Grapherex service. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Cenzúra megkerülés funkció nem szükséges; a Grapherex szolgáltatás aktív.";
-
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Cenzúra megkerülés funkció";
+/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Cenzúra megkerülés funkció nem szükséges; a Signal szolgáltatás aktív.";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_DEBUGLOG" = "Debug Log engedélyezés";
+"SETTINGS_ADVANCED_DEBUGLOG" = "Hibanapló engedélyezés";
 
 /* Label for the 'advanced pin settings' button. */
 "SETTINGS_ADVANCED_PIN_SETTINGS" = "További PIN beállítások";
@@ -4590,20 +4393,14 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "PIN engedélyezése";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "Grapherex PIN";
+/* No comment provided by engineer. */
+"SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Hibanapló továbbítása";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Debug Log továbbítása";
-
-/* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Haladó";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Hibanaplók";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Telefon kontaktokban tárolt profilkép használata";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Telefon kontaktokban tárolt profilkép használata.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
 "SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Profilképek a telefon kontaktlistából";
@@ -4668,11 +4465,8 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Felhasználó letiltása";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Letiltott kontaktok és csoportok listája.";
-
-/* A label that indicates the user has no Grapherex contacts. */
-"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Nincsenek Grapherex felhasználó kontaktjaid.";
+/* A label that indicates the user has no Signal contacts. */
+"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Nincsenek Signal felhasználó kontaktjaid.";
 
 /* A label that indicates the user's search has no matching results. */
 "SETTINGS_BLOCK_LIST_NO_SEARCH_RESULTS" = "Nincs találat";
@@ -4684,13 +4478,16 @@
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE" = "Minden hívás átjátszása";
 
 /* User settings section footer, a detailed explanation */
-"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Minden hívás a Grapherex kiszolgálón keresztül haladjon - ezzel elfedhető IP címed a hívott fél számára. A funkció engedélyezése csökkentheti a hívásminőséget.";
+"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Minden hívás a Signal kiszolgálón keresztül haladjon - ezzel elfedhető IP címed a hívott fél számára. A funkció engedélyezése csökkentheti a hívásminőséget.";
+
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Beszélgetések";
 
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Összes beszélgetés törlése";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Copyright Grapherex Messenger \nLicenc típusa: GPLv3";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger \nLicenc típusa: GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Adathasználat";
@@ -4699,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Adattakarékos mód";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "A kevesebb adat használatának beállítása javíthatja a hívások minőségét gyenge hálózatokon";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Mérsékeltebb adathasználat javíthatja a hívások minőségét gyenge hálózatokon.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Hívások";
@@ -4708,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Hangüzenetek, egyszeri média és a 100 KB alatti matricák mindig automatikusan letöltődnek.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "MÉDIA AUTO-LETÖLTÉS";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Automatikus letöltés";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Auto-letöltés alaphelyzetbe";
@@ -4728,23 +4525,17 @@
 /* Confirmation text for button which deletes all message, calling, attachments, etc. */
 "SETTINGS_DELETE_HISTORYLOG_CONFIRMATION_BUTTON" = "Minden törlése";
 
-/* Title for the 'donate to Grapherex' link in settings. */
-"SETTINGS_DONATE" = "Adomány a Grapherex számára";
+/* Title for the 'donate to signal' link in settings. */
+"SETTINGS_DONATE" = "Adomány a Signal számára";
 
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Súgó";
-
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Összes beszélgetés törlése";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Információ";
 
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Hívd meg barátaidat";
 
 /* content of tweet when inviting via twitter - please do not translate URL */
-"SETTINGS_INVITE_TWITTER_TEXT" = "Elérhető vagyok már @grapherexapp platformon is. Töltsd le te is innen: https://grapherex.com";
+"SETTINGS_INVITE_TWITTER_TEXT" = "Elérhető vagyok már @signalapp platformon is. Töltsd le te is innen: https://signal.org/download/";
 
 /* Label for settings view that allows user to change the notification sound. */
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "Üzenet hang";
@@ -4752,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Beszélgetés háttérkép";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Adatvédelmi & Ált. Szerződési Feltételek";
 
 /* Setting for enabling & disabling link previews. */
@@ -4785,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Üzenetküldés";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "Láthatod és mutathatod üzenetek olvasott állapotát és a gépelést jelző indikátort. Ha letiltod, te sem látod majd az olvasott állapotjelzőket és a gépelési indikátort.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Beállítások";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+/* A setting controlling whether muted conversations are shown in the badge count */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Némítottak jelölése is";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Jelölő számláló";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Hívás és üzenet értesítések érkezhetnek a készülék zárolási képernyőjére. Hogy mi jelenjen meg bennük, azt itt szabályozhatod.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Hívás és üzenet értesítések érkezhetnek a készülék zárolási képernyőjére.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Értesítés tartalma";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Ismerős csatlakozott a Grapherexhoz";
+/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Ismerős csatlakozott Signalon";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Események";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Értesítsen mikor...";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Értesítések";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4825,19 +4619,16 @@
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_ACTION" = "Emlékeztetők kikapcsolása";
 
 /* The explanation for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Bizonyosodj meg róla, hogy PIN kódodat megjegyezted vagy biztonságos helyre eltároltad, ugyanis a PIN kódot nem lehet visszaállítani. Amennyiben elfelejted PIN kódodat, akkor a Grapherex fiókod újraregisztrációja során adataid elveszhetnek.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Bizonyosodj meg róla, hogy PIN kódodat megjegyezted vagy biztonságos helyre eltároltad, ugyanis a PIN kódot nem lehet visszaállítani. Amennyiben elfelejted PIN kódodat, akkor a Signal fiókod újraregisztrációja során adataid elveszhetnek.";
 
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Erősítsd meg Grapherex PIN kódodat";
-
-/* Footer for the 'pin reminder' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Az emlékeztetők a PIN kód megjegyzését segítik, ugyanis a PIN-t nem lehet visszaállítani. Az idő múlásával egyre kevesebbszer fogunk kérni a megadására.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Erősítsd meg Signal PIN kódodat";
 
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN emlékeztetők";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "A PIN-nek köszönhetően a Grapherex által tárolt információk titkosítva vannak, így csak te férhetsz hozzájuk. Újratelepítés esetén profilod, beállításaid és kontaktjaid visszaállításra kerülnek.";
+"SETTINGS_PINS_FOOTER" = "A PIN kódnak köszönhetően a Signal által tárolt információk titkosítva vannak, így csak te férhetsz hozzájuk. A PIN nem visszaállítható, de általad felülírható. Újratelepítés esetén profilod, beállításaid és kontaktjaid visszaállításra kerülnek.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Adj meg egy új PIN kódot";
@@ -4846,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "PIN létrehozása";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "Grapherex PIN";
+"SETTINGS_PINS_TITLE" = "Signal PIN";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "A Grapherex hívások meg fognak jelenni az iOS hívás Előzményekben.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Cenzúra megkerülés, hívások átjátszása, biztonságos feladó kijelzés beállítások.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Haladó";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Hívások az Előzményekben";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Adatvédelem";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Olvasott nyugták küldése";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Bekapcsolt állapotban ismerőseid értesítést kapnak, amint elolvastad az üzenetüket. Ez a beállítás opcionális és minden beszélgetésre vonatkozik.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Kikapcsolás";
@@ -4873,7 +4664,7 @@
 "SETTINGS_REGISTRATION_LOCK_TURN_ON" = "Bekapcsolás";
 
 /* Body for the alert confirming that the user wants to turn on registration lock. */
-"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Amennyiben elfelejted Grapherex PIN kódodat a következő Grapherex regisztáció alkalmával, 7 napra ki leszel zárva a fiókodból.";
+"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Amennyiben elfelejted Signal PIN kódodat a következő Signal regisztáció alkalmával, 7 napra ki leszel zárva a fiókodból.";
 
 /* Title for the alert confirming that the user wants to turn on registration lock. */
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_TITLE" = "Bekapcsolod a regisztrációs zárat?";
@@ -4887,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Kijelző zárolási ideje";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Oldd fel a Grapherex zárolási képernyőjét Touch ID, Face ID, vagy iOS jelkód segítségével. Hívásokat fogadni, üzenet- és hívási értesítőket kapni aktív képernyőzár mellett is tudni fogsz. A Grapherex értesítési beállításainak finomhangolásával később is eldöntheted, hogy mit engedj megjelenni a kijelzőn.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Kijelző zárolás";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Kijelző zárolás";
 
 /* No comment provided by engineer. */
 "SETTINGS_SCREEN_SECURITY" = "Képernyővédelem engedélyezése";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Nem jelenik meg a Grapherex képernyőjének tartalma az appok közötti váltáskor.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "A Signal hívások meg fognak jelenni az iOS hívás Előzményekben.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Hangok";
@@ -4908,35 +4693,41 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Hívás";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Touch ID, FaceID, jelkód használata a Signal feloldásához.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Face ID használata a Signal feloldásához.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Jelkód használata a Signal feloldásához.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Touch ID használata a Signal feloldásához.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Biztonságos képernyő";
+"SETTINGS_SECURITY_TITLE" = "Biztonság";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Megjelenítés javasolatok közt";
+"SETTINGS_SHARING_SUGGESTIONS" = "Beszélgetések megjelenítése javasoltak között";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Grapherex beszélgetések megjelennek a más alkalmazásokból történő megosztási javaslatok közt.";
+"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal beszélgetések megjelennek a más alkalmazásokból történő megosztási javaslatok közt.";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Regisztrációs zár";
 
-/* Footer for the 'two factor auth' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Növeld a biztonságot azáltal, hogy a telefonszámod regisztrációját Grapherex PIN kódod megadásához kötöd.";
+/* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Telefonszámod újraregisztrációját Signal PIN kódod megadásához kötheted.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Gépelés mutatása";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Ezzel az opcióval láthatod, ha a másik fél éppen gépel. A funkció bekapcsolásával a te gépelésed is láthatóvá válik a másik fél számára. Opcionális funkció és az összes beszélgetésre érvényes lesz.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Rejtett feladó";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Állapotjelzők megjelenítése";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Jelenítsen meg egy státuszikont a rejtett feladóval kézbesített üzenetek \"Üzenet részletei\" menüpontjában.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Státusz ikon mutatása";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Engedélyezés mindenkitől";
@@ -4948,7 +4739,7 @@
 "SETTINGS_VERSION" = "Verzió";
 
 /* Label for the 'who can' privacy settings. */
-"SETTINGS_WHO_CAN" = "Ki tud...";
+"SETTINGS_WHO_CAN" = "Ki tudja...";
 
 /* action sheet item to open native mail app */
 "SHARE_ACTION_MAIL" = "Email";
@@ -4966,13 +4757,13 @@
 "SHARE_EXTENSION_LOADING" = "Betöltés...";
 
 /* Message indicating that the share extension cannot be used until the user has registered in the main app. */
-"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Indítsd el a Grapherext a regisztrálás elvégzéséhez.";
+"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Indítsd el a Signalt a regisztrálás elvégzéséhez.";
 
 /* Title indicating that the share extension cannot be used until the user has registered in the main app. */
 "SHARE_EXTENSION_NOT_REGISTERED_TITLE" = "Nincs regisztrálva";
 
 /* Message indicating that the share extension cannot be used until the main app has been launched at least once. */
-"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Indítsd el a Grapherex alkalmazást a regisztrálás beállításához.";
+"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Indítsd el a Signal alkalmazást a regisztrálás beállításához.";
 
 /* Title indicating that the share extension cannot be used until the main app has been launched at least once. */
 "SHARE_EXTENSION_NOT_YET_MIGRATED_TITLE" = "Nem elérhető";
@@ -4986,17 +4777,17 @@
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "Feltöltés folyamatban...";
 
-/* Shown when trying to share content to a Grapherex user for the share extension. Followed by failure details. */
+/* Shown when trying to share content to a Signal user for the share extension. Followed by failure details. */
 "SHARE_EXTENSION_UNABLE_TO_BUILD_ATTACHMENT_ALERT_TITLE" = "A csatolmány előkészítése sikertelen";
 
 /* Title for the 'share extension' view. */
-"SHARE_EXTENSION_VIEW_TITLE" = "Megosztás: Grapherex";
+"SHARE_EXTENSION_VIEW_TITLE" = "Megosztás: Signal";
 
 /* Title of alert indicating sharing suggestions failed to deactivate */
 "SHARING_SUGGESTIONS_DISABLE_ERROR" = "Nem sikerült letiltani a megosztási javaslatokat.";
 
 /* Body for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Grapherex beszélgetések megjelenhetnek a más alkalmazásokból történő megosztási javaslatok közt.";
+"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Signal beszélgetések megjelenhetnek a más alkalmazásokból történő megosztási javaslatok közt.";
 
 /* Title for sharing suggestions megaphone */
 "SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Könnyebb megoszthatóság";
@@ -5013,8 +4804,8 @@
 /* notification action */
 "SHOW_THREAD_BUTTON_TITLE" = "Beszélgetés mutatása";
 
-/* body sent to contacts when inviting to Install Grapherex */
-"SMS_INVITE_BODY" = "Szia, használd te is a Grapherext! Innen telepítheted:";
+/* body sent to contacts when inviting to Install Signal */
+"SMS_INVITE_BODY" = "Szia, használd te is a Signalt! Innen telepítheted:";
 
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "Nincs";
@@ -5041,7 +4832,7 @@
 "STICKERS_INSTALL_BUTTON" = "Telepítés";
 
 /* Title for the 'available built-in stickers' section of the 'manage stickers' view. */
-"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Grapherex Művészi Sorozat";
+"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Signal Művészi Sorozat";
 
 /* Title for the 'available known stickers' section of the 'manage stickers' view. */
 "STICKERS_MANAGE_VIEW_AVAILABLE_KNOWN_PACKS_SECTION_TITLE" = "Beérkezett matricák";
@@ -5092,7 +4883,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Írj pár szót a problémáról:";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Kérjük küldd támogatási kérésedet erre a címre: support@grapherex.com";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Kérjük küldd támogatási kérésedet erre a címre: support@signal.org";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Szűrő: %@";
@@ -5115,20 +4906,20 @@
 /* Localized label for support request email debug log URL. Embeds {{debug log url}}. */
 "SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "Naplófájl URL: %@";
 
-/* Localized label for support request email Grapherex version string. Embeds {{Grapherex version}}. */
-"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Grapherex verzió: %@";
+/* Localized label for support request email signal version string. Embeds {{signal version}}. */
+"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Signal verzió: %@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Grapherex iOS támogatási kérés";
+"SUPPORT_EMAIL_SUBJECT" = "Signal iOS támogatási kérés";
 
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "Hogy érzed magad? (opcionális)";
 
-/* Label in support request informing user about Grapherex FAQ */
+/* Label in support request informing user about Signal FAQ */
 "SUPPORT_FAQ_PROMPT" = "Láttad már a GYIK-et?";
 
 /* Label describing support switch to attach debug logs */
-"SUPPORT_INCLUDE_DEBUG_LOG" = "Hibakeresési napló csatolása";
+"SUPPORT_INCLUDE_DEBUG_LOG" = "Hibanapló csatolása";
 
 /* A string in the navigation bar indicating that the support request is uploading logs */
 "SUPPORT_LOG_UPLOAD_IN_PROGRESS" = "Betöltés";
@@ -5233,25 +5024,25 @@
 "UNKNOWN_COUNTRY_NAME" = "Ismeretlen ország";
 
 /* Info message recorded in conversation history when local user receives an unknown message from a linked device and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Az egyik eszközödről olyan üzenetet küldtél, melyet nem lehet feldolgozni vagy megjeleníteni ezen az eszközön, mivel olyan funkciót tartalmaz, mely csak a Grapherex egy újabb verziójában érhető el.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Az egyik eszközödről olyan üzenetet küldtél, melyet nem lehet feldolgozni vagy megjeleníteni ezen az eszközön, mivel olyan funkciót tartalmaz, mely csak a Signal egy újabb verziójában érhető el.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ ismerősödtől egy olyan üzenetet kaptál, melyet nem lehet feldolgozni vagy megjeleníteni ezen az eszközön, mivel olyan funkciót tartalmaz, mely csak a Grapherex egy újabb verziójában érhető el.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ ismerősödtől egy olyan üzenetet kaptál, melyet nem lehet feldolgozni vagy megjeleníteni ezen az eszközön, mivel olyan funkciót tartalmaz, mely csak a Signal egy újabb verziójában érhető el.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Olyan üzenetet kaptál, melyet nem lehet feldolgozni vagy megjeleníteni ezen az eszközön, mivel olyan funkciót tartalmaz, mely csak a Grapherex egy újabb verziójában érhető el.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Olyan üzenetet kaptál, melyet nem lehet feldolgozni vagy megjeleníteni ezen az eszközön, mivel olyan funkciót tartalmaz, mely csak a Signal egy újabb verziójában érhető el.";
 
 /* Label for button that lets users upgrade the app. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Grapherex frissítése most";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Signal frissítése most";
 
 /* Info message recorded in conversation history when local user has received an unknown unknown message from a linked device and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Sikeresen frissítetted a Grapherex alkalmazást. Ezen túl már képes leszel ezt a fajta üzenetet is fogadni.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Sikeresen frissítetted a Signal alkalmazást. Ezen túl már képes leszel ezt a fajta üzenetet is fogadni.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Most már megkérheted %@ ismerősödet, hogy küldje újra ezt az üzenetet, mivel már a Grapherex legfrissebb verzióját használod.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Most már megkérheted %@ ismerősödet, hogy küldje újra ezt az üzenetet, mivel már a Signal legfrissebb verzióját használod.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Most már megkérheted a küldő felet, hogy küldje újra ezt az üzenetet, mivel már a Grapherex legfrissebb verzióját használod.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Most már megkérheted a küldő felet, hogy küldje újra ezt az üzenetet, mivel már a Signal legfrissebb verzióját használod.";
 
 /* Label indicating an unknown user. */
 "UNKNOWN_USER" = "Ismeretlen";
@@ -5275,10 +5066,10 @@
 "UNLINK_CONFIRMATION_ALERT_TITLE" = "Társítás megszüntetése ezzel: \"%@\"?";
 
 /* Label warning the user that they have been unlinked from their primary device. */
-"UNLINKED_WARNING" = "Az eszköz társítása megszűnt. A Grapherex használatának folytatásához a társítás ismételt elvégzése szükséges.";
+"UNLINKED_WARNING" = "Az eszköz társítása megszűnt. A Signal használatának folytatásához a társítás ismételt elvégzése szükséges.";
 
 /* Alert title when unlinking device fails */
-"UNLINKING_FAILED_ALERT_TITLE" = "A Grapherex nem tudja megszüntetni a társítást a készülékeddel.";
+"UNLINKING_FAILED_ALERT_TITLE" = "A Signal nem tudja megszüntetni a társítást a készülékeddel.";
 
 /* Label text in device manager for a device with no name */
 "UNNAMED_DEVICE" = "Megnevezetlen készülék";
@@ -5293,7 +5084,7 @@
 "UNREAD_ACTION" = "Olvasatlan";
 
 /* No comment provided by engineer. */
-"UNREGISTER_SIGNAL_FAIL" = "Nem sikerült a Grapherex fiókod törlése.";
+"UNREGISTER_SIGNAL_FAIL" = "Nem sikerült a Signal fiókod törlése.";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Nem támogatott melléklet típust kaptál.";
@@ -5317,7 +5108,7 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_LEARN_MORE" = "Bővebben a PIN kódokról";
 
 /* Body text for PINs splash screen */
-"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "A PIN-nek köszönhetően a Grapherex által tárolt információk titkosítva lesznek, így csak te férhetsz hozzájuk. Újratelepítés esetén profilod, beállításaid és kontaktjaid visszaállításra kerülnek. Az alkalmazás megnyitásához nincs szükség a PIN kódra.";
+"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "A PIN-nek köszönhetően a Signal által tárolt információk titkosítva lesznek, így csak te férhetsz hozzájuk. Újratelepítés esetén profilod, beállításaid és kontaktjaid visszaállításra kerülnek. Az alkalmazás megnyitásához nincs szükség a PIN kódra.";
 
 /* Header for PINs splash screen */
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_TITLE" = "A PIN kódok bemutatása";
@@ -5326,16 +5117,13 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SKIP" = "PIN letiltása";
 
 /* Message for the alert indicating that user should upgrade iOS. */
-"UPGRADE_IOS_ALERT_MESSAGE" = "A Grapherex hamarosan iOS 11-et vagy későbbit igényel. Kérjük frissítsen a Beállítások app >> Általános >> Szoftver frissítés menüpont alatt.";
+"UPGRADE_IOS_ALERT_MESSAGE" = "A Signal hamarosan iOS 11-et vagy későbbit igényel. Kérjük frissítsen a Beállítások app >> Általános >> Szoftver frissítés menüpont alatt.";
 
 /* Title for the alert indicating that user should upgrade iOS. */
 "UPGRADE_IOS_ALERT_TITLE" = "iOS frissítése";
 
 /* An explanation of how usernames work on the username view. */
-"USERNAME_DESCRIPTION" = "Grapherexban a felhasználónév nem kötelező. Ha mégis beállítod, más felhasználók a jövőben név alapján is megtalálhatnak, a telefonszámod ismerete nélkül.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Felhasználónév";
+"USERNAME_DESCRIPTION" = "Signalban a felhasználónév nem kötelező. Ha mégis beállítod, más felhasználók a jövőben név alapján is megtalálhatnak, a telefonszámod ismerete nélkül.";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "A felhasználónevek csak az alábbi karaktereket tartalmazhatják: a-z, 0-9, _";
@@ -5343,10 +5131,10 @@
 /* A message indicating that username lookup failed. */
 "USERNAME_LOOKUP_ERROR" = "Felhasználónév elérhetősége nem ellenőrizhető, kérlek próbáld meg később.";
 
-/* A message indicating that the given username is not a registered Grapherex account. Embeds {{username}} */
-"USERNAME_NOT_FOUND_FORMAT" = "%@ nem Grapherex felhasználó. Kérlek ellenőrizd a felhasználónevet, majd próbáld újra.";
+/* A message indicating that the given username is not a registered signal account. Embeds {{username}} */
+"USERNAME_NOT_FOUND_FORMAT" = "%@ nem Signal felhasználó. Kérlek ellenőrizd a felhasználónevet, majd próbáld újra.";
 
-/* A message indicating that the given username was not registered with Grapherex. */
+/* A message indicating that the given username was not registered with signal. */
 "USERNAME_NOT_FOUND_TITLE" = "Nincs ilyen felhasználó";
 
 /* The placeholder for the username text entry in the username view. */
@@ -5422,7 +5210,7 @@
 "VOICE_MESSAGE_TOO_SHORT_ALERT_TITLE" = "Hangüzenet";
 
 /* Activity indicator title, shown upon returning to the device manager, until you complete the provisioning process on desktop */
-"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Fejezd be a telepítést a Grapherex Desktop -ban.";
+"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Fejezd be a telepítést a Signal Desktop -ban.";
 
 /* Placeholder text for header of the wallpaper mini preview */
 "WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Kontakt név";

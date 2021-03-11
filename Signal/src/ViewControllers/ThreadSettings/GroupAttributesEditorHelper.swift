@@ -124,20 +124,33 @@ class GroupAttributesEditorHelper: NSObject {
     }
 
     public static func buildCameraButtonForCorner() -> UIView {
-        let cameraImageView = UIImageView()
-        cameraImageView.setTemplateImageName("camera-outline-24", tintColor: .ows_gray45)
-        let cameraWrapper = UIView.container()
-        cameraWrapper.backgroundColor = .ows_white
-        cameraWrapper.addSubview(cameraImageView)
+        let cameraImageContainer = UIView()
+        cameraImageContainer.autoSetDimensions(to: CGSize.square(32))
+        cameraImageContainer.backgroundColor = Theme.isDarkThemeEnabled ? .ows_gray15 : UIColor(rgbHex: 0xf8f9f9)
+        cameraImageContainer.layer.cornerRadius = 16
+
+        cameraImageContainer.layer.shadowColor = UIColor.black.cgColor
+        cameraImageContainer.layer.shadowOpacity = 0.2
+        cameraImageContainer.layer.shadowRadius = 4
+        cameraImageContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
+
+        let secondaryShadowView = UIView()
+        secondaryShadowView.layer.shadowColor = UIColor.black.cgColor
+        secondaryShadowView.layer.shadowOpacity = 0.12
+        secondaryShadowView.layer.shadowRadius = 16
+        secondaryShadowView.layer.shadowOffset = CGSize(width: 0, height: 4)
+
+        cameraImageContainer.addSubview(secondaryShadowView)
+        secondaryShadowView.autoPinEdgesToSuperviewEdges()
+
+        let cameraImageView = UIImageView.withTemplateImageName("camera-outline-32", tintColor: Theme.isDarkThemeEnabled ? .ows_gray80 : .ows_black)
+        cameraImageView.autoSetDimensions(to: CGSize.square(20))
+        cameraImageView.contentMode = .scaleAspectFit
+
+        cameraImageContainer.addSubview(cameraImageView)
         cameraImageView.autoCenterInSuperview()
-        let wrapperSize: CGFloat = 32
-        cameraWrapper.layer.shadowColor = UIColor.ows_black.cgColor
-        cameraWrapper.layer.shadowOpacity = 0.5
-        cameraWrapper.layer.shadowRadius = 4
-        cameraWrapper.layer.shadowOffset = CGSize(width: 0, height: 4)
-        cameraWrapper.layer.cornerRadius = wrapperSize * 0.5
-        cameraWrapper.autoSetDimensions(to: CGSize(square: wrapperSize))
-        return cameraWrapper
+
+        return cameraImageContainer
     }
 
     public static func buildCameraButtonForCenter() -> UIView {
@@ -211,6 +224,10 @@ struct GroupAvatar {
             owsFailDebug("Invalid image data.")
             return nil
         }
+        guard TSGroupModel.isValidGroupAvatarData(imageData) else {
+            owsFailDebug("Invalid group avatar.")
+            return nil
+        }
         guard let image = UIImage(data: imageData) else {
             owsFailDebug("Could not load image.")
             return nil
@@ -226,7 +243,7 @@ struct GroupAvatar {
             owsFailDebug("Invalid image.")
             return nil
         }
-        return GroupAvatar(imageData: imageData, image: image)
+        return build(imageData: imageData)
     }
 }
 
@@ -239,7 +256,7 @@ extension GroupAttributesEditorHelper: UITextFieldDelegate {
             textField,
             shouldChangeCharactersInRange: range,
             replacementString: replacementString.withoutBidiControlCharacters,
-            maxCharacterCount: GroupManager.maxGroupNameCharactersCount
+            maxGlyphCount: GroupManager.maxGroupNameGlyphCount
         )
     }
 }

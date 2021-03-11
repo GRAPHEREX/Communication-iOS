@@ -188,7 +188,7 @@ public class NotificationPresenter: NSObject, NotificationsProtocol {
 
         super.init()
 
-        AppReadiness.runNowOrWhenAppDidBecomeReady {
+        AppReadiness.runNowOrWhenAppDidBecomeReadySync {
             NotificationCenter.default.addObserver(self, selector: #selector(self.handleMessageRead), name: .incomingMessageMarkedAsRead, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.handleAppDidBecomeActive), name: .OWSApplicationDidBecomeActive, object: nil)
             self.handleAppDidBecomeActive()

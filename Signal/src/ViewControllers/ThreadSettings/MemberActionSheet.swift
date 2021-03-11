@@ -158,13 +158,13 @@ class MemberActionSheet: NSObject {
                 action.leadingIcon = .settingsViewRevokeGroupAdmin
                 actionSheet.addAction(action)
             }
-            if groupViewHelper.memberActionSheetCanRemoveFromGroup(address: address) {
+            if groupViewHelper.canRemoveFromGroup(address: address) {
                 let action = ActionSheetAction(
                     title: NSLocalizedString("CONVERSATION_SETTINGS_REMOVE_FROM_GROUP_BUTTON",
                                              comment: "Label for 'remove from group' button in conversation settings view."),
                     accessibilityIdentifier: "MemberActionSheet.removeFromGroup"
                 ) { _ in
-                    groupViewHelper.memberActionSheetRemoveFromGroupWasSelected(address: address)
+                    groupViewHelper.presentRemoveFromGroupActionSheet(address: address)
                 }
                 action.leadingIcon = .settingsViewRemoveFromGroup
                 actionSheet.addAction(action)
@@ -292,7 +292,7 @@ private class MemberHeader: UIStackView {
 
         if let bioForDisplay = bioForDisplay {
             let label = buildSubtitleLabel(text: bioForDisplay)
-            label.numberOfLines = 2
+            label.numberOfLines = 0
             addArrangedSubview(label)
         }
 

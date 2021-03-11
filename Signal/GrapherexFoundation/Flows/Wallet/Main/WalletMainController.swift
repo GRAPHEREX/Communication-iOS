@@ -254,7 +254,7 @@ fileprivate extension WalletMainController {
                     actionBlock: nil
                 ))
             } else {
-                mainSection.add(
+                mainSection.add(items: 
                     filteredWallets.map {
                         let cell = OWSTableItem.newCell()
                         cell.selectionStyle = .none

@@ -16,11 +16,16 @@ public class GRDBSchemaMigrator: NSObject {
 
     // MARK: -
 
+    // Returns true IFF incremental migrations were performed.
     @objc
-    public func runSchemaMigrations() {
+    public func runSchemaMigrations() -> Bool {
+        var didPerformIncrementalMigrations = false
+
         if hasCreatedInitialSchema {
             Logger.info("Using incrementalMigrator.")
+            let appliedMigrations = self.appliedMigrations
             try! incrementalMigrator.migrate(grdbStorage.pool)
+            didPerformIncrementalMigrations = appliedMigrations != self.appliedMigrations
         } else {
             Logger.info("Using newUserMigrator.")
             try! newUserMigrator.migrate(grdbStorage.pool)
@@ -28,9 +33,17 @@ public class GRDBSchemaMigrator: NSObject {
         Logger.info("Migrations complete.")
 
         SSKPreferences.markGRDBSchemaAsLatest()
+
+        return didPerformIncrementalMigrations
     }
 
     private var hasCreatedInitialSchema: Bool {
+        let appliedMigrations = self.appliedMigrations
+        Logger.info("appliedMigrations: \(appliedMigrations).")
+        return appliedMigrations.contains(MigrationId.createInitialSchema.rawValue)
+    }
+
+    private var appliedMigrations: Set<String> {
         // HACK: GRDB doesn't create the grdb_migrations table until running a migration.
         // So we can't cleanly check which migrations have run for new users until creating this
         // table ourselves.
@@ -38,9 +51,7 @@ public class GRDBSchemaMigrator: NSObject {
             try! self.fixit_setupMigrations(transaction.database)
         }
 
-        let appliedMigrations = try! incrementalMigrator.appliedMigrations(in: grdbStorage.pool)
-        Logger.info("appliedMigrations: \(appliedMigrations).")
-        return appliedMigrations.contains(MigrationId.createInitialSchema.rawValue)
+        return try! incrementalMigrator.appliedMigrations(in: grdbStorage.pool)
     }
 
     private func fixit_setupMigrations(_ db: Database) throws {
@@ -127,10 +138,11 @@ public class GRDBSchemaMigrator: NSObject {
         case dataMigration_disableLinkPreviewForExistingUsers
         case dataMigration_groupIdMapping
         case dataMigration_disableSharingSuggestionsForExistingUsers
+        case dataMigration_removeOversizedGroupAvatars
     }
 
     public static let grdbSchemaVersionDefault: UInt = 0
-    public static let grdbSchemaVersionLatest: UInt = 18
+    public static let grdbSchemaVersionLatest: UInt = 19
 
     // An optimization for new users, we have the first migration import the latest schema
     // and mark any other migrations as "already run".
@@ -1080,6 +1092,28 @@ public class GRDBSchemaMigrator: NSObject {
             defer { transaction.finalizeTransaction() }
             SSKPreferences.setAreSharingSuggestionsEnabled(false, transaction: transaction.asAnyWrite)
         }
+
+        migrator.registerMigration(MigrationId.dataMigration_removeOversizedGroupAvatars.rawValue) { db in
+            let transaction = GRDBWriteTransaction(database: db)
+            defer { transaction.finalizeTransaction() }
+
+            TSGroupThread.anyEnumerate(transaction: transaction.asAnyWrite) { (thread: TSThread, _) in
+                guard let groupThread = thread as? TSGroupThread else { return }
+                guard let avatarData = groupThread.groupModel.groupAvatarData else { return }
+                guard !TSGroupModel.isValidGroupAvatarData(avatarData) else { return }
+
+                var builder = groupThread.groupModel.asBuilder
+                builder.avatarData = nil
+                builder.avatarUrlPath = nil
+
+                do {
+                    let newGroupModel = try builder.build(transaction: transaction.asAnyWrite)
+                    groupThread.update(with: newGroupModel, transaction: transaction.asAnyWrite)
+                } catch {
+                    owsFail("Failed to remove invalid group avatar during migration: \(error)")
+                }
+            }
+        }
     }
 }
 
@@ -1746,7 +1780,7 @@ public func createInitialGalleryRecords(transaction: GRDBWriteTransaction) throw
                 return
             }
 
-            try GRDBMediaGalleryFinder.insertGalleryRecord(attachmentStream: attachmentStream, transaction: transaction)
+            try MediaGalleryManager.insertGalleryRecord(attachmentStream: attachmentStream, transaction: transaction)
         }
     }
 }

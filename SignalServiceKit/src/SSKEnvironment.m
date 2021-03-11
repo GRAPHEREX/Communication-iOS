@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "SSKEnvironment.h"
@@ -27,9 +27,6 @@ static SSKEnvironment *sharedSSKEnvironment;
 @property (nonatomic) OWSIdentityManager *identityManager;
 @property (nonatomic) id<OWSUDManager> udManager;
 @property (nonatomic) OWSMessageDecrypter *messageDecrypter;
-@property (nonatomic) SSKMessageDecryptJobQueue *messageDecryptJobQueue;
-@property (nonatomic) OWSBatchMessageProcessor *batchMessageProcessor;
-@property (nonatomic) OWSMessageReceiver *messageReceiver;
 @property (nonatomic) GroupsV2MessageProcessor *groupsV2MessageProcessor;
 @property (nonatomic) TSSocketManager *socketManager;
 @property (nonatomic) TSAccountManager *tsAccountManager;
@@ -48,7 +45,6 @@ static SSKEnvironment *sharedSSKEnvironment;
 @property (nonatomic) SSKPreferences *sskPreferences;
 @property (nonatomic) id<GroupsV2> groupsV2;
 @property (nonatomic) id<GroupV2Updates> groupV2Updates;
-@property (nonatomic) MessageProcessing *messageProcessing;
 @property (nonatomic) MessageFetcherJob *messageFetcherJob;
 @property (nonatomic) BulkProfileFetch *bulkProfileFetch;
 @property (nonatomic) BulkUUIDLookup *bulkUUIDLookup;
@@ -86,9 +82,6 @@ static SSKEnvironment *sharedSSKEnvironment;
                             preKeyStore:(SSKPreKeyStore *)preKeyStore
                               udManager:(id<OWSUDManager>)udManager
                        messageDecrypter:(OWSMessageDecrypter *)messageDecrypter
-                 messageDecryptJobQueue:(SSKMessageDecryptJobQueue *)messageDecryptJobQueue
-                  batchMessageProcessor:(OWSBatchMessageProcessor *)batchMessageProcessor
-                        messageReceiver:(OWSMessageReceiver *)messageReceiver
                groupsV2MessageProcessor:(GroupsV2MessageProcessor *)groupsV2MessageProcessor
                           socketManager:(TSSocketManager *)socketManager
                        tsAccountManager:(TSAccountManager *)tsAccountManager
@@ -109,7 +102,6 @@ static SSKEnvironment *sharedSSKEnvironment;
                          sskPreferences:(SSKPreferences *)sskPreferences
                                groupsV2:(id<GroupsV2>)groupsV2
                          groupV2Updates:(id<GroupV2Updates>)groupV2Updates
-                      messageProcessing:(MessageProcessing *)messageProcessing
                       messageFetcherJob:(MessageFetcherJob *)messageFetcherJob
                        bulkProfileFetch:(BulkProfileFetch *)bulkProfileFetch
                          bulkUUIDLookup:(BulkUUIDLookup *)bulkUUIDLookup
@@ -118,6 +110,7 @@ static SSKEnvironment *sharedSSKEnvironment;
                     earlyMessageManager:(EarlyMessageManager *)earlyMessageManager
               messagePipelineSupervisor:(OWSMessagePipelineSupervisor *)messagePipelineSupervisor
                               appExpiry:(AppExpiry *)appExpiry
+                       messageProcessor:(MessageProcessor *)messageProcessor
 {
     self = [super init];
     if (!self) {
@@ -141,9 +134,6 @@ static SSKEnvironment *sharedSSKEnvironment;
     OWSAssertDebug(preKeyStore);
     OWSAssertDebug(udManager);
     OWSAssertDebug(messageDecrypter);
-    OWSAssertDebug(messageDecryptJobQueue);
-    OWSAssertDebug(batchMessageProcessor);
-    OWSAssertDebug(messageReceiver);
     OWSAssertDebug(groupsV2MessageProcessor);
     OWSAssertDebug(socketManager);
     OWSAssertDebug(tsAccountManager);
@@ -164,7 +154,6 @@ static SSKEnvironment *sharedSSKEnvironment;
     OWSAssertDebug(sskPreferences);
     OWSAssertDebug(groupsV2);
     OWSAssertDebug(groupV2Updates);
-    OWSAssertDebug(messageProcessing);
     OWSAssertDebug(messageFetcherJob);
     OWSAssertDebug(bulkProfileFetch);
     OWSAssertDebug(versionedProfiles);
@@ -172,6 +161,7 @@ static SSKEnvironment *sharedSSKEnvironment;
     OWSAssertDebug(modelReadCaches);
     OWSAssertDebug(earlyMessageManager);
     OWSAssertDebug(appExpiry);
+    OWSAssertDebug(messageProcessor);
 
     _contactsManager = contactsManager;
     _linkPreviewManager = linkPreviewManager;
@@ -191,9 +181,6 @@ static SSKEnvironment *sharedSSKEnvironment;
     _preKeyStore = preKeyStore;
     _udManager = udManager;
     _messageDecrypter = messageDecrypter;
-    _messageDecryptJobQueue = messageDecryptJobQueue;
-    _batchMessageProcessor = batchMessageProcessor;
-    _messageReceiver = messageReceiver;
     _groupsV2MessageProcessor = groupsV2MessageProcessor;
     _socketManager = socketManager;
     _tsAccountManager = tsAccountManager;
@@ -214,7 +201,6 @@ static SSKEnvironment *sharedSSKEnvironment;
     _sskPreferences = sskPreferences;
     _groupsV2 = groupsV2;
     _groupV2Updates = groupV2Updates;
-    _messageProcessing = messageProcessing;
     _messageFetcherJob = messageFetcherJob;
     _bulkProfileFetch = bulkProfileFetch;
     _versionedProfiles = versionedProfiles;
@@ -223,6 +209,7 @@ static SSKEnvironment *sharedSSKEnvironment;
     _earlyMessageManager = earlyMessageManager;
     _messagePipelineSupervisor = messagePipelineSupervisor;
     _appExpiry = appExpiry;
+    _messageProcessor = messageProcessor;
 
     return self;
 }

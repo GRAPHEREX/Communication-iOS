@@ -4,7 +4,6 @@
 
 #import "MockSSKEnvironment.h"
 #import "OWS2FAManager.h"
-#import "OWSBatchMessageProcessor.h"
 #import "OWSBlockingManager.h"
 #import "OWSDisappearingMessagesJob.h"
 #import "OWSFakeCallMessageHandler.h"
@@ -13,14 +12,11 @@
 #import "OWSFakeNetworkManager.h"
 #import "OWSFakeProfileManager.h"
 #import "OWSIdentityManager.h"
-#import "OWSMessageDecrypter.h"
 #import "OWSMessageManager.h"
-#import "OWSMessageReceiver.h"
 #import "OWSOutgoingReceiptManager.h"
 #import "OWSPrimaryStorage.h"
 #import "OWSReadReceiptManager.h"
 #import "SSKPreKeyStore.h"
-#import "SSKSessionStore.h"
 #import "SSKSignedPreKeyStore.h"
 #import "StorageCoordinator.h"
 #import "TSAccountManager.h"
@@ -47,8 +43,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)activate
 {
-    [SMKEnvironment setShared:[[SMKEnvironment alloc] initWithAccountIdFinder:[OWSAccountIdFinder new]]];
-
     MockSSKEnvironment *instance = [[self alloc] init];
     [self setShared:instance];
     [instance configure];
@@ -81,9 +75,6 @@ NS_ASSUME_NONNULL_BEGIN
     SSKSignedPreKeyStore *signedPreKeyStore = [SSKSignedPreKeyStore new];
     id<OWSUDManager> udManager = [OWSUDManagerImpl new];
     OWSMessageDecrypter *messageDecrypter = [OWSMessageDecrypter new];
-    SSKMessageDecryptJobQueue *messageDecryptJobQueue = [SSKMessageDecryptJobQueue new];
-    OWSBatchMessageProcessor *batchMessageProcessor = [OWSBatchMessageProcessor new];
-    OWSMessageReceiver *messageReceiver = [OWSMessageReceiver new];
     GroupsV2MessageProcessor *groupsV2MessageProcessor = [GroupsV2MessageProcessor new];
     TSSocketManager *socketManager = [[TSSocketManager alloc] init];
     TSAccountManager *tsAccountManager = [TSAccountManager new];
@@ -102,7 +93,6 @@ NS_ASSUME_NONNULL_BEGIN
     SSKPreferences *sskPreferences = [SSKPreferences new];
     id<GroupsV2> groupsV2 = [[MockGroupsV2 alloc] init];
     id<GroupV2Updates> groupV2Updates = [[MockGroupV2Updates alloc] init];
-    MessageProcessing *messageProcessing = [MessageProcessing new];
     MessageFetcherJob *messageFetcherJob = [MessageFetcherJob new];
     BulkProfileFetch *bulkProfileFetch = [BulkProfileFetch new];
     BulkUUIDLookup *bulkUUIDLookup = [BulkUUIDLookup new];
@@ -111,6 +101,7 @@ NS_ASSUME_NONNULL_BEGIN
     EarlyMessageManager *earlyMessageManager = [EarlyMessageManager new];
     OWSMessagePipelineSupervisor *messagePipelineSupervisor = [OWSMessagePipelineSupervisor createStandardSupervisor];
     AppExpiry *appExpiry = [AppExpiry new];
+    MessageProcessor *messageProcessor = [MessageProcessor new];
 
     self = [super initWithContactsManager:contactsManager
                        linkPreviewManager:linkPreviewManager
@@ -130,9 +121,6 @@ NS_ASSUME_NONNULL_BEGIN
                               preKeyStore:preKeyStore
                                 udManager:udManager
                          messageDecrypter:messageDecrypter
-                   messageDecryptJobQueue:messageDecryptJobQueue
-                    batchMessageProcessor:batchMessageProcessor
-                          messageReceiver:messageReceiver
                  groupsV2MessageProcessor:groupsV2MessageProcessor
                             socketManager:socketManager
                          tsAccountManager:tsAccountManager
@@ -153,7 +141,6 @@ NS_ASSUME_NONNULL_BEGIN
                            sskPreferences:sskPreferences
                                  groupsV2:groupsV2
                            groupV2Updates:groupV2Updates
-                        messageProcessing:messageProcessing
                         messageFetcherJob:messageFetcherJob
                          bulkProfileFetch:bulkProfileFetch
                            bulkUUIDLookup:bulkUUIDLookup
@@ -161,7 +148,8 @@ NS_ASSUME_NONNULL_BEGIN
                           modelReadCaches:modelReadCaches
                       earlyMessageManager:earlyMessageManager
                 messagePipelineSupervisor:messagePipelineSupervisor
-                                appExpiry:appExpiry];
+                                appExpiry:appExpiry
+                         messageProcessor:messageProcessor];
 
     if (!self) {
         return nil;

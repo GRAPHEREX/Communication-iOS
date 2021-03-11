@@ -136,7 +136,7 @@ public enum PushRegistrationError: Error {
     }
     
     private func fetchMessages() {
-        AppReadiness.runNowOrWhenAppDidBecomeReady {
+        AppReadiness.runNowOrWhenAppDidBecomeReadyAsync {
             AssertIsOnMainThread()
             self.messageFetcherJob.run()
         }

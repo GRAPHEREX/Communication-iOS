@@ -211,6 +211,7 @@ public class CVCellView: UIView, CVRootComponentHost {
                             componentDelegate: componentDelegate,
                             cellSelection: cellSelection,
                             swipeToReplyState: swipeToReplyState)
+        owsAssertDebug(componentView != nil)
     }
 
     @available(*, unavailable, message: "Unimplemented")

@@ -36,7 +36,7 @@ public class StorageServiceManager: NSObject, StorageServiceManagerProtocol {
             self.cleanUpUnknownData()
         }
 
-        AppReadiness.runNowOrWhenAppDidBecomeReady {
+        AppReadiness.runNowOrWhenAppDidBecomeReadySync {
             NotificationCenter.default.addObserver(
                 self,
                 selector: #selector(self.willResignActive),
@@ -45,7 +45,7 @@ public class StorageServiceManager: NSObject, StorageServiceManagerProtocol {
             )
         }
 
-        AppReadiness.runNowOrWhenAppDidBecomeReadyPolite {
+        AppReadiness.runNowOrWhenAppDidBecomeReadyAsync {
             guard self.tsAccountManager.isRegisteredAndReady else { return }
 
             // Schedule a restore. This will do nothing unless we've never
@@ -321,7 +321,7 @@ class StorageServiceOperation: OWSOperation {
         return BlockOperation {
             databaseStorage.write { transaction in
                 let updatedAccountIds = updatedAddresses.map { address in
-                    OWSAccountIdFinder().ensureAccountId(forAddress: address, transaction: transaction)
+                    OWSAccountIdFinder.ensureAccountId(forAddress: address, transaction: transaction)
                 }
 
                 recordPendingUpdates(updatedAccountIds: updatedAccountIds, transaction: transaction)
@@ -360,7 +360,7 @@ class StorageServiceOperation: OWSOperation {
         return BlockOperation {
             databaseStorage.write { transaction in
                 let deletedAccountIds = deletedAddresses.map { address in
-                    OWSAccountIdFinder().ensureAccountId(forAddress: address, transaction: transaction)
+                    OWSAccountIdFinder.ensureAccountId(forAddress: address, transaction: transaction)
                 }
 
                 recordPendingDeletions(deletedAccountIds: deletedAccountIds, transaction: transaction)
@@ -1355,7 +1355,7 @@ class StorageServiceOperation: OWSOperation {
             .accountIdToIdentifierMap
             .forwardKeys
             .filter { accountId in
-                guard let address = OWSAccountIdFinder().address(
+                guard let address = OWSAccountIdFinder.address(
                     forAccountId: accountId,
                     transaction: transaction
                     ) else { return true }

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -69,7 +69,7 @@ class ContactsFrameworkContactStoreAdaptee: NSObject, ContactStoreAdaptee {
 
     @objc
     func didBecomeActive() {
-        AppReadiness.runNowOrWhenAppDidBecomeReadyPolite {
+        AppReadiness.runNowOrWhenAppDidBecomeReadyAsync {
             let currentSortOrder = CNContactsUserDefaults.shared().sortOrder
 
             guard currentSortOrder != self.lastSortOrder else {
@@ -97,12 +97,14 @@ class ContactsFrameworkContactStoreAdaptee: NSObject, ContactStoreAdaptee {
     }
 
     func fetchContacts() -> Result<[Contact], Error> {
-        var systemContacts = [CNContact]()
+        var contacts = [Contact]()
         do {
             let contactFetchRequest = CNContactFetchRequest(keysToFetch: ContactsFrameworkContactStoreAdaptee.allowedContactKeys)
             contactFetchRequest.sortOrder = .userDefault
-            try contactStoreForLargeRequests.enumerateContacts(with: contactFetchRequest) { (contact, _) -> Void in
-                systemContacts.append(contact)
+            try autoreleasepool {
+                try contactStoreForLargeRequests.enumerateContacts(with: contactFetchRequest) { (systemContact, _) -> Void in
+                    contacts.append(Contact(systemContact: systemContact))
+                }
             }
         } catch let error as NSError {
             if error.domain == CNErrorDomain, error.code == CNError.Code.communicationError.rawValue {
@@ -114,7 +116,6 @@ class ContactsFrameworkContactStoreAdaptee: NSObject, ContactStoreAdaptee {
             return .error(error)
         }
 
-        let contacts = systemContacts.map { Contact(systemContact: $0) }
         return .success(contacts)
     }
 
@@ -367,9 +368,10 @@ public class SystemContactsFetcher: NSObject {
                 return
             }
 
-            Logger.info("fetched \(contacts.count) contacts.")
-
-            let contactsHash = contacts.hashValue
+            var contactsHash = 0
+            for contact in contacts {
+                contactsHash = contactsHash ^ contact.hash
+            }
 
             DispatchQueue.main.async {
                 var shouldNotifyDelegate = false

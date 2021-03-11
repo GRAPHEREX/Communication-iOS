@@ -139,7 +139,7 @@ fileprivate extension ContactsMainController {
         let contents: OWSTableContents = .init()
         let mainSection = OWSTableSection()
 
-        mainSection.add(contacts.map({ return makeCell(account: $0)}))
+        mainSection.add(items: contacts.map({ return makeCell(account: $0)}))
         contents.addSection(mainSection)
         tableViewController.contents = contents
     }

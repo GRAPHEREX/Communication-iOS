@@ -46,7 +46,6 @@ extension ConversationSettingsViewController {
     func updateTableContents() {
 
         let contents = OWSTableContents()
-        contents.title = NSLocalizedString("CONVERSATION_SETTINGS", comment: "title for conversation settings screen")
 
         let isNoteToSelf = thread.isNoteToSelf
 
@@ -373,8 +372,6 @@ extension ConversationSettingsViewController {
 
     private func buildNotificationsSection() -> OWSTableSection {
         let section = OWSTableSection()
-        section.customHeaderHeight = 14
-        section.customFooterHeight = 14
 
         section.add(OWSTableItem(customCellBlock: { [weak self] in
             guard let self = self else {
@@ -477,7 +474,6 @@ extension ConversationSettingsViewController {
 
     private func buildBlockAndLeaveSection() -> OWSTableSection {
         let section = OWSTableSection()
-        section.customHeaderHeight = 14
 
         section.footerTitle = isGroupThread
             ? NSLocalizedString("CONVERSATION_SETTINGS_BLOCK_AND_LEAVE_SECTION_FOOTER",
@@ -550,7 +546,6 @@ extension ConversationSettingsViewController {
                                           contents: OWSTableContents) {
 
         let section = OWSTableSection()
-        section.customHeaderHeight = 14
 
         section.add(OWSTableItem(customCellBlock: { [weak self] in
             guard let self = self else {
@@ -613,7 +608,7 @@ extension ConversationSettingsViewController {
 
     private func buildGroupMembershipSection(groupModel: TSGroupModel) -> OWSTableSection {
         let section = OWSTableSection()
-        section.customFooterHeight = 14
+        section.separatorInsetLeading = NSNumber(value: Float(Self.cellHInnerMargin + CGFloat(kSmallAvatarSize) + kContactCellAvatarTextMargin))
 
         guard let localAddress = tsAccountManager.localAddress else {
             owsFailDebug("Missing localAddress.")
@@ -634,12 +629,13 @@ extension ConversationSettingsViewController {
 
                 let iconView = OWSTableItem.buildIconInCircleView(icon: .settingsAddMembers,
                                                                   iconSize: kSmallAvatarSize,
-                                                                  innerIconSize: 22)
+                                                                  innerIconSize: 24,
+                                                                  iconTintColor: Theme.primaryTextColor)
 
                 let rowLabel = UILabel()
                 rowLabel.text = NSLocalizedString("CONVERSATION_SETTINGS_ADD_MEMBERS",
                                                   comment: "Label for 'add members' button in conversation settings view.")
-                rowLabel.textColor = Theme.accentBlueColor
+                rowLabel.textColor = Theme.primaryTextColor
                 rowLabel.font = OWSTableItem.primaryLabelFont
                 rowLabel.lineBreakMode = .byTruncatingTail
 
@@ -647,7 +643,8 @@ extension ConversationSettingsViewController {
                 contentRow.spacing = self.iconSpacingSmall
 
                 cell.contentView.addSubview(contentRow)
-                contentRow.autoPinEdgesToSuperviewMargins()
+                contentRow.autoPinWidthToSuperviewMargins()
+                contentRow.autoPinHeightToSuperview(withMargin: 7)
 
                 return cell
                 }) { [weak self] in
@@ -712,7 +709,6 @@ extension ConversationSettingsViewController {
                     return OWSTableItem.newCell()
                 }
                 let cell = ContactTableViewCell()
-                cell.setUseSmallAvatars()
 
                 let isGroupAdmin = groupMembership.isFullMemberAndAdministrator(memberAddress)
                 let isVerified = verificationState == .verified
@@ -773,13 +769,13 @@ extension ConversationSettingsViewController {
 
                 let iconView = OWSTableItem.buildIconInCircleView(icon: .settingsShowAllMembers,
                                                                   iconSize: kSmallAvatarSize,
-                                                                  innerIconSize: 19,
-                                                                  iconTintColor: Theme.secondaryTextAndIconColor)
+                                                                  innerIconSize: 24,
+                                                                  iconTintColor: Theme.primaryTextColor)
 
                 let rowLabel = UILabel()
                 rowLabel.text = NSLocalizedString("CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS",
                                                   comment: "Label for 'view all members' button in conversation settings view.")
-                rowLabel.textColor = Theme.secondaryTextAndIconColor
+                rowLabel.textColor = Theme.primaryTextColor
                 rowLabel.font = OWSTableItem.primaryLabelFont
                 rowLabel.lineBreakMode = .byTruncatingTail
 
@@ -787,7 +783,8 @@ extension ConversationSettingsViewController {
                 contentRow.spacing = self.iconSpacingSmall
 
                 cell.contentView.addSubview(contentRow)
-                contentRow.autoPinEdgesToSuperviewMargins()
+                contentRow.autoPinWidthToSuperviewMargins()
+                contentRow.autoPinHeightToSuperview(withMargin: 7)
 
                 return cell
                 }) { [weak self] in
@@ -802,8 +799,6 @@ extension ConversationSettingsViewController {
                                                     contents: OWSTableContents) {
 
         let section = OWSTableSection()
-        section.customHeaderHeight = 14
-        section.customFooterHeight = 14
 
         let itemTitle = (RemoteConfig.groupsV2InviteLinks
             ? NSLocalizedString("CONVERSATION_SETTINGS_MEMBER_REQUESTS_AND_INVITES",

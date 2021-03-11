@@ -6,7 +6,7 @@ import Foundation
 import PromiseKit
 
 @objc
-public class AddToGroupViewController: OWSTableViewController {
+public class AddToGroupViewController: OWSTableViewController2 {
 
     private let address: SignalServiceAddress
     private let collation = UILocalizedIndexedCollation.current()
@@ -20,10 +20,7 @@ public class AddToGroupViewController: OWSTableViewController {
 
     init(address: SignalServiceAddress) {
         self.address = address
-
         super.init()
-
-        tableViewStyle = .plain
     }
 
     public class func presentForUser(_ address: SignalServiceAddress,
@@ -44,15 +41,13 @@ public class AddToGroupViewController: OWSTableViewController {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(didPressCloseButton))
 
-        tableView.separatorStyle = .none
+        defaultSeparatorInsetLeading = Self.cellHInnerMargin + CGFloat(kSmallAvatarSize) + kContactCellAvatarTextMargin
     }
 
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         updateTableContents()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(themeDidChange), name: .ThemeDidChange, object: nil)
     }
 
     public override func viewWillDisappear(_ animated: Bool) {
@@ -80,11 +75,9 @@ public class AddToGroupViewController: OWSTableViewController {
         let recentGroups = groupThreads.count > maxRecentGroups ? Array(groupThreads[0..<maxRecentGroups]) : groupThreads
 
         let recentsSection = OWSTableSection()
-        recentsSection.customHeaderView = sectionHeader(
-            title: NSLocalizedString("ADD_TO_GROUP_RECENTS_TITLE",
-                                     comment: "The title for the 'add to group' view's recents section")
-        )
-        recentsSection.add(recentGroups.map(item(for:)))
+        recentsSection.headerTitle = NSLocalizedString("ADD_TO_GROUP_RECENTS_TITLE",
+                                                       comment: "The title for the 'add to group' view's recents section")
+        recentsSection.add(items: recentGroups.map(item(forGroupThread:)))
         contents.addSection(recentsSection)
 
         if let additionalGroups = groupThreads.count > maxRecentGroups ? Array(groupThreads[maxRecentGroups..<groupThreads.count]) : nil {
@@ -99,11 +92,10 @@ public class AddToGroupViewController: OWSTableViewController {
                 guard let sectionGroups = collatedGroups[section] else { continue }
 
                 let section = OWSTableSection()
-                section.customHeaderView = sectionHeader(title: title)
-                section.add(
-                    sectionGroups
+                section.headerTitle = title
+                section.add(items: sectionGroups
                         .sorted { $0.groupNameOrDefault.localizedCaseInsensitiveCompare($1.groupNameOrDefault) == .orderedAscending }
-                        .map(item(for:))
+                        .map(item(forGroupThread:))
                 )
 
                 contents.addSection(section)
@@ -124,8 +116,8 @@ public class AddToGroupViewController: OWSTableViewController {
 
     // MARK: Helpers
 
-    @objc
-    private func themeDidChange() {
+    public override func themeDidChange() {
+        super.themeDidChange()
         updateTableContents()
     }
 
@@ -138,7 +130,7 @@ public class AddToGroupViewController: OWSTableViewController {
 
     private func didSelectGroup(_ groupThread: TSGroupThread) {
         let shortName = databaseStorage.uiRead { transaction in
-            return Environment.shared.contactsManager.shortDisplayName(for: self.address, transaction: transaction)
+            return Self.contactsManager.shortDisplayName(for: self.address, transaction: transaction)
         }
 
         guard !groupThread.groupModel.groupMembership.isMemberOfAnyKind(address) else {
@@ -269,23 +261,7 @@ public class AddToGroupViewController: OWSTableViewController {
 
     // MARK: -
 
-    private func sectionHeader(title: String) -> UIView {
-        let textView = UITextView()
-        textView.isOpaque = false
-        textView.isEditable = false
-        textView.contentInset = .zero
-        textView.textContainer.lineFragmentPadding = 0
-        textView.isScrollEnabled = false
-        textView.textColor = Theme.primaryTextColor
-        textView.font = UIFont.ows_dynamicTypeBody.ows_semibold
-        textView.backgroundColor = Theme.washColor
-        let tableEdgeInsets: CGFloat = UIDevice.current.isPlusSizePhone ? 20 : 16
-        textView.textContainerInset = UIEdgeInsets(top: 5, left: tableEdgeInsets, bottom: 5, right: tableEdgeInsets)
-        textView.text = title
-        return textView
-    }
-
-    private func item(for groupThread: TSGroupThread) -> OWSTableItem {
+    private func item(forGroupThread  groupThread: TSGroupThread) -> OWSTableItem {
         return OWSTableItem(
             customCellBlock: {
                 let cell = GroupTableViewCell()

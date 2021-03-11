@@ -19,7 +19,7 @@ extension FeatureBuild {
     }
 }
 
-let build: FeatureBuild = OWSIsDebugBuild() ? .dev : .production
+let build: FeatureBuild = OWSIsDebugBuild() ? .dev : .qa
 
 // MARK: -
 
@@ -231,6 +231,9 @@ public class DebugFlags: BaseFlags {
     @objc
     public static let internalLogging = build.includes(.qa)
 
+    @objc
+    public static let betaLogging = build.includes(.beta)
+
     // DEBUG builds won't receive push notifications, which prevents receiving messages
     // while the app is backgrounded or the system call screen is active.
     //
@@ -242,14 +245,14 @@ public class DebugFlags: BaseFlags {
     public static let audibleErrorLogging = build.includes(.qa)
 
     @objc
-    public static let verboseAboutView = build.includes(.qa)
+    public static let internalSettings = build.includes(.qa)
 
     // This can be used to shut down various background operations.
     @objc
     public static let suppressBackgroundActivity = false
 
     @objc
-    public static let reduceLogChatter = false
+    public static let reduceLogChatter = build.includes(.dev) && false
 
     @objc
     public static let logSQLQueries = build.includes(.dev) && !reduceLogChatter
@@ -334,10 +337,13 @@ public class DebugFlags: BaseFlags {
     public static let permissiveGroupUpdateInfoMessages = build.includes(.dev)
 
     @objc
-    public static let showProfileKeyAndUuidsIndicator = build.includes(.qa)
+    public static let showProfileKeyAndUuidsIndicator = false
 
     @objc
-    public static let showCapabilityIndicators = build.includes(.qa)
+    public static let showCapabilityIndicators = false
+
+    @objc
+    public static let showWhitelisted = false
 
     @objc
     public static let verboseNotificationLogging = build.includes(.qa)
@@ -392,6 +398,9 @@ public class DebugFlags: BaseFlags {
 
     @objc
     public static let extraDebugLogs = build.includes(.qa)
+
+    @objc
+    public static let fakeLinkedDevices = false
 
     @objc
     public static let shouldShowColorPicker = false

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "TSAccountManager.h"
@@ -12,7 +12,6 @@
 #import "ProfileManagerProtocol.h"
 #import "RemoteAttestation.h"
 #import "SSKEnvironment.h"
-#import "SSKSessionStore.h"
 #import "TSNetworkManager.h"
 #import "TSPreKeyManager.h"
 #import <AFNetworking/AFURLResponseSerialization.h>
@@ -218,14 +217,12 @@ NSString *NSStringForOWSRegistrationState(OWSRegistrationState value)
 
     OWSSingletonAssert();
 
-    [AppReadiness runNowOrWhenAppDidBecomeReady:^{
+    AppReadinessRunNowOrWhenAppDidBecomeReadySync(^{
         if (!CurrentAppContext().isMainApp) {
             [self.databaseStorage appendUIDatabaseSnapshotDelegate:self];
         }
-    }];
-    [AppReadiness runNowOrWhenAppDidBecomeReadyPolite:^{
-        [self updateAccountAttributesIfNecessary];
-    }];
+    });
+    AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{ [self updateAccountAttributesIfNecessary]; });
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reachabilityChanged)
@@ -1032,9 +1029,7 @@ NSString *NSStringForOWSRegistrationState(OWSRegistrationState value)
 - (void)reachabilityChanged {
     OWSAssertIsOnMainThread();
 
-    [AppReadiness runNowOrWhenAppDidBecomeReadyPolite:^{
-        [self updateAccountAttributesIfNecessary];
-    }];
+    AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{ [self updateAccountAttributesIfNecessary]; });
 }
 
 #pragma mark - Notifications

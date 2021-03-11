@@ -1,250 +1,8 @@
-//////////////////////////////////////////// SkyTech ///////////////////////////////////////////
-
-"PRIVACY_VERIFICATION_BUTTON" = "Verification";
-
-"PROFILE_VIEW_EDIT_BUTTON" = "Edit";
-
-/* Default description for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DESCRIPTION_TEXT" = "Please enter your Display name,\nit will show for others users";
-
-/* Title for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_TITLE" = "Delete Contact?";
-
-/* Message for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_MESSAGE" = "This contact will be deleted from this device.";
-
-/* action sheet body */
-"REGISTER_RATE_BODY" = "Please wait half a minute before trying again.";
-
-/* No comment provided by engineer. */
-"SETTINGS_SUPPORT" = "Support";
-
-/* No comment provided by engineer. */
-"SETTINGS_SECURITY" = "Security";
-
-/* No comment provided by engineer. */
-"SETTINGS_FAQ" = "F.A.Q";
-
-"MAIN_ALL" = "All";
-"MAIN_OR" = "or";
-"MAIN_USER_KEY" = "User key";
-"MAIN_ADD" = "Add";
-"MAIN_BACK" = "Back";
-"MAIN_MOBILE" = "Phone";
-"MAIN_USER_ID" = "User ID";
-"MAIN_DISPLAY_NAME" = "Display name";
-"MAIN_BLOCK_USER" = "Block user";
-"MAIN_UNBLOCK" = "Unblock";
-"MAIN_PROFILE" = "Profile";
-"MAIN_SENT" = "Sent";
-"MAIN_SEND" = "Send";
-"MAIN_RECEIVE" = "Receive";
-"MAIN_RECEIVED" = "Received";
-"MAIN_TIME" = "Time";
-"MAIN_AMOUNT" = "Amount";
-"MAIN_APPLY" = "Apply";
-"MAIN_INFO" = "Info";
-"MAIN_SYMBOL" = "Symbol";
-"MAIN_CHAIN" = "Chain";
-"MAIN_THANK_YOU" = "Thank you";
-"MAIN_COPY" = "Copy";
-"MAIN_WALLET" = "Wallet";
-"MAIN_RECIPIENT" = "Recipient";
-"MAIN_TOTAL" = "Total";
-"MAIN_FEE" = "Fee";
-"MAIN_TAG" = "Tag";
-"MAIN_DONE" = "Done";
-"MAIN_BALANCE" = "Balance";
-"MAIN_ADDRESS" = "Address";
-"MAIN_PASSWORD" = "Password";
-"MAIN_NEW" = "New";
-"MAIN_CURRENCY" = "Currency";
-"MAIN_CONFIRM" = "Confirm";
-"MAIN_CURRENT" = "Current";
-"MAIN_PIN" = "Pin";
-"MAIN_SAVE" = "Save";
-"MAIN_ENTER" = "Enter";
-"MAIN_SAVED" = "Saved";
-"MAIN_NAME" = "Name";
-"MAIN_PASSWORD" = "Password";
-"MAIN_RESTORE" = "Restore";
-
-"WALLET_CANCEL_PIN" = "Cancel pin";
-"WALLET_SET_PIN" = "Set pin";
-"WALLET_EDIT_PIN" = "Edit pin";
-"WALLET_ENTER_PIN" = "Enter pin";
-"WALLET_PIN_VALIDATION_DESCRIPTION" = "Max pin lenght is 6";
-"WALLET_PINS_DO_NOT_MATCH" = "Pins do not match";
-"WALLET_ERROR_WRONG_PIN" = "Wrong pin";
-"WALLET_ERROR_TOO_LONG" = "Too long pin.\nMax lenght is 6";
-
-"WALLET_SET_PASSWORD" = "Set password";
-"WALLET_EDIT_PASSWORD" = "Edit password";
-"WALLET_ENTER_PASSWORD" = "Enter password";
-"WALLET_PASSWORDS_DO_NOT_MATCH" = "Passwords do not match";
-"WALLET_ERROR_WRONG_PASSWORD" = "Wrong password";
-
-"WALLET_SAVE_IT" = "Save it";
-"WALLET_EXCHANGE_TITLE" = "Exchange";
-"WALLET_NEW_PASSWORD_CONFIRMATION" = "Password for transaction\nconfirmation was changed";
-"WALLET_CODE_FOR_RESTORE_INFO" = "QR code for restore password";
-
-/* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE_new" = "Secure communication\nplatform";
-
-"ONBOARDING_SPLASH_BUTTON_TITLE_new" = "Sign up";
-
-/* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE_new" = "Enter your Phone number, PIN-code will come on your device";
-
-/* Title of the main button. */
-"ONBOARDING_PHONE_NUMBER_SEND" = "Send";
-
-"ONBOARDING_PHONE_NUMBER_SIGNUP" = "Sign Up";
-
-"ONBOARDING_PHONE_NUMBER_FORGOTRASSWORD" = "Forgot password?";
-
-"CALL_VIEW_MISSED_CALL" = "Missed call";
-
-"CALL_VIEW_INCOMING_CALL" = "Incoming call";
-
-"CALL_VIEW_OUTGOING_CALL" = "Outgoing call";
-
-"CALL_VIEW_CANCELLED_CALL" = "Cancelled call";
-
-"CALL_VIEW_TITLE" = "Calls";
-
-"CALL_VIEW_MISSED" = "Missed";
-
-"NEW_CONTACT_DESCRIPTION" = "Add a new user using a unique\nidentification key";
-
-"NEW_CONTACT_SCAN_INFO" = "Scan the key using the QR-code";
-
-/* Title for the contacts list's default mode. */
-"CONTACTS_VIEW_TITLE" = "Contacts";
-
-/* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_INVALID_CODE_new" = "Wrong PIN, try again";
-
-"ONBOARDING_VERIFICATION_VALID_CODE_new" = "Password is correct";
-
-/// Chats Empty State
-"CHATS_VIEW_EMPTY_TITLE" = "You have no one in the chat";
-
-"CHATS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CHATS_VIEW_EMPTY_BUTTON_TITLE" = "Start chat now";
-
-/// Contacts Empty State
-"CONTACTS_VIEW_EMPTY_TITLE" = "You have no contacts";
-
-"CONTACTS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CONTACTS_VIEW_EMPTY_BUTTON_TITLE" = "Invite friends";
-
-/// Calls Empty State
-"CALLS_VIEW_EMPTY_TITLE" = "You have no calls";
-
-"CALLS_VIEW_EMPTY_MISSED_TITLE" = "You have no missed calls";
-
-"CALLS_VIEW_EMPTY_SUBTITLE" = "Start new calls";
-
-"CALLS_VIEW_EMPTY_BUTTON_TITLE" = "Start new calls";
-
-"CALL_PICKER_MAIN_TITLE" = "New call";
-
-/* Label for settings view that allows user to change the notification sound. */
-"SETTINGS_ITEM_NOTIFICATION_SOUND_new" = "Notification Sound";
-
-
-// Wallet Main Screen
-"WALLET_VIEW_TITLE" = "Wallets";
-
-// Wallet Main Screen
-"WALLET_MAINHEADER_VIEW_TITLE" = "Total balance";
-
-/* Label indicating that the user is verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_VERIFIED_FORMAT_new" = "%@ is verified!";
-
-/* Label indicating that the user is NOT verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_NOT_VERIFIED_FORMAT_new" = "%@ is not verified!";
-
-"WALLET_EMPTY_STATE_TITLE" = "You have no wallet yet";
-
-"WALLET_EMPTY_STATE_SUBTITLE" = "Create new wallet now";
-
-"WALLET_EMPTY_STATE_BUTTON_TITLE" = "Create wallet";
-
-"WALLET_NEW_WALLET_TITLE" = "New wallet";
-
-"WALLET_EXCHANGE_MY_ORDERS_TITLE" = "My Orders";
-
-"WALLET_NEW_WALLET_VALIDATION_INFO" = "The password must contain\nnumbers, uppercase and lowercase\nletters and contain at least\n8 characters";
-
-// Attachments Titles
-"ATTACHMENTS_TITLE_MEDIA" = "Media";
-"ATTACHMENTS_TITLE_FILES" = "Files";
-"ATTACHMENTS_TITLE_VOICE" = "Voice";
-"ATTACHMENTS_TITLE_GROUPS" = "Groups";
-"ATTACHMENTS_TITLE_LINKS" = "Links";
-"ATTACHMENTS_TITLE_GIFS" = "GIFs";
-
-"ATTACHMENTS_EMPTY_STATE" = "No %@ here yet...";
-
-"PERSONAL_CODE_VIEW_TITLE" = "This is your personal code";
-"PERSONAL_CODE_VIEW_DESCRIPTION" = "Ask your friend using the app\nto scan it to confirm his subscription";
-
-"CONTACTLIST_VIEW_SEARCHBAR_PLACEHOLDER" = "Search";
-
-/* A button to select a money from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_MONEY" = "Money";
-
-/* A button to select a gallery from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_GALLERY" = "Gallery";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE" = "Your User ID";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE_SOMEONE" = "%@'s User ID";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_NORMAL" = "Copy";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_AFTER_CLICK" = "Copied";
-
-"USER_ID_VIEW_COPY_LABEL_INFO" = "You can copy this User ID to phone";
-
-"NEW_USER_NAME_DESCRIPTION_TEXT" = "Please enter Display name for new contact,\nit will show only for you";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_ALREADY_EXIST" = "This user is already in your contacts";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_OWN_USERID" = "You can't add yourself";
-
-"WALLET_TOTAL_BALANCE" = "Total balance";
-"WALLET_BUY" = "Buy";
-"WALLET_SELL" = "Sell";
-
-"WALLET_TRANSACTION_EMPTY_STATE_TITLE" = "No transaction yet...";
-"WALLET_ORDERS_EMPTY_STATE_TITLE" = "No orders yet...";
-
-"WALLET_TRANSACTION_TITLE" = "Transactions";
-
-"FILTER_TITLE" = "Filter";
-
-"FILTER_SORT_BY_TITLE" = "Sort by";
-
-"FILTER_TRANSACTION_TYPE_TITLE" = "Transaction type";
-
-/* Label for 'new contact' button in conversation settings view. */
-"NEW_USER_NAME_TITLE" = "New Contact";
-
-"INCORRECT_UUID_ERROR_MESSAGE" = "User Key is incorrect";
-
-"SENT_SUCCEED_TITLE" = "Sent succeed";
-
-"EXCHANGE_CREATED_TITLE" = "Exchange created";
-//////////////////////////////////////////// Grapherex ///////////////////////////////////////////
-
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Nid nawr";
+
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "About Signal";
 
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Derbyn y Rhif Diogelwch Newydd";
@@ -258,11 +16,11 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Cysylltiad";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Cysylltiad ar gyfer %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Cyfryngau";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Neges";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Chi";
@@ -270,11 +28,17 @@
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Sticer";
 
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Neges llais";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Neges llais %@ eiliad";
+
 /* Label for 'audio call' button in contact view. */
-"ACTION_AUDIO_CALL" = "Galwad Grapherex";
+"ACTION_AUDIO_CALL" = "Galwad Signal";
 
 /* Label for 'invite' button in contact view. */
-"ACTION_INVITE" = "Gwahodd i Grapherex";
+"ACTION_INVITE" = "Gwahodd i Signal";
 
 /* Label for button that lets you send a message to a contact. */
 "ACTION_SEND_MESSAGE" = "Anfon Neges";
@@ -364,7 +128,7 @@
 "APN_Message" = "Neges newydd!";
 
 /* Message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Ni all Grapherex lansio. Anfonwch cofnod dadfygio i support@grapherex.com fel y gallwn ddatrys y mater hwn.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Ni all Signal lansio. Anfonwch cofnod dadfygio i support@signal.org fel y gallwn ddatrys y mater hwn.";
 
 /* Title for the 'app launch failed' alert. */
 "APP_LAUNCH_FAILURE_ALERT_TITLE" = "Gwall";
@@ -373,13 +137,13 @@
 "APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE" = "Methwyd Llwytho'r Cronfa Ddata";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
-"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Os gwelwch yn dda uwchraddio i'r fersiwn ddiweddaraf o Grapherex.";
+"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Os gwelwch yn dda uwchraddio i'r fersiwn ddiweddaraf o Signal.";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Ferswin Anhysbys Cronfa Ddata ";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Ni ellid adfer y data a drosglwyddwyd o'ch hen ddyfais. Anfonwch gofnod dadfygio i support@grapherex.com fel y gallwn ddatrys y mater hwn. Os ydych chi'n ail-osod Grapherex efallai y bydd cofnod eich negeseuon yn cael ei golli.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Ni ellid adfer y data a drosglwyddwyd o'ch hen ddyfais. Anfonwch gofnod dadfygio i support@signal.org fel y gallwn ddatrys y mater hwn. Os ydych chi'n ail-osod Signal efallai y bydd cofnod eich negeseuon yn cael ei golli.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Methwyd Cwblhau y Trosglwyddiad";
@@ -394,7 +158,7 @@
 "APP_UPDATE_NAG_ALERT_MESSAGE_FORMAT" = "Mae fersiwn %@ nawr ar gael yn yr App Store";
 
 /* Title for the 'new app version available' alert. */
-"APP_UPDATE_NAG_ALERT_TITLE" = "Mae Fersiwn Newydd o Grapherex Ar Gael";
+"APP_UPDATE_NAG_ALERT_TITLE" = "Mae Fersiwn Newydd o Signal Ar Gael";
 
 /* Label for the 'update' button in the 'new app version available' alert. */
 "APP_UPDATE_NAG_ALERT_UPDATE_BUTTON" = "Diweddaru";
@@ -409,7 +173,7 @@
 "APPEARANCE_SETTINGS_SYSTEM_THEME_NAME" = "System";
 
 /* Name of application */
-"APPLICATION_NAME" = "Grapherex";
+"APPLICATION_NAME" = "Signal";
 
 /* Label for the archive button for conversations list view */
 "ARCHIVE_ACTION" = "Archif";
@@ -426,7 +190,7 @@
 /* Error that outgoing attachments could not be exported. */
 "ATTACHMENT_APPROVAL_FAILED_TO_EXPORT" = "Methwyd allgludo'r atodiad.";
 
-/* alert text when Grapherex was unable to save a copy of the attachment to the system photo library */
+/* alert text when Signal was unable to save a copy of the attachment to the system photo library */
 "ATTACHMENT_APPROVAL_FAILED_TO_SAVE" = "Methwyd Cadw";
 
 /* Format string for file extension label in call interstitial view */
@@ -718,7 +482,7 @@
 "CALL_AUDIO_MISSED_NOTIFICATION_BODY" = "📞 Galwad sain coll";
 
 /* Alert message when calling and permissions for microphone are missing */
-"CALL_AUDIO_PERMISSION_MESSAGE" = "Gallwch chi alluogi mynediad i'r meicroffon yn yr app Gosodiadau iOS i wneud galwadau a recordio negeseuon llais yn Grapherex.";
+"CALL_AUDIO_PERMISSION_MESSAGE" = "Gallwch chi alluogi mynediad i'r meicroffon yn yr app Gosodiadau iOS i wneud galwadau a recordio negeseuon llais yn Signal.";
 
 /* Alert title when calling and permissions for microphone are missing */
 "CALL_AUDIO_PERMISSION_TITLE" = "Rhaid Cael Mynediad i'r Meicroffon";
@@ -733,7 +497,7 @@
 "CALL_SCREEN_STATUS_NO_ANSWER" = "Dim Ateb";
 
 /* embeds {{Call Status}} in call screen label. For ongoing calls, {{Call Status}} is a seconds timer like 01:23, otherwise {{Call Status}} is a short text like 'Ringing', 'Busy', or 'Failed Call' */
-"CALL_STATUS_FORMAT" = "Grapherex %@";
+"CALL_STATUS_FORMAT" = "Signal %@";
 
 /* Label for call button for alert offering to call a user. */
 "CALL_USER_ALERT_CALL_BUTTON" = "Galw";
@@ -787,7 +551,7 @@
 "CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "Mae'ch fideo wedi'i ddiffodd";
 
 /* The generic name used for calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Defnyddiwr Grapherex";
+"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Defnyddiwr Signal";
 
 /* Accessibility hint describing what you can do with the camera button */
 "CAMERA_BUTTON_HINT" = "Tynnwch lun ac yna ei anfon";
@@ -817,13 +581,13 @@
 "CHECK_FOR_BACKUP_RESTORE" = "Adfer";
 
 /* Error indicating that the app could not determine that user's iCloud account status */
-"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Ni allai Grapherex ganfod statws eich cyfrif iCloud. Mewngofnodwch i'ch Cyfrif iCloud yn yr app gosodiadau iOS i wneud copi wrth gefn o'ch data Grapherex.";
+"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Ni allai Signal ganfod statws eich cyfrif iCloud. Mewngofnodwch i'ch Cyfrif iCloud yn yr app gosodiadau iOS i wneud copi wrth gefn o'ch data Signal.";
 
 /* Error indicating that user does not have an iCloud account. */
-"CLOUDKIT_STATUS_NO_ACCOUNT" = "Dim Cyfrif iCloud. Mewngofnodwch i'ch Cyfrif iCloud yn yr app gosodiadau iOS i wneud copi wrth gefn o'ch data Grapherex.";
+"CLOUDKIT_STATUS_NO_ACCOUNT" = "Dim Cyfrif iCloud. Mewngofnodwch i'ch Cyfrif iCloud yn yr app gosodiadau iOS i wneud copi wrth gefn o'ch data Signal.";
 
 /* Error indicating that the app was prevented from accessing the user's iCloud account. */
-"CLOUDKIT_STATUS_RESTRICTED" = "Gwrthodwyd Grapherex gael mynediad i'ch cyfrif iCloud i gael copïau wrth gefn. Caniatewch mynediad Grapherex i'ch Cyfrif iCloud yn yr app gosodiadau iOS i wneud copi wrth gefn o'ch data Grapherex.";
+"CLOUDKIT_STATUS_RESTRICTED" = "Gwrthodwyd Signal gael mynediad i'ch cyfrif iCloud i gael copïau wrth gefn. Caniatewch mynediad Signal i'ch Cyfrif iCloud yn yr app gosodiadau iOS i wneud copi wrth gefn o'ch data Signal.";
 
 /* The first of two messages demonstrating the chosen conversation color, by rendering this message in an outgoing message bubble. */
 "COLOR_PICKER_DEMO_MESSAGE_1" = "Dewiswch liw negeseuon sy'n mynd allan yn y sgwrs hon.";
@@ -838,7 +602,7 @@
 "COMPARE_SAFETY_NUMBER_ACTION" = "Cymharu â Clipfwrdd";
 
 /* Accessibility hint describing what you can do with the compose button */
-"COMPOSE_BUTTON_HINT" = "Dewis neu chwilio am ddefnyddiwr Grapherex i ddechrau sgwrs â hwy.";
+"COMPOSE_BUTTON_HINT" = "Dewis neu chwilio am ddefnyddiwr Signal i ddechrau sgwrs â hwy.";
 
 /* Accessibility label from compose button. */
 "COMPOSE_BUTTON_LABEL" = "Ysgrifennu";
@@ -856,7 +620,7 @@
 "COMPOSE_MESSAGE_USERNAME_SEARCH_SECTION_TITLE" = "Chwiliad enw defnyddiwr";
 
 /* Multi-line label explaining why compose-screen contact picker is empty. */
-"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Gallwch chi alluogi mynediad i'ch cysylltiadau yn yr app Gosodiadau iOS i weld pa rai ohonynt sy'n ddefnyddwyr Grapherex.";
+"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Gallwch chi alluogi mynediad i'ch cysylltiadau yn yr app Gosodiadau iOS i weld pa rai ohonynt sy'n ddefnyddwyr Signal.";
 
 /* No comment provided by engineer. */
 "CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Bydd hyn yn ail-osod y rhaglen trwy ddileu eich negeseuon a'ch dadgofrestru gyda'r gweinydd. Bydd yr ap yn cau ar ôl i'r broses hon gael ei chwblhau.";
@@ -987,11 +751,11 @@
 /* Error indicating that at least one contact field must be selected before sharing a contact. */
 "CONTACT_SHARE_NO_FIELDS_SELECTED" = "Ni ddewisir unrhyw feysydd sy'n ymwneud â chysylltiadau.";
 
-/* Button text to initiate an email to Grapherex support staff */
-"CONTACT_SUPPORT" = "Cysylltu â Chymorth Grapherex";
+/* Button text to initiate an email to signal support staff */
+"CONTACT_SUPPORT" = "Cysylltu â Chymorth Signal";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Nid oedd Grapherex yn gallu cwblhau eich cais am gymorth.";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Nid oedd Signal yn gallu cwblhau eich cais am gymorth.";
 
 /* button text */
 "CONTACT_SUPPORT_PROMPT_ERROR_TRY_AGAIN" = "Rhoi Cynnig Arall Arni";
@@ -1051,7 +815,7 @@
 "CONVERSATION_SETTINGS" = "Gosodiadau Sgwrsio";
 
 /* Label for 'add members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_ADD_MEMBERS" = "Ychwanegu aelodau";
+"CONVERSATION_SETTINGS_ADD_MEMBERS" = "Ychwanegu Aelodau";
 
 /* Label for 'new contact' button in conversation settings view. */
 "CONVERSATION_SETTINGS_ADD_TO_EXISTING_CONTACT" = "Ychwanegu at Cysylltiad Presennol";
@@ -1082,9 +846,6 @@
 
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Rhwystro Defnyddiwr";
-
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Manylion Cysylltiad";
 
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Lliw'r Sgwrs";
@@ -1210,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Newidiadau heb eu Cadw";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Gweld pob aelod";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "See All";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Mae'r defnyddiwr hwn yn eich cysylltiadau.";
@@ -1226,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Ychwanegu at Cysylltiadau";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "Anfonodd %@:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Anfonasoch:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Dileu Popeth";
@@ -1324,13 +1091,13 @@
 "DEREGISTRATION_REREGISTER_WITH_SAME_PHONE_NUMBER" = "Ailgofrestri'r rhif ffôn hwn";
 
 /* Label warning the user that they have been de-registered. */
-"DEREGISTRATION_WARNING" = "Nid yw'r ddyfais wedi'i chofrestru mwyach. Efallai bod eich rhif ffôn wedi'i gofrestru gyda Grapherex ar ddyfais wahanol. Tapiwch i ailgofrestru.";
+"DEREGISTRATION_WARNING" = "Nid yw'r ddyfais wedi'i chofrestru mwyach. Efallai bod eich rhif ffôn wedi'i gofrestru gyda Signal ar ddyfais wahanol. Tapiwch i ailgofrestru.";
 
-/* {{Short Date}} when device last communicated with Grapherex Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Yn weithredol ddiwethaf: %@";
+/* {{Short Date}} when device last communicated with Signal Server. */
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Last active %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Cysylltwyd: %@";
+"DEVICE_LINKED_AT_LABEL" = "Linked %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Methwyd diweddaru rhestr dyfeisiau.";
@@ -1348,7 +1115,7 @@
 "DEVICE_TRANSFER_CHOICE_EXPLANATION" = "Os oes gennych eich hen ddyfais iOS gallwch drowsglwyddo yn ddiogel eich cyfrif a negeseuon i'r ddyfais hon.";
 
 /* The explanation for the device transfer 'choice' view when linking a device */
-"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Os oeddech yn defnyddio Grapherex ar iPad cysylltiedig gallwch drowsglwyddo yn ddiogel eich cyfrif a negeseuon i'r ddyfais hon.";
+"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Os oeddech yn defnyddio Signal ar iPad cysylltiedig gallwch drowsglwyddo yn ddiogel eich cyfrif a negeseuon i'r ddyfais hon.";
 
 /* The body for the device transfer 'choice' view 'register' option */
 "DEVICE_TRANSFER_CHOICE_REGISTER_BODY" = "Parhau heb drosglwyddo eich cyfrif a negeseuon";
@@ -1378,7 +1145,7 @@
 "DEVICE_TRANSFER_CHOICE_TRANSFER_TITLE" = "Trosglwyddo o ddyfais iOS";
 
 /* A warning for the device transfer 'choice' view indicating you can only have one device registered with your number */
-"DEVICE_TRANSFER_CHOICE_WARNING" = "Bydd parhau yn analluogi Grapherex ar ddyfeisiau eraill sydd wedi'u cofrestru â'r un rhif ffôn.";
+"DEVICE_TRANSFER_CHOICE_WARNING" = "Bydd parhau yn analluogi Signal ar ddyfeisiau eraill sydd wedi'u cofrestru â'r un rhif ffôn.";
 
 /* An error indicating that we were unable to verify the indentity of the new device to complete the transfer */
 "DEVICE_TRANSFER_ERROR_CERTIFICATE_MISMATCH" = "Methu gwirio eich dyfais newydd, rhowch gynnig arall arni";
@@ -1396,16 +1163,16 @@
 "DEVICE_TRANSFER_ERROR_NOT_ENOUGH_SPACE" = "Dim digon o le ar gael i gwblhau'r trsoglwyddiad";
 
 /* An error indicating the user must update their device before trying to transfer. */
-"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Diweddarwch i'r fersiwn mwyaf diweddar o Grapherex a rhowch gynnig arall arni.";
+"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Diweddarwch i'r fersiwn mwyaf diweddar o Signal a rhowch gynnig arall arni.";
 
 /* The explanation on the action sheet prompting the user if they want to transfer their device. */
-"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Trosglwyddwch eich cyfrif Grapherex i ddyfais iOS newydd. Gwnewch yn sicr bod eich dyfais newydd gyfagos ac ei fod ymlaen.";
+"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Trosglwyddwch eich cyfrif Signal i ddyfais iOS newydd. Gwnewch yn sicr bod eich dyfais newydd gyfagos ac ei fod ymlaen.";
 
 /* The title on the acttion sheet prompting the user if they want to transfer their device. */
 "DEVICE_TRANSFER_PROMPT_TITLE" = "Trosglwyddo Cyfrif";
 
 /* The explanation for the device transfer qr code view */
-"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Agorwch Grapherex ar eich hen ddyfais, dewch a hi'n gyfagos a gwnewch yn siwr bod Wi-Fi a Bluetooth wedi'u galluogi ar y ddwy ddyfais.";
+"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Agorwch Signal ar eich hen ddyfais, dewch a hi'n gyfagos a gwnewch yn siwr bod Wi-Fi a Bluetooth wedi'u galluogi ar y ddwy ddyfais.";
 
 /* The second explanation for the device transfer qr code view */
 "DEVICE_TRANSFER_QRCODE_EXPLANATION2" = "Lleoliwch y côd QR o fewn y ffram ar eich dyfais arall.";
@@ -1417,7 +1184,7 @@
 "DEVICE_TRANSFER_QRCODE_TITLE" = "Yn Aros am y Ddyfais Arall...";
 
 /* The explanation on the view that shows receiving progress */
-"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Cadwch y ddwy ddyfais gyfagos a'i gilydd. Peidiwch a diffodd y naill ddyfais neu'r llall a chadwch Grapherex yn agored. Mae trosglwyddo wedi'i hamgryptio o'r dechrau-i'r-diwedd.";
+"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Cadwch y ddwy ddyfais gyfagos a'i gilydd. Peidiwch a diffodd y naill ddyfais neu'r llall a chadwch Signal yn agored. Mae trosglwyddo wedi'i hamgryptio o'r dechrau-i'r-diwedd.";
 
 /* The title on the view that shows receiving progress */
 "DEVICE_TRANSFER_RECEIVING_TITLE" = "Yn Derbyn Data";
@@ -1432,7 +1199,7 @@
 "DEVICE_TRANSFER_SCANNING_TITLE" = "Daliwch Eich Dyfais Newydd o Flaen y Camera";
 
 /* The explanation on the action sheet that shows transfer progress */
-"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Cadwch y ddwy ddyfais gyfagos a'i gilydd. Peidiwch a diffodd y naill ddyfais neu'r llall a chadwch Grapherex yn agored.";
+"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Cadwch y ddwy ddyfais gyfagos a'i gilydd. Peidiwch a diffodd y naill ddyfais neu'r llall a chadwch Signal yn agored.";
 
 /* The title on the action sheet that shows transfer progress */
 "DEVICE_TRANSFER_TRANSFERRING_TITLE" = "Yn Trosglwyddo Data";
@@ -1458,11 +1225,11 @@
 /* Section title for the 'domain fronting country' view. */
 "DOMAIN_FRONTING_COUNTRY_VIEW_SECTION_HEADER" = "Lleoliad Osgoi Sensoriaeth";
 
-/* Alert body for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
+/* Alert body for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_BODY" = "Gallwch chi alluogi mynediad yn yr app Gosodiadau iOS.";
 
-/* Alert title for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
-"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Mae Grapherex Angen Mynediad i Cysylltiadau i Olygu Gwybodaeth Cysylltiad";
+/* Alert title for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Mae Signal Angen Mynediad i Cysylltiadau i Olygu Gwybodaeth Cysylltiad";
 
 /* The 'clear avatar' button in the 'edit group' view. */
 "EDIT_GROUP_CLEAR_AVATAR" = "Dileu Llun";
@@ -1471,7 +1238,7 @@
 "EDIT_GROUP_DEFAULT_TITLE" = "Golygu grŵp";
 
 /* Error message indicating the a user can't be added to a group. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Ni ellir ychwanegu'r defnyddiwr hwn i'r grŵp nes iddynt ddiweddaru Grapherex.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Ni ellir ychwanegu'r defnyddiwr hwn i'r grŵp nes iddynt ddiweddaru Signal.";
 
 /* Format for the 'group full' error alert when a user can't be added to a group because the group is full. Embeds {{ the maximum number of members in a group }}. */
 "EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "Cyrhaeddwyd uchafswm nifer aelodau grŵp o %@.";
@@ -1494,14 +1261,14 @@
 /* Short name for edit menu item to copy contents of media message. */
 "EDIT_ITEM_COPY_ACTION" = "Copïo";
 
-/* body of email sent to contacts when inviting to install Grapherex. Embeds {{link to install Grapherex}} and {{link to the Grapherex home page}} */
-"EMAIL_INVITE_BODY" = "Sumai/siwmae,\n\nYn ddiweddar rydw i wedi bod yn defnyddio Grapherex i gadw'r sgyrsiau ar fy iPhone yn breifat. Hoffwn i chi ei osod hefyd, felly gallwn fod yn hyderus mai dim ond chi a minnau sy'n gallu darllen ein negeseuon neu glywed ein galwadau.\n\nMae Grapherex ar gael ar gyfer iPhone ac Android. Cewch o yma: %@\n\nMae Grapherex yn gweithio fel eich app negeseuon presennol. Gallwn anfon lluniau a fideo, gwneud galwadau, a dechrau sgyrsiau grŵp. Y rhan orau yw, ni all unrhyw un arall weld dim ohono, nid hyd yn oed y bobl sy'n gwneud Grapherex!\n\nGallwch ddarllen mwy am Open Whisper Systems, y bobl sy'n gwneud Grapherex, yma: %@";
+/* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
+"EMAIL_INVITE_BODY" = "Sumai/siwmae,\n\nYn ddiweddar rydw i wedi bod yn defnyddio Signal i gadw'r sgyrsiau ar fy iPhone yn breifat. Hoffwn i chi ei osod hefyd, felly gallwn fod yn hyderus mai dim ond chi a minnau sy'n gallu darllen ein negeseuon neu glywed ein galwadau.\n\nMae Signal ar gael ar gyfer iPhone ac Android. Cewch o yma: %@\n\nMae Signal yn gweithio fel eich app negeseuon presennol. Gallwn anfon lluniau a fideo, gwneud galwadau, a dechrau sgyrsiau grŵp. Y rhan orau yw, ni all unrhyw un arall weld dim ohono, nid hyd yn oed y bobl sy'n gwneud Signal!\n\nGallwch ddarllen mwy am Open Whisper Systems, y bobl sy'n gwneud Signal, yma: %@";
 
-/* subject of email sent to contacts when inviting to install Grapherex */
-"EMAIL_INVITE_SUBJECT" = "Gadewch i ni newid i Grapherex";
+/* subject of email sent to contacts when inviting to install Signal */
+"EMAIL_INVITE_SUBJECT" = "Gadewch i ni newid i Signal";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Nid yw'ch dyfais wedi'i gyflunio i anfon negeseuon e-bost. I anfon cais am gymorth, gosodwch e-bost ar eich dyfais neu anfonwch e-bost i support@grapherex.com";
+"EMAIL_SIGNAL_MESSAGE" = "Nid yw'ch dyfais wedi'i gyflunio i anfon negeseuon e-bost. I anfon cais am gymorth, gosodwch e-bost ar eich dyfais neu anfonwch e-bost i support@signal.org";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "E-bost ddim ar gael";
@@ -1534,7 +1301,7 @@
 "EMOJI_CATEGORY_TRAVEL_NAME" = "Teithio a Llefydd";
 
 /* Full width label displayed when attempting to compose message */
-"EMPTY_CONTACTS_LABEL_LINE1" = "Nid oes gan unrhyw un o'ch cysylltiadau Grapherex.";
+"EMPTY_CONTACTS_LABEL_LINE1" = "Nid oes gan unrhyw un o'ch cysylltiadau Signal.";
 
 /* Full width label displayed when attempting to compose message */
 "EMPTY_CONTACTS_LABEL_LINE2" = "Pam na wnewch chi wahodd rhywun?";
@@ -1572,8 +1339,8 @@
 /* Error message indicating that message send failed due to block list */
 "ERROR_DESCRIPTION_MESSAGE_SEND_FAILED_DUE_TO_BLOCK_LIST" = "Methwyd anfon neges i'r defnyddiwr oherwydd i chi eu gwahardd.";
 
-/* Generic error used whenever Grapherex can't contact the server */
-"ERROR_DESCRIPTION_NO_INTERNET" = "Nid oedd Grapherex yn gallu cysylltu â'r rhyngrwyd. Rhowch gynnig arall arni os gwelwch yn dda.";
+/* Generic error used whenever Signal can't contact the server */
+"ERROR_DESCRIPTION_NO_INTERNET" = "Nid oedd Signal yn gallu cysylltu â'r rhyngrwyd. Rhowch gynnig arall arni os gwelwch yn dda.";
 
 /* Error indicating that an outgoing message had no valid recipients. */
 "ERROR_DESCRIPTION_NO_VALID_RECIPIENTS" = "Methwyd anfon negeseuon oherwydd diffyg derbynwyr dilys.";
@@ -1588,7 +1355,7 @@
 "ERROR_DESCRIPTION_RESPONSE_FAILED" = "Ymateb annilys o'r gwasanaeth.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Nid yw'r ddyfais hon bellach wedi'i chofrestru â'ch rhif ffôn. Ailosodwch Grapherex.";
+"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Nid yw'r ddyfais hon bellach wedi'i chofrestru â'ch rhif ffôn. Ailosodwch Signal.";
 
 /* Generic server error */
 "ERROR_DESCRIPTION_SERVER_FAILURE" = "Gwall Gweinydd. Rhowch gynnig arall arni nes ymlaen.";
@@ -1597,13 +1364,13 @@
 "ERROR_DESCRIPTION_UNKNOWN_ERROR" = "Digwyddodd gwall anhysbys.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Nid yw'r cysylltiad yn ddefnyddiwr Grapherex.";
+"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Nid yw'r cysylltiad yn ddefnyddiwr Signal.";
 
 /* Error message indicating that attachment download(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_DOWNLOAD_FAILED" = "Methwyd lawrlwytho atodiad.";
 
 /* Error message when unable to receive an attachment because the sending client is too old. */
-"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Methiant atodiad: Gofynnwch i'r cysylltiad hwn anfon eu neges eto ar ôl ei diweddaru i'r fersiwn ddiweddaraf o Grapherex.";
+"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Methiant atodiad: Gofynnwch i'r cysylltiad hwn anfon eu neges eto ar ôl ei diweddaru i'r fersiwn ddiweddaraf o Signal.";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_DUPLICATE_MESSAGE" = "Derbynwyd neges ddyblyg.";
@@ -1620,10 +1387,10 @@
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_NO_SESSION" = "Nid oes sesiwn ar gael ar gyfer cysylltiad.";
 
-/* Shown when Grapherex users safety numbers changed */
+/* Shown when signal users safety numbers changed */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE" = "Rhif diogelwch wedi newid.";
 
-/* Shown when Grapherex users safety numbers changed, embeds the user's {{name or phone number}} */
+/* Shown when signal users safety numbers changed, embeds the user's {{name or phone number}} */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE_FORMAT" = "Mae'ch rhif diogelwch gyda %@ wedi newid.";
 
 /* Text notifying the user that their secure session has been reset */
@@ -1645,19 +1412,19 @@
 "ERROR_SENDING_DEREGISTERED" = "Nid yw'ch dyfais wedi'i chofrestru mwyach. Ail-gofrestrwch i anfon negeseuon pellach.";
 
 /* Error indicating a send failure due to an expired application. */
-"ERROR_SENDING_EXPIRED" = "Mae eich fersiwn chi o Grapherex wedi dod i ben. Diweddarwch i anfon negeseuon pellach.";
+"ERROR_SENDING_EXPIRED" = "Mae eich fersiwn chi o Signal wedi dod i ben. Diweddarwch i anfon negeseuon pellach.";
 
-/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or Grapherex id}}. */
+/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or signal id}}. */
 "ERROR_UNREGISTERED_USER_FORMAT" = "Defnyddiwr Anghofrestredig: %@";
 
 /* Label notifying the user that the app has expired. */
-"EXPIRATION_ERROR" = "Mae'ch fersiwn o Grapherex wedi dod i ben. Tapiwch i ddiweddaru i'r fersiwn ddiweddaraf.";
+"EXPIRATION_ERROR" = "Mae'ch fersiwn o Signal wedi dod i ben. Tapiwch i ddiweddaru i'r fersiwn ddiweddaraf.";
 
 /* Label warning the user that the app will expire soon. */
-"EXPIRATION_WARNING_SOON" = "Bydd eich fersiwn o Grapherex yn dod i ben ymhen %d diwrnod. Tapiwch i ddiweddaru i'r fersiwn ddiweddaraf.";
+"EXPIRATION_WARNING_SOON" = "Bydd eich fersiwn o Signal yn dod i ben ymhen %d diwrnod. Tapiwch i ddiweddaru i'r fersiwn ddiweddaraf.";
 
 /* Label warning the user that the app will expire today. */
-"EXPIRATION_WARNING_TODAY" = "Bydd eich fersiwn o Grapherex yn dod i ben heddiw. Tapiwch i ddiweddaru i'r fersiwn ddiweddaraf.";
+"EXPIRATION_WARNING_TODAY" = "Bydd eich fersiwn o Signal yn dod i ben heddiw. Tapiwch i ddiweddaru i'r fersiwn ddiweddaraf.";
 
 /* action sheet header when re-sending message which failed because of too many attempts */
 "FAILED_SENDING_BECAUSE_RATE_LIMIT" = "Gormod o fethiannau gyda'r cysylltiad hwn. Rhowch gynnig arall arni nes ymlaen.";
@@ -1732,7 +1499,7 @@
 "GO_TO_SETTINGS_BUTTON" = "Mynd i Gosodiadau";
 
 /* Body message of notification shown during GRDB migration indicating that user may need to open app to view their content. */
-"GRDB_MIGRATION_NOTIFICATION_BODY" = "Mae'r fersiwn hon o Grapherex yn cynnwys optimeiddiadau cronfa ddata a gwelliannau perfformiad. Efallai y bydd angen i chi agor yr ap i gwblhau'r broses.";
+"GRDB_MIGRATION_NOTIFICATION_BODY" = "Mae'r fersiwn hon o Signal yn cynnwys optimeiddiadau cronfa ddata a gwelliannau perfformiad. Efallai y bydd angen i chi agor yr ap i gwblhau'r broses.";
 
 /* Title of notification shown during GRDB migration indicating that user may need to open app to view their content. */
 "GRDB_MIGRATION_NOTIFICATION_TITLE" = "Yn Optimeiddio Cronfa Ddata";
@@ -2047,7 +1814,7 @@
 "GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Dolen Annilys";
 
 /* Error message indicating that the local user does not support groups v2. */
-"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Diweddarwch Grapherex ar y ddyfais hon i ymuno â'r grŵp hwn.";
+"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Diweddarwch Signal ar y ddyfais hon i ymuno â'r grŵp hwn.";
 
 /* Explanation of the 'approve new group members' switch. */
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Ei gwneud yn ofynnol i weinyddwr gymeradwyo aelodau newydd sy'n ymuno trwy'r ddolen grŵp.";
@@ -2112,11 +1879,11 @@
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "Cod QR";
 
-/* Label for the 'share group link via Grapherex' button in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Rhannu trwy Grapherex";
+/* Label for the 'share group link via Signal' button in the 'group link' view. */
+"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Rhannu trwy Signal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Gall unrhyw un sydd â'r ddolen hon ymuno â'r grŵp, neu anfon cais i ymuno. Rhannwch ef gyda phobl rydych chi'n ymddiried ynddynt.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Gall unrhyw un sydd â'r ddolen hon weld enw'r grŵp a'i aelodau ac anfon cais i ymuno. Rhannwch ef gyda phobl rydych chi'n ymddiried ynddynt.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Dolen Grŵp";
@@ -2220,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Galwad Fideo";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ group members have similar names.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Tapio i adolygu";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Aelod";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Adolygu Aelodau";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ group members have similar names, review the members below or choose to take action.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ group members have the same name, review the members below or choose to take action.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ group members have the same name.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Enw'r grŵp (angenrheidiol)";
 
@@ -2312,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "Cymeradwyodd %2$@ gais i ymuno â'r grŵp gan %1$@.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "Mae cais i ymuno â'r grŵp o %@ wedi'i gymeradwyo.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "Canslodd %@ ei gais i ymuno â'r grŵp.";
@@ -2446,13 +2231,13 @@
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_1_TITLE" = "Beth yw Hen Grwpiau?";
 
 /* Body text for the second section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Ni ellir uwchraddio Hen Grwpiau i Grwpiau Newydd eto, ond gallwch greu Grŵp Newydd gyda'r un aelodau os ydyn nhw ar y fersiwn ddiweddaraf o Grapherex.\n\nBydd Grapherex yn cynnig ffordd i uwchraddio Hen Grwpiau yn y dyfodol.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Ni ellir uwchraddio Hen Grwpiau i Grwpiau Newydd eto, ond gallwch greu Grŵp Newydd gyda'r un aelodau os ydyn nhw ar y fersiwn ddiweddaraf o Signal.\n\nBydd Signal yn cynnig ffordd i uwchraddio Hen Grwpiau yn y dyfodol.";
 
 /* Title for the second section of the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_2_TITLE" = "Gai “uwchraddio” Hen Grŵp?";
 
 /* Body text for the third section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "I greu Grŵp Newydd, dylai'r holl aelodau ddiweddaru i'r fersiwn ddiweddaraf o Grapherex.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "I greu Grŵp Newydd, dylai'r holl aelodau ddiweddaru i'r fersiwn ddiweddaraf o Signal.";
 
 /* Title for the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Hen Grŵp o'i gymharu â Grŵp Newydd";
@@ -2467,28 +2252,28 @@
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TOO_MANY_MEMBERS_FORMAT" = "Ni ellir uwchraddio'r grŵp hwn i Grŵp Newydd oherwydd ei fod â gormod o aelodau. Uchafswm maint y grŵp yw %@.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Pan fydd holl aelodau presennol y grŵp yn defnyddio fersiwn o Grapherex sy'n gallu ymuno â Grŵp Newydd, bydd y grŵp hwn yn cael ei uwchraddio.";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Pan fydd holl aelodau presennol y grŵp yn defnyddio fersiwn o Signal sy'n gallu ymuno â Grŵp Newydd, bydd y grŵp hwn yn cael ei uwchraddio.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_2" = "Bydd holl hanes negeseuon a chyfryngau o cyn uwchraddio yn cael eu cadw.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Ni ellir creu y grŵp hwn oherwydd bod 1 aelod yn defnyddio hen fersiwn o Grapherex. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Grapherex, neu eu tynnu cyn creu'r grŵp.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Ni ellir creu y grŵp hwn oherwydd bod 1 aelod yn defnyddio hen fersiwn o Signal. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Signal, neu eu tynnu cyn creu'r grŵp.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Ni ellir creu y grŵp hwn oherwydd bod %@ aelod yn defnyddio hen fersiwn o Grapherex. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Grapherex, neu eu tynnu cyn creu'r grŵp.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Ni ellir creu y grŵp hwn oherwydd bod %@ aelod yn defnyddio hen fersiwn o Signal. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Signal, neu eu tynnu cyn creu'r grŵp.";
 
 /* Indicates that a new group cannot be created because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Ni ellir creu y grŵp hwn oherwydd bod 1 aelod yn defnyddio hen fersiwn o Grapherex. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Grapherex, neu eu tynnu cyn creu'r grŵp. %@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Ni ellir creu y grŵp hwn oherwydd bod 1 aelod yn defnyddio hen fersiwn o Signal. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Signal, neu eu tynnu cyn creu'r grŵp. %@";
 
 /* Indicates that a new group cannot be created because multiple members do not support v2 groups. Embeds {{ %1$@ the number of members who do not support v2 groups, %2$@ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Ni ellir creu y grŵp hwn oherwydd bod %1$@ aelod yn defnyddio hen fersiwn o Grapherex. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Grapherex, neu eu tynnu cyn creu'r grŵp. %2$@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Ni ellir creu y grŵp hwn oherwydd bod %1$@ aelod yn defnyddio hen fersiwn o Signal. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Signal, neu eu tynnu cyn creu'r grŵp. %2$@";
 
 /* Title for alert that explains that a new group will be a legacy group because 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Bydd Hen Grŵp yn cael ei greu oherwydd bod 1 aelod yn defnyddio hen fersiwn o Grapherex. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Grapherex, neu eu tynnu cyn creu'r grŵp.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Bydd Hen Grŵp yn cael ei greu oherwydd bod 1 aelod yn defnyddio hen fersiwn o Signal. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Signal, neu eu tynnu cyn creu'r grŵp.";
 
 /* Title for alert that explains that a new group will be a legacy group because multiple members do not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Bydd Hen Grŵp yn cael ei greu oherwydd bod %@aelod yn defnyddio hen fersiwn o Grapherex. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Grapherex, neu eu tynnu cyn creu'r grŵp.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Bydd Hen Grŵp yn cael ei greu oherwydd bod %@aelod yn defnyddio hen fersiwn o Signal. Gallwch greu Grŵp Arddull Newydd gyda nhw ar ôl iddyn nhw ddiweddaru Signal, neu eu tynnu cyn creu'r grŵp.";
 
 /* Indicates that a new group will be a legacy group because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
 "GROUPS_LEGACY_GROUP_CREATION_WARNING_FORMAT_1" = "Nid yw 1 aelod yn cefnogi Grwpiau Newydd, felly Hen Grŵp fydd hwn. %@";
@@ -2608,7 +2393,7 @@
 "GROUPS_REPLACE_ADMIN_BUTTON" = "Dewiswch gweinyddwr newydd";
 
 /* Format for the alert warning the user that they've reached the recommended limit on how many members can be in a group when creating a new group. Embeds {{ the maximum number of recommended members in a group }}. */
-"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Mae grwpiau Grapherex yn gweithio orau gydag %@ aelod neu lai. Bydd ychwanegu mwy o aelodau yn achosi oedi wrth anfon a derbyn negeseuon.";
+"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Mae grwpiau Signal yn gweithio orau gydag %@ aelod neu lai. Bydd ychwanegu mwy o aelodau yn achosi oedi wrth anfon a derbyn negeseuon.";
 
 /* Title for alert warning the user that they've reached the recommended limit on how many members can be in a group. */
 "GROUPS_TOO_MANY_MEMBERS_ALERT_TITLE" = "Mae'r terfyn aelodaeth a argymhellir wedi'i gyrraedd";
@@ -2625,7 +2410,7 @@
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "Cysylltu â Ni";
 
-/* Help item that takes the user to the Grapherex support website */
+/* Help item that takes the user to the Signal support website */
 "HELP_SUPPORT_CENTER" = "Canolfan Cymorth";
 
 /* Label for 'archived conversations' button. */
@@ -2640,16 +2425,16 @@
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "Drafft:";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Grapherex contact.  Embeds {{The name of 1 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Mar rhai o'ch cysylltiadau eisoes ar Grapherex, yn cynnwys %@.";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Signal contact.  Embeds {{The name of 1 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Mar rhai o'ch cysylltiadau eisoes ar Signal, yn cynnwys %@.";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Grapherex contacts.  Embeds {{The names of 2 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Mar rhai o'ch cysylltiadau eisoes ar Grapherex, yn cynnwys %@ a %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Signal contacts.  Embeds {{The names of 2 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Mar rhai o'ch cysylltiadau eisoes ar Signal, yn cynnwys %@ a %@";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Grapherex contacts.  Embeds {{The names of 3 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Mar rhai o'ch cysylltiadau eisoes ar Grapherex, yn cynnwys %@, %@ a %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Signal contacts.  Embeds {{The names of 3 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Mar rhai o'ch cysylltiadau eisoes ar Signal, yn cynnwys %@, %@ a %@";
 
-/* A label offering to start a new conversation with your contacts, if you have no Grapherex contacts. */
+/* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Dechreuwch eich sgwrs gyntaf yma.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
@@ -2665,7 +2450,7 @@
 "HOME_VIEW_TITLE_ARCHIVE" = "Archif";
 
 /* Title for the conversation list's default mode. */
-"HOME_VIEW_TITLE_INBOX" = "Grapherex";
+"HOME_VIEW_TITLE_INBOX" = "Signal";
 
 /* The image editor hint that you can draw blur */
 "IMAGE_EDITOR_BLUR_HINT" = "Llunio unrhyw le i bylu";
@@ -2679,11 +2464,11 @@
 /* Momentarily shown to the user when attempting to select more images than is allowed. Embeds {{max number of items}} that can be shared. */
 "IMAGE_PICKER_CAN_SELECT_NO_MORE_TOAST_FORMAT" = "Nid oes modd rhannu mwy na %@ eitem.";
 
-/* Button that will present a view for the user to change the photos Grapherex has access to. */
+/* Button that will present a view for the user to change the photos Signal has access to. */
 "IMAGE_PICKER_CHANGE_PHOTOS" = "Newid Lluniau";
 
 /* Explanation showing that the user has granted limited access to their photos and can change that in the Settings app. */
-"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Caniatáu mynediad llawn yn Gosodiadau neu newid pa luniau all Grapherex gyrchu.";
+"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Caniatáu mynediad llawn yn Gosodiadau neu newid pa luniau all Signal gyrchu.";
 
 /* Title show that the user has granted limited access to their photos and can change that in the Settings app. */
 "IMAGE_PICKER_CHANGE_PHOTOS_TITLE" = "Ddim yn gweld eich llyniau?";
@@ -2733,8 +2518,8 @@
 /* Shown in inbox and conversation after syncing as a placeholder indicating why your message history is missing. */
 "INFO_MESSAGE_SYNCED_THREAD" = "Gallwch anfon neu dderbyn negeseuon cydamserol o'ch ffôn neu iPad.\nEr mwyn eich diogelwch, ni chaiff cofnod sgwrsio ei drosglwyddo i ddyfeisiau cysylltiedig newydd.";
 
-/* Shown in inbox and conversation when a user joins Grapherex, embeds the new user's {{contact name}} */
-"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "Mae %@ ar Grapherex!";
+/* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
+"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "Mae %@ ar Signal!";
 
 /* accessibility label for the button which shows the sticker picker */
 "INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL" = "Sticeri";
@@ -2745,14 +2530,14 @@
 /* Message for the alert indicating that an audio file is invalid. */
 "INVALID_AUDIO_FILE_ALERT_ERROR_MESSAGE" = "Ffeil sain annilys.";
 
-/* Alert body when contacts disabled while trying to invite contacts to Grapherex */
-"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Gallwch chi alluogi mynediad i'ch cysylltiadau yn app Gosodiadau iOS i wahodd eich ffrindiau i ymuno â Grapherex.";
+/* Alert body when contacts disabled while trying to invite contacts to signal */
+"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Gallwch chi alluogi mynediad i'ch cysylltiadau yn app Gosodiadau iOS i wahodd eich ffrindiau i ymuno â Signal.";
 
-/* Alert title when contacts disabled while trying to invite contacts to Grapherex */
+/* Alert title when contacts disabled while trying to invite contacts to signal */
 "INVITE_FLOW_REQUIRES_CONTACT_ACCESS_TITLE" = "Caniatáu Mynediad Cysylltiadau";
 
 /* Label for the cell that presents the 'invite contacts' workflow. */
-"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Gwahodd Ffrindiau i Grapherex";
+"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Gwahodd Ffrindiau i Signal";
 
 /* Search */
 "INVITE_FRIENDS_PICKER_SEARCHBAR_PLACEHOLDER" = "Chwilio";
@@ -2845,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Sganiwch y côd QR sydd yw weld ar y ddyfais i'w chysylltu.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Sganio côd QR";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scan QR Code to link a new device.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Cysylltu Dyfais Newydd";
@@ -2869,7 +2654,7 @@
 "LINKPREVIEWS_MEGAPHONE_TITLE" = "Rhagolwg o Unrhyw Ddolen";
 
 /* Body for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Er mwyn trosglwyddo'ch cyfrif Grapherex bydd rhaid galluogi cyrchu rhwydwaith lleol ar y ddwy ddyfais.";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Er mwyn trosglwyddo'ch cyfrif Signal bydd rhaid galluogi cyrchu rhwydwaith lleol ar y ddwy ddyfais.";
 
 /* A button asking the user if they need further help getting their transfer working. */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_NEED_HELP" = "Angen Cymorth?";
@@ -2881,7 +2666,7 @@
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_THREE" = "Galluogi \"Rhwydwaith Lleol\"";
 
 /* Second step for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Llywiwch at Grapherex";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Llywiwch at Signal";
 
 /* Title for local network permission action sheet */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_TITLE" = "Galluogi Cyrchu Rhwydwaith Lleol";
@@ -2892,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Dewis Lleoliad";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Cofnodi";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Debug logs can help Signal fix issues and crashes.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Neges";
@@ -2944,7 +2732,7 @@
 "MESSAGE_ACTION_DELETE_FOR_EVERYONE" = "Dileu i Bawb";
 
 /* A one-time confirmation that you want to delete for everyone */
-"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Bydd y neges hon yn cael ei dileu i bawb sydd yn y sgwrs os ydynt yn defnyddio fersiwn diweddar o Grapherex. Byddent yn gallu gweld eich bod wedi dileu neges.";
+"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Bydd y neges hon yn cael ei dileu i bawb sydd yn y sgwrs os ydynt yn defnyddio fersiwn diweddar o Signal. Byddent yn gallu gweld eich bod wedi dileu neges.";
 
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "I bwy yr hoffech chi ddileu'r neges hon?";
@@ -3061,7 +2849,7 @@
 "MESSAGE_REQUEST_LEAVE_AND_DELETE_GROUP_TITLE" = "Dileu a Gadael Grŵp?";
 
 /* Banner label notifying user that a new message is from a user with the same name as an existing contact */
-"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Adolygwch ceisiadau â gofal. Daeth Grapherex o hyd i gyswllt arall gyda'r un enw.";
+"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Adolygwch ceisiadau â gofal. Daeth Signal o hyd i gyswllt arall gyda'r un enw.";
 
 /* A header string above a known contact's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Eich cyswllt";
@@ -3147,7 +2935,7 @@
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "Darllen";
 
-/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Grapherex account. */
+/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Signal account. */
 "MESSAGE_STATUS_RECIPIENT_SKIPPED" = "Hepgorwyd";
 
 /* Label indicating that a message failed to send. */
@@ -3187,22 +2975,22 @@
 "MISSED_CALL" = "Galwad coll";
 
 /* Alert body */
-"MISSING_CAMERA_PERMISSION_MESSAGE" = "Gallwch chi alluogi mynediad i'r camera yn yr app Gosodiadau iOS i wneud galwadau fideo yn Grapherex.";
+"MISSING_CAMERA_PERMISSION_MESSAGE" = "Gallwch chi alluogi mynediad i'r camera yn yr app Gosodiadau iOS i wneud galwadau fideo yn Signal.";
 
 /* Alert title */
-"MISSING_CAMERA_PERMISSION_TITLE" = "Mae ar Grapherex angen mynediad i'ch camera.";
+"MISSING_CAMERA_PERMISSION_TITLE" = "Mae ar Signal angen mynediad i'ch camera.";
 
 /* Alert body indicating the user has denied location permissios */
 "MISSING_LOCATION_PERMISSION_MESSAGE" = "Gallwch chi alluogi yr hawl yma yn yr app Gosodiadau iOS.";
 
 /* Alert title indicating the user has denied location permissios */
-"MISSING_LOCATION_PERMISSION_TITLE" = "Mae ar Grapherex angen mynediad i'ch lleoliad ar gyfer y nodwedd hon.";
+"MISSING_LOCATION_PERMISSION_TITLE" = "Mae ar Signal angen mynediad i'ch lleoliad ar gyfer y nodwedd hon.";
 
 /* Alert body when user has previously denied media library access */
 "MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE" = "Gallwch chi alluogi yr hawl yma yn yr app Gosodiadau iOS.";
 
 /* Alert title when user has previously denied media library access */
-"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Mae ar Grapherex angen mynediad i'ch lluniau ar gyfer y nodwedd hon.";
+"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Mae ar Signal angen mynediad i'ch lluniau ar gyfer y nodwedd hon.";
 
 /* alert title: cannot link - reached max linked devices */
 "MULTIDEVICE_PAIRING_MAX_DESC" = "Ni allwch gysylltu mwy o ddyfeisiau.";
@@ -3215,6 +3003,9 @@
 
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Distewyd";
+
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Recently changed their profile name from %1$@ to %2$@.";
 
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Hepgor";
@@ -3297,16 +3088,19 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Dim grwpiau'n gyffredin";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Dim grwpiau eraill yn gyffredin.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Dewisa gyswllt neu grŵp i ddechrau sgwrsio.";
 
 /* Title welcoming to the app */
-"NO_SELECTED_CONVERSATION_TITLE" = "Croeso i Grapherex";
+"NO_SELECTED_CONVERSATION_TITLE" = "Croeso i Signal";
 
 /* A string prompting the user to send a new mesaage to a user */
 "NON_CONTACT_TABLE_CELL_NEW_MESSAGE" = "Neges newydd i:";
 
-/* A string asking the user if they'd like to invite a number to Grapherex via SMS. */
+/* A string asking the user if they'd like to invite a number to signal via SMS. */
 "NON_CONTACT_TABLE_CELL_SEND_SMS" = "Ni chanfüwyd y defnyddiwr. Gwahodd gyda SMS?";
 
 /* Label for 1:1 conversation with yourself. */
@@ -3348,11 +3142,8 @@
 /* No comment provided by engineer. */
 "NOTIFICATIONS_NONE" = "Dim Enw na Chynnwys";
 
-/* Table cell switch label. When disabled, Grapherex will not play notification sounds while the app is in the foreground. */
+/* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Chwarae tra mae'r App ar Agor";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Seiniau";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Ychwanegu sain arbennig...";
@@ -3412,7 +3203,7 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "Cysylltu iPhone";
 
 /* explanation to the user they're switching from linking to registering flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Bydd tapio \"Cofrestru iPad\" yn caniatáu i chi greu cyfrif Grapherex newydd sbon neu symyd cyfrif sydd eisoes yn bodoli i'r iPad hon. Mi fydd hyn yn analluogi Grapherex ar unrhyw ddyfais sydd wedi'i gofrestri a'r un rhif ffôn.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Bydd tapio \"Cofrestru iPad\" yn caniatáu i chi greu cyfrif Signal newydd sbon neu symyd cyfrif sydd eisoes yn bodoli i'r iPad hon. Mi fydd hyn yn analluogi Signal ar unrhyw ddyfais sydd wedi'i gofrestri a'r un rhif ffôn.";
 
 /* explanation to the user they're switching from registering to linking flow */
 "ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Bydd tapio \"Cysylltu iPhone\" yn caniatáu i chi gysylltu'ch ffôn i unrhyw gyfrif sydd eisoes yn bodoli. Nid yw cysylltu eich ffôn yn gyffredinol yn gymeradwy a bydd yn cyfyngu rhai nodweddion, megis galw.";
@@ -3424,7 +3215,7 @@
 "ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "Cysylltu'r iPhone hon?";
 
 /* warning to the user that registering an ipad is not recommended */
-"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Bydd cofrestru'r iPad hon yn analluogi Grapherex ar unrhyw ddyfais arall sydd ar hyn o bryd wedi'i gofrestri a'r un rhif ffôn.";
+"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Bydd cofrestru'r iPad hon yn analluogi Signal ar unrhyw ddyfais arall sydd ar hyn o bryd wedi'i gofrestri a'r un rhif ffôn.";
 
 /* warning to the user that linking a phone is not recommended */
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Nid yw cysylltu eich iPhone yn gymeradwy a bydd yn cyfyngu nodweddion craidd.";
@@ -3433,25 +3224,31 @@
 "ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Galluogi Cantiatâd";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Bydd hysbysebion yn caniatáu i chi weld pan mae negeseuon yn cyrraedd a derbyn diweddariadau ynglun a gweithgaredd sgwrsio.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Allowing notifications and contacts lets you see when messages arrive and helps you find people you know. Contacts are encrypted so the Signal service can't see them.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Derbyn y neges";
+"ONBOARDING_PERMISSIONS_TITLE" = "Galluogi Cantiatâd";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Dewiswch pwy all ddod o hyd i chi ar Grapherex gyda'ch rhif ffôn %@";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Dewiswch pwy all ddod o hyd i chi ar Signal gyda'ch rhif ffôn %@";
 
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Pwy all ddod o hyd i chi gyda'ch rhif?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Eich rhif ffôn";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Please wait a few minutes before trying again. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Rhowch eich rhif ffôn i gychwyn arni";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Rhowch eich rhif ffôn";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Rhif annilys";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Rhif ffôn anilys. Rhowch rhif ffôn dilys er mwyn cofrestru.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Rydych wedi cyrraedd terfyn dyfalu PIN, ond fedrwch barhau i ddefnyddio eich cyfrif Grapherex wrth greu PIN newydd. Er lles eich preifatrwydd a diogelwch bydd eich cyfrif yn cael ei adfer heb unrhwy wybodaeth proffil neu gosodiadau a gedwid.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Rydych wedi cyrraedd terfyn dyfalu PIN, ond fedrwch barhau i ddefnyddio eich cyfrif Signal wrth greu PIN newydd. Er lles eich preifatrwydd a diogelwch bydd eich cyfrif yn cael ei adfer heb unrhwy wybodaeth proffil neu gosodiadau a gedwid.";
 
 /* Label for the 'learn more' link when reglock is disabled in the 'onboarding pin attempts exhausted' view. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_LEARN_MORE" = "Dysgu mwy am PINiau";
@@ -3474,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Rhowch eich PIN";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Eich proffil";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Enw Olaf (Dewisol)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Enw Cyntaf (Angenrheidiol)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Polisi Telerau a Phreifatrwydd";
 
@@ -3483,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Rhif anghywir?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Ni chefais y côd (ar gael yn %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Gallwch Fi";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Cysylltu â Chefnogaeth Grapherex";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Gallwch Fi mewn %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Yn Dilysu Côd…";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Mae'r côd yn anghywir";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Ni chefais y côd";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Ailanfon Côd";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Cadarnhëwch eich bod gennych wasanaeth symudol ac y gallwch dderbyn negeseuon testun.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Dim côd?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Ailanfon Côd";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Galwch Fi yn lle";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Dal ddim côd?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Resend Code in %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Rhowch y côd a anfonwyd i %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Ailanfonwyd côd i %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Verification code";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Gosodiadau";
@@ -3525,8 +3322,8 @@
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "Gosododd %@ cyfnod negeseuon byrhoedlog i %@.";
 
-/* Label warning the user that the Grapherex service may be down. */
-"OUTAGE_WARNING" = "Mae Grapherex yn profi anawsterau technegol. Rydym yn gweithio'n galed i adfer y gwasanaeth cyn gynted ā phosib.";
+/* Label warning the user that the Signal service may be down. */
+"OUTAGE_WARNING" = "Mae Signal yn profi anawsterau technegol. Rydym yn gweithio'n galed i adfer y gwasanaeth cyn gynted ā phosib.";
 
 /* info message text in conversation view. {embeds callee name} */
 "OUTGOING_CALL_FORMAT" = "Galwoch chi %@";
@@ -3634,13 +3431,13 @@
 "PHONE_NUMBER_DISCOVERABILITY_EVERYBODY" = "Pawb";
 
 /* A user friendly description of the 'everybody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Bydd unrhyw un sydd â'ch rhif ffôn yn eu cysylltiadau yn eich gweld fel cyswllt ar Grapherex. Bydd eraill yn gallu dod o hyd i chi wrth chwilio.";
+"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Bydd unrhyw un sydd â'ch rhif ffôn yn eu cysylltiadau yn eich gweld fel cyswllt ar Signal. Bydd eraill yn gallu dod o hyd i chi wrth chwilio.";
 
 /* A user friendly name for the 'nobody' phone number discoverability mode. */
 "PHONE_NUMBER_DISCOVERABILITY_NOBODY" = "Neb";
 
 /* A user friendly description of the 'nobody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Ni fydd neb ar Grapherex yn gallu dod o hyd i chi gyda'ch rhif ffôn. Ni fyddwch i'w weld fel cyswllt i bobl sydd â'ch rhif ffôn yn eu cysylltiadau ac ni fydd eraill yn gallu dod o hyd i chi gyda'ch rhif ffôn wrth chwilio.";
+"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Ni fydd neb ar Signal yn gallu dod o hyd i chi gyda'ch rhif ffôn. Ni fyddwch i'w weld fel cyswllt i bobl sydd â'ch rhif ffôn yn eu cysylltiadau ac ni fydd eraill yn gallu dod o hyd i chi gyda'ch rhif ffôn wrth chwilio.";
 
 /* A format for a label showing an example phone number. Embeds {{the example phone number}}. */
 "PHONE_NUMBER_EXAMPLE_FORMAT" = "Esiample: %@";
@@ -3649,19 +3446,19 @@
 "PHONE_NUMBER_SHARING_CONTACTS_ONLY" = "Fy Nghysylltiadau";
 
 /* A user friendly description of the 'contacts only' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Dim ond eich cysylltiadau fydd yn gweld eich rhif ffôn ar Grapherex.";
+"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Dim ond eich cysylltiadau fydd yn gweld eich rhif ffôn ar Signal.";
 
 /* A user friendly name for the 'everybody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_EVERYBODY" = "Pawb";
 
 /* A user friendly description of the 'everybody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Bydd eich rhif ffôn i'w weld gan y bobl a'r grwpiau rydych chi'n anfon negeseuon atyn. Bydd pobl sydd â'ch rhif yn eu cysylltiadau ffôn hefyd yn ei weld ar Grapherex.";
+"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Bydd eich rhif ffôn i'w weld gan y bobl a'r grwpiau rydych chi'n anfon negeseuon atyn. Bydd pobl sydd â'ch rhif yn eu cysylltiadau ffôn hefyd yn ei weld ar Signal.";
 
 /* A user friendly name for the 'nobody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_NOBODY" = "Neb";
 
 /* A user friendly description of the 'nobody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Bydd neb yn gweld eich rhif ffôn ar Grapherex.";
+"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Bydd neb yn gweld eich rhif ffôn ar Signal.";
 
 /* Format for phone number label with an index. Embeds {{Phone number label (e.g. 'home')}} and {{index, e.g. 2}}. */
 "PHONE_NUMBER_TYPE_AND_INDEX_NAME_FORMAT" = "%@ %@";
@@ -3736,7 +3533,7 @@
 "PIN_CREATION_DISABLE_CONFIRMATION_ACTION" = "Analluogi'r PIN?";
 
 /* Message of the 'pin disable' action sheet. */
-"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Os fyddwch yn analluogi'r PIN, byddwch yn colli'r holl ddata pan fyddwch yn ailgofrestru Grapherex oni bai eich bod yn ei drosglwyddo o ddyfais iOS arall. Ni fyddwch yn gallu galluogi Cloi Cofrestru tra bod y PIN wedi ei analluogi.";
+"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Os fyddwch yn analluogi'r PIN, byddwch yn colli'r holl ddata pan fyddwch yn ailgofrestru Signal oni bai eich bod yn ei drosglwyddo o ddyfais iOS arall. Ni fyddwch yn gallu galluogi Cloi Cofrestru tra bod y PIN wedi ei analluogi.";
 
 /* Title of the 'pin disable' action sheet. */
 "PIN_CREATION_DISABLE_CONFIRMATION_TITLE" = "Rhybudd";
@@ -3748,7 +3545,7 @@
 "PIN_CREATION_ERROR_TITLE" = "Methodd creu'r PIN";
 
 /* The explanation in the 'pin creation' view. */
-"PIN_CREATION_EXPLANATION" = "Mae PINau'n cadw gwybodaeth wedi'i storio gyda Grapherex wedi'i hamgryptio felly dim ond i chi gael mynediad ati. Bydd eich proffil, gosodiadau, a chysylltiadau yn cael eu hadfer pan fyddwch yn ailosod y rhaglen. Nid oes angen eich PIN arnoch i agor yr ap.";
+"PIN_CREATION_EXPLANATION" = "Mae PINau'n cadw gwybodaeth wedi'i storio gyda Signal wedi'i hamgryptio felly dim ond i chi gael mynediad ati. Bydd eich proffil, gosodiadau, a chysylltiadau yn cael eu hadfer pan fyddwch yn ailosod y rhaglen. Nid oes angen eich PIN arnoch i agor yr ap.";
 
 /* Learn more action on the pin creation view */
 "PIN_CREATION_LEARN_MORE" = "Dysgu Rhagor Am PINiau";
@@ -3811,7 +3608,7 @@
 "PIN_REMINDER_MEGAPHONE_FEW_DAYS_TOAST" = "Byddwn yn eich atgoffa eto ymhen ychydig ddyddiau.";
 
 /* Title for PIN reminder megaphone */
-"PIN_REMINDER_MEGAPHONE_TITLE" = "Dilyswch eich PIN Grapherex";
+"PIN_REMINDER_MEGAPHONE_TITLE" = "Dilyswch eich PIN Signal";
 
 /* Toast indicating that we'll ask you for your PIN again tomorrow. */
 "PIN_REMINDER_MEGAPHONE_TOMORROW_TOAST" = "Byddwn yn eich atgoffa eto yfory.";
@@ -3826,7 +3623,7 @@
 "PIN_REMINDER_MISMATCH_ERROR" = "PIN annilys. Rhowch gynnig arall arni.";
 
 /* The title for the 'pin reminder' dialog. */
-"PIN_REMINDER_TITLE" = "Rhowch eich PIN Grapherex";
+"PIN_REMINDER_TITLE" = "Rhowch eich PIN Signal";
 
 /* Label indicating that the attempted PIN is too short */
 "PIN_REMINDER_TOO_SHORT_ERROR" = "Rhaid i PIN fod o leiaf 4 digid.";
@@ -3841,7 +3638,7 @@
 "PINS_MEGAPHONE_ACTION" = "Crëwch PIN";
 
 /* Body for PIN megaphone when user doesn't have a PIN */
-"PINS_MEGAPHONE_BODY" = "Mae PINiau yn cadw gwybodaeth sydd wedi'i storio gyda Grapherex wedi'i hamgryptio.";
+"PINS_MEGAPHONE_BODY" = "Mae PINiau yn cadw gwybodaeth sydd wedi'i storio gyda Signal wedi'i hamgryptio.";
 
 /* Toast indication that the user will be reminded later to setup their PIN. Embeds {{time until mandatory}} */
 "PINS_MEGAPHONE_SNOOZE_TOAST_FORMAT" = "Byddwn yn eich atgoffa nes ymlaen. Bydd creu PIN yn dod yn orfodol ymhen %ld diwrnod.";
@@ -3880,19 +3677,19 @@
 "PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "Nid yw'r rhif yn eich clipfwrdd yn debyg i'r rhif diogelwch cywir ar gyfer y sgwrs hon.";
 
 /* Alert body for user error */
-"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Ni chanfuwyd Grapherex unrhyw rif diogelwch yn eich clipfwrdd. Ydych chi wedi ei gopïo'n gywir?";
+"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Ni chanfuwyd Signal unrhyw rif diogelwch yn eich clipfwrdd. Ydych chi wedi ei gopïo'n gywir?";
 
 /* Alert body when verifying with {{contact name}} */
-"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Mae pob par o ddefnyddwyr Grapherex yn rhannu rhif diogelwch unigryw. Gwiriwch bod %@ yn dangos eich rhif unigryw *chi*.";
+"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Mae pob par o ddefnyddwyr Signal yn rhannu rhif diogelwch unigryw. Gwiriwch bod %@ yn dangos eich rhif unigryw *chi*.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Rydych yn rhedeg hen fersiwn o Grapherex. Mae'n rhaid i chi ei ddiweddaru cyn gallwch wirio.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Rydych yn rhedeg hen fersiwn o Signal. Mae'n rhaid i chi ei ddiweddaru cyn gallwch wirio.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Mae'ch partner yn rhedeg hen fersiwn o Grapherex. Maen rhaid iddynt ei ddiweddaru cyn gallwch wirio.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Mae'ch partner yn rhedeg hen fersiwn o Signal. Maen rhaid iddynt ei ddiweddaru cyn gallwch wirio.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Nid yw'r côd a sganwyd yn debyg i rif diogelwch. Ydych chi'ch dau ar y fersiwn mwyaf diweddar o Grapherex?";
+"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Nid yw'r côd a sganwyd yn debyg i rif diogelwch. Ydych chi'ch dau ar y fersiwn mwyaf diweddar o Signal?";
 
 /* Paragraph(s) shown alongside the safety number when verifying privacy with {{contact name}} */
 "PRIVACY_VERIFICATION_INSTRUCTIONS" = "Os dymunwch wirio diogelwch o'ch amgryptio dechrau-i'r-diwedd â %@, cymharwch y rhifau uchod â' rhifau ar eu dyfais nhw.\n\nFel arall, gallwch sganio'r côd ar eu ffôn, neu gofyn iddynt sganio'r côd ar eich ffôn chi.";
@@ -3916,13 +3713,13 @@
 "PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "Carwr Coffi";
 
 /* The 'Encrypted' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "Encrypted";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "Amgryptiedig";
 
 /* The 'free to chat' default bio in the profile bio view. */
 "PROFILE_BIO_VIEW_DEFAULT_BIO_FREE_TO_CHAT" = "Ar gael i sgwrsio";
 
 /* The 'Speak Freely' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_SPEAK_FREELY" = "Speak Freely";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_SPEAK_FREELY" = "Siarad heb Rwystr";
 
 /* The 'Taking a break' default bio in the profile bio view. */
 "PROFILE_BIO_VIEW_DEFAULT_BIO_TAKING_A_BREAK" = "Cael hoe fach";
@@ -3942,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "Newidiodd %@ eu henwau proffil i %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Ychwanegu i Proffil";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Your Name";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Ynghylch";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Name";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Enw defnyddiwr";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Gosod Llun Proffil";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Ynghylch";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Dileu Llun";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Creu Enw Defnyddiwr";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Mae'ch enw olaf yn ry hir.";
@@ -3967,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Mae'ch enw cyntaf yn ry hir.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Dewisiol)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Enw Olaf";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Enw Olaf (Dewisol)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Angenrheidiol)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Enw Cyntaf";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Enw Cyntaf (Angenrheidiol)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Gall proffil ond ei ddiweddaru pan wedi cysylltu â'r rhyngrwyd.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Mae eich proffil wedi'i amgryptio o ben-i-ben. Bydd eich proffil a'ch newidiadau iddo yn weladwy i'ch cysylltiadau, pan fyddwch chi'n cychwyn neu'n derbyn sgyrsiau newydd, a phan fyddwch yn ymuno â grwpiau newydd.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Mae eich proffil wedi'i amgryptio o'r dechrau i'r diwedd. Bydd eich proffil a newidiadau iddo yn weladwy i'ch cysylltiadau a phan fyddwch chi'n cychwyn neu'n derbyn sgyrsiau newydd.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Cadw";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Proffil";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Enw defnyddiwr";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Marcio wedi'i Ddarllen";
@@ -4004,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Wedi llwyddo ailgorestri am hysbiadau gwth.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Hysbysiadau Gwth";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -4152,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Ni allwn galluogi eich cyfrif nes i chi wirio'r cod anfonwyd atoch.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "To continue, check your phone's Internet connection and try again.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Gwiriwch Cysylltiad";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Ni chefnogir y fformat rhif hwn, cyslltwch â'r gwasanaeth cymorth.";
 
@@ -4182,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Dim Rhif Ffôn";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "A verification code will be sent to this number. Is your phone number above correct?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Cadarnhad Rhif: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Golygu";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Yn Gwirio %@…";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Gwrthod";
 
@@ -4192,28 +3998,28 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "Dewiswch Gweinyddwr Newydd";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "Ailgofrestrwch i gael hysbysiadau gwthio";
+"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
 
 /* Body for research megaphone */
-"RESEARCH_MEGAPHONE_BODY" = "I wneud Grapherex yr ap negeseuon gorau ar y planed, hoffwn glywed eich adborth.";
+"RESEARCH_MEGAPHONE_BODY" = "I wneud Signal yr ap negeseuon gorau ar y planed, hoffwn glywed eich adborth.";
 
 /* Title for research megaphone */
-"RESEARCH_MEGAPHONE_TITLE" = "Dywedwch wrth Grapherex beth you eich barn";
+"RESEARCH_MEGAPHONE_TITLE" = "Dywedwch wrth Signal beth you eich barn";
 
 /* Text for the research modal footer */
-"RESEARCH_MODAL_FOOTER" = "Surveygizmo sydd yn cynnal yr arolwg yn y parth diogel surveys.grapherexusers.com";
+"RESEARCH_MODAL_FOOTER" = "Surveygizmo sydd yn cynnal yr arolwg yn y parth diogel surveys.signalusers.org";
 
 /* Button text for declining the research modal */
 "RESEARCH_MODAL_NO_THANKS" = "Dim diolch";
 
 /* Text explaining why the user should take the survey */
-"RESEARCH_MODAL_PLEA" = "<bold>Credwn mewn preifatrwydd.</bold>\n\nNid yw Grapherex yn eich olrhain nac yn casglu eich data. Er mwyn gwella Grapherex i bawb, rydym yn dibynnu ar adborth defnyddwyr, <bold>a byddem wrth ein bod â'ch adborth chi</bold>.\n\nRydyn ni'n cynnal arolwg i ddeall sut rydych chi'n defnyddio Grapherex. Nid yw ein harolwg yn casglu unrhyw ddata a fydd yn eich adnabod chi. Os oes gennych ddiddordeb mewn rhannu adborth ychwanegol, bydd gennych yr opsiwn i ddarparu gwybodaeth gyswllt.\n\nOs oes gennych ychydig funudau ac adborth i'w gynnig, byddem wrth ein bodd yn clywed gennych.";
+"RESEARCH_MODAL_PLEA" = "<bold>Credwn mewn preifatrwydd.</bold>\n\nNid yw Signal yn eich olrhain nac yn casglu eich data. Er mwyn gwella Signal i bawb, rydym yn dibynnu ar adborth defnyddwyr, <bold>a byddem wrth ein bod â'ch adborth chi</bold>.\n\nRydyn ni'n cynnal arolwg i ddeall sut rydych chi'n defnyddio Signal. Nid yw ein harolwg yn casglu unrhyw ddata a fydd yn eich adnabod chi. Os oes gennych ddiddordeb mewn rhannu adborth ychwanegol, bydd gennych yr opsiwn i ddarparu gwybodaeth gyswllt.\n\nOs oes gennych ychydig funudau ac adborth i'w gynnig, byddem wrth ein bodd yn clywed gennych.";
 
 /* Button text for taking the research survey */
 "RESEARCH_MODAL_TAKE_SURVEY" = "Cymryd yr Arolwg";
 
 /* Title for the research megaphone modal */
-"RESEARCH_MODAL_TITLE" = "Ymchwil Grapherex";
+"RESEARCH_MODAL_TITLE" = "Ymchwil Signal";
 
 /* Generic text for button that retries whatever the last action was. */
 "RETRY_BUTTON_TEXT" = "Ailgynnig";
@@ -4243,7 +4049,7 @@
 "SAFETY_NUMBER_CONFIRMATION_VIEW_ACTION" = "Golwg";
 
 /* Snippet to share {{safety number}} with a friend. sent e.g. via SMS */
-"SAFETY_NUMBER_SHARE_FORMAT" = "Ein Rhif Diogelwch Grapherex:\n%@";
+"SAFETY_NUMBER_SHARE_FORMAT" = "Ein Rhif Diogelwch Signal:\n%@";
 
 /* Action sheet heading */
 "SAFETY_NUMBERS_ACTIONSHEET_TITLE" = "Mae'ch rhif diogelwch gyda %@ wedi newid. Efallai hoffech ei wirio.";
@@ -4275,14 +4081,14 @@
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Mae'n rhaid i chi alluogi cyfrinair yn Gosodiadau iOS er mwyn defnyddion Clo Sgrîn.";
 
-/* Description of how and why Grapherex iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
-"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Dilyswch i agor Grapherex.";
+/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
+"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Dilyswch i agor Signal.";
 
 /* Title for alert indicating that screen lock could not be unlocked. */
 "SCREEN_LOCK_UNLOCK_FAILED" = "Methwyd Dilysu";
 
-/* Label for button on lock screen that lets users unlock Grapherex. */
-"SCREEN_LOCK_UNLOCK_SIGNAL" = "Datgloi Grapherex\n";
+/* Label for button on lock screen that lets users unlock Signal. */
+"SCREEN_LOCK_UNLOCK_SIGNAL" = "Datgloi Signal\n";
 
 /* This is a contact's name. Replace the name for a more common name in your locale if this sounds too foreign. This should be a unique non-public figure's name. This will have a female profile photo. */
 "SCREENSHOT_NAME_CONTACT_EIGHT" = "Tegwen Haf";
@@ -4332,7 +4138,7 @@
 /* This is for a group chat for people who want weather updates. */
 "SCREENSHOT_NAME_GROUP_TWO" = "Rhagolygon Tywydd";
 
-/* This appears in Grapherex > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
+/* This appears in Signal > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
 "SCREENSHOT_NAME_LOCAL_PROFILE" = "Arlwydd Freia";
 
 /* This is a message expressing support/happiness/awe/shock. */
@@ -4441,13 +4247,13 @@
 "SECONDARY_DEVICE_ERROR_FETCHING_LINKING_CODE" = "Methu a Nol Côd Cysylltu";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Diweddarwch Grapherex ar y ddyfais hon i'w gysylltu a'ch ffôn.";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Diweddarwch Signal ar y ddyfais hon i'w gysylltu a'ch ffôn.";
 
 /* Title for error alert indicating that a linked device must be upgraded before it can be linked. */
 "SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Fersiwn na Chefnogir";
 
 /* alert message for outdated linking device */
-"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Mae'ch dyfais arall yn rhedeg hen fersiwn o Grapherex na all sganio côd QR iPad. Gosodwch y fersiwn diweddaraf o Grapherex a rhowch gynnig arall arni.";
+"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Mae'ch dyfais arall yn rhedeg hen fersiwn o Signal na all sganio côd QR iPad. Gosodwch y fersiwn diweddaraf o Signal a rhowch gynnig arall arni.";
 
 /* alert title for outdated linking device */
 "SECONDARY_LINKING_ERROR_OLD_VERSION_TITLE" = "Diweddarwch Dyfais Sganio";
@@ -4468,19 +4274,19 @@
 "SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS" = "Gorffen Cysylltu";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Lansiwch Grapherex ar eich ffôn er mwyn cysylltu yr iPad hon i'ch cyfrif";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Lansiwch Signal ar eich ffôn er mwyn cysylltu yr iPad hon i'ch cyfrif";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
-"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Nid oes gen i Grapherex ar fy ffôn...";
+"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Nid oes gen i Signal ar fy ffôn...";
 
 /* alert body */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Ewch i'r App Store are eich ffôn, gosodwch Grapherex, cwblhewch y broses cofrestru, a wedyn gallwch gysylltu eich iPad i'r un cyfrif.";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Ewch i'r App Store are eich ffôn, gosodwch Signal, cwblhewch y broses cofrestru, a wedyn gallwch gysylltu eich iPad i'r un cyfrif.";
 
 /* alert title */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Gosodwch Grapherex ar Eich Ffôn";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Gosodwch Signal ar Eich Ffôn";
 
 /* body text while displaying a QR code which, when scanned, will link this device. */
-"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Tapiwch ar eich llun proffil i agor Gosodiadau Grapherex ar eich ffôn. Wedyn \"Dyfeisiau Cysylltiedig\" a \"Cysylltu Dyfais Newydd\" i sganio'r côd hwn gyda'ch ffôn:";
+"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Tapiwch ar eich llun proffil i agor Gosodiadau Signal ar eich ffôn. Wedyn \"Dyfeisiau Cysylltiedig\" a \"Cysylltu Dyfais Newydd\" i sganio'r côd hwn gyda'ch ffôn:";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
 "SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Cewch gymorth i gysylltu eich iPad yma";
@@ -4513,7 +4319,7 @@
 "SEND_INVITE_FAILURE" = "Methwyd anfon gwahoddiad, rhowch gynnig arall arni nes ymlaen.";
 
 /* Alert body after invite succeeded */
-"SEND_INVITE_SUCCESS" = "Gwahoddasoch eich ffrind i ddefnyddio Grapherex!";
+"SEND_INVITE_SUCCESS" = "Gwahoddasoch eich ffrind i ddefnyddio Signal!";
 
 /* alert action, confirming the user wants to exit the media flow and abandon any photos they've taken */
 "SEND_MEDIA_CONFIRM_ABANDON_ALBUM" = "Taflu Cyfryngau";
@@ -4528,10 +4334,10 @@
 "SEND_SMS_CONFIRM_TITLE" = "Gwahodd ffrind trwy SMS anniogel?";
 
 /* No comment provided by engineer. */
-"SEND_SMS_INVITE_TITLE" = "Hoffech wahodd y rhif canlynol i Grapherex:";
+"SEND_SMS_INVITE_TITLE" = "Hoffech wahodd y rhif canlynol i Signal:";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "Defnyddir Grapherex amgryptio dechrau-i'r-diwedd ac efallai bydd rhaid iddo adnewyddu eich sesiwn sgwrsio o dro i dro. Nid yw hyn yn cael effaith ar ddiogelwch eich sgyrsiau ond efallai byddwch wedi methu neges gan y cysylltiad yma a gallwch ofyn iddynt ail-anfon.";
+"SESSION_REFRESH_ALERT_MESSAGE" = "Defnyddir Signal amgryptio dechrau-i'r-diwedd ac efallai bydd rhaid iddo adnewyddu eich sesiwn sgwrsio o dro i dro. Nid yw hyn yn cael effaith ar ddiogelwch eich sgyrsiau ond efallai byddwch wedi methu neges gan y cysylltiad yma a gallwch ofyn iddynt ail-anfon.";
 
 /* Title for the session refresh alert */
 "SESSION_REFRESH_ALERT_TITLE" = "Adnewyddwyd sesiwn sgwrsio";
@@ -4545,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Gosod Papur Wal";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "Ynghylch";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Account";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Rhwystro";
@@ -4554,11 +4360,11 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Osgoi Sensoriaeth";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Lleoliad: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Lleoliad";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Os y galluogir, bydd Grapherex yn rhoi cynnig ar osgoi sensoriaeth. Peidiwch a galluogi y nodwedd hon os nad ydych mewn lleoliad lle sensorir Grapherex.";
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Os y galluogir, bydd Signal yn rhoi cynnig ar osgoi sensoriaeth. Peidiwch a galluogi y nodwedd hon os nad ydych mewn lleoliad lle sensorir Signal.";
 
 /* Table footer for the 'censorship circumvention' section shown when censorship circumvention has been auto-enabled based on local phone number. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_AUTO_ENABLED" = "Mae osgoi sensoriaeth wedi'i ysgogi oherwydd y rhif ffôn ar eich cyfrif.";
@@ -4569,11 +4375,8 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "Gall osgoi sensorieth ond ei alluogi pan wedi cysylltu â'r rhyngrywd.";
 
-/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Grapherex service. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Nid oes angen osgoi sensoriaeth, rydych eisoes wedi cysylltu â gwasanaeth Grapherex.";
-
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Osgoi Sensoriaeth";
+/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Nid oes angen osgoi sensoriaeth, rydych eisoes wedi cysylltu â gwasanaeth Signal.";
 
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Galluogi Cofnod Dadfygio";
@@ -4590,23 +4393,17 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Galluogi'r PIN";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "PIN Grapherex";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Anfon Cofnod Dadfygio";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Gosodiadau Uwch";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Cofnod Gwallau";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Dangos lluniau cysylltiadau system os ar gael";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Defnyddio lluniau cysylltiadau system";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use System Contact Photos";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "Thema";
@@ -4668,11 +4465,8 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Ychwanegu Defynddiwr a Rwystrir";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Rhestr o'r cysylltiadau a'r grwpiau yr ydych wedi'u rhwystro.";
-
-/* A label that indicates the user has no Grapherex contacts. */
-"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Does gennych chi ddim cysylltiadau yn defnyddio Grapherex.";
+/* A label that indicates the user has no Signal contacts. */
+"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Does gennych chi ddim cysylltiadau yn defnyddio Signal.";
 
 /* A label that indicates the user's search has no matching results. */
 "SETTINGS_BLOCK_LIST_NO_SEARCH_RESULTS" = "Dim Canlyniadau Chwilio";
@@ -4684,13 +4478,16 @@
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE" = "Trosglwyddo Galwadau Bob Amser";
 
 /* User settings section footer, a detailed explanation */
-"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Trsoglwyddo pob galwad trwy gweinydd Grapherex i osgoi datgelu eich cyfeiriad IP i'ch cysylltiad. Bydd galluogi yn dirywio ansawdd galwadau.";
+"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Trsoglwyddo pob galwad trwy gweinydd Signal i osgoi datgelu eich cyfeiriad IP i'ch cysylltiad. Bydd galluogi yn dirywio ansawdd galwadau.";
+
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Sgyrsiau";
 
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Clirio Hanes Sgwrsio";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Hawlfraint Grapherex Messenger \n Dan drwydded GPLv3";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nLicensed under the GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Defnydd Data";
@@ -4699,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Defnyddio Llai o Ddata";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Efallai bydd defnyddio llai o ddata yn gwella galwadau ar rhai rhwydweithiau";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Galwadau";
@@ -4708,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Bydd negeseuon llais, ffeiliau cyfrwng gweld-unwaith, a sticeri (o dan 100kb) bob amser yn cael eu lawrlwytho.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "AWTO-LAWRLWYTHO CYFRYNGAU";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Auto-Download";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Ail-osod Gosodiadau Awto-Lawrlwytho";
@@ -4728,23 +4525,17 @@
 /* Confirmation text for button which deletes all message, calling, attachments, etc. */
 "SETTINGS_DELETE_HISTORYLOG_CONFIRMATION_BUTTON" = "Dileu Popeth";
 
-/* Title for the 'donate to Grapherex' link in settings. */
-"SETTINGS_DONATE" = "Cyfrannu at Grapherex";
+/* Title for the 'donate to signal' link in settings. */
+"SETTINGS_DONATE" = "Cyfrannu at Signal";
 
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Cymorth";
-
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Clirio Hanes Sgwrsio";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Gwybodaeth";
 
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Gwahodd Eich Ffrindiau";
 
 /* content of tweet when inviting via twitter - please do not translate URL */
-"SETTINGS_INVITE_TWITTER_TEXT" = "Gallwch gysylltu a fi yn defnyddio @grapherexapp. Ei gael yma: https://grapherex.com";
+"SETTINGS_INVITE_TWITTER_TEXT" = "Gallwch gysylltu a fi yn defnyddio @signalapp. Ei gael yma: https://signal.org/download/";
 
 /* Label for settings view that allows user to change the notification sound. */
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "Sain Neges";
@@ -4752,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Papur Wal Sgwrs";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Polisi Telerau a Phreifatrwydd";
 
 /* Setting for enabling & disabling link previews. */
@@ -4785,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Sgwrsio";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "See and share when messages are being read and typed. If disabled, you won’t see read receipts or typing indicators from others.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Gosodiadau";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Cynnwys Sgyrsiau a Ddistewyd";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Include Muted Chats";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Bathodyn Cyfri";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Gall hysbysiadau Galwad neu Sgwrsio ymddangos pan fod y ffôn dan glo. Efaillai hoffech gyfyngu yr hyn a ddangosir.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Call and Message notifications can appear while your phone is locked.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Cynnwys Hysbysiadau";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Ymunodd Cyslltiad â Grapherex";
+/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Contact Joins Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Digwyddiadau";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notify when…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Hysbysiadau";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4825,19 +4619,16 @@
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_ACTION" = "Diffodd Atgofiadau";
 
 /* The explanation for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Gwnewch yn siŵr eich bod yn cofio neu'n cadw eich PIN yn ddiogel gan nad oes modd ei adfer. Os fyddwch yn anghofio eich PIN, efallai y byddwch yn colli data wrth ailgofrestru eich cyfrif Grapherex.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Gwnewch yn siŵr eich bod yn cofio neu'n cadw eich PIN yn ddiogel gan nad oes modd ei adfer. Os fyddwch yn anghofio eich PIN, efallai y byddwch yn colli data wrth ailgofrestru eich cyfrif Signal.";
 
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Cadarnhewch eich PIN Grapherex";
-
-/* Footer for the 'pin reminder' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Mae atgofiadau yn eich helpu i gofio'ch PIN gan nad oes modd ei adfer. Byddwn yn gofyn i chi'n llai aml dros amser.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Cadarnhewch eich PIN Signal";
 
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "Atgofiadau PIN";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "Mae PINiau yn cadw gwybodaeth wedi'i storio gyda Grapherex wedi'i hamgryptio felly dim ond chi sy'n cael mynediad ati. Bydd eich proffil, gosodiadau, a chysylltiadau yn cael eu hadfer pan fyddwch yn ailosod Grapherex.";
+"SETTINGS_PINS_FOOTER" = "PINs keep information stored with Signal encrypted so only you can access it. Your PIN cannot be recovered. Your profile, settings, and contacts will restore when you reinstall Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Newid eich PIN";
@@ -4846,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Crëwch PIN";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "PIN Grapherex";
+"SETTINGS_PINS_TITLE" = "PIN Signal";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Dangos galwadau yn y rhestr \"Recents\" yn ap ffonio iOS.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Gosodiadau Uwch";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Dangos Galwadau yn \"Recents\"";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Preifatrwydd";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Derbynebau Darllen";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Gweld a rhannu pan fydd negeseuon wedi'u darllen. Dewisiol yw gosod hyn a mae'n effeithio pob sgwrs.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Diffodd";
@@ -4873,7 +4664,7 @@
 "SETTINGS_REGISTRATION_LOCK_TURN_ON" = "Galluogi";
 
 /* Body for the alert confirming that the user wants to turn on registration lock. */
-"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Os byddwch chi'n anghofio'ch PIN Grapherex wrth gofrestru gyda Grapherex eto, byddwch yn cael eich cloi allan o'ch cyfrif am 7 diwrnod.";
+"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Os byddwch chi'n anghofio'ch PIN Signal wrth gofrestru gyda Signal eto, byddwch yn cael eich cloi allan o'ch cyfrif am 7 diwrnod.";
 
 /* Title for the alert confirming that the user wants to turn on registration lock. */
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_TITLE" = "Troi y Clo Cofrestru ymlaen?";
@@ -4887,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Terfyn Amser Sgrîn Clo";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Datgloi sgrin Grapherex gan ddefnyddio Touch ID, Face ID, neu gyfrinair eich dyfais iOS. Gallwch barhau i ateb galwadau sy'n dod i mewn a derbyn hysbysiadau galwad a neges tra bod Clo Sgrîn wedi'i alluogi. Mae gosodiadau hysbysu Grapherex yn caniatáu ichi addasu'r wybodaeth sy'n cael ei harddangos.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Clo Sgrîn";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Clo Sgrîn";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Galluogi Diogelwch Sgrin";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Atal rhagolygon Grapherex rhag ymddangos yn y newidiwr apiau.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Seiniau";
@@ -4908,35 +4693,41 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Galwadau";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Diogelwch Sgrin";
+"SETTINGS_SECURITY_TITLE" = "App Security";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Sangos yn Awgrymiadau";
+"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Mae sgyrsiau Grapherex yn cael eu dangos fel awgrymiadau pan yn rhannu o apiau eraill.";
+"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Mae sgyrsiau Signal yn cael eu dangos fel awgrymiadau pan yn rhannu o apiau eraill.";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Clo Cofrestru";
 
-/* Footer for the 'two factor auth' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "I gael mwy o ddiogelwch, galluogwch clo cofrestru. Bydd hyn yn gwneud eich PIN Grapherex yn ofynnol er mwyn cofrestru eich rhif ffôn â Grapherex eto.";
+/* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Dangosyddion Teipio";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Gweld a rhannu pan fydd negeseuon yn cael eu teipio. Dewisiol yw gosod hyn a mae'n effeithio pob sgwrs.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Anfonwr dan Sêl";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Dangos Dangosyddion";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Dangos eicon statws pan fyddwch yn dewis \"Rhagor o Wybodaeth\" ar negeseuon sydd wedi eu anfon gan ddefnyddio anfonwr dan sêl.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Caniatáu gan Bawb";
@@ -4966,13 +4757,13 @@
 "SHARE_EXTENSION_LOADING" = "Llwytho...";
 
 /* Message indicating that the share extension cannot be used until the user has registered in the main app. */
-"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Lansiwch ap Grapherex i gorestru.";
+"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Lansiwch ap Signal i gorestru.";
 
 /* Title indicating that the share extension cannot be used until the user has registered in the main app. */
 "SHARE_EXTENSION_NOT_REGISTERED_TITLE" = "Heb Gofrestru";
 
 /* Message indicating that the share extension cannot be used until the main app has been launched at least once. */
-"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Lansiwch ap Grapherex i ddiewddaru neu gorestru.";
+"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Lansiwch ap Signal i ddiewddaru neu gorestru.";
 
 /* Title indicating that the share extension cannot be used until the main app has been launched at least once. */
 "SHARE_EXTENSION_NOT_YET_MIGRATED_TITLE" = "Ddim yn Barod";
@@ -4986,17 +4777,17 @@
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "Yn Uwchlwytho...";
 
-/* Shown when trying to share content to a Grapherex user for the share extension. Followed by failure details. */
+/* Shown when trying to share content to a Signal user for the share extension. Followed by failure details. */
 "SHARE_EXTENSION_UNABLE_TO_BUILD_ATTACHMENT_ALERT_TITLE" = "Methu Paratoi Atodiad";
 
 /* Title for the 'share extension' view. */
-"SHARE_EXTENSION_VIEW_TITLE" = "Rhannu i Grapherex";
+"SHARE_EXTENSION_VIEW_TITLE" = "Rhannu i Signal";
 
 /* Title of alert indicating sharing suggestions failed to deactivate */
 "SHARING_SUGGESTIONS_DISABLE_ERROR" = "Methwyd analluogi awgrymiadau rhannu.";
 
 /* Body for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Gellir dangos sgyrsiau Grapherex fel awgrymiadau pan yn rhannu o apiau eraill.";
+"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Gellir dangos sgyrsiau Signal fel awgrymiadau pan yn rhannu o apiau eraill.";
 
 /* Title for sharing suggestions megaphone */
 "SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Rhannu yn Rhwyddach";
@@ -5013,8 +4804,8 @@
 /* notification action */
 "SHOW_THREAD_BUTTON_TITLE" = "Dangos Sgwrsio";
 
-/* body sent to contacts when inviting to Install Grapherex */
-"SMS_INVITE_BODY" = "Rwy'n eich gwahodd i osod Grapherex! Dyma'r ddolen:";
+/* body sent to contacts when inviting to Install Signal */
+"SMS_INVITE_BODY" = "Rwy'n eich gwahodd i osod Signal! Dyma'r ddolen:";
 
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "Dim";
@@ -5041,7 +4832,7 @@
 "STICKERS_INSTALL_BUTTON" = "Gosod";
 
 /* Title for the 'available built-in stickers' section of the 'manage stickers' view. */
-"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Cyfres Artistiaid Grapherex";
+"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Cyfres Artistiaid Signal";
 
 /* Title for the 'available known stickers' section of the 'manage stickers' view. */
 "STICKERS_MANAGE_VIEW_AVAILABLE_KNOWN_PACKS_SECTION_TITLE" = "Sticeri rydych wedi'u Derbyn";
@@ -5092,7 +4883,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Rhowch wybod i ni am y broblem:";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Anfonwch eich cais am gymorth mewn ebost i support@grapherex.com";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Anfonwch eich cais am gymorth mewn ebost i support@signal.org";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Hidlydd: %@";
@@ -5115,16 +4906,16 @@
 /* Localized label for support request email debug log URL. Embeds {{debug log url}}. */
 "SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "URL Cofnod: %@";
 
-/* Localized label for support request email Grapherex version string. Embeds {{Grapherex version}}. */
-"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Fersiwn Grapherex: %@";
+/* Localized label for support request email signal version string. Embeds {{signal version}}. */
+"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Fersiwn Signal: %@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Cais Cymorth Grapherex iOS";
+"SUPPORT_EMAIL_SUBJECT" = "Cais Cymorth Signal iOS";
 
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "Sut ydych ch'n teimlo? (Dewisol)";
 
-/* Label in support request informing user about Grapherex FAQ */
+/* Label in support request informing user about Signal FAQ */
 "SUPPORT_FAQ_PROMPT" = "Ydych chi wedi darllen ein Cwestiynau Cyffredin eto?";
 
 /* Label describing support switch to attach debug logs */
@@ -5233,25 +5024,25 @@
 "UNKNOWN_COUNTRY_NAME" = "Gwlad Anhysbys";
 
 /* Info message recorded in conversation history when local user receives an unknown message from a linked device and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Anfonodd un o'ch dyfeisiau neges na ellir ei phrosesu na'i ddangos oherwydd ei bod yn defnyddio nodwedd Grapherex newydd.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Anfonodd un o'ch dyfeisiau neges na ellir ei phrosesu na'i ddangos oherwydd ei bod yn defnyddio nodwedd Signal newydd.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "Anfonodd %@ neges atoch na ellir ei phrosesu na'i ddangos oherwydd ei bod yn defnyddio nodwedd Grapherex newydd.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "Anfonodd %@ neges atoch na ellir ei phrosesu na'i ddangos oherwydd ei bod yn defnyddio nodwedd Signal newydd.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Cawsoch neges na ellir ei phrosesu na'i ddangos oherwydd ei bod yn defnyddio nodwedd Grapherex newydd.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Cawsoch neges na ellir ei phrosesu na'i ddangos oherwydd ei bod yn defnyddio nodwedd Signal newydd.";
 
 /* Label for button that lets users upgrade the app. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Diweddaru Grapherex Nawr";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Diweddaru Signal Nawr";
 
 /* Info message recorded in conversation history when local user has received an unknown unknown message from a linked device and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Diweddarwyd Grapherex i'r fersiwn diweddaraf. Gallwch nawr dderbyn neges or math hwn ar eich dyfais.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Diweddarwyd Signal i'r fersiwn diweddaraf. Gallwch nawr dderbyn neges or math hwn ar eich dyfais.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Gallwch ofyn i %@ ail-anfon y neges hon nawr eich bod yn defnyddio'r fersiwn ddiweddaraf o Grapherex.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Gallwch ofyn i %@ ail-anfon y neges hon nawr eich bod yn defnyddio'r fersiwn ddiweddaraf o Signal.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Gallwch ofyn i'r anfonwr ail-anfon y neges hon nawr eich bod yn defnyddio'r fersiwn ddiweddaraf o Grapherex.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Gallwch ofyn i'r anfonwr ail-anfon y neges hon nawr eich bod yn defnyddio'r fersiwn ddiweddaraf o Signal.";
 
 /* Label indicating an unknown user. */
 "UNKNOWN_USER" = "Anhysbys";
@@ -5275,10 +5066,10 @@
 "UNLINK_CONFIRMATION_ALERT_TITLE" = "Datgysylltu '%@'?";
 
 /* Label warning the user that they have been unlinked from their primary device. */
-"UNLINKED_WARNING" = "Nid yw'r ddyfais wedi'i chysylltu mwyach. Ail-gysylltwch Grapherex a'ch ffôn i barhau i anfon negeseuon.";
+"UNLINKED_WARNING" = "Nid yw'r ddyfais wedi'i chysylltu mwyach. Ail-gysylltwch Signal a'ch ffôn i barhau i anfon negeseuon.";
 
 /* Alert title when unlinking device fails */
-"UNLINKING_FAILED_ALERT_TITLE" = "Nid oedd Grapherex yn gallu datgysylltu eich dyfais.";
+"UNLINKING_FAILED_ALERT_TITLE" = "Nid oedd Signal yn gallu datgysylltu eich dyfais.";
 
 /* Label text in device manager for a device with no name */
 "UNNAMED_DEVICE" = "Dyfais Ddienw";
@@ -5293,7 +5084,7 @@
 "UNREAD_ACTION" = "Dad-ddarllen";
 
 /* No comment provided by engineer. */
-"UNREGISTER_SIGNAL_FAIL" = "Methwyd dadgofrestri o Grapherex.";
+"UNREGISTER_SIGNAL_FAIL" = "Methwyd dadgofrestri o Signal.";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Derbyniwyd atodaid o fath na chefnogir.";
@@ -5317,7 +5108,7 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_LEARN_MORE" = "Dysgu Rhagor Am PINiau";
 
 /* Body text for PINs splash screen */
-"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "Mae PINau'n cadw gwybodaeth wedi'i storio gyda Grapherex wedi'i hamgryptio felly dim ond i chi gael mynediad ati. Bydd eich proffil, gosodiadau, a chysylltiadau yn cael eu hadfer pan fyddwch yn ailosod y rhaglen. Nid oes angen eich PIN arnoch i agor yr ap.";
+"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "Mae PINau'n cadw gwybodaeth wedi'i storio gyda Signal wedi'i hamgryptio felly dim ond i chi gael mynediad ati. Bydd eich proffil, gosodiadau, a chysylltiadau yn cael eu hadfer pan fyddwch yn ailosod y rhaglen. Nid oes angen eich PIN arnoch i agor yr ap.";
 
 /* Header for PINs splash screen */
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_TITLE" = "Yn Cyflwyno PIN";
@@ -5326,16 +5117,13 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SKIP" = "Analluogi'r PIN?";
 
 /* Message for the alert indicating that user should upgrade iOS. */
-"UPGRADE_IOS_ALERT_MESSAGE" = "Bydd Grapherex cyn hir yn gorfodi o leiaf iOS 11. Uwchraddiwch yn ap Settings >> General >> Software Update.";
+"UPGRADE_IOS_ALERT_MESSAGE" = "Bydd Signal cyn hir yn gorfodi o leiaf iOS 11. Uwchraddiwch yn ap Settings >> General >> Software Update.";
 
 /* Title for the alert indicating that user should upgrade iOS. */
 "UPGRADE_IOS_ALERT_TITLE" = "Uwchraddio iOS";
 
 /* An explanation of how usernames work on the username view. */
-"USERNAME_DESCRIPTION" = "Mae enwau defnyddwyr ar Grapherex yn ddewisol. Os dewiswch greu enw defnyddiwr, bydd defnyddwyr Grapherex eraill yn gallu dod o hyd i chi yn ôl yr enw defnyddiwr hwn a chysylltu â chi heb wybod eich rhif ffôn.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Enw defnyddiwr";
+"USERNAME_DESCRIPTION" = "Mae enwau defnyddwyr ar Signal yn ddewisol. Os dewiswch greu enw defnyddiwr, bydd defnyddwyr Signal eraill yn gallu dod o hyd i chi yn ôl yr enw defnyddiwr hwn a chysylltu â chi heb wybod eich rhif ffôn.";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Gall enwau defnyddwyr ond cynnwys a-Z, 0-9, a _.";
@@ -5343,10 +5131,10 @@
 /* A message indicating that username lookup failed. */
 "USERNAME_LOOKUP_ERROR" = "Digwyddodd gwall tra'n chwilio am yr enw defnyddiwr. Rhowch gynnig aralla arni.";
 
-/* A message indicating that the given username is not a registered Grapherex account. Embeds {{username}} */
-"USERNAME_NOT_FOUND_FORMAT" = "Nid yw %@ yn ddefnyddiwr Grapherex. Gwiriwch yr enw defnyddiwr.";
+/* A message indicating that the given username is not a registered signal account. Embeds {{username}} */
+"USERNAME_NOT_FOUND_FORMAT" = "Nid yw %@ yn ddefnyddiwr Signal. Gwiriwch yr enw defnyddiwr.";
 
-/* A message indicating that the given username was not registered with Grapherex. */
+/* A message indicating that the given username was not registered with signal. */
 "USERNAME_NOT_FOUND_TITLE" = "Ni Chanfuwyd Defnyddiwr";
 
 /* The placeholder for the username text entry in the username view. */
@@ -5422,13 +5210,13 @@
 "VOICE_MESSAGE_TOO_SHORT_ALERT_TITLE" = "Neges Llais";
 
 /* Activity indicator title, shown upon returning to the device manager, until you complete the provisioning process on desktop */
-"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Cwblhau'r gosodiad ar Grapherex Desktop.";
+"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Cwblhau'r gosodiad ar Signal Desktop.";
 
 /* Placeholder text for header of the wallpaper mini preview */
 "WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Enw Cysylltiad";
 
 /* Blur button on wallpaper preview. */
-"WALLPAPER_PREVIEW_BLUR_BUTTON" = "Blur Photo";
+"WALLPAPER_PREVIEW_BLUR_BUTTON" = "Pylu Llun";
 
 /* The incoming bubble text when setting a photo */
 "WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "Pinsio i glosio, llusgo i gywiro";

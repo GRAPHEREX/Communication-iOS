@@ -1,250 +1,8 @@
-//////////////////////////////////////////// SkyTech ///////////////////////////////////////////
-
-"PRIVACY_VERIFICATION_BUTTON" = "Verification";
-
-"PROFILE_VIEW_EDIT_BUTTON" = "Edit";
-
-/* Default description for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DESCRIPTION_TEXT" = "Please enter your Display name,\nit will show for others users";
-
-/* Title for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_TITLE" = "Delete Contact?";
-
-/* Message for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_MESSAGE" = "This contact will be deleted from this device.";
-
-/* action sheet body */
-"REGISTER_RATE_BODY" = "Please wait half a minute before trying again.";
-
-/* No comment provided by engineer. */
-"SETTINGS_SUPPORT" = "Support";
-
-/* No comment provided by engineer. */
-"SETTINGS_SECURITY" = "Security";
-
-/* No comment provided by engineer. */
-"SETTINGS_FAQ" = "F.A.Q";
-
-"MAIN_ALL" = "All";
-"MAIN_OR" = "or";
-"MAIN_USER_KEY" = "User key";
-"MAIN_ADD" = "Add";
-"MAIN_BACK" = "Back";
-"MAIN_MOBILE" = "Phone";
-"MAIN_USER_ID" = "User ID";
-"MAIN_DISPLAY_NAME" = "Display name";
-"MAIN_BLOCK_USER" = "Block user";
-"MAIN_UNBLOCK" = "Unblock";
-"MAIN_PROFILE" = "Profile";
-"MAIN_SENT" = "Sent";
-"MAIN_SEND" = "Send";
-"MAIN_RECEIVE" = "Receive";
-"MAIN_RECEIVED" = "Received";
-"MAIN_TIME" = "Time";
-"MAIN_AMOUNT" = "Amount";
-"MAIN_APPLY" = "Apply";
-"MAIN_INFO" = "Info";
-"MAIN_SYMBOL" = "Symbol";
-"MAIN_CHAIN" = "Chain";
-"MAIN_THANK_YOU" = "Thank you";
-"MAIN_COPY" = "Copy";
-"MAIN_WALLET" = "Wallet";
-"MAIN_RECIPIENT" = "Recipient";
-"MAIN_TOTAL" = "Total";
-"MAIN_FEE" = "Fee";
-"MAIN_TAG" = "Tag";
-"MAIN_DONE" = "Done";
-"MAIN_BALANCE" = "Balance";
-"MAIN_ADDRESS" = "Address";
-"MAIN_PASSWORD" = "Password";
-"MAIN_NEW" = "New";
-"MAIN_CURRENCY" = "Currency";
-"MAIN_CONFIRM" = "Confirm";
-"MAIN_CURRENT" = "Current";
-"MAIN_PIN" = "Pin";
-"MAIN_SAVE" = "Save";
-"MAIN_ENTER" = "Enter";
-"MAIN_SAVED" = "Saved";
-"MAIN_NAME" = "Name";
-"MAIN_PASSWORD" = "Password";
-"MAIN_RESTORE" = "Restore";
-
-"WALLET_CANCEL_PIN" = "Cancel pin";
-"WALLET_SET_PIN" = "Set pin";
-"WALLET_EDIT_PIN" = "Edit pin";
-"WALLET_ENTER_PIN" = "Enter pin";
-"WALLET_PIN_VALIDATION_DESCRIPTION" = "Max pin lenght is 6";
-"WALLET_PINS_DO_NOT_MATCH" = "Pins do not match";
-"WALLET_ERROR_WRONG_PIN" = "Wrong pin";
-"WALLET_ERROR_TOO_LONG" = "Too long pin.\nMax lenght is 6";
-
-"WALLET_SET_PASSWORD" = "Set password";
-"WALLET_EDIT_PASSWORD" = "Edit password";
-"WALLET_ENTER_PASSWORD" = "Enter password";
-"WALLET_PASSWORDS_DO_NOT_MATCH" = "Passwords do not match";
-"WALLET_ERROR_WRONG_PASSWORD" = "Wrong password";
-
-"WALLET_SAVE_IT" = "Save it";
-"WALLET_EXCHANGE_TITLE" = "Exchange";
-"WALLET_NEW_PASSWORD_CONFIRMATION" = "Password for transaction\nconfirmation was changed";
-"WALLET_CODE_FOR_RESTORE_INFO" = "QR code for restore password";
-
-/* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE_new" = "Secure communication\nplatform";
-
-"ONBOARDING_SPLASH_BUTTON_TITLE_new" = "Sign up";
-
-/* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE_new" = "Enter your Phone number, PIN-code will come on your device";
-
-/* Title of the main button. */
-"ONBOARDING_PHONE_NUMBER_SEND" = "Send";
-
-"ONBOARDING_PHONE_NUMBER_SIGNUP" = "Sign Up";
-
-"ONBOARDING_PHONE_NUMBER_FORGOTRASSWORD" = "Forgot password?";
-
-"CALL_VIEW_MISSED_CALL" = "Missed call";
-
-"CALL_VIEW_INCOMING_CALL" = "Incoming call";
-
-"CALL_VIEW_OUTGOING_CALL" = "Outgoing call";
-
-"CALL_VIEW_CANCELLED_CALL" = "Cancelled call";
-
-"CALL_VIEW_TITLE" = "Calls";
-
-"CALL_VIEW_MISSED" = "Missed";
-
-"NEW_CONTACT_DESCRIPTION" = "Add a new user using a unique\nidentification key";
-
-"NEW_CONTACT_SCAN_INFO" = "Scan the key using the QR-code";
-
-/* Title for the contacts list's default mode. */
-"CONTACTS_VIEW_TITLE" = "Contacts";
-
-/* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_INVALID_CODE_new" = "Wrong PIN, try again";
-
-"ONBOARDING_VERIFICATION_VALID_CODE_new" = "Password is correct";
-
-/// Chats Empty State
-"CHATS_VIEW_EMPTY_TITLE" = "You have no one in the chat";
-
-"CHATS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CHATS_VIEW_EMPTY_BUTTON_TITLE" = "Start chat now";
-
-/// Contacts Empty State
-"CONTACTS_VIEW_EMPTY_TITLE" = "You have no contacts";
-
-"CONTACTS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CONTACTS_VIEW_EMPTY_BUTTON_TITLE" = "Invite friends";
-
-/// Calls Empty State
-"CALLS_VIEW_EMPTY_TITLE" = "You have no calls";
-
-"CALLS_VIEW_EMPTY_MISSED_TITLE" = "You have no missed calls";
-
-"CALLS_VIEW_EMPTY_SUBTITLE" = "Start new calls";
-
-"CALLS_VIEW_EMPTY_BUTTON_TITLE" = "Start new calls";
-
-"CALL_PICKER_MAIN_TITLE" = "New call";
-
-/* Label for settings view that allows user to change the notification sound. */
-"SETTINGS_ITEM_NOTIFICATION_SOUND_new" = "Notification Sound";
-
-
-// Wallet Main Screen
-"WALLET_VIEW_TITLE" = "Wallets";
-
-// Wallet Main Screen
-"WALLET_MAINHEADER_VIEW_TITLE" = "Total balance";
-
-/* Label indicating that the user is verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_VERIFIED_FORMAT_new" = "%@ is verified!";
-
-/* Label indicating that the user is NOT verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_NOT_VERIFIED_FORMAT_new" = "%@ is not verified!";
-
-"WALLET_EMPTY_STATE_TITLE" = "You have no wallet yet";
-
-"WALLET_EMPTY_STATE_SUBTITLE" = "Create new wallet now";
-
-"WALLET_EMPTY_STATE_BUTTON_TITLE" = "Create wallet";
-
-"WALLET_NEW_WALLET_TITLE" = "New wallet";
-
-"WALLET_EXCHANGE_MY_ORDERS_TITLE" = "My Orders";
-
-"WALLET_NEW_WALLET_VALIDATION_INFO" = "The password must contain\nnumbers, uppercase and lowercase\nletters and contain at least\n8 characters";
-
-// Attachments Titles
-"ATTACHMENTS_TITLE_MEDIA" = "Media";
-"ATTACHMENTS_TITLE_FILES" = "Files";
-"ATTACHMENTS_TITLE_VOICE" = "Voice";
-"ATTACHMENTS_TITLE_GROUPS" = "Groups";
-"ATTACHMENTS_TITLE_LINKS" = "Links";
-"ATTACHMENTS_TITLE_GIFS" = "GIFs";
-
-"ATTACHMENTS_EMPTY_STATE" = "No %@ here yet...";
-
-"PERSONAL_CODE_VIEW_TITLE" = "This is your personal code";
-"PERSONAL_CODE_VIEW_DESCRIPTION" = "Ask your friend using the app\nto scan it to confirm his subscription";
-
-"CONTACTLIST_VIEW_SEARCHBAR_PLACEHOLDER" = "Search";
-
-/* A button to select a money from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_MONEY" = "Money";
-
-/* A button to select a gallery from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_GALLERY" = "Gallery";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE" = "Your User ID";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE_SOMEONE" = "%@'s User ID";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_NORMAL" = "Copy";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_AFTER_CLICK" = "Copied";
-
-"USER_ID_VIEW_COPY_LABEL_INFO" = "You can copy this User ID to phone";
-
-"NEW_USER_NAME_DESCRIPTION_TEXT" = "Please enter Display name for new contact,\nit will show only for you";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_ALREADY_EXIST" = "This user is already in your contacts";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_OWN_USERID" = "You can't add yourself";
-
-"WALLET_TOTAL_BALANCE" = "Total balance";
-"WALLET_BUY" = "Buy";
-"WALLET_SELL" = "Sell";
-
-"WALLET_TRANSACTION_EMPTY_STATE_TITLE" = "No transaction yet...";
-"WALLET_ORDERS_EMPTY_STATE_TITLE" = "No orders yet...";
-
-"WALLET_TRANSACTION_TITLE" = "Transactions";
-
-"FILTER_TITLE" = "Filter";
-
-"FILTER_SORT_BY_TITLE" = "Sort by";
-
-"FILTER_TRANSACTION_TYPE_TITLE" = "Transaction type";
-
-/* Label for 'new contact' button in conversation settings view. */
-"NEW_USER_NAME_TITLE" = "New Contact";
-
-"INCORRECT_UUID_ERROR_MESSAGE" = "User Key is incorrect";
-
-"SENT_SUCCEED_TITLE" = "Sent succeed";
-
-"EXCHANGE_CREATED_TITLE" = "Exchange created";
-//////////////////////////////////////////// Grapherex ///////////////////////////////////////////
-
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Jetzt nicht";
+
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "Über Signal";
 
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Neue Sicherheitsnummer akzeptieren";
@@ -258,11 +16,11 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Kontakt";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Kontakt für %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Medieninhalte";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Nachricht";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Du";
@@ -270,11 +28,17 @@
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Sticker";
 
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Sprachnachricht";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Sprachnachricht %@ Sekunden";
+
 /* Label for 'audio call' button in contact view. */
-"ACTION_AUDIO_CALL" = "Grapherex-Anruf";
+"ACTION_AUDIO_CALL" = "Signal-Anruf";
 
 /* Label for 'invite' button in contact view. */
-"ACTION_INVITE" = "Zu Grapherex einladen";
+"ACTION_INVITE" = "Zu Signal einladen";
 
 /* Label for button that lets you send a message to a contact. */
 "ACTION_SEND_MESSAGE" = "Nachricht senden";
@@ -364,7 +128,7 @@
 "APN_Message" = "Neue Nachricht!";
 
 /* Message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Grapherex kann nicht starten. Bitte sende ein Diagnoseprotokoll an support@grapherex.com, damit wir dieses Problem beheben können.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Signal kann nicht starten. Bitte sende ein Diagnoseprotokoll an support@signal.org, damit wir dieses Problem beheben können.";
 
 /* Title for the 'app launch failed' alert. */
 "APP_LAUNCH_FAILURE_ALERT_TITLE" = "Fehler";
@@ -373,13 +137,13 @@
 "APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE" = "Datenbank konnte nicht geladen werden";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
-"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Bitte aktualisiere Grapherex auf die neueste Version.";
+"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Bitte aktualisiere Signal auf die neueste Version.";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Unbekannte Datenbankversion.";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Die von deinem alten Gerät übertragenen Daten konnten nicht wiederhergestellt werden. Sende bitte ein Diagnoseprotokoll an support@grapherex.com, damit wir das Problem beheben können. Falls du Grapherex erneut installierst, könnte dein Nachrichtenverlauf verloren sein.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Die von deinem alten Gerät übertragenen Daten konnten nicht wiederhergestellt werden. Sende bitte ein Diagnoseprotokoll an support@signal.org, damit wir das Problem beheben können. Falls du Signal erneut installierst, könnte dein Nachrichtenverlauf verloren sein.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Übertragung konnte nicht abgeschlossen werden";
@@ -394,7 +158,7 @@
 "APP_UPDATE_NAG_ALERT_MESSAGE_FORMAT" = "Version %@ ist nun im App Store verfügbar.";
 
 /* Title for the 'new app version available' alert. */
-"APP_UPDATE_NAG_ALERT_TITLE" = "Neue Grapherex-Version verfügbar";
+"APP_UPDATE_NAG_ALERT_TITLE" = "Neue Signal-Version verfügbar";
 
 /* Label for the 'update' button in the 'new app version available' alert. */
 "APP_UPDATE_NAG_ALERT_UPDATE_BUTTON" = "Aktualisieren";
@@ -409,7 +173,7 @@
 "APPEARANCE_SETTINGS_SYSTEM_THEME_NAME" = "System";
 
 /* Name of application */
-"APPLICATION_NAME" = "Grapherex";
+"APPLICATION_NAME" = "Signal";
 
 /* Label for the archive button for conversations list view */
 "ARCHIVE_ACTION" = "Archivieren";
@@ -426,7 +190,7 @@
 /* Error that outgoing attachments could not be exported. */
 "ATTACHMENT_APPROVAL_FAILED_TO_EXPORT" = "Anhang konnte nicht exportiert werden.";
 
-/* alert text when Grapherex was unable to save a copy of the attachment to the system photo library */
+/* alert text when Signal was unable to save a copy of the attachment to the system photo library */
 "ATTACHMENT_APPROVAL_FAILED_TO_SAVE" = "Speichern gescheitert";
 
 /* Format string for file extension label in call interstitial view */
@@ -733,7 +497,7 @@
 "CALL_SCREEN_STATUS_NO_ANSWER" = "Keine Antwort";
 
 /* embeds {{Call Status}} in call screen label. For ongoing calls, {{Call Status}} is a seconds timer like 01:23, otherwise {{Call Status}} is a short text like 'Ringing', 'Busy', or 'Failed Call' */
-"CALL_STATUS_FORMAT" = "Grapherex %@";
+"CALL_STATUS_FORMAT" = "Signal %@";
 
 /* Label for call button for alert offering to call a user. */
 "CALL_USER_ALERT_CALL_BUTTON" = "Anrufen";
@@ -787,7 +551,7 @@
 "CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "Deine Kamera ist ausgeschaltet";
 
 /* The generic name used for calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Grapherex-Nutzer";
+"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Signal-Nutzer";
 
 /* Accessibility hint describing what you can do with the camera button */
 "CAMERA_BUTTON_HINT" = "Bild aufnehmen und es dann versenden";
@@ -817,13 +581,13 @@
 "CHECK_FOR_BACKUP_RESTORE" = "Wiederherstellen";
 
 /* Error indicating that the app could not determine that user's iCloud account status */
-"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Grapherex konnte den Status deines iCloud-Kontos nicht ermitteln. Melde dich in der iOS-App »Einstellungen« bei deinem iCloud-Konto an, um deine Grapherex-Daten zu sichern.";
+"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Signal konnte den Status deines iCloud-Kontos nicht ermitteln. Melde dich in der iOS-App »Einstellungen« bei deinem iCloud-Konto an, um deine Signal-Daten zu sichern.";
 
 /* Error indicating that user does not have an iCloud account. */
-"CLOUDKIT_STATUS_NO_ACCOUNT" = "Kein iCloud-Konto. Melde dich in der iOS-App »Einstellungen« bei deinem iCloud-Konto an, um deine Grapherex-Daten zu sichern.";
+"CLOUDKIT_STATUS_NO_ACCOUNT" = "Kein iCloud-Konto. Melde dich in der iOS-App »Einstellungen« bei deinem iCloud-Konto an, um deine Signal-Daten zu sichern.";
 
 /* Error indicating that the app was prevented from accessing the user's iCloud account. */
-"CLOUDKIT_STATUS_RESTRICTED" = "Grapherex wurde für Datensicherungen kein Zugriff auf dein iCloud-Konto gewährt. Gestatte Grapherex in der iOS-App »Einstellungen« Zugriff auf dein iCloud-Konto, um deine Grapherex-Daten zu sichern.";
+"CLOUDKIT_STATUS_RESTRICTED" = "Signal wurde für Datensicherungen kein Zugriff auf dein iCloud-Konto gewährt. Gestatte Signal in der iOS-App »Einstellungen« Zugriff auf dein iCloud-Konto, um deine Signal-Daten zu sichern.";
 
 /* The first of two messages demonstrating the chosen conversation color, by rendering this message in an outgoing message bubble. */
 "COLOR_PICKER_DEMO_MESSAGE_1" = "Wähle die Farbe ausgehender Nachrichten für diese Unterhaltung.";
@@ -838,7 +602,7 @@
 "COMPARE_SAFETY_NUMBER_ACTION" = "Mit Zwischenablage vergleichen";
 
 /* Accessibility hint describing what you can do with the compose button */
-"COMPOSE_BUTTON_HINT" = "Wähle oder suche einen Grapherex-Nutzer, mit dem du eine Unterhaltung beginnen möchtest.";
+"COMPOSE_BUTTON_HINT" = "Wähle oder suche einen Signal-Nutzer, mit dem du eine Unterhaltung beginnen möchtest.";
 
 /* Accessibility label from compose button. */
 "COMPOSE_BUTTON_LABEL" = "Verfassen";
@@ -856,7 +620,7 @@
 "COMPOSE_MESSAGE_USERNAME_SEARCH_SECTION_TITLE" = "Nutzernamensuche";
 
 /* Multi-line label explaining why compose-screen contact picker is empty. */
-"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Du kannst den Zugriff auf deine Kontakte in der iOS-App »Einstellungen« aktivieren, um zu sehen, welche deiner Kontakte Grapherex verwenden.";
+"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Du kannst den Zugriff auf deine Kontakte in der iOS-App »Einstellungen« aktivieren, um zu sehen, welche deiner Kontakte Signal verwenden.";
 
 /* No comment provided by engineer. */
 "CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Dies setzt die App in ihren Ursprungszustand zurück. Dabei werden alle deine Nachrichten und dein Nutzerkonto vom Server gelöscht. Nach Abschluss des Vorgangs beendet sich die App automatisch.";
@@ -987,11 +751,11 @@
 /* Error indicating that at least one contact field must be selected before sharing a contact. */
 "CONTACT_SHARE_NO_FIELDS_SELECTED" = "Keine Kontaktfelder ausgewählt.";
 
-/* Button text to initiate an email to Grapherex support staff */
+/* Button text to initiate an email to signal support staff */
 "CONTACT_SUPPORT" = "Support kontaktieren";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Grapherex konnte deine Supportanfrage nicht abschließen.";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Signal konnte deine Supportanfrage nicht abschließen.";
 
 /* button text */
 "CONTACT_SUPPORT_PROMPT_ERROR_TRY_AGAIN" = "Erneut versuchen";
@@ -1082,9 +846,6 @@
 
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Nutzer blockieren";
-
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Kontaktdetails";
 
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Unterhaltungsfarbe";
@@ -1210,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Ungespeicherte Änderungen";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Alle Mitglieder anzeigen";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Alle anzeigen";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Dieser Nutzer ist in deinen Kontakten";
@@ -1226,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Zu Kontakten hinzufügen";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ hat gesendet:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Du hast gesendet:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Alle löschen";
@@ -1324,13 +1091,13 @@
 "DEREGISTRATION_REREGISTER_WITH_SAME_PHONE_NUMBER" = "Rufnummer erneut registrieren";
 
 /* Label warning the user that they have been de-registered. */
-"DEREGISTRATION_WARNING" = "Gerät nicht mehr registriert. Deine Rufnummer ist möglicherweise auf einem anderen Gerät bei Grapherex registriert. Zum erneuten Registrieren antippen.";
+"DEREGISTRATION_WARNING" = "Gerät nicht mehr registriert. Deine Rufnummer ist möglicherweise auf einem anderen Gerät bei Signal registriert. Zum erneuten Registrieren antippen.";
 
-/* {{Short Date}} when device last communicated with Grapherex Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Zuletzt aktiv: %@";
+/* {{Short Date}} when device last communicated with Signal Server. */
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Zuletzt aktiv %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Gekoppelt: %@";
+"DEVICE_LINKED_AT_LABEL" = "Gekoppelt %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Geräteliste konnte nicht aktualisiert werden.";
@@ -1348,7 +1115,7 @@
 "DEVICE_TRANSFER_CHOICE_EXPLANATION" = "Falls du dein altes iOS-Gerät noch hast, kannst du dein Konto und deine Nachrichten sicher auf dieses Gerät übertragen.";
 
 /* The explanation for the device transfer 'choice' view when linking a device */
-"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Falls du zuvor Grapherex auf einem gekoppelten iPad verwendet hast, kannst du dein Konto und deine Nachrichten sicher auf dieses Gerät übertragen.";
+"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Falls du zuvor Signal auf einem gekoppelten iPad verwendet hast, kannst du dein Konto und deine Nachrichten sicher auf dieses Gerät übertragen.";
 
 /* The body for the device transfer 'choice' view 'register' option */
 "DEVICE_TRANSFER_CHOICE_REGISTER_BODY" = "Fahre fort ohne Übertragen deines Kontos und deiner Nachrichten";
@@ -1378,7 +1145,7 @@
 "DEVICE_TRANSFER_CHOICE_TRANSFER_TITLE" = "Von iOS-Gerät übertragen";
 
 /* A warning for the device transfer 'choice' view indicating you can only have one device registered with your number */
-"DEVICE_TRANSFER_CHOICE_WARNING" = "Falls du fortfährst, wird Grapherex auf allen anderen, aktuell mit derselben Rufnummer registrierten Geräten deaktiviert.";
+"DEVICE_TRANSFER_CHOICE_WARNING" = "Falls du fortfährst, wird Signal auf allen anderen, aktuell mit derselben Rufnummer registrierten Geräten deaktiviert.";
 
 /* An error indicating that we were unable to verify the indentity of the new device to complete the transfer */
 "DEVICE_TRANSFER_ERROR_CERTIFICATE_MISMATCH" = "Dein neues Gerät konnte nicht verifiziert werden. Bitte versuche es erneut.";
@@ -1396,16 +1163,16 @@
 "DEVICE_TRANSFER_ERROR_NOT_ENOUGH_SPACE" = "Zu wenig Speicherplatz, um die Übertragung abzuschließen";
 
 /* An error indicating the user must update their device before trying to transfer. */
-"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Aktualisiere auf die neueste Grapherex-Version und versuche es erneut";
+"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Aktualisiere auf die neueste Signal-Version und versuche es erneut";
 
 /* The explanation on the action sheet prompting the user if they want to transfer their device. */
-"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Übertrage dein Grapherex-Konto auf ein neues iOS-Gerät. Sorge dafür, dass sich dein neues Gerät in der Nähe befindet und eingeschaltet ist.";
+"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Übertrage dein Signal-Konto auf ein neues iOS-Gerät. Sorge dafür, dass sich dein neues Gerät in der Nähe befindet und eingeschaltet ist.";
 
 /* The title on the acttion sheet prompting the user if they want to transfer their device. */
 "DEVICE_TRANSFER_PROMPT_TITLE" = "Konto übertragen";
 
 /* The explanation for the device transfer qr code view */
-"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Öffne Grapherex auf deinem alten Gerät, positioniere dieses in der Nähe und sorge dafür, dass WLAN und Bluetooth auf beiden Geräten aktiviert sind.";
+"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Öffne Signal auf deinem alten Gerät, positioniere dieses in der Nähe und sorge dafür, dass WLAN und Bluetooth auf beiden Geräten aktiviert sind.";
 
 /* The second explanation for the device transfer qr code view */
 "DEVICE_TRANSFER_QRCODE_EXPLANATION2" = "Positioniere diesen QR-Code innerhalb des Rahmens deines anderen Geräts.";
@@ -1417,7 +1184,7 @@
 "DEVICE_TRANSFER_QRCODE_TITLE" = "Warten auf anderes Gerät …";
 
 /* The explanation on the view that shows receiving progress */
-"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Positioniere beide Geräte nahe beieinander. Schalte keines davon aus und lass Grapherex geöffnet. Übertragungen sind Ende-zu-Ende-verschlüsselt.";
+"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Positioniere beide Geräte nahe beieinander. Schalte keines davon aus und lass Signal geöffnet. Übertragungen sind Ende-zu-Ende-verschlüsselt.";
 
 /* The title on the view that shows receiving progress */
 "DEVICE_TRANSFER_RECEIVING_TITLE" = "Daten werden empfangen";
@@ -1432,7 +1199,7 @@
 "DEVICE_TRANSFER_SCANNING_TITLE" = "Halte dein neues Gerät vor die Kamera";
 
 /* The explanation on the action sheet that shows transfer progress */
-"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Positioniere beide Geräte nahe beieinander. Schalte keines davon aus und lass Grapherex geöffnet.";
+"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Positioniere beide Geräte nahe beieinander. Schalte keines davon aus und lass Signal geöffnet.";
 
 /* The title on the action sheet that shows transfer progress */
 "DEVICE_TRANSFER_TRANSFERRING_TITLE" = "Daten werden übertragen";
@@ -1458,11 +1225,11 @@
 /* Section title for the 'domain fronting country' view. */
 "DOMAIN_FRONTING_COUNTRY_VIEW_SECTION_HEADER" = "Ort für Zensurumgehung";
 
-/* Alert body for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
+/* Alert body for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_BODY" = "Du kannst den Zugriff in der App »Einstellungen« aktivieren.";
 
-/* Alert title for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
-"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Grapherex benötigt Zugriff auf die Kontakte, um Kontaktinformationen bearbeiten zu können";
+/* Alert title for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Signal benötigt Zugriff auf die Kontakte, um Kontaktinformationen bearbeiten zu können";
 
 /* The 'clear avatar' button in the 'edit group' view. */
 "EDIT_GROUP_CLEAR_AVATAR" = "Foto entfernen";
@@ -1471,7 +1238,7 @@
 "EDIT_GROUP_DEFAULT_TITLE" = "Gruppe bearbeiten";
 
 /* Error message indicating the a user can't be added to a group. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Dieser Nutzer kann erst dann zur Gruppe hinzugefügt werden, wenn er Grapherex aktualisiert hat.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Dieser Nutzer kann erst dann zur Gruppe hinzugefügt werden, wenn er Signal aktualisiert hat.";
 
 /* Format for the 'group full' error alert when a user can't be added to a group because the group is full. Embeds {{ the maximum number of members in a group }}. */
 "EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "Maximale Gruppengröße von %@ Mitgliedern erreicht.";
@@ -1494,14 +1261,14 @@
 /* Short name for edit menu item to copy contents of media message. */
 "EDIT_ITEM_COPY_ACTION" = "Kopieren";
 
-/* body of email sent to contacts when inviting to install Grapherex. Embeds {{link to install Grapherex}} and {{link to the Grapherex home page}} */
-"EMAIL_INVITE_BODY" = "Hallo,\n\nseit einiger Zeit verwende ich Grapherex, um Unterhaltungen auf meinem iPhone vertraulich zu halten. Es wäre schön, wenn auch du es installieren würdest. So könnten wir darauf vertrauen, dass nur du und ich unsere Nachrichten lesen oder unsere Telefonate hören können.\n\nGrapherex ist für iPhones und Android-Geräte verfügbar. Du erhälst es hier: %@\n\nGrapherex funktioniert wie deine bereits vorhandene Sofortnachrichten-App. Wir können Bilder und Videos versenden, Anrufe tätigen und Gruppenunterhaltungen beginnen. Das Beste daran ist, dass niemand anderes irgendetwas davon sehen kann - selbst nicht die Leute, die Grapherex entwickeln!\n\nDu kannst mehr über Open Whisper Systems, die Entwickler von Grapherex, hier erfahren: %@";
+/* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
+"EMAIL_INVITE_BODY" = "Hallo,\n\nseit einiger Zeit verwende ich Signal, um Unterhaltungen auf meinem iPhone vertraulich zu halten. Es wäre schön, wenn auch du es installieren würdest. So könnten wir darauf vertrauen, dass nur du und ich unsere Nachrichten lesen oder unsere Telefonate hören können.\n\nSignal ist für iPhones und Android-Geräte verfügbar. Du erhälst es hier: %@\n\nSignal funktioniert wie deine bereits vorhandene Sofortnachrichten-App. Wir können Bilder und Videos versenden, Anrufe tätigen und Gruppenunterhaltungen beginnen. Das Beste daran ist, dass niemand anderes irgendetwas davon sehen kann - selbst nicht die Leute, die Signal entwickeln!\n\nDu kannst mehr über Open Whisper Systems, die Entwickler von Signal, hier erfahren: %@";
 
-/* subject of email sent to contacts when inviting to install Grapherex */
-"EMAIL_INVITE_SUBJECT" = "Lass uns zu Grapherex wechseln";
+/* subject of email sent to contacts when inviting to install Signal */
+"EMAIL_INVITE_SUBJECT" = "Lass uns zu Signal wechseln";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Dein Gerät ist nicht zum Senden von E-Mails konfiguriert. Um eine Supportanfrage zu senden, richte den E-Mail-Versand auf deinem Gerät ein oder sende eine E-Mail an support@grapherex.com";
+"EMAIL_SIGNAL_MESSAGE" = "Dein Gerät ist nicht zum Senden von E-Mails konfiguriert. Um eine Supportanfrage zu senden, richte den E-Mail-Versand auf deinem Gerät ein oder sende eine E-Mail an support@signal.org";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "E-Mail nicht verfügbar";
@@ -1534,7 +1301,7 @@
 "EMOJI_CATEGORY_TRAVEL_NAME" = "Reisen & Orte";
 
 /* Full width label displayed when attempting to compose message */
-"EMPTY_CONTACTS_LABEL_LINE1" = "Keiner deiner Kontakte verwendet Grapherex.";
+"EMPTY_CONTACTS_LABEL_LINE1" = "Keiner deiner Kontakte verwendet Signal.";
 
 /* Full width label displayed when attempting to compose message */
 "EMPTY_CONTACTS_LABEL_LINE2" = "Warum lädst du nicht jemanden ein?";
@@ -1572,8 +1339,8 @@
 /* Error message indicating that message send failed due to block list */
 "ERROR_DESCRIPTION_MESSAGE_SEND_FAILED_DUE_TO_BLOCK_LIST" = "Nachricht konnte nicht versendet werden, da du den Nutzer blockiert hast.";
 
-/* Generic error used whenever Grapherex can't contact the server */
-"ERROR_DESCRIPTION_NO_INTERNET" = "Grapherex konnte keine Verbindung zum Internet herstellen. Bitte versuche es erneut.";
+/* Generic error used whenever Signal can't contact the server */
+"ERROR_DESCRIPTION_NO_INTERNET" = "Signal konnte keine Verbindung zum Internet herstellen. Bitte versuche es erneut.";
 
 /* Error indicating that an outgoing message had no valid recipients. */
 "ERROR_DESCRIPTION_NO_VALID_RECIPIENTS" = "Nachricht konnte mangels gültiger Empfänger nicht versendet werden.";
@@ -1588,7 +1355,7 @@
 "ERROR_DESCRIPTION_RESPONSE_FAILED" = "Ungültige Antwort des Dienstes.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Dieses Gerät ist für deine Rufnummer nicht mehr registriert. Bitte installiere Grapherex erneut.";
+"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Dieses Gerät ist für deine Rufnummer nicht mehr registriert. Bitte installiere Signal erneut.";
 
 /* Generic server error */
 "ERROR_DESCRIPTION_SERVER_FAILURE" = "Serverfehler. Bitte versuche es später erneut.";
@@ -1597,13 +1364,13 @@
 "ERROR_DESCRIPTION_UNKNOWN_ERROR" = "Ein unbekannter Fehler ist aufgetreten.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Kontakt ist kein Grapherex-Nutzer.";
+"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Kontakt ist kein Signal-Nutzer.";
 
 /* Error message indicating that attachment download(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_DOWNLOAD_FAILED" = "Anhang konnte nicht heruntergeladen werden.";
 
 /* Error message when unable to receive an attachment because the sending client is too old. */
-"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Anhangsfehler: Bitte diesen Kontakt, Grapherex zu aktualisieren und danach seine Nachricht erneut zu senden.";
+"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Anhangsfehler: Bitte diesen Kontakt, Signal zu aktualisieren und danach seine Nachricht erneut zu senden.";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_DUPLICATE_MESSAGE" = "Nachricht doppelt erhalten.";
@@ -1615,15 +1382,15 @@
 "ERROR_MESSAGE_INVALID_MESSAGE" = "Empfangene Nachricht war fehlerhaft verschlüsselt.";
 
 /* No comment provided by engineer. */
-"ERROR_MESSAGE_INVALID_VERSION" = "Mit dieser Grapherex-Version inkompatible Nachricht erhalten.";
+"ERROR_MESSAGE_INVALID_VERSION" = "Mit dieser Signal-Version inkompatible Nachricht erhalten.";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_NO_SESSION" = "Keine Sitzung für Kontakt vorhanden.";
 
-/* Shown when Grapherex users safety numbers changed */
+/* Shown when signal users safety numbers changed */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE" = "Sicherheitsnummer geändert.";
 
-/* Shown when Grapherex users safety numbers changed, embeds the user's {{name or phone number}} */
+/* Shown when signal users safety numbers changed, embeds the user's {{name or phone number}} */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE_FORMAT" = "Deine Sicherheitsnummer mit %@ hat sich geändert.";
 
 /* Text notifying the user that their secure session has been reset */
@@ -1645,19 +1412,19 @@
 "ERROR_SENDING_DEREGISTERED" = "Dein Gerät ist nicht mehr registriert. Bitte registriere es erneut, um weitere Nachrichten zu senden.";
 
 /* Error indicating a send failure due to an expired application. */
-"ERROR_SENDING_EXPIRED" = "Deine Grapherex-Version ist veraltet. Bitte aktualisiere Grapherex, um weitere Nachrichten zu versenden.";
+"ERROR_SENDING_EXPIRED" = "Deine Signal-Version ist veraltet. Bitte aktualisiere Signal, um weitere Nachrichten zu versenden.";
 
-/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or Grapherex id}}. */
+/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or signal id}}. */
 "ERROR_UNREGISTERED_USER_FORMAT" = "Unregistrierter Nutzer: %@";
 
 /* Label notifying the user that the app has expired. */
-"EXPIRATION_ERROR" = "Deine Grapherex-Version ist abgelaufen! Bitte antippen, um auf die neueste Version zu aktualisieren.";
+"EXPIRATION_ERROR" = "Deine Signal-Version ist abgelaufen! Bitte antippen, um auf die neueste Version zu aktualisieren.";
 
 /* Label warning the user that the app will expire soon. */
-"EXPIRATION_WARNING_SOON" = "Deine Grapherex-Version wird in %d Tagen ablaufen. Bitte antippen, um auf die neueste Version zu aktualisieren.";
+"EXPIRATION_WARNING_SOON" = "Deine Signal-Version wird in %d Tagen ablaufen. Bitte antippen, um auf die neueste Version zu aktualisieren.";
 
 /* Label warning the user that the app will expire today. */
-"EXPIRATION_WARNING_TODAY" = "Deine Grapherex-Version wird heute ablaufen. Bitte antippen, um auf die neueste Version zu aktualisieren.";
+"EXPIRATION_WARNING_TODAY" = "Deine Signal-Version wird heute ablaufen. Bitte antippen, um auf die neueste Version zu aktualisieren.";
 
 /* action sheet header when re-sending message which failed because of too many attempts */
 "FAILED_SENDING_BECAUSE_RATE_LIMIT" = "Zu viele Fehler mit diesem Kontakt. Bitte versuche es später erneut.";
@@ -1732,7 +1499,7 @@
 "GO_TO_SETTINGS_BUTTON" = "Einstellungen öffnen";
 
 /* Body message of notification shown during GRDB migration indicating that user may need to open app to view their content. */
-"GRDB_MIGRATION_NOTIFICATION_BODY" = "Diese Grapherex-Version beinhaltet Datenbankoptimierungen und Leistungsverbesserungen. Möglicherweise musst du die App öffnen, um den Vorgang abzuschließen.";
+"GRDB_MIGRATION_NOTIFICATION_BODY" = "Diese Signal-Version beinhaltet Datenbankoptimierungen und Leistungsverbesserungen. Möglicherweise musst du die App öffnen, um den Vorgang abzuschließen.";
 
 /* Title of notification shown during GRDB migration indicating that user may need to open app to view their content. */
 "GRDB_MIGRATION_NOTIFICATION_TITLE" = "Datenbank wird optimiert";
@@ -1984,22 +1751,22 @@
 "GROUP_INVITE_LINK_RESET_BY_REMOTE_USER_FORMAT" = "%@ hat den Gruppen-Link zurückgesetzt.";
 
 /* Message indicating that the group invite link was set to not require approval. */
-"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL" = "Die Admin-Bestätigung für den Gruppen-Link wurde ausgeschaltet.";
+"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL" = "Admin-Bestätigungen für den Gruppen-Link wurden ausgeschaltet.";
 
 /* Message indicating that the group invite link was set to not require approval by the local user. */
-"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL_BY_LOCAL_USER" = "Du hast die Admin-Bestätigung für den Gruppen-Link ausgeschaltet.";
+"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL_BY_LOCAL_USER" = "Du hast Admin-Bestätigungen für den Gruppen-Link ausgeschaltet.";
 
 /* Message indicating that the group invite link was set to not require approval by a remote user. Embeds {{ user who set the group invite link to not require approval }}. */
-"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ hat die Admin-Bestätigung für den Gruppen-Link ausgeschaltet.";
+"GROUP_INVITE_LINK_SET_TO_NOT_REQUIRE_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ hat Admin-Bestätigungen für den Gruppen-Link ausgeschaltet.";
 
 /* Message indicating that the group invite link was set to require approval. */
-"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL" = "Die Admin-Bestätigung für den Gruppen-Link wurde eingeschaltet.";
+"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL" = "Admin-Bestätigungen für den Gruppen-Link wurden eingeschaltet.";
 
 /* Message indicating that the group invite link was set to require approval by the local user. */
-"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL_BY_LOCAL_USER" = "Du hast die Admin-Bestätigung für den Gruppen-Link eingeschaltet.";
+"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL_BY_LOCAL_USER" = "Du hast Admin-Bestätigungen für den Gruppen-Link eingeschaltet.";
 
 /* Message indicating that the group invite link was set to require approval by a remote user. Embeds {{ user who set the group invite link to require approval }}. */
-"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ hat die Admin-Bestätigung für den Gruppen-Link eingeschaltet.";
+"GROUP_INVITE_LINK_SET_TO_REQUIRE_APPROVAL_BY_REMOTE_USER_FORMAT" = "%@ hat Admin-Bestätigungen für den Gruppen-Link eingeschaltet.";
 
 /* Format for the message for an alert indicating that a member was invited to a group. Embeds: {{ the number of invites sent. }} */
 "GROUP_INVITES_SENT_ALERT_MESSAGE_1_FORMAT" = "%@ kann von dir nicht automatisch zu dieser Gruppe hinzugefügt werden. Der Nutzer wurde eingeladen beizutreten, wird aber keine Gruppennachrichten erhalten, bis er die Einladung angenommen hat.";
@@ -2047,7 +1814,7 @@
 "GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Ungültiger Link";
 
 /* Error message indicating that the local user does not support groups v2. */
-"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Aktualisiere Grapherex auf diesem Gerät, um dieser Gruppe beizutreten.";
+"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Aktualisiere Signal auf diesem Gerät, um dieser Gruppe beizutreten.";
 
 /* Explanation of the 'approve new group members' switch. */
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Für Beitrittsanfragen über den Gruppen-Link einen Admin zum Bestätigen erforderlich machen.";
@@ -2112,11 +1879,11 @@
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "QR-Code";
 
-/* Label for the 'share group link via Grapherex' button in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Über Grapherex teilen";
+/* Label for the 'share group link via Signal' button in the 'group link' view. */
+"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Über Signal teilen";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Jeder mit diesem Link kann der Gruppe beitreten oder eine Beitrittsanfrage senden. Teile ihn mit Personen, denen du vertraust.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Jeder mit diesem Link kann sowohl den Namen und die Mitglieder dieser Gruppe sehen als auch Beitrittsanfragen stellen. Teile ihn mit Personen, denen du vertraust.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Gruppen-Link";
@@ -2220,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Videoanruf";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ Gruppenmitglieder haben ähnliche Namen.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Zum Prüfen antippen";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Mitglied";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Mitglieder prüfen";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ Gruppenmitglieder haben ähnliche Namen. Prüfe die folgenden Mitglieder oder handle entsprechend.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ Gruppenmitglieder haben denselben Namen. Prüfe die folgenden Mitglieder oder handle entsprechend.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ Gruppenmitglieder haben denselben Namen.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Gruppenname (erforderlich)";
 
@@ -2312,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ hat eine Gruppenbeitrittsanfrage von %1$@ bestätigt.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "Eine Gruppenbeitrittsanfrage von %@ wurde bestätigt.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ hat die Gruppenbeitrittsanfrage abgebrochen.";
@@ -2446,13 +2231,13 @@
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_1_TITLE" = "Was sind Gruppen alten Typs?";
 
 /* Body text for the second section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Gruppen alten Typs können derzeit nicht in Gruppen neuen Typs umgewandelt werden, aber du kannst eine Gruppe neuen Typs mit denselben Mitgliedern erstellen, falls diese die neueste Grapherex-Version verwenden.\n\nGrapherex wird zukünftig eine Möglichkeit anbieten, Gruppen alten Typs umzuwandeln.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Gruppen alten Typs können derzeit nicht in Gruppen neuen Typs umgewandelt werden, aber du kannst eine Gruppe neuen Typs mit denselben Mitgliedern erstellen, falls diese die neueste Signal-Version verwenden.\n\nSignal wird zukünftig eine Möglichkeit anbieten, Gruppen alten Typs umzuwandeln.";
 
 /* Title for the second section of the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_2_TITLE" = "Kann ich eine Gruppe alten Typs umwandeln?";
 
 /* Body text for the third section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Zum Erstellen einer Gruppe neuen Typs sollten alle Mitglieder Grapherex auf die neueste Version aktualisieren.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Zum Erstellen einer Gruppe neuen Typs sollten alle Mitglieder Signal auf die neueste Version aktualisieren.";
 
 /* Title for the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Gruppen alten vs. neuen Typs";
@@ -2467,28 +2252,28 @@
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TOO_MANY_MEMBERS_FORMAT" = "Diese Gruppe kann nicht zu einer Gruppe neuen Typs aktualisiert werden. Die maximale Gruppengröße von %@ Mitgliedern ist überschritten.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Sobald alle derzeitigen Gruppenmitglieder eine zu Gruppen neuen Typs fähige Grapherex-Version verwenden, wird diese Gruppe aktualisiert.";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Sobald alle derzeitigen Gruppenmitglieder eine zu Gruppen neuen Typs fähige Signal-Version verwenden, wird diese Gruppe aktualisiert.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_2" = "Der bestehende Nachrichtenverlauf und die Medieninhalte werden durch die Aktualisierung erhalten bleiben.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Diese Gruppe kann nicht erstellt werden, da 1 Mitglied eine alte Grapherex-Version verwendet. Du kannst eine Gruppe neuen Typs mit diesem Mitglied erstellen, sobald es Grapherex aktualisiert hat, oder es vor Erstellen der Gruppe entfernen.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Diese Gruppe kann nicht erstellt werden, da 1 Mitglied eine alte Signal-Version verwendet. Du kannst eine Gruppe neuen Typs mit diesem Mitglied erstellen, sobald es Signal aktualisiert hat, oder es vor Erstellen der Gruppe entfernen.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Diese Gruppe kann nicht erstellt werden, da %@ Mitglieder eine alte Grapherex-Version verwenden. Du kannst eine Gruppe neuen Typs mit diesen Mitgliedern erstellen, sobald sie Grapherex aktualisiert haben, oder sie vor Erstellen der Gruppe entfernen.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Diese Gruppe kann nicht erstellt werden, da %@ Mitglieder eine alte Signal-Version verwenden. Du kannst eine Gruppe neuen Typs mit diesen Mitgliedern erstellen, sobald sie Signal aktualisiert haben, oder sie vor Erstellen der Gruppe entfernen.";
 
 /* Indicates that a new group cannot be created because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Diese Gruppe kann nicht erstellt werden, da 1 Mitglied eine alte Grapherex-Version verwendet. Du kannst eine Gruppe neuen Typs mit diesem Mitglied erstellen, sobald es Grapherex aktualisiert hat, oder es vor Erstellen der Gruppe entfernen. %@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Diese Gruppe kann nicht erstellt werden, da 1 Mitglied eine alte Signal-Version verwendet. Du kannst eine Gruppe neuen Typs mit diesem Mitglied erstellen, sobald es Signal aktualisiert hat, oder es vor Erstellen der Gruppe entfernen. %@";
 
 /* Indicates that a new group cannot be created because multiple members do not support v2 groups. Embeds {{ %1$@ the number of members who do not support v2 groups, %2$@ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Diese Gruppe kann nicht erstellt werden, da %1$@ Mitglieder eine alte Grapherex-Version verwenden. Du kannst eine Gruppe neuen Typs mit diesen Mitgliedern erstellen, sobald sie Grapherex aktualisiert haben, oder sie vor Erstellen der Gruppe entfernen. %2$@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Diese Gruppe kann nicht erstellt werden, da %1$@ Mitglieder eine alte Signal-Version verwenden. Du kannst eine Gruppe neuen Typs mit diesen Mitgliedern erstellen, sobald sie Signal aktualisiert haben, oder sie vor Erstellen der Gruppe entfernen. %2$@";
 
 /* Title for alert that explains that a new group will be a legacy group because 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Es wird eine Gruppe alten Typs erstellt, da 1 Mitglied eine alte Grapherex-Version verwendet. Du kannst eine Gruppe neuen Typs mit diesem Mitglied erstellen, sobald es Grapherex aktualisiert hat, oder es vor Erstellen der Gruppe entfernen.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Es wird eine Gruppe alten Typs erstellt, da 1 Mitglied eine alte Signal-Version verwendet. Du kannst eine Gruppe neuen Typs mit diesem Mitglied erstellen, sobald es Signal aktualisiert hat, oder es vor Erstellen der Gruppe entfernen.";
 
 /* Title for alert that explains that a new group will be a legacy group because multiple members do not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Es wird eine Gruppe alten Typs erstellt, da %@ Mitglieder eine alte Grapherex-Version verwenden. Du kannst eine  Gruppe neuen Typs mit diesen Mitgliedern erstellen, sobald sie Grapherex aktualisiert haben, oder sie vor Erstellen der Gruppe entfernen.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Es wird eine Gruppe alten Typs erstellt, da %@ Mitglieder eine alte Signal-Version verwenden. Du kannst eine  Gruppe neuen Typs mit diesen Mitgliedern erstellen, sobald sie Signal aktualisiert haben, oder sie vor Erstellen der Gruppe entfernen.";
 
 /* Indicates that a new group will be a legacy group because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
 "GROUPS_LEGACY_GROUP_CREATION_WARNING_FORMAT_1" = "1 Mitglied unterstützt keine Gruppen neuen Typs, daher wird diese Gruppe als Gruppe alten Typs erstellt. %@";
@@ -2560,10 +2345,10 @@
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_2_BODY" = "Der vor der Aktualisierung bestehende Nachrichtenverlauf und die Medieninhalte wurden erhalten.";
 
 /* Body text for the 'dropped member' section of the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_1" = "Dieses Mitglied wurde aus der Gruppe entfernt und wird nicht wieder beitreten können, bis es Grapherex aktualisiert hat.";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_1" = "Dieses Mitglied wurde aus der Gruppe entfernt und wird nicht wieder beitreten können, bis es Signal aktualisiert hat.";
 
 /* Body text for the 'dropped members' section of the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_N" = "Diese Mitglieder wurden aus der Gruppe entfernt und werden nicht wieder beitreten können, bis sie Grapherex aktualisiert haben.";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_N" = "Diese Mitglieder wurden aus der Gruppe entfernt und werden nicht wieder beitreten können, bis sie Signal aktualisiert haben.";
 
 /* Body text for the 'invites member' section of the 'upgrade legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_INVITED_MEMBERS_1" = "Dieses Mitglied muss eine Einladung zum erneuten Gruppenbeitritt annehmen und wird bis dahin keine Gruppennachrichten erhalten:";
@@ -2608,7 +2393,7 @@
 "GROUPS_REPLACE_ADMIN_BUTTON" = "Neuen Admin wählen";
 
 /* Format for the alert warning the user that they've reached the recommended limit on how many members can be in a group when creating a new group. Embeds {{ the maximum number of recommended members in a group }}. */
-"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Grapherex-Gruppen funktionieren am besten mit %@ oder weniger Mitgliedern. Das Hinzufügen weiterer Mitglieder führt zu Verzögerungen beim Senden und Empfangen von Nachrichten.";
+"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Signal-Gruppen funktionieren am besten mit %@ oder weniger Mitgliedern. Das Hinzufügen weiterer Mitglieder führt zu Verzögerungen beim Senden und Empfangen von Nachrichten.";
 
 /* Title for alert warning the user that they've reached the recommended limit on how many members can be in a group. */
 "GROUPS_TOO_MANY_MEMBERS_ALERT_TITLE" = "Empfohlene Mitgliederanzahl erreicht";
@@ -2625,7 +2410,7 @@
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "Kontaktiere uns";
 
-/* Help item that takes the user to the Grapherex support website */
+/* Help item that takes the user to the Signal support website */
 "HELP_SUPPORT_CENTER" = "Support-Center";
 
 /* Label for 'archived conversations' button. */
@@ -2640,16 +2425,16 @@
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "Entwurf:";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Grapherex contact.  Embeds {{The name of 1 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Einige deiner Kontakte sind bereits bei Grapherex, darunter %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Signal contact.  Embeds {{The name of 1 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Einige deiner Kontakte sind bereits bei Signal, darunter %@";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Grapherex contacts.  Embeds {{The names of 2 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Einige deiner Kontakte sind bereits bei Grapherex, darunter %@ und %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Signal contacts.  Embeds {{The names of 2 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Einige deiner Kontakte sind bereits bei Signal, darunter %@ und %@";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Grapherex contacts.  Embeds {{The names of 3 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Einige deiner Kontakte sind bereits bei Grapherex, darunter %@, %@ und %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Signal contacts.  Embeds {{The names of 3 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Einige deiner Kontakte sind bereits bei Signal, darunter %@, %@ und %@";
 
-/* A label offering to start a new conversation with your contacts, if you have no Grapherex contacts. */
+/* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Beginne hier deine erste Unterhaltung.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
@@ -2665,7 +2450,7 @@
 "HOME_VIEW_TITLE_ARCHIVE" = "Archiv";
 
 /* Title for the conversation list's default mode. */
-"HOME_VIEW_TITLE_INBOX" = "Grapherex";
+"HOME_VIEW_TITLE_INBOX" = "Signal";
 
 /* The image editor hint that you can draw blur */
 "IMAGE_EDITOR_BLUR_HINT" = "Zeichne zum Verwischen in beliebige Bereiche";
@@ -2679,11 +2464,11 @@
 /* Momentarily shown to the user when attempting to select more images than is allowed. Embeds {{max number of items}} that can be shared. */
 "IMAGE_PICKER_CAN_SELECT_NO_MORE_TOAST_FORMAT" = "Du kannst nicht mehr als %@ Elemente teilen.";
 
-/* Button that will present a view for the user to change the photos Grapherex has access to. */
+/* Button that will present a view for the user to change the photos Signal has access to. */
 "IMAGE_PICKER_CHANGE_PHOTOS" = "Fotos ändern";
 
 /* Explanation showing that the user has granted limited access to their photos and can change that in the Settings app. */
-"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Gewähre Vollzugriff in »Einstellungen« oder ändere, auf welche Fotos Grapherex zugreifen darf.";
+"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Gewähre Vollzugriff in »Einstellungen« oder ändere, auf welche Fotos Signal zugreifen darf.";
 
 /* Title show that the user has granted limited access to their photos and can change that in the Settings app. */
 "IMAGE_PICKER_CHANGE_PHOTOS_TITLE" = "Du kannst deine Fotos nicht sehen?";
@@ -2733,8 +2518,8 @@
 /* Shown in inbox and conversation after syncing as a placeholder indicating why your message history is missing. */
 "INFO_MESSAGE_SYNCED_THREAD" = "Du kannst von deinem Telefon oder iPad synchronisierte Nachrichten versenden oder empfangen. Zu deiner Sicherheit wird der Unterhaltungsverlauf nicht auf neue gekoppelte Geräte übertragen.";
 
-/* Shown in inbox and conversation when a user joins Grapherex, embeds the new user's {{contact name}} */
-"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ ist bei Grapherex!";
+/* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
+"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ ist bei Signal!";
 
 /* accessibility label for the button which shows the sticker picker */
 "INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL" = "Sticker";
@@ -2745,14 +2530,14 @@
 /* Message for the alert indicating that an audio file is invalid. */
 "INVALID_AUDIO_FILE_ALERT_ERROR_MESSAGE" = "Ungültige Audiodatei.";
 
-/* Alert body when contacts disabled while trying to invite contacts to Grapherex */
-"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Du kannst den Zugriff auf deine Kontakte in der iOS-App »Einstellungen« aktivieren, um deine Freunde zu Grapherex einzuladen.";
+/* Alert body when contacts disabled while trying to invite contacts to signal */
+"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Du kannst den Zugriff auf deine Kontakte in der iOS-App »Einstellungen« aktivieren, um deine Freunde zu Signal einzuladen.";
 
-/* Alert title when contacts disabled while trying to invite contacts to Grapherex */
+/* Alert title when contacts disabled while trying to invite contacts to signal */
 "INVITE_FLOW_REQUIRES_CONTACT_ACCESS_TITLE" = "Zugriff auf Kontakte erlauben";
 
 /* Label for the cell that presents the 'invite contacts' workflow. */
-"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Freunde zu Grapherex einladen";
+"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Freunde zu Signal einladen";
 
 /* Search */
 "INVITE_FRIENDS_PICKER_SEARCHBAR_PLACEHOLDER" = "Suchen";
@@ -2845,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Scanne den auf dem zu koppelnden Gerät angezeigten QR-Code ein.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "QR-Code einscannen";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scanne den QR-Code zum Koppeln eines neuen Geräts.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Neues Gerät koppeln";
@@ -2869,7 +2654,7 @@
 "LINKPREVIEWS_MEGAPHONE_TITLE" = "Vorschauen für jeden Link";
 
 /* Body for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Für das Übertragen deines Grapherex-Kontos musst du auf beiden Geräten den Zugriff auf das lokale Netzwerk aktivieren.";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Für das Übertragen deines Signal-Kontos musst du auf beiden Geräten den Zugriff auf das lokale Netzwerk aktivieren.";
 
 /* A button asking the user if they need further help getting their transfer working. */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_NEED_HELP" = "Hilfe benötigt?";
@@ -2881,7 +2666,7 @@
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_THREE" = "Schalte »Lokales Netzwerk« ein";
 
 /* Second step for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Navigiere zu »Grapherex«";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Navigiere zu »Signal«";
 
 /* Title for local network permission action sheet */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_TITLE" = "Schalte »Lokales Netzwerk« ein";
@@ -2892,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Ort auswählen";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Protokollierung";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Diagnoseprotokolle helfen Signal beim Beheben von Problemen und Abstürzen.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Nachricht";
@@ -2944,7 +2732,7 @@
 "MESSAGE_ACTION_DELETE_FOR_EVERYONE" = "Für jeden löschen";
 
 /* A one-time confirmation that you want to delete for everyone */
-"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Diese Nachricht wird für alle Teilnehmer der Unterhaltung gelöscht, die eine aktuelle Version von Grapherex verwenden. Sie werden sehen können, dass du eine Nachricht gelöscht hast.";
+"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Diese Nachricht wird für alle Teilnehmer der Unterhaltung gelöscht, die eine aktuelle Version von Signal verwenden. Sie werden sehen können, dass du eine Nachricht gelöscht hast.";
 
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "Für wen möchtest du diese Nachricht löschen?";
@@ -3061,7 +2849,7 @@
 "MESSAGE_REQUEST_LEAVE_AND_DELETE_GROUP_TITLE" = "Gruppe löschen und verlassen?";
 
 /* Banner label notifying user that a new message is from a user with the same name as an existing contact */
-"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Überprüfe Anfragen sorgfältig. Grapherex hat einen weiteren Kontakt mit demselben Namen gefunden.";
+"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Überprüfe Anfragen sorgfältig. Signal hat einen weiteren Kontakt mit demselben Namen gefunden.";
 
 /* A header string above a known contact's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Dein Kontakt";
@@ -3147,7 +2935,7 @@
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "Gelesen";
 
-/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Grapherex account. */
+/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Signal account. */
 "MESSAGE_STATUS_RECIPIENT_SKIPPED" = "Ausgelassen";
 
 /* Label indicating that a message failed to send. */
@@ -3187,22 +2975,22 @@
 "MISSED_CALL" = "Entgangener Anruf";
 
 /* Alert body */
-"MISSING_CAMERA_PERMISSION_MESSAGE" = "Du kannst den Zugriff auf die Kamera in der iOS-App »Einstellungen« aktivieren, um mit Grapherex Videoanrufe zu machen.";
+"MISSING_CAMERA_PERMISSION_MESSAGE" = "Du kannst den Zugriff auf die Kamera in der iOS-App »Einstellungen« aktivieren, um mit Signal Videoanrufe zu machen.";
 
 /* Alert title */
-"MISSING_CAMERA_PERMISSION_TITLE" = "Grapherex benötigt Zugriff auf deine Kamera.";
+"MISSING_CAMERA_PERMISSION_TITLE" = "Signal benötigt Zugriff auf deine Kamera.";
 
 /* Alert body indicating the user has denied location permissios */
 "MISSING_LOCATION_PERMISSION_MESSAGE" = "Du kannst diese Berechtigung in der iOS-App »Einstellungen« aktivieren.";
 
 /* Alert title indicating the user has denied location permissios */
-"MISSING_LOCATION_PERMISSION_TITLE" = "Grapherex benötigt für diese Funktion Zugriff auf deine Position.";
+"MISSING_LOCATION_PERMISSION_TITLE" = "Signal benötigt für diese Funktion Zugriff auf deine Position.";
 
 /* Alert body when user has previously denied media library access */
 "MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE" = "Du kannst diese Berechtigung in der iOS-App »Einstellungen« aktivieren.";
 
 /* Alert title when user has previously denied media library access */
-"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Grapherex benötigt für diese Funktion Zugriff auf deine Fotos.";
+"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Signal benötigt für diese Funktion Zugriff auf deine Fotos.";
 
 /* alert title: cannot link - reached max linked devices */
 "MULTIDEVICE_PAIRING_MAX_DESC" = "Du kannst keine weiteren Geräte koppeln.";
@@ -3215,6 +3003,9 @@
 
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Stumm";
+
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Profilname wurde kürzlich von %1$@ zu %2$@ geändert.";
 
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Überspringen";
@@ -3297,16 +3088,19 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Keine gemeinsamen Gruppen";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Keine anderen gemeinsamen Gruppen.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Wähle einen Kontakt oder eine Gruppe aus, um eine Unterhaltung zu beginnen.";
 
 /* Title welcoming to the app */
-"NO_SELECTED_CONVERSATION_TITLE" = "Willkommen bei Grapherex";
+"NO_SELECTED_CONVERSATION_TITLE" = "Willkommen bei Signal";
 
 /* A string prompting the user to send a new mesaage to a user */
 "NON_CONTACT_TABLE_CELL_NEW_MESSAGE" = "Neue Nachricht an:";
 
-/* A string asking the user if they'd like to invite a number to Grapherex via SMS. */
+/* A string asking the user if they'd like to invite a number to signal via SMS. */
 "NON_CONTACT_TABLE_CELL_SEND_SMS" = "Kein Nutzer gefunden. Via SMS einladen?";
 
 /* Label for 1:1 conversation with yourself. */
@@ -3348,11 +3142,8 @@
 /* No comment provided by engineer. */
 "NOTIFICATIONS_NONE" = "Kein Name oder Inhalt";
 
-/* Table cell switch label. When disabled, Grapherex will not play notification sounds while the app is in the foreground. */
+/* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Töne bei geöffneter App";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Töne";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Personalisierten Ton hinzufügen …";
@@ -3412,7 +3203,7 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "iPhone koppeln";
 
 /* explanation to the user they're switching from linking to registering flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Antippen von »iPad registrieren« lässt dich ein brandneues Grapherex-Konto erstellen oder ein bereits bestehendes Konto auf dieses iPad übertragen. Dies wird Grapherex auf jedem anderen, aktuell mit derselben Rufnummer registrierten Gerät deaktivieren.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Antippen von »iPad registrieren« lässt dich ein brandneues Signal-Konto erstellen oder ein bereits bestehendes Konto auf dieses iPad übertragen. Dies wird Signal auf jedem anderen, aktuell mit derselben Rufnummer registrierten Gerät deaktivieren.";
 
 /* explanation to the user they're switching from registering to linking flow */
 "ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Antippen von »iPhone koppeln« lässt dich dein Telefon mit einem bereits bestehenden Konto verbinden. Das Koppeln deines Telefons wird allgemein nicht empfohlen und einige Funktionen einschränken, wie z. B. Telefonieren.";
@@ -3424,7 +3215,7 @@
 "ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "Kopple dieses iPhone";
 
 /* warning to the user that registering an ipad is not recommended */
-"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Das Registrieren dieses iPads wird Grapherex auf jedem anderen, aktuell mit derselben Rufnummer registrierten Gerät deaktivieren.";
+"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Das Registrieren dieses iPads wird Signal auf jedem anderen, aktuell mit derselben Rufnummer registrierten Gerät deaktivieren.";
 
 /* warning to the user that linking a phone is not recommended */
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Das Koppeln deines iPhones wird nicht empfohlen und wichtige Funktionen einschränken.";
@@ -3433,25 +3224,31 @@
 "ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Berechtigungen gewähren";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Mitteilungen lassen dich wissen, wann Nachrichten eingehen, und du erhälst Aktualisierungen zu neuen Aktivitäten in deinen Unterhaltungen.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Die Erlaubnis für Benachrichtigungen und Kontakte ermöglicht, dich über den Eingang von Nachrichten zu informieren, und hilft dir dabei, dir bekannte Personen zu finden. Kontakte sind verschlüsselt, sodass der Signal-Dienst sie nicht sehen kann.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Sei informiert";
+"ONBOARDING_PERMISSIONS_TITLE" = "Berechtigungen gewähren";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Wähle, wer dich bei Grapherex mit deiner Rufnummer »%@« finden kann";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Wähle, wer dich bei Signal mit deiner Rufnummer »%@« finden kann";
 
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Wer kann dich mit deiner Rufnummer finden?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Deine Rufnummer";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Bitte warte einige Minuten vor einem erneuten Versuch. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Gib deine Rufnummer ein, um zu beginnen";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Gib deine Rufnummer ein";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Ungültige Rufnummer";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Ungültige Rufnummer. Bitte gib eine gültige Rufnummer ein, um Signal zu registrieren.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Du hast all deine Versuche zur PIN-Eingabe aufgebraucht, kannst jedoch trotzdem auf dein Grapherex-Konto zugreifen, indem du eine neue PIN erstellst. Zu deiner Sicherheit wird dein Konto ohne gespeicherte Profilinformationen oder Einstellungen wiederhergestellt.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Du hast all deine Versuche zur PIN-Eingabe aufgebraucht, kannst jedoch trotzdem auf dein Signal-Konto zugreifen, indem du eine neue PIN erstellst. Zu deiner Sicherheit wird dein Konto ohne gespeicherte Profilinformationen oder Einstellungen wiederhergestellt.";
 
 /* Label for the 'learn more' link when reglock is disabled in the 'onboarding pin attempts exhausted' view. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_LEARN_MORE" = "Mehr über PINs erfahren";
@@ -3474,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "PIN eingeben";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Dein Profil";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Nachname (optional)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Vorname (erforderlich)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Bedingungen & Datenschutzerklärung";
 
@@ -3483,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Falsche Rufnummer?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Ich habe keinen Code erhalten (verfügbar in %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Mich anrufen";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Grapherex-Support kontaktieren";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Mich anrufen in %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Code wird überprüft …";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Diese Code ist falsch";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Ich habe keinen Code erhalten";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Code erneut senden";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Stelle sicher, dass du Mobilfunkempfang hast und SMS empfangen kannst.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Kein Code?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Code erneut senden";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Mich anrufen";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Immer noch kein Code?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Code erneut senden in %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Gib den Code ein, den wir an %@ gesendet haben";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Wir haben gerade erneut einen Code an %@ gesendet";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Verifikationscode";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Einstellungen";
@@ -3525,8 +3322,8 @@
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ hat die Zeit für verschwindende Nachrichten auf %@ festgelegt.";
 
-/* Label warning the user that the Grapherex service may be down. */
-"OUTAGE_WARNING" = "Grapherex hat derzeit technische Schwierigkeiten. Wir arbeiten hart daran, den Betrieb so schnell wie möglich wiederherzustellen.";
+/* Label warning the user that the Signal service may be down. */
+"OUTAGE_WARNING" = "Signal hat derzeit technische Schwierigkeiten. Wir arbeiten hart daran, den Betrieb so schnell wie möglich wiederherzustellen.";
 
 /* info message text in conversation view. {embeds callee name} */
 "OUTGOING_CALL_FORMAT" = "Ausgehender Anruf an %@";
@@ -3592,7 +3389,7 @@
 "PENDING_GROUP_MEMBERS_SECTION_FOOTER_INVITES_FROM_OTHER_MEMBERS" = "Du kannst keine Details zu von anderen Gruppenmitgliedern eingeladenen Personen ansehen. Erst wenn die Eingeladenen der Gruppe beitreten, sind ihre Details für dich und die anderen Gruppenmitglieder einsehbar. Bis zum Beitritt erhalten die Eingeladenen auch keine Gruppennachrichten.";
 
 /* Footer for the 'pending member requests' section of the 'member requests and invites' view. Embeds {{ the name of the group }}. */
-"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "Personen auf dieser Liste möchten der Gruppe »%@« über den Gruppen-Link beizutreten.";
+"PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "Personen auf dieser Liste möchten der Gruppe »%@« über den Gruppen-Link beitreten.";
 
 /* Title for the 'invalid invites' section of the 'member requests and invites' view. */
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "Ungültige Einladungen";
@@ -3634,13 +3431,13 @@
 "PHONE_NUMBER_DISCOVERABILITY_EVERYBODY" = "Jeder";
 
 /* A user friendly description of the 'everybody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Jeder, der deine Rufnummer in seinen Kontakten gespeichert hat, sieht dich als Kontakt in Grapherex. Alle anderen können dich per Suche finden.";
+"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Jeder, der deine Rufnummer in seinen Kontakten gespeichert hat, sieht dich als Kontakt in Signal. Alle anderen können dich per Suche finden.";
 
 /* A user friendly name for the 'nobody' phone number discoverability mode. */
 "PHONE_NUMBER_DISCOVERABILITY_NOBODY" = "Niemand";
 
 /* A user friendly description of the 'nobody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Niemand kann dich anhand deiner Rufnummer bei Grapherex finden. Du wirst nicht als Grapherex-Kontakt bei Personen angezeigt, die deine Rufnummer in ihren Kontakten gespeichert haben, und alle anderen können dich in der Suche nicht anhand deiner Rufnummer finden.";
+"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Niemand kann dich anhand deiner Rufnummer bei Signal finden. Du wirst nicht als Signal-Kontakt bei Personen angezeigt, die deine Rufnummer in ihren Kontakten gespeichert haben, und alle anderen können dich in der Suche nicht anhand deiner Rufnummer finden.";
 
 /* A format for a label showing an example phone number. Embeds {{the example phone number}}. */
 "PHONE_NUMBER_EXAMPLE_FORMAT" = "Beispiel: %@";
@@ -3649,19 +3446,19 @@
 "PHONE_NUMBER_SHARING_CONTACTS_ONLY" = "Meine Kontakte";
 
 /* A user friendly description of the 'contacts only' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Nur deine Kontakte sehen deine Rufnummer in Grapherex.";
+"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Nur deine Kontakte sehen deine Rufnummer in Signal.";
 
 /* A user friendly name for the 'everybody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_EVERYBODY" = "Jeder";
 
 /* A user friendly description of the 'everybody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Deine Rufnummer ist sichtbar für alle Personen und Gruppen, mit denen du dich unterhälst. Personen, die deine Rufnummer in ihren Telefonkontakten gespeichert haben, sehen diese auch in Grapherex.";
+"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Deine Rufnummer ist sichtbar für alle Personen und Gruppen, mit denen du dich unterhälst. Personen, die deine Rufnummer in ihren Telefonkontakten gespeichert haben, sehen diese auch in Signal.";
 
 /* A user friendly name for the 'nobody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_NOBODY" = "Niemand";
 
 /* A user friendly description of the 'nobody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Niemand wird deine Rufnummer in Grapherex sehen.";
+"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Niemand wird deine Rufnummer in Signal sehen.";
 
 /* Format for phone number label with an index. Embeds {{Phone number label (e.g. 'home')}} and {{index, e.g. 2}}. */
 "PHONE_NUMBER_TYPE_AND_INDEX_NAME_FORMAT" = "%@ %@";
@@ -3736,7 +3533,7 @@
 "PIN_CREATION_DISABLE_CONFIRMATION_ACTION" = "PIN deaktivieren";
 
 /* Message of the 'pin disable' action sheet. */
-"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Falls du deine PIN deaktivierst, wirst du bei erneutem Registrieren von Grapherex alle Daten verlieren, sofern du sie nicht von einem anderen iOS-Gerät überträgst. Bei deaktivierter PIN kannst du die Registrierungssperre nicht einschalten.";
+"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Falls du deine PIN deaktivierst, wirst du bei erneutem Registrieren von Signal alle Daten verlieren, sofern du sie nicht von einem anderen iOS-Gerät überträgst. Bei deaktivierter PIN kannst du die Registrierungssperre nicht einschalten.";
 
 /* Title of the 'pin disable' action sheet. */
 "PIN_CREATION_DISABLE_CONFIRMATION_TITLE" = "Warnung";
@@ -3748,7 +3545,7 @@
 "PIN_CREATION_ERROR_TITLE" = "PIN konnte nicht erstellt werden";
 
 /* The explanation in the 'pin creation' view. */
-"PIN_CREATION_EXPLANATION" = "PINs halten deine bei Grapherex gespeicherten Informationen verschlüsselt, sodass nur du auf sie zugreifen kannst. Falls du Grapherex erneut installierst, werden so dein Profil und deine Einstellungen und Kontakte wiederhergestellt. Für das Öffnen der App wirst du deine PIN nicht benötigen.";
+"PIN_CREATION_EXPLANATION" = "PINs halten deine bei Signal gespeicherten Informationen verschlüsselt, sodass nur du auf sie zugreifen kannst. Falls du Signal erneut installierst, werden so dein Profil und deine Einstellungen und Kontakte wiederhergestellt. Für das Öffnen der App wirst du deine PIN nicht benötigen.";
 
 /* Learn more action on the pin creation view */
 "PIN_CREATION_LEARN_MORE" = "Mehr über PINs erfahren";
@@ -3811,7 +3608,7 @@
 "PIN_REMINDER_MEGAPHONE_FEW_DAYS_TOAST" = "Wir erinnern dich in einigen Tagen erneut.";
 
 /* Title for PIN reminder megaphone */
-"PIN_REMINDER_MEGAPHONE_TITLE" = "Überprüfe deine Grapherex-PIN";
+"PIN_REMINDER_MEGAPHONE_TITLE" = "Überprüfe deine Signal-PIN";
 
 /* Toast indicating that we'll ask you for your PIN again tomorrow. */
 "PIN_REMINDER_MEGAPHONE_TOMORROW_TOAST" = "Wir erinnern dich morgen erneut.";
@@ -3826,7 +3623,7 @@
 "PIN_REMINDER_MISMATCH_ERROR" = "Ungültige PIN. Bitte versuche es erneut.";
 
 /* The title for the 'pin reminder' dialog. */
-"PIN_REMINDER_TITLE" = "Bitte Grapherex-PIN eingeben";
+"PIN_REMINDER_TITLE" = "Bitte Signal-PIN eingeben";
 
 /* Label indicating that the attempted PIN is too short */
 "PIN_REMINDER_TOO_SHORT_ERROR" = "PIN muss aus mindestens 4 Ziffern bestehen.";
@@ -3841,7 +3638,7 @@
 "PINS_MEGAPHONE_ACTION" = "PIN erstellen";
 
 /* Body for PIN megaphone when user doesn't have a PIN */
-"PINS_MEGAPHONE_BODY" = "PINs halten deine bei Grapherex gespeicherten Informationen verschlüsselt";
+"PINS_MEGAPHONE_BODY" = "PINs halten deine bei Signal gespeicherten Informationen verschlüsselt";
 
 /* Toast indication that the user will be reminded later to setup their PIN. Embeds {{time until mandatory}} */
 "PINS_MEGAPHONE_SNOOZE_TOAST_FORMAT" = "Wir erinnern dich später. Das Erstellen einer PIN wird in %ld Tagen zwingend erforderlich.";
@@ -3880,19 +3677,19 @@
 "PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "Die Nummer in deiner Zwischenablage scheint nicht die korrekte Sicherheitsnummer für diese Unterhaltung zu sein.";
 
 /* Alert body for user error */
-"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Grapherex konnte in deiner Zwischenablage keine Sicherheitsnummer finden. Hast du sie korrekt kopiert?";
+"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Signal konnte in deiner Zwischenablage keine Sicherheitsnummer finden. Hast du sie korrekt kopiert?";
 
 /* Alert body when verifying with {{contact name}} */
-"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Jedes Paar von Grapherex-Nutzern teilt eine individuelle Sicherheitsnummer. Überprüfe noch einmal, ob %@ wirklich *eure* individuelle Sicherheitsnummer anzeigt.";
+"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Jedes Paar von Signal-Nutzern teilt eine individuelle Sicherheitsnummer. Überprüfe noch einmal, ob %@ wirklich *eure* individuelle Sicherheitsnummer anzeigt.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Du verwendest eine alte Grapherex-Version. Um den Kontakt verifizieren zu können, aktualisiere bitte die Grapherex-App.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Du verwendest eine alte Signal-Version. Um den Kontakt verifizieren zu können, aktualisiere bitte die Signal-App.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Dein Kontakt verwendet eine alte Grapherex-Version. Um den Kontakt verifizieren zu können, muss dieser die Grapherex-App aktualisieren.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Dein Kontakt verwendet eine alte Signal-Version. Um den Kontakt verifizieren zu können, muss dieser die Signal-App aktualisieren.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Der eingescannte Code sieht nicht wie eine Sicherheitsnummer aus. Verwendet ihr beide eine aktuelle Grapherex-Version?";
+"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Der eingescannte Code sieht nicht wie eine Sicherheitsnummer aus. Verwendet ihr beide eine aktuelle Signal-Version?";
 
 /* Paragraph(s) shown alongside the safety number when verifying privacy with {{contact name}} */
 "PRIVACY_VERIFICATION_INSTRUCTIONS" = "Falls du die Sicherheit deiner Ende-zu-Ende-Verschlüsselung mit %@ verifizieren möchtest, vergleiche bitte die oben dargestellten Nummern mit den Nummern auf dem Gerät deines Kontakts.\n\nAlternativ kannst du den Code deines Kontakts einscannen oder ihn deinen eigenen Code einscannen lassen.";
@@ -3942,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ hat den Profilnamen zu %@ geändert.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Zu Profil hinzufügen";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Dein Name";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Über";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Name";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Nutzername";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Profilfoto festlegen";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Über";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Foto entfernen";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Nutzername erstellen";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Dein Nachname ist zu lang.";
@@ -3967,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Dein Vorname ist zu lang.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Optional)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Nachname";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Nachname (optional)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Erforderlich)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Vorname";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Vorname (erforderlich)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Profil kann nur bei verbundenem Internet aktualisiert werden.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Dein Profil ist Ende-zu-Ende-verschlüsselt. Dein Profil und Änderungen daran werden für deine Kontakte sichtbar, sobald du neue Unterhaltungen beginnst oder annimmst, oder wenn du neuen Gruppen beitrittst.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Dein Profil ist Ende-zu-Ende-verschlüsselt. Dein Profil und Änderungen daran sind sichtbar für deine Kontakte, und bei Beginn oder Annahme neuer Unterhaltungen.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Speichern";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profil";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Nutzername";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Als gelesen markieren";
@@ -4004,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Für Push-Mitteilungen erfolgreich erneut registriert.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Push-Mitteilungen";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -4152,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Dein Konto kann nicht aktiviert werden, bevor du den dir gesendeten Code verifizierst.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Überprüfe die Internetverbindung deines Telefons und versuche es dann erneut.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Verbindung überprüfen";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Dieses Rufnummernformat wird nicht unterstützt, bitte kontaktiere den Support.";
 
@@ -4171,16 +3965,28 @@
 "REGISTRATION_VERIFICATION_FAILED_WRONG_PIN" = "Falsche PIN für die Registrierungssperre.";
 
 /* Message of alert indicating that users needs to enter a valid phone number to register. */
-"REGISTRATION_VIEW_INVALID_PHONE_NUMBER_ALERT_MESSAGE" = "Bitte gib eine gültige Rufnummer ein, um Grapherex zu registrieren.";
+"REGISTRATION_VIEW_INVALID_PHONE_NUMBER_ALERT_MESSAGE" = "Bitte gib eine gültige Rufnummer ein, um Signal zu registrieren.";
 
 /* Title of alert indicating that users needs to enter a valid phone number to register. */
 "REGISTRATION_VIEW_INVALID_PHONE_NUMBER_ALERT_TITLE" = "Ungültige Rufnummer";
 
 /* Message of alert indicating that users needs to enter a phone number to register. */
-"REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_MESSAGE" = "Bitte gib eine Rufnummer ein, um Grapherex zu registrieren.";
+"REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_MESSAGE" = "Bitte gib eine Rufnummer ein, um Signal zu registrieren.";
 
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Keine Rufnummer";
+
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Ein Verifikationscode wird an diese Rufnummer gesendet. Ist deine obige Rufnummer korrekt?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Bestätigung für Rufnummer: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Bearbeiten";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "%@ wird verifiziert …";
 
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Ablehnen";
@@ -4195,25 +4001,25 @@
 "REREGISTER_FOR_PUSH" = "Push-Registrierung erneuern";
 
 /* Body for research megaphone */
-"RESEARCH_MEGAPHONE_BODY" = "Damit Grapherex die beste Messaging-App der Welt wird, möchten wir gerne deine Meinung hören.";
+"RESEARCH_MEGAPHONE_BODY" = "Damit Signal die beste Messaging-App der Welt wird, möchten wir gerne deine Meinung hören.";
 
 /* Title for research megaphone */
-"RESEARCH_MEGAPHONE_TITLE" = "Sag Grapherex, was du denkst";
+"RESEARCH_MEGAPHONE_TITLE" = "Sag Signal, was du denkst";
 
 /* Text for the research modal footer */
-"RESEARCH_MODAL_FOOTER" = "Diese Umfrage wird bei »Surveygizmo« auf der sicheren Domain »surveys.grapherexusers.com« gehostet.";
+"RESEARCH_MODAL_FOOTER" = "Diese Umfrage wird bei »Surveygizmo« auf der sicheren Domain »surveys.signalusers.org« gehostet.";
 
 /* Button text for declining the research modal */
 "RESEARCH_MODAL_NO_THANKS" = "Nein danke";
 
 /* Text explaining why the user should take the survey */
-"RESEARCH_MODAL_PLEA" = "<bold>Wir glauben an Datenschutz.</bold>\n\nGrapherex verfolgt dich nicht und sammelt auch nicht deine Daten. Um Grapherex für alle zu verbessern, stützen wir uns auf Rückmeldungen der Nutzer, <bold>und wir wären sehr an deinen interessiert</bold>.\n\nZum besseren Verständnis darüber, wie du Grapherex nutzt, führen wir eine Umfrage durch. Unsere Umfrage sammelt keinerlei Daten, die Rückschlüsse auf deine Identität erlauben. Falls du weiteres Feedback geben möchtest,  kannst du optional deine Kontaktinformationen hinterlassen.\n\nWenn du einige Minuten erübrigen kannst, würden wir sehr gerne von dir hören.";
+"RESEARCH_MODAL_PLEA" = "<bold>Wir glauben an Datenschutz.</bold>\n\nSignal verfolgt dich nicht und sammelt auch nicht deine Daten. Um Signal für alle zu verbessern, stützen wir uns auf Rückmeldungen der Nutzer, <bold>und wir wären sehr an deinen interessiert</bold>.\n\nZum besseren Verständnis darüber, wie du Signal nutzt, führen wir eine Umfrage durch. Unsere Umfrage sammelt keinerlei Daten, die Rückschlüsse auf deine Identität erlauben. Falls du weiteres Feedback geben möchtest,  kannst du optional deine Kontaktinformationen hinterlassen.\n\nWenn du einige Minuten erübrigen kannst, würden wir sehr gerne von dir hören.";
 
 /* Button text for taking the research survey */
 "RESEARCH_MODAL_TAKE_SURVEY" = "An Umfrage teilnehmen";
 
 /* Title for the research megaphone modal */
-"RESEARCH_MODAL_TITLE" = "Grapherex-Forschung";
+"RESEARCH_MODAL_TITLE" = "Signal-Forschung";
 
 /* Generic text for button that retries whatever the last action was. */
 "RETRY_BUTTON_TEXT" = "Erneut versuchen";
@@ -4231,7 +4037,7 @@
 "SAFETY_NUMBER_CHANGED_CONFIRM_SEND_ACTION" = "Trotzdem senden";
 
 /* Message for the 'safety number confirmation' view */
-"SAFETY_NUMBER_CONFIRMATION_MESSAGE" = "Die folgenden Personen haben Grapherex vielleicht erneut installiert oder das Gerät gewechselt. Verifiziert eure gemeinsame Sicherheitsnummer zur Sicherstellung der Privatsphäre.";
+"SAFETY_NUMBER_CONFIRMATION_MESSAGE" = "Die folgenden Personen haben Signal vielleicht erneut installiert oder das Gerät gewechselt. Verifiziert eure gemeinsame Sicherheitsnummer zur Sicherstellung der Privatsphäre.";
 
 /* Text explaining that the given contact previously had their safety number verified. */
 "SAFETY_NUMBER_CONFIRMATION_PREVIOUSLY_VERIFIED" = "Zuvor verifiziert";
@@ -4243,7 +4049,7 @@
 "SAFETY_NUMBER_CONFIRMATION_VIEW_ACTION" = "Anzeigen";
 
 /* Snippet to share {{safety number}} with a friend. sent e.g. via SMS */
-"SAFETY_NUMBER_SHARE_FORMAT" = "Unsere Grapherex-Sicherheitsnummer:\n%@";
+"SAFETY_NUMBER_SHARE_FORMAT" = "Unsere Signal-Sicherheitsnummer:\n%@";
 
 /* Action sheet heading */
 "SAFETY_NUMBERS_ACTIONSHEET_TITLE" = "Deine Sicherheitsnummer mit %@ hat sich geändert. Möglicherweise möchtest du sie verifizieren.";
@@ -4275,14 +4081,14 @@
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Du musst einen Passcode in deinen iOS-Einstellungen festlegen, um die Bildschirmsperre zu verwenden.";
 
-/* Description of how and why Grapherex iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
-"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Authentifizieren, um Grapherex zu öffnen.";
+/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
+"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Authentifizieren, um Signal zu öffnen.";
 
 /* Title for alert indicating that screen lock could not be unlocked. */
 "SCREEN_LOCK_UNLOCK_FAILED" = "Authentifizierung gescheitert";
 
-/* Label for button on lock screen that lets users unlock Grapherex. */
-"SCREEN_LOCK_UNLOCK_SIGNAL" = "Grapherex entsperren";
+/* Label for button on lock screen that lets users unlock Signal. */
+"SCREEN_LOCK_UNLOCK_SIGNAL" = "Signal entsperren";
 
 /* This is a contact's name. Replace the name for a more common name in your locale if this sounds too foreign. This should be a unique non-public figure's name. This will have a female profile photo. */
 "SCREENSHOT_NAME_CONTACT_EIGHT" = "Delia Jahn";
@@ -4332,7 +4138,7 @@
 /* This is for a group chat for people who want weather updates. */
 "SCREENSHOT_NAME_GROUP_TWO" = "Wettervorhersagen";
 
-/* This appears in Grapherex > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
+/* This appears in Signal > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
 "SCREENSHOT_NAME_LOCAL_PROFILE" = "Vorsitzende Freya";
 
 /* This is a message expressing support/happiness/awe/shock. */
@@ -4441,13 +4247,13 @@
 "SECONDARY_DEVICE_ERROR_FETCHING_LINKING_CODE" = "Kopplungscode kann nicht abgerufen werden";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Aktualisiere Grapherex auf diesem Gerät, um es mit deinem Mobiltelefon zu koppeln.";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Aktualisiere Signal auf diesem Gerät, um es mit deinem Mobiltelefon zu koppeln.";
 
 /* Title for error alert indicating that a linked device must be upgraded before it can be linked. */
 "SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Nicht unterstützte Version";
 
 /* alert message for outdated linking device */
-"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Auf deinem anderen Gerät läuft eine veraltete Grapherex-Version, die das Scannen von iPad-QR-Codes nicht unterstützt. Bitte installiere dort die neueste Version und versuche es erneut.";
+"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Auf deinem anderen Gerät läuft eine veraltete Signal-Version, die das Scannen von iPad-QR-Codes nicht unterstützt. Bitte installiere dort die neueste Version und versuche es erneut.";
 
 /* alert title for outdated linking device */
 "SECONDARY_LINKING_ERROR_OLD_VERSION_TITLE" = "Scannendes Gerät aktualisieren";
@@ -4468,19 +4274,19 @@
 "SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS" = "Koppeln abgeschlossen";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Starte Grapherex auf deinem Mobiltelefon, um dieses iPad mit deinem Konto zu koppeln.";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Starte Signal auf deinem Mobiltelefon, um dieses iPad mit deinem Konto zu koppeln.";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
-"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Ich habe Grapherex nicht auf meinem Telefon …";
+"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Ich habe Signal nicht auf meinem Telefon …";
 
 /* alert body */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Geh in den App Store deines Mobiltelefons, installiere Grapherex und schließe die Registrierung ab. Danach kannst du dein iPad mit demselben Konto koppeln.";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Geh in den App Store deines Mobiltelefons, installiere Signal und schließe die Registrierung ab. Danach kannst du dein iPad mit demselben Konto koppeln.";
 
 /* alert title */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Installiere Grapherex auf deinem Telefon";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Installiere Signal auf deinem Telefon";
 
 /* body text while displaying a QR code which, when scanned, will link this device. */
-"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Tippe auf deinem Mobiltelefon auf dein Profilbild, um dort Grapherexs Einstellungen zu öffnen. Tippe dann auf »Gekoppelte Geräte« und »Neues Gerät koppeln«, um diesen Code mit deinem Mobiltelefon zu scannen:";
+"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Tippe auf deinem Mobiltelefon auf dein Profilbild, um dort Signals Einstellungen zu öffnen. Tippe dann auf »Gekoppelte Geräte« und »Neues Gerät koppeln«, um diesen Code mit deinem Mobiltelefon zu scannen:";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
 "SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Hilfe zum Koppeln deines iPads";
@@ -4489,7 +4295,7 @@
 "SECONDARY_ONBOARDING_SCAN_CODE_TITLE" = "Scanne den QR-Code mit deinem Telefon";
 
 /* header text before the user can transfer to this device */
-"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Starte Grapherex auf deinem alten iPad, um dein Konto zu übertragen";
+"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Starte Signal auf deinem alten iPad, um dein Konto zu übertragen";
 
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "Sichere Sitzung neu gestartet.";
@@ -4513,7 +4319,7 @@
 "SEND_INVITE_FAILURE" = "Einladung konnte nicht versendet werden. Bitte versuche es später erneut.";
 
 /* Alert body after invite succeeded */
-"SEND_INVITE_SUCCESS" = "Du hast deinen Freund eingeladen, Grapherex zu verwenden!";
+"SEND_INVITE_SUCCESS" = "Du hast deinen Freund eingeladen, Signal zu verwenden!";
 
 /* alert action, confirming the user wants to exit the media flow and abandon any photos they've taken */
 "SEND_MEDIA_CONFIRM_ABANDON_ALBUM" = "Medieninhalte verwerfen";
@@ -4528,10 +4334,10 @@
 "SEND_SMS_CONFIRM_TITLE" = "Einen Freund per ungesicherter SMS einladen?";
 
 /* No comment provided by engineer. */
-"SEND_SMS_INVITE_TITLE" = "Möchtest du folgende Rufnummer zu Grapherex einladen:";
+"SEND_SMS_INVITE_TITLE" = "Möchtest du folgende Rufnummer zu Signal einladen:";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "Grapherex verwendet Ende-zu-Ende-Verschlüsselung und muss gelegentlich deine Unterhaltungssitzung aktualisieren. Dies beeinflusst nicht die Sicherheit deiner Unterhaltungen, aber es besteht die Möglichkeit, dass du eine Nachricht von diesem Kontakt verpasst hast. Du kannst ihn bitten, die Nachricht erneut zu senden.";
+"SESSION_REFRESH_ALERT_MESSAGE" = "Signal verwendet Ende-zu-Ende-Verschlüsselung und muss gelegentlich deine Unterhaltungssitzung aktualisieren. Dies beeinflusst nicht die Sicherheit deiner Unterhaltungen, aber es besteht die Möglichkeit, dass du eine Nachricht von diesem Kontakt verpasst hast. Du kannst ihn bitten, die Nachricht erneut zu senden.";
 
 /* Title for the session refresh alert */
 "SESSION_REFRESH_ALERT_TITLE" = "Unterhaltungssitzung aktualisiert";
@@ -4545,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Hintergrund festlegen";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "Über";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Konto";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Blockieren";
@@ -4554,11 +4360,11 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Zensurumgehung";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Ort: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Standort";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Bei Aktivierung wird Grapherex versuchen, Zensurmaßnahmen zu umgehen. Aktiviere diese Funktion nur dann, wenn du dich an einem Ort befindest, an dem Grapherex zensiert wird.";
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Bei Aktivierung wird Signal versuchen, Zensurmaßnahmen zu umgehen. Aktiviere diese Funktion nur dann, wenn du dich an einem Ort befindest, an dem Signal zensiert wird.";
 
 /* Table footer for the 'censorship circumvention' section shown when censorship circumvention has been auto-enabled based on local phone number. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_AUTO_ENABLED" = "Die Zensurumgehung wurde aufgrund der Rufnummer deines Nutzerkontos aktiviert.";
@@ -4569,11 +4375,8 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "Die Zensurumgehung kann nur bei bestehender Internetverbindung aktiviert werden.";
 
-/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Grapherex service. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Die Zensurumgehung ist nicht notwendig, da bereits eine Verbindung mit dem Grapherex-Dienst besteht.";
-
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Zensurumgehung";
+/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Die Zensurumgehung ist nicht notwendig, da bereits eine Verbindung mit dem Signal-Dienst besteht.";
 
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Diagnoseprotokoll aktivieren";
@@ -4590,20 +4393,14 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "PIN aktivieren";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "Grapherex-PIN";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Diagnoseprotokoll übermitteln";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Erweitert";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Diagnoseprotokolle";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Kontaktfotos des Systems anzeigen, falls verfügbar";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Kontaktfotos des Systems anzeigen, falls verfügbar.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
 "SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "System-Kontaktfotos verwenden";
@@ -4668,11 +4465,8 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Blockierten Nutzer hinzufügen";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Liste von blockierten Kontakten und Gruppen.";
-
-/* A label that indicates the user has no Grapherex contacts. */
-"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Du hast bei Grapherex keine Kontakte.";
+/* A label that indicates the user has no Signal contacts. */
+"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Du hast bei Signal keine Kontakte.";
 
 /* A label that indicates the user's search has no matching results. */
 "SETTINGS_BLOCK_LIST_NO_SEARCH_RESULTS" = "Nichts gefunden";
@@ -4684,13 +4478,16 @@
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE" = "Anrufe immer indirekt";
 
 /* User settings section footer, a detailed explanation */
-"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Alle Anrufe über den Grapherex-Server leiten, um die eigene IP-Adresse gegenüber Kontakten nicht offenzulegen. Dies verringert die Anrufqualität.";
+"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Alle Anrufe über den Signal-Server leiten, um die eigene IP-Adresse gegenüber Kontakten nicht offenzulegen. Dies verringert die Anrufqualität.";
+
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Unterhaltungen";
 
 /* No comment provided by engineer. */
-"SETTINGS_CLEAR_HISTORY" = "Unterhaltungsverlauf löschen";
+"SETTINGS_CLEAR_HISTORY" = "Unterhaltungsverlauf leeren";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Urheberrecht Grapherex Messenger \nLizensiert unter GPLv3";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Urheberrecht Signal Messenger\nLizensiert unter GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Datennutzung";
@@ -4699,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Datenverbrauch reduzieren";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Das Reduzieren des Datenverbrauchs kann Anrufe bei schlechtem Netz verbessern";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Das Reduzieren des Datenverbrauchs kann Anrufe bei schlechtem Netz verbessern.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Anrufe";
@@ -4708,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Sprachnachrichten, einmalig anzeigbare Medien und Sticker (kleiner als 100 kB) werden immer automatisch heruntergeladen.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "AUTOM. HERUNTERLADEN VON MEDIEN";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Autom. Herunterladen";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Einstellungen für autom. Herunterladen zurücksetzen";
@@ -4728,23 +4525,17 @@
 /* Confirmation text for button which deletes all message, calling, attachments, etc. */
 "SETTINGS_DELETE_HISTORYLOG_CONFIRMATION_BUTTON" = "Alles löschen";
 
-/* Title for the 'donate to Grapherex' link in settings. */
-"SETTINGS_DONATE" = "An Grapherex spenden";
+/* Title for the 'donate to signal' link in settings. */
+"SETTINGS_DONATE" = "An Signal spenden";
 
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Hilfe";
-
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Unterhaltungsverlauf löschen";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Informationen";
 
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Freunde einladen";
 
 /* content of tweet when inviting via twitter - please do not translate URL */
-"SETTINGS_INVITE_TWITTER_TEXT" = "Du kannst mich über @grapherexapp erreichen. Hol dir jetzt die kostenlose App: https://grapherex.com";
+"SETTINGS_INVITE_TWITTER_TEXT" = "Du kannst mich über @signalapp erreichen. Hol dir jetzt die kostenlose App: https://signal.org/download/";
 
 /* Label for settings view that allows user to change the notification sound. */
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "Nachrichtenton";
@@ -4752,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Hintergrund";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Bedingungen & Datenschutzerklärung";
 
 /* Setting for enabling & disabling link previews. */
@@ -4785,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Nachrichtenübermittlung";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "Sehe und teile, wann Nachrichten gelesen und eingetippt werden. Falls deaktiviert, wirst du von anderen keine Lesebestätigungen oder Tipp-Indikatoren sehen.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Einstellungen";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Stummgeschaltete Unterhaltungen zählen";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Stummgeschaltete einschließen";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Zähler für ungelesene Nachrichten";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Anruf‑ und Nachrichtenmitteilungen können auch bei gesperrtem Telefon erscheinen. Vielleicht möchtest du begrenzen, was in diesen Mitteilungen dann angezeigt wird.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Anruf‑ und Nachrichtenmitteilungen können auch bei gesperrtem Telefon erscheinen.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Mitteilungsinhalt";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Neue Grapherex-Kontakte";
+/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Neuer Signal-Kontakt";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Ereignisse";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Benachrichtigen, wenn …";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Mitteilungen";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4825,19 +4619,16 @@
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_ACTION" = "Erinnerungen ausschalten";
 
 /* The explanation for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Sorge dafür, dass du dir deine PIN einprägst oder sicher verwahrst, da sie nicht wiederhergestellt werden kann. Falls du deine PIN vergisst, könntest du bei erneutem Registrieren deines Grapherex-Kontos deine Daten verlieren.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Sorge dafür, dass du dir deine PIN einprägst oder sicher verwahrst, da sie nicht wiederhergestellt werden kann. Falls du deine PIN vergisst, könntest du bei erneutem Registrieren deines Signal-Kontos deine Daten verlieren.";
 
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Bestätige deine Grapherex-PIN";
-
-/* Footer for the 'pin reminder' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Erinnerungen helfen dir dabei, dir deine PIN zu merken, da diese nicht wiederhergestellt werden kann. Sie wird mit der Zeit seltener abgefragt.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Bestätige deine Signal-PIN";
 
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN-Erinnerungen";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PINs halten deine bei Grapherex gespeicherten Informationen verschlüsselt, sodass nur du auf sie zugreifen kannst. Falls du Grapherex erneut installierst, werden so dein Profil und deine Einstellungen und Kontakte wiederhergestellt.";
+"SETTINGS_PINS_FOOTER" = "PINs halten deine bei Signal gespeicherten Informationen verschlüsselt, sodass nur du auf sie zugreifen kannst. Deine PIN kann nicht wiederhergestellt werden. Falls du Signal erneut installierst, werden dein Profil und deine Einstellungen und Kontakte wiederhergestellt.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "PIN ändern";
@@ -4846,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "PIN erstellen";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "Grapherex-PIN";
+"SETTINGS_PINS_TITLE" = "Signal-PIN";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Anrufe in der Anrufliste der Telefon-App von iOS anzeigen.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Einstellungen für Zensurumgehung, indirekte Anrufe und vertraulicher Absender.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Weitere Einstellungen";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Anrufe in Anrufliste anzeigen";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Datenschutz";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Lesebestätigungen";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Sehe und teile, wann Nachrichten gelesen wurden. Diese Einstellung ist optional und betrifft alle Unterhaltungen.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Ausschalten";
@@ -4873,7 +4664,7 @@
 "SETTINGS_REGISTRATION_LOCK_TURN_ON" = "Einschalten";
 
 /* Body for the alert confirming that the user wants to turn on registration lock. */
-"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Falls du beim erneuten Registrieren von Grapherex deine Grapherex-PIN vergisst, wird dein Konto für 7 Tage gesperrt.";
+"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Falls du beim erneuten Registrieren von Signal deine Signal-PIN vergisst, wird dein Konto für 7 Tage gesperrt.";
 
 /* Title for the alert confirming that the user wants to turn on registration lock. */
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_TITLE" = "Registrierungssperre einschalten?";
@@ -4887,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Autom. Sperre bei Inaktivität";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Grapherexs Bildschirm entsperren via Touch ID, Face ID oder deinem iOS-Gerätepasscode. Bei aktivierter Bildschirmsperre ist es immer noch möglich, eingehende Anrufe anzunehmen und Anruf‑ bzw. Nachrichtenmitteilungen zu erhalten. Die angezeigten Informationen können in Grapherexs Mitteilungseinstellungen angepasst werden.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Bildschirmsperre";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Bildschirmsperre";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Bildschirmschutz aktivieren";
+"SETTINGS_SCREEN_SECURITY" = "Bildschirm im App-Umschalter verstecken";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Erscheinen von Grapherex-Vorschauen im App-Umschalter verhindern.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Anruf in der Anrufliste der iOS-Telefon-App anzeigen.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Töne";
@@ -4908,35 +4693,41 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Anrufe";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Verwende Touch-ID, Face-ID oder den Passcode deines iOS-Geräts, um Signal zu entsperren.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Face-ID zum Entsperren von Signal verwenden.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Gerätepasscode zum Entsperren von Signal verwenden.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Touch-ID zum Entsperren von Signal verwenden.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Bildschirmschutz";
+"SETTINGS_SECURITY_TITLE" = "App-Sicherheit";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "In Vorschlägen anzeigen";
+"SETTINGS_SHARING_SUGGESTIONS" = "Unterhaltungen in Vorschlägen anzeigen";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Beim Teilen durch andere Apps werden Grapherex-Unterhaltungen als Vorschläge angezeigt.";
+"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Beim Teilen durch andere Apps werden Signal-Unterhaltungen als Vorschläge angezeigt.";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Registrierungssperre";
 
-/* Footer for the 'two factor auth' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Schalte als zusätzliche Sicherheitsmaßnahme die Registrierungssperre ein. Damit wird deine Grapherex-PIN erforderlich, sobald du deine Telefonnummer erneut bei Grapherex registrierst.";
+/* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Signal-PIN erforderlich machen, sobald du deine Rufnummer erneut bei Signal registrierst.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Tipp-Indikatoren";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Sehe und teile, wann Nachrichten eingetippt werden. Diese Einstellung ist optional und betrifft alle Unterhaltungen.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Vertraulicher Absender";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Indikatoren anzeigen";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Anzeigen eines Statussymbols unter »Mehr Details« von Nachrichten, die mittels »Vertraulicher Absender« zugestellt wurden.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Statussymbol anzeigen";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Von jedem erlauben";
@@ -4966,13 +4757,13 @@
 "SHARE_EXTENSION_LOADING" = "Wird geladen …";
 
 /* Message indicating that the share extension cannot be used until the user has registered in the main app. */
-"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Starte zum Registrieren die Grapherex-App.";
+"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Starte zum Registrieren die Signal-App.";
 
 /* Title indicating that the share extension cannot be used until the user has registered in the main app. */
 "SHARE_EXTENSION_NOT_REGISTERED_TITLE" = "Nicht registriert";
 
 /* Message indicating that the share extension cannot be used until the main app has been launched at least once. */
-"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Zum Aktualisieren oder Registrieren bitte die Grapherex-App starten.";
+"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Zum Aktualisieren oder Registrieren bitte die Signal-App starten.";
 
 /* Title indicating that the share extension cannot be used until the main app has been launched at least once. */
 "SHARE_EXTENSION_NOT_YET_MIGRATED_TITLE" = "Nicht bereit";
@@ -4986,17 +4777,17 @@
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "Wird hochgeladen …";
 
-/* Shown when trying to share content to a Grapherex user for the share extension. Followed by failure details. */
+/* Shown when trying to share content to a Signal user for the share extension. Followed by failure details. */
 "SHARE_EXTENSION_UNABLE_TO_BUILD_ATTACHMENT_ALERT_TITLE" = "Anhang kann nicht vorbereitet werden";
 
 /* Title for the 'share extension' view. */
-"SHARE_EXTENSION_VIEW_TITLE" = "Mit Grapherex teilen";
+"SHARE_EXTENSION_VIEW_TITLE" = "Mit Signal teilen";
 
 /* Title of alert indicating sharing suggestions failed to deactivate */
 "SHARING_SUGGESTIONS_DISABLE_ERROR" = "Vorschläge für das Teilen konnten nicht deaktiviert werden.";
 
 /* Body for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Grapherex-Unterhaltungen können nun beim Teilen durch andere Apps als Vorschläge angezeigt werden.";
+"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Signal-Unterhaltungen können nun beim Teilen durch andere Apps als Vorschläge angezeigt werden.";
 
 /* Title for sharing suggestions megaphone */
 "SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Teilen einfacher gemacht";
@@ -5013,8 +4804,8 @@
 /* notification action */
 "SHOW_THREAD_BUTTON_TITLE" = "Unterhaltung anzeigen";
 
-/* body sent to contacts when inviting to Install Grapherex */
-"SMS_INVITE_BODY" = "Ich möchte dich einladen, »Grapherex« zu installieren! Hier ist der Link:";
+/* body sent to contacts when inviting to Install Signal */
+"SMS_INVITE_BODY" = "Ich möchte dich einladen, »Signal« zu installieren! Hier ist der Link:";
 
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "Keiner";
@@ -5041,7 +4832,7 @@
 "STICKERS_INSTALL_BUTTON" = "Installieren";
 
 /* Title for the 'available built-in stickers' section of the 'manage stickers' view. */
-"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Grapherex-Artist-Serie";
+"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Signal-Artist-Serie";
 
 /* Title for the 'available known stickers' section of the 'manage stickers' view. */
 "STICKERS_MANAGE_VIEW_AVAILABLE_KNOWN_PACKS_SECTION_TITLE" = "Empfangene Sticker";
@@ -5092,7 +4883,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Beschreib das Problem:";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Bitte sende deine Supportanfrage per E-Mail an support@grapherex.com";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Bitte sende deine Supportanfrage per E-Mail an support@signal.org";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Filter: %@";
@@ -5115,16 +4906,16 @@
 /* Localized label for support request email debug log URL. Embeds {{debug log url}}. */
 "SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "Diagnoseprotokoll-URL: %@";
 
-/* Localized label for support request email Grapherex version string. Embeds {{Grapherex version}}. */
-"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Grapherex-Version: %@";
+/* Localized label for support request email signal version string. Embeds {{signal version}}. */
+"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Signal-Version: %@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Supportanfrage Grapherex iOS";
+"SUPPORT_EMAIL_SUBJECT" = "Supportanfrage Signal iOS";
 
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "Wie fühlst du dich? (optional)";
 
-/* Label in support request informing user about Grapherex FAQ */
+/* Label in support request informing user about Signal FAQ */
 "SUPPORT_FAQ_PROMPT" = "Hast du bereits die FAQ gelesen?";
 
 /* Label describing support switch to attach debug logs */
@@ -5233,25 +5024,25 @@
 "UNKNOWN_COUNTRY_NAME" = "Unbekanntes Land";
 
 /* Info message recorded in conversation history when local user receives an unknown message from a linked device and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Eines deiner Geräte hat eine Nachricht gesendet, die nicht verarbeitet oder hier angezeigt werden kann, da sie ein neues Grapherex-Feature nutzt.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Eines deiner Geräte hat eine Nachricht gesendet, die nicht verarbeitet oder hier angezeigt werden kann, da sie ein neues Signal-Feature nutzt.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ hat dir eine Nachricht gesendet, die nicht verarbeitet oder angezeigt werden kann, da sie ein neues Grapherex-Feature nutzt.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ hat dir eine Nachricht gesendet, die nicht verarbeitet oder angezeigt werden kann, da sie ein neues Signal-Feature nutzt.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Du hast eine Nachricht erhalten, die nicht verarbeitet oder angezeigt werden kann, da sie ein neues Grapherex-Feature nutzt.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Du hast eine Nachricht erhalten, die nicht verarbeitet oder angezeigt werden kann, da sie ein neues Signal-Feature nutzt.";
 
 /* Label for button that lets users upgrade the app. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Grapherex jetzt aktualisieren";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Signal jetzt aktualisieren";
 
 /* Info message recorded in conversation history when local user has received an unknown unknown message from a linked device and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Auf die neueste Grapherex-Version aktualisiert. Du kannst diese Nachrichtenart nun auf deinem Gerät empfangen.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Auf die neueste Signal-Version aktualisiert. Du kannst diese Nachrichtenart nun auf deinem Gerät empfangen.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Da du nun eine aktuelle Grapherex-Version verwendest, kannst du %@ bitten, diese Nachricht erneut zu senden.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Da du nun eine aktuelle Signal-Version verwendest, kannst du %@ bitten, diese Nachricht erneut zu senden.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Da du nun eine aktuelle Grapherex-Version verwendest, kannst du den Absender bitten, diese Nachricht erneut zu senden.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Da du nun eine aktuelle Signal-Version verwendest, kannst du den Absender bitten, diese Nachricht erneut zu senden.";
 
 /* Label indicating an unknown user. */
 "UNKNOWN_USER" = "Unbekannt";
@@ -5275,10 +5066,10 @@
 "UNLINK_CONFIRMATION_ALERT_TITLE" = "»%@« entkoppeln?";
 
 /* Label warning the user that they have been unlinked from their primary device. */
-"UNLINKED_WARNING" = "Gerät ist nicht mehr gekoppelt. Kopple Grapherex erneut mit deinem Telefon, um weiter zu kommunizieren.";
+"UNLINKED_WARNING" = "Gerät ist nicht mehr gekoppelt. Kopple Signal erneut mit deinem Telefon, um weiter zu kommunizieren.";
 
 /* Alert title when unlinking device fails */
-"UNLINKING_FAILED_ALERT_TITLE" = "Grapherex konnte dein Gerät nicht entkoppeln.";
+"UNLINKING_FAILED_ALERT_TITLE" = "Signal konnte dein Gerät nicht entkoppeln.";
 
 /* Label text in device manager for a device with no name */
 "UNNAMED_DEVICE" = "Unbenanntes Gerät";
@@ -5293,7 +5084,7 @@
 "UNREAD_ACTION" = "Ungelesen";
 
 /* No comment provided by engineer. */
-"UNREGISTER_SIGNAL_FAIL" = "Grapherex konnte nicht deregistriert werden.";
+"UNREGISTER_SIGNAL_FAIL" = "Signal konnte nicht deregistriert werden.";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Nicht unterstützten Anhangstyp erhalten.";
@@ -5317,7 +5108,7 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_LEARN_MORE" = "Mehr über PINs erfahren";
 
 /* Body text for PINs splash screen */
-"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PINs halten deine bei Grapherex gespeicherten Informationen verschlüsselt, sodass nur du auf sie zugreifen kannst. Falls du Grapherex erneut installierst, werden so dein Profil und deine Einstellungen und Kontakte wiederhergestellt. Für das Öffnen der App wirst du deine PIN nicht benötigen.";
+"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PINs halten deine bei Signal gespeicherten Informationen verschlüsselt, sodass nur du auf sie zugreifen kannst. Falls du Signal erneut installierst, werden so dein Profil und deine Einstellungen und Kontakte wiederhergestellt. Für das Öffnen der App wirst du deine PIN nicht benötigen.";
 
 /* Header for PINs splash screen */
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_TITLE" = "Neu: PINs";
@@ -5326,16 +5117,13 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SKIP" = "PIN deaktivieren";
 
 /* Message for the alert indicating that user should upgrade iOS. */
-"UPGRADE_IOS_ALERT_MESSAGE" = "Grapherex wird bald iOS 11 oder neuer voraussetzen. Bitte aktualisieren über die iOS-Einstellungen: Einstellungen >> Allgemein >> Softwareaktualisierung.";
+"UPGRADE_IOS_ALERT_MESSAGE" = "Signal wird bald iOS 11 oder neuer voraussetzen. Bitte aktualisieren über die iOS-Einstellungen: Einstellungen >> Allgemein >> Softwareaktualisierung.";
 
 /* Title for the alert indicating that user should upgrade iOS. */
 "UPGRADE_IOS_ALERT_TITLE" = "iOS aktualisieren";
 
 /* An explanation of how usernames work on the username view. */
-"USERNAME_DESCRIPTION" = "Nutzernamen sind bei Grapherex optional. Falls du dich dafür entscheidest, einen Nutzernamen zu erstellen, werden andere Nutzer dich über diesen finden und kontaktieren können, ohne deine Rufnummer zu kennen.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Nutzername";
+"USERNAME_DESCRIPTION" = "Nutzernamen sind bei Signal optional. Falls du dich dafür entscheidest, einen Nutzernamen zu erstellen, werden andere Nutzer dich über diesen finden und kontaktieren können, ohne deine Rufnummer zu kennen.";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Nutzernamen dürfen nur a-z, 0-9 und »_« enthalten";
@@ -5343,10 +5131,10 @@
 /* A message indicating that username lookup failed. */
 "USERNAME_LOOKUP_ERROR" = "Während der Suche nach dem Nutzernamen ist ein Fehler aufgetreten. Bitte versuche es später erneut.";
 
-/* A message indicating that the given username is not a registered Grapherex account. Embeds {{username}} */
-"USERNAME_NOT_FOUND_FORMAT" = "%@ ist kein Grapherex-Nutzer. Achte darauf, dass du den vollständigen Nutzernamen eingegeben hast.";
+/* A message indicating that the given username is not a registered signal account. Embeds {{username}} */
+"USERNAME_NOT_FOUND_FORMAT" = "%@ ist kein Signal-Nutzer. Achte darauf, dass du den vollständigen Nutzernamen eingegeben hast.";
 
-/* A message indicating that the given username was not registered with Grapherex. */
+/* A message indicating that the given username was not registered with signal. */
 "USERNAME_NOT_FOUND_TITLE" = "Nutzer nicht gefunden";
 
 /* The placeholder for the username text entry in the username view. */
@@ -5422,7 +5210,7 @@
 "VOICE_MESSAGE_TOO_SHORT_ALERT_TITLE" = "Sprachnachricht";
 
 /* Activity indicator title, shown upon returning to the device manager, until you complete the provisioning process on desktop */
-"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Schließe die Einrichtung von Grapherex Desktop ab.";
+"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Schließe die Einrichtung von Signal Desktop ab.";
 
 /* Placeholder text for header of the wallpaper mini preview */
 "WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Kontaktname";

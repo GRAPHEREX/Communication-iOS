@@ -68,7 +68,7 @@ public class CVComponentBodyMedia: CVComponentBase, CVComponent {
         let albumView = componentView.albumView
         albumView.configure(mediaCache: self.mediaCache,
                             items: self.items,
-                            isOutgoing: self.isOutgoing,
+                            interaction: self.interaction,
                             isBorderless: self.isBorderless,
                             cellMeasurement: cellMeasurement,
                             conversationStyle: conversationStyle)
@@ -128,10 +128,6 @@ public class CVComponentBodyMedia: CVComponentBase, CVComponent {
             firstMediaView.addSubview(innerShadowView)
             componentView.layoutConstraints.append(contentsOf: innerShadowView.autoPinEdgesToSuperviewEdges())
         }
-
-        let accessibilityDescription = NSLocalizedString("ACCESSIBILITY_LABEL_MEDIA",
-                                                         comment: "Accessibility label for media.")
-        albumView.accessibilityLabel = accessibilityLabel(description: accessibilityDescription)
 
         if hasDownloadButton {
             let iconView = UIImageView.withTemplateImageName("arrow-down-24",
@@ -428,5 +424,16 @@ extension CVComponentBodyMedia.CVComponentViewBodyMediaRootView: BodyMediaPresen
             result.append(bodyMediaGradientView)
         }
         return result
+    }
+}
+
+// MARK: -
+
+extension CVComponentBodyMedia: CVAccessibilityComponent {
+    public var accessibilityDescription: String {
+        // TODO: We could describe how many media
+        // and their type (video, image, animated image).
+        NSLocalizedString("ACCESSIBILITY_LABEL_MEDIA",
+                          comment: "Accessibility label for media.")
     }
 }

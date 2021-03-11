@@ -1,250 +1,8 @@
-//////////////////////////////////////////// SkyTech ///////////////////////////////////////////
-
-"PRIVACY_VERIFICATION_BUTTON" = "Verification";
-
-"PROFILE_VIEW_EDIT_BUTTON" = "Edit";
-
-/* Default description for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DESCRIPTION_TEXT" = "Please enter your Display name,\nit will show for others users";
-
-/* Title for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_TITLE" = "Delete Contact?";
-
-/* Message for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_MESSAGE" = "This contact will be deleted from this device.";
-
-/* action sheet body */
-"REGISTER_RATE_BODY" = "Please wait half a minute before trying again.";
-
-/* No comment provided by engineer. */
-"SETTINGS_SUPPORT" = "Support";
-
-/* No comment provided by engineer. */
-"SETTINGS_SECURITY" = "Security";
-
-/* No comment provided by engineer. */
-"SETTINGS_FAQ" = "F.A.Q";
-
-"MAIN_ALL" = "All";
-"MAIN_OR" = "or";
-"MAIN_USER_KEY" = "User key";
-"MAIN_ADD" = "Add";
-"MAIN_BACK" = "Back";
-"MAIN_MOBILE" = "Phone";
-"MAIN_USER_ID" = "User ID";
-"MAIN_DISPLAY_NAME" = "Display name";
-"MAIN_BLOCK_USER" = "Block user";
-"MAIN_UNBLOCK" = "Unblock";
-"MAIN_PROFILE" = "Profile";
-"MAIN_SENT" = "Sent";
-"MAIN_SEND" = "Send";
-"MAIN_RECEIVE" = "Receive";
-"MAIN_RECEIVED" = "Received";
-"MAIN_TIME" = "Time";
-"MAIN_AMOUNT" = "Amount";
-"MAIN_APPLY" = "Apply";
-"MAIN_INFO" = "Info";
-"MAIN_SYMBOL" = "Symbol";
-"MAIN_CHAIN" = "Chain";
-"MAIN_THANK_YOU" = "Thank you";
-"MAIN_COPY" = "Copy";
-"MAIN_WALLET" = "Wallet";
-"MAIN_RECIPIENT" = "Recipient";
-"MAIN_TOTAL" = "Total";
-"MAIN_FEE" = "Fee";
-"MAIN_TAG" = "Tag";
-"MAIN_DONE" = "Done";
-"MAIN_BALANCE" = "Balance";
-"MAIN_ADDRESS" = "Address";
-"MAIN_PASSWORD" = "Password";
-"MAIN_NEW" = "New";
-"MAIN_CURRENCY" = "Currency";
-"MAIN_CONFIRM" = "Confirm";
-"MAIN_CURRENT" = "Current";
-"MAIN_PIN" = "Pin";
-"MAIN_SAVE" = "Save";
-"MAIN_ENTER" = "Enter";
-"MAIN_SAVED" = "Saved";
-"MAIN_NAME" = "Name";
-"MAIN_PASSWORD" = "Password";
-"MAIN_RESTORE" = "Restore";
-
-"WALLET_CANCEL_PIN" = "Cancel pin";
-"WALLET_SET_PIN" = "Set pin";
-"WALLET_EDIT_PIN" = "Edit pin";
-"WALLET_ENTER_PIN" = "Enter pin";
-"WALLET_PIN_VALIDATION_DESCRIPTION" = "Max pin lenght is 6";
-"WALLET_PINS_DO_NOT_MATCH" = "Pins do not match";
-"WALLET_ERROR_WRONG_PIN" = "Wrong pin";
-"WALLET_ERROR_TOO_LONG" = "Too long pin.\nMax lenght is 6";
-
-"WALLET_SET_PASSWORD" = "Set password";
-"WALLET_EDIT_PASSWORD" = "Edit password";
-"WALLET_ENTER_PASSWORD" = "Enter password";
-"WALLET_PASSWORDS_DO_NOT_MATCH" = "Passwords do not match";
-"WALLET_ERROR_WRONG_PASSWORD" = "Wrong password";
-
-"WALLET_SAVE_IT" = "Save it";
-"WALLET_EXCHANGE_TITLE" = "Exchange";
-"WALLET_NEW_PASSWORD_CONFIRMATION" = "Password for transaction\nconfirmation was changed";
-"WALLET_CODE_FOR_RESTORE_INFO" = "QR code for restore password";
-
-/* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE_new" = "Secure communication\nplatform";
-
-"ONBOARDING_SPLASH_BUTTON_TITLE_new" = "Sign up";
-
-/* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE_new" = "Enter your Phone number, PIN-code will come on your device";
-
-/* Title of the main button. */
-"ONBOARDING_PHONE_NUMBER_SEND" = "Send";
-
-"ONBOARDING_PHONE_NUMBER_SIGNUP" = "Sign Up";
-
-"ONBOARDING_PHONE_NUMBER_FORGOTRASSWORD" = "Forgot password?";
-
-"CALL_VIEW_MISSED_CALL" = "Missed call";
-
-"CALL_VIEW_INCOMING_CALL" = "Incoming call";
-
-"CALL_VIEW_OUTGOING_CALL" = "Outgoing call";
-
-"CALL_VIEW_CANCELLED_CALL" = "Cancelled call";
-
-"CALL_VIEW_TITLE" = "Calls";
-
-"CALL_VIEW_MISSED" = "Missed";
-
-"NEW_CONTACT_DESCRIPTION" = "Add a new user using a unique\nidentification key";
-
-"NEW_CONTACT_SCAN_INFO" = "Scan the key using the QR-code";
-
-/* Title for the contacts list's default mode. */
-"CONTACTS_VIEW_TITLE" = "Contacts";
-
-/* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_INVALID_CODE_new" = "Wrong PIN, try again";
-
-"ONBOARDING_VERIFICATION_VALID_CODE_new" = "Password is correct";
-
-/// Chats Empty State
-"CHATS_VIEW_EMPTY_TITLE" = "You have no one in the chat";
-
-"CHATS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CHATS_VIEW_EMPTY_BUTTON_TITLE" = "Start chat now";
-
-/// Contacts Empty State
-"CONTACTS_VIEW_EMPTY_TITLE" = "You have no contacts";
-
-"CONTACTS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CONTACTS_VIEW_EMPTY_BUTTON_TITLE" = "Invite friends";
-
-/// Calls Empty State
-"CALLS_VIEW_EMPTY_TITLE" = "You have no calls";
-
-"CALLS_VIEW_EMPTY_MISSED_TITLE" = "You have no missed calls";
-
-"CALLS_VIEW_EMPTY_SUBTITLE" = "Start new calls";
-
-"CALLS_VIEW_EMPTY_BUTTON_TITLE" = "Start new calls";
-
-"CALL_PICKER_MAIN_TITLE" = "New call";
-
-/* Label for settings view that allows user to change the notification sound. */
-"SETTINGS_ITEM_NOTIFICATION_SOUND_new" = "Notification Sound";
-
-
-// Wallet Main Screen
-"WALLET_VIEW_TITLE" = "Wallets";
-
-// Wallet Main Screen
-"WALLET_MAINHEADER_VIEW_TITLE" = "Total balance";
-
-/* Label indicating that the user is verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_VERIFIED_FORMAT_new" = "%@ is verified!";
-
-/* Label indicating that the user is NOT verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_NOT_VERIFIED_FORMAT_new" = "%@ is not verified!";
-
-"WALLET_EMPTY_STATE_TITLE" = "You have no wallet yet";
-
-"WALLET_EMPTY_STATE_SUBTITLE" = "Create new wallet now";
-
-"WALLET_EMPTY_STATE_BUTTON_TITLE" = "Create wallet";
-
-"WALLET_NEW_WALLET_TITLE" = "New wallet";
-
-"WALLET_EXCHANGE_MY_ORDERS_TITLE" = "My Orders";
-
-"WALLET_NEW_WALLET_VALIDATION_INFO" = "The password must contain\nnumbers, uppercase and lowercase\nletters and contain at least\n8 characters";
-
-// Attachments Titles
-"ATTACHMENTS_TITLE_MEDIA" = "Media";
-"ATTACHMENTS_TITLE_FILES" = "Files";
-"ATTACHMENTS_TITLE_VOICE" = "Voice";
-"ATTACHMENTS_TITLE_GROUPS" = "Groups";
-"ATTACHMENTS_TITLE_LINKS" = "Links";
-"ATTACHMENTS_TITLE_GIFS" = "GIFs";
-
-"ATTACHMENTS_EMPTY_STATE" = "No %@ here yet...";
-
-"PERSONAL_CODE_VIEW_TITLE" = "This is your personal code";
-"PERSONAL_CODE_VIEW_DESCRIPTION" = "Ask your friend using the app\nto scan it to confirm his subscription";
-
-"CONTACTLIST_VIEW_SEARCHBAR_PLACEHOLDER" = "Search";
-
-/* A button to select a money from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_MONEY" = "Money";
-
-/* A button to select a gallery from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_GALLERY" = "Gallery";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE" = "Your User ID";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE_SOMEONE" = "%@'s User ID";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_NORMAL" = "Copy";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_AFTER_CLICK" = "Copied";
-
-"USER_ID_VIEW_COPY_LABEL_INFO" = "You can copy this User ID to phone";
-
-"NEW_USER_NAME_DESCRIPTION_TEXT" = "Please enter Display name for new contact,\nit will show only for you";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_ALREADY_EXIST" = "This user is already in your contacts";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_OWN_USERID" = "You can't add yourself";
-
-"WALLET_TOTAL_BALANCE" = "Total balance";
-"WALLET_BUY" = "Buy";
-"WALLET_SELL" = "Sell";
-
-"WALLET_TRANSACTION_EMPTY_STATE_TITLE" = "No transaction yet...";
-"WALLET_ORDERS_EMPTY_STATE_TITLE" = "No orders yet...";
-
-"WALLET_TRANSACTION_TITLE" = "Transactions";
-
-"FILTER_TITLE" = "Filter";
-
-"FILTER_SORT_BY_TITLE" = "Sort by";
-
-"FILTER_TRANSACTION_TYPE_TITLE" = "Transaction type";
-
-/* Label for 'new contact' button in conversation settings view. */
-"NEW_USER_NAME_TITLE" = "New Contact";
-
-"INCORRECT_UUID_ERROR_MESSAGE" = "User Key is incorrect";
-
-"SENT_SUCCEED_TITLE" = "Sent succeed";
-
-"EXCHANGE_CREATED_TITLE" = "Exchange created";
-//////////////////////////////////////////// Grapherex ///////////////////////////////////////////
-
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Ne sada";
+
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "O Signalu";
 
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Prihvati novi sigurnosni broj";
@@ -258,11 +16,11 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Kontakt";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Kontakt za %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Medijski zapis";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Poruka";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Vi";
@@ -270,11 +28,17 @@
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Naljepnica";
 
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Glasovna poruka";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Glasovna poruka od %@ sekundi";
+
 /* Label for 'audio call' button in contact view. */
-"ACTION_AUDIO_CALL" = "Grapherex poziv";
+"ACTION_AUDIO_CALL" = "Signal poziv";
 
 /* Label for 'invite' button in contact view. */
-"ACTION_INVITE" = "Pozovi u Grapherex";
+"ACTION_INVITE" = "Pozovi u Signal";
 
 /* Label for button that lets you send a message to a contact. */
 "ACTION_SEND_MESSAGE" = "Pošalji poruku";
@@ -364,7 +128,7 @@
 "APN_Message" = "Nova Poruka!";
 
 /* Message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Grapherex se ne može pokrenuti. Molimo pošaljite zapisnike o pogrešci na support@grapherex.com kako bi riješili ovaj problem.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Signal se ne može pokrenuti. Molimo pošaljite zapisnike o pogrešci na support@signal.org kako bi riješili ovaj problem.";
 
 /* Title for the 'app launch failed' alert. */
 "APP_LAUNCH_FAILURE_ALERT_TITLE" = "Pogreška";
@@ -373,13 +137,13 @@
 "APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE" = "Učitavanje baze podataka nije uspjelo";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
-"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Molimo nadogradite Grapherex na najnoviju verziju.";
+"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Molimo nadogradite Signal na najnoviju verziju.";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Nepoznata verzija baze podataka.";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Podaci preneseni s vašeg starog uređaja ne mogu se vratiti. Pošaljite zapisnik o pogrešci na support@grapherex.com da bismo mogli riješiti problem. Ako ponovo instalirate Grapherex, možda će se izgubiti povijest poruka.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Podaci preneseni s vašeg starog uređaja ne mogu se vratiti. Pošaljite zapisnik o pogrešci na support@signal.org da bismo mogli riješiti problem. Ako ponovo instalirate Signal, možda će se izgubiti povijest poruka.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Prijenos nije mogao biti dovršen";
@@ -394,7 +158,7 @@
 "APP_UPDATE_NAG_ALERT_MESSAGE_FORMAT" = "Verzija %@ je sada dostupna na App Storeu.";
 
 /* Title for the 'new app version available' alert. */
-"APP_UPDATE_NAG_ALERT_TITLE" = "Dostupna je nova verzija Grapherexa";
+"APP_UPDATE_NAG_ALERT_TITLE" = "Dostupna je nova verzija Signala";
 
 /* Label for the 'update' button in the 'new app version available' alert. */
 "APP_UPDATE_NAG_ALERT_UPDATE_BUTTON" = "Ažuriraj";
@@ -409,7 +173,7 @@
 "APPEARANCE_SETTINGS_SYSTEM_THEME_NAME" = "Sustav";
 
 /* Name of application */
-"APPLICATION_NAME" = "Grapherex";
+"APPLICATION_NAME" = "Signal";
 
 /* Label for the archive button for conversations list view */
 "ARCHIVE_ACTION" = "Arhiviraj";
@@ -426,7 +190,7 @@
 /* Error that outgoing attachments could not be exported. */
 "ATTACHMENT_APPROVAL_FAILED_TO_EXPORT" = "Izvoz privitka nije uspio.";
 
-/* alert text when Grapherex was unable to save a copy of the attachment to the system photo library */
+/* alert text when Signal was unable to save a copy of the attachment to the system photo library */
 "ATTACHMENT_APPROVAL_FAILED_TO_SAVE" = "Spremanje nije uspjelo";
 
 /* Format string for file extension label in call interstitial view */
@@ -718,7 +482,7 @@
 "CALL_AUDIO_MISSED_NOTIFICATION_BODY" = "📞 Propušteni zvučni poziv";
 
 /* Alert message when calling and permissions for microphone are missing */
-"CALL_AUDIO_PERMISSION_MESSAGE" = "Možete omogućiti pristup mikrofonu u postavkama iOS-a za upućivanje poziva i snimanje glasovnih poruka u Grapherexu.";
+"CALL_AUDIO_PERMISSION_MESSAGE" = "Možete omogućiti pristup mikrofonu u postavkama iOS-a za upućivanje poziva i snimanje glasovnih poruka u Signalu.";
 
 /* Alert title when calling and permissions for microphone are missing */
 "CALL_AUDIO_PERMISSION_TITLE" = "Potreban je pristup mikrofonu";
@@ -733,7 +497,7 @@
 "CALL_SCREEN_STATUS_NO_ANSWER" = "Nema odgovora";
 
 /* embeds {{Call Status}} in call screen label. For ongoing calls, {{Call Status}} is a seconds timer like 01:23, otherwise {{Call Status}} is a short text like 'Ringing', 'Busy', or 'Failed Call' */
-"CALL_STATUS_FORMAT" = "Grapherex %@";
+"CALL_STATUS_FORMAT" = "Signal %@";
 
 /* Label for call button for alert offering to call a user. */
 "CALL_USER_ALERT_CALL_BUTTON" = "Nazovi";
@@ -787,7 +551,7 @@
 "CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "Vaša kamera je isključena";
 
 /* The generic name used for calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Grapherex korisnik";
+"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Signal korisnik";
 
 /* Accessibility hint describing what you can do with the camera button */
 "CAMERA_BUTTON_HINT" = "Snimite fotografiju te je zatim pošaljite";
@@ -817,13 +581,13 @@
 "CHECK_FOR_BACKUP_RESTORE" = "Vrati";
 
 /* Error indicating that the app could not determine that user's iCloud account status */
-"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Grapherex ne može odrediti status vašeg iCloud računa. Prijavite se na svoj iCloud račun u postavkama iOS-a kako bi napravili sigurnosnu kopiju podataka Grapherexa.";
+"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Signal ne može odrediti status vašeg iCloud računa. Prijavite se na svoj iCloud račun u postavkama iOS-a kako bi napravili sigurnosnu kopiju podataka Signala.";
 
 /* Error indicating that user does not have an iCloud account. */
-"CLOUDKIT_STATUS_NO_ACCOUNT" = "Nema iCloud računa. Prijavite se na svoj iCloud račun u postavkama iOS-a kako biste napravili sigurnosne kopije podataka Grapherexa.";
+"CLOUDKIT_STATUS_NO_ACCOUNT" = "Nema iCloud računa. Prijavite se na svoj iCloud račun u postavkama iOS-a kako biste napravili sigurnosne kopije podataka Signala.";
 
 /* Error indicating that the app was prevented from accessing the user's iCloud account. */
-"CLOUDKIT_STATUS_RESTRICTED" = "Grapherexu je onemogućen pristup vašem iCloud računu za sigurnosne kopije. Omogućite Grapherexu pristup vašem iCloud računu u postavkama iOS-a za sigurnosno kopiranje vaših podataka Grapherexa.";
+"CLOUDKIT_STATUS_RESTRICTED" = "Signalu je onemogućen pristup vašem iCloud računu za sigurnosne kopije. Omogućite Signalu pristup vašem iCloud računu u postavkama iOS-a za sigurnosno kopiranje vaših podataka Signala.";
 
 /* The first of two messages demonstrating the chosen conversation color, by rendering this message in an outgoing message bubble. */
 "COLOR_PICKER_DEMO_MESSAGE_1" = "Odaberite boju odlaznih poruka za ovaj razgovor.";
@@ -838,7 +602,7 @@
 "COMPARE_SAFETY_NUMBER_ACTION" = "Usporedi s međuspremnikom";
 
 /* Accessibility hint describing what you can do with the compose button */
-"COMPOSE_BUTTON_HINT" = "Odaberite ili potražite Grapherex korisnika kako bi započeli razgovor.";
+"COMPOSE_BUTTON_HINT" = "Odaberite ili potražite Signal korisnika kako bi započeli razgovor.";
 
 /* Accessibility label from compose button. */
 "COMPOSE_BUTTON_LABEL" = "Sastavi";
@@ -856,7 +620,7 @@
 "COMPOSE_MESSAGE_USERNAME_SEARCH_SECTION_TITLE" = "Pretraga po korisničkom imenu";
 
 /* Multi-line label explaining why compose-screen contact picker is empty. */
-"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Možete omogućiti pristup kontaktima u postavkama iOS-a kako biste vidjeli koji od vaših kontakata su korisnici Grapherexa.";
+"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Možete omogućiti pristup kontaktima u postavkama iOS-a kako biste vidjeli koji od vaših kontakata su korisnici Signala.";
 
 /* No comment provided by engineer. */
 "CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Ovo će resetirati aplikaciju brisanjem vaših poruka i uklanjanjem registracije s poslužitelja. Aplikacija će se zatvoriti nakon dovršetka ovog postupka.";
@@ -987,11 +751,11 @@
 /* Error indicating that at least one contact field must be selected before sharing a contact. */
 "CONTACT_SHARE_NO_FIELDS_SELECTED" = "Nije odabrano polje za kontakt.";
 
-/* Button text to initiate an email to Grapherex support staff */
+/* Button text to initiate an email to signal support staff */
 "CONTACT_SUPPORT" = "Kontaktirajte podršku";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Grapherex nije uspio dovršiti vaš zahtjev za podršku.";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Signal nije uspio dovršiti vaš zahtjev za podršku.";
 
 /* button text */
 "CONTACT_SUPPORT_PROMPT_ERROR_TRY_AGAIN" = "Pokušajte ponovo";
@@ -1082,9 +846,6 @@
 
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Blokiraj korisnika";
-
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Informacije o kontaktu";
 
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Boja razgovora";
@@ -1210,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Nespremljene promjene";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Prikaži sve članove";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Prikaži sve";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Ovaj korisnik je u vašim kontaktima";
@@ -1226,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Dodaj u kontakte";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ je poslao:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Vi ste poslali:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Izbriši sve";
@@ -1324,13 +1091,13 @@
 "DEREGISTRATION_REREGISTER_WITH_SAME_PHONE_NUMBER" = "Ponovno registriraj ovaj broj telefona";
 
 /* Label warning the user that they have been de-registered. */
-"DEREGISTRATION_WARNING" = "Uređaj više nije registriran. Vaš broj telefona se sada može registrirati na Grapherex s drugim uređajem. Pritisnite za ponovnu registraciju.";
+"DEREGISTRATION_WARNING" = "Uređaj više nije registriran. Vaš broj telefona se sada može registrirati na Signal s drugim uređajem. Pritisnite za ponovnu registraciju.";
 
-/* {{Short Date}} when device last communicated with Grapherex Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Zadnje aktivno: %@";
+/* {{Short Date}} when device last communicated with Signal Server. */
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Zadnje aktivno %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Povezano: %@";
+"DEVICE_LINKED_AT_LABEL" = "Povezano %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Ažuriranje popisa uređaja nije uspjelo.";
@@ -1348,7 +1115,7 @@
 "DEVICE_TRANSFER_CHOICE_EXPLANATION" = "Ako imate svoj stari iOS uređaj, svoj račun i poruke možete sigurno prenijeti na ovaj uređaj.";
 
 /* The explanation for the device transfer 'choice' view when linking a device */
-"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Ako ste prethodno koristili Grapherex na povezanom iPadu, svoj račun i poruke možete sigurno prenijeti na ovaj uređaj.";
+"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Ako ste prethodno koristili Signal na povezanom iPadu, svoj račun i poruke možete sigurno prenijeti na ovaj uređaj.";
 
 /* The body for the device transfer 'choice' view 'register' option */
 "DEVICE_TRANSFER_CHOICE_REGISTER_BODY" = "Nastavite bez prijenosa vašeg računa i poruka";
@@ -1378,7 +1145,7 @@
 "DEVICE_TRANSFER_CHOICE_TRANSFER_TITLE" = "Prenesi s iOS uređaja";
 
 /* A warning for the device transfer 'choice' view indicating you can only have one device registered with your number */
-"DEVICE_TRANSFER_CHOICE_WARNING" = "Ako nastavite, Grapherex će biti onemogućen na ostalim uređajima koji su trenutno registrirani s istim brojem telefona.";
+"DEVICE_TRANSFER_CHOICE_WARNING" = "Ako nastavite, Signal će biti onemogućen na ostalim uređajima koji su trenutno registrirani s istim brojem telefona.";
 
 /* An error indicating that we were unable to verify the indentity of the new device to complete the transfer */
 "DEVICE_TRANSFER_ERROR_CERTIFICATE_MISMATCH" = "Potvrda vašeg novog uređaja nije uspjela, pokušajte ponovno";
@@ -1396,16 +1163,16 @@
 "DEVICE_TRANSFER_ERROR_NOT_ENOUGH_SPACE" = "Nema dovoljno slobodnog prostora za dovršetak prijenosa";
 
 /* An error indicating the user must update their device before trying to transfer. */
-"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Ažurirajte na najnoviju verziju Grapherexa i pokušajte ponovno";
+"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Ažurirajte na najnoviju verziju Signala i pokušajte ponovno";
 
 /* The explanation on the action sheet prompting the user if they want to transfer their device. */
-"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Prenesite svoj Grapherex račun na novi iOS uređaj. Provjerite je li vaš novi uređaj u blizini i je li uključen.";
+"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Prenesite svoj Signal račun na novi iOS uređaj. Provjerite je li vaš novi uređaj u blizini i je li uključen.";
 
 /* The title on the acttion sheet prompting the user if they want to transfer their device. */
 "DEVICE_TRANSFER_PROMPT_TITLE" = "Prenesi račun";
 
 /* The explanation for the device transfer qr code view */
-"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Otvorite Grapherex na svom starom uređaju, približite ga, te upalite Wi-Fi i Bluetooth na oba uređaja.";
+"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Otvorite Signal na svom starom uređaju, približite ga, te upalite Wi-Fi i Bluetooth na oba uređaja.";
 
 /* The second explanation for the device transfer qr code view */
 "DEVICE_TRANSFER_QRCODE_EXPLANATION2" = "Postavite ovaj QR kôd unutar okvira drugog uređaja.";
@@ -1417,7 +1184,7 @@
 "DEVICE_TRANSFER_QRCODE_TITLE" = "Čekanje drugog uređaja...";
 
 /* The explanation on the view that shows receiving progress */
-"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Držite oba uređaja blizu jedan drugog. Ne isključujte nijedan uređaj i držite Grapherex otvorenim. Prijenosi su end-to-end šifrirani.";
+"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Držite oba uređaja blizu jedan drugog. Ne isključujte nijedan uređaj i držite Signal otvorenim. Prijenosi su end-to-end šifrirani.";
 
 /* The title on the view that shows receiving progress */
 "DEVICE_TRANSFER_RECEIVING_TITLE" = "Primanje podataka";
@@ -1432,7 +1199,7 @@
 "DEVICE_TRANSFER_SCANNING_TITLE" = "Postavite svoj novi uređaj pred kameru";
 
 /* The explanation on the action sheet that shows transfer progress */
-"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Držite oba uređaja blizu jedan drugog. Ne isključujte nijedan uređaj i držite Grapherex otvorenim.";
+"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Držite oba uređaja blizu jedan drugog. Ne isključujte nijedan uređaj i držite Signal otvorenim.";
 
 /* The title on the action sheet that shows transfer progress */
 "DEVICE_TRANSFER_TRANSFERRING_TITLE" = "Prijenos podataka";
@@ -1458,11 +1225,11 @@
 /* Section title for the 'domain fronting country' view. */
 "DOMAIN_FRONTING_COUNTRY_VIEW_SECTION_HEADER" = "Mjesto zaobilaska cenzure";
 
-/* Alert body for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
+/* Alert body for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_BODY" = "Možete omogućiti pristup u postavkama iOS-a.";
 
-/* Alert title for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
-"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Grapherexu je potreban pristup kontaktima za uređivanje informacija o kontaktima";
+/* Alert title for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Signalu je potreban pristup kontaktima za uređivanje informacija o kontaktima";
 
 /* The 'clear avatar' button in the 'edit group' view. */
 "EDIT_GROUP_CLEAR_AVATAR" = "Ukloni sliku";
@@ -1471,7 +1238,7 @@
 "EDIT_GROUP_DEFAULT_TITLE" = "Uredi grupu";
 
 /* Error message indicating the a user can't be added to a group. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Ovaj se korisnik ne može dodati u grupu dok ne ažurira Grapherex.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Ovaj se korisnik ne može dodati u grupu dok ne ažurira Signal.";
 
 /* Format for the 'group full' error alert when a user can't be added to a group because the group is full. Embeds {{ the maximum number of members in a group }}. */
 "EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "Dosegnuta je maksimalna veličina grupe od %@ članova.";
@@ -1494,14 +1261,14 @@
 /* Short name for edit menu item to copy contents of media message. */
 "EDIT_ITEM_COPY_ACTION" = "Kopiraj";
 
-/* body of email sent to contacts when inviting to install Grapherex. Embeds {{link to install Grapherex}} and {{link to the Grapherex home page}} */
-"EMAIL_INVITE_BODY" = "Hej,\n\nU posljednje vrijeme pomoću Grapherexa održavam svoje razgovore privatnima na svojem iPhoneu. Volio bih da ga i ti instaliraš, tako da možemo biti sigurni da samo ti i ja možemo čitati naše poruke ili čuti naše pozive.\n\nGrapherex je dostupan za iPhone i Android. Preuzmi ga ovdje: %@\n\nGrapherex funkcionira poput tvoje postojeće aplikacije za razmjenu poruka. Možemo slati slike i video, pozivati i započeti grupne razgovore. Najbolji dio je što nitko drugi ne može vidjeti, pa čak ni osobe koji stvaraju Grapherex!\n\nViše o Open Whisper Systems i osobama koji stvaraju Grapherex, možete pročitati ovdje: %@";
+/* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
+"EMAIL_INVITE_BODY" = "Hej,\n\nU posljednje vrijeme pomoću Signala održavam svoje razgovore privatnima na svojem iPhoneu. Volio bih da ga i ti instaliraš, tako da možemo biti sigurni da samo ti i ja možemo čitati naše poruke ili čuti naše pozive.\n\nSignal je dostupan za iPhone i Android. Preuzmi ga ovdje: %@\n\nSignal funkcionira poput tvoje postojeće aplikacije za razmjenu poruka. Možemo slati slike i video, pozivati i započeti grupne razgovore. Najbolji dio je što nitko drugi ne može vidjeti, pa čak ni osobe koji stvaraju Signal!\n\nViše o Open Whisper Systems i osobama koji stvaraju Signal, možete pročitati ovdje: %@";
 
-/* subject of email sent to contacts when inviting to install Grapherex */
-"EMAIL_INVITE_SUBJECT" = "Prebacimo se na Grapherex";
+/* subject of email sent to contacts when inviting to install Signal */
+"EMAIL_INVITE_SUBJECT" = "Prebacimo se na Signal";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Vaš uređaj nije postavljen za slanje e-pošte. Kako biste poslali zahtjev za podršku, postavite e-poštu na svom uređaju ili pošaljite e-poštu na support@grapherex.com";
+"EMAIL_SIGNAL_MESSAGE" = "Vaš uređaj nije postavljen za slanje e-pošte. Kako biste poslali zahtjev za podršku, postavite e-poštu na svom uređaju ili pošaljite e-poštu na support@signal.org";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "E-pošta nije dostupna";
@@ -1534,7 +1301,7 @@
 "EMOJI_CATEGORY_TRAVEL_NAME" = "Putovanja i mjesta";
 
 /* Full width label displayed when attempting to compose message */
-"EMPTY_CONTACTS_LABEL_LINE1" = "Nijedan od vaših kontakata ne koristi Grapherex.";
+"EMPTY_CONTACTS_LABEL_LINE1" = "Nijedan od vaših kontakata ne koristi Signal.";
 
 /* Full width label displayed when attempting to compose message */
 "EMPTY_CONTACTS_LABEL_LINE2" = "Zašto ne pozovete nekoga?";
@@ -1572,8 +1339,8 @@
 /* Error message indicating that message send failed due to block list */
 "ERROR_DESCRIPTION_MESSAGE_SEND_FAILED_DUE_TO_BLOCK_LIST" = "Slanje poruke kontaktu nije uspjelo jer ste ga blokirali.";
 
-/* Generic error used whenever Grapherex can't contact the server */
-"ERROR_DESCRIPTION_NO_INTERNET" = "Grapherex se nije uspio povezati s internetom. Pokušajte ponovno.";
+/* Generic error used whenever Signal can't contact the server */
+"ERROR_DESCRIPTION_NO_INTERNET" = "Signal se nije uspio povezati s internetom. Pokušajte ponovno.";
 
 /* Error indicating that an outgoing message had no valid recipients. */
 "ERROR_DESCRIPTION_NO_VALID_RECIPIENTS" = "Slanje poruke nije uspjelo zbog nedostatka valjanih primatelja.";
@@ -1588,7 +1355,7 @@
 "ERROR_DESCRIPTION_RESPONSE_FAILED" = "Nevažeći odgovor usluge..";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Ovaj uređaj više nije registriran s vašim brojem telefona. Ponovo instalirajte Grapherex.";
+"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Ovaj uređaj više nije registriran s vašim brojem telefona. Ponovo instalirajte Signal.";
 
 /* Generic server error */
 "ERROR_DESCRIPTION_SERVER_FAILURE" = "Pogreška poslužitelja. Molimo pokušajte ponovo kasnije.";
@@ -1597,13 +1364,13 @@
 "ERROR_DESCRIPTION_UNKNOWN_ERROR" = "Došlo je do nepoznate pogreške.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Kontakt nije korisnik Grapherexa.";
+"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Kontakt nije korisnik Signala.";
 
 /* Error message indicating that attachment download(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_DOWNLOAD_FAILED" = "Preuzimanje privitka nije uspjelo.";
 
 /* Error message when unable to receive an attachment because the sending client is too old. */
-"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Pogreška privitka: Zatražite od ovog kontakta da ponovo pošalje svoju poruku nakon ažuriranja na najnoviju verziju Grapherexa.";
+"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Pogreška privitka: Zatražite od ovog kontakta da ponovo pošalje svoju poruku nakon ažuriranja na najnoviju verziju Signala.";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_DUPLICATE_MESSAGE" = "Primljena je dvostruka poruka.";
@@ -1620,10 +1387,10 @@
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_NO_SESSION" = "Nema dostupne sesije za kontakt.";
 
-/* Shown when Grapherex users safety numbers changed */
+/* Shown when signal users safety numbers changed */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE" = "Sigurnosni broj je promijenjen.";
 
-/* Shown when Grapherex users safety numbers changed, embeds the user's {{name or phone number}} */
+/* Shown when signal users safety numbers changed, embeds the user's {{name or phone number}} */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE_FORMAT" = "Vaš sigurnosni broj s %@ je promijenjen.";
 
 /* Text notifying the user that their secure session has been reset */
@@ -1645,19 +1412,19 @@
 "ERROR_SENDING_DEREGISTERED" = "Vaš uređaj više nije povezan. Ponovno ga povežite kako biste nastavili slati poruke.";
 
 /* Error indicating a send failure due to an expired application. */
-"ERROR_SENDING_EXPIRED" = "Vaša verzija Grapherexa je istekla. Ažurirajte kako bi nastavili slati poruke.";
+"ERROR_SENDING_EXPIRED" = "Vaša verzija Signala je istekla. Ažurirajte kako bi nastavili slati poruke.";
 
-/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or Grapherex id}}. */
+/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or signal id}}. */
 "ERROR_UNREGISTERED_USER_FORMAT" = "Neregistrirani korisnik: %@";
 
 /* Label notifying the user that the app has expired. */
-"EXPIRATION_ERROR" = "Vaša verzija Grapherexa je istekla. Pritisnite za ažuriranje na najnoviju verziju.";
+"EXPIRATION_ERROR" = "Vaša verzija Signala je istekla. Pritisnite za ažuriranje na najnoviju verziju.";
 
 /* Label warning the user that the app will expire soon. */
-"EXPIRATION_WARNING_SOON" = "Vaša verzija Grapherexa istječe za %d dana. Pritisnite za ažuriranje na najnoviju verziju.";
+"EXPIRATION_WARNING_SOON" = "Vaša verzija Signala istječe za %d dana. Pritisnite za ažuriranje na najnoviju verziju.";
 
 /* Label warning the user that the app will expire today. */
-"EXPIRATION_WARNING_TODAY" = "Vaša verzija Grapherexa istječe danas. Pritisnite za ažuriranje na najnoviju verziju.";
+"EXPIRATION_WARNING_TODAY" = "Vaša verzija Signala istječe danas. Pritisnite za ažuriranje na najnoviju verziju.";
 
 /* action sheet header when re-sending message which failed because of too many attempts */
 "FAILED_SENDING_BECAUSE_RATE_LIMIT" = "Previše neuspjeha s ovim kontaktom. Pokušajte ponovo kasnije.";
@@ -1732,7 +1499,7 @@
 "GO_TO_SETTINGS_BUTTON" = "Idi na postavke";
 
 /* Body message of notification shown during GRDB migration indicating that user may need to open app to view their content. */
-"GRDB_MIGRATION_NOTIFICATION_BODY" = "Ova verzija Grapherexa uključuje optimizacije baze podataka i poboljšanja performansi. Možda će te trebati otvoriti aplikaciju kako biste dovršili proces.";
+"GRDB_MIGRATION_NOTIFICATION_BODY" = "Ova verzija Signala uključuje optimizacije baze podataka i poboljšanja performansi. Možda će te trebati otvoriti aplikaciju kako biste dovršili proces.";
 
 /* Title of notification shown during GRDB migration indicating that user may need to open app to view their content. */
 "GRDB_MIGRATION_NOTIFICATION_TITLE" = "Optimiziranje baze podataka";
@@ -2047,7 +1814,7 @@
 "GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Nevažeća poveznica";
 
 /* Error message indicating that the local user does not support groups v2. */
-"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Ažurirajte Grapherex na ovom uređaju da biste se pridružili ovoj grupi.";
+"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Ažurirajte Signal na ovom uređaju da biste se pridružili ovoj grupi.";
 
 /* Explanation of the 'approve new group members' switch. */
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Zahtjeva da administrator odobri pridruživanje novih članova putem poveznice grupe.";
@@ -2112,11 +1879,11 @@
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "QR kôd";
 
-/* Label for the 'share group link via Grapherex' button in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Podijeli putem Grapherexa";
+/* Label for the 'share group link via Signal' button in the 'group link' view. */
+"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Podijeli putem Signala";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Bilo tko s ovom poveznicom može se pridružiti grupi ili poslati zahtjev za pridruživanje. Podijelite s osobama kojima vjerujete.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Bilo tko s ovom poveznicom može vidjeti naziv grupe i članove kao i poslati zahtjev za pridruživanje. Podijelite s osobama kojima vjerujete.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Poveznica grupe";
@@ -2220,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Video poziv";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ člana/ova grupe imaju slično ime.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Pritisnite za pregled";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Član";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Pregled članova";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ člana/ova grupe imaju slično ime, pregledajte članove u nastavku i odaberite poduzeti radnju.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ člana/ova grupe imaju isto ime, pregledajte članove u nastavku i odaberite poduzeti radnju.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ člana/ova grupe imaju slično ime.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Naziv grupe (obavezno)";
 
@@ -2312,9 +2100,6 @@
 
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ je prihvatio/la zahtjev za pridruživanje u grupu od %1$@.";
-
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "Prihvatili ste zahtjev za pridruživanje u grupu od %@.";
 
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ je odbio njihov zahtjev za pridruživanje ovoj grupi.";
@@ -2446,13 +2231,13 @@
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_1_TITLE" = "Što su Naslijeđene grupe?";
 
 /* Body text for the second section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Naslijeđene grupe se još ne mogu nadograditi u Nove grupe, ali možete stvoriti Novu grupu s istim članovima ako su na najnovijoj verziji Grapherexa.\n\nGrapherex će u budućnosti ponuditi način nadogradnje Naslijeđenih grupa.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Naslijeđene grupe se još ne mogu nadograditi u Nove grupe, ali možete stvoriti Novu grupu s istim članovima ako su na najnovijoj verziji Signala.\n\nSignal će u budućnosti ponuditi način nadogradnje Naslijeđenih grupa.";
 
 /* Title for the second section of the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_2_TITLE" = "Mogu li \"nadograditi\" Naslijeđenu grupu?";
 
 /* Body text for the third section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Za stvaranje Nove grupe, svi korisnici trebaju ažurirati Grapherex na najnoviju verziju.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Za stvaranje Nove grupe, svi korisnici trebaju ažurirati Signal na najnoviju verziju.";
 
 /* Title for the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Naslijeđene i Nove grupe";
@@ -2467,28 +2252,28 @@
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TOO_MANY_MEMBERS_FORMAT" = "Ova se grupa ne može nadograditi u Novu grupu jer ima previše članova. Maksimalna veličina grupe koja se može nadograditi je %@.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Kada svi trenutni članovi grupe budu koristili verziju Grapherexa s kojom se može pridružiti Novoj grupi, ova će se grupa nadograditi.";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Kada svi trenutni članovi grupe budu koristili verziju Signala s kojom se može pridružiti Novoj grupi, ova će se grupa nadograditi.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_2" = "Sva povijest poruka i medijskih zapisa će biti sačuvana od prije nadogradnje.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Ova grupa ne može biti stvorena jer 1 član koristi staru verziju Grapherexa. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Grapherex ili ih ukloniti prije stvaranja grupe.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Ova grupa ne može biti stvorena jer 1 član koristi staru verziju Signala. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Signal ili ih ukloniti prije stvaranja grupe.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Ova grupa ne može biti stvorena jer %@ članova koristi staru verziju Grapherexa. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Grapherex ili ih ukloniti prije stvaranja grupe.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Ova grupa ne može biti stvorena jer %@ članova koristi staru verziju Signala. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Signal ili ih ukloniti prije stvaranja grupe.";
 
 /* Indicates that a new group cannot be created because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Ova grupa ne može biti stvorena jer 1 član koristi staru verziju Grapherexa. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Grapherex ili ih ukloniti prije stvaranja grupe. %@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Ova grupa ne može biti stvorena jer 1 član koristi staru verziju Signala. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Signal ili ih ukloniti prije stvaranja grupe. %@";
 
 /* Indicates that a new group cannot be created because multiple members do not support v2 groups. Embeds {{ %1$@ the number of members who do not support v2 groups, %2$@ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Ova grupa ne može biti stvorena jer %1$@ članova koristi staru verziju Grapherexa. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Grapherex ili ih ukloniti prije stvaranja grupe. %2$@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Ova grupa ne može biti stvorena jer %1$@ članova koristi staru verziju Signala. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Signal ili ih ukloniti prije stvaranja grupe. %2$@";
 
 /* Title for alert that explains that a new group will be a legacy group because 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Naslijeđena grupa će biti stvorena jer 1 član koristi staru verziju Grapherexa. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Grapherex ili ih uklonite prije stvaranja grupe.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Naslijeđena grupa će biti stvorena jer 1 član koristi staru verziju Signala. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Signal ili ih uklonite prije stvaranja grupe.";
 
 /* Title for alert that explains that a new group will be a legacy group because multiple members do not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Naslijeđena grupa će biti stvorena jer %@ članovi koriste staru verziju Grapherexa. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Grapherex ili ih ukloniti prije stvaranja grupe.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Naslijeđena grupa će biti stvorena jer %@ članovi koriste staru verziju Signala. Možete stvoriti Novu grupu s njima nakon što svi ažuriraju Signal ili ih ukloniti prije stvaranja grupe.";
 
 /* Indicates that a new group will be a legacy group because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
 "GROUPS_LEGACY_GROUP_CREATION_WARNING_FORMAT_1" = "1 član ne podržava Nove grupe, tako da će ovo biti Naslijeđena grupa. %@";
@@ -2608,7 +2393,7 @@
 "GROUPS_REPLACE_ADMIN_BUTTON" = "Odaberi novog administratora";
 
 /* Format for the alert warning the user that they've reached the recommended limit on how many members can be in a group when creating a new group. Embeds {{ the maximum number of recommended members in a group }}. */
-"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Grapherex grupe najbolje rade s %@ članova ili manje. Dodavanje više članova uzrokovat će kašnjenja u slanju i primanju poruka.";
+"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Signal grupe najbolje rade s %@ članova ili manje. Dodavanje više članova uzrokovat će kašnjenja u slanju i primanju poruka.";
 
 /* Title for alert warning the user that they've reached the recommended limit on how many members can be in a group. */
 "GROUPS_TOO_MANY_MEMBERS_ALERT_TITLE" = "Dosegnuto preporučeno ograničenje članova";
@@ -2625,7 +2410,7 @@
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "Kontaktirajte nas";
 
-/* Help item that takes the user to the Grapherex support website */
+/* Help item that takes the user to the Signal support website */
 "HELP_SUPPORT_CENTER" = "Centar za podršku";
 
 /* Label for 'archived conversations' button. */
@@ -2640,16 +2425,16 @@
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "Skica:";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Grapherex contact.  Embeds {{The name of 1 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Neki vaši kontakti već koriste Grapherex, uključujući %@.";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Signal contact.  Embeds {{The name of 1 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Neki vaši kontakti već koriste Signal, uključujući %@.";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Grapherex contacts.  Embeds {{The names of 2 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Neki vaši kontakti već koriste Grapherex, uključujući %@ i %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Signal contacts.  Embeds {{The names of 2 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Neki vaši kontakti već koriste Signal, uključujući %@ i %@";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Grapherex contacts.  Embeds {{The names of 3 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Neki vaši kontakti već koriste Grapherex, uključujući %@, %@ i %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Signal contacts.  Embeds {{The names of 3 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Neki vaši kontakti već koriste Signal, uključujući %@, %@ i %@";
 
-/* A label offering to start a new conversation with your contacts, if you have no Grapherex contacts. */
+/* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Započnite svoj prvi razgovor ovdje.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
@@ -2665,7 +2450,7 @@
 "HOME_VIEW_TITLE_ARCHIVE" = "Arhiva";
 
 /* Title for the conversation list's default mode. */
-"HOME_VIEW_TITLE_INBOX" = "Grapherex";
+"HOME_VIEW_TITLE_INBOX" = "Signal";
 
 /* The image editor hint that you can draw blur */
 "IMAGE_EDITOR_BLUR_HINT" = "Crtajte bilo gdje kako biste zamutili sliku";
@@ -2679,11 +2464,11 @@
 /* Momentarily shown to the user when attempting to select more images than is allowed. Embeds {{max number of items}} that can be shared. */
 "IMAGE_PICKER_CAN_SELECT_NO_MORE_TOAST_FORMAT" = "Ne možete dijeliti više od %@ stavki.";
 
-/* Button that will present a view for the user to change the photos Grapherex has access to. */
+/* Button that will present a view for the user to change the photos Signal has access to. */
 "IMAGE_PICKER_CHANGE_PHOTOS" = "Promijeni sliku";
 
 /* Explanation showing that the user has granted limited access to their photos and can change that in the Settings app. */
-"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Odobrite potpuni pristup u Postavkama ili promijenite kojim fotografijama Grapherex može pristupiti.";
+"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Odobrite potpuni pristup u Postavkama ili promijenite kojim fotografijama Signal može pristupiti.";
 
 /* Title show that the user has granted limited access to their photos and can change that in the Settings app. */
 "IMAGE_PICKER_CHANGE_PHOTOS_TITLE" = "Ne vidite vašu sliku?";
@@ -2733,8 +2518,8 @@
 /* Shown in inbox and conversation after syncing as a placeholder indicating why your message history is missing. */
 "INFO_MESSAGE_SYNCED_THREAD" = "Možete slati ili primati sinkronizirane poruke s vašeg telefona ili iPada.\nRadi vaše sigurnosti, povijest razgovora se ne prenosi na nove povezane uređaje.";
 
-/* Shown in inbox and conversation when a user joins Grapherex, embeds the new user's {{contact name}} */
-"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ je na Grapherexu!";
+/* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
+"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ je na Signalu!";
 
 /* accessibility label for the button which shows the sticker picker */
 "INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL" = "Naljepnice";
@@ -2745,14 +2530,14 @@
 /* Message for the alert indicating that an audio file is invalid. */
 "INVALID_AUDIO_FILE_ALERT_ERROR_MESSAGE" = "Nevažeća zvučna datoteka.";
 
-/* Alert body when contacts disabled while trying to invite contacts to Grapherex */
-"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Možete omogućiti pristup kontaktima u postavkama iOS-a za pozivanje svojih prijatelja da se pridruže Grapherexu.";
+/* Alert body when contacts disabled while trying to invite contacts to signal */
+"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Možete omogućiti pristup kontaktima u postavkama iOS-a za pozivanje svojih prijatelja da se pridruže Signalu.";
 
-/* Alert title when contacts disabled while trying to invite contacts to Grapherex */
+/* Alert title when contacts disabled while trying to invite contacts to signal */
 "INVITE_FLOW_REQUIRES_CONTACT_ACCESS_TITLE" = "Dozvoli pristup kontaktima";
 
 /* Label for the cell that presents the 'invite contacts' workflow. */
-"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Pozovite prijatelje na Grapherex";
+"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Pozovite prijatelje na Signal";
 
 /* Search */
 "INVITE_FRIENDS_PICKER_SEARCHBAR_PLACEHOLDER" = "Pretraži";
@@ -2845,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Skenirajte QR kôd prikazan na uređaju kojeg želite povezati.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Skeniraj QR kôd";
+"LINK_NEW_DEVICE_SUBTITLE" = "Skenirajte QR kôd za povezivanje novog uređaja.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Poveži novi uređaj";
@@ -2869,7 +2654,7 @@
 "LINKPREVIEWS_MEGAPHONE_TITLE" = "Pregledajte bilo koju poveznicu";
 
 /* Body for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Da biste prenijeli svoj Grapherex račun, morate omogućiti pristup lokalnoj mreži na oba uređaja.";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Da biste prenijeli svoj Signal račun, morate omogućiti pristup lokalnoj mreži na oba uređaja.";
 
 /* A button asking the user if they need further help getting their transfer working. */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_NEED_HELP" = "Trebate pomoć?";
@@ -2881,7 +2666,7 @@
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_THREE" = "Uključite \"Lokalna mreža\"";
 
 /* Second step for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Idite u Grapherex";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Idite u Signal";
 
 /* Title for local network permission action sheet */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_TITLE" = "Uključite pristup lokalnoj mreži";
@@ -2892,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Odaberite lokaciju";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Zapisnici";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Zapisnici pogreške pomažu Signalu popraviti probleme i rušenja aplikacije.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Poruka";
@@ -2944,7 +2732,7 @@
 "MESSAGE_ACTION_DELETE_FOR_EVERYONE" = "Izbriši za sve";
 
 /* A one-time confirmation that you want to delete for everyone */
-"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Ova poruka će biti trajno izbrisana za sve osobe u razgovoru ako su na najnovijoj verziji Grapherexa. Moći će vidjeti da ste izbrisali poruku.";
+"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Ova poruka će biti trajno izbrisana za sve osobe u razgovoru ako su na najnovijoj verziji Signala. Moći će vidjeti da ste izbrisali poruku.";
 
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "Za koga želite izbrisati ovu poruku?";
@@ -3061,7 +2849,7 @@
 "MESSAGE_REQUEST_LEAVE_AND_DELETE_GROUP_TITLE" = "Izbriši i napusti grupu?";
 
 /* Banner label notifying user that a new message is from a user with the same name as an existing contact */
-"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Pažljivo pregledajte zahtjeve. Grapherex je pronašao drugi kontakt s istim imenom.";
+"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Pažljivo pregledajte zahtjeve. Signal je pronašao drugi kontakt s istim imenom.";
 
 /* A header string above a known contact's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Vaš kontakt";
@@ -3147,7 +2935,7 @@
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "Pročitano";
 
-/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Grapherex account. */
+/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Signal account. */
 "MESSAGE_STATUS_RECIPIENT_SKIPPED" = "Preskočeno";
 
 /* Label indicating that a message failed to send. */
@@ -3187,22 +2975,22 @@
 "MISSED_CALL" = "Propušten poziv";
 
 /* Alert body */
-"MISSING_CAMERA_PERMISSION_MESSAGE" = "Možete omogućiti pristup kameri u postavkama iOS-a za upućivanje video poziva u Grapherex.";
+"MISSING_CAMERA_PERMISSION_MESSAGE" = "Možete omogućiti pristup kameri u postavkama iOS-a za upućivanje video poziva u Signal.";
 
 /* Alert title */
-"MISSING_CAMERA_PERMISSION_TITLE" = "Grapherex treba pristup vašoj kameri.";
+"MISSING_CAMERA_PERMISSION_TITLE" = "Signal treba pristup vašoj kameri.";
 
 /* Alert body indicating the user has denied location permissios */
 "MISSING_LOCATION_PERMISSION_MESSAGE" = "Možete omogućiti ovu dozvolu u postavkama iOS-a.";
 
 /* Alert title indicating the user has denied location permissios */
-"MISSING_LOCATION_PERMISSION_TITLE" = "Grapherex zahtijeva pristup vašoj lokaciji za ovu značajku.";
+"MISSING_LOCATION_PERMISSION_TITLE" = "Signal zahtijeva pristup vašoj lokaciji za ovu značajku.";
 
 /* Alert body when user has previously denied media library access */
 "MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE" = "Možete omogućiti ovu dozvolu u postavkama iOS-a.";
 
 /* Alert title when user has previously denied media library access */
-"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Grapherex zahtijeva pristup vašim fotografijama za ovu značajku.";
+"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Signal zahtijeva pristup vašim fotografijama za ovu značajku.";
 
 /* alert title: cannot link - reached max linked devices */
 "MULTIDEVICE_PAIRING_MAX_DESC" = "Ne možete povezati više uređaja.";
@@ -3215,6 +3003,9 @@
 
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Utišano";
+
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Nedavno su promijenili ime svog profila iz %1$@ u %2$@.";
 
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Preskoči";
@@ -3297,16 +3088,19 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Nema zajedničkih grupa";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Nema drugih zajedničkih grupa.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Odaberite kontakt ili grupu za početak razgovora.";
 
 /* Title welcoming to the app */
-"NO_SELECTED_CONVERSATION_TITLE" = "Dobrodošli u Grapherex";
+"NO_SELECTED_CONVERSATION_TITLE" = "Dobrodošli u Signal";
 
 /* A string prompting the user to send a new mesaage to a user */
 "NON_CONTACT_TABLE_CELL_NEW_MESSAGE" = "Nova poruka za:";
 
-/* A string asking the user if they'd like to invite a number to Grapherex via SMS. */
+/* A string asking the user if they'd like to invite a number to signal via SMS. */
 "NON_CONTACT_TABLE_CELL_SEND_SMS" = "Nije pronađen nijedan korisnik. Pozovite putem SMS-a?";
 
 /* Label for 1:1 conversation with yourself. */
@@ -3348,11 +3142,8 @@
 /* No comment provided by engineer. */
 "NOTIFICATIONS_NONE" = "Bez imena i sadržaja";
 
-/* Table cell switch label. When disabled, Grapherex will not play notification sounds while the app is in the foreground. */
+/* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Sviraj dok je aplikacija otvorena";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Zvukovi";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Dodaj prilagođeni zvuk...";
@@ -3412,7 +3203,7 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "Poveži iPhone";
 
 /* explanation to the user they're switching from linking to registering flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Pritiskom na \"Registriraj iPad\" možete stvoriti potpuno novi Grapherex račun ili prebaciti postojeći račun na ovaj iPad. To će onemogućiti Grapherex na bilo kojem drugom uređaju koji je trenutno registriran s istim brojem telefona.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Pritiskom na \"Registriraj iPad\" možete stvoriti potpuno novi Signal račun ili prebaciti postojeći račun na ovaj iPad. To će onemogućiti Signal na bilo kojem drugom uređaju koji je trenutno registriran s istim brojem telefona.";
 
 /* explanation to the user they're switching from registering to linking flow */
 "ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Pritiskom na \"Poveži iPhone\" možete povezati svoj telefon s postojećim računom. Povezivanje telefona uglavnom se ne preporučuje i ograničiti će neke funkcije, poput pozivanja.";
@@ -3424,34 +3215,40 @@
 "ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "Poveži ovaj iPhone";
 
 /* warning to the user that registering an ipad is not recommended */
-"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Registriranjem ovog iPada onemogućiti će se Grapherex na bilo kojem drugom uređaju koji je trenutno registriran s istim brojem telefona.";
+"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Registriranjem ovog iPada onemogućiti će se Signal na bilo kojem drugom uređaju koji je trenutno registriran s istim brojem telefona.";
 
 /* warning to the user that linking a phone is not recommended */
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Povezivanje vašeg iPhonea se ne preporučuje i ograničiti će osnovne funkcionalnosti.";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Omogućite dozvole";
+"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Omogući dozvole";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Obavijesti vam omogućavaju da vidite kada vam stignu poruke kao i nove aktivnostima u razgovorima.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Omogućavanje obavijesti i kontakata dopušta vam da vidite kada stižu poruke i pomaže vam pronaći osobe koje poznajete. Kontakti su šifrirani, tako da ih Signal ne može vidjeti.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Primite poruku";
+"ONBOARDING_PERMISSIONS_TITLE" = "Omogući dozvole";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Odaberite tko vas može pronaći na Grapherexu s vašim brojem telefona %@";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Odaberite tko vas može pronaći na Signalu s vašim brojem telefona %@";
 
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Tko vas može pronaći s vašim brojem telefona?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Vaš broj telefona";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Molimo pričekajte nekoliko minuta prije novog pokušaja. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Unesite broj telefona za početak";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Unesite vaš broj telefona";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Nevažeći broj";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Nevažeći broj telefona. Unesite valjani broj telefona za registraciju.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Ponestalo vam je pokušaja za unos PIN-a, ali i dalje možete pristupiti svom Grapherex računu stvaranjem novog PIN-a. Radi vaše privatnosti i sigurnosti, vaš će se račun oporaviti bez ikakvih spremljenih podataka ili postavki profila.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Ponestalo vam je pokušaja za unos PIN-a, ali i dalje možete pristupiti svom Signal računu stvaranjem novog PIN-a. Radi vaše privatnosti i sigurnosti, vaš će se račun oporaviti bez ikakvih spremljenih podataka ili postavki profila.";
 
 /* Label for the 'learn more' link when reglock is disabled in the 'onboarding pin attempts exhausted' view. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_LEARN_MORE" = "Naučite više o PIN-ovima";
@@ -3474,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Unesite svoj PIN";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Vaš profil";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Prezime (neobavezno)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Ime (obavezno)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Uvjeti i pravila o privatnosti";
 
@@ -3483,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Pogrešan broj?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Nisam dobio/la kôd (dostupno za %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Nazovi me";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Kontaktirajte Grapherexovu podršku";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Nazovi me za %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Provjera kôda...";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Ovaj kôd je nevažeći";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Nisam dobio/la kôd";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Ponovno pošalji kôd";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Provjerite imate li mobilnu uslugu i možete li primati SMS poruke.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Nema kôda?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Ponovno pošalji kôd";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Potvrdite pozivom";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Još uvijek nema kôda?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Ponovno pošalji kôd za %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Unesite kôd koji smo poslali na %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Upravo smo ponovno poslali kôd na %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Potvrdni kôd";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Postavke";
@@ -3525,8 +3322,8 @@
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ je postavio da poruke nestaju za %@.";
 
-/* Label warning the user that the Grapherex service may be down. */
-"OUTAGE_WARNING" = "Grapherex ima tehničkih poteškoća. Naporno radimo na što bržem vraćanju usluge.";
+/* Label warning the user that the Signal service may be down. */
+"OUTAGE_WARNING" = "Signal ima tehničkih poteškoća. Naporno radimo na što bržem vraćanju usluge.";
 
 /* info message text in conversation view. {embeds callee name} */
 "OUTGOING_CALL_FORMAT" = "Vi ste zvali %@";
@@ -3634,13 +3431,13 @@
 "PHONE_NUMBER_DISCOVERABILITY_EVERYBODY" = "Svi";
 
 /* A user friendly description of the 'everybody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Svatko tko ima vaš broj telefona u svojim kontaktima vidjeti će vas kao kontakt na Grapherexu. Drugi će vas moći pronaći u pretraživanju.";
+"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Svatko tko ima vaš broj telefona u svojim kontaktima vidjeti će vas kao kontakt na Signalu. Drugi će vas moći pronaći u pretraživanju.";
 
 /* A user friendly name for the 'nobody' phone number discoverability mode. */
 "PHONE_NUMBER_DISCOVERABILITY_NOBODY" = "Nitko";
 
 /* A user friendly description of the 'nobody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Nitko na Grapherexu vas neće moći pronaći s vašim brojem telefona. Nećete biti vidljivi osobama koje imaju vaš broj telefona u kontaktima, a drugi vas neće moći pronaći s vašim brojem telefona u pretraživanju.";
+"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Nitko na Signalu vas neće moći pronaći s vašim brojem telefona. Nećete biti vidljivi osobama koje imaju vaš broj telefona u kontaktima, a drugi vas neće moći pronaći s vašim brojem telefona u pretraživanju.";
 
 /* A format for a label showing an example phone number. Embeds {{the example phone number}}. */
 "PHONE_NUMBER_EXAMPLE_FORMAT" = "Primjer: %@";
@@ -3649,19 +3446,19 @@
 "PHONE_NUMBER_SHARING_CONTACTS_ONLY" = "Moji kontakti";
 
 /* A user friendly description of the 'contacts only' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Samo vaši kontakti mogu vidjeti vaš broj telefona na Grapherexu.";
+"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Samo vaši kontakti mogu vidjeti vaš broj telefona na Signalu.";
 
 /* A user friendly name for the 'everybody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_EVERYBODY" = "Svi";
 
 /* A user friendly description of the 'everybody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Vaš broj telefona će biti vidljiv osobama i grupama kojima pošaljete poruku. Osobe koji imaju vaš broj u telefonskim kontaktima također će ga vidjeti na Grapherexu.";
+"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Vaš broj telefona će biti vidljiv osobama i grupama kojima pošaljete poruku. Osobe koji imaju vaš broj u telefonskim kontaktima također će ga vidjeti na Signalu.";
 
 /* A user friendly name for the 'nobody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_NOBODY" = "Nitko";
 
 /* A user friendly description of the 'nobody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Nitko neće vidjeti vaš broj telefona na Grapherexu.";
+"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Nitko neće vidjeti vaš broj telefona na Signalu.";
 
 /* Format for phone number label with an index. Embeds {{Phone number label (e.g. 'home')}} and {{index, e.g. 2}}. */
 "PHONE_NUMBER_TYPE_AND_INDEX_NAME_FORMAT" = "%@ %@";
@@ -3736,7 +3533,7 @@
 "PIN_CREATION_DISABLE_CONFIRMATION_ACTION" = "Onemogući PIN";
 
 /* Message of the 'pin disable' action sheet. */
-"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Ako onemogućite PIN, izgubiti će te sve podatke kada se ponovo registrirate na Grapherex, osim ako ih ne prenesete s drugog iOS uređaja. Ne možete omogućiti Zaključavanje registracije dokle god je PIN onemogućen.";
+"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Ako onemogućite PIN, izgubiti će te sve podatke kada se ponovo registrirate na Signal, osim ako ih ne prenesete s drugog iOS uređaja. Ne možete omogućiti Zaključavanje registracije dokle god je PIN onemogućen.";
 
 /* Title of the 'pin disable' action sheet. */
 "PIN_CREATION_DISABLE_CONFIRMATION_TITLE" = "Upozorenje";
@@ -3748,7 +3545,7 @@
 "PIN_CREATION_ERROR_TITLE" = "Stvaranje PIN-a nije uspjelo";
 
 /* The explanation in the 'pin creation' view. */
-"PIN_CREATION_EXPLANATION" = "PIN-ovi čuvaju šifrirane podatke spremljenima na Grapherexu tako da im samo vi možete pristupiti. Vaš profil, postavke i kontakti će biti vraćeni nakon ponovne instalacije. Neće vam trebati PIN kako biste otvorili aplikaciju.";
+"PIN_CREATION_EXPLANATION" = "PIN-ovi čuvaju šifrirane podatke spremljenima na Signalu tako da im samo vi možete pristupiti. Vaš profil, postavke i kontakti će biti vraćeni nakon ponovne instalacije. Neće vam trebati PIN kako biste otvorili aplikaciju.";
 
 /* Learn more action on the pin creation view */
 "PIN_CREATION_LEARN_MORE" = "Saznajte više o PIN-ovima";
@@ -3811,7 +3608,7 @@
 "PIN_REMINDER_MEGAPHONE_FEW_DAYS_TOAST" = "Podsjetiti ćemo vas ponovo za par dana.";
 
 /* Title for PIN reminder megaphone */
-"PIN_REMINDER_MEGAPHONE_TITLE" = "Potvrdite svoj Grapherex PIN";
+"PIN_REMINDER_MEGAPHONE_TITLE" = "Potvrdite svoj Signal PIN";
 
 /* Toast indicating that we'll ask you for your PIN again tomorrow. */
 "PIN_REMINDER_MEGAPHONE_TOMORROW_TOAST" = "Podsjetiti ćemo vas ponovo sutra.";
@@ -3826,7 +3623,7 @@
 "PIN_REMINDER_MISMATCH_ERROR" = "Nevažeći PIN, pokušajte ponovno.";
 
 /* The title for the 'pin reminder' dialog. */
-"PIN_REMINDER_TITLE" = "Unesite svoj Grapherex PIN";
+"PIN_REMINDER_TITLE" = "Unesite svoj Signal PIN";
 
 /* Label indicating that the attempted PIN is too short */
 "PIN_REMINDER_TOO_SHORT_ERROR" = "PIN mora imati najmanje 4 znamenke.";
@@ -3841,7 +3638,7 @@
 "PINS_MEGAPHONE_ACTION" = "Stvori PIN";
 
 /* Body for PIN megaphone when user doesn't have a PIN */
-"PINS_MEGAPHONE_BODY" = "PIN omogućava da vaši podaci koji su pohranjeni na Grapherexu budu šifrirani";
+"PINS_MEGAPHONE_BODY" = "PIN omogućava da vaši podaci koji su pohranjeni na Signalu budu šifrirani";
 
 /* Toast indication that the user will be reminded later to setup their PIN. Embeds {{time until mandatory}} */
 "PINS_MEGAPHONE_SNOOZE_TOAST_FORMAT" = "Podsjetiti ćemo vas kasnije. Stvaranje PIN-a postati će obvezno za %ld dana.";
@@ -3880,19 +3677,19 @@
 "PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "Broj u vašem međuspremniku ne izgleda kao točan sigurnosni broj za ovaj razgovor.";
 
 /* Alert body for user error */
-"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Grapherex nije uspio pronaći nijedan sigurnosni broj u međuspremniku. Jeste li ga ispravno kopirali?";
+"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Signal nije uspio pronaći nijedan sigurnosni broj u međuspremniku. Jeste li ga ispravno kopirali?";
 
 /* Alert body when verifying with {{contact name}} */
-"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Svaki par Grapherex korisnika ima poseban sigurnosni broj. Dvaput provjerite da %@ prikazuje *vaš* jedinstveni sigurnosni broj.";
+"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Svaki par Signal korisnika ima poseban sigurnosni broj. Dvaput provjerite da %@ prikazuje *vaš* jedinstveni sigurnosni broj.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Imate staru verziju Grapherexa. Prije potvrde morate ažurirati aplikaciju.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Imate staru verziju Signala. Prije potvrde morate ažurirati aplikaciju.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Vaš partner koristi staru verziju Grapherexa. Nužno je da ažurira aplikaciju prije nego što možete potvrditi.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Vaš partner koristi staru verziju Signala. Nužno je da ažurira aplikaciju prije nego što možete potvrditi.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Skenirani kôd ne izgleda kao sigurnosni broj. Koristite li oboje najnoviju verziju Grapherexa?";
+"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Skenirani kôd ne izgleda kao sigurnosni broj. Koristite li oboje najnoviju verziju Signala?";
 
 /* Paragraph(s) shown alongside the safety number when verifying privacy with {{contact name}} */
 "PRIVACY_VERIFICATION_INSTRUCTIONS" = "Ako želite provjeriti sigurnost vašeg end-to-end šifriranja s %@, usporedite gore navedene brojeve s brojevima na njihovom uređaju.\nTakođer možete skenirati kôd na njihovom telefonu ili zatražiti da skeniraju vaš kôd.";
@@ -3913,7 +3710,7 @@
 "PROFILE_BIO_VIEW_DEFAULT_BIO_BE_KIND" = "Budite ljubazni";
 
 /* The 'Coffee lover' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "Ljubitelj kave";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_COFFEE_LOVER" = "Ljubitelj/ica kave";
 
 /* The 'Encrypted' default bio in the profile bio view. */
 "PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "Šifrirano";
@@ -3942,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ je promijenio/la ime na profilu u %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Dodaj u profil";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Vaše ime";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Opis";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Ime";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Korisničko ime";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Postavite profilnu sliku";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Opis";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Ukloni sliku";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Stvorite korisničko ime";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Vaše prezime je predugo.";
@@ -3967,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Vaše je ime predugo.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(neobavezno)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Prezime";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Prezime (neobavezno)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(obavezno)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Ime";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Ime (obavezno)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Profil se može ažurirati samo ako ste povezani s internetom.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Vaš profil je end-to-end šifriran. Vaš profil kao i promjene na njemu biti će vidljive vašim kontaktima kada započinjete ili prihvaćate nove razgovore i kada se pridružite novim grupama.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Vaš profil je end-to-end šifriran. Vaš profil kao i promjene na njemu biti će vidljive vašim kontaktima kada započinjete ili prihvaćate nove razgovore.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Spremi";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profil";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Korisničko ime";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Označi kao pročitano";
@@ -4004,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Ponovna registracija push obavijesti je uspješna.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Push obavijesti";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -4152,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Ne možemo aktivirati vaš račun dok ne potvrdite kôd koji smo vam poslali.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Da biste nastavili, provjerite internetsku vezu uređaja i pokušajte ponovo.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Provjerite vašu mrežnu vezu";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Format ovog broja telefona nije podržan. Molimo kontaktirajte službu za podršku.";
 
@@ -4182,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Nema broja telefona";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Potvrdni kôd će biti poslan na ovaj broj. Je li vaš navedeni broj telefona točan?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Broj za potvrdu: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Uredi";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Potvrđivanje %@...";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Odbij";
 
@@ -4195,25 +4001,25 @@
 "REREGISTER_FOR_PUSH" = "Ponovno registriraj push obavijesti";
 
 /* Body for research megaphone */
-"RESEARCH_MEGAPHONE_BODY" = "Kako bi Grapherex bio najbolja aplikacija za razmjenu poruka na planetu, voljeli bismo čuti vaše povratne informacije.";
+"RESEARCH_MEGAPHONE_BODY" = "Kako bi Signal bio najbolja aplikacija za razmjenu poruka na planetu, voljeli bismo čuti vaše povratne informacije.";
 
 /* Title for research megaphone */
-"RESEARCH_MEGAPHONE_TITLE" = "Recite što mislite o Grapherexu";
+"RESEARCH_MEGAPHONE_TITLE" = "Recite što mislite o Signalu";
 
 /* Text for the research modal footer */
-"RESEARCH_MODAL_FOOTER" = "Anketu održava Surveygizmo na sigurnoj domeni o surveys.grapherexusers.com";
+"RESEARCH_MODAL_FOOTER" = "Anketu održava Surveygizmo na sigurnoj domeni o surveys.signalusers.org";
 
 /* Button text for declining the research modal */
 "RESEARCH_MODAL_NO_THANKS" = "Ne, hvala";
 
 /* Text explaining why the user should take the survey */
-"RESEARCH_MODAL_PLEA" = "<bold>Vjerujemo u privatnost.</bold>\n\nGrapherex vas ne prati niti prikuplja vaše podatke. Da bismo poboljšali Grapherex za sve, oslanjamo se na povratne informacije korisnika i <bold>voljeli bismo vaše</bold>.\n\nProvodimo anketu kako bismo shvatili kako koristite Grapherex. Naša anketa ne prikuplja podatke koji će vas identificirati. Ako ste zainteresirani za dijeljenje dodatnih povratnih informacija, imat ćete mogućnost pružanja podataka za kontakt.\n\nAko imate nekoliko minuta i želite poslati povratne informacije, voljeli bismo čuti vaše mišljenje.";
+"RESEARCH_MODAL_PLEA" = "<bold>Vjerujemo u privatnost.</bold>\n\nSignal vas ne prati niti prikuplja vaše podatke. Da bismo poboljšali Signal za sve, oslanjamo se na povratne informacije korisnika i <bold>voljeli bismo vaše</bold>.\n\nProvodimo anketu kako bismo shvatili kako koristite Signal. Naša anketa ne prikuplja podatke koji će vas identificirati. Ako ste zainteresirani za dijeljenje dodatnih povratnih informacija, imat ćete mogućnost pružanja podataka za kontakt.\n\nAko imate nekoliko minuta i želite poslati povratne informacije, voljeli bismo čuti vaše mišljenje.";
 
 /* Button text for taking the research survey */
 "RESEARCH_MODAL_TAKE_SURVEY" = "Ispunite anketu";
 
 /* Title for the research megaphone modal */
-"RESEARCH_MODAL_TITLE" = "Grapherex istraživanja";
+"RESEARCH_MODAL_TITLE" = "Signal istraživanja";
 
 /* Generic text for button that retries whatever the last action was. */
 "RETRY_BUTTON_TEXT" = "Pokušaj ponovno";
@@ -4243,7 +4049,7 @@
 "SAFETY_NUMBER_CONFIRMATION_VIEW_ACTION" = "Pregled";
 
 /* Snippet to share {{safety number}} with a friend. sent e.g. via SMS */
-"SAFETY_NUMBER_SHARE_FORMAT" = "Naš Grapherex sigurnosni broj:\n%@";
+"SAFETY_NUMBER_SHARE_FORMAT" = "Naš Signal sigurnosni broj:\n%@";
 
 /* Action sheet heading */
 "SAFETY_NUMBERS_ACTIONSHEET_TITLE" = "Vaš sigurnosni broj s %@ je promijenjen. Možda ga želite provjeriti.";
@@ -4275,14 +4081,14 @@
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Kako biste koristili Zaključavanje zaslona, morate omogućiti lozinku u postavkama iOS-a.";
 
-/* Description of how and why Grapherex iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
-"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Potvrdite za otvaranje Grapherexa.";
+/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
+"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Potvrdite za otvaranje Signala.";
 
 /* Title for alert indicating that screen lock could not be unlocked. */
 "SCREEN_LOCK_UNLOCK_FAILED" = "Provjera autentičnosti nije uspjela";
 
-/* Label for button on lock screen that lets users unlock Grapherex. */
-"SCREEN_LOCK_UNLOCK_SIGNAL" = "Otključajte Grapherex";
+/* Label for button on lock screen that lets users unlock Signal. */
+"SCREEN_LOCK_UNLOCK_SIGNAL" = "Otključajte Signal";
 
 /* This is a contact's name. Replace the name for a more common name in your locale if this sounds too foreign. This should be a unique non-public figure's name. This will have a female profile photo. */
 "SCREENSHOT_NAME_CONTACT_EIGHT" = "Tina Grgić";
@@ -4332,7 +4138,7 @@
 /* This is for a group chat for people who want weather updates. */
 "SCREENSHOT_NAME_GROUP_TWO" = "Vremenska prognoza";
 
-/* This appears in Grapherex > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
+/* This appears in Signal > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
 "SCREENSHOT_NAME_LOCAL_PROFILE" = "Predsjednica Frida";
 
 /* This is a message expressing support/happiness/awe/shock. */
@@ -4441,13 +4247,13 @@
 "SECONDARY_DEVICE_ERROR_FETCHING_LINKING_CODE" = "Nije moguće dohvatiti kôd za povezivanje";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Ažurirajte Grapherex na ovom uređaju kako biste ga povezali sa svojim telefonom.";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Ažurirajte Signal na ovom uređaju kako biste ga povezali sa svojim telefonom.";
 
 /* Title for error alert indicating that a linked device must be upgraded before it can be linked. */
 "SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Nepodržana verzija";
 
 /* alert message for outdated linking device */
-"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Na vašem drugom uređaju nalazi se starija verzija Grapherexa koja ne podržava skeniranje iPad QR kôdova. Instalirajte najnoviju verziju Grapherexa i pokušajte ponovo.";
+"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Na vašem drugom uređaju nalazi se starija verzija Signala koja ne podržava skeniranje iPad QR kôdova. Instalirajte najnoviju verziju Signala i pokušajte ponovo.";
 
 /* alert title for outdated linking device */
 "SECONDARY_LINKING_ERROR_OLD_VERSION_TITLE" = "Ažurirajte uređaj za skeniranje";
@@ -4468,19 +4274,19 @@
 "SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS" = "Dovršite povezivanje";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Pokrenite Grapherex na uređaju kako biste povezali ovaj iPad s svojim računom";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Pokrenite Signal na uređaju kako biste povezali ovaj iPad s svojim računom";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
-"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Nemam Grapherex na svom telefonu...";
+"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Nemam Signal na svom telefonu...";
 
 /* alert body */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Otvorite App Store na svom telefonu, instalirajte Grapherex, dovršite postupak registracije i tada možete svoj iPad povezati s istim računom.";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Otvorite App Store na svom telefonu, instalirajte Signal, dovršite postupak registracije i tada možete svoj iPad povezati s istim računom.";
 
 /* alert title */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Instalirajte Grapherex na svoj telefon";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Instalirajte Signal na svoj telefon";
 
 /* body text while displaying a QR code which, when scanned, will link this device. */
-"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Pritisnite svoju profilnu sliku kako biste otvorili postavke Grapherexa na vašem uređaju. Zatim pritisnite \"Povezani uređaji\" te \"Poveži novi uređaj\" za skeniranje ovog kôda s vašim uređajem:";
+"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Pritisnite svoju profilnu sliku kako biste otvorili postavke Signala na vašem uređaju. Zatim pritisnite \"Povezani uređaji\" te \"Poveži novi uređaj\" za skeniranje ovog kôda s vašim uređajem:";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
 "SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Ovdje potražite pomoć za povezivanje iPada";
@@ -4489,7 +4295,7 @@
 "SECONDARY_ONBOARDING_SCAN_CODE_TITLE" = "Skenirajte QR kôd s svojim uređajem";
 
 /* header text before the user can transfer to this device */
-"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Pokrenite Grapherex na svom starom iPadu kako bi prenijeli vaš račun";
+"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Pokrenite Signal na svom starom iPadu kako bi prenijeli vaš račun";
 
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "Sigurna sesija je resetirana.";
@@ -4513,7 +4319,7 @@
 "SEND_INVITE_FAILURE" = "Slanje pozivnice nije uspjelo, pokušajte ponovno kasnije.";
 
 /* Alert body after invite succeeded */
-"SEND_INVITE_SUCCESS" = "Pozvali ste prijatelja da koristi Grapherex!";
+"SEND_INVITE_SUCCESS" = "Pozvali ste prijatelja da koristi Signal!";
 
 /* alert action, confirming the user wants to exit the media flow and abandon any photos they've taken */
 "SEND_MEDIA_CONFIRM_ABANDON_ALBUM" = "Odbaci medijske zapise";
@@ -4528,10 +4334,10 @@
 "SEND_SMS_CONFIRM_TITLE" = "Pozvati prijatelja putem nesigurnog SMS-a?";
 
 /* No comment provided by engineer. */
-"SEND_SMS_INVITE_TITLE" = "Želite li pozvati sljedeći broj na Grapherex:";
+"SEND_SMS_INVITE_TITLE" = "Želite li pozvati sljedeći broj na Signal:";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "Grapherex koristi end-to-end šifriranje i možda će ponekad trebati osvježiti sesiju razgovora. To ne utječe na sigurnost vašeg razgovora, ali ste možda propustili poruku od ovog kontakta i možete zatražiti da je ponovno pošalje.";
+"SESSION_REFRESH_ALERT_MESSAGE" = "Signal koristi end-to-end šifriranje i možda će ponekad trebati osvježiti sesiju razgovora. To ne utječe na sigurnost vašeg razgovora, ali ste možda propustili poruku od ovog kontakta i možete zatražiti da je ponovno pošalje.";
 
 /* Title for the session refresh alert */
 "SESSION_REFRESH_ALERT_TITLE" = "Sesija razgovora je osvježena";
@@ -4545,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Postavi pozadinu";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "O aplikaciji";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Račun";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Blokiraj";
@@ -4554,11 +4360,11 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Zaobilaženje cenzure";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Lokacija: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Lokacija";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Ako je omogućeno, Grapherex će pokušati zaobići cenzuru. Omogućite ovu značajku samo ako ste u mjestu gdje je Grapherex cenzuriran.";
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Ako je omogućeno, Signal će pokušati zaobići cenzuru. Omogućite ovu značajku samo ako ste u mjestu gdje je Signal cenzuriran.";
 
 /* Table footer for the 'censorship circumvention' section shown when censorship circumvention has been auto-enabled based on local phone number. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_AUTO_ENABLED" = "Zaobilaženje cenzure aktivirano je na temelju broja telefona vašeg računa.";
@@ -4569,11 +4375,8 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "Zaobilaženje cenzure se može aktivirati samo ako ste povezani na Internet.";
 
-/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Grapherex service. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Zaobilaženje cenzure nije potrebno. Već ste povezani s Grapherexom.";
-
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Zaobilaženje cenzure";
+/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Zaobilaženje cenzure nije potrebno. Već ste povezani s Signalom.";
 
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Omogući zapisnike pogreške";
@@ -4590,20 +4393,14 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Omogući PIN";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "Grapherex PIN";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Pošalji zapisnik pogreške";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Napredno";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Zapisnici pogrešaka";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Prikaži fotografije kontakata iz imenika ako su dostupne";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Prikaži fotografije kontakata iz imenika ako su dostupne.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
 "SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Koristi fotografije kontakata iz imenika";
@@ -4668,11 +4465,8 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Dodaj kontakt za blokiranje";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Popis kontakata i grupa koje ste blokirali.";
-
-/* A label that indicates the user has no Grapherex contacts. */
-"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Nemate kontakte na Grapherexu.";
+/* A label that indicates the user has no Signal contacts. */
+"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Nemate kontakte na Signalu.";
 
 /* A label that indicates the user's search has no matching results. */
 "SETTINGS_BLOCK_LIST_NO_SEARCH_RESULTS" = "Nema rezultata";
@@ -4684,13 +4478,16 @@
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE" = "Uvijek preusmjeri pozive";
 
 /* User settings section footer, a detailed explanation */
-"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Preusmjerite sve pozive putem Grapherexnog poslužitelja kako biste izbjegli otkrivanje vaše IP adrese vašim kontaktima. Omogućavanje opcije će smanjiti kvalitetu poziva.";
+"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Preusmjerite sve pozive putem Signalnog poslužitelja kako biste izbjegli otkrivanje vaše IP adrese vašim kontaktima. Omogućavanje opcije će smanjiti kvalitetu poziva.";
+
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Razgovori";
 
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Izbriši povijest razgovora";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Copyright Grapherex Messenger \nGPLv3 licenca";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger \nGPLv3 licenca";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Upotreba podatkovnih podataka";
@@ -4699,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Koristi manje mobilnih podataka";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Korištenjem manje mobilnih podataka mogu se poboljšati pozivi na lošim mrežama";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Korištenjem manje mobilnih podataka mogu se poboljšati pozivi na lošim mrežama.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Pozivi";
@@ -4708,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Glasovne poruke, jednom vidljivi medijski zapisi i naljepnice (manje od 100 kb) se uvijek automatski preuzimaju.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "AUTOMATSKO PREUZIMANJE MEDIJSKIH ZAPISA";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Automatsko preuzimanje";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Poništi postavke automatskog preuzimanja";
@@ -4728,23 +4525,17 @@
 /* Confirmation text for button which deletes all message, calling, attachments, etc. */
 "SETTINGS_DELETE_HISTORYLOG_CONFIRMATION_BUTTON" = "Izbriši sve";
 
-/* Title for the 'donate to Grapherex' link in settings. */
-"SETTINGS_DONATE" = "Donirajte Grapherexu";
+/* Title for the 'donate to signal' link in settings. */
+"SETTINGS_DONATE" = "Donirajte Signalu";
 
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Pomoć";
-
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Izbriši povijest razgovora";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Informacije";
 
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Pozovite svoje prijatelje";
 
 /* content of tweet when inviting via twitter - please do not translate URL */
-"SETTINGS_INVITE_TWITTER_TEXT" = "Možete me kontaktirati koristeći @grapherexapp. Nabavite ga sada: https://grapherex.com";
+"SETTINGS_INVITE_TWITTER_TEXT" = "Možete me kontaktirati koristeći @signalapp. Nabavite ga sada: https://signal.org/download/";
 
 /* Label for settings view that allows user to change the notification sound. */
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "Zvuk poruke";
@@ -4752,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Pozadina razgovora";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Uvjeti i pravila o privatnosti";
 
 /* Setting for enabling & disabling link previews. */
@@ -4785,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Razmjena poruka";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "Pregledajte i dijelite kada se poruke tipkaju. Ako je onemogućeno, nećete moći vidjeti potvrde čitanja kao ni kada drugi tipkaju.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Postavke";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+/* A setting controlling whether muted conversations are shown in the badge count */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Uračunaj i utišane razgovore";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Bedž obavijesti";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Obavijesti o pozivima i porukama mogu se pojaviti dok je telefon zaključan. Možete ograničiti ono što je prikazano u ovim obavijestima.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Obavijesti o pozivima i porukama mogu se pojaviti dok je telefon zaključan.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Sadržaj obavijesti";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Kontakt se pridružio Grapherexu";
+/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Kontakt se pridružio/la Signalu";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Događaji";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Obavijesti me kada...";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Obavijesti";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4825,19 +4619,16 @@
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_ACTION" = "Isključi podsjetnike";
 
 /* The explanation for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Svakako zapamtite ili sigurno pohranite svoj PIN jer ga nije moguće vratiti. Ako zaboravite svoj PIN, možete izgubiti podatke prilikom ponovne registracije vašeg Grapherex računa.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Svakako zapamtite ili sigurno pohranite svoj PIN jer ga nije moguće vratiti. Ako zaboravite svoj PIN, možete izgubiti podatke prilikom ponovne registracije vašeg Signal računa.";
 
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Potvrdite svoj Grapherex PIN";
-
-/* Footer for the 'pin reminder' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Podsjetnici vam pomažu da zapamtite svoj PIN jer ga nije moguće vratiti. S vremenom ćemo vas rijeđe tražiti. ";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Potvrdite svoj Signal PIN";
 
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN podsjetnici";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PIN-ovi čuvaju šifrirane podatke spremljenima na Grapherexu tako da im samo vi možete pristupiti. Vaš profil, postavke i kontakti će biti vraćeni nakon ponovne instalacije.";
+"SETTINGS_PINS_FOOTER" = "PIN-ovi čuvaju šifrirane podatke spremljenima na Signalu tako da im samo vi možete pristupiti. Vaš PIN se ne može oporaviti. Vaš profil, postavke i kontakti će biti vraćeni nakon ponovne instalacije.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Promijenite PIN";
@@ -4846,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Stvorite PIN";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "Grapherex PIN";
+"SETTINGS_PINS_TITLE" = "Signal PIN";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Prikaži pozive u kartici \"Lista poziva\" u Telefon aplikaciji iOS-a.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Postavke za zaobilaženje cenzure, preusmjeravanje poziva i zapečaćene pošiljatelje.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Napredno";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Prikaži pozive u listi poziva";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Privatnost";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Potvrde o čitanju";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Pregledajte i podijelite kada su poruke pročitane. Ova je postavka neobavezna i primjenjuje se na sve razgovore.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Isključi";
@@ -4873,7 +4664,7 @@
 "SETTINGS_REGISTRATION_LOCK_TURN_ON" = "Uključi";
 
 /* Body for the alert confirming that the user wants to turn on registration lock. */
-"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Ako zaboravite svoj PIN za Grapherex prilikom ponovne registracije na Grapherexu, biti ćete zaključani iz svog računa na 7 dana.";
+"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Ako zaboravite svoj PIN za Signal prilikom ponovne registracije na Signalu, biti ćete zaključani iz svog računa na 7 dana.";
 
 /* Title for the alert confirming that the user wants to turn on registration lock. */
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_TITLE" = "Omogući Zaključavanje registracije?";
@@ -4887,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Zaključaj zaslon nakon";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Otključajte zaslon Grapherexa koristeći Touch ID, Face ID ili lozinku vašeg iOS uređaja. I dalje možete odgovarati na dolazne pozive i primati obavijesti o pozivima i porukama dok je Zaključavanje zaslona omogućeno. Postavke obavijesti Grapherexa omogućuju vam prilagođavanje prikazanih informacija.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Zaključavanje zaslona";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Zaključavanje zaslona";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Omogući sigurnost zaslona";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Spriječava prikaz pregleda Grapherexa prilikom promjene aplikacija.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Zvukovi";
@@ -4908,35 +4693,41 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Uspostava poziva";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Sigurnost zaslona";
+"SETTINGS_SECURITY_TITLE" = "App Security";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Prikaži u prijedlozima";
+"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Razgovori u Grapherexu se prikazuju kao prijedlozi prilikom dijeljenja iz drugih aplikacija.";
+"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Razgovori u Signalu se prikazuju kao prijedlozi prilikom dijeljenja iz drugih aplikacija.";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Zaključavanje registracije";
 
-/* Footer for the 'two factor auth' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Zbog dodatne sigurnosti, omogućite Zaključavanje registracije koje će zahtijevati vaš Grapherex PIN za ponovnu registriraciju vašeg broja telefona na Grapherex.";
+/* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Prikaži tipkanje";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Pregledajte i dijelite kada se poruke tipkaju. Ova je postavka neobavezna i primjenjuje se na sve razgovore.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Zapečaćeni pošiljatelj";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Prikaži ikonu";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Prikazuje ikonu statusa kada odaberete \"Više informacija\" na porukama koje su isporučene pomoću zapečaćenog pošiljatelja.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Dopusti od svih";
@@ -4966,13 +4757,13 @@
 "SHARE_EXTENSION_LOADING" = "Učitavanje...";
 
 /* Message indicating that the share extension cannot be used until the user has registered in the main app. */
-"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Pokrenite Grapherex kako biste se registrirali.";
+"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Pokrenite Signal kako biste se registrirali.";
 
 /* Title indicating that the share extension cannot be used until the user has registered in the main app. */
 "SHARE_EXTENSION_NOT_REGISTERED_TITLE" = "Nije registriran/a";
 
 /* Message indicating that the share extension cannot be used until the main app has been launched at least once. */
-"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Pokrenite Grapherex za ažuriranje ili registraciju.";
+"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Pokrenite Signal za ažuriranje ili registraciju.";
 
 /* Title indicating that the share extension cannot be used until the main app has been launched at least once. */
 "SHARE_EXTENSION_NOT_YET_MIGRATED_TITLE" = "Nije spremno";
@@ -4986,17 +4777,17 @@
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "Učitavanje...";
 
-/* Shown when trying to share content to a Grapherex user for the share extension. Followed by failure details. */
+/* Shown when trying to share content to a Signal user for the share extension. Followed by failure details. */
 "SHARE_EXTENSION_UNABLE_TO_BUILD_ATTACHMENT_ALERT_TITLE" = "Nije moguće pripremiti privitak";
 
 /* Title for the 'share extension' view. */
-"SHARE_EXTENSION_VIEW_TITLE" = "Podijeli na Grapherexu";
+"SHARE_EXTENSION_VIEW_TITLE" = "Podijeli na Signalu";
 
 /* Title of alert indicating sharing suggestions failed to deactivate */
 "SHARING_SUGGESTIONS_DISABLE_ERROR" = "Onemogućavanje prijedloga prilikom dijeljenja nije uspjelo.";
 
 /* Body for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Razgovori u Grapherexu se sada mogu prikazati kao prijedlozi prilikom dijeljenja iz drugih aplikacija.";
+"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Razgovori u Signalu se sada mogu prikazati kao prijedlozi prilikom dijeljenja iz drugih aplikacija.";
 
 /* Title for sharing suggestions megaphone */
 "SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Dijeljenje je postalo još lakše";
@@ -5013,8 +4804,8 @@
 /* notification action */
 "SHOW_THREAD_BUTTON_TITLE" = "Prikaži razgovor";
 
-/* body sent to contacts when inviting to Install Grapherex */
-"SMS_INVITE_BODY" = "Pozivam te da instaliraš Grapherex! Ovdje je poveznica:";
+/* body sent to contacts when inviting to Install Signal */
+"SMS_INVITE_BODY" = "Pozivam te da instaliraš Signal! Ovdje je poveznica:";
 
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "Bez zvuka";
@@ -5041,7 +4832,7 @@
 "STICKERS_INSTALL_BUTTON" = "Instalirajte";
 
 /* Title for the 'available built-in stickers' section of the 'manage stickers' view. */
-"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Grapherexova umjetnička serija";
+"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Signalova umjetnička serija";
 
 /* Title for the 'available known stickers' section of the 'manage stickers' view. */
 "STICKERS_MANAGE_VIEW_AVAILABLE_KNOWN_PACKS_SECTION_TITLE" = "Naljepnice koje ste primili";
@@ -5092,7 +4883,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Recite nam o problemu:";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Pošaljite e-poštu s vašim zahtjevom za podršku na support@grapherex.com";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Pošaljite e-poštu s vašim zahtjevom za podršku na support@signal.org";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Filtar: %@";
@@ -5115,16 +4906,16 @@
 /* Localized label for support request email debug log URL. Embeds {{debug log url}}. */
 "SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "URL zapisa: %@";
 
-/* Localized label for support request email Grapherex version string. Embeds {{Grapherex version}}. */
-"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Grapherex verzija: %@";
+/* Localized label for support request email signal version string. Embeds {{signal version}}. */
+"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Signal verzija: %@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Grapherex iOS zahtjev za podršku";
+"SUPPORT_EMAIL_SUBJECT" = "Signal iOS zahtjev za podršku";
 
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "Kako se osjećate? (neobavezno)";
 
-/* Label in support request informing user about Grapherex FAQ */
+/* Label in support request informing user about Signal FAQ */
 "SUPPORT_FAQ_PROMPT" = "Jeste li već pročitali naša ČPP?";
 
 /* Label describing support switch to attach debug logs */
@@ -5233,25 +5024,25 @@
 "UNKNOWN_COUNTRY_NAME" = "Nepoznata država";
 
 /* Info message recorded in conversation history when local user receives an unknown message from a linked device and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Jedan od vaših uređaja je poslao poruku koja se ne može obraditi niti prikazati ovdje jer koristi novu značajku Grapherexa.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Jedan od vaših uređaja je poslao poruku koja se ne može obraditi niti prikazati ovdje jer koristi novu značajku Signala.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ vam je poslao poruku koja se ne može obraditi niti prikazati jer koristi novu značajku Grapherexa.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ vam je poslao poruku koja se ne može obraditi niti prikazati jer koristi novu značajku Signala.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Primili ste poruku koja se ne može obraditi niti prikazati jer koristi novu značajku Grapherexa.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Primili ste poruku koja se ne može obraditi niti prikazati jer koristi novu značajku Signala.";
 
 /* Label for button that lets users upgrade the app. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Ažurirajte Grapherex sada";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Ažurirajte Signal sada";
 
 /* Info message recorded in conversation history when local user has received an unknown unknown message from a linked device and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Ažurirano na najnoviju verziju Grapherexa. Sada možete primati ovu vrstu poruke na svoj uređaj.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Ažurirano na najnoviju verziju Signala. Sada možete primati ovu vrstu poruke na svoj uređaj.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Možete zatražiti od %@ da ponovo pošalje ovu poruku sada kada koristite najnoviju verziju Grapherexa.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Možete zatražiti od %@ da ponovo pošalje ovu poruku sada kada koristite najnoviju verziju Signala.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Možete zatražiti od pošiljatelja da ponovo pošalje ovu poruku sada kada koristite najnoviju verziju Grapherexa.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Možete zatražiti od pošiljatelja da ponovo pošalje ovu poruku sada kada koristite najnoviju verziju Signala.";
 
 /* Label indicating an unknown user. */
 "UNKNOWN_USER" = "Nepoznato";
@@ -5278,7 +5069,7 @@
 "UNLINKED_WARNING" = "Uređaj više nije povezan. Ponovno ga povežite s vašim telefonom kako biste nastavili slati poruke.";
 
 /* Alert title when unlinking device fails */
-"UNLINKING_FAILED_ALERT_TITLE" = "Grapherex nije uspio poništiti vezu s vašim uređajem.";
+"UNLINKING_FAILED_ALERT_TITLE" = "Signal nije uspio poništiti vezu s vašim uređajem.";
 
 /* Label text in device manager for a device with no name */
 "UNNAMED_DEVICE" = "Bezimeni uređaj";
@@ -5293,7 +5084,7 @@
 "UNREAD_ACTION" = "Označi kao nepročitano";
 
 /* No comment provided by engineer. */
-"UNREGISTER_SIGNAL_FAIL" = "Poništavanje registracije s Grapherexa nije uspjelo.";
+"UNREGISTER_SIGNAL_FAIL" = "Poništavanje registracije s Signala nije uspjelo.";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Primljena je nepodržana vrsta privitka.";
@@ -5317,7 +5108,7 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_LEARN_MORE" = "Saznajte više o PIN-ovima";
 
 /* Body text for PINs splash screen */
-"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PIN-ovi čuvaju šifrirane podatke pohranjene u Grapherexu tako da im možete pristupiti samo vi. Nakon ponovne instalacije vratiti će se vaš profil, postavke i kontakti. Neće vam trebati PIN kako biste otvorili aplikaciju.";
+"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PIN-ovi čuvaju šifrirane podatke pohranjene u Signalu tako da im možete pristupiti samo vi. Nakon ponovne instalacije vratiti će se vaš profil, postavke i kontakti. Neće vam trebati PIN kako biste otvorili aplikaciju.";
 
 /* Header for PINs splash screen */
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_TITLE" = "Predstavljamo PIN-ove";
@@ -5326,16 +5117,13 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SKIP" = "Onemogući PIN";
 
 /* Message for the alert indicating that user should upgrade iOS. */
-"UPGRADE_IOS_ALERT_MESSAGE" = "Grapherex će uskoro zahtijevati iOS 11 ili noviji. Nadogradite u Postavke >> Općenito >> Ažuriranje softvera.";
+"UPGRADE_IOS_ALERT_MESSAGE" = "Signal će uskoro zahtijevati iOS 11 ili noviji. Nadogradite u Postavke >> Općenito >> Ažuriranje softvera.";
 
 /* Title for the alert indicating that user should upgrade iOS. */
 "UPGRADE_IOS_ALERT_TITLE" = "Ažurirajte iOS";
 
 /* An explanation of how usernames work on the username view. */
-"USERNAME_DESCRIPTION" = "Korisnička imena na Grapherexu su neobavezna. Ako odlučite stvoriti korisničko ime, drugi korisnici Grapherexa će vas moći pronaći prema tom korisničkom imenu i kontaktirati vas bez poznavanja vašeg broja telefona.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Korisničko ime";
+"USERNAME_DESCRIPTION" = "Korisnička imena na Signalu su neobavezna. Ako odlučite stvoriti korisničko ime, drugi korisnici Signala će vas moći pronaći prema tom korisničkom imenu i kontaktirati vas bez poznavanja vašeg broja telefona.";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Korisnička imena smiju sadržavati samo a-z, 0-9 i _";
@@ -5343,10 +5131,10 @@
 /* A message indicating that username lookup failed. */
 "USERNAME_LOOKUP_ERROR" = "Došlo je do pogreške prilikom pretraživanja korisničkog imena. Pokušajte ponovno kasnije.";
 
-/* A message indicating that the given username is not a registered Grapherex account. Embeds {{username}} */
-"USERNAME_NOT_FOUND_FORMAT" = "%@ nije korisnik Grapherexa. Provjerite jeste li unijeli potpuno korisničko ime.";
+/* A message indicating that the given username is not a registered signal account. Embeds {{username}} */
+"USERNAME_NOT_FOUND_FORMAT" = "%@ nije korisnik Signala. Provjerite jeste li unijeli potpuno korisničko ime.";
 
-/* A message indicating that the given username was not registered with Grapherex. */
+/* A message indicating that the given username was not registered with signal. */
 "USERNAME_NOT_FOUND_TITLE" = "Korisnik nije pronađen";
 
 /* The placeholder for the username text entry in the username view. */
@@ -5422,7 +5210,7 @@
 "VOICE_MESSAGE_TOO_SHORT_ALERT_TITLE" = "Glasovna poruka";
 
 /* Activity indicator title, shown upon returning to the device manager, until you complete the provisioning process on desktop */
-"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Dovrši postavljanje Grapherexa za Desktop.";
+"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Dovrši postavljanje Signala za Desktop.";
 
 /* Placeholder text for header of the wallpaper mini preview */
 "WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Ime kontakta";

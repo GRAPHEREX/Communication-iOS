@@ -1,250 +1,8 @@
-//////////////////////////////////////////// SkyTech ///////////////////////////////////////////
-
-"PRIVACY_VERIFICATION_BUTTON" = "Verification";
-
-"PROFILE_VIEW_EDIT_BUTTON" = "Edit";
-
-/* Default description for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DESCRIPTION_TEXT" = "Please enter your Display name,\nit will show for others users";
-
-/* Title for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_TITLE" = "Delete Contact?";
-
-/* Message for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_MESSAGE" = "This contact will be deleted from this device.";
-
-/* action sheet body */
-"REGISTER_RATE_BODY" = "Please wait half a minute before trying again.";
-
-/* No comment provided by engineer. */
-"SETTINGS_SUPPORT" = "Support";
-
-/* No comment provided by engineer. */
-"SETTINGS_SECURITY" = "Security";
-
-/* No comment provided by engineer. */
-"SETTINGS_FAQ" = "F.A.Q";
-
-"MAIN_ALL" = "All";
-"MAIN_OR" = "or";
-"MAIN_USER_KEY" = "User key";
-"MAIN_ADD" = "Add";
-"MAIN_BACK" = "Back";
-"MAIN_MOBILE" = "Phone";
-"MAIN_USER_ID" = "User ID";
-"MAIN_DISPLAY_NAME" = "Display name";
-"MAIN_BLOCK_USER" = "Block user";
-"MAIN_UNBLOCK" = "Unblock";
-"MAIN_PROFILE" = "Profile";
-"MAIN_SENT" = "Sent";
-"MAIN_SEND" = "Send";
-"MAIN_RECEIVE" = "Receive";
-"MAIN_RECEIVED" = "Received";
-"MAIN_TIME" = "Time";
-"MAIN_AMOUNT" = "Amount";
-"MAIN_APPLY" = "Apply";
-"MAIN_INFO" = "Info";
-"MAIN_SYMBOL" = "Symbol";
-"MAIN_CHAIN" = "Chain";
-"MAIN_THANK_YOU" = "Thank you";
-"MAIN_COPY" = "Copy";
-"MAIN_WALLET" = "Wallet";
-"MAIN_RECIPIENT" = "Recipient";
-"MAIN_TOTAL" = "Total";
-"MAIN_FEE" = "Fee";
-"MAIN_TAG" = "Tag";
-"MAIN_DONE" = "Done";
-"MAIN_BALANCE" = "Balance";
-"MAIN_ADDRESS" = "Address";
-"MAIN_PASSWORD" = "Password";
-"MAIN_NEW" = "New";
-"MAIN_CURRENCY" = "Currency";
-"MAIN_CONFIRM" = "Confirm";
-"MAIN_CURRENT" = "Current";
-"MAIN_PIN" = "Pin";
-"MAIN_SAVE" = "Save";
-"MAIN_ENTER" = "Enter";
-"MAIN_SAVED" = "Saved";
-"MAIN_NAME" = "Name";
-"MAIN_PASSWORD" = "Password";
-"MAIN_RESTORE" = "Restore";
-
-"WALLET_CANCEL_PIN" = "Cancel pin";
-"WALLET_SET_PIN" = "Set pin";
-"WALLET_EDIT_PIN" = "Edit pin";
-"WALLET_ENTER_PIN" = "Enter pin";
-"WALLET_PIN_VALIDATION_DESCRIPTION" = "Max pin lenght is 6";
-"WALLET_PINS_DO_NOT_MATCH" = "Pins do not match";
-"WALLET_ERROR_WRONG_PIN" = "Wrong pin";
-"WALLET_ERROR_TOO_LONG" = "Too long pin.\nMax lenght is 6";
-
-"WALLET_SET_PASSWORD" = "Set password";
-"WALLET_EDIT_PASSWORD" = "Edit password";
-"WALLET_ENTER_PASSWORD" = "Enter password";
-"WALLET_PASSWORDS_DO_NOT_MATCH" = "Passwords do not match";
-"WALLET_ERROR_WRONG_PASSWORD" = "Wrong password";
-
-"WALLET_SAVE_IT" = "Save it";
-"WALLET_EXCHANGE_TITLE" = "Exchange";
-"WALLET_NEW_PASSWORD_CONFIRMATION" = "Password for transaction\nconfirmation was changed";
-"WALLET_CODE_FOR_RESTORE_INFO" = "QR code for restore password";
-
-/* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE_new" = "Secure communication\nplatform";
-
-"ONBOARDING_SPLASH_BUTTON_TITLE_new" = "Sign up";
-
-/* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE_new" = "Enter your Phone number, PIN-code will come on your device";
-
-/* Title of the main button. */
-"ONBOARDING_PHONE_NUMBER_SEND" = "Send";
-
-"ONBOARDING_PHONE_NUMBER_SIGNUP" = "Sign Up";
-
-"ONBOARDING_PHONE_NUMBER_FORGOTRASSWORD" = "Forgot password?";
-
-"CALL_VIEW_MISSED_CALL" = "Missed call";
-
-"CALL_VIEW_INCOMING_CALL" = "Incoming call";
-
-"CALL_VIEW_OUTGOING_CALL" = "Outgoing call";
-
-"CALL_VIEW_CANCELLED_CALL" = "Cancelled call";
-
-"CALL_VIEW_TITLE" = "Calls";
-
-"CALL_VIEW_MISSED" = "Missed";
-
-"NEW_CONTACT_DESCRIPTION" = "Add a new user using a unique\nidentification key";
-
-"NEW_CONTACT_SCAN_INFO" = "Scan the key using the QR-code";
-
-/* Title for the contacts list's default mode. */
-"CONTACTS_VIEW_TITLE" = "Contacts";
-
-/* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_INVALID_CODE_new" = "Wrong PIN, try again";
-
-"ONBOARDING_VERIFICATION_VALID_CODE_new" = "Password is correct";
-
-/// Chats Empty State
-"CHATS_VIEW_EMPTY_TITLE" = "You have no one in the chat";
-
-"CHATS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CHATS_VIEW_EMPTY_BUTTON_TITLE" = "Start chat now";
-
-/// Contacts Empty State
-"CONTACTS_VIEW_EMPTY_TITLE" = "You have no contacts";
-
-"CONTACTS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CONTACTS_VIEW_EMPTY_BUTTON_TITLE" = "Invite friends";
-
-/// Calls Empty State
-"CALLS_VIEW_EMPTY_TITLE" = "You have no calls";
-
-"CALLS_VIEW_EMPTY_MISSED_TITLE" = "You have no missed calls";
-
-"CALLS_VIEW_EMPTY_SUBTITLE" = "Start new calls";
-
-"CALLS_VIEW_EMPTY_BUTTON_TITLE" = "Start new calls";
-
-"CALL_PICKER_MAIN_TITLE" = "New call";
-
-/* Label for settings view that allows user to change the notification sound. */
-"SETTINGS_ITEM_NOTIFICATION_SOUND_new" = "Notification Sound";
-
-
-// Wallet Main Screen
-"WALLET_VIEW_TITLE" = "Wallets";
-
-// Wallet Main Screen
-"WALLET_MAINHEADER_VIEW_TITLE" = "Total balance";
-
-/* Label indicating that the user is verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_VERIFIED_FORMAT_new" = "%@ is verified!";
-
-/* Label indicating that the user is NOT verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_NOT_VERIFIED_FORMAT_new" = "%@ is not verified!";
-
-"WALLET_EMPTY_STATE_TITLE" = "You have no wallet yet";
-
-"WALLET_EMPTY_STATE_SUBTITLE" = "Create new wallet now";
-
-"WALLET_EMPTY_STATE_BUTTON_TITLE" = "Create wallet";
-
-"WALLET_NEW_WALLET_TITLE" = "New wallet";
-
-"WALLET_EXCHANGE_MY_ORDERS_TITLE" = "My Orders";
-
-"WALLET_NEW_WALLET_VALIDATION_INFO" = "The password must contain\nnumbers, uppercase and lowercase\nletters and contain at least\n8 characters";
-
-// Attachments Titles
-"ATTACHMENTS_TITLE_MEDIA" = "Media";
-"ATTACHMENTS_TITLE_FILES" = "Files";
-"ATTACHMENTS_TITLE_VOICE" = "Voice";
-"ATTACHMENTS_TITLE_GROUPS" = "Groups";
-"ATTACHMENTS_TITLE_LINKS" = "Links";
-"ATTACHMENTS_TITLE_GIFS" = "GIFs";
-
-"ATTACHMENTS_EMPTY_STATE" = "No %@ here yet...";
-
-"PERSONAL_CODE_VIEW_TITLE" = "This is your personal code";
-"PERSONAL_CODE_VIEW_DESCRIPTION" = "Ask your friend using the app\nto scan it to confirm his subscription";
-
-"CONTACTLIST_VIEW_SEARCHBAR_PLACEHOLDER" = "Search";
-
-/* A button to select a money from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_MONEY" = "Money";
-
-/* A button to select a gallery from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_GALLERY" = "Gallery";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE" = "Your User ID";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE_SOMEONE" = "%@'s User ID";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_NORMAL" = "Copy";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_AFTER_CLICK" = "Copied";
-
-"USER_ID_VIEW_COPY_LABEL_INFO" = "You can copy this User ID to phone";
-
-"NEW_USER_NAME_DESCRIPTION_TEXT" = "Please enter Display name for new contact,\nit will show only for you";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_ALREADY_EXIST" = "This user is already in your contacts";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_OWN_USERID" = "You can't add yourself";
-
-"WALLET_TOTAL_BALANCE" = "Total balance";
-"WALLET_BUY" = "Buy";
-"WALLET_SELL" = "Sell";
-
-"WALLET_TRANSACTION_EMPTY_STATE_TITLE" = "No transaction yet...";
-"WALLET_ORDERS_EMPTY_STATE_TITLE" = "No orders yet...";
-
-"WALLET_TRANSACTION_TITLE" = "Transactions";
-
-"FILTER_TITLE" = "Filter";
-
-"FILTER_SORT_BY_TITLE" = "Sort by";
-
-"FILTER_TRANSACTION_TYPE_TITLE" = "Transaction type";
-
-/* Label for 'new contact' button in conversation settings view. */
-"NEW_USER_NAME_TITLE" = "New Contact";
-
-"INCORRECT_UUID_ERROR_MESSAGE" = "User Key is incorrect";
-
-"SENT_SUCCEED_TITLE" = "Sent succeed";
-
-"EXCHANGE_CREATED_TITLE" = "Exchange created";
-//////////////////////////////////////////// Grapherex ///////////////////////////////////////////
-
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Ei nyt";
+
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "About Signal";
 
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Hyväksy uusi turvanumero";
@@ -258,11 +16,11 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Yhteystieto";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Yhteystieto: %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Media";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Viesti";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Sinä";
@@ -270,11 +28,17 @@
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Tarra";
 
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Ääniviesti";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Ääniviesti %@ sekuntia";
+
 /* Label for 'audio call' button in contact view. */
-"ACTION_AUDIO_CALL" = "Grapherex -puhelu";
+"ACTION_AUDIO_CALL" = "Signal -puhelu";
 
 /* Label for 'invite' button in contact view. */
-"ACTION_INVITE" = "Kutsu Grapherexiin";
+"ACTION_INVITE" = "Kutsu Signaliin";
 
 /* Label for button that lets you send a message to a contact. */
 "ACTION_SEND_MESSAGE" = "Lähetä viesti";
@@ -364,7 +128,7 @@
 "APN_Message" = "Uusi viesti!";
 
 /* Message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Grapherex ei avaudu. Lähetä virheenkorjausloki osoitteeseen support@grapherex.com, jotta voimme selvittää ratkaista ongelman.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Signal ei avaudu. Lähetä virheenkorjausloki osoitteeseen support@signal.org, jotta voimme selvittää ratkaista ongelman.";
 
 /* Title for the 'app launch failed' alert. */
 "APP_LAUNCH_FAILURE_ALERT_TITLE" = "Virhe";
@@ -373,13 +137,13 @@
 "APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE" = "Tietokannan lataaminen ei onnistunut";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
-"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Päivitä Grapherexin uusimpaan versioon.";
+"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Päivitä Signalin uusimpaan versioon.";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Tuntematon tietokantaversio.";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Aiemmasta laitteesta siirrettyjä tietoja ei voitu palauttaa. Lähetä virheloki osoitteeseen support@grapherex.com, jotta voimme selvittää ongelman. Jos asennat Grapherexin uudelleen, viestihistoriasi saattaa pyyhkiytyä.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Aiemmasta laitteesta siirrettyjä tietoja ei voitu palauttaa. Lähetä virheloki osoitteeseen support@signal.org, jotta voimme selvittää ongelman. Jos asennat Signalin uudelleen, viestihistoriasi saattaa pyyhkiytyä.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Siirtoa ei voitu suorittaa loppuun";
@@ -394,7 +158,7 @@
 "APP_UPDATE_NAG_ALERT_MESSAGE_FORMAT" = "Versio %@ on nyt saatavilla App Storesta.";
 
 /* Title for the 'new app version available' alert. */
-"APP_UPDATE_NAG_ALERT_TITLE" = "Uusi versio Grapherexista on saatavilla";
+"APP_UPDATE_NAG_ALERT_TITLE" = "Uusi versio Signalista on saatavilla";
 
 /* Label for the 'update' button in the 'new app version available' alert. */
 "APP_UPDATE_NAG_ALERT_UPDATE_BUTTON" = "Päivitä";
@@ -409,7 +173,7 @@
 "APPEARANCE_SETTINGS_SYSTEM_THEME_NAME" = "Järjestelmäasetus";
 
 /* Name of application */
-"APPLICATION_NAME" = "Grapherex";
+"APPLICATION_NAME" = "Signal";
 
 /* Label for the archive button for conversations list view */
 "ARCHIVE_ACTION" = "Arkistoi";
@@ -426,7 +190,7 @@
 /* Error that outgoing attachments could not be exported. */
 "ATTACHMENT_APPROVAL_FAILED_TO_EXPORT" = "Liitteen vieminen epäonnistui.";
 
-/* alert text when Grapherex was unable to save a copy of the attachment to the system photo library */
+/* alert text when Signal was unable to save a copy of the attachment to the system photo library */
 "ATTACHMENT_APPROVAL_FAILED_TO_SAVE" = "Tallennus epäonnistui";
 
 /* Format string for file extension label in call interstitial view */
@@ -733,7 +497,7 @@
 "CALL_SCREEN_STATUS_NO_ANSWER" = "Ei vastausta";
 
 /* embeds {{Call Status}} in call screen label. For ongoing calls, {{Call Status}} is a seconds timer like 01:23, otherwise {{Call Status}} is a short text like 'Ringing', 'Busy', or 'Failed Call' */
-"CALL_STATUS_FORMAT" = "Grapherex %@";
+"CALL_STATUS_FORMAT" = "Signal %@";
 
 /* Label for call button for alert offering to call a user. */
 "CALL_USER_ALERT_CALL_BUTTON" = "Soita";
@@ -787,7 +551,7 @@
 "CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "Kamera on pois päältä";
 
 /* The generic name used for calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Grapherex-käyttäjä";
+"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Signal-käyttäjä";
 
 /* Accessibility hint describing what you can do with the camera button */
 "CAMERA_BUTTON_HINT" = "Ota kuva ja lähetä se";
@@ -817,13 +581,13 @@
 "CHECK_FOR_BACKUP_RESTORE" = "Palauta";
 
 /* Error indicating that the app could not determine that user's iCloud account status */
-"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Grapherex ei voinut määrittää iCloud-tilisi tilaa. Kirjaudu iCloud-tiliisi iOS:n asetussovelluksessa, jotta voit varmuuskopioida Grapherex-tietosi.";
+"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Signal ei voinut määrittää iCloud-tilisi tilaa. Kirjaudu iCloud-tiliisi iOS:n asetussovelluksessa, jotta voit varmuuskopioida Signal-tietosi.";
 
 /* Error indicating that user does not have an iCloud account. */
-"CLOUDKIT_STATUS_NO_ACCOUNT" = "Ei iCloud-tiliä. Kirjaudu iCloud-tiliisi iOS-asetussovelluksessa, jotta voit varmuuskopioida Grapherex-tietosi.";
+"CLOUDKIT_STATUS_NO_ACCOUNT" = "Ei iCloud-tiliä. Kirjaudu iCloud-tiliisi iOS-asetussovelluksessa, jotta voit varmuuskopioida Signal-tietosi.";
 
 /* Error indicating that the app was prevented from accessing the user's iCloud account. */
-"CLOUDKIT_STATUS_RESTRICTED" = "Grapherexille ei sallittu pääsyä iCloud-tiliisi varmuuskopiointia varten. Anna Grapherexille pääsy iCloud-tilillesi iOS-asetussovelluksessa, jotta voit varmuuskopioida Grapherex-tietosi.";
+"CLOUDKIT_STATUS_RESTRICTED" = "Signalille ei sallittu pääsyä iCloud-tiliisi varmuuskopiointia varten. Anna Signalille pääsy iCloud-tilillesi iOS-asetussovelluksessa, jotta voit varmuuskopioida Signal-tietosi.";
 
 /* The first of two messages demonstrating the chosen conversation color, by rendering this message in an outgoing message bubble. */
 "COLOR_PICKER_DEMO_MESSAGE_1" = "Valitse tämän keskustelun lähtevien viestien väri.";
@@ -838,7 +602,7 @@
 "COMPARE_SAFETY_NUMBER_ACTION" = "Vertaa leikepöytään";
 
 /* Accessibility hint describing what you can do with the compose button */
-"COMPOSE_BUTTON_HINT" = "Aloita keskustelu valitsemalla tai etsimällä Grapherex-käyttäjä.";
+"COMPOSE_BUTTON_HINT" = "Aloita keskustelu valitsemalla tai etsimällä Signal-käyttäjä.";
 
 /* Accessibility label from compose button. */
 "COMPOSE_BUTTON_LABEL" = "Syötä";
@@ -856,10 +620,10 @@
 "COMPOSE_MESSAGE_USERNAME_SEARCH_SECTION_TITLE" = "Käyttäjätunnushaku";
 
 /* Multi-line label explaining why compose-screen contact picker is empty. */
-"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Hae yhteystiedoistasi Grapherexin käyttäjiä sallimalla yhteystietojen käyttö iOS:n asetuksissa.";
+"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Hae yhteystiedoistasi Signalin käyttäjiä sallimalla yhteystietojen käyttö iOS:n asetuksissa.";
 
 /* No comment provided by engineer. */
-"CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Tämä palauttaa sovelluksen poistamalla viestisi ja purkamalla rekisteröintisi palvelimelta. Sovellus sulkeutuu, kun tämä prosessi on valmis.";
+"CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Signal-tili poistetaan ja sovellusasetukset nollataan. Sovellus sulkeutuu prosessin päätteeksi.";
 
 /* No comment provided by engineer. */
 "CONFIRM_ACCOUNT_DESTRUCTION_TITLE" = "Haluatko varmasti poistaa tilisi?";
@@ -987,11 +751,11 @@
 /* Error indicating that at least one contact field must be selected before sharing a contact. */
 "CONTACT_SHARE_NO_FIELDS_SELECTED" = "Yhtäkään yhteystietokenttää ei valittuna";
 
-/* Button text to initiate an email to Grapherex support staff */
+/* Button text to initiate an email to signal support staff */
 "CONTACT_SUPPORT" = "Ota yhteyttä tukeen";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Grapherex ei kyennyt täyttämään tukipyyntöäsi.";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Signal ei kyennyt täyttämään tukipyyntöäsi.";
 
 /* button text */
 "CONTACT_SUPPORT_PROMPT_ERROR_TRY_AGAIN" = "Yritä uudelleen";
@@ -1082,9 +846,6 @@
 
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Estä käyttäjä";
-
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Yhteystiedot";
 
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Keskustelun väri";
@@ -1210,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Tallentamattomia muutoksia";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Näytä kaikki jäsenet";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "See All";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Tämä käyttäjä on yhteystiedoissasi";
@@ -1226,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Lisää yhteystietoihin";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ lähetti:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Sinä lähetit:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Poista kaikki";
@@ -1246,7 +1013,7 @@
 "CROP_SCALE_IMAGE_VIEW_TITLE" = "Liikuta ja skaalaa";
 
 /* Subtitle shown while the app is updating its database. */
-"DATABASE_VIEW_OVERLAY_SUBTITLE" = "Tämä saattaa viedä muutaman minuutin.";
+"DATABASE_VIEW_OVERLAY_SUBTITLE" = "Tämä saattaa kestää muutaman minuutin.";
 
 /* Title shown while the app is updating its database. */
 "DATABASE_VIEW_OVERLAY_TITLE" = "Päivitetään tietokantaa";
@@ -1324,13 +1091,13 @@
 "DEREGISTRATION_REREGISTER_WITH_SAME_PHONE_NUMBER" = "Rekisteröi tämä puhelinnumero uudelleen";
 
 /* Label warning the user that they have been de-registered. */
-"DEREGISTRATION_WARNING" = "Tämä laite ei ole enää rekisteröity. Puhelinnumerosi saataa olla rekisteröity Grapherexiin jollain toisella laitteella. Napauta rekisteröityäksesi uudelleen.";
+"DEREGISTRATION_WARNING" = "Tämä laite ei ole enää rekisteröity. Puhelinnumerosi saataa olla rekisteröity Signaliin jollain toisella laitteella. Napauta rekisteröityäksesi uudelleen.";
 
-/* {{Short Date}} when device last communicated with Grapherex Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Viimeksi käytetty: %@";
+/* {{Short Date}} when device last communicated with Signal Server. */
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Last active %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Yhdistetty: %@";
+"DEVICE_LINKED_AT_LABEL" = "Linked %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Yhdistettyjen laitteiden listaa ei saatu päivitettyä";
@@ -1348,7 +1115,7 @@
 "DEVICE_TRANSFER_CHOICE_EXPLANATION" = "Jos sinulla on vanha iOS-laite, voit siirtää tilisi ja viestisi turvallisesti tähän laitteeseen.";
 
 /* The explanation for the device transfer 'choice' view when linking a device */
-"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Jos käytit Grapherexia aiemmin yhdistetyllä iPadilla, voit siirtää tilisi ja viestisi turvallisesti tähän laitteeseen.";
+"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Jos käytit Signalia aiemmin yhdistetyllä iPadilla, voit siirtää tilisi ja viestisi turvallisesti tähän laitteeseen.";
 
 /* The body for the device transfer 'choice' view 'register' option */
 "DEVICE_TRANSFER_CHOICE_REGISTER_BODY" = "Jatka ilman tilin ja viestien siirtoa";
@@ -1378,7 +1145,7 @@
 "DEVICE_TRANSFER_CHOICE_TRANSFER_TITLE" = "Siirto toisesta iOS-laitteesta";
 
 /* A warning for the device transfer 'choice' view indicating you can only have one device registered with your number */
-"DEVICE_TRANSFER_CHOICE_WARNING" = "Jatkaminen poistaa Grapherexin käytöstä muissa laitteissa, jotka ovat tällä hetkellä rekisteröity samalla puhelinnumerolla.";
+"DEVICE_TRANSFER_CHOICE_WARNING" = "Jatkaminen poistaa Signalin käytöstä muissa laitteissa, jotka ovat tällä hetkellä rekisteröity samalla puhelinnumerolla.";
 
 /* An error indicating that we were unable to verify the indentity of the new device to complete the transfer */
 "DEVICE_TRANSFER_ERROR_CERTIFICATE_MISMATCH" = "Uutta laitetta ei voitu varmentaa. Yritä uudelleen";
@@ -1396,16 +1163,16 @@
 "DEVICE_TRANSFER_ERROR_NOT_ENOUGH_SPACE" = "Ei tarpeeksi tallennustilaa. Siirtoa ei voi tehdä";
 
 /* An error indicating the user must update their device before trying to transfer. */
-"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Päivitä Grapherex uusimpaan versioon ja yritä uudelleen";
+"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Päivitä Signal uusimpaan versioon ja yritä uudelleen";
 
 /* The explanation on the action sheet prompting the user if they want to transfer their device. */
-"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Siirtää Grapherex-tili uuteen iOS-laitteeseen. Varmista, että uusi laite on lähettyvillä ja päällä.";
+"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Siirtää Signal-tili uuteen iOS-laitteeseen. Varmista, että uusi laite on lähettyvillä ja päällä.";
 
 /* The title on the acttion sheet prompting the user if they want to transfer their device. */
 "DEVICE_TRANSFER_PROMPT_TITLE" = "Siirrä tili";
 
 /* The explanation for the device transfer qr code view */
-"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Avaa Grapherex aiemmalla laitteella, pidä se lähellä, ja varmista, että WiFi ja Bluetooth ovat käytössä molemmissa laitteissa.";
+"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Avaa Signal aiemmalla laitteella, pidä se lähellä, ja varmista, että WiFi ja Bluetooth ovat käytössä molemmissa laitteissa.";
 
 /* The second explanation for the device transfer qr code view */
 "DEVICE_TRANSFER_QRCODE_EXPLANATION2" = "Sijoita tämä QR-koodi toisen laitteen kehykseen.";
@@ -1417,7 +1184,7 @@
 "DEVICE_TRANSFER_QRCODE_TITLE" = "Odotetaan toista laitetta…";
 
 /* The explanation on the view that shows receiving progress */
-"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Pidä laitteet lähellä toisiaan. Älä sammuta niitä ja pidä Grapherex avoinna. Siirrot salataan täysin.";
+"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Pidä laitteet lähellä toisiaan. Älä sammuta niitä ja pidä Signal avoinna. Siirrot salataan täysin.";
 
 /* The title on the view that shows receiving progress */
 "DEVICE_TRANSFER_RECEIVING_TITLE" = "Tietoja vastaanotetaan";
@@ -1432,7 +1199,7 @@
 "DEVICE_TRANSFER_SCANNING_TITLE" = "Näytä uuden laitteen koodi kameralle";
 
 /* The explanation on the action sheet that shows transfer progress */
-"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Pidä laitteet lähellä toisiaan. Älä sammuta niitä ja pidä Grapherex avoinna.";
+"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Pidä laitteet lähellä toisiaan. Älä sammuta niitä ja pidä Signal avoinna.";
 
 /* The title on the action sheet that shows transfer progress */
 "DEVICE_TRANSFER_TRANSFERRING_TITLE" = "Tietoja siirretään";
@@ -1453,16 +1220,16 @@
 "DISAPPEARING_MESSAGES_LABEL" = "Katoavien viestien asetukset";
 
 /* Short text to dismiss current modal / actionsheet / screen */
-"DISMISS_BUTTON_TEXT" = "Selvä";
+"DISMISS_BUTTON_TEXT" = "Peruuta";
 
 /* Section title for the 'domain fronting country' view. */
 "DOMAIN_FRONTING_COUNTRY_VIEW_SECTION_HEADER" = "Sensuurin kiertämisen sijainti";
 
-/* Alert body for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
+/* Alert body for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_BODY" = "Voit sallia yhteystietojen käytön Asetukset-ohjelmasta.";
 
-/* Alert title for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
-"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Grapherex tarvitsee oikeutta käyttää yhteystietojasi niiden muokkaamiseen";
+/* Alert title for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Signal tarvitsee oikeutta käyttää yhteystietojasi niiden muokkaamiseen";
 
 /* The 'clear avatar' button in the 'edit group' view. */
 "EDIT_GROUP_CLEAR_AVATAR" = "Poista ryhmäkuva";
@@ -1471,7 +1238,7 @@
 "EDIT_GROUP_DEFAULT_TITLE" = "Muokkaa ryhmää";
 
 /* Error message indicating the a user can't be added to a group. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Tätä käyttäjää ei voida lisätä ryhmään ennen kuin hän on päivittänyt Grapherexin.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Tätä käyttäjää ei voida lisätä ryhmään ennen kuin hän on päivittänyt Signalin.";
 
 /* Format for the 'group full' error alert when a user can't be added to a group because the group is full. Embeds {{ the maximum number of members in a group }}. */
 "EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "Ryhmäjäsenten enimmäismäärä %@ on täyttynyt.";
@@ -1494,14 +1261,14 @@
 /* Short name for edit menu item to copy contents of media message. */
 "EDIT_ITEM_COPY_ACTION" = "Kopioi";
 
-/* body of email sent to contacts when inviting to install Grapherex. Embeds {{link to install Grapherex}} and {{link to the Grapherex home page}} */
-"EMAIL_INVITE_BODY" = "Hei!\n\nOlen alkanut käyttämään Grapherexia iPhonella tietosuojattuun viestintään. Haluaisin myös sinun asentavan sen, jotta voimme olla varmoja, ettei kukaan muu lue viestejämme tai kuuntele puheluitamme.\n\nGrapherex on saatavilla sekä iPhonelle että Androidille. Lataa se täältä: %@\n\nGrapherex toimii kuten muutkin viestintäapit. Sillä voi lähettää kuvia ja videoita, soittaa puheluita ja käydä ryhmäkeskusteluja. Ja mikä parasta, kukaan ulkopuolinen ei pääse käsiksi viesteihin, eivät edes Grapherexin kehittäjät!\n\nVoit lukea lisää Open Whisper Systemsistä, eli Grapherexin kehittäjistä, täältä: %@";
+/* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
+"EMAIL_INVITE_BODY" = "Hei!\n\nOlen alkanut käyttämään Signalia iPhonella tietosuojattuun viestintään. Haluaisin myös sinun asentavan sen, jotta voimme olla varmoja, ettei kukaan muu lue viestejämme tai kuuntele puheluitamme.\n\nSignal on saatavilla sekä iPhonelle että Androidille. Lataa se täältä: %@\n\nSignal toimii kuten muutkin viestintäapit. Sillä voi lähettää kuvia ja videoita, soittaa puheluita ja käydä ryhmäkeskusteluja. Ja mikä parasta, kukaan ulkopuolinen ei pääse käsiksi viesteihin, eivät edes Signalin kehittäjät!\n\nVoit lukea lisää Open Whisper Systemsistä, eli Signalin kehittäjistä, täältä: %@";
 
-/* subject of email sent to contacts when inviting to install Grapherex */
-"EMAIL_INVITE_SUBJECT" = "Vaihdetaan Grapherexiin";
+/* subject of email sent to contacts when inviting to install Signal */
+"EMAIL_INVITE_SUBJECT" = "Vaihdetaan Signaliin";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Laitteesi ei tue sähköpostien lähetystä. Lähettääksesi tukipyynnön, määritä laitteesi sähköpostiasetukset tai lähetä sähköposti osoitteeseen support@grapherex.com";
+"EMAIL_SIGNAL_MESSAGE" = "Laitteesi ei tue sähköpostien lähetystä. Lähettääksesi tukipyynnön, määritä laitteesi sähköpostiasetukset tai lähetä sähköposti osoitteeseen support@signal.org";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "Sähköposti ei käytettävissä";
@@ -1534,7 +1301,7 @@
 "EMOJI_CATEGORY_TRAVEL_NAME" = "Matkailu ja paikat";
 
 /* Full width label displayed when attempting to compose message */
-"EMPTY_CONTACTS_LABEL_LINE1" = "Kellään yhteystiedollasi ei ole Grapherexia.";
+"EMPTY_CONTACTS_LABEL_LINE1" = "Kellään yhteystiedollasi ei ole Signalia.";
 
 /* Full width label displayed when attempting to compose message */
 "EMPTY_CONTACTS_LABEL_LINE2" = "Haluaisitko kutsua jonkun?";
@@ -1572,8 +1339,8 @@
 /* Error message indicating that message send failed due to block list */
 "ERROR_DESCRIPTION_MESSAGE_SEND_FAILED_DUE_TO_BLOCK_LIST" = "Viestin lähettäminen ei onnistunut, koska olet estänyt kyseisen yhteystiedon.";
 
-/* Generic error used whenever Grapherex can't contact the server */
-"ERROR_DESCRIPTION_NO_INTERNET" = "Grapherex ei saanut yhteyttä internetiin. Yritä uudelleen.";
+/* Generic error used whenever Signal can't contact the server */
+"ERROR_DESCRIPTION_NO_INTERNET" = "Signal ei saanut yhteyttä internetiin. Yritä uudelleen.";
 
 /* Error indicating that an outgoing message had no valid recipients. */
 "ERROR_DESCRIPTION_NO_VALID_RECIPIENTS" = "Viestin lähettäminen ei onnistunut, koska vastaanottajatiedoissa on virhe.";
@@ -1588,7 +1355,7 @@
 "ERROR_DESCRIPTION_RESPONSE_FAILED" = "Virheelinen vastaus palvelimelta.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Tämä laite ei ole enää rekisteröity puhelinnumerollesi. Asenna Grapherex uudelleen.";
+"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Tämä laite ei ole enää rekisteröity puhelinnumerollesi. Asenna Signal uudelleen.";
 
 /* Generic server error */
 "ERROR_DESCRIPTION_SERVER_FAILURE" = "Palvelinvirhe. Ytitä myöhemmin uudelleen.";
@@ -1597,13 +1364,13 @@
 "ERROR_DESCRIPTION_UNKNOWN_ERROR" = "Tuntematon virhe.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Yhteystieto ei käytä Grapherexia.";
+"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Yhteystieto ei käytä Signalia.";
 
 /* Error message indicating that attachment download(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_DOWNLOAD_FAILED" = "Liitteen lataaminen epäonnistui.";
 
 /* Error message when unable to receive an attachment because the sending client is too old. */
-"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Virhe liitteessä: pyydä lähettäjää päivittämään Grapherex ja sitten lähettämään viesti uudellleen. ";
+"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Virhe liitteessä: pyydä lähettäjää päivittämään Signal ja sitten lähettämään viesti uudellleen. ";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_DUPLICATE_MESSAGE" = "Vastaanotettiin viestin kaksoiskappale.";
@@ -1620,10 +1387,10 @@
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_NO_SESSION" = "Tälle yhteystiedolle ei ole istuntoa.";
 
-/* Shown when Grapherex users safety numbers changed */
+/* Shown when signal users safety numbers changed */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE" = "Turvanumero on vaihtunut.";
 
-/* Shown when Grapherex users safety numbers changed, embeds the user's {{name or phone number}} */
+/* Shown when signal users safety numbers changed, embeds the user's {{name or phone number}} */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE_FORMAT" = "Turvanumerosi yhteystiedon %@ kanssa on vaihtunut.";
 
 /* Text notifying the user that their secure session has been reset */
@@ -1645,19 +1412,19 @@
 "ERROR_SENDING_DEREGISTERED" = "Laitteesi ei ole enää rekisteröity. Rekisteröidy uudelleen jatkaaksesi viestintää.";
 
 /* Error indicating a send failure due to an expired application. */
-"ERROR_SENDING_EXPIRED" = "Käyttämäsi Grapherexin versio on vahentunut. Napsauta päivittääksesi uudempaan versioon, jotta voit jatkaa viestien lähettelyä.";
+"ERROR_SENDING_EXPIRED" = "Käyttämäsi Signalin versio on vahentunut. Napsauta päivittääksesi uudempaan versioon, jotta voit jatkaa viestien lähettelyä.";
 
-/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or Grapherex id}}. */
+/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or signal id}}. */
 "ERROR_UNREGISTERED_USER_FORMAT" = "Rekisteröimätön käyttäjä: %@";
 
 /* Label notifying the user that the app has expired. */
-"EXPIRATION_ERROR" = "Tämä Grapherexin versio on vanhentunut! Päivitä viimeisimpään versioon napauttamalla.";
+"EXPIRATION_ERROR" = "Tämä Signalin versio on vanhentunut! Päivitä viimeisimpään versioon napauttamalla.";
 
 /* Label warning the user that the app will expire soon. */
-"EXPIRATION_WARNING_SOON" = "Tämä Grapherexin versio vanhenee %d päivän kuluttua. Päivitä viimeisimpään versioon napauttamalla.";
+"EXPIRATION_WARNING_SOON" = "Tämä Signalin versio vanhenee %d päivän kuluttua. Päivitä viimeisimpään versioon napauttamalla.";
 
 /* Label warning the user that the app will expire today. */
-"EXPIRATION_WARNING_TODAY" = "Tämä Grapherexin versio vanhenee tänään. Päivitä viimeisimpään versioon napauttamalla.";
+"EXPIRATION_WARNING_TODAY" = "Tämä Signalin versio vanhenee tänään. Päivitä viimeisimpään versioon napauttamalla.";
 
 /* action sheet header when re-sending message which failed because of too many attempts */
 "FAILED_SENDING_BECAUSE_RATE_LIMIT" = "Lähetys tälle yhteystiedolle on epäonnistunut liian monta kertaa. Yritä myöhemmin uudelleen.";
@@ -1705,7 +1472,7 @@
 "GET_STARTED_CARD_NEW_GROUP" = "Uusi ryhmä";
 
 /* Error displayed when there is a failure fetching a GIF from the remote service. */
-"GIF_PICKER_ERROR_FETCH_FAILURE" = "GIF:n lataaminen epäonnistui. Varmista, että olet verkossa.";
+"GIF_PICKER_ERROR_FETCH_FAILURE" = "GIF:n lataaminen epäonnistui, tarkista verkkoyhteys.";
 
 /* Generic error displayed when picking a GIF */
 "GIF_PICKER_ERROR_GENERIC" = "Tuntematon virhe.";
@@ -1732,7 +1499,7 @@
 "GO_TO_SETTINGS_BUTTON" = "Siirry asetuksiin";
 
 /* Body message of notification shown during GRDB migration indicating that user may need to open app to view their content. */
-"GRDB_MIGRATION_NOTIFICATION_BODY" = "Tämä Grapherex-päivitys sisältää tietokannan ja suorituskyvyn parannuksia. Saatat joutua avaamaan sovelluksen päivityksen viimeistelemiseksi.";
+"GRDB_MIGRATION_NOTIFICATION_BODY" = "Tämä Signal-päivitys sisältää tietokannan ja suorituskyvyn parannuksia. Saatat joutua avaamaan sovelluksen päivityksen viimeistelemiseksi.";
 
 /* Title of notification shown during GRDB migration indicating that user may need to open app to view their content. */
 "GRDB_MIGRATION_NOTIFICATION_TITLE" = "Päivitetään tietokantaa";
@@ -1792,10 +1559,10 @@
 "GROUP_CALL_ERROR_DETAILS" = "Lisätietoja";
 
 /* An error displayed to the user when the group call ends because it has exceeded the max devices. Embeds {{max device count}}. */
-"GROUP_CALL_HAS_MAX_DEVICES_FORMAT" = "The maximum number of %ld participants has been reached for this call. Try again later.";
+"GROUP_CALL_HAS_MAX_DEVICES_FORMAT" = "Puhelun osallistujien enimmäismäärä %ld on täyttynyt, yritä myöhemmin uudelleen.";
 
 /* An error displayed to the user when the group call ends because it has exceeded the max devices. */
-"GROUP_CALL_HAS_MAX_DEVICES_UNKNOWN_COUNT" = "The maximum number of participants has been reached for this call. Try again later.";
+"GROUP_CALL_HAS_MAX_DEVICES_UNKNOWN_COUNT" = "Puheluun ei mahdu enempää osallistujia, yritä myöhemmin uudelleen.";
 
 /* Text explaining the group call is full */
 "GROUP_CALL_IS_FULL" = "Puhelu on täynnä";
@@ -1810,16 +1577,16 @@
 "GROUP_CALL_MANY_IN_THIS_CALL_FORMAT" = "Tässä puhelussa · %ld henkilöä";
 
 /* Text explaining that there are more than three people in the group call. Embeds {{ %1$@ participant1, %2$@ participant2, %3$@ participantCount-2 }} */
-"GROUP_CALL_MANY_PEOPLE_HERE_FORMAT" = "%1$@, %2$@, and %3$@ others are in this call";
+"GROUP_CALL_MANY_PEOPLE_HERE_FORMAT" = "%1$@, %2$@ ja %3$@ tässä puhelussa";
 
 /* String displayed in cell when media from a user can't be displayed in group call grid. Embeds {user's name} */
-"GROUP_CALL_MISSING_MEDIA_KEYS_FORMAT" = "Can't receive audio & video from %@";
+"GROUP_CALL_MISSING_MEDIA_KEYS_FORMAT" = "Ääni- ja videoviestin vastaanottaminen käyttäjältä %@ epäonnistui ";
 
 /* Message body for alert explaining that a group call participant cannot be displayed because of missing keys */
 "GROUP_CALL_NO_KEYS_ALERT_MESSAGE" = "Tämä saattaa johtua siitä että he eivät ole verifioineet turvanumerosi muutosta, heidän laitteessaan olevasta ongelmasta, tai siitä että he ovat blokanneet sinut.";
 
 /* Title for alert explaining that a group call participant cannot be displayed because of missing keys. Embeds {{ user's name }} */
-"GROUP_CALL_NO_KEYS_ALERT_TITLE_FORMAT" = "Can't receive audio and video from %@";
+"GROUP_CALL_NO_KEYS_ALERT_TITLE_FORMAT" = "Ääni- ja videoviestin vastaanottaminen käyttäjältä %@ epäonnistui ";
 
 /* Text explaining that you are the only person currently in the group call */
 "GROUP_CALL_NO_ONE_HERE" = "Kukaan muu ei ole täällä";
@@ -1897,7 +1664,7 @@
 "GROUP_CALLS_MEGAPHONE_BODY" = "Avaa uuden tyylin ryhmä aloittaaksesi ilmaisen ja salatun ryhmäpuhelun";
 
 /* Title for group calls megaphone */
-"GROUP_CALLS_MEGAPHONE_TITLE" = "Esittelemme ryhmäpuhelut";
+"GROUP_CALLS_MEGAPHONE_TITLE" = "Esittelyssä ryhmäpuhelut";
 
 /* Message indicating that group was created by the local user. */
 "GROUP_CREATED_BY_LOCAL_USER" = "Sinä loit ryhmän.";
@@ -2047,7 +1814,7 @@
 "GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Virheellinen linkki";
 
 /* Error message indicating that the local user does not support groups v2. */
-"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Päivitä Grapherex tällä laitteella liittyäksesi ryhmään.";
+"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Päivitä Signal tällä laitteella liittyäksesi ryhmään.";
 
 /* Explanation of the 'approve new group members' switch. */
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Vaadi ylläpitäjän hyväksyä uudet jäsenet, jotka liittyvät ryhmälinkin kautta.";
@@ -2112,11 +1879,11 @@
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "QR-koodi";
 
-/* Label for the 'share group link via Grapherex' button in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Jaa Grapherexilla";
+/* Label for the 'share group link via Signal' button in the 'group link' view. */
+"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Jaa Signalilla";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Kuka tahansa, jolla on tämä linkki, voi liittyä ryhmään tai lähettää liittymispyynnön. Jaa se ihmisille, joihin luotat.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Kuka tahansa, jolla on tämä linkki, voi nähdä tämän ryhmän nimen ja osallistujat tai lähettää liittymispyynnön. Jaa se ihmisille, joihin luotat.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Ryhmälinkki";
@@ -2220,6 +1987,27 @@
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Videopuhelu";
 
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ group members have similar names.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Tarkista napauttamalla";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Jäsen";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Tarkista jäsenet";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ group members have similar names, review the members below or choose to take action.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ group members have the same name, review the members below or choose to take action.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ group members have the same name.";
+
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Ryhmän nimi (vaaditaan)";
 
@@ -2313,9 +2101,6 @@
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ hyväksyi henkilön %1$@ pyynnön liittyä ryhmään.";
 
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "Henkilön %@ pyyntö liittyä ryhmään on hyväksytty.";
-
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@ peruutti pyyntönsä liittyä ryhmään.";
 
@@ -2398,22 +2183,22 @@
 "GROUP_WAS_MIGRATED" = "Tämä ryhmä päivitettiin uudeksi ryhmäksi.";
 
 /* Message indicating that 1 user was dropped while migrating the group. */
-"GROUP_WAS_MIGRATED_USERS_DROPPED_1" = "A member couldn’t be added to the New Group and has been removed from the group.";
+"GROUP_WAS_MIGRATED_USERS_DROPPED_1" = "Jäsentä ei voitu lisätä uuteen ryhmään ja hänet on poistettu ryhmästä.";
 
 /* Message indicating that the local user was dropped while migrating the group. */
-"GROUP_WAS_MIGRATED_USERS_DROPPED_LOCAL_USER" = "You couldn’t be added to the New Group and has been removed from the group.";
+"GROUP_WAS_MIGRATED_USERS_DROPPED_LOCAL_USER" = "Sinua ei voitu lisätä uuteen ryhmään ja sinut poistettiin ryhmästä.";
 
 /* Message indicating that N users were dropped while migrating the group. Embeds {{ the number of dropped users }}. */
-"GROUP_WAS_MIGRATED_USERS_DROPPED_N_FORMAT" = "%@ members couldn’t be added to the New Group and have been removed from the group.";
+"GROUP_WAS_MIGRATED_USERS_DROPPED_N_FORMAT" = "%@ jäsentä jäi lisäämättä uuteen ryhmään ja heidät on poistettu ryhmästä.";
 
 /* Message indicating that 1 user was invited while migrating the group. */
-"GROUP_WAS_MIGRATED_USERS_INVITED_1" = "A member couldn’t be added to the New Group and has been invited to join";
+"GROUP_WAS_MIGRATED_USERS_INVITED_1" = "Jäsentä ei voitu lisätä uuteen ryhmään ja hänet on kutsuttu liittymään.";
 
 /* Message indicating that the local user was invited while migrating the group. */
-"GROUP_WAS_MIGRATED_USERS_INVITED_LOCAL_USER" = "You couldn’t be added to the New Group and has been invited to join";
+"GROUP_WAS_MIGRATED_USERS_INVITED_LOCAL_USER" = "Sinua ei voitu lisätä uuteen ryhmään ja sinut on kutsuttu liittymään.";
 
 /* Message indicating that N users were invited while migrating the group. Embeds {{ the number of invited users }}. */
-"GROUP_WAS_MIGRATED_USERS_INVITED_N_FORMAT" = "%@ members couldn’t be added to the New Group and have been invited to join.";
+"GROUP_WAS_MIGRATED_USERS_INVITED_N_FORMAT" = "%@ jäsentä jäi lisäämättä uuteen ryhmään ja heidät on kutsuttu liittymään.";
 
 /* Message indicating that the local user left the group. */
 "GROUP_YOU_LEFT" = "Olet poistunut ryhmästä.";
@@ -2446,49 +2231,49 @@
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_1_TITLE" = "Mitä ovat vanhan tyylin ryhmät?";
 
 /* Body text for the second section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Vanhoja ryhmiä ei voi vielä päivittää uusiksi ryhmiksi, mutta voit luoda uuden ryhmän samoilla jäsenillä, jos he käyttävät Grapherexin uusinta versiota.\n\nGrapherex tulee tarjoamaan tavan päivittää vanhan tyylin ryhmiä tulevaisuudessa.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Vanhoja ryhmiä ei voi vielä päivittää uusiksi ryhmiksi, mutta voit luoda uuden ryhmän samoilla jäsenillä, jos he käyttävät Signalin uusinta versiota.\n\nSignal tulee tarjoamaan tavan päivittää vanhan tyylin ryhmiä tulevaisuudessa.";
 
 /* Title for the second section of the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_2_TITLE" = "Voinko päivittää vanhan ryhmän?";
 
 /* Body text for the third section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Uuden ryhmän luomiseksi kaikkien jäsenten tulee päivittää Grapherexin uusimpaan versioon.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Uuden ryhmän luomiseksi kaikkien jäsenten tulee päivittää Signalin uusimpaan versioon.";
 
 /* Title for the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Vanhan tyyliset vs. uudet ryhmät";
 
 /* Format for indicator that a group cannot be used until it is migrated. Embeds {{ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_BLOCKING_MIGRATION_FORMAT" = "Upgrade this group to activate new features like @mentions and admins. Members who have not shared their name or photo in this group will be invited to join. %@.";
+"GROUPS_LEGACY_GROUP_BLOCKING_MIGRATION_FORMAT" = "Ryhmän päivittämällä käyttöön tulee uusia ominaisuuksia, kuten @maininnat ja ylläpitäjät. Jäsenille, jotka eivät ole jakaneet nimeään tai kuvaansa tässä ryhmässä, lähetetään kutsu. %@.";
 
 /* Title for the 'can't upgrade legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TITLE" = "Uuteen ryhmään päivittäminen epäonnistui";
 
 /* Text indicating that a legacy group can't be upgraded because it has too many members. Embeds {{ The maximum number of members allowed in a group. }}. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TOO_MANY_MEMBERS_FORMAT" = "This group can’t be upgraded to a New Group because it has too many members. The maximum group size that can be upgraded is %@.";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TOO_MANY_MEMBERS_FORMAT" = "Tätä ryhmää ei pystytä päivittämään uudeksi ryhmäksi, koska siinä on liian monta jäsentä. Ryhmässä voi olla enintään %@ jäsentä.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "When all current group members are using a version of Grapherex capable of joining a New Group, this group will be upgraded.";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Kun kaikki nykyiset ryhmän jäsenet käyttävät Signalin versiota, jossa liittyminen uuteen ryhmään on mahdollista, tämä ryhmä päivitetään.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_2" = "Kaikki päivitystä edeltävä viestihistoria ja media tulee säilymään.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "This group cannot be created because 1 member is using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Tätä ryhmää ei luotu, koska yksi jäsen käyttää Signalin vanhaa versiota. Voit luoda uuden tyylin ryhmän kun hän on päivittänyt Signalin, tai voit poistaa hänet ennen kuin luot ryhmän.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "This group cannot be created because %@ members are using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Tätä ryhmää ei luotu, koska %@ jäsentä käyttää Signalin vanhaa versiota. Voit luoda uuden tyylin ryhmän kun hän on päivittänyt Signalin, tai voit poistaa jäsenen ennen kuin luot ryhmän.";
 
 /* Indicates that a new group cannot be created because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "This group cannot be created because 1 member is using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group. %@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Tätä ryhmää ei luotu, koska yksi jäsen käyttää Signalin vanhaa versiota. Voit luoda uuden tyylin ryhmän kun hän on päivittänyt Signalin, tai voit poistaa hänet ennen kuin luot ryhmän. %@";
 
 /* Indicates that a new group cannot be created because multiple members do not support v2 groups. Embeds {{ %1$@ the number of members who do not support v2 groups, %2$@ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "This group cannot be created because %1$@ members are using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group. %2$@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Tätä ryhmää ei luotu, koska %1$@ jäsentä käyttää Signalin vanhaa versiota. Voit luoda uuden tyylin ryhmän kun hän on päivittänyt Signalin, tai voit poistaa jäsenen ennen kuin luot ryhmän. %2$@";
 
 /* Title for alert that explains that a new group will be a legacy group because 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Vanhan tyylin ryhmä luodaan koska 1 jäsen käyttää Grapherexin vanhaa versiota. Voit luoda uuden tyylin ryhmä sen jälkeen kun hän on päivittänyt Grapherexin, tai voit poistaa hänet ennen kuin luot ryhmän.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Vanhan tyylin ryhmä luodaan koska 1 jäsen käyttää Signalin vanhaa versiota. Voit luoda uuden tyylin ryhmä sen jälkeen kun hän on päivittänyt Signalin, tai voit poistaa hänet ennen kuin luot ryhmän.";
 
 /* Title for alert that explains that a new group will be a legacy group because multiple members do not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Vanhan tyylin ryhmä luodaan koska %@ jäsentä käyttävät Grapherexin vanhaa versiota. Voit luoda uuden tyylin ryhmä sen jälkeen kun he ovat päivittäneet Grapherexin, tai voit poistaa heidät ennen kuin luot ryhmän.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Vanhan tyylin ryhmä luodaan koska %@ jäsentä käyttävät Signalin vanhaa versiota. Voit luoda uuden tyylin ryhmä sen jälkeen kun he ovat päivittäneet Signalin, tai voit poistaa heidät ennen kuin luot ryhmän.";
 
 /* Indicates that a new group will be a legacy group because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
 "GROUPS_LEGACY_GROUP_CREATION_WARNING_FORMAT_1" = "1 jäsen ei tue uusia ryhmiä, joten tästä tulee vanhan tyylin ryhmä. %@";
@@ -2500,19 +2285,19 @@
 "GROUPS_LEGACY_GROUP_DESCRIPTION_FORMAT" = "Tämä on vanhan tyylin ryhmä. Ylläpitäjän kaltaiset ominaisuudet ovat käytettävissä vain uusissa ryhmissä. %@";
 
 /* Indicates that a legacy group can't be upgraded because some members can't be migrated. Embeds {{ an \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_DESCRIPTION_MEMBERS_CANT_BE_MIGRATED_FORMAT" = "This Legacy Group is not yet ready to be upgraded to a New Group. %@.";
+"GROUPS_LEGACY_GROUP_DESCRIPTION_MEMBERS_CANT_BE_MIGRATED_FORMAT" = "Tätä vanhan tyylin ryhmää ei voida päivittää uudeksi ryhmäksi. %@.";
 
 /* Indicates that a legacy group can't be upgraded because it has too many members. Embeds {{ an \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_DESCRIPTION_TOO_MANY_MEMBERS_FORMAT" = "This Legacy Group can’t be upgraded to a New Group because it is too large. %@.";
+"GROUPS_LEGACY_GROUP_DESCRIPTION_TOO_MANY_MEMBERS_FORMAT" = "Tätä vanhan tyylin ryhmää ei voida päivittää uudeksi ryhmäksi, koska se on liian iso. %@.";
 
 /* Explanation of legacy groups. Embeds {{ an \"upgrade\" link. }}. */
-"GROUPS_LEGACY_GROUP_DESCRIPTION_WITH_UPGRADE_OFFER_FORMAT" = "This is a Legacy Group. To access new features like @mentions and admins, %@.";
+"GROUPS_LEGACY_GROUP_DESCRIPTION_WITH_UPGRADE_OFFER_FORMAT" = "Tämä on vanhan tyylin ryhmä. Käyttääksesi uusia ominaisuuksia, kuten @mainintoja ja ylläpitäjyyttä, %@.";
 
 /* Title for the the 'dropped group member' banner. */
-"GROUPS_LEGACY_GROUP_DROPPED_MEMBERS_BANNER_1" = "1 member couldn’t be re-added to the New Group. Do you want to add them now?";
+"GROUPS_LEGACY_GROUP_DROPPED_MEMBERS_BANNER_1" = "Yhtä jäsentä ei voitu lisätä uudelleen uuteen ryhmään. Haluatko lisätä hänet nyt?";
 
 /* Format for the title for the the 'dropped group members' banner. Embeds: {{ the number of dropped group members }}. */
-"GROUPS_LEGACY_GROUP_DROPPED_MEMBERS_BANNER_N_FORMAT" = "%@ members couldn’t be re-added to the New Group. Do you want to add them now?";
+"GROUPS_LEGACY_GROUP_DROPPED_MEMBERS_BANNER_N_FORMAT" = "%@ jäsentä jäi lisäämättä uuteen ryhmään. Haluatko lisätä heidät nyt?";
 
 /* Label indicating a legacy group. */
 "GROUPS_LEGACY_GROUP_INDICATOR" = "Vanhan tyylin ryhmä";
@@ -2551,19 +2336,19 @@
 "GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_BUTTON" = "Lisää jäseniä";
 
 /* Explanation of 're-adding dropped group member' in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_DESCRIPTION_1" = "This member couldn’t be added to the New Group automatically when it was upgraded:";
+"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_DESCRIPTION_1" = "Tätä jäsentä ei voitu lisätä automaattisesti uuteen ryhmään, kun se päivitettiin:";
 
 /* Explanation of 're-adding dropped group member' in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_DESCRIPTION_N" = "These members couldn’t be added to the New Group automatically when it was upgraded:";
+"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_DESCRIPTION_N" = "Näitä jäseniä ei voitu lisätä automaattisesti uuteen ryhmään, kun se päivitettiin:";
 
 /* Body text for the second section of the 'upgrade legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_2_BODY" = "Kaikki päivitystä edeltävä viestihistoria ja media on säilytetty.";
 
 /* Body text for the 'dropped member' section of the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_1" = "This member was removed from the group and will not be able to rejoin the group until they upgrade:";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_1" = "Tämä jäsen poistettiin ryhmästä ja ei voi liittyä uudelleen, ennen kuin hän on päivittänyt:";
 
 /* Body text for the 'dropped members' section of the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_N" = "These members were removed from the group and will not be able to rejoin the group until they upgrade:";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_N" = "Nämä jäsenet poistettiin ryhmästä ja eivät voi liittyä uudelleen ryhmään, ennen kuin he ovat päivittäneet:";
 
 /* Body text for the 'invites member' section of the 'upgrade legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_INVITED_MEMBERS_1" = "Tämän jäsenen on hyväksyttävä kutsu liittyä uudelleen tähän ryhmään, eikä hän saa ryhmäviestejä ennen kuin hän hyväksyy:";
@@ -2581,22 +2366,22 @@
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_TITLE" = "Päivitä uuden tyylin ryhmään";
 
 /* Label for the 'upgrade this group' button in the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_BUTTON" = "Upgrade this Group";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_BUTTON" = "Päivitä tämä ryhmä";
 
 /* Message for error alert indicating the group update failed. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_MESSAGE" = "This group couldn’t be upgraded to a New Group right now.";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_MESSAGE" = "Tätä ryhmää ei voitu juuri nyt päivittää uuteen ryhmään.";
 
 /* Message for error alert indicating the group update failed due to network connectivity. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_MESSAGE_NETWORK" = "This group couldn’t be upgraded to a New Group because you’re not connected to the Internet. Try again later.";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_MESSAGE_NETWORK" = "Tätä ryhmää ei voitu päivittää uuteen ryhmään, koska et ole yhdistettynä internettiin. Yritä myöhemmin uudelleen.";
 
 /* Title for error alert indicating the group update failed. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_TITLE" = "Couldn’t Complete Upgrade";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_TITLE" = "Päivityksen viimeistely epäonnistui";
 
 /* Message indicating the group update succeeded. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_SUCCEEDED" = "Upgraded to New Group.";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_SUCCEEDED" = "Päivitetty uuteen ryhmään";
 
 /* An \"upgrade\" link for upgrading legacy groups to new groups. */
-"GROUPS_LEGACY_GROUP_UPGRADE_LINK" = "upgrade this group";
+"GROUPS_LEGACY_GROUP_UPGRADE_LINK" = "päivitä tämä ryhmä";
 
 /* Message for the 'replace group admin' alert. */
 "GROUPS_REPLACE_ADMIN_ALERT_MESSAGE" = "Ennen kuin lähdet, valitse uusi ylläpitäjä tälle ryhmälle.";
@@ -2608,7 +2393,7 @@
 "GROUPS_REPLACE_ADMIN_BUTTON" = "Valitse uusi ylläpitäjä";
 
 /* Format for the alert warning the user that they've reached the recommended limit on how many members can be in a group when creating a new group. Embeds {{ the maximum number of recommended members in a group }}. */
-"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Grapherex groups perform best with %@ members or less. Adding more members will cause delays sending and receiving messages.";
+"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Signal-ryhmät toimivat parhaiten enintään %@ jäsenellä. Korkeampi jäsenmäärä viivästyttää viestien kulkua.";
 
 /* Title for alert warning the user that they've reached the recommended limit on how many members can be in a group. */
 "GROUPS_TOO_MANY_MEMBERS_ALERT_TITLE" = "Suositeltu jäsenmäärä saavutettu";
@@ -2623,9 +2408,9 @@
 "GROUPS_VIEW_REQUESTS_BUTTON" = "Näytä pyynnöt";
 
 /* Help item allowing the user to file a support request */
-"HELP_CONTACT_US" = "Ota meihin yhteyttä";
+"HELP_CONTACT_US" = "Ota yhteyttä";
 
-/* Help item that takes the user to the Grapherex support website */
+/* Help item that takes the user to the Signal support website */
 "HELP_SUPPORT_CENTER" = "Tukikeskus";
 
 /* Label for 'archived conversations' button. */
@@ -2640,16 +2425,16 @@
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "Luonnos:";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Grapherex contact.  Embeds {{The name of 1 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Jotkin yhteystietosi ovat jo Grapherexissa, mukaan lukien %@.";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Signal contact.  Embeds {{The name of 1 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Jotkin yhteystietosi ovat jo Signalissa, mukaan lukien %@.";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Grapherex contacts.  Embeds {{The names of 2 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Jotkin yhteystietosi ovat jo Grapherexissa, mukaan lukien %@ ja %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Signal contacts.  Embeds {{The names of 2 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Jotkin yhteystietosi ovat jo Signalissa, mukaan lukien %@ ja %@";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Grapherex contacts.  Embeds {{The names of 3 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Jotkin yhteystietosi ovat jo Grapherexissa, mukaan lukien %@, %@ ja %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Signal contacts.  Embeds {{The names of 3 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Jotkin yhteystietosi ovat jo Signalissa, mukaan lukien %@, %@ ja %@";
 
-/* A label offering to start a new conversation with your contacts, if you have no Grapherex contacts. */
+/* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Aloita ensimmäinen keskustelu.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
@@ -2665,25 +2450,25 @@
 "HOME_VIEW_TITLE_ARCHIVE" = "Arkisto";
 
 /* Title for the conversation list's default mode. */
-"HOME_VIEW_TITLE_INBOX" = "Grapherex";
+"HOME_VIEW_TITLE_INBOX" = "Signal";
 
 /* The image editor hint that you can draw blur */
-"IMAGE_EDITOR_BLUR_HINT" = "Piirrä mihin vain sumentaaksesi";
+"IMAGE_EDITOR_BLUR_HINT" = "Sumenna piirtämällä kohdan päällä";
 
 /* The image editor setting to blur faces */
 "IMAGE_EDITOR_BLUR_SETTING" = "Sumenna kasvot";
 
 /* A toast indicating that you can blur more faces after detection */
-"IMAGE_EDITOR_BLUR_TOAST" = "Piirrä sumentaaksesi lisää kasvoja tai alueita";
+"IMAGE_EDITOR_BLUR_TOAST" = "Sumenna kasvoja tai alueita piirtämällä";
 
 /* Momentarily shown to the user when attempting to select more images than is allowed. Embeds {{max number of items}} that can be shared. */
 "IMAGE_PICKER_CAN_SELECT_NO_MORE_TOAST_FORMAT" = "Et voi jakaa useampaa kuin %@ kappaletta.";
 
-/* Button that will present a view for the user to change the photos Grapherex has access to. */
+/* Button that will present a view for the user to change the photos Signal has access to. */
 "IMAGE_PICKER_CHANGE_PHOTOS" = "Vaihda kuvat";
 
 /* Explanation showing that the user has granted limited access to their photos and can change that in the Settings app. */
-"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Myönnä täysi käyttöoikeus Asetukset-sovelluksen kautta tai muuta, mihin kuviin Grapherexilla on pääsy.";
+"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Myönnä täysi käyttöoikeus Asetukset-sovelluksen kautta tai muuta, mihin kuviin Signalilla on pääsy.";
 
 /* Title show that the user has granted limited access to their photos and can change that in the Settings app. */
 "IMAGE_PICKER_CHANGE_PHOTOS_TITLE" = "Etkö näe kuviasi?";
@@ -2733,8 +2518,8 @@
 /* Shown in inbox and conversation after syncing as a placeholder indicating why your message history is missing. */
 "INFO_MESSAGE_SYNCED_THREAD" = "Voit lähettää tai vastaanottaa synkronoituja viestejä puhelimesta tai iPadista.\nTietoturvasi vuoksi keskusteluhistoriaa ei siirretä uusiin yhdistettyihin laitteisiin.";
 
-/* Shown in inbox and conversation when a user joins Grapherex, embeds the new user's {{contact name}} */
-"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ käyttää Grapherexia!";
+/* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
+"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ käyttää Signalia!";
 
 /* accessibility label for the button which shows the sticker picker */
 "INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL" = "Tarrat";
@@ -2745,14 +2530,14 @@
 /* Message for the alert indicating that an audio file is invalid. */
 "INVALID_AUDIO_FILE_ALERT_ERROR_MESSAGE" = "Virheellinen äänitiedosto.";
 
-/* Alert body when contacts disabled while trying to invite contacts to Grapherex */
-"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Kutsu kavereita Grapherexiin sallimalla yhteystietojen käyttö iOS:n asetuksissa.";
+/* Alert body when contacts disabled while trying to invite contacts to signal */
+"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Kutsu kavereita Signaliin sallimalla yhteystietojen käyttö iOS:n asetuksissa.";
 
-/* Alert title when contacts disabled while trying to invite contacts to Grapherex */
+/* Alert title when contacts disabled while trying to invite contacts to signal */
 "INVITE_FLOW_REQUIRES_CONTACT_ACCESS_TITLE" = "Salli yhteystietojen käyttö";
 
 /* Label for the cell that presents the 'invite contacts' workflow. */
-"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Kutsu kavereita Grapherexiin";
+"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Kutsu kavereita Signaliin";
 
 /* Search */
 "INVITE_FRIENDS_PICKER_SEARCHBAR_PLACEHOLDER" = "Hae";
@@ -2845,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Skannaa yhdistettävän laitteen ruudulla näkyvä QR-koodi.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Skannaa QR-koodi";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scan QR Code to link a new device.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Yhdistä uusi laite";
@@ -2869,7 +2654,7 @@
 "LINKPREVIEWS_MEGAPHONE_TITLE" = "Esikatsele kaikkia linkkejä";
 
 /* Body for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Grapherex-tilisi siirtämiseksi sinun on sallittava paikallisen verkon käyttö molemmissa laitteissa.";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Signal-tilisi siirtämiseksi sinun on sallittava paikallisen verkon käyttö molemmissa laitteissa.";
 
 /* A button asking the user if they need further help getting their transfer working. */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_NEED_HELP" = "Tarvitsetko apua?";
@@ -2881,7 +2666,7 @@
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_THREE" = "Ota käyttöön \"Paikallinen verkko\"";
 
 /* Second step for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Avaa Grapherex";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Avaa Signal";
 
 /* Title for local network permission action sheet */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_TITLE" = "Ota käyttöön paikallinen verkkoyhteys";
@@ -2892,14 +2677,17 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Valitse sijainti";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Lokit";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Debug logs can help Signal fix issues and crashes.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Viesti";
 
 /* A string describing that the user has many groups in common with another user. Embeds {{common group count}} */
-"MANY_GROUPS_IN_COMMON" = "%@ yhteistä ryhmä";
+"MANY_GROUPS_IN_COMMON" = "%@ yhteistä ryhmää";
 
 /* nav bar button item */
 "MEDIA_DETAIL_VIEW_ALL_MEDIA_BUTTON" = "Kaikki media";
@@ -2944,7 +2732,7 @@
 "MESSAGE_ACTION_DELETE_FOR_EVERYONE" = "Poista kaikilta";
 
 /* A one-time confirmation that you want to delete for everyone */
-"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Tämä viesti poistetaan kaikilta keskustelussa olevilta, jos he käyttävät Grapherexin uusinta versiota. He näkevät, että poistit viestin.";
+"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Tämä viesti poistetaan kaikilta keskustelussa olevilta, jos he käyttävät Signalin uusinta versiota. He näkevät, että poistit viestin.";
 
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "Keneltä haluat poistaa tämän viestin?";
@@ -3061,7 +2849,7 @@
 "MESSAGE_REQUEST_LEAVE_AND_DELETE_GROUP_TITLE" = "Poistetaanko ja poistutaanko ryhmästä?";
 
 /* Banner label notifying user that a new message is from a user with the same name as an existing contact */
-"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Tarkista pyynnöt huolellisesti. Grapherex löysi toisen samannimisen yhteystiedon.";
+"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Tarkista pyynnöt huolellisesti. Signal löysi toisen samannimisen yhteystiedon.";
 
 /* A header string above a known contact's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Sinun yhteystieto";
@@ -3088,13 +2876,13 @@
 "MESSAGE_REQUEST_VIEW_BLOCK_BUTTON" = "Estä";
 
 /* A prompt notifying that the user must unblock this conversation to continue. Embeds {{contact name}}. */
-"MESSAGE_REQUEST_VIEW_BLOCKED_CONTACT_PROMPT_FORMAT" = "Sallitaanko henkilön %@ lähettää sinulle viestejä ja nähdä nimesi ja profiilikuvasi? Et saa viestejä ennen kuin poistat niiden eston.";
+"MESSAGE_REQUEST_VIEW_BLOCKED_CONTACT_PROMPT_FORMAT" = "Sallitaanko henkilön %@ lähettää sinulle viestejä ja nähdä nimesi ja profiilikuvasi? Et saa viestejä ennen eston poistamista.";
 
 /* A prompt notifying that the user must unblock this group to continue. */
-"MESSAGE_REQUEST_VIEW_BLOCKED_GROUP_PROMPT" = "Poistetaanko tämän ryhmän esto ja näytetäänkö nimesi ja profiilikuvasi sen jäsenille? Et saa viestejä ennen kuin poistat niiden eston.";
+"MESSAGE_REQUEST_VIEW_BLOCKED_GROUP_PROMPT" = "Poistetaanko tämän ryhmän esto ja näytetäänkö nimesi ja profiilikuvasi sen jäsenille? Et saa viestejä ennen eston poistamista.";
 
 /* A prompt notifying that the user must unblock this group to continue. */
-"MESSAGE_REQUEST_VIEW_BLOCKED_GROUP_PROMPT_V2" = "Haluatko poistaa tämän ryhmän eston? He eivät tiedä, että olet nähnyt heidän viestinsä, ennen kuin poistat eston.";
+"MESSAGE_REQUEST_VIEW_BLOCKED_GROUP_PROMPT_V2" = "Haluatko poistaa tämän ryhmän eston? He eivät tiedä, että olet nähnyt heidän viestinsä ennen eston poistamista.";
 
 /* A button used to continue a conversation and share your profile. */
 "MESSAGE_REQUEST_VIEW_CONTINUE_BUTTON" = "Jatka";
@@ -3147,7 +2935,7 @@
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "Luettu";
 
-/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Grapherex account. */
+/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Signal account. */
 "MESSAGE_STATUS_RECIPIENT_SKIPPED" = "Sivuutettu";
 
 /* Label indicating that a message failed to send. */
@@ -3163,7 +2951,7 @@
 "MESSAGE_STATUS_UPLOADING" = "Lähetetään...";
 
 /* placeholder text for the editable message field */
-"MESSAGE_TEXT_FIELD_PLACEHOLDER" = "Uusi viesti";
+"MESSAGE_TEXT_FIELD_PLACEHOLDER" = "Kirjoita viesti";
 
 /* Indicates that one member of this group conversation is no longer verified. Embeds {{user's name or phone number}}. */
 "MESSAGES_VIEW_1_MEMBER_NO_LONGER_VERIFIED_FORMAT" = "%@ ei ole enää merkitty varmennetuksi. Lisätietoja napauttamalla.";
@@ -3187,22 +2975,22 @@
 "MISSED_CALL" = "Vastaamatta jäänyt puhelu";
 
 /* Alert body */
-"MISSING_CAMERA_PERMISSION_MESSAGE" = "Soita videopuheluita Grapherexilla sallimalla kameran käyttö iOS:n asetuksissa.";
+"MISSING_CAMERA_PERMISSION_MESSAGE" = "Soita videopuheluita Signalilla sallimalla kameran käyttö iOS:n asetuksissa.";
 
 /* Alert title */
-"MISSING_CAMERA_PERMISSION_TITLE" = "Grapherex tarvitsee oikeutta käyttää kameraa.";
+"MISSING_CAMERA_PERMISSION_TITLE" = "Signal tarvitsee oikeutta käyttää kameraa.";
 
 /* Alert body indicating the user has denied location permissios */
 "MISSING_LOCATION_PERMISSION_MESSAGE" = "Voit antaa tämän käyttöoikeuden laitteesi Asetuksista.";
 
 /* Alert title indicating the user has denied location permissios */
-"MISSING_LOCATION_PERMISSION_TITLE" = "Tämän toiminnon käyttämiseksi Grapherex tarvitsee lupaa saada laitteesi sijainti.";
+"MISSING_LOCATION_PERMISSION_TITLE" = "Tämän toiminnon käyttämiseksi Signal tarvitsee lupaa saada laitteesi sijainti.";
 
 /* Alert body when user has previously denied media library access */
-"MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE" = "Voit antaa tämän käyttöoikeuden laitteesi Asetuksista.";
+"MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE" = "Voit antaa tämän käyttöoikeuden iOS-asetuksissa.";
 
 /* Alert title when user has previously denied media library access */
-"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Tämän toiminnon käyttämiseksi Grapherex tarvitsee lupaa päästä laitteesi mediakirjastoon.";
+"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Tämän toiminnon käyttämiseksi Signal tarvitsee lupaa päästä laitteesi mediakirjastoon.";
 
 /* alert title: cannot link - reached max linked devices */
 "MULTIDEVICE_PAIRING_MAX_DESC" = "Et voi yhdistää enempää laitteita.";
@@ -3215,6 +3003,9 @@
 
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Mykistetty";
+
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Recently changed their profile name from %1$@ to %2$@.";
 
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Ohita";
@@ -3253,7 +3044,7 @@
 "NEW_GROUP_CREATION_FAILED_DUE_TO_NETWORK" = "Uuden ryhmän luominen ei onnistunut. Tarkista verkkoyhteytesi ja yritä uudelleen.";
 
 /* Indicates that a group member does not support New Groups. */
-"NEW_GROUP_CREATION_MEMBER_DOES_NOT_SUPPORT_NEW_GROUPS" = "Does not support New Groups";
+"NEW_GROUP_CREATION_MEMBER_DOES_NOT_SUPPORT_NEW_GROUPS" = "Ei tue uusia ryhmiä";
 
 /* Message for error alert indicating that a group name is required. */
 "NEW_GROUP_CREATION_MISSING_NAME_ALERT_MESSAGE" = "Ryhmän nimi vaaditaan.";
@@ -3283,7 +3074,7 @@
 "NEW_GROUP_VIEW_UNSAVED_CHANGES_TITLE" = "Tallentamattomia muutoksia";
 
 /* No comment provided by engineer. */
-"new_message" = "Uusi viesti";
+"new_message" = "Kirjoita viesti";
 
 /* A label for the 'add by phone number' button in the 'new non-contact conversation' view */
 "NEW_NONCONTACT_CONVERSATION_VIEW_BUTTON" = "Hae";
@@ -3297,16 +3088,19 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Ei yhteisiä ryhmiä";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Ei muita yhteisiä ryhmiä.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Aloita keskustelu valitsemalla jokin yhteystieto tai ryhmä";
 
 /* Title welcoming to the app */
-"NO_SELECTED_CONVERSATION_TITLE" = "Tervetuloa Grapherexiin";
+"NO_SELECTED_CONVERSATION_TITLE" = "Tervetuloa Signaliin";
 
 /* A string prompting the user to send a new mesaage to a user */
 "NON_CONTACT_TABLE_CELL_NEW_MESSAGE" = "Uusi viesti henkilölle:";
 
-/* A string asking the user if they'd like to invite a number to Grapherex via SMS. */
+/* A string asking the user if they'd like to invite a number to signal via SMS. */
 "NON_CONTACT_TABLE_CELL_SEND_SMS" = "Käyttäjää ei löytynyt. Kutsutaanko tekstiviestillä?";
 
 /* Label for 1:1 conversation with yourself. */
@@ -3343,16 +3137,13 @@
 "NOTIFICATION_PERMISSION_REMINDER_MEGAPHONE_TITLE" = "Otetaanko Ilmoitukset käyttöön?";
 
 /* No comment provided by engineer. */
-"NOTIFICATIONS_FOOTER_WARNING" = "Toimintoihin kuuluu \"Merkitse luetuksi\", \"Vastaa\" ja \"Soita takaisin\".";
+"NOTIFICATIONS_FOOTER_WARNING" = "Toimintoihin kuuluu Merkitse luetuksi, Vastaa ja Soita takaisin.";
 
 /* No comment provided by engineer. */
 "NOTIFICATIONS_NONE" = "Ei nimeä eikä sisältöä";
 
-/* Table cell switch label. When disabled, Grapherex will not play notification sounds while the app is in the foreground. */
+/* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Toista apin ollessa auki";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Äänet";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Lisää mukautettu ääni…";
@@ -3412,7 +3203,7 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "Yhdistä iPhone";
 
 /* explanation to the user they're switching from linking to registering flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Napauttamalla ”Rekisteröi iPad” voit luoda aivan uuden Grapherex-tilin tai siirtää olemassa olevan tilin tähän iPadiin. Tämä poistaa Grapherexin käytöstä toiselta laitteelta, jos se on tällä hetkellä rekisteröity samalla puhelinnumerolla.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Napauttamalla ”Rekisteröi iPad” voit luoda aivan uuden Signal-tilin tai siirtää olemassa olevan tilin tähän iPadiin. Tämä poistaa Signalin käytöstä toiselta laitteelta, jos se on tällä hetkellä rekisteröity samalla puhelinnumerolla.";
 
 /* explanation to the user they're switching from registering to linking flow */
 "ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Napauttamalla “Yhdistä iPhone” voit yhdistää puhelimesi olemassa olevaan tiliin. Puhelimen yhdistämistä ei yleensä suositella, ja se rajoittaa joitain toimintoja, kuten soittamista.";
@@ -3424,7 +3215,7 @@
 "ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "Yhdistä tämä iPhone";
 
 /* warning to the user that registering an ipad is not recommended */
-"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Tämän iPadin rekisteröiminen poistaa Grapherexin käytöstä toiselta laitteelta, jos se on tällä hetkellä rekisteröity samalla puhelinnumerolla.";
+"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Tämän iPadin rekisteröiminen poistaa Signalin käytöstä toiselta laitteelta, jos se on tällä hetkellä rekisteröity samalla puhelinnumerolla.";
 
 /* warning to the user that linking a phone is not recommended */
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "iPhonen yhdistämistä ei suositella. Se rajoittaa myös ydintoimintoja.";
@@ -3433,25 +3224,31 @@
 "ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Myönnä käyttöoikeudet";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Ilmoitusten avulla pysyt ajan tasalla uusista viesteistä ja keskusteluista.";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Ilmoitusten ja yhteystietojen salliminen mahdollistaa uusista viesteistä tiedottamisen ja tuntemiesi ihmisten löytämisen. Yhteystiedot salataan, eikä Signal-sovellus käsittele niitä.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Ilmoitukset viesteistä";
+"ONBOARDING_PERMISSIONS_TITLE" = "Myönnä käyttöoikeudet";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Valitse ketkä voivat löytää sinut Grapherexista puhelinnumerolla %@";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Valitse ketkä voivat löytää sinut Signalista puhelinnumerolla %@";
 
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Ketkä voivat löytää sinut puhelinnumerollasi?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Puhelinnumerosi";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Odota muutama minuutti ennen kuin yrität uudelleen. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Syötä puhelinnumerosi, jotta pääset alkuun";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Syötä puhelinnumerosi";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Virheellinen numero";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Virheellinen puhelinnumero. Syötä voimassa oleva puhelinnumero rekisteröidäksesi.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Tunnuslukuyritykset ovat loppuneet, mutta voit silti käyttää Grapherex-tiliäsi luomalla uuden tunnusluvun. Yksityisyys- ja tietoturvasyistä tili palautetaan ilman tallennettuja profiilitietoja tai asetuksia.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Tunnuslukuyritykset ovat loppuneet, mutta voit silti käyttää Signal-tiliäsi luomalla uuden tunnusluvun. Yksityisyys- ja tietoturvasyistä tili palautetaan ilman tallennettuja profiilitietoja tai asetuksia.";
 
 /* Label for the 'learn more' link when reglock is disabled in the 'onboarding pin attempts exhausted' view. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_LEARN_MORE" = "Lisätietoa tunnusluvuista";
@@ -3474,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Syötä tunnusluku";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Profiilisi";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Sukunimi (valinnainen)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Etunimi (pakollinen)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Käyttöehdot ja tietosuoja";
 
@@ -3483,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Väärä numero?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "En saanut koodia (käytettävissä %@ kuluttua)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Soita minulle";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Ota yhteyttä Grapherexin tukeen";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Soita minulle %@ kuluttua";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Varmennetaan koodia…";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Tämä koodi on virheellinen";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "En saanut koodia";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Lähetä koodi uudelleen";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Varmista, että sinulla on yhteys matkapuhelinverkkoon ja voit vastaanottaa tekstiviestejä.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Ei koodia?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Lähetä koodi uudelleen";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Soita minulle mieluummin";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Ei vieläkään koodia?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Lähetä koodi uudelleen %@ kuluttua";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Syötä koodi, jonka lähetimme numeroon %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Lähetimme koodin uudelleen numeroon %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Vahvistuskoodi";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Asetukset";
@@ -3525,8 +3322,8 @@
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ asetti viestien katoamisajaksi %@.";
 
-/* Label warning the user that the Grapherex service may be down. */
-"OUTAGE_WARNING" = "Grapherexissa ilmenee tällä hetkellä teknisiä ongelmia. Työskentelemme parhaillaan palvelun palauttamiseksi.";
+/* Label warning the user that the Signal service may be down. */
+"OUTAGE_WARNING" = "Signalissa ilmenee tällä hetkellä teknisiä ongelmia. Työskentelemme parhaillaan palvelun palauttamiseksi.";
 
 /* info message text in conversation view. {embeds callee name} */
 "OUTGOING_CALL_FORMAT" = "Soitit yhteystiedolle %@";
@@ -3634,13 +3431,13 @@
 "PHONE_NUMBER_DISCOVERABILITY_EVERYBODY" = "Kaikki";
 
 /* A user friendly description of the 'everybody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Jokainen, jolla on puhelinnumerosi yhteystiedoissa, näkee sinut yhteystietona Grapherexissa. Muut voivat löytää sinut haun kautta.";
+"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Jokainen, jolla on puhelinnumerosi yhteystiedoissa, näkee sinut yhteystietona Signalissa. Muut voivat löytää sinut haun kautta.";
 
 /* A user friendly name for the 'nobody' phone number discoverability mode. */
 "PHONE_NUMBER_DISCOVERABILITY_NOBODY" = "Ei kukaan";
 
 /* A user friendly description of the 'nobody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Kukaan Grapherexissa ei tule löytämään sinua puhelinnumerosi perusteella. Et tule näkymään yhteyshenkilönä ihmisille, joilla on puhelinnumerosi heidän yhteystiedoissa, eivätkä muut voi löytää sinua puhelinnumerosi avulla.";
+"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Kukaan Signalissa ei tule löytämään sinua puhelinnumerosi perusteella. Et tule näkymään yhteyshenkilönä ihmisille, joilla on puhelinnumerosi heidän yhteystiedoissa, eivätkä muut voi löytää sinua puhelinnumerosi avulla.";
 
 /* A format for a label showing an example phone number. Embeds {{the example phone number}}. */
 "PHONE_NUMBER_EXAMPLE_FORMAT" = "Esimerkki: %@";
@@ -3649,19 +3446,19 @@
 "PHONE_NUMBER_SHARING_CONTACTS_ONLY" = "Yhteystietoni";
 
 /* A user friendly description of the 'contacts only' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Vain yhteystietosi näkevät puhelinnumerosi Grapherexissa.";
+"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Vain yhteystietosi näkevät puhelinnumerosi Signalissa.";
 
 /* A user friendly name for the 'everybody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_EVERYBODY" = "Kaikki";
 
 /* A user friendly description of the 'everybody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Puhelinnumerosi näkyy ihmisille ja ryhmille, joille lähetät viestejä. Ihmiset, joilla on puhelinnumerosi heidän puhelimen yhteystiedoissa, näkevät sen myös Grapherexissa.";
+"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Puhelinnumerosi näkyy ihmisille ja ryhmille, joille lähetät viestejä. Ihmiset, joilla on puhelinnumerosi heidän puhelimen yhteystiedoissa, näkevät sen myös Signalissa.";
 
 /* A user friendly name for the 'nobody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_NOBODY" = "Ei kukaan";
 
 /* A user friendly description of the 'nobody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Kukaan ei näe puhelinnumeroasi Grapherexissa.";
+"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Kukaan ei näe puhelinnumeroasi Signalissa.";
 
 /* Format for phone number label with an index. Embeds {{Phone number label (e.g. 'home')}} and {{index, e.g. 2}}. */
 "PHONE_NUMBER_TYPE_AND_INDEX_NAME_FORMAT" = "%@ %@";
@@ -3715,7 +3512,7 @@
 "PIN_ACTION" = "Kiinnitä";
 
 /* Label indicating the user must use at least 4 characters */
-"PIN_CREATION_ALPHANUMERIC_HINT" = "Tunnusluvun on oltava vähintään 4 merkkiä";
+"PIN_CREATION_ALPHANUMERIC_HINT" = "Vähintään 4 merkkiä";
 
 /* Title of the 'pin creation' recreation view. */
 "PIN_CREATION_CHANGING_TITLE" = "Vaihda tunnusluku";
@@ -3736,7 +3533,7 @@
 "PIN_CREATION_DISABLE_CONFIRMATION_ACTION" = "Poista tunnusluku käytöstä";
 
 /* Message of the 'pin disable' action sheet. */
-"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Jos poistat tunnusluvun käytöstä, menetät kaikki tietosi rekisteröityessäsi Grapherexiin uudelleen, ellet siirrä tietojasi toisesta iOS-laitteesta. Et voi myöskään ottaa rekisteröinnin lukitusta käyttöön.";
+"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Jos poistat tunnusluvun käytöstä, menetät kaikki tietosi rekisteröityessäsi Signaliin uudelleen, ellet siirrä tietojasi toisesta iOS-laitteesta. Et voi myöskään ottaa rekisteröinnin lukitusta käyttöön.";
 
 /* Title of the 'pin disable' action sheet. */
 "PIN_CREATION_DISABLE_CONFIRMATION_TITLE" = "Varoitus";
@@ -3748,7 +3545,7 @@
 "PIN_CREATION_ERROR_TITLE" = "Tunnusluvun luominen epäonnistui";
 
 /* The explanation in the 'pin creation' view. */
-"PIN_CREATION_EXPLANATION" = "Tunnusluvulla salataan Grapherexiin tallentamasi tiedot. Profiilisi, asetuksesi ja yhteystietosi palautetaan, kun asennat Grapherexin uudelleen. Tunnuslukua ei tarvita sovelluksen avaamiseen.";
+"PIN_CREATION_EXPLANATION" = "Tunnusluvulla salataan Signaliin tallentamasi tiedot. Profiilisi, asetuksesi ja yhteystietosi palautetaan, kun asennat Signalin uudelleen. Tunnuslukua ei tarvita sovelluksen avaamiseen.";
 
 /* Learn more action on the pin creation view */
 "PIN_CREATION_LEARN_MORE" = "Lisätietoa tunnusluvuista";
@@ -3757,7 +3554,7 @@
 "PIN_CREATION_MISMATCH_ERROR" = "Tunnusluvut eivät täsmää. Yritä uudelleen.";
 
 /* Label indicating the user must use at least 4 digits */
-"PIN_CREATION_NUMERIC_HINT" = "Tunnusluvun on oltava vähintään 4 numeroa";
+"PIN_CREATION_NUMERIC_HINT" = "Vähintään 4 numeroa";
 
 /* Label indication the user must confirm their PIN. */
 "PIN_CREATION_PIN_CONFIRMATION_HINT" = "Syötä tunnusluku uudelleen";
@@ -3766,7 +3563,7 @@
 "PIN_CREATION_PIN_PROGRESS" = "Luodaan tunnuslukua…";
 
 /* The re-creation explanation in the 'pin creation' view. */
-"PIN_CREATION_RECREATION_EXPLANATION" = "Voit vaihtaa tunnusluvun tämän laitteen ollessa rekisteröity.";
+"PIN_CREATION_RECREATION_EXPLANATION" = "Tunnusluvun voi vaihtaa vain laitteella, joka on rekisteröity.";
 
 /* Title of the 'pin creation' recreation view. */
 "PIN_CREATION_RECREATION_TITLE" = "Vaihda tunnusluku";
@@ -3811,7 +3608,7 @@
 "PIN_REMINDER_MEGAPHONE_FEW_DAYS_TOAST" = "Muistutamme sinua jälleen muutaman päivän päästä.";
 
 /* Title for PIN reminder megaphone */
-"PIN_REMINDER_MEGAPHONE_TITLE" = "Vahvista Grapherex-tunnuslukusi";
+"PIN_REMINDER_MEGAPHONE_TITLE" = "Varmenna Signal-tunnuslukusi";
 
 /* Toast indicating that we'll ask you for your PIN again tomorrow. */
 "PIN_REMINDER_MEGAPHONE_TOMORROW_TOAST" = "Muistutamme sinua jälleen huomenna.";
@@ -3823,10 +3620,10 @@
 "PIN_REMINDER_MEGAPHONE_WEEK_TOAST" = "Muistutamme sinua uudelleen viikon kuluttua.";
 
 /* Label indicating that the attempted PIN does not match the user's PIN */
-"PIN_REMINDER_MISMATCH_ERROR" = "Virheellinen tunnusluku, yritä uudelleen.";
+"PIN_REMINDER_MISMATCH_ERROR" = "Väärä tunnusluku, yritä uudelleen.";
 
 /* The title for the 'pin reminder' dialog. */
-"PIN_REMINDER_TITLE" = "Syötä Grapherex-tunnuslukusi";
+"PIN_REMINDER_TITLE" = "Syötä Signal-tunnuslukusi";
 
 /* Label indicating that the attempted PIN is too short */
 "PIN_REMINDER_TOO_SHORT_ERROR" = "Tunnusluvun on oltava vähintään 4 numeroa.";
@@ -3841,7 +3638,7 @@
 "PINS_MEGAPHONE_ACTION" = "Luo tunnusluku";
 
 /* Body for PIN megaphone when user doesn't have a PIN */
-"PINS_MEGAPHONE_BODY" = "Tunnusluvut pitävät Grapherexiin tallennetut tiedot salattuina";
+"PINS_MEGAPHONE_BODY" = "Tunnusluvut pitävät Signaliin tallennetut tiedot salattuina";
 
 /* Toast indication that the user will be reminded later to setup their PIN. Embeds {{time until mandatory}} */
 "PINS_MEGAPHONE_SNOOZE_TOAST_FORMAT" = "Muistutamme sinua myöhemmin. Tunnusluku on luotava %ld päivän kuluttua.";
@@ -3880,19 +3677,19 @@
 "PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "Leikepöydällä oleva numero ei näytä olevan oikea turvanumero tälle keskustelulle.";
 
 /* Alert body for user error */
-"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Grapherex ei löytänyt turvanumeroa leikepöydältä. Oletko varmasti kopioinut sen oikein?";
+"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Signal ei löytänyt turvanumeroa leikepöydältä. Oletko varmasti kopioinut sen oikein?";
 
 /* Alert body when verifying with {{contact name}} */
-"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Turvanumero on yksilöllinen aina kahden Grapherex-käyttäjän välillä. Tarkista vielä uudelleen, että yhteystiedon %@ laiteessa näkyy juuri teidän turvanumero.";
+"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Turvanumero on yksilöllinen aina kahden Signal-käyttäjän välillä. Tarkista vielä uudelleen, että yhteystiedon %@ laiteessa näkyy juuri teidän turvanumero.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Sinulla on käytössä vanha versio Grapherexista. Sinun tulee ensin päivittää, jotta voit varmentaa.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Sinulla on käytössä vanha versio Signalista. Sinun tulee ensin päivittää, jotta voit varmentaa.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Vastapuolella on käytössä vanha versio Grapherexista. Hänen tulee ensin päivittää, jotta voit varmentaa.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Vastapuolella on käytössä vanha versio Signalista. Hänen tulee ensin päivittää, jotta voit varmentaa.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Skannattu koodi ei näytä olevan turvanumero. Onko teillä kummallakin viimeisin versio Grapherexista käytössä?";
+"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Skannattu koodi ei näytä olevan turvanumero. Onko teillä kummallakin viimeisin versio Signalista käytössä?";
 
 /* Paragraph(s) shown alongside the safety number when verifying privacy with {{contact name}} */
 "PRIVACY_VERIFICATION_INSTRUCTIONS" = "Voit varmentaa yhteystiedon %@ kanssa käytävän keskustelun salauksen vertaamalla ylläolevia numeroita toisessa laitteessa näkyviin vastaaviin numeroihin.\n\nVaihtoehtoisesti voit skannata koodin hänen puhelimestaan tai pyytää häntä skannaamaan sinun koodisi.";
@@ -3907,7 +3704,7 @@
 "PROCEED_BUTTON" = "Jatka";
 
 /* Placeholder text for the bio field of the profile bio view. */
-"PROFILE_BIO_VIEW_BIO_PLACEHOLDER" = "Kuvaile itseäsi muutamalla sanalla...";
+"PROFILE_BIO_VIEW_BIO_PLACEHOLDER" = "Kerro jotain itsestäsi...";
 
 /* The 'Be kind' default bio in the profile bio view. */
 "PROFILE_BIO_VIEW_DEFAULT_BIO_BE_KIND" = "Ole ystävällinen";
@@ -3919,10 +3716,10 @@
 "PROFILE_BIO_VIEW_DEFAULT_BIO_ENCRYPTED" = "Salattu";
 
 /* The 'free to chat' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_FREE_TO_CHAT" = "Tule juttelemaan vapaasti";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_FREE_TO_CHAT" = "Juttutuulella";
 
 /* The 'Speak Freely' default bio in the profile bio view. */
-"PROFILE_BIO_VIEW_DEFAULT_BIO_SPEAK_FREELY" = "Speak Freely";
+"PROFILE_BIO_VIEW_DEFAULT_BIO_SPEAK_FREELY" = "Tule juttelemaan";
 
 /* The 'Taking a break' default bio in the profile bio view. */
 "PROFILE_BIO_VIEW_DEFAULT_BIO_TAKING_A_BREAK" = "Tauolla";
@@ -3931,10 +3728,10 @@
 "PROFILE_BIO_VIEW_DEFAULT_BIO_WORKING_ON_SOMETHING_NEW" = "Luomassa uutta";
 
 /* Title for the profile bio view. */
-"PROFILE_BIO_VIEW_TITLE" = "Tiedot";
+"PROFILE_BIO_VIEW_TITLE" = "Tietoja";
 
 /* Title for the profile bio view. Embeds {{ the number of characters that can be added to the profile bio without hitting the length limit }}. */
-"PROFILE_BIO_VIEW_TITLE_FORMAT" = "Tiedot (%@)";
+"PROFILE_BIO_VIEW_TITLE_FORMAT" = "Tietoja (%@)";
 
 /* The copy rendered in a conversation when someone in your address book changes their profile name. Embeds {contact name}, {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_CONTACT_FORMAT" = "%@ muutti profiilinimensä %@ nimeksi %@.";
@@ -3942,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ muutti profiilinimekseen %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Lisää profiiliin";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Sinun nimi";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Tietoja";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Name";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Käyttäjätunnus";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Aseta profiilikuva";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Tiedot";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Poista profiilikuva";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Luo käyttäjätunnus";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Sukunimi on liian pitkä.";
@@ -3967,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Etunimi on liian pitkä.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Valinnainen)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Sukunimi";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Sukunimi (valinnainen)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Vaaditaan)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Etunimi";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Etunimi (pakollinen)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Internet-yhteys vaaditaan profiilin päivittämiseen.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Profiilisi on salattu päästä päähän. Se ja siihen tekemäsi muutokset näkyvät yhteystiedoillesi, kun aloitat tai hyväksyt uusia keskusteluja ja kun liityt uusiin ryhmiin.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Profiili on salattu päästä päähän. Se näkyy yhteyshenkilöillesi, kun aloitat tai hyväksyt uusia keskusteluja.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Tallenna";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profiili";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Käyttäjätunnus";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Merkitse luetuksi";
@@ -4004,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Push-ilmoitusten uudellenrekisteröinti onnistui.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Push-ilmoitukset";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -4150,7 +3938,13 @@
 "REGISTRATION_ERROR" = "Virhe rekisteröitymisessä";
 
 /* alert body during registration */
-"REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Emme pysty aktivoimaan laitettasi ennen kuin olet vahvistanut lähettämämme koodin.";
+"REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Laitteen aktivointi edellyttää lähettämämme koodin syöttämistä.";
+
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Jatka tarkistamalla puhelimesi Internet-yhteys ja yritä uudelleen.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Tarkista verkkoyhteytesi";
 
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Tätä puhelinnumeron esitystapaa ei tueta, ota yhteys tukeen.";
@@ -4182,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Ei puhelinnumeroa​";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Varmennuskoodi lähetetään tähän numeroon. Onko yllä oleva puhelinnumero oikea?";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Numeron vahvistus: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Muokkaa";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Varmennetaan %@…";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Hylkää";
 
@@ -4192,28 +3998,28 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "Valitse uusi ylläpitäjä";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "Rekisteröidy uudelleen push-ilmoituksia varten";
+"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
 
 /* Body for research megaphone */
-"RESEARCH_MEGAPHONE_BODY" = "Jotta Grapherexista tulisi planeetan paras viestintäsovellus, haluaisimme kuulla mielipiteesi.";
+"RESEARCH_MEGAPHONE_BODY" = "Jotta Signalista tulisi planeetan paras viestintäsovellus, haluaisimme kuulla mielipiteesi.";
 
 /* Title for research megaphone */
-"RESEARCH_MEGAPHONE_TITLE" = "Kerro Grapherexille mielipiteesi";
+"RESEARCH_MEGAPHONE_TITLE" = "Kerro Signalille mielipiteesi";
 
 /* Text for the research modal footer */
-"RESEARCH_MODAL_FOOTER" = "Kysely on saatavilla Surveygizmo-palvelussa suojatussa verkkotunnuksessa surveys.grapherexusers.com";
+"RESEARCH_MODAL_FOOTER" = "Kysely on saatavilla Surveygizmo-palvelussa suojatussa verkkotunnuksessa surveys.signalusers.org";
 
 /* Button text for declining the research modal */
 "RESEARCH_MODAL_NO_THANKS" = "Ei kiitos";
 
 /* Text explaining why the user should take the survey */
-"RESEARCH_MODAL_PLEA" = "<bold>Uskomme yksityisyyteen.</bold>\n\nGrapherex ei seuraa sinua tai kerää tietojasi. Grapherexin kehitystyössä olemme riippuvaisia käyttäjien palautteesta ja <bold>haluaisimme kuulla myös sinun mielipiteesi</bold>.\n\nHaluamme ymmärtää kuinka käytät Grapherexia. Kyselyssä ei kerätä tietoja, joista sinut voisi tunnistaa. Jos haluat jakaa yksityiskohtaisempaa palautetta, sinulla on mahdollisuus antaa yhteystietosi.\n\nJos sinulla on palautetta ja muutama minuutti aikaa, haluaisimme kuulla mielipiteesi.";
+"RESEARCH_MODAL_PLEA" = "<bold>Uskomme yksityisyyteen.</bold>\n\nSignal ei seuraa sinua tai kerää tietojasi. Signalin kehitystyössä olemme riippuvaisia käyttäjien palautteesta ja <bold>haluaisimme kuulla myös sinun mielipiteesi</bold>.\n\nHaluamme ymmärtää kuinka käytät Signalia. Kyselyssä ei kerätä tietoja, joista sinut voisi tunnistaa. Jos haluat jakaa yksityiskohtaisempaa palautetta, sinulla on mahdollisuus antaa yhteystietosi.\n\nJos sinulla on palautetta ja muutama minuutti aikaa, haluaisimme kuulla mielipiteesi.";
 
 /* Button text for taking the research survey */
 "RESEARCH_MODAL_TAKE_SURVEY" = "Vastaa kyselyyn";
 
 /* Title for the research megaphone modal */
-"RESEARCH_MODAL_TITLE" = "Grapherex-tutkimus";
+"RESEARCH_MODAL_TITLE" = "Signal-tutkimus";
 
 /* Generic text for button that retries whatever the last action was. */
 "RETRY_BUTTON_TEXT" = "Yritä uudelleen";
@@ -4243,7 +4049,7 @@
 "SAFETY_NUMBER_CONFIRMATION_VIEW_ACTION" = "Näytä";
 
 /* Snippet to share {{safety number}} with a friend. sent e.g. via SMS */
-"SAFETY_NUMBER_SHARE_FORMAT" = "Keskustelumme Grapherex-turvanumero:\n%@";
+"SAFETY_NUMBER_SHARE_FORMAT" = "Keskustelumme Signal-turvanumero:\n%@";
 
 /* Action sheet heading */
 "SAFETY_NUMBERS_ACTIONSHEET_TITLE" = "Sinun ja yhteystiedon %@ turvanumero on vaihtunut. Saatat halua varmentaa sen.";
@@ -4275,13 +4081,13 @@
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Sinun täytyy asettaa pääsykoodi puhelimesi asetuksista, jotta voit käyttää ruudun lukitusta.";
 
-/* Description of how and why Grapherex iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
-"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Avaa Grapherex tunnistautumalla";
+/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
+"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Avaa Signal tunnistautumalla";
 
 /* Title for alert indicating that screen lock could not be unlocked. */
 "SCREEN_LOCK_UNLOCK_FAILED" = "Tunnistautuminen epäonnistui";
 
-/* Label for button on lock screen that lets users unlock Grapherex. */
+/* Label for button on lock screen that lets users unlock Signal. */
 "SCREEN_LOCK_UNLOCK_SIGNAL" = "Avaa lukitus";
 
 /* This is a contact's name. Replace the name for a more common name in your locale if this sounds too foreign. This should be a unique non-public figure's name. This will have a female profile photo. */
@@ -4332,7 +4138,7 @@
 /* This is for a group chat for people who want weather updates. */
 "SCREENSHOT_NAME_GROUP_TWO" = "Sääennusteet";
 
-/* This appears in Grapherex > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
+/* This appears in Signal > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
 "SCREENSHOT_NAME_LOCAL_PROFILE" = "Puheenjohtaja Freija";
 
 /* This is a message expressing support/happiness/awe/shock. */
@@ -4387,7 +4193,7 @@
 "SCREENSHOT_THREAD_GROUP_ONE_FILE_NAME" = "Vuonna_1984.txt";
 
 /* This is for a message in the 'Book Club' group chat */
-"SCREENSHOT_THREAD_GROUP_ONE_MESSAGE_ONE" = "Luitko tämän vielä?";
+"SCREENSHOT_THREAD_GROUP_ONE_MESSAGE_ONE" = "Luitko jo tämän?";
 
 /* This is a file name 'Instructions' for the cat chat group. */
 "SCREENSHOT_THREAD_GROUP_SIX_FILE_NAME" = "Käyttöohjeet.PDF";
@@ -4441,13 +4247,13 @@
 "SECONDARY_DEVICE_ERROR_FETCHING_LINKING_CODE" = "Yhdistyskoodia ei voitu noutaa";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Päivitä Grapherex tällä laitteella linkittääksesi sen puhelimeesi.";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Päivitä Signal tällä laitteella linkittääksesi sen puhelimeesi.";
 
 /* Title for error alert indicating that a linked device must be upgraded before it can be linked. */
 "SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Ei tuettu versio";
 
 /* alert message for outdated linking device */
-"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Toisella laitteellasi on vanha Grapherexin versio, joka ei tue iPadin QR-koodien skannausta. Asenna Grapherexin uusin versio ja yritä uudelleen.";
+"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Toisella laitteellasi on vanha Signalin versio, joka ei tue iPadin QR-koodien skannausta. Asenna Signalin uusin versio ja yritä uudelleen.";
 
 /* alert title for outdated linking device */
 "SECONDARY_LINKING_ERROR_OLD_VERSION_TITLE" = "Päivitä skannaava laite";
@@ -4459,7 +4265,7 @@
 "SECONDARY_ONBOARDING_CHOOSE_DEVICE_NAME" = "Valitse nimi tälle laitteelle";
 
 /* label text */
-"SECONDARY_ONBOARDING_CHOOSE_DEVICE_NAME_EXPLANATION" = "Tämä nimi tulee olemaan \"Yhdistetyt laitteet\" -näkymässä.";
+"SECONDARY_ONBOARDING_CHOOSE_DEVICE_NAME_EXPLANATION" = "Tämä nimi näytetään Yhdistetyt laitteet -näkymässä.";
 
 /* text field placeholder */
 "SECONDARY_ONBOARDING_CHOOSE_DEVICE_NAME_PLACEHOLDER" = "Valitse nimi";
@@ -4468,19 +4274,19 @@
 "SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS" = "Viimeistele yhdistys";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Käynnistä Grapherex puhelimellasi yhdistääksesi tämä iPad tiliisi";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Aloita tämän iPadin yhdistäminen avaamalla Signal puhelimessasi";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
-"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Minulla ei ole Grapherexia puhelimessa…";
+"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Minulla ei ole Signalia puhelimessa…";
 
 /* alert body */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Siirry puhelimesi App Store -sovellukseen, asenna Grapherex, suorita rekisteröintiprosessi ja yhdistä sitten iPad samaan tiliin.";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Siirry puhelimesi App Store -sovellukseen, asenna Signal, suorita rekisteröintiprosessi ja yhdistä sitten iPad samaan tiliin.";
 
 /* alert title */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Asenna Grapherex puhelimeesi";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Asenna Signal puhelimeesi";
 
 /* body text while displaying a QR code which, when scanned, will link this device. */
-"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Napauta profiilikuvaasi avataksesi Grapherexin asetukset puhelimellasi. Sitten \"Yhdistetyt laitteet\" ja \"Yhdistä uusi laite\" skannataksesi tämä koodi puhelimellasi:";
+"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Avaa Signal-asetukset napauttamalla profiilikuvaasi. Napauta Yhdistetyt laitteet ja Yhdistä uusi laite ja skannaa sitten tämä koodi puhelimellasi:";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
 "SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Saa apua iPadin yhdistämiseen täältä";
@@ -4489,7 +4295,7 @@
 "SECONDARY_ONBOARDING_SCAN_CODE_TITLE" = "Skannaa QR-koodi puhelimellasi";
 
 /* header text before the user can transfer to this device */
-"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Avaa Grapherex vanhalla iPadillasi tilisi siirtämiseksi";
+"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Avaa Signal vanhalla iPadillasi tilisi siirtämiseksi";
 
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "Suojattu istunto alustettu.";
@@ -4513,7 +4319,7 @@
 "SEND_INVITE_FAILURE" = "Kutsun lähettäminen epäonnistui. Yritä myöhemmin uudelleen.";
 
 /* Alert body after invite succeeded */
-"SEND_INVITE_SUCCESS" = "Olet kutsunut ystäväsi käyttämään Grapherexia!";
+"SEND_INVITE_SUCCESS" = "Olet kutsunut ystäväsi käyttämään Signalia!";
 
 /* alert action, confirming the user wants to exit the media flow and abandon any photos they've taken */
 "SEND_MEDIA_CONFIRM_ABANDON_ALBUM" = "Hylkää media";
@@ -4525,28 +4331,28 @@
 "SEND_MEDIA_RETURN_TO_MEDIA_LIBRARY" = "Palaa mediakirjastoon";
 
 /* No comment provided by engineer. */
-"SEND_SMS_CONFIRM_TITLE" = "Kutsu ystävä suojaamattomalla tekstiviestillä?";
+"SEND_SMS_CONFIRM_TITLE" = "Kutsutaanko kaveri suojaamattomalla tekstiviestillä?";
 
 /* No comment provided by engineer. */
-"SEND_SMS_INVITE_TITLE" = "Haluatko kutsua seuraavan numeron käyttämään Grapherexia:";
+"SEND_SMS_INVITE_TITLE" = "Haluatko kutsua seuraavan numeron käyttämään Signalia:";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "Grapherex uses end-to-end encryption and it may need to refresh your chat session sometimes. This doesn’t affect your chat’s security but you may have missed a message from this contact and you can ask them to resend it.";
+"SESSION_REFRESH_ALERT_MESSAGE" = "Signalin sisältö salataan päästä päähän, mutta ajoittain keskustelu voidaan joutua päivittämään. Se ei vaikuta tietoturvaan, mutta tämän yhteyshenkilön viimeisin viesti ei välttämättä näy, ja voit pyytää häntä lähettämään sen uudelleen.";
 
 /* Title for the session refresh alert */
 "SESSION_REFRESH_ALERT_TITLE" = "Keskustelutuokio on päivitetty";
 
 /* Title for the wallpaper choose from photos option */
-"SET_WALLPAPER_CHOOSE_PHOTO" = "Choose from Photos";
+"SET_WALLPAPER_CHOOSE_PHOTO" = "Valitse kuvista";
 
 /* Title for the wallpaper presets section */
-"SET_WALLPAPER_PRESETS" = "Esiasetukset";
+"SET_WALLPAPER_PRESETS" = "Esiasennetut";
 
 /* Title for the set wallpaper settings view. */
-"SET_WALLPAPER_TITLE" = "Set Wallpaper";
+"SET_WALLPAPER_TITLE" = "Aseta taustakuva";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "Tietoja ohjelmasta";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Account";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Estä";
@@ -4554,11 +4360,11 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Kierrä sensuuria";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Sijainti: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Sijainti";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Grapherex yrittää kiertää sensuuria toiminnon ollessa käytössä. Käytä toimintoa vain paikassa, jossa Grapherex on sensuroitu.";
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Signal yrittää kiertää sensuuria toiminnon ollessa käytössä. Käytä toimintoa vain paikassa, jossa Signal on sensuroitu.";
 
 /* Table footer for the 'censorship circumvention' section shown when censorship circumvention has been auto-enabled based on local phone number. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_AUTO_ENABLED" = "Puhelinnumerosi sijaintiin perustuva sensuurin kiertäminen otettu käyttöön.";
@@ -4569,11 +4375,8 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "Sensuurin kiertäminen toimii ainoastaan laitteen ollessa Internet-yhteydessä.";
 
-/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Grapherex service. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Sensuurin kiertäminen ei ole tarpeellista, sillä laite on jo yhdistetty Grapherex-palvelimeen.";
-
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Sensuurin kiertäminen";
+/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Sensuurin kiertäminen ei ole tarpeellista, sillä laite on jo yhdistetty Signal-palvelimeen.";
 
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Virheenkorjausloki";
@@ -4590,23 +4393,17 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Ota tunnusluku käyttöön";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "Grapherexin tunnusluku";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Lähetä virheenkorjausloki";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Lisäasetukset";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Virhelokit";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Käytä yhteystietojen kuvia osoitekirjasta";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Näytä yhteystietojen kuvat osoitekirjasta";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use System Contact Photos";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "Teema";
@@ -4668,11 +4465,8 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Lisää estetty käyttäjä";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Luettelo yhteystiedoista ja ryhmistä, jotka olet estänyt.";
-
-/* A label that indicates the user has no Grapherex contacts. */
-"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Sinulla ei ole yhteystietoja Grapherexissa.";
+/* A label that indicates the user has no Signal contacts. */
+"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Sinulla ei ole yhteystietoja Signalissa.";
 
 /* A label that indicates the user's search has no matching results. */
 "SETTINGS_BLOCK_LIST_NO_SEARCH_RESULTS" = "Ei hakutuloksia";
@@ -4684,22 +4478,25 @@
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE" = "Välitä puhelut aina";
 
 /* User settings section footer, a detailed explanation */
-"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Kaikki puhelut välitetään Grapherexin palvelimen kautta, jotta IP-osoitteesi ei paljastu yhteystiedollesi. Heikentää puhelun laatua.";
+"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Kaikki puhelut välitetään Signalin palvelimen kautta, jotta IP-osoitteesi ei paljastu yhteystiedollesi. Heikentää puhelun laatua.";
+
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Keskustelut";
 
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Tyhjennä keskusteluhistoria";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Tekijänoikeussuojattu Grapherex Messenger\nLisensoitu GPLv3-lisenssillä";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nLicensed under the GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Datankäyttö";
 
 /* Item title for the low bandwidth call setting */
-"SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Use Less Data";
+"SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Vähennä puheluiden datankäyttöä";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Pienempi datankäyttö voi parantaa puheluja heikolla verkkoyhteydellä";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Puhelut";
@@ -4708,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Ääniviestit, itsestään katoavat mediat ja alle 100 kilotavun kokoiset tarrat ladataan aina automaattisesti.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Median automaattinen lataus";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Auto-Download";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Nollaa automaattisen latauksen asetukset";
@@ -4728,31 +4525,25 @@
 /* Confirmation text for button which deletes all message, calling, attachments, etc. */
 "SETTINGS_DELETE_HISTORYLOG_CONFIRMATION_BUTTON" = "Poista kaikki";
 
-/* Title for the 'donate to Grapherex' link in settings. */
-"SETTINGS_DONATE" = "Lahjoita Grapherexille";
+/* Title for the 'donate to signal' link in settings. */
+"SETTINGS_DONATE" = "Lahjoita Signalille";
 
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Tuki ";
-
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Tyhjennä keskusteluhistoria";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Tietoja";
 
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Kutsu kavereita";
 
 /* content of tweet when inviting via twitter - please do not translate URL */
-"SETTINGS_INVITE_TWITTER_TEXT" = "Voit ottaa minuun yhteyttä @grapherexapp​illa. Lataa se nyt: https://grapherex.com";
+"SETTINGS_INVITE_TWITTER_TEXT" = "Voit ottaa minuun yhteyttä @signalapp​illa. Lataa se nyt: https://signal.org/download/";
 
 /* Label for settings view that allows user to change the notification sound. */
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "Viestin ääni";
 
 /* Label for settings view that allows user to change the wallpaper. */
-"SETTINGS_ITEM_WALLPAPER" = "Chat Wallpaper";
+"SETTINGS_ITEM_WALLPAPER" = "Keskustelunäkymän taustakuva";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Käyttöehdot ja yksityisyydensuoja";
 
 /* Setting for enabling & disabling link previews. */
@@ -4774,7 +4565,7 @@
 "SETTINGS_MEDIA_DOWNLOAD_TYPE_AUDIO" = "Ääni";
 
 /* Label for the 'document' attachment type in the media download settings. */
-"SETTINGS_MEDIA_DOWNLOAD_TYPE_DOCUMENT" = "Dokumentit";
+"SETTINGS_MEDIA_DOWNLOAD_TYPE_DOCUMENT" = "Tiedostot";
 
 /* Label for the 'photo' attachment type in the media download settings. */
 "SETTINGS_MEDIA_DOWNLOAD_TYPE_PHOTO" = "Kuvat";
@@ -4785,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Viestintä";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "See and share when messages are being read and typed. If disabled, you won’t see read receipts or typing indicators from others.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Asetukset";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Sisällytä mykistetyt keskustelut";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Include Muted Chats";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Merkin laskenta";
+"SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Viestiluvun laskenta";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Valitse mitä tietoja puhelu- ja viesti-ilmoituksissa näytetään, jotka näkyvät myös puhelimen ollessa lukittu.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Call and Message notifications can appear while your phone is locked.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Ilmoitusten sisältö";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Yhteystieto liittyi Grapherexiin";
+/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Contact Joins Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Tapahtumat";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notify when…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Ilmoitukset";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4825,19 +4619,16 @@
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_ACTION" = "Poista muistutukset käytöstä";
 
 /* The explanation for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Opettele tunnusluku ulkoa tai tallenna se turvallisesti, sillä sitä ei voi palauttaa. Jos tunnusluku unohtuu ja Grapherex rekisteröidään uudelleen, tietoja voi kadota.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Opettele tunnusluku ulkoa tai tallenna se turvallisesti, sillä sitä ei voi palauttaa. Jos tunnusluku unohtuu ja Signal rekisteröidään uudelleen, tietoja voi kadota.";
 
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Vahvista Grapherex-tunnuslukusi";
-
-/* Footer for the 'pin reminder' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Muistutukset auttavat sinua muistamaan tunnuslukusi, koska sitä ei voida palauttaa. Kyselyt harvenevat ajan myötä.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Vahvista Signal-tunnuslukusi";
 
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "Tunnuslukumuistutukset";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "Tunnusluku pitää Grapherexiin tallennetut tiedot salattuina, jotta vain sinä pääset niihin käsiksi. Profiilisi, asetuksesi ja yhteystietosi palautuvat kun asennat Grapherexin uudelleen.";
+"SETTINGS_PINS_FOOTER" = "PINs keep information stored with Signal encrypted so only you can access it. Your PIN cannot be recovered. Your profile, settings, and contacts will restore when you reinstall Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Vaihda tunnusluku";
@@ -4846,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Luo tunnusluku";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "Grapherexin TUNNUSLUKU";
+"SETTINGS_PINS_TITLE" = "Signal-tunnusluku";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Näytä puhelut iOS:n Puhelin-apin Äskeiset-listalla.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Lisäasetukset";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Näytä puhelut äskeisissä";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Yksityisyys";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Lukukuittaukset";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Näe milloin muut ovat lukeneet viestisi ja päinvastoin. Valinnainen, koskee kaikkia keskusteluja.";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Poista käytöstä";
@@ -4873,7 +4664,7 @@
 "SETTINGS_REGISTRATION_LOCK_TURN_ON" = "Ota käyttöön";
 
 /* Body for the alert confirming that the user wants to turn on registration lock. */
-"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Jos et muista Grapherex-tunnuslukua kun rekisteröit Grapherexin uudelleen, tili lukitaan 7 päiväksi.";
+"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Jos et muista Signal-tunnuslukua kun rekisteröit Signalin uudelleen, tili lukitaan 7 päiväksi.";
 
 /* Title for the alert confirming that the user wants to turn on registration lock. */
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_TITLE" = "Otetaanko rekisteröintiesto käyttöön?";
@@ -4887,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Automaattisen ruudun lukituksen odotusaika";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Avaa Grapherexin ruudun lukitus Touch ID:llä, Face ID:llä tai iOS-pääsykoodilla. Puheluihin voi vastata ja viesti- ja puheluilmoitukset lähetetään poistamatta ruudun lukitusta. Ilmoituksissa näkyvää tietoa voi mukauttaa Grapherexin ilmoitusasetuksista.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Ruudun lukitus";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Ruudun lukitus";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Estä kuvakaappaukset";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Estä Grapherexin sisällön näkyminen apinvaihtajanäytöllä.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Äänet";
@@ -4908,35 +4693,41 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Puhelut";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Näytön suojaus";
+"SETTINGS_SECURITY_TITLE" = "App Security";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Näytä ehdotuksissa";
+"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Grapherex-keskustelut näkyvät ehdotuksissa jaettaessa sisältöä muista apeista";
+"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Signal-keskustelut näkyvät ehdotuksissa jaettaessa sisältöä muista apeista.";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Rekisteröintiesto";
 
-/* Footer for the 'two factor auth' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Rekisteröintiesto parantaa tietoturvaa vaatimalla Grapherex-tunnuslukua aina kun puhelinnumerollasi rekisteröidytään Grapherexiin.";
+/* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Kirjoittamisen ilmaisin";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Näe milloin muut ovat kirjoittamassa viestiä ja päinvastoin. Valinnainen, koskee kaikkia keskusteluja.";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Lähettäjäsinetti";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Näytä tilailmaisin";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Näytä viestin lisätiedoissa kuvake niille viesteille, jotka toimitettiin lähettäjäsinetillä. ";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Hyväksy kaikilta";
@@ -4966,13 +4757,13 @@
 "SHARE_EXTENSION_LOADING" = "Ladataan...";
 
 /* Message indicating that the share extension cannot be used until the user has registered in the main app. */
-"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Rekisteröidy avaamalla Grapherex-appi.";
+"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Rekisteröidy avaamalla Signal-appi.";
 
 /* Title indicating that the share extension cannot be used until the user has registered in the main app. */
 "SHARE_EXTENSION_NOT_REGISTERED_TITLE" = "Ei rekisteröity";
 
 /* Message indicating that the share extension cannot be used until the main app has been launched at least once. */
-"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Rekisteröidy tai päivitä avaamalla Grapherex-appi.";
+"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Rekisteröidy tai päivitä avaamalla Signal-appi.";
 
 /* Title indicating that the share extension cannot be used until the main app has been launched at least once. */
 "SHARE_EXTENSION_NOT_YET_MIGRATED_TITLE" = "Ei valmis";
@@ -4986,17 +4777,17 @@
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "Lähetetään...";
 
-/* Shown when trying to share content to a Grapherex user for the share extension. Followed by failure details. */
+/* Shown when trying to share content to a Signal user for the share extension. Followed by failure details. */
 "SHARE_EXTENSION_UNABLE_TO_BUILD_ATTACHMENT_ALERT_TITLE" = "Liitteen valmistelu epäonnistui";
 
 /* Title for the 'share extension' view. */
-"SHARE_EXTENSION_VIEW_TITLE" = "Jaa Grapherexiin";
+"SHARE_EXTENSION_VIEW_TITLE" = "Jaa Signaliin";
 
 /* Title of alert indicating sharing suggestions failed to deactivate */
 "SHARING_SUGGESTIONS_DISABLE_ERROR" = "Jakoehdotusten käytöstä poistaminen epäonnistui.";
 
 /* Body for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Grapherex-keskusteluja ehdotetaan nyt jaettaessa sisältöä muista sovelluksista.";
+"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Signal-keskusteluja ehdotetaan nyt jaettaessa sisältöä muista sovelluksista.";
 
 /* Title for sharing suggestions megaphone */
 "SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Jakaminen on nyt helpompaa";
@@ -5013,8 +4804,8 @@
 /* notification action */
 "SHOW_THREAD_BUTTON_TITLE" = "Näytä keskustelu";
 
-/* body sent to contacts when inviting to Install Grapherex */
-"SMS_INVITE_BODY" = "Tule käyttämään Grapherexia! Tässä linkki:";
+/* body sent to contacts when inviting to Install Signal */
+"SMS_INVITE_BODY" = "Tule käyttämään Signalia! Tässä linkki:";
 
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "Ei mitään";
@@ -5041,7 +4832,7 @@
 "STICKERS_INSTALL_BUTTON" = "Asenna";
 
 /* Title for the 'available built-in stickers' section of the 'manage stickers' view. */
-"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Grapherex Artist -sarja";
+"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Signal Artist -sarja";
 
 /* Title for the 'available known stickers' section of the 'manage stickers' view. */
 "STICKERS_MANAGE_VIEW_AVAILABLE_KNOWN_PACKS_SECTION_TITLE" = "Vastaanotetut tarrat";
@@ -5083,7 +4874,7 @@
 "SUCCESSFUL_VERIFICATION_TITLE" = "Turvanumero täsmää!";
 
 /* Header of support description field */
-"SUPPORT_CONTACT_US_HEADER" = "Ota meihin yhteyttä";
+"SUPPORT_CONTACT_US_HEADER" = "Ota yhteyttä";
 
 /* Placeholder string for support description */
 "SUPPORT_DESCRIPTION_PLACEHOLDER" = "Kerro asiasi";
@@ -5092,7 +4883,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Kuvaile ongelmaa:";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Lähetä tukipyyntösi sähköpostitse osoitteeseen support@grapherex.com";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Lähetä tukipyyntösi sähköpostitse osoitteeseen support@signal.org";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Suodatin: %@";
@@ -5115,16 +4906,16 @@
 /* Localized label for support request email debug log URL. Embeds {{debug log url}}. */
 "SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "Lokin osoite: %@";
 
-/* Localized label for support request email Grapherex version string. Embeds {{Grapherex version}}. */
-"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Grapherex-versio: %@";
+/* Localized label for support request email signal version string. Embeds {{signal version}}. */
+"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Signal-versio: %@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Grapherex iOS tukipyyntö";
+"SUPPORT_EMAIL_SUBJECT" = "Signal iOS tukipyyntö";
 
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "Mitä mieltä olet? (valinnainen)";
 
-/* Label in support request informing user about Grapherex FAQ */
+/* Label in support request informing user about Signal FAQ */
 "SUPPORT_FAQ_PROMPT" = "Oletko tutustunut usein kysyttyihin kysymyksiin?";
 
 /* Label describing support switch to attach debug logs */
@@ -5140,7 +4931,7 @@
 "SWITCH_ON" = "Käytössä";
 
 /* Label for button to verify a user's safety number. */
-"SYSTEM_MESSAGE_ACTION_VERIFY_SAFETY_NUMBER" = "Vahvista";
+"SYSTEM_MESSAGE_ACTION_VERIFY_SAFETY_NUMBER" = "Varmenna";
 
 /* text indicating the message was remotely deleted */
 "THIS_MESSAGE_WAS_DELETED" = "Tämä viesti poistettiin.";
@@ -5233,25 +5024,25 @@
 "UNKNOWN_COUNTRY_NAME" = "Tuntematon maa";
 
 /* Info message recorded in conversation history when local user receives an unknown message from a linked device and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Yksi laitteistasi lähetti viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Grapherex-ominaisuutta.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Yksi laitteistasi lähetti viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Signal-ominaisuutta.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ lähetti sinulle viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Grapherex-ominaisuutta.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ lähetti sinulle viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Signal-ominaisuutta.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Sait viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Grapherex-ominaisuutta.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Sait viestin, jota ei voida käsitellä tai näyttää, koska se käyttää uutta Signal-ominaisuutta.";
 
 /* Label for button that lets users upgrade the app. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Päivitä Grapherex nyt";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Päivitä Signal nyt";
 
 /* Info message recorded in conversation history when local user has received an unknown unknown message from a linked device and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Grapherex on päivitetty uusimpaan versioon. Voit nyt vastaanottaa tämän viestityypin laitteellasi.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Signal on päivitetty uusimpaan versioon. Voit nyt vastaanottaa tämän viestityypin laitteellasi.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Voit pyytää yhteyshenkilöä %@ lähettämään tämän viestin uudelleen, nyt kun käytät ajantasaista Grapherex-versiota.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Voit pyytää yhteyshenkilöä %@ lähettämään tämän viestin uudelleen, nyt kun käytät ajantasaista Signal-versiota.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Voit pyytää lähettäjää lähettämään tämän viestin uudelleen, nyt kun käytät ajan tasalla olevaa Grapherex-versiota.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Voit pyytää lähettäjää lähettämään tämän viestin uudelleen, nyt kun käytät ajan tasalla olevaa Signal-versiota.";
 
 /* Label indicating an unknown user. */
 "UNKNOWN_USER" = "Tuntematon";
@@ -5275,10 +5066,10 @@
 "UNLINK_CONFIRMATION_ALERT_TITLE" = "Poistetaanko %@?";
 
 /* Label warning the user that they have been unlinked from their primary device. */
-"UNLINKED_WARNING" = "Laite ei ole enää yhdistetty. Yhdistä Grapherex uudelleen puhelimeesi jatkaaksesi viestintää.";
+"UNLINKED_WARNING" = "Laite ei ole enää yhdistetty. Yhdistä Signal uudelleen puhelimeesi jatkaaksesi viestintää.";
 
 /* Alert title when unlinking device fails */
-"UNLINKING_FAILED_ALERT_TITLE" = "Grapherex ei onnistunut poistamaan laitettasi.";
+"UNLINKING_FAILED_ALERT_TITLE" = "Signal ei onnistunut poistamaan laitettasi.";
 
 /* Label text in device manager for a device with no name */
 "UNNAMED_DEVICE" = "Nimeämätön laite";
@@ -5293,7 +5084,7 @@
 "UNREAD_ACTION" = "Lukematon";
 
 /* No comment provided by engineer. */
-"UNREGISTER_SIGNAL_FAIL" = "Rekisteröimisen purku Grapherexista epäonnistui.";
+"UNREGISTER_SIGNAL_FAIL" = "Rekisteröimisen purku Signalista epäonnistui.";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Vastaanotettiin liite, jota ei tueta.";
@@ -5317,7 +5108,7 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_LEARN_MORE" = "Lisätietoa tunnusluvuista";
 
 /* Body text for PINs splash screen */
-"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "Tunnusluku salaa Grapherexiin tallennetut tiedot, jotta vain sinä pääset niihin käsiksi. Profiilisi, asetuksesi ja yhteystietosi palautuvat kun asennat Grapherexin uudelleen. Tunnuslukua ei tarvita sovelluksen avaamiseen.";
+"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "Tunnusluvulla salataan Signaliin tallentamasi tiedot. Profiilisi, asetuksesi ja yhteystietosi palautetaan, kun asennat Signalin uudelleen. Tunnuslukua ei tarvita sovelluksen avaamiseen.";
 
 /* Header for PINs splash screen */
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_TITLE" = "Esittelyssä tunnusluku";
@@ -5326,16 +5117,13 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SKIP" = "Poista tunnusluku käytöstä";
 
 /* Message for the alert indicating that user should upgrade iOS. */
-"UPGRADE_IOS_ALERT_MESSAGE" = "Pian Grapherex vaatii vähintään iOS 11 -versiota. Päivitä käyttöjärjestelmäsi valitsemalla kotinäkymästä Asetukset >> Yleiset >> Ohjelmistopäivitys.";
+"UPGRADE_IOS_ALERT_MESSAGE" = "Pian Signal vaatii vähintään iOS 11 -versiota. Päivitä käyttöjärjestelmäsi valitsemalla kotinäkymästä Asetukset >> Yleiset >> Ohjelmistopäivitys.";
 
 /* Title for the alert indicating that user should upgrade iOS. */
 "UPGRADE_IOS_ALERT_TITLE" = "Päivitä iOS";
 
 /* An explanation of how usernames work on the username view. */
-"USERNAME_DESCRIPTION" = "Grapherexin käyttäjätunnukset ovat valinnaisia. Jos päätät luoda käyttäjätunnuksen, muut Grapherexin käyttäjät voivat löytää sinut tällä käyttäjätunnuksella ja ottaa sinuun yhteyttä tietämättään puhelinnumeroasi.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Käyttäjätunnus";
+"USERNAME_DESCRIPTION" = "Signalin käyttäjätunnukset ovat valinnaisia. Jos päätät luoda käyttäjätunnuksen, muut Signalin käyttäjät voivat löytää sinut tällä käyttäjätunnuksella ja ottaa sinuun yhteyttä tietämättään puhelinnumeroasi.";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Käyttäjätunnukset voivat sisältää vain merkkejä a–z, 0–9 ja _";
@@ -5343,10 +5131,10 @@
 /* A message indicating that username lookup failed. */
 "USERNAME_LOOKUP_ERROR" = "Käyttäjätunnusta etsiessä tapahtui virhe. Yritä uudelleen myöhemmin.";
 
-/* A message indicating that the given username is not a registered Grapherex account. Embeds {{username}} */
-"USERNAME_NOT_FOUND_FORMAT" = "%@ ei ole Grapherexin käyttäjä. Varmista, että olet syöttänyt koko käyttäjätunnuksen.";
+/* A message indicating that the given username is not a registered signal account. Embeds {{username}} */
+"USERNAME_NOT_FOUND_FORMAT" = "%@ ei ole Signalin käyttäjä. Varmista, että olet syöttänyt koko käyttäjätunnuksen.";
 
-/* A message indicating that the given username was not registered with Grapherex. */
+/* A message indicating that the given username was not registered with signal. */
 "USERNAME_NOT_FOUND_TITLE" = "Käyttäjää ei löydy";
 
 /* The placeholder for the username text entry in the username view. */
@@ -5422,64 +5210,64 @@
 "VOICE_MESSAGE_TOO_SHORT_ALERT_TITLE" = "Ääniviesti";
 
 /* Activity indicator title, shown upon returning to the device manager, until you complete the provisioning process on desktop */
-"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Viimeistele yhdistäminen Grapherexin työpöytäversiossa.";
+"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Viimeistele yhdistäminen Signalin työpöytäversiossa.";
 
 /* Placeholder text for header of the wallpaper mini preview */
-"WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Contact Name";
+"WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Yhteystiedon nimi";
 
 /* Blur button on wallpaper preview. */
-"WALLPAPER_PREVIEW_BLUR_BUTTON" = "Blur Photo";
+"WALLPAPER_PREVIEW_BLUR_BUTTON" = "Sumenna kuva";
 
 /* The incoming bubble text when setting a photo */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "Zoomaa nipistämällä, säädä vetämällä.";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "Lähennä/loitonna nipistämällä, säädä vetämällä.";
 
 /* The incoming bubble text when setting a preset */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Swipe to preview more wallpapers.";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Esikatsele lisää taustakuvia pyyhkäisemällä";
 
 /* The outgoing bubble text when setting a wallpaper for all chats. */
-"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "Aseta taustakuva kaikille chat-keskusteluille.";
+"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "Taustakuva asetetaan kaikkiin keskusteluihin.";
 
 /* The outgoing bubble text when setting a wallpaper for specific chat. Embeds {{chat name}} */
-"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_FORMAT" = "Set wallpaper for %@.";
+"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_FORMAT" = "Aseta taustakuva keskusteluun %@.";
 
 /* The text for the set button on wallpaper preview view. */
-"WALLPAPER_PREVIEW_SET_BUTTON" = "Set";
+"WALLPAPER_PREVIEW_SET_BUTTON" = "Aseta";
 
 /* Title for the wallpaper preview view. */
 "WALLPAPER_PREVIEW_TITLE" = "Esikatselu";
 
 /* Clear wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "Clear Wallpaper";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "Poista taustakuva";
 
 /* Confirmation dialog when clearing the wallpaper for a specific chat. */
 "WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "Haluatko poistaa tämän keskustelun taustakuvan?";
 
 /* Confirmation dialog when clearing the global wallpaper. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "Haluatko poistaa taustakuvan? Tämä ei poista chat-keskusteluillesi asettamiasi mukautettuja taustakuvia.";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "Haluatko poistaa taustakuvan? Yksittäisille keskusteluille asetettuja taustakuvia ei poisteta.";
 
 /* Dim wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_DIM_WALLPAPER" = "Dark Theme Dims Wallpaper";
+"WALLPAPER_SETTINGS_DIM_WALLPAPER" = "Himmennä tummassa teemassa";
 
 /* An error indicating to the user that we failed to clear the wallpaper. */
-"WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "The wallpaper could not be cleared, please try again later or contact support if the error persists.";
+"WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "Taustakuvan poistaminen epäonnistui. Yritä myöhemmin uudelleen ja tarvittaessa ota yhteyttä tukeen.";
 
 /* An error indicating to the user that we failed to reset all wallpapers. */
-"WALLPAPER_SETTINGS_FAILED_TO_RESET" = "All wallpapers could not be reset, please try again later or contact support if the error persists.";
+"WALLPAPER_SETTINGS_FAILED_TO_RESET" = "Taustakuvien poistaminen epäonnistui. Yritä myöhemmin uudelleen ja tarvittaessa ota yhteyttä tukeen.";
 
 /* Title for the wallpaper settings preview section. */
 "WALLPAPER_SETTINGS_PREVIEW" = "Esikatselu";
 
 /* Reset all wallpapers action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_RESET_ALL" = "Reset All Wallpapers";
+"WALLPAPER_SETTINGS_RESET_ALL" = "Poista kaikki taustakuvat";
 
 /* Confirmation dialog when resetting all wallpapers. */
-"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "Alusta kaikki taustakuvat mukaanlukien omat taustakuvat, jotka olet asettanut chat-keskusteluihisi?";
+"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "Poistetaanko kaikki taustakuvat yhteystietokohtaiset mukaan lukien?";
 
 /* Set wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_SET_WALLPAPER" = "Set Wallpaper";
+"WALLPAPER_SETTINGS_SET_WALLPAPER" = "Aseta taustakuva";
 
 /* Title for the wallpaper settings view. */
-"WALLPAPER_SETTINGS_TITLE" = "Chat Wallpaper";
+"WALLPAPER_SETTINGS_TITLE" = "Keskustelunäkymän taustakuva";
 
 /* text indicating the message was remotely deleted by you */
 "YOU_DELETED_THIS_MESSAGE" = "Poistit tämän viestin.";

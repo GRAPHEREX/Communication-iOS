@@ -663,7 +663,6 @@ public class ProfileViewController: OWSTableViewController {
     private func didTapBio() {
         let view = ProfileBioViewController(bio: profileBio, bioEmoji:
                                                 profileBioEmoji,
-                                            mode: mode,
                                             profileDelegate: self)
         navigationController?.pushViewController(view, animated: true)
     }

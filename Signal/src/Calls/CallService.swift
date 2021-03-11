@@ -35,6 +35,8 @@ public final class CallService: NSObject {
 
     private var databaseStorage: SDSDatabaseStorage { .shared }
 
+    private static var databaseStorage: SDSDatabaseStorage { .shared }
+
     @objc
     public let individualCallService = IndividualCallService()
     let groupCallMessageHandler = GroupCallUpdateMessageHandler()
@@ -153,7 +155,7 @@ public final class CallService: NSObject {
             name: .reachabilityChanged,
             object: nil)
 
-        AppReadiness.runNowOrWhenAppDidBecomeReadyPolite {
+        AppReadiness.runNowOrWhenAppDidBecomeReadyAsync {
             SDSDatabaseStorage.shared.appendUIDatabaseSnapshotDelegate(self)
         }
     }
@@ -341,21 +343,25 @@ public final class CallService: NSObject {
         guard AppReadiness.isAppReady else { return }
         guard let currentCall = currentCall else { return }
 
-        let highBandwidthInterfaces = databaseStorage.read { readTx in
-            Self.highBandwidthNetworkInterfaces(readTx: readTx)
-        }
-        let useLowBandwidth = !SSKEnvironment.shared.reachabilityManager.isReachable(with: highBandwidthInterfaces)
+        let useLowBandwidth = Self.useLowBandwidthWithSneakyTransaction()
         Logger.info("Configuring call for \(useLowBandwidth ? "low" : "standard") bandwidth")
 
         switch currentCall.mode {
         case let .group(call):
             call.updateBandwidthMode(bandwidthMode: useLowBandwidth ? .low : .normal)
         case let .individual(call) where call.state == .connected:
-            callManager.setLowBandwidthMode(enabled: useLowBandwidth)
+            callManager.udpateBandwidthMode(bandwidthMode: useLowBandwidth ? .low : .normal)
         default:
             // Do nothing. We'll reapply the bandwidth mode once connected
             break
         }
+    }
+
+    static func useLowBandwidthWithSneakyTransaction() -> Bool {
+        let highBandwidthInterfaces = databaseStorage.read { readTx in
+            Self.highBandwidthNetworkInterfaces(readTx: readTx)
+        }
+        return !SSKEnvironment.shared.reachabilityManager.isReachable(with: highBandwidthInterfaces)
     }
 
     // MARK: -
@@ -947,8 +953,8 @@ extension CallService: CallManagerDelegate {
         }
 
         let session = OWSURLSession(
-            securityPolicy: OWSURLSession.signalServiceSecurityPolicy(),
-            configuration: OWSURLSession.defaultURLSessionConfiguration()
+            securityPolicy: OWSURLSession.signalServiceSecurityPolicy,
+            configuration: OWSURLSession.defaultConfigurationWithoutCaching
         )
         session.require2xxOr3xx = false
         session.allowRedirects = true
@@ -1046,8 +1052,7 @@ extension CallService: CallManagerDelegate {
         shouldSendOffer callId: UInt64,
         call: SignalCall,
         destinationDeviceId: UInt32?,
-        opaque: Data?,
-        sdp: String?,
+        opaque: Data,
         callMediaType: CallMediaType
     ) {
         AssertIsOnMainThread()
@@ -1059,7 +1064,6 @@ extension CallService: CallManagerDelegate {
             call: call,
             destinationDeviceId: destinationDeviceId,
             opaque: opaque,
-            sdp: sdp,
             callMediaType: callMediaType
         )
     }
@@ -1069,8 +1073,7 @@ extension CallService: CallManagerDelegate {
         shouldSendAnswer callId: UInt64,
         call: SignalCall,
         destinationDeviceId: UInt32?,
-        opaque: Data?,
-        sdp: String?
+        opaque: Data
     ) {
         AssertIsOnMainThread()
         owsAssertDebug(call.isIndividualCall)
@@ -1080,8 +1083,7 @@ extension CallService: CallManagerDelegate {
             shouldSendAnswer: callId,
             call: call,
             destinationDeviceId: destinationDeviceId,
-            opaque: opaque,
-            sdp: sdp
+            opaque: opaque
         )
     }
 
@@ -1090,7 +1092,7 @@ extension CallService: CallManagerDelegate {
         shouldSendIceCandidates callId: UInt64,
         call: SignalCall,
         destinationDeviceId: UInt32?,
-        candidates: [CallManagerIceCandidate]
+        candidates: [Data]
     ) {
         AssertIsOnMainThread()
         owsAssertDebug(call.isIndividualCall)

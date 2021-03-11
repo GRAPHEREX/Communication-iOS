@@ -95,11 +95,11 @@ NSString *const OWSContactsManagerKeyNextFullIntersectionDate = @"OWSContactsMan
 
     OWSSingletonAssert();
 
-    [AppReadiness runNowOrWhenAppWillBecomeReady:^{
+    AppReadinessRunNowOrWhenAppWillBecomeReady(^{
         [self setup];
         
         [self startObserving];
-    }];
+    });
 
     return self;
 }
@@ -520,12 +520,12 @@ NSString *const OWSContactsManagerKeyNextFullIntersectionDate = @"OWSContactsMan
 {
     OWSAssertIsOnMainThread();
 
-    [AppReadiness runNowOrWhenAppDidBecomeReady:^{
+    AppReadinessRunNowOrWhenAppDidBecomeReadySync(^{
         SignalServiceAddress *address = notification.userInfo[kNSNotificationKey_ProfileAddress];
         OWSAssertDebug(address.isValid);
 
         [self removeAllFromAvatarCacheWithKey:address.stringForDisplay];
-    }];
+    });
 }
 
 - (void)updateWithContacts:(NSArray<Contact *> *)contacts
@@ -693,19 +693,19 @@ NSString *const OWSContactsManagerKeyNextFullIntersectionDate = @"OWSContactsMan
 
         // Update cached SignalAccounts on disk
         DatabaseStorageWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
-            if (signalAccountsToUpsert.count > 0) {
-                OWSLogInfo(@"Saving %lu SignalAccounts", (unsigned long)signalAccountsToUpsert.count);
-                for (SignalAccount *signalAccount in signalAccountsToUpsert) {
-                    OWSLogVerbose(@"Saving SignalAccount: %@", signalAccount.recipientAddress);
-                    [signalAccount anyUpsertWithTransaction:transaction];
-                }
-            }
-
             if (signalAccountsToRemove.count > 0) {
                 OWSLogInfo(@"Removing %lu old SignalAccounts.", (unsigned long)signalAccountsToRemove.count);
                 for (SignalAccount *signalAccount in signalAccountsToRemove) {
                     OWSLogVerbose(@"Removing old SignalAccount: %@", signalAccount.recipientAddress);
                     [signalAccount anyRemoveWithTransaction:transaction];
+                }
+            }
+
+            if (signalAccountsToUpsert.count > 0) {
+                OWSLogInfo(@"Saving %lu SignalAccounts", (unsigned long)signalAccountsToUpsert.count);
+                for (SignalAccount *signalAccount in signalAccountsToUpsert) {
+                    OWSLogVerbose(@"Saving SignalAccount: %@", signalAccount.recipientAddress);
+                    [signalAccount anyUpsertWithTransaction:transaction];
                 }
             }
 
@@ -853,42 +853,20 @@ NSString *const OWSContactsManagerKeyNextFullIntersectionDate = @"OWSContactsMan
 - (nullable NSPersonNameComponents *)cachedContactNameComponentsForSignalAccount:(nullable SignalAccount *)signalAccount
                                                                      phoneNumber:(nullable NSString *)phoneNumber
 {
-    NSPersonNameComponents *nameComponents = [NSPersonNameComponents new];
-
     if (!signalAccount) {
         // search system contacts for no-longer-registered signal users, for which there will be no SignalAccount
         Contact *_Nullable nonSignalContact = self.allContactsMap[phoneNumber];
         if (!nonSignalContact) {
             return nil;
         }
+        NSPersonNameComponents *nameComponents = [NSPersonNameComponents new];
         nameComponents.givenName = nonSignalContact.firstName;
-        nameComponents.nickname = nonSignalContact.nickname;
         nameComponents.familyName = nonSignalContact.lastName;
+        nameComponents.nickname = nonSignalContact.nickname;
         return nameComponents;
     }
 
-    // Check if we have a first name or last name, if we do we can use them directly.
-    if (signalAccount.contactFirstName.length > 0 || signalAccount.contactLastName.length > 0) {
-        nameComponents.givenName = signalAccount.contactFirstName;
-        nameComponents.familyName = signalAccount.contactLastName;
-    } else if (signalAccount.contactFullName.length > 0) {
-        // If we don't have a first name or last name, but we *do* have a full name,
-        // try our best to create appropriate components to represent it.
-        NSArray<NSString *> *components = [signalAccount.contactFullName componentsSeparatedByString:@" "];
-
-        // If there are only two words separated by a space, this is probably a given
-        // and family name.
-        if (components.count <= 2) {
-            nameComponents.givenName = components.firstObject;
-            nameComponents.familyName = components.lastObject;
-        } else {
-            nameComponents.givenName = signalAccount.contactFullName;
-        }
-    } else {
-        return nil;
-    }
-
-    return nameComponents;
+    return signalAccount.contactPersonNameComponents;
 }
 
 - (nullable NSString *)phoneNumberForAddress:(SignalServiceAddress *)address
@@ -1142,6 +1120,15 @@ NSString *const OWSContactsManagerKeyNextFullIntersectionDate = @"OWSContactsMan
                              transaction:(SDSAnyReadTransaction *)transaction
 {
     OWSAssertDebug(address.isValid);
+
+    SignalAccount *_Nullable signalAccount = [self fetchSignalAccountForAddress:address transaction:transaction];
+    if (signalAccount != nil) {
+        NSString *_Nullable nickname = signalAccount.contactNicknameIfAvailable;
+        if (nickname.length > 0) {
+            return nickname;
+        }
+    }
+
     NSPersonNameComponents *_Nullable nameComponents = [self nameComponentsForAddress:address transaction:transaction];
     if (!nameComponents) {
         return [self displayNameForAddress:address transaction:transaction];

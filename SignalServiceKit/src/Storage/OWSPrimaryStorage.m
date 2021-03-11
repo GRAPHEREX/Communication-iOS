@@ -1,23 +1,21 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "OWSPrimaryStorage.h"
 #import "AppContext.h"
 #import "OWSAnalytics.h"
-#import "OWSBatchMessageProcessor.h"
 #import "OWSDisappearingMessagesFinder.h"
 #import "OWSFailedAttachmentDownloadsJob.h"
 #import "OWSFailedMessagesJob.h"
 #import "OWSFileSystem.h"
 #import "OWSIncomingMessageFinder.h"
 #import "OWSIncompleteCallsJob.h"
-#import "OWSMessageReceiver.h"
 #import "OWSStorage+Subclass.h"
 #import "SSKEnvironment.h"
 #import "TSDatabaseSecondaryIndexes.h"
 #import "TSDatabaseView.h"
-#import "YAPDBMediaGalleryFinder.h"
+#import "YAPDBMediaGalleryManager.h"
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -142,7 +140,6 @@ void VerifyRegistrationsForPrimaryStorage(OWSStorage *storage, dispatch_block_t 
                                                           withName:[TSDatabaseSecondaryIndexes
                                                                        registerTimeStampIndexExtensionName]];
 
-                                      [OWSMessageReceiver asyncRegisterDatabaseExtension:self];
                                       [YAPDBMessageContentJobFinder asyncRegisterDatabaseExtension:self];
 
                                       [TSDatabaseView asyncRegisterThreadOutgoingMessagesDatabaseView:self];
@@ -157,10 +154,11 @@ void VerifyRegistrationsForPrimaryStorage(OWSStorage *storage, dispatch_block_t 
                                       [OWSIncompleteCallsJob asyncRegisterDatabaseExtensionsWithPrimaryStorage:self];
                                       [OWSFailedAttachmentDownloadsJob
                                           asyncRegisterDatabaseExtensionsWithPrimaryStorage:self];
-                                      [YAPDBMediaGalleryFinder asyncRegisterDatabaseExtensionsWithPrimaryStorage:self];
+                                      [YAPDBMediaGalleryManager asyncRegisterDatabaseExtensionsWithPrimaryStorage:self];
                                       [TSDatabaseView asyncRegisterLazyRestoreAttachmentsDatabaseView:self];
                                       [YAPDBJobRecordFinderSetup asyncRegisterDatabaseExtensionObjCWithStorage:self];
                                       [YAPDBUserProfileFinder asyncRegisterDatabaseExtensions:self];
+                                      [OWSMessageDecryptJobFinder asyncRegisterDatabaseExtension:self];
 
                                       [self.database
                                           flushExtensionRequestsWithCompletionQueue:dispatch_get_global_queue(

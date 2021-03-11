@@ -1,250 +1,8 @@
-//////////////////////////////////////////// SkyTech ///////////////////////////////////////////
-
-"PRIVACY_VERIFICATION_BUTTON" = "Verification";
-
-"PROFILE_VIEW_EDIT_BUTTON" = "Edit";
-
-/* Default description for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DESCRIPTION_TEXT" = "Please enter your Display name,\nit will show for others users";
-
-/* Title for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_TITLE" = "Delete Contact?";
-
-/* Message for the 'contact delete confirmation' alert. */
-"CONTACT_DELETE_CONFIRMATION_ALERT_MESSAGE" = "This contact will be deleted from this device.";
-
-/* action sheet body */
-"REGISTER_RATE_BODY" = "Please wait half a minute before trying again.";
-
-/* No comment provided by engineer. */
-"SETTINGS_SUPPORT" = "Support";
-
-/* No comment provided by engineer. */
-"SETTINGS_SECURITY" = "Security";
-
-/* No comment provided by engineer. */
-"SETTINGS_FAQ" = "F.A.Q";
-
-"MAIN_ALL" = "All";
-"MAIN_OR" = "or";
-"MAIN_USER_KEY" = "User key";
-"MAIN_ADD" = "Add";
-"MAIN_BACK" = "Back";
-"MAIN_MOBILE" = "Phone";
-"MAIN_USER_ID" = "User ID";
-"MAIN_DISPLAY_NAME" = "Display name";
-"MAIN_BLOCK_USER" = "Block user";
-"MAIN_UNBLOCK" = "Unblock";
-"MAIN_PROFILE" = "Profile";
-"MAIN_SENT" = "Sent";
-"MAIN_SEND" = "Send";
-"MAIN_RECEIVE" = "Receive";
-"MAIN_RECEIVED" = "Received";
-"MAIN_TIME" = "Time";
-"MAIN_AMOUNT" = "Amount";
-"MAIN_APPLY" = "Apply";
-"MAIN_INFO" = "Info";
-"MAIN_SYMBOL" = "Symbol";
-"MAIN_CHAIN" = "Chain";
-"MAIN_THANK_YOU" = "Thank you";
-"MAIN_COPY" = "Copy";
-"MAIN_WALLET" = "Wallet";
-"MAIN_RECIPIENT" = "Recipient";
-"MAIN_TOTAL" = "Total";
-"MAIN_FEE" = "Fee";
-"MAIN_TAG" = "Tag";
-"MAIN_DONE" = "Done";
-"MAIN_BALANCE" = "Balance";
-"MAIN_ADDRESS" = "Address";
-"MAIN_PASSWORD" = "Password";
-"MAIN_NEW" = "New";
-"MAIN_CURRENCY" = "Currency";
-"MAIN_CONFIRM" = "Confirm";
-"MAIN_CURRENT" = "Current";
-"MAIN_PIN" = "Pin";
-"MAIN_SAVE" = "Save";
-"MAIN_ENTER" = "Enter";
-"MAIN_SAVED" = "Saved";
-"MAIN_NAME" = "Name";
-"MAIN_PASSWORD" = "Password";
-"MAIN_RESTORE" = "Restore";
-
-"WALLET_CANCEL_PIN" = "Cancel pin";
-"WALLET_SET_PIN" = "Set pin";
-"WALLET_EDIT_PIN" = "Edit pin";
-"WALLET_ENTER_PIN" = "Enter pin";
-"WALLET_PIN_VALIDATION_DESCRIPTION" = "Max pin lenght is 6";
-"WALLET_PINS_DO_NOT_MATCH" = "Pins do not match";
-"WALLET_ERROR_WRONG_PIN" = "Wrong pin";
-"WALLET_ERROR_TOO_LONG" = "Too long pin.\nMax lenght is 6";
-
-"WALLET_SET_PASSWORD" = "Set password";
-"WALLET_EDIT_PASSWORD" = "Edit password";
-"WALLET_ENTER_PASSWORD" = "Enter password";
-"WALLET_PASSWORDS_DO_NOT_MATCH" = "Passwords do not match";
-"WALLET_ERROR_WRONG_PASSWORD" = "Wrong password";
-
-"WALLET_SAVE_IT" = "Save it";
-"WALLET_EXCHANGE_TITLE" = "Exchange";
-"WALLET_NEW_PASSWORD_CONFIRMATION" = "Password for transaction\nconfirmation was changed";
-"WALLET_CODE_FOR_RESTORE_INFO" = "QR code for restore password";
-
-/* Title of the 'onboarding splash' view. */
-"ONBOARDING_SPLASH_TITLE_new" = "Secure communication\nplatform";
-
-"ONBOARDING_SPLASH_BUTTON_TITLE_new" = "Sign up";
-
-/* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE_new" = "Enter your Phone number, PIN-code will come on your device";
-
-/* Title of the main button. */
-"ONBOARDING_PHONE_NUMBER_SEND" = "Send";
-
-"ONBOARDING_PHONE_NUMBER_SIGNUP" = "Sign Up";
-
-"ONBOARDING_PHONE_NUMBER_FORGOTRASSWORD" = "Forgot password?";
-
-"CALL_VIEW_MISSED_CALL" = "Missed call";
-
-"CALL_VIEW_INCOMING_CALL" = "Incoming call";
-
-"CALL_VIEW_OUTGOING_CALL" = "Outgoing call";
-
-"CALL_VIEW_CANCELLED_CALL" = "Cancelled call";
-
-"CALL_VIEW_TITLE" = "Calls";
-
-"CALL_VIEW_MISSED" = "Missed";
-
-"NEW_CONTACT_DESCRIPTION" = "Add a new user using a unique\nidentification key";
-
-"NEW_CONTACT_SCAN_INFO" = "Scan the key using the QR-code";
-
-/* Title for the contacts list's default mode. */
-"CONTACTS_VIEW_TITLE" = "Contacts";
-
-/* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_INVALID_CODE_new" = "Wrong PIN, try again";
-
-"ONBOARDING_VERIFICATION_VALID_CODE_new" = "Password is correct";
-
-/// Chats Empty State
-"CHATS_VIEW_EMPTY_TITLE" = "You have no one in the chat";
-
-"CHATS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CHATS_VIEW_EMPTY_BUTTON_TITLE" = "Start chat now";
-
-/// Contacts Empty State
-"CONTACTS_VIEW_EMPTY_TITLE" = "You have no contacts";
-
-"CONTACTS_VIEW_EMPTY_SUBTITLE" = "Invite your friends to chat";
-
-"CONTACTS_VIEW_EMPTY_BUTTON_TITLE" = "Invite friends";
-
-/// Calls Empty State
-"CALLS_VIEW_EMPTY_TITLE" = "You have no calls";
-
-"CALLS_VIEW_EMPTY_MISSED_TITLE" = "You have no missed calls";
-
-"CALLS_VIEW_EMPTY_SUBTITLE" = "Start new calls";
-
-"CALLS_VIEW_EMPTY_BUTTON_TITLE" = "Start new calls";
-
-"CALL_PICKER_MAIN_TITLE" = "New call";
-
-/* Label for settings view that allows user to change the notification sound. */
-"SETTINGS_ITEM_NOTIFICATION_SOUND_new" = "Notification Sound";
-
-
-// Wallet Main Screen
-"WALLET_VIEW_TITLE" = "Wallets";
-
-// Wallet Main Screen
-"WALLET_MAINHEADER_VIEW_TITLE" = "Total balance";
-
-/* Label indicating that the user is verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_VERIFIED_FORMAT_new" = "%@ is verified!";
-
-/* Label indicating that the user is NOT verified. Embeds {{the user's name or phone number}}. */
-"PRIVACY_IDENTITY_IS_NOT_VERIFIED_FORMAT_new" = "%@ is not verified!";
-
-"WALLET_EMPTY_STATE_TITLE" = "You have no wallet yet";
-
-"WALLET_EMPTY_STATE_SUBTITLE" = "Create new wallet now";
-
-"WALLET_EMPTY_STATE_BUTTON_TITLE" = "Create wallet";
-
-"WALLET_NEW_WALLET_TITLE" = "New wallet";
-
-"WALLET_EXCHANGE_MY_ORDERS_TITLE" = "My Orders";
-
-"WALLET_NEW_WALLET_VALIDATION_INFO" = "The password must contain\nnumbers, uppercase and lowercase\nletters and contain at least\n8 characters";
-
-// Attachments Titles
-"ATTACHMENTS_TITLE_MEDIA" = "Media";
-"ATTACHMENTS_TITLE_FILES" = "Files";
-"ATTACHMENTS_TITLE_VOICE" = "Voice";
-"ATTACHMENTS_TITLE_GROUPS" = "Groups";
-"ATTACHMENTS_TITLE_LINKS" = "Links";
-"ATTACHMENTS_TITLE_GIFS" = "GIFs";
-
-"ATTACHMENTS_EMPTY_STATE" = "No %@ here yet...";
-
-"PERSONAL_CODE_VIEW_TITLE" = "This is your personal code";
-"PERSONAL_CODE_VIEW_DESCRIPTION" = "Ask your friend using the app\nto scan it to confirm his subscription";
-
-"CONTACTLIST_VIEW_SEARCHBAR_PLACEHOLDER" = "Search";
-
-/* A button to select a money from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_MONEY" = "Money";
-
-/* A button to select a gallery from the Attachment Keyboard */
-"ATTACHMENT_KEYBOARD_GALLERY" = "Gallery";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE" = "Your User ID";
-
-"USER_ID_VIEW_COPY_MAIN_TITLE_SOMEONE" = "%@'s User ID";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_NORMAL" = "Copy";
-
-"USER_ID_VIEW_COPY_BUTTON_TITLE_AFTER_CLICK" = "Copied";
-
-"USER_ID_VIEW_COPY_LABEL_INFO" = "You can copy this User ID to phone";
-
-"NEW_USER_NAME_DESCRIPTION_TEXT" = "Please enter Display name for new contact,\nit will show only for you";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_ALREADY_EXIST" = "This user is already in your contacts";
-
-"ADD_NEW_CONTACT_ERROR_CONTACT_OWN_USERID" = "You can't add yourself";
-
-"WALLET_TOTAL_BALANCE" = "Total balance";
-"WALLET_BUY" = "Buy";
-"WALLET_SELL" = "Sell";
-
-"WALLET_TRANSACTION_EMPTY_STATE_TITLE" = "No transaction yet...";
-"WALLET_ORDERS_EMPTY_STATE_TITLE" = "No orders yet...";
-
-"WALLET_TRANSACTION_TITLE" = "Transactions";
-
-"FILTER_TITLE" = "Filter";
-
-"FILTER_SORT_BY_TITLE" = "Sort by";
-
-"FILTER_TRANSACTION_TYPE_TITLE" = "Transaction type";
-
-/* Label for 'new contact' button in conversation settings view. */
-"NEW_USER_NAME_TITLE" = "New Contact";
-
-"INCORRECT_UUID_ERROR_MESSAGE" = "User Key is incorrect";
-
-"SENT_SUCCEED_TITLE" = "Sent succeed";
-
-"EXCHANGE_CREATED_TITLE" = "Exchange created";
-//////////////////////////////////////////// Grapherex ///////////////////////////////////////////
-
 /* Button text to dismiss missing contacts permission alert */
 "AB_PERMISSION_MISSING_ACTION_NOT_NOW" = "Nu acum";
+
+/* Title for the 'about' help section */
+"ABOUT_SECTION_TITLE" = "Despre Signal";
 
 /* Action sheet item */
 "ACCEPT_NEW_IDENTITY_ACTION" = "Acceptă noul număr de siguranță";
@@ -258,11 +16,11 @@
 /* Accessibility label for contact. */
 "ACCESSIBILITY_LABEL_CONTACT" = "Contact";
 
+/* Accessibility label for contact. Embeds: {{ the contact name }}. */
+"ACCESSIBILITY_LABEL_CONTACT_FORMAT" = "Contact pentru %@";
+
 /* Accessibility label for media. */
 "ACCESSIBILITY_LABEL_MEDIA" = "Media";
-
-/* Accessibility label for message. */
-"ACCESSIBILITY_LABEL_MESSAGE" = "Mesaj";
 
 /* Accessibility label for messages sent by you. */
 "ACCESSIBILITY_LABEL_SENDER_SELF" = "Tu";
@@ -270,11 +28,17 @@
 /* Accessibility label for stickers. */
 "ACCESSIBILITY_LABEL_STICKER" = "Autocolant";
 
+/* Accessibility label for a voice memo. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO" = "Mesaj vocal";
+
+/* Accessibility label for a voice memo. Embeds: {{ the duration of the voice message }}. */
+"ACCESSIBILITY_LABEL_VOICE_MEMO_FORMAT" = "Mesaj vocal %@ secunde";
+
 /* Label for 'audio call' button in contact view. */
-"ACTION_AUDIO_CALL" = "Apel Grapherex";
+"ACTION_AUDIO_CALL" = "Apel Signal";
 
 /* Label for 'invite' button in contact view. */
-"ACTION_INVITE" = "Invită pe Grapherex";
+"ACTION_INVITE" = "Invită pe Signal";
 
 /* Label for button that lets you send a message to a contact. */
 "ACTION_SEND_MESSAGE" = "Trimite mesaj";
@@ -298,7 +62,7 @@
 "ADD_GROUP_MEMBERS_VIEW_CONFIRM_ALERT_MESSAGE_1_FORMAT" = "Adaugă membrul la “%2$@”?";
 
 /* Format for the message for the 'add group members' confirmation alert.  Embeds {{ %1$@ number of new members, %2$@ name of the group. }}. */
-"ADD_GROUP_MEMBERS_VIEW_CONFIRM_ALERT_MESSAGE_N_FORMAT" = "Adaugă %1$@ membrii la “%2$@”?";
+"ADD_GROUP_MEMBERS_VIEW_CONFIRM_ALERT_MESSAGE_N_FORMAT" = "Adaugă %1$@ membri la “%2$@”?";
 
 /* Title for the 'add group member' confirmation alert. */
 "ADD_GROUP_MEMBERS_VIEW_CONFIRM_ALERT_TITLE_1" = "Adaugă un membru nou";
@@ -364,7 +128,7 @@
 "APN_Message" = "Mesaj nou!";
 
 /* Message for the 'app launch failed' alert. */
-"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Grapherex nu poate porni. Te rog trimite jurnalul tău de depanare la support@grapherex.com ca să investigăm problema.";
+"APP_LAUNCH_FAILURE_ALERT_MESSAGE" = "Signal nu poate porni. Te rog trimite jurnalul tău de depanare la support@signal.org ca să investigăm problema.";
 
 /* Title for the 'app launch failed' alert. */
 "APP_LAUNCH_FAILURE_ALERT_TITLE" = "Eroare";
@@ -373,13 +137,13 @@
 "APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE" = "Baza de date nu a putut fi încărcată";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
-"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Te rog să actualizezi Grapherex la ultima versiune.";
+"APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_MESSAGE" = "Te rog să actualizezi Signal la ultima versiune.";
 
 /* Error indicating that the app could not launch without reverting unknown database migrations. */
 "APP_LAUNCH_FAILURE_INVALID_DATABASE_VERSION_TITLE" = "Versiune de bază de date necunoscută.";
 
 /* Error indicating that the app could not restore transferred data. */
-"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Datele transferate de pe dispozitivul tău vechi nu au putut fi restabilite. Te rog să trimiți un jurnal de depanare la support@grapherex.com pentru a putea rezolva această problemă. Dacă reinstalezi Grapherex, istoricul mesajelor tale poate fi pierdut.";
+"APP_LAUNCH_FAILURE_RESTORE_FAILED_MESSAGE" = "Datele transferate de pe dispozitivul tău vechi nu au putut fi restabilite. Te rog să trimiți un jurnal de depanare la support@signal.org pentru a putea rezolva această problemă. Dacă reinstalezi Signal, istoricul mesajelor tale poate fi pierdut.";
 
 /* Error indicating that the app could not restore transferred data. */
 "APP_LAUNCH_FAILURE_RESTORE_FAILED_TITLE" = "Transferul nu s-a putut finaliza";
@@ -394,7 +158,7 @@
 "APP_UPDATE_NAG_ALERT_MESSAGE_FORMAT" = "Versiunea %@ este disponibilă acum în Magazinul de Aplicații.";
 
 /* Title for the 'new app version available' alert. */
-"APP_UPDATE_NAG_ALERT_TITLE" = "O nouă versiune de Grapherex este disponibilă";
+"APP_UPDATE_NAG_ALERT_TITLE" = "O nouă versiune de Signal este disponibilă";
 
 /* Label for the 'update' button in the 'new app version available' alert. */
 "APP_UPDATE_NAG_ALERT_UPDATE_BUTTON" = "Actualizează";
@@ -409,7 +173,7 @@
 "APPEARANCE_SETTINGS_SYSTEM_THEME_NAME" = "Sistem";
 
 /* Name of application */
-"APPLICATION_NAME" = "Grapherex";
+"APPLICATION_NAME" = "Signal";
 
 /* Label for the archive button for conversations list view */
 "ARCHIVE_ACTION" = "Arhivează";
@@ -426,7 +190,7 @@
 /* Error that outgoing attachments could not be exported. */
 "ATTACHMENT_APPROVAL_FAILED_TO_EXPORT" = "Atașamentul nu a putut fi exportat.";
 
-/* alert text when Grapherex was unable to save a copy of the attachment to the system photo library */
+/* alert text when Signal was unable to save a copy of the attachment to the system photo library */
 "ATTACHMENT_APPROVAL_FAILED_TO_SAVE" = "Eroare la salvare.";
 
 /* Format string for file extension label in call interstitial view */
@@ -718,7 +482,7 @@
 "CALL_AUDIO_MISSED_NOTIFICATION_BODY" = "📞 Apel audio nepreluat";
 
 /* Alert message when calling and permissions for microphone are missing */
-"CALL_AUDIO_PERMISSION_MESSAGE" = "Poți activa accesul microfonului din aplicația iOS Setări pentru a putea realiza apeluri și a înregistra mesaje vocale în Grapherex. ";
+"CALL_AUDIO_PERMISSION_MESSAGE" = "Poți activa accesul microfonului din aplicația iOS Setări pentru a putea realiza apeluri și a înregistra mesaje vocale în Signal. ";
 
 /* Alert title when calling and permissions for microphone are missing */
 "CALL_AUDIO_PERMISSION_TITLE" = "Accesul la microfon este necesar";
@@ -733,7 +497,7 @@
 "CALL_SCREEN_STATUS_NO_ANSWER" = "Nici un răspuns";
 
 /* embeds {{Call Status}} in call screen label. For ongoing calls, {{Call Status}} is a seconds timer like 01:23, otherwise {{Call Status}} is a short text like 'Ringing', 'Busy', or 'Failed Call' */
-"CALL_STATUS_FORMAT" = "Grapherex %@";
+"CALL_STATUS_FORMAT" = "Signal %@";
 
 /* Label for call button for alert offering to call a user. */
 "CALL_USER_ALERT_CALL_BUTTON" = "Apelează";
@@ -787,7 +551,7 @@
 "CALLING_MEMBER_VIEW_YOUR_CAMERA_IS_OFF" = "Camera ta este oprită";
 
 /* The generic name used for calls if CallKit privacy is enabled */
-"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Utilizator Grapherex";
+"CALLKIT_ANONYMOUS_CONTACT_NAME" = "Utilizator Signal";
 
 /* Accessibility hint describing what you can do with the camera button */
 "CAMERA_BUTTON_HINT" = "Fă o poză și trimite-o";
@@ -817,13 +581,13 @@
 "CHECK_FOR_BACKUP_RESTORE" = "Restaurează";
 
 /* Error indicating that the app could not determine that user's iCloud account status */
-"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Grapherex nu a putut determina starea contului tău de iCloud. Conectează-te la contul tău iCloud în aplicația iOS Setări pentru a putea face o copie de rezervă la datele tale Grapherex.";
+"CLOUDKIT_STATUS_COULD_NOT_DETERMINE" = "Signal nu a putut determina starea contului tău de iCloud. Conectează-te la contul tău iCloud în aplicația iOS Setări pentru a putea face o copie de rezervă la datele tale Signal.";
 
 /* Error indicating that user does not have an iCloud account. */
-"CLOUDKIT_STATUS_NO_ACCOUNT" = "Nu există un cont iCloud. Conectează-te la contul tău iCloud în aplicația iOS Setări pentru a putea face o copie de rezervă la datele tale Grapherex.";
+"CLOUDKIT_STATUS_NO_ACCOUNT" = "Nu există un cont iCloud. Conectează-te la contul tău iCloud în aplicația iOS Setări pentru a putea face o copie de rezervă la datele tale Signal.";
 
 /* Error indicating that the app was prevented from accessing the user's iCloud account. */
-"CLOUDKIT_STATUS_RESTRICTED" = "Grapherex nu a primit accesul la contul tău iCloud pentru a putea face copii de rezervă. Permite Grapherex accesul la contul tău iCloud în aplicația iOS Setări pentru a putea face copii de rezervă la datele tale.";
+"CLOUDKIT_STATUS_RESTRICTED" = "Signal nu a primit accesul la contul tău iCloud pentru a putea face copii de rezervă. Permite Signal accesul la contul tău iCloud în aplicația iOS Setări pentru a putea face copii de rezervă la datele tale.";
 
 /* The first of two messages demonstrating the chosen conversation color, by rendering this message in an outgoing message bubble. */
 "COLOR_PICKER_DEMO_MESSAGE_1" = "Alege culoarea mesajelor trimise în această conversație.";
@@ -838,7 +602,7 @@
 "COMPARE_SAFETY_NUMBER_ACTION" = "Compară cu Clipboard";
 
 /* Accessibility hint describing what you can do with the compose button */
-"COMPOSE_BUTTON_HINT" = "Selectați sau căutați un utilizator de Grapherex pentru a începe o conversație.";
+"COMPOSE_BUTTON_HINT" = "Selectați sau căutați un utilizator de Signal pentru a începe o conversație.";
 
 /* Accessibility label from compose button. */
 "COMPOSE_BUTTON_LABEL" = "Compune";
@@ -856,7 +620,7 @@
 "COMPOSE_MESSAGE_USERNAME_SEARCH_SECTION_TITLE" = "Caută nume de utilizator";
 
 /* Multi-line label explaining why compose-screen contact picker is empty. */
-"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Poți activa accesul la contacte din aplicația iOS Setări pentru a putea vedea care dintre contactele tale sunt utilizatori Grapherex.";
+"COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Poți activa accesul la contacte din aplicația iOS Setări pentru a putea vedea care dintre contactele tale sunt utilizatori Signal.";
 
 /* No comment provided by engineer. */
 "CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Această acțiune va reseta aplicația prin șteregerea mesajelor tale și prin anularea înregistrării la server. Această aplicație se va închide după ce procesul s-a încheiat.";
@@ -987,11 +751,11 @@
 /* Error indicating that at least one contact field must be selected before sharing a contact. */
 "CONTACT_SHARE_NO_FIELDS_SELECTED" = "Nici un câmp al contactului nu a fost selectat.";
 
-/* Button text to initiate an email to Grapherex support staff */
+/* Button text to initiate an email to signal support staff */
 "CONTACT_SUPPORT" = "Contactează suportul";
 
 /* Alert body */
-"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Grapherex nu a putut finaliza solicitarea ta de asistență.";
+"CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Signal nu a putut finaliza solicitarea ta de asistență.";
 
 /* button text */
 "CONTACT_SUPPORT_PROMPT_ERROR_TRY_AGAIN" = "Încearcă din nou";
@@ -1083,9 +847,6 @@
 /* Label for 'block user' action in conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_USER" = "Blochează utilizator";
 
-/* Navbar title when viewing settings for a 1-on-1 thread */
-"CONVERSATION_SETTINGS_CONTACT_INFO_TITLE" = "Informații contact";
-
 /* Label for table cell which leads to picking a new conversation color */
 "CONVERSATION_SETTINGS_CONVERSATION_COLOR" = "Culoare conversaţie";
 
@@ -1102,19 +863,19 @@
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_DESCRIPTION" = "Alegeți cine poate modifica numele grupului, poza și perioada pentru dispariția mesajelor:";
 
 /* Label for button that sets 'group attributes access' to 'members-only'. */
-"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_MEMBERS_BUTTON" = "Toți membrii";
+"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_MEMBERS_BUTTON" = "Toți membri";
 
 /* Label for 'edit membership access' action in conversation settings view. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "Cine poate adăuga membrii";
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "Cine poate adăuga membri";
 
 /* Label for button that sets 'group membership access' to 'administrators-only'. */
 "CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "Doar administratorii";
 
 /* Description for the 'edit group membership access' alert. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_DESCRIPTION" = "Alege cine poate adăuga membrii la grup:";
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_DESCRIPTION" = "Alege cine poate adăuga membri la grup:";
 
 /* Label for button that sets 'group membership access' to 'members-only'. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_MEMBERS_BUTTON" = "Toți membrii";
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_MEMBERS_BUTTON" = "Toți membri";
 
 /* Label for 'group link' action in conversation settings view. */
 "CONVERSATION_SETTINGS_GROUP_LINK" = "Adresa grupului";
@@ -1123,7 +884,7 @@
 "CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_BUTTON" = "Fă Admin";
 
 /* Format for title for 'make group admin' confirmation alert. Embeds {user to make an admin}. */
-"CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_TITLE_FORMAT" = "%@ va putea edita acest grup și membrii acestuia.";
+"CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_TITLE_FORMAT" = "%@ va putea edita acest grup și membri acestuia.";
 
 /* Label for 'member invites' action in conversation settings view. */
 "CONVERSATION_SETTINGS_MEMBER_INVITES" = "Invită membri";
@@ -1132,10 +893,10 @@
 "CONVERSATION_SETTINGS_MEMBER_REQUESTS_AND_INVITES" = "Solicitări și invitații ale membrilor";
 
 /* Section title of the 'members' section in conversation settings view. */
-"CONVERSATION_SETTINGS_MEMBERS_SECTION_TITLE" = "Membrii";
+"CONVERSATION_SETTINGS_MEMBERS_SECTION_TITLE" = "Membri";
 
 /* Format for the section title of the 'members' section in conversation settings view. Embeds: {{ the number of group members }}. */
-"CONVERSATION_SETTINGS_MEMBERS_SECTION_TITLE_FORMAT" = "%@ Membrii";
+"CONVERSATION_SETTINGS_MEMBERS_SECTION_TITLE_FORMAT" = "%@ Membri";
 
 /* label for 'always' option for mention notifications in conversation settings */
 "CONVERSATION_SETTINGS_MENTION_MODE_AlWAYS" = "Notifică întotdeauna";
@@ -1210,7 +971,7 @@
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Schimbări nesalvate";
 
 /* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Vezi toți membrii";
+"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Afișare toți membri";
 
 /* Indicates that user is in the system contacts list. */
 "CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Acest utilizator se află în lista ta de contacte.";
@@ -1226,6 +987,12 @@
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Adaugă la contacte";
+
+/* Format for sender info for accessibility label for message. Embeds {{ the sender name }}. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_FORMAT" = "%@ trimis:";
+
+/* Format for sender info for outgoing messages. */
+"CONVERSATION_VIEW_CELL_ACCESSIBILITY_SENDER_LOCAL_USER" = "Ai trimis:";
 
 /* button text to delete all items in the current conversation */
 "CONVERSATION_VIEW_DELETE_ALL_MESSAGES" = "Șterge tot";
@@ -1324,13 +1091,13 @@
 "DEREGISTRATION_REREGISTER_WITH_SAME_PHONE_NUMBER" = "Înregistrează din nou acest număr de telefon";
 
 /* Label warning the user that they have been de-registered. */
-"DEREGISTRATION_WARNING" = "Dispozitivul nu mai este înregistrat. Numărul tău de telefon este posibil să fie înregistrat la Grapherex pe un alt dispozitiv. Apasă pentru re-înregistrare.";
+"DEREGISTRATION_WARNING" = "Dispozitivul nu mai este înregistrat. Numărul tău de telefon este posibil să fie înregistrat la Signal pe un alt dispozitiv. Apasă pentru re-înregistrare.";
 
-/* {{Short Date}} when device last communicated with Grapherex Server. */
-"DEVICE_LAST_ACTIVE_AT_LABEL" = "Activ ultima oară: %@";
+/* {{Short Date}} when device last communicated with Signal Server. */
+"DEVICE_LAST_ACTIVE_AT_LABEL" = "Activ ultima oară %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Asociat: %@";
+"DEVICE_LINKED_AT_LABEL" = "Asociat %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Actualizarea listei de dispozitive a eșuat.";
@@ -1348,7 +1115,7 @@
 "DEVICE_TRANSFER_CHOICE_EXPLANATION" = "Dacă aveți dispozitivul iOS vechi, vă puteți transfera în siguranță contul și mesajele pe acest dispozitiv.";
 
 /* The explanation for the device transfer 'choice' view when linking a device */
-"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Dacă ați utilizați anterior Grapherex pe un iPad asociat, puteți transfera în siguranță contul și mesajele pe acest dispozitiv.";
+"DEVICE_TRANSFER_CHOICE_LINKED_EXPLANATION" = "Dacă ați utilizați anterior Signal pe un iPad asociat, puteți transfera în siguranță contul și mesajele pe acest dispozitiv.";
 
 /* The body for the device transfer 'choice' view 'register' option */
 "DEVICE_TRANSFER_CHOICE_REGISTER_BODY" = "Continuă fără transferul contului și a mesajelor tale";
@@ -1378,7 +1145,7 @@
 "DEVICE_TRANSFER_CHOICE_TRANSFER_TITLE" = "Transfer de pe un dispozitiv iOS";
 
 /* A warning for the device transfer 'choice' view indicating you can only have one device registered with your number */
-"DEVICE_TRANSFER_CHOICE_WARNING" = "Continuarea va dezactiva Grapherex pe alte dispozitive înregistrate în prezent cu același număr de telefon.";
+"DEVICE_TRANSFER_CHOICE_WARNING" = "Continuarea va dezactiva Signal pe alte dispozitive înregistrate în prezent cu același număr de telefon.";
 
 /* An error indicating that we were unable to verify the indentity of the new device to complete the transfer */
 "DEVICE_TRANSFER_ERROR_CERTIFICATE_MISMATCH" = "Noul dispozitiv nu a putut fi verificat, încercați din nou";
@@ -1396,16 +1163,16 @@
 "DEVICE_TRANSFER_ERROR_NOT_ENOUGH_SPACE" = "Nu există suficient spațiu liber pentru a finaliza transferul";
 
 /* An error indicating the user must update their device before trying to transfer. */
-"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Actualizați Grapherex la ultima versiune și încercați din nou";
+"DEVICE_TRANSFER_ERROR_UNSUPPORTED_VERSION" = "Actualizați Signal la ultima versiune și încercați din nou";
 
 /* The explanation on the action sheet prompting the user if they want to transfer their device. */
-"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Transferă contul tău Grapherex la un nou dispozitiv iOS. Asigură-te că noul dispozitiv este în apropiere și este pornit.";
+"DEVICE_TRANSFER_PROMPT_EXPLANATION" = "Transferă contul tău Signal la un nou dispozitiv iOS. Asigură-te că noul dispozitiv este în apropiere și este pornit.";
 
 /* The title on the acttion sheet prompting the user if they want to transfer their device. */
 "DEVICE_TRANSFER_PROMPT_TITLE" = "Transfer cont";
 
 /* The explanation for the device transfer qr code view */
-"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Deschideți Grapherex pe dispozitivul vechi, aduceți-l în apropiere și asigurați-vă că Wi-Fi și Bluetooth sunt activate pe ambele dispozitive.";
+"DEVICE_TRANSFER_QRCODE_EXPLANATION" = "Deschideți Signal pe dispozitivul vechi, aduceți-l în apropiere și asigurați-vă că Wi-Fi și Bluetooth sunt activate pe ambele dispozitive.";
 
 /* The second explanation for the device transfer qr code view */
 "DEVICE_TRANSFER_QRCODE_EXPLANATION2" = "Poziționați codul QR în vizorul celuilalt dispozitiv.";
@@ -1417,7 +1184,7 @@
 "DEVICE_TRANSFER_QRCODE_TITLE" = "Se așteaptă celălalt dispozitiv...";
 
 /* The explanation on the view that shows receiving progress */
-"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Țineți ambele dispozitive unul lângă altul. Nu opriți niciun dispozitiv și mențineți Grapherex deschis. Transferurile sunt criptate integral.";
+"DEVICE_TRANSFER_RECEIVING_EXPLANATION" = "Țineți ambele dispozitive unul lângă altul. Nu opriți niciun dispozitiv și mențineți Signal deschis. Transferurile sunt criptate integral.";
 
 /* The title on the view that shows receiving progress */
 "DEVICE_TRANSFER_RECEIVING_TITLE" = "Se primesc date";
@@ -1432,7 +1199,7 @@
 "DEVICE_TRANSFER_SCANNING_TITLE" = "Țineți dispozitivul nou în fața camerei foto";
 
 /* The explanation on the action sheet that shows transfer progress */
-"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Țineți ambele dispozitive unul lângă altul. Nu opriți niciun dispozitiv și mențineți Grapherex deschis.";
+"DEVICE_TRANSFER_TRANSFERRING_EXPLANATION" = "Țineți ambele dispozitive unul lângă altul. Nu opriți niciun dispozitiv și mențineți Signal deschis.";
 
 /* The title on the action sheet that shows transfer progress */
 "DEVICE_TRANSFER_TRANSFERRING_TITLE" = "Se transmit datele";
@@ -1458,11 +1225,11 @@
 /* Section title for the 'domain fronting country' view. */
 "DOMAIN_FRONTING_COUNTRY_VIEW_SECTION_HEADER" = "Locație ocolire cenzură";
 
-/* Alert body for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
+/* Alert body for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
 "EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_BODY" = "Poți permite accesul din aplicația iOS Setări.";
 
-/* Alert title for when the user has just tried to edit a contacts after declining to give Grapherex contacts permissions */
-"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Grapherex are nevoie de acces la contacte pentru a edita informațiile despre contact";
+/* Alert title for when the user has just tried to edit a contacts after declining to give Signal contacts permissions */
+"EDIT_CONTACT_WITHOUT_CONTACTS_PERMISSION_ALERT_TITLE" = "Signal are nevoie de acces la contacte pentru a edita informațiile despre contact";
 
 /* The 'clear avatar' button in the 'edit group' view. */
 "EDIT_GROUP_CLEAR_AVATAR" = "Eliminați poza";
@@ -1471,10 +1238,10 @@
 "EDIT_GROUP_DEFAULT_TITLE" = "Editează grupul";
 
 /* Error message indicating the a user can't be added to a group. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Acest utilizator nu poate fi adăugat la grup până când nu își actualizează aplicația Grapherex.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER" = "Acest utilizator nu poate fi adăugat la grup până când nu își actualizează aplicația Signal.";
 
 /* Format for the 'group full' error alert when a user can't be added to a group because the group is full. Embeds {{ the maximum number of members in a group }}. */
-"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "Mărimea maximă a grupului de %@ de membrii a fost atinsă.";
+"EDIT_GROUP_ERROR_CANNOT_ADD_MEMBER_GROUP_FULL_FORMAT" = "Mărimea maximă a grupului de %@ membri a fost atinsă.";
 
 /* Error message indicating that an avatar image is invalid and cannot be used. */
 "EDIT_GROUP_ERROR_INVALID_AVATAR" = "Poză invalidă.";
@@ -1494,14 +1261,14 @@
 /* Short name for edit menu item to copy contents of media message. */
 "EDIT_ITEM_COPY_ACTION" = "Copiază";
 
-/* body of email sent to contacts when inviting to install Grapherex. Embeds {{link to install Grapherex}} and {{link to the Grapherex home page}} */
-"EMAIL_INVITE_BODY" = "Hey,\n\nRecent am început să folosesc Grapherex pentru a-mi păstra conversațiile private pe iPhone. Aș dori să-ți instalezi și tu aplicația, ca să fim siguri că numai noi doi putem citi mesajele sau să ascultăm apelurile.\n\nGrapherex este disponibil pentru iPhone și Android. Obține-l de aici:%@\n\nGrapherex funcționează ca și aplicația ta curentă de mesagerie. Putem trimite poze și video-uri, putem suna, și putem incepe chat-uri de grup. Cea mai bună parte este că nimeni altcineva nu poate vedea toate acestea, nici măcar oamenii care dezvoltă Grapherex!\n\nPoți afla mai multe despre Open Whisper Systems, oamenii care dezvoltă Grapherex, aici: %@";
+/* body of email sent to contacts when inviting to install Signal. Embeds {{link to install Signal}} and {{link to the Signal home page}} */
+"EMAIL_INVITE_BODY" = "Hey,\n\nRecent am început să folosesc Signal pentru a-mi păstra conversațiile private pe iPhone. Aș dori să-ți instalezi și tu aplicația, ca să fim siguri că numai noi doi putem citi mesajele sau să ascultăm apelurile.\n\nSignal este disponibil pentru iPhone și Android. Obține-l de aici:%@\n\nSignal funcționează ca și aplicația ta curentă de mesagerie. Putem trimite poze și video-uri, putem suna, și putem incepe chat-uri de grup. Cea mai bună parte este că nimeni altcineva nu poate vedea toate acestea, nici măcar oamenii care dezvoltă Signal!\n\nPoți afla mai multe despre Open Whisper Systems, oamenii care dezvoltă Signal, aici: %@";
 
-/* subject of email sent to contacts when inviting to install Grapherex */
-"EMAIL_INVITE_SUBJECT" = "Hai să folosim Grapherex";
+/* subject of email sent to contacts when inviting to install Signal */
+"EMAIL_INVITE_SUBJECT" = "Hai să folosim Signal";
 
 /* Description for the fallback support sheet if user cannot send email */
-"EMAIL_SIGNAL_MESSAGE" = "Dispozitivul tău nu este configurat pentru a trimite email. Pentru a trimite o solicitare de asistență, configureză un email pe dispozitivul tău sau trimite email la support@grapherex.com";
+"EMAIL_SIGNAL_MESSAGE" = "Dispozitivul tău nu este configurat pentru a trimite email. Pentru a trimite o solicitare de asistență, configureză un email pe dispozitivul tău sau trimite email la support@signal.org";
 
 /* Title for the fallback support sheet if user cannot send email */
 "EMAIL_SIGNAL_TITLE" = "Email indisponibil";
@@ -1534,7 +1301,7 @@
 "EMOJI_CATEGORY_TRAVEL_NAME" = "Călătorii și Locații";
 
 /* Full width label displayed when attempting to compose message */
-"EMPTY_CONTACTS_LABEL_LINE1" = "Nici un contact de al tău nu are Grapherex.";
+"EMPTY_CONTACTS_LABEL_LINE1" = "Nici un contact de al tău nu are Signal.";
 
 /* Full width label displayed when attempting to compose message */
 "EMPTY_CONTACTS_LABEL_LINE2" = "De ce nu inviți pe cineva?";
@@ -1572,8 +1339,8 @@
 /* Error message indicating that message send failed due to block list */
 "ERROR_DESCRIPTION_MESSAGE_SEND_FAILED_DUE_TO_BLOCK_LIST" = "Mesajul nu a fost trimis deoarece ai blocat acest utilizator.";
 
-/* Generic error used whenever Grapherex can't contact the server */
-"ERROR_DESCRIPTION_NO_INTERNET" = "Grapherex nu s-a putut conecta la internet. Te rugăm să încerci din nou.";
+/* Generic error used whenever Signal can't contact the server */
+"ERROR_DESCRIPTION_NO_INTERNET" = "Signal nu s-a putut conecta la internet. Te rugăm să încerci din nou.";
 
 /* Error indicating that an outgoing message had no valid recipients. */
 "ERROR_DESCRIPTION_NO_VALID_RECIPIENTS" = "Mesajul nu a putut fi trimis deoarece nu există o listă validă de destinatari.";
@@ -1588,7 +1355,7 @@
 "ERROR_DESCRIPTION_RESPONSE_FAILED" = "Răspuns invalid de la serviciu.";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Acest dispozitiv nu mai este înregistrat pentru numărul tău de telefon. Te rugăm să reinstalezi Grapherex.";
+"ERROR_DESCRIPTION_SENDING_UNAUTHORIZED" = "Acest dispozitiv nu mai este înregistrat pentru numărul tău de telefon. Te rugăm să reinstalezi Signal.";
 
 /* Generic server error */
 "ERROR_DESCRIPTION_SERVER_FAILURE" = "Eroare de server. Te rog încearcă mai târziu.";
@@ -1597,13 +1364,13 @@
 "ERROR_DESCRIPTION_UNKNOWN_ERROR" = "A apărut o eroare neprevăzută. ";
 
 /* Error message when attempting to send message */
-"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Contactul nu este un utilizator de Grapherex.";
+"ERROR_DESCRIPTION_UNREGISTERED_RECIPIENT" = "Contactul nu este un utilizator de Signal.";
 
 /* Error message indicating that attachment download(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_DOWNLOAD_FAILED" = "Descărcarea atașamentului a eșuat.";
 
 /* Error message when unable to receive an attachment because the sending client is too old. */
-"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Eroare atașsament: Roagă acest contact să trimită mesajul din nou după ce a actualizat Grapherex la ultima versiune.";
+"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Eroare atașsament: Roagă acest contact să trimită mesajul din nou după ce a actualizat Signal la ultima versiune.";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_DUPLICATE_MESSAGE" = "A fost primit un mesaj duplicat.";
@@ -1620,10 +1387,10 @@
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_NO_SESSION" = "Nu există nici o sesiune pentru contact.";
 
-/* Shown when Grapherex users safety numbers changed */
+/* Shown when signal users safety numbers changed */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE" = "Numărul de siguranță s-a schimbat.";
 
-/* Shown when Grapherex users safety numbers changed, embeds the user's {{name or phone number}} */
+/* Shown when signal users safety numbers changed, embeds the user's {{name or phone number}} */
 "ERROR_MESSAGE_NON_BLOCKING_IDENTITY_CHANGE_FORMAT" = "Numărul tău de siguranță pentru %@ s-a schimbat.";
 
 /* Text notifying the user that their secure session has been reset */
@@ -1645,19 +1412,19 @@
 "ERROR_SENDING_DEREGISTERED" = "Dispozitivul tău nu mai este înregistrat. Te rog să te înregistrezi pentru a trimite mesaje în continuare.";
 
 /* Error indicating a send failure due to an expired application. */
-"ERROR_SENDING_EXPIRED" = "Versiunea ta de Grapherex a expirat. Te rog să o actualizezi pentru a putea trimite mesaje mai departe.";
+"ERROR_SENDING_EXPIRED" = "Versiunea ta de Signal a expirat. Te rog să o actualizezi pentru a putea trimite mesaje mai departe.";
 
-/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or Grapherex id}}. */
+/* Format string for 'unregistered user' error. Embeds {{the unregistered user's name or signal id}}. */
 "ERROR_UNREGISTERED_USER_FORMAT" = "Utilizator neînregistrat: %@";
 
 /* Label notifying the user that the app has expired. */
-"EXPIRATION_ERROR" = "Versiunea ta de Grapherex a expirat! Apasă pentru a actualiza la versiunea cea mai recentă.";
+"EXPIRATION_ERROR" = "Versiunea ta de Signal a expirat! Apasă pentru a actualiza la versiunea cea mai recentă.";
 
 /* Label warning the user that the app will expire soon. */
-"EXPIRATION_WARNING_SOON" = "Versiunea ta de Grapherex va expira în %d zile. Apasă pentru a actualiza aplicația la versiunea cea mai recentă.";
+"EXPIRATION_WARNING_SOON" = "Versiunea ta de Signal va expira în %d zile. Apasă pentru a actualiza aplicația la versiunea cea mai recentă.";
 
 /* Label warning the user that the app will expire today. */
-"EXPIRATION_WARNING_TODAY" = "Versiunea ta de Grapherex va expira azi. Apasă pentru a actualiza aplicația la versiunea cea mai recentă.";
+"EXPIRATION_WARNING_TODAY" = "Versiunea ta de Signal va expira azi. Apasă pentru a actualiza aplicația la versiunea cea mai recentă.";
 
 /* action sheet header when re-sending message which failed because of too many attempts */
 "FAILED_SENDING_BECAUSE_RATE_LIMIT" = "Prea multe erori pentru acest contact. Te rog încearcă din nou mai târziu.";
@@ -1732,7 +1499,7 @@
 "GO_TO_SETTINGS_BUTTON" = "Navigaţi la Setări";
 
 /* Body message of notification shown during GRDB migration indicating that user may need to open app to view their content. */
-"GRDB_MIGRATION_NOTIFICATION_BODY" = "Această versiune de Grapherex include optimizări de bază de date și îmbunătățiri de performanță. Este posibil să fie nevoie să deschideți aplicația pentru a finaliza procesul.";
+"GRDB_MIGRATION_NOTIFICATION_BODY" = "Această versiune de Signal include optimizări de bază de date și îmbunătățiri de performanță. Este posibil să fie nevoie să deschideți aplicația pentru a finaliza procesul.";
 
 /* Title of notification shown during GRDB migration indicating that user may need to open app to view their content. */
 "GRDB_MIGRATION_NOTIFICATION_TITLE" = "Se optimizează baza de date";
@@ -1753,7 +1520,7 @@
 "GROUP_ACCESS_LEVEL_ANY" = "Orice utilizator";
 
 /* Description of the 'all members' access level. */
-"GROUP_ACCESS_LEVEL_MEMBER" = "Toți membrii";
+"GROUP_ACCESS_LEVEL_MEMBER" = "Toți membri";
 
 /* Description of the 'unknown' access level. */
 "GROUP_ACCESS_LEVEL_UNKNOWN" = "Necunoscut";
@@ -1909,7 +1676,7 @@
 "GROUP_CREATED_BY_UNKNOWN_USER" = "Grupul a fost creat.";
 
 /* Message shown in conversation view that indicates there were issues with group creation. */
-"GROUP_CREATION_FAILED" = "Nu toți membrii au putut fi adăugați la grup. Apasă pentru a reîncerca.";
+"GROUP_CREATION_FAILED" = "Nu toți membri au putut fi adăugați la grup. Apasă pentru a reîncerca.";
 
 /* Message indicating that 1 invalid invite was added to the group. */
 "GROUP_INVALID_INVITES_ADDED_1" = "O invitație invalidă a fost adăugată.";
@@ -2047,13 +1814,13 @@
 "GROUP_LINK_INVALID_GROUP_INVITE_LINK_ERROR_TITLE" = "Link invalid";
 
 /* Error message indicating that the local user does not support groups v2. */
-"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Actualizați Grapherex de pe acest dispozitiv pentru a vă alătura acestui grup.";
+"GROUP_LINK_LOCAL_USER_DOES_NOT_SUPPORT_GROUPS_V2_ERROR_MESSAGE" = "Actualizați Signal de pe acest dispozitiv pentru a vă alătura acestui grup.";
 
 /* Explanation of the 'approve new group members' switch. */
 "GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_EXPLANATION" = "Solicitați unui administrator să aprobe membrii noi care se alătură prin link-ul grupului.";
 
 /* Label for the 'approve new group members' switch. */
-"GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_SWITCH" = "Aprobare noi membrii";
+"GROUP_LINK_PROMOTION_ALERT_APPROVE_NEW_MEMBERS_SWITCH" = "Aprobare noi membri";
 
 /* Label for the 'enable and share link' button in the 'group link promotion' alert view. */
 "GROUP_LINK_PROMOTION_ALERT_ENABLE_AND_SHARE_LINK" = "Permite și distribuie adresa";
@@ -2080,7 +1847,7 @@
 "GROUP_LINK_QR_CODE_VIEW_TITLE" = "Cod QR";
 
 /* Label for the 'approve new members' switch in the 'group link' view. */
-"GROUP_LINK_VIEW_APPROVE_NEW_MEMBERS_SWITCH" = "Aprobare noi membrii";
+"GROUP_LINK_VIEW_APPROVE_NEW_MEMBERS_SWITCH" = "Aprobare noi membri";
 
 /* Label for the 'copy link' button in the 'group link' view. */
 "GROUP_LINK_VIEW_COPY_LINK" = "Copiază Link-ul";
@@ -2092,10 +1859,10 @@
 "GROUP_LINK_VIEW_MANAGE_AND_SHARE_SECTION_TITLE" = "Gestionează și distribuie";
 
 /* Footer for the 'member requests' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "Solicitați unui administrator să aprobe membrii noi care se alătură prin linkul grupului.";
+"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "Solicitați unui administrator să aprobe membri noi care se alătură prin linkul grupului.";
 
 /* Title for the 'member requests' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "Cereri membrii";
+"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "Cereri membri";
 
 /* Label for the 'reset link' button in the 'group link' view. */
 "GROUP_LINK_VIEW_RESET_LINK" = "Resetare link";
@@ -2112,11 +1879,11 @@
 /* Label for the 'share group link via QR code' button in the 'group link' view. */
 "GROUP_LINK_VIEW_SHARE_LINK_VIA_QR_CODE" = "Cod QR";
 
-/* Label for the 'share group link via Grapherex' button in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Partajează prin Grapherex";
+/* Label for the 'share group link via Signal' button in the 'group link' view. */
+"GROUP_LINK_VIEW_SHARE_LINK_VIA_SIGNAL" = "Partajează prin Signal";
 
 /* Message for the 'share group link' action sheet in the 'group link' view. */
-"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Oricine cu această adresă se poate alătura grupului, sau poate solicita o cerere de aderare la grup. Distribuie adresa persoanelor de încredere.";
+"GROUP_LINK_VIEW_SHARE_SHEET_MESSAGE" = "Oricine cu această adresă poate vedea numele grupului și membrii săi și poate solicita o cerere de aderare la grup. Distribuiți adresa cu persoanele de încredere.";
 
 /* The title for the 'group link' view. */
 "GROUP_LINK_VIEW_TITLE" = "Link grup";
@@ -2197,10 +1964,10 @@
 "GROUP_MEMBER_COUNT_LABEL_1" = "1 membru";
 
 /* Format for the 'group member count' indicator. Embeds {the number of group members}. */
-"GROUP_MEMBER_COUNT_LABEL_FORMAT" = "%@ membrii";
+"GROUP_MEMBER_COUNT_LABEL_FORMAT" = "%@ membri";
 
 /* Format string for the group member count indicator. Embeds {{ the number of members in the group }}. */
-"GROUP_MEMBER_COUNT_WITHOUT_LIMIT_FORMAT" = "%@ Membrii";
+"GROUP_MEMBER_COUNT_WITHOUT_LIMIT_FORMAT" = "%@ Membri";
 
 /* Label indicating the local user. */
 "GROUP_MEMBER_LOCAL_USER" = "Tu";
@@ -2212,13 +1979,34 @@
 "GROUP_MEMBERS_NO_OTHER_MEMBERS" = "Puteți adăuga sau invita prieteni după crearea acestui grup.";
 
 /* Title for the 'members' section of the 'group members' view. */
-"GROUP_MEMBERS_SECTION_TITLE_MEMBERS" = "Membrii";
+"GROUP_MEMBERS_SECTION_TITLE_MEMBERS" = "Membri";
 
 /* Accessibility label for the 'send message to group member' button */
 "GROUP_MEMBERS_SEND_MESSAGE" = "Mesaj";
 
 /* Accessibility label for the 'call group member' button */
 "GROUP_MEMBERS_VIDEO_CALL" = "Apel Video";
+
+/* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ membri ai grupului au nume similar.";
+
+/* Button to allow user to review known name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Atingeți pentru examinare";
+
+/* A header string above a group member's contact info */
+"GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "Membru";
+
+/* A title string for a view that allows a user to review name collisions in group membership */
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Revizuire membri";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ membri ai grupului au nume similar, revizuiți membri de mai jos și alegeți să luați o decizie.";
+
+/* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ membri ai grupului au același nume, revizuiți membrii de mai jos și alegeți să luați o decizie.";
+
+/* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ membri ai grupului au același nume.";
 
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Nume grup (obligatoriu)";
@@ -2313,9 +2101,6 @@
 /* Message indicating that a remote user's request to join the group was approved by another user. Embeds {{ %1$@ requesting user name, %2$@ approving user name }}. */
 "GROUP_REMOTE_USER_REQUEST_APPROVED_BY_REMOTE_USER_FORMAT" = "%2$@ a aprobat o cerere de alăturare la grup de la %1$@.";
 
-/* Message indicating that a remote user's request to join the group was approved. Embeds {{requesting user name}}. */
-"GROUP_REMOTE_USER_REQUEST_APPROVED_FORMAT" = "O cerere de alăturare la grup de la %@ a fost aprobată.";
-
 /* Message indicating that a remote user cancelled their request to join the group. Embeds {{ the name of the requesting user }}. */
 "GROUP_REMOTE_USER_REQUEST_CANCELLED_BY_REMOTE_USER_FORMAT" = "%@și-a anulat solicitarea de a se alătura grupului. ";
 
@@ -2341,7 +2126,7 @@
 "GROUP_REMOTE_USER_REVOKED_ADMINISTRATOR_BY_REMOTE_USER_FORMAT" = "%1$@ a revocat privilegiile de admin pentru %2$@.";
 
 /* Label for the 'member requests' mode of the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "Cereri membrii";
+"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "Cereri membri";
 
 /* Label for the 'pending invites' mode of the 'group requests and invites' view. */
 "GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "Invitații în așteptare";
@@ -2404,16 +2189,16 @@
 "GROUP_WAS_MIGRATED_USERS_DROPPED_LOCAL_USER" = "Nu ai putut fi adăugat noilor grupuri și ai fost șters din grup. ";
 
 /* Message indicating that N users were dropped while migrating the group. Embeds {{ the number of dropped users }}. */
-"GROUP_WAS_MIGRATED_USERS_DROPPED_N_FORMAT" = "%@ membrii nu au putut fi adăugați noului grup și au fost șterși din grup.";
+"GROUP_WAS_MIGRATED_USERS_DROPPED_N_FORMAT" = "%@ membri nu au putut fi adăugați noului grup și au fost șterși din grup.";
 
 /* Message indicating that 1 user was invited while migrating the group. */
 "GROUP_WAS_MIGRATED_USERS_INVITED_1" = "Un membru nu a putut fi adăugat noului grup și a fost șters din grup. ";
 
 /* Message indicating that the local user was invited while migrating the group. */
-"GROUP_WAS_MIGRATED_USERS_INVITED_LOCAL_USER" = "You couldn’t be added to the New Group and has been invited to join";
+"GROUP_WAS_MIGRATED_USERS_INVITED_LOCAL_USER" = "Nu ai putut fi adăugat la noul grup și ai fost invitat să te înscrii";
 
 /* Message indicating that N users were invited while migrating the group. Embeds {{ the number of invited users }}. */
-"GROUP_WAS_MIGRATED_USERS_INVITED_N_FORMAT" = "%@ members couldn’t be added to the New Group and have been invited to join.";
+"GROUP_WAS_MIGRATED_USERS_INVITED_N_FORMAT" = "%@ membri nu au putut fi adăugați la noul grup și au fost invitați să se alăture.";
 
 /* Message indicating that the local user left the group. */
 "GROUP_YOU_LEFT" = "Ați părăsit grupul.";
@@ -2446,49 +2231,49 @@
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_1_TITLE" = "Ce sunt grupurile vechi?";
 
 /* Body text for the second section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Grupurile vechi nu pot fi încă migrate la cele noi, dar poți crea un Grup Nou cu aceeași membri dacă aceștia folosesc toți ultima versiune Grapherex.\n\nGrapherex va oferi o metodă de migrare a grupurilor vechi mai târziu. ";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_2_BODY" = "Grupurile vechi nu pot fi încă migrate la cele noi, dar poți crea un Grup Nou cu aceeași membri dacă aceștia folosesc toți ultima versiune Signal.\n\nSignal va oferi o metodă de migrare a grupurilor vechi mai târziu. ";
 
 /* Title for the second section of the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_SECTION_2_TITLE" = "Pot să migrez un grup vechi?";
 
 /* Body text for the third section of the 'legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Pentru a creea un grup nou, toți membrii ar trebui să se actualizeze la cea mai recentă versiune a Grapherex.";
+"GROUPS_LEGACY_GROUP_ALERT_SECTION_3_BODY" = "Pentru a creea un grup nou, toți membri ar trebui să se actualizeze la cea mai recentă versiune a Signal.";
 
 /* Title for the 'legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_ALERT_TITLE" = "Grupuri vechi vs. grupuri noi";
 
 /* Format for indicator that a group cannot be used until it is migrated. Embeds {{ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_BLOCKING_MIGRATION_FORMAT" = "Upgrade this group to activate new features like @mentions and admins. Members who have not shared their name or photo in this group will be invited to join. %@.";
+"GROUPS_LEGACY_GROUP_BLOCKING_MIGRATION_FORMAT" = "Actualizează acest grup pentru a activa noi funcționalități cum ar fi @mențiuni și abilitatea de a administra grupul. Membrii care nu și-au partajat numele și poza de profil cu acest grup vor fi invitați să se alăture. %@.";
 
 /* Title for the 'can't upgrade legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TITLE" = "Nu se poate actualiza la noile grupuri";
 
 /* Text indicating that a legacy group can't be upgraded because it has too many members. Embeds {{ The maximum number of members allowed in a group. }}. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TOO_MANY_MEMBERS_FORMAT" = "This group can’t be upgraded to a New Group because it has too many members. The maximum group size that can be upgraded is %@.";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_ALERT_TOO_MANY_MEMBERS_FORMAT" = "Acest grup vechi nu poate fi actualizat la noile grupuri din cauza numărului mare de membri. Dimensiunea maximă a grupului este de %@. ";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "When all current group members are using a version of Grapherex capable of joining a New Group, this group will be upgraded.";
+"GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_1" = "Acest grup va fi actualizat când toți membrii vor folosi o versiune a aplicației Signal capabilă să suporte funcționalitățile noilor grupuri.";
 
 /* Explanation of group migration for groups that can't yet be migrated in the 'legacy group' alert views. */
 "GROUPS_LEGACY_GROUP_CANT_UPGRADE_YET_2" = "Tot istoricul mesajelor și conținutul media o să fie păstrate înainte de actualizare.";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "This group cannot be created because 1 member is using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_1" = "Acest grup nu poate fi creat din cauză că un membru folosește o versiune învechită a aplicației Signal. Poți crea grupul, abia după ce acest membru își actualizează aplicația Signal sau îl ștergi din lista de membri. ";
 
 /* Title for alert that explains that a new group cannot be created 1 member does not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "This group cannot be created because %@ members are using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group.";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_ALERT_TITLE_N_FORMAT" = "Grupul nu poate fi creat pentru că %@ membrii folosesc o versiune învechită a aplicației Signal. Poți crea grupul, abia după ce acești membrii își actualizează aplicația Signal sau îi ștergi înainte de a crea grupul. ";
 
 /* Indicates that a new group cannot be created because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "This group cannot be created because 1 member is using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group. %@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_1" = "Acest grup nu poate fi creat din cauză că un membru folosește o versiune învechită a aplicației Signal. Poți crea grupul, abia după ce acest membru își actualizează aplicația Signal sau îi ștergi înainte de a crea grupul. %@";
 
 /* Indicates that a new group cannot be created because multiple members do not support v2 groups. Embeds {{ %1$@ the number of members who do not support v2 groups, %2$@ a \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "This group cannot be created because %1$@ members are using an old version of Grapherex. You can create a New Style Group with them after they update Grapherex, or remove them before creating the group. %2$@";
+"GROUPS_LEGACY_GROUP_CREATION_ERROR_FORMAT_N" = "Grupul nu poate fi creat pentru că %1$@ membrii folosesc o versiune învechită a aplicației Signal. Poți crea grupul, abia după ce acești membrii își actualizează aplicația Signal sau îi ștergi înainte de a crea grupul. %2$@";
 
 /* Title for alert that explains that a new group will be a legacy group because 1 member does not support v2 groups. */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Un Grup Vechi va fi creat deoarece 1 membru folosește o versiune veche de Grapherex. Puteți crea un Grup de tip Nou cu ei după ce își actualizează Grapherex, sau îi eliminați înainte de a crea grupul.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_1" = "Un Grup Vechi va fi creat deoarece 1 membru folosește o versiune veche de Signal. Puteți crea un Grup de tip Nou cu ei după ce își actualizează Signal, sau îi eliminați înainte de a crea grupul.";
 
 /* Title for alert that explains that a new group will be a legacy group because multiple members do not support v2 groups. Embeds {{ the number of members which do not support v2 groups. }} */
-"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Un Grup Vechi ca fi creat deoarece %@ membrii folosesc o versiune veche de Grapherex. Puteți crea un Grup de tip Nou cu ei după ce își actualizează Grapherex, sau îi eliminați înainte de a crea grupul.";
+"GROUPS_LEGACY_GROUP_CREATION_WARNING_ALERT_TITLE_N_FORMAT" = "Un Grup Vechi ca fi creat deoarece %@ membrii folosesc o versiune veche de Signal. Puteți crea un Grup de tip Nou cu ei după ce își actualizează Signal, sau îi eliminați înainte de a crea grupul.";
 
 /* Indicates that a new group will be a legacy group because a member does not support v2 groups. Embeds {{ a \"learn more\" link. }}. */
 "GROUPS_LEGACY_GROUP_CREATION_WARNING_FORMAT_1" = "1 membru nu suportă Noile Grupuri, astfel acest grup va fi un Grup Vechi. %@";
@@ -2500,19 +2285,19 @@
 "GROUPS_LEGACY_GROUP_DESCRIPTION_FORMAT" = "Acesta este un grup vechi. Funcții precum administratorii de grup sunt accesibile doar grupurilor noi. %@";
 
 /* Indicates that a legacy group can't be upgraded because some members can't be migrated. Embeds {{ an \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_DESCRIPTION_MEMBERS_CANT_BE_MIGRATED_FORMAT" = "This Legacy Group is not yet ready to be upgraded to a New Group. %@.";
+"GROUPS_LEGACY_GROUP_DESCRIPTION_MEMBERS_CANT_BE_MIGRATED_FORMAT" = "Acest grup vechi nu poate fi încă actualizat la noile grupuri. %@.";
 
 /* Indicates that a legacy group can't be upgraded because it has too many members. Embeds {{ an \"learn more\" link. }}. */
-"GROUPS_LEGACY_GROUP_DESCRIPTION_TOO_MANY_MEMBERS_FORMAT" = "This Legacy Group can’t be upgraded to a New Group because it is too large. %@.";
+"GROUPS_LEGACY_GROUP_DESCRIPTION_TOO_MANY_MEMBERS_FORMAT" = "Acest grup vechi nu poate fi actualizat la noile grupuri pentru că are prea mulți membrii. %@.";
 
 /* Explanation of legacy groups. Embeds {{ an \"upgrade\" link. }}. */
-"GROUPS_LEGACY_GROUP_DESCRIPTION_WITH_UPGRADE_OFFER_FORMAT" = "This is a Legacy Group. To access new features like @mentions and admins, %@.";
+"GROUPS_LEGACY_GROUP_DESCRIPTION_WITH_UPGRADE_OFFER_FORMAT" = "Acesta este un grup vechi. Pentru a avea acces la funcții noi cum ar fi @mențiuni și administrare, accesează %@.";
 
 /* Title for the the 'dropped group member' banner. */
-"GROUPS_LEGACY_GROUP_DROPPED_MEMBERS_BANNER_1" = "1 member couldn’t be re-added to the New Group. Do you want to add them now?";
+"GROUPS_LEGACY_GROUP_DROPPED_MEMBERS_BANNER_1" = "Un membru nu a putut fi readăugat noului grup. Vrei să-l adaugi acum?";
 
 /* Format for the title for the the 'dropped group members' banner. Embeds: {{ the number of dropped group members }}. */
-"GROUPS_LEGACY_GROUP_DROPPED_MEMBERS_BANNER_N_FORMAT" = "%@ members couldn’t be re-added to the New Group. Do you want to add them now?";
+"GROUPS_LEGACY_GROUP_DROPPED_MEMBERS_BANNER_N_FORMAT" = "%@ membrii nu au putut fi readăugați noului grup. Vrei să-i adaugi acum?";
 
 /* Label indicating a legacy group. */
 "GROUPS_LEGACY_GROUP_INDICATOR" = "Grup vechi";
@@ -2545,34 +2330,34 @@
 "GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ALERT_TITLE_1" = "Adăugați membru?";
 
 /* Title for the 're-add dropped group members' alert view. */
-"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ALERT_TITLE_N" = "Adăugați membrii?";
+"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_ALERT_TITLE_N" = "Adăugați membri?";
 
 /* Label for the 'add members' button in the 're-add dropped groups members' banner. */
 "GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_BUTTON" = "Adaugă membri";
 
 /* Explanation of 're-adding dropped group member' in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_DESCRIPTION_1" = "This member couldn’t be added to the New Group automatically when it was upgraded:";
+"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_DESCRIPTION_1" = "Acest membru nu a putut fi adăugat automat noului grup atunci când a fost actualizat:";
 
 /* Explanation of 're-adding dropped group member' in the 'legacy group' alert views. */
-"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_DESCRIPTION_N" = "These members couldn’t be added to the New Group automatically when it was upgraded:";
+"GROUPS_LEGACY_GROUP_RE_ADD_DROPPED_GROUP_MEMBERS_DESCRIPTION_N" = "Acești membri nu au putut fi adăugați automat noului grup atunci când a fost actualizat:";
 
 /* Body text for the second section of the 'upgrade legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_2_BODY" = "Tot istoricul mesajelor și conținutul media a fost păstrat înainte de actualizare.";
 
 /* Body text for the 'dropped member' section of the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_1" = "This member was removed from the group and will not be able to rejoin the group until they upgrade:";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_1" = "Acest membru a fost șters din grup și nu va putea să se alăture din nou decât după ce actualizează aplicația:";
 
 /* Body text for the 'dropped members' section of the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_N" = "These members were removed from the group and will not be able to rejoin the group until they upgrade:";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_DROPPED_MEMBERS_N" = "Acești membri au fost șterși din grup și nu vor putea să se alăture din nou decât după ce își actualizează aplicația:";
 
 /* Body text for the 'invites member' section of the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_INVITED_MEMBERS_1" = "This member will need to accept an invite to join this group again, and will not receive group messages until they accept:";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_INVITED_MEMBERS_1" = "Acest membru va trebui să accepte din nou invitația de a se alătura acestui grup, și nu va primi mesaje din grup până când nu va accepta:";
 
 /* Body text for the 'invites members' section of the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_INVITED_MEMBERS_N" = "These members will need to accept an invite to join this group again, and will not receive group messages until they accept:";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_INVITED_MEMBERS_N" = "Acești membri vor trebui să accepte din nou invitația de a se alătura acestui grup, și nu vor primi mesaje din grup până când nu vor accepta:";
 
 /* Body text for the 'possibly dropped member' section of the 'upgrade legacy group' alert view. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_POSSIBLY_DROPPED_MEMBERS_1" = "This member is not capable of joining New Groups, and will be removed from the group:";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_POSSIBLY_DROPPED_MEMBERS_1" = "Acest memebru nu se poate alătura noilor grupuri și va fi șters din grup. ";
 
 /* Body text for the 'possibly dropped members' section of the 'upgrade legacy group' alert view. */
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_SECTION_POSSIBLY_DROPPED_MEMBERS_N" = "Acest membru nu se poate alătura grupurilor noi și va fi eliminat din grup:";
@@ -2584,10 +2369,10 @@
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_BUTTON" = "Actualizați acest grup";
 
 /* Message for error alert indicating the group update failed. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_MESSAGE" = "This group couldn’t be upgraded to a New Group right now.";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_MESSAGE" = "Acest grup nu a putut fi actualizat la noul tip de grup chiar acum.";
 
 /* Message for error alert indicating the group update failed due to network connectivity. */
-"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_MESSAGE_NETWORK" = "This group couldn’t be upgraded to a New Group because you’re not connected to the Internet. Try again later.";
+"GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_MESSAGE_NETWORK" = "Acest grup nu poate fi actualizat noilor grupuri pentru că nu există o conexiune la Internet. Te rog să încerci mai târziu. ";
 
 /* Title for error alert indicating the group update failed. */
 "GROUPS_LEGACY_GROUP_UPGRADE_ALERT_UPGRADE_FAILED_ERROR_TITLE" = "Nu am putut finaliza actualizarea";
@@ -2608,7 +2393,7 @@
 "GROUPS_REPLACE_ADMIN_BUTTON" = "Alegeți un nou admin";
 
 /* Format for the alert warning the user that they've reached the recommended limit on how many members can be in a group when creating a new group. Embeds {{ the maximum number of recommended members in a group }}. */
-"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Grapherex groups perform best with %@ members or less. Adding more members will cause delays sending and receiving messages.";
+"GROUPS_TOO_MANY_MEMBERS_ALERT_MESSAGE_FORMAT" = "Grupurile pe Signal au performanțe maxime cu %@ membri sau mai puțin. Adăugarea mai multor membri va provoca întârzieri la trimiterea și primirea mesajelor.";
 
 /* Title for alert warning the user that they've reached the recommended limit on how many members can be in a group. */
 "GROUPS_TOO_MANY_MEMBERS_ALERT_TITLE" = "A fost atinsă limita de membri recomandată";
@@ -2625,7 +2410,7 @@
 /* Help item allowing the user to file a support request */
 "HELP_CONTACT_US" = "Contactați-ne";
 
-/* Help item that takes the user to the Grapherex support website */
+/* Help item that takes the user to the Signal support website */
 "HELP_SUPPORT_CENTER" = "Centru suport";
 
 /* Label for 'archived conversations' button. */
@@ -2640,16 +2425,16 @@
 /* A prefix indicating that a message preview is a draft */
 "HOME_VIEW_DRAFT_PREFIX" = "Ciornă:";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Grapherex contact.  Embeds {{The name of 1 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Unele dintre contactele tale sunt deja conectate la Grapherex, inclusiv %@.";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 1 Signal contact.  Embeds {{The name of 1 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_1_CONTACT_FORMAT" = "Unele dintre contactele tale sunt deja conectate la Signal, inclusiv %@.";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Grapherex contacts.  Embeds {{The names of 2 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Unele dintre contactele tale sunt deja conectate la Grapherex, printre care %@ și %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have 2 Signal contacts.  Embeds {{The names of 2 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_2_CONTACTS_FORMAT" = "Unele dintre contactele tale sunt deja conectate la Signal, printre care %@ și %@";
 
-/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Grapherex contacts.  Embeds {{The names of 3 of your Grapherex contacts}}. */
-"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Unele dintre contactele tale sunt deja conectate la Grapherex, printre care %@, %@ și %@";
+/* Format string for a label offering to start a new conversation with your contacts, if you have at least 3 Signal contacts.  Embeds {{The names of 3 of your Signal contacts}}. */
+"HOME_VIEW_FIRST_CONVERSATION_OFFER_3_CONTACTS_FORMAT" = "Unele dintre contactele tale sunt deja conectate la Signal, printre care %@, %@ și %@";
 
-/* A label offering to start a new conversation with your contacts, if you have no Grapherex contacts. */
+/* A label offering to start a new conversation with your contacts, if you have no Signal contacts. */
 "HOME_VIEW_FIRST_CONVERSATION_OFFER_NO_CONTACTS" = "Începe prima ta conversație aici.";
 
 /* Table cell subtitle label for a group the user has been added to. {Embeds inviter name} */
@@ -2665,7 +2450,7 @@
 "HOME_VIEW_TITLE_ARCHIVE" = "Arhivă";
 
 /* Title for the conversation list's default mode. */
-"HOME_VIEW_TITLE_INBOX" = "Grapherex";
+"HOME_VIEW_TITLE_INBOX" = "Signal";
 
 /* The image editor hint that you can draw blur */
 "IMAGE_EDITOR_BLUR_HINT" = "Desenați oriunde pentru a estompa";
@@ -2679,11 +2464,11 @@
 /* Momentarily shown to the user when attempting to select more images than is allowed. Embeds {{max number of items}} that can be shared. */
 "IMAGE_PICKER_CAN_SELECT_NO_MORE_TOAST_FORMAT" = "Nu puteți partaja mai mult de %@ elemente.";
 
-/* Button that will present a view for the user to change the photos Grapherex has access to. */
+/* Button that will present a view for the user to change the photos Signal has access to. */
 "IMAGE_PICKER_CHANGE_PHOTOS" = "Schimbă accesul la fotografii";
 
 /* Explanation showing that the user has granted limited access to their photos and can change that in the Settings app. */
-"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Dă acces complet în Setări sau schimbă la care fotografii Grapherex are acces.";
+"IMAGE_PICKER_CHANGE_PHOTOS_EXPLANATION" = "Dă acces complet în Setări sau schimbă la care fotografii Signal are acces.";
 
 /* Title show that the user has granted limited access to their photos and can change that in the Settings app. */
 "IMAGE_PICKER_CHANGE_PHOTOS_TITLE" = "Nu vezi fotografiile tale?";
@@ -2733,8 +2518,8 @@
 /* Shown in inbox and conversation after syncing as a placeholder indicating why your message history is missing. */
 "INFO_MESSAGE_SYNCED_THREAD" = "Poți trimite sau primi mesaje sincronizate de pe telefon sau iPad.↵Pentru a păstra securitatea conversațiilor tale, istoricul acestora nu este transferat pe noile dispozitive asociate. ";
 
-/* Shown in inbox and conversation when a user joins Grapherex, embeds the new user's {{contact name}} */
-"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ folosește Grapherex!";
+/* Shown in inbox and conversation when a user joins Signal, embeds the new user's {{contact name}} */
+"INFO_MESSAGE_USER_JOINED_SIGNAL_BODY_FORMAT" = "%@ folosește Signal!";
 
 /* accessibility label for the button which shows the sticker picker */
 "INPUT_TOOLBAR_STICKER_BUTTON_ACCESSIBILITY_LABEL" = "Autocolante";
@@ -2745,14 +2530,14 @@
 /* Message for the alert indicating that an audio file is invalid. */
 "INVALID_AUDIO_FILE_ALERT_ERROR_MESSAGE" = "Fișier audio invalid.";
 
-/* Alert body when contacts disabled while trying to invite contacts to Grapherex */
-"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Poți activa accesul la contacte din aplicația iOS Setări pentru a putea invita prietenii tăi la Grapherex.";
+/* Alert body when contacts disabled while trying to invite contacts to signal */
+"INVITE_FLOW_REQUIRES_CONTACT_ACCESS_BODY" = "Poți activa accesul la contacte din aplicația iOS Setări pentru a putea invita prietenii tăi la Signal.";
 
-/* Alert title when contacts disabled while trying to invite contacts to Grapherex */
+/* Alert title when contacts disabled while trying to invite contacts to signal */
 "INVITE_FLOW_REQUIRES_CONTACT_ACCESS_TITLE" = "Permite accesul la contacte";
 
 /* Label for the cell that presents the 'invite contacts' workflow. */
-"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Invită-ți prietenii la Grapherex";
+"INVITE_FRIENDS_CONTACT_TABLE_BUTTON" = "Invită-ți prietenii la Signal";
 
 /* Search */
 "INVITE_FRIENDS_PICKER_SEARCHBAR_PLACEHOLDER" = "Căutare";
@@ -2845,7 +2630,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Scanează codul QR care este afișat pe dispozitivul care vrei să-l asociezi.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Scanează codul QR";
+"LINK_NEW_DEVICE_SUBTITLE" = "Scanați codul QR pentru a conecta un dispozitiv nou.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Asociază un dispozitiv nou";
@@ -2869,7 +2654,7 @@
 "LINKPREVIEWS_MEGAPHONE_TITLE" = "Previzualizează orice adresă web";
 
 /* Body for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Pentru a putea să transferi contul tău Grapherex, este nevoie să activezi accesul la rețeaua locală pe ambele dispozitive.";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_BODY" = "Pentru a putea să transferi contul tău Signal, este nevoie să activezi accesul la rețeaua locală pe ambele dispozitive.";
 
 /* A button asking the user if they need further help getting their transfer working. */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_NEED_HELP" = "Aveți nevoie de ajutor?";
@@ -2881,7 +2666,7 @@
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_THREE" = "Activează „Rețea Locală”";
 
 /* Second step for local network permission action sheet */
-"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Navighează la Grapherex";
+"LOCAL_NETWORK_PERMISSION_ACTION_SHEET_STEP_TWO" = "Navighează la Signal";
 
 /* Title for local network permission action sheet */
 "LOCAL_NETWORK_PERMISSION_ACTION_SHEET_TITLE" = "Activează accesul la rețeaua locală";
@@ -2892,8 +2677,11 @@
 /* The title for the location picker view */
 "LOCATION_PICKER_TITLE" = "Selectați locația";
 
-/* No comment provided by engineer. */
+/* Title for the 'logging' help section. */
 "LOGGING_SECTION" = "Jurnalizare";
+
+/* Footer for the 'logging' help section. */
+"LOGGING_SECTION_FOOTER" = "Jurnalele de depanare pot ajuta Signal să remedieze probleme și blocări.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Mesaj";
@@ -2944,7 +2732,7 @@
 "MESSAGE_ACTION_DELETE_FOR_EVERYONE" = "Șterge pentru toată lumea";
 
 /* A one-time confirmation that you want to delete for everyone */
-"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Acest mesaj va fi șters pentru toți participanții la conversație dacă aceștia folosesc o versiune recentă Grapherex. Toți participanții vor putea vedea că ai șters mesajul. ";
+"MESSAGE_ACTION_DELETE_FOR_EVERYONE_CONFIRMATION" = "Acest mesaj va fi șters pentru toți participanții la conversație dacă aceștia folosesc o versiune recentă Signal. Toți participanții vor putea vedea că ai șters mesajul. ";
 
 /* The title for the action sheet asking who the user wants to delete the message for. */
 "MESSAGE_ACTION_DELETE_FOR_TITLE" = "Pentru cine doriți să ștergeți acest mesaj?";
@@ -3061,7 +2849,7 @@
 "MESSAGE_REQUEST_LEAVE_AND_DELETE_GROUP_TITLE" = "Ștergeți și părăsiți grupul?";
 
 /* Banner label notifying user that a new message is from a user with the same name as an existing contact */
-"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Revizuie cererile cu mare atenție. Grapherex a găsit un alt contact cu același nume. ";
+"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Revizuie cererile cu mare atenție. Signal a găsit un alt contact cu același nume. ";
 
 /* A header string above a known contact's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Contactul tău";
@@ -3147,7 +2935,7 @@
 /* status message for read messages */
 "MESSAGE_STATUS_READ" = "Citit";
 
-/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Grapherex account. */
+/* message status if message delivery to a recipient is skipped. We skip delivering group messages to users who have left the group or unregistered their Signal account. */
 "MESSAGE_STATUS_RECIPIENT_SKIPPED" = "Omis";
 
 /* Label indicating that a message failed to send. */
@@ -3175,7 +2963,7 @@
 "MESSAGES_VIEW_GROUP_1_MEMBER_BLOCKED" = "Ai blocat 1 membru al acestui grup";
 
 /* Indicates that some members of this group has been blocked. Embeds {{the number of blocked users in this group}}. */
-"MESSAGES_VIEW_GROUP_N_MEMBERS_BLOCKED_FORMAT" = "Ai blocat %@ membrii din acest grup";
+"MESSAGES_VIEW_GROUP_N_MEMBERS_BLOCKED_FORMAT" = "Ai blocat %@ membri din acest grup";
 
 /* Indicates that more than one member of this group conversation is no longer verified. */
 "MESSAGES_VIEW_N_MEMBERS_NO_LONGER_VERIFIED" = "Mai mult de un membru din acest grup nu mai este marcat ca verificat. Apasă pentru opțiuni.";
@@ -3187,22 +2975,22 @@
 "MISSED_CALL" = "Apel ratat.";
 
 /* Alert body */
-"MISSING_CAMERA_PERMISSION_MESSAGE" = "Poți activa accesul camerei din aplicația iOS Setări pentru a putea realiza apeluri video în Grapherex. ";
+"MISSING_CAMERA_PERMISSION_MESSAGE" = "Poți activa accesul camerei din aplicația iOS Setări pentru a putea realiza apeluri video în Signal. ";
 
 /* Alert title */
-"MISSING_CAMERA_PERMISSION_TITLE" = "Grapherex are nevoie de acces la camera ta.";
+"MISSING_CAMERA_PERMISSION_TITLE" = "Signal are nevoie de acces la camera ta.";
 
 /* Alert body indicating the user has denied location permissios */
 "MISSING_LOCATION_PERMISSION_MESSAGE" = "Poți activa această permisiune din aplicația iOS Setări. ";
 
 /* Alert title indicating the user has denied location permissios */
-"MISSING_LOCATION_PERMISSION_TITLE" = "Grapherex are nevoie de acces la locația ta pentru această funcționalitate.";
+"MISSING_LOCATION_PERMISSION_TITLE" = "Signal are nevoie de acces la locația ta pentru această funcționalitate.";
 
 /* Alert body when user has previously denied media library access */
 "MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE" = "Poți activa această permisiune din aplicația iOS Setări. ";
 
 /* Alert title when user has previously denied media library access */
-"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Grapherex are nevoie de acces la pozele tale pentru această funcționalitate.";
+"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE" = "Signal are nevoie de acces la pozele tale pentru această funcționalitate.";
 
 /* alert title: cannot link - reached max linked devices */
 "MULTIDEVICE_PAIRING_MAX_DESC" = "Nu mai poți asocia alte dispozitive.";
@@ -3215,6 +3003,9 @@
 
 /* Badge indicating that the user is muted. */
 "MUTED_BADGE" = "Fără sunet";
+
+/* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Recent și-au schimbat numele profilului din %1$@ în %2$@.";
 
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Omite";
@@ -3297,16 +3088,19 @@
 /* A string describing that the user has no groups in common with another user */
 "NO_GROUPS_IN_COMMON" = "Nu există grupuri în comun";
 
+/* A string describing that the user has no groups in common other than the group implied by the current UI context */
+"NO_OTHER_GROUPS_IN_COMMON" = "Nu există alte grupuri în comun.";
+
 /* Explanation of how to see a conversation. */
 "NO_SELECTED_CONVERSATION_DESCRIPTION" = "Alege un contact sau un grup pentru a discuta.";
 
 /* Title welcoming to the app */
-"NO_SELECTED_CONVERSATION_TITLE" = "Bun venit la Grapherex";
+"NO_SELECTED_CONVERSATION_TITLE" = "Bun venit la Signal";
 
 /* A string prompting the user to send a new mesaage to a user */
 "NON_CONTACT_TABLE_CELL_NEW_MESSAGE" = "Mesaj nou către:";
 
-/* A string asking the user if they'd like to invite a number to Grapherex via SMS. */
+/* A string asking the user if they'd like to invite a number to signal via SMS. */
 "NON_CONTACT_TABLE_CELL_SEND_SMS" = "Nu a fost găsit niciun utilizator. Invitați prin SMS?";
 
 /* Label for 1:1 conversation with yourself. */
@@ -3348,11 +3142,8 @@
 /* No comment provided by engineer. */
 "NOTIFICATIONS_NONE" = "Fără nume sau conținut";
 
-/* Table cell switch label. When disabled, Grapherex will not play notification sounds while the app is in the foreground. */
+/* Table cell switch label. When disabled, Signal will not play notification sounds while the app is in the foreground. */
 "NOTIFICATIONS_SECTION_INAPP" = "Redă cât timp aplicația este deschisă";
-
-/* Label for settings UI that allows user to change the notification sound. */
-"NOTIFICATIONS_SECTION_SOUNDS" = "Sunete";
 
 /* Label for settings UI that allows user to add a new notification sound. */
 "NOTIFICATIONS_SECTION_SOUNDS_ADD_CUSTOM_SOUND" = "Adaugă un ton personalizat...";
@@ -3412,7 +3203,7 @@
 "ONBOARDING_MODE_SWITCH_BUTTON_REGISTERING" = "Asociați iPhone-ul";
 
 /* explanation to the user they're switching from linking to registering flow */
-"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Apăsarea pe \"Înregistrare iPad\" vă va permite să creați un nou cont de Grapherex      sau să mutați un cont existent pe acest iPad. Acest lucru va dezactiva Grapherex pe orice alt dispozitiv înregistrat în prezent cu același număr de telefon.";
+"ONBOARDING_MODE_SWITCH_EXPLANATION_PROVISIONING" = "Apăsarea pe \"Înregistrare iPad\" vă va permite să creați un nou cont de Signal      sau să mutați un cont existent pe acest iPad. Acest lucru va dezactiva Signal pe orice alt dispozitiv înregistrat în prezent cu același număr de telefon.";
 
 /* explanation to the user they're switching from registering to linking flow */
 "ONBOARDING_MODE_SWITCH_EXPLANATION_REGISTERING" = "Apăsând pe \"Asociere iPhone\" vă va permite să vă conectați telefonul la un cont existent. În general, asocierea telefonului nu este recomandată și va limita anumite funcționalități, cum ar fi apelarea.";
@@ -3424,34 +3215,40 @@
 "ONBOARDING_MODE_SWITCH_TITLE_REGISTERING" = "Asociați acest iPhone";
 
 /* warning to the user that registering an ipad is not recommended */
-"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Înregistrarea acestui iPad va dezactiva Grapherex pe orice alt dispozitiv înregistrat în prezent cu același număr de telefon.";
+"ONBOARDING_MODE_SWITCH_WARNING_PROVISIONING" = "Înregistrarea acestui iPad va dezactiva Signal pe orice alt dispozitiv înregistrat în prezent cu același număr de telefon.";
 
 /* warning to the user that linking a phone is not recommended */
 "ONBOARDING_MODE_SWITCH_WARNING_REGISTERING" = "Asocierea iPhone-ului tău nu este recomandată și va limita funcții de bază.";
 
 /* Label for the 'give access' button in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Activează permisiunile";
+"ONBOARDING_PERMISSIONS_ENABLE_PERMISSIONS_BUTTON" = "Activare permisiuni";
 
 /* Explanation in the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_EXPLANATION" = "Notificările îți permit să vezi când sosesc mesaje și să primești actualizări cu privire la activitatea recentă din conversație. ";
+"ONBOARDING_PERMISSIONS_EXPLANATION" = "Activarea notificărilor și a contactelor vă permite să vedeți când sosesc mesajele și vă ajută să găsiți persoane pe care le cunoașteți. Contactele sunt criptate, astfel încât serviciul Signal nu le poate vedea.";
 
 /* Title of the 'onboarding permissions' view. */
-"ONBOARDING_PERMISSIONS_TITLE" = "Obțineți mesajul";
+"ONBOARDING_PERMISSIONS_TITLE" = "Activare permisiuni";
 
 /* Explanation of the 'onboarding phone number discoverability' view. Embeds {user phone number} */
-"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Alege cine te poate găsi pe Grapherex folosind numărul tău de telefon %@";
+"ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_EXPLANATION_FORMAT" = "Alege cine te poate găsi pe Signal folosind numărul tău de telefon %@";
 
 /* Title of the 'onboarding phone number discoverability' view. */
 "ONBOARDING_PHONE_NUMBER_DISCOVERABILITY_TITLE" = "Cine te poate găsi după numărul tău?";
 
+/* Placeholder string for phone number field during registration */
+"ONBOARDING_PHONE_NUMBER_PLACEHOLDER" = "Numărul tău de telefon";
+
+/* Label indicating that registration has been ratelimited. Embeds {{remaining time string}}. */
+"ONBOARDING_PHONE_NUMBER_RATE_LIMIT_WARNING_FORMAT" = "Vă rugăm să așteptați câteva minute înainte să încercați din nou. (%@)";
+
 /* Title of the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_TITLE" = "Introdu numărul tău de telefon pentru a putea începe";
+"ONBOARDING_PHONE_NUMBER_TITLE" = "Introduceți numărul dvs. de telefon";
 
 /* Label indicating that the phone number is invalid in the 'onboarding phone number' view. */
-"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Număr invalid";
+"ONBOARDING_PHONE_NUMBER_VALIDATION_WARNING" = "Număr de telefon invalid. Pentru a vă putea înregistra vă rugăm să introduceți un număr de telefon valid.";
 
 /* Explanation of the 'onboarding pin attempts exhausted' view when reglock is disabled. */
-"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Ai depășit limita de încercări ale PIN-ului, dar poți accesa contul tău Grapherex prin crearea unui nou PIN. Pentru confidențialitate și securitate, contul tău va fi restaurat fără informații sau setări de profil salvate.";
+"ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_EXPLANATION" = "Ai depășit limita de încercări ale PIN-ului, dar poți accesa contul tău Signal prin crearea unui nou PIN. Pentru confidențialitate și securitate, contul tău va fi restaurat fără informații sau setări de profil salvate.";
 
 /* Label for the 'learn more' link when reglock is disabled in the 'onboarding pin attempts exhausted' view. */
 "ONBOARDING_PIN_ATTEMPTS_EXHAUSTED_LEARN_MORE" = "Aflați mai multe despre PIN-uri";
@@ -3474,6 +3271,15 @@
 /* Title of the 'onboarding PIN' view. */
 "ONBOARDING_PIN_TITLE" = "Introdu PIN-ul tău";
 
+/* Title label for profile creation step of onboarding */
+"ONBOARDING_PROFILE_CREATION_TITLE" = "Profilul dvs.";
+
+/* Placeholder text for the family name field of the profile creation view. */
+"ONBOARDING_PROFILE_FAMILY_NAME_FIELD" = "Nume (opțional)";
+
+/* Placeholder text for the given name field of the profile creation view. */
+"ONBOARDING_PROFILE_GIVEN_NAME_FIELD" = "Prenume (obligatoriu)";
+
 /* Link to the 'terms and privacy policy' in the 'onboarding splash' view. */
 "ONBOARDING_SPLASH_TERM_AND_PRIVACY_POLICY" = "Termeni și politica de confidențialitate";
 
@@ -3483,38 +3289,29 @@
 /* Label for the link that lets users change their phone number in the onboarding views. */
 "ONBOARDING_VERIFICATION_BACK_LINK" = "Număr greșit?";
 
-/* Format for the label of the 'sent code' label of the 'onboarding verification' view. Embeds {{the time until the code can be resent}}. */
-"ONBOARDING_VERIFICATION_CODE_COUNTDOWN_FORMAT" = "Nu am primit codul (disponibil în %@)";
+/* Label for button to perform verification with a phone call. */
+"ONBOARDING_VERIFICATION_CALL_ME_BUTTON" = "Sună-mă";
 
-/* action sheet item shown after a number of failures to receive a verificaiton SMS during registration */
-"ONBOARDING_VERIFICATION_EMAIL_SIGNAL_SUPPORT" = "Contactați suportul Grapherex";
+/* Format string for button counting down time until phone call verification can be performed. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_CALL_ME_COUNTDOWN_FORMAT" = "Sună-mă în %@";
+
+/* Label for a progress spinner currently validating code */
+"ONBOARDING_VERIFICATION_CODE_VALIDATION_PROGRESS_LABEL" = "Se validează codul...";
 
 /* Label indicating that the verification code is incorrect in the 'onboarding verification' view. */
 "ONBOARDING_VERIFICATION_INVALID_CODE" = "Acest cod este incorect";
 
-/* Label for link that can be used when the original code did not arrive. */
-"ONBOARDING_VERIFICATION_ORIGINAL_CODE_MISSING_LINK" = "Nu am primit nici un cod";
+/* Label for button to resend SMS verification code. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_BUTTON" = "Trimite din nou codul";
 
-/* Message for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_MESSAGE" = "Asigurați-vă că aveți servicii celulare și puteți primi mesaje SMS.";
-
-/* Title for the 'resend code' alert in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_ALERT_TITLE" = "Nici un cod?";
-
-/* Label for the 'resend code by SMS' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_SMS_BUTTON" = "Trimite din nou codul";
-
-/* Label for the 'resend code by voice' button in the 'onboarding verification' view. */
-"ONBOARDING_VERIFICATION_RESEND_CODE_BY_VOICE_BUTTON" = "Mai bine Sună-mă";
-
-/* Label for link that can be used when the resent code did not arrive. */
-"ONBOARDING_VERIFICATION_RESENT_CODE_MISSING_LINK" = "Încă nu ați primit codul?";
+/* Format string for button counting down time until SMS code can be resent. Embeds {{time remaining}}. */
+"ONBOARDING_VERIFICATION_RESEND_CODE_COUNTDOWN_FORMAT" = "Retrimite cod în %@";
 
 /* Format for the title of the 'onboarding verification' view. Embeds {{the user's phone number}}. */
 "ONBOARDING_VERIFICATION_TITLE_DEFAULT_FORMAT" = "Introduceți codul trimis la %@";
 
-/* Format for the title of the 'onboarding verification' view after the verification code has been resent. Embeds {{the user's phone number}}. */
-"ONBOARDING_VERIFICATION_TITLE_RESENT_FORMAT" = "Tocmai am trimis din nou un cod la %@";
+/* Title label for the onboarding verification page */
+"ONBOARDING_VERIFICATION_TITLE_LABEL" = "Cod de verificare";
 
 /* Button text which opens the settings app */
 "OPEN_SETTINGS_BUTTON" = "Setări";
@@ -3525,8 +3322,8 @@
 /* Info Message when another user enabled disappearing messages. Embeds {{name of other user}} and {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context. */
 "OTHER_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "%@ a setat timpul de expirare a mesajelor la %@.";
 
-/* Label warning the user that the Grapherex service may be down. */
-"OUTAGE_WARNING" = "Grapherex întâmpină dificultăți tehnice. Muncim din greu pentru a restabili serviciul cât mai repede posibil.";
+/* Label warning the user that the Signal service may be down. */
+"OUTAGE_WARNING" = "Signal întâmpină dificultăți tehnice. Muncim din greu pentru a restabili serviciul cât mai repede posibil.";
 
 /* info message text in conversation view. {embeds callee name} */
 "OUTGOING_CALL_FORMAT" = "Ați apelat pe %@";
@@ -3634,13 +3431,13 @@
 "PHONE_NUMBER_DISCOVERABILITY_EVERYBODY" = "Toată lumea";
 
 /* A user friendly description of the 'everybody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Oricine are numărul tău de telefon în lista de contacte, te va vedea ca un contact pe Grapherex. Alții te vor putea găsi folosing numărul tău de telefon utilizând funcția Căutare.";
+"PHONE_NUMBER_DISCOVERABILITY_EVERYBODY_DESCRIPTION" = "Oricine are numărul tău de telefon în lista de contacte, te va vedea ca un contact pe Signal. Alții te vor putea găsi folosing numărul tău de telefon utilizând funcția Căutare.";
 
 /* A user friendly name for the 'nobody' phone number discoverability mode. */
 "PHONE_NUMBER_DISCOVERABILITY_NOBODY" = "Nimeni";
 
 /* A user friendly description of the 'nobody' phone number discoverability mode. */
-"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Nimeni nu te va putea găsi pe Grapherex folosind numărul tău de telefon. Nu vei fi vizibil ca și contact pentru persoanele care au numărul tău de telefon în lista lor de contacte, în timp ce alții nu te vor putea găsi folosind numărul tău de telefon utilizând funcția Căutare. ";
+"PHONE_NUMBER_DISCOVERABILITY_NOBODY_DESCRIPTION" = "Nimeni nu te va putea găsi pe Signal folosind numărul tău de telefon. Nu vei fi vizibil ca și contact pentru persoanele care au numărul tău de telefon în lista lor de contacte, în timp ce alții nu te vor putea găsi folosind numărul tău de telefon utilizând funcția Căutare. ";
 
 /* A format for a label showing an example phone number. Embeds {{the example phone number}}. */
 "PHONE_NUMBER_EXAMPLE_FORMAT" = "Exemplu: %@";
@@ -3649,19 +3446,19 @@
 "PHONE_NUMBER_SHARING_CONTACTS_ONLY" = "Contactele mele";
 
 /* A user friendly description of the 'contacts only' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Numai contactele tale vă vor vedea numărul de telefon pe Grapherex.";
+"PHONE_NUMBER_SHARING_CONTACTS_ONLY_DESCRIPTION" = "Numai contactele tale vă vor vedea numărul de telefon pe Signal.";
 
 /* A user friendly name for the 'everybody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_EVERYBODY" = "Toată lumea";
 
 /* A user friendly description of the 'everybody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Numărul tău de telefon va fi vizibil pentru pentru persoanele și grupurile către care trimiți mesaje. Persoanele care au numărul tău de telefon în lista lor de contacte îl vor vedea și în Grapherex. ";
+"PHONE_NUMBER_SHARING_EVERYBODY_DESCRIPTION" = "Numărul tău de telefon va fi vizibil pentru pentru persoanele și grupurile către care trimiți mesaje. Persoanele care au numărul tău de telefon în lista lor de contacte îl vor vedea și în Signal. ";
 
 /* A user friendly name for the 'nobody' phone number sharing mode. */
 "PHONE_NUMBER_SHARING_NOBODY" = "Nimeni";
 
 /* A user friendly description of the 'nobody' phone number sharing mode. */
-"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Nimeni nu vă va vedea numărul de telefon pe Grapherex.";
+"PHONE_NUMBER_SHARING_NOBODY_DESCRIPTION" = "Nimeni nu vă va vedea numărul de telefon pe Signal.";
 
 /* Format for phone number label with an index. Embeds {{Phone number label (e.g. 'home')}} and {{index, e.g. 2}}. */
 "PHONE_NUMBER_TYPE_AND_INDEX_NAME_FORMAT" = "%@ %@";
@@ -3736,7 +3533,7 @@
 "PIN_CREATION_DISABLE_CONFIRMATION_ACTION" = "Dezactivare PIN";
 
 /* Message of the 'pin disable' action sheet. */
-"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Dacă dezactivați codul PIN, veți pierde toate datele când vă înregistrați din nou la Grapherex, dacă nu le transferați de pe alt dispozitiv iOS. Nu puteți activa Blocarea înregistrării în timp ce codul PIN este dezactivat.";
+"PIN_CREATION_DISABLE_CONFIRMATION_MESSAGE" = "Dacă dezactivați codul PIN, veți pierde toate datele când vă înregistrați din nou la Signal, dacă nu le transferați de pe alt dispozitiv iOS. Nu puteți activa Blocarea înregistrării în timp ce codul PIN este dezactivat.";
 
 /* Title of the 'pin disable' action sheet. */
 "PIN_CREATION_DISABLE_CONFIRMATION_TITLE" = "Avertizare";
@@ -3748,7 +3545,7 @@
 "PIN_CREATION_ERROR_TITLE" = "Crearea PIN-ului a eșuat";
 
 /* The explanation in the 'pin creation' view. */
-"PIN_CREATION_EXPLANATION" = "PIN-urile păstrează informațiile stocate în Grapherex criptate, astfel încât numai tu să le poți accesa. Profilul, setările și contactele se vor restabili atunci când reinstalați Grapherex. Nu aveți nevoie de PIN pentru a deschide aplicația.";
+"PIN_CREATION_EXPLANATION" = "PIN-urile păstrează informațiile stocate în Signal criptate, astfel încât numai tu să le poți accesa. Profilul, setările și contactele se vor restabili atunci când reinstalați Signal. Nu aveți nevoie de PIN pentru a deschide aplicația.";
 
 /* Learn more action on the pin creation view */
 "PIN_CREATION_LEARN_MORE" = "Aflați mai multe despre PIN-uri";
@@ -3811,7 +3608,7 @@
 "PIN_REMINDER_MEGAPHONE_FEW_DAYS_TOAST" = "Vă reamintim în câteva zile.";
 
 /* Title for PIN reminder megaphone */
-"PIN_REMINDER_MEGAPHONE_TITLE" = "Verifică PIN-ul Grapherex";
+"PIN_REMINDER_MEGAPHONE_TITLE" = "Verifică PIN-ul Signal";
 
 /* Toast indicating that we'll ask you for your PIN again tomorrow. */
 "PIN_REMINDER_MEGAPHONE_TOMORROW_TOAST" = "Vă reamintim mâine.";
@@ -3826,7 +3623,7 @@
 "PIN_REMINDER_MISMATCH_ERROR" = "PIN invalid, încercați din nou.";
 
 /* The title for the 'pin reminder' dialog. */
-"PIN_REMINDER_TITLE" = "Introdu PIN-ul Grapherex.";
+"PIN_REMINDER_TITLE" = "Introdu PIN-ul Signal.";
 
 /* Label indicating that the attempted PIN is too short */
 "PIN_REMINDER_TOO_SHORT_ERROR" = "PIN-ul trebuie să aibe cel puțin 4 cifre.";
@@ -3841,7 +3638,7 @@
 "PINS_MEGAPHONE_ACTION" = "Creați PIN";
 
 /* Body for PIN megaphone when user doesn't have a PIN */
-"PINS_MEGAPHONE_BODY" = "PIN-urile păstrează informațiile stocate în Grapherex criptate";
+"PINS_MEGAPHONE_BODY" = "PIN-urile păstrează informațiile stocate în Signal criptate";
 
 /* Toast indication that the user will be reminded later to setup their PIN. Embeds {{time until mandatory}} */
 "PINS_MEGAPHONE_SNOOZE_TOAST_FORMAT" = "Vă amintim mai târziu. Creearea unui PIN o să devină obligatorie în %ld zile.";
@@ -3880,19 +3677,19 @@
 "PRIVACY_VERIFICATION_FAILED_MISMATCHED_SAFETY_NUMBERS_IN_CLIPBOARD" = "Numărul din clipboard-ul tău nu pare a fi un număr de siguranță corect pentru această conversație.";
 
 /* Alert body for user error */
-"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Grapherex nu a putut găsi nici un număr de siguranță în clipboard-ul tău. L-ai copiat corect?";
+"PRIVACY_VERIFICATION_FAILED_NO_SAFETY_NUMBERS_IN_CLIPBOARD" = "Signal nu a putut găsi nici un număr de siguranță în clipboard-ul tău. L-ai copiat corect?";
 
 /* Alert body when verifying with {{contact name}} */
-"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Fiecare pereche de utilizatori Grapherex partajează un număr de siguranță distinct. Verifică din nou dacă %@ afișează numărul *tău* de siguranță.";
+"PRIVACY_VERIFICATION_FAILED_THEY_HAVE_WRONG_KEY_FOR_ME" = "Fiecare pereche de utilizatori Signal partajează un număr de siguranță distinct. Verifică din nou dacă %@ afișează numărul *tău* de siguranță.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Folosești o versiune veche de Grapherex. Trebuie să actualizezi aplicația înainte de a realiza verificarea.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_LOCAL_VERSION" = "Folosești o versiune veche de Signal. Trebuie să actualizezi aplicația înainte de a realiza verificarea.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Partenerul tău folosește o versiune veche de Grapherex. Trebuie sa-și actualizeze aplicația pentru a realiza verificarea.";
+"PRIVACY_VERIFICATION_FAILED_WITH_OLD_REMOTE_VERSION" = "Partenerul tău folosește o versiune veche de Signal. Trebuie sa-și actualizeze aplicația pentru a realiza verificarea.";
 
 /* alert body */
-"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Codul scanat nu pare a fi un număr de siguranță. Folosiți amândoi o versiune actualizată de Grapherex?";
+"PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "Codul scanat nu pare a fi un număr de siguranță. Folosiți amândoi o versiune actualizată de Signal?";
 
 /* Paragraph(s) shown alongside the safety number when verifying privacy with {{contact name}} */
 "PRIVACY_VERIFICATION_INSTRUCTIONS" = "Dacă dorești să verifici securitatea criptării integrale cu %@, compară numerele de deasupra cu numerele de pe dispozitivul lor.\n\nAlternativ, poți scana codul de pe telefonul lor sau îi poți ruga să scaneze codul tău.";
@@ -3942,20 +3739,23 @@
 /* The copy rendered in a conversation when someone not in your address book changes their profile name. Embeds {old profile name}, {new profile name} */
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ și-a schimbat numele profilului în %@.";
 
-/* Button to add a 'bio' to the user's profile in the profile view. */
-"PROFILE_VIEW_ADD_BIO_TO_PROFILE" = "Adăugați la profil";
+/* Title for the profile name view. */
+"PROFILE_NAME_VIEW_TITLE" = "Numele dumneavoastră";
+
+/* Placeholder when the user doesn't have an 'about' for profile settings screen. */
+"PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Despre";
+
+/* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Nume";
+
+/* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Nume utilizator";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "Setare poză profil";
 
-/* Header for the 'bio' section of the profile view. */
-"PROFILE_VIEW_BIO_SECTION_HEADER" = "Despre";
-
 /* Label for action that clear's the user's profile avatar */
 "PROFILE_VIEW_CLEAR_AVATAR" = "Eliminați poza";
-
-/* A string indicating that the user can create a username on the profile view. */
-"PROFILE_VIEW_CREATE_USERNAME" = "Creați un nume de utilizator";
 
 /* Error message shown when user tries to update profile with a family name that is too long. */
 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG" = "Numele este prea lung.";
@@ -3967,31 +3767,22 @@
 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG" = "Prenumele este prea lung.";
 
 /* Default text for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "(Opțional)";
-
-/* Label for the family name field of the profile view. */
-"PROFILE_VIEW_FAMILY_NAME_FIELD" = "Nume";
+"PROFILE_VIEW_FAMILY_NAME_DEFAULT_TEXT" = "Nume (opțional)";
 
 /* Default text for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "(Necesar)";
-
-/* Label for the given name field of the profile view. */
-"PROFILE_VIEW_GIVEN_NAME_FIELD" = "Prenume";
+"PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT" = "Prenume (obligatoriu)";
 
 /* Error shown when the user tries to update their profile when the app is not connected to the internet. */
 "PROFILE_VIEW_NO_CONNECTION" = "Profilul poate fi actualizat doar când sunteți conectat la internet.";
 
 /* Description of the user profile. */
-"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Profilul tău este criptat integral. Profilul și modificările sale vor fi vizibile pentru contactele tale atunci când inițiezi sau accepți conversații noi și când te alături grupurilor noi.";
+"PROFILE_VIEW_PROFILE_DESCRIPTION" = "Profilul dvs. este criptat integral. Profilul dvs. și modificările sale vor fi vizibile pentru contactele dvs., atunci când inițiați sau acceptați conversații noi.";
 
 /* Button to save the profile view in the profile view. */
 "PROFILE_VIEW_SAVE_BUTTON" = "Salvează";
 
 /* Title for the profile view. */
 "PROFILE_VIEW_TITLE" = "Profil";
-
-/* Label for the username field of the profile view. */
-"PROFILE_VIEW_USERNAME_FIELD" = "Nume utilizator";
 
 /* Notification action button title */
 "PUSH_MANAGER_MARKREAD" = "Marchează ca citit";
@@ -4004,9 +3795,6 @@
 
 /* Title of alert shown when push tokens sync job succeeds. */
 "PUSH_REGISTER_SUCCESS" = "Reînregistrarea pentru notificări push s-a făcut cu succes.";
-
-/* Used in table section header and alert view title contexts */
-"PUSH_REGISTER_TITLE" = "Notificări Push";
 
 /* No comment provided by engineer. */
 "QUESTIONMARK_PUNCTUATION" = "?";
@@ -4152,6 +3940,12 @@
 /* alert body during registration */
 "REGISTRATION_ERROR_BLANK_VERIFICATION_CODE" = "Nu putem activa contul tău până nu verifici codul pe care ți l-am trimis.";
 
+/* Alert body for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_BODY" = "Pentru a continua, verificați conexiunea la internet a telefonului și încercați din nou.";
+
+/* Alert title for network failure during registration */
+"REGISTRATION_ERROR_NETWORK_FAILURE_ALERT_TITLE" = "Verificare conexiune";
+
 /* No comment provided by engineer. */
 "REGISTRATION_NON_VALID_NUMBER" = "Acest format de număr de telefon nu este suportat, te rog contactează suportul tehnic.";
 
@@ -4182,6 +3976,18 @@
 /* Title of alert indicating that users needs to enter a phone number to register. */
 "REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE" = "Nici un număr de telefon";
 
+/* Message for confirmation alert during phone number registration. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_MESSAGE" = "Un cod de verificare o să fie trimis la acest număr. Numărul dvs. de telefon de mai sus este corect? ";
+
+/* Title for confirmation alert during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_ALERT_TITLE_FORMAT" = "Confirmare număr: %@";
+
+/* A button allowing user to cancel registration and edit a phone number */
+"REGISTRATION_VIEW_PHONE_NUMBER_CONFIRMATION_EDIT_BUTTON" = "Editează";
+
+/* Label for the progress spinner shown during phone number registration. Embeds {{phone number}}. */
+"REGISTRATION_VIEW_PHONE_NUMBER_SPINNER_LABEL_FORMAT" = "Se verifică %@...";
+
 /* notification action */
 "REJECT_CALL_BUTTON_TITLE" = "Respinge";
 
@@ -4192,28 +3998,28 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "Alegeți un nou admin";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "Reînregistrează-te pentru a primi notificarile push";
+"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
 
 /* Body for research megaphone */
-"RESEARCH_MEGAPHONE_BODY" = "Pentru a putea să facem din Grapherex cea mai bună aplicație de mesagerie de pe planetă, ne-ar plăcea să-ți auzim părerea. ";
+"RESEARCH_MEGAPHONE_BODY" = "Pentru a putea să facem din Signal cea mai bună aplicație de mesagerie de pe planetă, ne-ar plăcea să-ți auzim părerea. ";
 
 /* Title for research megaphone */
 "RESEARCH_MEGAPHONE_TITLE" = "Spune-ne ce părere ai";
 
 /* Text for the research modal footer */
-"RESEARCH_MODAL_FOOTER" = "Acest studiu este găzduit de Surveygizmo pe domeniul securizat surveys.grapherexusers.com";
+"RESEARCH_MODAL_FOOTER" = "Acest studiu este găzduit de Surveygizmo pe domeniul securizat surveys.signalusers.org";
 
 /* Button text for declining the research modal */
 "RESEARCH_MODAL_NO_THANKS" = "Nu, mulţumesc";
 
 /* Text explaining why the user should take the survey */
-"RESEARCH_MODAL_PLEA" = "<bold>Credem în confidențialitate</bold>\n\nGrapherex nu te urmărește și nu-ți colectează informațiile. Pentru a îmbunătăți aplicația pentru toată lumea, ne bazăm pe opiniile utilizatorilor noștri <bold>și ne-ar plăcea să o azim pe a ta</bold>.\n\nDerulăm un sondaj pentru a înțelege mai bine cum folosești Grapherex. Studiul nostru nu colectează informații care te-ar putea identifica. Dacă ești interesat în a împărtăși păreri suplimentare cu noi, vei avea opțiunea să ne furnizezi informații de contact. \n\nDacă ai câteva minute la dispoziție și păreri de oferit, ne-ar plăcea să auzim de tine.";
+"RESEARCH_MODAL_PLEA" = "<bold>Credem în confidențialitate</bold>\n\nSignal nu te urmărește și nu-ți colectează informațiile. Pentru a îmbunătăți aplicația pentru toată lumea, ne bazăm pe opiniile utilizatorilor noștri <bold>și ne-ar plăcea să o azim pe a ta</bold>.\n\nDerulăm un sondaj pentru a înțelege mai bine cum folosești Signal. Studiul nostru nu colectează informații care te-ar putea identifica. Dacă ești interesat în a împărtăși păreri suplimentare cu noi, vei avea opțiunea să ne furnizezi informații de contact. \n\nDacă ai câteva minute la dispoziție și păreri de oferit, ne-ar plăcea să auzim de tine.";
 
 /* Button text for taking the research survey */
 "RESEARCH_MODAL_TAKE_SURVEY" = "Completează studiul";
 
 /* Title for the research megaphone modal */
-"RESEARCH_MODAL_TITLE" = "Cercetare Grapherex";
+"RESEARCH_MODAL_TITLE" = "Cercetare Signal";
 
 /* Generic text for button that retries whatever the last action was. */
 "RETRY_BUTTON_TEXT" = "Încearcă din nou";
@@ -4243,7 +4049,7 @@
 "SAFETY_NUMBER_CONFIRMATION_VIEW_ACTION" = "Vizualizare";
 
 /* Snippet to share {{safety number}} with a friend. sent e.g. via SMS */
-"SAFETY_NUMBER_SHARE_FORMAT" = "Numărul nostru Grapherex de Siguranță:\n%@";
+"SAFETY_NUMBER_SHARE_FORMAT" = "Numărul nostru Signal de Siguranță:\n%@";
 
 /* Action sheet heading */
 "SAFETY_NUMBERS_ACTIONSHEET_TITLE" = "Numărul tău de siguranță pentru %@ s-a schimbat. S-ar putea să dorești să-l verifici.";
@@ -4275,14 +4081,14 @@
 /* Indicates that Touch ID/Face ID/Phone Passcode passcode is not set. */
 "SCREEN_LOCK_ERROR_LOCAL_AUTHENTICATION_PASSCODE_NOT_SET" = "Trebuie să activezi o parolă în setările tale iOS pentru a putea folosi ecranul de blocare.";
 
-/* Description of how and why Grapherex iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
-"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Autentifică-te pentru a deschide Grapherex.";
+/* Description of how and why Signal iOS uses Touch ID/Face ID/Phone Passcode to unlock 'screen lock'. */
+"SCREEN_LOCK_REASON_UNLOCK_SCREEN_LOCK" = "Autentifică-te pentru a deschide Signal.";
 
 /* Title for alert indicating that screen lock could not be unlocked. */
 "SCREEN_LOCK_UNLOCK_FAILED" = "Autentificare eșuată";
 
-/* Label for button on lock screen that lets users unlock Grapherex. */
-"SCREEN_LOCK_UNLOCK_SIGNAL" = "Deblochează Grapherex";
+/* Label for button on lock screen that lets users unlock Signal. */
+"SCREEN_LOCK_UNLOCK_SIGNAL" = "Deblochează Signal";
 
 /* This is a contact's name. Replace the name for a more common name in your locale if this sounds too foreign. This should be a unique non-public figure's name. This will have a female profile photo. */
 "SCREENSHOT_NAME_CONTACT_EIGHT" = "Tina Ursariu";
@@ -4332,7 +4138,7 @@
 /* This is for a group chat for people who want weather updates. */
 "SCREENSHOT_NAME_GROUP_TWO" = "Prognoze meteo";
 
-/* This appears in Grapherex > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
+/* This appears in Signal > Settings. A female leadership/presidential/chairwoman position + female name Freyja or similar spelling. This will have a cat profile photo. */
 "SCREENSHOT_NAME_LOCAL_PROFILE" = "Președinta Felicia";
 
 /* This is a message expressing support/happiness/awe/shock. */
@@ -4441,13 +4247,13 @@
 "SECONDARY_DEVICE_ERROR_FETCHING_LINKING_CODE" = "Codul de asociere nu a putut fi obținut";
 
 /* Message for error alert indicating that a linked device must be upgraded before it can be linked. */
-"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Actualizează Grapherex de pe acest dispozitiv pentru a-l asocia cu telefonul.";
+"SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_MESSAGE" = "Actualizează Signal de pe acest dispozitiv pentru a-l asocia cu telefonul.";
 
 /* Title for error alert indicating that a linked device must be upgraded before it can be linked. */
 "SECONDARY_LINKING_ERROR_OBSOLETE_LINKED_DEVICE_TITLE" = "Versiune nesuportată";
 
 /* alert message for outdated linking device */
-"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Celălalt dispozitiv rulează o versiune veche de Grapherex care nu acceptă scanarea codurilor QR iPad. Vă rugăm să instalați cea mai recentă versiune de Grapherex și să încercați din nou.";
+"SECONDARY_LINKING_ERROR_OLD_VERSION_MESSAGE" = "Celălalt dispozitiv rulează o versiune veche de Signal care nu acceptă scanarea codurilor QR iPad. Vă rugăm să instalați cea mai recentă versiune de Signal și să încercați din nou.";
 
 /* alert title for outdated linking device */
 "SECONDARY_LINKING_ERROR_OLD_VERSION_TITLE" = "Actualizați dispozitivul de scanare";
@@ -4468,19 +4274,19 @@
 "SECONDARY_ONBOARDING_COMPLETE_LINKING_PROCESS" = "Finalizați asocierea";
 
 /* header text before the user can link this device */
-"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Deschide Grapherex pe telefon pentru a asocia acest iPad la contul tău.";
+"SECONDARY_ONBOARDING_GET_STARTED_BY_OPENING_PRIMARY" = "Deschide Signal pe telefon pentru a asocia acest iPad la contul tău.";
 
 /* Link explaining what to do when trying to link a device before having a primary device. */
-"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Nu am Grapherex pe telefonul meu...";
+"SECONDARY_ONBOARDING_GET_STARTED_DO_NOT_HAVE_PRIMARY" = "Nu am Signal pe telefonul meu...";
 
 /* alert body */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Accesează magazinul de aplicații de pe telefon, instalează Grapherex, finalizează procesul de înregistrare și apoi poți asocia iPad-ul la același cont.";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_BODY" = "Accesează magazinul de aplicații de pe telefon, instalează Signal, finalizează procesul de înregistrare și apoi poți asocia iPad-ul la același cont.";
 
 /* alert title */
-"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Instalează Grapherex pe telefonul tău";
+"SECONDARY_ONBOARDING_INSTALL_PRIMARY_FIRST_TITLE" = "Instalează Signal pe telefonul tău";
 
 /* body text while displaying a QR code which, when scanned, will link this device. */
-"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Atingeți imaginea de profil pentru a deschide setările de Grapherex pe telefon. Apoi \"Dispozitive asociate\" și \"Asociați dispozitiv nou\" pentru a scana acest cod cu telefonul:";
+"SECONDARY_ONBOARDING_SCAN_CODE_BODY" = "Atingeți imaginea de profil pentru a deschide setările de Signal pe telefon. Apoi \"Dispozitive asociate\" și \"Asociați dispozitiv nou\" pentru a scana acest cod cu telefonul:";
 
 /* Link text for page with troubleshooting info shown on the QR scanning screen */
 "SECONDARY_ONBOARDING_SCAN_CODE_HELP_TEXT" = "Obțineți ajutor pentru asocierea iPad-ului tău aici";
@@ -4489,7 +4295,7 @@
 "SECONDARY_ONBOARDING_SCAN_CODE_TITLE" = "Scanează codul QR cu telefonul tău";
 
 /* header text before the user can transfer to this device */
-"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Deschide Grapherex pe vechiul iPad pentru a transfera contul ";
+"SECONDARY_TRANSFER_GET_STARTED_BY_OPENING_IPAD" = "Deschide Signal pe vechiul iPad pentru a transfera contul ";
 
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "Sesiunea securizată a fost resetată";
@@ -4513,7 +4319,7 @@
 "SEND_INVITE_FAILURE" = "Invitația trimisă a eșuat, te rog încearcă din nou mai târziu.";
 
 /* Alert body after invite succeeded */
-"SEND_INVITE_SUCCESS" = "Ai invitat prietenul tău să folosească Grapherex!";
+"SEND_INVITE_SUCCESS" = "Ai invitat prietenul tău să folosească Signal!";
 
 /* alert action, confirming the user wants to exit the media flow and abandon any photos they've taken */
 "SEND_MEDIA_CONFIRM_ABANDON_ALBUM" = "Renunțați la Media";
@@ -4528,16 +4334,16 @@
 "SEND_SMS_CONFIRM_TITLE" = "Invită un prieten prin SMS nesecurizat?";
 
 /* No comment provided by engineer. */
-"SEND_SMS_INVITE_TITLE" = "Ai dori să inviți numărul următor să folosească aplicația Grapherex:";
+"SEND_SMS_INVITE_TITLE" = "Ai dori să inviți numărul următor să folosească aplicația Signal:";
 
 /* Description for the session refresh alert */
-"SESSION_REFRESH_ALERT_MESSAGE" = "Grapherex folosește criptarea de la un cap la altul și câteodată va avea nevoie să reîmprospăteze sesiunile de conversație. Acest lucru nu va afecta securitatea conversațiilor dar s-ar putea să fi ratat un mesaj de la acest contact și ai putea să-l rogi să-l retrimită. ";
+"SESSION_REFRESH_ALERT_MESSAGE" = "Signal folosește criptarea de la un cap la altul și câteodată va avea nevoie să reîmprospăteze sesiunile de conversație. Acest lucru nu va afecta securitatea conversațiilor dar s-ar putea să fi ratat un mesaj de la acest contact și ai putea să-l rogi să-l retrimită. ";
 
 /* Title for the session refresh alert */
 "SESSION_REFRESH_ALERT_TITLE" = "Sesiunea conversației a fost resetată";
 
 /* Title for the wallpaper choose from photos option */
-"SET_WALLPAPER_CHOOSE_PHOTO" = "Alegeți din galerie";
+"SET_WALLPAPER_CHOOSE_PHOTO" = "Alege din galerie";
 
 /* Title for the wallpaper presets section */
 "SET_WALLPAPER_PRESETS" = "Presetări";
@@ -4545,8 +4351,8 @@
 /* Title for the set wallpaper settings view. */
 "SET_WALLPAPER_TITLE" = "Setare fundal";
 
-/* Navbar title */
-"SETTINGS_ABOUT" = "Despre";
+/* Title for the 'account' link in settings. */
+"SETTINGS_ACCOUNT" = "Cont";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Blochează";
@@ -4554,11 +4360,11 @@
 /* Label for the  'manual censorship circumvention' switch. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION" = "Ocolire Cenzură ";
 
-/* Label for the 'manual censorship circumvention' country. Embeds {{the manual censorship circumvention country}}. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY_FORMAT" = "Locație: %@";
+/* Label for the 'manual censorship circumvention' country. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_COUNTRY" = "Locație";
 
 /* Table footer for the 'censorship circumvention' section when censorship circumvention can be manually enabled. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Dacă este activată, Grapherex va încerca să ocolească cenzura. Nu activa această funcționalitate doar dacă ești într-o locație unde Grapherex este cenzurat.";
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER" = "Dacă este activată, Signal va încerca să ocolească cenzura. Nu activa această funcționalitate doar dacă ești într-o locație unde Signal este cenzurat.";
 
 /* Table footer for the 'censorship circumvention' section shown when censorship circumvention has been auto-enabled based on local phone number. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_AUTO_ENABLED" = "Ocolirea cenzurii a fost activată pe baza numărului tău de telefon.";
@@ -4569,11 +4375,8 @@
 /* Table footer for the 'censorship circumvention' section shown when the app is not connected to the internet. */
 "SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_NO_CONNECTION" = "Ocolirea cenzurii poate fi activată numai atunci când ești conectat la internet.";
 
-/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Grapherex service. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Ocolirea cenzurii nu este necesară; ești deja conectat la serviciul Grapherex.";
-
-/* Table header for the 'censorship circumvention' section. */
-"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_HEADER" = "Ocolire Cenzură ";
+/* Table footer for the 'censorship circumvention' section shown when the app is connected to the Signal service. */
+"SETTINGS_ADVANCED_CENSORSHIP_CIRCUMVENTION_FOOTER_WEBSOCKET_CONNECTED" = "Ocolirea cenzurii nu este necesară; ești deja conectat la serviciul Signal.";
 
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_DEBUGLOG" = "Activează Log-ul de depanare";
@@ -4590,20 +4393,14 @@
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_PINS_ENABLE_PIN_ACTION" = "Activare PIN";
 
-/* Table header for the 'pins' section. */
-"SETTINGS_ADVANCED_PINS_HEADER" = "PIN Grapherex";
-
 /* No comment provided by engineer. */
 "SETTINGS_ADVANCED_SUBMIT_DEBUGLOG" = "Trimite Log-ul de depanare";
 
 /* No comment provided by engineer. */
-"SETTINGS_ADVANCED_TITLE" = "Avansat";
-
-/* table cell label */
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Jurnalele cu erori";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Afișează fotografiile contactelor din sistem dacă sunt disponibile";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Afișează fotografiile contactelor din sistem dacă sunt disponibile.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
 "SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Folosește fotografiile contactelor din sistem";
@@ -4668,11 +4465,8 @@
 /* A label for the 'add phone number' button in the block list table. */
 "SETTINGS_BLOCK_LIST_ADD_BUTTON" = "Adaugă un utilizator blocat";
 
-/* An explanation of the 'blocked' setting */
-"SETTINGS_BLOCK_LIST_FOOTER" = "Lista contactelor și grupurilor pe care le-ai blocat.";
-
-/* A label that indicates the user has no Grapherex contacts. */
-"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Nu ai nici un contact pe Grapherex.";
+/* A label that indicates the user has no Signal contacts. */
+"SETTINGS_BLOCK_LIST_NO_CONTACTS" = "Nu ai nici un contact pe Signal.";
 
 /* A label that indicates the user's search has no matching results. */
 "SETTINGS_BLOCK_LIST_NO_SEARCH_RESULTS" = "Niciun rezultat al căutării";
@@ -4684,13 +4478,16 @@
 "SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE" = "Redirecționează întotdeauna apelurile";
 
 /* User settings section footer, a detailed explanation */
-"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Redirecționează toate apelurile către un server Grapherex pentru a evita aflarea adresei IP de către contact tău. Activarea va reduce calitatea apelului.";
+"SETTINGS_CALLING_HIDES_IP_ADDRESS_PREFERENCE_TITLE_DETAIL" = "Redirecționează toate apelurile către un server Signal pentru a evita aflarea adresei IP de către contact tău. Activarea va reduce calitatea apelului.";
+
+/* Title for the 'chats' link in settings. */
+"SETTINGS_CHATS" = "Conversații";
 
 /* No comment provided by engineer. */
 "SETTINGS_CLEAR_HISTORY" = "Șterge istoricul conversației";
 
-/* No comment provided by engineer. */
-"SETTINGS_COPYRIGHT" = "Drepturi de autor Grapherex Messenger \n Sub licenţa GPLv3";
+/* Footer for the 'about' help section */
+"SETTINGS_COPYRIGHT" = "Drepturi de autor Signal Messenger\nSub licenţa GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Utilizare date";
@@ -4699,7 +4496,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Reducerea consumului de date";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Folosind mai puține date, se pot îmbunătăți apelurile în rețelele cu probleme";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Reducând consumul de date, se pot îmbunătăți apelurile în rețelele cu probleme.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Apeluri";
@@ -4708,7 +4505,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Mesajele de voce, fișierele media ce pot fi văzute o singură dată și autocolantele (sub 100kb) vor fi descărcate automat.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "DESCĂRCARE AUTOMATĂ MEDIA";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Descărcare automată";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Resetează setările pentru descărcarea automată ";
@@ -4728,23 +4525,17 @@
 /* Confirmation text for button which deletes all message, calling, attachments, etc. */
 "SETTINGS_DELETE_HISTORYLOG_CONFIRMATION_BUTTON" = "Șterge tot";
 
-/* Title for the 'donate to Grapherex' link in settings. */
-"SETTINGS_DONATE" = "Donați pentru Grapherex";
+/* Title for the 'donate to signal' link in settings. */
+"SETTINGS_DONATE" = "Donați pentru Signal";
 
 /* Title for support page in app settings. */
 "SETTINGS_HELP" = "Ajutor";
-
-/* Section header */
-"SETTINGS_HISTORYLOG_TITLE" = "Șterge istoricul conversației";
-
-/* No comment provided by engineer. */
-"SETTINGS_INFORMATION_HEADER" = "Informații";
 
 /* Settings table view cell label */
 "SETTINGS_INVITE_TITLE" = "Invită-ți prietenii";
 
 /* content of tweet when inviting via twitter - please do not translate URL */
-"SETTINGS_INVITE_TWITTER_TEXT" = "Poți să mă contactezi prin @grapherexapp. Obține-l acum: https://grapherex.com";
+"SETTINGS_INVITE_TWITTER_TEXT" = "Poți să mă contactezi prin @signalapp. Obține-l acum: https://signal.org/download/";
 
 /* Label for settings view that allows user to change the notification sound. */
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "Sunet mesaj";
@@ -4752,7 +4543,7 @@
 /* Label for settings view that allows user to change the wallpaper. */
 "SETTINGS_ITEM_WALLPAPER" = "Fundal conversații";
 
-/* table cell label */
+/* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Termeni și politica de confidențialitate";
 
 /* Setting for enabling & disabling link previews. */
@@ -4785,28 +4576,31 @@
 /* Label for the 'messaging' privacy settings. */
 "SETTINGS_MESSAGING" = "Mesagerie";
 
+/* Explanation for the 'messaging' privacy settings. */
+"SETTINGS_MESSAGING_FOOTER" = "See and share when messages are being read and typed. If disabled, you won’t see read receipts or typing indicators from others.";
+
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Setări";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Numără conversațiile silențioase";
+/* A setting controlling whether muted conversations are shown in the badge count */
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Include Muted Chats";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Număr insignă";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Notificările privind apelurile și mesajele pot apărea în timp ce telefonul este blocat. Poate dorești să limitezi ce este afișat în aceste notificări.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Call and Message notifications can appear while your phone is locked.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Conținut notificări";
 
-/* When the local device discovers a contact has recently installed Grapherex, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Un contact s-a alăturat pe Grapherex";
+/* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Un contact se alătură la Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_EVENTS_SECTION_TITLE" = "Evenimente";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notify when…";
 
-/* No comment provided by engineer. */
+/* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Notificări";
 
 /* Label for the 'phone number discoverability' setting. */
@@ -4828,16 +4622,13 @@
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Asigură-te că memorezi sau salvezi în siguranță codul PIN, deoarece acesta nu poate fi recuperat. Dacă uiți codul PIN, este posibil să pierzi date la înregistrarea din nou a contului.";
 
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Confirmă PIN-ul Grapherex";
-
-/* Footer for the 'pin reminder' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_PIN_REMINDER_FOOTER" = "Memento-urile vă ajută să vă amintiți codul PIN deoarece nu poate fi recuperat. Vi se va cere mai rar în timp.";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Confirmă PIN-ul Signal";
 
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "Memento-uri PIN";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PIN-urile păstrează informațiile stocate în Grapherex criptate, astfel încât numai tu să le poți accesa. Profilul, setările și contactele se vor restabili atunci când reinstalați Grapherex.";
+"SETTINGS_PINS_FOOTER" = "PIN-urile păstrează informațiile stocate în Signal criptate, astfel încât numai tu să le poți accesa. PIN-ul nu poatre fi recuperat. Profilul, setările și contactele se vor restabili atunci când reinstalați Signal.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Schimbați-vă PIN-ul";
@@ -4846,22 +4637,22 @@
 "SETTINGS_PINS_ITEM_CREATE" = "Creați un PIN";
 
 /* Title for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_TITLE" = "PIN Grapherex";
+"SETTINGS_PINS_TITLE" = "PIN Signal";
 
-/* Settings table section footer. */
-"SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_DESCRIPTION" = "Afișează apelurile în lista \"Recente\" din aplicația iOS Telefon.";
+/* Footer for table section */
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+
+/* Title for the advanced privacy settings */
+"SETTINGS_PRIVACY_ADVANCED_TITLE" = "Avansat";
 
 /* Short table cell label */
 "SETTINGS_PRIVACY_CALLKIT_SYSTEM_CALL_LOG_PREFERENCE_TITLE" = "Afișează apelurile în Recente";
 
-/* Settings table view cell label */
+/* The title for the privacy settings. */
 "SETTINGS_PRIVACY_TITLE" = "Confidențialitate";
 
 /* Label for the 'read receipts' setting. */
 "SETTINGS_READ_RECEIPT" = "Confirmări citire";
-
-/* An explanation of the 'read receipts' setting. */
-"SETTINGS_READ_RECEIPTS_SECTION_FOOTER" = "Vezi și distribuie când mesajele au fost citite. Această setare este opțională și se aplică pentru toate conversațiile. ";
 
 /* Action to turn off registration lock */
 "SETTINGS_REGISTRATION_LOCK_TURN_OFF" = "Dezactivare";
@@ -4873,7 +4664,7 @@
 "SETTINGS_REGISTRATION_LOCK_TURN_ON" = "Activare";
 
 /* Body for the alert confirming that the user wants to turn on registration lock. */
-"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Dacă uiți PIN-ul Grapherex atunci când te înregistrezi din nou, vei fi blocat din cont timp de 7 zile.";
+"SETTINGS_REGISTRATION_LOCK_TURN_ON_MESSAGE" = "Dacă uiți PIN-ul Signal atunci când te înregistrezi din nou, vei fi blocat din cont timp de 7 zile.";
 
 /* Title for the alert confirming that the user wants to turn on registration lock. */
 "SETTINGS_REGISTRATION_LOCK_TURN_ON_TITLE" = "Activați Blocarea Înregistrării?";
@@ -4887,20 +4678,14 @@
 /* Label for the 'screen lock activity timeout' setting of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_ACTIVITY_TIMEOUT" = "Expirare timp blocare ecran";
 
-/* Footer for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_FOOTER" = "Deblocați ecranul Grapherex folosind Touch ID, Face ID, sau parola de pe dispozitivul iOS. Încă puteți răspunde la apeluri primite și să primiți notificări la apeluri și mesaje în timp ce ecranul de blocare este activat. Setările de notificare ale Grapherex vă permit să personalizați informațiile afișate.";
-
-/* Title for the 'screen lock' section of the privacy settings. */
-"SETTINGS_SCREEN_LOCK_SECTION_TITLE" = "Blocare ecran";
-
 /* Label for the 'enable screen lock' switch of the privacy settings. */
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Blocare ecran";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Activează ecranul de securitate";
+"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
 
-/* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY_DETAIL" = "Previne previzualizare lui Grapherex în app switcher.";
+/* Footer for table section */
+"SETTINGS_SECTION_FOOTER_CALLING" = "Afișează apelurile în lista \"Recente\" din aplicația iOS Telefon.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Sunete";
@@ -4908,35 +4693,41 @@
 /* settings topic header for table section */
 "SETTINGS_SECTION_TITLE_CALLING" = "Apel în curs";
 
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL" = "Utilizați Touch ID, Face ID sau codul de acces al dispozitivului iOS pentru a debloca Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Folosiți Face ID pentru a debloca Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Folosiți codul de acces al dispozitivului pentru a debloca Signal.";
+
+/* Section footer */
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Folosiți Touch ID pentru a debloca Signal.";
+
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "Securitate Ecran";
+"SETTINGS_SECURITY_TITLE" = "Securitatea aplicației";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Afișare în Sugestii";
+"SETTINGS_SHARING_SUGGESTIONS" = "Afișare conversații în sugestii";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Conversațiile Grapherex sunt afișate ca și sugestii când distribuiți din alte aplicații.";
+"SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Conversațiile Signal sunt afișate ca și sugestii când distribuiți din alte aplicații.";
 
 /* Label for the 'enable registration lock' switch of the privacy settings. */
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Blocare înregistrare";
 
-/* Footer for the 'two factor auth' section of the privacy settings when Grapherex PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Pentru o securitate suplimentară, activează blocarea înregistrării, care va solicita PIN-ul tău Grapherex pentru a înregistra din nou numărul tău de telefon la Grapherex.";
+/* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Solicitați PIN-ul Signal pentru a vă înregistra din nou numărul de telefon cu Signal.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Indicatori de tastare";
-
-/* An explanation of the 'typing indicators' setting. */
-"SETTINGS_TYPING_INDICATORS_FOOTER" = "Vezi și distribuie când mesajele sunt tastate. Această setare este opțională și se aplică la toate conversațiile. ";
 
 /* table section label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Expeditor ascuns";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Afișează indicatoare";
-
-/* table section footer */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS_FOOTER" = "Afișează o icoană de status când selectezi \"Mai multe informații\" din mesajele care au fost trimise folosind funcția expeditor ascuns.";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Permite oricui";
@@ -4966,13 +4757,13 @@
 "SHARE_EXTENSION_LOADING" = "Se încarcă...";
 
 /* Message indicating that the share extension cannot be used until the user has registered in the main app. */
-"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Lansează aplicația Grapherex pentru a te înregistra.";
+"SHARE_EXTENSION_NOT_REGISTERED_MESSAGE" = "Lansează aplicația Signal pentru a te înregistra.";
 
 /* Title indicating that the share extension cannot be used until the user has registered in the main app. */
 "SHARE_EXTENSION_NOT_REGISTERED_TITLE" = "Nu este înregistrată";
 
 /* Message indicating that the share extension cannot be used until the main app has been launched at least once. */
-"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Lansează aplicația Grapherex pentru actualizare sau înregistrare.";
+"SHARE_EXTENSION_NOT_YET_MIGRATED_MESSAGE" = "Lansează aplicația Signal pentru actualizare sau înregistrare.";
 
 /* Title indicating that the share extension cannot be used until the main app has been launched at least once. */
 "SHARE_EXTENSION_NOT_YET_MIGRATED_TITLE" = "Nu este gata";
@@ -4986,23 +4777,23 @@
 /* Alert title */
 "SHARE_EXTENSION_SENDING_IN_PROGRESS_TITLE" = "Se încarcă ...";
 
-/* Shown when trying to share content to a Grapherex user for the share extension. Followed by failure details. */
+/* Shown when trying to share content to a Signal user for the share extension. Followed by failure details. */
 "SHARE_EXTENSION_UNABLE_TO_BUILD_ATTACHMENT_ALERT_TITLE" = "Nu s-a putut prepara atașamentul";
 
 /* Title for the 'share extension' view. */
-"SHARE_EXTENSION_VIEW_TITLE" = "Partajează prin Grapherex";
+"SHARE_EXTENSION_VIEW_TITLE" = "Partajează prin Signal";
 
 /* Title of alert indicating sharing suggestions failed to deactivate */
 "SHARING_SUGGESTIONS_DISABLE_ERROR" = "Eroare la dezactivarea sugestiilor pentru distribuire";
 
 /* Body for sharing suggestions megaphone */
-"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Conversațiile Grapherex pot fi afișate acum ca și sugestii când distribuiți din alte aplicații.";
+"SHARING_SUGGESTIONS_MEGAPHONE_BODY" = "Conversațiile Signal pot fi afișate acum ca și sugestii când distribuiți din alte aplicații.";
 
 /* Title for sharing suggestions megaphone */
 "SHARING_SUGGESTIONS_MEGAPHONE_TITLE" = "Distribuire mai facilă";
 
 /* Disable button for sharing suggestions megaphone */
-"SHARING_SUGGESTIOONS_MEGAPHONE_BUTTON_DISABLE" = "Dezactivați";
+"SHARING_SUGGESTIOONS_MEGAPHONE_BUTTON_DISABLE" = "Dezactivează";
 
 /* Enable button for sharing suggestions megaphone */
 "SHARING_SUGGESTIOONS_MEGAPHONE_BUTTON_ENABLE" = "Activează";
@@ -5013,8 +4804,8 @@
 /* notification action */
 "SHOW_THREAD_BUTTON_TITLE" = "Afișați conversația";
 
-/* body sent to contacts when inviting to Install Grapherex */
-"SMS_INVITE_BODY" = "Te invit să instalezi Grapherex! Uite link-ul:";
+/* body sent to contacts when inviting to Install Signal */
+"SMS_INVITE_BODY" = "Te invit să instalezi Signal! Uite link-ul:";
 
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "Niciunul";
@@ -5041,7 +4832,7 @@
 "STICKERS_INSTALL_BUTTON" = "Instalați";
 
 /* Title for the 'available built-in stickers' section of the 'manage stickers' view. */
-"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Seria artistică Grapherex";
+"STICKERS_MANAGE_VIEW_AVAILABLE_BUILT_IN_PACKS_SECTION_TITLE" = "Seria artistică Signal";
 
 /* Title for the 'available known stickers' section of the 'manage stickers' view. */
 "STICKERS_MANAGE_VIEW_AVAILABLE_KNOWN_PACKS_SECTION_TITLE" = "Autocolante primite";
@@ -5092,7 +4883,7 @@
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Spune-ne despre problemă: ";
 
 /* Message for alert dialog presented when a support email failed to send */
-"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Vă rugăm să trimiteți un email pentru solicitare de asistență la support@grapherex.com";
+"SUPPORT_EMAIL_ERROR_ALERT_DESCRIPTION" = "Vă rugăm să trimiteți un email pentru solicitare de asistență la support@signal.org";
 
 /* Localized label for support request email filter string. Embeds {{filter text}}. */
 "SUPPORT_EMAIL_FILTER_LABEL_FORMAT" = "Filtru: %@";
@@ -5115,16 +4906,16 @@
 /* Localized label for support request email debug log URL. Embeds {{debug log url}}. */
 "SUPPORT_EMAIL_LOG_URL_LABEL_FORMAT" = "Adresă jurnal: %@";
 
-/* Localized label for support request email Grapherex version string. Embeds {{Grapherex version}}. */
-"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Versiune Grapherex: %@";
+/* Localized label for support request email signal version string. Embeds {{signal version}}. */
+"SUPPORT_EMAIL_SIGNAL_VERSION_LABEL_FORMAT" = "Versiune Signal: %@";
 
 /* Localized subject for support request emails */
-"SUPPORT_EMAIL_SUBJECT" = "Cerere asistență Grapherex iOS";
+"SUPPORT_EMAIL_SUBJECT" = "Cerere asistență Signal iOS";
 
 /* Header for emoji mood selection */
 "SUPPORT_EMOJI_PROMPT" = "Cum vă simțiți? (Opțional)";
 
-/* Label in support request informing user about Grapherex FAQ */
+/* Label in support request informing user about Signal FAQ */
 "SUPPORT_FAQ_PROMPT" = "Ai citit deja FAQ-ul nostru?";
 
 /* Label describing support switch to attach debug logs */
@@ -5233,25 +5024,25 @@
 "UNKNOWN_COUNTRY_NAME" = "Țară necunoscută";
 
 /* Info message recorded in conversation history when local user receives an unknown message from a linked device and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Unul dintre dispozitivele tale a trimis un mesaj care nu poate fi procesat sau afișat pentru că utilizează o nouă funcționalitate Grapherex.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_FROM_LINKED_DEVICE" = "Unul dintre dispozitivele tale a trimis un mesaj care nu poate fi procesat sau afișat pentru că utilizează o nouă funcționalitate Signal.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ ți-a trimis un mesaj care nu poate fi procesat sau afișat pentru că utilizează o nouă funcționalitate Grapherex.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITH_NAME_FORMAT" = "%@ ți-a trimis un mesaj care nu poate fi procesat sau afișat pentru că utilizează o nouă funcționalitate Signal.";
 
 /* Info message recorded in conversation history when local user receives an unknown message and needs to upgrade. */
-"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Ați primit un mesaj care nu poate fi procesat sau afișat pentru că utilizează o nouă funcționalitate Grapherex.";
+"UNKNOWN_PROTOCOL_VERSION_NEED_TO_UPGRADE_WITHOUT_NAME" = "Ați primit un mesaj care nu poate fi procesat sau afișat pentru că utilizează o nouă funcționalitate Signal.";
 
 /* Label for button that lets users upgrade the app. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Actualizați Grapherex acum";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_BUTTON" = "Actualizați Signal acum";
 
 /* Info message recorded in conversation history when local user has received an unknown unknown message from a linked device and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Actualizat la ultima versiune de Grapherex. Acum puteți primi acest tip de mesaj pe dispozitiv.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_FROM_LINKED_DEVICE" = "Actualizat la ultima versiune de Signal. Acum puteți primi acest tip de mesaj pe dispozitiv.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. Embeds {{user's name or phone number}}. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Îl puteți ruga pe %@ să retrimită acest mesaj din moment ce folosiți acum o versiune actualizată de Grapherex.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITH_NAME_FORMAT" = "Îl puteți ruga pe %@ să retrimită acest mesaj din moment ce folosiți acum o versiune actualizată de Signal.";
 
 /* Info message recorded in conversation history when local user has received an unknown message and has upgraded. */
-"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Îl puteți ruga pe expeditor să retrimită acest mesaj din moment ce folosiți acum o versiune actualizată de Grapherex.";
+"UNKNOWN_PROTOCOL_VERSION_UPGRADE_COMPLETE_WITHOUT_NAME" = "Îl puteți ruga pe expeditor să retrimită acest mesaj din moment ce folosiți acum o versiune actualizată de Signal.";
 
 /* Label indicating an unknown user. */
 "UNKNOWN_USER" = "Necunoscut";
@@ -5275,10 +5066,10 @@
 "UNLINK_CONFIRMATION_ALERT_TITLE" = "Disociez \"%@\"?";
 
 /* Label warning the user that they have been unlinked from their primary device. */
-"UNLINKED_WARNING" = "Dispozitivul nu mai este asociat. Asociază din nou Grapherex cu telefonul tău pentru a putea comunica din nou.";
+"UNLINKED_WARNING" = "Dispozitivul nu mai este asociat. Asociază din nou Signal cu telefonul tău pentru a putea comunica din nou.";
 
 /* Alert title when unlinking device fails */
-"UNLINKING_FAILED_ALERT_TITLE" = "Grapherex nu a putut disocia dispozitivul tău.";
+"UNLINKING_FAILED_ALERT_TITLE" = "Signal nu a putut disocia dispozitivul tău.";
 
 /* Label text in device manager for a device with no name */
 "UNNAMED_DEVICE" = "Dispozitiv fără nume";
@@ -5293,7 +5084,7 @@
 "UNREAD_ACTION" = "Necitit";
 
 /* No comment provided by engineer. */
-"UNREGISTER_SIGNAL_FAIL" = "Anularea înregistrării de la Grapherex a eșuat.";
+"UNREGISTER_SIGNAL_FAIL" = "Anularea înregistrării de la Signal a eșuat.";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "A fost primit un tip de atașament care nu e suportat.";
@@ -5317,7 +5108,7 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_LEARN_MORE" = "Aflați mai multe despre PIN-uri";
 
 /* Body text for PINs splash screen */
-"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PIN-urile păstrează informațiile stocate în Grapherex criptate, astfel încât numai tu să le poți accesa. Profilul, setările și contactele se vor restabili atunci când reinstalați Grapherex. Nu aveți nevoie de PIN pentru a deschide aplicația.";
+"UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_DESCRIPTION" = "PIN-urile păstrează informațiile stocate în Signal criptate, astfel încât numai tu să le poți accesa. Profilul, setările și contactele se vor restabili atunci când reinstalați Signal. Nu aveți nevoie de PIN pentru a deschide aplicația.";
 
 /* Header for PINs splash screen */
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SETUP_TITLE" = "Vă prezentăm PIN-uri";
@@ -5326,16 +5117,13 @@
 "UPGRADE_EXPERIENCE_INTRODUCING_PINS_SKIP" = "Dezactivare PIN";
 
 /* Message for the alert indicating that user should upgrade iOS. */
-"UPGRADE_IOS_ALERT_MESSAGE" = "Grapherex va necesita în curând iOS 11 sau o versiune mai nouă. Vă rugăm să actualizați din aplicația Setări >> General >> Actualizări Software.";
+"UPGRADE_IOS_ALERT_MESSAGE" = "Signal va necesita în curând iOS 11 sau o versiune mai nouă. Vă rugăm să actualizați din aplicația Setări >> General >> Actualizări Software.";
 
 /* Title for the alert indicating that user should upgrade iOS. */
 "UPGRADE_IOS_ALERT_TITLE" = "Actualizează-ți iOS-ul";
 
 /* An explanation of how usernames work on the username view. */
-"USERNAME_DESCRIPTION" = "Numele de utilizator pe Grapherex sunt opționale. Dacă alegi să creezi un nume de utilizator, alți utilizatori de Grapherex te vor putea găsi prin acest nume și te vor contacta fără să îți știe numărul de telefon.";
-
-/* Label for the username field in the username view. */
-"USERNAME_FIELD" = "Nume utilizator";
+"USERNAME_DESCRIPTION" = "Numele de utilizator pe Signal sunt opționale. Dacă alegi să creezi un nume de utilizator, alți utilizatori de Signal te vor putea găsi prin acest nume și te vor contacta fără să îți știe numărul de telefon.";
 
 /* An error indicating that the supplied username contains disallowed characters. */
 "USERNAME_INVALID_CHARACTERS_ERROR" = "Numele de utilizatori pot conține doar a-z, 0-9, și _";
@@ -5343,10 +5131,10 @@
 /* A message indicating that username lookup failed. */
 "USERNAME_LOOKUP_ERROR" = "A apărut o eroare la căutarea numelui de utilizator. Vă rugăm să încercați din nou mai târziu.";
 
-/* A message indicating that the given username is not a registered Grapherex account. Embeds {{username}} */
-"USERNAME_NOT_FOUND_FORMAT" = "%@ nu este un utilizator Grapherex. Asigurați-vă că ați introdus numele de utilizator complet.";
+/* A message indicating that the given username is not a registered signal account. Embeds {{username}} */
+"USERNAME_NOT_FOUND_FORMAT" = "%@ nu este un utilizator Signal. Asigurați-vă că ați introdus numele de utilizator complet.";
 
-/* A message indicating that the given username was not registered with Grapherex. */
+/* A message indicating that the given username was not registered with signal. */
 "USERNAME_NOT_FOUND_TITLE" = "Utilizatorul nu a fost găsit";
 
 /* The placeholder for the username text entry in the username view. */
@@ -5422,7 +5210,7 @@
 "VOICE_MESSAGE_TOO_SHORT_ALERT_TITLE" = "Mesaj vocal";
 
 /* Activity indicator title, shown upon returning to the device manager, until you complete the provisioning process on desktop */
-"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Finalizează configurarea în Grapherex Desktop.";
+"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Finalizează configurarea în Signal Desktop.";
 
 /* Placeholder text for header of the wallpaper mini preview */
 "WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Nume contact";
@@ -5431,13 +5219,13 @@
 "WALLPAPER_PREVIEW_BLUR_BUTTON" = "Estompare poză";
 
 /* The incoming bubble text when setting a photo */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "Prindeți pentru a mări, trageți pentru a ajusta.";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PHOTO" = "Prinde pentru a mări, trage pentru a ajusta.";
 
 /* The incoming bubble text when setting a preset */
-"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Glisați pentru a previzualiza mai multe imagini de fundal.";
+"WALLPAPER_PREVIEW_INCOMING_MESSAGE_PRESET" = "Glisează pentru a previzualiza mai multe imagini de fundal.";
 
 /* The outgoing bubble text when setting a wallpaper for all chats. */
-"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "Setați imaginea de fundal pentru toate conversațiile";
+"WALLPAPER_PREVIEW_OUTGOING_MESSAGE_ALL_CHATS" = "Setează imaginea de fundal pentru toate conversațiile";
 
 /* The outgoing bubble text when setting a wallpaper for specific chat. Embeds {{chat name}} */
 "WALLPAPER_PREVIEW_OUTGOING_MESSAGE_FORMAT" = "Setare fundal pentru %@.";
@@ -5452,16 +5240,16 @@
 "WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "Eliminare fundal";
 
 /* Confirmation dialog when clearing the wallpaper for a specific chat. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "Eliminați fundalul pentru această conversație?";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "Elimini fundalul pentru această conversație?";
 
 /* Confirmation dialog when clearing the global wallpaper. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "Ștergeți imaginea de fundal? Aceasta nu va șterge imaginile de fundal personalizate pe care le-ați setat pentru conversațiile dvs.";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "Șterge imaginea de fundal? Nu vor fi șterse imaginile de fundal personalizate setate pentru fiecare conversație.";
 
 /* Dim wallpaper action in wallpaper settings view. */
 "WALLPAPER_SETTINGS_DIM_WALLPAPER" = "Tema întunecată estompează fundalul";
 
 /* An error indicating to the user that we failed to clear the wallpaper. */
-"WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "Imaginea de fundal nu a putut fi ștearsă, încercați din nou mai târziu sau contactați suportul dacă eroarea persistă.";
+"WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "Imaginea de fundal nu a putut fi ștearsă, încearcă din nou mai târziu sau contactează suportul dacă eroarea persistă.";
 
 /* An error indicating to the user that we failed to reset all wallpapers. */
 "WALLPAPER_SETTINGS_FAILED_TO_RESET" = "Nu s-au putut reseta toate imaginile de fundal, încercați din nou mai târziu sau contactați suportul dacă eroarea persistă.";
@@ -5473,7 +5261,7 @@
 "WALLPAPER_SETTINGS_RESET_ALL" = "Resetare toate imaginile de fundal";
 
 /* Confirmation dialog when resetting all wallpapers. */
-"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "Resetați toate imaginile de fundal, inclusiv imaginile de fundal personalizate pe care le-ați setat pentru conversațiile dvs.?";
+"WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "Resetezi toate imaginile de fundal, inclusiv imaginile de fundal personalizate pe care le-ai setat pentru conversațiile tale?";
 
 /* Set wallpaper action in wallpaper settings view. */
 "WALLPAPER_SETTINGS_SET_WALLPAPER" = "Setează fundal";

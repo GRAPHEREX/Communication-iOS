@@ -84,28 +84,28 @@ class GRDBMessagesWithLinkFinder: MessagesWithLinkFinder {
 
     func enumerateAllMessagesWithLink(transaction: GRDBReadTransaction, block: @escaping EnumerateTSMessageBlock) {
 
-        let sql = """
-        SELECT * FROM \(InteractionRecord.databaseTableName)
-        WHERE \(interactionColumn: .threadUniqueId) = ?
-            AND \(interactionColumn: .isMessageWithLink) == TRUE
-        ORDER BY \(interactionColumn: .receivedAtTimestamp) DESC
-        """
-        
-        let cursor = TSInteraction.grdbFetchCursor(sql: sql,
-                                                   arguments: [thread.uniqueId],
-                                                   transaction: transaction)
-        var stop: ObjCBool = false
-        // GRDB TODO make cursor.next fail hard to remove this `try!`
-        while let next = try! cursor.next() {
-            guard let message = next as? TSMessage else {
-                owsFailDebug("expecting message but found: \(next)")
-                return
-            }
-            block(message, &stop)
-            if stop.boolValue {
-                return
-            }
-        }
+//        let sql = """
+//        SELECT * FROM \(InteractionRecord.databaseTableName)
+//        WHERE \(interactionColumn: .threadUniqueId) = ?
+//            AND \(interactionColumn: .isMessageWithLink) == TRUE
+//        ORDER BY \(interactionColumn: .receivedAtTimestamp) DESC
+//        """
+//
+//        let cursor = TSInteraction.grdbFetchCursor(sql: sql,
+//                                                   arguments: [thread.uniqueId],
+//                                                   transaction: transaction)
+//        var stop: ObjCBool = false
+//        // GRDB TODO make cursor.next fail hard to remove this `try!`
+//        while let next = try! cursor.next() {
+//            guard let message = next as? TSMessage else {
+//                owsFailDebug("expecting message but found: \(next)")
+//                return
+//            }
+//            block(message, &stop)
+//            if stop.boolValue {
+//                return
+//            }
+//        }
     }
 }
 

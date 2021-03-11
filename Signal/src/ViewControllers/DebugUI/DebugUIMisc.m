@@ -15,7 +15,6 @@
 #import <SignalMessaging/OWSTableViewController.h>
 #import <SignalServiceKit/OWSBlockingManager.h>
 #import <SignalServiceKit/OWSDisappearingMessagesConfiguration.h>
-#import <SignalServiceKit/SSKSessionStore.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <SignalServiceKit/TSCall.h>
 #import <SignalServiceKit/TSPreKeyManager.h>
@@ -625,13 +624,6 @@ NS_ASSUME_NONNULL_BEGIN
                               lastSeenAt:[NSDate new]
                                     name:nil] anyInsertWithTransaction:transaction];
 
-    // SSKJobRecord
-    //
-    // NOTE: We insert every kind of job record.
-    [[[SSKMessageDecryptJobRecord alloc] initWithEnvelopeData:[Randomness generateRandomBytes:16]
-                                      serverDeliveryTimestamp:0
-                                                        label:SSKMessageDecryptJobQueue.jobRecordLabel]
-        anyInsertWithTransaction:transaction];
     TSOutgoingMessage *queuedMessage = [[TSOutgoingMessageBuilder outgoingMessageBuilderWithThread:thread
                                                                                        messageBody:@"some body"] build];
     NSError *_Nullable error;

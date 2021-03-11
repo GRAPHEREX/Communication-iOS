@@ -49,7 +49,7 @@ typedef void (^CallAction)(SignalServiceAddress*);
 
 - (void)setCustomAvatar:(nullable UIImage *)customAvatar;
 
-- (void)setUseSmallAvatars;
+- (void)setUseLargeAvatars;
 
 - (NSAttributedString *)verifiedSubtitle;
 

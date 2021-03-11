@@ -116,7 +116,7 @@ public class CVComponentCallMessage: CVComponentBase, CVRootComponent {
         titleLabelConfig(text: call.shortPreviewText(), textColor: textColor).applyForRendering(label: titleLabel)
         
         let timestampLabel = componentView.timestampLabel
-        timestampLabelConfig(text: DateUtil.formatMessageTimestamp(itemModel.interaction.timestamp), textColor: textColor).applyForRendering(label: timestampLabel)
+        timestampLabelConfig(text: DateUtil.formatMessageTimestamp(itemModel.interaction.timestamp, shouldUseLongFormat: false), textColor: textColor).applyForRendering(label: timestampLabel)
         
         let subtitleIconView = componentView.subtitleIconView
         subtitleIconView.image = subtitleIcon
@@ -144,7 +144,7 @@ public class CVComponentCallMessage: CVComponentBase, CVRootComponent {
         
         let titleLabelSize = titleLabelConfig(text: call.shortPreviewText(), textColor: .black).measure(maxWidth: maxTitleWidth)
         
-        let timestampLabelSize = timestampLabelConfig(text: DateUtil.formatMessageTimestamp(itemModel.interaction.timestamp), textColor: .black).measure(maxWidth: maxTitleWidth)
+        let timestampLabelSize = timestampLabelConfig(text: DateUtil.formatMessageTimestamp(itemModel.interaction.timestamp, shouldUseLongFormat: false), textColor: .black).measure(maxWidth: maxTitleWidth)
         
         let cellHeight = innerLayoutMargins.top + titleLabelSize.height + vStackViewConfig.spacing + max(timestampLabelSize.height, subtitleIcon.size.height) + innerLayoutMargins.bottom
         

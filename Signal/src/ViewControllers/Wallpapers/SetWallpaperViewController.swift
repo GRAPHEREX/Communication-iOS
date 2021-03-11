@@ -4,11 +4,15 @@
 
 import Foundation
 
-class SetWallpaperViewController: OWSTableViewController {
+class SetWallpaperViewController: OWSTableViewController2 {
     lazy var collectionView = WallpaperCollectionView { [weak self] wallpaper in
         guard let self = self else { return }
-        let vc = PreviewWallpaperViewController(mode: .preset(selectedWallpaper: wallpaper), thread: self.thread)
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = PreviewWallpaperViewController(
+            mode: .preset(selectedWallpaper: wallpaper),
+            thread: self.thread,
+            delegate: self
+        )
+        self.presentFullScreen(UINavigationController(rootViewController: vc), animated: true)
     }
 
     let thread: TSThread?
@@ -28,7 +32,7 @@ class SetWallpaperViewController: OWSTableViewController {
         super.viewDidLoad()
 
         title = NSLocalizedString("SET_WALLPAPER_TITLE", comment: "Title for the set wallpaper settings view.")
-        useThemeBackgroundColors = true
+
         updateTableContents()
     }
 
@@ -89,7 +93,7 @@ class SetWallpaperViewController: OWSTableViewController {
             let cell = OWSTableItem.newCell()
             guard let self = self else { return cell }
             cell.contentView.addSubview(self.collectionView)
-            self.collectionView.autoPinEdgesToSuperviewEdges()
+            self.collectionView.autoPinEdgesToSuperviewMargins()
             return cell
         } actionBlock: {}
         presetsSection.add(presetsItem)
@@ -109,15 +113,30 @@ extension SetWallpaperViewController: UIImagePickerControllerDelegate, UINavigat
             return owsFailDebug("Missing image")
         }
 
-        let vc = PreviewWallpaperViewController(mode: .photo(selectedPhoto: rawImage), thread: thread)
+        let vc = PreviewWallpaperViewController(
+            mode: .photo(selectedPhoto: rawImage),
+            thread: thread,
+            delegate: self
+        )
 
         picker.dismiss(animated: true) {
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.presentFullScreen(UINavigationController(rootViewController: vc), animated: true)
         }
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension SetWallpaperViewController: PreviewWallpaperDelegate {
+    func previewWallpaperDidCancel(_ vc: PreviewWallpaperViewController) {
+        presentedViewController?.dismiss(animated: true)
+    }
+
+    func previewWallpaperDidComplete(_ vc: PreviewWallpaperViewController) {
+        presentedViewController?.dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -136,7 +155,7 @@ class WallpaperCollectionView: UICollectionView {
 
         delegate = self
         dataSource = self
-        contentInset = UIEdgeInsets(hMargin: 16, vMargin: 16)
+        contentInset = UIEdgeInsets(hMargin: 0, vMargin: 8)
         isScrollEnabled = false
         backgroundColor = .clear
 
@@ -149,7 +168,7 @@ class WallpaperCollectionView: UICollectionView {
         let numberOfColumns: CGFloat = 3
         let numberOfRows = CGFloat(Wallpaper.defaultWallpapers.count) / numberOfColumns
 
-        let availableWidth = reference.width - contentInset.totalWidth - 8 - safeAreaInsets.totalWidth
+        let availableWidth = reference.width - ((OWSTableViewController2.cellHOuterMargin * 2) + (OWSTableViewController2.cellHInnerMargin * 2) + 8 + safeAreaInsets.totalWidth)
 
         let itemWidth = availableWidth / numberOfColumns
         let itemHeight = itemWidth / CurrentAppContext().frame.size.aspectRatio

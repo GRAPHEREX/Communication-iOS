@@ -30,6 +30,8 @@ typedef void (^CallAction)(SignalServiceAddress*); //_Nonnull
 /// Default is "NO"
 @property (nonatomic) BOOL asCallView;
 
+@property (nonatomic) BOOL useLargeAvatars;
+
 - (void)configureWithRecipientAddressWithSneakyTransaction:(SignalServiceAddress *)address
     NS_SWIFT_NAME(configureWithSneakyTransaction(recipientAddress:));
 

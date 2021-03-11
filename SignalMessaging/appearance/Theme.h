@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -44,6 +44,7 @@ extern NSString *const ThemeDidChangeNotification;
 @property (class, readonly, nonatomic) UIColor *primaryTextColor;
 @property (class, readonly, nonatomic) UIColor *primaryIconColor;
 @property (class, readonly, nonatomic) UIColor *secondaryTextAndIconColor;
+@property (class, readonly, nonatomic) UIColor *ternaryTextColor;
 @property (class, readonly, nonatomic) UIColor *boldColor;
 @property (class, readonly, nonatomic) UIColor *middleGrayColor;
 @property (class, readonly, nonatomic) UIColor *placeholderColor;
@@ -77,6 +78,15 @@ extern NSString *const ThemeDidChangeNotification;
 
 @property (class, readonly, nonatomic) UIColor *tableCellBackgroundColor;
 @property (class, readonly, nonatomic) UIColor *tableViewBackgroundColor;
+
+@property (class, readonly, nonatomic) UIColor *tableCell2BackgroundColor;
+@property (class, readonly, nonatomic) UIColor *tableCell2PresentedBackgroundColor;
+@property (class, readonly, nonatomic) UIColor *tableCell2SelectedBackgroundColor;
+@property (class, readonly, nonatomic) UIColor *tableCell2PresentedSelectedBackgroundColor;
+@property (class, readonly, nonatomic) UIColor *tableView2BackgroundColor;
+@property (class, readonly, nonatomic) UIColor *tableView2PresentedBackgroundColor;
+@property (class, readonly, nonatomic) UIColor *tableView2SeparatorColor;
+@property (class, readonly, nonatomic) UIColor *tableView2PresentedSeparatorColor;
 
 // In some contexts, e.g. media viewing/sending, we always use "dark theme" UI regardless of the
 // users chosen theme.

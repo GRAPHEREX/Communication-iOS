@@ -258,9 +258,6 @@ public class ShareViewController: UIViewController, ShareViewDelegate, SAEFailed
 
         ensureRootViewController()
 
-        // We don't need to use OWSMessageReceiver in the SAE.
-        // We don't need to use OWSBatchMessageProcessor in the SAE.
-
         // We don't need to use OWSOrphanDataCleaner in the SAE.
 
         // We don't need to fetch the local profile in the SAE
@@ -381,7 +378,7 @@ public class ShareViewController: UIViewController, ShareViewDelegate, SAEFailed
         Logger.debug("")
 
         if isReadyForAppExtensions {
-            AppReadiness.runNowOrWhenAppDidBecomeReady { [weak self] in
+            AppReadiness.runNowOrWhenAppDidBecomeReadySync { [weak self] in
                 AssertIsOnMainThread()
                 guard let strongSelf = self else { return }
                 strongSelf.activate()

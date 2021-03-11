@@ -4,7 +4,7 @@
 
 import Foundation
 
-public class WallpaperSettingsViewController: OWSTableViewController {
+public class WallpaperSettingsViewController: OWSTableViewController2 {
     let thread: TSThread?
     public init(thread: TSThread? = nil) {
         self.thread = thread
@@ -22,7 +22,7 @@ public class WallpaperSettingsViewController: OWSTableViewController {
         super.viewDidLoad()
 
         title = NSLocalizedString("WALLPAPER_SETTINGS_TITLE", comment: "Title for the wallpaper settings view.")
-        useThemeBackgroundColors = true
+
         updateTableContents()
     }
 
@@ -31,6 +31,7 @@ public class WallpaperSettingsViewController: OWSTableViewController {
         let contents = OWSTableContents()
 
         let previewSection = OWSTableSection()
+        previewSection.hasBackground = false
         previewSection.headerTitle = NSLocalizedString("WALLPAPER_SETTINGS_PREVIEW",
                                                        comment: "Title for the wallpaper settings preview section.")
         let previewItem = OWSTableItem { [weak self] in
@@ -39,7 +40,8 @@ public class WallpaperSettingsViewController: OWSTableViewController {
             guard let self = self else { return cell }
             let miniPreview = MiniPreviewView(thread: self.thread)
             cell.contentView.addSubview(miniPreview)
-            miniPreview.autoPinEdgesToSuperviewEdges()
+            miniPreview.autoPinWidthToSuperview(withMargin: Self.cellHOuterMargin)
+            miniPreview.autoPinHeightToSuperview()
             return cell
         } actionBlock: {}
         previewSection.add(previewItem)
@@ -195,6 +197,7 @@ class MiniPreviewView: UIView {
     init(thread: TSThread?) {
         super.init(frame: .zero)
 
+        layer.cornerRadius = OWSTableViewController2.cellRounding
         backgroundColor = Theme.isDarkThemeEnabled ? .ows_gray65 : .ows_gray05
 
         let stackViewContainer: UIView
@@ -209,7 +212,18 @@ class MiniPreviewView: UIView {
 
         stackViewContainer.layer.cornerRadius = 8
         stackViewContainer.clipsToBounds = true
-        stackViewContainer.autoSetDimensions(to: CGSize(width: 156, height: 288))
+
+        let windowAspectRatio = CGSize(
+            width: CurrentAppContext().frame.size.smallerAxis,
+            height: CurrentAppContext().frame.size.largerAxis
+        ).aspectRatio
+
+        stackViewContainer.autoSetDimensions(
+            to: CGSize(
+                width: 156,
+                height: 156 / windowAspectRatio
+            )
+        )
 
         addSubview(stackViewContainer)
         stackViewContainer.autoHCenterInSuperview()
@@ -250,7 +264,7 @@ class MiniPreviewView: UIView {
         let bubbleView = UIView()
         bubbleView.layer.cornerRadius = 10
         bubbleView.autoSetDimensions(to: CGSize(width: 100, height: 30))
-        bubbleView.backgroundColor = Theme.isDarkThemeEnabled ? .ows_gray80 : .ows_gray05
+        bubbleView.backgroundColor = Theme.isDarkThemeEnabled ? .ows_gray95 : .ows_white
         containerView.addSubview(bubbleView)
         bubbleView.autoPinEdge(toSuperviewEdge: .leading, withInset: 8)
         bubbleView.autoPinHeightToSuperview()

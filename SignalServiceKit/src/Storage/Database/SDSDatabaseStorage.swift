@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -132,6 +132,51 @@ public class SDSDatabaseStorage: SDSTransactable {
     @objc
     public static let storageDidReload = Notification.Name("storageDidReload")
 
+    // completion is performed on the main queue.
+    @objc
+    public func runGrdbSchemaMigrations(completion: @escaping () -> Void) {
+        guard storageCoordinatorState == .GRDB,
+              canReadFromGrdb else {
+            owsFailDebug("Not GRDB.")
+            return
+        }
+
+        Logger.info("")
+
+        let didPerformIncrementalMigrations = GRDBSchemaMigrator().runSchemaMigrations()
+
+        Logger.info("didPerformIncrementalMigrations: \(didPerformIncrementalMigrations)")
+
+        if didPerformIncrementalMigrations {
+            let benchSteps = BenchSteps()
+
+            // There seems to be a rare issue where at least one reader or writer
+            // (e.g. SQLite connection) in the GRDB pool ends up "stale" after
+            // a schema migration and does not reflect the migrations.
+            grdbStorage.pool.releaseMemory()
+            weak var weakPool = grdbStorage.pool
+            weak var weakGrdbStorage = grdbStorage
+            owsAssertDebug(weakPool != nil)
+            owsAssertDebug(weakGrdbStorage != nil)
+            _grdbStorage = createGrdbStorage()
+
+            DispatchQueue.main.async {
+                // We want to make sure all db connections from the old adapter/pool are closed.
+                //
+                // We only reach this point by a predictable code path; the autoreleasepool
+                // should be drained by this point.
+                owsAssertDebug(weakPool == nil)
+                owsAssertDebug(weakGrdbStorage == nil)
+
+                benchSteps.step("New GRDB adapter.")
+
+                completion()
+            }
+        } else {
+            DispatchQueue.main.async(execute: completion)
+        }
+    }
+
     public func reload() {
         AssertIsOnMainThread()
         assert(storageCoordinatorState == .GRDB)
@@ -150,7 +195,6 @@ public class SDSDatabaseStorage: SDSTransactable {
         NotificationCenter.default.post(name: Self.storageDidReload, object: nil, userInfo: nil)
 
         SSKEnvironment.shared.warmCaches()
-        OWSIdentityManager.shared().recreateDatabaseQueue()
 
         if wasRegistered != TSAccountManager.shared().isRegistered {
             NotificationCenter.default.post(name: .registrationStateDidChange, object: nil, userInfo: nil)
@@ -231,28 +275,6 @@ public class SDSDatabaseStorage: SDSTransactable {
             return
         }
         uiDatabaseObserver.appendSnapshotDelegate(snapshotDelegate)
-    }
-
-    // MARK: -
-
-    @objc
-    public func newDatabaseQueue() -> SDSAnyDatabaseQueue {
-        var yapDatabaseQueue: YAPDBDatabaseQueue?
-        var grdbDatabaseQueue: GRDBDatabaseQueue?
-
-        switch storageCoordinatorState {
-        case .YDB:
-            yapDatabaseQueue = yapStorage.newDatabaseQueue()
-        case .GRDB:
-            grdbDatabaseQueue = grdbStorage.newDatabaseQueue()
-        case .ydbTests, .grdbTests, .beforeYDBToGRDBMigration, .duringYDBToGRDBMigration:
-            yapDatabaseQueue = yapStorage.newDatabaseQueue()
-            grdbDatabaseQueue = grdbStorage.newDatabaseQueue()
-        }
-
-        return SDSAnyDatabaseQueue(yapDatabaseQueue: yapDatabaseQueue,
-                                   grdbDatabaseQueue: grdbDatabaseQueue,
-                                   crossProcess: crossProcess)
     }
 
     // MARK: - UI Database Snapshot Completion
@@ -378,7 +400,8 @@ public class SDSDatabaseStorage: SDSTransactable {
                 if let uiDatabaseObserver = grdbStorage.uiDatabaseObserver {
                     uiDatabaseObserver.didTouch(thread: thread, transaction: grdb)
                 } else if AppReadiness.isAppReady {
-                    owsFailDebug("conversationListDatabaseObserver was unexpectedly nil")
+                    // This can race with observation setup when app becomes ready.
+                    Logger.warn("uiDatabaseObserver was unexpectedly nil")
                 }
                 if shouldReindex {
                     GRDBFullTextSearchFinder.modelWasUpdated(model: thread, transaction: grdb)
@@ -440,7 +463,7 @@ public class SDSDatabaseStorage: SDSTransactable {
     // MARK: - SDSTransactable
 
     @objc
-    public func uiRead(block: @escaping (SDSAnyReadTransaction) -> Void) {
+    public func uiRead(block: (SDSAnyReadTransaction) -> Void) {
         switch dataStoreForReads {
         case .grdb:
             do {
@@ -460,7 +483,7 @@ public class SDSDatabaseStorage: SDSTransactable {
     }
 
     @objc
-    public override func read(block: @escaping (SDSAnyReadTransaction) -> Void) {
+    public override func read(block: (SDSAnyReadTransaction) -> Void) {
         switch dataStoreForReads {
         case .grdb:
             do {
@@ -481,7 +504,7 @@ public class SDSDatabaseStorage: SDSTransactable {
     public override func write(file: String = #file,
                                function: String = #function,
                                line: Int = #line,
-                               block: @escaping (SDSAnyWriteTransaction) -> Void) {
+                               block: (SDSAnyWriteTransaction) -> Void) {
         #if TESTABLE_BUILD
         if Thread.isMainThread &&
             AppReadiness.isAppReady {
@@ -494,7 +517,7 @@ public class SDSDatabaseStorage: SDSTransactable {
         case .grdb:
             do {
                 try grdbStorage.write { transaction in
-                    Bench(title: benchTitle, logIfLongerThan: 0.1) {
+                    Bench(title: benchTitle, logIfLongerThan: 0.1, logInProduction: DebugFlags.internalLogging) {
                         block(transaction.asAnyWrite)
                     }
                 }
@@ -511,7 +534,7 @@ public class SDSDatabaseStorage: SDSTransactable {
         crossProcess.notifyChangedAsync()
     }
 
-    public func uiReadThrows(block: @escaping (SDSAnyReadTransaction) throws -> Void) throws {
+    public func uiReadThrows(block: (SDSAnyReadTransaction) throws -> Void) throws {
         switch dataStoreForReads {
         case .grdb:
             try grdbStorage.uiReadThrows { transaction in
@@ -528,7 +551,7 @@ public class SDSDatabaseStorage: SDSTransactable {
         }
     }
 
-    public func uiRead<T>(block: @escaping (SDSAnyReadTransaction) -> T) -> T {
+    public func uiRead<T>(block: (SDSAnyReadTransaction) -> T) -> T {
         var value: T!
         uiRead { (transaction) in
             value = block(transaction)
@@ -677,9 +700,9 @@ extension SDSDatabaseStorage {
 protocol SDSDatabaseStorageAdapter {
     associatedtype ReadTransaction
     associatedtype WriteTransaction
-    func uiRead(block: @escaping (ReadTransaction) -> Void) throws
-    func read(block: @escaping (ReadTransaction) -> Void) throws
-    func write(block: @escaping (WriteTransaction) -> Void) throws
+    func uiRead(block: (ReadTransaction) -> Void) throws
+    func read(block: (ReadTransaction) -> Void) throws
+    func write(block: (WriteTransaction) -> Void) throws
 }
 
 // MARK: -

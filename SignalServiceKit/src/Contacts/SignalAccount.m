@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "SignalAccount.h"
@@ -176,22 +176,85 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
 
 // --- CODE GENERATION MARKER
 
-- (nullable NSString *)contactPreferredDisplayName {
-    NSPersonNameComponents *components = [NSPersonNameComponents new];
-    components.givenName = self.contact.firstName;
-    components.familyName = self.contact.lastName;
-    components.nickname = self.contact.nickname;
-    
+- (BOOL)shouldUseNicknames
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kSignalPreferNicknamesPreference];
+}
+
+- (nullable NSPersonNameComponents *)contactPersonNameComponents
+{
+    NSPersonNameComponents *nameComponents = [NSPersonNameComponents new];
+
+    // Check if we have a first name or last name, if we do we can use them directly.
+    if (self.contactFirstName.length > 0 || self.contactLastName.length > 0) {
+        nameComponents.givenName = self.contactFirstName;
+        nameComponents.familyName = self.contactLastName;
+    } else if (self.contactFullName.length > 0) {
+        // If we don't have a first name or last name, but we *do* have a full name,
+        // try our best to create appropriate components to represent it.
+        NSArray<NSString *> *components = [self.contactFullName componentsSeparatedByString:@" "];
+
+        // If there are only two words separated by a space, this is probably a given
+        // and family name.
+        if (components.count <= 2) {
+            nameComponents.givenName = components.firstObject;
+            nameComponents.familyName = components.lastObject;
+        } else {
+            nameComponents.givenName = self.contactFullName;
+        }
+    }
+    nameComponents.nickname = self.contactNicknameIfAvailable;
+
+    if (nameComponents.givenName.length < 1 && nameComponents.familyName.length < 1
+        && nameComponents.nickname.length < 1) {
+        return nil;
+    }
+
+    return nameComponents;
+}
+
+- (nullable NSString *)contactPreferredDisplayName
+{
+    NSPersonNameComponents *_Nullable components = self.contactPersonNameComponents;
+    if (components == nil) {
+        return nil;
+    }
+
     NSString *result = nil;
     // If we have a nickname check what the user prefers.
-    if (components.nickname.length && [[NSUserDefaults standardUserDefaults] boolForKey: kSignalPreferNicknamesPreference]) {
+    if (components.nickname.length > 0 && self.shouldUseNicknames) {
         result = components.nickname;
-    } else {
+    } else if (components.givenName.length > 0 || components.familyName.length > 0) {
         result = [NSPersonNameComponentsFormatter localizedStringFromPersonNameComponents: components
                                                                                     style: NSPersonNameComponentsFormatterStyleDefault
                                                                                   options: 0];
+    } else {
+        // The components might have a nickname but !shouldUseNicknames.
+        OWSLogWarn(@"Invalid name components.");
+        return nil;
     }
-    return result.filterStringForDisplay;
+    result = result.filterStringForDisplay;
+    if (result.length > 0) {
+        return result;
+    } else {
+        return nil;
+    }
+}
+
+- (nullable NSString *)contactNicknameIfAvailable
+{
+    if (!self.shouldUseNicknames) {
+        return nil;
+    }
+    NSString *nickname = self.contact.nickname;
+    if (nickname.length > 0)
+    {
+        return nickname;
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 - (nullable NSString *)contactFullName

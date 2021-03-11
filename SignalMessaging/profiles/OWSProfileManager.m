@@ -4,7 +4,6 @@
 
 #import "OWSProfileManager.h"
 #import "Environment.h"
-#import <AFNetworking/AFHTTPSessionManager.h>
 #import <PromiseKit/AnyPromise.h>
 #import <SignalCoreKit/Cryptography.h>
 #import <SignalCoreKit/NSData+OWS.h>
@@ -146,12 +145,12 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
 
     OWSSingletonAssert();
 
-    [AppReadiness runNowOrWhenAppDidBecomeReadyPolite:^{
+    AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{
         if (TSAccountManager.shared.isRegistered) {
             [self rotateLocalProfileKeyIfNecessary];
             [OWSProfileManager updateProfileOnServiceIfNecessaryObjc];
         }
-    }];
+    });
 
     [self observeNotifications];
 
@@ -875,7 +874,7 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
     OWSAssertDebug(addresses);
 
     // Try to avoid opening a write transaction.
-    [AppReadiness runNowOrWhenAppDidBecomeReadyPolite:^{
+    AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{
         [self.databaseStorage asyncReadWithBlock:^(SDSAnyReadTransaction *readTransaction) {
             NSSet<SignalServiceAddress *> *addressesToAdd = [self addressesNotBlockedOrInWhitelist:addresses
                                                                                        transaction:readTransaction];
@@ -890,7 +889,7 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
                                              transaction:writeTransaction];
             });
         }];
-    }];
+    });
 }
 
 - (void)addUserToProfileWhitelist:(SignalServiceAddress *)address
@@ -1952,6 +1951,9 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
 {
     OWSAssertIsOnMainThread();
 
+    if (profileName.glyphCount > OWSUserProfile.maxNameLengthGlyphs) {
+        return YES;
+    }
     NSData *nameData = [profileName dataUsingEncoding:NSUTF8StringEncoding];
     return nameData.length > (NSUInteger)OWSUserProfile.maxNameLengthBytes;
 }
@@ -2107,9 +2109,7 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
 - (void)blockListDidChange:(NSNotification *)notification {
     OWSAssertIsOnMainThread();
 
-    [AppReadiness runNowOrWhenAppDidBecomeReadyPolite:^{
-        [self rotateLocalProfileKeyIfNecessary];
-    }];
+    AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{ [self rotateLocalProfileKeyIfNecessary]; });
 }
 
 #ifdef DEBUG
