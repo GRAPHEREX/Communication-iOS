@@ -15,8 +15,8 @@ class AppSettingsViewController: OWSTableViewController2 {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = NSLocalizedString("SETTINGS_NAV_BAR_TITLE", comment: "Title for settings activity")
-        navigationItem.leftBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: #selector(didTapDone))
+        navigationItem.title = NSLocalizedString("SETTINGS_NAV_BAR_TITLE", comment: "Title for settings activity")
+//        navigationItem.leftBarButtonItem = .init(barButtonSystemItem: .done, target: self, action: #selector(didTapDone))
 
         defaultSeparatorInsetLeading = Self.cellHInnerMargin + 24 + OWSTableItem.iconSpacing
 
@@ -52,7 +52,10 @@ class AppSettingsViewController: OWSTableViewController2 {
         profileSection.add(.init(
             customCellBlock: { self.profileCell() },
             actionBlock: { [weak self] in
-                let vc = ProfileSettingsViewController()
+                let vc = MyProfileViewController()
+                vc.completionHandler = { completedVC in
+                    completedVC.navigationController?.popViewController(animated: true)
+                }
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
         ))
