@@ -52,6 +52,7 @@ extension ConversationSettingsViewController {
         // Main section.
         let mainSection = OWSTableSection()
         let header = buildMainHeader()
+        header.backgroundColor = .clear
         lastContentWidth = view.width
         mainSection.customHeaderView = header
         addBasicItems(to: mainSection)
