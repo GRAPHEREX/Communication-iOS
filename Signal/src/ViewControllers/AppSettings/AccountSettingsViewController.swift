@@ -17,97 +17,97 @@ class AccountSettingsViewController: OWSTableViewController2 {
     func updateTableContents() {
         let contents = OWSTableContents()
 
-        // Show the change pin and reglock sections
-        if tsAccountManager.isRegisteredPrimaryDevice {
-            let pinSection = OWSTableSection()
-            pinSection.headerTitle = NSLocalizedString(
-                "SETTINGS_PINS_TITLE",
-                comment: "Title for the 'PINs' section of the privacy settings."
-            )
-            pinSection.footerAttributedTitle = NSAttributedString.composed(of: [
-                NSLocalizedString(
-                    "SETTINGS_PINS_FOOTER",
-                    comment: "Footer for the 'PINs' section of the privacy settings."
-                ),
-                " ",
-                CommonStrings.learnMore.styled(with: .link(URL(string: "https://support.signal.org/hc/articles/360007059792")!))
-            ]).styled(
-                with: .font(.ows_dynamicTypeCaption1Clamped),
-                .color(Theme.secondaryTextAndIconColor)
-            )
-
-            pinSection.add(.disclosureItem(
-                withText: OWS2FAManager.shared().is2FAEnabled()
-                    ? NSLocalizedString(
-                        "SETTINGS_PINS_ITEM",
-                        comment: "Label for the 'pins' item of the privacy settings when the user does have a pin."
-                    )
-                    : NSLocalizedString(
-                        "SETTINGS_PINS_ITEM_CREATE",
-                        comment: "Label for the 'pins' item of the privacy settings when the user doesn't have a pin."
-                    ),
-                accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "pin"),
-                actionBlock: { [weak self] in
-                    if OWS2FAManager.shared().is2FAEnabled() {
-                        self?.showChangePin()
-                    } else {
-                        self?.showCreatePin()
-                    }
-                }
-            ))
-
-            // Reminders toggle.
-            if OWS2FAManager.shared().is2FAEnabled() {
-                pinSection.add(.switch(
-                    withText: NSLocalizedString(
-                        "SETTINGS_PIN_REMINDER_SWITCH_LABEL",
-                        comment: "Label for the 'pin reminder' switch of the privacy settings."
-                    ),
-                    isOn: { OWS2FAManager.shared().areRemindersEnabled },
-                    isEnabledBlock: { true },
-                    target: self,
-                    selector: #selector(arePINRemindersEnabledDidChange)
-                ))
-            }
-
-            contents.addSection(pinSection)
-
-            let regLockSection = OWSTableSection()
-            regLockSection.footerTitle = NSLocalizedString(
-                "SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER",
-                comment: "Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available."
-            )
-
-            regLockSection.add(.switch(
-                withText: NSLocalizedString(
-                    "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL",
-                    comment: "Label for the 'enable registration lock' switch of the privacy settings."
-                ),
-                isOn: { OWS2FAManager.shared().isRegistrationLockV2Enabled },
-                isEnabledBlock: { true },
-                target: self,
-                selector: #selector(isRegistrationLockV2EnabledDidChange)
-            ))
-
-            contents.addSection(regLockSection)
-
-            let advancedSection = OWSTableSection()
-            advancedSection.add(.disclosureItem(
-                withText:NSLocalizedString(
-                    "SETTINGS_ADVANCED_PIN_SETTINGS",
-                    comment: "Label for the 'advanced pin settings' button."
-                ),
-                accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "advanced-pins"),
-                actionBlock: { [weak self] in
-                    let vc = AdvancedPinSettingsTableViewController()
-                    self?.navigationController?.pushViewController(vc, animated: true)
-                }
-            ))
-            contents.addSection(advancedSection)
-        }
+//        // Show the change pin and reglock sections
+//        if tsAccountManager.isRegisteredPrimaryDevice {
+//            let pinSection = OWSTableSection()
+//            pinSection.headerTitle = NSLocalizedString(
+//                "SETTINGS_PINS_TITLE",
+//                comment: "Title for the 'PINs' section of the privacy settings."
+//            )
+//            pinSection.footerAttributedTitle = NSAttributedString.composed(of: [
+//                NSLocalizedString(
+//                    "SETTINGS_PINS_FOOTER",
+//                    comment: "Footer for the 'PINs' section of the privacy settings."
+//                ),
+//                " ",
+//                CommonStrings.learnMore.styled(with: .link(URL(string: "https://support.signal.org/hc/articles/360007059792")!))
+//            ]).styled(
+//                with: .font(.ows_dynamicTypeCaption1Clamped),
+//                .color(Theme.secondaryTextAndIconColor)
+//            )
+//
+//            pinSection.add(.disclosureItem(
+//                withText: OWS2FAManager.shared().is2FAEnabled()
+//                    ? NSLocalizedString(
+//                        "SETTINGS_PINS_ITEM",
+//                        comment: "Label for the 'pins' item of the privacy settings when the user does have a pin."
+//                    )
+//                    : NSLocalizedString(
+//                        "SETTINGS_PINS_ITEM_CREATE",
+//                        comment: "Label for the 'pins' item of the privacy settings when the user doesn't have a pin."
+//                    ),
+//                accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "pin"),
+//                actionBlock: { [weak self] in
+//                    if OWS2FAManager.shared().is2FAEnabled() {
+//                        self?.showChangePin()
+//                    } else {
+//                        self?.showCreatePin()
+//                    }
+//                }
+//            ))
+//
+//            // Reminders toggle.
+//            if OWS2FAManager.shared().is2FAEnabled() {
+//                pinSection.add(.switch(
+//                    withText: NSLocalizedString(
+//                        "SETTINGS_PIN_REMINDER_SWITCH_LABEL",
+//                        comment: "Label for the 'pin reminder' switch of the privacy settings."
+//                    ),
+//                    isOn: { OWS2FAManager.shared().areRemindersEnabled },
+//                    isEnabledBlock: { true },
+//                    target: self,
+//                    selector: #selector(arePINRemindersEnabledDidChange)
+//                ))
+//            }
+//
+//            contents.addSection(pinSection)
+//
+//            let regLockSection = OWSTableSection()
+//            regLockSection.footerTitle = NSLocalizedString(
+//                "SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER",
+//                comment: "Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available."
+//            )
+//
+//            regLockSection.add(.switch(
+//                withText: NSLocalizedString(
+//                    "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL",
+//                    comment: "Label for the 'enable registration lock' switch of the privacy settings."
+//                ),
+//                isOn: { OWS2FAManager.shared().isRegistrationLockV2Enabled },
+//                isEnabledBlock: { true },
+//                target: self,
+//                selector: #selector(isRegistrationLockV2EnabledDidChange)
+//            ))
+//
+//            contents.addSection(regLockSection)
+//
+//            let advancedSection = OWSTableSection()
+//            advancedSection.add(.disclosureItem(
+//                withText:NSLocalizedString(
+//                    "SETTINGS_ADVANCED_PIN_SETTINGS",
+//                    comment: "Label for the 'advanced pin settings' button."
+//                ),
+//                accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "advanced-pins"),
+//                actionBlock: { [weak self] in
+//                    let vc = AdvancedPinSettingsTableViewController()
+//                    self?.navigationController?.pushViewController(vc, animated: true)
+//                }
+//            ))
+//            contents.addSection(advancedSection)
+//        }
 
         let accountSection = OWSTableSection()
-        accountSection.headerTitle = NSLocalizedString("SETTINGS_ACCOUNT", comment: "Title for the 'account' link in settings.")
+//        accountSection.headerTitle = NSLocalizedString("SETTINGS_ACCOUNT", comment: "Title for the 'account' link in settings.")
 
         if tsAccountManager.isDeregistered() {
             accountSection.add(.actionItem(

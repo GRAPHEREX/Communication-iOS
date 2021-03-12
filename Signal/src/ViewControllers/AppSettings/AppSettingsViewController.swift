@@ -71,15 +71,15 @@ class AppSettingsViewController: OWSTableViewController2 {
                 self?.push(viewController: vc)
             }
         ))
-        section1.add(.disclosureItem(
-            icon: .settingsLinkedDevices,
-            name: NSLocalizedString("LINKED_DEVICES_TITLE", comment: "Menu item and navbar title for the device manager"),
-            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "linked-devices"),
-            actionBlock: { [weak self] in
-                let vc = LinkedDevicesTableViewController()
-                self?.push(viewController: vc)
-            }
-        ))
+//        section1.add(.disclosureItem(
+//            icon: .settingsLinkedDevices,
+//            name: NSLocalizedString("LINKED_DEVICES_TITLE", comment: "Menu item and navbar title for the device manager"),
+//            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "linked-devices"),
+//            actionBlock: { [weak self] in
+//                let vc = LinkedDevicesTableViewController()
+//                self?.push(viewController: vc)
+//            }
+//        ))
         contents.addSection(section1)
 
         let section2 = OWSTableSection()
@@ -151,16 +151,16 @@ class AppSettingsViewController: OWSTableViewController2 {
                 self?.showInviteFlow()
             }
         ))
-        section4.add(.item(
-            icon: .settingsDonate,
-            name: NSLocalizedString("SETTINGS_DONATE", comment: "Title for the 'donate to signal' link in settings."),
-            accessoryImage: #imageLiteral(resourceName: "open-externally-14"),
-            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "donate"),
-            actionBlock: {
-                UIApplication.shared.open(URL(string: "https://signal.org/donate")!, options: [:], completionHandler: nil)
-            }
-        ))
-        contents.addSection(section4)
+//        section4.add(.item(
+//            icon: .settingsDonate,
+//            name: NSLocalizedString("SETTINGS_DONATE", comment: "Title for the 'donate to signal' link in settings."),
+//            accessoryImage: #imageLiteral(resourceName: "open-externally-14"),
+//            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "donate"),
+//            actionBlock: {
+//                UIApplication.shared.open(URL(string: "https://signal.org/donate")!, options: [:], completionHandler: nil)
+//            }
+//        ))
+//        contents.addSection(section4)
 
         if DebugFlags.internalSettings {
             let internalSection = OWSTableSection()

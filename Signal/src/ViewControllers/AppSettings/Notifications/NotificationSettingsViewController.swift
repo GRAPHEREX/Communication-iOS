@@ -105,14 +105,14 @@ class NotificationSettingsViewController: OWSTableViewController2 {
         ))
         contents.addSection(notifyWhenSection)
 
-        let reregisterPushSection = OWSTableSection()
-        reregisterPushSection.add(.actionItem(
-            withText: NSLocalizedString("REREGISTER_FOR_PUSH", comment: ""),
-            actionBlock: { [weak self] in
-                self?.syncPushTokens()
-            }
-        ))
-        contents.addSection(reregisterPushSection)
+//        let reregisterPushSection = OWSTableSection()
+//        reregisterPushSection.add(.actionItem(
+//            withText: NSLocalizedString("REREGISTER_FOR_PUSH", comment: ""),
+//            actionBlock: { [weak self] in
+//                self?.syncPushTokens()
+//            }
+//        ))
+//        contents.addSection(reregisterPushSection)
 
         self.contents = contents
     }
