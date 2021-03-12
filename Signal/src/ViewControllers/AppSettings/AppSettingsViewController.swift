@@ -68,7 +68,7 @@ class AppSettingsViewController: OWSTableViewController2 {
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "account"),
             actionBlock: { [weak self] in
                 let vc = AccountSettingsViewController()
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.push(viewController: vc)
             }
         ))
         section1.add(.disclosureItem(
@@ -77,7 +77,7 @@ class AppSettingsViewController: OWSTableViewController2 {
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "linked-devices"),
             actionBlock: { [weak self] in
                 let vc = LinkedDevicesTableViewController()
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.push(viewController: vc)
             }
         ))
         contents.addSection(section1)
@@ -89,7 +89,7 @@ class AppSettingsViewController: OWSTableViewController2 {
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "appearance"),
             actionBlock: { [weak self] in
                 let vc = AppearanceSettingsTableViewController()
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.push(viewController: vc)
             }
         ))
         section2.add(.disclosureItem(
@@ -98,7 +98,7 @@ class AppSettingsViewController: OWSTableViewController2 {
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "chats"),
             actionBlock: { [weak self] in
                 let vc = ChatsSettingsViewController()
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.push(viewController: vc)
             }
         ))
         section2.add(.disclosureItem(
@@ -107,7 +107,7 @@ class AppSettingsViewController: OWSTableViewController2 {
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "notifications"),
             actionBlock: { [weak self] in
                 let vc = NotificationSettingsViewController()
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.push(viewController: vc)
             }
         ))
         section2.add(.disclosureItem(
@@ -116,7 +116,7 @@ class AppSettingsViewController: OWSTableViewController2 {
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "privacy"),
             actionBlock: { [weak self] in
                 let vc = PrivacySettingsViewController()
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.push(viewController: vc)
             }
         ))
         section2.add(.disclosureItem(
@@ -125,7 +125,7 @@ class AppSettingsViewController: OWSTableViewController2 {
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "data-usage"),
             actionBlock: { [weak self] in
                 let vc = DataSettingsTableViewController()
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.push(viewController: vc)
             }
         ))
         contents.addSection(section2)
@@ -137,7 +137,7 @@ class AppSettingsViewController: OWSTableViewController2 {
             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "help"),
             actionBlock: { [weak self] in
                 let vc = HelpViewController()
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.push(viewController: vc)
             }
         ))
         contents.addSection(section3)
@@ -170,7 +170,7 @@ class AppSettingsViewController: OWSTableViewController2 {
                 accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "internal"),
                 actionBlock: { [weak self] in
                     let vc = InternalSettingsViewController()
-                    self?.navigationController?.pushViewController(vc, animated: true)
+                    self?.push(viewController: vc)
                 }
             ))
             contents.addSection(internalSection)
@@ -272,5 +272,12 @@ class AppSettingsViewController: OWSTableViewController2 {
         topSpacer.autoMatch(.height, to: .height, of: bottomSpacer)
 
         return cell
+    }
+}
+
+extension AppSettingsViewController {
+    private func push(viewController: UIViewController) {
+        viewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
