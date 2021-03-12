@@ -286,28 +286,28 @@ public class ContactsPicker: OWSViewController, UITableViewDelegate, UITableView
         return collation.section(forSectionIndexTitle: index)
     }
 
-    open func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return collation.sectionIndexTitles
-    }
-
-    open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let dataSource = filteredSections
-
-        guard section < dataSource.count else {
-            return nil
-        }
-
-        // Don't show empty sections
-        if dataSource[section].count > 0 {
-            guard section < collation.sectionTitles.count else {
-                return nil
-            }
-
-            return collation.sectionTitles[section]
-        } else {
-            return nil
-        }
-    }
+//    open func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+//        return collation.sectionIndexTitles
+//    }
+//
+//    open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        let dataSource = filteredSections
+//
+//        guard section < dataSource.count else {
+//            return nil
+//        }
+//
+//        // Don't show empty sections
+//        if dataSource[section].count > 0 {
+//            guard section < collation.sectionTitles.count else {
+//                return nil
+//            }
+//
+//            return collation.sectionTitles[section]
+//        } else {
+//            return nil
+//        }
+//    }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
