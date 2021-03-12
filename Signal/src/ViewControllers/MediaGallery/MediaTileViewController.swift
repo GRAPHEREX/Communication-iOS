@@ -128,7 +128,7 @@ public class MediaTileViewController: OWSViewController, OWSAudioPlayerDelegate 
         
         segmentControl.autoPinEdge(toSuperviewEdge: .leading)
         segmentControl.autoPinEdge(toSuperviewEdge: .trailing)
-        segmentControl.autoPinEdge(toSuperviewEdge: .top)
+        segmentControl.autoPinEdge(toSuperviewSafeArea: .top)
         segmentControl.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         collectionView.autoPinEdge(.top, to: .bottom, of: segmentControl)
