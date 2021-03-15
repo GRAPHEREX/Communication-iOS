@@ -164,7 +164,7 @@ fileprivate extension ContactsMainController {
         })
 
         return .init(customCell: cell,
-                     customRowHeight: UITableView.automaticDimension,
+                     customRowHeight: 60,
                      actionBlock: { [weak self] in
                         self?.showContactDetail(account: account)
         })
