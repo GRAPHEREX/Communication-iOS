@@ -52,6 +52,7 @@ final public class OnboardingPhoneNumberViewController_Grapherex: OWSViewControl
             phoneNumberTextField.keyboardType = .numberPad
             phoneNumberTextField.textColor = Theme.lightThemePrimaryColor
             phoneNumberTextField.font = UIFont.ows_dynamicTypeBodyClamped
+            phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             phoneNumberTextField.accessibilityIdentifier = "onboarding.phoneNumber." + "phoneNumberTextField"
         }}
     
@@ -324,6 +325,11 @@ final public class OnboardingPhoneNumberViewController_Grapherex: OWSViewControl
     func changeStyle(isFilled: Bool) {
         sendButton.handleEnabled(isFilled)
     }
+    
+    private func applyPhoneNumberFormatting() {
+        AssertIsOnMainThread()
+        ViewControllerUtils.reformatPhoneNumber(phoneNumberTextField, callingCode: callingCode)
+    }
 }
 
 // MARK: -
@@ -334,10 +340,18 @@ extension OnboardingPhoneNumberViewController_Grapherex: UITextFieldDelegate {
         let newString = (userEnteredString! as NSString).replacingCharacters(in: range, with: string) as String
         changeStyle(isFilled: newString.count >= 6)
         
-        ViewControllerUtils.phoneNumber(textField, shouldChangeCharactersIn: range, replacementString: string, callingCode: callingCode)
-        
-        // Inform our caller that we took care of performing the change.
-        return false
+        // If ViewControllerUtils applied the edit on our behalf, inform UIKit
+        // so the edit isn't applied twice.
+        return ViewControllerUtils.phoneNumber(
+            textField,
+            shouldChangeCharactersIn: range,
+            replacementString: string,
+            callingCode: callingCode)
+    }
+    
+    @objc
+    private func textFieldDidChange(_ textField: UITextField) {
+        applyPhoneNumberFormatting()
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
