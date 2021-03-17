@@ -623,10 +623,10 @@
 "COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Al activar el acceso a los contactos en «Ajustes» de iOS puedes saber quien usa Signal. Tus contactos no se guardarán en el servidor de Signal.";
 
 /* No comment provided by engineer. */
-"CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Esta acción reinicia la aplicación, elimina todos los mensajes y da de baja el número del servidor. Signal se cerrará después de completarse el proceso.";
+"CONFIRM_DELETE_DATA_TEXT" = "Esta acción reinicia la aplicación y elimina todos tus mensajes. Signal se cerrará después de completarse el proceso.";
 
 /* No comment provided by engineer. */
-"CONFIRM_ACCOUNT_DESTRUCTION_TITLE" = "¿Estás segur@ de querer eliminar tu cuenta?";
+"CONFIRM_DELETE_DATA_TITLE" = "¿Estás segur@ de querer eliminar todos los datos?";
 
 /* No comment provided by engineer. */
 "CONFIRM_DELETE_LINKED_DATA_TEXT" = "Esta acción reinicia la aplicación y elimina todos los mensajes en este dispositivo. Siempre puedes volver a enlazar tu teléfono pero no recuperarás los mensajes eliminados. Signal se cerrará después de completar el proceso.";
@@ -890,7 +890,7 @@
 "CONVERSATION_SETTINGS_MEMBER_INVITES" = "Invitaciones";
 
 /* Label for 'member requests & invites' action in conversation settings view. */
-"CONVERSATION_SETTINGS_MEMBER_REQUESTS_AND_INVITES" = "Solicitudes e invitaciones a participar";
+"CONVERSATION_SETTINGS_MEMBER_REQUESTS_AND_INVITES" = "Solicitudes e invitaciones al grupo";
 
 /* Section title of the 'members' section in conversation settings view. */
 "CONVERSATION_SETTINGS_MEMBERS_SECTION_TITLE" = "Participantes";
@@ -1074,6 +1074,42 @@
 
 /* Accessibility label for the ? vector asset used to get info about debug logs */
 "DEBUG_LOG_INFO_BUTTON" = "Información sobre registro de depuración";
+
+/* Title for the action sheet 'delete' action of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_ACTION" = "Eliminar cuenta";
+
+/* Title for the action sheet message of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_MESSAGE" = "Esta acción elimina tu cuenta de Signal y reinicia la aplicación. Signal se cerrará después de completarse el proceso.";
+
+/* Title for the action sheet confirmation title of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_TITLE" = "¿Estás segur@ de querer eliminar tu cuenta?";
+
+/* Title for the 'country code' row of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_COUNTRY_CODE_TITLE" = "Código de país";
+
+/* Title for the action sheet when delete failed on the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_DELETE_FAILED" = "Fallo al eliminar la cuenta. Asegúrate que el dispositivo tiene acceso a internet y vuelve a intentarlo.";
+
+/* Description for the 'delete account' confirmation view. */
+"DELETE_ACCOUNT_CONFIRMATION_DESCRIPTION" = "Esta acción elimina la información de tu cuenta, alias, foto de perfil y todos tus mensajes.";
+
+/* Indicates the work we are doing while deleting the account */
+"DELETE_ACCOUNT_CONFIRMATION_IN_PROGRESS" = "Eliminando cuenta …";
+
+/* Title for the action sheet when you have no internet on the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_NO_INTERNET" = "No hay conexión de red. Asegúrate que el dispositivo tiene acceso a internet y vuelve a intentarlo.";
+
+/* Title for the 'phone number' row of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_PHONE_NUMBER_TITLE" = "Núm. de teléfono";
+
+/* Section header */
+"DELETE_ACCOUNT_CONFIRMATION_SECTION_TITLE" = "Confirma tu número de Signal";
+
+/* Title for the 'delete account' confirmation view. */
+"DELETE_ACCOUNT_CONFIRMATION_TITLE" = "Eliminar cuenta";
+
+/* Title for the action sheet when you enter the wrong number on the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_WRONG_NUMBER" = "El número introducido no coincide con el de tu cuenta.";
 
 /* action sheet body */
 "DELETE_ALL_MESSAGES_IN_CONVERSATION_ALERT_BODY" = "¿Eliminar todos los mensajes del chat?";
@@ -1862,7 +1898,7 @@
 "GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "Con esta opción activa, un(a) admin del grupo debe aprobar las solicitudes de acceso para unirse al grupo.";
 
 /* Title for the 'member requests' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "Solicitudes de participantes";
+"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "Solicitudes para participar";
 
 /* Label for the 'reset link' button in the 'group link' view. */
 "GROUP_LINK_VIEW_RESET_LINK" = "Restablecer enlace";
@@ -2000,10 +2036,10 @@
 "GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Revisar participantes";
 
 /* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
-"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ participantes usan nombres similares, revisa la lista de participantes debajo y selecciona la opción correcta.";
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ participantes usan nombres similares, revisa la lista de participantes debajo y selecciona la opción adecuada.";
 
 /* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
-"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ participantes usan el mismo nombre, revisa la lista de participantes debajo y selecciona la opción correcta.";
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ participantes usan el mismo nombre, revisa la lista de participantes debajo y selecciona la opción adecuada.";
 
 /* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
 "GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ participantes usan el mismo nombre.";
@@ -2126,13 +2162,13 @@
 "GROUP_REMOTE_USER_REVOKED_ADMINISTRATOR_BY_REMOTE_USER_FORMAT" = "%1$@ ha retirado los permisos de admin a %2$@.";
 
 /* Label for the 'member requests' mode of the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "Solicitudes de participantes";
+"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "Solicitudes";
 
 /* Label for the 'pending invites' mode of the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "Invitaciones pendientes";
+"GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "Invitaciones";
 
 /* The title for the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_TITLE" = "Solicitudes e invitaciones a participar";
+"GROUP_REQUESTS_AND_INVITES_VIEW_TITLE" = "Solicitudes e invitaciones al grupo";
 
 /* Info message indicating that the group was updated by an unknown user. */
 "GROUP_UPDATED" = "Grupo actualizado.";
@@ -2550,12 +2586,6 @@
 
 /* Button to join an active group call */
 "JOIN_CALL_PILL_BUTTON" = "Unirse";
-
-/* Slider label embeds {{TIME_AMOUNT}}, e.g. '2 hours'. See *_TIME_AMOUNT strings for examples. */
-"KEEP_MESSAGES_DURATION" = "Los mensajes desaparecerán tras %@.";
-
-/* Slider label when disappearing messages is off */
-"KEEP_MESSAGES_FOREVER" = "Los mensajes no desaparecerán.";
 
 /* A keyboard command to open the current conversation's all media view. */
 "KEY_COMMAND_ALL_MEDIA" = "Ir a adjuntos";
@@ -3386,7 +3416,7 @@
 "PENDING_GROUP_MEMBERS_REVOKE_LOCAL_INVITE_CONFIRMATION_TITLE_1_FORMAT" = "¿Retirar la invitación a %@?";
 
 /* Footer for the 'invites by other group members' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_FOOTER_INVITES_FROM_OTHER_MEMBERS" = "No se pueden mostrar los detalles de personas invitadas por otr@s participantes del grupo. Sólo compartirán sus detalles con el grupo y verán los mensajes que se envíen a partir del momento en que decidan participar.";
+"PENDING_GROUP_MEMBERS_SECTION_FOOTER_INVITES_FROM_OTHER_MEMBERS" = "No se pueden mostrar los detalles de personas invitadas por otr@s participantes del grupo. Las personas invitadas sólo compartirán sus detalles con el grupo y verán los mensajes que se envíen a partir del momento en que decidan participar en el grupo.";
 
 /* Footer for the 'pending member requests' section of the 'member requests and invites' view. Embeds {{ the name of the group }}. */
 "PENDING_GROUP_MEMBERS_SECTION_FOOTER_PENDING_MEMBER_REQUESTS_FORMAT" = "Las personas en esta lista han solicitado unirse al grupo «%@» vía enlace.";
@@ -3395,13 +3425,13 @@
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "Invitaciones inválidas";
 
 /* Title for the 'invites by other group members' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "Invitaciones de otr@s participantes";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "Otras personas que han sido invitadas";
 
 /* Title for the 'pending member requests' section of the 'member requests and invites' view. */
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_PENDING_MEMBER_REQUESTS" = "Solicitudes pendientes";
 
 /* Title for the 'people you invited' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "Personas que has invitado";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "Personas que has invitado tú";
 
 /* Label for view-once messages that have invalid content. */
 "PER_MESSAGE_EXPIRATION_INVALID_CONTENT" = "Fallo al procesar el mensaje recibido";
@@ -5082,9 +5112,6 @@
 
 /* Pressing this button marks a thread as unread */
 "UNREAD_ACTION" = "No leído";
-
-/* No comment provided by engineer. */
-"UNREGISTER_SIGNAL_FAIL" = "Fallo al darse de baja en Signal";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Adjunto recibido con formato no compatible.";

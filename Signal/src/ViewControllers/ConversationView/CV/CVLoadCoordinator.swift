@@ -110,7 +110,8 @@ public class CVLoadCoordinator: NSObject {
 
         let viewStateSnapshot = CVViewStateSnapshot.snapshot(viewState: viewState,
                                                              typingIndicatorsSender: nil,
-                                                             hasClearedUnreadMessagesIndicator: hasClearedUnreadMessagesIndicator)
+                                                             hasClearedUnreadMessagesIndicator: hasClearedUnreadMessagesIndicator,
+                                                             wasShowingSelectionUI: false)
         self.renderState = CVRenderState.defaultRenderState(threadViewModel: threadViewModel,
                                                             viewStateSnapshot: viewStateSnapshot)
 
@@ -462,7 +463,8 @@ public class CVLoadCoordinator: NSObject {
         let typingIndicatorsSender = typingIndicators.typingAddress(forThread: thread)
         let viewStateSnapshot = CVViewStateSnapshot.snapshot(viewState: viewState,
                                                              typingIndicatorsSender: typingIndicatorsSender,
-                                                             hasClearedUnreadMessagesIndicator: hasClearedUnreadMessagesIndicator)
+                                                             hasClearedUnreadMessagesIndicator: hasClearedUnreadMessagesIndicator,
+                                                             wasShowingSelectionUI: prevRenderState.viewStateSnapshot.isShowingSelectionUI)
         let loader = CVLoader(threadUniqueId: threadUniqueId,
                               loadRequest: loadRequest,
                               viewStateSnapshot: viewStateSnapshot,
@@ -514,6 +516,10 @@ public class CVLoadCoordinator: NSObject {
 
         let viewState = self.viewState
         func canLandLoad() -> Bool {
+            // We can't land loads while the selction UI is presenting or
+            // dismissing.
+            guard !viewState.isAnimatingSelectionUI else { return false }
+
             // Ensure isUserScrolling is a substate of hasScrollingAnimation.
             if viewState.isUserScrolling {
                 owsAssertDebug(viewState.hasScrollingAnimation)

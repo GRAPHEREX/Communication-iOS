@@ -2364,7 +2364,7 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
 - (void)getStartedBannerDidTapInviteFriends:(OWSGetStartedBannerViewController *)banner
 {
     self.inviteFlow = [[OWSInviteFlow alloc] initWithPresentingViewController:self];
-    [self.inviteFlow presentWithIsAnimated:YES isModal:YES completion:nil];
+    [self.inviteFlow presentWithIsAnimated:YES completion:nil];
 }
 
 - (void)getStartedBannerDidDismissAllCards:(OWSGetStartedBannerViewController *)banner animated:(BOOL)isAnimated

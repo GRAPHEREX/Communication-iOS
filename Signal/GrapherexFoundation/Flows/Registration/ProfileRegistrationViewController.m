@@ -203,11 +203,11 @@ NSString *const kProfileRegistrationView_LastPresentedDate = @"kProfileRegistrat
         presentFromViewController:self
                         canCancel:NO
                   backgroundBlock:^(ModalActivityIndicatorViewController *modalActivityIndicator) {
-                      [OWSProfileManager updateLocalProfilePromiseObjWithProfileGivenName:normalizedGivenName
-                                                                         profileFamilyName:@""
-                                                                                profileBio:nil
-                                                                           profileBioEmoji:nil
-                                                                         profileAvatarData:weakSelf.avatarData]
+                      [OWSProfileManager updateLocalProfilePromiseWithProfileGivenName:normalizedGivenName
+                                                                     profileFamilyName:@""
+                                                                            profileBio:nil
+                                                                       profileBioEmoji:nil
+                                                                     profileAvatarData:weakSelf.avatarData]
 
                               .then(^{
                                   [modalActivityIndicator dismissWithCompletion:^{

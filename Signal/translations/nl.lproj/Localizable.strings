@@ -356,7 +356,7 @@
 "BACKUP_RESTORE_DECISION_TITLE" = "Back-up-mogelijkheid beschikbaar";
 
 /* Label for the backup restore description. */
-"BACKUP_RESTORE_DESCRIPTION" = "Gegevens vanuit een back-up-bestand terugplaatsen";
+"BACKUP_RESTORE_DESCRIPTION" = "Gegevens vanuit een back-up-bestand terugzetten";
 
 /* Label for the backup restore progress. */
 "BACKUP_RESTORE_PROGRESS" = "Voortgang";
@@ -623,10 +623,10 @@
 "COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Je kunt toegang tot contacten inschakelen in de iOS-instellingen-app om te zien welke van je contacten Signal gebruiken.";
 
 /* No comment provided by engineer. */
-"CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Dit zal de app terugzetten door je berichten te verwijderen en je uit te schrijven bij de Signal-server. De app zal afsluiten nadat dit proces is voltooid.";
+"CONFIRM_DELETE_DATA_TEXT" = "Hiermee zal de applicatie vernieuwd worden, waarbij alle gegevens inclusief alle berichten van dit apparaat worden gewist. De app zal zichzelf sluiten nadat je dit doet.";
 
 /* No comment provided by engineer. */
-"CONFIRM_ACCOUNT_DESTRUCTION_TITLE" = "Weet je zeker dat je je registratie wilt opzeggen en je gesprekken wilt wissen?";
+"CONFIRM_DELETE_DATA_TITLE" = "Weet je zeker dat je alle gegevens wilt wissen?";
 
 /* No comment provided by engineer. */
 "CONFIRM_DELETE_LINKED_DATA_TEXT" = "Dit zal de applicatie volledig opnieuw instellen door al je berichten te wissen van dit apparaat. Je kunt je telefoon altijd opnieuw koppelen, maar daarmee worden gewiste berichten niet hersteld. De app sluit zichzelf as dit proces is voltooid.";
@@ -1074,6 +1074,42 @@
 
 /* Accessibility label for the ? vector asset used to get info about debug logs */
 "DEBUG_LOG_INFO_BUTTON" = "Informatie over foutopsporingslogs";
+
+/* Title for the action sheet 'delete' action of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_ACTION" = "Registratie opzeggen";
+
+/* Title for the action sheet message of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_MESSAGE" = "Hiermee wis je al je Signal-gegevens zowel van de servers als van je telefoon. De Signal-app zal zichzelf sluiten nadat je dit doet.";
+
+/* Title for the action sheet confirmation title of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_TITLE" = "Weet je zeker dat je je registratie wilt opzeggen en al je gegevens en gesprekken wilt wissen?";
+
+/* Title for the 'country code' row of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_COUNTRY_CODE_TITLE" = "Landcode";
+
+/* Title for the action sheet when delete failed on the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_DELETE_FAILED" = "Het opzeggen van je registratie is mislukt. Ga na dat wifi of mobiele-dataoverdracht is ingeschakeld en probeer het daarna opnieuw.";
+
+/* Description for the 'delete account' confirmation view. */
+"DELETE_ACCOUNT_CONFIRMATION_DESCRIPTION" = "Hiermee worden alle gegevens van Signal servers, je profiel en all je berichten gewist.";
+
+/* Indicates the work we are doing while deleting the account */
+"DELETE_ACCOUNT_CONFIRMATION_IN_PROGRESS" = "Registratie aan het opzeggen en alle gegevens aan wissen …";
+
+/* Title for the action sheet when you have no internet on the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_NO_INTERNET" = "Je hebt geen verbinding met het internet. Ga na dat wifi of mobiele-dataoverdracht is ingeschakeld en probeer het daarna opnieuw.";
+
+/* Title for the 'phone number' row of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_PHONE_NUMBER_TITLE" = "Telefoonnummer";
+
+/* Section header */
+"DELETE_ACCOUNT_CONFIRMATION_SECTION_TITLE" = "Bevestig je telefoonnummer";
+
+/* Title for the 'delete account' confirmation view. */
+"DELETE_ACCOUNT_CONFIRMATION_TITLE" = "Registratie opzeggen";
+
+/* Title for the action sheet when you enter the wrong number on the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_WRONG_NUMBER" = "Het telefoonnummer wat je hebt ingevuld komt niet overeen met het telefoonnummer wat je voor Signal gebruikt.";
 
 /* action sheet body */
 "DELETE_ALL_MESSAGES_IN_CONVERSATION_ALERT_BODY" = "Alle berichten in dit gesprek wissen?";
@@ -2551,12 +2587,6 @@
 /* Button to join an active group call */
 "JOIN_CALL_PILL_BUTTON" = "Deelnemen";
 
-/* Slider label embeds {{TIME_AMOUNT}}, e.g. '2 hours'. See *_TIME_AMOUNT strings for examples. */
-"KEEP_MESSAGES_DURATION" = "Berichten verlopen na %@.";
-
-/* Slider label when disappearing messages is off */
-"KEEP_MESSAGES_FOREVER" = "Berichten verlopen niet.";
-
 /* A keyboard command to open the current conversation's all media view. */
 "KEY_COMMAND_ALL_MEDIA" = "Ga naar ‘Alle media’";
 
@@ -3014,7 +3044,7 @@
 "NETWORK_ERROR_RECOVERY" = "Controleer of je met internet verbonden bent en probeer het opnieuw.";
 
 /* String representing only the cellular interface */
-"NETWORK_INTERFACE_SET_CELLULAR" = "Alleen bij mobielegegevensoverdracht";
+"NETWORK_INTERFACE_SET_CELLULAR" = "Alleen bij mobiele-dataoverdracht";
 
 /* String representing the 'never' condition of having no supported network interfaces */
 "NETWORK_INTERFACE_SET_NEVER" = "Nooit";
@@ -3023,7 +3053,7 @@
 "NETWORK_INTERFACE_SET_WIFI" = "Alleen bij wifi";
 
 /* String representing both wifi and cellular interfaces */
-"NETWORK_INTERFACE_SET_WIFI_CELLULAR" = "Bij wifi en mobielegegevensoverdracht";
+"NETWORK_INTERFACE_SET_WIFI_CELLULAR" = "Bij wifi & mobiele-dataoverdracht";
 
 /* A label the cell that lets you add a new member to a group. */
 "NEW_CONVERSATION_FIND_BY_PHONE_NUMBER" = "Op telefoonnummer zoeken";
@@ -4490,13 +4520,13 @@
 "SETTINGS_COPYRIGHT" = "Auteursrecht Signal-berichtenapp\nGelicentieerd onder de GPLv3";
 
 /* Label for the 'data' section of the app settings. */
-"SETTINGS_DATA" = "Gegevensgebruik";
+"SETTINGS_DATA" = "Dataverbruik";
 
 /* Item title for the low bandwidth call setting */
-"SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Minder gegevensoverdracht bij oproepen";
+"SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Minder dataoverdracht bij oproepen";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Gebruik maken van minder gegevensoverdracht bij oproepen kan de kwaliteit van oproepen verbeteren op een slecht netwerk.";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Gebruik maken van minder dataoverdracht bij oproepen kan de kwaliteit van oproepen verbeteren op een slecht netwerk.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Oproepen";
@@ -4511,7 +4541,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Herstel automatischedownload-instellingen";
 
 /* The title for the data settings. */
-"SETTINGS_DATA_TITLE" = "Gegevensgebruik";
+"SETTINGS_DATA_TITLE" = "Dataverbruik";
 
 /* No comment provided by engineer. */
 "SETTINGS_DELETE_ACCOUNT_BUTTON" = "Registratie opzeggen";
@@ -4556,7 +4586,7 @@
 "SETTINGS_MEDIA_DOWNLOAD_CONDITION_NEVER" = "Nooit";
 
 /* Label for the 'wifi and cellular' media attachment download behavior in the media download settings. */
-"SETTINGS_MEDIA_DOWNLOAD_CONDITION_WIFI_AND_CELLULAR" = "Wifi en mobielegegevensoverdracht";
+"SETTINGS_MEDIA_DOWNLOAD_CONDITION_WIFI_AND_CELLULAR" = "Wifi & mobiele-dataoverdracht";
 
 /* Label for the 'wifi-only' media attachment download behavior in the media download settings. */
 "SETTINGS_MEDIA_DOWNLOAD_CONDITION_WIFI_ONLY" = "Wifi";
@@ -5082,9 +5112,6 @@
 
 /* Pressing this button marks a thread as unread */
 "UNREAD_ACTION" = "Ongelezen";
-
-/* No comment provided by engineer. */
-"UNREGISTER_SIGNAL_FAIL" = "Deregistreren van Signal mislukt.";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Niet-ondersteund formaat van bijlage ontvangen.";

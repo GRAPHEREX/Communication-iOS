@@ -623,10 +623,10 @@
 "COMPOSE_SCREEN_MISSING_CONTACTS_PERMISSION" = "Norėdami matyti, kurie iš jūsų adresatų yra Signal naudotojai, iOS nustatymų programėlėje galite įjungti prieigą prie adresatų.";
 
 /* No comment provided by engineer. */
-"CONFIRM_ACCOUNT_DESTRUCTION_TEXT" = "Tai atstatys programėlę, ištrinant jūsų žinutes ir išregistruojant jus iš serverio. Užbaigus šį procesą, programėlė bus užverta.";
+"CONFIRM_DELETE_DATA_TEXT" = "Tai atstatys programėlę, ištrinant jūsų žinutes. Užbaigus šį procesą, programėlė bus užverta.";
 
 /* No comment provided by engineer. */
-"CONFIRM_ACCOUNT_DESTRUCTION_TITLE" = "Ar tikrai norite ištrinti savo paskyrą?";
+"CONFIRM_DELETE_DATA_TITLE" = "Ar tikrai norite ištrinti visus duomenis?";
 
 /* No comment provided by engineer. */
 "CONFIRM_DELETE_LINKED_DATA_TEXT" = "Tai atstatys programą ir ištrins iš šio įrenginio visas jūsų žinutes. Visada galite ir vėl susieti savo telefoną, tačiau tai neatkurs ištrintų žinučių. Užbaigus šį procesą, programėlė bus užverta.";
@@ -1074,6 +1074,42 @@
 
 /* Accessibility label for the ? vector asset used to get info about debug logs */
 "DEBUG_LOG_INFO_BUTTON" = "Informacija apie derinimo žurnalus";
+
+/* Title for the action sheet 'delete' action of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_ACTION" = "Ištrinti paskyrą";
+
+/* Title for the action sheet message of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_MESSAGE" = "Tai ištrins jūsų Signal paskyrą ir atstatys programėlę. Užbaigus šį procesą, programėlė bus užverta.";
+
+/* Title for the action sheet confirmation title of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_TITLE" = "Ar tikrai norite ištrinti savo paskyrą?";
+
+/* Title for the 'country code' row of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_COUNTRY_CODE_TITLE" = "Šalies kodas";
+
+/* Title for the action sheet when delete failed on the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_DELETE_FAILED" = "Nepavyko ištrinti paskyros. Įsitikinkite, kad yra įjungtas belaidis (Wi-Fi) arba mobiliųjų duomenų ryšys, o tuomet bandykite dar kartą.";
+
+/* Description for the 'delete account' confirmation view. */
+"DELETE_ACCOUNT_CONFIRMATION_DESCRIPTION" = "Tai ištrins jūsų paskyros informaciją, profilį ir visas jūsų žinutes.";
+
+/* Indicates the work we are doing while deleting the account */
+"DELETE_ACCOUNT_CONFIRMATION_IN_PROGRESS" = "Ištrinama paskyra...";
+
+/* Title for the action sheet when you have no internet on the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_NO_INTERNET" = "Nėra interneto ryšio. Įsitikinkite, kad yra įjungtas belaidis (Wi-Fi) arba mobiliųjų duomenų ryšys, o tuomet bandykite dar kartą.";
+
+/* Title for the 'phone number' row of the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_PHONE_NUMBER_TITLE" = "Telefono numeris";
+
+/* Section header */
+"DELETE_ACCOUNT_CONFIRMATION_SECTION_TITLE" = "Patvirtinkite savo Signal numerį";
+
+/* Title for the 'delete account' confirmation view. */
+"DELETE_ACCOUNT_CONFIRMATION_TITLE" = "Ištrinti paskyrą";
+
+/* Title for the action sheet when you enter the wrong number on the 'delete account confirmation' view controller. */
+"DELETE_ACCOUNT_CONFIRMATION_WRONG_NUMBER" = "Jūsų įvestas telefono numeris nesutampa su jūsų paskyros telefono numeriu.";
 
 /* action sheet body */
 "DELETE_ALL_MESSAGES_IN_CONVERSATION_ALERT_BODY" = "Ištrinti visas pokalbio žinutes?";
@@ -2550,12 +2586,6 @@
 
 /* Button to join an active group call */
 "JOIN_CALL_PILL_BUTTON" = "Prisijungti";
-
-/* Slider label embeds {{TIME_AMOUNT}}, e.g. '2 hours'. See *_TIME_AMOUNT strings for examples. */
-"KEEP_MESSAGES_DURATION" = "Žinutės išnyksta po %@.";
-
-/* Slider label when disappearing messages is off */
-"KEEP_MESSAGES_FOREVER" = "Žinutės neišnyksta.";
 
 /* A keyboard command to open the current conversation's all media view. */
 "KEY_COMMAND_ALL_MEDIA" = "Pereiti į visą mediją";
@@ -4727,7 +4757,7 @@
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Užantspauduotas siuntėjas";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Rodyti būsenos piktogramą";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Leisti nuo bet ko";
@@ -5082,9 +5112,6 @@
 
 /* Pressing this button marks a thread as unread */
 "UNREAD_ACTION" = "Neskaityta";
-
-/* No comment provided by engineer. */
-"UNREGISTER_SIGNAL_FAIL" = "Nepavyko išregistruoti iš Signal.";
 
 /* No comment provided by engineer. */
 "UNSUPPORTED_ATTACHMENT" = "Gautas nepalaikomas priedo tipas.";

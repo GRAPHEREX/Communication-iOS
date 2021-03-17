@@ -258,7 +258,7 @@ final public class OnboardingPhoneNumberViewController_Grapherex: OWSViewControl
         
         callingCodeLabel.text = callingCode
 
-        self.phoneNumberTextField.placeholder = ViewControllerUtils.examplePhoneNumber(forCountryCode: countryCode, callingCode: callingCode)
+        self.phoneNumberTextField.placeholder = ViewControllerUtils.examplePhoneNumber(forCountryCode: countryCode, callingCode: callingCode, includeExampleLabel: true)
     }
     
     // MARK: - Events
