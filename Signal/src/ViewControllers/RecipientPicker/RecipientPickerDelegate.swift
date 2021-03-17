@@ -188,9 +188,9 @@ extension RecipientPickerViewController {
                             cell.setAccessoryMessage(accessoryMessage)
                         }
 
-                        if let attributedSubtitle = delegate.recipientPicker?(self, attributedSubtitleForRecipient: recipient) {
-                            cell.setAttributedSubtitle(attributedSubtitle)
-                        }
+//                        if let attributedSubtitle = delegate.recipientPicker?(self, attributedSubtitleForRecipient: recipient) {
+//                            cell.setAttributedSubtitle(attributedSubtitle)
+//                        }
                     }
 
                     cell.configureWithSneakyTransaction(recipientAddress: address)
