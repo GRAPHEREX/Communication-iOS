@@ -254,7 +254,7 @@ class AppSettingsViewController: OWSTableViewController2 {
             vStackView.addArrangedSubview(containerView)
         }
 
-        addSubtitleLabel(text: OWSUserProfile.bioForDisplay(bio: snapshot.bio, bioEmoji: snapshot.bioEmoji))
+//        addSubtitleLabel(text: OWSUserProfile.bioForDisplay(bio: snapshot.bio, bioEmoji: snapshot.bioEmoji))
 
         if let phoneNumber = tsAccountManager.localNumber {
             addSubtitleLabel(
