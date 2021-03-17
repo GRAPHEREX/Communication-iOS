@@ -63,12 +63,12 @@ public extension TSAccountManager {
 
     @objc
     var isRegisteredPrimaryDevice: Bool {
-        return isRegistered && self.storedDeviceId() == OWSDevicePrimaryDeviceId
+        isRegistered && isPrimaryDevice
     }
 
     @objc
     var isPrimaryDevice: Bool {
-        return storedDeviceId() == OWSDevicePrimaryDeviceId
+        storedDeviceId() == OWSDevicePrimaryDeviceId
     }
 
     @objc
@@ -93,13 +93,18 @@ public extension TSAccountManager {
     // Sets the flag to force an account attributes update,
     // then returns a promise for the current attempt.
     @objc
+    @available(swift, obsoleted: 1.0)
     func updateAccountAttributes() -> AnyPromise {
+        return AnyPromise(updateAccountAttributes())
+    }
+
+    func updateAccountAttributes() -> Promise<Void> {
         Self.databaseStorage.write { transaction in
             self.keyValueStore.setDate(Date(),
                                        key: Self.needsAccountAttributesUpdateKey,
                                        transaction: transaction)
         }
-        return AnyPromise(updateAccountAttributesIfNecessaryAttempt())
+        return updateAccountAttributesIfNecessaryAttempt()
     }
 
     @objc

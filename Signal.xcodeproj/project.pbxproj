@@ -751,6 +751,7 @@
 		887B380F25F056FD00685845 /* NotificationSettingsSoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887B380E25F056FD00685845 /* NotificationSettingsSoundViewController.swift */; };
 		887B381125F05F3100685845 /* PrivacySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887B381025F05F3100685845 /* PrivacySettingsViewController.swift */; };
 		887B381325F0681400685845 /* AdvancedPrivacySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887B381225F0681400685845 /* AdvancedPrivacySettingsViewController.swift */; };
+		887B6DC925F6C3E900E677D4 /* DeleteAccountConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887B6DC825F6C3E900E677D4 /* DeleteAccountConfirmationViewController.swift */; };
 		887C6A7824DBB16E00141B64 /* ResizingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C6A7724DBB16E00141B64 /* ResizingScrollView.swift */; };
 		887CD4772472FEA500FDD265 /* DeviceTransferOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CD4762472FEA500FDD265 /* DeviceTransferOperation.swift */; };
 		887CD47B247304B600FDD265 /* DeviceTransferService+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CD47A247304B600FDD265 /* DeviceTransferService+URL.swift */; };
@@ -831,6 +832,7 @@
 		88E34F2922F26CC100966CC2 /* StorageServiceProto+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E34F2822F26CC100966CC2 /* StorageServiceProto+Sync.swift */; };
 		88E728FF25F0241100A2E4A4 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E728FE25F0241100A2E4A4 /* AccountSettingsViewController.swift */; };
 		88EAD79223764F09004B797E /* OnboardingModeSwitchConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EAD79123764F09004B797E /* OnboardingModeSwitchConfirmationViewController.swift */; };
+		88EF42E525F825650017C057 /* DisappearingMessagesTimerSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EF42E425F825650017C057 /* DisappearingMessagesTimerSettingsViewController.swift */; };
 		88EFF4F425AD1AC6000FAFBA /* ConversationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46361222EE680700185951 /* ConversationPicker.swift */; };
 		88EFF4F525AD1ACB000FAFBA /* ConversationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6354FF22F15A1E00A8ECE6 /* ConversationItem.swift */; };
 		88EFF4F625AD1C82000FAFBA /* ThemeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C63550122F15A6700A8ECE6 /* ThemeHeaderView.swift */; };
@@ -1300,6 +1302,8 @@
 		349439D524360C30001045F7 /* AddGroupMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupMembersViewController.swift; sourceTree = "<group>"; };
 		349439D724360D63001045F7 /* BaseGroupMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGroupMemberViewController.swift; sourceTree = "<group>"; };
 		3495BC911F1426B800B478F5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = translations/ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3495FF1325F9A0C900959D6E /* ug */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ug; path = translations/ug.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3495FF1425F9A0C900959D6E /* ug */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ug; path = translations/ug.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3496744E2076ACCE00080B5F /* LongTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongTextViewController.swift; sourceTree = "<group>"; };
 		34969559219B605E00DCFE74 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
 		3496955A219B605E00DCFE74 /* PhotoCollectionPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionPickerController.swift; sourceTree = "<group>"; };
@@ -1827,6 +1831,7 @@
 		887B381025F05F3100685845 /* PrivacySettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingsViewController.swift; sourceTree = "<group>"; };
 		887B381225F0681400685845 /* AdvancedPrivacySettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedPrivacySettingsViewController.swift; sourceTree = "<group>"; };
 		887B6B2324895F1F0075EBC7 /* eu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eu; path = translations/eu.lproj/Localizable.strings; sourceTree = "<group>"; };
+		887B6DC825F6C3E900E677D4 /* DeleteAccountConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountConfirmationViewController.swift; sourceTree = "<group>"; };
 		887C6A7724DBB16E00141B64 /* ResizingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizingScrollView.swift; sourceTree = "<group>"; };
 		887CD4762472FEA500FDD265 /* DeviceTransferOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTransferOperation.swift; sourceTree = "<group>"; };
 		887CD47A247304B600FDD265 /* DeviceTransferService+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceTransferService+URL.swift"; sourceTree = "<group>"; };
@@ -1955,6 +1960,7 @@
 		88E34F2822F26CC100966CC2 /* StorageServiceProto+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageServiceProto+Sync.swift"; sourceTree = "<group>"; };
 		88E728FE25F0241100A2E4A4 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		88EAD79123764F09004B797E /* OnboardingModeSwitchConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModeSwitchConfirmationViewController.swift; sourceTree = "<group>"; };
+		88EF42E425F825650017C057 /* DisappearingMessagesTimerSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisappearingMessagesTimerSettingsViewController.swift; sourceTree = "<group>"; };
 		88EFF4DD25AD0566000FAFBA /* is */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = is; path = translations/is.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		88EFF4FB25AD4230000FAFBA /* SharingThreadPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingThreadPickerViewController.swift; sourceTree = "<group>"; };
 		88F58A1625EEE5B9008CDA24 /* AppSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
@@ -2277,34 +2283,18 @@
 			isa = PBXGroup;
 			children = (
 				88F58A1625EEE5B9008CDA24 /* AppSettingsViewController.swift */,
-				88E728FE25F0241100A2E4A4 /* AccountSettingsViewController.swift */,
-				88C7597224B7EAA600DB03EA /* AdvancedPinSettingsTableViewController.swift */,
-				8827004D23208A1900F01C46 /* AppearanceSettingsTableViewController.swift */,
-				8829883825B979F900DEE1E3 /* ThemeSettingsTableViewController.swift */,
-				340FC890204DAC8C007AEB0F /* BlockListViewController.h */,
-				340FC887204DAC8C007AEB0F /* BlockListViewController.m */,
+				887B6DCA25F6C3F500E677D4 /* Account */,
+				887B6DCB25F6C40500E677D4 /* Appearance */,
 				887B380725F0355700685845 /* ChatsSettingsViewController.swift */,
-				329D42A625AE673400DCB449 /* NetworkInterfacePreferenceViewController.swift */,
-				346C19DE25ACDF0B00061D3A /* DataSettingsTableViewController.swift */,
-				340FC889204DAC8C007AEB0F /* DomainFrontingCountryViewController.h */,
-				340FC87D204DAC8C007AEB0F /* DomainFrontingCountryViewController.m */,
-				344A761024B366F4009D69A5 /* FlagsViewController.swift */,
+				887B6DCC25F6C41500E677D4 /* Data Usage */,
 				32ECD08624BFBF5C00EDDED0 /* Help */,
-				8862A55825F090C5005D65DB /* InternalSettingsViewController.swift */,
-				3437F6392512835200AC1767 /* LinkedDevicesTableViewController.swift */,
-				346C19E025ACE9AE00061D3A /* MediaDownloadSettingsViewController.swift */,
+				887B6DCE25F6C45B00E677D4 /* Internal */,
+				887B6DCD25F6C44800E677D4 /* Linked Devices */,
 				887B380B25F042A300685845 /* Notifications */,
 				340FC87F204DAC8C007AEB0F /* OWSBackupSettingsViewController.h */,
 				340FC88E204DAC8C007AEB0F /* OWSBackupSettingsViewController.m */,
-				340FC891204DAC8C007AEB0F /* OWSLinkDeviceViewController.h */,
-				340FC885204DAC8C007AEB0F /* OWSLinkDeviceViewController.m */,
-				340FC888204DAC8C007AEB0F /* OWSQRCodeScanningViewController.h */,
-				340FC896204DAC8C007AEB0F /* OWSQRCodeScanningViewController.m */,
-				88D1BCBA24F73C15009A1738 /* PhoneNumberDiscoverabilitySettingsTableViewController.swift */,
-				88D1BCB824F73C04009A1738 /* PhoneNumberSharingSettingsTableViewController.swift */,
 				887B381425F0681B00685845 /* Privacy */,
 				8871B16D25F007CE00D4E070 /* Profile */,
-				344A761224B36C8C009D69A5 /* TestingViewController.swift */,
 			);
 			path = AppSettings;
 			sourceTree = "<group>";
@@ -2318,6 +2308,7 @@
 				34E20D4D2425672A002C011E /* ConversationSettingsViewController+Contents.swift */,
 				34E20D4B24256563002C011E /* ConversationSettingsViewController+Header.swift */,
 				34A17D80253F7236009F8C02 /* ConversationSettingsViewController+LegacyGroups.swift */,
+				88EF42E425F825650017C057 /* DisappearingMessagesTimerSettingsViewController.swift */,
 				340FC89D204DAC8D007AEB0F /* FingerprintViewController.h */,
 				340FC8A2204DAC8D007AEB0F /* FingerprintViewController.m */,
 				340FC8A5204DAC8D007AEB0F /* FingerprintViewScanController.h */,
@@ -3564,8 +3555,65 @@
 			children = (
 				887B381025F05F3100685845 /* PrivacySettingsViewController.swift */,
 				887B381225F0681400685845 /* AdvancedPrivacySettingsViewController.swift */,
+				340FC890204DAC8C007AEB0F /* BlockListViewController.h */,
+				340FC887204DAC8C007AEB0F /* BlockListViewController.m */,
+				340FC889204DAC8C007AEB0F /* DomainFrontingCountryViewController.h */,
+				340FC87D204DAC8C007AEB0F /* DomainFrontingCountryViewController.m */,
+				88D1BCBA24F73C15009A1738 /* PhoneNumberDiscoverabilitySettingsTableViewController.swift */,
+				88D1BCB824F73C04009A1738 /* PhoneNumberSharingSettingsTableViewController.swift */,
 			);
 			path = Privacy;
+			sourceTree = "<group>";
+		};
+		887B6DCA25F6C3F500E677D4 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				88E728FE25F0241100A2E4A4 /* AccountSettingsViewController.swift */,
+				88C7597224B7EAA600DB03EA /* AdvancedPinSettingsTableViewController.swift */,
+				887B6DC825F6C3E900E677D4 /* DeleteAccountConfirmationViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		887B6DCB25F6C40500E677D4 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				8827004D23208A1900F01C46 /* AppearanceSettingsTableViewController.swift */,
+				8829883825B979F900DEE1E3 /* ThemeSettingsTableViewController.swift */,
+			);
+			path = Appearance;
+			sourceTree = "<group>";
+		};
+		887B6DCC25F6C41500E677D4 /* Data Usage */ = {
+			isa = PBXGroup;
+			children = (
+				329D42A625AE673400DCB449 /* NetworkInterfacePreferenceViewController.swift */,
+				346C19DE25ACDF0B00061D3A /* DataSettingsTableViewController.swift */,
+				346C19E025ACE9AE00061D3A /* MediaDownloadSettingsViewController.swift */,
+			);
+			path = "Data Usage";
+			sourceTree = "<group>";
+		};
+		887B6DCD25F6C44800E677D4 /* Linked Devices */ = {
+			isa = PBXGroup;
+			children = (
+				3437F6392512835200AC1767 /* LinkedDevicesTableViewController.swift */,
+				340FC891204DAC8C007AEB0F /* OWSLinkDeviceViewController.h */,
+				340FC885204DAC8C007AEB0F /* OWSLinkDeviceViewController.m */,
+				340FC888204DAC8C007AEB0F /* OWSQRCodeScanningViewController.h */,
+				340FC896204DAC8C007AEB0F /* OWSQRCodeScanningViewController.m */,
+			);
+			path = "Linked Devices";
+			sourceTree = "<group>";
+		};
+		887B6DCE25F6C45B00E677D4 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				344A761024B366F4009D69A5 /* FlagsViewController.swift */,
+				8862A55825F090C5005D65DB /* InternalSettingsViewController.swift */,
+				344A761224B36C8C009D69A5 /* TestingViewController.swift */,
+			);
+			path = Internal;
 			sourceTree = "<group>";
 		};
 		888B6D4325B2223200E2A662 /* Wallpapers */ = {
@@ -4353,6 +4401,7 @@
 				"zh-HK",
 				zh_HK,
 				kab,
+				ug,
 			);
 			mainGroup = D221A07E169C9E5E00537ABF;
 			productRefGroup = D221A08A169C9E5E00537ABF /* Products */;
@@ -5325,6 +5374,7 @@
 				34995F1B2411838D00C70546 /* NewGroupMembersViewController.swift in Sources */,
 				340FC8BC204DAC8D007AEB0F /* FingerprintViewController.m in Sources */,
 				34A4C61E221613D00042EF2E /* OnboardingVerificationViewController.swift in Sources */,
+				887B6DC925F6C3E900E677D4 /* DeleteAccountConfirmationViewController.swift in Sources */,
 				884EFBAC251478D0006B9457 /* ResearchMegaphone.swift in Sources */,
 				4CC613362227A00400E21A3A /* ConversationSearch.swift in Sources */,
 				88A505FA23DBA1360005C012 /* IntroducingPINs.swift in Sources */,
@@ -5526,6 +5576,7 @@
 				4579431E1E7C8CE9008ED0C0 /* Pastelog.m in Sources */,
 				8809CE8A22F93C2200D38867 /* RecentPhotoCollectionView.swift in Sources */,
 				880D90302481E617003D2B14 /* SignalApp.swift in Sources */,
+				88EF42E525F825650017C057 /* DisappearingMessagesTimerSettingsViewController.swift in Sources */,
 				348815BA2552063F00D4F4C4 /* CVAvatarBuilder.swift in Sources */,
 				3496957321A301A100DCFE74 /* OWSBackupJob.m in Sources */,
 				32C584A825B81C6600256804 /* AvatarViewController.swift in Sources */,
@@ -5711,6 +5762,7 @@
 				88EFF4DD25AD0566000FAFBA /* is */,
 				888B6D4025AE7E2200E2A662 /* zh-HK */,
 				3414896C25CC3C2E0098E3ED /* kab */,
+				3495FF1325F9A0C900959D6E /* ug */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -5787,6 +5839,7 @@
 				887B6B2324895F1F0075EBC7 /* eu */,
 				884596EF24B93E13002F66D3 /* cy */,
 				3414896D25CC3C2E0098E3ED /* kab */,
+				3495FF1425F9A0C900959D6E /* ug */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
