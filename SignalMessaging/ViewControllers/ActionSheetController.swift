@@ -219,11 +219,21 @@ open class ActionSheetController: OWSViewController {
 
         let bottomInset = scrollView.adjustedContentInset.bottom
         scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.height + bottomInset)
+        
+        let cornerRadius: CGFloat = 16
+        let path = UIBezierPath(
+            roundedRect: contentView.bounds,
+            byRoundingCorners: [.allCorners],
+            cornerRadii: CGSize(square: cornerRadius)
+        )
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        contentView.layer.mask = shapeLayer
     }
     
     public func setupCenterHeader(title: String, close: Selector?) {
         let backgroundView = UIView()
-        backgroundView.backgroundColor = Theme.backgroundColor
+//        backgroundView.backgroundColor = Theme.backgroundColor
         
         let titleLabel = UILabel()
         titleLabel.textColor = Theme.primaryTextColor
