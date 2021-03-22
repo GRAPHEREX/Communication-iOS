@@ -61,16 +61,16 @@ class AppSettingsViewController: OWSTableViewController2 {
         ))
         contents.addSection(profileSection)
 
-        let section1 = OWSTableSection()
-        section1.add(.disclosureItem(
-            icon: .settingsAccount,
-            name: NSLocalizedString("SETTINGS_ACCOUNT", comment: "Title for the 'account' link in settings."),
-            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "account"),
-            actionBlock: { [weak self] in
-                let vc = AccountSettingsViewController()
-                self?.push(viewController: vc)
-            }
-        ))
+//        let section1 = OWSTableSection()
+//        section1.add(.disclosureItem(
+//            icon: .settingsAccount,
+//            name: NSLocalizedString("SETTINGS_ACCOUNT", comment: "Title for the 'account' link in settings."),
+//            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "account"),
+//            actionBlock: { [weak self] in
+//                let vc = AccountSettingsViewController()
+//                self?.push(viewController: vc)
+//            }
+//        ))
 //        section1.add(.disclosureItem(
 //            icon: .settingsLinkedDevices,
 //            name: NSLocalizedString("LINKED_DEVICES_TITLE", comment: "Menu item and navbar title for the device manager"),
@@ -80,7 +80,7 @@ class AppSettingsViewController: OWSTableViewController2 {
 //                self?.push(viewController: vc)
 //            }
 //        ))
-        contents.addSection(section1)
+//        contents.addSection(section1)
 
         let section2 = OWSTableSection()
         section2.add(.disclosureItem(
@@ -175,8 +175,87 @@ class AppSettingsViewController: OWSTableViewController2 {
             ))
             contents.addSection(internalSection)
         }
+        
+        let accountSection = OWSTableSection()
+//        accountSection.headerTitle = NSLocalizedString("SETTINGS_ACCOUNT", comment: "Title for the 'account' link in settings.")
+
+        if tsAccountManager.isDeregistered() {
+            accountSection.add(.actionItem(
+                withText: tsAccountManager.isPrimaryDevice
+                    ? NSLocalizedString("SETTINGS_REREGISTER_BUTTON", comment: "Label for re-registration button.")
+                    : NSLocalizedString("SETTINGS_RELINK_BUTTON", comment: "Label for re-link button."),
+                textColor: .ows_accentBlue,
+                accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "reregister"),
+                actionBlock: { [weak self] in
+                    self?.reregisterUser()
+                }
+            ))
+            accountSection.add(.actionItem(
+                withText: NSLocalizedString("SETTINGS_DELETE_DATA_BUTTON",
+                                            comment: "Label for 'delete data' button."),
+                textColor: .ows_accentRed,
+                accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "delete_data"),
+                actionBlock: { [weak self] in
+                    self?.deleteUnregisterUserData()
+                }
+            ))
+        } else if tsAccountManager.isRegisteredPrimaryDevice {
+            accountSection.add(.actionItem(
+                withText: NSLocalizedString("SETTINGS_DELETE_ACCOUNT_BUTTON", comment: ""),
+                textColor: .ows_accentRed,
+                accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "delete_account"),
+                actionBlock: { [weak self] in
+                    self?.unregisterUser()
+                }
+            ))
+        } else {
+            accountSection.add(.actionItem(
+                withText: NSLocalizedString("SETTINGS_DELETE_DATA_BUTTON",
+                                            comment: "Label for 'delete data' button."),
+                textColor: .ows_accentRed,
+                accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "delete_data"),
+                actionBlock: { [weak self] in
+                    self?.deleteLinkedData()
+                }
+            ))
+        }
+
+        contents.addSection(accountSection)
 
         self.contents = contents
+    }
+    
+    // MARK: - Account
+
+    private func reregisterUser() {
+        RegistrationUtils.showReregistrationUI(from: self)
+    }
+
+    private func deleteLinkedData() {
+        OWSActionSheets.showConfirmationAlert(
+            title: NSLocalizedString("CONFIRM_DELETE_LINKED_DATA_TITLE", comment: ""),
+            message: NSLocalizedString("CONFIRM_DELETE_LINKED_DATA_TEXT", comment: ""),
+            proceedTitle: NSLocalizedString("PROCEED_BUTTON", comment: ""),
+            proceedStyle: .destructive
+        ) { _ in
+            SignalApp.resetAppData()
+        }
+    }
+
+    private func unregisterUser() {
+        let vc = DeleteAccountConfirmationViewController()
+        presentFormSheet(OWSNavigationController(rootViewController: vc), animated: true)
+    }
+
+    private func deleteUnregisterUserData() {
+        OWSActionSheets.showConfirmationAlert(
+            title: NSLocalizedString("CONFIRM_DELETE_DATA_TITLE", comment: ""),
+            message: NSLocalizedString("CONFIRM_DELETE_DATA_TEXT", comment: ""),
+            proceedTitle: NSLocalizedString("PROCEED_BUTTON", comment: ""),
+            proceedStyle: .destructive
+        ) { [weak self] _ in
+            SignalApp.resetAppData()
+        }
     }
 
     private var inviteFlow: InviteFlow?
