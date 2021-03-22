@@ -827,27 +827,29 @@ NSString *NSStringForOWSRegistrationState(OWSRegistrationState value)
 
 + (void)unregisterTextSecureWithSuccess:(void (^)(void))success failure:(void (^)(NSError *error))failureBlock
 {
-    TSRequest *request = [OWSRequestFactory unregisterAccountRequest];
-    [[TSNetworkManager shared] makeRequest:request
-        success:^(NSURLSessionDataTask *task, id responseObject) {
-            OWSLogInfo(@"Successfully unregistered");
-            success();
-
-            // This is called from `[AppSettingsViewController proceedToUnregistration]` whose
-            // success handler calls `[Environment resetAppData]`.
-            // This method, after calling that success handler, fires
-            // `RegistrationStateDidChangeNotification` which is only safe to fire after
-            // the data store is reset.
-
-            [self.shared postRegistrationStateDidChangeNotification];
-        }
-        failure:^(NSURLSessionDataTask *task, NSError *error) {
-            if (!IsNetworkConnectivityFailure(error)) {
-                OWSProdError([OWSAnalyticsEvents accountsErrorUnregisterAccountRequestFailed]);
-            }
-            OWSLogError(@"Failed to unregister with error: %@", error);
-            failureBlock(error);
-        }];
+    success();
+    [self.shared postRegistrationStateDidChangeNotification];
+//    TSRequest *request = [OWSRequestFactory unregisterAccountRequest];
+//    [[TSNetworkManager shared] makeRequest:request
+//        success:^(NSURLSessionDataTask *task, id responseObject) {
+//            OWSLogInfo(@"Successfully unregistered");
+//            success();
+//
+//            // This is called from `[AppSettingsViewController proceedToUnregistration]` whose
+//            // success handler calls `[Environment resetAppData]`.
+//            // This method, after calling that success handler, fires
+//            // `RegistrationStateDidChangeNotification` which is only safe to fire after
+//            // the data store is reset.
+//
+//            [self.shared postRegistrationStateDidChangeNotification];
+//        }
+//        failure:^(NSURLSessionDataTask *task, NSError *error) {
+//            if (!IsNetworkConnectivityFailure(error)) {
+//                OWSProdError([OWSAnalyticsEvents accountsErrorUnregisterAccountRequestFailed]);
+//            }
+//            OWSLogError(@"Failed to unregister with error: %@", error);
+//            failureBlock(error);
+//        }];
 }
 
 #pragma mark - De-Registration
