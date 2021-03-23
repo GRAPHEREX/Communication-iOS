@@ -171,9 +171,48 @@ fileprivate extension ContactsMainController {
     }
     
     @objc func didAddNewContactButtonTap() {
+        let presentAddNewContactControllerAction = ActionSheetAction(title: NSLocalizedString("Insert ID-Key", comment: ""), style: .default) { [weak self] _ in
+            self?.presentAddNewContactController()
+        }
+        
+        let presentScanQRControllerAction = ActionSheetAction(title: NSLocalizedString("Scan QR-Code", comment: ""), style: .default) { [weak self] _ in
+            self?.presentScanQRController()
+        }
+        
+        let presentInviteFriendsControllerAction = ActionSheetAction(title: NSLocalizedString("INVITE_FRIENDS_CONTACT_TABLE_BUTTON", comment: ""), style: .default) { [weak self] _ in
+            self?.inviteFriends()
+        }
+        
+        let actions = [presentAddNewContactControllerAction, presentScanQRControllerAction, presentInviteFriendsControllerAction]
+        let actionSheetController = ActionSheetController(title: nil, message: nil)
+        actionSheetController.addAction(OWSActionSheets.dismissAction)
+        for action in actions {
+            actionSheetController.addAction(action)
+        }
+        present(actionSheetController, animated: true)
+    }
+    
+    private func presentAddNewContactController() {
         let controller = UIStoryboard.makeController(AddNewContactController.self)
         controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    private func presentScanQRController() {
+        let addNewContactController = UIStoryboard.makeController(AddNewContactController.self)
+        addNewContactController.hidesBottomBarWhenPushed = true
+        
+        let scanQRController = ScanQRController()
+        scanQRController.hidesBottomBarWhenPushed = true
+        scanQRController.returnScreen = addNewContactController
+        scanQRController.result = { [weak addNewContactController] uuidString in
+            addNewContactController?.setUuidString(uuidString: uuidString)
+        }
+        navigationController?.pushViewController(scanQRController, animated: true) { [weak self] in
+            var vcs = self?.navigationController?.viewControllers
+            vcs?.insert(addNewContactController, at: 1)
+            self?.navigationController?.viewControllers = vcs ?? []
+        }
     }
     
     func showContactDetail(account: SignalAccount) {

@@ -269,23 +269,23 @@ OWSTableViewControllerDraggingDelegate,
               [hStack autoPinEdgesToSuperviewEdges];
           };
 
-    if (self.shouldShowNewGroup) {
-        addButton(NSLocalizedString(@"NEW_GROUP_BUTTON", comment
-                                    : @"Label for the 'create new group' button."),
-            @selector(newGroupButtonPressed),
-            @"newGroupButton",
-            ThemeIconComposeNewGroupLarge,
-            35);
-    }
+//    if (self.shouldShowNewGroup) {
+//        addButton(NSLocalizedString(@"NEW_GROUP_BUTTON", comment
+//                                    : @"Label for the 'create new group' button."),
+//            @selector(newGroupButtonPressed),
+//            @"newGroupButton",
+//            ThemeIconComposeNewGroupLarge,
+//            35);
+//    }
 
-    if (self.allowsAddByPhoneNumber) {
-        addButton(NSLocalizedString(@"NO_CONTACTS_SEARCH_BY_PHONE_NUMBER",
-                      @"Label for a button that lets users search for contacts by phone number"),
-            @selector(hideBackgroundView),
-            @"searchByPhoneNumberButton",
-            ThemeIconComposeFindByPhoneNumberLarge,
-            42);
-    }
+//    if (self.allowsAddByPhoneNumber) {
+//        addButton(NSLocalizedString(@"NO_CONTACTS_SEARCH_BY_PHONE_NUMBER",
+//                      @"Label for a button that lets users search for contacts by phone number"),
+//            @selector(hideBackgroundView),
+//            @"searchByPhoneNumberButton",
+//            ThemeIconComposeFindByPhoneNumberLarge,
+//            42);
+//    }
 
     if (self.shouldShowInvites) {
         addButton(NSLocalizedString(@"INVITE_FRIENDS_CONTACT_TABLE_BUTTON",
@@ -436,18 +436,18 @@ OWSTableViewControllerDraggingDelegate,
 //                        }]];
 //    }
 
-    if (self.contactsManager.isSystemContactsAuthorized && self.shouldShowInvites && !isSearching) {
-        // Invite Contacts
-        [staticSection
-            addItem:[OWSTableItem
-                         disclosureItemWithIcon:ThemeIconComposeInvite
-                                           name:NSLocalizedString(@"INVITE_FRIENDS_CONTACT_TABLE_BUTTON",
-                                                    @"Label for the cell that presents the 'invite contacts' workflow.")
-                                  accessoryText:nil
-                        accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(
-                                                    RecipientPickerViewController, @"invite_contacts")
-                                    actionBlock:^{ [weakSelf presentInviteFlow]; }]];
-    }
+//    if (self.contactsManager.isSystemContactsAuthorized && self.shouldShowInvites && !isSearching) {
+//        // Invite Contacts
+//        [staticSection
+//            addItem:[OWSTableItem
+//                         disclosureItemWithIcon:ThemeIconComposeInvite
+//                                           name:NSLocalizedString(@"INVITE_FRIENDS_CONTACT_TABLE_BUTTON",
+//                                                    @"Label for the cell that presents the 'invite contacts' workflow.")
+//                                  accessoryText:nil
+//                        accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(
+//                                                    RecipientPickerViewController, @"invite_contacts")
+//                                    actionBlock:^{ [weakSelf presentInviteFlow]; }]];
+//    }
 
     if (staticSection.itemCount > 0) {
         [contents addSection:staticSection];
