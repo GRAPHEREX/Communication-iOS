@@ -200,6 +200,8 @@ fileprivate extension ContactsMainController {
     
     private func presentScanQRController() {
         let addNewContactController = UIStoryboard.makeController(AddNewContactController.self)
+        addNewContactController.loadView()
+        addNewContactController.viewDidLoad()
         addNewContactController.hidesBottomBarWhenPushed = true
         
         let scanQRController = ScanQRController()
