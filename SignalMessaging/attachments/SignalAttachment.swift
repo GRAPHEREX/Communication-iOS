@@ -99,7 +99,7 @@ public enum TSImageQuality: UInt {
         case .original:
             return .original
         case .medium:
-            return .mediumHigh
+            return .high
         case .compact:
             return .medium
         }

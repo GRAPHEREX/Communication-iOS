@@ -4082,34 +4082,46 @@ typedef enum : NSUInteger {
         return;
     }
 
-    TSContactThread *contactThread = (TSContactThread *)self.thread;
-    NSString *displayName = [self.contactsManager displayNameForAddress:contactThread.contactAddress];
-
-    ActionSheetController *alert = [[ActionSheetController alloc]
-        initWithTitle:[CallStrings callBackAlertTitle]
-              message:[NSString stringWithFormat:[CallStrings callBackAlertMessageFormat], displayName]];
-
-    __weak ConversationViewController *weakSelf = self;
-    ActionSheetAction *callAction =
-        [[ActionSheetAction alloc] initWithTitle:[CallStrings callBackAlertCallButton]
-                         accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"call_back")
-                                           style:ActionSheetActionStyleDefault
-                                         handler:^(ActionSheetAction *action) {
-                                             switch (call.offerType) {
-                                                 case TSRecentCallOfferTypeAudio:
-                                                     [weakSelf startIndividualAudioCall];
-                                                     break;
-                                                 case TSRecentCallOfferTypeVideo:
-                                                     [weakSelf startIndividualVideoCall];
-                                                     break;
-                                             }
-                                         }];
-    [alert addAction:callAction];
-    [alert addAction:[OWSActionSheets cancelAction]];
-
+//    TSContactThread *contactThread = (TSContactThread *)self.thread;
+//    NSString *displayName = [self.contactsManager displayNameForAddress:contactThread.contactAddress];
+//
+//    ActionSheetController *alert = [[ActionSheetController alloc]
+//        initWithTitle:[CallStrings callBackAlertTitle]
+//              message:[NSString stringWithFormat:[CallStrings callBackAlertMessageFormat], displayName]];
+//
+//    __weak ConversationViewController *weakSelf = self;
+//    ActionSheetAction *callAction =
+//        [[ActionSheetAction alloc] initWithTitle:[CallStrings callBackAlertCallButton]
+//                         accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"call_back")
+//                                           style:ActionSheetActionStyleDefault
+//                                         handler:^(ActionSheetAction *action) {
+//                                             switch (call.offerType) {
+//                                                 case TSRecentCallOfferTypeAudio:
+//                                                     [weakSelf startIndividualAudioCall];
+//                                                     break;
+//                                                 case TSRecentCallOfferTypeVideo:
+//                                                     [weakSelf startIndividualVideoCall];
+//                                                     break;
+//                                             }
+//                                         }];
+//    [alert addAction:callAction];
+//    [alert addAction:[OWSActionSheets cancelAction]];
+//
+//    [self.inputToolbar clearDesiredKeyboard];
+//    [self dismissKeyBoard];
+//    [self presentActionSheet:alert];
+    
     [self.inputToolbar clearDesiredKeyboard];
     [self dismissKeyBoard];
-    [self presentActionSheet:alert];
+    
+    switch (call.offerType) {
+        case TSRecentCallOfferTypeAudio:
+            [self startIndividualAudioCall];
+            break;
+        case TSRecentCallOfferTypeVideo:
+            [self startIndividualVideoCall];
+            break;
+    }
 }
 
 - (void)cvc_didTapGroupCall

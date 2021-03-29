@@ -272,7 +272,12 @@ private extension CVComponentCallMessage {
     }
     
     var phoneImage: UIImage {
-        UIImage(named: "profileMenu.icon.call")!.withRenderingMode(.alwaysTemplate)
+        switch call.offerType {
+        case .audio:
+            return UIImage(named: "profileMenu.icon.call")!.withRenderingMode(.alwaysTemplate)
+        case .video:
+            return Theme.iconImage(.videoCall)
+        }
     }
 }
 

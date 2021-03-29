@@ -78,7 +78,7 @@ fileprivate extension CallsMainController {
         let callCell = ContactTableViewCell()
         callCell.configure(with: call, shouldUseShortName: true)
         callCell.configureCallAction({ [weak self] address in
-            self?.outboundCallInitiator.initiateCall(address: address)
+            self?.outboundCallInitiator.initiateCall(address: address, isVideo: call.offerType == .video)
         })
 
         let item = OWSTableItem(customCell: callCell,

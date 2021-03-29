@@ -79,7 +79,8 @@ public class MediaTileViewController: OWSViewController, OWSAudioPlayerDelegate 
         collectionView.register(LinkGridViewCell.self, forCellWithReuseIdentifier: LinkGridViewCell.reuseIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.isScrollEnabled = false
+        collectionView.isScrollEnabled = true
+        collectionView.alwaysBounceVertical = true
         collectionView.delegate = self
 
         self.mediaTileViewLayout.invalidateLayout()
