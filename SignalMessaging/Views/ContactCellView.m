@@ -39,6 +39,8 @@ const CGFloat callIconSize = 24;
 @property (nonatomic) SignalServiceAddress *address;
 @property (nonatomic, nullable) NSArray<NSLayoutConstraint *> *layoutConstraints;
 
+@property (nonatomic, nullable) UIImage *callIconImage;
+
 @end
 
 #pragma mark -
@@ -248,6 +250,15 @@ const CGFloat callIconSize = 24;
     self.thread = call.threadWithSneakyTransaction;
     self.address = self.thread.recipientAddresses[0];
 
+    switch (call.offerType) {
+        case TSRecentCallOfferTypeAudio:
+            self.callIconImage = [[UIImage imageNamed:@"profileMenu.icon.call"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            break;
+        case TSRecentCallOfferTypeVideo:
+            self.callIconImage = [Theme iconImage:ThemeIconVideoCall];
+            break;
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(otherUsersProfileDidChange:)
                                                  name:kNSNotificationNameOtherUsersProfileDidChange
@@ -291,6 +302,8 @@ const CGFloat callIconSize = 24;
         case RPRecentCallTypeIncomingMissed:
         case RPRecentCallTypeIncomingIncomplete:
         case RPRecentCallTypeIncomingMissedBecauseOfChangedIdentity:
+        case RPRecentCallTypeIncomingAnsweredElsewhere:
+        case RPRecentCallTypeIncomingBusyElsewhere:
             [iconImageView setTemplateImage:[UIImage imageNamed:@"icon.call.incoming"] tintColor:UIColor.ows_accentRedColor];
             break;
         case RPRecentCallTypeOutgoingIncomplete:
@@ -298,6 +311,7 @@ const CGFloat callIconSize = 24;
             [iconImageView setTemplateImage:[UIImage imageNamed:@"icon.call.outgoing"] tintColor:UIColor.st_neutralIcon2];
             break;
         case RPRecentCallTypeIncomingDeclined:
+        case RPRecentCallTypeIncomingDeclinedElsewhere:
             [iconImageView setTemplateImage:[UIImage imageNamed:@"icon.call.incoming"] tintColor:UIColor.st_neutralIcon2];
             break;
     }
@@ -322,8 +336,9 @@ const CGFloat callIconSize = 24;
     [self.callViewContainer autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self];
     [self.callViewContainer autoSetDimension:ALDimensionWidth toSize:callViewContainerWidth];
     UIImageView* callIconView = [UIImageView new];
-    callIconView.image = [UIImage imageNamed:@"mainTab.callList.icon.regular"];
+    callIconView.image = self.callIconImage;
     [callIconView autoSetDimensionsToSize:CGSizeMake(callIconSize, callIconSize)];
+    callIconView.tintColor = self.forceDarkAppearance ? Theme.darkThemeSecondaryTextAndIconColor : Theme.secondaryTextAndIconColor;
     [self addArrangedSubview:callIconView];
     self.action = handler;
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(callAction)];
@@ -426,6 +441,7 @@ const CGFloat callIconSize = 24;
 
     self.forceDarkAppearance = NO;
     self.thread = nil;
+    self.callIconImage = nil;
     self.accessoryMessage = nil;
     self.nameLabel.text = nil;
     self.subtitleLabel.text = nil;
