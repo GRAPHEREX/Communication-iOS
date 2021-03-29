@@ -1261,14 +1261,19 @@ extension MessageSender {
         // Returns the per-device-message parameters used when submitting a message to
         // the Signal Web Service.
         // See: https://github.com/signalapp/Signal-Server/blob/master/service/src/main/java/org/whispersystems/textsecuregcm/entities/IncomingMessage.java
-        return [
+        var dict: [String: Any] = [
             "type": messageType.rawValue,
             "destination": protocolAddress.name,
             "destinationDeviceId": protocolAddress.deviceId,
             "destinationRegistrationId": Int32(bitPattern: try session.remoteRegistrationId()),
             "content": serializedMessage.base64EncodedString(),
-            "isOnline": message.isOnline,
-            "push": push ?? ""
+            "isOnline": message.isOnline
         ]
+        
+        if let push = push {
+            dict["push"] = push
+        }
+        
+        return dict as NSDictionary
     }
 }
