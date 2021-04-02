@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import GrapherexWallet
 
 public enum MainTab: Hashable, CaseIterable {
     case contactList

@@ -3,7 +3,6 @@
 // 
 
 import Foundation
-import GrapherexWallet
 
 @objc
 extension UIViewController {

@@ -103,6 +103,9 @@ end
 target 'SignalShareExtension'
 target 'SignalMessaging'
 target 'NotificationServiceExtension'
+target 'GrapherexWallet' do
+  pod 'SDWebImage', :inhibit_warnings => true
+end
 
 post_install do |installer|
   enable_strip(installer)

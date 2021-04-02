@@ -13,6 +13,8 @@
 #import <SignalServiceKit/TSContactThread.h>
 #import <SignalServiceKit/TSGroupThread.h>
 
+@import GrapherexWallet;
+
 NS_ASSUME_NONNULL_BEGIN
 
 NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminateKey";

@@ -81,6 +81,9 @@ PODS:
   - PureLayout (3.1.4)
   - Reachability (3.2)
   - SAMKeychain (1.5.3)
+  - SDWebImage (5.10.4):
+    - SDWebImage/Core (= 5.10.4)
+  - SDWebImage/Core (5.10.4)
   - SignalArgon2 (1.3.2)
   - SignalArgon2/Tests (1.3.2)
   - SignalClient (0.3.1):
@@ -259,6 +262,7 @@ DEPENDENCIES:
   - PromiseKit
   - PureLayout
   - Reachability
+  - SDWebImage
   - SignalArgon2 (from `https://github.com/signalapp/Argon2.git`)
   - SignalArgon2/Tests (from `https://github.com/signalapp/Argon2.git`)
   - SignalClient (from `https://github.com/signalapp/libsignal-client.git`)
@@ -292,6 +296,7 @@ SPEC REPOS:
     - PureLayout
     - Reachability
     - SAMKeychain
+    - SDWebImage
     - SQLCipher
     - SSZipArchive
     - SwiftProtobuf
@@ -413,6 +418,7 @@ SPEC CHECKSUMS:
   PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
+  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SignalArgon2: 1c24183835ca861e6af06631c18b1671cdf35571
   SignalClient: 33768bc23cd46f738665d597323bea8f9e3965d0
   SignalCoreKit: 43daa8f15d6125d54705f35628ac35051bb205c6
@@ -428,6 +434,6 @@ SPEC CHECKSUMS:
   ZKGroup: 15a08eed5870a44b9dd14af0824ac95f6eed7380
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: c499eafb418071a1de1845bd96b1ef19bdea4a39
+PODFILE CHECKSUM: 47ee1d247aafa97d08df4b400ce03ef7e9b842d3
 
 COCOAPODS: 1.9.2
