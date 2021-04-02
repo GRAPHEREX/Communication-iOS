@@ -952,7 +952,6 @@
 		F2155E2725D44EA20089AA63 /* notificationPermission1.png in Resources */ = {isa = PBXBuildFile; fileRef = F2155E2625D44EA20089AA63 /* notificationPermission1.png */; };
 		F2155E2E25D44EAC0089AA63 /* notificationPermission2.png in Resources */ = {isa = PBXBuildFile; fileRef = F2155E2D25D44EAC0089AA63 /* notificationPermission2.png */; };
 		F217437525CAEA9E00BC9476 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420325CAEA9D00BC9476 /* GalleryManager.swift */; };
-		F217437625CAEA9E00BC9476 /* UIViewController + Send.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420525CAEA9D00BC9476 /* UIViewController + Send.swift */; };
 		F217437725CAEA9E00BC9476 /* Array + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420625CAEA9D00BC9476 /* Array + Extension.swift */; };
 		F217437825CAEA9E00BC9476 /* UIViewController + Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420725CAEA9D00BC9476 /* UIViewController + Permission.swift */; };
 		F217437925CAEA9E00BC9476 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420825CAEA9D00BC9476 /* Date + Extension.swift */; };
@@ -2307,7 +2306,6 @@
 		F2155E2625D44EA20089AA63 /* notificationPermission1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationPermission1.png; sourceTree = "<group>"; };
 		F2155E2D25D44EAC0089AA63 /* notificationPermission2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationPermission2.png; sourceTree = "<group>"; };
 		F217420325CAEA9D00BC9476 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
-		F217420525CAEA9D00BC9476 /* UIViewController + Send.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Send.swift"; sourceTree = "<group>"; };
 		F217420625CAEA9D00BC9476 /* Array + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array + Extension.swift"; sourceTree = "<group>"; };
 		F217420725CAEA9D00BC9476 /* UIViewController + Permission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Permission.swift"; sourceTree = "<group>"; };
 		F217420825CAEA9D00BC9476 /* Date + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
@@ -4971,7 +4969,6 @@
 		F217420425CAEA9D00BC9476 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F217420525CAEA9D00BC9476 /* UIViewController + Send.swift */,
 				F217420625CAEA9D00BC9476 /* Array + Extension.swift */,
 				F217420725CAEA9D00BC9476 /* UIViewController + Permission.swift */,
 				F217420825CAEA9D00BC9476 /* Date + Extension.swift */,
@@ -7226,7 +7223,6 @@
 				348815C9255346A500D4F4C4 /* CVComponent.swift in Sources */,
 				34D1F0861F8678AA0066283D /* ConversationViewController.m in Sources */,
 				3427C64320F500E000EEC730 /* OWSMessageTimerView.m in Sources */,
-				F217437625CAEA9E00BC9476 /* UIViewController + Send.swift in Sources */,
 				F21743C425CAEA9F00BC9476 /* SDWebImageOptionsProcessor.m in Sources */,
 				32AC5CE7255B51E900829BD8 /* JoinGroupCallPill.swift in Sources */,
 				32ECD08A24BFBF9500EDDED0 /* ContactSupportViewController.swift in Sources */,

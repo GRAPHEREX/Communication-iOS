@@ -67,6 +67,7 @@
 #import <SignalServiceKit/TSQuotedMessage.h>
 
 @import SafariServices;
+@import GrapherexWallet;
 
 NS_ASSUME_NONNULL_BEGIN
 
