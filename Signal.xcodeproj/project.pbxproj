@@ -842,98 +842,100 @@
 		E35193BB26170FB400043606 /* GrapherexWallet.h in Headers */ = {isa = PBXBuildFile; fileRef = E35193B926170FB400043606 /* GrapherexWallet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E35193BE26170FB400043606 /* GrapherexWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E35193B726170FB300043606 /* GrapherexWallet.framework */; };
 		E35193BF26170FB400043606 /* GrapherexWallet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E35193B726170FB300043606 /* GrapherexWallet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E35194732617128B00043606 /* QRPasswordSaveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194242617128A00043606 /* QRPasswordSaveController.swift */; };
-		E35194742617128B00043606 /* RestorePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194252617128A00043606 /* RestorePasswordController.swift */; };
-		E35194752617128B00043606 /* PasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194262617128A00043606 /* PasswordController.swift */; };
-		E35194762617128B00043606 /* CancelPinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194282617128A00043606 /* CancelPinController.swift */; };
-		E35194772617128B00043606 /* EnterPinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194292617128A00043606 /* EnterPinController.swift */; };
-		E35194782617128B00043606 /* SetPinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351942A2617128A00043606 /* SetPinController.swift */; };
-		E35194792617128B00043606 /* TransactionInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351942D2617128A00043606 /* TransactionInfoController.swift */; };
-		E351947A2617128B00043606 /* WalletDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351942F2617128A00043606 /* WalletDetailController.swift */; };
-		E351947B2617128B00043606 /* WalletHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194312617128A00043606 /* WalletHeaderView.swift */; };
-		E351947C2617128B00043606 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194322617128A00043606 /* TransactionView.swift */; };
-		E351947D2617128B00043606 /* ExchangeCreatedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194352617128A00043606 /* ExchangeCreatedController.swift */; };
-		E351947E2617128B00043606 /* WalletExchangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194362617128A00043606 /* WalletExchangeController.swift */; };
-		E351947F2617128B00043606 /* WalletExchangeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194382617128A00043606 /* WalletExchangeSelectionView.swift */; };
-		E35194802617128B00043606 /* PastelessTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194392617128A00043606 /* PastelessTextField.swift */; };
-		E35194812617128B00043606 /* SendFromChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351943B2617128A00043606 /* SendFromChatView.swift */; };
-		E35194822617128B00043606 /* SentSucceedCurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351943D2617128A00043606 /* SentSucceedCurrencyController.swift */; };
-		E35194832617128B00043606 /* FeeInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351943E2617128A00043606 /* FeeInfoController.swift */; };
-		E35194842617128B00043606 /* EnterPasswordBeforeSendingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351943F2617128A00043606 /* EnterPasswordBeforeSendingController.swift */; };
-		E35194852617128B00043606 /* SendCurrencyFromChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194402617128A00043606 /* SendCurrencyFromChatController.swift */; };
-		E35194862617128B00043606 /* SendCurrencyFromWalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194412617128A00043606 /* SendCurrencyFromWalletController.swift */; };
-		E35194872617128B00043606 /* WalletExchangeHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194432617128A00043606 /* WalletExchangeHistoryController.swift */; };
-		E35194882617128B00043606 /* ExchangeHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194442617128A00043606 /* ExchangeHistoryView.swift */; };
-		E35194892617128B00043606 /* InfoCurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194462617128A00043606 /* InfoCurrencyController.swift */; };
-		E351948A2617128B00043606 /* NewWalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194482617128A00043606 /* NewWalletController.swift */; };
-		E351948B2617128B00043606 /* NewWalletSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194492617128A00043606 /* NewWalletSuccessController.swift */; };
-		E351948C2617128B00043606 /* NoWalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351944A2617128A00043606 /* NoWalletController.swift */; };
-		E351948D2617128B00043606 /* Fee.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351944D2617128B00043606 /* Fee.swift */; };
-		E351948E2617128B00043606 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351944E2617128B00043606 /* Currency.swift */; };
-		E351948F2617128B00043606 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351944F2617128B00043606 /* Transaction.swift */; };
-		E35194902617128B00043606 /* RecipientWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194502617128B00043606 /* RecipientWallet.swift */; };
-		E35194912617128B00043606 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194512617128B00043606 /* Wallet.swift */; };
-		E35194922617128B00043606 /* WalletCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194522617128B00043606 /* WalletCredentials.swift */; };
-		E35194932617128B00043606 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194532617128B00043606 /* WalletModel.swift */; };
-		E35194942617128B00043606 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194562617128B00043606 /* UITextField.swift */; };
-		E35194952617128B00043606 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194582617128B00043606 /* NumberFormatter.swift */; };
-		E35194962617128B00043606 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194592617128B00043606 /* String.swift */; };
-		E35194972617128B00043606 /* MoneyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351945A2617128B00043606 /* MoneyFormatter.swift */; };
-		E35194982617128B00043606 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351945B2617128B00043606 /* WalletManager.swift */; };
-		E35194992617128B00043606 /* CurrencyPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351945E2617128B00043606 /* CurrencyPickerController.swift */; };
-		E351949A2617128B00043606 /* CurrencyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351945F2617128B00043606 /* CurrencyPickerView.swift */; };
-		E351949B2617128B00043606 /* RecipientWalletPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194612617128B00043606 /* RecipientWalletPickerView.swift */; };
-		E351949C2617128B00043606 /* RecipientWalletPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194622617128B00043606 /* RecipientWalletPickerController.swift */; };
-		E351949D2617128B00043606 /* WalletPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194642617128B00043606 /* WalletPickerController.swift */; };
-		E351949E2617128B00043606 /* WalletPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194652617128B00043606 /* WalletPickerView.swift */; };
-		E351949F2617128B00043606 /* FilterTransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194672617128B00043606 /* FilterTransactionController.swift */; };
-		E35194A02617128B00043606 /* RecieveCurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194692617128B00043606 /* RecieveCurrencyController.swift */; };
-		E35194A12617128B00043606 /* WalletItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351946C2617128B00043606 /* WalletItemCell.swift */; };
-		E35194A22617128B00043606 /* WalletMainHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351946D2617128B00043606 /* WalletMainHeaderCell.swift */; };
-		E35194A32617128B00043606 /* WalletMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351946E2617128B00043606 /* WalletMainController.swift */; };
-		E35194A42617128B00043606 /* WalletMainController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E351946F2617128B00043606 /* WalletMainController.storyboard */; };
-		E35194A52617128B00043606 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194712617128B00043606 /* SecureTextField.swift */; };
-		E35194A62617128B00043606 /* MoneyInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194722617128B00043606 /* MoneyInputTextField.swift */; };
-		E35194BC261712D000043606 /* SFUIText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E35194B1261712CF00043606 /* SFUIText-Regular.ttf */; };
-		E35194BD261712D000043606 /* SFUIText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E35194B2261712CF00043606 /* SFUIText-Semibold.ttf */; };
-		E35194BE261712D000043606 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E35194B3261712CF00043606 /* Roboto-Regular.ttf */; };
-		E35194BF261712D000043606 /* AttachmentToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194B5261712CF00043606 /* AttachmentToggleButton.swift */; };
-		E35194C0261712D000043606 /* SecondaryEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194B6261712CF00043606 /* SecondaryEmptyStateView.swift */; };
-		E35194C1261712D000043606 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194B7261712D000043606 /* EmptyStateView.swift */; };
-		E35194C2261712D000043606 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194B9261712D000043606 /* Throttler.swift */; };
-		E35194C3261712D000043606 /* UIStoryboard+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194BA261712D000043606 /* UIStoryboard+ViewController.swift */; };
-		E35194C4261712D000043606 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35194BB261712D000043606 /* BaseView.swift */; };
-		E351954E2617155C00043606 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351954D2617155C00043606 /* UIView + Extension.swift */; };
-		E351955C261715D800043606 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3519555261715D000043606 /* Date + Extension.swift */; };
-		E351955D261715D800043606 /* Array + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3519556261715D100043606 /* Array + Extension.swift */; };
-		E351955E261715D900043606 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3519557261715D200043606 /* UIStackView + Extension.swift */; };
-		E351955F261715D900043606 /* UIViewController + Send.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3519558261715D400043606 /* UIViewController + Send.swift */; };
-		E3519560261715D900043606 /* UIViewController + Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3519559261715D500043606 /* UIViewController + Permission.swift */; };
-		E3519561261715D900043606 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351955A261715D600043606 /* String + Extension.swift */; };
-		E3519562261715D900043606 /* UIViewController + Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351955B261715D700043606 /* UIViewController + Toast.swift */; };
-		E351956B2617163700043606 /* ProfileOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351956A2617163700043606 /* ProfileOptionView.swift */; };
-		E35195742617166100043606 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E35195732617166100043606 /* Images.xcassets */; };
-		E351957C2617173600043606 /* QRCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351957B2617173600043606 /* QRCreator.swift */; };
-		E35195842617175200043606 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35195832617175200043606 /* GalleryManager.swift */; };
-		E351958C2617177800043606 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351958B2617177800043606 /* ReminderView.swift */; };
-		E3519594261717A600043606 /* ImagePickerGridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3519593261717A600043606 /* ImagePickerGridController.swift */; };
-		E351959C261717DB00043606 /* ScanQRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351959B261717DB00043606 /* ScanQRController.swift */; };
-		E35195A5261718A900043606 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35195A4261718A900043606 /* UIImage + Extension.swift */; };
-		E35195B22617194A00043606 /* OWSQRCodeScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E35195AE2617194900043606 /* OWSQRCodeScanningViewController.m */; };
-		E35195B32617194A00043606 /* OWSQRCodeScanningViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E35195AF2617194900043606 /* OWSQRCodeScanningViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E35195BB2617195A00043606 /* PhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35195BA2617195A00043606 /* PhotoLibrary.swift */; };
-		E35195C926171A0B00043606 /* PhotoGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35195C826171A0B00043606 /* PhotoGridViewCell.swift */; };
-		E35195D126171A5B00043606 /* SendMediaNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35195D026171A5B00043606 /* SendMediaNavigationController.swift */; };
-		E35195D926171A8800043606 /* CameraFirstNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35195D826171A8800043606 /* CameraFirstNavigationController.swift */; };
-		E35195E126171AC400043606 /* PhotoCollectionPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35195E026171AC400043606 /* PhotoCollectionPickerController.swift */; };
-		E35195E926171B2600043606 /* SendMediaBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35195E826171B2600043606 /* SendMediaBottomButton.swift */; };
-		E35195F126171B5000043606 /* PhotoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35195F026171B5000043606 /* PhotoCaptureViewController.swift */; };
-		E35195F926171BE300043606 /* PhotoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35195F826171BE300043606 /* PhotoCapture.swift */; };
-		E351960D26171C1800043606 /* VolumeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351960C26171C1800043606 /* VolumeButtons.swift */; };
-		E351961526171C4000043606 /* PhotoCaptureDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351961426171C4000043606 /* PhotoCaptureDismiss.swift */; };
-		E351961D26171CA300043606 /* InteractiveDismissDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351961C26171CA300043606 /* InteractiveDismissDelegate.swift */; };
-		E35196502617200100043606 /* OWSBezierPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = E351964E2617200000043606 /* OWSBezierPathView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E35196512617200100043606 /* OWSBezierPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = E351964F2617200000043606 /* OWSBezierPathView.m */; };
+		E35197E726175A2A00043606 /* QRPasswordSaveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351976026175A2900043606 /* QRPasswordSaveController.swift */; };
+		E35197E826175A2A00043606 /* RestorePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351976126175A2900043606 /* RestorePasswordController.swift */; };
+		E35197E926175A2A00043606 /* PasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351976226175A2900043606 /* PasswordController.swift */; };
+		E35197EA26175A2A00043606 /* CancelPinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351976426175A2900043606 /* CancelPinController.swift */; };
+		E35197EB26175A2A00043606 /* EnterPinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351976526175A2900043606 /* EnterPinController.swift */; };
+		E35197EC26175A2A00043606 /* SetPinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351976626175A2900043606 /* SetPinController.swift */; };
+		E35197ED26175A2A00043606 /* TransactionInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351976926175A2900043606 /* TransactionInfoController.swift */; };
+		E35197EE26175A2A00043606 /* WalletDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351976B26175A2900043606 /* WalletDetailController.swift */; };
+		E35197EF26175A2A00043606 /* WalletHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351976D26175A2900043606 /* WalletHeaderView.swift */; };
+		E35197F026175A2A00043606 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351976E26175A2900043606 /* TransactionView.swift */; };
+		E35197F126175A2A00043606 /* ExchangeCreatedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351977126175A2900043606 /* ExchangeCreatedController.swift */; };
+		E35197F226175A2A00043606 /* WalletExchangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351977226175A2900043606 /* WalletExchangeController.swift */; };
+		E35197F326175A2B00043606 /* WalletExchangeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351977426175A2900043606 /* WalletExchangeSelectionView.swift */; };
+		E35197F426175A2B00043606 /* PastelessTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351977526175A2900043606 /* PastelessTextField.swift */; };
+		E35197F526175A2B00043606 /* SendFromChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351977726175A2900043606 /* SendFromChatView.swift */; };
+		E35197F626175A2B00043606 /* SentSucceedCurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351977926175A2900043606 /* SentSucceedCurrencyController.swift */; };
+		E35197F726175A2B00043606 /* FeeInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351977A26175A2900043606 /* FeeInfoController.swift */; };
+		E35197F826175A2B00043606 /* EnterPasswordBeforeSendingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351977B26175A2900043606 /* EnterPasswordBeforeSendingController.swift */; };
+		E35197F926175A2B00043606 /* SendCurrencyFromChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351977C26175A2900043606 /* SendCurrencyFromChatController.swift */; };
+		E35197FA26175A2B00043606 /* SendCurrencyFromWalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351977D26175A2900043606 /* SendCurrencyFromWalletController.swift */; };
+		E35197FB26175A2B00043606 /* WalletExchangeHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351977F26175A2900043606 /* WalletExchangeHistoryController.swift */; };
+		E35197FC26175A2B00043606 /* ExchangeHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351978026175A2900043606 /* ExchangeHistoryView.swift */; };
+		E35197FD26175A2B00043606 /* InfoCurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351978226175A2900043606 /* InfoCurrencyController.swift */; };
+		E35197FE26175A2B00043606 /* NewWalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351978426175A2900043606 /* NewWalletController.swift */; };
+		E35197FF26175A2B00043606 /* NewWalletSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351978526175A2A00043606 /* NewWalletSuccessController.swift */; };
+		E351980026175A2B00043606 /* NoWalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351978626175A2A00043606 /* NoWalletController.swift */; };
+		E351980126175A2B00043606 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E351978A26175A2A00043606 /* Images.xcassets */; };
+		E351980226175A2B00043606 /* UIViewController + Send.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351978C26175A2A00043606 /* UIViewController + Send.swift */; };
+		E351980326175A2B00043606 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351978D26175A2A00043606 /* UIImage + Extension.swift */; };
+		E351980426175A2B00043606 /* Array + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351978E26175A2A00043606 /* Array + Extension.swift */; };
+		E351980526175A2B00043606 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351978F26175A2A00043606 /* UIView + Extension.swift */; };
+		E351980626175A2B00043606 /* UIViewController + Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351979026175A2A00043606 /* UIViewController + Permission.swift */; };
+		E351980726175A2B00043606 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351979126175A2A00043606 /* Date + Extension.swift */; };
+		E351980826175A2B00043606 /* UIViewController + Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351979226175A2A00043606 /* UIViewController + Toast.swift */; };
+		E351980926175A2B00043606 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351979326175A2A00043606 /* String + Extension.swift */; };
+		E351980A26175A2B00043606 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351979426175A2A00043606 /* UIStackView + Extension.swift */; };
+		E351980B26175A2B00043606 /* SFUIText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E351979726175A2A00043606 /* SFUIText-Regular.ttf */; };
+		E351980C26175A2B00043606 /* SFUIText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E351979826175A2A00043606 /* SFUIText-Semibold.ttf */; };
+		E351980D26175A2B00043606 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E351979926175A2A00043606 /* Roboto-Regular.ttf */; };
+		E351980E26175A2B00043606 /* AttachmentToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351979B26175A2A00043606 /* AttachmentToggleButton.swift */; };
+		E351980F26175A2B00043606 /* SecondaryEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351979C26175A2A00043606 /* SecondaryEmptyStateView.swift */; };
+		E351981026175A2B00043606 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351979D26175A2A00043606 /* EmptyStateView.swift */; };
+		E351981126175A2B00043606 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351979F26175A2A00043606 /* Throttler.swift */; };
+		E351981226175A2B00043606 /* UIStoryboard+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197A026175A2A00043606 /* UIStoryboard+ViewController.swift */; };
+		E351981326175A2B00043606 /* ProfileOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197A326175A2A00043606 /* ProfileOptionView.swift */; };
+		E351981426175A2B00043606 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197A426175A2A00043606 /* ReminderView.swift */; };
+		E351981526175A2B00043606 /* SendMediaBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197A526175A2A00043606 /* SendMediaBottomButton.swift */; };
+		E351981626175A2B00043606 /* OWSBezierPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197A626175A2A00043606 /* OWSBezierPathView.h */; };
+		E351981726175A2B00043606 /* OWSBezierPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = E35197A726175A2A00043606 /* OWSBezierPathView.m */; };
+		E351981826175A2B00043606 /* RegistrationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E35197A826175A2A00043606 /* RegistrationUtils.m */; };
+		E351981926175A2B00043606 /* VolumeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AA26175A2A00043606 /* VolumeButtons.swift */; };
+		E351981A26175A2B00043606 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AB26175A2A00043606 /* GalleryManager.swift */; };
+		E351981B26175A2B00043606 /* InteractiveDismissDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AC26175A2A00043606 /* InteractiveDismissDelegate.swift */; };
+		E351981C26175A2B00043606 /* QRCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AE26175A2A00043606 /* QRCreator.swift */; };
+		E351981D26175A2B00043606 /* OWSQRCodeScanningViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197AF26175A2A00043606 /* OWSQRCodeScanningViewController.h */; };
+		E351981E26175A2B00043606 /* ScanQRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B026175A2A00043606 /* ScanQRController.swift */; };
+		E351981F26175A2B00043606 /* OWSQRCodeScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E35197B126175A2A00043606 /* OWSQRCodeScanningViewController.m */; };
+		E351982026175A2B00043606 /* RegistrationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197B226175A2A00043606 /* RegistrationUtils.h */; };
+		E351982126175A2B00043606 /* ImagePickerGridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B426175A2A00043606 /* ImagePickerGridController.swift */; };
+		E351982226175A2B00043606 /* CameraFirstNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B526175A2A00043606 /* CameraFirstNavigationController.swift */; };
+		E351982326175A2B00043606 /* SendMediaNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B626175A2A00043606 /* SendMediaNavigationController.swift */; };
+		E351982426175A2B00043606 /* PhotoCaptureDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B826175A2A00043606 /* PhotoCaptureDismiss.swift */; };
+		E351982526175A2B00043606 /* PhotoGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B926175A2A00043606 /* PhotoGridViewCell.swift */; };
+		E351982626175A2B00043606 /* PhotoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197BA26175A2A00043606 /* PhotoCapture.swift */; };
+		E351982726175A2B00043606 /* PhotoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197BB26175A2A00043606 /* PhotoCaptureViewController.swift */; };
+		E351982826175A2B00043606 /* PhotoCollectionPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197BC26175A2A00043606 /* PhotoCollectionPickerController.swift */; };
+		E351982926175A2B00043606 /* PhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197BD26175A2A00043606 /* PhotoLibrary.swift */; };
+		E351982A26175A2B00043606 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197BE26175A2A00043606 /* BaseView.swift */; };
+		E351982B26175A2B00043606 /* Fee.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C126175A2A00043606 /* Fee.swift */; };
+		E351982C26175A2B00043606 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C226175A2A00043606 /* Currency.swift */; };
+		E351982D26175A2B00043606 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C326175A2A00043606 /* Transaction.swift */; };
+		E351982E26175A2B00043606 /* RecipientWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C426175A2A00043606 /* RecipientWallet.swift */; };
+		E351982F26175A2B00043606 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C526175A2A00043606 /* Wallet.swift */; };
+		E351983026175A2B00043606 /* WalletCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C626175A2A00043606 /* WalletCredentials.swift */; };
+		E351983126175A2B00043606 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C726175A2A00043606 /* WalletModel.swift */; };
+		E351983226175A2B00043606 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197CA26175A2A00043606 /* UITextField.swift */; };
+		E351983326175A2B00043606 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197CC26175A2A00043606 /* NumberFormatter.swift */; };
+		E351983426175A2B00043606 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197CD26175A2A00043606 /* String.swift */; };
+		E351983526175A2B00043606 /* MoneyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197CE26175A2A00043606 /* MoneyFormatter.swift */; };
+		E351983626175A2B00043606 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197CF26175A2A00043606 /* WalletManager.swift */; };
+		E351983726175A2B00043606 /* CurrencyPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197D226175A2A00043606 /* CurrencyPickerController.swift */; };
+		E351983826175A2B00043606 /* CurrencyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197D326175A2A00043606 /* CurrencyPickerView.swift */; };
+		E351983926175A2B00043606 /* RecipientWalletPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197D526175A2A00043606 /* RecipientWalletPickerView.swift */; };
+		E351983A26175A2B00043606 /* RecipientWalletPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197D626175A2A00043606 /* RecipientWalletPickerController.swift */; };
+		E351983B26175A2B00043606 /* WalletPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197D826175A2A00043606 /* WalletPickerController.swift */; };
+		E351983C26175A2B00043606 /* WalletPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197D926175A2A00043606 /* WalletPickerView.swift */; };
+		E351983D26175A2B00043606 /* FilterTransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197DB26175A2A00043606 /* FilterTransactionController.swift */; };
+		E351983E26175A2B00043606 /* RecieveCurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197DD26175A2A00043606 /* RecieveCurrencyController.swift */; };
+		E351983F26175A2B00043606 /* WalletItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197E026175A2A00043606 /* WalletItemCell.swift */; };
+		E351984026175A2B00043606 /* WalletMainHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197E126175A2A00043606 /* WalletMainHeaderCell.swift */; };
+		E351984126175A2B00043606 /* WalletMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197E226175A2A00043606 /* WalletMainController.swift */; };
+		E351984226175A2B00043606 /* WalletMainController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E35197E326175A2A00043606 /* WalletMainController.storyboard */; };
+		E351984326175A2B00043606 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197E526175A2A00043606 /* SecureTextField.swift */; };
+		E351984426175A2B00043606 /* MoneyInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197E626175A2A00043606 /* MoneyInputTextField.swift */; };
 		E44AD4E624E98F440035D7B8 /* PhotoCaptureDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44AD4E524E98F430035D7B8 /* PhotoCaptureDismiss.swift */; };
 		F215596D25CC3DB50089AA63 /* STGhostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F215596A25CC3DB50089AA63 /* STGhostButton.swift */; };
 		F215596E25CC3DB50089AA63 /* STSecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F215596B25CC3DB50089AA63 /* STSecondaryButton.swift */; };
@@ -2121,98 +2123,100 @@
 		E35193B726170FB300043606 /* GrapherexWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GrapherexWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E35193B926170FB400043606 /* GrapherexWallet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrapherexWallet.h; sourceTree = "<group>"; };
 		E35193BA26170FB400043606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E35194242617128A00043606 /* QRPasswordSaveController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRPasswordSaveController.swift; sourceTree = "<group>"; };
-		E35194252617128A00043606 /* RestorePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestorePasswordController.swift; sourceTree = "<group>"; };
-		E35194262617128A00043606 /* PasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordController.swift; sourceTree = "<group>"; };
-		E35194282617128A00043606 /* CancelPinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelPinController.swift; sourceTree = "<group>"; };
-		E35194292617128A00043606 /* EnterPinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPinController.swift; sourceTree = "<group>"; };
-		E351942A2617128A00043606 /* SetPinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPinController.swift; sourceTree = "<group>"; };
-		E351942D2617128A00043606 /* TransactionInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionInfoController.swift; sourceTree = "<group>"; };
-		E351942F2617128A00043606 /* WalletDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletDetailController.swift; sourceTree = "<group>"; };
-		E35194312617128A00043606 /* WalletHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletHeaderView.swift; sourceTree = "<group>"; };
-		E35194322617128A00043606 /* TransactionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
-		E35194352617128A00043606 /* ExchangeCreatedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeCreatedController.swift; sourceTree = "<group>"; };
-		E35194362617128A00043606 /* WalletExchangeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletExchangeController.swift; sourceTree = "<group>"; };
-		E35194382617128A00043606 /* WalletExchangeSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletExchangeSelectionView.swift; sourceTree = "<group>"; };
-		E35194392617128A00043606 /* PastelessTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastelessTextField.swift; sourceTree = "<group>"; };
-		E351943B2617128A00043606 /* SendFromChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFromChatView.swift; sourceTree = "<group>"; };
-		E351943D2617128A00043606 /* SentSucceedCurrencyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentSucceedCurrencyController.swift; sourceTree = "<group>"; };
-		E351943E2617128A00043606 /* FeeInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeeInfoController.swift; sourceTree = "<group>"; };
-		E351943F2617128A00043606 /* EnterPasswordBeforeSendingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordBeforeSendingController.swift; sourceTree = "<group>"; };
-		E35194402617128A00043606 /* SendCurrencyFromChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCurrencyFromChatController.swift; sourceTree = "<group>"; };
-		E35194412617128A00043606 /* SendCurrencyFromWalletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCurrencyFromWalletController.swift; sourceTree = "<group>"; };
-		E35194432617128A00043606 /* WalletExchangeHistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletExchangeHistoryController.swift; sourceTree = "<group>"; };
-		E35194442617128A00043606 /* ExchangeHistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeHistoryView.swift; sourceTree = "<group>"; };
-		E35194462617128A00043606 /* InfoCurrencyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCurrencyController.swift; sourceTree = "<group>"; };
-		E35194482617128A00043606 /* NewWalletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWalletController.swift; sourceTree = "<group>"; };
-		E35194492617128A00043606 /* NewWalletSuccessController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWalletSuccessController.swift; sourceTree = "<group>"; };
-		E351944A2617128A00043606 /* NoWalletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoWalletController.swift; sourceTree = "<group>"; };
-		E351944D2617128B00043606 /* Fee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fee.swift; sourceTree = "<group>"; };
-		E351944E2617128B00043606 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		E351944F2617128B00043606 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		E35194502617128B00043606 /* RecipientWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientWallet.swift; sourceTree = "<group>"; };
-		E35194512617128B00043606 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
-		E35194522617128B00043606 /* WalletCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletCredentials.swift; sourceTree = "<group>"; };
-		E35194532617128B00043606 /* WalletModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
-		E35194562617128B00043606 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
-		E35194582617128B00043606 /* NumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
-		E35194592617128B00043606 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		E351945A2617128B00043606 /* MoneyFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyFormatter.swift; sourceTree = "<group>"; };
-		E351945B2617128B00043606 /* WalletManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
-		E351945E2617128B00043606 /* CurrencyPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPickerController.swift; sourceTree = "<group>"; };
-		E351945F2617128B00043606 /* CurrencyPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPickerView.swift; sourceTree = "<group>"; };
-		E35194612617128B00043606 /* RecipientWalletPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientWalletPickerView.swift; sourceTree = "<group>"; };
-		E35194622617128B00043606 /* RecipientWalletPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientWalletPickerController.swift; sourceTree = "<group>"; };
-		E35194642617128B00043606 /* WalletPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerController.swift; sourceTree = "<group>"; };
-		E35194652617128B00043606 /* WalletPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerView.swift; sourceTree = "<group>"; };
-		E35194672617128B00043606 /* FilterTransactionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionController.swift; sourceTree = "<group>"; };
-		E35194692617128B00043606 /* RecieveCurrencyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecieveCurrencyController.swift; sourceTree = "<group>"; };
-		E351946C2617128B00043606 /* WalletItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletItemCell.swift; sourceTree = "<group>"; };
-		E351946D2617128B00043606 /* WalletMainHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletMainHeaderCell.swift; sourceTree = "<group>"; };
-		E351946E2617128B00043606 /* WalletMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletMainController.swift; sourceTree = "<group>"; };
-		E351946F2617128B00043606 /* WalletMainController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalletMainController.storyboard; sourceTree = "<group>"; };
-		E35194712617128B00043606 /* SecureTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
-		E35194722617128B00043606 /* MoneyInputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyInputTextField.swift; sourceTree = "<group>"; };
-		E35194B1261712CF00043606 /* SFUIText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Regular.ttf"; sourceTree = "<group>"; };
-		E35194B2261712CF00043606 /* SFUIText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.ttf"; sourceTree = "<group>"; };
-		E35194B3261712CF00043606 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		E35194B5261712CF00043606 /* AttachmentToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentToggleButton.swift; sourceTree = "<group>"; };
-		E35194B6261712CF00043606 /* SecondaryEmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryEmptyStateView.swift; sourceTree = "<group>"; };
-		E35194B7261712D000043606 /* EmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
-		E35194B9261712D000043606 /* Throttler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
-		E35194BA261712D000043606 /* UIStoryboard+ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+ViewController.swift"; sourceTree = "<group>"; };
-		E35194BB261712D000043606 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		E351954D2617155C00043606 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
-		E3519555261715D000043606 /* Date + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
-		E3519556261715D100043606 /* Array + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array + Extension.swift"; sourceTree = "<group>"; };
-		E3519557261715D200043606 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
-		E3519558261715D400043606 /* UIViewController + Send.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Send.swift"; sourceTree = "<group>"; };
-		E3519559261715D500043606 /* UIViewController + Permission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Permission.swift"; sourceTree = "<group>"; };
-		E351955A261715D600043606 /* String + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
-		E351955B261715D700043606 /* UIViewController + Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Toast.swift"; sourceTree = "<group>"; };
-		E351956A2617163700043606 /* ProfileOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOptionView.swift; sourceTree = "<group>"; };
-		E35195732617166100043606 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E351957B2617173600043606 /* QRCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCreator.swift; sourceTree = "<group>"; };
-		E35195832617175200043606 /* GalleryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
-		E351958B2617177800043606 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
-		E3519593261717A600043606 /* ImagePickerGridController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerGridController.swift; sourceTree = "<group>"; };
-		E351959B261717DB00043606 /* ScanQRController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRController.swift; sourceTree = "<group>"; };
-		E35195A4261718A900043606 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
-		E35195AE2617194900043606 /* OWSQRCodeScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSQRCodeScanningViewController.m; sourceTree = "<group>"; };
-		E35195AF2617194900043606 /* OWSQRCodeScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSQRCodeScanningViewController.h; sourceTree = "<group>"; };
-		E35195BA2617195A00043606 /* PhotoLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibrary.swift; sourceTree = "<group>"; };
-		E35195C826171A0B00043606 /* PhotoGridViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewCell.swift; sourceTree = "<group>"; };
-		E35195D026171A5B00043606 /* SendMediaNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMediaNavigationController.swift; sourceTree = "<group>"; };
-		E35195D826171A8800043606 /* CameraFirstNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFirstNavigationController.swift; sourceTree = "<group>"; };
-		E35195E026171AC400043606 /* PhotoCollectionPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionPickerController.swift; sourceTree = "<group>"; };
-		E35195E826171B2600043606 /* SendMediaBottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMediaBottomButton.swift; sourceTree = "<group>"; };
-		E35195F026171B5000043606 /* PhotoCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureViewController.swift; sourceTree = "<group>"; };
-		E35195F826171BE300043606 /* PhotoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCapture.swift; sourceTree = "<group>"; };
-		E351960C26171C1800043606 /* VolumeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeButtons.swift; sourceTree = "<group>"; };
-		E351961426171C4000043606 /* PhotoCaptureDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDismiss.swift; sourceTree = "<group>"; };
-		E351961C26171CA300043606 /* InteractiveDismissDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveDismissDelegate.swift; sourceTree = "<group>"; };
-		E351964E2617200000043606 /* OWSBezierPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSBezierPathView.h; sourceTree = "<group>"; };
-		E351964F2617200000043606 /* OWSBezierPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSBezierPathView.m; sourceTree = "<group>"; };
+		E351976026175A2900043606 /* QRPasswordSaveController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRPasswordSaveController.swift; sourceTree = "<group>"; };
+		E351976126175A2900043606 /* RestorePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestorePasswordController.swift; sourceTree = "<group>"; };
+		E351976226175A2900043606 /* PasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordController.swift; sourceTree = "<group>"; };
+		E351976426175A2900043606 /* CancelPinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelPinController.swift; sourceTree = "<group>"; };
+		E351976526175A2900043606 /* EnterPinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPinController.swift; sourceTree = "<group>"; };
+		E351976626175A2900043606 /* SetPinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPinController.swift; sourceTree = "<group>"; };
+		E351976926175A2900043606 /* TransactionInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionInfoController.swift; sourceTree = "<group>"; };
+		E351976B26175A2900043606 /* WalletDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletDetailController.swift; sourceTree = "<group>"; };
+		E351976D26175A2900043606 /* WalletHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletHeaderView.swift; sourceTree = "<group>"; };
+		E351976E26175A2900043606 /* TransactionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		E351977126175A2900043606 /* ExchangeCreatedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeCreatedController.swift; sourceTree = "<group>"; };
+		E351977226175A2900043606 /* WalletExchangeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletExchangeController.swift; sourceTree = "<group>"; };
+		E351977426175A2900043606 /* WalletExchangeSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletExchangeSelectionView.swift; sourceTree = "<group>"; };
+		E351977526175A2900043606 /* PastelessTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastelessTextField.swift; sourceTree = "<group>"; };
+		E351977726175A2900043606 /* SendFromChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFromChatView.swift; sourceTree = "<group>"; };
+		E351977926175A2900043606 /* SentSucceedCurrencyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentSucceedCurrencyController.swift; sourceTree = "<group>"; };
+		E351977A26175A2900043606 /* FeeInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeeInfoController.swift; sourceTree = "<group>"; };
+		E351977B26175A2900043606 /* EnterPasswordBeforeSendingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordBeforeSendingController.swift; sourceTree = "<group>"; };
+		E351977C26175A2900043606 /* SendCurrencyFromChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCurrencyFromChatController.swift; sourceTree = "<group>"; };
+		E351977D26175A2900043606 /* SendCurrencyFromWalletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCurrencyFromWalletController.swift; sourceTree = "<group>"; };
+		E351977F26175A2900043606 /* WalletExchangeHistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletExchangeHistoryController.swift; sourceTree = "<group>"; };
+		E351978026175A2900043606 /* ExchangeHistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeHistoryView.swift; sourceTree = "<group>"; };
+		E351978226175A2900043606 /* InfoCurrencyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCurrencyController.swift; sourceTree = "<group>"; };
+		E351978426175A2900043606 /* NewWalletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWalletController.swift; sourceTree = "<group>"; };
+		E351978526175A2A00043606 /* NewWalletSuccessController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWalletSuccessController.swift; sourceTree = "<group>"; };
+		E351978626175A2A00043606 /* NoWalletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoWalletController.swift; sourceTree = "<group>"; };
+		E351978A26175A2A00043606 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E351978C26175A2A00043606 /* UIViewController + Send.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Send.swift"; sourceTree = "<group>"; };
+		E351978D26175A2A00043606 /* UIImage + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		E351978E26175A2A00043606 /* Array + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array + Extension.swift"; sourceTree = "<group>"; };
+		E351978F26175A2A00043606 /* UIView + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		E351979026175A2A00043606 /* UIViewController + Permission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Permission.swift"; sourceTree = "<group>"; };
+		E351979126175A2A00043606 /* Date + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
+		E351979226175A2A00043606 /* UIViewController + Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Toast.swift"; sourceTree = "<group>"; };
+		E351979326175A2A00043606 /* String + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		E351979426175A2A00043606 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
+		E351979726175A2A00043606 /* SFUIText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Regular.ttf"; sourceTree = "<group>"; };
+		E351979826175A2A00043606 /* SFUIText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.ttf"; sourceTree = "<group>"; };
+		E351979926175A2A00043606 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		E351979B26175A2A00043606 /* AttachmentToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentToggleButton.swift; sourceTree = "<group>"; };
+		E351979C26175A2A00043606 /* SecondaryEmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryEmptyStateView.swift; sourceTree = "<group>"; };
+		E351979D26175A2A00043606 /* EmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		E351979F26175A2A00043606 /* Throttler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
+		E35197A026175A2A00043606 /* UIStoryboard+ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+ViewController.swift"; sourceTree = "<group>"; };
+		E35197A326175A2A00043606 /* ProfileOptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileOptionView.swift; sourceTree = "<group>"; };
+		E35197A426175A2A00043606 /* ReminderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
+		E35197A526175A2A00043606 /* SendMediaBottomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMediaBottomButton.swift; sourceTree = "<group>"; };
+		E35197A626175A2A00043606 /* OWSBezierPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSBezierPathView.h; sourceTree = "<group>"; };
+		E35197A726175A2A00043606 /* OWSBezierPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSBezierPathView.m; sourceTree = "<group>"; };
+		E35197A826175A2A00043606 /* RegistrationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationUtils.m; sourceTree = "<group>"; };
+		E35197AA26175A2A00043606 /* VolumeButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeButtons.swift; sourceTree = "<group>"; };
+		E35197AB26175A2A00043606 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
+		E35197AC26175A2A00043606 /* InteractiveDismissDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveDismissDelegate.swift; sourceTree = "<group>"; };
+		E35197AE26175A2A00043606 /* QRCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCreator.swift; sourceTree = "<group>"; };
+		E35197AF26175A2A00043606 /* OWSQRCodeScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSQRCodeScanningViewController.h; sourceTree = "<group>"; };
+		E35197B026175A2A00043606 /* ScanQRController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRController.swift; sourceTree = "<group>"; };
+		E35197B126175A2A00043606 /* OWSQRCodeScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSQRCodeScanningViewController.m; sourceTree = "<group>"; };
+		E35197B226175A2A00043606 /* RegistrationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationUtils.h; sourceTree = "<group>"; };
+		E35197B426175A2A00043606 /* ImagePickerGridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerGridController.swift; sourceTree = "<group>"; };
+		E35197B526175A2A00043606 /* CameraFirstNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFirstNavigationController.swift; sourceTree = "<group>"; };
+		E35197B626175A2A00043606 /* SendMediaNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMediaNavigationController.swift; sourceTree = "<group>"; };
+		E35197B826175A2A00043606 /* PhotoCaptureDismiss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDismiss.swift; sourceTree = "<group>"; };
+		E35197B926175A2A00043606 /* PhotoGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGridViewCell.swift; sourceTree = "<group>"; };
+		E35197BA26175A2A00043606 /* PhotoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCapture.swift; sourceTree = "<group>"; };
+		E35197BB26175A2A00043606 /* PhotoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureViewController.swift; sourceTree = "<group>"; };
+		E35197BC26175A2A00043606 /* PhotoCollectionPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionPickerController.swift; sourceTree = "<group>"; };
+		E35197BD26175A2A00043606 /* PhotoLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibrary.swift; sourceTree = "<group>"; };
+		E35197BE26175A2A00043606 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		E35197C126175A2A00043606 /* Fee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fee.swift; sourceTree = "<group>"; };
+		E35197C226175A2A00043606 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		E35197C326175A2A00043606 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		E35197C426175A2A00043606 /* RecipientWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientWallet.swift; sourceTree = "<group>"; };
+		E35197C526175A2A00043606 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		E35197C626175A2A00043606 /* WalletCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletCredentials.swift; sourceTree = "<group>"; };
+		E35197C726175A2A00043606 /* WalletModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
+		E35197CA26175A2A00043606 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		E35197CC26175A2A00043606 /* NumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		E35197CD26175A2A00043606 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		E35197CE26175A2A00043606 /* MoneyFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyFormatter.swift; sourceTree = "<group>"; };
+		E35197CF26175A2A00043606 /* WalletManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
+		E35197D226175A2A00043606 /* CurrencyPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPickerController.swift; sourceTree = "<group>"; };
+		E35197D326175A2A00043606 /* CurrencyPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPickerView.swift; sourceTree = "<group>"; };
+		E35197D526175A2A00043606 /* RecipientWalletPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientWalletPickerView.swift; sourceTree = "<group>"; };
+		E35197D626175A2A00043606 /* RecipientWalletPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientWalletPickerController.swift; sourceTree = "<group>"; };
+		E35197D826175A2A00043606 /* WalletPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerController.swift; sourceTree = "<group>"; };
+		E35197D926175A2A00043606 /* WalletPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletPickerView.swift; sourceTree = "<group>"; };
+		E35197DB26175A2A00043606 /* FilterTransactionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionController.swift; sourceTree = "<group>"; };
+		E35197DD26175A2A00043606 /* RecieveCurrencyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecieveCurrencyController.swift; sourceTree = "<group>"; };
+		E35197E026175A2A00043606 /* WalletItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletItemCell.swift; sourceTree = "<group>"; };
+		E35197E126175A2A00043606 /* WalletMainHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletMainHeaderCell.swift; sourceTree = "<group>"; };
+		E35197E226175A2A00043606 /* WalletMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletMainController.swift; sourceTree = "<group>"; };
+		E35197E326175A2A00043606 /* WalletMainController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalletMainController.storyboard; sourceTree = "<group>"; };
+		E35197E526175A2A00043606 /* SecureTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
+		E35197E626175A2A00043606 /* MoneyInputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyInputTextField.swift; sourceTree = "<group>"; };
 		E434E65F6E6E989A106307BA /* Pods-SignalTests.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.profiling.xcconfig"; path = "Pods/Target Support Files/Pods-SignalTests/Pods-SignalTests.profiling.xcconfig"; sourceTree = "<group>"; };
 		E44AD4E524E98F430035D7B8 /* PhotoCaptureDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDismiss.swift; sourceTree = "<group>"; };
 		EE9074FA846BAA8A998E782E /* Pods-GrapherexWallet.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrapherexWallet.testable release.xcconfig"; path = "Pods/Target Support Files/Pods-GrapherexWallet/Pods-GrapherexWallet.testable release.xcconfig"; sourceTree = "<group>"; };
@@ -4259,454 +4263,456 @@
 		E35193B826170FB300043606 /* GrapherexWallet */ = {
 			isa = PBXGroup;
 			children = (
-				E35194212617128A00043606 /* Legacy */,
+				E351975D26175A2900043606 /* Legacy */,
 				E35193B926170FB400043606 /* GrapherexWallet.h */,
 				E35193BA26170FB400043606 /* Info.plist */,
 			);
 			path = GrapherexWallet;
 			sourceTree = "<group>";
 		};
-		E35194212617128A00043606 /* Legacy */ = {
+		E351975D26175A2900043606 /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
-				E35194AD261712CF00043606 /* Elements */,
-				E35194222617128A00043606 /* WalletSafety */,
-				E351942B2617128A00043606 /* Transaction */,
-				E35194332617128A00043606 /* Exchange */,
-				E351943A2617128A00043606 /* SendCurrency */,
-				E35194422617128A00043606 /* ExchangeHistory */,
-				E35194452617128A00043606 /* InfoCurrency */,
-				E35194472617128A00043606 /* NewWallet */,
-				E351944B2617128A00043606 /* Model */,
-				E351945C2617128B00043606 /* Pickers */,
-				E35194662617128B00043606 /* Filter */,
-				E35194682617128B00043606 /* RecieveCurrency */,
-				E351946A2617128B00043606 /* Main */,
-				E35194702617128B00043606 /* Views */,
+				E351975E26175A2900043606 /* WalletSafety */,
+				E351976726175A2900043606 /* Transaction */,
+				E351976F26175A2900043606 /* Exchange */,
+				E351977626175A2900043606 /* SendCurrency */,
+				E351977E26175A2900043606 /* ExchangeHistory */,
+				E351978126175A2900043606 /* InfoCurrency */,
+				E351978326175A2900043606 /* NewWallet */,
+				E351978726175A2A00043606 /* Libraries */,
+				E351978826175A2A00043606 /* Elements */,
+				E35197BF26175A2A00043606 /* Model */,
+				E35197D026175A2A00043606 /* Pickers */,
+				E35197DA26175A2A00043606 /* Filter */,
+				E35197DC26175A2A00043606 /* RecieveCurrency */,
+				E35197DE26175A2A00043606 /* Main */,
+				E35197E426175A2A00043606 /* Views */,
 			);
 			path = Legacy;
 			sourceTree = "<group>";
 		};
-		E35194222617128A00043606 /* WalletSafety */ = {
+		E351975E26175A2900043606 /* WalletSafety */ = {
 			isa = PBXGroup;
 			children = (
-				E35194232617128A00043606 /* Password */,
-				E35194272617128A00043606 /* Pin */,
+				E351975F26175A2900043606 /* Password */,
+				E351976326175A2900043606 /* Pin */,
 			);
 			path = WalletSafety;
 			sourceTree = "<group>";
 		};
-		E35194232617128A00043606 /* Password */ = {
+		E351975F26175A2900043606 /* Password */ = {
 			isa = PBXGroup;
 			children = (
-				E35194242617128A00043606 /* QRPasswordSaveController.swift */,
-				E35194252617128A00043606 /* RestorePasswordController.swift */,
-				E35194262617128A00043606 /* PasswordController.swift */,
+				E351976026175A2900043606 /* QRPasswordSaveController.swift */,
+				E351976126175A2900043606 /* RestorePasswordController.swift */,
+				E351976226175A2900043606 /* PasswordController.swift */,
 			);
 			path = Password;
 			sourceTree = "<group>";
 		};
-		E35194272617128A00043606 /* Pin */ = {
+		E351976326175A2900043606 /* Pin */ = {
 			isa = PBXGroup;
 			children = (
-				E35194282617128A00043606 /* CancelPinController.swift */,
-				E35194292617128A00043606 /* EnterPinController.swift */,
-				E351942A2617128A00043606 /* SetPinController.swift */,
+				E351976426175A2900043606 /* CancelPinController.swift */,
+				E351976526175A2900043606 /* EnterPinController.swift */,
+				E351976626175A2900043606 /* SetPinController.swift */,
 			);
 			path = Pin;
 			sourceTree = "<group>";
 		};
-		E351942B2617128A00043606 /* Transaction */ = {
+		E351976726175A2900043606 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
-				E351942C2617128A00043606 /* TransactionInfo */,
-				E351942E2617128A00043606 /* TransactionList */,
+				E351976826175A2900043606 /* TransactionInfo */,
+				E351976A26175A2900043606 /* TransactionList */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
 		};
-		E351942C2617128A00043606 /* TransactionInfo */ = {
+		E351976826175A2900043606 /* TransactionInfo */ = {
 			isa = PBXGroup;
 			children = (
-				E351942D2617128A00043606 /* TransactionInfoController.swift */,
+				E351976926175A2900043606 /* TransactionInfoController.swift */,
 			);
 			path = TransactionInfo;
 			sourceTree = "<group>";
 		};
-		E351942E2617128A00043606 /* TransactionList */ = {
+		E351976A26175A2900043606 /* TransactionList */ = {
 			isa = PBXGroup;
 			children = (
-				E351942F2617128A00043606 /* WalletDetailController.swift */,
-				E35194302617128A00043606 /* Views */,
+				E351976B26175A2900043606 /* WalletDetailController.swift */,
+				E351976C26175A2900043606 /* Views */,
 			);
 			path = TransactionList;
 			sourceTree = "<group>";
 		};
-		E35194302617128A00043606 /* Views */ = {
+		E351976C26175A2900043606 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E35194312617128A00043606 /* WalletHeaderView.swift */,
-				E35194322617128A00043606 /* TransactionView.swift */,
+				E351976D26175A2900043606 /* WalletHeaderView.swift */,
+				E351976E26175A2900043606 /* TransactionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		E35194332617128A00043606 /* Exchange */ = {
+		E351976F26175A2900043606 /* Exchange */ = {
 			isa = PBXGroup;
 			children = (
-				E35194342617128A00043606 /* ExchangeCreated */,
-				E35194362617128A00043606 /* WalletExchangeController.swift */,
-				E35194372617128A00043606 /* Views */,
+				E351977026175A2900043606 /* ExchangeCreated */,
+				E351977226175A2900043606 /* WalletExchangeController.swift */,
+				E351977326175A2900043606 /* Views */,
 			);
 			path = Exchange;
 			sourceTree = "<group>";
 		};
-		E35194342617128A00043606 /* ExchangeCreated */ = {
+		E351977026175A2900043606 /* ExchangeCreated */ = {
 			isa = PBXGroup;
 			children = (
-				E35194352617128A00043606 /* ExchangeCreatedController.swift */,
+				E351977126175A2900043606 /* ExchangeCreatedController.swift */,
 			);
 			path = ExchangeCreated;
 			sourceTree = "<group>";
 		};
-		E35194372617128A00043606 /* Views */ = {
+		E351977326175A2900043606 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E35194382617128A00043606 /* WalletExchangeSelectionView.swift */,
-				E35194392617128A00043606 /* PastelessTextField.swift */,
+				E351977426175A2900043606 /* WalletExchangeSelectionView.swift */,
+				E351977526175A2900043606 /* PastelessTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		E351943A2617128A00043606 /* SendCurrency */ = {
+		E351977626175A2900043606 /* SendCurrency */ = {
 			isa = PBXGroup;
 			children = (
-				E351943B2617128A00043606 /* SendFromChatView.swift */,
-				E351943C2617128A00043606 /* SentSucceedCurrency */,
-				E351943E2617128A00043606 /* FeeInfoController.swift */,
-				E351943F2617128A00043606 /* EnterPasswordBeforeSendingController.swift */,
-				E35194402617128A00043606 /* SendCurrencyFromChatController.swift */,
-				E35194412617128A00043606 /* SendCurrencyFromWalletController.swift */,
+				E351977726175A2900043606 /* SendFromChatView.swift */,
+				E351977826175A2900043606 /* SentSucceedCurrency */,
+				E351977A26175A2900043606 /* FeeInfoController.swift */,
+				E351977B26175A2900043606 /* EnterPasswordBeforeSendingController.swift */,
+				E351977C26175A2900043606 /* SendCurrencyFromChatController.swift */,
+				E351977D26175A2900043606 /* SendCurrencyFromWalletController.swift */,
 			);
 			path = SendCurrency;
 			sourceTree = "<group>";
 		};
-		E351943C2617128A00043606 /* SentSucceedCurrency */ = {
+		E351977826175A2900043606 /* SentSucceedCurrency */ = {
 			isa = PBXGroup;
 			children = (
-				E351943D2617128A00043606 /* SentSucceedCurrencyController.swift */,
+				E351977926175A2900043606 /* SentSucceedCurrencyController.swift */,
 			);
 			path = SentSucceedCurrency;
 			sourceTree = "<group>";
 		};
-		E35194422617128A00043606 /* ExchangeHistory */ = {
+		E351977E26175A2900043606 /* ExchangeHistory */ = {
 			isa = PBXGroup;
 			children = (
-				E35194432617128A00043606 /* WalletExchangeHistoryController.swift */,
-				E35194442617128A00043606 /* ExchangeHistoryView.swift */,
+				E351977F26175A2900043606 /* WalletExchangeHistoryController.swift */,
+				E351978026175A2900043606 /* ExchangeHistoryView.swift */,
 			);
 			path = ExchangeHistory;
 			sourceTree = "<group>";
 		};
-		E35194452617128A00043606 /* InfoCurrency */ = {
+		E351978126175A2900043606 /* InfoCurrency */ = {
 			isa = PBXGroup;
 			children = (
-				E35194462617128A00043606 /* InfoCurrencyController.swift */,
+				E351978226175A2900043606 /* InfoCurrencyController.swift */,
 			);
 			path = InfoCurrency;
 			sourceTree = "<group>";
 		};
-		E35194472617128A00043606 /* NewWallet */ = {
+		E351978326175A2900043606 /* NewWallet */ = {
 			isa = PBXGroup;
 			children = (
-				E35194482617128A00043606 /* NewWalletController.swift */,
-				E35194492617128A00043606 /* NewWalletSuccessController.swift */,
-				E351944A2617128A00043606 /* NoWalletController.swift */,
+				E351978426175A2900043606 /* NewWalletController.swift */,
+				E351978526175A2A00043606 /* NewWalletSuccessController.swift */,
+				E351978626175A2A00043606 /* NoWalletController.swift */,
 			);
 			path = NewWallet;
 			sourceTree = "<group>";
 		};
-		E351944B2617128A00043606 /* Model */ = {
+		E351978726175A2A00043606 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				E351944C2617128B00043606 /* Data models */,
-				E35194522617128B00043606 /* WalletCredentials.swift */,
-				E35194532617128B00043606 /* WalletModel.swift */,
-				E35194542617128B00043606 /* CurrencyFormatter */,
-				E351945B2617128B00043606 /* WalletManager.swift */,
 			);
-			path = Model;
+			path = Libraries;
 			sourceTree = "<group>";
 		};
-		E351944C2617128B00043606 /* Data models */ = {
+		E351978826175A2A00043606 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				E351944D2617128B00043606 /* Fee.swift */,
-				E351944E2617128B00043606 /* Currency.swift */,
-				E351944F2617128B00043606 /* Transaction.swift */,
-				E35194502617128B00043606 /* RecipientWallet.swift */,
-				E35194512617128B00043606 /* Wallet.swift */,
-			);
-			path = "Data models";
-			sourceTree = "<group>";
-		};
-		E35194542617128B00043606 /* CurrencyFormatter */ = {
-			isa = PBXGroup;
-			children = (
-				E35194552617128B00043606 /* UITextFieldDelegate */,
-				E35194572617128B00043606 /* Formatter */,
-			);
-			path = CurrencyFormatter;
-			sourceTree = "<group>";
-		};
-		E35194552617128B00043606 /* UITextFieldDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				E35194562617128B00043606 /* UITextField.swift */,
-			);
-			path = UITextFieldDelegate;
-			sourceTree = "<group>";
-		};
-		E35194572617128B00043606 /* Formatter */ = {
-			isa = PBXGroup;
-			children = (
-				E35194582617128B00043606 /* NumberFormatter.swift */,
-				E35194592617128B00043606 /* String.swift */,
-				E351945A2617128B00043606 /* MoneyFormatter.swift */,
-			);
-			path = Formatter;
-			sourceTree = "<group>";
-		};
-		E351945C2617128B00043606 /* Pickers */ = {
-			isa = PBXGroup;
-			children = (
-				E351945D2617128B00043606 /* CurrencyPicker */,
-				E35194602617128B00043606 /* RecipientWalletPicker */,
-				E35194632617128B00043606 /* WalletPicker */,
-			);
-			path = Pickers;
-			sourceTree = "<group>";
-		};
-		E351945D2617128B00043606 /* CurrencyPicker */ = {
-			isa = PBXGroup;
-			children = (
-				E351945E2617128B00043606 /* CurrencyPickerController.swift */,
-				E351945F2617128B00043606 /* CurrencyPickerView.swift */,
-			);
-			path = CurrencyPicker;
-			sourceTree = "<group>";
-		};
-		E35194602617128B00043606 /* RecipientWalletPicker */ = {
-			isa = PBXGroup;
-			children = (
-				E35194612617128B00043606 /* RecipientWalletPickerView.swift */,
-				E35194622617128B00043606 /* RecipientWalletPickerController.swift */,
-			);
-			path = RecipientWalletPicker;
-			sourceTree = "<group>";
-		};
-		E35194632617128B00043606 /* WalletPicker */ = {
-			isa = PBXGroup;
-			children = (
-				E35194642617128B00043606 /* WalletPickerController.swift */,
-				E35194652617128B00043606 /* WalletPickerView.swift */,
-			);
-			path = WalletPicker;
-			sourceTree = "<group>";
-		};
-		E35194662617128B00043606 /* Filter */ = {
-			isa = PBXGroup;
-			children = (
-				E35194672617128B00043606 /* FilterTransactionController.swift */,
-			);
-			path = Filter;
-			sourceTree = "<group>";
-		};
-		E35194682617128B00043606 /* RecieveCurrency */ = {
-			isa = PBXGroup;
-			children = (
-				E35194692617128B00043606 /* RecieveCurrencyController.swift */,
-			);
-			path = RecieveCurrency;
-			sourceTree = "<group>";
-		};
-		E351946A2617128B00043606 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				E351946B2617128B00043606 /* Cells */,
-				E351946E2617128B00043606 /* WalletMainController.swift */,
-				E351946F2617128B00043606 /* WalletMainController.storyboard */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		E351946B2617128B00043606 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				E351946C2617128B00043606 /* WalletItemCell.swift */,
-				E351946D2617128B00043606 /* WalletMainHeaderCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		E35194702617128B00043606 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E35194712617128B00043606 /* SecureTextField.swift */,
-				E35194722617128B00043606 /* MoneyInputTextField.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		E35194AD261712CF00043606 /* Elements */ = {
-			isa = PBXGroup;
-			children = (
-				E35195722617164A00043606 /* Resources */,
-				E35195402617154000043606 /* Extensions */,
-				E35194AE261712CF00043606 /* General */,
-				E35194AF261712CF00043606 /* Fonts */,
-				E35194B4261712CF00043606 /* Views */,
-				E35194B8261712D000043606 /* Base */,
+				E351978926175A2A00043606 /* Resources */,
+				E351978B26175A2A00043606 /* Extensions */,
+				E351979526175A2A00043606 /* Fonts */,
+				E351979A26175A2A00043606 /* Views */,
+				E351979E26175A2A00043606 /* Base */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
 		};
-		E35194AE261712CF00043606 /* General */ = {
+		E351978926175A2A00043606 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = General;
-			sourceTree = "<group>";
-		};
-		E35194AF261712CF00043606 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				E35194B0261712CF00043606 /* SF UI */,
-				E35194B3261712CF00043606 /* Roboto-Regular.ttf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		E35194B0261712CF00043606 /* SF UI */ = {
-			isa = PBXGroup;
-			children = (
-				E35194B1261712CF00043606 /* SFUIText-Regular.ttf */,
-				E35194B2261712CF00043606 /* SFUIText-Semibold.ttf */,
-			);
-			path = "SF UI";
-			sourceTree = "<group>";
-		};
-		E35194B4261712CF00043606 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E35194B5261712CF00043606 /* AttachmentToggleButton.swift */,
-				E35194B6261712CF00043606 /* SecondaryEmptyStateView.swift */,
-				E35194B7261712D000043606 /* EmptyStateView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		E35194B8261712D000043606 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				E35195A32617183800043606 /* Signal */,
-				E35194B9261712D000043606 /* Throttler.swift */,
-				E35194BA261712D000043606 /* UIStoryboard+ViewController.swift */,
-				E35194BB261712D000043606 /* BaseView.swift */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		E35195402617154000043606 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E3519556261715D100043606 /* Array + Extension.swift */,
-				E3519555261715D000043606 /* Date + Extension.swift */,
-				E351955A261715D600043606 /* String + Extension.swift */,
-				E3519557261715D200043606 /* UIStackView + Extension.swift */,
-				E3519559261715D500043606 /* UIViewController + Permission.swift */,
-				E3519558261715D400043606 /* UIViewController + Send.swift */,
-				E351955B261715D700043606 /* UIViewController + Toast.swift */,
-				E351954D2617155C00043606 /* UIView + Extension.swift */,
-				E35195A4261718A900043606 /* UIImage + Extension.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		E35195722617164A00043606 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E35195732617166100043606 /* Images.xcassets */,
+				E351978A26175A2A00043606 /* Images.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		E35195A32617183800043606 /* Signal */ = {
+		E351978B26175A2A00043606 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E351968826173B2E00043606 /* Other */,
-				E351968726173B0200043606 /* GeneralViews */,
-				E351968626173AED00043606 /* GeneralViewControllers */,
-				E351968526173ADA00043606 /* QRCode */,
-				E351968426173ABA00043606 /* Photos */,
+				E351978C26175A2A00043606 /* UIViewController + Send.swift */,
+				E351978D26175A2A00043606 /* UIImage + Extension.swift */,
+				E351978E26175A2A00043606 /* Array + Extension.swift */,
+				E351978F26175A2A00043606 /* UIView + Extension.swift */,
+				E351979026175A2A00043606 /* UIViewController + Permission.swift */,
+				E351979126175A2A00043606 /* Date + Extension.swift */,
+				E351979226175A2A00043606 /* UIViewController + Toast.swift */,
+				E351979326175A2A00043606 /* String + Extension.swift */,
+				E351979426175A2A00043606 /* UIStackView + Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E351979526175A2A00043606 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E351979626175A2A00043606 /* SF UI */,
+				E351979926175A2A00043606 /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E351979626175A2A00043606 /* SF UI */ = {
+			isa = PBXGroup;
+			children = (
+				E351979726175A2A00043606 /* SFUIText-Regular.ttf */,
+				E351979826175A2A00043606 /* SFUIText-Semibold.ttf */,
+			);
+			path = "SF UI";
+			sourceTree = "<group>";
+		};
+		E351979A26175A2A00043606 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E351979B26175A2A00043606 /* AttachmentToggleButton.swift */,
+				E351979C26175A2A00043606 /* SecondaryEmptyStateView.swift */,
+				E351979D26175A2A00043606 /* EmptyStateView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E351979E26175A2A00043606 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E351979F26175A2A00043606 /* Throttler.swift */,
+				E35197A026175A2A00043606 /* UIStoryboard+ViewController.swift */,
+				E35197A126175A2A00043606 /* Signal */,
+				E35197BE26175A2A00043606 /* BaseView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		E35197A126175A2A00043606 /* Signal */ = {
+			isa = PBXGroup;
+			children = (
+				E35197A226175A2A00043606 /* GeneralViews */,
+				E35197A826175A2A00043606 /* RegistrationUtils.m */,
+				E35197A926175A2A00043606 /* Other */,
+				E35197AD26175A2A00043606 /* QRCode */,
+				E35197B226175A2A00043606 /* RegistrationUtils.h */,
+				E35197B326175A2A00043606 /* GeneralViewControllers */,
+				E35197B726175A2A00043606 /* Photos */,
 			);
 			path = Signal;
 			sourceTree = "<group>";
 		};
-		E351968426173ABA00043606 /* Photos */ = {
+		E35197A226175A2A00043606 /* GeneralViews */ = {
 			isa = PBXGroup;
 			children = (
-				E35195BA2617195A00043606 /* PhotoLibrary.swift */,
-				E35195C826171A0B00043606 /* PhotoGridViewCell.swift */,
-				E35195E026171AC400043606 /* PhotoCollectionPickerController.swift */,
-				E35195F026171B5000043606 /* PhotoCaptureViewController.swift */,
-				E35195F826171BE300043606 /* PhotoCapture.swift */,
-				E351961426171C4000043606 /* PhotoCaptureDismiss.swift */,
-			);
-			path = Photos;
-			sourceTree = "<group>";
-		};
-		E351968526173ADA00043606 /* QRCode */ = {
-			isa = PBXGroup;
-			children = (
-				E351957B2617173600043606 /* QRCreator.swift */,
-				E351959B261717DB00043606 /* ScanQRController.swift */,
-				E35195AF2617194900043606 /* OWSQRCodeScanningViewController.h */,
-				E35195AE2617194900043606 /* OWSQRCodeScanningViewController.m */,
-			);
-			path = QRCode;
-			sourceTree = "<group>";
-		};
-		E351968626173AED00043606 /* GeneralViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				E3519593261717A600043606 /* ImagePickerGridController.swift */,
-				E35195D026171A5B00043606 /* SendMediaNavigationController.swift */,
-				E35195D826171A8800043606 /* CameraFirstNavigationController.swift */,
-			);
-			path = GeneralViewControllers;
-			sourceTree = "<group>";
-		};
-		E351968726173B0200043606 /* GeneralViews */ = {
-			isa = PBXGroup;
-			children = (
-				E351964E2617200000043606 /* OWSBezierPathView.h */,
-				E351964F2617200000043606 /* OWSBezierPathView.m */,
-				E351956A2617163700043606 /* ProfileOptionView.swift */,
-				E351958B2617177800043606 /* ReminderView.swift */,
-				E35195E826171B2600043606 /* SendMediaBottomButton.swift */,
+				E35197A326175A2A00043606 /* ProfileOptionView.swift */,
+				E35197A426175A2A00043606 /* ReminderView.swift */,
+				E35197A526175A2A00043606 /* SendMediaBottomButton.swift */,
+				E35197A626175A2A00043606 /* OWSBezierPathView.h */,
+				E35197A726175A2A00043606 /* OWSBezierPathView.m */,
 			);
 			path = GeneralViews;
 			sourceTree = "<group>";
 		};
-		E351968826173B2E00043606 /* Other */ = {
+		E35197A926175A2A00043606 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				E35195832617175200043606 /* GalleryManager.swift */,
-				E351961C26171CA300043606 /* InteractiveDismissDelegate.swift */,
-				E351960C26171C1800043606 /* VolumeButtons.swift */,
+				E35197AA26175A2A00043606 /* VolumeButtons.swift */,
+				E35197AB26175A2A00043606 /* GalleryManager.swift */,
+				E35197AC26175A2A00043606 /* InteractiveDismissDelegate.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		E35197AD26175A2A00043606 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				E35197AE26175A2A00043606 /* QRCreator.swift */,
+				E35197AF26175A2A00043606 /* OWSQRCodeScanningViewController.h */,
+				E35197B026175A2A00043606 /* ScanQRController.swift */,
+				E35197B126175A2A00043606 /* OWSQRCodeScanningViewController.m */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		E35197B326175A2A00043606 /* GeneralViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E35197B426175A2A00043606 /* ImagePickerGridController.swift */,
+				E35197B526175A2A00043606 /* CameraFirstNavigationController.swift */,
+				E35197B626175A2A00043606 /* SendMediaNavigationController.swift */,
+			);
+			path = GeneralViewControllers;
+			sourceTree = "<group>";
+		};
+		E35197B726175A2A00043606 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				E35197B826175A2A00043606 /* PhotoCaptureDismiss.swift */,
+				E35197B926175A2A00043606 /* PhotoGridViewCell.swift */,
+				E35197BA26175A2A00043606 /* PhotoCapture.swift */,
+				E35197BB26175A2A00043606 /* PhotoCaptureViewController.swift */,
+				E35197BC26175A2A00043606 /* PhotoCollectionPickerController.swift */,
+				E35197BD26175A2A00043606 /* PhotoLibrary.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		E35197BF26175A2A00043606 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E35197C026175A2A00043606 /* Data models */,
+				E35197C626175A2A00043606 /* WalletCredentials.swift */,
+				E35197C726175A2A00043606 /* WalletModel.swift */,
+				E35197C826175A2A00043606 /* CurrencyFormatter */,
+				E35197CF26175A2A00043606 /* WalletManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E35197C026175A2A00043606 /* Data models */ = {
+			isa = PBXGroup;
+			children = (
+				E35197C126175A2A00043606 /* Fee.swift */,
+				E35197C226175A2A00043606 /* Currency.swift */,
+				E35197C326175A2A00043606 /* Transaction.swift */,
+				E35197C426175A2A00043606 /* RecipientWallet.swift */,
+				E35197C526175A2A00043606 /* Wallet.swift */,
+			);
+			path = "Data models";
+			sourceTree = "<group>";
+		};
+		E35197C826175A2A00043606 /* CurrencyFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				E35197C926175A2A00043606 /* UITextFieldDelegate */,
+				E35197CB26175A2A00043606 /* Formatter */,
+			);
+			path = CurrencyFormatter;
+			sourceTree = "<group>";
+		};
+		E35197C926175A2A00043606 /* UITextFieldDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				E35197CA26175A2A00043606 /* UITextField.swift */,
+			);
+			path = UITextFieldDelegate;
+			sourceTree = "<group>";
+		};
+		E35197CB26175A2A00043606 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				E35197CC26175A2A00043606 /* NumberFormatter.swift */,
+				E35197CD26175A2A00043606 /* String.swift */,
+				E35197CE26175A2A00043606 /* MoneyFormatter.swift */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		E35197D026175A2A00043606 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				E35197D126175A2A00043606 /* CurrencyPicker */,
+				E35197D426175A2A00043606 /* RecipientWalletPicker */,
+				E35197D726175A2A00043606 /* WalletPicker */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
+		E35197D126175A2A00043606 /* CurrencyPicker */ = {
+			isa = PBXGroup;
+			children = (
+				E35197D226175A2A00043606 /* CurrencyPickerController.swift */,
+				E35197D326175A2A00043606 /* CurrencyPickerView.swift */,
+			);
+			path = CurrencyPicker;
+			sourceTree = "<group>";
+		};
+		E35197D426175A2A00043606 /* RecipientWalletPicker */ = {
+			isa = PBXGroup;
+			children = (
+				E35197D526175A2A00043606 /* RecipientWalletPickerView.swift */,
+				E35197D626175A2A00043606 /* RecipientWalletPickerController.swift */,
+			);
+			path = RecipientWalletPicker;
+			sourceTree = "<group>";
+		};
+		E35197D726175A2A00043606 /* WalletPicker */ = {
+			isa = PBXGroup;
+			children = (
+				E35197D826175A2A00043606 /* WalletPickerController.swift */,
+				E35197D926175A2A00043606 /* WalletPickerView.swift */,
+			);
+			path = WalletPicker;
+			sourceTree = "<group>";
+		};
+		E35197DA26175A2A00043606 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				E35197DB26175A2A00043606 /* FilterTransactionController.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		E35197DC26175A2A00043606 /* RecieveCurrency */ = {
+			isa = PBXGroup;
+			children = (
+				E35197DD26175A2A00043606 /* RecieveCurrencyController.swift */,
+			);
+			path = RecieveCurrency;
+			sourceTree = "<group>";
+		};
+		E35197DE26175A2A00043606 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E35197DF26175A2A00043606 /* Cells */,
+				E35197E226175A2A00043606 /* WalletMainController.swift */,
+				E35197E326175A2A00043606 /* WalletMainController.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E35197DF26175A2A00043606 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E35197E026175A2A00043606 /* WalletItemCell.swift */,
+				E35197E126175A2A00043606 /* WalletMainHeaderCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E35197E426175A2A00043606 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E35197E526175A2A00043606 /* SecureTextField.swift */,
+				E35197E626175A2A00043606 /* MoneyInputTextField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F215596825CC3DB50089AA63 /* SkyTech */ = {
@@ -5308,9 +5314,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E35195B32617194A00043606 /* OWSQRCodeScanningViewController.h in Headers */,
 				E35193BB26170FB400043606 /* GrapherexWallet.h in Headers */,
-				E35196502617200100043606 /* OWSBezierPathView.h in Headers */,
+				E351982026175A2B00043606 /* RegistrationUtils.h in Headers */,
+				E351981D26175A2B00043606 /* OWSQRCodeScanningViewController.h in Headers */,
+				E351981626175A2B00043606 /* OWSBezierPathView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5798,11 +5805,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E35194A42617128B00043606 /* WalletMainController.storyboard in Resources */,
-				E35194BD261712D000043606 /* SFUIText-Semibold.ttf in Resources */,
-				E35195742617166100043606 /* Images.xcassets in Resources */,
-				E35194BE261712D000043606 /* Roboto-Regular.ttf in Resources */,
-				E35194BC261712D000043606 /* SFUIText-Regular.ttf in Resources */,
+				E351980126175A2B00043606 /* Images.xcassets in Resources */,
+				E351980C26175A2B00043606 /* SFUIText-Semibold.ttf in Resources */,
+				E351980D26175A2B00043606 /* Roboto-Regular.ttf in Resources */,
+				E351984226175A2B00043606 /* WalletMainController.storyboard in Resources */,
+				E351980B26175A2B00043606 /* SFUIText-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6827,91 +6834,92 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E35194802617128B00043606 /* PastelessTextField.swift in Sources */,
-				E351961D26171CA300043606 /* InteractiveDismissDelegate.swift in Sources */,
-				E35194772617128B00043606 /* EnterPinController.swift in Sources */,
-				E35194832617128B00043606 /* FeeInfoController.swift in Sources */,
-				E351947F2617128B00043606 /* WalletExchangeSelectionView.swift in Sources */,
-				E351955F261715D900043606 /* UIViewController + Send.swift in Sources */,
-				E35195A5261718A900043606 /* UIImage + Extension.swift in Sources */,
-				E35194812617128B00043606 /* SendFromChatView.swift in Sources */,
-				E35194792617128B00043606 /* TransactionInfoController.swift in Sources */,
-				E3519562261715D900043606 /* UIViewController + Toast.swift in Sources */,
-				E351949C2617128B00043606 /* RecipientWalletPickerController.swift in Sources */,
-				E351949F2617128B00043606 /* FilterTransactionController.swift in Sources */,
-				E35194732617128B00043606 /* QRPasswordSaveController.swift in Sources */,
-				E35194A32617128B00043606 /* WalletMainController.swift in Sources */,
-				E35194BF261712D000043606 /* AttachmentToggleButton.swift in Sources */,
-				E35194862617128B00043606 /* SendCurrencyFromWalletController.swift in Sources */,
-				E351957C2617173600043606 /* QRCreator.swift in Sources */,
-				E351947D2617128B00043606 /* ExchangeCreatedController.swift in Sources */,
-				E351956B2617163700043606 /* ProfileOptionView.swift in Sources */,
-				E35194922617128B00043606 /* WalletCredentials.swift in Sources */,
-				E351959C261717DB00043606 /* ScanQRController.swift in Sources */,
-				E351949D2617128B00043606 /* WalletPickerController.swift in Sources */,
-				E3519560261715D900043606 /* UIViewController + Permission.swift in Sources */,
-				E35195BB2617195A00043606 /* PhotoLibrary.swift in Sources */,
-				E35194932617128B00043606 /* WalletModel.swift in Sources */,
-				E3519561261715D900043606 /* String + Extension.swift in Sources */,
-				E35194762617128B00043606 /* CancelPinController.swift in Sources */,
-				E351948D2617128B00043606 /* Fee.swift in Sources */,
-				E35194C1261712D000043606 /* EmptyStateView.swift in Sources */,
-				E3519594261717A600043606 /* ImagePickerGridController.swift in Sources */,
-				E351949E2617128B00043606 /* WalletPickerView.swift in Sources */,
-				E351954E2617155C00043606 /* UIView + Extension.swift in Sources */,
-				E35194C0261712D000043606 /* SecondaryEmptyStateView.swift in Sources */,
-				E35194882617128B00043606 /* ExchangeHistoryView.swift in Sources */,
-				E351955E261715D900043606 /* UIStackView + Extension.swift in Sources */,
-				E351948E2617128B00043606 /* Currency.swift in Sources */,
-				E35194942617128B00043606 /* UITextField.swift in Sources */,
-				E35196512617200100043606 /* OWSBezierPathView.m in Sources */,
-				E351948A2617128B00043606 /* NewWalletController.swift in Sources */,
-				E351949B2617128B00043606 /* RecipientWalletPickerView.swift in Sources */,
-				E35194842617128B00043606 /* EnterPasswordBeforeSendingController.swift in Sources */,
-				E35195F926171BE300043606 /* PhotoCapture.swift in Sources */,
-				E35194972617128B00043606 /* MoneyFormatter.swift in Sources */,
-				E35194912617128B00043606 /* Wallet.swift in Sources */,
-				E351955C261715D800043606 /* Date + Extension.swift in Sources */,
-				E35194872617128B00043606 /* WalletExchangeHistoryController.swift in Sources */,
-				E35194742617128B00043606 /* RestorePasswordController.swift in Sources */,
-				E35194852617128B00043606 /* SendCurrencyFromChatController.swift in Sources */,
-				E35195C926171A0B00043606 /* PhotoGridViewCell.swift in Sources */,
-				E351958C2617177800043606 /* ReminderView.swift in Sources */,
-				E35194A22617128B00043606 /* WalletMainHeaderCell.swift in Sources */,
-				E35194A02617128B00043606 /* RecieveCurrencyController.swift in Sources */,
-				E35195E126171AC400043606 /* PhotoCollectionPickerController.swift in Sources */,
-				E35194782617128B00043606 /* SetPinController.swift in Sources */,
-				E35194752617128B00043606 /* PasswordController.swift in Sources */,
-				E35194A12617128B00043606 /* WalletItemCell.swift in Sources */,
-				E351948B2617128B00043606 /* NewWalletSuccessController.swift in Sources */,
-				E351948C2617128B00043606 /* NoWalletController.swift in Sources */,
-				E35194952617128B00043606 /* NumberFormatter.swift in Sources */,
-				E35194982617128B00043606 /* WalletManager.swift in Sources */,
-				E35195B22617194A00043606 /* OWSQRCodeScanningViewController.m in Sources */,
-				E35194822617128B00043606 /* SentSucceedCurrencyController.swift in Sources */,
-				E35195D926171A8800043606 /* CameraFirstNavigationController.swift in Sources */,
-				E35194992617128B00043606 /* CurrencyPickerController.swift in Sources */,
-				E351955D261715D800043606 /* Array + Extension.swift in Sources */,
-				E351947C2617128B00043606 /* TransactionView.swift in Sources */,
-				E35194892617128B00043606 /* InfoCurrencyController.swift in Sources */,
-				E35195F126171B5000043606 /* PhotoCaptureViewController.swift in Sources */,
-				E35195E926171B2600043606 /* SendMediaBottomButton.swift in Sources */,
-				E35194A62617128B00043606 /* MoneyInputTextField.swift in Sources */,
-				E35194962617128B00043606 /* String.swift in Sources */,
-				E351947E2617128B00043606 /* WalletExchangeController.swift in Sources */,
-				E35194902617128B00043606 /* RecipientWallet.swift in Sources */,
-				E351948F2617128B00043606 /* Transaction.swift in Sources */,
-				E35194A52617128B00043606 /* SecureTextField.swift in Sources */,
-				E35194C2261712D000043606 /* Throttler.swift in Sources */,
-				E35195842617175200043606 /* GalleryManager.swift in Sources */,
-				E351947B2617128B00043606 /* WalletHeaderView.swift in Sources */,
-				E35195D126171A5B00043606 /* SendMediaNavigationController.swift in Sources */,
-				E351961526171C4000043606 /* PhotoCaptureDismiss.swift in Sources */,
-				E351947A2617128B00043606 /* WalletDetailController.swift in Sources */,
-				E351960D26171C1800043606 /* VolumeButtons.swift in Sources */,
-				E35194C4261712D000043606 /* BaseView.swift in Sources */,
-				E351949A2617128B00043606 /* CurrencyPickerView.swift in Sources */,
-				E35194C3261712D000043606 /* UIStoryboard+ViewController.swift in Sources */,
+				E351981B26175A2B00043606 /* InteractiveDismissDelegate.swift in Sources */,
+				E35197F426175A2B00043606 /* PastelessTextField.swift in Sources */,
+				E351983226175A2B00043606 /* UITextField.swift in Sources */,
+				E35197EB26175A2A00043606 /* EnterPinController.swift in Sources */,
+				E351983826175A2B00043606 /* CurrencyPickerView.swift in Sources */,
+				E351981026175A2B00043606 /* EmptyStateView.swift in Sources */,
+				E351981926175A2B00043606 /* VolumeButtons.swift in Sources */,
+				E35197F726175A2B00043606 /* FeeInfoController.swift in Sources */,
+				E35197F326175A2B00043606 /* WalletExchangeSelectionView.swift in Sources */,
+				E35197F526175A2B00043606 /* SendFromChatView.swift in Sources */,
+				E35197ED26175A2A00043606 /* TransactionInfoController.swift in Sources */,
+				E351981226175A2B00043606 /* UIStoryboard+ViewController.swift in Sources */,
+				E351983626175A2B00043606 /* WalletManager.swift in Sources */,
+				E351983126175A2B00043606 /* WalletModel.swift in Sources */,
+				E351983E26175A2B00043606 /* RecieveCurrencyController.swift in Sources */,
+				E351980226175A2B00043606 /* UIViewController + Send.swift in Sources */,
+				E351983726175A2B00043606 /* CurrencyPickerController.swift in Sources */,
+				E351981526175A2B00043606 /* SendMediaBottomButton.swift in Sources */,
+				E351981326175A2B00043606 /* ProfileOptionView.swift in Sources */,
+				E351981E26175A2B00043606 /* ScanQRController.swift in Sources */,
+				E351982626175A2B00043606 /* PhotoCapture.swift in Sources */,
+				E351983A26175A2B00043606 /* RecipientWalletPickerController.swift in Sources */,
+				E35197E726175A2A00043606 /* QRPasswordSaveController.swift in Sources */,
+				E351984126175A2B00043606 /* WalletMainController.swift in Sources */,
+				E351980A26175A2B00043606 /* UIStackView + Extension.swift in Sources */,
+				E351983526175A2B00043606 /* MoneyFormatter.swift in Sources */,
+				E351981F26175A2B00043606 /* OWSQRCodeScanningViewController.m in Sources */,
+				E351980526175A2B00043606 /* UIView + Extension.swift in Sources */,
+				E351983F26175A2B00043606 /* WalletItemCell.swift in Sources */,
+				E35197FA26175A2B00043606 /* SendCurrencyFromWalletController.swift in Sources */,
+				E351982426175A2B00043606 /* PhotoCaptureDismiss.swift in Sources */,
+				E35197F126175A2A00043606 /* ExchangeCreatedController.swift in Sources */,
+				E35197EA26175A2A00043606 /* CancelPinController.swift in Sources */,
+				E35197FC26175A2B00043606 /* ExchangeHistoryView.swift in Sources */,
+				E351982826175A2B00043606 /* PhotoCollectionPickerController.swift in Sources */,
+				E351981826175A2B00043606 /* RegistrationUtils.m in Sources */,
+				E351981C26175A2B00043606 /* QRCreator.swift in Sources */,
+				E351981A26175A2B00043606 /* GalleryManager.swift in Sources */,
+				E351980F26175A2B00043606 /* SecondaryEmptyStateView.swift in Sources */,
+				E35197FE26175A2B00043606 /* NewWalletController.swift in Sources */,
+				E35197F826175A2B00043606 /* EnterPasswordBeforeSendingController.swift in Sources */,
+				E351982326175A2B00043606 /* SendMediaNavigationController.swift in Sources */,
+				E35197FB26175A2B00043606 /* WalletExchangeHistoryController.swift in Sources */,
+				E35197E826175A2A00043606 /* RestorePasswordController.swift in Sources */,
+				E351983C26175A2B00043606 /* WalletPickerView.swift in Sources */,
+				E351980626175A2B00043606 /* UIViewController + Permission.swift in Sources */,
+				E35197F926175A2B00043606 /* SendCurrencyFromChatController.swift in Sources */,
+				E351982F26175A2B00043606 /* Wallet.swift in Sources */,
+				E35197EC26175A2A00043606 /* SetPinController.swift in Sources */,
+				E351983426175A2B00043606 /* String.swift in Sources */,
+				E351981126175A2B00043606 /* Throttler.swift in Sources */,
+				E351984026175A2B00043606 /* WalletMainHeaderCell.swift in Sources */,
+				E351982A26175A2B00043606 /* BaseView.swift in Sources */,
+				E35197E926175A2A00043606 /* PasswordController.swift in Sources */,
+				E35197FF26175A2B00043606 /* NewWalletSuccessController.swift in Sources */,
+				E351980026175A2B00043606 /* NoWalletController.swift in Sources */,
+				E351983D26175A2B00043606 /* FilterTransactionController.swift in Sources */,
+				E351982126175A2B00043606 /* ImagePickerGridController.swift in Sources */,
+				E351980726175A2B00043606 /* Date + Extension.swift in Sources */,
+				E351980426175A2B00043606 /* Array + Extension.swift in Sources */,
+				E351980326175A2B00043606 /* UIImage + Extension.swift in Sources */,
+				E351984326175A2B00043606 /* SecureTextField.swift in Sources */,
+				E351982B26175A2B00043606 /* Fee.swift in Sources */,
+				E351983926175A2B00043606 /* RecipientWalletPickerView.swift in Sources */,
+				E35197F626175A2B00043606 /* SentSucceedCurrencyController.swift in Sources */,
+				E351984426175A2B00043606 /* MoneyInputTextField.swift in Sources */,
+				E35197F026175A2A00043606 /* TransactionView.swift in Sources */,
+				E351982526175A2B00043606 /* PhotoGridViewCell.swift in Sources */,
+				E351982D26175A2B00043606 /* Transaction.swift in Sources */,
+				E35197FD26175A2B00043606 /* InfoCurrencyController.swift in Sources */,
+				E351983B26175A2B00043606 /* WalletPickerController.swift in Sources */,
+				E351981726175A2B00043606 /* OWSBezierPathView.m in Sources */,
+				E351980E26175A2B00043606 /* AttachmentToggleButton.swift in Sources */,
+				E351982726175A2B00043606 /* PhotoCaptureViewController.swift in Sources */,
+				E351983026175A2B00043606 /* WalletCredentials.swift in Sources */,
+				E351982C26175A2B00043606 /* Currency.swift in Sources */,
+				E351982E26175A2B00043606 /* RecipientWallet.swift in Sources */,
+				E351983326175A2B00043606 /* NumberFormatter.swift in Sources */,
+				E351982926175A2B00043606 /* PhotoLibrary.swift in Sources */,
+				E35197F226175A2A00043606 /* WalletExchangeController.swift in Sources */,
+				E351980926175A2B00043606 /* String + Extension.swift in Sources */,
+				E351981426175A2B00043606 /* ReminderView.swift in Sources */,
+				E35197EF26175A2A00043606 /* WalletHeaderView.swift in Sources */,
+				E351980826175A2B00043606 /* UIViewController + Toast.swift in Sources */,
+				E35197EE26175A2A00043606 /* WalletDetailController.swift in Sources */,
+				E351982226175A2B00043606 /* CameraFirstNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
