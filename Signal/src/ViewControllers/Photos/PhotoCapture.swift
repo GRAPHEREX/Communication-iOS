@@ -1039,121 +1039,121 @@ extension AVCaptureVideoOrientation {
     }
 }
 
-extension AVCaptureDevice.FocusMode: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .locked:
-            return "FocusMode.locked"
-        case .autoFocus:
-            return "FocusMode.autoFocus"
-        case .continuousAutoFocus:
-            return "FocusMode.continuousAutoFocus"
-        @unknown default:
-            return "FocusMode.unknown"
-        }
-    }
-}
-
-extension AVCaptureDevice.ExposureMode: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .locked:
-            return "ExposureMode.locked"
-        case .autoExpose:
-            return "ExposureMode.autoExpose"
-        case .continuousAutoExposure:
-            return "ExposureMode.continuousAutoExposure"
-        case .custom:
-            return "ExposureMode.custom"
-        @unknown default:
-            return "ExposureMode.unknown"
-        }
-    }
-}
-
-extension AVCaptureVideoOrientation: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .portrait:
-            return "AVCaptureVideoOrientation.portrait"
-        case .portraitUpsideDown:
-            return "AVCaptureVideoOrientation.portraitUpsideDown"
-        case .landscapeRight:
-            return "AVCaptureVideoOrientation.landscapeRight"
-        case .landscapeLeft:
-            return "AVCaptureVideoOrientation.landscapeLeft"
-        @unknown default:
-            return "AVCaptureVideoOrientation.unknownDefault"
-        }
-    }
-}
-
-extension UIDeviceOrientation: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .unknown:
-            return "UIDeviceOrientation.unknown"
-        case .portrait:
-            return "UIDeviceOrientation.portrait"
-        case .portraitUpsideDown:
-            return "UIDeviceOrientation.portraitUpsideDown"
-        case .landscapeLeft:
-            return "UIDeviceOrientation.landscapeLeft"
-        case .landscapeRight:
-            return "UIDeviceOrientation.landscapeRight"
-        case .faceUp:
-            return "UIDeviceOrientation.faceUp"
-        case .faceDown:
-            return "UIDeviceOrientation.faceDown"
-        @unknown default:
-            return "UIDeviceOrientation.unknownDefault"
-        }
-    }
-}
-
-extension UIInterfaceOrientation: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .unknown:
-            return "UIInterfaceOrientation.unknown"
-        case .portrait:
-            return "UIInterfaceOrientation.portrait"
-        case .portraitUpsideDown:
-            return "UIInterfaceOrientation.portraitUpsideDown"
-        case .landscapeLeft:
-            return "UIInterfaceOrientation.landscapeLeft"
-        case .landscapeRight:
-            return "UIInterfaceOrientation.landscapeRight"
-        @unknown default:
-            return "UIInterfaceOrientation.unknownDefault"
-        }
-    }
-}
-
-extension UIImage.Orientation: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .up:
-            return "UIImageOrientation.up"
-        case .down:
-            return "UIImageOrientation.down"
-        case .left:
-            return "UIImageOrientation.left"
-        case .right:
-            return "UIImageOrientation.right"
-        case .upMirrored:
-            return "UIImageOrientation.upMirrored"
-        case .downMirrored:
-            return "UIImageOrientation.downMirrored"
-        case .leftMirrored:
-            return "UIImageOrientation.leftMirrored"
-        case .rightMirrored:
-            return "UIImageOrientation.rightMirrored"
-        @unknown default:
-            return "UIImageOrientation.unknownDefault"
-        }
-    }
-}
+//extension AVCaptureDevice.FocusMode: CustomStringConvertible {
+//    public var description: String {
+//        switch self {
+//        case .locked:
+//            return "FocusMode.locked"
+//        case .autoFocus:
+//            return "FocusMode.autoFocus"
+//        case .continuousAutoFocus:
+//            return "FocusMode.continuousAutoFocus"
+//        @unknown default:
+//            return "FocusMode.unknown"
+//        }
+//    }
+//}
+//
+//extension AVCaptureDevice.ExposureMode: CustomStringConvertible {
+//    public var description: String {
+//        switch self {
+//        case .locked:
+//            return "ExposureMode.locked"
+//        case .autoExpose:
+//            return "ExposureMode.autoExpose"
+//        case .continuousAutoExposure:
+//            return "ExposureMode.continuousAutoExposure"
+//        case .custom:
+//            return "ExposureMode.custom"
+//        @unknown default:
+//            return "ExposureMode.unknown"
+//        }
+//    }
+//}
+//
+//extension AVCaptureVideoOrientation: CustomStringConvertible {
+//    public var description: String {
+//        switch self {
+//        case .portrait:
+//            return "AVCaptureVideoOrientation.portrait"
+//        case .portraitUpsideDown:
+//            return "AVCaptureVideoOrientation.portraitUpsideDown"
+//        case .landscapeRight:
+//            return "AVCaptureVideoOrientation.landscapeRight"
+//        case .landscapeLeft:
+//            return "AVCaptureVideoOrientation.landscapeLeft"
+//        @unknown default:
+//            return "AVCaptureVideoOrientation.unknownDefault"
+//        }
+//    }
+//}
+//
+//extension UIDeviceOrientation: CustomStringConvertible {
+//    public var description: String {
+//        switch self {
+//        case .unknown:
+//            return "UIDeviceOrientation.unknown"
+//        case .portrait:
+//            return "UIDeviceOrientation.portrait"
+//        case .portraitUpsideDown:
+//            return "UIDeviceOrientation.portraitUpsideDown"
+//        case .landscapeLeft:
+//            return "UIDeviceOrientation.landscapeLeft"
+//        case .landscapeRight:
+//            return "UIDeviceOrientation.landscapeRight"
+//        case .faceUp:
+//            return "UIDeviceOrientation.faceUp"
+//        case .faceDown:
+//            return "UIDeviceOrientation.faceDown"
+//        @unknown default:
+//            return "UIDeviceOrientation.unknownDefault"
+//        }
+//    }
+//}
+//
+//extension UIInterfaceOrientation: CustomStringConvertible {
+//    public var description: String {
+//        switch self {
+//        case .unknown:
+//            return "UIInterfaceOrientation.unknown"
+//        case .portrait:
+//            return "UIInterfaceOrientation.portrait"
+//        case .portraitUpsideDown:
+//            return "UIInterfaceOrientation.portraitUpsideDown"
+//        case .landscapeLeft:
+//            return "UIInterfaceOrientation.landscapeLeft"
+//        case .landscapeRight:
+//            return "UIInterfaceOrientation.landscapeRight"
+//        @unknown default:
+//            return "UIInterfaceOrientation.unknownDefault"
+//        }
+//    }
+//}
+//
+//extension UIImage.Orientation: CustomStringConvertible {
+//    public var description: String {
+//        switch self {
+//        case .up:
+//            return "UIImageOrientation.up"
+//        case .down:
+//            return "UIImageOrientation.down"
+//        case .left:
+//            return "UIImageOrientation.left"
+//        case .right:
+//            return "UIImageOrientation.right"
+//        case .upMirrored:
+//            return "UIImageOrientation.upMirrored"
+//        case .downMirrored:
+//            return "UIImageOrientation.downMirrored"
+//        case .leftMirrored:
+//            return "UIImageOrientation.leftMirrored"
+//        case .rightMirrored:
+//            return "UIImageOrientation.rightMirrored"
+//        @unknown default:
+//            return "UIImageOrientation.unknownDefault"
+//        }
+//    }
+//}
 
 extension CGSize {
     func scaledToFit(max: CGFloat) -> CGSize {
