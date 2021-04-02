@@ -3,89 +3,102 @@ plugin 'cocoapods-binary'
 
 use_frameworks!
 
+def shared_pods
+  pod 'PureLayout', :inhibit_warnings => true
+end
+
 ###
 # OWS Pods
 ###
 
-pod 'SwiftProtobuf', "1.7.0"
+def ows_pods
+  pod 'SwiftProtobuf', "1.7.0"
 
-pod 'SignalCoreKit', git: 'https://github.com/signalapp/SignalCoreKit.git', testspecs: ["Tests"]
-# pod 'SignalCoreKit', path: '../SignalCoreKit', testspecs: ["Tests"]
+  pod 'SignalCoreKit', git: 'https://github.com/signalapp/SignalCoreKit.git', testspecs: ["Tests"]
+  # pod 'SignalCoreKit', path: '../SignalCoreKit', testspecs: ["Tests"]
 
-pod 'SignalClient', git: 'https://github.com/signalapp/libsignal-client.git', testspecs: ["Tests"]
-# pod 'SignalClient', path: '../libsignal-client', testspecs: ["Tests"]
+  pod 'SignalClient', git: 'https://github.com/signalapp/libsignal-client.git', testspecs: ["Tests"]
+  # pod 'SignalClient', path: '../libsignal-client', testspecs: ["Tests"]
 
-pod 'AxolotlKit', git: 'https://github.com/signalapp/SignalProtocolKit.git', branch: 'master', testspecs: ["Tests"]
-# pod 'AxolotlKit', path: '../SignalProtocolKit', testspecs: ["Tests"]
+  pod 'AxolotlKit', git: 'https://github.com/signalapp/SignalProtocolKit.git', branch: 'master', testspecs: ["Tests"]
+  # pod 'AxolotlKit', path: '../SignalProtocolKit', testspecs: ["Tests"]
 
-pod 'HKDFKit', git: 'https://github.com/signalapp/HKDFKit.git', testspecs: ["Tests"]
-# pod 'HKDFKit', path: '../HKDFKit', testspecs: ["Tests"]
+  pod 'HKDFKit', git: 'https://github.com/signalapp/HKDFKit.git', testspecs: ["Tests"]
+  # pod 'HKDFKit', path: '../HKDFKit', testspecs: ["Tests"]
 
-pod 'Curve25519Kit', git: 'ssh://git@github.com/signalapp/Curve25519Kit', testspecs: ["Tests"], branch: 'feature/SignalClient-adoption'
-# pod 'Curve25519Kit', path: '../Curve25519Kit', testspecs: ["Tests"]
+  pod 'Curve25519Kit', git: 'ssh://git@github.com/signalapp/Curve25519Kit', testspecs: ["Tests"], branch: 'feature/SignalClient-adoption'
+  # pod 'Curve25519Kit', path: '../Curve25519Kit', testspecs: ["Tests"]
 
-pod 'SignalMetadataKit', git: 'ssh://git@github.com/signalapp/SignalMetadataKit', testspecs: ["Tests"], branch: 'feature/SignalClient-adoption'
-# pod 'SignalMetadataKit', path: '../SignalMetadataKit', testspecs: ["Tests"]
+  pod 'SignalMetadataKit', git: 'ssh://git@github.com/signalapp/SignalMetadataKit', testspecs: ["Tests"], branch: 'feature/SignalClient-adoption'
+  # pod 'SignalMetadataKit', path: '../SignalMetadataKit', testspecs: ["Tests"]
 
-pod 'blurhash', git: 'https://github.com/signalapp/blurhash', branch: 'signal-master'
-# pod 'blurhash', path: '../blurhash'
+  pod 'blurhash', git: 'https://github.com/signalapp/blurhash', branch: 'signal-master'
+  # pod 'blurhash', path: '../blurhash'
 
-pod 'SignalServiceKit', path: '.', testspecs: ["Tests"]
+  pod 'SignalServiceKit', path: '.', testspecs: ["Tests"]
 
-pod 'ZKGroup', git: 'https://github.com/signalapp/signal-zkgroup-swift', testspecs: ["Tests"]
+  pod 'ZKGroup', git: 'https://github.com/signalapp/signal-zkgroup-swift', testspecs: ["Tests"]
 
-pod 'SignalArgon2', git: 'https://github.com/signalapp/Argon2.git', submodules: true, testspecs: ["Tests"]
-# pod 'SignalArgon2', path: '../Argon2', testspecs: ["Tests"]
+  pod 'SignalArgon2', git: 'https://github.com/signalapp/Argon2.git', submodules: true, testspecs: ["Tests"]
+  # pod 'SignalArgon2', path: '../Argon2', testspecs: ["Tests"]
 
-pod 'PromiseKit'
+  pod 'PromiseKit'
 
-# pod 'GRDB.swift/SQLCipher', path: '../GRDB.swift'
-pod 'GRDB.swift/SQLCipher'
+  # pod 'GRDB.swift/SQLCipher', path: '../GRDB.swift'
+  pod 'GRDB.swift/SQLCipher'
 
-pod 'SQLCipher', ">= 4.0.1"
+  pod 'SQLCipher', ">= 4.0.1"
+end
 
 ###
 # forked third party pods
 ###
 
-# Forked for performance optimizations that are not likely to be upstreamed as they are specific
-# to our limited use of Mantle
-pod 'Mantle', git: 'https://github.com/signalapp/Mantle', branch: 'signal-master'
-# pod 'Mantle', path: '../Mantle'
+def forked_third_party_pods
+  # Forked for performance optimizations that are not likely to be upstreamed as they are specific
+  # to our limited use of Mantle
+  pod 'Mantle', git: 'https://github.com/signalapp/Mantle', branch: 'signal-master'
+  # pod 'Mantle', path: '../Mantle'
 
-# Forked for compatibily with the ShareExtension, changes have an open PR, but have not been merged.
-pod 'YapDatabase/SQLCipher', :git => 'https://github.com/signalapp/YapDatabase.git', branch: 'signal-release'
-# pod 'YapDatabase/SQLCipher', path: '../YapDatabase'
+  # Forked for compatibily with the ShareExtension, changes have an open PR, but have not been merged.
+  pod 'YapDatabase/SQLCipher', :git => 'https://github.com/signalapp/YapDatabase.git', branch: 'signal-release'
+  # pod 'YapDatabase/SQLCipher', path: '../YapDatabase'
 
-# Forked to incorporate our self-built binary artifact.
-pod 'GRKOpenSSLFramework', git: 'https://github.com/signalapp/GRKOpenSSLFramework', branch: 'mkirk/1.0.2t'
-#pod 'GRKOpenSSLFramework', path: '../GRKOpenSSLFramework'
+  # Forked to incorporate our self-built binary artifact.
+  pod 'GRKOpenSSLFramework', git: 'https://github.com/signalapp/GRKOpenSSLFramework', branch: 'mkirk/1.0.2t'
+  #pod 'GRKOpenSSLFramework', path: '../GRKOpenSSLFramework'
 
-pod 'Starscream', git: 'https://github.com/signalapp/Starscream.git', branch: 'signal-release'
-# pod 'Starscream', path: '../Starscream'
+  pod 'Starscream', git: 'https://github.com/signalapp/Starscream.git', branch: 'signal-release'
+  # pod 'Starscream', path: '../Starscream'
 
-pod 'libPhoneNumber-iOS', git: 'https://github.com/signalapp/libPhoneNumber-iOS', branch: 'signal-master'
-# pod 'libPhoneNumber-iOS', path: '../libPhoneNumber-iOS'
+  pod 'libPhoneNumber-iOS', git: 'https://github.com/signalapp/libPhoneNumber-iOS', branch: 'signal-master'
+  # pod 'libPhoneNumber-iOS', path: '../libPhoneNumber-iOS'
 
-pod 'YYImage', git: 'https://github.com/signalapp/YYImage', :inhibit_warnings => true
-# pod 'YYImage', path: '../YYImage'
+  pod 'YYImage', git: 'https://github.com/signalapp/YYImage', :inhibit_warnings => true
+  # pod 'YYImage', path: '../YYImage'
+end
 
 ###
 # third party pods
 ####
 
-pod 'AFNetworking/NSURLSession', inhibit_warnings: true
-pod 'PureLayout', :inhibit_warnings => true
-pod 'Reachability', :inhibit_warnings => true
-pod 'lottie-ios', :inhibit_warnings => true
-pod 'BonMot', inhibit_warnings: true
+def third_party_pods
+  pod 'AFNetworking/NSURLSession', inhibit_warnings: true
+  pod 'Reachability', :inhibit_warnings => true
+  pod 'lottie-ios', :inhibit_warnings => true
+  pod 'BonMot', inhibit_warnings: true
 
-# For catalyst we need to be on master until 3.6.7 or later is released
-pod 'ZXingObjC', git: 'https://github.com/zxingify/zxingify-objc.git', inhibit_warnings: true, binary: true
+  # For catalyst we need to be on master until 3.6.7 or later is released
+  pod 'ZXingObjC', git: 'https://github.com/zxingify/zxingify-objc.git', inhibit_warnings: true, binary: true
+end
 
 target 'Signal' do
   project 'Signal.xcodeproj', 'Debug' => :debug, 'Release' => :release
 
+  shared_pods
+  ows_pods
+  third_party_pods
+  forked_third_party_pods
   # Pods only available inside the main Signal app
   pod 'SSZipArchive', :inhibit_warnings => true
   pod 'SignalRingRTC', path: 'ThirdParty/SignalRingRTC.podspec', inhibit_warnings: true
@@ -100,10 +113,29 @@ target 'Signal' do
 end
 
 # These extensions inherit all of the pods
-target 'SignalShareExtension'
-target 'SignalMessaging'
-target 'NotificationServiceExtension'
+target 'SignalShareExtension' do
+  shared_pods
+  ows_pods
+  third_party_pods
+  forked_third_party_pods
+end
+
+target 'SignalMessaging' do
+  shared_pods
+  ows_pods
+  third_party_pods
+  forked_third_party_pods
+end
+
+target 'NotificationServiceExtension' do
+  shared_pods
+  ows_pods
+  third_party_pods
+  forked_third_party_pods
+end
+
 target 'GrapherexWallet' do
+  shared_pods
   pod 'SDWebImage', :inhibit_warnings => true
 end
 
