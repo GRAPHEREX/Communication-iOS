@@ -78,7 +78,7 @@ final class WalletDetailController: OWSViewController {
                 let cell = OWSTableItem.newCell()
                 let emptyView = SecondaryEmptyStateView()
                 emptyView.set(
-                    image: UIImage(named: "Wallet"),
+                    image: UIImage.image(named: "wallet"),
                     title: "No data"
                 )
                 cell.contentView.addSubview(emptyView)

@@ -250,7 +250,7 @@ fileprivate extension SendCurrencyFromChatController {
                      textField: feeTextField,
                      button: feeButton,
                      value: "",
-                     icon: #imageLiteral(resourceName: "icon.wallet.fee"),
+                     icon: UIImage.image(named: "icon.wallet.fee"),
                      valueTitleLabel: feeLabel,
                      valueSubTitleLabel: feeEquivalentLabel,
                      completion: {}

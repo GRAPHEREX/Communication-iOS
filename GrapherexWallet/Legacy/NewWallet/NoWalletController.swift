@@ -38,7 +38,7 @@ fileprivate extension NoWalletController {
         let bottomSpacer = UIView.hStretchingSpacer()
         
         stackView.addArrangedSubview(topSpacer)
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "Wallet"))
+        let imageView = UIImageView(image: UIImage.image(named: "wallet"))
         imageView.contentMode = .scaleAspectFit
         imageView.setContentHuggingVerticalHigh()
         stackView.addArrangedSubview(imageView)

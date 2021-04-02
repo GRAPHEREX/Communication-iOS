@@ -180,7 +180,7 @@ fileprivate extension WalletMainController {
                 let cell = OWSTableItem.newCell()
                 let emptyView = SecondaryEmptyStateView()
                 emptyView.set(
-                    image: UIImage(named: "Wallet"),
+                    image: UIImage.image(named: "wallet"),
                     title: "No data"
                 )
                 cell.contentView.addSubview(emptyView)
@@ -226,7 +226,7 @@ fileprivate extension WalletMainController {
                     let cell = OWSTableItem.newCell()
                     let emptyView = SecondaryEmptyStateView()
                     emptyView.set(
-                        image: UIImage(named: "Wallet"),
+                        image: UIImage.image(named: "wallet"),
                         title: "No wallets"
                     )
                     cell.contentView.addSubview(emptyView)
@@ -243,7 +243,7 @@ fileprivate extension WalletMainController {
                         let cell = OWSTableItem.newCell()
                         let emptyView = SecondaryEmptyStateView()
                         emptyView.set(
-                            image: UIImage(named: "Wallet"),
+                            image: UIImage.image(named: "wallet"),
                             title: "All wallets are hidden"
                         )
                         cell.contentView.addSubview(emptyView)
