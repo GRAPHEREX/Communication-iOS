@@ -889,17 +889,15 @@
 		E351981326175A2B00043606 /* ProfileOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197A326175A2A00043606 /* ProfileOptionView.swift */; };
 		E351981426175A2B00043606 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197A426175A2A00043606 /* ReminderView.swift */; };
 		E351981526175A2B00043606 /* SendMediaBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197A526175A2A00043606 /* SendMediaBottomButton.swift */; };
-		E351981626175A2B00043606 /* OWSBezierPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197A626175A2A00043606 /* OWSBezierPathView.h */; };
+		E351981626175A2B00043606 /* OWSBezierPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197A626175A2A00043606 /* OWSBezierPathView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E351981726175A2B00043606 /* OWSBezierPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = E35197A726175A2A00043606 /* OWSBezierPathView.m */; };
-		E351981826175A2B00043606 /* RegistrationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E35197A826175A2A00043606 /* RegistrationUtils.m */; };
 		E351981926175A2B00043606 /* VolumeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AA26175A2A00043606 /* VolumeButtons.swift */; };
 		E351981A26175A2B00043606 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AB26175A2A00043606 /* GalleryManager.swift */; };
 		E351981B26175A2B00043606 /* InteractiveDismissDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AC26175A2A00043606 /* InteractiveDismissDelegate.swift */; };
 		E351981C26175A2B00043606 /* QRCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AE26175A2A00043606 /* QRCreator.swift */; };
-		E351981D26175A2B00043606 /* OWSQRCodeScanningViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197AF26175A2A00043606 /* OWSQRCodeScanningViewController.h */; };
+		E351981D26175A2B00043606 /* OWSQRCodeScanningViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197AF26175A2A00043606 /* OWSQRCodeScanningViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E351981E26175A2B00043606 /* ScanQRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B026175A2A00043606 /* ScanQRController.swift */; };
 		E351981F26175A2B00043606 /* OWSQRCodeScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E35197B126175A2A00043606 /* OWSQRCodeScanningViewController.m */; };
-		E351982026175A2B00043606 /* RegistrationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197B226175A2A00043606 /* RegistrationUtils.h */; };
 		E351982126175A2B00043606 /* ImagePickerGridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B426175A2A00043606 /* ImagePickerGridController.swift */; };
 		E351982226175A2B00043606 /* CameraFirstNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B526175A2A00043606 /* CameraFirstNavigationController.swift */; };
 		E351982326175A2B00043606 /* SendMediaNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B626175A2A00043606 /* SendMediaNavigationController.swift */; };
@@ -2172,7 +2170,6 @@
 		E35197A526175A2A00043606 /* SendMediaBottomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMediaBottomButton.swift; sourceTree = "<group>"; };
 		E35197A626175A2A00043606 /* OWSBezierPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSBezierPathView.h; sourceTree = "<group>"; };
 		E35197A726175A2A00043606 /* OWSBezierPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSBezierPathView.m; sourceTree = "<group>"; };
-		E35197A826175A2A00043606 /* RegistrationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationUtils.m; sourceTree = "<group>"; };
 		E35197AA26175A2A00043606 /* VolumeButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeButtons.swift; sourceTree = "<group>"; };
 		E35197AB26175A2A00043606 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
 		E35197AC26175A2A00043606 /* InteractiveDismissDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveDismissDelegate.swift; sourceTree = "<group>"; };
@@ -2180,7 +2177,6 @@
 		E35197AF26175A2A00043606 /* OWSQRCodeScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSQRCodeScanningViewController.h; sourceTree = "<group>"; };
 		E35197B026175A2A00043606 /* ScanQRController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRController.swift; sourceTree = "<group>"; };
 		E35197B126175A2A00043606 /* OWSQRCodeScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSQRCodeScanningViewController.m; sourceTree = "<group>"; };
-		E35197B226175A2A00043606 /* RegistrationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationUtils.h; sourceTree = "<group>"; };
 		E35197B426175A2A00043606 /* ImagePickerGridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerGridController.swift; sourceTree = "<group>"; };
 		E35197B526175A2A00043606 /* CameraFirstNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFirstNavigationController.swift; sourceTree = "<group>"; };
 		E35197B626175A2A00043606 /* SendMediaNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMediaNavigationController.swift; sourceTree = "<group>"; };
@@ -4509,10 +4505,8 @@
 			isa = PBXGroup;
 			children = (
 				E35197A226175A2A00043606 /* GeneralViews */,
-				E35197A826175A2A00043606 /* RegistrationUtils.m */,
 				E35197A926175A2A00043606 /* Other */,
 				E35197AD26175A2A00043606 /* QRCode */,
-				E35197B226175A2A00043606 /* RegistrationUtils.h */,
 				E35197B326175A2A00043606 /* GeneralViewControllers */,
 				E35197B726175A2A00043606 /* Photos */,
 			);
@@ -5307,7 +5301,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E35193BB26170FB400043606 /* GrapherexWallet.h in Headers */,
-				E351982026175A2B00043606 /* RegistrationUtils.h in Headers */,
 				E351981D26175A2B00043606 /* OWSQRCodeScanningViewController.h in Headers */,
 				E351981626175A2B00043606 /* OWSBezierPathView.h in Headers */,
 			);
@@ -6861,7 +6854,6 @@
 				E35197EA26175A2A00043606 /* CancelPinController.swift in Sources */,
 				E35197FC26175A2B00043606 /* ExchangeHistoryView.swift in Sources */,
 				E351982826175A2B00043606 /* PhotoCollectionPickerController.swift in Sources */,
-				E351981826175A2B00043606 /* RegistrationUtils.m in Sources */,
 				E351981C26175A2B00043606 /* QRCreator.swift in Sources */,
 				E351981A26175A2B00043606 /* GalleryManager.swift in Sources */,
 				E351980F26175A2B00043606 /* SecondaryEmptyStateView.swift in Sources */,
