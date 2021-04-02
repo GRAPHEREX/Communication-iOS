@@ -25,7 +25,8 @@ extension StoryboardIdentifiable where Self: UIViewController {
 
 extension UIStoryboard {
     static func makeController<T: UIViewController>(_: T.Type) -> T {
-        let storyboard = UIStoryboard(name: T.storyboardIdentifier, bundle: nil)
+        let bundle = Bundle(for: T.self)
+        let storyboard = UIStoryboard(name: T.storyboardIdentifier, bundle: bundle)
         return storyboard.instantiateViewController(T.self)
     }
 
