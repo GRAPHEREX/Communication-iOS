@@ -8,7 +8,7 @@ def shared_pods
   # For catalyst we need to be on master until 3.6.7 or later is released
   pod 'ZXingObjC', git: 'https://github.com/zxingify/zxingify-objc.git', inhibit_warnings: true, binary: true
   pod 'lottie-ios', :inhibit_warnings => true
-  pod 'SignalServiceKit', path: '.', testspecs: ["Tests"]
+  pod 'PromiseKit', :inhibit_warnings => true
 end
 
 ###
@@ -39,12 +39,12 @@ def ows_pods
   pod 'blurhash', git: 'https://github.com/signalapp/blurhash', branch: 'signal-master'
   # pod 'blurhash', path: '../blurhash'
 
+  pod 'SignalServiceKit', path: '.', testspecs: ["Tests"]
+
   pod 'ZKGroup', git: 'https://github.com/signalapp/signal-zkgroup-swift', testspecs: ["Tests"]
 
   pod 'SignalArgon2', git: 'https://github.com/signalapp/Argon2.git', submodules: true, testspecs: ["Tests"]
   # pod 'SignalArgon2', path: '../Argon2', testspecs: ["Tests"]
-
-  pod 'PromiseKit'
 
   # pod 'GRDB.swift/SQLCipher', path: '../GRDB.swift'
   pod 'GRDB.swift/SQLCipher'

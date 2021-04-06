@@ -4,9 +4,6 @@
 
 #import "UIView+OWS.h"
 #import "OWSMath.h"
-//#import <SignalCoreKit/iOSVersions.h>
-//#import <SignalMessaging/SignalMessaging-Swift.h>
-//#import <SignalServiceKit/AppContext.h>
 #import <Availability.h>
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(major, minor) \

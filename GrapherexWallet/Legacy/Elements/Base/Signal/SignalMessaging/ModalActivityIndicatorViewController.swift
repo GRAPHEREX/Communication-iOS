@@ -4,7 +4,6 @@
 
 import Foundation
 import MediaPlayer
-import SignalServiceKit
 import PromiseKit
 import PureLayout
 
@@ -60,7 +59,7 @@ public class ModalActivityIndicatorViewController: WLTViewController {
                               canCancel: Bool,
                               presentationDelay: TimeInterval,
                               backgroundBlock : @escaping (ModalActivityIndicatorViewController) -> Void) {
-        AssertIsOnMainThread()
+//        AssertIsOnMainThread()
         
         let view = ModalActivityIndicatorViewController(canCancel: canCancel, presentationDelay: presentationDelay)
         // Present this modal _over_ the current view contents.
@@ -75,11 +74,12 @@ public class ModalActivityIndicatorViewController: WLTViewController {
     
     @objc
     public func dismiss(completion completionParam: @escaping () -> Void) {
-        AssertIsOnMainThread()
+//        AssertIsOnMainThread()
         
         let completion = {
             completionParam()
-            self.wasCancelledResolver.reject(OWSGenericError("ModalActivityIndicatorViewController was not cancelled."))
+            // MARK: - SINGAL DEPENDENCY – reimplement
+//            self.wasCancelledResolver.reject(OWSGenericError("ModalActivityIndicatorViewController was not cancelled."))
         }
         
         if !wasDimissed {
@@ -150,8 +150,11 @@ public class ModalActivityIndicatorViewController: WLTViewController {
         //
         // NOTE: It will still intercept user interactions while hidden, as it
         //       should.
+        // MARK: - SINGAL DEPENDENCY – reimplement
+        // weakScheduledTimer - > scheduledTimer
         self.presentTimer?.invalidate()
-        self.presentTimer = Timer.weakScheduledTimer(withTimeInterval: presentationDelay, target: self, selector: #selector(presentTimerFired), userInfo: nil, repeats: false)
+        self.presentTimer = Timer.scheduledTimer(timeInterval: presentationDelay, target: self, selector: #selector(presentTimerFired), userInfo: nil, repeats: false)
+//        self.presentTimer = Timer.weakScheduledTimer(withTimeInterval: presentationDelay, target: self, selector: #selector(presentTimerFired), userInfo: nil, repeats: false)
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -174,7 +177,7 @@ public class ModalActivityIndicatorViewController: WLTViewController {
     }
     
     @objc func presentTimerFired() {
-        AssertIsOnMainThread()
+//        AssertIsOnMainThread()
         
         clearTimer()
         
@@ -185,7 +188,7 @@ public class ModalActivityIndicatorViewController: WLTViewController {
     }
     
     @objc func cancelPressed() {
-        AssertIsOnMainThread()
+//        AssertIsOnMainThread()
         
         _wasCancelled.set(true)
         

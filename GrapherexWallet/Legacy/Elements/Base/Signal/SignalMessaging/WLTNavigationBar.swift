@@ -61,12 +61,12 @@ public class WLTNavigationBar: UINavigationBar {
         }
         
         if [.secondaryBar, .solid].contains(currentStyle) {
-            let backgroundImage = UIImage(color: navbarBackgroundColor)
-            self.setBackgroundImage(backgroundImage, for: .default)
+//            let backgroundImage = UIImage(color: navbarBackgroundColor)
+//            self.setBackgroundImage(backgroundImage, for: .default)
         } else if UIAccessibility.isReduceTransparencyEnabled {
             blurEffectView?.isHidden = true
-            let backgroundImage = UIImage(color: navbarBackgroundColor)
-            self.setBackgroundImage(backgroundImage, for: .default)
+//            let backgroundImage = UIImage(color: navbarBackgroundColor)
+//            self.setBackgroundImage(backgroundImage, for: .default)
         } else {
             let blurEffect = UIBlurEffect()
                 //Theme.barBlurEffect
@@ -115,8 +115,8 @@ public class WLTNavigationBar: UINavigationBar {
                 // If we can't find the tinting subview (e.g. a new iOS version changed the behavior)
                 // We'll make the navbar more translucent by setting a background color.
                 let color = navbarBackgroundColor.withAlphaComponent(WLTNavigationBar.backgroundBlurMutingFactor)
-                let backgroundImage = UIImage(color: color)
-                self.setBackgroundImage(backgroundImage, for: .default)
+//                let backgroundImage = UIImage(color: color)
+//                self.setBackgroundImage(backgroundImage, for: .default)
             }
         }
         

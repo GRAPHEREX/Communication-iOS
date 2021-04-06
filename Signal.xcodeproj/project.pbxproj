@@ -943,6 +943,13 @@
 		E351984226175A2B00043606 /* WalletMainController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E35197E326175A2A00043606 /* WalletMainController.storyboard */; };
 		E351984326175A2B00043606 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197E526175A2A00043606 /* SecureTextField.swift */; };
 		E351984426175A2B00043606 /* MoneyInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197E626175A2A00043606 /* MoneyInputTextField.swift */; };
+		E354E36E261C965500FC65D0 /* WalletError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E36D261C965500FC65D0 /* WalletError.swift */; };
+		E354E377261CA40A00FC65D0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E376261CA40A00FC65D0 /* String+Extension.swift */; };
+		E354E37F261CA7AD00FC65D0 /* Atomics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E37E261CA7AD00FC65D0 /* Atomics.swift */; };
+		E354E387261CA8F100FC65D0 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E386261CA8F100FC65D0 /* CGFloat+Extension.swift */; };
+		E354E38F261CAA3800FC65D0 /* UnfairLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E38E261CAA3800FC65D0 /* UnfairLock.swift */; };
+		E354E398261CAAB100FC65D0 /* UnfairLock.h in Headers */ = {isa = PBXBuildFile; fileRef = E354E396261CAAB100FC65D0 /* UnfairLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E354E399261CAAB100FC65D0 /* UnfairLock.m in Sources */ = {isa = PBXBuildFile; fileRef = E354E397261CAAB100FC65D0 /* UnfairLock.m */; };
 		E3794A83261B5A3800E14B2E /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3794A82261B5A3800E14B2E /* Weak.swift */; };
 		E3794A92261B5B3C00E14B2E /* UIColor+OWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3794A8B261B5B3C00E14B2E /* UIColor+OWS.swift */; };
 		E3794A93261B5B3C00E14B2E /* WLTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3794A8C261B5B3C00E14B2E /* WLTNavigationController.m */; };
@@ -2241,6 +2248,13 @@
 		E35197E326175A2A00043606 /* WalletMainController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WalletMainController.storyboard; sourceTree = "<group>"; };
 		E35197E526175A2A00043606 /* SecureTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
 		E35197E626175A2A00043606 /* MoneyInputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyInputTextField.swift; sourceTree = "<group>"; };
+		E354E36D261C965500FC65D0 /* WalletError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletError.swift; sourceTree = "<group>"; };
+		E354E376261CA40A00FC65D0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		E354E37E261CA7AD00FC65D0 /* Atomics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomics.swift; sourceTree = "<group>"; };
+		E354E386261CA8F100FC65D0 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
+		E354E38E261CAA3800FC65D0 /* UnfairLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfairLock.swift; sourceTree = "<group>"; };
+		E354E396261CAAB100FC65D0 /* UnfairLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnfairLock.h; sourceTree = "<group>"; };
+		E354E397261CAAB100FC65D0 /* UnfairLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfairLock.m; sourceTree = "<group>"; };
 		E3794A82261B5A3800E14B2E /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		E3794A8B261B5B3C00E14B2E /* UIColor+OWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+OWS.swift"; sourceTree = "<group>"; };
 		E3794A8C261B5B3C00E14B2E /* WLTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTNavigationController.m; sourceTree = "<group>"; };
@@ -4304,6 +4318,7 @@
 		E35193B826170FB300043606 /* GrapherexWallet */ = {
 			isa = PBXGroup;
 			children = (
+				E354E330261C945A00FC65D0 /* Error */,
 				E39F889226177255000E120C /* Network */,
 				E351975D26175A2900043606 /* Legacy */,
 				E35193B926170FB400043606 /* GrapherexWallet.h */,
@@ -4550,6 +4565,7 @@
 		E35197A126175A2A00043606 /* Signal */ = {
 			isa = PBXGroup;
 			children = (
+				E354E375261CA3F900FC65D0 /* SignalServiceKit */,
 				E3794A8A261B5B3C00E14B2E /* SignalMessaging */,
 				E35197A226175A2A00043606 /* GeneralViews */,
 				E35197A926175A2A00043606 /* Other */,
@@ -4746,6 +4762,27 @@
 				E35197E626175A2A00043606 /* MoneyInputTextField.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E354E330261C945A00FC65D0 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				E354E36D261C965500FC65D0 /* WalletError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		E354E375261CA3F900FC65D0 /* SignalServiceKit */ = {
+			isa = PBXGroup;
+			children = (
+				E354E396261CAAB100FC65D0 /* UnfairLock.h */,
+				E354E397261CAAB100FC65D0 /* UnfairLock.m */,
+				E354E376261CA40A00FC65D0 /* String+Extension.swift */,
+				E354E37E261CA7AD00FC65D0 /* Atomics.swift */,
+				E354E386261CA8F100FC65D0 /* CGFloat+Extension.swift */,
+				E354E38E261CAA3800FC65D0 /* UnfairLock.swift */,
+			);
+			path = SignalServiceKit;
 			sourceTree = "<group>";
 		};
 		E3794A8A261B5B3C00E14B2E /* SignalMessaging */ = {
@@ -5402,6 +5439,7 @@
 				E35193BB26170FB400043606 /* GrapherexWallet.h in Headers */,
 				E3332632261C755A00CFE73E /* UIViewController+Permissions.h in Headers */,
 				E3332623261C730800CFE73E /* OWSMath.h in Headers */,
+				E354E398261CAAB100FC65D0 /* UnfairLock.h in Headers */,
 				E3332643261C75C900CFE73E /* UIFont+OWS.h in Headers */,
 				E351981D26175A2B00043606 /* OWSQRCodeScanningViewController.h in Headers */,
 				E351981626175A2B00043606 /* OWSBezierPathView.h in Headers */,
@@ -6949,6 +6987,7 @@
 				E351981E26175A2B00043606 /* ScanQRController.swift in Sources */,
 				E351982626175A2B00043606 /* PhotoCapture.swift in Sources */,
 				E351983A26175A2B00043606 /* RecipientWalletPickerController.swift in Sources */,
+				E354E37F261CA7AD00FC65D0 /* Atomics.swift in Sources */,
 				E35197E726175A2A00043606 /* QRPasswordSaveController.swift in Sources */,
 				E351984126175A2B00043606 /* WalletMainController.swift in Sources */,
 				E3794A96261B5B3C00E14B2E /* UIView+OWS.swift in Sources */,
@@ -6968,6 +7007,8 @@
 				E351981A26175A2B00043606 /* GalleryManager.swift in Sources */,
 				E351980F26175A2B00043606 /* SecondaryEmptyStateView.swift in Sources */,
 				E35197FE26175A2B00043606 /* NewWalletController.swift in Sources */,
+				E354E36E261C965500FC65D0 /* WalletError.swift in Sources */,
+				E354E387261CA8F100FC65D0 /* CGFloat+Extension.swift in Sources */,
 				E35197F826175A2B00043606 /* EnterPasswordBeforeSendingController.swift in Sources */,
 				E351982326175A2B00043606 /* SendMediaNavigationController.swift in Sources */,
 				E35197FB26175A2B00043606 /* WalletExchangeHistoryController.swift in Sources */,
@@ -6984,6 +7025,7 @@
 				E351982A26175A2B00043606 /* BaseView.swift in Sources */,
 				E35197E926175A2A00043606 /* PasswordController.swift in Sources */,
 				E35197FF26175A2B00043606 /* NewWalletSuccessController.swift in Sources */,
+				E354E38F261CAA3800FC65D0 /* UnfairLock.swift in Sources */,
 				E3794A93261B5B3C00E14B2E /* WLTNavigationController.m in Sources */,
 				E351980026175A2B00043606 /* NoWalletController.swift in Sources */,
 				E351983D26175A2B00043606 /* FilterTransactionController.swift in Sources */,
@@ -6995,6 +7037,7 @@
 				E351984326175A2B00043606 /* SecureTextField.swift in Sources */,
 				E351982B26175A2B00043606 /* Fee.swift in Sources */,
 				E351983926175A2B00043606 /* RecipientWalletPickerView.swift in Sources */,
+				E354E377261CA40A00FC65D0 /* String+Extension.swift in Sources */,
 				E35197F626175A2B00043606 /* SentSucceedCurrencyController.swift in Sources */,
 				E351984426175A2B00043606 /* MoneyInputTextField.swift in Sources */,
 				E35197F026175A2A00043606 /* TransactionView.swift in Sources */,
@@ -7024,6 +7067,7 @@
 				E3794A95261B5B3C00E14B2E /* WLTViewController.m in Sources */,
 				E35197EE26175A2A00043606 /* WalletDetailController.swift in Sources */,
 				E3794AD8261B65B100E14B2E /* WLTTableViewController.m in Sources */,
+				E354E399261CAAB100FC65D0 /* UnfairLock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

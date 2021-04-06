@@ -4,9 +4,6 @@
 
 #import "WLTTableViewController.h"
 #import "WLTNavigationController.h"
-//#import "Theme.h"
-#import "UIFont+OWS.h"
-#import "UIView+OWS.h"
 #import <GrapherexWallet/GrapherexWallet-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN

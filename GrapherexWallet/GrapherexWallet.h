@@ -9,6 +9,7 @@
 @import PureLayout;
 
 // Import Objective-C Headers so these classes are visible from the Swift code
+// SignalMessaging
 #import <OWSQRCodeScanningViewController.h>
 #import <OWSBezierPathView.h>
 #import <WLTViewController.h>
@@ -19,6 +20,8 @@
 #import <UIViewController+Permissions.h>
 #import <UIFont+OWS.h>
 
+// SignalServiceKit
+#import <UnfairLock.h>
 
 //! Project version number for GrapherexWallet.
 FOUNDATION_EXPORT double GrapherexWalletVersionNumber;

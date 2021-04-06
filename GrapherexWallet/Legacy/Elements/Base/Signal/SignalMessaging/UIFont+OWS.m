@@ -3,7 +3,6 @@
 //
 
 #import "UIFont+OWS.h"
-#import <SignalCoreKit/iOSVersions.h>
 #import <GrapherexWallet/GrapherexWallet-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN

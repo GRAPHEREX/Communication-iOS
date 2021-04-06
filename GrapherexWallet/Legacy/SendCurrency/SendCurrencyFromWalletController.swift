@@ -841,17 +841,17 @@ fileprivate extension SendCurrencyFromWalletController {
                             
                             break
                         case .failure(let error):
-                            if error.isNetworkFailureOrTimeout {
-                                modal.dismiss {
-                                    // MARK: - SINGAL DEPENDENCY – reimplement
+                        // MARK: - SINGAL DEPENDENCY – reimplement
+//                            if error.isNetworkFailureOrTimeout {
+//                                modal.dismiss {
                                     //OWSActionSheets.showErrorAlert(message: error.localizedDescription)
-                                }
-                            } else {
+//                                }
+//                            } else {
                                 modal.dismiss {
                                     self.errorLabel.text = error.localizedDescription
                                     self.errorLabel.isHidden = false
                                 }
-                            }
+//                            }
                         }
                 })
         })
