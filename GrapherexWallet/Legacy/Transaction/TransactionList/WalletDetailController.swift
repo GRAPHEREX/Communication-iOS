@@ -3,10 +3,11 @@
 // 
 
 import Foundation
+import PureLayout
 
-final class WalletDetailController: OWSViewController {
+final class WalletDetailController: WLTViewController {
     
-    private lazy var tableViewController =  OWSTableViewController()
+    private lazy var tableViewController =  WLTTableViewController()
     private let headerView = WalletHeaderView()
     private let noDataView = SecondaryEmptyStateView()
     private let emptyTransactionsView = SecondaryEmptyStateView()
@@ -56,9 +57,10 @@ final class WalletDetailController: OWSViewController {
             name: WalletModel.walletCredentionalsDidChange,
             object: nil
         )
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(applyTheme),
-            name: .ThemeDidChange, object: nil)
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        NotificationCenter.default.addObserver(
+//            self, selector: #selector(applyTheme),
+//            name: .ThemeDidChange, object: nil)
         
         loadData()
         mainLoadingIndicator.startAnimating()
@@ -70,12 +72,12 @@ final class WalletDetailController: OWSViewController {
         
         navigationItem.rightBarButtonItem = nil
 
-        let contents: OWSTableContents = .init()
-        let mainSection = OWSTableSection()
+        let contents: WLTTableContents = .init()
+        let mainSection = WLTTableSection()
                         
-        let emptyItem = OWSTableItem(
+        let emptyItem = WLTTableItem(
             customCellBlock: {
-                let cell = OWSTableItem.newCell()
+                let cell = WLTTableItem.newCell()
                 let emptyView = SecondaryEmptyStateView()
                 emptyView.set(
                     image: UIImage.image(named: "wallet"),
@@ -112,7 +114,8 @@ fileprivate extension WalletDetailController {
                 self.updateContent(allowedShowEmptyTransaction: false)
             case .failure(let error):
                 self.setNoDataState()
-                OWSActionSheets.showErrorAlert(message: error.localizedDescription)
+                // MARK: - SINGAL DEPENDENCY – reimplement
+                //OWSActionSheets.showErrorAlert(message: error.localizedDescription)
             }
         }
         completion?()
@@ -124,7 +127,7 @@ fileprivate extension WalletDetailController {
     }
     
     func setupTableView() {
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         tableViewController.tableViewStyle = .plain
         view.addSubview(tableViewController.view)
         tableViewController.view.backgroundColor = .clear
@@ -151,10 +154,10 @@ fileprivate extension WalletDetailController {
             action: #selector(showMenu)
         )
         
-        let contents: OWSTableContents = .init()
-        let headerSection = OWSTableSection()
-        let mainSection = OWSTableSection()
-        let loaderSection = OWSTableSection()
+        let contents: WLTTableContents = .init()
+        let headerSection = WLTTableSection()
+        let mainSection = WLTTableSection()
+        let loaderSection = WLTTableSection()
         headerSection.add(setupHeader())
         mainSection.customHeaderView = transactionHeaderView
         mainSection.customHeaderHeight = 40
@@ -166,10 +169,10 @@ fileprivate extension WalletDetailController {
     }
     
     func updateContent(allowedShowEmptyTransaction: Bool) {
-        let contents: OWSTableContents = .init()
-        let headerSection = OWSTableSection()
-        let mainSection = OWSTableSection()
-        let loaderSection = OWSTableSection()
+        let contents: WLTTableContents = .init()
+        let headerSection = WLTTableSection()
+        let mainSection = WLTTableSection()
+        let loaderSection = WLTTableSection()
         headerSection.add(setupHeader())
         mainSection.customHeaderView = transactionHeaderView
         mainSection.customHeaderHeight = 40
@@ -189,8 +192,8 @@ fileprivate extension WalletDetailController {
         tableViewController.contents = contents
     }
     
-    func setupHeader() -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
+    func setupHeader() -> WLTTableItem {
+        let cell = WLTTableItem.newCell()
         cell.selectionStyle = .none
         cell.contentView.addSubview(headerView)
         headerView.autoPinEdgesToSuperviewEdges()
@@ -207,18 +210,18 @@ fileprivate extension WalletDetailController {
                                   action: { [weak self] in self?.showInfo() })
             ])
         
-        return OWSTableItem(customCell: cell,
+        return WLTTableItem(customCell: cell,
                             customRowHeight: WalletHeaderView.Constact.height,
                             actionBlock: nil)
     }
     
-    func setupLoading() -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
+    func setupLoading() -> WLTTableItem {
+        let cell = WLTTableItem.newCell()
         cell.selectionStyle = .none
         cell.contentView.addSubview(paginationLoadingIndicator)
         paginationLoadingIndicator.autoCenterInSuperview()
         
-        return OWSTableItem(customCell: cell,
+        return WLTTableItem(customCell: cell,
                             customRowHeight: 64,
                             actionBlock: nil)
     }
@@ -226,9 +229,9 @@ fileprivate extension WalletDetailController {
     func setupTransactionHeader() {
         let label = UILabel()
         transactionHeaderView.subviews.forEach { $0.removeFromSuperview() }
-        transactionHeaderView.backgroundColor = Theme.backgroundColor
-        label.textColor = Theme.primaryTextColor
-        label.font = UIFont.st_sfUiTextSemiboldFont(withSize: 16)
+        transactionHeaderView.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 16)
         label.text = NSLocalizedString("WALLET_TRANSACTION_TITLE", comment: "")
         
         transactionHeaderView.addSubview(label)
@@ -239,7 +242,7 @@ fileprivate extension WalletDetailController {
         
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "icon.filter").withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = Theme.secondaryTextAndIconColor
+        button.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         button.addTarget(self, action: #selector(showFilter), for: .touchUpInside)
         
         transactionHeaderView.addSubview(button)
@@ -336,20 +339,20 @@ fileprivate extension WalletDetailController {
         self.presentActionSheet(controller, animated: true)
     }
     
-    func makeEmptyState() -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
+    func makeEmptyState() -> WLTTableItem {
+        let cell = WLTTableItem.newCell()
         cell.selectionStyle = .none
         cell.contentView.addSubview(emptyTransactionsView)
         emptyTransactionsView.autoPinEdgesToSuperviewEdges()
         emptyTransactionsView.set(image: #imageLiteral(resourceName: "SignNumber"), title: NSLocalizedString("WALLET_TRANSACTION_EMPTY_STATE_TITLE", comment: ""))
         
-        return OWSTableItem(customCell: cell,
+        return WLTTableItem(customCell: cell,
                             customRowHeight: tableViewController.view.frame.height - WalletHeaderView.Constact.height - 64,
                             actionBlock: nil)
     }
     
     func setupPullToRefresh() {
-        refreshControl.tintColor = Theme.secondaryTextAndIconColor
+        refreshControl.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableViewController.tableView.refreshControl = refreshControl
     }
@@ -361,15 +364,15 @@ fileprivate extension WalletDetailController {
         }
     }
     
-    func makeTransactionView(props: TransactionView.Props) -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
+    func makeTransactionView(props: TransactionView.Props) -> WLTTableItem {
+        let cell = WLTTableItem.newCell()
         cell.selectionStyle = .none
         let view = TransactionView()
         view.props = props
         cell.contentView.layoutMargins = .zero
         cell.contentView.addSubview(view)
         view.autoPinEdgesToSuperviewEdges()
-        return OWSTableItem(
+        return WLTTableItem(
             customCell: cell,
             customRowHeight: TransactionView.Constant.height,
             actionBlock: { [weak self] in
@@ -394,7 +397,7 @@ fileprivate extension WalletDetailController {
 
 // MARK: - Pagination
 
-extension WalletDetailController: OWSTableViewControllerWillDisplayDelegate {
+extension WalletDetailController: WLTTableViewControllerWillDisplayDelegate {
     
     func loadNextPage() {
         paginationLoadingIndicator.startAnimating()

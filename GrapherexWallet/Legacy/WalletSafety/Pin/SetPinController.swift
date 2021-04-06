@@ -27,9 +27,9 @@ final class SetPinController: ActionSheetController {
         pinTextField.placeholder = "New"
         pinTextField.textAlignment = .center
         pinTextField.isSecureTextEntry = true
-        pinTextField.textColor = Theme.primaryTextColor
-        pinTextField.font = .ows_dynamicTypeBodyClamped
-        pinTextField.keyboardAppearance = Theme.keyboardAppearance
+        pinTextField.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        pinTextField.font = .wlt_dynamicTypeBodyClamped
+//        pinTextField.keyboardAppearance = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.keyboardAppearance
         pinTextField.defaultTextAttributes.updateValue(5, forKey: .kern)
         pinTextField.keyboardType = .decimalPad
         return pinTextField
@@ -40,9 +40,9 @@ final class SetPinController: ActionSheetController {
         pinTextField.placeholder = "Confirm"
         pinTextField.textAlignment = .center
         pinTextField.isSecureTextEntry = true
-        pinTextField.textColor = Theme.primaryTextColor
-        pinTextField.font = .ows_dynamicTypeBodyClamped
-        pinTextField.keyboardAppearance = Theme.keyboardAppearance
+        pinTextField.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        pinTextField.font = .wlt_dynamicTypeBodyClamped
+//        pinTextField.keyboardAppearance = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.keyboardAppearance
         pinTextField.defaultTextAttributes.updateValue(5, forKey: .kern)
         pinTextField.keyboardType = .decimalPad
         return pinTextField
@@ -50,7 +50,7 @@ final class SetPinController: ActionSheetController {
     
     private let primaryButton: STPrimaryButton = {
         let button = STPrimaryButton()
-        button.setTitle(CommonStrings.nextButton, for: .normal)
+        button.setTitle("Next", for: .normal)
         button.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -59,14 +59,14 @@ final class SetPinController: ActionSheetController {
     private lazy var newPinStrokeNormal = newPinTextField.addBottomStroke()
     private lazy var confirmPinStrokeNormal = confirmPinTextField.addBottomStroke()
     
-    private lazy var newPinStrokeError = newPinTextField.addBottomStroke(color: .ows_accentRed, strokeWidth: 2)
-    private lazy var confirmPinStrokeError = confirmPinTextField.addBottomStroke(color: .ows_accentRed, strokeWidth: 2)
+    private lazy var newPinStrokeError = newPinTextField.addBottomStroke(color: .wlt_accentRed, strokeWidth: 2)
+    private lazy var confirmPinStrokeError = confirmPinTextField.addBottomStroke(color: .wlt_accentRed, strokeWidth: 2)
     
     private let validationWarningLabel: UILabel = {
         let validationWarningLabel = UILabel()
-        validationWarningLabel.textColor = .st_otherRed
+        validationWarningLabel.textColor = .stwlt_otherRed
         validationWarningLabel.textAlignment = .center
-        validationWarningLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
+        validationWarningLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         validationWarningLabel.numberOfLines = 0
         return validationWarningLabel
     }()
@@ -91,7 +91,7 @@ final class SetPinController: ActionSheetController {
         }
     }
     
-    private var pinType: KeyBackupService.PinType = .numeric
+//    private var pinType: KeyBackupService.PinType = .numeric
 
     private var topPadding: CGFloat = 0.0
 
@@ -133,16 +133,16 @@ final class SetPinController: ActionSheetController {
 extension SetPinController: UITextFieldDelegate {
     func setupContent() {
         newPinTextField.delegate = self
-        newPinTextField.setContentHuggingHorizontalLow()
-        newPinTextField.setCompressionResistanceHorizontalLow()
+        newPinTextField.wltSetContentHuggingHorizontalLow()
+        newPinTextField.wltSetCompressionResistanceHorizontalLow()
         newPinTextField.autoSetDimension(.height, toSize: 40)
         
         confirmPinTextField.delegate = self
-        confirmPinTextField.setContentHuggingHorizontalLow()
-        confirmPinTextField.setCompressionResistanceHorizontalLow()
+        confirmPinTextField.wltSetContentHuggingHorizontalLow()
+        confirmPinTextField.wltSetCompressionResistanceHorizontalLow()
         confirmPinTextField.autoSetDimension(.height, toSize: 40)
         
-        validationWarningLabel.setCompressionResistanceHigh()
+        validationWarningLabel.wltSetCompressionResistanceHigh()
         
         let pinStack = UIStackView(arrangedSubviews: [
             newPinTextField,
@@ -156,13 +156,13 @@ extension SetPinController: UITextFieldDelegate {
         
         let pinStackRow = UIView()
         pinStackRow.addSubview(pinStack)
-        pinStack.autoHCenterInSuperview()
-        pinStack.autoPinHeightToSuperview()
+        pinStack.wltAutoHCenterInSuperview()
+        pinStack.wltAutoPinHeightToSuperview()
         pinStack.autoSetDimension(.width, toSize: 227)
-        pinStackRow.setContentHuggingVerticalHigh()
+        pinStackRow.wltSetContentHuggingVerticalHigh()
         	
         buttonContainer.addSubview(primaryButton)
-        primaryButton.autoPinEdgesToSuperviewEdges(with: .init(top: 0, leading: 16, bottom: 0, trailing: 16))
+        primaryButton.autoPinEdgesToSuperviewEdges(with: .init(top: 0, left: 16, bottom: 0, right: 16))
         
         let topSpacer = UIView.vStretchingSpacer()
         let bottomSpacer = UIView.vStretchingSpacer()
@@ -217,8 +217,8 @@ extension SetPinController: UITextFieldDelegate {
             confirmPinIsValid = !newString.isEmpty
         }
         attemptState = .valid
-        
-        ViewControllerUtils.ows2FAPINTextField(textField, shouldChangeCharactersIn: range, replacementString: string)
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        ViewControllerUtils.ows2FAPINTextField(textField, shouldChangeCharactersIn: range, replacementString: string)
         
         return false
     }

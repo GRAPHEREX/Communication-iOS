@@ -57,12 +57,12 @@ class MediaInteractiveDismiss: UIPercentDrivenInteractiveTransition {
     
     private var shouldCompleteTransition: Bool {
         if farEnoughToCompleteTransition {
-            Logger.verbose("farEnoughToCompleteTransition")
+            ////Logger.verbose("farEnoughToCompleteTransition")
             return true
         }
         
         if fastEnoughToCompleteTransition {
-            Logger.verbose("fastEnoughToCompleteTransition")
+            ////Logger.verbose("fastEnoughToCompleteTransition")
             return true
         }
         
@@ -72,7 +72,7 @@ class MediaInteractiveDismiss: UIPercentDrivenInteractiveTransition {
     @objc
     private func handleGesture(_ gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
         guard let coordinateSpace = gestureRecognizer.view?.superview else {
-            owsFailDebug("coordinateSpace was unexpectedly nil")
+            //owsFailDebug("coordinateSpace was unexpectedly nil")
             return
         }
         

@@ -31,7 +31,7 @@ class PhotoCaptureInteractiveDismiss: UIPercentDrivenInteractiveTransition {
     
     private var shouldCompleteTransition: Bool {
         if farEnoughToCompleteTransition {
-            Logger.verbose("farEnoughToCompleteTransition")
+            //Logger.verbose("farEnoughToCompleteTransition")
             return true
         }
         
@@ -41,7 +41,7 @@ class PhotoCaptureInteractiveDismiss: UIPercentDrivenInteractiveTransition {
     @objc
     private func handleGesture(_ gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
         guard let coordinateSpace = gestureRecognizer.view?.superview else {
-            owsFailDebug("coordinateSpace was unexpectedly nil")
+            //owsFailDebug("coordinateSpace was unexpectedly nil")
             return
         }
         

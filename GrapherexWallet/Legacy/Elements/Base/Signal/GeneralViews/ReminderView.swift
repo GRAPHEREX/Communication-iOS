@@ -32,12 +32,16 @@ class ReminderView: UIView {
     
     @available(*, unavailable, message:"use other constructor instead.")
     required init?(coder aDecoder: NSCoder) {
-        notImplemented()
+        // MARK: - SINGAL DEPENDENCY – reimplement
+        //notImplemented()
+        fatalError()
     }
     
     @available(*, unavailable, message:"use other constructor instead.")
     override init(frame: CGRect) {
-        notImplemented()
+        // MARK: - SINGAL DEPENDENCY – reimplement
+        //notImplemented()
+        fatalError()
     }
     
     init(mode: ReminderViewMode,
@@ -65,14 +69,14 @@ class ReminderView: UIView {
         let iconColor: UIColor
         switch mode {
         case .nag:
-            self.backgroundColor = UIColor.ows_reminderYellow
-            textColor = UIColor.ows_gray90
-            iconColor = UIColor.ows_gray60
+            self.backgroundColor = UIColor.wlt_reminderYellow
+            textColor = UIColor.wlt_gray90
+            iconColor = UIColor.wlt_gray60
         case .explanation:
             // TODO: Theme, review with design.
-            self.backgroundColor = Theme.washColor
-            textColor = Theme.primaryTextColor
-            iconColor = Theme.secondaryTextAndIconColor
+            self.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.washColor
+            textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+            iconColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         }
         self.clipsToBounds = true
         
@@ -89,7 +93,7 @@ class ReminderView: UIView {
         container.autoPinEdgesToSuperviewEdges()
         
         // Label
-        label.font = UIFont.ows_dynamicTypeSubheadline
+//        label.font = UIFont.wlt_dynamicTypeSubheadline
         container.addArrangedSubview(label)
         label.textColor = textColor
         label.numberOfLines = 0
@@ -98,9 +102,10 @@ class ReminderView: UIView {
         // Show the disclosure indicator if this reminder has a tap action.
         if tapAction != nil {
             // Icon
-            let iconName = (CurrentAppContext().isRTL ? "system_disclosure_indicator_rtl" : "system_disclosure_indicator")
+            let iconName = "system_disclosure_indicator"
+                //(CurrentAppContext().isRTL ? "system_disclosure_indicator_rtl" : "system_disclosure_indicator")
             guard let iconImage = UIImage(named: iconName) else {
-                owsFailDebug("missing icon.")
+                //owsFailDebug("missing icon.")
                 return
             }
             let iconView = UIImageView(image: iconImage.withRenderingMode(.alwaysTemplate))

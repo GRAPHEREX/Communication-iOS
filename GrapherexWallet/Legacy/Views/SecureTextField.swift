@@ -34,6 +34,6 @@ fileprivate extension SecureTextField {
     @objc
     func secureButtonTap() {
         self.isSecureTextEntry.toggle()
-        button.tintColor = self.isSecureTextEntry ? .ows_gray10 : .st_accentGreen
+        button.tintColor = self.isSecureTextEntry ? .wlt_gray10 : .stwlt_accentGreen
     }
 }

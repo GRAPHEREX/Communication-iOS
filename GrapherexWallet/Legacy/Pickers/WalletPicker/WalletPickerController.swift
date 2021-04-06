@@ -3,7 +3,9 @@
 // 
 
 import Foundation
+import PureLayout
 
+// MARK: - SINGAL DEPENDENCY – reimplement
 final class WalletPickerController: ActionSheetController {
    typealias FinishHandler = (Wallet) -> Void
     
@@ -19,18 +21,18 @@ final class WalletPickerController: ActionSheetController {
     }
     
     private var filteredWallets: [Wallet] = [] { didSet {
-            setupContent()
+//            setupContent()
         }}
     
-    private let searchBar = OWSSearchBar()
-    
-    private let tableViewController = OWSTableViewController()
-    
+//    private let searchBar = OWSSearchBar()
+//
+    private let tableViewController = WLTTableViewController()
+
     override func setup() {
         super.setup()
-        searchBar.delegate = self
-        searchBar.sizeToFit()
-        searchBar.placeholder = "Search"
+//        searchBar.delegate = self
+//        searchBar.sizeToFit()
+//        searchBar.placeholder = "Search"
         isCancelable = true
         let window = UIApplication.shared.keyWindow
         let topPadding = window?.safeAreaInsets.top ?? 0
@@ -39,7 +41,7 @@ final class WalletPickerController: ActionSheetController {
         setupCenterHeader(title: "Choose wallet", close: #selector(close))
         stackView.addArrangedSubview(tableViewController.view)
         tableViewController.tableView.backgroundColor = .clear
-        tableViewController.tableView.tableHeaderView = searchBar
+//        tableViewController.tableView.tableHeaderView = searchBar
         tableViewController.tableView.keyboardDismissMode = .onDrag
         filteredWallets = wallets
 
@@ -52,18 +54,18 @@ final class WalletPickerController: ActionSheetController {
 
 fileprivate extension WalletPickerController {
     func setupContent() {
-        let content = OWSTableContents()
-        let mainSection = OWSTableSection()
+        let content = WLTTableContents()
+        let mainSection = WLTTableSection()
         filteredWallets.forEach {
             mainSection.add(self.createItem(wallet: $0))
         }
         content.addSection(mainSection)
         tableViewController.contents = content
     }
-    
-    func createItem(wallet: Wallet) -> OWSTableItem {
-        let newCell = OWSTableItem.newCell()
-        
+
+    func createItem(wallet: Wallet) -> WLTTableItem {
+        let newCell = WLTTableItem.newCell()
+
         let view = WalletPickerView()
         view.wallet = wallet
         view.finish = { [weak self] wallet in
@@ -73,12 +75,12 @@ fileprivate extension WalletPickerController {
         newCell.selectionStyle = .none
         newCell.contentView.addSubview(view)
         view.autoPinEdgesToSuperviewEdges()
-        
-        return OWSTableItem(customCell: newCell,
+
+        return WLTTableItem(customCell: newCell,
                             customRowHeight: Constant.height,
                             actionBlock: nil)
     }
-    
+
     @objc
     func close() {
         self.dismiss(animated: true, completion:  nil)
@@ -94,13 +96,13 @@ extension WalletPickerController: UISearchBarDelegate {
     }
     
     func search() {
-        guard let text = searchBar.text, !text.isEmpty else {
-            filteredWallets = wallets
-            return
-        }
-        filteredWallets = wallets.filter {
-            $0.currency.name.lowercased().contains(text.lowercased())
-        }
+//        guard let text = searchBar.text, !text.isEmpty else {
+//            filteredWallets = wallets
+//            return
+//        }
+//        filteredWallets = wallets.filter {
+//            $0.currency.name.lowercased().contains(text.lowercased())
+//        }
     }
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -116,23 +118,23 @@ extension WalletPickerController: UISearchBarDelegate {
     }
     
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.text = nil;
+//        self.searchBar.text = nil;
         search()
         dismissSearchKeyboard()
         ensureSearchBarCancelButton()
     }
     
     func dismissSearchKeyboard() {
-        searchBar.resignFirstResponder()
+//        searchBar.resignFirstResponder()
     }
     
     func ensureSearchBarCancelButton() {
-        let shouldShowCancelButton: Bool = (searchBar.isFirstResponder || searchBar.text?.count ?? 0 > 0)
-        if searchBar.showsCancelButton == shouldShowCancelButton { return }
-        searchBar.setShowsCancelButton(shouldShowCancelButton, animated: self.isViewLoaded)
+//        let shouldShowCancelButton: Bool = (searchBar.isFirstResponder || searchBar.text?.count ?? 0 > 0)
+//        if searchBar.showsCancelButton == shouldShowCancelButton { return }
+//        searchBar.setShowsCancelButton(shouldShowCancelButton, animated: self.isViewLoaded)
     }
     
     @objc func removeFocus() {
-        searchBar.endEditing(true)
+//        searchBar.endEditing(true)
     }
 }

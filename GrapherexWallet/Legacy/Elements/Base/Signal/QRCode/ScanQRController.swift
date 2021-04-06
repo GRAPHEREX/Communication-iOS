@@ -4,7 +4,7 @@
 
 import Foundation
 
-final class ScanQRController: OWSViewController {
+final class ScanQRController: WLTViewController {
     private let qrScanner = OWSQRCodeScanningViewController()
     public var result: ((String) -> Void)?
     public weak var returnScreen: UIViewController!
@@ -13,7 +13,7 @@ final class ScanQRController: OWSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        qrScanner.view.backgroundColor = .ows_black
+        qrScanner.view.backgroundColor = .wlt_black
         self.navigationController?.navigationBar.backgroundColor = .clear
         //        qrScanner.bottomSpaceSize = STPrimaryButton.Constant.height
         self.title = "Scan QR code"
@@ -60,7 +60,7 @@ final class ScanQRController: OWSViewController {
 
 extension ScanQRController: OWSQRScannerDelegate {
     func controller(_ controller: OWSQRCodeScanningViewController, didDetectQRCodeWith string: String) {
-        Logger.debug("qr scan: \(string)")
+        //Logger.debug("qr scan: \(string)")
         scannedString = string
         result?(scannedString)
         close()

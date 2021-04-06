@@ -11,7 +11,8 @@ protocol ImagePickerGridControllerDelegate: AnyObject {
     func imagePickerDidCancel(_ imagePicker: ImagePickerGridController)
     
     func imagePicker(_ imagePicker: ImagePickerGridController, isAssetSelected asset: PHAsset) -> Bool
-    func imagePicker(_ imagePicker: ImagePickerGridController, didSelectAsset asset: PHAsset, attachmentPromise: Promise<SignalAttachment>)
+    // MARK: - SINGAL DEPENDENCY – reimplement
+//    func imagePicker(_ imagePicker: ImagePickerGridController, didSelectAsset asset: PHAsset, attachmentPromise: Promise<SignalAttachment>)
     func imagePicker(_ imagePicker: ImagePickerGridController, didDeselectAsset asset: PHAsset)
     
     var isInBatchSelectMode: Bool { get }
@@ -46,9 +47,10 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
     // MARK: - View Lifecycle
     
     override var prefersStatusBarHidden: Bool {
-        guard !OWSWindowManager.shared.hasCall else {
-            return false
-        }
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        guard !OWSWindowManager.shared.hasCall else {
+//            return false
+//        }
         
         return true
     }
@@ -59,7 +61,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
         library.add(delegate: self)
         
         guard let collectionView = collectionView else {
-            owsFailDebug("collectionView was unexpectedly nil")
+            //owsFailDebug("collectionView was unexpectedly nil")
             return
         }
         collectionView.register(PhotoGridViewCell.self, forCellWithReuseIdentifier: PhotoGridViewCell.reuseIdentifier)
@@ -67,7 +69,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
         // ensure images at the end of the list can be scrolled above the bottom buttons
         let bottomButtonInset = -1 * SendMediaNavigationController.bottomButtonsCenterOffset + SendMediaNavigationController.bottomButtonWidth / 2
         collectionView.contentInset.bottom = bottomButtonInset + 8
-        view.backgroundColor = .ows_gray95
+        view.backgroundColor = .wlt_gray95
         
         // The PhotoCaptureVC needs a shadow behind it's cancel button, so we use a custom icon.
         // This VC has a visible navbar so doesn't need the shadow, but because the user can
@@ -75,15 +77,16 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
         // icon here rather than the system "stop" icon so that the spacing matches exactly.
         // Otherwise there's a noticable shift in the icon placement.
         if UIDevice.current.isIPad {
-            let cancelButton = OWSButton.shadowedCancelButton { [weak self] in
-                self?.didPressCancel()
-            }
-            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: cancelButton)
+            // MARK: - SINGAL DEPENDENCY – reimplement
+//            let cancelButton = OWSButton.shadowedCancelButton { [weak self] in
+//                self?.didPressCancel()
+//            }
+//            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: cancelButton)
         } else {
             let cancelImage = UIImage.image(named: "ic_x_with_shadow")
             let cancelButton = UIBarButtonItem(image: cancelImage, style: .plain, target: self, action: #selector(didPressCancel))
             
-            cancelButton.tintColor = .ows_gray05
+            cancelButton.tintColor = .wlt_gray05
             navigationItem.leftBarButtonItem = cancelButton
         }
         
@@ -94,7 +97,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
         navigationItem.titleView = titleView
         self.titleView = titleView
         
-        collectionView.backgroundColor = .ows_gray95
+        collectionView.backgroundColor = .wlt_gray95
         
         let selectionPanGesture = DirectionalPanGestureRecognizer(direction: [.horizontal], target: self, action: #selector(didPanSelection))
         selectionPanGesture.delegate = self
@@ -111,12 +114,12 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
     @objc
     func didPanSelection(_ selectionPanGesture: UIPanGestureRecognizer) {
         guard let collectionView = collectionView else {
-            owsFailDebug("collectionView was unexpectedly nil")
+            //owsFailDebug("collectionView was unexpectedly nil")
             return
         }
         
         guard let delegate = delegate else {
-            owsFailDebug("delegate was unexpectedly nil")
+            //owsFailDebug("delegate was unexpectedly nil")
             return
         }
         
@@ -165,23 +168,24 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
             collectionView.isUserInteractionEnabled = true
             collectionView.isScrollEnabled = true
         @unknown default:
-            owsFailDebug("unexpected selectionPanGesture.state: \(selectionPanGesture.state)")
+            fatalError()
+            //owsFailDebug("unexpected selectionPanGesture.state: \(selectionPanGesture.state)")
         }
     }
     
     func tryToToggleBatchSelect(at indexPath: IndexPath) {
         guard let collectionView = collectionView else {
-            owsFailDebug("collectionView was unexpectedly nil")
+            //owsFailDebug("collectionView was unexpectedly nil")
             return
         }
         
         guard let delegate = delegate else {
-            owsFailDebug("delegate was unexpectedly nil")
+            //owsFailDebug("delegate was unexpectedly nil")
             return
         }
         
         guard delegate.isInBatchSelectMode else {
-            owsFailDebug("isInBatchSelectMode was unexpectedly false")
+            //owsFailDebug("isInBatchSelectMode was unexpectedly false")
             return
         }
         
@@ -197,8 +201,9 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
                 return
             }
             
-            let attachmentPromise: Promise<SignalAttachment> = photoCollectionContents.outgoingAttachment(for: asset, imageQuality: imageQuality)
-            delegate.imagePicker(self, didSelectAsset: asset, attachmentPromise: attachmentPromise)
+            // MARK: - SINGAL DEPENDENCY – reimplement
+//            let attachmentPromise: Promise<SignalAttachment> = photoCollectionContents.outgoingAttachment(for: asset, imageQuality: imageQuality)
+//            delegate.imagePicker(self, didSelectAsset: asset, attachmentPromise: attachmentPromise)
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
         case .deselect:
             guard isSelected(indexPath: indexPath) else {
@@ -210,9 +215,10 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
         }
     }
     
-    var imageQuality: TSImageQuality {
-        return .medium
-    }
+    // MARK: - SINGAL DEPENDENCY – reimplement
+//    var imageQuality: TSImageQuality {
+//        return .medium
+//    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -254,7 +260,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
         
         hasEverAppeared = true
         
-        BenchEventComplete(eventId: "Show-Media-Library")
+//        BenchEventComplete(eventId: "Show-Media-Library")
         
         DispatchQueue.main.async {
             // pre-layout collectionPicker for snappier response
@@ -273,7 +279,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
         self.view.layoutIfNeeded()
         
         guard let collectionView = collectionView else {
-            owsFailDebug("collectionView was unexpectedly nil")
+            //owsFailDebug("collectionView was unexpectedly nil")
             return
         }
         
@@ -296,14 +302,14 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
             // causing the content to adjust *after* viewWillAppear and viewSafeAreaInsetsDidChange.
             // Because that something results in `scrollViewDidScroll` we re-adjust the content
             // insets to the bottom.
-            Logger.debug("adjusting scroll offset back to bottom")
+            //Logger.debug("adjusting scroll offset back to bottom")
             scrollToBottom(animated: false)
         }
     }
     
     public func reloadData() {
         guard let collectionView = collectionView else {
-            owsFailDebug("Missing collectionView.")
+            //owsFailDebug("Missing collectionView.")
             return
         }
         
@@ -349,7 +355,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
             collectionViewFlowLayout.itemSize = newItemSize
             // Inset any remaining space around the outside edges to ensure all inter-item spacing is exactly equal, otherwise
             // we may get slightly different gaps between rows vs. columns
-            collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 0, leading: remainingSpace / 2, bottom: 0, trailing: remainingSpace / 2)
+            collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: remainingSpace / 2, bottom: 0, right: remainingSpace / 2)
             collectionViewFlowLayout.invalidateLayout()
         }
     }
@@ -374,7 +380,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
         }
         
         guard let collectionView = collectionView else {
-            owsFailDebug("collectionView was unexpectedly nil")
+            //owsFailDebug("collectionView was unexpectedly nil")
             return
         }
         
@@ -399,10 +405,10 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
     }()
     
     func showCollectionPicker() {
-        Logger.debug("")
+        //Logger.debug("")
         
         guard let collectionPickerView = collectionPickerController.view else {
-            owsFailDebug("collectionView was unexpectedly nil")
+            //owsFailDebug("collectionView was unexpectedly nil")
             return
         }
         
@@ -425,7 +431,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
     }
     
     func hideCollectionPicker() {
-        Logger.debug("")
+        //Logger.debug("")
         
         assert(isShowingCollectionPickerController)
         isShowingCollectionPickerController = false
@@ -433,7 +439,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
         UIView.animate(.promise, duration: 0.25, delay: 0, options: .curveEaseInOut) {
             self.collectionPickerController.view.frame = self.collectionPickerController.view.frame.offsetBy(
                 dx: 0,
-                dy: self.collectionPickerController.view.height
+                dy: self.collectionPickerController.view.bounds.height
             )
             self.titleView.rotateIcon(.down)
         }.done { _ in
@@ -445,8 +451,8 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
     // MARK: - PhotoCollectionPickerDelegate
     
     func photoCollectionPicker(_ photoCollectionPicker: PhotoCollectionPickerController, didPickCollection collection: PhotoCollection) {
-        BenchEventStart(title: "Picked Collection", eventId: "Picked Collection")
-        defer { BenchEventComplete(eventId: "Picked Collection") }
+//        BenchEventStart(title: "Picked Collection", eventId: "Picked Collection")
+//        defer { BenchEventComplete(eventId: "Picked Collection") }
         guard photoCollection != collection else {
             hideCollectionPicker()
             return
@@ -479,13 +485,14 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let delegate = delegate else {
-            owsFailDebug("delegate was unexpectedly nil")
+            //owsFailDebug("delegate was unexpectedly nil")
             return
         }
         
         let asset: PHAsset = photoCollectionContents.asset(at: indexPath.item)
-        let attachmentPromise: Promise<SignalAttachment> = photoCollectionContents.outgoingAttachment(for: asset, imageQuality: imageQuality)
-        delegate.imagePicker(self, didSelectAsset: asset, attachmentPromise: attachmentPromise)
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        let attachmentPromise: Promise<SignalAttachment> = photoCollectionContents.outgoingAttachment(for: asset, imageQuality: imageQuality)
+//        delegate.imagePicker(self, didSelectAsset: asset, attachmentPromise: attachmentPromise)
         
         if !delegate.isInBatchSelectMode {
             // Don't show "selected" badge unless we're in batch mode
@@ -495,9 +502,9 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
     }
     
     public override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        Logger.debug("")
+        //Logger.debug("")
         guard let delegate = delegate else {
-            owsFailDebug("delegate was unexpectedly nil")
+            //owsFailDebug("delegate was unexpectedly nil")
             return
         }
         
@@ -511,7 +518,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoGridViewCell.reuseIdentifier, for: indexPath) as? PhotoGridViewCell else {
-            owsFail("cell was unexpectedly nil")
+            fatalError("cell was unexpectedly nil")
         }
         
         cell.loadingColor = UIColor(white: 0.2, alpha: 1)
@@ -523,7 +530,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let delegate = delegate else { return }
         guard let photoGridViewCell = cell as? PhotoGridViewCell else {
-            owsFailDebug("unexpected cell: \(cell)")
+            //owsFailDebug("unexpected cell: \(cell)")
             return
         }
         let assetItem = photoCollectionContents.assetItem(at: indexPath.item, photoMediaSize: photoMediaSize)
@@ -541,12 +548,12 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
         guard let delegate = delegate else { return }
         for cell in collectionView.visibleCells {
             guard let photoGridViewCell = cell as? PhotoGridViewCell else {
-                owsFailDebug("unexpected cell: \(cell)")
+                //owsFailDebug("unexpected cell: \(cell)")
                 continue
             }
             
             guard let assetItem = photoGridViewCell.item as? PhotoPickerAssetItem else {
-                owsFailDebug("unexpected photoGridViewCell.item: \(String(describing: photoGridViewCell.item))")
+                //owsFailDebug("unexpected photoGridViewCell.item: \(String(describing: photoGridViewCell.item))")
                 continue
             }
             
@@ -601,10 +608,10 @@ class TitleView: UIView {
         addSubview(stackView)
         stackView.autoPinEdgesToSuperviewEdges()
         
-        label.textColor = .ows_gray05
-        label.font = UIFont.ows_dynamicTypeBody.ows_semibold
+        label.textColor = .wlt_gray05
+        label.font = UIFont.wlt_dynamicTypeBody.wlt_semibold
         
-        iconView.tintColor = .ows_gray05
+        iconView.tintColor = .wlt_gray05
         iconView.image = UIImage(named: "navbar_disclosure_down")?.withRenderingMode(.alwaysTemplate)
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(titleTapped)))

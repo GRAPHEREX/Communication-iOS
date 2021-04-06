@@ -29,7 +29,7 @@ fileprivate extension NoWalletController {
     func setupButton() {
         createButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         createButton.setTitle("Create wallet", for: .normal)
-        createButton.setContentHuggingVerticalHigh()
+        createButton.wltSetContentHuggingVerticalHigh()
         stackView.addArrangedSubview(createButton)
     }
     
@@ -40,12 +40,12 @@ fileprivate extension NoWalletController {
         stackView.addArrangedSubview(topSpacer)
         let imageView = UIImageView(image: UIImage.image(named: "wallet"))
         imageView.contentMode = .scaleAspectFit
-        imageView.setContentHuggingVerticalHigh()
+        imageView.wltSetContentHuggingVerticalHigh()
         stackView.addArrangedSubview(imageView)
         
         let titleLabel = UILabel()
-        titleLabel.textColor = Theme.primaryTextColor
-        titleLabel.font = UIFont.st_robotoRegularFont(withSize: 18).ows_semibold
+        titleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        titleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 18).wlt_semibold
         titleLabel.textAlignment = .center
         titleLabel.text = "You have no wallets"
         stackView.addArrangedSubview(titleLabel)

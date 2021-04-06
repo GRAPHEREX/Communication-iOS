@@ -60,14 +60,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setConfigureShapeLayerBlock:(ConfigureShapeLayerBlock)configureShapeLayerBlock
 {
-    //OWSAssertDebug(configureShapeLayerBlock);
+    ////OWSAssertDebug(configureShapeLayerBlock);
 
     [self setConfigureShapeLayerBlocks:@[ configureShapeLayerBlock ]];
 }
 
 - (void)setConfigureShapeLayerBlocks:(NSArray<ConfigureShapeLayerBlock> *)configureShapeLayerBlocks
 {
-    //OWSAssertDebug(configureShapeLayerBlocks.count > 0);
+    ////OWSAssertDebug(configureShapeLayerBlocks.count > 0);
 
     _configureShapeLayerBlocks = configureShapeLayerBlocks;
 

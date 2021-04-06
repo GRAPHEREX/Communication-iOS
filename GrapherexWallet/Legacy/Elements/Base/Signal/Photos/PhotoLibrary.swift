@@ -53,7 +53,8 @@ class PhotoPickerAssetItem: PhotoGridItem {
         // Surprisingly, iOS will opportunistically run the completion block sync if the image is
         // already available.
         photoCollectionContents.requestThumbnail(for: self.asset, thumbnailSize: photoMediaSize.thumbnailSize) { image, _ in
-            DispatchMainThreadSafe({
+            // MARK: - SINGAL DEPENDENCY – reimplement
+//            DispatchMainThreadSafe({
                 syncImageResult = image
                 
                 // Once we've _successfully_ completed (e.g. invoked the completion with
@@ -65,7 +66,7 @@ class PhotoPickerAssetItem: PhotoGridItem {
                         hasLoadedImage = true
                     }
                 }
-            })
+//            })
         }
         return syncImageResult
     }
@@ -140,89 +141,90 @@ class PhotoCollectionContents {
         _ = imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil, resultHandler: resultHandler)
     }
     
-    private func requestImageDataSource(for asset: PHAsset) -> Promise<(dataSource: DataSource, dataUTI: String)> {
-        return Promise { resolver in
-            
-            let options: PHImageRequestOptions = PHImageRequestOptions()
-            options.isNetworkAccessAllowed = true
-            options.version = .current
-            options.deliveryMode = .highQualityFormat
-            
-            _ = imageManager.requestImageData(for: asset, options: options) { imageData, dataUTI, _, _ in
-                
-                guard let imageData = imageData else {
-                    resolver.reject(PhotoLibraryError.assertionError(description: "imageData was unexpectedly nil"))
-                    return
-                }
-                
-                guard let dataUTI = dataUTI else {
-                    resolver.reject(PhotoLibraryError.assertionError(description: "dataUTI was unexpectedly nil"))
-                    return
-                }
-                
-                guard let dataSource = DataSourceValue.dataSource(with: imageData, utiType: dataUTI) else {
-                    resolver.reject(PhotoLibraryError.assertionError(description: "dataSource was unexpectedly nil"))
-                    return
-                }
-                
-                resolver.fulfill((dataSource: dataSource, dataUTI: dataUTI))
-            }
-        }
-    }
+    // MARK: - SINGAL DEPENDENCY – reimplement
+//    private func requestImageDataSource(for asset: PHAsset) -> Promise<(dataSource: DataSource, dataUTI: String)> {
+//        return Promise { resolver in
+//
+//            let options: PHImageRequestOptions = PHImageRequestOptions()
+//            options.isNetworkAccessAllowed = true
+//            options.version = .current
+//            options.deliveryMode = .highQualityFormat
+//
+//            _ = imageManager.requestImageData(for: asset, options: options) { imageData, dataUTI, _, _ in
+//
+//                guard let imageData = imageData else {
+//                    resolver.reject(PhotoLibraryError.assertionError(description: "imageData was unexpectedly nil"))
+//                    return
+//                }
+//
+//                guard let dataUTI = dataUTI else {
+//                    resolver.reject(PhotoLibraryError.assertionError(description: "dataUTI was unexpectedly nil"))
+//                    return
+//                }
+//
+//                guard let dataSource = DataSourceValue.dataSource(with: imageData, utiType: dataUTI) else {
+//                    resolver.reject(PhotoLibraryError.assertionError(description: "dataSource was unexpectedly nil"))
+//                    return
+//                }
+//
+//                resolver.fulfill((dataSource: dataSource, dataUTI: dataUTI))
+//            }
+//        }
+//    }
     
-    private func requestVideoDataSource(for asset: PHAsset) -> Promise<SignalAttachment> {
-        return Promise { resolver in
-            
-            let options: PHVideoRequestOptions = PHVideoRequestOptions()
-            options.isNetworkAccessAllowed = true
-            options.version = .current
-            
-            _ = imageManager.requestAVAsset(forVideo: asset, options: options) { video, _, info in
-                guard let video = video else {
-                    let error = info?[PHImageErrorKey] as! Error?
-                    resolver.reject(PhotoLibraryError.failedToExportAsset(underlyingError: error))
-                    return
-                }
-                
-                let dataUTI: String
-                let baseFilename: String?
-                if let onDiskVideo = video as? AVURLAsset {
-                    let url = onDiskVideo.url
-                    dataUTI = MIMETypeUtil.utiType(forFileExtension: url.pathExtension) ?? kUTTypeVideo as String
-                    
-                    if let dataSource = try? DataSourcePath.dataSource(with: url, shouldDeleteOnDeallocation: false) {
-                        if !SignalAttachment.isVideoThatNeedsCompression(dataSource: dataSource, dataUTI: dataUTI) {
-                            resolver.fulfill(SignalAttachment.attachment(dataSource: dataSource, dataUTI: dataUTI))
-                            return
-                        }
-                    }
-                    
-                    baseFilename = url.lastPathComponent
-                } else {
-                    dataUTI = kUTTypeVideo as String
-                    baseFilename = nil
-                }
-                
-                let (compressPromise, _) = SignalAttachment.compressVideoAsMp4(asset: video,
-                                                                               baseFilename: baseFilename,
-                                                                               dataUTI: dataUTI)
-                compressPromise.pipe { resolver.resolve($0) }
-            }
-        }
-    }
+//    private func requestVideoDataSource(for asset: PHAsset) -> Promise<SignalAttachment> {
+//        return Promise { resolver in
+//
+//            let options: PHVideoRequestOptions = PHVideoRequestOptions()
+//            options.isNetworkAccessAllowed = true
+//            options.version = .current
+//
+//            _ = imageManager.requestAVAsset(forVideo: asset, options: options) { video, _, info in
+//                guard let video = video else {
+//                    let error = info?[PHImageErrorKey] as! Error?
+//                    resolver.reject(PhotoLibraryError.failedToExportAsset(underlyingError: error))
+//                    return
+//                }
+//
+//                let dataUTI: String
+//                let baseFilename: String?
+//                if let onDiskVideo = video as? AVURLAsset {
+//                    let url = onDiskVideo.url
+//                    dataUTI = MIMETypeUtil.utiType(forFileExtension: url.pathExtension) ?? kUTTypeVideo as String
+//
+//                    if let dataSource = try? DataSourcePath.dataSource(with: url, shouldDeleteOnDeallocation: false) {
+//                        if !SignalAttachment.isVideoThatNeedsCompression(dataSource: dataSource, dataUTI: dataUTI) {
+//                            resolver.fulfill(SignalAttachment.attachment(dataSource: dataSource, dataUTI: dataUTI))
+//                            return
+//                        }
+//                    }
+//
+//                    baseFilename = url.lastPathComponent
+//                } else {
+//                    dataUTI = kUTTypeVideo as String
+//                    baseFilename = nil
+//                }
+//
+//                let (compressPromise, _) = SignalAttachment.compressVideoAsMp4(asset: video,
+//                                                                               baseFilename: baseFilename,
+//                                                                               dataUTI: dataUTI)
+//                compressPromise.pipe { resolver.resolve($0) }
+//            }
+//        }
+//    }
     
-    func outgoingAttachment(for asset: PHAsset, imageQuality: TSImageQuality) -> Promise<SignalAttachment> {
-        switch asset.mediaType {
-        case .image:
-            return requestImageDataSource(for: asset).map(on: .global()) { (dataSource: DataSource, dataUTI: String) in
-                return SignalAttachment.attachment(dataSource: dataSource, dataUTI: dataUTI, imageQuality: imageQuality)
-            }
-        case .video:
-            return requestVideoDataSource(for: asset)
-        default:
-            return Promise(error: PhotoLibraryError.unsupportedMediaType)
-        }
-    }
+//    func outgoingAttachment(for asset: PHAsset, imageQuality: TSImageQuality) -> Promise<SignalAttachment> {
+//        switch asset.mediaType {
+//        case .image:
+//            return requestImageDataSource(for: asset).map(on: .global()) { (dataSource: DataSource, dataUTI: String) in
+//                return SignalAttachment.attachment(dataSource: dataSource, dataUTI: dataUTI, imageQuality: imageQuality)
+//            }
+//        case .video:
+//            return requestVideoDataSource(for: asset)
+//        default:
+//            return Promise(error: PhotoLibraryError.unsupportedMediaType)
+//        }
+//    }
 }
 
 class PhotoCollection {
@@ -299,7 +301,7 @@ class PhotoLibrary: NSObject, PHPhotoLibraryChangeObserver {
         }
         
         guard let photoCollection = fetchedCollection else {
-            Logger.info("Using empty photo collection.")
+//            //Logger.info("Using empty photo collection.")
             assert(PHPhotoLibrary.authorizationStatus() == .denied)
             return PhotoCollection.empty
         }
@@ -330,7 +332,7 @@ class PhotoLibrary: NSObject, PHPhotoLibraryChangeObserver {
             guard let assetCollection = collection as? PHAssetCollection else {
                 // TODO: Add support for albmus nested in folders.
                 if collection is PHCollectionList { return }
-                owsFailDebug("Asset collection has unexpected type: \(type(of: collection))")
+//                //owsFailDebug("Asset collection has unexpected type: \(type(of: collection))")
                 return
             }
             let photoCollection = PhotoCollection(collection: assetCollection)

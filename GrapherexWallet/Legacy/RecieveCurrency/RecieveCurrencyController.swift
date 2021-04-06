@@ -34,7 +34,7 @@ fileprivate extension ReceiveCurrencyController {
     func setupButton() {
         copyButton.addTarget(self, action: #selector(copyButtonTap), for: .touchUpInside)
         copyButton.setTitle(NSLocalizedString("MAIN_COPY", comment: ""), for: .normal)
-        copyButton.setContentHuggingVerticalHigh()
+        copyButton.wltSetContentHuggingVerticalHigh()
         copyButton.icon = .copy
         stackView.addArrangedSubview(copyButton)
         copyButton.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
@@ -42,10 +42,10 @@ fileprivate extension ReceiveCurrencyController {
     
     func setupCodeView() {
         let titleLabel = UILabel()
-        titleLabel.textColor = Theme.primaryTextColor
-        titleLabel.font = UIFont.st_robotoRegularFont(withSize: 18).ows_semibold
+        titleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        titleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 18).wlt_semibold
         titleLabel.textAlignment = .center
-        titleLabel.setContentHuggingVerticalHigh()
+        titleLabel.wltSetContentHuggingVerticalHigh()
         titleLabel.text = "\(wallet.credentials?.name ?? wallet.currency.symbol) address"
         stackView.addArrangedSubview(UIView.vStretchingSpacer(minHeight: 4, maxHeight: 16))
         stackView.addArrangedSubview(titleLabel)
@@ -68,8 +68,8 @@ fileprivate extension ReceiveCurrencyController {
         
         stackView.addArrangedSubview(topSpacer)
         let titleLabel = UILabel()
-        titleLabel.textColor = Theme.primaryTextColor
-        titleLabel.font = UIFont.st_robotoRegularFont(withSize: 16)
+        titleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        titleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 16)
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         titleLabel.text = "This address only supports \(wallet.currency.symbol) \nand Omni USDT. Deposit will arrive after \nat least 3 block confirmations"
@@ -78,8 +78,8 @@ fileprivate extension ReceiveCurrencyController {
         stackView.addArrangedSubview(middleSpacer)
         
         let codeLabel = UILabel()
-        codeLabel.textColor = Theme.primaryTextColor
-        codeLabel.font = UIFont.st_robotoRegularFont(withSize: 16).ows_semibold
+        codeLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        codeLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 16).wlt_semibold
         codeLabel.textAlignment = .center
         codeLabel.text = wallet.address
         codeLabel.numberOfLines = 0

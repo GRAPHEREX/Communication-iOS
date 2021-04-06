@@ -28,9 +28,9 @@ final class ExchangeHistoryView: BaseView {
             var color: UIColor {
                 switch self {
                 case .income(_):
-                    return .st_accentGreen
+                    return .stwlt_accentGreen
                 case .loss(_):
-                    return .st_otherRed
+                    return .stwlt_otherRed
                 }
             }
             
@@ -66,42 +66,42 @@ final class ExchangeHistoryView: BaseView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = #imageLiteral(resourceName: "icon.exchange").withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = Theme.secondaryTextAndIconColor
+        imageView.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         return imageView
     }()
     
     private let fromCurrencyLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Theme.primaryTextColor
-        label.font = UIFont.st_sfUiTextSemiboldFont(withSize: 14)
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 14)
         return label
     }()
     
     private let toCurrencyLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Theme.primaryTextColor
-        label.font = UIFont.st_sfUiTextSemiboldFont(withSize: 14)
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 14)
         return label
     }()
     
     private let coefLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Theme.secondaryTextAndIconColor
-        label.font = UIFont.st_sfUiTextRegularFont(withSize: 12)
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 12)
         return label
     }()
     
     private let changeView = UIView()
     private let changeLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Theme.backgroundColor
-        label.font = UIFont.st_sfUiTextSemiboldFont(withSize: 12)
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 12)
         return label
     }()
     private let priceLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Theme.primaryTextColor
-        label.font = UIFont.st_sfUiTextSemiboldFont(withSize: 12)
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 12)
         return label
     }()
     
@@ -112,8 +112,8 @@ final class ExchangeHistoryView: BaseView {
     }
     
     private func configure() {
-        layoutMargins = .init(top: Constant.layoutMargin, leading: Constant.layoutMargin,
-                              bottom: Constant.layoutMargin, trailing: Constant.layoutMargin)
+        layoutMargins = .init(top: Constant.layoutMargin, left: Constant.layoutMargin,
+                              bottom: Constant.layoutMargin, right: Constant.layoutMargin)
         
         addSubview(indicatorView)
         indicatorView.autoPinEdge(toSuperviewMargin: .top)
@@ -134,10 +134,10 @@ final class ExchangeHistoryView: BaseView {
         mainContentView.spacing = 4
         
         addSubview(mainContentView)
-        mainContentView.autoPinTopToSuperviewMargin()
-        mainContentView.autoPinBottomToSuperviewMargin()
-        mainContentView.autoPinTrailingToSuperviewMargin()
-        mainContentView.autoPinLeading(toTrailingEdgeOf: indicatorView)
+        mainContentView.wltAutoPinTopToSuperviewMargin()
+        mainContentView.wltAutoPinBottomToSuperviewMargin()
+        mainContentView.wltAutoPinTrailingToSuperviewMargin()
+        mainContentView.wltAutoPinLeading(toTrailingEdgeOf: indicatorView)
     }
     
 }

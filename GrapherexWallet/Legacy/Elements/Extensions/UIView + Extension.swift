@@ -6,7 +6,7 @@ import Foundation
 
 public extension UIView {
     func addBottomStroke() -> UIView {
-        return addBottomStroke(color: Theme.middleGrayColor, strokeWidth: CGHairlineWidth())
+        return addBottomStroke(color: UIColor.gray, strokeWidth: WLTCGHairlineWidth())
     }
     
     func addBottomStroke(color: UIColor, strokeWidth: CGFloat) -> UIView {
@@ -14,7 +14,7 @@ public extension UIView {
         strokeView.backgroundColor = color
         addSubview(strokeView)
         strokeView.autoSetDimension(.height, toSize: strokeWidth)
-        strokeView.autoPinWidthToSuperview()
+        strokeView.wltAutoPinWidthToSuperview()
         strokeView.autoPinEdge(toSuperviewEdge: .bottom)
         return strokeView
     }

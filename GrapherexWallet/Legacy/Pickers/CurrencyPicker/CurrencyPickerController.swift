@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import PureLayout
 
 final class CurrencyPickerController: ActionSheetController {
     typealias FinishHandler = (Currency) -> Void
@@ -25,16 +26,16 @@ final class CurrencyPickerController: ActionSheetController {
             setupContent()
         }
     }
+    // MARK: - SINGAL DEPENDENCY – reimplement
+    private let searchBar = UISearchBar()
     
-    private let searchBar = OWSSearchBar()
-    
-    private let tableViewController = OWSTableViewController()
+    private let tableViewController = WLTTableViewController()
     
     override func setup() {
         super.setup()
-        searchBar.delegate = self
-        searchBar.sizeToFit()
-        searchBar.placeholder = "Search"
+//        searchBar.delegate = self
+//        searchBar.sizeToFit()
+//        searchBar.placeholder = "Search"
         isCancelable = true
         let window = UIApplication.shared.keyWindow
         let topPadding = window?.safeAreaInsets.top ?? 0
@@ -55,8 +56,8 @@ final class CurrencyPickerController: ActionSheetController {
 
 fileprivate extension CurrencyPickerController {
     func setupContent() {
-        let content = OWSTableContents()
-        let mainSection = OWSTableSection()
+        let content = WLTTableContents()
+        let mainSection = WLTTableSection()
         filteredCurrencies.forEach {
             mainSection.add(self.createCurrencyItem(currency: $0))
         }
@@ -64,8 +65,8 @@ fileprivate extension CurrencyPickerController {
         tableViewController.contents = content
     }
     
-    func createCurrencyItem(currency: Currency) -> OWSTableItem {
-        let newCell = OWSTableItem.newCell()
+    func createCurrencyItem(currency: Currency) -> WLTTableItem {
+        let newCell = WLTTableItem.newCell()
         
         let view = CurrencyPickerView()
         view.currency = currency
@@ -78,7 +79,7 @@ fileprivate extension CurrencyPickerController {
         newCell.contentView.addSubview(view)
         view.autoPinEdgesToSuperviewEdges()
         
-        return OWSTableItem(customCell: newCell,
+        return WLTTableItem(customCell: newCell,
                             customRowHeight: Constant.height,
                             actionBlock: nil)
     }

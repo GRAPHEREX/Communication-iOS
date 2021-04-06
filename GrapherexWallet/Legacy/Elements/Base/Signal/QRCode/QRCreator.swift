@@ -7,11 +7,11 @@ import Foundation
 final class QRCreator {
     static func createQr(qrString: String?, size: CGFloat) -> UIImage? {
         guard qrString != nil else {
-            Logger.error("qrString is nil")
+            //Logger.error("qrString is nil")
             return nil }
         
         guard let qrData = qrString?.data(using: String.Encoding.ascii) else {
-            Logger.error("qrData from qrString is nil")
+            //Logger.error("qrData from qrString is nil")
             return nil }
         
         return createQr(qrData: qrData, size: size)
@@ -19,7 +19,7 @@ final class QRCreator {
     
     static func createQr(qrData: Data?, size: CGFloat) -> UIImage? {
         guard let filter = CIFilter(name: "CIQRCodeGenerator") else {
-            Logger.error("filter is not found")
+            //Logger.error("filter is not found")
             return nil }
         
         filter.setDefaults()
@@ -27,7 +27,7 @@ final class QRCreator {
         
         
         guard let ciImage = filter.outputImage else {
-            Logger.error("outputImage is nil")
+            //Logger.error("outputImage is nil")
             return nil }
         
         let scaleXX = size / ciImage.extent.size.width
@@ -38,7 +38,7 @@ final class QRCreator {
         
         let context = CIContext()
         guard let cgImage = context.createCGImage(transformedCiImage, from: transformedCiImage.extent) else {
-            Logger.error("cgImage is nil")
+            //Logger.error("cgImage is nil")
             return nil }
         let qrImage = UIImage(cgImage: cgImage)
         

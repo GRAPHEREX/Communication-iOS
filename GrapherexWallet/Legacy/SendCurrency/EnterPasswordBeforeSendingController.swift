@@ -16,15 +16,15 @@ final class EnterPasswordBeforeSendingController: ActionSheetController {
     private let sendButton = STPrimaryButton()
     private let recieverAddressLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Theme.primaryTextColor
-        label.font = UIFont.st_sfUiTextRegularFont(withSize: 16)
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 16)
         return label
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Theme.primaryTextColor
-        label.font = UIFont.st_sfUiTextRegularFont(withSize: 16).ows_semibold
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 16).wlt_semibold
         label.text = "Password"
         return label
     }()

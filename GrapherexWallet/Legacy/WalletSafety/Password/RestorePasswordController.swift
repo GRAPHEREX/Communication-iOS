@@ -39,7 +39,7 @@ final class RestorePasswordController: ActionSheetController {
         isCancelable = true
         stackView.spacing = 12
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = .init(top: 16, leading: 16, bottom: 8, trailing: 16)
+        stackView.layoutMargins = .init(top: 16, left: 16, bottom: 8, right: 16)
         setupCenterHeader(title: "Restore password", close: #selector(close))
         
         setupLabels()
@@ -60,20 +60,20 @@ fileprivate extension RestorePasswordController {
         selectInfoLabel.numberOfLines = 2
         selectInfoLabel.text = "Tap here\nto select image"
         selectInfoLabel.textAlignment = .center
-        selectInfoLabel.textColor = Theme.secondaryTextAndIconColor
-        selectInfoLabel.font = UIFont.st_sfUiTextSemiboldFont(withSize: 20)
+        selectInfoLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
+        selectInfoLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 20)
         
         errorLabel.isHidden = true
         errorLabel.textAlignment = .center
-        errorLabel.textColor = .st_otherRed
+        errorLabel.textColor = .stwlt_otherRed
         errorLabel.text = "Choose QR code image"
-        errorLabel.font = UIFont.st_sfUiTextSemiboldFont(withSize: 12)
+        errorLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 12)
         
         let restoreLabel = UILabel()
         restoreLabel.textAlignment = .center
-        restoreLabel.textColor = Theme.primaryTextColor
+        restoreLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         restoreLabel.text = "Set QR code for restore password"
-        restoreLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 16).ows_semibold
+        restoreLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 16).wlt_semibold
         
         stackView.addArrangedSubview(restoreLabel)
     }
@@ -108,7 +108,7 @@ fileprivate extension RestorePasswordController {
         stackView.addArrangedSubview(UIView.spacer(withHeight: 12))
         scanButton.addTarget(self, action: #selector(scanQRcode), for: .touchUpInside)
         scanButton.setTitle("Scan QR code", for: .normal)
-        scanButton.setTitleColor(Theme.secondaryTextAndIconColor, for: .normal)
+//        scanButton.setTitleColor(Theme.secondaryTextAndIconColor, for: .normal)
         restoreButton.setTitle(NSLocalizedString("MAIN_RESTORE", comment: ""), for: .normal)
         restoreButton.addTarget(self, action: #selector(restore), for: .touchUpInside)
         stackView.addArrangedSubview(restoreButton)
@@ -116,8 +116,8 @@ fileprivate extension RestorePasswordController {
     
     @objc
     func openMedia() {
-        Logger.info(#function)
-        self.ows_askForMediaLibraryPermissions() { [weak self] isEnabled in
+        //Logger.info(#function)
+        self.wlt_askForMediaLibraryPermissions() { [weak self] isEnabled in
             guard let self = self else { return }
             let navController = SendMediaNavigationController()
             let vc = ImagePickerGridController()
@@ -136,14 +136,14 @@ fileprivate extension RestorePasswordController {
             self.password = secureCode
             controller?.dismiss(animated: true, completion: nil)
         }
-        let navController = OWSNavigationController(rootViewController: controller)
+        let navController = WLTNavigationController(rootViewController: controller)
         self.presentFullScreen(navController, animated: true)
 
     }
     
     @objc
     func restore() {
-        Logger.info(#function)
+        //Logger.info(#function)
         let controller = PasswordController()
         controller.mode = .changePassword
         controller.walletId = walletId
@@ -194,12 +194,12 @@ extension RestorePasswordController: ImagePickerGridControllerDelegate {
     
     func imagePicker(_ imagePicker: ImagePickerGridController, isAssetSelected asset: PHAsset) -> Bool { return true }
     
-    func imagePicker(_ imagePicker: ImagePickerGridController, didSelectAsset asset: PHAsset, attachmentPromise: Promise<SignalAttachment>) {
-        _ = imageManager.requestImageData(for: asset, options: .none) { imageData, dataUTI, _, _ in
-            guard let imageData = imageData else { return }
-            self.image = UIImage(data: imageData)
-        }
-    }
+//    func imagePicker(_ imagePicker: ImagePickerGridController, didSelectAsset asset: PHAsset, attachmentPromise: Promise<SignalAttachment>) {
+//        _ = imageManager.requestImageData(for: asset, options: .none) { imageData, dataUTI, _, _ in
+//            guard let imageData = imageData else { return }
+//            self.image = UIImage(data: imageData)
+//        }
+//    }
     
     func imagePicker(_ imagePicker: ImagePickerGridController, didDeselectAsset asset: PHAsset) { }
     

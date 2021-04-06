@@ -3,6 +3,7 @@
 // 
 
 import Foundation
+import PureLayout
 
 final class SendFromChatView: BaseView {
     typealias VoidHandler = () -> Void
@@ -17,22 +18,22 @@ final class SendFromChatView: BaseView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = Theme.secondaryTextAndIconColor
-        label.font = UIFont.st_robotoRegularFont(withSize: 14)
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 14)
         return label
     }()
     
     private let primaryLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Theme.primaryTextColor
-        label.font = UIFont.st_robotoRegularFont(withSize: 16).ows_semibold
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 16).wlt_semibold
         return label
     }()
     
     private let secondaryLabel: UILabel = {
        let label = UILabel()
-        label.textColor = Theme.secondaryTextAndIconColor
-        label.font = UIFont.st_robotoRegularFont(withSize: 14)
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 14)
         return label
     }()
     
@@ -66,8 +67,8 @@ final class SendFromChatView: BaseView {
         backgroundColor = .clear
         addSubview(titleLabel)
         self.layoutMargins = .zero
-        titleLabel.autoPinTopToSuperviewMargin()
-        titleLabel.autoPinLeadingAndTrailingToSuperviewMargin()
+//        titleLabel.wltAutoPinTopToSuperviewMargin()
+//        titleLabel.wltAutoPinLeadingAndTrailingToSuperviewMargin()
         
         let textStack = UIStackView(arrangedSubviews: [
             primaryLabel,
@@ -84,8 +85,8 @@ final class SendFromChatView: BaseView {
         
         addSubview(contentStack)
         contentStack.autoPinEdge(.top, to: .bottom, of: titleLabel, withOffset: 4)
-        contentStack.autoPinBottomToSuperviewMargin()
-        contentStack.autoPinLeadingAndTrailingToSuperviewMargin()
+//        contentStack.wltAutoPinBottomToSuperviewMargin()
+//        contentStack.wltAutoPinLeadingAndTrailingToSuperviewMargin()
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap)))
         
         mainImageView.autoSetDimension(.width, toSize: 40, relation: .lessThanOrEqual)
@@ -94,7 +95,7 @@ final class SendFromChatView: BaseView {
 
 fileprivate extension SendFromChatView {
     func render() {
-        guard let props = self.props else { Logger.debug("props is nil"); return }
+        guard let props = self.props else { return }
         if props.iconPath != nil {
             mainImageView.sd_setImage(with: URL(string: props.iconPath!), completed: nil)
         } else {

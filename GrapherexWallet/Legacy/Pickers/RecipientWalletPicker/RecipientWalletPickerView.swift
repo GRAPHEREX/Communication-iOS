@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import PureLayout
 
 final class RecipientWalletPickerView: UIView {
     typealias FinishHandler = (RecipientWallet) -> Void
@@ -19,20 +20,20 @@ final class RecipientWalletPickerView: UIView {
     
     private let titleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.st_sfUiTextSemiboldFont(withSize: 17).ows_semibold
+        view.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 17).wlt_semibold
         return view
     }()
     
     private let addressLabel: UILabel = {
         let view = UILabel()
-        view.textColor = Theme.secondaryTextAndIconColor
-        view.font = .st_sfUiTextRegularFont(withSize: 15)
+        view.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
+        view.font = .stwlt_sfUiTextRegularFont(withSize: 15)
         return view
     }()
     
     private let changesLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.st_sfUiTextSemiboldFont(withSize: 12)
+        view.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 12)
         return view
     }()
     
@@ -61,16 +62,16 @@ fileprivate extension RecipientWalletPickerView {
     }
     
     func setup() {
-        backgroundColor = Theme.backgroundColor
+        backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         self.layoutMargins = .zero
         
         // Image
         addSubview(mainImage)
-        mainImage.autoVCenterInSuperview()
+        mainImage.wltAutoVCenterInSuperview()
         mainImage.autoSetDimensions(to: .init(width: 48, height: 48))
-        mainImage.autoPinTopToSuperviewMargin()
-        mainImage.autoPinBottomToSuperviewMargin()
-        mainImage.autoPinLeadingToSuperviewMargin()
+        mainImage.wltAutoPinTopToSuperviewMargin()
+        mainImage.wltAutoPinBottomToSuperviewMargin()
+        mainImage.wltAutoPinLeadingToSuperviewMargin()
         
         let stack = UIStackView(arrangedSubviews: [
             titleLabel,
@@ -80,9 +81,9 @@ fileprivate extension RecipientWalletPickerView {
         addSubview(stack)
         stack.autoPinEdge(.top, to: .top, of: mainImage, withOffset: 5)
         stack.autoPinEdge(.bottom, to: .bottom, of: mainImage, withOffset: -5)
-        stack.autoVCenterInSuperview()
+        stack.wltAutoVCenterInSuperview()
         stack.autoPinEdge(.leading, to: .trailing, of: mainImage, withOffset: 8)
-        stack.autoPinTrailingToSuperviewMargin()
+        stack.wltAutoPinTrailingToSuperviewMargin()
         
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap)))
     }

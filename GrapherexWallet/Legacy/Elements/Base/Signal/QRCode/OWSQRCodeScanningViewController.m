@@ -4,7 +4,7 @@
 
 #import "OWSQRCodeScanningViewController.h"
 #import "OWSBezierPathView.h"
-#import "UIView+OWS.h"
+#import <UIView+OWS.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
     [maskingView setConfigureShapeLayerBlock:^(CAShapeLayer *layer, CGRect bounds) {
         // Add a circular mask
         UIBezierPath *path = [UIBezierPath bezierPathWithRect:bounds];
-        CGFloat margin = ScaleFromIPhone5To7Plus(8.f, 16.f);
+        CGFloat margin = WLTWLTScaleFromIPhone5To7Plus(8.f, 16.f);
         CGFloat radius = MIN(bounds.size.width, bounds.size.height) * 0.5f - margin;
 
         // Center the circle's bounding rectangle

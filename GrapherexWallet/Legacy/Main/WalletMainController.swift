@@ -1,9 +1,10 @@
 import UIKit
+import PureLayout
 
 final public class WalletMainController: UIViewController {
 
     @IBOutlet var tableViewHolder: UIView!
-    private let tableViewController = OWSTableViewController()
+    private let tableViewController = WLTTableViewController()
     private let mainLoadingIndicator = UIActivityIndicatorView()
     
     enum Constant {
@@ -41,15 +42,15 @@ final public class WalletMainController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         setupTableView()
         setupNavigationBar()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(themeDidChange),
-            name: .ThemeDidChange,
-            object: nil
-        )
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(themeDidChange),
+//            name: .ThemeDidChange,
+//            object: nil
+//        )
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(updateWallet),
@@ -99,28 +100,29 @@ fileprivate extension WalletMainController {
         )
     }
     
-    func setupReminders() -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
-        let deregisteredView = ReminderView.nag(
-            text: TSAccountManager.shared().isPrimaryDevice
-                ? NSLocalizedString("DEREGISTRATION_WARNING", comment: "Label warning the user that they have been de-registered.")
-                : NSLocalizedString(
-                    "UNLINKED_WARNING", comment: "Label warning the user that they have been unlinked from their primary device."), tapAction: {
-//                        RegistrationUtils.showReregistrationUI(from: self)
-        })
-        
-        
-        cell.selectionStyle = .none
-        cell.contentView.addSubview(deregisteredView)
-        deregisteredView.autoPinEdgesToSuperviewEdges()
-        
-        return OWSTableItem(
-            customCellBlock: { return cell },
-            customRowHeight: Constant.remindersHeight,
-            actionBlock: {
+    // MARK: - SINGAL DEPENDENCY – reimplement
+//    func setupReminders() -> WLTTableItem {
+//        let cell = WLTTableItem.newCell()
+//        let deregisteredView = ReminderView.nag(
+//            text: TSAccountManager.shared().isPrimaryDevice
+//                ? NSLocalizedString("DEREGISTRATION_WARNING", comment: "Label warning the user that they have been de-registered.")
+//                : NSLocalizedString(
+//                    "UNLINKED_WARNING", comment: "Label warning the user that they have been unlinked from their primary device."), tapAction: {
+////                        RegistrationUtils.showReregistrationUI(from: self)
+//        })
+//
+//
+//        cell.selectionStyle = .none
+//        cell.contentView.addSubview(deregisteredView)
+//        deregisteredView.autoPinEdgesToSuperviewEdges()
+//
+//        return WLTTableItem(
+//            customCellBlock: { return cell },
+//            customRowHeight: Constant.remindersHeight,
+//            actionBlock: {
 //                RegistrationUtils.showReregistrationUI(from: self)
-        })
-    }
+//        })
+//    }
 
     func setupTableView() {
         tableViewHolder.addSubview(tableViewController.view)
@@ -134,17 +136,17 @@ fileprivate extension WalletMainController {
         mainLoadingIndicator.autoCenterInSuperview()
         mainLoadingIndicator.bringSubviewToFront(tableViewController.tableView)
         
-        let contents: OWSTableContents = .init()
-        let headerSection = OWSTableSection()
+        let contents: WLTTableContents = .init()
+        let headerSection = WLTTableSection()
         
-        let headerCell = OWSTableItem.newCell()
+        let headerCell = WLTTableItem.newCell()
         headerCell.selectionStyle = .none
         let walletMainHeader = WalletMainHeaderCell()
         walletMainHeader.props = .init(balance: "USD 0.00")
         headerCell.contentView.addSubview(walletMainHeader)
         walletMainHeader.autoPinEdgesToSuperviewEdges()
         
-        let owsItem = OWSTableItem(
+        let owsItem = WLTTableItem(
             customCellBlock: { return headerCell },
             customRowHeight: 80,
             actionBlock: nil
@@ -160,24 +162,25 @@ fileprivate extension WalletMainController {
         mainLoadingIndicator.isHidden = true
         mainLoadingIndicator.stopAnimating()
         
-        let contents: OWSTableContents = .init()
-        let mainSection = OWSTableSection()
+        let contents: WLTTableContents = .init()
+        let mainSection = WLTTableSection()
         
         var emptyItemHeight: CGFloat = 0
                 
         emptyItemHeight += Constant.headerHeight
         
-        if TSAccountManager.shared().isDeregistered() {
-            let remindersSection = OWSTableSection()
-            remindersSection.add(setupReminders())
-            contents.addSection(remindersSection)
-
-            emptyItemHeight += Constant.remindersHeight
-        }
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        if TSAccountManager.shared().isDeregistered() {
+//            let remindersSection = WLTTableSection()
+//            remindersSection.add(setupReminders())
+//            contents.addSection(remindersSection)
+//
+//            emptyItemHeight += Constant.remindersHeight
+//        }
                 
-        let emptyItem = OWSTableItem(
+        let emptyItem = WLTTableItem(
             customCellBlock: {
-                let cell = OWSTableItem.newCell()
+                let cell = WLTTableItem.newCell()
                 let emptyView = SecondaryEmptyStateView()
                 emptyView.set(
                     image: UIImage.image(named: "wallet"),
@@ -198,19 +201,19 @@ fileprivate extension WalletMainController {
     }
     
     func render() {
-        let contents: OWSTableContents = .init()
-        let headerSection = OWSTableSection()
-        let mainSection = OWSTableSection()
+        let contents: WLTTableContents = .init()
+        let headerSection = WLTTableSection()
+        let mainSection = WLTTableSection()
 
         if !showOnlyHidden {
-            let headerCell = OWSTableItem.newCell()
+            let headerCell = WLTTableItem.newCell()
             headerCell.selectionStyle = .none
             let walletMainHeader = WalletMainHeaderCell()
             walletMainHeader.props = .init(balance: props.totalCurrency)
             headerCell.contentView.addSubview(walletMainHeader)
             walletMainHeader.autoPinEdgesToSuperviewEdges()
             
-            let owsItem = OWSTableItem(
+            let owsItem = WLTTableItem(
                 customCellBlock: { return headerCell },
                 customRowHeight: 80,
                 actionBlock: nil
@@ -221,9 +224,9 @@ fileprivate extension WalletMainController {
         if props.wallets.isEmpty {
             let customRowHeight = tableViewController.tableView.frame.height - Constant.headerHeight
             guard customRowHeight > 0 else { return }
-            headerSection.add(OWSTableItem(
+            headerSection.add(WLTTableItem(
                 customCellBlock: {
-                    let cell = OWSTableItem.newCell()
+                    let cell = WLTTableItem.newCell()
                     let emptyView = SecondaryEmptyStateView()
                     emptyView.set(
                         image: UIImage.image(named: "wallet"),
@@ -238,9 +241,9 @@ fileprivate extension WalletMainController {
             ))
         } else {
             if filteredWallets.isEmpty {
-                headerSection.add(OWSTableItem(
+                headerSection.add(WLTTableItem(
                     customCellBlock: {
-                        let cell = OWSTableItem.newCell()
+                        let cell = WLTTableItem.newCell()
                         let emptyView = SecondaryEmptyStateView()
                         emptyView.set(
                             image: UIImage.image(named: "wallet"),
@@ -256,7 +259,7 @@ fileprivate extension WalletMainController {
             } else {
                 mainSection.add(items: 
                     filteredWallets.map {
-                        let cell = OWSTableItem.newCell()
+                        let cell = WLTTableItem.newCell()
                         cell.selectionStyle = .none
                         cell.layoutMargins.top = 16
                         cell.layoutMargins.bottom = 16
@@ -296,15 +299,16 @@ fileprivate extension WalletMainController {
 //                target: self,
 //                action: #selector(exchangeButtonPressed)
 //            )
-                    
-            if !TSAccountManager.shared().isDeregistered() {
-                navigationItem.rightBarButtonItem = UIBarButtonItem(
-                    image: UIImage(named: "icon.dots"),
-                    style: .plain,
-                    target: self,
-                    action: #selector(showMenu)
-                )
-            }
+              
+            // MARK: - SINGAL DEPENDENCY – reimplement
+//            if !TSAccountManager.shared().isDeregistered() {
+//                navigationItem.rightBarButtonItem = UIBarButtonItem(
+//                    image: UIImage(named: "icon.dots"),
+//                    style: .plain,
+//                    target: self,
+//                    action: #selector(showMenu)
+//                )
+//            }
         }
     }
     
@@ -346,7 +350,7 @@ fileprivate extension WalletMainController {
     
     func setupPullToRefresh() {
         let pullToRefreshView = UIRefreshControl()
-        pullToRefreshView.tintColor = Theme.secondaryTextAndIconColor
+        pullToRefreshView.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         pullToRefreshView.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableViewController.tableView.refreshControl = pullToRefreshView
     }
@@ -429,12 +433,12 @@ fileprivate extension WalletMainController {
     }
     
     @objc func themeDidChange() {
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         render()
     }
 }
 
-extension WalletMainController: OWSTableViewControllerEditActionDelegate, OWSTableViewControllerSwipeActionsConfigurationDelegate {
+extension WalletMainController: WLTTableViewControllerEditActionDelegate, WLTTableViewControllerSwipeActionsConfigurationDelegate {
     
     public func leadingSwipeActionsConfigurationForRow(at indexPath: IndexPath) -> UISwipeActionsConfiguration {
         let title = filteredWallets[indexPath.row].isHidden ? "Show" : "Hide"
@@ -445,7 +449,7 @@ extension WalletMainController: OWSTableViewControllerEditActionDelegate, OWSTab
                 completionHandler(true)
                 self.handleHideAction(on: indexPath)
         })
-        hideAction.backgroundColor = .st_otherBlue
+        hideAction.backgroundColor = .stwlt_otherBlue
         
         let configuration = UISwipeActionsConfiguration(actions: [hideAction])
         return configuration
@@ -461,7 +465,7 @@ extension WalletMainController: OWSTableViewControllerEditActionDelegate, OWSTab
                 completionHandler(true)
                 self.send(wallet: wallet)
         })
-        sendAction.backgroundColor = .st_accentGreen
+        sendAction.backgroundColor = .stwlt_accentGreen
         
         let recieveAction = UIContextualAction(
             style: .normal, title: NSLocalizedString("MAIN_RECEIVE", comment: ""),
@@ -469,7 +473,7 @@ extension WalletMainController: OWSTableViewControllerEditActionDelegate, OWSTab
                 completionHandler(true)
                 self.receive(wallet: wallet)
         })
-        recieveAction.backgroundColor = .st_accentGreen
+        recieveAction.backgroundColor = .stwlt_accentGreen
         
         let configuration = UISwipeActionsConfiguration(actions: [sendAction, recieveAction])
         return configuration
@@ -507,7 +511,8 @@ extension WalletMainController: OWSTableViewControllerEditActionDelegate, OWSTab
             }
         ))
         
-        alert.addAction(OWSActionSheets.cancelAction)
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        alert.addAction(OWSActionSheets.cancelAction)
         presentActionSheet(alert)
     }
 }

@@ -3,8 +3,9 @@
 //
 
 import UIKit
+import PureLayout
 
-final class WalletExchangeController: OWSViewController {
+final class WalletExchangeController: ActionSheetController {
     
     private var contentStack: UIStackView!
     
@@ -21,7 +22,7 @@ final class WalletExchangeController: OWSViewController {
     private let changeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "icon.exchange")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = Theme.primaryTextColor
+        button.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         return button
     }()
     
@@ -64,15 +65,16 @@ final class WalletExchangeController: OWSViewController {
             action: #selector(plusButtonPressed)
         )
         sendButton.addTarget(self, action: #selector(sendButtonPressed), for: .touchUpInside)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(applyTheme),
-                                               name: .ThemeDidChange, object: nil)
+        // MARK: - SINGAL DEPENDENCY - THEME – reimplement
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(applyTheme),
+//                                               name: .ThemeDidChange, object: nil)
     }
     
     @objc
     func applyTheme() {
-        view.backgroundColor = Theme.backgroundColor
-        changeButton.tintColor = Theme.primaryTextColor
+        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
+        changeButton.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
     }
 }
 
@@ -105,7 +107,7 @@ fileprivate extension WalletExchangeController {
 
 fileprivate extension WalletExchangeController {
     func setupView() {
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
         let spacers = [UIView.vStretchingSpacer(),
@@ -117,7 +119,7 @@ fileprivate extension WalletExchangeController {
         buttonBackground.addSubview(changeButton)
         changeButton.autoPinEdge(.top, to: .top, of: buttonBackground)
         changeButton.autoPinEdge(.bottom, to: .bottom, of: buttonBackground)
-        changeButton.autoHCenterInSuperview()
+        changeButton.wltAutoHCenterInSuperview()
         changeButton.autoSetDimension(.width, toSize: 240)
         changeButton.autoSetDimension(.height, toSize: 40, relation: .lessThanOrEqual)
         changeButton.addTarget(self, action: #selector(swapWallets), for: .touchUpInside)
@@ -150,14 +152,14 @@ fileprivate extension WalletExchangeController {
 
         fromWalletView.autoPinEdge(.top, to: .top, of: containerFromViewContainer)
         fromWalletView.autoPinEdge(.bottom, to: .bottom, of: containerFromViewContainer)
-        fromWalletView.autoPinLeadingToSuperviewMargin(withInset: 8)
-        fromWalletView.autoPinTrailingToSuperviewMargin(withInset: 8)
+        fromWalletView.wltAutoPinLeadingToSuperviewMargin(withInset: 8)
+        fromWalletView.wltAutoPinTrailingToSuperviewMargin(withInset: 8)
         
         toWalletView.autoPinEdge(.top, to: .top, of: containerToViewContainer)
         toWalletView.autoPinEdge(.bottom, to: .bottom, of: containerToViewContainer)
-        toWalletView.autoVCenterInSuperview()
-        toWalletView.autoPinLeadingToSuperviewMargin(withInset: 8)
-        toWalletView.autoPinTrailingToSuperviewMargin(withInset: 8)
+        toWalletView.wltAutoVCenterInSuperview()
+        toWalletView.wltAutoPinLeadingToSuperviewMargin(withInset: 8)
+        toWalletView.wltAutoPinTrailingToSuperviewMargin(withInset: 8)
 
         sendButton.autoSetDimension(.height, toSize: 56)
         containerFromViewContainer.autoMatch(.height, to: .height, of: containerToViewContainer)

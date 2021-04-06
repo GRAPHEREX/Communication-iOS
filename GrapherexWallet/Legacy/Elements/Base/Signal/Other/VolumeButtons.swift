@@ -36,7 +36,8 @@ class VolumeButtons {
     
     private var observers: [Weak<VolumeButtonObserver>] = []
     func addObserver(observer: VolumeButtonObserver) {
-        AssertIsOnMainThread()
+        // MARK: - SINGAL DEPENDENCY – reimplement
+        //AssertIsOnMainThread()
         
         if observers.firstIndex(where: { $0.value === observer }) == nil {
             observers.append(Weak(value: observer))
@@ -47,7 +48,7 @@ class VolumeButtons {
     }
     
     func removeObserver(_ observer: VolumeButtonObserver) {
-        AssertIsOnMainThread()
+//        AssertIsOnMainThread()
         
         observers = observers.filter { $0.value !== observer }
         
@@ -56,7 +57,7 @@ class VolumeButtons {
     }
     
     func removeAllObservers() {
-        AssertIsOnMainThread()
+//        AssertIsOnMainThread()
         observers = []
         stopObservation()
     }
@@ -124,17 +125,20 @@ class VolumeButtons {
         longPressingButton = nil
         
         longPressTimer?.invalidate()
-        longPressTimer = WeakTimer.scheduledTimer(
-            timeInterval: longPressDuration,
-            target: self,
-            userInfo: nil,
-            repeats: false
-        ) { [weak self] _ in
-            self?.longPressingButton = identifier
-            self?.notifyObserversOfBeginLongPress(with: identifier)
-            self?.longPressTimer?.invalidate()
-            self?.longPressTimer = nil
-        }
+        // MARK: - SINGAL DEPENDENCY – reimplement
+        // WeakTimer -> Timer
+//        longPressTimer = Timer.scheduledTimer(
+//            timeInterval: longPressDuration,
+//            target: self,
+//            repeats: false,
+//            userInfo: nil
+//        )
+//        { [weak self] _ in
+//            self?.longPressingButton = identifier
+//            self?.notifyObserversOfBeginLongPress(with: identifier)
+//            self?.longPressTimer?.invalidate()
+//            self?.longPressTimer = nil
+//        }
         
         notifyObserversOfPress(with: identifier)
     }

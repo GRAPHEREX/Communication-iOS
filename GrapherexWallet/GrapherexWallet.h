@@ -4,13 +4,21 @@
 
 @import Foundation;
 @import UIKit;
-@import SignalMessaging;
 @import SDWebImage;
 @import AVFoundation;
 @import PureLayout;
 
-#import "OWSQRCodeScanningViewController.h"
-#import "OWSBezierPathView.h"
+// Import Objective-C Headers so these classes are visible from the Swift code
+#import <OWSQRCodeScanningViewController.h>
+#import <OWSBezierPathView.h>
+#import <WLTViewController.h>
+#import <WLTNavigationController.h>
+#import <WLTTableViewController.h>
+#import <UIView+OWS.h>
+#import <OWSMath.h>
+#import <UIViewController+Permissions.h>
+#import <UIFont+OWS.h>
+
 
 //! Project version number for GrapherexWallet.
 FOUNDATION_EXPORT double GrapherexWalletVersionNumber;

@@ -4,6 +4,8 @@
 //
 
 import Foundation
+import UIKit
+import PureLayout
 
 final class RecipientWalletPickerController: ActionSheetController {
    typealias FinishHandler = (RecipientWallet) -> Void
@@ -27,9 +29,11 @@ final class RecipientWalletPickerController: ActionSheetController {
             setupContent()
         }}
 
-    private let searchBar = OWSSearchBar()
+    // MARK: - SINGAL DEPENDENCY – reimplement
+    // OWSSearchBar -> UISearchBar
+    private let searchBar = UISearchBar()
     
-    private let tableViewController = OWSTableViewController()
+    private let tableViewController = WLTTableViewController()
     
     override func setup() {
         super.setup()
@@ -57,8 +61,8 @@ final class RecipientWalletPickerController: ActionSheetController {
 
 fileprivate extension RecipientWalletPickerController {
     func setupContent() {
-        let content = OWSTableContents()
-        let mainSection = OWSTableSection()
+        let content = WLTTableContents()
+        let mainSection = WLTTableSection()
         filteredWallets.forEach {
             mainSection.add(self.createItem(wallet: $0))
         }
@@ -66,8 +70,8 @@ fileprivate extension RecipientWalletPickerController {
         tableViewController.contents = content
     }
     
-    func createItem(wallet: RecipientWallet) -> OWSTableItem {
-        let newCell = OWSTableItem.newCell()
+    func createItem(wallet: RecipientWallet) -> WLTTableItem {
+        let newCell = WLTTableItem.newCell()
         
         let view = RecipientWalletPickerView()
         view.recipientWallet = wallet
@@ -79,7 +83,7 @@ fileprivate extension RecipientWalletPickerController {
         newCell.contentView.addSubview(view)
         view.autoPinEdgesToSuperviewEdges()
         
-        return OWSTableItem(customCell: newCell,
+        return WLTTableItem(customCell: newCell,
                             customRowHeight: Constant.height,
                             actionBlock: nil)
     }

@@ -9,7 +9,7 @@ final class GalleryManager {
     typealias FinishHandler = (Bool, String?) -> Void
     
     static func saveImage(image: UIImage, completion: FinishHandler?) {
-        Logger.info("save Image")
+        //Logger.info("save Image")
         PHPhotoLibrary.requestAuthorization { status in
             switch status {
             case .authorized:

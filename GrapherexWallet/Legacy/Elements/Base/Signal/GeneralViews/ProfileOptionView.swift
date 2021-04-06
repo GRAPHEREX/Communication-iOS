@@ -12,14 +12,14 @@ final class ProfileOptionView: BaseView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.st_sfUiTextRegularFont(withSize: 12)
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 12)
         label.textAlignment = .center
         return label
     }()
     
     private let mainButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .st_accentGreen
+        button.backgroundColor = .stwlt_accentGreen
         return button
     }()
     
@@ -81,22 +81,22 @@ final class ProfileOptionView: BaseView {
         super.setup()
         
         addSubview(mainButton)
-        mainButton.autoHCenterInSuperview()
+        mainButton.wltAutoHCenterInSuperview()
         mainButton.autoPinEdge(.top, to: .top, of: self)
         mainButton.layer.cornerRadius = Constant.buttonSize / 2
         mainButton.autoSetDimensions(to: .init(square: Constant.buttonSize))
         mainButton.addTarget(self, action: #selector(didButtonTap), for: .touchUpInside)
         
         addSubview(titleLabel)
-        titleLabel.autoHCenterInSuperview()
+        titleLabel.wltAutoHCenterInSuperview()
         titleLabel.autoPinEdge(.top, to: .bottom, of: mainButton)
         titleLabel.autoPinEdge(.bottom, to: .bottom, of: self)
         titleLabel.autoPinEdge(.leading, to: .leading, of: self, withOffset: 0, relation: .equal)
         titleLabel.autoPinEdge(.trailing, to: .trailing, of: self, withOffset: 0, relation: .equal)
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(applyTheme),
-                                               name: .ThemeDidChange, object: nil)
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(applyTheme),
+//                                               name: .ThemeDidChange, object: nil)
     }
 }
 
@@ -104,7 +104,7 @@ fileprivate extension ProfileOptionView {
     func render() {
         let image = option.iconValue?.withRenderingMode(.alwaysTemplate)
         mainButton.setImage(image, for: .normal)
-        mainButton.tintColor = Theme.backgroundColor
+        mainButton.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         titleLabel.text = option.rawValue
     }
     

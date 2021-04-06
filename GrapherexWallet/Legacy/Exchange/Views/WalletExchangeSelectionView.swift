@@ -1,4 +1,5 @@
 import UIKit
+import PureLayout
 
 final class WalletExchangeSelectionView: UIView {
     
@@ -12,15 +13,15 @@ final class WalletExchangeSelectionView: UIView {
     
     private let titleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.st_sfUiTextSemiboldFont(withSize: 16)
-        view.textColor = Theme.primaryTextColor
+        view.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 16)
+        view.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         return view
     }()
     
     private let balanceLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.st_sfUiTextRegularFont(withSize: 12)
-        view.textColor = Theme.secondaryTextAndIconColor
+        view.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 12)
+        view.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         return view
     }()
     
@@ -40,14 +41,14 @@ final class WalletExchangeSelectionView: UIView {
     
     private let divider: UIView = {
         let view = UIView()
-        view.backgroundColor = Theme.secondaryTextAndIconColor
+        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         return view
     }()
     
     private let hintAmount: UILabel = {
         let view = UILabel()
-        view.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
-        view.textColor = Theme.secondaryTextAndIconColor
+        view.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
+        view.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         return view
     }()
     
@@ -120,9 +121,9 @@ fileprivate extension WalletExchangeSelectionView {
     
     @objc
     func applyTheme() {
-        titleLabel.textColor = Theme.primaryTextColor
-        hintAmount.textColor = Theme.secondaryTextAndIconColor
-        backgroundColor = Theme.backgroundColor
+        titleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        hintAmount.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
+        backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
     }
     
     func render() {
@@ -137,11 +138,12 @@ fileprivate extension WalletExchangeSelectionView {
     }
     
     func setup() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(applyTheme),
-                                               name: .ThemeDidChange, object: nil)
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(applyTheme),
+//                                               name: .ThemeDidChange, object: nil)
         
-        backgroundColor = Theme.backgroundColor
+        backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
 
         addSubview(mainImage)
         addSubview(arrowImage)
@@ -151,7 +153,7 @@ fileprivate extension WalletExchangeSelectionView {
 
         // Image
         mainImage.autoPinEdge(toSuperviewMargin: .top)
-        mainImage.autoPinLeadingToSuperviewMargin(withInset: 16)
+//        mainImage.wltAutoPinLeadingToSuperviewMargin(withInset: 16)
         
         // Title & Balance
         let stack = UIStackView(arrangedSubviews: [titleLabel, balanceLabel])
@@ -167,14 +169,14 @@ fileprivate extension WalletExchangeSelectionView {
         arrowImage.autoPinEdge(toSuperviewEdge: .trailing, withInset: 16)
         
         amountTextField.autoPinEdge(.top, to: .bottom, of: balanceLabel, withOffset: 16)
-        amountTextField.autoHCenterInSuperview()
+        amountTextField.wltAutoHCenterInSuperview()
 
         divider.autoPinEdge(.top, to: .bottom, of: amountTextField, withOffset: 8)
-        divider.autoHCenterInSuperview()
+        divider.wltAutoHCenterInSuperview()
 
         hintAmount.autoPinEdge(.top, to: .bottom, of: divider, withOffset: 8)
-        hintAmount.autoHCenterInSuperview()
-        hintAmount.autoPinBottomToSuperviewMargin()
+        hintAmount.wltAutoHCenterInSuperview()
+        hintAmount.wltAutoPinBottomToSuperviewMargin()
         
         NSLayoutConstraint.activate([
             arrowImage.centerYAnchor.constraint(equalTo: mainImage.centerYAnchor),

@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import PureLayout
 
 final class TransactionView: BaseView {
     
@@ -14,24 +15,30 @@ final class TransactionView: BaseView {
     private let formatter = MoneyFormatter()
     private let transactionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Theme.primaryTextColor
-        label.font = UIFont.st_sfUiTextRegularFont(withSize: 14).ows_semibold
+        // MARK: - SINGAL DEPENDENCY – reimplement
+        label.font = .systemFont(ofSize: 14)
+//        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14).wlt_semibold
+//        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         label.numberOfLines = 2
         return label
     }()
     
     private let rateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.st_sfUiTextRegularFont(withSize: 12)
-        label.textColor = Theme.secondaryTextAndIconColor
+        // MARK: - SINGAL DEPENDENCY – reimplement
+        label.font = .systemFont(ofSize: 12)
+//        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 12)
+//        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         label.textAlignment = .right
         return label
     }()
     
     private let priceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
-        label.textColor = Theme.primaryTextColor
+        // MARK: - SINGAL DEPENDENCY – reimplement
+        label.font = .systemFont(ofSize: 14)
+//        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
+//        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         label.textAlignment = .right
         return label
     }()
@@ -66,9 +73,9 @@ final class TransactionView: BaseView {
         var color: UIColor {
             switch self {
             case .sent:
-                return .st_otherRed
+                return .red
             case .received:
-                return .st_accentGreen
+                return .green
             case .all:
                 return .clear
             }
@@ -109,33 +116,34 @@ final class TransactionView: BaseView {
         
         addSubview(indicatorView)
         indicatorView.autoSetDimensions(to: .init(width: 24, height: 24))
-        indicatorView.autoPinLeadingToSuperviewMargin(withInset: 8)
-        indicatorView.autoVCenterInSuperview()
-        indicatorView.tintColor = Theme.inversedPrimaryTextColor
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        indicatorView.wltAutoPinLeadingToSuperviewMargin(withInset: 8)
+//        indicatorView.wltAutoVCenterInSuperview()
+//        indicatorView.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.inversedPrimaryTextColor
         
         addSubview(transactionLabel)
-        transactionLabel.autoVCenterInSuperview()
+//        transactionLabel.wltAutoVCenterInSuperview()
         transactionLabel.autoPinEdge(.leading, to: .trailing, of: indicatorView, withOffset: 8)
-        transactionLabel.setContentHuggingHorizontalLow()
-        transactionLabel.setCompressionResistanceHorizontalLow()
+//        transactionLabel.wltSetContentHuggingHorizontalLow()
+//        transactionLabel.wltSetCompressionResistanceHorizontalLow()
 
         let containerView = UIView()
         addSubview(containerView)
-        containerView.autoVCenterInSuperview()
+//        containerView.wltAutoVCenterInSuperview()
         containerView.autoPinEdge(.leading, to: .trailing, of: transactionLabel, withOffset: 16)
-        containerView.autoPinTrailingToSuperviewMargin(withInset: 8)
+//        containerView.wltAutoPinTrailingToSuperviewMargin(withInset: 8)
         containerView.setContentHuggingPriority(.required, for: .horizontal)
         containerView.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         containerView.addSubview(priceLabel)
-        priceLabel.autoPinTopToSuperviewMargin()
-        priceLabel.autoPinLeadingAndTrailingToSuperviewMargin()
-//        priceLabel.autoPinBottomToSuperviewMargin()
+//        priceLabel.wltAutoPinTopToSuperviewMargin()
+//        priceLabel.wltAutoPinLeadingAndTrailingToSuperviewMargin()
+//        priceLabel.wltAutoPinBottomToSuperviewMargin()
         
         containerView.addSubview(rateLabel)
         rateLabel.autoPinEdge(.top, to: .bottom, of: priceLabel)
-        rateLabel.autoPinLeadingAndTrailingToSuperviewMargin()
-        rateLabel.autoPinBottomToSuperviewMargin()
+//        rateLabel.wltAutoPinLeadingAndTrailingToSuperviewMargin()
+//        rateLabel.wltAutoPinBottomToSuperviewMargin()
         
         formatter.minDecimalDigits = 2
         formatter.decimalDigits = 2

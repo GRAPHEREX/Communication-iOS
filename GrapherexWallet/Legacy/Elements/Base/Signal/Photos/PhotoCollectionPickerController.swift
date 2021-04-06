@@ -10,7 +10,7 @@ protocol PhotoCollectionPickerDelegate: class {
     func photoCollectionPicker(_ photoCollectionPicker: PhotoCollectionPickerController, didPickCollection collection: PhotoCollection)
 }
 
-class PhotoCollectionPickerController: OWSTableViewController, PhotoLibraryDelegate {
+class PhotoCollectionPickerController: WLTTableViewController, PhotoLibraryDelegate {
     
     private weak var collectionDelegate: PhotoCollectionPickerDelegate?
     
@@ -30,8 +30,8 @@ class PhotoCollectionPickerController: OWSTableViewController, PhotoLibraryDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Theme.darkThemeBackgroundColor
-        tableView.backgroundColor = Theme.darkThemeBackgroundColor
+        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.darkThemeBackgroundColor
+        tableView.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.darkThemeBackgroundColor
         tableView.separatorColor = .clear
         
         library.add(delegate: self)
@@ -45,7 +45,7 @@ class PhotoCollectionPickerController: OWSTableViewController, PhotoLibraryDeleg
         photoCollections = library.allPhotoCollections()
         
         let sectionItems = photoCollections.map { collection in
-            return OWSTableItem(customCellBlock: { [weak self] in
+            return WLTTableItem(customCellBlock: { [weak self] in
                 guard let self = self else {
                     return UITableViewCell()
                 }
@@ -57,8 +57,8 @@ class PhotoCollectionPickerController: OWSTableViewController, PhotoLibraryDeleg
             })
         }
         
-        let section = OWSTableSection(title: nil, items: sectionItems)
-        let contents = OWSTableContents()
+        let section = WLTTableSection(title: nil, items: sectionItems)
+        let contents = WLTTableContents()
         contents.addSection(section)
         self.contents = contents
     }
@@ -66,22 +66,22 @@ class PhotoCollectionPickerController: OWSTableViewController, PhotoLibraryDeleg
     private let numberFormatter: NumberFormatter = NumberFormatter()
     
     private func buildTableCell(collection: PhotoCollection) -> UITableViewCell {
-        let cell = OWSTableItem.newCell()
+        let cell = WLTTableItem.newCell()
         
-        cell.backgroundColor = Theme.darkThemeBackgroundColor
+        cell.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.darkThemeBackgroundColor
         cell.selectedBackgroundView?.backgroundColor = UIColor(white: 0.2, alpha: 1)
         
         let contents = collection.contents()
         
         let titleLabel = UILabel()
         titleLabel.text = collection.localizedTitle()
-        titleLabel.font = UIFont.ows_dynamicTypeBody
-        titleLabel.textColor = Theme.darkThemePrimaryColor
+        titleLabel.font = UIFont.wlt_dynamicTypeBody
+        titleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.darkThemePrimaryColor
         
         let countLabel = UILabel()
         countLabel.text = numberFormatter.string(for: contents.assetCount)
-        countLabel.font = UIFont.ows_dynamicTypeCaption1
-        countLabel.textColor = Theme.darkThemePrimaryColor
+        countLabel.font = UIFont.wlt_dynamicTypeCaption1
+        countLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.darkThemePrimaryColor
         
         let textStack = UIStackView(arrangedSubviews: [titleLabel, countLabel])
         textStack.axis = .vertical
@@ -102,14 +102,14 @@ class PhotoCollectionPickerController: OWSTableViewController, PhotoLibraryDeleg
         let photoMediaSize = PhotoMediaSize(thumbnailSize: CGSize(square: kImageSize))
         if let assetItem = contents.lastAssetItem(photoMediaSize: photoMediaSize) {
             imageView.image = assetItem.asyncThumbnail { [weak imageView] image in
-                AssertIsOnMainThread()
+//                AssertIsOnMainThread()
                 
                 guard let imageView = imageView else {
                     return
                 }
                 
                 guard let image = image else {
-                    owsFailDebug("image was unexpectedly nil")
+                    //owsFailDebug("image was unexpectedly nil")
                     return
                 }
                 

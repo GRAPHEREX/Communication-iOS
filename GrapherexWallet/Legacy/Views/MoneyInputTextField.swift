@@ -63,11 +63,13 @@ final class MoneyInputTextField: PastelessTextField {
             return self?.additionalValidation?(text) != false
         }
         
-        font = UIFont.st_robotoRegularFont(withSize: 16).ows_semibold
-        
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(applyTheme),
-            name: .ThemeDidChange, object: nil)
+        // MARK: - SINGAL DEPENDENCY – reimplement
+        font = .systemFont(ofSize: 16)
+//        font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 16).wlt_semibold
+//
+//        NotificationCenter.default.addObserver(
+//            self, selector: #selector(applyTheme),
+//            name: .ThemeDidChange, object: nil)
     }
     
     public func amountForSending() -> String? {
@@ -115,7 +117,8 @@ final class MoneyInputTextField: PastelessTextField {
     
     @objc
     private func applyTheme() {
-        textColor = Theme.primaryTextColor
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
     }
 }
 

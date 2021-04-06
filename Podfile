@@ -5,6 +5,10 @@ use_frameworks!
 
 def shared_pods
   pod 'PureLayout', :inhibit_warnings => true
+  # For catalyst we need to be on master until 3.6.7 or later is released
+  pod 'ZXingObjC', git: 'https://github.com/zxingify/zxingify-objc.git', inhibit_warnings: true, binary: true
+  pod 'lottie-ios', :inhibit_warnings => true
+  pod 'SignalServiceKit', path: '.', testspecs: ["Tests"]
 end
 
 ###
@@ -34,8 +38,6 @@ def ows_pods
 
   pod 'blurhash', git: 'https://github.com/signalapp/blurhash', branch: 'signal-master'
   # pod 'blurhash', path: '../blurhash'
-
-  pod 'SignalServiceKit', path: '.', testspecs: ["Tests"]
 
   pod 'ZKGroup', git: 'https://github.com/signalapp/signal-zkgroup-swift', testspecs: ["Tests"]
 
@@ -85,11 +87,7 @@ end
 def third_party_pods
   pod 'AFNetworking/NSURLSession', inhibit_warnings: true
   pod 'Reachability', :inhibit_warnings => true
-  pod 'lottie-ios', :inhibit_warnings => true
   pod 'BonMot', inhibit_warnings: true
-
-  # For catalyst we need to be on master until 3.6.7 or later is released
-  pod 'ZXingObjC', git: 'https://github.com/zxingify/zxingify-objc.git', inhibit_warnings: true, binary: true
 end
 
 target 'Signal' do

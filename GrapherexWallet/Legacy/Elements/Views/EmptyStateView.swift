@@ -3,6 +3,7 @@
 // 
 
 import Foundation
+import PureLayout
 
 @objc
 final class EmptyStateView: UIView {
@@ -11,14 +12,14 @@ final class EmptyStateView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.st_sfUiTextSemiboldFont(withSize: 16)
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 16)
         return label
     }()
     
     private let subtitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         // TODO: add Color
         label.textColor = .lightGray
         return label
@@ -60,12 +61,12 @@ fileprivate extension EmptyStateView {
     }
     
     @objc func applyTheme() {
-        backgroundColor = Theme.backgroundColor
+        backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
     }
     
     func setup() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applyTheme), name: .ThemeDidChange, object: nil)
-        backgroundColor = Theme.backgroundColor
+//        NotificationCenter.default.addObserver(self, selector: #selector(applyTheme), name: .ThemeDidChange, object: nil)
+        backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         let topSpacer = UIView.vStretchingSpacer()
         let middleSpacer = UIView.vStretchingSpacer()
         let bottomSpacer = UIView.vStretchingSpacer()
@@ -97,7 +98,7 @@ fileprivate extension EmptyStateView {
         actionButton.addTarget(self, action: #selector(didTap), for: .touchUpInside)
         illustrationView.autoMatch(.height, to: .height, of: self, withMultiplier: 0.25)
         
-        actionButton.titleLabel?.font = UIFont.st_sfUiTextRegularFont(withSize: 16)
-        actionButton.setTitleColor(Theme.secondaryTextAndIconColor, for: .normal)
+        actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 16)
+//        actionButton.setTitleColor(Theme.secondaryTextAndIconColor, for: .normal)
     }
 }

@@ -48,9 +48,9 @@ final class PasswordController: ActionSheetController {
         passwordTextField.placeholder = "Current"
         passwordTextField.textAlignment = .center
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.textColor = Theme.primaryTextColor
-        passwordTextField.font = .ows_dynamicTypeBodyClamped
-        passwordTextField.keyboardAppearance = Theme.keyboardAppearance
+        passwordTextField.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        passwordTextField.font = .wlt_dynamicTypeBodyClamped
+//        passwordTextField.keyboardAppearance = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.keyboardAppearance
         passwordTextField.defaultTextAttributes.updateValue(5, forKey: .kern)
         return passwordTextField
     }()
@@ -59,9 +59,9 @@ final class PasswordController: ActionSheetController {
         let passwordTextField = SecureTextField()
         passwordTextField.placeholder = "New"
         passwordTextField.textAlignment = .center
-        passwordTextField.textColor = Theme.primaryTextColor
-        passwordTextField.font = .ows_dynamicTypeBodyClamped
-        passwordTextField.keyboardAppearance = Theme.keyboardAppearance
+        passwordTextField.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        passwordTextField.font = .wlt_dynamicTypeBodyClamped
+//        passwordTextField.keyboardAppearance = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.keyboardAppearance
         passwordTextField.defaultTextAttributes.updateValue(5, forKey: .kern)
         return passwordTextField
     }()
@@ -70,16 +70,16 @@ final class PasswordController: ActionSheetController {
         let passwordTextField = SecureTextField()
         passwordTextField.placeholder = "Confirm"
         passwordTextField.textAlignment = .center
-        passwordTextField.textColor = Theme.primaryTextColor
-        passwordTextField.font = .ows_dynamicTypeBodyClamped
-        passwordTextField.keyboardAppearance = Theme.keyboardAppearance
+        passwordTextField.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        passwordTextField.font = .wlt_dynamicTypeBodyClamped
+//        passwordTextField.keyboardAppearance = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.keyboardAppearance
         passwordTextField.defaultTextAttributes.updateValue(5, forKey: .kern)
         return passwordTextField
     }()
     
     private let primaryButton: STPrimaryButton = {
         let button = STPrimaryButton()
-        button.setTitle(CommonStrings.nextButton, for: .normal)
+        button.setTitle("Next", for: .normal)
         button.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -88,9 +88,9 @@ final class PasswordController: ActionSheetController {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.textColor = Theme.secondaryTextAndIconColor
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         label.text = "The password must contain numbers, uppercase and lowercase letters and contain at least 8 characters";
-        label.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         return label
     }()
     
@@ -99,15 +99,15 @@ final class PasswordController: ActionSheetController {
     private lazy var newPasswordStrokeNormal = newPasswordTextField.addBottomStroke()
     private lazy var confirmPasswordStrokeNormal = confirmPasswordTextField.addBottomStroke()
     
-    private lazy var currentPasswordStrokeError = currentPasswordTextField.addBottomStroke(color: .ows_accentRed, strokeWidth: 2)
-    private lazy var newPasswordStrokeError = newPasswordTextField.addBottomStroke(color: .ows_accentRed, strokeWidth: 2)
-    private lazy var confirmPasswordStrokeError = confirmPasswordTextField.addBottomStroke(color: .ows_accentRed, strokeWidth: 2)
+    private lazy var currentPasswordStrokeError = currentPasswordTextField.addBottomStroke(color: .wlt_accentRed, strokeWidth: 2)
+    private lazy var newPasswordStrokeError = newPasswordTextField.addBottomStroke(color: .wlt_accentRed, strokeWidth: 2)
+    private lazy var confirmPasswordStrokeError = confirmPasswordTextField.addBottomStroke(color: .wlt_accentRed, strokeWidth: 2)
     
     private let validationWarningLabel: UILabel = {
         let validationWarningLabel = UILabel()
-        validationWarningLabel.textColor = .st_otherRed
+        validationWarningLabel.textColor = .stwlt_otherRed
         validationWarningLabel.textAlignment = .center
-        validationWarningLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
+        validationWarningLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         validationWarningLabel.numberOfLines = 0
         return validationWarningLabel
     }()
@@ -163,7 +163,7 @@ final class PasswordController: ActionSheetController {
         }
     }
     
-    private var passwordType: KeyBackupService.PinType = .alphanumeric
+//    private var passwordType: KeyBackupService.PinType = .alphanumeric
     
     private var topPadding: CGFloat = 0.0
     
@@ -264,21 +264,21 @@ fileprivate extension PasswordController {
     
     func setupContent() {
         currentPasswordTextField.delegate = self
-        currentPasswordTextField.setContentHuggingHorizontalLow()
-        currentPasswordTextField.setCompressionResistanceHorizontalLow()
+        currentPasswordTextField.wltSetContentHuggingHorizontalLow()
+        currentPasswordTextField.wltSetCompressionResistanceHorizontalLow()
         currentPasswordTextField.autoSetDimension(.height, toSize: 40)
         
         newPasswordTextField.delegate = self
-        newPasswordTextField.setContentHuggingHorizontalLow()
-        newPasswordTextField.setCompressionResistanceHorizontalLow()
+        newPasswordTextField.wltSetContentHuggingHorizontalLow()
+        newPasswordTextField.wltSetCompressionResistanceHorizontalLow()
         newPasswordTextField.autoSetDimension(.height, toSize: 40)
         
         confirmPasswordTextField.delegate = self
-        confirmPasswordTextField.setContentHuggingHorizontalLow()
-        confirmPasswordTextField.setCompressionResistanceHorizontalLow()
+        confirmPasswordTextField.wltSetContentHuggingHorizontalLow()
+        confirmPasswordTextField.wltSetCompressionResistanceHorizontalLow()
         confirmPasswordTextField.autoSetDimension(.height, toSize: 40)
         
-        validationWarningLabel.setCompressionResistanceHigh()
+        validationWarningLabel.wltSetCompressionResistanceHigh()
         
         let pinStack = UIStackView(arrangedSubviews: [
             currentPasswordTextField,
@@ -294,13 +294,13 @@ fileprivate extension PasswordController {
         
         let pinStackRow = UIView()
         pinStackRow.addSubview(pinStack)
-        pinStack.autoHCenterInSuperview()
-        pinStack.autoPinHeightToSuperview()
+        pinStack.wltAutoHCenterInSuperview()
+        pinStack.wltAutoPinHeightToSuperview()
         pinStack.autoSetDimension(.width, toSize: 227)
-        pinStackRow.setContentHuggingVerticalHigh()
+        pinStackRow.wltSetContentHuggingVerticalHigh()
         
         buttonContainer.addSubview(primaryButton)
-        primaryButton.autoPinEdgesToSuperviewEdges(with: .init(top: 0, leading: 16, bottom: 0, trailing: 16))
+        primaryButton.autoPinEdgesToSuperviewEdges(with: .init(top: 0, left: 16, bottom: 0, right: 16))
         NSLayoutConstraint.activate([
             primaryButton.heightAnchor.constraint(equalToConstant: 56)
         ])
@@ -359,8 +359,8 @@ fileprivate extension PasswordController {
         
         validationWarningLabel.isHidden = !attemptState.isInvalid
         infoLabel.textColor = attemptState.isInvalid
-            ? .st_otherRed
-            : Theme.secondaryTextAndIconColor
+            ? .stwlt_otherRed
+            : .stwlt_otherRed//Theme.secondaryTextAndIconColor
     }
     
     func isValid() -> Bool {
@@ -379,7 +379,7 @@ fileprivate extension PasswordController {
     }
     
     func setFirstPassword() {
-        Logger.info("Try to set new Password")
+        //Logger.info("Try to set new Password")
         guard let password = newPasswordTextField.text else { return }
         ModalActivityIndicatorViewController.present(
             fromViewController: self,
@@ -405,7 +405,7 @@ fileprivate extension PasswordController {
     }
     
     func changePassword() {
-        Logger.info("Try to change Password")
+        //Logger.info("Try to change Password")
         guard let password = newPasswordTextField.text,
             let oldPassword = currentPasswordTextField.text else { return }
 
@@ -468,7 +468,7 @@ fileprivate extension PasswordController {
                 attemptState = .invalid
                 return false
             } else if !isValidPassword(newPasswordTextField.text!) {
-                infoLabel.textColor = .st_otherRed
+                infoLabel.textColor = .stwlt_otherRed
                 attemptState = .invalid
                 return false
             }

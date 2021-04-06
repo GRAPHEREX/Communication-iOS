@@ -43,15 +43,15 @@ fileprivate extension QRPasswordSaveController {
         let confirmationLabel = UILabel()
         confirmationLabel.numberOfLines = 2
         confirmationLabel.textAlignment = .center
-        confirmationLabel.textColor = Theme.primaryTextColor
+        confirmationLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         confirmationLabel.text = NSLocalizedString("WALLET_NEW_PASSWORD_CONFIRMATION", comment: "")
-        confirmationLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 16).ows_semibold
+        confirmationLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 16).wlt_semibold
         
         let restoreLabel = UILabel()
         restoreLabel.textAlignment = .center
-        restoreLabel.textColor = Theme.primaryTextColor
+        restoreLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         restoreLabel.text = NSLocalizedString("WALLET_CODE_FOR_RESTORE_INFO", comment: "")
-        restoreLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
+        restoreLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         
         stackView.addArrangedSubview(confirmationLabel)
         stackView.addArrangedSubview(UIView.vStretchingSpacer(minHeight: 4, maxHeight: 24))
@@ -68,13 +68,13 @@ fileprivate extension QRPasswordSaveController {
         qrImage = QRCreator.createQr(qrString: password, size: UIScreen.main.bounds.size.height * 0.33)
         let imageView = UIImageView(image: qrImage)
         imageView.contentMode = .scaleAspectFit
-        imageView.setContentHuggingVerticalHigh()
+        //imageView.wltSetContentHuggingVerticalHigh()
         stackView.addArrangedSubview(imageView)
         imageView.autoMatch(.height, to: .height, of: view, withMultiplier: 0.33)
         stackView.addArrangedSubview(middleSpacer)
         
-        saveLabel.textColor = Theme.primaryTextColor
-        saveLabel.font = UIFont.st_robotoRegularFont(withSize: 16).ows_semibold
+        saveLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        saveLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 16).wlt_semibold
         saveLabel.textAlignment = .center
         saveLabel.text = NSLocalizedString("WALLET_SAVE_IT", comment: "")
         stackView.addArrangedSubview(saveLabel)

@@ -5,9 +5,9 @@
 import Foundation
 import PromiseKit
 
-final class SendCurrencyFromWalletController: OWSViewController {
+final class SendCurrencyFromWalletController: WLTViewController {
     
-    private let tableViewController = OWSTableViewController()
+    private let tableViewController = WLTTableViewController()
     private var bottomSpace: CGFloat = 0
     
     private var addressIsValid: Bool = false { didSet {
@@ -26,8 +26,8 @@ final class SendCurrencyFromWalletController: OWSViewController {
         let errorLabel = UILabel()
         errorLabel.isHidden = true
         errorLabel.textAlignment = .center
-        errorLabel.textColor = .st_otherRed
-        errorLabel.font = UIFont.st_robotoRegularFont(withSize: 14).ows_semibold
+        errorLabel.textColor = .stwlt_otherRed
+        errorLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 14).wlt_semibold
         return errorLabel
     }()
     
@@ -96,7 +96,7 @@ final class SendCurrencyFromWalletController: OWSViewController {
         }
         self.offErrorState()
         guard let backgroundView = self.feeTextField.superview?.superview else { return }
-        backgroundView.backgroundColor = feeType == .default ? .clear : Theme.walletBubbleColor
+        backgroundView.backgroundColor = feeType == .default ? .clear : .white //Theme.walletBubbleColor
     }}
     
     private var balance: String {
@@ -127,9 +127,9 @@ final class SendCurrencyFromWalletController: OWSViewController {
         setupContent()
         title = NSLocalizedString("MAIN_SEND", comment: "")
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(applyTheme),
-                                               name: .ThemeDidChange, object: nil)
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(applyTheme),
+//                                               name: .ThemeDidChange, object: nil)
     }
     
 }
@@ -151,8 +151,8 @@ fileprivate extension SendCurrencyFromWalletController {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         feeLabel = self.parameterTitle()
         feeEquivalentLabel = self.parameterTitle()
-        feeEquivalentLabel.textColor = Theme.primaryTextColor
-        feeEquivalentLabel.font = UIFont.st_robotoRegularFont(withSize: 14).ows_semibold
+        feeEquivalentLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        feeEquivalentLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 14).wlt_semibold
         
         gasLimitTextField.maxDigitsCountAfterSeparator = 0
         gasLimitTextField.onAmountChange = { [weak self] text in
@@ -192,7 +192,7 @@ fileprivate extension SendCurrencyFromWalletController {
     
     func setupTableView() {
         setupKeyboardNotifications()
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         view.addSubview(tableViewController.view)
         tableViewController.view.backgroundColor = .clear
         tableViewController.tableView.backgroundColor = .clear
@@ -208,8 +208,8 @@ fileprivate extension SendCurrencyFromWalletController {
     }
     
     func setupContent() {
-        let contents: OWSTableContents = .init()
-        let mainSection = OWSTableSection()
+        let contents: WLTTableContents = .init()
+        let mainSection = WLTTableSection()
         mainSection.add(
             makeItem(parameterTitle: NSLocalizedString("MAIN_WALLET", comment: ""),
                      parameterSubtitle: wallet.currency.name,
@@ -256,7 +256,7 @@ fileprivate extension SendCurrencyFromWalletController {
             )
         )
         if let backgroundView = self.feeTextField.superview?.superview  {
-            backgroundView.backgroundColor = feeType == .default ? .clear : Theme.walletBubbleColor
+            backgroundView.backgroundColor = feeType == .default ? .clear : .white //Theme.walletBubbleColor
         }
        
         if (isEtherium && feeType == .personal)  {
@@ -290,37 +290,37 @@ fileprivate extension SendCurrencyFromWalletController {
         icon: UIImage? = nil,
         completion: (() -> Void)? = nil,
         isEmptyState: Bool = false
-    ) -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
+    ) -> WLTTableItem {
+        let cell = WLTTableItem.newCell()
         cell.selectionStyle = .none
 
         cell.contentView.layoutMargins.right = cell.contentView.layoutMargins.left
         let parameterTitleLabel = self.parameterTitle(title: parameterTitle)
         
         cell.contentView.addSubview(parameterTitleLabel)
-        parameterTitleLabel.autoPinTopToSuperviewMargin()
-        parameterTitleLabel.autoPinLeadingAndTrailingToSuperviewMargin()
+        parameterTitleLabel.wltAutoPinTopToSuperviewMargin()
+        parameterTitleLabel.wltAutoPinLeadingAndTrailingToSuperviewMargin()
         
         var imageView = UIImageView()
         if mainIcon != nil {
             imageView = AvatarImageView()
             imageView.sd_setImage(with: URL(string: mainIcon ?? ""), completed: nil)
             imageView.autoSetDimensions(to: CGSize(square: 40))
-            imageView.setContentHuggingVerticalLow()
-            imageView.setCompressionResistanceVerticalHigh()
+            imageView.wltSetContentHuggingVerticalLow()
+            imageView.wltSetCompressionResistanceVerticalHigh()
             imageView.contentMode = .scaleAspectFit
         }
         
         let parameterSubtitleLabel  = self.parameterSubtitle(subtitle: parameterSubtitle, isEmptyState: isEmptyState)
         
         let valueLabel = self.parameterSubtitle(subtitle: value, isEmptyState: false)
-        valueLabel.setContentHuggingHorizontalHigh()
-        valueLabel.setCompressionResistanceHorizontalHigh()
+        valueLabel.wltSetContentHuggingHorizontalHigh()
+        valueLabel.wltSetCompressionResistanceHorizontalHigh()
         
         let subValue = balance(for: !isRateActive)
         let subValueLabel = self.parameterTitle(title: subValue)
-        subValueLabel.setContentHuggingHorizontalHigh()
-        subValueLabel.setCompressionResistanceHorizontalHigh()
+        subValueLabel.wltSetContentHuggingHorizontalHigh()
+        subValueLabel.wltSetCompressionResistanceHorizontalHigh()
         
         let balanceStackView = UIStackView(arrangedSubviews: [
             valueLabel,
@@ -332,9 +332,9 @@ fileprivate extension SendCurrencyFromWalletController {
         
         let iconView = UIImageView(image: icon?.withRenderingMode(.alwaysTemplate))
         iconView.autoSetDimensions(to: CGSize(square: 24))
-        iconView.setContentHuggingHorizontalHigh()
+        iconView.wltSetContentHuggingHorizontalHigh()
         iconView.contentMode = .scaleAspectFit
-        iconView.tintColor = .st_accentGreen
+        iconView.tintColor = .stwlt_accentGreen
         
         let contentStack = UIStackView(arrangedSubviews: [
             imageView,
@@ -346,15 +346,15 @@ fileprivate extension SendCurrencyFromWalletController {
         
         cell.contentView.addSubview(contentStack)
         contentStack.autoPinEdge(.top, to: .bottom, of: parameterTitleLabel, withOffset: 4)
-        contentStack.autoPinBottomToSuperviewMargin()
-        contentStack.autoPinLeadingAndTrailingToSuperviewMargin()
+        contentStack.wltAutoPinBottomToSuperviewMargin()
+        contentStack.wltAutoPinLeadingAndTrailingToSuperviewMargin()
         
         parameterTitleLabel.isHidden = parameterTitle == nil
         iconView.isHidden = icon == nil
         imageView.isHidden = mainIcon == nil
         valueLabel.isHidden = value == nil
         
-        return OWSTableItem(customCell: cell,
+        return WLTTableItem(customCell: cell,
                             customRowHeight: UITableView.automaticDimension,
                             actionBlock: completion)
     }
@@ -370,28 +370,28 @@ fileprivate extension SendCurrencyFromWalletController {
         valueTitleLabel: UILabel? = nil,
         valueSubTitleLabel: UILabel? = nil,
         completion: @escaping (() -> Void)
-    ) -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
+    ) -> WLTTableItem {
+        let cell = WLTTableItem.newCell()
         cell.selectionStyle = .none
         cell.contentView.layoutMargins.right = cell.contentView.layoutMargins.left
         
         let titleStackView = UIStackView()
         cell.contentView.addSubview(titleStackView)
-        titleStackView.autoPinTopToSuperviewMargin()
-        titleStackView.autoPinLeadingToSuperviewMargin()
+        titleStackView.wltAutoPinTopToSuperviewMargin()
+        titleStackView.wltAutoPinLeadingToSuperviewMargin()
         titleStackView.spacing = 8
         
         let parameterTitleLabel = self.parameterTitle(title: parameterTitle)
-        parameterTitleLabel.setCompressionResistanceHigh()
-        parameterTitleLabel.setContentHuggingHorizontalHigh()
-        parameterTitleLabel.setContentHuggingVerticalHigh()
+        parameterTitleLabel.wltSetCompressionResistanceHigh()
+        parameterTitleLabel.wltSetContentHuggingHorizontalHigh()
+        parameterTitleLabel.wltSetContentHuggingVerticalHigh()
         
         titleStackView.addArrangedSubview(parameterTitleLabel)
         
         if let parameterIcon = infoIcon {
             let parameterImageView = UIImageView(image: parameterIcon)
             parameterImageView.contentMode = .scaleAspectFit
-            parameterImageView.backgroundColor = .st_accentGreen
+            parameterImageView.backgroundColor = .stwlt_accentGreen
             parameterImageView.widthAnchor.constraint(equalTo: parameterImageView.heightAnchor).isActive = true
             parameterImageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
             parameterImageView.layer.cornerRadius = 8
@@ -405,11 +405,11 @@ fileprivate extension SendCurrencyFromWalletController {
         }
         
         let valueLabel: UILabel = valueTitleLabel ?? self.parameterTitle(title: value)
-        valueLabel.setContentHuggingHorizontalHigh()
+        valueLabel.wltSetContentHuggingHorizontalHigh()
         
         let subValueLabel = valueSubTitleLabel ?? UILabel()
-        subValueLabel.setContentHuggingHorizontalHigh()
-        subValueLabel.setContentHuggingVerticalHigh()
+        subValueLabel.wltSetContentHuggingHorizontalHigh()
+        subValueLabel.wltSetContentHuggingVerticalHigh()
         
         let valueStackView = UIStackView(arrangedSubviews: [
             valueLabel,
@@ -424,8 +424,8 @@ fileprivate extension SendCurrencyFromWalletController {
             valueStackView
         ])
         if placeholder != nil { textField.placeholder = placeholder }
-        textField.font = UIFont.st_robotoRegularFont(withSize: 16).ows_semibold
-        textField.textColor = Theme.primaryTextColor
+        textField.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 16).wlt_semibold
+        textField.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         
         contentStack.spacing = 8
         contentStack.heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
@@ -433,25 +433,25 @@ fileprivate extension SendCurrencyFromWalletController {
         let backgroundView = makeBackground()
         cell.contentView.addSubview(backgroundView)
         backgroundView.addSubview(contentStack)
-        contentStack.autoPinTopToSuperviewMargin()
-        contentStack.autoPinBottomToSuperviewMargin()
-        contentStack.autoPinLeadingToSuperviewMargin()
+        contentStack.wltAutoPinTopToSuperviewMargin()
+        contentStack.wltAutoPinBottomToSuperviewMargin()
+        contentStack.wltAutoPinLeadingToSuperviewMargin()
 
         backgroundView.autoPinEdge(.top, to: .bottom, of: parameterTitleLabel, withOffset: 4)
-        backgroundView.autoPinBottomToSuperviewMargin()
-        backgroundView.autoPinLeadingToSuperviewMargin()
+        backgroundView.wltAutoPinBottomToSuperviewMargin()
+        backgroundView.wltAutoPinLeadingToSuperviewMargin()
         
         if let button = button {
             backgroundView.addSubview(button)
-            button.autoPinBottomToSuperviewMargin()
-            button.autoPinTopToSuperviewMargin()
-            button.autoPinTrailingToSuperviewMargin()
-            button.autoPinLeading(toTrailingEdgeOf: contentStack, offset: 2)
+            button.wltAutoPinBottomToSuperviewMargin()
+            button.wltAutoPinTopToSuperviewMargin()
+            button.wltAutoPinTrailingToSuperviewMargin()
+            button.wltAutoPinLeading(toTrailingEdgeOf: contentStack, offset: 2)
         } else {
-            contentStack.autoPinTrailingToSuperviewMargin()
+            contentStack.wltAutoPinTrailingToSuperviewMargin()
         }
         
-        backgroundView.autoPinTrailingToSuperviewMargin(withInset: 0)
+        backgroundView.wltAutoPinTrailingToSuperviewMargin(withInset: 0)
         let tapGesture = TextFieldTapGesture(target: self, action: #selector(setTextFieldFocused(gesture:)))
         tapGesture.textField = textField
         backgroundView.addGestureRecognizer(tapGesture)
@@ -459,13 +459,13 @@ fileprivate extension SendCurrencyFromWalletController {
         valueLabel.isHidden = value == nil
         parameterTitleLabel.isHidden = parameterTitle == nil
         
-        return OWSTableItem(customCell: cell,
+        return WLTTableItem(customCell: cell,
                             customRowHeight: UITableView.automaticDimension,
                             actionBlock: { completion() })
     }
     
-    func makeSumItem() -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
+    func makeSumItem() -> WLTTableItem {
+        let cell = WLTTableItem.newCell()
         cell.selectionStyle = .none
 
         cell.contentView.layoutMargins.right = cell.contentView.layoutMargins.left
@@ -479,8 +479,8 @@ fileprivate extension SendCurrencyFromWalletController {
         setupAmountFonts()
         
         cell.contentView.addSubview(parameterTitleLabel)
-        parameterTitleLabel.autoPinTopToSuperviewMargin()
-        parameterTitleLabel.autoPinLeadingAndTrailingToSuperviewMargin()
+        parameterTitleLabel.wltAutoPinTopToSuperviewMargin()
+        parameterTitleLabel.wltAutoPinLeadingAndTrailingToSuperviewMargin()
         
         changeAmountButton.addTarget(self, action: #selector(updateSumField), for: .touchUpInside)
         setupButton(button: changeAmountButton, icon: #imageLiteral(resourceName: "icon.swap.v"))
@@ -503,17 +503,17 @@ fileprivate extension SendCurrencyFromWalletController {
         amountStack.autoPinEdgesToSuperviewMargins()
         
         backgroundView.addSubview(changeAmountButton)
-        changeAmountButton.autoPinTopToSuperviewMargin()
-        changeAmountButton.autoPinBottomToSuperviewMargin()
-        changeAmountButton.autoPinTrailingToSuperviewMargin()
+        changeAmountButton.wltAutoPinTopToSuperviewMargin()
+        changeAmountButton.wltAutoPinBottomToSuperviewMargin()
+        changeAmountButton.wltAutoPinTrailingToSuperviewMargin()
         
         backgroundView.autoPinEdge(.top, to: .bottom, of: parameterTitleLabel, withOffset: 4)
-        backgroundView.autoPinBottomToSuperviewMargin()
-        backgroundView.autoPinLeadingToSuperviewMargin()
-        backgroundView.autoPinTrailingToSuperviewMargin()
+        backgroundView.wltAutoPinBottomToSuperviewMargin()
+        backgroundView.wltAutoPinLeadingToSuperviewMargin()
+        backgroundView.wltAutoPinTrailingToSuperviewMargin()
         backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(setAmountFocused)))
         
-        return OWSTableItem(
+        return WLTTableItem(
             customCell: cell,
             customRowHeight: UITableView.automaticDimension,
             actionBlock: { })
@@ -522,25 +522,25 @@ fileprivate extension SendCurrencyFromWalletController {
     func setupButton(button: UIButton, icon: UIImage) {
         button.setImage(icon.withRenderingMode(.alwaysTemplate), for: .normal)
         
-        button.tintColor = .st_accentGreen
+        button.tintColor = .stwlt_accentGreen
         button.autoSetDimension(.width, toSize: 40)
 
         button.contentHorizontalAlignment = .trailing
     }
     
-    func makeSendItem() -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
+    func makeSendItem() -> WLTTableItem {
+        let cell = WLTTableItem.newCell()
         cell.selectionStyle = .none
 
         cell.contentView.layoutMargins.right = cell.contentView.layoutMargins.left
         cell.contentView.layoutMargins.top = 16
         
         cell.contentView.addSubview(self.errorLabel)
-        self.errorLabel.autoPinTopToSuperviewMargin()
-        self.errorLabel.autoPinLeadingAndTrailingToSuperviewMargin()
-        self.errorLabel.autoPinBottomToSuperviewMargin()
+        self.errorLabel.wltAutoPinTopToSuperviewMargin()
+        self.errorLabel.wltAutoPinLeadingAndTrailingToSuperviewMargin()
+        self.errorLabel.wltAutoPinBottomToSuperviewMargin()
         
-        return OWSTableItem(customCell: cell,
+        return WLTTableItem(customCell: cell,
                             customRowHeight: 44,
                             actionBlock: nil)
     }
@@ -606,28 +606,28 @@ fileprivate extension SendCurrencyFromWalletController {
 
     func setupAmountFonts() {
         self.amountTextField.font = isRateActive
-            ? .st_sfUiTextRegularFont(withSize: 14)
-            : (UIFont.st_sfUiTextRegularFont(withSize: 16).ows_semibold)
+            ? .stwlt_sfUiTextRegularFont(withSize: 14)
+            : (UIFont.stwlt_sfUiTextRegularFont(withSize: 16).wlt_semibold)
         
         self.rateAmountTextField.font = !isRateActive
-            ? .st_sfUiTextRegularFont(withSize: 14)
-            : (UIFont.st_sfUiTextRegularFont(withSize: 16).ows_semibold)
+            ? .stwlt_sfUiTextRegularFont(withSize: 14)
+            : (UIFont.stwlt_sfUiTextRegularFont(withSize: 16).wlt_semibold)
         
         self.amountSymbolLabel.font = isRateActive
-            ? UIFont.st_robotoRegularFont(withSize: 12)
-            : UIFont.st_robotoRegularFont(withSize: 14)
+            ? UIFont.stwlt_robotoRegularFont(withSize: 12)
+            : UIFont.stwlt_robotoRegularFont(withSize: 14)
         
         self.rateAmountSymbolLabel.font = !isRateActive
-            ? UIFont.st_robotoRegularFont(withSize: 12)
-            : UIFont.st_robotoRegularFont(withSize: 14)
+            ? UIFont.stwlt_robotoRegularFont(withSize: 12)
+            : UIFont.stwlt_robotoRegularFont(withSize: 14)
         
         self.amountTextField.isEnabled = !isRateActive
-        self.amountTextField.textColor = isRateActive ? Theme.secondaryTextAndIconColor : Theme.primaryTextColor
+        self.amountTextField.textColor = UIColor.black //isRateActive ? Theme.secondaryTextAndIconColor : UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/
         self.rateAmountTextField.isEnabled = isRateActive
-        self.rateAmountTextField.textColor = isRateActive ? Theme.primaryTextColor : Theme.secondaryTextAndIconColor
+        self.rateAmountTextField.textColor = UIColor.black //isRateActive ? Theme.primaryTextColor : Theme.secondaryTextAndIconColor
         
-        self.amountSymbolLabel.textColor = isRateActive ? Theme.secondaryTextAndIconColor : Theme.primaryTextColor
-        self.rateAmountSymbolLabel.textColor = isRateActive ? Theme.primaryTextColor : Theme.secondaryTextAndIconColor
+        self.amountSymbolLabel.textColor = UIColor.black //isRateActive ? Theme.secondaryTextAndIconColor : UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/
+        self.rateAmountSymbolLabel.textColor = UIColor.black //isRateActive ? Theme.primaryTextColor : Theme.secondaryTextAndIconColor
     }
     
     func setupAmountFields() {
@@ -649,7 +649,7 @@ fileprivate extension SendCurrencyFromWalletController {
             self.updateTextFieldSizes()
             self.offErrorState()
         }
-        amountTextField.textColor = Theme.primaryTextColor
+        amountTextField.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
 
         // rate amount text field
         rateAmountTextField.isEnabled = false
@@ -670,7 +670,7 @@ fileprivate extension SendCurrencyFromWalletController {
                 else { return false }
             return self.amountTextField.validText(text: totalValue)
         }
-        rateAmountTextField.textColor = Theme.secondaryTextAndIconColor
+        rateAmountTextField.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
     }
     
     func updateTextFieldSizes() {
@@ -708,9 +708,9 @@ fileprivate extension SendCurrencyFromWalletController {
 fileprivate extension SendCurrencyFromWalletController {
     func makeBackground() -> UIView {
         let backgroundView = UIView()
-        backgroundView.layoutMargins = .init(top: 8, leading: 8, bottom: 8, trailing: 8)
+        backgroundView.layoutMargins = .init(top: 8, left: 8, bottom: 8, right: 8)
 
-        backgroundView.backgroundColor = Theme.walletBubbleColor
+        backgroundView.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.walletBubbleColor
         backgroundView.layer.cornerRadius = 12
         
         return backgroundView
@@ -722,16 +722,16 @@ fileprivate extension SendCurrencyFromWalletController {
         view.backgroundColor = .clear
         
         view.addSubview(textField)
-        textField.autoPinTopToSuperviewMargin()
-        textField.autoPinBottomToSuperviewMargin()
-        textField.autoPinLeadingToSuperviewMargin()
+        textField.wltAutoPinTopToSuperviewMargin()
+        textField.wltAutoPinBottomToSuperviewMargin()
+        textField.wltAutoPinLeadingToSuperviewMargin()
         
         view.addSubview(label)
-        label.autoPinTopToSuperviewMargin()
-        label.autoPinBottomToSuperviewMargin()
-        label.autoPinTrailingToSuperviewMargin()
-        label.autoPinLeading(toTrailingEdgeOf: textField)
-        label.setContentHuggingHorizontalLow()
+        label.wltAutoPinTopToSuperviewMargin()
+        label.wltAutoPinBottomToSuperviewMargin()
+        label.wltAutoPinTrailingToSuperviewMargin()
+        label.wltAutoPinLeading(toTrailingEdgeOf: textField)
+        label.wltSetContentHuggingHorizontalLow()
         
         return view
     }
@@ -739,16 +739,16 @@ fileprivate extension SendCurrencyFromWalletController {
     func parameterTitle(title: String? = nil) -> UILabel {
         let parameterTitleLabel = UILabel()
         parameterTitleLabel.numberOfLines = 0
-        parameterTitleLabel.textColor = Theme.secondaryTextAndIconColor
-        parameterTitleLabel.font = UIFont.st_robotoRegularFont(withSize: 14)
+        parameterTitleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
+        parameterTitleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 14)
         parameterTitleLabel.text = title
         return parameterTitleLabel
     }
     
     func parameterSubtitle(subtitle: String?, isEmptyState: Bool) -> UILabel {
         let parameterSubtitleLabel = UILabel()
-        parameterSubtitleLabel.textColor = isEmptyState ? Theme.secondaryTextAndIconColor : Theme.primaryTextColor
-        parameterSubtitleLabel.font = UIFont.st_robotoRegularFont(withSize: 16).ows_semibold
+        parameterSubtitleLabel.textColor = UIColor.black //isEmptyState ? Theme.secondaryTextAndIconColor : UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/
+        parameterSubtitleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 16).wlt_semibold
         parameterSubtitleLabel.text = subtitle
         return parameterSubtitleLabel
     }
@@ -843,7 +843,8 @@ fileprivate extension SendCurrencyFromWalletController {
                         case .failure(let error):
                             if error.isNetworkFailureOrTimeout {
                                 modal.dismiss {
-                                    OWSActionSheets.showErrorAlert(message: error.localizedDescription)
+                                    // MARK: - SINGAL DEPENDENCY – reimplement
+                                    //OWSActionSheets.showErrorAlert(message: error.localizedDescription)
                                 }
                             } else {
                                 modal.dismiss {
@@ -902,9 +903,9 @@ fileprivate extension SendCurrencyFromWalletController {
     }
     
     @objc func applyTheme() {
-        view.backgroundColor = Theme.backgroundColor
-        tableViewController.tableView.backgroundColor = Theme.backgroundColor
-        tableViewController.tableView.backgroundView?.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
+        tableViewController.tableView.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
+        tableViewController.tableView.backgroundView?.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         setupContent()
     }
 }

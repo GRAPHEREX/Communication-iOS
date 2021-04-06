@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import PureLayout
 
 final class EnterPinController: ActionSheetController {
     typealias FinishHandler = (Bool) -> Void
@@ -15,31 +16,31 @@ final class EnterPinController: ActionSheetController {
     private let pinTextField: UITextField = {
         let pinTextField = UITextField()
         pinTextField.isSecureTextEntry = true
-        pinTextField.textColor = Theme.primaryTextColor
+        pinTextField.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         pinTextField.textAlignment = .center
-        pinTextField.font = .ows_dynamicTypeBodyClamped
+//        pinTextField.font = .wlt_dynamicTypeBodyClamped
         pinTextField.isSecureTextEntry = true
         pinTextField.defaultTextAttributes.updateValue(5, forKey: .kern)
-        pinTextField.keyboardAppearance = Theme.keyboardAppearance
+//        pinTextField.keyboardAppearance = // MARK: - SINGAL DEPENDENCY - THEME  = Theme.keyboardAppearance
         pinTextField.keyboardType = .decimalPad
         return pinTextField
     }()
 
     private let primaryButton: STPrimaryButton = {
         let button = STPrimaryButton()
-        button.setTitle(CommonStrings.nextButton, for: .normal)
+        button.setTitle("Next", for: .normal)
         button.addTarget(self, action: #selector(enterButtonPressed), for: .touchUpInside)
         return button
     }()
     
     private let buttonContainer = UIView()
     private lazy var pinStrokeNormal = pinTextField.addBottomStroke()
-    private lazy var pinStrokeError = pinTextField.addBottomStroke(color: .ows_accentRed, strokeWidth: 2)
+    private lazy var pinStrokeError = pinTextField.addBottomStroke(color: .wlt_accentRed, strokeWidth: 2)
     private let validationWarningLabel: UILabel = {
         let validationWarningLabel = UILabel()
-        validationWarningLabel.textColor = .st_otherRed
+        validationWarningLabel.textColor = .stwlt_otherRed
         validationWarningLabel.textAlignment = .center
-        validationWarningLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
+        validationWarningLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         validationWarningLabel.numberOfLines = 0
         return validationWarningLabel
     }()
@@ -49,8 +50,8 @@ final class EnterPinController: ActionSheetController {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.text = "Enter the PIN to continue"
-        label.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
-        label.textColor = .st_neutralGray
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
+        label.textColor = .stwlt_neutralGray
         return label
     }()
     
@@ -75,7 +76,8 @@ final class EnterPinController: ActionSheetController {
         }
     }
     
-    private var pinType: KeyBackupService.PinType = .numeric
+    // MARK: - SINGAL DEPENDENCY – reimplement
+    //private var pinType: KeyBackupService.PinType = .numeric
 
     private var topPadding: CGFloat = 0.0
 
@@ -117,11 +119,11 @@ final class EnterPinController: ActionSheetController {
 extension EnterPinController: UITextFieldDelegate {
     func setupContent() {
         pinTextField.delegate = self
-        pinTextField.setContentHuggingHorizontalLow()
-        pinTextField.setCompressionResistanceHorizontalLow()
+        pinTextField.wltSetContentHuggingHorizontalLow()
+        pinTextField.wltSetCompressionResistanceHorizontalLow()
         pinTextField.autoSetDimension(.height, toSize: 40)
         
-        validationWarningLabel.setCompressionResistanceHigh()
+        validationWarningLabel.wltSetCompressionResistanceHigh()
         
         let pinStack = UIStackView(arrangedSubviews: [
             pinTextField,
@@ -133,13 +135,13 @@ extension EnterPinController: UITextFieldDelegate {
         
         let pinStackRow = UIView()
         pinStackRow.addSubview(pinStack)
-        pinStack.autoHCenterInSuperview()
-        pinStack.autoPinHeightToSuperview()
+        pinStack.wltAutoHCenterInSuperview()
+        pinStack.wltAutoPinHeightToSuperview()
         pinStack.autoSetDimension(.width, toSize: 227)
-        pinStackRow.setContentHuggingVerticalHigh()
+        pinStackRow.wltSetContentHuggingVerticalHigh()
         
         buttonContainer.addSubview(primaryButton)
-        primaryButton.autoPinEdgesToSuperviewEdges(with: .init(top: 0, leading: 16, bottom: 0, trailing: 16))
+        primaryButton.autoPinEdgesToSuperviewEdges(with: .init(top: 0, left: 16, bottom: 0, right: 16))
         
         let topSpacer = UIView.vStretchingSpacer()
         let bottomSpacer = UIView.vStretchingSpacer()
@@ -186,12 +188,13 @@ extension EnterPinController: UITextFieldDelegate {
         if newString.count > 6 { return false }
         
         let hasPendingChanges: Bool
-        if pinType == .numeric {
-            ViewControllerUtils.ows2FAPINTextField(textField, shouldChangeCharactersIn: range, replacementString: string)
-            hasPendingChanges = false
-        } else {
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        if pinType == .numeric {
+//            ViewControllerUtils.ows2FAPINTextField(textField, shouldChangeCharactersIn: range, replacementString: string)
+//            hasPendingChanges = false
+//        } else {
             hasPendingChanges = true
-        }
+//        }
 
         // Reset the attempt state to clear errors, since the user is trying again
         attemptState = .unattempted

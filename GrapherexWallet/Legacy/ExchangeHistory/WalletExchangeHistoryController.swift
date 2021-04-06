@@ -4,13 +4,13 @@
 
 import Foundation
 
-final class WalletExchangeHistoryController: OWSViewController {
+final class WalletExchangeHistoryController: WLTViewController {
     
     enum TransactionType {
         case all, pending, closed
     }
     
-    private lazy var tableViewController =  OWSTableViewController()
+    private lazy var tableViewController =  WLTTableViewController()
     private let emptyView = SecondaryEmptyStateView()
 
     private let segmentControl = UISegmentedControl(items: ["All", "Pending", "Closed"])
@@ -30,9 +30,9 @@ final class WalletExchangeHistoryController: OWSViewController {
         setupTableView()
         setupContent()
         filteredData = data
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(applyTheme),
-                                               name: .ThemeDidChange, object: nil)
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(applyTheme),
+//                                               name: .ThemeDidChange, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +42,7 @@ final class WalletExchangeHistoryController: OWSViewController {
     
     @objc
     private func applyTheme() {
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         setupContent()
     }
 }
@@ -52,12 +52,12 @@ fileprivate extension WalletExchangeHistoryController {
         view.addSubview(segmentControl)
         segmentControl.addTarget(self, action: #selector(filter), for: .valueChanged)
         segmentControl.autoPinEdge(.top, to: .top, of: view)
-        segmentControl.autoHCenterInSuperview()
+        segmentControl.wltAutoHCenterInSuperview()
         segmentControl.selectedSegmentIndex = 0
     }
     
     func setupTableView() {
-        view.backgroundColor = Theme.backgroundColor
+        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         tableViewController.tableViewStyle = .plain
         view.addSubview(tableViewController.view)
         tableViewController.view.backgroundColor = .clear
@@ -77,15 +77,15 @@ fileprivate extension WalletExchangeHistoryController {
         emptyView.set(image: #imageLiteral(resourceName: "SignNumber"), title: NSLocalizedString("WALLET_ORDERS_EMPTY_STATE_TITLE", comment: ""))
         view.addSubview(emptyView)
         emptyView.autoPinEdge(.top, to: .top, of: tableViewController.view)
-        emptyView.autoPinBottomToSuperviewMargin()
+        emptyView.wltAutoPinBottomToSuperviewMargin()
         emptyView.autoPinEdge(.trailing, to: .trailing, of: tableViewController.view)
         emptyView.autoPinEdge(.leading, to: .leading, of: tableViewController.view)
         view.bringSubviewToFront(tableViewController.view)
     }
     
     func setupContent() {
-        let contents: OWSTableContents = .init()
-        let mainSection = OWSTableSection()
+        let contents: WLTTableContents = .init()
+        let mainSection = WLTTableSection()
                 
         filteredData.forEach {
             mainSection.add(makeExchangeHistoryView(props: $0))
@@ -98,7 +98,7 @@ fileprivate extension WalletExchangeHistoryController {
     
     func setupPullToRefresh() {
         let pullToRefreshView = UIRefreshControl()
-        pullToRefreshView.tintColor = Theme.secondaryTextAndIconColor
+        pullToRefreshView.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         pullToRefreshView.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableViewController.tableView.refreshControl = pullToRefreshView
     }
@@ -122,14 +122,14 @@ fileprivate extension WalletExchangeHistoryController {
         tableViewController.view.isHidden = isEmpty
     }
     
-    func makeExchangeHistoryView(props: ExchangeHistoryView.Props) -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
+    func makeExchangeHistoryView(props: ExchangeHistoryView.Props) -> WLTTableItem {
+        let cell = WLTTableItem.newCell()
         let view = ExchangeHistoryView()
         view.props = props
         cell.contentView.layoutMargins = .zero
         cell.contentView.addSubview(view)
         view.autoPinEdgesToSuperviewEdges()
-        return OWSTableItem(customCell: cell, customRowHeight: 64, actionBlock: nil)
+        return WLTTableItem(customCell: cell, customRowHeight: 64, actionBlock: nil)
     }
     
     @objc

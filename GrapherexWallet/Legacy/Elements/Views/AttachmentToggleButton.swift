@@ -31,13 +31,14 @@ final class AttachmentToggleButton: UIButton {
     
     @objc
     func setSelected(_ isSelected: Bool, animated: Bool) {
-        AssertIsOnMainThread()
+//        AssertIsOnMainThread()
         self.isSelected = isSelected
     }
     
     func setup() {
         visibleView.backgroundColor = .clear
-        mainImageView.tintColor = .st_neutralGray
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        mainImageView.tintColor = .stwlt_neutralGray
         self.addSubview(visibleView)
         visibleView.autoCenterInSuperview()
         visibleView.autoSetDimensions(to: .init(square: 28))
@@ -50,11 +51,12 @@ final class AttachmentToggleButton: UIButton {
         UIView.animate(withDuration: 0.5, animations: { [weak self] in
             guard let self = self else { return }
             if self.isSelected {
-                self.visibleView.backgroundColor = .st_accentGreen
-                self.mainImageView.tintColor = Theme.backgroundColor
+                // MARK: - SINGAL DEPENDENCY – reimplement
+//                self.visibleView.backgroundColor = .stwlt_accentGreen
+//                self.mainImageView.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
                 self.mainImageView.transform = CGAffineTransform(rotationAngle: CGFloat.pi * 0.75 )
             } else {
-                self.mainImageView.tintColor = .st_neutralGray
+//                self.mainImageView.tintColor = .stwlt_neutralGray
                 self.visibleView.backgroundColor = .clear
                 self.mainImageView.transform = .identity
             }

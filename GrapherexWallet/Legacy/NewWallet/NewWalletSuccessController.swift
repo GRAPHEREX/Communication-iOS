@@ -42,22 +42,22 @@ fileprivate extension NewWalletSuccessController {
     func setupLabels() {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .center
-        titleLabel.textColor = Theme.primaryTextColor
+        titleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         titleLabel.text = "Wallet was created successfully"
-        titleLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 16).ows_semibold
+        titleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 16).wlt_semibold
         
         let confirmationLabel = UILabel()
         confirmationLabel.numberOfLines = 2
         confirmationLabel.textAlignment = .center
-        confirmationLabel.textColor = Theme.primaryTextColor
+        confirmationLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         confirmationLabel.text = "Password for transaction\nconfirmation was set";
-        confirmationLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
+        confirmationLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         
         let restoreLabel = UILabel()
         restoreLabel.textAlignment = .center
-        restoreLabel.textColor = Theme.primaryTextColor
+        restoreLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         restoreLabel.text = NSLocalizedString("WALLET_CODE_FOR_RESTORE_INFO", comment: "")
-        restoreLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
+        restoreLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         
         stackView.addArrangedSubview(UIView.vStretchingSpacer(minHeight: 4, maxHeight: 16))
         stackView.addArrangedSubview(titleLabel)
@@ -77,14 +77,14 @@ fileprivate extension NewWalletSuccessController {
         qrImage = QRCreator.createQr(qrString: password, size: UIScreen.main.bounds.size.height * imageViewCoeff)
         let imageView = UIImageView(image: qrImage)
         imageView.contentMode = .scaleAspectFit
-        imageView.setContentHuggingVerticalHigh()
+        imageView.wltSetContentHuggingVerticalHigh()
         stackView.addArrangedSubview(imageView)
         imageView.autoMatch(.height, to: .height, of: view, withMultiplier: imageViewCoeff)
         stackView.addArrangedSubview(middleSpacer)
         
-        saveLabel.textColor = Theme.primaryTextColor
+        saveLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         saveLabel.numberOfLines = 2
-        saveLabel.font = UIFont.st_robotoRegularFont(withSize: 16).ows_semibold
+        saveLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 16).wlt_semibold
         saveLabel.textAlignment = .center
         saveLabel.text = NSLocalizedString("WALLET_SAVE_IT", comment: "")
         stackView.addArrangedSubview(saveLabel)

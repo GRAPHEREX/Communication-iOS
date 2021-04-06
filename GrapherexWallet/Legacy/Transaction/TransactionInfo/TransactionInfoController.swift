@@ -40,14 +40,14 @@ fileprivate extension TransactionInfoController {
     
     func makeView(title: String, subtitle: String, action: Selector? = nil) {
         let backgroundView = UIView()
-        backgroundView.backgroundColor = Theme.backgroundColor
+        backgroundView.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         if action != nil {
             backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action!))
         }
         
         let titleLabel = UILabel()
-        titleLabel.textColor = Theme.secondaryTextAndIconColor
-        titleLabel.font = UIFont.st_robotoRegularFont(withSize: 14)
+        titleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
+        titleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 14)
         titleLabel.text = title
         
         backgroundView.addSubview(titleLabel)
@@ -57,8 +57,8 @@ fileprivate extension TransactionInfoController {
         
         let subtitleLabel = UILabel()
         subtitleLabel.numberOfLines = 0
-        subtitleLabel.textColor = Theme.primaryTextColor
-        subtitleLabel.font = UIFont.st_robotoRegularFont(withSize: 16).ows_semibold
+        subtitleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        subtitleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 16).wlt_semibold
         subtitleLabel.text = subtitle
         subtitleLabel.autoSetDimension(.width, toSize: UIScreen.main.bounds.size.width - 2*Constants.margin)
         

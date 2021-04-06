@@ -87,12 +87,12 @@ fileprivate extension FilterTransactionController {
     
     func makeFilter(title: String, filterOption: UISegmentedControl) {
         let backgroundView = UIView()
-        backgroundView.backgroundColor = Theme.backgroundColor
-        filterOption.tintColor = Theme.primaryIconColor
+        backgroundView.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
+        filterOption.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryIconColor
         
         let titleLabel = UILabel()
-        titleLabel.textColor = Theme.secondaryTextAndIconColor
-        titleLabel.font = UIFont.st_robotoRegularFont(withSize: 14)
+        titleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
+        titleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 14)
         titleLabel.numberOfLines = 0
         titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.textAlignment = .left

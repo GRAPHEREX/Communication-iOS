@@ -3,6 +3,7 @@
 // 
 
 import Foundation
+import PureLayout
 
 final class FeeInfoController: ActionSheetController {
     
@@ -28,10 +29,10 @@ extension FeeInfoController {
         closeButton.layer.cornerRadius = height / 2
         closeButton.clipsToBounds = true
         closeButton.setTitleColor(.white, for: .normal)
-        closeButton.backgroundColor = .st_accentGreen
+//        closeButton.backgroundColor = .stwlt_accentGreen
         closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         closeButton.setTitle("Got it", for: .normal)
-        closeButton.setContentHuggingVerticalHigh()
+        closeButton.wltSetContentHuggingVerticalHigh()
         let stack = UIStackView(arrangedSubviews: [UIView.hStretchingSpacer(), closeButton, UIView.hStretchingSpacer()])
         stack.distribution = .equalCentering
         stackView.addArrangedSubview(stack)
@@ -39,8 +40,8 @@ extension FeeInfoController {
     
     func setupContent() {
         let titleLabel = UILabel()
-        titleLabel.textColor = Theme.primaryTextColor
-        titleLabel.font = UIFont.st_robotoRegularFont(withSize: 14)
+        titleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        titleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 14)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
         titleLabel.text = message

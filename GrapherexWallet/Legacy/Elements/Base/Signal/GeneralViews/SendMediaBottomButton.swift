@@ -3,13 +3,17 @@
 //
 
 import UIKit
-
+import PureLayout
 class SendMediaBottomButton: UIView {
-    let button: OWSButton
+    // MARK: - SINGAL DEPENDENCY – reimplement
+    // OWSButton -> UIButton
+    let button: UIButton
     let blurView: UIVisualEffectView
     
     init(imageName: String, tintColor: UIColor, diameter: CGFloat, block: @escaping () -> Void) {
-        self.button = OWSButton(imageName: imageName, tintColor: tintColor, block: block)
+        self.button = UIButton(type: .custom)
+        
+        //WSButton(imageName: imageName, tintColor: tintColor, block: block)
         button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         let blurEffect = UIBlurEffect(style: .dark)
@@ -70,17 +74,17 @@ class SendMediaBottomButton: UIView {
     func updateViewState() {
         switch mode {
         case .selected:
-            button.tintColor = .ows_black
+//            button.tintColor = .wlt_black
             blurView.isHidden = true
-            backgroundColor = .ows_white
+            backgroundColor = .wlt_white
             setShadow()
         case .unselectedOverMediaLibrary:
-            button.tintColor = .ows_white
+//            button.tintColor = .wlt_white
             blurView.isHidden = false
             backgroundColor = .clear
             layer.shadowRadius = 0
         case .unselectedOverPhotoCapture:
-            button.tintColor = .ows_white
+//            button.tintColor = .wlt_white
             blurView.isHidden = true
             backgroundColor = .clear
             setShadow()

@@ -21,27 +21,30 @@ public class WalletCredentialsManager: NSObject {
     }
     
     static func getWalletCredentials() -> [WalletCredentials] {
-        do {
-            let jsonData = try CurrentAppContext().keychainStorage().data(forService: "Wallet", key: "Credentials")
-            let decodedWalletCredentials: [WalletCredentials] = try JSONDecoder().decode([WalletCredentials].self, from: jsonData)
-            return decodedWalletCredentials
-        } catch {
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        do {
+//            let jsonData = try CurrentAppContext().keychainStorage().data(forService: "Wallet", key: "Credentials")
+//            let decodedWalletCredentials: [WalletCredentials] = try JSONDecoder().decode([WalletCredentials].self, from: jsonData)
+//            return decodedWalletCredentials
+//        } catch {
             return []
-        }
+//        }
     }
     
     static func saveWalletCredentials(walletCredentials: [WalletCredentials]) -> Bool {
-        do {
-            let jsonData = try JSONEncoder().encode(walletCredentials)
-            try CurrentAppContext().keychainStorage().set(data: jsonData, service: "Wallet", key: "Credentials")
-            NotificationCenter.default.post(name: WalletModel.walletCredentionalsNeedUpdate, object: self)
-            return true
-            
-        } catch(let error) {
-            Logger.error(error.localizedDescription)
-            owsFailDebug("saveWalletCredentials failure")
-            return false
-        }
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        do {
+//            let jsonData = try JSONEncoder().encode(walletCredentials)
+//            try CurrentAppContext().keychainStorage().set(data: jsonData, service: "Wallet", key: "Credentials")
+//            NotificationCenter.default.post(name: WalletModel.walletCredentionalsNeedUpdate, object: self)
+//            return true
+//
+//        } catch(let error) {
+//            //Logger.error(error.localizedDescription)
+//            //owsFailDebug("saveWalletCredentials failure")
+//            return false
+//        }
+        return true
     }
     
     static func resetPin(walletId: String) -> Bool {

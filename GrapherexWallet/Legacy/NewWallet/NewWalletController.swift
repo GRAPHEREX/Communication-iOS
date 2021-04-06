@@ -3,6 +3,7 @@
 // 
 
 import Foundation
+import PureLayout
 
 final public class NewWalletController: ActionSheetController {
     
@@ -72,14 +73,14 @@ extension NewWalletController: UITextFieldDelegate {
         
         infoLabel.numberOfLines = 0
         infoLabel.textAlignment = .center
-        infoLabel.textColor = Theme.secondaryTextAndIconColor
+        infoLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         infoLabel.text = NSLocalizedString("WALLET_NEW_WALLET_VALIDATION_INFO", comment: "")
-        infoLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
+        infoLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         
         errorLabel.textAlignment = .center
-        errorLabel.textColor = .st_otherRed
+        errorLabel.textColor = .stwlt_otherRed
         errorLabel.isHidden = true
-        errorLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 14).ows_semibold
+        errorLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14).wlt_semibold
         
         stackView.addArrangedSubview(errorLabel)
         stackView.addArrangedSubview(infoLabel)
@@ -99,7 +100,7 @@ extension NewWalletController: UITextFieldDelegate {
             currencyTextField
         ])
         
-        currencyImageView.setContentHuggingHorizontalHigh()
+        currencyImageView.wltSetContentHuggingHorizontalHigh()
         currencyImageView.isHidden = true
         self.stackView.addArrangedSubview(currencyStack)
         currencyStack.autoSetDimension(.height, toSize: 40)
@@ -123,13 +124,13 @@ extension NewWalletController: UITextFieldDelegate {
         let backgroundView = UIView()
         backgroundView.addSubview(textField)
 
-        textField.autoPinLeading(toEdgeOf: backgroundView, offset: 8)
-        textField.autoPinTrailing(toEdgeOf: backgroundView, offset: -8)
+        textField.wltAutoPinLeading(toEdgeOf: backgroundView, offset: 8)
+        textField.wltAutoPinTrailing(toEdgeOf: backgroundView, offset: -8)
         textField.autoPinEdge(.top, to: .top, of: backgroundView, withOffset: 8)
         textField.autoPinEdge(.bottom, to: .bottom, of: backgroundView, withOffset: -8)
         backgroundView.autoSetDimension(.height, toSize: 36)
 
-        backgroundView.backgroundColor = Theme.walletBubbleColor
+        backgroundView.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.walletBubbleColor
         backgroundView.layer.cornerRadius = 12
         
         let stack = UIStackView(arrangedSubviews: [
@@ -144,8 +145,8 @@ extension NewWalletController: UITextFieldDelegate {
         
         titleLabel.autoSetDimension(.width, toSize: 72)
         titleLabel.text = titleText
-        titleLabel.textColor = Theme.primaryTextColor
-        titleLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 14).ows_semibold
+        titleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        titleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14).wlt_semibold
         
         return titleLabel
     }
@@ -153,8 +154,8 @@ extension NewWalletController: UITextFieldDelegate {
     private func textField(textField: UITextField, placeholder: String) -> UITextField {
         textField.autocorrectionType = .no
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        textField.textColor = Theme.primaryTextColor
-        textField.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
+        textField.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        textField.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         textField.placeholder = placeholder
         
         return textField
@@ -219,24 +220,24 @@ extension NewWalletController: UITextFieldDelegate {
         errorLabel.text = ""
         
         if (newTextField.text != confirmTextField.text) {
-            newTitleLabel.textColor = .st_otherRed
-            confirmTitleLabel.textColor = .st_otherRed
+            newTitleLabel.textColor = .stwlt_otherRed
+            confirmTitleLabel.textColor = .stwlt_otherRed
             errorLabel.text = "Passwords do not match"
         } else if !isValidPassword(password: newTextField.text!) {
-            newTitleLabel.textColor = .st_otherRed
-            confirmTitleLabel.textColor = .st_otherRed
-            self.infoLabel.textColor = .st_otherRed
+            newTitleLabel.textColor = .stwlt_otherRed
+            confirmTitleLabel.textColor = .stwlt_otherRed
+            self.infoLabel.textColor = .stwlt_otherRed
             return false
         } else {
-            newTitleLabel.textColor = Theme.primaryTextColor
-            confirmTitleLabel.textColor = Theme.primaryTextColor
+            newTitleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+            confirmTitleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         }
         
         if currencyTextField.text?.isEmpty != false {
-            currencyTitleLabel.textColor = .st_otherRed
+            currencyTitleLabel.textColor = .stwlt_otherRed
             errorLabel.text = "Choose currency"
         } else {
-            currencyTitleLabel.textColor = Theme.primaryTextColor
+            currencyTitleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         }
         
         let isValid = errorLabel.text?.isEmpty == true
@@ -249,13 +250,13 @@ extension NewWalletController: UITextFieldDelegate {
     func textFieldDidChange(sender: UITextField) {
         if sender === currencyTextField {
             currencyIsValid = currencyTextField.text?.isEmpty != true
-            currencyTitleLabel.textColor = Theme.primaryTextColor
+            currencyTitleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         } else if sender === newTextField || sender === confirmTextField {
-            newTitleLabel.textColor = Theme.primaryTextColor
-            confirmTitleLabel.textColor = Theme.primaryTextColor
+            newTitleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+            confirmTitleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
             passwordIsValid = newTextField.text?.isEmpty == false
             confirmIsValid = confirmTextField.text?.isEmpty == false
-            infoLabel.textColor = Theme.secondaryTextAndIconColor
+            infoLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
         }
     }
     

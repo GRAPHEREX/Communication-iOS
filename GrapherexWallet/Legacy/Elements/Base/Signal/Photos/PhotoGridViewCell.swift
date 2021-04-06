@@ -2,6 +2,8 @@
 //  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
 //
 
+import PureLayout
+
 public enum PhotoGridItemType {
     case photo, animated, video
 }
@@ -16,7 +18,9 @@ public class PhotoGridViewCell: UICollectionViewCell {
     static let reuseIdentifier = "PhotoGridViewCell"
     
     private let unselectedBadgeView: UIView = {
-        let view = CircleView()
+        // MARK: - SINGAL DEPENDENCY – reimplement
+        let view = UIView()
+//        let view = CircleView()
         view.backgroundColor = .clear
         view.layer.borderWidth = 0.5
         view.layer.borderColor = UIColor.white.cgColor
@@ -81,14 +85,16 @@ public class PhotoGridViewCell: UICollectionViewCell {
     private let highlightedMaskView: UIView = {
         let view = UIView()
         view.alpha = 0.2
-        view.backgroundColor = Theme.darkThemePrimaryColor
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.darkThemePrimaryColor
         view.isHidden = true
         return view
     }()
     private let selectedMaskView: UIView = {
         let view = UIView()
         view.alpha = 0.3
-        view.backgroundColor = Theme.darkThemeBackgroundColor
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        view.backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.darkThemeBackgroundColor
         view.isHidden = true
         return view
     }()
@@ -98,7 +104,9 @@ public class PhotoGridViewCell: UICollectionViewCell {
     private static let videoBadgeImage = #imageLiteral(resourceName: "ic_gallery_badge_video")
     private static let animatedBadgeImage = #imageLiteral(resourceName: "ic_gallery_badge_gif")
     private static let selectedBadgeImage = #imageLiteral(resourceName: "image_editor_checkmark_full").withRenderingMode(.alwaysTemplate)
-    public var loadingColor = Theme.washColor
+    // MARK: - SINGAL DEPENDENCY – reimplement
+    public var loadingColor = UIColor.white
+        //Theme.washColor
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -136,7 +144,8 @@ public class PhotoGridViewCell: UICollectionViewCell {
     
     @available(*, unavailable, message: "Unimplemented")
     required public init?(coder aDecoder: NSCoder) {
-        notImplemented()
+        //notImplemented()
+        fatalError()
     }
     
     var image: UIImage? {
@@ -175,7 +184,7 @@ public class PhotoGridViewCell: UICollectionViewCell {
             }
             
             if image == nil {
-                Logger.debug("image == nil")
+//                //Logger.debug("image == nil")
             }
             self.image = image
         }

@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import PureLayout
 
 final class WalletPickerView: UIView {
     typealias FinishHandler = (Wallet) -> Void
@@ -19,14 +20,14 @@ final class WalletPickerView: UIView {
     
     private let titleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.st_sfUiTextSemiboldFont(withSize: 17).ows_semibold
+        view.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 17).wlt_semibold
         return view
     }()
     
     private let balanceLabel: UILabel = {
         let view = UILabel()
-        view.textColor = Theme.secondaryTextAndIconColor
-        view.font = .st_sfUiTextRegularFont(withSize: 15)
+        view.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
+        view.font = .stwlt_sfUiTextRegularFont(withSize: 15)
         return view
     }()
     
@@ -37,7 +38,7 @@ final class WalletPickerView: UIView {
     
     private let changesLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.st_sfUiTextSemiboldFont(withSize: 12)
+        view.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 12)
         return view
     }()
     
@@ -66,27 +67,27 @@ fileprivate extension WalletPickerView {
         let currencyBalance: String = wallet.fiatCurrency + " " + wallet.fiatBalance
         currencyBalanceLabel.attributedText = currencyBalance.decorate(
             primaryAttributes: [
-                .font: UIFont.ows_regularFont(withSize: 14),
-                .foregroundColor: Theme.primaryTextColor
+                .font: UIFont.wlt_regularFont(withSize: 14),
+                .foregroundColor: UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/
             ],
             secondaryAttributes: [
-                .font: UIFont.ows_regularFont(withSize: 14),
-                .foregroundColor: Theme.primaryTextColor
+                .font: UIFont.wlt_regularFont(withSize: 14),
+                .foregroundColor: UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/
             ]
         )
     }
     
     func setup() {
-        backgroundColor = Theme.backgroundColor
+        backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
         self.layoutMargins = .zero
         
         // Image
         addSubview(mainImage)
-        mainImage.autoVCenterInSuperview()
+        mainImage.wltAutoVCenterInSuperview()
         mainImage.autoSetDimensions(to: .init(width: 48, height: 48))
-        mainImage.autoPinTopToSuperviewMargin()
-        mainImage.autoPinBottomToSuperviewMargin()
-        mainImage.autoPinLeadingToSuperviewMargin()
+        mainImage.wltAutoPinTopToSuperviewMargin()
+        mainImage.wltAutoPinBottomToSuperviewMargin()
+        mainImage.wltAutoPinLeadingToSuperviewMargin()
         
         let stack = UIStackView(arrangedSubviews: [
             titleLabel,
@@ -96,15 +97,15 @@ fileprivate extension WalletPickerView {
         addSubview(stack)
         stack.autoPinEdge(.top, to: .top, of: mainImage, withOffset: 5)
         stack.autoPinEdge(.bottom, to: .bottom, of: mainImage, withOffset: -5)
-        stack.autoVCenterInSuperview()
+        stack.wltAutoVCenterInSuperview()
         stack.autoPinEdge(.leading, to: .trailing, of: mainImage, withOffset: 8)
 
         // Currency Balance
         addSubview(currencyBalanceLabel)
-        currencyBalanceLabel.autoVCenterInSuperview()
+        currencyBalanceLabel.wltAutoVCenterInSuperview()
         currencyBalanceLabel.autoPinEdge(.leading, to: .trailing, of: stack, withOffset: 8, relation: .greaterThanOrEqual)
-        currencyBalanceLabel.autoPinTrailingToSuperviewMargin()
-        currencyBalanceLabel.setCompressionResistanceHorizontalHigh()
+        currencyBalanceLabel.wltAutoPinTrailingToSuperviewMargin()
+        currencyBalanceLabel.wltSetCompressionResistanceHorizontalHigh()
         
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap)))
     }

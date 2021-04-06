@@ -36,8 +36,8 @@ final class WalletHeaderView: BaseView {
     
     internal let amountLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.st_sfUiTextSemiboldFont(withSize: 18)
-        label.textColor = Theme.primaryTextColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 18)
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         return label
     }()
     
@@ -105,16 +105,16 @@ internal extension WalletHeaderView {
         imageView.sd_setImage(with: URL(string: props.currency.icon), completed: nil)
         currencyAmountLabel.attributedText = props.currencyAmount.decorate(
             primaryAttributes: [
-                .font: UIFont.st_sfUiTextRegularFont(withSize: 16),
-                .foregroundColor: Theme.primaryTextColor
+                .font: UIFont.systemFont(ofSize: 16), //UIFont.stwlt_sfUiTextRegularFont(withSize: 16),
+                .foregroundColor: UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/
             ],
             secondaryAttributes: [
-                .font: UIFont.st_sfUiTextRegularFont(withSize: 16),
-                .foregroundColor: Theme.primaryTextColor
+                .font: UIFont.systemFont(ofSize: 16), //UIFont.stwlt_sfUiTextRegularFont(withSize: 16),
+                .foregroundColor: UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/
             ]
         )
         amountLabel.text = props.amount
-        amountLabel.textColor = Theme.primaryTextColor
+        amountLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
         optionStack.arrangedSubviews
             .forEach({ $0.removeFromSuperview() })
         for option in props.options {

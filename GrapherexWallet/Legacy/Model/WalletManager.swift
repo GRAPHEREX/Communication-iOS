@@ -459,11 +459,11 @@ class WalletManager {
         networkManager.makeRequest(
             request,
             success: { task, response in
-                //Analytics.logEvent("wallet_set_first_password_success", parameters: nil)
+                //Analytics.logEvent("wallet_set_firstwlt_password_success", parameters: nil)
                 completion(.success(()))
             },
             failure: { task, error in
-                //Analytics.logEvent("wallet_set_first_password_failure", parameters: nil)
+                //Analytics.logEvent("wallet_set_firstwlt_password_failure", parameters: nil)
                 guard let _ = task.response as? HTTPURLResponse else {
                     completion(.failure(OWSErrorMakeUnableToProcessServerResponseError()))
                     return

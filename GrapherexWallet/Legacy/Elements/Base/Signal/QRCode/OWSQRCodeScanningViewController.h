@@ -3,7 +3,6 @@
 //
 
 #import <AVFoundation/AVFoundation.h>
-#import <SignalMessaging/OWSViewController.h>
 #import <UIKit/UIKit.h>
 #import <ZXingObjC/ZXingObjC.h>
 
@@ -21,9 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 #pragma mark -
-
-@interface OWSQRCodeScanningViewController
-    : OWSViewController <AVCaptureMetadataOutputObjectsDelegate, ZXCaptureDelegate>
+// MARK: - SINGAL DEPENDENCY – reimplement
+// WLTViewController -> UIViewController
+@interface OWSQRCodeScanningViewController: UIViewController <AVCaptureMetadataOutputObjectsDelegate, ZXCaptureDelegate>
 
 @property (nonatomic, weak) UIViewController<OWSQRScannerDelegate> *scanDelegate;
 

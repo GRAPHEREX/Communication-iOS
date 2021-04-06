@@ -4,6 +4,7 @@
 
 import Foundation
 
+
 final class SentSucceedCurrencyController: ActionSheetController {
     
     private let finishButton = STPrimaryButton()
@@ -33,7 +34,7 @@ fileprivate extension SentSucceedCurrencyController {
     func setupButton() {
         finishButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         finishButton.setTitle(NSLocalizedString("MAIN_THANK_YOU", comment: ""), for: .normal)
-        finishButton.setContentHuggingVerticalHigh()
+        finishButton.wltSetContentHuggingVerticalHigh()
         stackView.addArrangedSubview(finishButton)
     }
     
@@ -44,12 +45,13 @@ fileprivate extension SentSucceedCurrencyController {
         stackView.addArrangedSubview(topSpacer)
         let imageView = UIImageView(image: #imageLiteral(resourceName: "Success"))
         imageView.contentMode = .scaleAspectFit
-        imageView.setContentHuggingVerticalHigh()
+        imageView.wltSetContentHuggingVerticalHigh()
         stackView.addArrangedSubview(imageView)
         
         let titleLabel = UILabel()
-        titleLabel.textColor = Theme.primaryTextColor
-        titleLabel.font = UIFont.st_robotoRegularFont(withSize: 18).ows_semibold
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        titleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+//        titleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 18).wlt_semibold
         titleLabel.textAlignment = .center
         titleLabel.text = NSLocalizedString("SENT_SUCCEED_TITLE", comment: "")
         stackView.addArrangedSubview(titleLabel)
@@ -57,8 +59,8 @@ fileprivate extension SentSucceedCurrencyController {
         let subtitleLabel = UILabel()
         subtitleLabel.textAlignment = .center
         subtitleLabel.text = sentMoneyInfo
-        subtitleLabel.textColor = Theme.secondaryTextAndIconColor
-        subtitleLabel.font = UIFont.st_robotoRegularFont(withSize: 14)
+//        subtitleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
+//        subtitleLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 14)
         
         stackView.addArrangedSubview(subtitleLabel)
         stackView.addArrangedSubview(bottomSpacer)

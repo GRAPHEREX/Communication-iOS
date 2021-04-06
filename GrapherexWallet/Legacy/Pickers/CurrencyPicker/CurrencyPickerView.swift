@@ -3,6 +3,7 @@
 // 
 
 import Foundation
+import PureLayout
 
 final class CurrencyPickerView: BaseView {
     typealias FinishHandler = (Currency) -> Void
@@ -11,8 +12,8 @@ final class CurrencyPickerView: BaseView {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Theme.primaryTextColor
-        label.font = UIFont.st_sfUiTextRegularFont(withSize: 14)
+        label.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
+        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         return label
     }()
     
@@ -28,12 +29,13 @@ final class CurrencyPickerView: BaseView {
         addSubview(imageView)
         addSubview(nameLabel)
         imageView.autoSetDimensions(to: .init(width: 32, height: 32))
-        imageView.autoVCenterInSuperview()
-        imageView.autoPinLeading(toEdgeOf: self)
+        // MARK: - SINGAL DEPENDENCY – reimplement
+//        imageView.wltAutoVCenterInSuperview()
+//        imageView.wltAutoPinLeading(toEdgeOf: self)
         
-        nameLabel.autoVCenterInSuperview()
-        nameLabel.autoPinLeading(toTrailingEdgeOf: imageView, offset: 8)
-        nameLabel.autoPinTrailingToSuperviewMargin()
+//        nameLabel.wltAutoVCenterInSuperview()
+//        nameLabel.wltAutoPinLeading(toTrailingEdgeOf: imageView, offset: 8)
+//        nameLabel.wltAutoPinTrailingToSuperviewMargin()
 
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap)))
     }
