@@ -454,7 +454,7 @@ public class OWSUserProfileCursor: NSObject {
             return nil
         }
         let value = try OWSUserProfile.fromRecord(record)
-        SSKEnvironment.shared.modelReadCaches.userProfileReadCache.didReadUserProfile(value, transaction: transaction.asAnyRead)
+        Self.modelReadCaches.userProfileReadCache.didReadUserProfile(value, transaction: transaction.asAnyRead)
         return value
     }
 
@@ -499,8 +499,6 @@ public extension OWSUserProfile {
         assert(uniqueId.count > 0)
 
         switch transaction.readTransaction {
-        case .yapRead(let ydbTransaction):
-            return OWSUserProfile.ydb_fetch(uniqueId: uniqueId, transaction: ydbTransaction)
         case .grdbRead(let grdbTransaction):
             let sql = "SELECT * FROM \(UserProfileRecord.databaseTableName) WHERE \(userProfileColumn: .uniqueId) = ?"
             return grdbFetchOne(sql: sql, arguments: [uniqueId], transaction: grdbTransaction)
@@ -531,14 +529,6 @@ public extension OWSUserProfile {
                             batchSize: UInt,
                             block: @escaping (OWSUserProfile, UnsafeMutablePointer<ObjCBool>) -> Void) {
         switch transaction.readTransaction {
-        case .yapRead(let ydbTransaction):
-            OWSUserProfile.ydb_enumerateCollectionObjects(with: ydbTransaction) { (object, stop) in
-                guard let value = object as? OWSUserProfile else {
-                    owsFailDebug("unexpected object: \(type(of: object))")
-                    return
-                }
-                block(value, stop)
-            }
         case .grdbRead(let grdbTransaction):
             do {
                 let cursor = OWSUserProfile.grdbFetchCursor(transaction: grdbTransaction)
@@ -580,10 +570,6 @@ public extension OWSUserProfile {
                                      batchSize: UInt,
                                      block: @escaping (String, UnsafeMutablePointer<ObjCBool>) -> Void) {
         switch transaction.readTransaction {
-        case .yapRead(let ydbTransaction):
-            ydbTransaction.enumerateKeys(inCollection: OWSUserProfile.collection()) { (uniqueId, stop) in
-                block(uniqueId, stop)
-            }
         case .grdbRead(let grdbTransaction):
             grdbEnumerateUniqueIds(transaction: grdbTransaction,
                                    sql: """
@@ -615,8 +601,6 @@ public extension OWSUserProfile {
 
     class func anyCount(transaction: SDSAnyReadTransaction) -> UInt {
         switch transaction.readTransaction {
-        case .yapRead(let ydbTransaction):
-            return ydbTransaction.numberOfKeys(inCollection: OWSUserProfile.collection())
         case .grdbRead(let grdbTransaction):
             return UserProfileRecord.ows_fetchCount(grdbTransaction.database)
         }
@@ -626,8 +610,6 @@ public extension OWSUserProfile {
     //          in their anyWillRemove(), anyDidRemove() methods.
     class func anyRemoveAllWithoutInstantation(transaction: SDSAnyWriteTransaction) {
         switch transaction.writeTransaction {
-        case .yapWrite(let ydbTransaction):
-            ydbTransaction.removeAllObjects(inCollection: OWSUserProfile.collection())
         case .grdbWrite(let grdbTransaction):
             do {
                 try UserProfileRecord.deleteAll(grdbTransaction.database)
@@ -676,8 +658,6 @@ public extension OWSUserProfile {
         assert(uniqueId.count > 0)
 
         switch transaction.readTransaction {
-        case .yapRead(let ydbTransaction):
-            return ydbTransaction.hasObject(forKey: uniqueId, inCollection: OWSUserProfile.collection())
         case .grdbRead(let grdbTransaction):
             let sql = "SELECT EXISTS ( SELECT 1 FROM \(UserProfileRecord.databaseTableName) WHERE \(userProfileColumn: .uniqueId) = ? )"
             let arguments: StatementArguments = [uniqueId]
@@ -715,7 +695,7 @@ public extension OWSUserProfile {
             }
 
             let value = try OWSUserProfile.fromRecord(record)
-            SSKEnvironment.shared.modelReadCaches.userProfileReadCache.didReadUserProfile(value, transaction: transaction.asAnyRead)
+            Self.modelReadCaches.userProfileReadCache.didReadUserProfile(value, transaction: transaction.asAnyRead)
             return value
         } catch {
             owsFailDebug("error: \(error)")

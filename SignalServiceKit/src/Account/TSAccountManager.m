@@ -237,43 +237,6 @@ NSString *NSStringForOWSRegistrationState(OWSRegistrationState value)
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-+ (TSAccountManager *)shared
-{
-    OWSAssertDebug(SSKEnvironment.shared.tsAccountManager);
-    
-    return SSKEnvironment.shared.tsAccountManager;
-}
-
-#pragma mark - Dependencies
-
-- (TSNetworkManager *)networkManager
-{
-    OWSAssertDebug(SSKEnvironment.shared.networkManager);
-    
-    return SSKEnvironment.shared.networkManager;
-}
-
-- (id<ProfileManagerProtocol>)profileManager {
-    OWSAssertDebug(SSKEnvironment.shared.profileManager);
-
-    return SSKEnvironment.shared.profileManager;
-}
-
-- (SDSDatabaseStorage *)databaseStorage
-{
-    return SDSDatabaseStorage.shared;
-}
-
-- (SSKSessionStore *)sessionStore
-{
-    return SSKEnvironment.shared.sessionStore;
-}
-
-- (id<OWSUDManager>)udManager
-{
-    return SSKEnvironment.shared.udManager;
-}
-
 #pragma mark -
 
 - (void)warmCaches
@@ -417,6 +380,9 @@ NSString *NSStringForOWSRegistrationState(OWSRegistrationState value)
     DatabaseStorageWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
         [self storeLocalNumber:phoneNumber uuid:uuid transaction:transaction];
     });
+
+    // Clear this flag so we don't show the "dropped ydb" ui during future re-registrations.
+    [SSKPreferences setDidDropYdb:NO];
 
     [self postRegistrationStateDidChangeNotification];
 }
@@ -1017,8 +983,7 @@ NSString *NSStringForOWSRegistrationState(OWSRegistrationState value)
 
 - (void)registerForTestsWithLocalNumber:(NSString *)localNumber uuid:(NSUUID *)uuid
 {
-    OWSAssertDebug(
-        SSKFeatureFlags.storageMode == StorageModeYdbTests || SSKFeatureFlags.storageMode == StorageModeGrdbTests);
+    OWSAssertDebug(SSKFeatureFlags.storageMode == StorageModeGrdbTests);
     OWSAssertDebug(CurrentAppContext().isRunningTests);
     OWSAssertDebug(localNumber.length > 0);
     OWSAssertDebug(uuid != nil);

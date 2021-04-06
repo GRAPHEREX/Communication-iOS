@@ -8,26 +8,37 @@ import GRDB
 @objc
 public class GRDBDatabaseStorageAdapter: NSObject {
 
-    // MARK: - Dependencies
+    // 256 bit key + 128 bit salt
+    public static let kSQLCipherKeySpecLength: UInt = 48
 
-    private var databaseStorage: SDSDatabaseStorage {
-        return SDSDatabaseStorage.shared
+    @objc
+    public enum DirectoryMode: Int {
+        case primary
+        case hotswap
+
+        var folderName: String {
+            switch self {
+            case .primary: return "grdb"
+            case .hotswap: return "grdb-hotswap"
+            }
+        }
     }
 
-    private var storageCoordinator: StorageCoordinator {
-        return SSKEnvironment.shared.storageCoordinator
+    @objc
+    public static func databaseDirUrl(baseDir: URL, directoryMode: DirectoryMode = .primary) -> URL {
+        return baseDir.appendingPathComponent(directoryMode.folderName, isDirectory: true)
     }
 
-    // MARK: -
-
-    static func databaseDirUrl(baseDir: URL) -> URL {
-        return baseDir.appendingPathComponent("grdb", isDirectory: true)
-    }
-
-    static func databaseFileUrl(baseDir: URL) -> URL {
-        let databaseDir = databaseDirUrl(baseDir: baseDir)
+    public static func databaseFileUrl(baseDir: URL, directoryMode: DirectoryMode = .primary) -> URL {
+        let databaseDir = databaseDirUrl(baseDir: baseDir, directoryMode: directoryMode)
         OWSFileSystem.ensureDirectoryExists(databaseDir.path)
         return databaseDir.appendingPathComponent("signal.sqlite", isDirectory: false)
+    }
+
+    public static func databaseWalUrl(baseDir: URL, directoryMode: DirectoryMode = .primary) -> URL {
+        let databaseDir = databaseDirUrl(baseDir: baseDir, directoryMode: directoryMode)
+        OWSFileSystem.ensureDirectoryExists(databaseDir.path)
+        return databaseDir.appendingPathComponent("signal.sqlite-wal", isDirectory: false)
     }
 
     private let databaseUrl: URL
@@ -38,8 +49,8 @@ public class GRDBDatabaseStorageAdapter: NSObject {
         return storage.pool
     }
 
-    init(baseDir: URL) {
-        databaseUrl = GRDBDatabaseStorageAdapter.databaseFileUrl(baseDir: baseDir)
+    init(baseDir: URL, directoryMode: DirectoryMode = .primary) {
+        databaseUrl = GRDBDatabaseStorageAdapter.databaseFileUrl(baseDir: baseDir, directoryMode: directoryMode)
 
         do {
             // Crash if keychain is inaccessible.
@@ -211,7 +222,6 @@ public class GRDBDatabaseStorageAdapter: NSObject {
         //
         // * This is a new install so there's no existing password to retrieve.
         // * The keychain has become corrupt.
-        // * We are about to do a ydb-to-grdb migration.
         let databaseUrl = GRDBDatabaseStorageAdapter.databaseFileUrl(baseDir: baseDir)
         let doesDBExist = FileManager.default.fileExists(atPath: databaseUrl.path)
         if doesDBExist {
@@ -245,6 +255,19 @@ public class GRDBDatabaseStorageAdapter: NSObject {
             owsFailDebug("Could not clear keychain: \(error)")
         }
     }
+
+    static func prepareDatabase(db: Database, keyspec: GRDBKeySpecSource, name: String? = nil) throws {
+        let prefix: String
+        if let name = name, !name.isEmpty {
+            prefix = name + "."
+        } else {
+            prefix = ""
+        }
+
+        let keyspec = try keyspec.fetchString()
+        try db.execute(sql: "PRAGMA \(prefix)key = \"\(keyspec)\"")
+        try db.execute(sql: "PRAGMA \(prefix)cipher_plaintext_header_size = 32")
+    }
 }
 
 // MARK: -
@@ -269,28 +292,8 @@ extension GRDBDatabaseStorageAdapter: SDSDatabaseStorageAdapter {
     }
     #endif
 
-    private func assertCanRead() {
-        if !databaseStorage.canReadFromGrdb {
-            Logger.error("storageMode: \(FeatureFlags.storageModeDescription).")
-            Logger.error(
-                "StorageCoordinatorState: \(NSStringFromStorageCoordinatorState(storageCoordinator.state)).")
-            Logger.error(
-                "dataStoreForUI: \(NSStringForDataStore(StorageCoordinator.dataStoreForUI)).")
-
-            switch FeatureFlags.storageModeStrictness {
-            case .fail:
-                owsFail("Unexpected GRDB read.")
-            case .failDebug:
-                owsFailDebug("Unexpected GRDB read.")
-            case .log:
-                Logger.error("Unexpected GRDB read.")
-            }
-        }
-    }
-
     // TODO readThrows/writeThrows flavors
     public func uiReadThrows(block: (GRDBReadTransaction) throws -> Void) rethrows {
-        assertCanRead()
 
         #if TESTABLE_BUILD
         owsAssertDebug(Self.canOpenTransaction)
@@ -316,7 +319,6 @@ extension GRDBDatabaseStorageAdapter: SDSDatabaseStorageAdapter {
 
     @discardableResult
     public func read<T>(block: (GRDBReadTransaction) throws -> T) throws -> T {
-        assertCanRead()
 
         #if TESTABLE_BUILD
         owsAssertDebug(Self.canOpenTransaction)
@@ -359,7 +361,6 @@ extension GRDBDatabaseStorageAdapter: SDSDatabaseStorageAdapter {
 
     @objc
     public func uiRead(block: (GRDBReadTransaction) -> Void) throws {
-        assertCanRead()
         AssertIsOnMainThread()
 
         #if TESTABLE_BUILD
@@ -390,7 +391,6 @@ extension GRDBDatabaseStorageAdapter: SDSDatabaseStorageAdapter {
 
     @objc
     public func read(block: (GRDBReadTransaction) -> Void) throws {
-        assertCanRead()
 
         #if TESTABLE_BUILD
         owsAssertDebug(Self.canOpenTransaction)
@@ -412,28 +412,8 @@ extension GRDBDatabaseStorageAdapter: SDSDatabaseStorageAdapter {
         }
     }
 
-    private func assertCanWrite() {
-        if !databaseStorage.canWriteToGrdb {
-            Logger.error("storageMode: \(FeatureFlags.storageModeDescription).")
-            Logger.error(
-                "StorageCoordinatorState: \(NSStringFromStorageCoordinatorState(storageCoordinator.state)).")
-            Logger.error(
-                "dataStoreForUI: \(NSStringForDataStore(StorageCoordinator.dataStoreForUI)).")
-
-            switch FeatureFlags.storageModeStrictness {
-            case .fail:
-                owsFail("Unexpected GRDB write.")
-            case .failDebug:
-                owsFailDebug("Unexpected GRDB write.")
-            case .log:
-                Logger.error("Unexpected GRDB write.")
-            }
-        }
-    }
-
     @objc
     public func write(block: (GRDBWriteTransaction) -> Void) throws {
-        assertCanWrite()
 
         #if TESTABLE_BUILD
         owsAssertDebug(Self.canOpenTransaction)
@@ -564,10 +544,8 @@ private struct GRDBStorage {
                 return true
             }
         })
-        configuration.prepareDatabase = { (db: Database) in
-            let keyspec = try keyspec.fetchString()
-            try db.execute(sql: "PRAGMA key = \"\(keyspec)\"")
-            try db.execute(sql: "PRAGMA cipher_plaintext_header_size = 32")
+        configuration.prepareDatabase = { db in
+            try GRDBDatabaseStorageAdapter.prepareDatabase(db: db, keyspec: keyspec)
         }
         configuration.defaultTransactionKind = .immediate
         configuration.allowsUnsafeTransactions = true
@@ -578,8 +556,10 @@ private struct GRDBStorage {
 // MARK: -
 
 public struct GRDBKeySpecSource {
-    // 256 bit key + 128 bit salt
-    private let kSQLCipherKeySpecLength: UInt = 48
+
+    private var kSQLCipherKeySpecLength: UInt {
+        GRDBDatabaseStorageAdapter.kSQLCipherKeySpecLength
+    }
 
     let keyServiceName: String
     let keyName: String

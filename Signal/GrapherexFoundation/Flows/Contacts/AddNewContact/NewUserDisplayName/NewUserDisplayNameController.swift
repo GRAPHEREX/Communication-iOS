@@ -97,7 +97,7 @@ final class NewUserDisplayNameController: UIViewController, UITextFieldDelegate,
             return
         }
         
-        if OWSProfileManager.shared().isProfileNameTooLong(normalizedGivenName) {
+        if OWSProfileManager.shared.isProfileNameTooLong(normalizedGivenName) {
             OWSActionSheets.showErrorAlert(
                 message: NSLocalizedString("PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG",
                                            comment: "Error message shown when user tries to update profile with a given name that is too long.")
@@ -113,7 +113,7 @@ final class NewUserDisplayNameController: UIViewController, UITextFieldDelegate,
                     signalAccount.anyUpdate(transaction: transaction, block: { signalAcc in
                         signalAcc.isDeleted = false
                     })
-                    self.contactsManager.update(signalAccount)
+                    self.contactsManagerImpl.update(signalAccount)
                 } else { }
             } else {
                 let signalAccount = SignalAccount(address: .init(uuid: self.uuid))
@@ -131,10 +131,10 @@ final class NewUserDisplayNameController: UIViewController, UITextFieldDelegate,
                     imageDataToHash: nil)
                 signalAccount.contact = contact
                 signalAccount.anyInsert(transaction: transaction)
-                self.contactsManager.update(signalAccount)
+                self.contactsManagerImpl.update(signalAccount)
             }
         })
-        contactsManager.userRequestedSystemContactsRefresh()
+        contactsManagerImpl.userRequestedSystemContactsRefresh()
         navigationController?.popToRootViewController(animated: true)
     }
     

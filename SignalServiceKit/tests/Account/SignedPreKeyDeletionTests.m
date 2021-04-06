@@ -1,13 +1,13 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "SSKBaseTestObjC.h"
 #import "SSKSignedPreKeyStore.h"
 #import "TSPreKeyManager.h"
-#import <AxolotlKit/SignedPrekeyRecord.h>
 #import <SignalServiceKit/SDSDatabaseStorage+Objc.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/SignedPrekeyRecord.h>
 
 @interface TSPreKeyManager (Testing)
 
@@ -31,15 +31,6 @@
 
 @implementation SSKSignedPreKeyStore (Tests)
 
-#pragma mark - Dependencies
-
-- (SDSDatabaseStorage *)databaseStorage
-{
-    return SDSDatabaseStorage.shared;
-}
-
-#pragma mark -
-
 - (nullable SignedPreKeyRecord *)loadSignedPreKey:(int)signedPreKeyId
 {
     __block SignedPreKeyRecord *_Nullable result;
@@ -55,26 +46,12 @@
 
 @implementation SignedPreKeyDeletionTests
 
-#pragma mark - Dependencies
-
-- (SDSDatabaseStorage *)databaseStorage
-{
-    return SDSDatabaseStorage.shared;
-}
-
-#pragma mark -
-
 - (void)setUp {
     [super setUp];
 }
 
 - (void)tearDown {
     [super tearDown];
-}
-
-- (SSKSignedPreKeyStore *)signedPreKeyStore
-{
-    return SSKEnvironment.shared.signedPreKeyStore;
 }
 
 - (NSUInteger)signedPreKeyCount

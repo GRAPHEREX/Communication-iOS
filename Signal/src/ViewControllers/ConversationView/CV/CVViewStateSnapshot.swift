@@ -7,18 +7,10 @@ import PromiseKit
 
 // This captures the CV view state that can affect the load.
 // It is used when building, measuring & configuring components and their views.
-struct CVViewStateSnapshot {
-
-    // MARK: - Dependencies
-
-    private static var callService: CallService {
-        return AppEnvironment.shared.callService
-    }
-
-    // MARK: -
+struct CVViewStateSnapshot: Dependencies {
 
     let textExpansion: CVTextExpansion
-    let swipeToReplyState: CVSwipeToReplyState
+    let messageSwipeActionState: CVMessageSwipeActionState
 
     // We can only measure (configure) with a given ConversationStyle.
     // So we need to capture the ConversationStyle at the time the
@@ -35,7 +27,6 @@ struct CVViewStateSnapshot {
     let typingIndicatorsSender: SignalServiceAddress?
 
     let isShowingSelectionUI: Bool
-    let wasShowingSelectionUI: Bool
 
     let searchText: String?
 
@@ -45,14 +36,12 @@ struct CVViewStateSnapshot {
 
     static func snapshot(viewState: CVViewState,
                          typingIndicatorsSender: SignalServiceAddress?,
-                         hasClearedUnreadMessagesIndicator: Bool,
-                         wasShowingSelectionUI: Bool) -> CVViewStateSnapshot {
+                         hasClearedUnreadMessagesIndicator: Bool) -> CVViewStateSnapshot {
         CVViewStateSnapshot(textExpansion: viewState.textExpansion.copy(),
-                            swipeToReplyState: viewState.swipeToReplyState.copy(),
+                            messageSwipeActionState: viewState.messageSwipeActionState.copy(),
                             coreState: viewState.asCoreState,
                             typingIndicatorsSender: typingIndicatorsSender,
                             isShowingSelectionUI: viewState.isShowingSelectionUI,
-                            wasShowingSelectionUI: wasShowingSelectionUI,
                             searchText: viewState.lastSearchedText,
                             hasClearedUnreadMessagesIndicator: hasClearedUnreadMessagesIndicator,
                             currentCallThreadId: callService.currentCall?.thread.uniqueId)
@@ -60,11 +49,10 @@ struct CVViewStateSnapshot {
 
     static func mockSnapshotForStandaloneItems(coreState: CVCoreState) -> CVViewStateSnapshot {
         CVViewStateSnapshot(textExpansion: CVTextExpansion(),
-                            swipeToReplyState: CVSwipeToReplyState(),
+                            messageSwipeActionState: CVMessageSwipeActionState(),
                             coreState: coreState,
                             typingIndicatorsSender: nil,
                             isShowingSelectionUI: false,
-                            wasShowingSelectionUI: false,
                             searchText: nil,
                             hasClearedUnreadMessagesIndicator: false,
                             currentCallThreadId: nil)

@@ -135,17 +135,19 @@ public extension OWSTableItem {
                      accessibilityIdentifier: String,
                      actionBlock: (() -> Void)? = nil) -> OWSTableItem {
 
-        OWSTableItem(customCellBlock: {
-            OWSTableItem.buildCellWithAccessoryLabel(icon: icon,
-                                                     tintColor: tintColor,
-                                                     itemName: name,
-                                                     textColor: textColor,
-                                                     accessoryText: accessoryText,
-                                                     accessoryType: accessoryType,
-                                                     accessoryImage: accessoryImage,
-                                                     accessibilityIdentifier: accessibilityIdentifier)
-            },
-                     actionBlock: actionBlock)
+        OWSTableItem(
+            customCell: OWSTableItem.buildCellWithAccessoryLabel(
+                icon: icon,
+                tintColor: tintColor,
+                itemName: name,
+                textColor: textColor,
+                accessoryText: accessoryText,
+                accessoryType: accessoryType,
+                accessoryImage: accessoryImage,
+                accessibilityIdentifier: accessibilityIdentifier
+            ),
+            actionBlock: actionBlock
+        )
     }
 
     @available(swift, obsoleted: 1.0)
@@ -188,6 +190,7 @@ public extension OWSTableItem {
                                   itemName: String,
                                   textColor: UIColor? = nil,
                                   accessoryText: String? = nil,
+                                  accessoryTextColor: UIColor? = nil,
                                   accessoryType: UITableViewCell.AccessoryType = .none,
                                   accessoryImage: UIImage? = nil,
                                   customColor: UIColor? = nil,
@@ -244,7 +247,7 @@ public extension OWSTableItem {
         if let accessoryText = accessoryText {
             let accessoryLabel = UILabel()
             accessoryLabel.text = accessoryText
-            accessoryLabel.textColor = Theme.isDarkThemeEnabled ? .ows_gray25 : .ows_gray45
+            accessoryLabel.textColor = accessoryTextColor ?? (Theme.isDarkThemeEnabled ? .ows_gray25 : .ows_gray45)
             accessoryLabel.font = OWSTableItem.accessoryLabelFont
             accessoryLabel.adjustsFontForContentSizeCategory = true
 

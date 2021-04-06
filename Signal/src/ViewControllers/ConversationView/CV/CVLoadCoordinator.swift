@@ -37,26 +37,6 @@ struct CVUpdateToken {
 @objc
 public class CVLoadCoordinator: NSObject {
 
-    // MARK: - Dependencies
-
-    private static var databaseStorage: SDSDatabaseStorage {
-        return .shared
-    }
-
-    private static var profileManager: OWSProfileManager {
-        return .shared()
-    }
-
-    private var typingIndicators: TypingIndicators {
-        return SSKEnvironment.shared.typingIndicators
-    }
-
-    private var callService: CallService {
-        return AppEnvironment.shared.callService
-    }
-
-    // MARK: -
-
     private weak var delegate: CVLoadCoordinatorDelegate?
     private weak var componentDelegate: CVComponentDelegate?
     private weak var messageActionsDelegate: MessageActionsDelegate?
@@ -110,8 +90,7 @@ public class CVLoadCoordinator: NSObject {
 
         let viewStateSnapshot = CVViewStateSnapshot.snapshot(viewState: viewState,
                                                              typingIndicatorsSender: nil,
-                                                             hasClearedUnreadMessagesIndicator: hasClearedUnreadMessagesIndicator,
-                                                             wasShowingSelectionUI: false)
+                                                             hasClearedUnreadMessagesIndicator: hasClearedUnreadMessagesIndicator)
         self.renderState = CVRenderState.defaultRenderState(threadViewModel: threadViewModel,
                                                             viewStateSnapshot: viewStateSnapshot)
 
@@ -460,11 +439,10 @@ public class CVLoadCoordinator: NSObject {
             lastLoadNewerDate = Date()
         }
 
-        let typingIndicatorsSender = typingIndicators.typingAddress(forThread: thread)
+        let typingIndicatorsSender = typingIndicatorsImpl.typingAddress(forThread: thread)
         let viewStateSnapshot = CVViewStateSnapshot.snapshot(viewState: viewState,
                                                              typingIndicatorsSender: typingIndicatorsSender,
-                                                             hasClearedUnreadMessagesIndicator: hasClearedUnreadMessagesIndicator,
-                                                             wasShowingSelectionUI: prevRenderState.viewStateSnapshot.isShowingSelectionUI)
+                                                             hasClearedUnreadMessagesIndicator: hasClearedUnreadMessagesIndicator)
         let loader = CVLoader(threadUniqueId: threadUniqueId,
                               loadRequest: loadRequest,
                               viewStateSnapshot: viewStateSnapshot,
@@ -516,10 +494,6 @@ public class CVLoadCoordinator: NSObject {
 
         let viewState = self.viewState
         func canLandLoad() -> Bool {
-            // We can't land loads while the selction UI is presenting or
-            // dismissing.
-            guard !viewState.isAnimatingSelectionUI else { return false }
-
             // Ensure isUserScrolling is a substate of hasScrollingAnimation.
             if viewState.isUserScrolling {
                 owsAssertDebug(viewState.hasScrollingAnimation)
@@ -687,11 +661,11 @@ extension CVLoadCoordinator: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         let cellSelection = delegate.viewState.cellSelection
-        let swipeToReplyState = delegate.viewState.swipeToReplyState
+        let messageSwipeActionState = delegate.viewState.messageSwipeActionState
         cell.configure(renderItem: renderItem,
                        componentDelegate: componentDelegate,
                        cellSelection: cellSelection,
-                       swipeToReplyState: swipeToReplyState)
+                       messageSwipeActionState: messageSwipeActionState)
         return cell
 
         //        // This must happen after load for display, since the tap
@@ -717,9 +691,9 @@ extension CVLoadCoordinator: UICollectionViewDataSource {
         //            cellName = [NSString stringWithFormat:@"message.sticker.%@", [viewItem.stickerInfo asKey]];
         //        }
         //        cell.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, cellName);
-        //#endif
+        // #endif
         //
-        //return cell;
+        // return cell;
     }
 
     public func collectionView(_ collectionView: UICollectionView,

@@ -28,7 +28,7 @@ final class ContactsMainController: UIViewController, UISearchBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Environment.shared.contactsManager.userRequestedSystemContactsRefresh()
+        contactsManagerImpl.userRequestedSystemContactsRefresh()
         search()
         navigationController?.navigationBar.topItem?.title = NSLocalizedString("CONTACTS_VIEW_TITLE", comment: "")
         navigationItem.rightBarButtonItems = [
@@ -293,7 +293,7 @@ extension ContactsMainController: OWSTableViewControllerSwipeActionsConfiguratio
     }
     
     private func removeContact(at indexPath: IndexPath) {
-        contactsManager.deleteSignalAccount(contacts[indexPath.row])
+        contactsManagerImpl.deleteSignalAccount(contacts[indexPath.row])
         contacts.remove(at: indexPath.row)
         reloadTable()
     }

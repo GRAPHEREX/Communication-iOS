@@ -124,6 +124,8 @@ public enum ThemeIcon: UInt {
     case emojiSymbol
     case emojiTravel
     case emojiRecent
+
+    case sealedSenderIndicator
 }
 
 // MARK: - Colors
@@ -392,6 +394,9 @@ public extension Theme {
             return "emoji-travel-\(isDarkThemeEnabled ? "solid" : "outline")-20"
         case .emojiRecent:
             return "recent-\(isDarkThemeEnabled ? "solid" : "outline")-20"
+
+        case .sealedSenderIndicator:
+            return isDarkThemeEnabled ? "unidentified-delivery-solid-20" : "unidentified-delivery-outline-20"
         }
     }
 }

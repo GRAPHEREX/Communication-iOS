@@ -192,7 +192,7 @@ class NameCollisionResolutionViewController: OWSTableViewController2 {
             }
         }()
 
-        let actions: [NameCollisionActionCell.Action] = {
+        let actions: [NameCollisionCell.Action] = {
             switch (thread: thread, address: model.address, isBlocked: model.isBlocked) {
             case (thread: is TSContactThread, address: flattenedCellModels.first?.address, isBlocked: false):
                 return [
@@ -217,19 +217,18 @@ class NameCollisionResolutionViewController: OWSTableViewController2 {
             }
         }()
 
-        let contactInfoCell = NameCollisionReviewContactCell.createWithModel(model)
-        let section = OWSTableSection(title: header, items: [
-            OWSTableItem(customCell: contactInfoCell)
+        return OWSTableSection(title: header, items: [
+            OWSTableItem(
+                customCell: NameCollisionCell.createWithModel(model, actions: actions),
+                actionBlock: { [weak self] in
+                    guard let self = self else { return }
+                    MemberActionSheet(
+                        address: model.address,
+                        groupViewHelper: self.groupViewHelper
+                    ).present(fromViewController: self)
+                }
+            )
         ])
-
-        if actions.isEmpty {
-            contactInfoCell.isPairedWithActions = false
-        } else {
-            contactInfoCell.isPairedWithActions = true
-            section.add(OWSTableItem(customCell: NameCollisionActionCell(actions: actions)))
-        }
-
-        return section
     }
 
     // MARK: - Resolution Actions
@@ -271,7 +270,7 @@ class NameCollisionResolutionViewController: OWSTableViewController2 {
 
     private func presentContactUpdateSheet(for address: SignalServiceAddress) {
         owsAssertDebug(navigationController != nil)
-        guard contactsManager.supportsContactEditing else {
+        guard contactsManagerImpl.supportsContactEditing else {
             return owsFailDebug("Contact editing unsupported")
         }
         guard let contactVC = contactsViewHelper.contactViewController(for: address, editImmediately: true) else {
@@ -300,7 +299,7 @@ class NameCollisionResolutionViewController: OWSTableViewController2 {
 extension NameCollisionResolutionViewController: CNContactViewControllerDelegate, ContactsViewHelperObserver {
 
     func shouldShowContactUpdateAction(for address: SignalServiceAddress) -> Bool {
-        return contactsManager.isSystemContact(address: address) && contactsManager.supportsContactEditing
+        return contactsManager.isSystemContact(address: address) && contactsManagerImpl.supportsContactEditing
     }
 
     func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {

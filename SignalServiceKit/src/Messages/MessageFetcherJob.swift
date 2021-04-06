@@ -34,20 +34,21 @@ public class MessageFetcherJob: NSObject {
         super.init()
 
         SwiftSingletons.register(self)
-    }
 
-    // MARK: Singletons
-
-    private class var networkManager: TSNetworkManager {
-        return SSKEnvironment.shared.networkManager
-    }
-
-    private class var signalService: OWSSignalService {
-        return OWSSignalService.shared()
-    }
-
-    private class var tsAccountManager: TSAccountManager {
-        return TSAccountManager.shared()
+        if CurrentAppContext().shouldProcessIncomingMessages {
+            AppReadiness.runNowOrWhenAppDidBecomeReadySync {
+                // Fetch messages as soon as possible after launching. In particular, when
+                // launching from the background, without this, we end up waiting some extra
+                // seconds before receiving an actionable push notification.
+                if Self.tsAccountManager.isRegistered {
+                    firstly(on: .global()) {
+                        self.run()
+                    }.catch(on: .global()) { error in
+                        owsFailDebugUnlessNetworkFailure(error)
+                    }
+                }
+            }
+        }
     }
 
     // MARK: -
@@ -244,7 +245,7 @@ public class MessageFetcherJob: NSObject {
             fetchBatchViaRest()
         }.then { (envelopes: [SSKProtoEnvelope], serverDeliveryTimestamp: UInt64, more: Bool) -> Promise<Void> in
 
-            SSKEnvironment.shared.messageProcessor.processEncryptedEnvelopes(
+            Self.messageProcessor.processEncryptedEnvelopes(
                 envelopes: envelopes.compactMap { envelope in
                     do {
                         let envelopeData = try envelope.serializedData()

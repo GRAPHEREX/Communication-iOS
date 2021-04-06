@@ -320,7 +320,7 @@ public class Onboarding2FAViewController_Grapherex: OnboardingBaseViewController
 
             // If we were successful, also mark the user as having a PIN
             if wasSuccessful {
-                OWS2FAManager.shared().markEnabled(pin: pinToUse, transaction: transaction)
+                OWS2FAManager.shared.markEnabled(pin: pinToUse, transaction: transaction)
             }
         }
 

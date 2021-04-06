@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import XCTest
@@ -9,22 +9,8 @@ import XCTest
 
 class GRDBFinderTest: SignalBaseTest {
 
-    // MARK: - Dependencies
-
-    var storageCoordinator: StorageCoordinator {
-        return SSKEnvironment.shared.storageCoordinator
-    }
-
-    var tsAccountManager: TSAccountManager {
-        return SSKEnvironment.shared.tsAccountManager
-    }
-
-    // MARK: -
-
     override func setUp() {
         super.setUp()
-
-        storageCoordinator.useGRDBForTests()
 
         // ensure local client has necessary "registered" state
         let localE164Identifier = "+13235551234"

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -190,9 +190,9 @@ class GroupInviteLinksActionSheet: ActionSheetController {
 
     private func loadLinkPreview() {
         firstly(on: .global()) {
-            self.groupsV2.fetchGroupInviteLinkPreview(inviteLinkPassword: self.groupInviteLinkInfo.inviteLinkPassword,
-                                                      groupSecretParamsData: self.groupV2ContextInfo.groupSecretParamsData,
-                                                      allowCached: false)
+            self.groupsV2Impl.fetchGroupInviteLinkPreview(inviteLinkPassword: self.groupInviteLinkInfo.inviteLinkPassword,
+                                                          groupSecretParamsData: self.groupV2ContextInfo.groupSecretParamsData,
+                                                          allowCached: false)
         }.done { [weak self] (groupInviteLinkPreview: GroupInviteLinkPreview) in
             self?.applyGroupInviteLinkPreview(groupInviteLinkPreview)
 
@@ -211,8 +211,8 @@ class GroupInviteLinksActionSheet: ActionSheetController {
 
     private func loadGroupAvatar(avatarUrlPath: String) {
         firstly(on: .global()) {
-            self.groupsV2.fetchGroupInviteLinkAvatar(avatarUrlPath: avatarUrlPath,
-                                                     groupSecretParamsData: self.groupV2ContextInfo.groupSecretParamsData)
+            self.groupsV2Impl.fetchGroupInviteLinkAvatar(avatarUrlPath: avatarUrlPath,
+                                                         groupSecretParamsData: self.groupV2ContextInfo.groupSecretParamsData)
         }.done { [weak self] (groupAvatar: Data) in
             self?.applyGroupAvatar(groupAvatar)
         }.catch { error in
@@ -319,9 +319,9 @@ class GroupInviteLinksActionSheet: ActionSheetController {
                 }
                 // Kick off a fresh attempt to download the link preview.
                 // We cannot join the group without the preview.
-                return self.groupsV2.fetchGroupInviteLinkPreview(inviteLinkPassword: self.groupInviteLinkInfo.inviteLinkPassword,
-                                                                 groupSecretParamsData: self.groupV2ContextInfo.groupSecretParamsData,
-                                                                 allowCached: false)
+                return self.groupsV2Impl.fetchGroupInviteLinkPreview(inviteLinkPassword: self.groupInviteLinkInfo.inviteLinkPassword,
+                                                                     groupSecretParamsData: self.groupV2ContextInfo.groupSecretParamsData,
+                                                                     allowCached: false)
             }.then(on: .global()) { (groupInviteLinkPreview: GroupInviteLinkPreview) -> Promise<(GroupInviteLinkPreview, Data?)> in
                 guard let avatarUrlPath = groupInviteLinkPreview.avatarUrlPath else {
                     // Group has no avatar.
@@ -332,8 +332,8 @@ class GroupInviteLinksActionSheet: ActionSheetController {
                     return Promise.value((groupInviteLinkPreview, existingAvatarData))
                 }
                 return firstly(on: .global()) {
-                    self.groupsV2.fetchGroupInviteLinkAvatar(avatarUrlPath: avatarUrlPath,
-                                                             groupSecretParamsData: self.groupV2ContextInfo.groupSecretParamsData)
+                    self.groupsV2Impl.fetchGroupInviteLinkAvatar(avatarUrlPath: avatarUrlPath,
+                                                                 groupSecretParamsData: self.groupV2ContextInfo.groupSecretParamsData)
                 }.map(on: .global()) { (groupAvatar: Data) in
                     (groupInviteLinkPreview, groupAvatar)
                 }.recover(on: .global()) { error -> Promise<(GroupInviteLinkPreview, Data?)> in

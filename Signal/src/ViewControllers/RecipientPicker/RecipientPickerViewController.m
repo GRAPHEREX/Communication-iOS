@@ -178,7 +178,7 @@ OWSTableViewControllerDraggingDelegate,
     OWSAssertIsOnMainThread();
     OWSLogInfo(@"beggining refreshing.");
 
-    [self.contactsManager userRequestedSystemContactsRefresh]
+    [self.contactsManagerImpl userRequestedSystemContactsRefresh]
         .then(^{
             if (TSAccountManager.shared.isRegisteredPrimaryDevice) {
                 return [AnyPromise promiseWithValue:nil];
@@ -332,7 +332,7 @@ OWSTableViewControllerDraggingDelegate,
     // Make sure we have requested contact access at this point if, e.g.
     // the user has no messages in their inbox and they choose to compose
     // a message.
-    [self.contactsManager requestSystemContactsOnce];
+    [self.contactsManagerImpl requestSystemContactsOnce];
 
     [self showContactAppropriateViews];
 }
@@ -366,7 +366,7 @@ OWSTableViewControllerDraggingDelegate,
 
     // App is killed and restarted when the user changes their contact permissions, so need need to "observe" anything
     // to re-render this.
-    if (self.contactsManager.isSystemContactsDenied) {
+    if (self.contactsManagerImpl.isSystemContactsDenied) {
         OWSTableItem *contactReminderItem = [OWSTableItem
             itemWithCustomCellBlock:^{
                 UITableViewCell *cell = [OWSTableItem newCell];
@@ -412,31 +412,23 @@ OWSTableViewControllerDraggingDelegate,
 //    if (self.allowsAddByPhoneNumber && !isSearching) {
 //        [staticSection
 //            addItem:[OWSTableItem
-//                        itemWithCustomCellBlock:^{
-//                            NSString *cellName = NSLocalizedString(@"NEW_CONVERSATION_FIND_BY_PHONE_NUMBER",
-//                                @"A label the cell that lets you add a new member to a group.");
-//                            UIView *iconView =
-//                                [OWSTableItem buildIconInCircleViewWithIcon:ThemeIconComposeFindByPhoneNumber
-//                                                              innerIconSize:42];
-//                            UITableViewCell *cell = [OWSTableItem buildCellWithName:cellName
-//                                                                           iconView:iconView
-//                                                                        iconSpacing:kContactCellAvatarTextMargin];
-//                            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//                            cell.accessibilityIdentifier
-//                                = ACCESSIBILITY_IDENTIFIER_WITH_NAME(RecipientPickerViewController, @"find_by_phone");
-//
-//                            return cell;
-//                        }
-//                        actionBlock:^{
-//                            FindByPhoneNumberViewController *viewController = [[FindByPhoneNumberViewController alloc]
-//                                        initWithDelegate:self
-//                                              buttonText:self.findByPhoneNumberButtonTitle
-//                                requiresRegisteredNumber:!self.allowsSelectingUnregisteredPhoneNumbers];
-//                            [weakSelf.navigationController pushViewController:viewController animated:YES];
-//                        }]];
+//                         disclosureItemWithIcon:ThemeIconComposeFindByPhoneNumber
+//                                           name:NSLocalizedString(@"NEW_CONVERSATION_FIND_BY_PHONE_NUMBER",
+//                                                    @"A label the cell that lets you add a new member to a group.")
+//                                  accessoryText:nil
+//                        accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(
+//                                                    RecipientPickerViewController, @"find_by_phone")
+//                                    actionBlock:^{
+//                                        FindByPhoneNumberViewController *viewController =
+//                                            [[FindByPhoneNumberViewController alloc]
+//                                                        initWithDelegate:self
+//                                                              buttonText:self.findByPhoneNumberButtonTitle
+//                                                requiresRegisteredNumber:!self.allowsSelectingUnregisteredPhoneNumbers];
+//                                        [weakSelf.navigationController pushViewController:viewController animated:YES];
+//                                    }]];
 //    }
-
-//    if (self.contactsManager.isSystemContactsAuthorized && self.shouldShowInvites && !isSearching) {
+//
+//    if (self.contactsManagerImpl.isSystemContactsAuthorized && self.shouldShowInvites && !isSearching) {
 //        // Invite Contacts
 //        [staticSection
 //            addItem:[OWSTableItem
@@ -541,7 +533,7 @@ OWSTableViewControllerDraggingDelegate,
         // No Contacts
         OWSTableSection *contactsSection = [OWSTableSection new];
 
-        if (self.contactsManager.isSystemContactsAuthorized) {
+        if (self.contactsManagerImpl.isSystemContactsAuthorized) {
             if (self.contactsViewHelper.hasUpdatedContactsAtLeastOnce) {
 
                 [contactsSection
@@ -672,8 +664,8 @@ OWSTableViewControllerDraggingDelegate,
                 [matchedAccountPhoneNumbers addObject:phoneNumber];
             }
 
-            NSString *_Nullable username = [self.profileManager usernameForAddress:signalAccount.recipientAddress
-                                                                       transaction:transaction];
+            NSString *_Nullable username = [self.profileManagerImpl usernameForAddress:signalAccount.recipientAddress
+                                                                           transaction:transaction];
             if (username) {
                 [matchedAccountUsernames addObject:username];
             }
@@ -866,7 +858,7 @@ OWSTableViewControllerDraggingDelegate,
 
 - (void)showContactAppropriateViews
 {
-    if (self.contactsManager.isSystemContactsAuthorized) {
+    if (self.contactsManagerImpl.isSystemContactsAuthorized) {
         if (self.contactsViewHelper.hasUpdatedContactsAtLeastOnce && self.allSignalAccounts.count < 1
             && ![Environment.shared.preferences hasDeclinedNoContactsView]) {
             self.isNoContactsModeActive = YES;
@@ -997,7 +989,7 @@ OWSTableViewControllerDraggingDelegate,
         presentFromViewController:self
                         canCancel:YES
                   backgroundBlock:^(ModalActivityIndicatorViewController *modal) {
-                      [self.profileManager fetchProfileForUsername:username
+                      [self.profileManagerImpl fetchProfileForUsername:username
                           success:^(SignalServiceAddress *address) {
                               if (modal.wasCancelled) {
                                   return;

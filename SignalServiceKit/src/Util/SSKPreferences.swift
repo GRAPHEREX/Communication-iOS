@@ -6,9 +6,6 @@ import Foundation
 
 @objc
 public class SSKPreferences: NSObject {
-    private static var shared: SSKPreferences {
-        return SSKEnvironment.shared.sskPreferences
-    }
 
     public static let store = SDSKeyValueStore(collection: "SSKPreferences")
 
@@ -33,8 +30,8 @@ public class SSKPreferences: NSObject {
         store.setBool(newValue, key: areLinkPreviewsEnabledKey, transaction: transaction)
 
         if shouldSync {
-            SSKEnvironment.shared.syncManager.sendConfigurationSyncMessage()
-            SSKEnvironment.shared.storageServiceManager.recordPendingLocalAccountUpdates()
+            Self.syncManager.sendConfigurationSyncMessage()
+            Self.storageServiceManager.recordPendingLocalAccountUpdates()
         }
     }
 
@@ -95,26 +92,6 @@ public class SSKPreferences: NSObject {
 
     // MARK: -
 
-    private static let isYdbMigratedKey = "isYdbMigrated1"
-
-    @objc
-    public static func isYdbMigrated() -> Bool {
-        let appUserDefaults = CurrentAppContext().appUserDefaults()
-        guard let preference = appUserDefaults.object(forKey: isYdbMigratedKey) as? NSNumber else {
-            return false
-        }
-        return preference.boolValue
-    }
-
-    @objc
-    public static func setIsYdbMigrated(_ value: Bool) {
-        let appUserDefaults = CurrentAppContext().appUserDefaults()
-        appUserDefaults.set(value, forKey: isYdbMigratedKey)
-        appUserDefaults.synchronize()
-    }
-
-    // MARK: -
-
     private static let didEverUseYdbKey = "didEverUseYdb"
 
     @objc
@@ -130,6 +107,24 @@ public class SSKPreferences: NSObject {
     public static func setDidEverUseYdb(_ value: Bool) {
         let appUserDefaults = CurrentAppContext().appUserDefaults()
         appUserDefaults.set(value, forKey: didEverUseYdbKey)
+        appUserDefaults.synchronize()
+    }
+
+    private static let didDropYdbKey = "didDropYdb"
+
+    @objc
+    public static func didDropYdb() -> Bool {
+        let appUserDefaults = CurrentAppContext().appUserDefaults()
+        guard let preference = appUserDefaults.object(forKey: didDropYdbKey) as? NSNumber else {
+            return false
+        }
+        return preference.boolValue
+    }
+
+    @objc
+    public static func setDidDropYdb(_ value: Bool) {
+        let appUserDefaults = CurrentAppContext().appUserDefaults()
+        appUserDefaults.set(value, forKey: didDropYdbKey)
         appUserDefaults.synchronize()
     }
 
@@ -203,7 +198,7 @@ public class SSKPreferences: NSObject {
 
         if oldValue != value {
             if updateStorageService {
-                SSKEnvironment.shared.storageServiceManager.recordPendingLocalAccountUpdates()
+                Self.storageServiceManager.recordPendingLocalAccountUpdates()
             }
             NotificationCenter.default.postNotificationNameAsync(Self.preferContactAvatarsPreferenceDidChange, object: nil)
         }
@@ -255,5 +250,38 @@ public class SSKPreferences: NSObject {
             return true
         }
         return false
+    }
+
+    // MARK: - Keep Muted Chats Archived
+
+    private static let shouldKeepMutedChatsArchivedKey = "shouldKeepMutedChatsArchived"
+
+    @objc
+    public static func shouldKeepMutedChatsArchived(transaction: SDSAnyReadTransaction) -> Bool {
+        return store.getBool(shouldKeepMutedChatsArchivedKey, defaultValue: false, transaction: transaction)
+    }
+
+    @objc
+    public static func setShouldKeepMutedChatsArchived(_ newValue: Bool, transaction: SDSAnyWriteTransaction) {
+        store.setBool(newValue, key: shouldKeepMutedChatsArchivedKey, transaction: transaction)
+    }
+
+    private static let hasGrdbDatabaseCorruptionKey = "hasGrdbDatabaseCorruption"
+    @objc
+    public static func hasGrdbDatabaseCorruption() -> Bool {
+        let appUserDefaults = CurrentAppContext().appUserDefaults()
+        guard let preference = appUserDefaults.object(forKey: hasGrdbDatabaseCorruptionKey) as? NSNumber else {
+            return false
+        }
+        return preference.boolValue
+    }
+
+    @objc
+    public static func setHasGrdbDatabaseCorruption(_ value: Bool) {
+        if value { Logger.warn("Flagging GRDB database as corrupted.") }
+
+        let appUserDefaults = CurrentAppContext().appUserDefaults()
+        appUserDefaults.set(value, forKey: hasGrdbDatabaseCorruptionKey)
+        appUserDefaults.synchronize()
     }
 }

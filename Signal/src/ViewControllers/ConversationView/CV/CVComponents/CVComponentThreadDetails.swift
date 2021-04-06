@@ -31,7 +31,7 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
                           cellMeasurement: CVCellMeasurement,
                           componentDelegate: CVComponentDelegate,
                           cellSelection: CVCellSelection,
-                          swipeToReplyState: CVSwipeToReplyState,
+                          messageSwipeActionState: CVMessageSwipeActionState,
                           componentView: CVComponentView) {
         owsAssertDebug(cellView.layoutMargins == .zero)
         owsAssertDebug(cellView.subviews.isEmpty)
@@ -199,8 +199,8 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
             if contactThread.isNoteToSelf {
                 return nil
             }
-            return Self.profileManager.profileBioForDisplay(for: contactThread.contactAddress,
-                                                            transaction: transaction)
+            return Self.profileManagerImpl.profileBioForDisplay(for: contactThread.contactAddress,
+                                                                transaction: transaction)
         }()
 
         let detailsText = { () -> String? in
@@ -217,8 +217,8 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
                 }
             }
 
-            if let username = Self.profileManager.username(for: contactThread.contactAddress,
-                                                           transaction: transaction) {
+            if let username = Self.profileManagerImpl.username(for: contactThread.contactAddress,
+                                                               transaction: transaction) {
                 if let formattedUsername = CommonFormats.formatUsername(username), threadName != formattedUsername {
                     if let existingDetails = details {
                         details = existingDetails + "\n" + formattedUsername

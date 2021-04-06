@@ -46,6 +46,7 @@
 #import <SignalCoreKit/SCKExceptionWrapper.h>
 #import <SignalCoreKit/Threading.h>
 #import <SignalMetadataKit/SignalMetadataKit-Swift.h>
+#import <SignalServiceKit/AxolotlExceptions.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import "OWSOutgoingCallMessage.h"
 
@@ -159,15 +160,6 @@ NSError *SSKEnsureError(NSError *_Nullable error, OWSErrorCode fallbackCode, NSS
 #pragma mark -
 
 @implementation OWSSendMessageOperation
-
-#pragma mark - Dependencies
-
-- (SDSDatabaseStorage *)databaseStorage
-{
-    return SDSDatabaseStorage.shared;
-}
-
-#pragma mark -
 
 - (instancetype)initWithMessage:(TSOutgoingMessage *)message
                   messageSender:(MessageSender *)messageSender
@@ -328,78 +320,6 @@ NSString *const MessageSenderRateLimitedException = @"RateLimitedException";
 
     return self;
 }
-
-#pragma mark - Dependencies
-
-- (id<ContactsManagerProtocol>)contactsManager
-{
-    OWSAssertDebug(SSKEnvironment.shared.contactsManager);
-
-    return SSKEnvironment.shared.contactsManager;
-}
-
-- (OWSBlockingManager *)blockingManager
-{
-    OWSAssertDebug(SSKEnvironment.shared.blockingManager);
-
-    return SSKEnvironment.shared.blockingManager;
-}
-
-- (TSNetworkManager *)networkManager
-{
-    OWSAssertDebug(SSKEnvironment.shared.networkManager);
-
-    return SSKEnvironment.shared.networkManager;
-}
-
-- (id<OWSUDManager>)udManager
-{
-    OWSAssertDebug(SSKEnvironment.shared.udManager);
-
-    return SSKEnvironment.shared.udManager;
-}
-
-- (TSAccountManager *)tsAccountManager
-{
-    return TSAccountManager.shared;
-}
-
-- (OWSIdentityManager *)identityManager
-{
-    return SSKEnvironment.shared.identityManager;
-}
-
-- (SSKSessionStore *)sessionStore
-{
-    return SSKEnvironment.shared.sessionStore;
-}
-
-- (SSKPreKeyStore *)preKeyStore
-{
-    return SSKEnvironment.shared.preKeyStore;
-}
-
-- (SSKSignedPreKeyStore *)signedPreKeyStore
-{
-    return SSKEnvironment.shared.signedPreKeyStore;
-}
-
-- (SDSDatabaseStorage *)databaseStorage
-{
-    return SDSDatabaseStorage.shared;
-}
-
-+ (SDSDatabaseStorage *)databaseStorage
-{
-    return SDSDatabaseStorage.shared;
-}
-
-- (id<ProfileManagerProtocol>)profileManager
-{
-    return SSKEnvironment.shared.profileManager;
-}
-
-#pragma mark -
 
 - (NSOperationQueue *)sendingQueueForMessage:(TSOutgoingMessage *)message
 {
@@ -1448,142 +1368,6 @@ NSString *const MessageSenderRateLimitedException = @"RateLimitedException";
         // NSUnderlyingErrorKey isn't a normal NSException user info key, but it's appropriate here.
         OWSRaiseExceptionWithUserInfo(
             @"sessionCreationException", @{ NSUnderlyingErrorKey : error }, @"Failed to create session: %@", error);
-    }
-}
-
-//<<<<<<< HEAD
-//- (nullable NSDictionary *)throws_encryptedMessageForMessageSend:(OWSMessageSend *)messageSend
-//                                                        deviceId:(NSNumber *)deviceId
-//                                                       plainText:(NSData *)plainText
-//                                                     transaction:(SDSAnyWriteTransaction *)transaction
-//{
-//    OWSAssertDebug(!NSThread.isMainThread);
-//    OWSAssertDebug(messageSend);
-//    OWSAssertDebug(deviceId);
-//    OWSAssertDebug(plainText);
-//    OWSAssertDebug(transaction);
-//
-//    TSOutgoingMessage *message = messageSend.message;
-//    SignalServiceAddress *recipientAddress = messageSend.address;
-//    OWSAssertDebug(recipientAddress.isValid);
-//
-//    NSString *accountId = [[OWSAccountIdFinder new] ensureAccountIdForAddress:recipientAddress transaction:transaction];
-//
-//    if (![self.sessionStore containsSessionForAccountId:accountId
-//                                               deviceId:[deviceId intValue]
-//                                            transaction:transaction]) {
-//        NSString *missingSessionException = @"missingSessionException";
-//        OWSRaiseException(missingSessionException,
-//            @"Unexpectedly missing session for recipientAddress: %@, device: %@",
-//            recipientAddress,
-//            deviceId);
-//    }
-//
-//    SessionCipher *cipher = [[SessionCipher alloc] initWithSessionStore:self.sessionStore
-//                                                            preKeyStore:self.preKeyStore
-//                                                      signedPreKeyStore:self.signedPreKeyStore
-//                                                       identityKeyStore:self.identityManager
-//                                                            recipientId:accountId
-//                                                               deviceId:[deviceId intValue]];
-//
-//    NSData *_Nullable serializedMessage;
-//    TSWhisperMessageType messageType;
-//    OWSUDSendingAccess *_Nullable udSendingAcess = messageSend.udSendingAccess;
-//    if (udSendingAcess != nil) {
-//        NSError *error;
-//        SMKSecretSessionCipher *_Nullable secretCipher =
-//            [[SMKSecretSessionCipher alloc] initWithSessionStore:self.sessionStore
-//                                                     preKeyStore:self.preKeyStore
-//                                               signedPreKeyStore:self.signedPreKeyStore
-//                                                   identityStore:self.identityManager
-//                                                           error:&error];
-//        if (error || !secretCipher) {
-//            OWSRaiseException(@"SecretSessionCipherFailure", @"Can't create secret session cipher.");
-//        }
-//        serializedMessage = [secretCipher throwswrapped_encryptMessageWithRecipientId:accountId
-//                                                                             deviceId:deviceId.intValue
-//                                                                      paddedPlaintext:[plainText paddedMessageBody]
-//                                                                    senderCertificate:udSendingAcess.senderCertificate
-//                                                                      protocolContext:transaction
-//                                                                                error:&error];
-//        SCKRaiseIfExceptionWrapperError(error);
-//        if (!serializedMessage || error) {
-//            OWSFailDebug(@"error while UD encrypting message: %@", error);
-//            return nil;
-//        }
-//        messageType = TSUnidentifiedSenderMessageType;
-//    } else {
-//        // This may throw an exception.
-//        id<CipherMessage> encryptedMessage = [cipher throws_encryptMessage:[plainText paddedMessageBody]
-//                                                           protocolContext:transaction];
-//        serializedMessage = encryptedMessage.serialized;
-//        messageType = [self messageTypeForCipherMessage:encryptedMessage];
-//    }
-//
-//    BOOL isVoip = NO;
-//    if ([message isKindOfClass:[OWSOutgoingCallMessage class]]) {
-//        isVoip = ((OWSOutgoingCallMessage *)message).offerMessage != nil;
-//    }
-//
-//    if (isVoip) {
-//        SSKProtoCallMessageOfferType callType = ((OWSOutgoingCallMessage *)message).offerMessage.unwrappedType;
-//        BOOL isVideoCall = callType == SSKProtoCallMessageOfferTypeOfferVideoCall;
-//        NSString *profileName = [self.contactsManager displayNameForAddress:messageSend.localAddress];
-//        NSString *destination = messageSend.address.phoneNumber ?: messageSend.address.uuidString; // SKYTech: check if it works with adresses without phone number
-//        TSRequest *request = [OWSRequestFactory sendCallOfferVoipPush:destination message:
-//                              @{
-//                                  @"sender": profileName,
-//                                  @"callType": [NSNumber numberWithBool:isVideoCall]
-//                              }];
-//        [self.networkManager makeRequest:request success:^(NSURLSessionDataTask *task, id responseObject) {
-//            NSLog(@"Success");
-//        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//            NSLog(@"Error %@", error);
-//        }];
-//    }
-//
-//    NSString *push = nil;
-//    if (message.body.length > 0 || [message hasAttachments]) {
-//        push = @"{\\\"aps\\\" : { \\\"alert\\\" : \\\"New message\\\", \\\"sound\\\" : \\\"default\\\" }}";
-//    }
-//    else if (message.groupMetaMessage == TSGroupMetaMessageNew) {
-//        push = @"{\\\"aps\\\" : { \\\"alert\\\" : \\\"New group\\\", \\\"sound\\\" : \\\"default\\\" }}";
-//    }
-//
-//    BOOL isSilent = message.isSilent;
-//    BOOL isOnline = message.isOnline;
-//    OWSMessageServiceParams *messageParams =
-//        [[OWSMessageServiceParams alloc] initWithType:messageType
-//                                              address:recipientAddress
-//                                               device:[deviceId intValue]
-//                                              content:serializedMessage
-//                                             isSilent:isSilent
-//                                             isOnline:isOnline
-//                                       registrationId:[cipher throws_remoteRegistrationId:transaction]
-//                                                 push:push];
-//
-//    NSError *error;
-//    NSDictionary *jsonDict = [MTLJSONAdapter JSONDictionaryFromModel:messageParams error:&error];
-//
-//    if (error) {
-//        OWSProdError([OWSAnalyticsEvents messageSendErrorCouldNotSerializeMessageJson]);
-//        return nil;
-//    }
-//
-//    return jsonDict;
-//}
-//
-//=======
-//>>>>>>> master
-- (TSWhisperMessageType)messageTypeForCipherMessage:(id<CipherMessage>)cipherMessage
-{
-    switch (cipherMessage.cipherMessageType) {
-        case CipherMessageType_Whisper:
-            return TSEncryptedWhisperMessageType;
-        case CipherMessageType_Prekey:
-            return TSPreKeyWhisperMessageType;
-        default:
-            return TSUnknownMessageType;
     }
 }
 

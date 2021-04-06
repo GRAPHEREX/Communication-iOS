@@ -23,15 +23,6 @@ const NSUInteger kLargeAvatarSize = 96;
 
 @implementation OWSAvatarBuilder
 
-#pragma mark - Dependencies
-
-+ (SDSDatabaseStorage *)databaseStorage
-{
-    return SDSDatabaseStorage.shared;
-}
-
-#pragma mark -
-
 + (nullable UIImage *)buildImageForThread:(TSThread *)thread diameter:(NSUInteger)diameter
 {
     __block UIImage *_Nullable result;

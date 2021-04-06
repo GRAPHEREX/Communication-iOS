@@ -7,7 +7,7 @@ import PromiseKit
 
 @objc
 public protocol CVViewStateDelegate: class {
-    func viewStateUIModeDidChange(oldValue: ConversationUIMode)
+    func uiModeDidChange()
 }
 
 // MARK: -
@@ -81,17 +81,16 @@ public class CVViewState: NSObject {
             let didChange = uiMode != oldValue
             if didChange {
                 cellSelection.reset()
-                delegate?.viewStateUIModeDidChange(oldValue: oldValue)
+                delegate?.uiModeDidChange()
             }
         }
     }
     @objc
     public var isShowingSelectionUI: Bool { uiMode == .selection }
-    public var isAnimatingSelectionUI = false
 
     public let cellSelection = CVCellSelection()
     public let textExpansion = CVTextExpansion()
-    public let swipeToReplyState = CVSwipeToReplyState()
+    public let messageSwipeActionState = CVMessageSwipeActionState()
 
     public var isDarkThemeEnabled: Bool = Theme.isDarkThemeEnabled
 
@@ -429,7 +428,7 @@ public class CVTextExpansion {
 
 // MARK: -
 
-public class CVSwipeToReplyState {
+public class CVMessageSwipeActionState {
     public struct Reference {
         let contentViewCenter: CGPoint
         let reactionsViewCenter: CGPoint?
@@ -461,8 +460,8 @@ public class CVSwipeToReplyState {
         progressMap[interactionId] = nil
     }
 
-    func copy() -> CVSwipeToReplyState {
-        CVSwipeToReplyState(progressMap: progressMap)
+    func copy() -> CVMessageSwipeActionState {
+        CVMessageSwipeActionState(progressMap: progressMap)
     }
 }
 

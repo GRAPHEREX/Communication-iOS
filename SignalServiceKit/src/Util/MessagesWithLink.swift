@@ -8,12 +8,6 @@ import SignalCoreKit
 @objc
 public class MessagesWithLink: NSObject {
 
-    // MARK: - Dependencies
-
-    private class var databaseStorage: SDSDatabaseStorage {
-        return SDSDatabaseStorage.shared
-    }
-
     private static let store = SDSKeyValueStore(collection: "messagesWithLink")
 
     private class func readReceiptKey(senderAddress: SignalServiceAddress,

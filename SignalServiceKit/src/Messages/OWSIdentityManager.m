@@ -20,10 +20,10 @@
 #import "TSErrorMessage.h"
 #import "TSGroupThread.h"
 #import "UnfairLock.h"
-#import <AxolotlKit/NSData+keyVersionByte.h>
 #import <Curve25519Kit/Curve25519.h>
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalCoreKit/SCKExceptionWrapper.h>
+#import <SignalServiceKit/NSData+keyVersionByte.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -56,13 +56,6 @@ NSNotificationName const kNSNotificationNameIdentityStateDidChange = @"kNSNotifi
 
 @implementation OWSIdentityManager
 
-+ (instancetype)shared
-{
-    OWSAssertDebug(SSKEnvironment.shared.identityManager);
-
-    return SSKEnvironment.shared.identityManager;
-}
-
 - (instancetype)initWithDatabaseStorage:(SDSDatabaseStorage *)databaseStorage
 {
     self = [super init];
@@ -88,37 +81,6 @@ NSNotificationName const kNSNotificationNameIdentityStateDidChange = @"kNSNotifi
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-#pragma mark - Dependencies
-
-- (MessageSender *)messageSender
-{
-    OWSAssertDebug(SSKEnvironment.shared.messageSender);
-
-    return SSKEnvironment.shared.messageSender;
-}
-
-- (SSKSessionStore *)sessionStore
-{
-    return SSKEnvironment.shared.sessionStore;
-}
-
-- (TSAccountManager *)tsAccountManager
-{
-    return SSKEnvironment.shared.tsAccountManager;
-}
-
-- (id<StorageServiceManagerProtocol>)storageServiceManager
-{
-    return SSKEnvironment.shared.storageServiceManager;
-}
-
-- (SDSDatabaseStorage *)databaseStorage
-{
-    return SDSDatabaseStorage.shared;
-}
-
-#pragma mark -
 
 - (void)writeWithUnfairLock:(void(^ _Nonnull)(SDSAnyWriteTransaction *transaction))block
 {
@@ -1043,66 +1005,6 @@ NSNotificationName const kNSNotificationNameIdentityStateDidChange = @"kNSNotifi
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)1.f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self tryToSyncQueuedVerificationStates];
     });
-}
-
-#pragma mark - Deprecated IdentityStore methods
-
-// These methods should only ever be called from ProtocolKit, recipientId == accountId
-
-- (nullable NSData *)identityKeyForRecipientId:(NSString *)accountId
-{
-    __block NSData *_Nullable result = nil;
-    [self readWithUnfairLock:^(SDSAnyReadTransaction *transaction) {
-        result = [self identityKeyForAccountId:accountId transaction:transaction];
-    }];
-    return result;
-}
-
-- (nullable NSData *)identityKeyForRecipientId:(NSString *)accountId
-                               protocolContext:(nullable id<SPKProtocolReadContext>)protocolContext
-{
-    OWSAssertDebug([protocolContext isKindOfClass:[SDSAnyReadTransaction class]]);
-    OWSAssertDebug(accountId.length > 1);
-
-    SDSAnyReadTransaction *transaction = protocolContext;
-
-    return [self identityKeyForAccountId:accountId transaction:transaction];
-}
-
-- (nullable ECKeyPair *)identityKeyPair:(nullable id<SPKProtocolWriteContext>)protocolContext
-{
-    OWSAssertDebug([protocolContext isKindOfClass:[SDSAnyReadTransaction class]]);
-    SDSAnyReadTransaction *transaction = protocolContext;
-
-    return [self identityKeyPairWithTransaction:transaction];
-}
-
-- (BOOL)isTrustedIdentityKey:(nonnull NSData *)identityKey
-                 recipientId:(NSString *)recipientId
-                   direction:(TSMessageDirection)direction
-             protocolContext:(nullable id<SPKProtocolReadContext>)protocolContext
-{
-    OWSAssertDebug([protocolContext isKindOfClass:[SDSAnyReadTransaction class]]);
-    SDSAnyReadTransaction *transaction = protocolContext;
-
-    return [self isTrustedIdentityKey:identityKey accountId:recipientId direction:direction transaction:transaction];
-}
-
-- (int)localRegistrationId:(nullable id<SPKProtocolWriteContext>)protocolContext
-{
-    OWSAssertDebug([protocolContext isKindOfClass:[SDSAnyWriteTransaction class]]);
-    SDSAnyWriteTransaction *transaction = protocolContext;
-    return [self localRegistrationIdWithTransaction:transaction];
-}
-
-- (BOOL)saveRemoteIdentity:(nonnull NSData *)identityKey
-               recipientId:(NSString *)accountId
-           protocolContext:(nullable id<SPKProtocolWriteContext>)protocolContext
-{
-    OWSAssertDebug([protocolContext isKindOfClass:[SDSAnyWriteTransaction class]]);
-    SDSAnyWriteTransaction *transaction = protocolContext;
-
-    return [self saveRemoteIdentity:identityKey accountId:accountId transaction:transaction];
 }
 
 @end

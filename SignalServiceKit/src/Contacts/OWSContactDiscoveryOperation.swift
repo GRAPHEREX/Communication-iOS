@@ -16,12 +16,6 @@ public class LegacyContactDiscoveryOperation: OWSOperation {
 
     private let phoneNumbersToLookup: [String]
 
-    // MARK: - Dependencies
-
-    private var networkManager: TSNetworkManager {
-        return TSNetworkManager.shared()
-    }
-
     // MARK: - Initializers
 
     @objc

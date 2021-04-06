@@ -255,7 +255,7 @@ NSString *const kProfileRegistrationView_LastPresentedDate = @"kProfileRegistrat
 {
     OWSAssertIsOnMainThread();
     OWSLogVerbose(@"");
-    [SignalApp.sharedApp showConversationSplitView];
+    [SignalApp.shared showConversationSplitView];
 }
 
 - (void)setupKeyboardNotifications {

@@ -707,7 +707,7 @@ public class TSAttachmentCursor: NSObject {
             return nil
         }
         let value = try TSAttachment.fromRecord(record)
-        SSKEnvironment.shared.modelReadCaches.attachmentReadCache.didReadAttachment(value, transaction: transaction.asAnyRead)
+        Self.modelReadCaches.attachmentReadCache.didReadAttachment(value, transaction: transaction.asAnyRead)
         return value
     }
 
@@ -761,13 +761,11 @@ public extension TSAttachment {
         assert(uniqueId.count > 0)
 
         if !ignoreCache,
-            let cachedCopy = SSKEnvironment.shared.modelReadCaches.attachmentReadCache.getAttachment(uniqueId: uniqueId, transaction: transaction) {
+            let cachedCopy = Self.modelReadCaches.attachmentReadCache.getAttachment(uniqueId: uniqueId, transaction: transaction) {
             return cachedCopy
         }
 
         switch transaction.readTransaction {
-        case .yapRead(let ydbTransaction):
-            return TSAttachment.ydb_fetch(uniqueId: uniqueId, transaction: ydbTransaction)
         case .grdbRead(let grdbTransaction):
             let sql = "SELECT * FROM \(AttachmentRecord.databaseTableName) WHERE \(attachmentColumn: .uniqueId) = ?"
             return grdbFetchOne(sql: sql, arguments: [uniqueId], transaction: grdbTransaction)
@@ -798,14 +796,6 @@ public extension TSAttachment {
                             batchSize: UInt,
                             block: @escaping (TSAttachment, UnsafeMutablePointer<ObjCBool>) -> Void) {
         switch transaction.readTransaction {
-        case .yapRead(let ydbTransaction):
-            TSAttachment.ydb_enumerateCollectionObjects(with: ydbTransaction) { (object, stop) in
-                guard let value = object as? TSAttachment else {
-                    owsFailDebug("unexpected object: \(type(of: object))")
-                    return
-                }
-                block(value, stop)
-            }
         case .grdbRead(let grdbTransaction):
             do {
                 let cursor = TSAttachment.grdbFetchCursor(transaction: grdbTransaction)
@@ -847,10 +837,6 @@ public extension TSAttachment {
                                      batchSize: UInt,
                                      block: @escaping (String, UnsafeMutablePointer<ObjCBool>) -> Void) {
         switch transaction.readTransaction {
-        case .yapRead(let ydbTransaction):
-            ydbTransaction.enumerateKeys(inCollection: TSAttachment.collection()) { (uniqueId, stop) in
-                block(uniqueId, stop)
-            }
         case .grdbRead(let grdbTransaction):
             grdbEnumerateUniqueIds(transaction: grdbTransaction,
                                    sql: """
@@ -882,8 +868,6 @@ public extension TSAttachment {
 
     class func anyCount(transaction: SDSAnyReadTransaction) -> UInt {
         switch transaction.readTransaction {
-        case .yapRead(let ydbTransaction):
-            return ydbTransaction.numberOfKeys(inCollection: TSAttachment.collection())
         case .grdbRead(let grdbTransaction):
             return AttachmentRecord.ows_fetchCount(grdbTransaction.database)
         }
@@ -893,8 +877,6 @@ public extension TSAttachment {
     //          in their anyWillRemove(), anyDidRemove() methods.
     class func anyRemoveAllWithoutInstantation(transaction: SDSAnyWriteTransaction) {
         switch transaction.writeTransaction {
-        case .yapWrite(let ydbTransaction):
-            ydbTransaction.removeAllObjects(inCollection: TSAttachment.collection())
         case .grdbWrite(let grdbTransaction):
             do {
                 try AttachmentRecord.deleteAll(grdbTransaction.database)
@@ -943,8 +925,6 @@ public extension TSAttachment {
         assert(uniqueId.count > 0)
 
         switch transaction.readTransaction {
-        case .yapRead(let ydbTransaction):
-            return ydbTransaction.hasObject(forKey: uniqueId, inCollection: TSAttachment.collection())
         case .grdbRead(let grdbTransaction):
             let sql = "SELECT EXISTS ( SELECT 1 FROM \(AttachmentRecord.databaseTableName) WHERE \(attachmentColumn: .uniqueId) = ? )"
             let arguments: StatementArguments = [uniqueId]
@@ -982,7 +962,7 @@ public extension TSAttachment {
             }
 
             let value = try TSAttachment.fromRecord(record)
-            SSKEnvironment.shared.modelReadCaches.attachmentReadCache.didReadAttachment(value, transaction: transaction.asAnyRead)
+            Self.modelReadCaches.attachmentReadCache.didReadAttachment(value, transaction: transaction.asAnyRead)
             return value
         } catch {
             owsFailDebug("error: \(error)")

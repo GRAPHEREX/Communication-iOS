@@ -82,42 +82,6 @@ public class OnboardingNavigationController: OWSNavigationController {
 @objc
 public class OnboardingController: NSObject {
 
-    // MARK: - Dependencies
-
-    private var tsAccountManager: TSAccountManager {
-        return TSAccountManager.shared()
-    }
-
-    private static var tsAccountManager: TSAccountManager {
-        return TSAccountManager.shared()
-    }
-
-    private var accountManager: AccountManager {
-        return AppEnvironment.shared.accountManager
-    }
-
-    private var contactsManager: OWSContactsManager {
-        return Environment.shared.contactsManager
-    }
-
-    private var backup: OWSBackup {
-        return AppEnvironment.shared.backup
-    }
-
-    private var databaseStorage: SDSDatabaseStorage {
-        return .shared
-    }
-
-    private var profileManager: ProfileManagerProtocol {
-        return SSKEnvironment.shared.profileManager
-    }
-
-    private var ows2FAManager: OWS2FAManager {
-        return .shared()
-    }
-
-    // MARK: -
-
     public enum OnboardingMode {
         case provisioning
         case registering
@@ -275,7 +239,11 @@ public class OnboardingController: NSObject {
         Logger.info("milestone: \(milestone)")
         switch milestone {
         case .verifiedPhoneNumber, .verifiedLinkedDevice:
-            return OnboardingSplashViewController(onboardingController: self)
+            if SSKPreferences.didDropYdb() {
+                return OnboardingDroppedYdbViewController(onboardingController: self)
+            } else {
+                return OnboardingSplashViewController(onboardingController: self)
+            }
         case .setupProfile:
             return buildProfileViewController()
         case .restorePin:
@@ -373,7 +341,7 @@ public class OnboardingController: NSObject {
         Logger.info("")
 
         // TODO: Once notification work is complete, uncomment this.
-        // AppEnvironment.shared.notificationPresenter.cancelIncompleteRegistrationNotification()
+        // Self.notificationPresenter.cancelIncompleteRegistrationNotification()
 
         let view = OnboardingVerificationViewController(onboardingController: self)
         viewController.navigationController?.pushViewController(view, animated: true)
@@ -415,13 +383,9 @@ public class OnboardingController: NSObject {
         // We start the contact fetch/intersection now so that by the time
         // they get to conversation list we can show meaningful contact in
         // the suggested contact bubble.
-        contactsManager.fetchSystemContactsOnceIfAlreadyAuthorized()
+        contactsManagerImpl.fetchSystemContactsOnceIfAlreadyAuthorized()
 
-        if tsAccountManager.isReregistering {
-            showNextMilestone(navigationController: navigationController)
-        } else {
-            checkCanImportBackup(fromView: view)
-        }
+        showNextMilestone(navigationController: navigationController)
     }
 
     public func linkingDidComplete(from viewController: UIViewController) {
@@ -457,70 +421,6 @@ public class OnboardingController: NSObject {
 
             self.showNextMilestone(navigationController: navigationController)
         }
-    }
-
-    private func showBackupRestoreView(fromView view: UIViewController) {
-        AssertIsOnMainThread()
-
-        Logger.info("")
-
-        guard let navigationController = view.navigationController else {
-            owsFailDebug("Missing navigationController")
-            return
-        }
-
-        let restoreView = BackupRestoreViewController()
-        navigationController.setViewControllers([restoreView], animated: true)
-    }
-
-    private func checkCanImportBackup(fromView view: UIViewController) {
-        AssertIsOnMainThread()
-
-        Logger.info("")
-
-        guard let navigationController = view.navigationController else {
-            owsFailDebug("navigationController was unexpectedly nil")
-            return
-        }
-
-        backup.checkCanImport({ (canImport) in
-            Logger.info("canImport: \(canImport)")
-
-            if canImport {
-                self.backup.setHasPendingRestoreDecision(true)
-
-                self.showBackupRestoreView(fromView: view)
-            } else {
-                self.showNextMilestone(navigationController: navigationController)
-            }
-        }, failure: { (_) in
-            self.showBackupCheckFailedAlert(fromView: view)
-        })
-    }
-
-    private func showBackupCheckFailedAlert(fromView view: UIViewController) {
-        AssertIsOnMainThread()
-
-        Logger.info("")
-
-        guard let navigationController = view.navigationController else {
-            owsFailDebug("navigationController was unexpectedly nil")
-            return
-        }
-
-        let alert = ActionSheetController(title: NSLocalizedString("CHECK_FOR_BACKUP_FAILED_TITLE",
-                                                               comment: "Title for alert shown when the app failed to check for an existing backup."),
-                                      message: NSLocalizedString("CHECK_FOR_BACKUP_FAILED_MESSAGE",
-                                                                 comment: "Message for alert shown when the app failed to check for an existing backup."))
-        alert.addAction(ActionSheetAction(title: NSLocalizedString("REGISTER_FAILED_TRY_AGAIN", comment: ""),
-                                      style: .default) { (_) in
-                                        self.checkCanImportBackup(fromView: view)
-        })
-        alert.addAction(ActionSheetAction(title: NSLocalizedString("CHECK_FOR_BACKUP_DO_NOT_RESTORE", comment: "The label for the 'do not restore backup' button."),
-                                      style: .destructive) { (_) in
-                                        self.showNextMilestone(navigationController: navigationController)
-        })
-        view.presentActionSheet(alert)
     }
 
     public func onboardingDidRequire2FAPin(viewController: UIViewController) {
@@ -932,10 +832,10 @@ public class OnboardingController: NSObject {
             // Re-enable 2FA and RegLock with the registered pin, if any
             if let pin = twoFAPin {
                 self.databaseStorage.write { transaction in
-                    OWS2FAManager.shared().markEnabled(pin: pin, transaction: transaction)
+                    OWS2FAManager.shared.markEnabled(pin: pin, transaction: transaction)
                 }
-                if OWS2FAManager.shared().mode == .V2 {
-                    return OWS2FAManager.shared().enableRegistrationLockV2()
+                if OWS2FAManager.shared.mode == .V2 {
+                    return OWS2FAManager.shared.enableRegistrationLockV2()
                 }
             }
             return Promise.value(())

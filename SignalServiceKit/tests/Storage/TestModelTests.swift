@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2019 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -7,14 +7,6 @@ import XCTest
 @testable import SignalServiceKit
 
 class TestModelTests: SSKBaseTestSwift {
-
-    // MARK: - Dependencies
-
-    var storageCoordinator: StorageCoordinator {
-        return SSKEnvironment.shared.storageCoordinator
-    }
-
-    // MARK: 
 
     func testTestModel() {
 
@@ -24,12 +16,7 @@ class TestModelTests: SSKBaseTestSwift {
             writeModel.anyInsert(transaction: transaction)
 
             let readModel = TestModel.anyFetch(uniqueId: writeModel.uniqueId, transaction: transaction)!
-            if self.storageCoordinator.state == .YDB ||
-                self.storageCoordinator.state == .ydbTests {
-                XCTAssertTrue(writeModel === readModel)
-            } else {
-                XCTAssertFalse(writeModel === readModel)
-            }
+            XCTAssertFalse(writeModel === readModel)
             XCTAssertEqual(0, readModel.doubleValue)
             XCTAssertEqual(0, readModel.floatValue)
             XCTAssertEqual(0, readModel.uint64Value)
@@ -62,12 +49,7 @@ class TestModelTests: SSKBaseTestSwift {
             }
 
             let readModel = TestModel.anyFetch(uniqueId: writeModel.uniqueId, transaction: transaction)!
-            if self.storageCoordinator.state == .YDB ||
-                self.storageCoordinator.state == .ydbTests {
-                XCTAssertTrue(writeModel === readModel)
-            } else {
-                XCTAssertFalse(writeModel === readModel)
-            }
+            XCTAssertFalse(writeModel === readModel)
             XCTAssertEqual(1, readModel.doubleValue)
             XCTAssertEqual(1, readModel.floatValue)
             XCTAssertEqual(1, readModel.uint64Value)
@@ -120,12 +102,7 @@ class TestModelTests: SSKBaseTestSwift {
             }
 
             let readModel = TestModel.anyFetch(uniqueId: writeModel.uniqueId, transaction: transaction)!
-            if self.storageCoordinator.state == .YDB ||
-                self.storageCoordinator.state == .ydbTests {
-                XCTAssertTrue(writeModel === readModel)
-            } else {
-                XCTAssertFalse(writeModel === readModel)
-            }
+            XCTAssertFalse(writeModel === readModel)
             XCTAssertEqual(Double.greatestFiniteMagnitude, readModel.doubleValue)
             XCTAssertEqual(Float.greatestFiniteMagnitude, readModel.floatValue)
             XCTAssertEqual(uint64Max, readModel.uint64Value)
@@ -154,12 +131,7 @@ class TestModelTests: SSKBaseTestSwift {
             }
 
             let readModel = TestModel.anyFetch(uniqueId: writeModel.uniqueId, transaction: transaction)!
-            if self.storageCoordinator.state == .YDB ||
-                self.storageCoordinator.state == .ydbTests {
-                XCTAssertTrue(writeModel === readModel)
-            } else {
-                XCTAssertFalse(writeModel === readModel)
-            }
+            XCTAssertFalse(writeModel === readModel)
             XCTAssertEqual(Double.leastNormalMagnitude, readModel.doubleValue)
             XCTAssertEqual(Float.leastNormalMagnitude, readModel.floatValue)
             XCTAssertEqual(UInt64.min, readModel.uint64Value)
@@ -181,12 +153,7 @@ class TestModelTests: SSKBaseTestSwift {
             }
 
             let readModel = TestModel.anyFetch(uniqueId: writeModel.uniqueId, transaction: transaction)!
-            if self.storageCoordinator.state == .YDB ||
-                self.storageCoordinator.state == .ydbTests {
-                XCTAssertTrue(writeModel === readModel)
-            } else {
-                XCTAssertFalse(writeModel === readModel)
-            }
+            XCTAssertFalse(writeModel === readModel)
             // This date value will NOT be truncated during the roundtrip.
             // NSDate is backed by NSTimeInterval (seconds as double) and we
             // serialiuze using TimeInterval/timeIntervalSince1970.

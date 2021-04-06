@@ -37,19 +37,7 @@ public class OWSUpload: NSObject {
 // MARK: -
 
 fileprivate extension OWSUpload {
-
-    // MARK: - Dependencies
     
-    static var networkManager: TSNetworkManager {
-        return SSKEnvironment.shared.networkManager
-    }
-
-    static var signalService: OWSSignalService {
-        return OWSSignalService.shared()
-    }
-
-    // MARK: -
-
     static var cdn0SessionManager: AFHTTPSessionManager {
         signalService.sessionManagerForCdn(cdnNumber: 0)
     }
