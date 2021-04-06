@@ -2,8 +2,8 @@
 //  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
 //
 
-#import "UIView+OWS.h"
-#import "OWSMath.h"
+#import "UIView+WLT.h"
+#import <WLTMath.h>
 #import <Availability.h>
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(major, minor) \
@@ -35,7 +35,7 @@ CGFloat WLTScaleFromIPhone5(CGFloat iPhone5Value)
 
 #pragma mark -
 
-@implementation UIView (OWS)
+@implementation UIView (WLT)
 
 - (NSArray<NSLayoutConstraint *> *)wltAutoPinWidthToSuperviewWithMargin:(CGFloat)margin
 {
@@ -239,32 +239,32 @@ CGFloat WLTScaleFromIPhone5(CGFloat iPhone5Value)
 
 #pragma mark - Manual Layout
 
-- (CGFloat)left
+- (CGFloat)wltLeft
 {
     return self.frame.origin.x;
 }
 
-- (CGFloat)right
+- (CGFloat)wltRight
 {
     return self.frame.origin.x + self.frame.size.width;
 }
 
-- (CGFloat)top
+- (CGFloat)wltTop
 {
     return self.frame.origin.y;
 }
 
-- (CGFloat)bottom
+- (CGFloat)wltBottom
 {
     return self.frame.origin.y + self.frame.size.height;
 }
 
-- (CGFloat)width
+- (CGFloat)wltWidth
 {
     return self.frame.size.width;
 }
 
-- (CGFloat)height
+- (CGFloat)wltHeight
 {
     return self.frame.size.height;
 }
@@ -273,9 +273,9 @@ CGFloat WLTScaleFromIPhone5(CGFloat iPhone5Value)
 {
     //OWSAssertDebug(self.superview);
 
-    CGFloat x = (CGFloat)round((self.superview.width - self.width) * 0.5f);
-    CGFloat y = (CGFloat)round((self.superview.height - self.height) * 0.5f);
-    self.frame = CGRectMake(x, y, self.width, self.height);
+    CGFloat x = (CGFloat)round((self.superview.wltWidth - self.wltWidth) * 0.5f);
+    CGFloat y = (CGFloat)round((self.superview.wltHeight - self.wltHeight) * 0.5f);
+    self.frame = CGRectMake(x, y, self.wltWidth, self.wltHeight);
 }
 
 #pragma mark - RTL
@@ -562,7 +562,7 @@ CGFloat WLTScaleFromIPhone5(CGFloat iPhone5Value)
 
 #pragma mark -
 
-@implementation UIScrollView (OWS)
+@implementation UIScrollView (WLT)
 
 - (BOOL)wltApplyScrollViewInsetsFix
 {
@@ -582,7 +582,7 @@ CGFloat WLTScaleFromIPhone5(CGFloat iPhone5Value)
 
 #pragma mark -
 
-@implementation UIStackView (OWS)
+@implementation UIStackView (WLT)
 
 - (void)wltAddHairlineWithColor:(UIColor *)color
 {

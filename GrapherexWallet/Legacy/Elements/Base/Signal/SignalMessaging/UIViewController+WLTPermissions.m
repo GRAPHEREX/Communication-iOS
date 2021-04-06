@@ -2,7 +2,7 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "UIViewController+Permissions.h"
+#import "UIViewController+WLTPermissions.h"
 #import <AVFoundation/AVFoundation.h>
 #import <Photos/Photos.h>
 //#import <SignalCoreKit/Threading.h>
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation UIViewController (Permissions)
+@implementation UIViewController (WLTPermissions)
 
 - (void)wlt_askForCameraPermissions:(void (^)(BOOL granted))callbackParam
 {
@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (status == AVAuthorizationStatusDenied) {
-        ActionSheetController *alert = [[ActionSheetController alloc]
+        WTLActionSheetController *alert = [[WTLActionSheetController alloc]
             initWithTitle:NSLocalizedString(@"MISSING_CAMERA_PERMISSION_TITLE", @"Alert title")
                   message:NSLocalizedString(@"MISSING_CAMERA_PERMISSION_MESSAGE", @"Alert body")];
 
@@ -51,12 +51,13 @@ NS_ASSUME_NONNULL_BEGIN
 //            [alert addAction:openSettingsAction];
 //        }
 
-        ActionSheetAction *dismissAction = [[ActionSheetAction alloc] initWithTitle:@"Dismiss"
-                                                                              style:ActionSheetActionStyleCancel
-                                                                            handler:^(ActionSheetAction *action) {
-                                                                                callback(NO);
-                                                                            }];
-        [alert addAction:dismissAction];
+//        WLTActionSheetAction *dismissAction = [[WLTActionSheetAction alloc] initWithTitle:@"Dismiss"
+//                                                                              style:WLTActionSheetActionStyleCancel
+//                                                                               handler:^( *action) {
+//                                                                                callback(NO);
+//                                                                            }];
+        
+//        [alert addAction:dismissAction];
 
         [self presentActionSheet:alert];
     } else if (status == AVAuthorizationStatusAuthorized) {
@@ -82,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     void (^presentSettingsDialog)(void) = ^(void) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            ActionSheetController *alert = [[ActionSheetController alloc]
+            WTLActionSheetController *alert = [[WTLActionSheetController alloc]
                 initWithTitle:NSLocalizedString(@"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE",
                                   @"Alert title when user has previously denied media library access")
                       message:NSLocalizedString(@"MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE",
@@ -97,12 +98,12 @@ NS_ASSUME_NONNULL_BEGIN
 //                [alert addAction:openSettingsAction];
 //            }
 
-            ActionSheetAction *dismissAction = [[ActionSheetAction alloc] initWithTitle:@"Dismiss"
-                                                                                  style:ActionSheetActionStyleCancel
-                                                                                handler:^(ActionSheetAction *action) {
-                                                                                    completionCallback(NO);
-                                                                                }];
-            [alert addAction:dismissAction];
+//            WTLActionSheetAction *dismissAction = [[WTLActionSheetAction alloc] initWithTitle:@"Dismiss"
+//                                                                                  style:WLTActionSheetActionStyleCancel
+//                                                                                      handler:^( *action) {
+//                                                                                    completionCallback(NO);
+//                                                                                }];
+//            [alert addAction:dismissAction];
 
             [self presentActionSheet:alert];
         });
@@ -183,7 +184,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)wlt_showNoMicrophonePermissionActionSheet
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        ActionSheetController *alert = [[ActionSheetController alloc]
+        WTLActionSheetController *alert = [[WTLActionSheetController alloc]
             initWithTitle:NSLocalizedString(@"CALL_AUDIO_PERMISSION_TITLE",
                               @"Alert title when calling and permissions for microphone are missing")
                   message:NSLocalizedString(@"CALL_AUDIO_PERMISSION_MESSAGE",

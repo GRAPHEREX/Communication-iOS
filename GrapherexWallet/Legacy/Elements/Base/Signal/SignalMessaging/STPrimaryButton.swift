@@ -3,6 +3,7 @@ import PromiseKit
 import UIKit
 
 // SkyTech
+@objc(WLTPrimaryButton)
 public class STPrimaryButton: UIButton {
     
     public enum Constant {

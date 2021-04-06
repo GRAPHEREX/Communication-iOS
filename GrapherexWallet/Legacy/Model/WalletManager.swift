@@ -74,6 +74,8 @@ class WalletManager {
     // MARK: - Get Wallets
     
     func getWallets(_ currencies: [Currency], completion: @escaping (Result<WalletResponse, Error>) -> Void) {
+        
+        completion(.success(WalletResponse(fiatTotalBalance: "0", fiatCurrency: "$", wallets: [])))
         // MARK: - SINGAL DEPENDENCY – reimplement
 //        let request = TSRequest(url: URL(string: basePath + "wallets")!, method: "GET", parameters: [:])
 //        request.customHost = TSConstants.walletServerURL
@@ -143,6 +145,8 @@ class WalletManager {
     // MARK: - Get Currencies
     
     func getCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void) {
+        
+        completion(.success([]))
         // MARK: - SINGAL DEPENDENCY – reimplement
 //        let request = TSRequest(url: URL(string: basePath + "currencies")!, method: "GET", parameters: [:])
 //        request.customHost = TSConstants.walletServerURL
@@ -380,6 +384,8 @@ class WalletManager {
         if sortBy != nil { parameters["sort_by"] = sortBy! }
         if tx_direction != nil { parameters["tx_direction"] = tx_direction! }
         parameters["ascending"] = ascending
+        
+        completion(.success([]))
         // MARK: - SINGAL DEPENDENCY – reimplement
 //        let request = TSRequest(
 //            url: URL(string: basePath + "wallets" + "/" + wallet.id + "/" + "transactions")!,
@@ -553,6 +559,8 @@ class WalletManager {
         accountId: String,
         currencies:[Currency],
         completion: @escaping (Result<[RecipientWallet], Error>) -> Void) {
+        
+        completion(.success([]))
         // MARK: - SINGAL DEPENDENCY – reimplement
 //        let request = TSRequest(
 //            url: URL(string: basePath + "wallets/accounts/" + accountId)!,

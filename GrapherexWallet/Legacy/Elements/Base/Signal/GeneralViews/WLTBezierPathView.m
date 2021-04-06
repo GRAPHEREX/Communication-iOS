@@ -2,13 +2,13 @@
 //  Copyright (c) 2018 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSBezierPathView.h"
+#import "WLTBezierPathView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark -
 
-@implementation OWSBezierPathView
+@implementation WLTBezierPathView
 
 - (id)init
 {

@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// in Swift or bridge to Objective-C. I figured bridging a simple struct is a bit easier to read.
 ///
 /// Note: Errors with unfair lock are fatal and will terminate the process.
-NS_SWIFT_NAME(UnfairLock)
-@interface UnfairLock : NSObject <NSLocking>
+NS_SWIFT_NAME(WTLUnfairLock)
+@interface WTLUnfairLock : NSObject <NSLocking>
 
 /// Locks the lock. Blocks if the lock is held by another thread.
 /// Forwards to os_unfair_lock_lock() defined in os/lock.h

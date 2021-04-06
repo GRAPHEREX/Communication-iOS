@@ -68,6 +68,7 @@ public extension UINavigationController {
 
 // MARK: - SpacerView
 
+@objc(WLTSpacerView)
 public class SpacerView: UIView {
     private var preferredSize: CGSize
 

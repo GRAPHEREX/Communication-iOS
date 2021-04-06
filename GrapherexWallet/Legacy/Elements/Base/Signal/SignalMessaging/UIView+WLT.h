@@ -20,7 +20,7 @@ CGFloat WLTWLTScaleFromIPhone5To7Plus(CGFloat iPhone5Value, CGFloat iPhone7PlusV
 CGFloat WLTScaleFromIPhone5(CGFloat iPhone5Value);
 
 // A set of helper methods for doing layout with PureLayout.
-@interface UIView (OWS)
+@interface UIView (WLT)
 
 // Pins the width of this view to the width of its superview, with uniform margins.
 - (NSArray<NSLayoutConstraint *> *)wltAutoPinWidthToSuperviewWithMargin:(CGFloat)margin;
@@ -141,7 +141,7 @@ CGFloat WLTScaleFromIPhone5(CGFloat iPhone5Value);
 
 #pragma mark -
 
-@interface UIScrollView (OWS)
+@interface UIScrollView (WLT)
 
 // Returns YES if contentInsetAdjustmentBehavior is disabled.
 - (BOOL)wltApplyScrollViewInsetsFix;
@@ -150,7 +150,7 @@ CGFloat WLTScaleFromIPhone5(CGFloat iPhone5Value);
 
 #pragma mark -
 
-@interface UIStackView (OWS)
+@interface UIStackView (WLT)
 
 - (void)wltAddHairlineWithColor:(UIColor *)color;
 - (void)wltInsertHairlineWithColor:(UIColor *)color atIndex:(NSInteger)index;

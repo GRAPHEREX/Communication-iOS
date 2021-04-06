@@ -9,7 +9,7 @@ typedef void (^ConfigureShapeLayerBlock)(CAShapeLayer *_Nonnull layer, CGRect bo
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OWSBezierPathView : UIView
+@interface WLTBezierPathView : UIView
 
 // Configure the view with this method if it uses a single Bezier path.
 @property (nonatomic) ConfigureShapeLayerBlock configureShapeLayerBlock;

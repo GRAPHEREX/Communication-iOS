@@ -5,7 +5,7 @@
 import UIKit
 import PureLayout
 
-@objc
+@objc(WTLActionSheetController)
 open class ActionSheetController: WLTViewController {
     
     public let topSpace: CGFloat = {
@@ -371,7 +371,7 @@ open class ActionSheetController: WLTViewController {
 
 // MARK: -
 
-@objc
+@objc(WLTActionSheetAction)
 public class ActionSheetAction: NSObject {
     @objc
     public let title: String
@@ -384,7 +384,7 @@ public class ActionSheetAction: NSObject {
     
     @objc
     public let style: Style
-    @objc(ActionSheetActionStyle)
+    @objc(WLTActionSheetActionStyle)
     public enum Style: Int {
         case `default`
         case cancel

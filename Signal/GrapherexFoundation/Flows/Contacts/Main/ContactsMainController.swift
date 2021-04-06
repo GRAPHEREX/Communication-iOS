@@ -300,8 +300,8 @@ extension ContactsMainController: OWSTableViewControllerSwipeActionsConfiguratio
     
     private func sendMoney(at indexPath: IndexPath) {
         let contact = contacts[indexPath.row]
-        
-        self.showSendFromChat(recipientAddress: contact.recipientAddress)
+        // MARK: - SINGAL DEPENDENCY – reimplement
+        //self.showSendFromChat(recipientAddress: contact.recipientAddress)
     }
 }
 

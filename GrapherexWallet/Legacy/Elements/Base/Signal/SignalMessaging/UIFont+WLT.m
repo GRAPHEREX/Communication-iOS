@@ -2,12 +2,12 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "UIFont+OWS.h"
+#import "UIFont+WLT.h"
 #import <GrapherexWallet/GrapherexWallet-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation UIFont (OWS)
+@implementation UIFont (WLT)
 
 + (UIFont *)wlt_thinFontWithSize:(CGFloat)size
 {

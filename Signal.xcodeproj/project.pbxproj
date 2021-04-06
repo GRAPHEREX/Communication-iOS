@@ -842,13 +842,13 @@
 		E33325FB261C5E5800CFE73E /* ToastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33325FA261C5E5800CFE73E /* ToastController.swift */; };
 		E3332609261C629600CFE73E /* DirectionalPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3332608261C629600CFE73E /* DirectionalPanGestureRecognizer.swift */; };
 		E3332611261C64B400CFE73E /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3332610261C64B400CFE73E /* AvatarImageView.swift */; };
-		E333261A261C6CC300CFE73E /* UIView+OWS.h in Headers */ = {isa = PBXBuildFile; fileRef = E3332618261C6CC200CFE73E /* UIView+OWS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E333261B261C6CC300CFE73E /* UIView+OWS.m in Sources */ = {isa = PBXBuildFile; fileRef = E3332619261C6CC200CFE73E /* UIView+OWS.m */; };
-		E3332623261C730800CFE73E /* OWSMath.h in Headers */ = {isa = PBXBuildFile; fileRef = E3332622261C730800CFE73E /* OWSMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E3332632261C755A00CFE73E /* UIViewController+Permissions.h in Headers */ = {isa = PBXBuildFile; fileRef = E3332630261C755900CFE73E /* UIViewController+Permissions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E3332633261C755A00CFE73E /* UIViewController+Permissions.m in Sources */ = {isa = PBXBuildFile; fileRef = E3332631261C755900CFE73E /* UIViewController+Permissions.m */; };
-		E3332642261C75C900CFE73E /* UIFont+OWS.m in Sources */ = {isa = PBXBuildFile; fileRef = E3332640261C75C900CFE73E /* UIFont+OWS.m */; };
-		E3332643261C75C900CFE73E /* UIFont+OWS.h in Headers */ = {isa = PBXBuildFile; fileRef = E3332641261C75C900CFE73E /* UIFont+OWS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E333261A261C6CC300CFE73E /* UIView+WLT.h in Headers */ = {isa = PBXBuildFile; fileRef = E3332618261C6CC200CFE73E /* UIView+WLT.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E333261B261C6CC300CFE73E /* UIView+WLT.m in Sources */ = {isa = PBXBuildFile; fileRef = E3332619261C6CC200CFE73E /* UIView+WLT.m */; };
+		E3332623261C730800CFE73E /* WLTMath.h in Headers */ = {isa = PBXBuildFile; fileRef = E3332622261C730800CFE73E /* WLTMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E3332632261C755A00CFE73E /* UIViewController+WLTPermissions.h in Headers */ = {isa = PBXBuildFile; fileRef = E3332630261C755900CFE73E /* UIViewController+WLTPermissions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E3332633261C755A00CFE73E /* UIViewController+WLTPermissions.m in Sources */ = {isa = PBXBuildFile; fileRef = E3332631261C755900CFE73E /* UIViewController+WLTPermissions.m */; };
+		E3332642261C75C900CFE73E /* UIFont+WLT.m in Sources */ = {isa = PBXBuildFile; fileRef = E3332640261C75C900CFE73E /* UIFont+WLT.m */; };
+		E3332643261C75C900CFE73E /* UIFont+WLT.h in Headers */ = {isa = PBXBuildFile; fileRef = E3332641261C75C900CFE73E /* UIFont+WLT.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E35193BB26170FB400043606 /* GrapherexWallet.h in Headers */ = {isa = PBXBuildFile; fileRef = E35193B926170FB400043606 /* GrapherexWallet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E35193BE26170FB400043606 /* GrapherexWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E35193B726170FB300043606 /* GrapherexWallet.framework */; };
 		E35193BF26170FB400043606 /* GrapherexWallet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E35193B726170FB300043606 /* GrapherexWallet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -899,15 +899,15 @@
 		E351981326175A2B00043606 /* ProfileOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197A326175A2A00043606 /* ProfileOptionView.swift */; };
 		E351981426175A2B00043606 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197A426175A2A00043606 /* ReminderView.swift */; };
 		E351981526175A2B00043606 /* SendMediaBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197A526175A2A00043606 /* SendMediaBottomButton.swift */; };
-		E351981626175A2B00043606 /* OWSBezierPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197A626175A2A00043606 /* OWSBezierPathView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E351981726175A2B00043606 /* OWSBezierPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = E35197A726175A2A00043606 /* OWSBezierPathView.m */; };
+		E351981626175A2B00043606 /* WLTBezierPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197A626175A2A00043606 /* WLTBezierPathView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E351981726175A2B00043606 /* WLTBezierPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = E35197A726175A2A00043606 /* WLTBezierPathView.m */; };
 		E351981926175A2B00043606 /* VolumeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AA26175A2A00043606 /* VolumeButtons.swift */; };
 		E351981A26175A2B00043606 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AB26175A2A00043606 /* GalleryManager.swift */; };
 		E351981B26175A2B00043606 /* InteractiveDismissDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AC26175A2A00043606 /* InteractiveDismissDelegate.swift */; };
 		E351981C26175A2B00043606 /* QRCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197AE26175A2A00043606 /* QRCreator.swift */; };
-		E351981D26175A2B00043606 /* OWSQRCodeScanningViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197AF26175A2A00043606 /* OWSQRCodeScanningViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E351981D26175A2B00043606 /* WLTQRCodeScanningViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E35197AF26175A2A00043606 /* WLTQRCodeScanningViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E351981E26175A2B00043606 /* ScanQRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B026175A2A00043606 /* ScanQRController.swift */; };
-		E351981F26175A2B00043606 /* OWSQRCodeScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E35197B126175A2A00043606 /* OWSQRCodeScanningViewController.m */; };
+		E351981F26175A2B00043606 /* WLTQRCodeScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E35197B126175A2A00043606 /* WLTQRCodeScanningViewController.m */; };
 		E351982126175A2B00043606 /* ImagePickerGridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B426175A2A00043606 /* ImagePickerGridController.swift */; };
 		E351982326175A2B00043606 /* SendMediaNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B626175A2A00043606 /* SendMediaNavigationController.swift */; };
 		E351982426175A2B00043606 /* PhotoCaptureDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197B826175A2A00043606 /* PhotoCaptureDismiss.swift */; };
@@ -948,8 +948,8 @@
 		E354E37F261CA7AD00FC65D0 /* Atomics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E37E261CA7AD00FC65D0 /* Atomics.swift */; };
 		E354E387261CA8F100FC65D0 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E386261CA8F100FC65D0 /* CGFloat+Extension.swift */; };
 		E354E38F261CAA3800FC65D0 /* UnfairLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E38E261CAA3800FC65D0 /* UnfairLock.swift */; };
-		E354E398261CAAB100FC65D0 /* UnfairLock.h in Headers */ = {isa = PBXBuildFile; fileRef = E354E396261CAAB100FC65D0 /* UnfairLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E354E399261CAAB100FC65D0 /* UnfairLock.m in Sources */ = {isa = PBXBuildFile; fileRef = E354E397261CAAB100FC65D0 /* UnfairLock.m */; };
+		E354E398261CAAB100FC65D0 /* WTLUnfairLock.h in Headers */ = {isa = PBXBuildFile; fileRef = E354E396261CAAB100FC65D0 /* WTLUnfairLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E354E399261CAAB100FC65D0 /* WTLUnfairLock.m in Sources */ = {isa = PBXBuildFile; fileRef = E354E397261CAAB100FC65D0 /* WTLUnfairLock.m */; };
 		E3794A83261B5A3800E14B2E /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3794A82261B5A3800E14B2E /* Weak.swift */; };
 		E3794A92261B5B3C00E14B2E /* UIColor+OWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3794A8B261B5B3C00E14B2E /* UIColor+OWS.swift */; };
 		E3794A93261B5B3C00E14B2E /* WLTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3794A8C261B5B3C00E14B2E /* WLTNavigationController.m */; };
@@ -2147,13 +2147,13 @@
 		E33325FA261C5E5800CFE73E /* ToastController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastController.swift; sourceTree = "<group>"; };
 		E3332608261C629600CFE73E /* DirectionalPanGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionalPanGestureRecognizer.swift; sourceTree = "<group>"; };
 		E3332610261C64B400CFE73E /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
-		E3332618261C6CC200CFE73E /* UIView+OWS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+OWS.h"; sourceTree = "<group>"; };
-		E3332619261C6CC200CFE73E /* UIView+OWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+OWS.m"; sourceTree = "<group>"; };
-		E3332622261C730800CFE73E /* OWSMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSMath.h; sourceTree = "<group>"; };
-		E3332630261C755900CFE73E /* UIViewController+Permissions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Permissions.h"; sourceTree = "<group>"; };
-		E3332631261C755900CFE73E /* UIViewController+Permissions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Permissions.m"; sourceTree = "<group>"; };
-		E3332640261C75C900CFE73E /* UIFont+OWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+OWS.m"; sourceTree = "<group>"; };
-		E3332641261C75C900CFE73E /* UIFont+OWS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+OWS.h"; sourceTree = "<group>"; };
+		E3332618261C6CC200CFE73E /* UIView+WLT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WLT.h"; sourceTree = "<group>"; };
+		E3332619261C6CC200CFE73E /* UIView+WLT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WLT.m"; sourceTree = "<group>"; };
+		E3332622261C730800CFE73E /* WLTMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTMath.h; sourceTree = "<group>"; };
+		E3332630261C755900CFE73E /* UIViewController+WLTPermissions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WLTPermissions.h"; sourceTree = "<group>"; };
+		E3332631261C755900CFE73E /* UIViewController+WLTPermissions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WLTPermissions.m"; sourceTree = "<group>"; };
+		E3332640261C75C900CFE73E /* UIFont+WLT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+WLT.m"; sourceTree = "<group>"; };
+		E3332641261C75C900CFE73E /* UIFont+WLT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+WLT.h"; sourceTree = "<group>"; };
 		E35193B726170FB300043606 /* GrapherexWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GrapherexWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E35193B926170FB400043606 /* GrapherexWallet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrapherexWallet.h; sourceTree = "<group>"; };
 		E35193BA26170FB400043606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2204,15 +2204,15 @@
 		E35197A326175A2A00043606 /* ProfileOptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileOptionView.swift; sourceTree = "<group>"; };
 		E35197A426175A2A00043606 /* ReminderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
 		E35197A526175A2A00043606 /* SendMediaBottomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMediaBottomButton.swift; sourceTree = "<group>"; };
-		E35197A626175A2A00043606 /* OWSBezierPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSBezierPathView.h; sourceTree = "<group>"; };
-		E35197A726175A2A00043606 /* OWSBezierPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSBezierPathView.m; sourceTree = "<group>"; };
+		E35197A626175A2A00043606 /* WLTBezierPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTBezierPathView.h; sourceTree = "<group>"; };
+		E35197A726175A2A00043606 /* WLTBezierPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTBezierPathView.m; sourceTree = "<group>"; };
 		E35197AA26175A2A00043606 /* VolumeButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeButtons.swift; sourceTree = "<group>"; };
 		E35197AB26175A2A00043606 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
 		E35197AC26175A2A00043606 /* InteractiveDismissDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveDismissDelegate.swift; sourceTree = "<group>"; };
 		E35197AE26175A2A00043606 /* QRCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCreator.swift; sourceTree = "<group>"; };
-		E35197AF26175A2A00043606 /* OWSQRCodeScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSQRCodeScanningViewController.h; sourceTree = "<group>"; };
+		E35197AF26175A2A00043606 /* WLTQRCodeScanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTQRCodeScanningViewController.h; sourceTree = "<group>"; };
 		E35197B026175A2A00043606 /* ScanQRController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRController.swift; sourceTree = "<group>"; };
-		E35197B126175A2A00043606 /* OWSQRCodeScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSQRCodeScanningViewController.m; sourceTree = "<group>"; };
+		E35197B126175A2A00043606 /* WLTQRCodeScanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTQRCodeScanningViewController.m; sourceTree = "<group>"; };
 		E35197B426175A2A00043606 /* ImagePickerGridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerGridController.swift; sourceTree = "<group>"; };
 		E35197B626175A2A00043606 /* SendMediaNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMediaNavigationController.swift; sourceTree = "<group>"; };
 		E35197B826175A2A00043606 /* PhotoCaptureDismiss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDismiss.swift; sourceTree = "<group>"; };
@@ -2253,8 +2253,8 @@
 		E354E37E261CA7AD00FC65D0 /* Atomics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomics.swift; sourceTree = "<group>"; };
 		E354E386261CA8F100FC65D0 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		E354E38E261CAA3800FC65D0 /* UnfairLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfairLock.swift; sourceTree = "<group>"; };
-		E354E396261CAAB100FC65D0 /* UnfairLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnfairLock.h; sourceTree = "<group>"; };
-		E354E397261CAAB100FC65D0 /* UnfairLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfairLock.m; sourceTree = "<group>"; };
+		E354E396261CAAB100FC65D0 /* WTLUnfairLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTLUnfairLock.h; sourceTree = "<group>"; };
+		E354E397261CAAB100FC65D0 /* WTLUnfairLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTLUnfairLock.m; sourceTree = "<group>"; };
 		E3794A82261B5A3800E14B2E /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		E3794A8B261B5B3C00E14B2E /* UIColor+OWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+OWS.swift"; sourceTree = "<group>"; };
 		E3794A8C261B5B3C00E14B2E /* WLTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTNavigationController.m; sourceTree = "<group>"; };
@@ -4583,8 +4583,8 @@
 				E35197A326175A2A00043606 /* ProfileOptionView.swift */,
 				E35197A426175A2A00043606 /* ReminderView.swift */,
 				E35197A526175A2A00043606 /* SendMediaBottomButton.swift */,
-				E35197A626175A2A00043606 /* OWSBezierPathView.h */,
-				E35197A726175A2A00043606 /* OWSBezierPathView.m */,
+				E35197A626175A2A00043606 /* WLTBezierPathView.h */,
+				E35197A726175A2A00043606 /* WLTBezierPathView.m */,
 			);
 			path = GeneralViews;
 			sourceTree = "<group>";
@@ -4603,9 +4603,9 @@
 			isa = PBXGroup;
 			children = (
 				E35197AE26175A2A00043606 /* QRCreator.swift */,
-				E35197AF26175A2A00043606 /* OWSQRCodeScanningViewController.h */,
+				E35197AF26175A2A00043606 /* WLTQRCodeScanningViewController.h */,
 				E35197B026175A2A00043606 /* ScanQRController.swift */,
-				E35197B126175A2A00043606 /* OWSQRCodeScanningViewController.m */,
+				E35197B126175A2A00043606 /* WLTQRCodeScanningViewController.m */,
 			);
 			path = QRCode;
 			sourceTree = "<group>";
@@ -4775,8 +4775,8 @@
 		E354E375261CA3F900FC65D0 /* SignalServiceKit */ = {
 			isa = PBXGroup;
 			children = (
-				E354E396261CAAB100FC65D0 /* UnfairLock.h */,
-				E354E397261CAAB100FC65D0 /* UnfairLock.m */,
+				E354E396261CAAB100FC65D0 /* WTLUnfairLock.h */,
+				E354E397261CAAB100FC65D0 /* WTLUnfairLock.m */,
 				E354E376261CA40A00FC65D0 /* String+Extension.swift */,
 				E354E37E261CA7AD00FC65D0 /* Atomics.swift */,
 				E354E386261CA8F100FC65D0 /* CGFloat+Extension.swift */,
@@ -4788,13 +4788,13 @@
 		E3794A8A261B5B3C00E14B2E /* SignalMessaging */ = {
 			isa = PBXGroup;
 			children = (
-				E3332641261C75C900CFE73E /* UIFont+OWS.h */,
-				E3332640261C75C900CFE73E /* UIFont+OWS.m */,
-				E3332630261C755900CFE73E /* UIViewController+Permissions.h */,
-				E3332631261C755900CFE73E /* UIViewController+Permissions.m */,
-				E3332622261C730800CFE73E /* OWSMath.h */,
-				E3332618261C6CC200CFE73E /* UIView+OWS.h */,
-				E3332619261C6CC200CFE73E /* UIView+OWS.m */,
+				E3332641261C75C900CFE73E /* UIFont+WLT.h */,
+				E3332640261C75C900CFE73E /* UIFont+WLT.m */,
+				E3332630261C755900CFE73E /* UIViewController+WLTPermissions.h */,
+				E3332631261C755900CFE73E /* UIViewController+WLTPermissions.m */,
+				E3332622261C730800CFE73E /* WLTMath.h */,
+				E3332618261C6CC200CFE73E /* UIView+WLT.h */,
+				E3332619261C6CC200CFE73E /* UIView+WLT.m */,
 				E3332610261C64B400CFE73E /* AvatarImageView.swift */,
 				E3794ACF261B65B000E14B2E /* ModalActivityIndicatorViewController.swift */,
 				E3794AD0261B65B000E14B2E /* WLTNavigationBar.swift */,
@@ -5435,14 +5435,14 @@
 				E3794A97261B5B3C00E14B2E /* WLTNavigationController.h in Headers */,
 				E3794A98261B5B3C00E14B2E /* WLTViewController.h in Headers */,
 				E3794AD7261B65B100E14B2E /* WLTTableViewController.h in Headers */,
-				E333261A261C6CC300CFE73E /* UIView+OWS.h in Headers */,
+				E333261A261C6CC300CFE73E /* UIView+WLT.h in Headers */,
 				E35193BB26170FB400043606 /* GrapherexWallet.h in Headers */,
-				E3332632261C755A00CFE73E /* UIViewController+Permissions.h in Headers */,
-				E3332623261C730800CFE73E /* OWSMath.h in Headers */,
-				E354E398261CAAB100FC65D0 /* UnfairLock.h in Headers */,
-				E3332643261C75C900CFE73E /* UIFont+OWS.h in Headers */,
-				E351981D26175A2B00043606 /* OWSQRCodeScanningViewController.h in Headers */,
-				E351981626175A2B00043606 /* OWSBezierPathView.h in Headers */,
+				E3332632261C755A00CFE73E /* UIViewController+WLTPermissions.h in Headers */,
+				E3332623261C730800CFE73E /* WLTMath.h in Headers */,
+				E354E398261CAAB100FC65D0 /* WTLUnfairLock.h in Headers */,
+				E3332643261C75C900CFE73E /* UIFont+WLT.h in Headers */,
+				E351981D26175A2B00043606 /* WLTQRCodeScanningViewController.h in Headers */,
+				E351981626175A2B00043606 /* WLTBezierPathView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6982,7 +6982,7 @@
 				E3794AB4261B5E8C00E14B2E /* ActionSheetController.swift in Sources */,
 				E351983726175A2B00043606 /* CurrencyPickerController.swift in Sources */,
 				E351981526175A2B00043606 /* SendMediaBottomButton.swift in Sources */,
-				E3332642261C75C900CFE73E /* UIFont+OWS.m in Sources */,
+				E3332642261C75C900CFE73E /* UIFont+WLT.m in Sources */,
 				E351981326175A2B00043606 /* ProfileOptionView.swift in Sources */,
 				E351981E26175A2B00043606 /* ScanQRController.swift in Sources */,
 				E351982626175A2B00043606 /* PhotoCapture.swift in Sources */,
@@ -6993,7 +6993,7 @@
 				E3794A96261B5B3C00E14B2E /* UIView+OWS.swift in Sources */,
 				E351980A26175A2B00043606 /* UIStackView + Extension.swift in Sources */,
 				E351983526175A2B00043606 /* MoneyFormatter.swift in Sources */,
-				E351981F26175A2B00043606 /* OWSQRCodeScanningViewController.m in Sources */,
+				E351981F26175A2B00043606 /* WLTQRCodeScanningViewController.m in Sources */,
 				E351980526175A2B00043606 /* UIView + Extension.swift in Sources */,
 				E351983F26175A2B00043606 /* WalletItemCell.swift in Sources */,
 				E35197FA26175A2B00043606 /* SendCurrencyFromWalletController.swift in Sources */,
@@ -7046,7 +7046,7 @@
 				E351982D26175A2B00043606 /* Transaction.swift in Sources */,
 				E35197FD26175A2B00043606 /* InfoCurrencyController.swift in Sources */,
 				E351983B26175A2B00043606 /* WalletPickerController.swift in Sources */,
-				E351981726175A2B00043606 /* OWSBezierPathView.m in Sources */,
+				E351981726175A2B00043606 /* WLTBezierPathView.m in Sources */,
 				E39F889426177285000E120C /* NetworkService.swift in Sources */,
 				E39F88AE2617733D000E120C /* WalletNetworkService.swift in Sources */,
 				E3794AAC261B5DA300E14B2E /* STPrimaryButton.swift in Sources */,
@@ -7055,7 +7055,7 @@
 				E351983026175A2B00043606 /* WalletCredentials.swift in Sources */,
 				E351982C26175A2B00043606 /* Currency.swift in Sources */,
 				E351982E26175A2B00043606 /* RecipientWallet.swift in Sources */,
-				E3332633261C755A00CFE73E /* UIViewController+Permissions.m in Sources */,
+				E3332633261C755A00CFE73E /* UIViewController+WLTPermissions.m in Sources */,
 				E351983326175A2B00043606 /* NumberFormatter.swift in Sources */,
 				E351982926175A2B00043606 /* PhotoLibrary.swift in Sources */,
 				E35197F226175A2A00043606 /* WalletExchangeController.swift in Sources */,
@@ -7063,11 +7063,11 @@
 				E351981426175A2B00043606 /* ReminderView.swift in Sources */,
 				E35197EF26175A2A00043606 /* WalletHeaderView.swift in Sources */,
 				E351980826175A2B00043606 /* UIViewController + Toast.swift in Sources */,
-				E333261B261C6CC300CFE73E /* UIView+OWS.m in Sources */,
+				E333261B261C6CC300CFE73E /* UIView+WLT.m in Sources */,
 				E3794A95261B5B3C00E14B2E /* WLTViewController.m in Sources */,
 				E35197EE26175A2A00043606 /* WalletDetailController.swift in Sources */,
 				E3794AD8261B65B100E14B2E /* WLTTableViewController.m in Sources */,
-				E354E399261CAAB100FC65D0 /* UnfairLock.m in Sources */,
+				E354E399261CAAB100FC65D0 /* WTLUnfairLock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

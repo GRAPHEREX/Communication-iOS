@@ -2,13 +2,15 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSQRCodeScanningViewController.h"
-#import "OWSBezierPathView.h"
-#import <UIView+OWS.h>
+#import "WLTQRCodeScanningViewController.h"
+#import "WLTBezierPathView.h"
+#import <UIView+WLT.h>
+
+@import PureLayout;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OWSQRCodeScanningViewController ()
+@interface WLTQRCodeScanningViewController ()
 
 @property (atomic) ZXCapture *capture;
 @property (nonatomic) BOOL captureEnabled;
@@ -18,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark -
 
-@implementation OWSQRCodeScanningViewController
+@implementation WLTQRCodeScanningViewController
 
 - (void)dealloc
 {
@@ -41,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 {
     [super loadView];
 
-    OWSBezierPathView *maskingView = [OWSBezierPathView new];
+    WLTBezierPathView *maskingView = [WLTBezierPathView new];
     self.maskingView = maskingView;
     [maskingView setConfigureShapeLayerBlock:^(CAShapeLayer *layer, CGRect bounds) {
         // Add a circular mask

@@ -6,7 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIViewController (Permissions)
+@interface UIViewController (WLTPermissions)
 
 - (void)wlt_askForCameraPermissions:(void (^)(BOOL granted))callback
     NS_SWIFT_NAME(wlt_askForCameraPermissions(callback:));

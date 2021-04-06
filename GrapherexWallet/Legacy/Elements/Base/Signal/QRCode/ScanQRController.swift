@@ -5,7 +5,7 @@
 import Foundation
 
 final class ScanQRController: WLTViewController {
-    private let qrScanner = OWSQRCodeScanningViewController()
+    private let qrScanner = WLTQRCodeScanningViewController()
     public var result: ((String) -> Void)?
     public weak var returnScreen: UIViewController!
     
@@ -58,8 +58,8 @@ final class ScanQRController: WLTViewController {
     }
 }
 
-extension ScanQRController: OWSQRScannerDelegate {
-    func controller(_ controller: OWSQRCodeScanningViewController, didDetectQRCodeWith string: String) {
+extension ScanQRController: WLTQRScannerDelegate {
+    func controller(_ controller: WLTQRCodeScanningViewController, didDetectQRCodeWith string: String) {
         //Logger.debug("qr scan: \(string)")
         scannedString = string
         result?(scannedString)

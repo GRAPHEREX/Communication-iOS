@@ -2658,7 +2658,8 @@ typedef enum : NSUInteger {
 -(void)moneyButtonPressed
 {
     [self dismissKeyBoard];
-    [self showSendFromChatWithRecipientAddress:self.thread.recipientAddresses[0]];
+    // MARK: - SINGAL DEPENDENCY – reimplement
+    //[self showSendFromChatWithRecipientAddress:self.thread.recipientAddresses[0]];
 }
 
 - (void)gifButtonPressed

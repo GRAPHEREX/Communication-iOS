@@ -3,7 +3,6 @@
 //
 
 #import "WLTViewController.h"
-#import "UIView+OWS.h"
 #import <GrapherexWallet/GrapherexWallet-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN

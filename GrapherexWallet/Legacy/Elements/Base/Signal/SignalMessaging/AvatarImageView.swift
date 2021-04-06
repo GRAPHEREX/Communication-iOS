@@ -5,7 +5,7 @@
 import UIKit
 import PureLayout
 
-@objc
+@objc(WLTAvatarImageView)
 open class AvatarImageView: UIImageView {
     
     public init() {

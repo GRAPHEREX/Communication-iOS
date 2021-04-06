@@ -6,7 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIFont (OWS)
+@interface UIFont (WLT)
 
 + (UIFont *)wlt_thinFontWithSize:(CGFloat)size;
 
