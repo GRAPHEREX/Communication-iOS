@@ -26,7 +26,7 @@ extension ConversationSettingsViewController {
             owsFailDebug("Invalid thread.")
             return false
         }
-        return contactsManager.hasSignalAccount(for: contactThread.contactAddress)
+        return contactsManagerImpl.hasSignalAccount(for: contactThread.contactAddress)
     }
 
     private func buildCell(name: String, icon: ThemeIcon,
@@ -102,7 +102,7 @@ extension ConversationSettingsViewController {
         let isNoteToSelf = thread.isNoteToSelf
 
         if let contactThread = thread as? TSContactThread,
-            contactsManager.supportsContactEditing && !hasExistingContact {
+            contactsManagerImpl.supportsContactEditing && !hasExistingContact {
             section.add(OWSTableItem(customCellBlock: { [weak self] in
                 guard let self = self else {
                     owsFailDebug("Missing self")
@@ -203,7 +203,7 @@ extension ConversationSettingsViewController {
                                             owsFailDebug("Missing self")
                                             return
                                         }
-                                        if self.contactsManager.supportsContactEditing {
+                                        if self.contactsManagerImpl.supportsContactEditing {
                                             self.presentContactViewController()
                                         }
             }))
@@ -256,7 +256,8 @@ extension ConversationSettingsViewController {
         let disappearingMessagesConfiguration = self.disappearingMessagesConfiguration
 
         section.add(.init(
-            customCellBlock: {
+            customCellBlock: { [weak self] in
+                guard let self = self else { return UITableViewCell() }
                 let cell = OWSTableItem.buildIconNameCell(
                     icon: disappearingMessagesConfiguration.isEnabled
                         ? .settingsTimer
@@ -337,8 +338,11 @@ extension ConversationSettingsViewController {
                                                comment: "Indicates that the current thread is not muted.")
 
             let now = Date()
-            if let mutedUntilDate = self.thread.mutedUntilDate,
-                mutedUntilDate > now {
+
+            if self.thread.mutedUntilTimestamp == TSThread.alwaysMutedTimestamp {
+                muteStatus = NSLocalizedString("CONVERSATION_SETTINGS_MUTED_ALWAYS",
+                                               comment: "Indicates that this thread is muted forever.")
+            } else if let mutedUntilDate = self.thread.mutedUntilDate, mutedUntilDate > now {
                 let calendar = Calendar.current
                 let muteUntilComponents = calendar.dateComponents([.year, .month, .day], from: mutedUntilDate)
                 let nowComponents = calendar.dateComponents([.year, .month, .day], from: now)
@@ -597,8 +601,8 @@ extension ConversationSettingsViewController {
                 verificationStateMap[memberAddress] = self.identityManager.verificationState(for: memberAddress,
                                                                                              transaction: transaction)
             }
-            allMembersSorted = self.contactsManager.sortSignalServiceAddresses(Array(allMembers),
-                                                                               transaction: transaction)
+            allMembersSorted = self.contactsManagerImpl.sortSignalServiceAddresses(Array(allMembers),
+                                                                                   transaction: transaction)
         }
 
         var membersToRender = [SignalServiceAddress]()
@@ -662,7 +666,7 @@ extension ConversationSettingsViewController {
 
                 if isLocalUser {
                     // Use a custom avatar to avoid using the "note to self" icon.
-                    let customAvatar = OWSProfileManager.shared().localProfileAvatarImage() ?? OWSContactAvatarBuilder(forLocalUserWithDiameter: kSmallAvatarSize).buildDefaultImage()
+                    let customAvatar = Self.profileManagerImpl.localProfileAvatarImage() ?? OWSContactAvatarBuilder(forLocalUserWithDiameter: kSmallAvatarSize).buildDefaultImage()
                     cell.setCustomAvatar(customAvatar)
                     cell.setCustomName(NSLocalizedString("GROUP_MEMBER_LOCAL_USER",
                                                          comment: "Label indicating the local user."))
@@ -677,7 +681,7 @@ extension ConversationSettingsViewController {
                     cell.setAttributedSubtitle(cell.verifiedSubtitle())
                 } else if !memberAddress.isLocalAddress,
                           let bioForDisplay = (Self.databaseStorage.read { transaction in
-                    Self.profileManager.profileBioForDisplay(for: memberAddress, transaction: transaction)
+                    Self.profileManagerImpl.profileBioForDisplay(for: memberAddress, transaction: transaction)
                 }) {
                     cell.setAttributedSubtitle(NSAttributedString(string: bioForDisplay))
                 } else {

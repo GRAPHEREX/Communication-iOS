@@ -132,7 +132,7 @@ class UsernameViewController: OWSTableViewController2 {
         )
 
         section.add(.init(
-            customCellBlock: { self.nameCell(textField: self.usernameTextField) },
+            customCell: nameCell(textField: self.usernameTextField),
             actionBlock: { [weak self] in
                 self?.usernameTextField.becomeFirstResponder()
             }
@@ -217,9 +217,9 @@ class UsernameViewController: OWSTableViewController2 {
                 usernameRequest = OWSRequestFactory.usernameDeleteRequest()
             }
 
-            SSKEnvironment.shared.networkManager.makePromise(request: usernameRequest).done { _ in
+            Self.networkManager.makePromise(request: usernameRequest).done { _ in
                 self.databaseStorage.write { transaction in
-                    OWSProfileManager.shared().updateLocalUsername(usernameToUse, transaction: transaction)
+                    Self.profileManagerImpl.updateLocalUsername(usernameToUse, transaction: transaction)
                 }
                 modalView.dismiss {
                     self.usernameSavedOrCanceled()

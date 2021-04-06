@@ -8,20 +8,6 @@ import GRDB
 
 class MessageProcessingPerformanceTest: PerformanceBaseTest {
 
-    // MARK: - Dependencies
-
-    var tsAccountManager: TSAccountManager {
-        return SSKEnvironment.shared.tsAccountManager
-    }
-
-    var identityManager: OWSIdentityManager {
-        return SSKEnvironment.shared.identityManager
-    }
-
-    var messageProcessor: MessageProcessor { .shared }
-
-    // MARK: -
-
     let localE164Identifier = "+13235551234"
     let localUUID = UUID()
     let localClient = LocalSignalClient()
@@ -41,7 +27,6 @@ class MessageProcessingPerformanceTest: PerformanceBaseTest {
     override func setUp() {
         super.setUp()
 
-        storageCoordinator.useGRDBForTests()
         try! databaseStorage.grdbStorage.setupUIDatabase()
 
         let dbObserver = BlockObserver(block: { [weak self] in self?.dbObserverBlock?() })
@@ -58,7 +43,7 @@ class MessageProcessingPerformanceTest: PerformanceBaseTest {
 
     // MARK: - Tests
 
-    func testGRDBPerf_messageProcessing() {
+    func testPerf_messageProcessing() {
         measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
             processIncomingMessages()
         }

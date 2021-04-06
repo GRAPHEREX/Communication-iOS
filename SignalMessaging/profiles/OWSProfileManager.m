@@ -82,41 +82,7 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
 // Writes should happen off the main thread, wherever possible.
 @implementation OWSProfileManager
 
-#pragma mark - Dependencies
-
-- (SDSDatabaseStorage *)databaseStorage
-{
-    return SDSDatabaseStorage.shared;
-}
-
-- (id<GroupsV2>)groupsV2
-{
-    return SSKEnvironment.shared.groupsV2;
-}
-
-- (id<StorageServiceManagerProtocol>)storageServiceManager
-{
-    return SSKEnvironment.shared.storageServiceManager;
-}
-
-- (id<VersionedProfiles>)versionedProfiles
-{
-    return SSKEnvironment.shared.versionedProfiles;
-}
-
-- (UserProfileReadCache *)userProfileReadCache
-{
-    return SSKEnvironment.shared.modelReadCaches.userProfileReadCache;
-}
-
-#pragma mark -
-
 @synthesize localUserProfile = _localUserProfile;
-
-+ (instancetype)shared
-{
-    return SSKEnvironment.shared.profileManager;
-}
 
 - (instancetype)initWithDatabaseStorage:(SDSDatabaseStorage *)databaseStorage
 {
@@ -139,6 +105,13 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
     _profileAvatarImageCache = [NSCache new];
 
     OWSSingletonAssert();
+
+    AppReadinessRunNowOrWhenAppDidBecomeReadySync(^{
+        if (CurrentAppContext().isMainApp && !CurrentAppContext().isRunningTests
+            && TSAccountManager.shared.isRegistered) {
+            [self fetchLocalUsersProfile];
+        }
+    });
 
     AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{
         if (TSAccountManager.shared.isRegistered) {
@@ -171,45 +144,6 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
                                              selector:@selector(blockListDidChange:)
                                                  name:kNSNotificationNameBlockListDidChange
                                                object:nil];
-}
-
-#pragma mark - Dependencies
-
-- (TSAccountManager *)tsAccountManager
-{
-    return TSAccountManager.shared;
-}
-
-- (OWSIdentityManager *)identityManager
-{
-    return SSKEnvironment.shared.identityManager;
-}
-
-- (MessageSenderJobQueue *)messageSenderJobQueue
-{
-    return SSKEnvironment.shared.messageSenderJobQueue;
-}
-
-- (TSNetworkManager *)networkManager
-{
-    return SSKEnvironment.shared.networkManager;
-}
-
-- (OWSBlockingManager *)blockingManager
-{
-    return SSKEnvironment.shared.blockingManager;
-}
-
-- (id<SyncManagerProtocol>)syncManager
-{
-    return SSKEnvironment.shared.syncManager;
-}
-
-- (id<OWSUDManager>)udManager
-{
-    OWSAssertDebug(SSKEnvironment.shared.udManager);
-
-    return SSKEnvironment.shared.udManager;
 }
 
 #pragma mark - User Profile Accessor
@@ -572,13 +506,15 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
 
                 [whitelistedGroupIds addObject:groupId];
 
-                // Note we don't add `group.recipientIds` to the `whitelistedRecipientIds`.
+                // Note: We don't add the group member's ids to whitelistedUUIDS
+                // and whitelistedPhoneNumbers.
                 //
                 // Whenever we message a contact, be it in a 1:1 thread or in a group thread,
-                // we add them to the contact whitelist, so there's no reason to redundnatly
+                // we add them to the contact whitelist, so there's no reason to redundantly
                 // add them here.
                 //
                 // Furthermore, doing so would cause the following problem:
+                //
                 // - Alice is in group Book Club
                 // - Add Book Club to your profile white list
                 // - Message Book Club, which also adds Alice to your profile whitelist.
@@ -587,28 +523,9 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
                 // Now, at this point we'd want to rotate our profile key once, since Alice has
                 // it via BookClub.
                 //
-                // However, after we did. The next time we check if we should rotate our profile
-                // key, adding all `group.recipientIds` to `whitelistedRecipientIds` here, would
+                // The next time we checked whether we should rotate our profile key, adding all
+                // group members to whitelistedUUIDS and whitelistedPhoneNumbers would
                 // include Alice, and we'd rotate our profile key every time this method is called.
-            }
-
-            // Treat all the members of every group that is whitelisted as if they were directly
-            // whitelisted, since they likely have access to our profile key. We don't explicitly
-            // whitelist group members because we don't want to automatically bypass message requests
-            // for 1:1 threads with every member of a group you've shared your profile in.
-            for (NSData *groupId in whitelistedGroupIds) {
-                TSGroupThread *_Nullable groupThread = [TSGroupThread fetchWithGroupId:groupId transaction:transaction];
-                if (!groupThread) {
-                    continue;
-                }
-                for (SignalServiceAddress *address in groupThread.groupModel.groupMembers) {
-                    if (address.phoneNumber) {
-                        [whitelistedPhoneNumbers addObject:address.phoneNumber];
-                    }
-                    if (address.uuidString) {
-                        [whitelistedUUIDS addObject:address.uuidString];
-                    }
-                }
             }
         }];
 
@@ -1322,22 +1239,22 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
     // profile key credential for them.
     [self.versionedProfiles clearProfileKeyCredentialForAddress:address transaction:transaction];
 
-    [userProfile clearWithProfileKey:profileKey
-                 wasLocallyInitiated:wasLocallyInitiated
-                         transaction:transaction
-                          completion:^{
-                              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                                  // If this is the profile for the local user, we always want to defer to local state
-                                  // so skip the update profile for address call.
-                                  if ([OWSUserProfile isLocalProfileAddress:address]) {
-                                      return;
-                                  }
+    [userProfile updateWithProfileKey:profileKey
+                  wasLocallyInitiated:wasLocallyInitiated
+                          transaction:transaction
+                           completion:^{
+                               dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                                   // If this is the profile for the local user, we always want to defer to local state
+                                   // so skip the update profile for address call.
+                                   if ([OWSUserProfile isLocalProfileAddress:address]) {
+                                       return;
+                                   }
 
-                                  [self.udManager setUnidentifiedAccessMode:UnidentifiedAccessModeUnknown
-                                                                    address:address];
-                                  [self fetchProfileForAddress:address];
-                              });
-                          }];
+                                   [self.udManager setUnidentifiedAccessMode:UnidentifiedAccessModeUnknown
+                                                                     address:address];
+                                   [self fetchProfileForAddress:address];
+                               });
+                           }];
 }
 
 - (void)fillInMissingProfileKeys:(NSDictionary<SignalServiceAddress *, NSData *> *)profileKeys
@@ -1584,7 +1501,7 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
         return [self getLocalUserProfileWithTransaction:transaction];
     }
 
-    return [self.userProfileReadCache getUserProfileWithAddress:address transaction:transaction];
+    return [self.modelReadCaches.userProfileReadCache getUserProfileWithAddress:address transaction:transaction];
 }
 
 - (NSString *)generateAvatarFilename
@@ -1654,7 +1571,7 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
                 }
                 UIImage *_Nullable image = [UIImage imageWithContentsOfFile:filePath];
                 if (image == nil) {
-                    OWSFailDebug(@"Could not read avatar image.");
+                    OWSLogError(@"Could not read avatar image.");
                     return;
                 }
 

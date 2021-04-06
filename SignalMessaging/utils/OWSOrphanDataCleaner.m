@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "OWSOrphanDataCleaner.h"
@@ -13,10 +13,10 @@
 #import <SignalServiceKit/OWSFileSystem.h>
 #import <SignalServiceKit/OWSIncomingContactSyncJobRecord.h>
 #import <SignalServiceKit/OWSIncomingGroupSyncJobRecord.h>
-#import <SignalServiceKit/OWSPrimaryStorage.h>
 #import <SignalServiceKit/OWSReaction.h>
 #import <SignalServiceKit/OWSUserProfile.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSAccountManager.h>
 #import <SignalServiceKit/TSAttachmentStream.h>
 #import <SignalServiceKit/TSInteraction.h>
 #import <SignalServiceKit/TSMention.h>
@@ -55,14 +55,20 @@ typedef void (^OrphanDataBlock)(OWSOrphanData *);
 
 @implementation OWSOrphanDataCleaner
 
-#pragma mark - Dependencies
-
-+ (SDSDatabaseStorage *)databaseStorage
+- (instancetype)init
 {
-    return SDSDatabaseStorage.shared;
-}
+    self = [super init];
 
-#pragma mark -
+    if (!self) {
+        return self;
+    }
+
+    OWSSingletonAssert();
+
+    AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{ [OWSOrphanDataCleaner auditOnLaunchIfNecessary]; });
+
+    return self;
+}
 
 + (SDSKeyValueStore *)keyValueStore
 {
@@ -305,22 +311,31 @@ typedef void (^OrphanDataBlock)(OWSOrphanData *);
     [allOnDiskFilePaths addObjectsFromArray:tempFilePaths];
 
     // This should be redundant, but this will future-proof us against
-    // ever accidentally removing the YDB or GRDB databases during
+    // ever accidentally removing the GRDB databases during
     // orphan clean up.
-    NSString *grdbDirectoryPath = [SDSDatabaseStorage grdbDatabaseDirUrl].path;
-    NSString *ydbDirectoryPath = [OWSPrimaryStorage sharedDataDatabaseDirPath];
+    NSString *grdbPrimaryDirectoryPath =
+        [GRDBDatabaseStorageAdapter databaseDirUrlWithBaseDir:SDSDatabaseStorage.baseDir
+                                                directoryMode:DirectoryModePrimary]
+            .path;
+    NSString *grdbHotswapDirectoryPath =
+        [GRDBDatabaseStorageAdapter databaseDirUrlWithBaseDir:SDSDatabaseStorage.baseDir
+                                                directoryMode:DirectoryModeHotswap]
+            .path;
+
     NSMutableSet<NSString *> *databaseFilePaths = [NSMutableSet new];
     for (NSString *filePath in allOnDiskFilePaths) {
-        if ([filePath hasPrefix:grdbDirectoryPath] || [filePath hasPrefix:ydbDirectoryPath]) {
+        if ([filePath hasPrefix:grdbPrimaryDirectoryPath]) {
             OWSLogInfo(@"Protecting database file: %@", filePath);
+            [databaseFilePaths addObject:filePath];
+        } else if ([filePath hasPrefix:grdbHotswapDirectoryPath]) {
+            OWSLogInfo(@"Protecting database hotswap file: %@", filePath);
             [databaseFilePaths addObject:filePath];
         }
     }
     [allOnDiskFilePaths minusSet:databaseFilePaths];
-    OWSLogVerbose(
-        @"grdbDirectoryPath: %@ (%d)", grdbDirectoryPath, [OWSFileSystem fileOrFolderExistsAtPath:grdbDirectoryPath]);
-    OWSLogVerbose(
-        @"ydbDirectoryPath: %@ (%d)", ydbDirectoryPath, [OWSFileSystem fileOrFolderExistsAtPath:ydbDirectoryPath]);
+    OWSLogVerbose(@"grdbDirectoryPath: %@ (%d)",
+        grdbPrimaryDirectoryPath,
+        [OWSFileSystem fileOrFolderExistsAtPath:grdbPrimaryDirectoryPath]);
     OWSLogVerbose(@"databaseFilePaths: %lu", (unsigned long)databaseFilePaths.count);
 
     OWSLogVerbose(@"allOnDiskFilePaths: %lu", (unsigned long)allOnDiskFilePaths.count);
@@ -588,6 +603,9 @@ typedef void (^OrphanDataBlock)(OWSOrphanData *);
 {
     OWSAssertIsOnMainThread();
 
+    if (!CurrentAppContext().isMainApp || CurrentAppContext().isRunningTests || !TSAccountManager.shared.isRegistered) {
+        return NO;
+    }
     if (!SSKFeatureFlags.useOrphanDataCleaner) {
         return NO;
     }
@@ -784,6 +802,10 @@ typedef void (^OrphanDataBlock)(OWSOrphanData *);
        shouldRemoveOrphans:(BOOL)shouldRemoveOrphans
 {
     OWSAssertDebug(orphanData);
+
+    if (!self.isMainAppAndActive) {
+        return NO;
+    }
 
     __block BOOL shouldAbort = NO;
 

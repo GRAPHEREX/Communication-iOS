@@ -58,36 +58,25 @@ public class ShareViewController: UIViewController, ShareViewDelegate, SAEFailed
             return
         }
 
-        // If we need to migrate YDB-to-GRDB, show an error view and abort.
-        guard StorageCoordinator.isReadyForShareExtension else {
-            showNotReadyView()
-            return
-        }
-
-        // If we haven't migrated the database file to the shared data
-        // directory we can't load it, and therefore can't init TSSPrimaryStorage,
-        // and therefore don't want to setup most of our machinery (Environment,
-        // most of the singletons, etc.).  We just want to show an error view and
-        // abort.
-        isReadyForAppExtensions = OWSPreferences.isReadyForAppExtensions()
-        guard isReadyForAppExtensions else {
-            showNotReadyView()
-            return
-        }
-
         // We shouldn't set up our environment until after we've consulted isReadyForAppExtensions.
         AppSetup.setupEnvironment(appSpecificSingletonBlock: {
-            SSKEnvironment.shared.callMessageHandler = NoopCallMessageHandler()
-            SSKEnvironment.shared.notificationsManager = NoopNotificationsManager()
-            },
-            migrationCompletion: { [weak self] in
-                                    AssertIsOnMainThread()
+            SSKEnvironment.shared.callMessageHandlerRef = NoopCallMessageHandler()
+            SSKEnvironment.shared.notificationsManagerRef = NoopNotificationsManager()
+        },
+        migrationCompletion: { [weak self] error in
+            AssertIsOnMainThread()
 
-                                    guard let strongSelf = self else { return }
+            guard let strongSelf = self else { return }
 
-                                    // performUpdateCheck must be invoked after Environment has been initialized because
-                                    // upgrade process may depend on Environment.
-                                    strongSelf.versionMigrationsDidComplete()
+            if let error = error {
+                owsFailDebug("Error \(error)")
+                strongSelf.showNotReadyView()
+                return
+            }
+
+            // performUpdateCheck must be invoked after Environment has been initialized because
+            // upgrade process may depend on Environment.
+            strongSelf.versionMigrationsDidComplete()
         })
 
         let shareViewNavigationController = OWSNavigationController()
@@ -380,8 +369,7 @@ public class ShareViewController: UIViewController, ShareViewDelegate, SAEFailed
         if isReadyForAppExtensions {
             AppReadiness.runNowOrWhenAppDidBecomeReadySync { [weak self] in
                 AssertIsOnMainThread()
-                guard let strongSelf = self else { return }
-                strongSelf.activate()
+                self?.activate()
             }
         }
     }

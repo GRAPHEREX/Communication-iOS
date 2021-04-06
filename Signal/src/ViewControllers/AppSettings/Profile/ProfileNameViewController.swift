@@ -140,7 +140,7 @@ class ProfileNameViewController: OWSTableViewController2 {
         let namesSection = OWSTableSection()
         func addTextField(_ textField: UITextField) {
             namesSection.add(.init(
-                customCellBlock: { self.nameCell(textField: textField) },
+                customCell: nameCell(textField: textField),
                 actionBlock: {
                     textField.becomeFirstResponder()
                 }
@@ -199,7 +199,7 @@ class ProfileNameViewController: OWSTableViewController2 {
             return
         }
 
-        if profileManager.isProfileNameTooLong(normalizedGivenName) {
+        if profileManagerImpl.isProfileNameTooLong(normalizedGivenName) {
             OWSActionSheets.showErrorAlert(message: NSLocalizedString(
                 "PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG",
                 comment: "Error message shown when user tries to update profile with a given name that is too long."
@@ -207,7 +207,7 @@ class ProfileNameViewController: OWSTableViewController2 {
             return
         }
 
-        if profileManager.isProfileNameTooLong(normalizedFamilyName) {
+        if profileManagerImpl.isProfileNameTooLong(normalizedFamilyName) {
             OWSActionSheets.showErrorAlert(message: NSLocalizedString(
                 "PROFILE_VIEW_ERROR_FAMILY_NAME_TOO_LONG",
                 comment: "Error message shown when user tries to update profile with a family name that is too long."

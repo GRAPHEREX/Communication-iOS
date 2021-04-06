@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -79,12 +79,6 @@ extension MockObserver: UIDatabaseSnapshotDelegate {
 
 class SDSDatabaseStorageObservationTest: SSKBaseTestSwift {
 
-    // MARK: - Dependencies
-
-    var storageCoordinator: StorageCoordinator {
-        return SSKEnvironment.shared.storageCoordinator
-    }
-
     // MARK: - GRDB
 
     func testGRDBSyncWrite() {
@@ -141,12 +135,7 @@ class SDSDatabaseStorageObservationTest: SSKBaseTestSwift {
             XCTAssertTrue(lastChange.didUpdate(keyValueStore: keyValueStore))
             // Note: For GRDB, didUpdate(keyValueStore:) currently returns true
             //       if any key value stores was updated.
-            if self.storageCoordinator.state == .YDB ||
-                self.storageCoordinator.state == .ydbTests {
-                XCTAssertFalse(lastChange.didUpdate(keyValueStore: otherKeyValueStore))
-            } else {
-                XCTAssertTrue(lastChange.didUpdate(keyValueStore: otherKeyValueStore))
-            }
+            XCTAssertTrue(lastChange.didUpdate(keyValueStore: otherKeyValueStore))
         }
         mockObserver.clear()
 
@@ -323,12 +312,7 @@ class SDSDatabaseStorageObservationTest: SSKBaseTestSwift {
             XCTAssertTrue(lastChange.didUpdate(keyValueStore: keyValueStore))
             // Note: For GRDB, didUpdate(keyValueStore:) currently returns true
             //       if any key value stores was updated.
-            if self.storageCoordinator.state == .YDB ||
-                self.storageCoordinator.state == .ydbTests {
-                XCTAssertFalse(lastChange.didUpdate(keyValueStore: otherKeyValueStore))
-            } else {
-                XCTAssertTrue(lastChange.didUpdate(keyValueStore: otherKeyValueStore))
-            }
+            XCTAssertTrue(lastChange.didUpdate(keyValueStore: otherKeyValueStore))
         }
         mockObserver.clear()
 

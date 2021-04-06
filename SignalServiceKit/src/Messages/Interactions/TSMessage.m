@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "TSMessage.h"
@@ -627,9 +627,9 @@ static const NSUInteger OWSMessageSchemaVersion = 4;
         return;
     }
     uint64_t nowMs = [NSDate ows_millisecondTimeStamp];
-    [[OWSDisappearingMessagesJob sharedJob] startAnyExpirationForMessage:self
-                                                     expirationStartedAt:nowMs
-                                                             transaction:transaction];
+    [[OWSDisappearingMessagesJob shared] startAnyExpirationForMessage:self
+                                                  expirationStartedAt:nowMs
+                                                          transaction:transaction];
 }
 
 - (void)updateStoredShouldStartExpireTimer
@@ -661,12 +661,7 @@ static const NSUInteger OWSMessageSchemaVersion = 4;
 
     [self removeAllReactionsWithTransaction:transaction];
 
-    // This path gets hit during the YDB->GRDB migration *tests*, at which point
-    // it's unsafe to assume we have a GRDB transaction. We can safely skip this
-    // step during the tests when we don't.
-    if (!transaction.isYapWrite) {
-        [self removeAllMentionsWithTransaction:transaction];
-    }
+    [self removeAllMentionsWithTransaction:transaction];
 }
 
 - (void)removeAllAttachmentsWithTransaction:(SDSAnyWriteTransaction *)transaction

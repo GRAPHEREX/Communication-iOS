@@ -233,39 +233,6 @@ NSNotificationName const NSNotificationWebSocketStateDidChange = @"NSNotificatio
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - Dependencies
-
-- (OWSSignalService *)signalService
-{
-    return [OWSSignalService shared];
-}
-
-- (TSAccountManager *)tsAccountManager
-{
-    return TSAccountManager.shared;
-}
-
-- (OutageDetection *)outageDetection
-{
-    return OutageDetection.shared;
-}
-
-- (SDSDatabaseStorage *)databaseStorage
-{
-    return SDSDatabaseStorage.shared;
-}
-
-- (id<NotificationsProtocol>)notificationsManager
-{
-    return SSKEnvironment.shared.notificationsManager;
-}
-
-- (id<OWSUDManager>)udManager {
-    return SSKEnvironment.shared.udManager;
-}
-
-#pragma mark -
-
 // We want to observe these notifications lazily to avoid accessing
 // the data store in [application: didFinishLaunchingWithOptions:].
 - (void)observeNotificationsIfNecessary
@@ -1073,8 +1040,12 @@ NSNotificationName const NSNotificationWebSocketStateDidChange = @"NSNotificatio
 
     if (!AppReadiness.isAppReady) {
         static dispatch_once_t onceToken;
-        dispatch_once(
-            &onceToken, ^{ AppReadinessRunNowOrWhenAppDidBecomeReadySync(^{ [self applyDesiredSocketState]; }); });
+        dispatch_once(&onceToken, ^{
+            AppReadinessRunNowOrWhenAppDidBecomeReadySync(^{
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+                    ^{ [self applyDesiredSocketState]; });
+            });
+        });
         return;
     }
 

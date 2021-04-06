@@ -8,14 +8,6 @@ import GRDB
 @objc
 public class GRDBSchemaMigrator: NSObject {
 
-    // MARK: - Dependencies
-
-    private var grdbStorage: GRDBDatabaseStorageAdapter {
-        return SDSDatabaseStorage.shared.grdbStorage
-    }
-
-    // MARK: -
-
     // Returns true IFF incremental migrations were performed.
     @objc
     public func runSchemaMigrations() -> Bool {
@@ -24,11 +16,11 @@ public class GRDBSchemaMigrator: NSObject {
         if hasCreatedInitialSchema {
             Logger.info("Using incrementalMigrator.")
             let appliedMigrations = self.appliedMigrations
-            try! incrementalMigrator.migrate(grdbStorage.pool)
+            try! incrementalMigrator.migrate(grdbStorageAdapter.pool)
             didPerformIncrementalMigrations = appliedMigrations != self.appliedMigrations
         } else {
             Logger.info("Using newUserMigrator.")
-            try! newUserMigrator.migrate(grdbStorage.pool)
+            try! newUserMigrator.migrate(grdbStorageAdapter.pool)
         }
         Logger.info("Migrations complete.")
 
@@ -47,11 +39,11 @@ public class GRDBSchemaMigrator: NSObject {
         // HACK: GRDB doesn't create the grdb_migrations table until running a migration.
         // So we can't cleanly check which migrations have run for new users until creating this
         // table ourselves.
-        try! grdbStorage.write { transaction in
+        try! grdbStorageAdapter.write { transaction in
             try! self.fixit_setupMigrations(transaction.database)
         }
 
-        return try! incrementalMigrator.appliedMigrations(in: grdbStorage.pool)
+        return try! incrementalMigrator.appliedMigrations(in: grdbStorageAdapter.pool)
     }
 
     private func fixit_setupMigrations(_ db: Database) throws {
@@ -105,6 +97,7 @@ public class GRDBSchemaMigrator: NSObject {
         case addGroupCallEraIdIndex
         case addProfileBio
         case addWasIdentityVerified
+        case storeMutedUntilDateAsMillisecondTimestamp
 
         // NOTE: Every time we add a migration id, consider
         // incrementing grdbSchemaVersionLatest.
@@ -139,10 +132,11 @@ public class GRDBSchemaMigrator: NSObject {
         case dataMigration_groupIdMapping
         case dataMigration_disableSharingSuggestionsForExistingUsers
         case dataMigration_removeOversizedGroupAvatars
+        case dataMigration_scheduleStorageServiceUpdateForMutedThreads
     }
 
     public static let grdbSchemaVersionDefault: UInt = 0
-    public static let grdbSchemaVersionLatest: UInt = 19
+    public static let grdbSchemaVersionLatest: UInt = 20
 
     // An optimization for new users, we have the first migration import the latest schema
     // and mark any other migrations as "already run".
@@ -939,6 +933,20 @@ public class GRDBSchemaMigrator: NSObject {
             }
         }
 
+        migrator.registerMigration(MigrationId.storeMutedUntilDateAsMillisecondTimestamp.rawValue) { db in
+            do {
+                try db.alter(table: "model_TSThread") { table in
+                    table.add(column: "mutedUntilTimestamp", .integer).notNull().defaults(to: 0)
+                }
+
+                // Convert any existing mutedUntilDate (seconds) into mutedUntilTimestamp (milliseconds)
+                try db.execute(sql: "UPDATE model_TSThread SET mutedUntilTimestamp = CAST(mutedUntilDate * 1000 AS INT) WHERE mutedUntilDate IS NOT NULL")
+                try db.execute(sql: "UPDATE model_TSThread SET mutedUntilDate = NULL")
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
         // MARK: - Schema Migration Insertion Point
     }
 
@@ -962,9 +970,9 @@ public class GRDBSchemaMigrator: NSObject {
             let transaction = GRDBWriteTransaction(database: db)
             defer { transaction.finalizeTransaction() }
 
-            if TSAccountManager.shared().isRegistered(transaction: transaction.asAnyWrite) {
+            if TSAccountManager.shared.isRegistered(transaction: transaction.asAnyWrite) {
                 Logger.info("marking existing user as onboarded")
-                TSAccountManager.shared().setIsOnboarded(true, transaction: transaction.asAnyWrite)
+                TSAccountManager.shared.setIsOnboarded(true, transaction: transaction.asAnyWrite)
             }
         }
 
@@ -985,7 +993,7 @@ public class GRDBSchemaMigrator: NSObject {
             let transaction = GRDBWriteTransaction(database: db)
             defer { transaction.finalizeTransaction() }
 
-            SSKEnvironment.shared.storageServiceManager.resetLocalData(transaction: transaction.asAnyWrite)
+            Self.storageServiceManager.resetLocalData(transaction: transaction.asAnyWrite)
         }
 
         migrator.registerMigration(MigrationId.dataMigration_markAllInteractionsAsNotDeleted.rawValue) { db in
@@ -1109,6 +1117,26 @@ public class GRDBSchemaMigrator: NSObject {
                     groupThread.update(with: newGroupModel, transaction: transaction.asAnyWrite)
                 } catch {
                     owsFail("Failed to remove invalid group avatar during migration: \(error)")
+                }
+            }
+        }
+
+        migrator.registerMigration(MigrationId.dataMigration_scheduleStorageServiceUpdateForMutedThreads.rawValue) { db in
+            let transaction = GRDBWriteTransaction(database: db)
+            defer { transaction.finalizeTransaction() }
+
+            let cursor = TSThread.grdbFetchCursor(
+                sql: "SELECT * FROM \(ThreadRecord.databaseTableName) WHERE \(threadColumn: .mutedUntilTimestamp) > 0",
+                transaction: transaction
+            )
+
+            while let thread = try cursor.next() {
+                if let thread = thread as? TSContactThread {
+                    Self.storageServiceManager.recordPendingUpdates(updatedAddresses: [thread.contactAddress])
+                } else if let thread = thread as? TSGroupThread {
+                    Self.storageServiceManager.recordPendingUpdates(groupModel: thread.groupModel)
+                } else {
+                    owsFail("Unexpected thread type \(thread)")
                 }
             }
         }

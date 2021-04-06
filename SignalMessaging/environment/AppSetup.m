@@ -6,8 +6,6 @@
 #import "Environment.h"
 #import "Theme.h"
 #import "VersionMigrations.h"
-#import <AxolotlKit/SessionCipher.h>
-#import <SignalMessaging/OWSDatabaseMigration.h>
 #import <SignalMessaging/OWSProfileManager.h>
 #import <SignalMessaging/SignalMessaging-Swift.h>
 #import <SignalMetadataKit/SignalMetadataKit-Swift.h>
@@ -19,7 +17,6 @@
 #import <SignalServiceKit/OWSMessageManager.h>
 #import <SignalServiceKit/OWSOutgoingReceiptManager.h>
 #import <SignalServiceKit/OWSReadReceiptManager.h>
-#import <SignalServiceKit/OWSStorage.h>
 #import <SignalServiceKit/SSKEnvironment.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <SignalServiceKit/TSSocketManager.h>
@@ -29,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @implementation AppSetup
 
 + (void)setupEnvironmentWithAppSpecificSingletonBlock:(dispatch_block_t)appSpecificSingletonBlock
-                                  migrationCompletion:(dispatch_block_t)migrationCompletion
+                                  migrationCompletion:(void (^)(NSError *_Nullable error))migrationCompletion
 {
     OWSAssertDebug(appSpecificSingletonBlock);
     OWSAssertDebug(migrationCompletion);
@@ -49,10 +46,6 @@ NS_ASSUME_NONNULL_BEGIN
 
         StorageCoordinator *storageCoordinator = [StorageCoordinator new];
         SDSDatabaseStorage *databaseStorage = storageCoordinator.databaseStorage;
-        OWSPrimaryStorage *_Nullable primaryStorage;
-        if (databaseStorage.canLoadYdb) {
-            primaryStorage = databaseStorage.yapPrimaryStorage;
-        }
 
         // AFNetworking (via CFNetworking) spools it's attachments to NSTemporaryDirectory().
         // If you receive a media message while the device is locked, the download will fail if the temporary directory
@@ -117,6 +110,7 @@ NS_ASSUME_NONNULL_BEGIN
         AppExpiry *appExpiry = [AppExpiry new];
         BroadcastMediaMessageJobQueue *broadcastMediaMessageJobQueue = [BroadcastMediaMessageJobQueue new];
         MessageProcessor *messageProcessor = [MessageProcessor new];
+        OWSOrphanDataCleaner *orphanDataCleaner = [OWSOrphanDataCleaner new];
 
         [Environment setShared:[[Environment alloc] initWithAudioSession:audioSession
                                              incomingContactSyncJobQueue:incomingContactSyncJobQueue
@@ -127,7 +121,8 @@ NS_ASSUME_NONNULL_BEGIN
                                                                   sounds:sounds
                                                            windowManager:windowManager
                                                       contactsViewHelper:contactsViewHelper
-                                           broadcastMediaMessageJobQueue:broadcastMediaMessageJobQueue]];
+                                           broadcastMediaMessageJobQueue:broadcastMediaMessageJobQueue
+                                                       orphanDataCleaner:orphanDataCleaner]];
 
         [SSKEnvironment setShared:[[SSKEnvironment alloc] initWithContactsManager:contactsManager
                                                                linkPreviewManager:linkPreviewManager
@@ -135,7 +130,6 @@ NS_ASSUME_NONNULL_BEGIN
                                                             messageSenderJobQueue:messageSenderJobQueue
                                                        pendingReadReceiptRecorder:pendingReadReceiptRecorder
                                                                    profileManager:profileManager
-                                                                   primaryStorage:primaryStorage
                                                                    networkManager:networkManager
                                                                    messageManager:messageManager
                                                                   blockingManager:blockingManager
@@ -182,7 +176,6 @@ NS_ASSUME_NONNULL_BEGIN
 
         // Register renamed classes.
         [NSKeyedUnarchiver setClass:[OWSUserProfile class] forClassName:[OWSUserProfile collection]];
-        [NSKeyedUnarchiver setClass:[OWSDatabaseMigration class] forClassName:[OWSDatabaseMigration collection]];
         [NSKeyedUnarchiver setClass:[ExperienceUpgrade class] forClassName:[ExperienceUpgrade collection]];
         [NSKeyedUnarchiver setClass:[ExperienceUpgrade class] forClassName:@"Signal.ExperienceUpgrade"];
         [NSKeyedUnarchiver setClass:[OWSGroupInfoRequestMessage class] forClassName:@"OWSSyncGroupsRequestMessage"];
@@ -204,7 +197,9 @@ NS_ASSUME_NONNULL_BEGIN
                     NSError *_Nullable error;
                     [databaseStorage.grdbStorage syncTruncatingCheckpointAndReturnError:&error];
                     if (error != nil) {
-                        OWSFailDebug(@"error: %@", error);
+                        OWSFailDebug(@"Failed to truncate database: %@", error);
+
+                        dispatch_async(dispatch_get_main_queue(), ^{ migrationCompletion(error); });
                     }
                 }
 
@@ -220,7 +215,7 @@ NS_ASSUME_NONNULL_BEGIN
                         if (StorageCoordinator.dataStoreForUI == DataStoreGrdb) {
                             [SSKEnvironment.shared warmCaches];
                         }
-                        migrationCompletion();
+                        migrationCompletion(nil);
 
                         OWSAssertDebug(backgroundTask);
                         backgroundTask = nil;
@@ -229,11 +224,7 @@ NS_ASSUME_NONNULL_BEGIN
             });
         };
 
-        if (databaseStorage.canLoadYdb) {
-            [OWSStorage registerExtensionsWithCompletionBlock:completionBlock];
-        } else {
-            completionBlock();
-        }
+        completionBlock();
     });
 }
 

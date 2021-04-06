@@ -6,14 +6,12 @@
 #import "ConversationListViewController.h"
 #import "DebugLogger.h"
 #import "MainAppContext.h"
-#import "OWSBackup.h"
 #import "OWSOrphanDataCleaner.h"
 #import "OWSScreenLockUI.h"
 #import "Pastelog.h"
 #import "Signal-Swift.h"
 #import "SignalApp.h"
 #import "ViewControllerUtils.h"
-#import "YDBLegacyMigration.h"
 #import <Intents/Intents.h>
 #import <PromiseKit/AnyPromise.h>
 #import <SignalCoreKit/iOSVersions.h>
@@ -57,7 +55,8 @@ typedef NS_ENUM(NSUInteger, LaunchFailure) {
     LaunchFailure_None,
     LaunchFailure_CouldNotLoadDatabase,
     LaunchFailure_UnknownDatabaseVersion,
-    LaunchFailure_CouldNotRestoreTransferredData
+    LaunchFailure_CouldNotRestoreTransferredData,
+    LaunchFailure_DatabaseUnrecoverablyCorrupted
 };
 
 NSString *NSStringForLaunchFailure(LaunchFailure launchFailure);
@@ -72,6 +71,8 @@ NSString *NSStringForLaunchFailure(LaunchFailure launchFailure)
             return @"LaunchFailure_UnknownDatabaseVersion";
         case LaunchFailure_CouldNotRestoreTransferredData:
             return @"LaunchFailure_CouldNotRestoreTransferredData";
+        case LaunchFailure_DatabaseUnrecoverablyCorrupted:
+            return @"LaunchFailure_DatabaseUnrecoverablyCorrupted";
     }
 }
 
@@ -125,7 +126,7 @@ void uncaughtExceptionHandler(NSException *exception)
 {
     OWSLogInfo(@"applicationWillTerminate.");
 
-    [SignalApp.sharedApp applicationWillTerminate];
+    [SignalApp.shared applicationWillTerminate];
 
     [DDLog flushLog];
 }
@@ -175,24 +176,24 @@ void uncaughtExceptionHandler(NSException *exception)
                                deviceTransferRestoreFailed = ![DeviceTransferService.shared launchCleanup];
                            }];
 
-    // XXX - careful when moving this. It must happen before we load YDB and/or GRDB.
+    // XXX - careful when moving this. It must happen before we load GRDB.
     [self verifyDBKeysAvailableBeforeBackgroundLaunch];
 
     // We need to do this _after_ we set up logging, when the keychain is unlocked,
-    // but before we access YapDatabase, files on disk, or NSUserDefaults
+    // but before we access the database, files on disk, or NSUserDefaults.
     NSError *_Nullable launchError = nil;
     LaunchFailure launchFailure = LaunchFailure_None;
 
-    BOOL isYdbNotReady = ![YDBLegacyMigration ensureIsYDBReadyForAppExtensions:&launchError];
     if (deviceTransferRestoreFailed) {
         launchFailure = LaunchFailure_CouldNotRestoreTransferredData;
-    } else if (isYdbNotReady || launchError != nil) {
+    } else if (launchError != nil) {
         launchFailure = LaunchFailure_CouldNotLoadDatabase;
     } else if (StorageCoordinator.hasInvalidDatabaseVersion) {
         // Prevent:
-        // * Users who have used GRDB revert to using YDB.
         // * Users with an unknown GRDB schema revert to using an earlier GRDB schema.
         launchFailure = LaunchFailure_UnknownDatabaseVersion;
+    } else if ([SSKPreferences hasGrdbDatabaseCorruption]) {
+        launchFailure = LaunchFailure_DatabaseUnrecoverablyCorrupted;
     }
     if (launchFailure != LaunchFailure_None) {
         OWSLogInfo(@"application: didFinishLaunchingWithOptions failed.");
@@ -201,24 +202,9 @@ void uncaughtExceptionHandler(NSException *exception)
         return YES;
     }
 
-#if RELEASE
-    // ensureIsYDBReadyForAppExtensions may change the state of the logging
-    // preference (due to [NSUserDefaults migrateToSharedUserDefaults]), so honor
-    // that change if necessary.
-    if (isLoggingEnabled && !OWSPreferences.isLoggingEnabled) {
-        [DebugLogger.sharedLogger disableFileLogging];
-    }
-#endif
-
     [AppVersion shared];
 
     [self setupNSEInteroperation];
-
-    // Prevent the device from sleeping during database view async registration
-    // (e.g. long database upgrades).
-    //
-    // This block will be cleared in storageIsReady.
-    [DeviceSleepManager.shared addBlockWithBlockObject:self];
 
     if (CurrentAppContext().isRunningTests) {
         return YES;
@@ -228,12 +214,17 @@ void uncaughtExceptionHandler(NSException *exception)
         setupEnvironmentWithAppSpecificSingletonBlock:^{
             // Create AppEnvironment.
             [AppEnvironment.shared setup];
-            [SignalApp.sharedApp setup];
+            [SignalApp.shared setup];
         }
-        migrationCompletion:^{
+        migrationCompletion:^(NSError *_Nullable error) {
             OWSAssertIsOnMainThread();
 
-            [self versionMigrationsDidComplete];
+            if (error != nil) {
+                OWSFailDebug(@"Error: %@", error);
+                [self showUIForLaunchFailure:LaunchFailure_DatabaseUnrecoverablyCorrupted];
+            } else {
+                [self versionMigrationsDidComplete];
+            }
         }];
 
     [UIUtil setupSignalAppearence];
@@ -294,20 +285,7 @@ void uncaughtExceptionHandler(NSException *exception)
         return;
     }
 
-    // someone currently using yap
-    if (StorageCoordinator.hasYdbFile && !SSKPreferences.isYdbMigrated
-        && OWSPrimaryStorage.isDatabasePasswordAccessible) {
-        return;
-    }
-
-    // someone who migrated from yap to grdb needs the GRDB spec
-    if (SSKPreferences.isYdbMigrated && GRDBDatabaseStorageAdapter.isKeyAccessible) {
-        return;
-    }
-
-    // someone who never used yap needs the GRDB spec
-    if (!StorageCoordinator.hasYdbFile && StorageCoordinator.hasGrdbFile
-        && GRDBDatabaseStorageAdapter.isKeyAccessible) {
+    if (StorageCoordinator.hasGrdbFile && GRDBDatabaseStorageAdapter.isKeyAccessible) {
         return;
     }
 
@@ -341,8 +319,10 @@ void uncaughtExceptionHandler(NSException *exception)
     // We perform a subset of the [application:didFinishLaunchingWithOptions:].
     [AppVersion shared];
 
-    self.window = [OWSWindow new];
-    CurrentAppContext().mainWindow = self.window;
+    if (self.window == nil) {
+        self.window = [OWSWindow new];
+        CurrentAppContext().mainWindow = self.window;
+    }
 
     // Show the launch screen
     UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Launch Screen"
@@ -355,6 +335,8 @@ void uncaughtExceptionHandler(NSException *exception)
     NSString *alertMessage
         = NSLocalizedString(@"APP_LAUNCH_FAILURE_ALERT_MESSAGE", @"Message for the 'app launch failed' alert.");
     switch (launchFailure) {
+        case LaunchFailure_DatabaseUnrecoverablyCorrupted:
+            // Fallthrough
         case LaunchFailure_CouldNotLoadDatabase:
             alertTitle = NSLocalizedString(@"APP_LAUNCH_FAILURE_COULD_NOT_LOAD_DATABASE",
                 @"Error indicating that the app could not launch because the database could not be loaded.");
@@ -456,7 +438,7 @@ void uncaughtExceptionHandler(NSException *exception)
                 OWSFailDebug(@"Ignoring URL; app is not ready.");
                 return NO;
             }
-            return [SignalApp.sharedApp receivedVerificationCode:[url.path substringFromIndex:1]];
+            return [SignalApp.shared receivedVerificationCode:[url.path substringFromIndex:1]];
         } else if ([url.host hasPrefix:kURLHostAddStickersPrefix] && [self.tsAccountManager isRegistered]) {
             StickerPackInfo *_Nullable stickerPackInfo = [self parseAddStickersUrl:url];
             if (stickerPackInfo == nil) {
@@ -560,8 +542,6 @@ void uncaughtExceptionHandler(NSException *exception)
         return;
     }
 
-    [SignalApp.sharedApp ensureRootViewController:launchStartedAt];
-
     AppReadinessRunNowOrWhenAppDidBecomeReadySync(^{ [self handleActivation]; });
 
     // Clear all notifications whenever we become active.
@@ -635,7 +615,7 @@ void uncaughtExceptionHandler(NSException *exception)
         // Avoid blocking app launch by putting all further possible DB access in async block
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.socketManager requestSocketOpen];
-            [Environment.shared.contactsManager fetchSystemContactsOnceIfAlreadyAuthorized];
+            [Environment.shared.contactsManagerImpl fetchSystemContactsOnceIfAlreadyAuthorized];
             [self.messageFetcherJob runObjc];
 
             if (![UIApplication sharedApplication].isRegisteredForRemoteNotifications) {
@@ -644,8 +624,7 @@ void uncaughtExceptionHandler(NSException *exception)
                 // usually sufficient, but e.g. on iOS11, users who have disabled "Allow Notifications" and disabled
                 // "Background App Refresh" will not be able to obtain an APN token. Enabling those settings does not
                 // restart the app, so we check every activation for users who haven't yet registered.
-                [OWSSyncPushTokensJob runWithAccountManager:AppEnvironment.shared.accountManager
-                                                preferences:Environment.shared.preferences];
+                [OWSSyncPushTokensJob run];
             }
         });
     }
@@ -710,7 +689,7 @@ void uncaughtExceptionHandler(NSException *exception)
             return;
         }
 
-        [SignalApp.sharedApp showNewConversationView];
+        [SignalApp.shared showNewConversationView];
 
         completionHandler(YES);
     });
@@ -761,8 +740,7 @@ void uncaughtExceptionHandler(NSException *exception)
                 return;
             }
 
-            [SignalApp.sharedApp presentConversationAndScrollToFirstUnreadMessageForThreadId:threadUniqueId
-                                                                                    animated:NO];
+            [SignalApp.shared presentConversationAndScrollToFirstUnreadMessageForThreadId:threadUniqueId animated:NO];
         });
         return YES;
     } else if ([userActivity.activityType isEqualToString:@"INStartVideoCallIntent"]) {
@@ -1094,6 +1072,11 @@ void uncaughtExceptionHandler(NSException *exception)
 {
     OWSAssertIsOnMainThread();
 
+    // If launch failed, the app will never be ready.
+    if (self.didAppLaunchFail) {
+        return;
+    }
+
     // App isn't ready until storage is ready AND all version migrations are complete.
     if (!self.areVersionMigrationsComplete) {
         return;
@@ -1136,21 +1119,11 @@ void uncaughtExceptionHandler(NSException *exception)
     if ([self.tsAccountManager isRegistered]) {
         OWSLogInfo(@"localAddress: %@", TSAccountManager.localAddress);
 
-        // Fetch messages as soon as possible after launching. In particular, when
-        // launching from the background, without this, we end up waiting some extra
-        // seconds before receiving an actionable push notification.
-        [self.messageFetcherJob runObjc];
-
         // This should happen at any launch, background or foreground.
-        [OWSSyncPushTokensJob runWithAccountManager:AppEnvironment.shared.accountManager
-                                        preferences:Environment.shared.preferences];
+        [OWSSyncPushTokensJob run];
     }
 
-    [DeviceSleepManager.shared removeBlockWithBlockObject:self];
-
     [AppVersion.shared mainAppLaunchDidComplete];
-
-    [Environment.shared.audioSession setup];
 
     if (!Environment.shared.preferences.hasGeneratedThumbnails) {
         [self.databaseStorage
@@ -1166,24 +1139,7 @@ void uncaughtExceptionHandler(NSException *exception)
             }];
     }
 
-#ifdef DEBUG
-    // A bug in orphan cleanup could be disastrous so let's only
-    // run it in DEBUG builds for a few releases.
-    //
-    // TODO: Release to production once we have analytics.
-    // TODO: Orphan cleanup is somewhat expensive - not least in doing a bunch
-    //       of disk access.  We might want to only run it "once per version"
-    //       or something like that in production.
-    [OWSOrphanDataCleaner auditOnLaunchIfNecessary];
-#endif
-
-    [self.profileManager fetchLocalUsersProfile];
-
-    [SignalApp.sharedApp ensureRootViewController:launchStartedAt];
-
-    [self.messageManager startObserving];
-
-    [ViewOnceMessages appDidBecomeReady];
+    [SignalApp.shared ensureRootViewController:launchStartedAt];
 }
 
 - (void)registrationStateDidChange

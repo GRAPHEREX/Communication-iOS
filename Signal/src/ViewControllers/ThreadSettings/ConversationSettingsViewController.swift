@@ -166,7 +166,7 @@ class ConversationSettingsViewController: OWSTableViewController2 {
             return
         }
 
-        if isGroupThread || contactsManager.isSystemContactsAuthorized {
+        if isGroupThread || contactsManagerImpl.isSystemContactsAuthorized {
             navigationItem.rightBarButtonItem = UIBarButtonItem(
                 title: NSLocalizedString("CONVERSATION_SETTINGS_EDIT",
                                          comment: "Label for the 'edit' button in conversation settings view."),
@@ -318,16 +318,16 @@ class ConversationSettingsViewController: OWSTableViewController2 {
                 showGroupAttributesView(editAction: .avatar)
             } else if isGroupThread {
                 showGroupAttributesView(editAction: .name)
-            } else if contactsManager.supportsContactEditing {
+            } else if contactsManagerImpl.supportsContactEditing {
                 presentContactViewController()
             }
         }
     }
 
     func showShareProfileAlert() {
-        profileManager.presentAddThread(toProfileWhitelist: thread,
-                                        from: self) {
-                                            self.updateTableContents()
+        profileManagerImpl.presentAddThread(toProfileWhitelist: thread,
+                                            from: self) {
+            self.updateTableContents()
         }
     }
 
@@ -345,7 +345,7 @@ class ConversationSettingsViewController: OWSTableViewController2 {
         let vc = NotificationSettingsSoundViewController(thread: thread) { [weak self] in
             self?.updateTableContents()
         }
-        present(OWSNavigationController(rootViewController: vc), animated: true)
+        presentFormSheet(OWSNavigationController(rootViewController: vc), animated: true)
     }
 
     func showWallpaperSettingsView() {
@@ -582,7 +582,7 @@ class ConversationSettingsViewController: OWSTableViewController2 {
     }
 
     func presentContactViewController() {
-        if !contactsManager.supportsContactEditing {
+        if !contactsManagerImpl.supportsContactEditing {
             owsFailDebug("Contact editing not supported")
             return
         }
@@ -614,13 +614,13 @@ class ConversationSettingsViewController: OWSTableViewController2 {
 
     private func presentAddToContactViewController(address: SignalServiceAddress) {
 
-        if !contactsManager.supportsContactEditing {
+        if !contactsManagerImpl.supportsContactEditing {
             // Should not expose UI that lets the user get here.
             owsFailDebug("Contact editing not supported.")
             return
         }
 
-        if !contactsManager.isSystemContactsAuthorized {
+        if !contactsManagerImpl.isSystemContactsAuthorized {
             contactsViewHelper.presentMissingContactAccessAlertController(from: self)
             return
         }
@@ -767,34 +767,26 @@ class ConversationSettingsViewController: OWSTableViewController2 {
     }
 
     func showMuteUnmuteActionSheet() {
-        // The "unmute" action sheet has no title or message; the
-        // action label speaks for itself.
-        var title: String?
-        var message: String?
-        if !thread.isMuted {
-            title = NSLocalizedString(
-                "CONVERSATION_SETTINGS_MUTE_ACTION_SHEET_TITLE", comment: "Title of the 'mute this thread' action sheet.")
-            message = NSLocalizedString(
-                "MUTE_BEHAVIOR_EXPLANATION", comment: "An explanation of the consequences of muting a thread.")
-        }
-
-        let actionSheet = ActionSheetController(title: title, message: message)
+        let actionSheet = ActionSheetController(
+            message: thread.isMuted ? nil : NSLocalizedString(
+                "CONVERSATION_SETTINGS_MUTE_ACTION_SHEET_TITLE",
+                comment: "Title for the mute action sheet"
+            )
+        )
 
         if thread.isMuted {
             let action =
                 ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_UNMUTE_ACTION",
                                                            comment: "Label for button to unmute a thread."),
-                                  accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "unmute"),
-                                  style: .destructive) { [weak self] _ in
-                                    self?.setThreadMutedUntilDate(nil)
+                                  accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "unmute")) { [weak self] _ in
+                                    self?.setThreadMutedUntilTimestamp(0)
             }
             actionSheet.addAction(action)
         } else {
             #if DEBUG
             actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_ONE_MINUTE_ACTION",
                                                                              comment: "Label for button to mute a thread for a minute."),
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_minute"),
-                                                    style: .destructive) { [weak self] _ in
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_minute")) { [weak self] _ in
                                                         self?.setThreadMuted {
                                                             var dateComponents = DateComponents()
                                                             dateComponents.minute = 1
@@ -804,18 +796,25 @@ class ConversationSettingsViewController: OWSTableViewController2 {
             #endif
             actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_ONE_HOUR_ACTION",
                                                                              comment: "Label for button to mute a thread for a hour."),
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_hour"),
-                                                    style: .destructive) { [weak self] _ in
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_hour")) { [weak self] _ in
                                                         self?.setThreadMuted {
                                                             var dateComponents = DateComponents()
                                                             dateComponents.hour = 1
                                                             return dateComponents
                                                         }
             })
+            actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_EIGHT_HOUR_ACTION",
+                                                                             comment: "Label for button to mute a thread for eight hours."),
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_8_hour")) { [weak self] _ in
+                                                        self?.setThreadMuted {
+                                                            var dateComponents = DateComponents()
+                                                            dateComponents.hour = 8
+                                                            return dateComponents
+                                                        }
+            })
             actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_ONE_DAY_ACTION",
                                                                              comment: "Label for button to mute a thread for a day."),
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_day"),
-                                                    style: .destructive) { [weak self] _ in
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_day")) { [weak self] _ in
                                                         self?.setThreadMuted {
                                                             var dateComponents = DateComponents()
                                                             dateComponents.day = 1
@@ -824,23 +823,17 @@ class ConversationSettingsViewController: OWSTableViewController2 {
             })
             actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_ONE_WEEK_ACTION",
                                                                              comment: "Label for button to mute a thread for a week."),
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_week"),
-                                                    style: .destructive) { [weak self] _ in
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_week")) { [weak self] _ in
                                                         self?.setThreadMuted {
                                                             var dateComponents = DateComponents()
                                                             dateComponents.day = 7
                                                             return dateComponents
                                                         }
             })
-            actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_ONE_YEAR_ACTION",
-                                                                             comment: "Label for button to mute a thread for a year."),
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_year"),
-                                                    style: .destructive) { [weak self] _ in
-                                                        self?.setThreadMuted {
-                                                            var dateComponents = DateComponents()
-                                                            dateComponents.year = 1
-                                                            return dateComponents
-                                                        }
+            actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_ALWAYS_ACTION",
+                                                                             comment: "Label for button to mute a thread forever."),
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_always")) { [weak self] _ in
+                self?.setThreadMutedUntilTimestamp(TSThread.alwaysMutedTimestamp)
             })
         }
 
@@ -860,12 +853,12 @@ class ConversationSettingsViewController: OWSTableViewController2 {
             owsFailDebug("Couldn't modify date.")
             return
         }
-        self.setThreadMutedUntilDate(mutedUntilDate)
+        self.setThreadMutedUntilTimestamp(mutedUntilDate.ows_millisecondsSince1970)
     }
 
-    private func setThreadMutedUntilDate(_ value: Date?) {
+    private func setThreadMutedUntilTimestamp(_ value: UInt64) {
         databaseStorage.write { transaction in
-            self.thread.updateWithMuted(until: value, transaction: transaction)
+            self.thread.updateWithMuted(untilTimestamp: value, updateStorageService: true, transaction: transaction)
         }
 
         updateTableContents()
@@ -1009,8 +1002,8 @@ extension ConversationSettingsViewController: ColorPickerDelegate {
             self.thread.updateConversationColorName(conversationColor.name, transaction: transaction)
         }
 
-        contactsManager.removeAllFromAvatarCache()
-        contactsManager.clearColorNameCache()
+        contactsManagerImpl.removeAllFromAvatarCache()
+        contactsManagerImpl.clearColorNameCache()
         updateTableContents()
         conversationSettingsViewDelegate?.conversationColorWasUpdated()
 

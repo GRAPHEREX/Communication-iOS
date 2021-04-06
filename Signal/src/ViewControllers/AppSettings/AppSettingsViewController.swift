@@ -50,7 +50,7 @@ class AppSettingsViewController: OWSTableViewController2 {
 
         let profileSection = OWSTableSection()
         profileSection.add(.init(
-            customCellBlock: { self.profileCell() },
+            customCell: profileCell(),
             actionBlock: { [weak self] in
                 let vc = ProfileSettingsViewController()
                 self?.navigationController?.pushViewController(vc, animated: true)
@@ -194,7 +194,7 @@ class AppSettingsViewController: OWSTableViewController2 {
         cell.contentView.addSubview(hStackView)
         hStackView.autoPinEdgesToSuperviewMargins()
 
-        let snapshot = profileManager.localProfileSnapshot(shouldIncludeAvatar: true)
+        let snapshot = profileManagerImpl.localProfileSnapshot(shouldIncludeAvatar: true)
 
         let avatarDiameter: CGFloat = 64
         let avatarImageView = AvatarImageView()

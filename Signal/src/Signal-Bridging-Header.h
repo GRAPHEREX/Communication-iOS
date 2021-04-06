@@ -25,12 +25,9 @@
 #import "DomainFrontingCountryViewController.h"
 #import "FingerprintViewController.h"
 #import "MediaDetailViewController.h"
-#import "OWSBackup.h"
-#import "OWSBackupIO.h"
 #import "OWSBezierPathView.h"
 #import "OWSBubbleShapeView.h"
 #import "OWSBubbleView.h"
-#import "OWSDatabaseMigration.h"
 #import "OWSDeviceTableViewCell.h"
 #import "OWSLinkDeviceViewController.h"
 #import "OWSMessageTextView.h"
@@ -46,7 +43,6 @@
 #import "RemoteVideoView.h"
 #import "SignalApp.h"
 #import "ViewControllerUtils.h"
-#import <AxolotlKit/NSData+keyVersionByte.h>
 #import <PureLayout/PureLayout.h>
 #import <SignalCoreKit/Cryptography.h>
 #import <SignalCoreKit/NSData+OWS.h>
@@ -80,6 +76,7 @@
 #import <SignalServiceKit/MIMETypeUtil.h>
 #import <SignalServiceKit/MessageSender.h>
 #import <SignalServiceKit/NSData+Image.h>
+#import <SignalServiceKit/NSData+keyVersionByte.h>
 #import <SignalServiceKit/NSNotificationCenter+OWS.h>
 #import <SignalServiceKit/NSTimer+OWS.h>
 #import <SignalServiceKit/OWSAnalytics.h>

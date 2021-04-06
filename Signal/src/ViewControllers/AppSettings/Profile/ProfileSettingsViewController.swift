@@ -32,7 +32,7 @@ class ProfileSettingsViewController: OWSTableViewController2 {
 
         avatarViewHelper.delegate = self
 
-        let snapshot = profileManager.localProfileSnapshot(shouldIncludeAvatar: true)
+        let snapshot = profileManagerImpl.localProfileSnapshot(shouldIncludeAvatar: true)
         avatarData = snapshot.avatarData
         givenName = snapshot.givenName
         familyName = snapshot.familyName
@@ -58,7 +58,7 @@ class ProfileSettingsViewController: OWSTableViewController2 {
         let avatarSection = OWSTableSection()
         avatarSection.hasBackground = false
         avatarSection.add(.init(
-            customCellBlock: { self.avatarCell() },
+            customCell: avatarCell(),
             actionBlock: { [weak self] in
                 self?.avatarViewHelper.showChangeAvatarUI()
             }

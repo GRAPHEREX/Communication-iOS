@@ -51,9 +51,10 @@ ConversationColorName const ConversationColorNameDefault = ConversationColorName
 @property (nonatomic, copy, nullable) NSString *messageDraft;
 @property (nonatomic, nullable) MessageBodyRanges *messageDraftBodyRanges;
 
-@property (atomic, nullable) NSDate *mutedUntilDate;
+@property (atomic) uint64_t mutedUntilTimestamp;
 @property (nonatomic) int64_t lastInteractionRowId;
 
+@property (nonatomic, nullable) NSDate *mutedUntilDateObsolete;
 @property (nonatomic) uint64_t lastVisibleSortIdObsolete;
 @property (nonatomic) double lastVisibleSortIdOnScreenPercentageObsolete;
 
@@ -64,22 +65,6 @@ ConversationColorName const ConversationColorNameDefault = ConversationColorName
 #pragma mark -
 
 @implementation TSThread
-
-#pragma mark - Dependencies
-
-- (TSAccountManager *)tsAccountManager
-{
-    OWSAssertDebug(SSKEnvironment.shared.tsAccountManager);
-
-    return SSKEnvironment.shared.tsAccountManager;
-}
-
-- (ThreadReadCache *)threadReadCache
-{
-    return SSKEnvironment.shared.modelReadCaches.threadReadCache;
-}
-
-#pragma mark -
 
 + (NSString *)collection {
     return @"TSThread";
@@ -130,7 +115,8 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
          mentionNotificationMode:(TSThreadMentionNotificationMode)mentionNotificationMode
                     messageDraft:(nullable NSString *)messageDraft
           messageDraftBodyRanges:(nullable MessageBodyRanges *)messageDraftBodyRanges
-                  mutedUntilDate:(nullable NSDate *)mutedUntilDate
+          mutedUntilDateObsolete:(nullable NSDate *)mutedUntilDateObsolete
+             mutedUntilTimestamp:(uint64_t)mutedUntilTimestamp
            shouldThreadBeVisible:(BOOL)shouldThreadBeVisible
 {
     self = [super initWithGrdbId:grdbId
@@ -150,7 +136,8 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
     _mentionNotificationMode = mentionNotificationMode;
     _messageDraft = messageDraft;
     _messageDraftBodyRanges = messageDraftBodyRanges;
-    _mutedUntilDate = mutedUntilDate;
+    _mutedUntilDateObsolete = mutedUntilDateObsolete;
+    _mutedUntilTimestamp = mutedUntilTimestamp;
     _shouldThreadBeVisible = shouldThreadBeVisible;
 
     return self;
@@ -220,7 +207,7 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
         [SSKPreferences setHasSavedThread:YES transaction:transaction];
     }
 
-    [self.threadReadCache didInsertOrUpdateThread:self transaction:transaction];
+    [self.modelReadCaches.threadReadCache didInsertOrUpdateThread:self transaction:transaction];
 }
 
 - (void)anyDidUpdateWithTransaction:(SDSAnyWriteTransaction *)transaction
@@ -231,7 +218,7 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
         [SSKPreferences setHasSavedThread:YES transaction:transaction];
     }
 
-    [self.threadReadCache didInsertOrUpdateThread:self transaction:transaction];
+    [self.modelReadCaches.threadReadCache didInsertOrUpdateThread:self transaction:transaction];
 
     [PinnedThreadManager handleUpdatedThread:self transaction:transaction];
 }
@@ -240,7 +227,7 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
 {
     [super anyDidRemoveWithTransaction:transaction];
 
-    [self.threadReadCache didRemoveThread:self transaction:transaction];
+    [self.modelReadCaches.threadReadCache didRemoveThread:self transaction:transaction];
 }
 
 - (void)anyWillRemoveWithTransaction:(SDSAnyWriteTransaction *)transaction
@@ -478,16 +465,12 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
 
 - (int64_t)messageSortIdForMessage:(TSInteraction *)message transaction:(SDSAnyWriteTransaction *)transaction
 {
-    if (transaction.transitional_yapWriteTransaction) {
-        return message.sortId;
+    if (message.grdbId == nil) {
+        OWSFailDebug(@"Missing messageSortId.");
+    } else if (message.grdbId.unsignedLongLongValue == 0) {
+        OWSFailDebug(@"Invalid messageSortId.");
     } else {
-        if (message.grdbId == nil) {
-            OWSFailDebug(@"Missing messageSortId.");
-        } else if (message.grdbId.unsignedLongLongValue == 0) {
-            OWSFailDebug(@"Invalid messageSortId.");
-        } else {
-            return message.grdbId.longLongValue;
-        }
+        return message.grdbId.longLongValue;
     }
     return 0;
 }
@@ -525,6 +508,12 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
     // Don't clear archived during thread import
     if ([message isKindOfClass:TSInfoMessage.class]
         && ((TSInfoMessage *)message).messageType == TSInfoMessageSyncedThread) {
+        needsToClearArchived = NO;
+    }
+
+    // Don't clear archive if muted and the user has
+    // requested we don't for muted conversations.
+    if (self.isMuted && [SSKPreferences shouldKeepMutedChatsArchivedWithTransaction:transaction]) {
         needsToClearArchived = NO;
     }
 
@@ -747,18 +736,29 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
 
 - (BOOL)isMuted
 {
-    NSDate *mutedUntilDate = self.mutedUntilDate;
-    NSDate *now = [NSDate date];
-    return (mutedUntilDate != nil &&
-            [mutedUntilDate timeIntervalSinceDate:now] > 0);
+    return self.mutedUntilTimestamp > [NSDate ows_millisecondTimeStamp];
 }
 
-- (void)updateWithMutedUntilDate:(nullable NSDate *)mutedUntilDate transaction:(SDSAnyWriteTransaction *)transaction
+- (nullable NSDate *)mutedUntilDate
+{
+    return self.isMuted ? [NSDate ows_dateWithMillisecondsSince1970:self.mutedUntilTimestamp] : nil;
+}
+
++ (UInt64)alwaysMutedTimestamp
+{
+    return LLONG_MAX;
+}
+
+- (void)updateWithMutedUntilTimestamp:(uint64_t)mutedUntilTimestamp
+                 updateStorageService:(BOOL)updateStorageService
+                          transaction:(SDSAnyWriteTransaction *)transaction
 {
     [self anyUpdateWithTransaction:transaction
-                             block:^(TSThread *thread) {
-                                 [thread setMutedUntilDate:mutedUntilDate];
-                             }];
+                             block:^(TSThread *thread) { thread.mutedUntilTimestamp = mutedUntilTimestamp; }];
+
+    if (updateStorageService) {
+        [self recordPendingStorageServiceUpdates];
+    }
 }
 
 - (void)updateWithMentionNotificationMode:(TSThreadMentionNotificationMode)mentionNotificationMode
