@@ -5,7 +5,7 @@
 import Foundation
 import PureLayout
 
-@objc(WTLToastController)
+@objc(WLTToastController)
 public class ToastController: NSObject, ToastViewDelegate {
     
     static var currentToastController: ToastController?

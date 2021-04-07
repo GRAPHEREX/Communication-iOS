@@ -4,7 +4,7 @@
 
 import Foundation
 
-public extension WTLUnfairLock {
+public extension WLTUnfairLock {
     
     /// Acquires and releases the lock around the provided closure. Blocks the current thread until the lock can be
     /// acquired.

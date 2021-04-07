@@ -2,10 +2,10 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "WTLUnfairLock.h"
+#import "WLTUnfairLock.h"
 #import <os/lock.h>
 
-@implementation WTLUnfairLock {
+@implementation WLTUnfairLock {
     os_unfair_lock _lock;
 }
 

@@ -13,7 +13,7 @@ public enum AtomicError: Int, Error {
 
 private class Atomics {
     fileprivate static let fairQueue = DispatchQueue(label: "Atomics")
-    fileprivate static let unfairLock = WTLUnfairLock()
+    fileprivate static let unfairLock = WLTUnfairLock()
     
     // Never instantiate this class.
     private init() {}

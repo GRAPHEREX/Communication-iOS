@@ -948,8 +948,8 @@
 		E354E37F261CA7AD00FC65D0 /* Atomics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E37E261CA7AD00FC65D0 /* Atomics.swift */; };
 		E354E387261CA8F100FC65D0 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E386261CA8F100FC65D0 /* CGFloat+Extension.swift */; };
 		E354E38F261CAA3800FC65D0 /* UnfairLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E38E261CAA3800FC65D0 /* UnfairLock.swift */; };
-		E354E398261CAAB100FC65D0 /* WTLUnfairLock.h in Headers */ = {isa = PBXBuildFile; fileRef = E354E396261CAAB100FC65D0 /* WTLUnfairLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E354E399261CAAB100FC65D0 /* WTLUnfairLock.m in Sources */ = {isa = PBXBuildFile; fileRef = E354E397261CAAB100FC65D0 /* WTLUnfairLock.m */; };
+		E354E398261CAAB100FC65D0 /* WLTUnfairLock.h in Headers */ = {isa = PBXBuildFile; fileRef = E354E396261CAAB100FC65D0 /* WLTUnfairLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E354E399261CAAB100FC65D0 /* WLTUnfairLock.m in Sources */ = {isa = PBXBuildFile; fileRef = E354E397261CAAB100FC65D0 /* WLTUnfairLock.m */; };
 		E3794A83261B5A3800E14B2E /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3794A82261B5A3800E14B2E /* Weak.swift */; };
 		E3794A92261B5B3C00E14B2E /* UIColor+OWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3794A8B261B5B3C00E14B2E /* UIColor+OWS.swift */; };
 		E3794A93261B5B3C00E14B2E /* WLTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3794A8C261B5B3C00E14B2E /* WLTNavigationController.m */; };
@@ -2253,8 +2253,8 @@
 		E354E37E261CA7AD00FC65D0 /* Atomics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomics.swift; sourceTree = "<group>"; };
 		E354E386261CA8F100FC65D0 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		E354E38E261CAA3800FC65D0 /* UnfairLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfairLock.swift; sourceTree = "<group>"; };
-		E354E396261CAAB100FC65D0 /* WTLUnfairLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTLUnfairLock.h; sourceTree = "<group>"; };
-		E354E397261CAAB100FC65D0 /* WTLUnfairLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTLUnfairLock.m; sourceTree = "<group>"; };
+		E354E396261CAAB100FC65D0 /* WLTUnfairLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTUnfairLock.h; sourceTree = "<group>"; };
+		E354E397261CAAB100FC65D0 /* WLTUnfairLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTUnfairLock.m; sourceTree = "<group>"; };
 		E3794A82261B5A3800E14B2E /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		E3794A8B261B5B3C00E14B2E /* UIColor+OWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+OWS.swift"; sourceTree = "<group>"; };
 		E3794A8C261B5B3C00E14B2E /* WLTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTNavigationController.m; sourceTree = "<group>"; };
@@ -4775,12 +4775,12 @@
 		E354E375261CA3F900FC65D0 /* SignalServiceKit */ = {
 			isa = PBXGroup;
 			children = (
-				E354E396261CAAB100FC65D0 /* WTLUnfairLock.h */,
-				E354E397261CAAB100FC65D0 /* WTLUnfairLock.m */,
+				E354E396261CAAB100FC65D0 /* WLTUnfairLock.h */,
+				E354E397261CAAB100FC65D0 /* WLTUnfairLock.m */,
+				E354E38E261CAA3800FC65D0 /* UnfairLock.swift */,
 				E354E376261CA40A00FC65D0 /* String+Extension.swift */,
 				E354E37E261CA7AD00FC65D0 /* Atomics.swift */,
 				E354E386261CA8F100FC65D0 /* CGFloat+Extension.swift */,
-				E354E38E261CAA3800FC65D0 /* UnfairLock.swift */,
 			);
 			path = SignalServiceKit;
 			sourceTree = "<group>";
@@ -5439,7 +5439,7 @@
 				E35193BB26170FB400043606 /* GrapherexWallet.h in Headers */,
 				E3332632261C755A00CFE73E /* UIViewController+WLTPermissions.h in Headers */,
 				E3332623261C730800CFE73E /* WLTMath.h in Headers */,
-				E354E398261CAAB100FC65D0 /* WTLUnfairLock.h in Headers */,
+				E354E398261CAAB100FC65D0 /* WLTUnfairLock.h in Headers */,
 				E3332643261C75C900CFE73E /* UIFont+WLT.h in Headers */,
 				E351981D26175A2B00043606 /* WLTQRCodeScanningViewController.h in Headers */,
 				E351981626175A2B00043606 /* WLTBezierPathView.h in Headers */,
@@ -7067,7 +7067,7 @@
 				E3794A95261B5B3C00E14B2E /* WLTViewController.m in Sources */,
 				E35197EE26175A2A00043606 /* WalletDetailController.swift in Sources */,
 				E3794AD8261B65B100E14B2E /* WLTTableViewController.m in Sources */,
-				E354E399261CAAB100FC65D0 /* WTLUnfairLock.m in Sources */,
+				E354E399261CAAB100FC65D0 /* WLTUnfairLock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

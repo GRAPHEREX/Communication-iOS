@@ -5,7 +5,7 @@
 import UIKit
 import PureLayout
 
-@objc(WTLActionSheetController)
+@objc(WLTActionSheetController)
 open class ActionSheetController: WLTViewController {
     
     public let topSpace: CGFloat = {

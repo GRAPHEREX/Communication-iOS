@@ -21,7 +21,7 @@
 #import "UIFont+WLT.h"
 
 // SignalServiceKit Source Substitution
-#import "WTLUnfairLock.h"
+#import "WLTUnfairLock.h"
 
 //! Project version number for GrapherexWallet.
 FOUNDATION_EXPORT double GrapherexWalletVersionNumber;

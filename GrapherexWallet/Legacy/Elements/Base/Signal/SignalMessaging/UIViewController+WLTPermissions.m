@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (status == AVAuthorizationStatusDenied) {
-        WTLActionSheetController *alert = [[WTLActionSheetController alloc]
+        WLTActionSheetController *alert = [[WLTActionSheetController alloc]
             initWithTitle:NSLocalizedString(@"MISSING_CAMERA_PERMISSION_TITLE", @"Alert title")
                   message:NSLocalizedString(@"MISSING_CAMERA_PERMISSION_MESSAGE", @"Alert body")];
 
@@ -83,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     void (^presentSettingsDialog)(void) = ^(void) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            WTLActionSheetController *alert = [[WTLActionSheetController alloc]
+            WLTActionSheetController *alert = [[WLTActionSheetController alloc]
                 initWithTitle:NSLocalizedString(@"MISSING_MEDIA_LIBRARY_PERMISSION_TITLE",
                                   @"Alert title when user has previously denied media library access")
                       message:NSLocalizedString(@"MISSING_MEDIA_LIBRARY_PERMISSION_MESSAGE",
@@ -98,7 +98,7 @@ NS_ASSUME_NONNULL_BEGIN
 //                [alert addAction:openSettingsAction];
 //            }
 
-//            WTLActionSheetAction *dismissAction = [[WTLActionSheetAction alloc] initWithTitle:@"Dismiss"
+//            WLTActionSheetAction *dismissAction = [[WLTActionSheetAction alloc] initWithTitle:@"Dismiss"
 //                                                                                  style:WLTActionSheetActionStyleCancel
 //                                                                                      handler:^( *action) {
 //                                                                                    completionCallback(NO);
@@ -184,7 +184,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)wlt_showNoMicrophonePermissionActionSheet
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        WTLActionSheetController *alert = [[WTLActionSheetController alloc]
+        WLTActionSheetController *alert = [[WLTActionSheetController alloc]
             initWithTitle:NSLocalizedString(@"CALL_AUDIO_PERMISSION_TITLE",
                               @"Alert title when calling and permissions for microphone are missing")
                   message:NSLocalizedString(@"CALL_AUDIO_PERMISSION_MESSAGE",
