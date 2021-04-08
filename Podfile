@@ -102,6 +102,7 @@ post_install do |installer|
   disable_bitcode(installer)
   disable_non_development_pod_warnings(installer)
   copy_acknowledgements
+  fix_deployment_target(installer)
 end
 
 # Works around CocoaPods behavior designed for static libraries.
@@ -211,4 +212,12 @@ def copy_acknowledgements
   raw_acknowledgements = File.read('Pods/Target Support Files/Pods-Signal/Pods-Signal-Acknowledgements.plist')
   formatted_acknowledgements = raw_acknowledgements.gsub(/(?<!>)(?<!\n)\n( *)(?![ \*])(?![ -])(?!\n)(?!<)/, ' ')
   File.open('Signal/Settings.bundle/Acknowledgements.plist', "w") { |file| file.puts formatted_acknowledgements }
+end
+
+def fix_deployment_target(installer)
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.1'
+    end
+  end
 end
