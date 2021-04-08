@@ -529,9 +529,8 @@ public final class CallService: NSObject {
             offerMediaType = .video
         }
 
-        
         let newCall = SignalCall.incomingIndividualCall(
-            localId: CallKitUUIDManager.getUUID(),
+            localId: PushRegistrationManager.getUUID(),
             remoteAddress: thread.contactAddress,
             sentAtTimestamp: sentAtTimestamp,
             offerMediaType: offerMediaType

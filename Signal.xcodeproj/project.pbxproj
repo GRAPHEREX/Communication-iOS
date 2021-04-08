@@ -801,7 +801,6 @@
 		F2155AF325CFFE3B0089AA63 /* SecondaryLinkingPrepViewController_Grapherex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2155AF225CFFE3B0089AA63 /* SecondaryLinkingPrepViewController_Grapherex.swift */; };
 		F2155AFA25CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2155AF925CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift */; };
 		F2155B2E25D020360089AA63 /* LoadingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2155B2D25D020360089AA63 /* LoadingViewController.storyboard */; };
-		F2155BD425D2CDD50089AA63 /* CallKitUUIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2155BD325D2CDD40089AA63 /* CallKitUUIDManager.swift */; };
 		F2155E0A25D4412A0089AA63 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2155E0925D4412A0089AA63 /* Launch Screen.storyboard */; };
 		F2155E1B25D44D530089AA63 /* notificationPermission0.png in Resources */ = {isa = PBXBuildFile; fileRef = F2155E1A25D44D530089AA63 /* notificationPermission0.png */; };
 		F2155E2725D44EA20089AA63 /* notificationPermission1.png in Resources */ = {isa = PBXBuildFile; fileRef = F2155E2625D44EA20089AA63 /* notificationPermission1.png */; };
@@ -2039,7 +2038,6 @@
 		F2155AF225CFFE3B0089AA63 /* SecondaryLinkingPrepViewController_Grapherex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryLinkingPrepViewController_Grapherex.swift; sourceTree = "<group>"; };
 		F2155AF925CFFEB30089AA63 /* OnboardingCaptchaViewController_Grapherex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCaptchaViewController_Grapherex.swift; sourceTree = "<group>"; };
 		F2155B2D25D020360089AA63 /* LoadingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingViewController.storyboard; sourceTree = "<group>"; };
-		F2155BD325D2CDD40089AA63 /* CallKitUUIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallKitUUIDManager.swift; sourceTree = "<group>"; };
 		F2155E0925D4412A0089AA63 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "util/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F2155E1A25D44D530089AA63 /* notificationPermission0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationPermission0.png; sourceTree = "<group>"; };
 		F2155E2625D44EA20089AA63 /* notificationPermission1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationPermission1.png; sourceTree = "<group>"; };
@@ -3957,7 +3955,6 @@
 			children = (
 				88D23D1A23CEC0C700B0E74B /* CallKitCallManager.swift */,
 				88D23D1B23CEC0C700B0E74B /* CallKitCallUIAdaptee.swift */,
-				F2155BD325D2CDD40089AA63 /* CallKitUUIDManager.swift */,
 			);
 			path = CallKit;
 			sourceTree = "<group>";
@@ -6284,7 +6281,6 @@
 				4CD675C522E7CF22008010D2 /* ConversationViewController+OWS.swift in Sources */,
 				F2E97D58261CD11B00EA9BDA /* SDWebImageOptionsProcessor.m in Sources */,
 				F2E97BC8261CBE8800EA9BDA /* UIViewController + Toast.swift in Sources */,
-				F2155BD425D2CDD50089AA63 /* CallKitUUIDManager.swift in Sources */,
 				F296F9AF25E796BA00B89378 /* VoiceGridViewCell.swift in Sources */,
 				347C3829252CE69400F3D941 /* CVComponentState+GroupLink.swift in Sources */,
 				343A65981FC4CFE7000477A1 /* ConversationScrollButton.m in Sources */,

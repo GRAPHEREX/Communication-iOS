@@ -1185,7 +1185,7 @@ extension MessageSender {
             let callType = offerMessage.unwrappedType
             let isVideoCall = callType == .offerVideoCall
             let profileName = MessageSender.contactsManager.displayName(for: messageSend.localAddress)
-            if let destination = messageSend.address.phoneNumber ?? messageSend.address.uuidString { // SKYTech: check if it works with adresses without phone number
+            if let destination = messageSend.address.phoneNumber ?? messageSend.address.uuidString {
                 let request = OWSRequestFactory.sendCallOfferVoipPush(destination, message: ["sender": profileName, "callType": isVideoCall])
                 MessageSender.networkManager.makeRequest(request) { _, _ in
                     OWSLogger.debug("VoIP push request was successfully send")

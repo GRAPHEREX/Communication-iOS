@@ -336,7 +336,7 @@ final class CallKitCallUIAdaptee: NSObject, CallUIAdaptee, CXProviderDelegate {
                     self.provider(provider, perform: action)
                 }
             } else {
-                owsFailDebug("call as unexpectedly nil")
+                owsFailDebug("call is unexpectedly nil")
                 action.fail()
             }
             return
