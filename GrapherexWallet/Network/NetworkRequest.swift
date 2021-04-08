@@ -6,8 +6,7 @@ import Foundation
 
 typealias AuthToken = String
 
-@objc(WLTNetworkRequest)
-public class NetworkRequest: NSObject {
+class NetworkRequest {
     // MARK: - Properties
     let urlPath: String
     let parameters: HTTPParameters
@@ -25,6 +24,5 @@ public class NetworkRequest: NSObject {
         self.urlPath = urlPath
         self.httpMethod = method
         self.parameters = parameters
-        super.init()
     }
 }

@@ -4,22 +4,22 @@
 
 import Foundation
 
-public struct WalletResponse {
+struct WalletResponse {
     let fiatTotalBalance: String
     let fiatCurrency: String
     let wallets: [Wallet]
 }
 
-public struct Wallet {
-    public let id: String
-    public let currency: Currency
-    public let balance: String
-    public let fiatBalance: String
-    public let fiatCurrency: String
-    public let address: String
-    public let needPassword: Bool
-    public let createdAt: Int64
-    public var credentials: WalletCredentials?
+struct Wallet {
+    let id: String
+    let currency: Currency
+    let balance: String
+    let fiatBalance: String
+    let fiatCurrency: String
+    let address: String
+    let needPassword: Bool
+    let createdAt: Int64
+    var credentials: WalletCredentials?
     
     static let empty: Wallet = .init(
         id: "",

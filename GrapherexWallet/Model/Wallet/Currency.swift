@@ -8,7 +8,7 @@ enum SpecialCurrency: String {
     case ethereum
 }
 
-public struct Currency: Equatable {
+struct Currency: Equatable {
     let name: String
     let symbol: String
     let icon: String

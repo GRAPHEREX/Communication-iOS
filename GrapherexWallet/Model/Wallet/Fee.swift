@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum FeeType: String {
+enum FeeType: String {
     case personal, `default`
     
     var infoMessage: String {
@@ -17,6 +17,6 @@ public enum FeeType: String {
     }
 }
 
-public struct Fee {
+struct Fee {
     let formatted: String
 }

@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct RecipientWallet {
+struct RecipientWallet {
     public let id: String
     public let currency: Currency
     public let address: String

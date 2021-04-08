@@ -4,8 +4,8 @@
 
 import Foundation
 
-public typealias JSON = [String: Any]
-public typealias HTTPParameters = [String: Any]
+typealias JSON = [String: Any]
+typealias HTTPParameters = [String: Any]
 
 enum HTTPMethod: String {
     case get = "GET"

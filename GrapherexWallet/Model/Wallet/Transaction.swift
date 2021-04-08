@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct Transaction {
+struct Transaction {
     enum Direction: String, CaseIterable {
         case `in`, out
         

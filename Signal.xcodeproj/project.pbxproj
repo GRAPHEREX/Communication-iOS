@@ -4338,6 +4338,7 @@
 		E351975D26175A2900043606 /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
+				E3E2F0C8261F2ECB00126155 /* WalletModel */,
 				E35197C826175A2A00043606 /* CurrencyFormatter */,
 				E3B6DD82261DF23500F01AA7 /* Extensions */,
 				E351975E26175A2900043606 /* WalletSafety */,
@@ -4647,7 +4648,6 @@
 				E3B6DD8F261DF38100F01AA7 /* Config */,
 				E354E330261C945A00FC65D0 /* Error */,
 				E35197C026175A2A00043606 /* Wallet */,
-				E35197C726175A2A00043606 /* WalletModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4879,6 +4879,14 @@
 				E3E2F052261F0C6800126155 /* String+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E3E2F0C8261F2ECB00126155 /* WalletModel */ = {
+			isa = PBXGroup;
+			children = (
+				E35197C726175A2A00043606 /* WalletModel.swift */,
+			);
+			path = WalletModel;
 			sourceTree = "<group>";
 		};
 		F215596825CC3DB50089AA63 /* SkyTech */ = {

@@ -4,15 +4,14 @@
 
 import Foundation
 
-public struct WalletCredentials: Codable {
+struct WalletCredentials: Codable {
     let id: String
     let name: String?
     let pin: String?
     let isHidden: Bool
 }
 
-@objc
-public class WalletCredentialsManager: NSObject {
+class WalletCredentialsManager: NSObject {
     
     private override init() { }
     
@@ -93,8 +92,7 @@ public class WalletCredentialsManager: NSObject {
         return saveWalletCredentials(walletCredentials: credentialsArr)
     }
     
-    @objc
-    public static func reset() {
+    static func reset() {
        _ = saveWalletCredentials(walletCredentials: [])
     }
 }
