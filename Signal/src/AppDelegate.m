@@ -232,6 +232,7 @@ void uncaughtExceptionHandler(NSException *exception)
             // Create AppEnvironment.
             [AppEnvironment.shared setup];
             [SignalApp.sharedApp setup];
+            [[TSAccountManager shared] startWalletConfigurationObserver];
         }
         migrationCompletion:^{
             OWSAssertIsOnMainThread();
