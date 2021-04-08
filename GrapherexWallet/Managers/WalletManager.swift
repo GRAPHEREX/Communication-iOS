@@ -21,9 +21,7 @@ public class WalletManager {
         return config?.cryptoServerURL ?? ""
     }
     private var token: String? = nil
-    
-    // MARK: - SINGAL DEPENDENCY – reimplement
-//    private let reachabilityManager = SSKEnvironment.shared.reachabilityManager
+    private let reachability = try! Reachability()
     
     // MARK: - Dependencies
     private var networkService: NetworkService!
@@ -525,10 +523,10 @@ fileprivate extension WalletManager {
     // MARK: - Error Handling
     
     func handle(_ error: Error, completion: @escaping (Error?) -> Void) {
-//        if !reachabilityManager.isReachable {
-//            completion(OWSErrorMakeNetworkError())
-//            return
-//        }
+        if reachability.connection == .unavailable {
+            completion(WalletError.networkConnectionError)
+            return
+        }
         if let wltError = error as? WalletError,
            wltError == .tokenExpiredError {
             token(completion: { [weak self] result in
