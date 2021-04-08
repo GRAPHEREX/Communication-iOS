@@ -9,6 +9,7 @@ def shared_pods
   pod 'ZXingObjC', git: 'https://github.com/zxingify/zxingify-objc.git', inhibit_warnings: true, binary: true
   pod 'lottie-ios', :inhibit_warnings => true
   pod 'PromiseKit', :inhibit_warnings => true
+  pod 'XCGLogger', :inhibit_warnings => true
 end
 
 ###

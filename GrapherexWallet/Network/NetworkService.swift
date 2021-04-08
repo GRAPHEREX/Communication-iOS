@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import XCGLogger
 
 typealias JSON = [String: Any]
 typealias HTTPParameters = [String: Any]
@@ -26,10 +27,9 @@ class WalletNetworkService: NetworkService {
     // MARK: - Properties
     let session: URLSession
     
-    //TODO: Add logger
-    //    private let logger = Logger()
     private let responseQueue: DispatchQueue
     private let baseHostURL: URL
+    private let logger: XCGLogger = XCGLogger.default
     
     // MARK: - Methods
     required init(session: URLSession = .shared, responseQueue: DispatchQueue = .main, baseHostURL: URL) {
@@ -144,7 +144,8 @@ class WalletNetworkService: NetworkService {
     
     private func debugPrint(url: URL?, data: Data, params: [String: Any]) {
         let string = String(data: data, encoding: .utf8) ?? "DATA STRING CONVERSION ERROR"
-        print("""
+        
+        logger.debug("""
             API call
             To \(url?.absoluteString ?? "").
             Parameter: \(self.jsonString(dict: params)).
