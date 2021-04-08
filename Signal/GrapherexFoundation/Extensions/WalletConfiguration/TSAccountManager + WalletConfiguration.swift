@@ -13,7 +13,7 @@ extension TSAccountManager {
     }
     
     @objc func resetWalletConfiguration() {
-        WalletManager.shared.reset()
+        APIService.shared.reset()
     }
     
     // MARK: - Private Methods
@@ -31,7 +31,7 @@ extension TSAccountManager {
                                   cryptoServerBasePath: "/api/crypto-backend/v2/",
                                   authUsername: authUserName,
                                   authPassword: authPassword)
-        WalletManager.shared.config = config
+        APIService.shared.config = config
     }
 }
 

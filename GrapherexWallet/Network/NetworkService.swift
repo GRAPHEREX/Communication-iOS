@@ -101,24 +101,20 @@ class WalletNetworkService: NetworkService {
     // MARK: - Private Methods
     private func constructURLRequest(withNetworkRequest request: NetworkRequest) throws -> URLRequest {
         var resRequest: URLRequest
-        if let customHost = request.customHost,
-           let finalURL = URL(string: customHost.removingTrailingSlash())?.appendingPathComponent(request.urlPath) {
-            resRequest = URLRequest(url: finalURL)
-        } else if let finalURL = URL(string: baseHostURL.absoluteString.removingTrailingSlash())?.appendingPathComponent(request.urlPath) {
+        if let finalURL = URL(string: baseHostURL.absoluteString.removingTrailingSlash())?.appendingPathComponent(request.urlPath) {
             resRequest = URLRequest(url: finalURL)
         } else {
             throw WalletError.requestConstructionError
         }
         
-        if request.shouldHaveAuthorizationHeaders {
-            if let authUserName = request.authUserName,
-               let authPassword = request.authPassword {
-                let authString = generateBasicAuthorizationString(username: authUserName, password: authPassword)
-                resRequest.addValue("Basic \(authString)", forHTTPHeaderField: "Authorization")
-            } else if let authToken = request.authToken {
-                resRequest.addValue(authToken, forHTTPHeaderField: "Authorization")
-            } 
+        if let authUserName = request.authUserName,
+           let authPassword = request.authPassword {
+            let authString = generateBasicAuthorizationString(username: authUserName, password: authPassword)
+            resRequest.addValue("Basic \(authString)", forHTTPHeaderField: "Authorization")
+        } else if let authToken = request.authToken {
+            resRequest.addValue(authToken, forHTTPHeaderField: "Authorization")
         }
+        
         
         resRequest.httpMethod = request.httpMethod.rawValue
         if request.httpMethod != .get, request.parameters.count > 0 {

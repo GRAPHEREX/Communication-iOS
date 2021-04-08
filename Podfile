@@ -135,6 +135,7 @@ end
 
 target 'GrapherexWallet' do
   shared_pods
+  pod 'SwiftKeychainWrapper', :inhibit_warnings => true
   pod 'SDWebImage', :inhibit_warnings => true
 end
 

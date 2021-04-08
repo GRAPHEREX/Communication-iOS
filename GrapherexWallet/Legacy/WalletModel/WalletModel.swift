@@ -22,8 +22,8 @@ class WalletModel {
 
     // MARK: - Dependencies
 
-    private var walletManager: WalletManager {
-        return WalletManager.shared
+    private var walletManager: APIService {
+        return APIService.shared
     }
     var wallets: [Wallet] = []
     var currencies: [Currency] = []

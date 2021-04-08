@@ -69,6 +69,9 @@ PODS:
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
   - PromiseKit (6.13.1):
     - PromiseKit/CorePromise (= 6.13.1)
     - PromiseKit/Foundation (= 6.13.1)
@@ -170,7 +173,12 @@ PODS:
     - SQLCipher/common
   - SSZipArchive (2.1.4)
   - Starscream (3.0.6)
+  - SwiftKeychainWrapper (4.0.1)
   - SwiftProtobuf (1.7.0)
+  - XCGLogger (7.0.1):
+    - XCGLogger/Core (= 7.0.1)
+  - XCGLogger/Core (7.0.1):
+    - ObjcExceptionBridging
   - YapDatabase/SQLCipher (3.1.1):
     - YapDatabase/SQLCipher/Core (= 3.1.1)
     - YapDatabase/SQLCipher/Extensions (= 3.1.1)
@@ -277,7 +285,9 @@ DEPENDENCIES:
   - SQLCipher (>= 4.0.1)
   - SSZipArchive
   - Starscream (from `https://github.com/signalapp/Starscream.git`, branch `signal-release`)
+  - SwiftKeychainWrapper
   - SwiftProtobuf (= 1.7.0)
+  - XCGLogger
   - YapDatabase/SQLCipher (from `https://github.com/signalapp/YapDatabase.git`, branch `signal-release`)
   - YYImage (from `https://github.com/signalapp/YYImage`)
   - ZKGroup (from `https://github.com/signalapp/signal-zkgroup-swift`)
@@ -292,6 +302,7 @@ SPEC REPOS:
     - GRDB.swift
     - libwebp
     - lottie-ios
+    - ObjcExceptionBridging
     - PromiseKit
     - PureLayout
     - Reachability
@@ -299,7 +310,9 @@ SPEC REPOS:
     - SDWebImage
     - SQLCipher
     - SSZipArchive
+    - SwiftKeychainWrapper
     - SwiftProtobuf
+    - XCGLogger
 
 EXTERNAL SOURCES:
   AxolotlKit:
@@ -414,6 +427,7 @@ SPEC CHECKSUMS:
   libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
   lottie-ios: 496ac5cea1bbf1a7bd1f1f472f3232eb1b8d744b
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
@@ -428,12 +442,14 @@ SPEC CHECKSUMS:
   SQLCipher: d305a7bd9af4b64f095c79bdc1a1fa50f2a15116
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   Starscream: 8aaf1a7feb805c816d0e7d3190ef23856f6665b9
+  SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
   SwiftProtobuf: 4fd9645e69b72cbae6ec8da5be0cdd20ca6565dd
+  XCGLogger: 1943831ef907df55108b0b18657953f868de973b
   YapDatabase: b418a4baa6906e8028748938f9159807fd039af4
   YYImage: 6db68da66f20d9f169ceb94dfb9947c3867b9665
   ZKGroup: 15a08eed5870a44b9dd14af0824ac95f6eed7380
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: bd941cd340b75d2b24e1c7984f1fe13503660dcd
+PODFILE CHECKSUM: 2d41a4793fecbc31b8b4befa4733a7ba1bde4852
 
 COCOAPODS: 1.9.2

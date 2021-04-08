@@ -12,9 +12,6 @@ class NetworkRequest {
     let parameters: HTTPParameters
     let httpMethod: HTTPMethod
     
-    var shouldHaveAuthorizationHeaders: Bool = false
-    
-    var customHost: String?
     var authToken: AuthToken?
     var authUserName: String?
     var authPassword: String?

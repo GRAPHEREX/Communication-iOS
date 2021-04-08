@@ -4,9 +4,9 @@
 
 import Foundation
 
-public class WalletManager {
+public class APIService {
     // MARK: - Public Properties
-    public static let shared = WalletManager()
+    public static let shared = APIService()
     public var config: WalletConfig? {
         didSet {
             updateConfig()
@@ -17,63 +17,29 @@ public class WalletManager {
     private var basePath: String {
         return config?.cryptoServerBasePath ?? ""
     }
-    private var walletServerURL: String {
-        return config?.cryptoServerURL ?? ""
-    }
     private var token: String? = nil
     private let reachability = try! Reachability()
     
     // MARK: - Dependencies
     private var networkService: NetworkService!
+    private var authManager: AuthenticationManager!
     
     // MARK: - Private Methods
     private init() {}
     
     private func updateConfig() {
         guard let config = config else { return }
-        networkService = WalletNetworkService(baseHostURL: URL(string: config.apiServerURL)!)
-    }
-    
-    private func setAuthRequestToApiServer(_ request: NetworkRequest, config: WalletConfig) {
-        request.authUserName = config.authUsername
-        request.authPassword = config.authPassword
-        request.shouldHaveAuthorizationHeaders = true
+        networkService = WalletNetworkService(baseHostURL: URL(string: config.cryptoServerURL)!)
+        authManager = WalletAuthenticationManager(config: config)
     }
     
     private func setAuthRequestToWalletServer(_ request: NetworkRequest) {
-        request.customHost = walletServerURL
         request.authToken = token
-        request.shouldHaveAuthorizationHeaders = true
     }
     
     // MARK: - Reset
     public func reset() {
         //TODO: Credentials reset
-    }
-    
-    // MARK: - Token & Auth
-    private func token(completion: @escaping (Result<String, Error>) -> Void) {
-        guard let config = config else {
-            completion(.failure(WalletError.noWalletConfigurationFound))
-            return
-        }
-        let request = NetworkRequest(urlPath: "/v1/wallet/token", method: .get, parameters: [:])
-        setAuthRequestToApiServer(request, config: config)
-        networkService.makeRequest(request) { (result) in
-            switch result {
-            case .success(let response):
-                guard
-                    let responseDict = response as? [String: AnyObject],
-                    let token = responseDict["token"] as? String
-                else {
-                    completion(.failure(WalletError.unableToProcessServerResponseError))
-                    return
-                }
-                completion(.success(token))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
     }
     
     // MARK: - Initiation
@@ -524,7 +490,7 @@ public class WalletManager {
     }
 }
 
-fileprivate extension WalletManager {
+fileprivate extension APIService {
 
     // MARK: - Error Handling
     
@@ -535,7 +501,7 @@ fileprivate extension WalletManager {
         }
         if let wltError = error as? WalletError,
            wltError == .tokenExpiredError {
-            token(completion: { [weak self] result in
+            authManager.getWalletToken(completion: { [weak self] result in
                 switch result {
                 case .success(let token):
                     self?.token = token
