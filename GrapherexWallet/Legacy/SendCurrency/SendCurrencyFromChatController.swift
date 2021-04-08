@@ -72,8 +72,8 @@ final public class SendCurrencyFromChatController: WLTViewController, UITextFiel
     }()
     private var wallet: Wallet?
     private var recipientWallet: RecipientWallet?
-    public var recipeintWallets: [RecipientWallet]!
-    public var allowedCurrencies: [Currency] = [] { didSet {
+    var recipeintWallets: [RecipientWallet]!
+    var allowedCurrencies: [Currency] = [] { didSet {
         if !allowedCurrencies.isEmpty {
             currency = allowedCurrencies[0]
         }}}

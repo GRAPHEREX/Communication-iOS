@@ -11,6 +11,7 @@ enum WalletError: Error, CustomStringConvertible, LocalizedError {
     case unableToProcessServerResponseError
     case tokenExpiredError
     case noWalletConfigurationFound
+    case networkConnectionError
     
     var description: String {
         switch self {
@@ -24,6 +25,8 @@ enum WalletError: Error, CustomStringConvertible, LocalizedError {
             return "No valid wallet configuration found"
         case .requestConstructionError:
             return "Request construction error"
+        case .networkConnectionError:
+            return "Network error. Please check your Internet connection"
         case .unknown:
             return "Unknown error"
         }

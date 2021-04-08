@@ -970,6 +970,7 @@
 		E3B6DD6E261DADF000F01AA7 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6DD6D261DADF000F01AA7 /* NetworkRequest.swift */; };
 		E3B6DD91261DF38C00F01AA7 /* WalletConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6DD90261DF38C00F01AA7 /* WalletConfig.swift */; };
 		E3E2F053261F0C6800126155 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E2F052261F0C6800126155 /* String+Extensions.swift */; };
+		E3E2F0CB261F333F00126155 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E2F0CA261F333F00126155 /* Reachability.swift */; };
 		E44AD4E624E98F440035D7B8 /* PhotoCaptureDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44AD4E524E98F430035D7B8 /* PhotoCaptureDismiss.swift */; };
 		F215596D25CC3DB50089AA63 /* STGhostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F215596A25CC3DB50089AA63 /* STGhostButton.swift */; };
 		F215596E25CC3DB50089AA63 /* STSecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F215596B25CC3DB50089AA63 /* STSecondaryButton.swift */; };
@@ -2278,6 +2279,7 @@
 		E3B6DD6D261DADF000F01AA7 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		E3B6DD90261DF38C00F01AA7 /* WalletConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConfig.swift; sourceTree = "<group>"; };
 		E3E2F052261F0C6800126155 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		E3E2F0CA261F333F00126155 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E434E65F6E6E989A106307BA /* Pods-SignalTests.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.profiling.xcconfig"; path = "Pods/Target Support Files/Pods-SignalTests/Pods-SignalTests.profiling.xcconfig"; sourceTree = "<group>"; };
 		E44AD4E524E98F430035D7B8 /* PhotoCaptureDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDismiss.swift; sourceTree = "<group>"; };
 		EE9074FA846BAA8A998E782E /* Pods-GrapherexWallet.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrapherexWallet.testable release.xcconfig"; path = "Pods/Target Support Files/Pods-GrapherexWallet/Pods-GrapherexWallet.testable release.xcconfig"; sourceTree = "<group>"; };
@@ -4868,6 +4870,7 @@
 		E3E2F050261F0B2A00126155 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E3E2F0C9261F332700126155 /* Reachability */,
 				E3E2F051261F0C5700126155 /* Extensions */,
 			);
 			path = Utils;
@@ -4887,6 +4890,14 @@
 				E35197C726175A2A00043606 /* WalletModel.swift */,
 			);
 			path = WalletModel;
+			sourceTree = "<group>";
+		};
+		E3E2F0C9261F332700126155 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				E3E2F0CA261F333F00126155 /* Reachability.swift */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		F215596825CC3DB50089AA63 /* SkyTech */ = {
@@ -7120,6 +7131,7 @@
 				E351982926175A2B00043606 /* PhotoLibrary.swift in Sources */,
 				E35197F226175A2A00043606 /* WalletExchangeController.swift in Sources */,
 				E351980926175A2B00043606 /* String + Extension.swift in Sources */,
+				E3E2F0CB261F333F00126155 /* Reachability.swift in Sources */,
 				E351981426175A2B00043606 /* ReminderView.swift in Sources */,
 				E35197EF26175A2A00043606 /* WalletHeaderView.swift in Sources */,
 				E351980826175A2B00043606 /* UIViewController + Toast.swift in Sources */,

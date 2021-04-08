@@ -12,6 +12,11 @@ extension TSAccountManager {
         onRegStateChanged()
     }
     
+    @objc func resetWalletConfiguration() {
+        WalletManager.shared.reset()
+    }
+    
+    // MARK: - Private Methods
     @objc private func onRegStateChanged() {
         if (isRegisteredAndReady) {
             configureWallet()

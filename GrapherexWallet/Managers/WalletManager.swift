@@ -46,8 +46,13 @@ public class WalletManager {
         request.shouldHaveAuthorizationHeaders = true
     }
     
+    // MARK: - Reset
+    public func reset() {
+        //TODO: Credentials reset
+    }
+    
     // MARK: - Token & Auth
-    func token(completion: @escaping (Result<String, Error>) -> Void) {
+    private func token(completion: @escaping (Result<String, Error>) -> Void) {
         guard let config = config else {
             completion(.failure(WalletError.noWalletConfigurationFound))
             return
@@ -103,6 +108,7 @@ public class WalletManager {
             switch result {
             case .success(let response):
                 guard
+                    //TODO: Replace dictionary parsing with Codable structures
                     let responseDict = response as? [String: AnyObject],
                     let wallets = responseDict["wallets"] as? [Any],
                     let fiatCurrency = responseDict["fiat_currency"] as? String,

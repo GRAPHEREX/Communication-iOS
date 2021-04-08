@@ -4,7 +4,7 @@
 
 import Foundation
 
-public class WalletConfig: NSObject {
+public struct WalletConfig {
     let apiServerURL: String
     let cryptoServerURL: String
     let cryptoServerBasePath: String

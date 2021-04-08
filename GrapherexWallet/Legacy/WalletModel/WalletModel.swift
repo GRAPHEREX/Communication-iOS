@@ -4,14 +4,14 @@
 
 import Foundation
 
-public class WalletModel {
+class WalletModel {
     
-    public static let walletsNeedUpdate = NSNotification.Name(rawValue: "walletsNeedUpdate")
-    public static let walletCredentionalsDidChange: NSNotification.Name = NSNotification.Name(rawValue: "walletCredentionalsDidChangeNotification")
-    public static let walletCredentionalsNeedUpdate: NSNotification.Name = NSNotification.Name(rawValue: "walletCredentionalsNeedUpdateNotification")
+    static let walletsNeedUpdate = NSNotification.Name(rawValue: "walletsNeedUpdate")
+    static let walletCredentionalsDidChange: NSNotification.Name = NSNotification.Name(rawValue: "walletCredentionalsDidChangeNotification")
+    static let walletCredentionalsNeedUpdate: NSNotification.Name = NSNotification.Name(rawValue: "walletCredentionalsNeedUpdateNotification")
     
     static let passwordLenght: Int = 8
-    public static let shared = WalletModel()
+    static let shared = WalletModel()
     
     private init() {
         NotificationCenter.default.addObserver(
@@ -25,12 +25,12 @@ public class WalletModel {
     private var walletManager: WalletManager {
         return WalletManager.shared
     }
-    public var wallets: [Wallet] = []
-    public var currencies: [Currency] = []
+    var wallets: [Wallet] = []
+    var currencies: [Currency] = []
     
-    // MARK: - Public Interface
+    // MARK: - Interface
     
-    public func isValidPassword(password: String) -> Bool {
+    func isValidPassword(password: String) -> Bool {
         let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,}$"
         return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
     }
@@ -51,11 +51,11 @@ public class WalletModel {
         NotificationCenter.default.post(name: WalletModel.walletCredentionalsDidChange, object: self)
     }
     
-    public func getWalletById(id: String) -> Wallet? {
+    func getWalletById(id: String) -> Wallet? {
         return wallets.first(where: {$0.id == id})
     }
     
-    public func initWallets(completion: @escaping ((Result<WalletResponse, Error>) -> Void)) {
+    func initWallets(completion: @escaping ((Result<WalletResponse, Error>) -> Void)) {
         walletManager.initWallets { result in
             switch result {
             case let .success((walletsResponse, currencies)):
@@ -68,19 +68,19 @@ public class WalletModel {
         }
     }
     
-    public func walletInfo(_ wallet: Wallet, completion: @escaping ((Result<Wallet, Error>) -> Void)) {
+    func walletInfo(_ wallet: Wallet, completion: @escaping ((Result<Wallet, Error>) -> Void)) {
         walletManager.getWalletInfo(wallet: wallet, currencies: currencies) { result in
             completion(result)
         }
     }
     
-    public func createWallet(_ currency: Currency, password: String, completion: @escaping ((Result<String, Error>) -> Void)) {
+    func createWallet(_ currency: Currency, password: String, completion: @escaping ((Result<String, Error>) -> Void)) {
         walletManager.createWallet(currency, password: password) { result in
             completion(result)
         }
     }
     
-    public func sendCurrency(wallet: Wallet, password: String, destinationAddress: String,
+    func sendCurrency(wallet: Wallet, password: String, destinationAddress: String,
                       amount: String, fee: String?, customGasPrice: String?, customGasLimit: Int?,
                       completion: @escaping (Result<String, Error>) -> ()
     ) {
@@ -90,7 +90,7 @@ public class WalletModel {
         }
     }
     
-    public func getTransactions( wallet: Wallet, limit: Int, offset: Int,
+    func getTransactions( wallet: Wallet, limit: Int, offset: Int,
                           tx_direction: String?, sortBy: String?, ascending: Bool,
                           completion: @escaping (Result<[Transaction], Error>) -> ()) {
         walletManager.getTransactions(
@@ -106,25 +106,25 @@ public class WalletModel {
         }
     }
     
-    public func changePassword(wallet: Wallet, oldPassword: String, newPassword: String, completion: @escaping (Result<Void, Error>) -> ()) {
+    func changePassword(wallet: Wallet, oldPassword: String, newPassword: String, completion: @escaping (Result<Void, Error>) -> ()) {
         walletManager.changePassword(wallet: wallet, oldPassword: oldPassword, newPassword: newPassword) { result in
             completion(result)
         }
     }
     
-    public func setFirstPassword(for wallet: Wallet, password: String, completion: @escaping (Result<Void, Error>) -> ()) {
+    func setFirstPassword(for wallet: Wallet, password: String, completion: @escaping (Result<Void, Error>) -> ()) {
         walletManager.setFirstPassword(wallet: wallet, password: password) { result in
             completion(result)
         }
     }
     
-    public func getBaseFee(currency: Currency, completion: @escaping (Result<Fee, Error>) -> Void) {
+    func getBaseFee(currency: Currency, completion: @escaping (Result<Fee, Error>) -> Void) {
         walletManager.getBaseFee(currency: currency) { result in
             completion(result)
         }
     }
     
-    public func getRecipientWallets(accountId: String, completion: @escaping (Result<[RecipientWallet], Error>) -> Void) {
+    func getRecipientWallets(accountId: String, completion: @escaping (Result<[RecipientWallet], Error>) -> Void) {
         walletManager.getRecipientWallets(accountId: accountId, currencies: currencies) { result in
             completion(result)
         }
