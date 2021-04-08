@@ -99,6 +99,13 @@ public protocol CVComponentDelegate {
 
     func cvc_didTapMention(_ mention: Mention)
 
+    func cvc_didTapShowMessageDetail(_ itemViewModel: CVItemViewModelImpl)
+
+    func cvc_prepareMessageDetailForInteractivePresentation(_ itemViewModel: CVItemViewModelImpl)
+
+    @objc
+    var view: UIView { get }
+
     // MARK: - Selection
 
     @objc
@@ -116,7 +123,10 @@ public protocol CVComponentDelegate {
     // MARK: - System Cell
 
     @objc
-    func cvc_didTapNonBlockingIdentityChange(_ address: SignalServiceAddress)
+    func cvc_didTapPreviouslyVerifiedIdentityChange(_ address: SignalServiceAddress)
+
+    @objc
+    func cvc_didTapUnverifiedIdentityChange(_ address: SignalServiceAddress)
 
     @objc
     func cvc_didTapInvalidIdentityKeyErrorMessage(_ message: TSInvalidIdentityKeyErrorMessage)
@@ -183,7 +193,8 @@ struct CVMessageAction: Equatable {
     }
 
     enum Action: Equatable {
-        case cvc_didTapNonBlockingIdentityChange(address: SignalServiceAddress)
+        case cvc_didTapPreviouslyVerifiedIdentityChange(address: SignalServiceAddress)
+        case cvc_didTapUnverifiedIdentityChange(address: SignalServiceAddress)
         case cvc_didTapInvalidIdentityKeyErrorMessage(errorMessage: TSInvalidIdentityKeyErrorMessage)
         case cvc_didTapCorruptedMessage(errorMessage: TSErrorMessage)
         case cvc_didTapSessionRefreshMessage(errorMessage: TSErrorMessage)
@@ -204,8 +215,10 @@ struct CVMessageAction: Equatable {
 
         func perform(delegate: CVComponentDelegate) {
             switch self {
-            case .cvc_didTapNonBlockingIdentityChange(let address):
-                delegate.cvc_didTapNonBlockingIdentityChange(address)
+            case .cvc_didTapPreviouslyVerifiedIdentityChange(let address):
+                delegate.cvc_didTapPreviouslyVerifiedIdentityChange(address)
+            case .cvc_didTapUnverifiedIdentityChange(let address):
+                delegate.cvc_didTapUnverifiedIdentityChange(address)
             case .cvc_didTapInvalidIdentityKeyErrorMessage(let errorMessage):
                 delegate.cvc_didTapInvalidIdentityKeyErrorMessage(errorMessage)
             case .cvc_didTapCorruptedMessage(let errorMessage):

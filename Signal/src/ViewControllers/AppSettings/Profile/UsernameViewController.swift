@@ -22,7 +22,7 @@ class UsernameViewController: OWSViewController {
 
     private let usernameTextField = OWSTextField()
     private var hasPendingChanges: Bool {
-        return pendingUsername != (OWSProfileManager.shared().localUsername() ?? "")
+        return pendingUsername != (OWSProfileManager.shared.localUsername() ?? "")
     }
 
     private var pendingUsername: String {
@@ -95,7 +95,7 @@ class UsernameViewController: OWSViewController {
         usernameTextField.autocapitalizationType = .none
         usernameTextField.placeholder = NSLocalizedString("USERNAME_PLACEHOLDER",
                                                           comment: "The placeholder for the username text entry in the username view.")
-        usernameTextField.text = OWSProfileManager.shared().localUsername()
+        usernameTextField.text = OWSProfileManager.shared.localUsername()
         usernameTextField.textAlignment = .right
         usernameTextField.delegate = self
         usernameTextField.returnKeyType = .done
@@ -196,7 +196,7 @@ class UsernameViewController: OWSViewController {
 
             SSKEnvironment.shared.networkManager.makePromise(request: usernameRequest).done { _ in
                 self.databaseStorage.write { transaction in
-                    OWSProfileManager.shared().updateLocalUsername(usernameToUse, transaction: transaction)
+                    OWSProfileManager.shared.updateLocalUsername(usernameToUse, transaction: transaction)
                 }
                 modalView.dismiss {
                     self.usernameSavedOrCanceled()

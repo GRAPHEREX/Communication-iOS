@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -20,25 +20,19 @@ public enum PushRegistrationError: Error {
  */
 @objc public class PushRegistrationManager: NSObject, PKPushRegistryDelegate {
 
-    // MARK: - Dependencies
-
-    private var messageFetcherJob: MessageFetcherJob {
-        return SSKEnvironment.shared.messageFetcherJob
-    }
-
-    private var notificationPresenter: NotificationPresenter {
-        return AppEnvironment.shared.notificationPresenter
-    }
-
-    // MARK: - Singleton class
-
-    @objc
-    public static var shared: PushRegistrationManager {
-        get {
-            return AppEnvironment.shared.pushRegistrationManager
+    private static var currentCallUUID: UUID? = nil
+    
+    static func getUUID() -> UUID {
+        if let uuid = currentCallUUID {
+            currentCallUUID = nil
+            return uuid
+        }
+        else {
+            currentCallUUID = UUID()
+            return currentCallUUID!
         }
     }
-
+    
     override init() {
         super.init()
 
@@ -121,7 +115,7 @@ public enum PushRegistrationError: Error {
             callUpdate.supportsDTMF = false
             
             // Report the call to CallKit, and let it display the call UI.
-            AppEnvironment.shared.callService.individualCallService.callUIAdapter.defaultAdaptee.getProvider()?.reportNewIncomingCall(with: CallKitUUIDManager.getUUID(), update: callUpdate, completion: { [weak self] (error) in
+            AppEnvironment.shared.callService.individualCallService.callUIAdapter.defaultAdaptee.getProvider()?.reportNewIncomingCall(with: PushRegistrationManager.getUUID(), update: callUpdate, completion: { [weak self] (error) in
                 guard error == nil else {
                     completion()
                     Logger.error("failed to report new incoming call, error: \(error!)")

@@ -32,7 +32,7 @@ final class ContactProfileController: OWSViewController {
     private func updateRighBarButton() {
         if canVerification() {
             let icon: UIImage
-            if OWSIdentityManager.shared().verificationState(for: address) == .verified {
+            if OWSIdentityManager.shared.verificationState(for: address) == .verified {
                 icon = Theme.iconImage(.verificationActive, alwaysTemplate: false).withRenderingMode(.alwaysOriginal)
             }
             else {
@@ -51,7 +51,7 @@ final class ContactProfileController: OWSViewController {
 
 fileprivate extension ContactProfileController {
     func canVerification() -> Bool {
-        return address.uuid != nil && OWSIdentityManager.shared().identityKey(for: address) != nil
+        return address.uuid != nil && OWSIdentityManager.shared.identityKey(for: address) != nil
     }
     
     func setupTableView() {

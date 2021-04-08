@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import XCTest
@@ -26,25 +26,17 @@ class MessageSendingPerformanceTest: PerformanceBaseTest {
     let localClient = LocalSignalClient()
     let runner = TestProtocolRunner()
 
-    // MARK: - Dependencies
-
-    var tsAccountManager: TSAccountManager {
-        return SSKEnvironment.shared.tsAccountManager
-    }
-
-    var identityManager: OWSIdentityManager {
-        return SSKEnvironment.shared.identityManager
-    }
-
     // MARK: - Hooks
 
     override func setUp() {
         super.setUp()
-        MockSSKEnvironment.shared.networkManager = self.stubbableNetworkManager
+
+        let sskEnvironment = SSKEnvironment.shared as! MockSSKEnvironment
+        sskEnvironment.networkManagerRef = self.stubbableNetworkManager
 
         // use the *real* message sender to measure it's perf
-        MockSSKEnvironment.shared.messageSender = MessageSender()
-        MockSSKEnvironment.shared.messageSenderJobQueue.setup()
+        sskEnvironment.messageSenderRef = MessageSender()
+        Self.messageSenderJobQueue.setup()
 
         try! databaseStorage.grdbStorage.setup()
 
@@ -61,9 +53,8 @@ class MessageSendingPerformanceTest: PerformanceBaseTest {
 
     // MARK: -
 
-    func testGRDBPerf_messageSending_contactThread() {
+    func testPerf_messageSending_contactThread() {
         // This is an example of a performance test case.
-        storageCoordinator.useGRDBForTests()
         try! databaseStorage.grdbStorage.setupUIDatabase()
         measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
             sendMessages_contactThread()
@@ -71,9 +62,8 @@ class MessageSendingPerformanceTest: PerformanceBaseTest {
         databaseStorage.grdbStorage.testing_tearDownUIDatabase()
     }
 
-    func testGRDBPerf_messageSending_groupThread() {
+    func testPerf_messageSending_groupThread() {
         // This is an example of a performance test case.
-        storageCoordinator.useGRDBForTests()
         try! databaseStorage.grdbStorage.setupUIDatabase()
         measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
             sendMessages_groupThread()
@@ -217,7 +207,7 @@ private class BlockObserver: UIDatabaseSnapshotDelegate {
 }
 
 class StubbableNetworkManager: TSNetworkManager {
-    var block: (TSRequest, TSNetworkManagerSuccess, TSNetworkManagerFailure) -> Void = { request, success, failure in
+    var block: (TSRequest, TSNetworkManagerSuccess, TSNetworkManagerFailure) -> Void = { request, success, _ in
         let fakeTask = URLSessionDataTask()
         Logger.info("faking success for request: \(request)")
         success(fakeTask, nil)

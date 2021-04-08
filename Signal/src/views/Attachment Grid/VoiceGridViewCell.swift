@@ -93,7 +93,7 @@ public class VoiceGridViewCell: UICollectionViewCell {
                 }
                 name = self?.contactsManager.displayName(for: incomingMessage.authorAddress) ?? ""
             case .outgoingMessage:
-                name = OWSProfileManager.shared().localFullName() ?? ""
+                name = OWSProfileManager.shared.localFullName() ?? ""
             default:
                 break
             }

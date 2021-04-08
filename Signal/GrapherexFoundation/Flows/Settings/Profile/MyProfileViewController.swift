@@ -66,7 +66,7 @@ fileprivate extension MyProfileViewController {
             "PROFILE_VIEW_GIVEN_NAME_DEFAULT_TEXT", comment: "Default text for the given name field of the profile view.");
         displayNameTextField.delegate = self
         displayNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        displayNameTextField.text = OWSProfileManager.shared().localGivenName()
+        displayNameTextField.text = OWSProfileManager.shared.localGivenName()
     }
     
     func navigationButtonTitle() -> String {
@@ -102,7 +102,7 @@ fileprivate extension MyProfileViewController {
             return
         }
         
-        if OWSProfileManager.shared().isProfileNameTooLong(normalizedDisplayName) {
+        if OWSProfileManager.shared.isProfileNameTooLong(normalizedDisplayName) {
             OWSActionSheets.showErrorAlert(message:
                 NSLocalizedString("PROFILE_VIEW_ERROR_GIVEN_NAME_TOO_LONG", comment: ""))
             return

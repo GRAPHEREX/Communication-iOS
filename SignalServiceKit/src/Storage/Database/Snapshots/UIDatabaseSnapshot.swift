@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -39,14 +39,6 @@ func AssertHasUIDatabaseObserverLock() {
 
 @objc
 public class UIDatabaseObserver: NSObject {
-
-    // MARK: - Dependencies
-
-    private var tsAccountManager: TSAccountManager {
-        return .shared()
-    }
-
-    // MARK: -
 
     @objc
     public static let didUpdateUIDatabaseSnapshotNotification = Notification.Name("didUpdateUIDatabaseSnapshot")
@@ -175,7 +167,9 @@ public class UIDatabaseObserver: NSObject {
                                                object: nil)
 
         AppReadiness.runNowOrWhenAppDidBecomeReadySync {
-            self.ensureDisplayLink()
+            DispatchQueue.main.async {
+                self.ensureDisplayLink()
+            }
         }
     }
 

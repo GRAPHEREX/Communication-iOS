@@ -68,7 +68,7 @@ final class HeaderMyProfileView : HeaderContactProfileView, AvatarViewHelperDele
         }
         
         setup(
-            fullName: OWSProfileManager.shared().localGivenName()!,
+            fullName: OWSProfileManager.shared.localGivenName()!,
             subtitle: "",
             image: getAvatar(),
             options: options)
@@ -76,7 +76,7 @@ final class HeaderMyProfileView : HeaderContactProfileView, AvatarViewHelperDele
     
     func getAvatar() -> UIImage? {
         if !isDeletingAvatar,
-            let image = OWSProfileManager.shared().localProfileAvatarImage()  {
+            let image = OWSProfileManager.shared.localProfileAvatarImage()  {
             hasClearAvatar = true
             return image
         }
@@ -118,7 +118,7 @@ final class HeaderMyProfileView : HeaderContactProfileView, AvatarViewHelperDele
         cameraImageView.isHidden = !isEditMode
         imageView.isUserInteractionEnabled = isEditMode
         if isEditMode {
-            if let image = OWSProfileManager.shared().localProfileAvatarImage() {
+            if let image = OWSProfileManager.shared.localProfileAvatarImage() {
                imageView.image = image
             } else {
                 imageView.image = OWSContactAvatarBuilder

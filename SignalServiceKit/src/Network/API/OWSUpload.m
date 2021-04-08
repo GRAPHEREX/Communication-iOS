@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "OWSUpload.h"
@@ -95,18 +95,6 @@ void AppendMultipartFormV4Path(id<AFMultipartFormData> formData, NSString *name,
 #pragma mark -
 
 @implementation OWSAvatarUploadV4
-
-#pragma mark - Dependencies
-
-- (AFHTTPSessionManager *)uploadHTTPManager
-{
-    return [[OWSSignalService shared] sessionManagerForCdnNumber:0];
-}
-
-- (TSNetworkManager *)networkManager
-{
-    return SSKEnvironment.shared.networkManager;
-}
 
 #pragma mark - Avatars
 

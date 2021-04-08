@@ -26,7 +26,7 @@ public class CVComponentCallMessage: CVComponentBase, CVRootComponent {
                           cellMeasurement: CVCellMeasurement,
                           componentDelegate: CVComponentDelegate,
                           cellSelection: CVCellSelection,
-                          swipeToReplyState: CVSwipeToReplyState,
+                          messageSwipeActionState: CVMessageSwipeActionState,
                           componentView: CVComponentView) {
 
         guard let componentView = componentView as? CVComponentViewCallMessage else {

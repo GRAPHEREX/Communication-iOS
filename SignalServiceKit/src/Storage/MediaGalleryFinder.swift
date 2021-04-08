@@ -85,8 +85,6 @@ public final class MediaGalleryManager: NSObject {
     @objc(didInsertAttachmentStream:transaction:)
     public class func didInsert(attachmentStream: TSAttachmentStream, transaction: SDSAnyWriteTransaction) {
         switch transaction.writeTransaction {
-        case .yapWrite:
-            break
         case .grdbWrite(let grdbWrite):
             do {
                 try insertGalleryRecord(attachmentStream: attachmentStream, transaction: grdbWrite)
@@ -99,8 +97,6 @@ public final class MediaGalleryManager: NSObject {
     @objc(didRemoveAttachmentStream:transaction:)
     public class func didRemove(attachmentStream: TSAttachmentStream, transaction: SDSAnyWriteTransaction) {
         switch transaction.writeTransaction {
-        case .yapWrite:
-            break
         case .grdbWrite(let grdbWrite):
             do {
                 try removeAnyGalleryRecord(attachmentStream: attachmentStream, transaction: grdbWrite)
@@ -113,8 +109,6 @@ public final class MediaGalleryManager: NSObject {
     @objc
     public class func didRemoveAllContent(transaction: SDSAnyWriteTransaction) {
         switch transaction.writeTransaction {
-        case .yapWrite:
-            break
         case .grdbWrite(let grdbWrite):
             do {
                 try removeAllGalleryRecords(transaction: grdbWrite)
@@ -409,8 +403,6 @@ extension AnyMediaGalleryFinder: MediaGalleryFinder_Old {
         switch transaction.readTransaction {
         case .grdbRead(let grdbRead):
             return grdbAdapter.mediaIndex(attachment: attachment, transaction: grdbRead)
-        case .yapRead(_):
-            return nil
         }
     }
     
@@ -418,8 +410,6 @@ extension AnyMediaGalleryFinder: MediaGalleryFinder_Old {
         switch transaction.readTransaction {
         case .grdbRead(let grdbRead):
             return grdbAdapter.enumerateAllAttachments(range: range, transaction: grdbRead, block: block)
-        case .yapRead(_):
-            return
         }
     }
 
@@ -427,8 +417,6 @@ extension AnyMediaGalleryFinder: MediaGalleryFinder_Old {
         switch transaction.readTransaction {
         case .grdbRead(let grdbRead):
             return grdbAdapter.enumerateMediaAttachments(range: range, transaction: grdbRead, block: block)
-        case .yapRead(_):
-            return
         }
     }
 
@@ -436,8 +424,6 @@ extension AnyMediaGalleryFinder: MediaGalleryFinder_Old {
         switch transaction.readTransaction {
         case .grdbRead(let grdbRead):
             return grdbAdapter.mediaCount(transaction: grdbRead)
-        case .yapRead(_):
-            return 0
         }
     }
 
@@ -445,16 +431,12 @@ extension AnyMediaGalleryFinder: MediaGalleryFinder_Old {
         switch transaction.readTransaction {
         case .grdbRead(let grdbRead):
             return grdbAdapter.mostRecentMediaAttachment(transaction: grdbRead)
-        case .yapRead(_):
-            return nil
         }
     }
 
     @objc(didInsertAttachmentStream:transaction:)
     public class func didInsert(attachmentStream: TSAttachmentStream, transaction: SDSAnyWriteTransaction) {
         switch transaction.writeTransaction {
-        case .yapWrite:
-            break
         case .grdbWrite(let grdbWrite):
             do {
                 try GRDBMediaGalleryFinder.insertGalleryRecord(attachmentStream: attachmentStream, transaction: grdbWrite)
@@ -467,8 +449,6 @@ extension AnyMediaGalleryFinder: MediaGalleryFinder_Old {
     @objc(didRemoveAttachmentStream:transaction:)
     public class func didRemove(attachmentStream: TSAttachmentStream, transaction: SDSAnyWriteTransaction) {
         switch transaction.writeTransaction {
-        case .yapWrite:
-            break
         case .grdbWrite(let grdbWrite):
             do {
                 try GRDBMediaGalleryFinder.removeAnyGalleryRecord(attachmentStream: attachmentStream, transaction: grdbWrite)
@@ -481,8 +461,6 @@ extension AnyMediaGalleryFinder: MediaGalleryFinder_Old {
     @objc
     public class func didRemoveAllContent(transaction: SDSAnyWriteTransaction) {
         switch transaction.writeTransaction {
-        case .yapWrite:
-            break
         case .grdbWrite(let grdbWrite):
             do {
                 try GRDBMediaGalleryFinder.removeAllGalleryRecords(transaction: grdbWrite)

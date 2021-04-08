@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -10,15 +10,7 @@ class SDSPerformanceTest: PerformanceBaseTest {
 
     // MARK: - Insert Messages
 
-    func testYDBPerf_insertMessages() {
-        storageCoordinator.useYDBForTests()
-        measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
-            insertMessages()
-        }
-    }
-
-    func testGRDBPerf_insertMessages() {
-        storageCoordinator.useGRDBForTests()
+    func testPerf_insertMessages() {
         measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
             insertMessages()
         }
@@ -61,15 +53,7 @@ class SDSPerformanceTest: PerformanceBaseTest {
 
     // MARK: - Fetch Messages
 
-    func testYDBPerf_fetchMessages() {
-        storageCoordinator.useYDBForTests()
-        measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
-            fetchMessages()
-        }
-    }
-
-    func testGRDBPerf_fetchMessages() {
-        storageCoordinator.useGRDBForTests()
+    func testPerf_fetchMessages() {
         measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
             fetchMessages()
         }
@@ -107,29 +91,13 @@ class SDSPerformanceTest: PerformanceBaseTest {
 
     // MARK: - Enumerate Messages
 
-    func testYDBPerf_enumerateMessagesUnbatched() {
-        storageCoordinator.useYDBForTests()
+    func testPerf_enumerateMessagesUnbatched() {
         measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
             enumerateMessages(batched: false)
         }
     }
 
-    func testGRDBPerf_enumerateMessagesUnbatched() {
-        storageCoordinator.useGRDBForTests()
-        measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
-            enumerateMessages(batched: false)
-        }
-    }
-
-    func testYDBPerf_enumerateMessagesBatched() {
-        storageCoordinator.useYDBForTests()
-        measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
-            enumerateMessages(batched: true)
-        }
-    }
-
-    func testGRDBPerf_enumerateMessagesBatched() {
-        storageCoordinator.useGRDBForTests()
+    func testPerf_enumerateMessagesBatched() {
         measureMetrics(XCTestCase.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
             enumerateMessages(batched: true)
         }

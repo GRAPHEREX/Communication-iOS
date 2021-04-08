@@ -103,7 +103,7 @@ final class AddNewContactController: UIViewController {
             return
         }
         
-        if let contact = Environment.shared.contactsManager.fetchSignalAccount(for: .init(uuid: uuid)) {
+        if let contact = contactsManagerImpl.fetchSignalAccount(for: .init(uuid: uuid)) {
             if !contact.isDeleted {
                 OWSActionSheets.showErrorAlert(message: NSLocalizedString("ADD_NEW_CONTACT_ERROR_CONTACT_ALREADY_EXIST", comment: ""))
                 return

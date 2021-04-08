@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -54,12 +54,6 @@ class AppUpdateNag: NSObject {
 
     static let kLastNagDateKey = "TSStorageManagerAppUpgradeNagDate"
     static let kFirstHeardOfNewVersionDateKey = "TSStorageManagerAppUpgradeFirstHeardOfNewVersionDate"
-
-    // MARK: - Dependencies
-
-    private var databaseStorage: SDSDatabaseStorage {
-        return SDSDatabaseStorage.shared
-    }
 
     // MARK: - KV Store
 
@@ -121,7 +115,9 @@ class AppUpdateNag: NSObject {
         }
 
         switch frontmostViewController {
-        case is ConversationSplitViewController, is OnboardingSplashViewController:
+        case is ConversationSplitViewController,
+             is OnboardingSplashViewController,
+             is OnboardingDroppedYdbViewController:
             self.setLastNagDate(Date())
             self.clearFirstHeardOfNewVersionDate()
             presentUpgradeNag(appStoreRecord: appStoreRecord)

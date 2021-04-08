@@ -1,22 +1,19 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "ThreadViewHelper.h"
 #import <SignalServiceKit/AppContext.h>
 #import <SignalServiceKit/AppReadiness.h>
-#import <SignalServiceKit/OWSPrimaryStorage.h>
 #import <SignalServiceKit/SSKEnvironment.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <SignalServiceKit/StorageCoordinator.h>
-#import <SignalServiceKit/TSDatabaseView.h>
 #import <SignalServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ThreadViewHelper () <UIDatabaseSnapshotDelegate>
 
-@property (nonatomic, nullable) YapDatabaseViewMappings *threadMappings;
 @property (nonatomic) BOOL shouldObserveDBModifications;
 
 @end
@@ -24,21 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark -
 
 @implementation ThreadViewHelper
-
-#pragma mark - Dependencies
-
-- (SDSDatabaseStorage *)databaseStorage
-{
-    return SDSDatabaseStorage.shared;
-}
-
-// POST GRDB TODO - Remove
-- (nullable OWSPrimaryStorage *)primaryStorage
-{
-    return SSKEnvironment.shared.primaryStorage;
-}
-
-#pragma mark -
 
 - (instancetype)init
 {

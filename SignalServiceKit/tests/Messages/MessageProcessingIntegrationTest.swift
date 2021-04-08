@@ -8,24 +8,6 @@ import GRDB
 
 class MessageProcessingIntegrationTest: SSKBaseTestSwift {
 
-    // MARK: - Dependencies
-
-    var tsAccountManager: TSAccountManager {
-        return SSKEnvironment.shared.tsAccountManager
-    }
-
-    var identityManager: OWSIdentityManager {
-        return SSKEnvironment.shared.identityManager
-    }
-
-    var storageCoordinator: StorageCoordinator {
-        return SSKEnvironment.shared.storageCoordinator
-    }
-
-    var messageProcessor: MessageProcessor { .shared }
-
-    // MARK: -
-
     let localE164Identifier = "+13235551234"
     let localUUID = UUID()
 
@@ -65,7 +47,6 @@ class MessageProcessingIntegrationTest: SSKBaseTestSwift {
     // MARK: - Tests
 
     func test_contactMessage_e164AndUuidEnvelope() {
-
         write { transaction in
             try! self.runner.initialize(senderClient: self.bobClient,
                                         recipientClient: self.localClient,

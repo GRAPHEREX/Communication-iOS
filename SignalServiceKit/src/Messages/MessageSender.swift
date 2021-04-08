@@ -21,58 +21,6 @@ public enum MessageSenderError: Int, Error {
 @objc
 public extension MessageSender {
 
-    // MARK: - Dependencies
-
-    fileprivate static var databaseStorage: SDSDatabaseStorage {
-        return SDSDatabaseStorage.shared
-    }
-
-    fileprivate static var sessionStore: SSKSessionStore {
-        return SSKEnvironment.shared.sessionStore
-    }
-
-    fileprivate static var preKeyStore: SSKPreKeyStore {
-        return SSKEnvironment.shared.preKeyStore
-    }
-
-    fileprivate static var signedPreKeyStore: SSKSignedPreKeyStore {
-        return SSKEnvironment.shared.signedPreKeyStore
-    }
-
-    fileprivate static var identityManager: OWSIdentityManager {
-        return OWSIdentityManager.shared()
-    }
-
-    fileprivate static var tsAccountManager: TSAccountManager {
-        return .shared()
-    }
-
-    fileprivate static var blockingManager: OWSBlockingManager {
-        return .shared()
-    }
-
-    fileprivate static var udManager: OWSUDManager {
-        return SSKEnvironment.shared.udManager
-    }
-
-    fileprivate static var deviceManager: OWSDeviceManager {
-        return OWSDeviceManager.shared()
-    }
-
-    fileprivate static var profileManager: ProfileManagerProtocol {
-        return SSKEnvironment.shared.profileManager
-    }
-    
-    fileprivate static var contactsManager: ContactsManagerProtocol {
-        return SSKEnvironment.shared.contactsManager
-    }
-    
-    fileprivate static var networkManager: TSNetworkManager {
-        return SSKEnvironment.shared.networkManager
-    }
-
-    // MARK: -
-
     class func isPrekeyRateLimitError(_ error: Error) -> Bool {
         switch error {
         case MessageSenderError.prekeyRateLimit:
@@ -185,8 +133,8 @@ extension MessageSender {
 
             Logger.verbose("Fetching prekey for: \(messageSend.address), \(deviceId)")
 
-            let promise: Promise<Void> = firstly(on: .global()) { () -> Promise<AxolotlKit.PreKeyBundle> in
-                let (promise, resolver) = Promise<AxolotlKit.PreKeyBundle>.pending()
+            let promise: Promise<Void> = firstly(on: .global()) { () -> Promise<SignalServiceKit.PreKeyBundle> in
+                let (promise, resolver) = Promise<SignalServiceKit.PreKeyBundle>.pending()
                 self.makePrekeyRequest(
                     messageSend: messageSend,
                     deviceId: NSNumber(value: deviceId),
@@ -202,7 +150,7 @@ extension MessageSender {
                     }
                 )
                 return promise
-            }.done(on: .global()) { (preKeyBundle: AxolotlKit.PreKeyBundle) -> Void in
+            }.done(on: .global()) { (preKeyBundle: SignalServiceKit.PreKeyBundle) -> Void in
                 try self.databaseStorage.write { transaction in
                     // Since we successfully fetched the prekey bundle,
                     // we know this device is registered. We can safely
@@ -259,7 +207,7 @@ public extension MessageSender {
     class func makePrekeyRequest(messageSend: OWSMessageSend,
                                  deviceId: NSNumber,
                                  accountId: AccountId?,
-                                 success: @escaping (AxolotlKit.PreKeyBundle?) -> Void,
+                                 success: @escaping (SignalServiceKit.PreKeyBundle?) -> Void,
                                  failure: @escaping (Error) -> Void) {
         assert(!Thread.isMainThread)
 
@@ -316,7 +264,7 @@ public extension MessageSender {
             guard let responseObject = result.responseObject as? [AnyHashable: Any] else {
                 throw OWSAssertionError("Prekey fetch missing response object.")
             }
-            let bundle = AxolotlKit.PreKeyBundle(from: responseObject, forDeviceNumber: deviceId)
+            let bundle = SignalServiceKit.PreKeyBundle(from: responseObject, forDeviceNumber: deviceId)
             success(bundle)
         }.catch(on: .global()) { error in
             if let httpStatusCode = error.httpStatusCode {
@@ -332,7 +280,7 @@ public extension MessageSender {
     }
 
     @objc(createSessionForPreKeyBundle:accountId:recipientAddress:deviceId:transaction:error:)
-    class func createSession(forPreKeyBundle preKeyBundle: AxolotlKit.PreKeyBundle,
+    class func createSession(forPreKeyBundle preKeyBundle: SignalServiceKit.PreKeyBundle,
                              accountId: String,
                              recipientAddress: SignalServiceAddress,
                              deviceId: NSNumber,
@@ -392,7 +340,7 @@ public extension MessageSender {
 
     class func handleUntrustedIdentityKeyError(accountId: String,
                                                recipientAddress: SignalServiceAddress,
-                                               preKeyBundle: AxolotlKit.PreKeyBundle,
+                                               preKeyBundle: SignalServiceKit.PreKeyBundle,
                                                transaction: SDSAnyWriteTransaction) {
         saveRemoteIdentity(recipientAddress: recipientAddress,
                            preKeyBundle: preKeyBundle,
@@ -407,7 +355,7 @@ public extension MessageSender {
     }
 
     private class func saveRemoteIdentity(recipientAddress: SignalServiceAddress,
-                                          preKeyBundle: AxolotlKit.PreKeyBundle,
+                                          preKeyBundle: SignalServiceKit.PreKeyBundle,
                                           transaction: SDSAnyWriteTransaction) {
         Logger.info("recipientAddress: \(recipientAddress)")
         do {
@@ -436,7 +384,7 @@ fileprivate extension MessageSender {
 
     class func hadUntrustedIdentityKeyError(recipientAddress: SignalServiceAddress,
                                             currentIdentityKey: Data,
-                                            preKeyBundle: AxolotlKit.PreKeyBundle) {
+                                            preKeyBundle: SignalServiceKit.PreKeyBundle) {
         assert(!Thread.isMainThread)
 
         let newIdentityKey: Data
@@ -1237,7 +1185,7 @@ extension MessageSender {
             let callType = offerMessage.unwrappedType
             let isVideoCall = callType == .offerVideoCall
             let profileName = MessageSender.contactsManager.displayName(for: messageSend.localAddress)
-            if let destination = messageSend.address.phoneNumber ?? messageSend.address.uuidString { // SKYTech: check if it works with adresses without phone number
+            if let destination = messageSend.address.phoneNumber ?? messageSend.address.uuidString {
                 let request = OWSRequestFactory.sendCallOfferVoipPush(destination, message: ["sender": profileName, "callType": isVideoCall])
                 MessageSender.networkManager.makeRequest(request) { _, _ in
                     OWSLogger.debug("VoIP push request was successfully send")

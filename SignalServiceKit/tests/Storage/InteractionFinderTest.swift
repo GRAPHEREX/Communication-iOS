@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -8,18 +8,8 @@ import XCTest
 
 class InteractionFinderTest: SSKBaseTestSwift {
 
-    // MARK: - Dependencies
-
-    var storageCoordinator: StorageCoordinator {
-        return SSKEnvironment.shared.storageCoordinator
-    }
-
-    // MARK: -
-
     override func setUp() {
         super.setUp()
-
-        storageCoordinator.useGRDBForTests()
     }
 
     func testInteractions() {

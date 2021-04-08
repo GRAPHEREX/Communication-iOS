@@ -10,7 +10,7 @@ public class SignalServiceAddress: NSObject, NSCopying, NSSecureCoding, Codable 
     public static let supportsSecureCoding: Bool = true
 
     private static var cache: SignalServiceAddressCache {
-        return SSKEnvironment.shared.signalServiceAddressCache
+        return Self.signalServiceAddressCache
     }
 
     private let backingPhoneNumber: AtomicOptional<String>
@@ -434,8 +434,8 @@ public class SignalServiceAddressCache: NSObject {
 
     @objc
     func warmCaches() {
-        let localNumber = TSAccountManager.shared().localNumber
-        let localUuid = TSAccountManager.shared().localUuid
+        let localNumber = TSAccountManager.shared.localNumber
+        let localUuid = TSAccountManager.shared.localUuid
 
         if localNumber != nil || localUuid != nil {
             hashAndCache(uuid: localUuid, phoneNumber: localNumber, trustLevel: .high)
@@ -554,7 +554,7 @@ public class SignalServiceAddressCache: NSObject {
         SignalServiceAddress.notifyMappingDidChange(forUuid: uuid)
 
         if AppReadiness.isAppReady {
-            SSKEnvironment.shared.bulkProfileFetch.fetchProfile(uuid: uuid)
+            Self.bulkProfileFetch.fetchProfile(uuid: uuid)
         }
     }
 }

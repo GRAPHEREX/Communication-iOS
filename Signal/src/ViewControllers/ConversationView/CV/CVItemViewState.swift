@@ -28,7 +28,6 @@ public struct CVItemViewState: Equatable {
     let bodyTextState: CVComponentBodyText.State?
 
     let isShowingSelectionUI: Bool
-    let wasShowingSelectionUI: Bool
 
     public class Builder {
         var shouldShowSenderAvatar = false
@@ -42,7 +41,6 @@ public struct CVItemViewState: Equatable {
         var dateHeaderState: CVComponentDateHeader.State?
         var bodyTextState: CVComponentBodyText.State?
         var isShowingSelectionUI = false
-        var wasShowingSelectionUI = false
 
         func build() -> CVItemViewState {
             CVItemViewState(shouldShowSenderAvatar: shouldShowSenderAvatar,
@@ -55,27 +53,14 @@ public struct CVItemViewState: Equatable {
                             footerState: footerState,
                             dateHeaderState: dateHeaderState,
                             bodyTextState: bodyTextState,
-                            isShowingSelectionUI: isShowingSelectionUI,
-                            wasShowingSelectionUI: wasShowingSelectionUI)
+                            isShowingSelectionUI: isShowingSelectionUI)
         }
     }
 }
 
 // MARK: -
 
-struct CVItemModelBuilder: CVItemBuilding {
-
-    // MARK: - Dependencies
-
-    private static var contactsManager: OWSContactsManager {
-        return Environment.shared.contactsManager
-    }
-
-    private static var profileManager: OWSProfileManager {
-        return .shared()
-    }
-
-    // MARK: -
+struct CVItemModelBuilder: CVItemBuilding, Dependencies {
 
     let itemBuildingContext: CVItemBuildingContext
     let messageMapping: CVMessageMapping
@@ -242,7 +227,6 @@ struct CVItemModelBuilder: CVItemBuilding {
                                                                          hasPendingMessageRequest: threadViewModel.hasPendingMessageRequest)
         }
 
-        itemViewState.wasShowingSelectionUI = viewStateSnapshot.wasShowingSelectionUI
         itemViewState.isShowingSelectionUI = viewStateSnapshot.isShowingSelectionUI
 
         if let outgoingMessage = interaction as? TSOutgoingMessage {

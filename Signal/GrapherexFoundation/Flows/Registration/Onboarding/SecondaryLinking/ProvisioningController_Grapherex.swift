@@ -8,14 +8,6 @@ import PromiseKit
 @objc
 public class ProvisioningController_Grapherex: NSObject {
 
-    // MARK: - Dependencies
-
-    var accountManager: AccountManager {
-        return AppEnvironment.shared.accountManager
-    }
-
-    // MARK: -
-
     let onboardingController: OnboardingController_Grapherex
     let provisioningCipher: ProvisioningCipher
 

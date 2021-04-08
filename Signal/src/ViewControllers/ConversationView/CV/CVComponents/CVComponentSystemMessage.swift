@@ -28,7 +28,7 @@ public class CVComponentSystemMessage: CVComponentBase, CVRootComponent {
                           cellMeasurement: CVCellMeasurement,
                           componentDelegate: CVComponentDelegate,
                           cellSelection: CVCellSelection,
-                          swipeToReplyState: CVSwipeToReplyState,
+                          messageSwipeActionState: CVMessageSwipeActionState,
                           componentView: CVComponentView) {
 
         configureForRendering(componentView: componentView,
@@ -683,11 +683,11 @@ extension CVComponentSystemMessage {
                 return CVMessageAction(title: NSLocalizedString("SYSTEM_MESSAGE_ACTION_VERIFY_SAFETY_NUMBER",
                                                                 comment: "Label for button to verify a user's safety number."),
                                        accessibilityIdentifier: "verify_safety_number",
-                                       action: .cvc_didTapNonBlockingIdentityChange(address: address))
+                                       action: .cvc_didTapPreviouslyVerifiedIdentityChange(address: address))
             } else {
                 return CVMessageAction(title: CommonStrings.learnMore,
                                        accessibilityIdentifier: "learn_more",
-                                       action: .cvc_didTapNonBlockingIdentityChange(address: address))
+                                       action: .cvc_didTapUnverifiedIdentityChange(address: address))
             }
         case .wrongTrustedIdentityKey:
             guard let message = message as? TSInvalidIdentityKeyErrorMessage else {
@@ -822,8 +822,8 @@ extension CVComponentSystemMessage {
             guard Self.contactsManager.isSystemContact(address: profileChangeAddress) else {
                 return nil
             }
-            let systemContactName = Self.contactsManager.nameFromSystemContacts(for: profileChangeAddress,
-                                                                                transaction: transaction)
+            let systemContactName = Self.contactsManagerImpl.nameFromSystemContacts(for: profileChangeAddress,
+                                                                                    transaction: transaction)
             let newProfileName = PersonNameComponentsFormatter.localizedString(from: profileChangeNewNameComponents,
                                                                                style: .`default`,
                                                                                options: [])

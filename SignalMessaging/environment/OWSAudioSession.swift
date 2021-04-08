@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -39,12 +39,6 @@ public class AudioActivity: NSObject {
         audioSession.ensureAudioState()
     }
 
-    // MARK: Dependencies
-
-    var audioSession: OWSAudioSession {
-        return Environment.shared.audioSession
-    }
-
     // MARK: 
 
     override public var description: String {
@@ -55,22 +49,26 @@ public class AudioActivity: NSObject {
 @objc
 public class OWSAudioSession: NSObject {
 
-    @objc
-    public func setup() {
-        NotificationCenter.default.addObserver(self, selector: #selector(proximitySensorStateDidChange(notification:)), name: UIDevice.proximityStateDidChangeNotification, object: nil)
-    }
-
-    // MARK: Dependencies
-
-    var proximityMonitoringManager: OWSProximityMonitoringManager {
-        return Environment.shared.proximityMonitoringManager
-    }
-
     private let avAudioSession = AVAudioSession.sharedInstance()
 
     private let device = UIDevice.current
 
-    // MARK: 
+    @objc
+    public required override init() {
+        super.init()
+
+        if CurrentAppContext().isMainApp {
+            AppReadiness.runNowOrWhenAppDidBecomeReadySync {
+                self.setup()
+            }
+        }
+    }
+
+    private func setup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(proximitySensorStateDidChange(notification:)), name: UIDevice.proximityStateDidChangeNotification, object: nil)
+    }
+
+    // MARK: -
 
     public private(set) var currentActivities: [Weak<AudioActivity>] = []
     var aggregateBehaviors: Set<OWSAudioBehavior> {

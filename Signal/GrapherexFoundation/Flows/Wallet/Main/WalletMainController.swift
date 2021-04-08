@@ -102,7 +102,7 @@ fileprivate extension WalletMainController {
     func setupReminders() -> OWSTableItem {
         let cell = OWSTableItem.newCell()
         let deregisteredView = ReminderView.nag(
-            text: TSAccountManager.shared().isPrimaryDevice
+            text: TSAccountManager.shared.isPrimaryDevice
                 ? NSLocalizedString("DEREGISTRATION_WARNING", comment: "Label warning the user that they have been de-registered.")
                 : NSLocalizedString(
                     "UNLINKED_WARNING", comment: "Label warning the user that they have been unlinked from their primary device."), tapAction: {
@@ -167,7 +167,7 @@ fileprivate extension WalletMainController {
                 
         emptyItemHeight += Constant.headerHeight
         
-        if TSAccountManager.shared().isDeregistered() {
+        if TSAccountManager.shared.isDeregistered() {
             let remindersSection = OWSTableSection()
             remindersSection.add(setupReminders())
             contents.addSection(remindersSection)
@@ -297,7 +297,7 @@ fileprivate extension WalletMainController {
 //                action: #selector(exchangeButtonPressed)
 //            )
                     
-            if !TSAccountManager.shared().isDeregistered() {
+            if !TSAccountManager.shared.isDeregistered() {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(
                     image: UIImage(named: "icon.dots"),
                     style: .plain,

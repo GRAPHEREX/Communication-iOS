@@ -44,12 +44,12 @@ public class CVCell: UICollectionViewCell, CVItemCell, CVRootComponentHost {
             if isCellVisible {
                 guard let renderItem = renderItem,
                       let componentView = componentView,
-                      let swipeToReplyState = swipeToReplyState else {
+                      let messageSwipeActionState = messageSwipeActionState else {
                     return
                 }
                 renderItem.rootComponent.cellDidBecomeVisible(componentView: componentView,
                                                               renderItem: renderItem,
-                                                              swipeToReplyState: swipeToReplyState)
+                                                              messageSwipeActionState: messageSwipeActionState)
             }
         }
     }
@@ -59,7 +59,7 @@ public class CVCell: UICollectionViewCell, CVItemCell, CVRootComponentHost {
     public var hostView: UIView { contentView }
     public var rootComponent: CVRootComponent? { renderItem?.rootComponent }
 
-    private var swipeToReplyState: CVSwipeToReplyState?
+    private var messageSwipeActionState: CVMessageSwipeActionState?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -121,7 +121,7 @@ public class CVCell: UICollectionViewCell, CVItemCell, CVRootComponentHost {
     func configure(renderItem: CVRenderItem,
                    componentDelegate: CVComponentDelegate,
                    cellSelection: CVCellSelection,
-                   swipeToReplyState: CVSwipeToReplyState) {
+                   messageSwipeActionState: CVMessageSwipeActionState) {
 
         let isReusingDedicatedCell = componentView != nil && renderItem.rootComponent.isDedicatedCell
 
@@ -133,9 +133,9 @@ public class CVCell: UICollectionViewCell, CVItemCell, CVRootComponentHost {
         configureForHosting(renderItem: renderItem,
                             componentDelegate: componentDelegate,
                             cellSelection: cellSelection,
-                            swipeToReplyState: swipeToReplyState)
+                            messageSwipeActionState: messageSwipeActionState)
 
-        self.swipeToReplyState = swipeToReplyState
+        self.messageSwipeActionState = messageSwipeActionState
     }
 
     override public func prepareForReuse() {
@@ -161,7 +161,7 @@ public class CVCell: UICollectionViewCell, CVItemCell, CVRootComponentHost {
         }
 
         isCellVisible = false
-        swipeToReplyState = nil
+        messageSwipeActionState = nil
     }
 
     public override func layoutSubviews() {
@@ -169,12 +169,12 @@ public class CVCell: UICollectionViewCell, CVItemCell, CVRootComponentHost {
 
         guard let renderItem = renderItem,
               let componentView = componentView,
-              let swipeToReplyState = swipeToReplyState else {
+              let messageSwipeActionState = messageSwipeActionState else {
             return
         }
         renderItem.rootComponent.cellDidLayoutSubviews(componentView: componentView,
                                                        renderItem: renderItem,
-                                                       swipeToReplyState: swipeToReplyState)
+                                                       messageSwipeActionState: messageSwipeActionState)
     }
 }
 
@@ -206,11 +206,11 @@ public class CVCellView: UIView, CVRootComponentHost {
         self.layoutMargins = .zero
 
         let cellSelection = CVCellSelection()
-        let swipeToReplyState = CVSwipeToReplyState()
+        let messageSwipeActionState = CVMessageSwipeActionState()
         configureForHosting(renderItem: renderItem,
                             componentDelegate: componentDelegate,
                             cellSelection: cellSelection,
-                            swipeToReplyState: swipeToReplyState)
+                            messageSwipeActionState: messageSwipeActionState)
         owsAssertDebug(componentView != nil)
     }
 
@@ -245,7 +245,7 @@ public extension CVRootComponentHost {
     fileprivate func configureForHosting(renderItem: CVRenderItem,
                                          componentDelegate: CVComponentDelegate,
                                          cellSelection: CVCellSelection,
-                                         swipeToReplyState: CVSwipeToReplyState) {
+                                         messageSwipeActionState: CVMessageSwipeActionState) {
         self.renderItem = renderItem
 
         #if TESTABLE_BUILD
@@ -269,7 +269,7 @@ public extension CVRootComponentHost {
                                 cellMeasurement: renderItem.cellMeasurement,
                                 componentDelegate: componentDelegate,
                                 cellSelection: cellSelection,
-                                swipeToReplyState: swipeToReplyState,
+                                messageSwipeActionState: messageSwipeActionState,
                                 componentView: componentView)
 
         #if TESTABLE_BUILD
@@ -310,7 +310,7 @@ public extension CVRootComponentHost {
 
     func findPanHandler(sender: UIPanGestureRecognizer,
                         componentDelegate: CVComponentDelegate,
-                        swipeToReplyState: CVSwipeToReplyState) -> CVPanHandler? {
+                        messageSwipeActionState: CVMessageSwipeActionState) -> CVPanHandler? {
         guard let renderItem = renderItem else {
             owsFailDebug("Missing renderItem.")
             return nil
@@ -323,13 +323,13 @@ public extension CVRootComponentHost {
                                                        componentDelegate: componentDelegate,
                                                        componentView: componentView,
                                                        renderItem: renderItem,
-                                                       swipeToReplyState: swipeToReplyState)
+                                                       messageSwipeActionState: messageSwipeActionState)
     }
 
     func startPanGesture(sender: UIPanGestureRecognizer,
                          panHandler: CVPanHandler,
                          componentDelegate: CVComponentDelegate,
-                         swipeToReplyState: CVSwipeToReplyState) {
+                         messageSwipeActionState: CVMessageSwipeActionState) {
         guard let renderItem = renderItem else {
             owsFailDebug("Missing renderItem.")
             return
@@ -343,13 +343,13 @@ public extension CVRootComponentHost {
                                                  componentDelegate: componentDelegate,
                                                  componentView: componentView,
                                                  renderItem: renderItem,
-                                                 swipeToReplyState: swipeToReplyState)
+                                                 messageSwipeActionState: messageSwipeActionState)
     }
 
     func handlePanGesture(sender: UIPanGestureRecognizer,
                           panHandler: CVPanHandler,
                           componentDelegate: CVComponentDelegate,
-                          swipeToReplyState: CVSwipeToReplyState) {
+                          messageSwipeActionState: CVMessageSwipeActionState) {
         guard let renderItem = renderItem else {
             owsFailDebug("Missing renderItem.")
             return
@@ -363,7 +363,7 @@ public extension CVRootComponentHost {
                                                   componentDelegate: componentDelegate,
                                                   componentView: componentView,
                                                   renderItem: renderItem,
-                                                  swipeToReplyState: swipeToReplyState)
+                                                  messageSwipeActionState: messageSwipeActionState)
     }
 
     func albumItemView(forAttachment attachment: TSAttachmentStream) -> UIView? {
