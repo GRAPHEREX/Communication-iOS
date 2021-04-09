@@ -138,14 +138,16 @@ class WalletNetworkService: NetworkService {
         return base64LoginString
     }
     
-    private func debugPrint(url: URL?, data: Data, params: [String: Any]) {
-        let string = String(data: data, encoding: .utf8) ?? "DATA STRING CONVERSION ERROR"
+    private func debugPrint(url: @autoclosure () -> URL?, data: @autoclosure () -> Data, params: @autoclosure () -> [String: Any]) {
+        let string: (Data) -> String = { (data) in
+            return String(data: data, encoding: .utf8) ?? "DATA STRING CONVERSION ERROR"
+        }
         
         logger.debug("""
             API call
-            To \(url?.absoluteString ?? "").
-            Parameter: \(self.jsonString(dict: params)).
-            Response: \(string)
+            To \(url()?.absoluteString ?? "").
+            Parameter: \(self.jsonString(dict: params())).
+            Response: \(string(data()))
             """)
     }
     
