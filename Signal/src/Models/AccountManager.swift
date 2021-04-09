@@ -400,25 +400,27 @@ public class AccountManager: NSObject {
     // MARK: Turn Server
 
     func getTurnServerInfo() -> Promise<TurnServerInfo> {
-        return Promise { resolver in
-            self.networkManager.makeRequest(OWSRequestFactory.turnServerInfoRequest(),
-                                            success: { (_: URLSessionDataTask, responseObject: Any?) in
-                                                guard responseObject != nil else {
-                                                    return resolver.reject(OWSErrorMakeUnableToProcessServerResponseError())
-                                                }
-
-                                                if let responseDictionary = responseObject as? [String: AnyObject] {
-                                                    if let turnServerInfo = TurnServerInfo(attributes: responseDictionary) {
-                                                        return resolver.fulfill(turnServerInfo)
-                                                    }
-                                                    Logger.error("unexpected server response:\(responseDictionary)")
-                                                }
-                                                return resolver.reject(OWSErrorMakeUnableToProcessServerResponseError())
-            },
-                                            failure: { (_: URLSessionDataTask, error: Error) in
-                                                    return resolver.reject(error)
-            })
-        }
+        let turn = TurnServerInfo(username: "voice", password: "voice123", urls: ["turn:webrtcdev.stacle.com:3478", "turn:webrtcdev.stacle.com:3478?transport=tcp"])
+        return Promise.value(turn)
+//        return Promise { resolver in
+//            self.networkManager.makeRequest(OWSRequestFactory.turnServerInfoRequest(),
+//                                            success: { (_: URLSessionDataTask, responseObject: Any?) in
+//                                                guard responseObject != nil else {
+//                                                    return resolver.reject(OWSErrorMakeUnableToProcessServerResponseError())
+//                                                }
+//
+//                                                if let responseDictionary = responseObject as? [String: AnyObject] {
+//                                                    if let turnServerInfo = TurnServerInfo(attributes: responseDictionary) {
+//                                                        return resolver.fulfill(turnServerInfo)
+//                                                    }
+//                                                    Logger.error("unexpected server response:\(responseDictionary)")
+//                                                }
+//                                                return resolver.reject(OWSErrorMakeUnableToProcessServerResponseError())
+//            },
+//                                            failure: { (_: URLSessionDataTask, error: Error) in
+//                                                    return resolver.reject(error)
+//            })
+//        }
     }
 
     func recordUuidIfNecessary() {

@@ -30,3 +30,11 @@ struct TurnServerInfo {
         }
     }
 }
+
+extension TurnServerInfo {
+    init(username: String, password: String, urls: [String]) {
+        self.username = username
+        self.password = password
+        self.urls = urls
+    }
+}
