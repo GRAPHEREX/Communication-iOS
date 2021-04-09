@@ -33,10 +33,6 @@ public class APIService {
         authManager = WalletAuthenticationManager(config: config)
     }
     
-    private func setAuthRequestToWalletServer(_ request: NetworkRequest) {
-        request.authToken = token
-    }
-    
     // MARK: - Reset
     public func reset() {
         //TODO: Credentials reset
@@ -68,8 +64,8 @@ public class APIService {
 
     // MARK: - Get Wallets
     func getWallets(_ currencies: [Currency], completion: @escaping (Result<WalletResponse, Error>) -> Void) {
-        let request = NetworkRequest(urlPath: basePath + "wallets", method: .get, parameters: [:])
-        setAuthRequestToWalletServer(request)
+        var request = NetworkRequest(urlPath: basePath + "wallets", method: .get, parameters: [:])
+        request.authToken = token
         networkService.makeRequest(request) { [weak self](result) in
             switch result {
             case .success(let response):
@@ -133,8 +129,8 @@ public class APIService {
     // MARK: - Get Currencies
     
     func getCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void) {
-        let request = NetworkRequest(urlPath: basePath + "currencies", method: .get, parameters: [:])
-        setAuthRequestToWalletServer(request)
+        var request = NetworkRequest(urlPath: basePath + "currencies", method: .get, parameters: [:])
+        request.authToken = token
         networkService.makeRequest(request) { [weak self](result) in
             switch result {
             case .success(let response):
@@ -189,8 +185,8 @@ public class APIService {
     
     func getWalletInfo(wallet: Wallet, currencies: [Currency], completion: @escaping (Result<Wallet, Error>) -> Void) {
         let urlPath = basePath + wallet.currency.path + "/wallet/" + wallet.id
-        let request = NetworkRequest(urlPath: urlPath, method: .get, parameters: [:])
-        setAuthRequestToWalletServer(request)
+        var request = NetworkRequest(urlPath: urlPath, method: .get, parameters: [:])
+        request.authToken = token
         networkService.makeRequest(request) { [weak self](result) in
             switch result {
             case .success(let response):
@@ -236,10 +232,10 @@ public class APIService {
     
     func createWallet(_ currency: Currency, password: String, completion: @escaping (Result<String, Error>) -> ()) {
         let urlPath = basePath + currency.path + "/wallet"
-        let request = NetworkRequest(urlPath: urlPath, method: .post, parameters: [
+        var request = NetworkRequest(urlPath: urlPath, method: .post, parameters: [
             "password" : password
         ])
-        setAuthRequestToWalletServer(request)
+        request.authToken = token
         networkService.makeRequest(request) { [weak self](result) in
             switch result {
             case .success(let response):
@@ -289,8 +285,8 @@ public class APIService {
         } else if fee != nil { parameters["custom_fee"] = fee! }
         
         let urlPath = basePath + wallet.currency.path + "/wallet/" + wallet.id + "/send"
-        let request = NetworkRequest(urlPath: urlPath, method: .post, parameters: parameters)
-        setAuthRequestToWalletServer(request)
+        var request = NetworkRequest(urlPath: urlPath, method: .post, parameters: parameters)
+        request.authToken = token
         networkService.makeRequest(request) { (result) in
             switch result {
             case .success(let response):
@@ -329,8 +325,8 @@ public class APIService {
         parameters["ascending"] = ascending
         
         let urlPath = basePath + "wallets" + "/" + wallet.id + "/" + "transactions"
-        let request = NetworkRequest(urlPath: urlPath, method: .get, parameters: parameters)
-        setAuthRequestToWalletServer(request)
+        var request = NetworkRequest(urlPath: urlPath, method: .get, parameters: parameters)
+        request.authToken = token
         networkService.makeRequest(request) { [weak self](result) in
             switch result {
             case .success(let response):
@@ -390,10 +386,10 @@ public class APIService {
         completion: @escaping (Result<Void, Error>) -> ()
     ) {
         let urlPath = basePath + wallet.currency.path + "/wallet/" + wallet.id + "/password/first"
-        let request = NetworkRequest(urlPath: urlPath, method: .patch, parameters: [
+        var request = NetworkRequest(urlPath: urlPath, method: .patch, parameters: [
             "new_password" : password
         ])
-        setAuthRequestToWalletServer(request)
+        request.authToken = token
         networkService.makeRequest(request) { (result) in
             switch result {
             case .success(_):
@@ -411,11 +407,11 @@ public class APIService {
         completion: @escaping (Result<Void, Error>) -> ()
     ) {
         let urlPath = basePath + wallet.currency.path + "/wallet/" + wallet.id + "/password"
-        let request = NetworkRequest(urlPath: urlPath, method: .patch, parameters: [
+        var request = NetworkRequest(urlPath: urlPath, method: .patch, parameters: [
             "password" : oldPassword,
             "new_password" : newPassword
         ])
-        setAuthRequestToWalletServer(request)
+        request.authToken = token
         networkService.makeRequest(request) { (result) in
             switch result {
             case .success(_):
@@ -428,8 +424,8 @@ public class APIService {
     
     func getBaseFee(currency: Currency, completion: @escaping (Result<Fee, Error>) -> Void) {
         let urlPath = basePath + currency.path + "/base_fee"
-        let request = NetworkRequest(urlPath: urlPath, method: .get, parameters: [:])
-        setAuthRequestToWalletServer(request)
+        var request = NetworkRequest(urlPath: urlPath, method: .get, parameters: [:])
+        request.authToken = token
         networkService.makeRequest(request) { (result) in
             switch result {
             case .success(let response):
@@ -452,8 +448,8 @@ public class APIService {
         completion: @escaping (Result<[RecipientWallet], Error>) -> Void) {
         
         let urlPath = basePath + "wallets/accounts/" + accountId
-        let request = NetworkRequest(urlPath: urlPath, method: .get, parameters: [:])
-        setAuthRequestToWalletServer(request)
+        var request = NetworkRequest(urlPath: urlPath, method: .get, parameters: [:])
+        request.authToken = token
         networkService.makeRequest(request) { (result) in
             switch result {
             case .success(let response):
@@ -501,7 +497,7 @@ fileprivate extension APIService {
         }
         if let wltError = error as? WalletError,
            wltError == .tokenExpiredError {
-            authManager.getWalletToken(completion: { [weak self] result in
+            authManager.refreshWalletToken(completion: { [weak self] result in
                 switch result {
                 case .success(let token):
                     self?.token = token

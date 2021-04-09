@@ -4334,7 +4334,7 @@
 		E35193B826170FB300043606 /* GrapherexWallet */ = {
 			isa = PBXGroup;
 			children = (
-				E3E2F0EC261F444400126155 /* Services */,
+				E3E2F0EC261F444400126155 /* Storage */,
 				E3E2F050261F0B2A00126155 /* Utils */,
 				E3B6DD81261DF21300F01AA7 /* Managers */,
 				E35197BF26175A2A00043606 /* Model */,
@@ -4847,6 +4847,7 @@
 		E39F889226177255000E120C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E3FA099F262045360056196B /* API */,
 				E39F889326177285000E120C /* NetworkService.swift */,
 				E3B6DD6D261DADF000F01AA7 /* NetworkRequest.swift */,
 			);
@@ -4910,14 +4911,12 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
-		E3E2F0EC261F444400126155 /* Services */ = {
+		E3E2F0EC261F444400126155 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				E35197CF26175A2A00043606 /* APIService.swift */,
-				E3E2F0D8261F3F5700126155 /* AuthenticationService.swift */,
 				E3E2F135261F50A500126155 /* AuthTokenStorageService.swift */,
 			);
-			path = Services;
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		E3E2F0F5261F477700126155 /* Credentials */ = {
@@ -4926,6 +4925,15 @@
 				E35197C626175A2A00043606 /* WalletCredentialsManager.swift */,
 			);
 			path = Credentials;
+			sourceTree = "<group>";
+		};
+		E3FA099F262045360056196B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E35197CF26175A2A00043606 /* APIService.swift */,
+				E3E2F0D8261F3F5700126155 /* AuthenticationService.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		F215596825CC3DB50089AA63 /* SkyTech */ = {

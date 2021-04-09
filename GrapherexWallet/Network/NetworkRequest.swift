@@ -6,7 +6,7 @@ import Foundation
 
 typealias AuthToken = String
 
-class NetworkRequest {
+struct NetworkRequest {
     // MARK: - Properties
     let urlPath: String
     let parameters: HTTPParameters
