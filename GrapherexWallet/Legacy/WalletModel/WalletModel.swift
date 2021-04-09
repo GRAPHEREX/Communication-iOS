@@ -41,14 +41,14 @@ class WalletModel {
     
     @objc
     func walletCredentionalsUpdate() {
-        let credentionals = WalletCredentialsManager.getWalletCredentials()
-        let result: [Wallet] = wallets.map { wallet in
-            var wallet = wallet
-            wallet.credentials = credentionals.first(where: { wallet.id == $0.id })
-            return wallet
-        }
-        wallets = result
-        NotificationCenter.default.post(name: WalletModel.walletCredentionalsDidChange, object: self)
+//        let credentionals = WalletCredentialsManager.getWalletCredentials()
+//        let result: [Wallet] = wallets.map { wallet in
+//            var wallet = wallet
+//            wallet.credentials = credentionals.first(where: { wallet.id == $0.id })
+//            return wallet
+//        }
+//        wallets = result
+//        NotificationCenter.default.post(name: WalletModel.walletCredentionalsDidChange, object: self)
     }
     
     func getWalletById(id: String) -> Wallet? {

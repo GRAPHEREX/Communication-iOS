@@ -92,7 +92,7 @@ final class SetPinController: ActionSheetController {
     }
     
 //    private var pinType: KeyBackupService.PinType = .numeric
-
+    private let credentialsManager: CredentialsManager = WalletCredentialsManager()
     private var topPadding: CGFloat = 0.0
 
     public var walletId: String! {
@@ -237,13 +237,15 @@ extension SetPinController: UITextFieldDelegate {
                     guard let self = self,
                         let text = self.newPinTextField.text else { return }
                     
-                    if !WalletCredentialsManager.update(credentialType: .pin, newValue: text, walletId: self.walletId) {
-                        self.validationWarningLabel.isHidden = false
-                        self.validationWarningLabel.text = "Something went wrong. Try later"
-                        modal.dismiss { }
-                    } else {
-                        modal.dismiss { }
-                        self.close()
+                    self.credentialsManager.updateCredential(ofType: .pin, newValue: text, forWalletWithId: self.walletId) { (error) in
+                        if error != nil {
+                            self.validationWarningLabel.isHidden = false
+                            self.validationWarningLabel.text = "Something went wrong. Try later"
+                            modal.dismiss { }
+                        } else {
+                            modal.dismiss { }
+                            self.close()
+                        }
                     }
                 }
         })

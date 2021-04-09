@@ -39,6 +39,7 @@ final public class WalletMainController: UIViewController {
     private var filteredWallets: [WalletItemCell.Props] = [] { didSet {
             render()
         }}
+    private let credentialsManager: CredentialsManager = WalletCredentialsManager()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -500,13 +501,14 @@ extension WalletMainController: WLTTableViewControllerEditActionDelegate, WLTTab
             style: .destructive,
             handler: { [weak self] action in
                 guard let self = self else { return }
-                if WalletCredentialsManager.update(
-                    isHidden: !self.filteredWallets[indexPath.row].isHidden,
-                    walletId: self.filteredWallets[indexPath.row].walletId) {
+                self.credentialsManager.setHidden(forWalletWithId: self.filteredWallets[indexPath.row].walletId,
+                                                  isHidden: !self.filteredWallets[indexPath.row].isHidden) { [weak self](_) in
+                    guard let self = self else { return }
                     if self.filteredWallets.count < 1 && self.showOnlyHidden {
                         self.showOnlyHidden = false
                         self.render()
                     }
+
                 }
             }
         ))

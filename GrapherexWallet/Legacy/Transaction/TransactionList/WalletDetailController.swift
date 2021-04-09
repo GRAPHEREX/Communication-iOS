@@ -26,6 +26,7 @@ final class WalletDetailController: WLTViewController {
     private let walletModel: WalletModel = {
         return WalletModel.shared
     }()
+    private let credentialsManager: CredentialsManager = WalletCredentialsManager()
     
     private let transactionPaginationSize: Int = 50
     private let transactionHeaderView = UIView()
@@ -309,8 +310,9 @@ fileprivate extension WalletDetailController {
         let title = isHiddenWallet ? "Show wallet at main list" : "Hide wallet from main list"
         action.addAction(.init(title: title, style: .default, handler: { [weak self] actionSheet in
             guard let self = self else { return }
-            _ = WalletCredentialsManager.update(isHidden: !isHiddenWallet, walletId: self.walletId)
-            self.updateWallet()
+            self.credentialsManager.setHidden(forWalletWithId: self.walletId, isHidden: !isHiddenWallet) { (_) in
+                self.updateWallet()
+            }
         }))
         
         if hasPin {

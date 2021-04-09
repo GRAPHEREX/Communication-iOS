@@ -17,7 +17,7 @@ class WalletAuthenticationManager: AuthenticationManager {
     //MARK: - Methods
     init(config: WalletConfig) {
         authService = WalletAuthenticationService(config: config)
-        tokenStorage = WalletAuthTokenStorageService()
+        tokenStorage = KeychainAuthTokenStorageService()
     }
     
     func refreshWalletToken(completion: @escaping (Result<AuthToken, Error>) -> Void) {

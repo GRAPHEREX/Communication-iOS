@@ -922,7 +922,6 @@
 		E351982D26175A2B00043606 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C326175A2A00043606 /* Transaction.swift */; };
 		E351982E26175A2B00043606 /* RecipientWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C426175A2A00043606 /* RecipientWallet.swift */; };
 		E351982F26175A2B00043606 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C526175A2A00043606 /* Wallet.swift */; };
-		E351983026175A2B00043606 /* WalletCredentialsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C626175A2A00043606 /* WalletCredentialsManager.swift */; };
 		E351983126175A2B00043606 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197C726175A2A00043606 /* WalletModel.swift */; };
 		E351983226175A2B00043606 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197CA26175A2A00043606 /* UITextField+Extension.swift */; };
 		E351983326175A2B00043606 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35197CC26175A2A00043606 /* NumberFormatter.swift */; };
@@ -966,6 +965,11 @@
 		E3794AD7261B65B100E14B2E /* WLTTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E3794AD2261B65B100E14B2E /* WLTTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E3794AD8261B65B100E14B2E /* WLTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3794AD3261B65B100E14B2E /* WLTTableViewController.m */; };
 		E3794AD9261B65B100E14B2E /* WLTTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3794AD4261B65B100E14B2E /* WLTTableViewController.swift */; };
+		E395626F26206294003C5527 /* KeychainAuthTokenStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395626E26206294003C5527 /* KeychainAuthTokenStorageService.swift */; };
+		E3956277262062BD003C5527 /* CredentialsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3956276262062BD003C5527 /* CredentialsManager.swift */; };
+		E39562812620633F003C5527 /* WalletCredentialsStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39562802620633F003C5527 /* WalletCredentialsStorageService.swift */; };
+		E395628A2620637C003C5527 /* WalletCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39562892620637C003C5527 /* WalletCredentials.swift */; };
+		E3956292262064D1003C5527 /* KeychainWalletCredentialsStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3956291262064D1003C5527 /* KeychainWalletCredentialsStorageService.swift */; };
 		E39F889426177285000E120C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39F889326177285000E120C /* NetworkService.swift */; };
 		E3B6DD6E261DADF000F01AA7 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6DD6D261DADF000F01AA7 /* NetworkRequest.swift */; };
 		E3B6DD91261DF38C00F01AA7 /* WalletConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6DD90261DF38C00F01AA7 /* WalletConfig.swift */; };
@@ -2235,7 +2239,6 @@
 		E35197C326175A2A00043606 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		E35197C426175A2A00043606 /* RecipientWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientWallet.swift; sourceTree = "<group>"; };
 		E35197C526175A2A00043606 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
-		E35197C626175A2A00043606 /* WalletCredentialsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletCredentialsManager.swift; sourceTree = "<group>"; };
 		E35197C726175A2A00043606 /* WalletModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
 		E35197CA26175A2A00043606 /* UITextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		E35197CC26175A2A00043606 /* NumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
@@ -2279,6 +2282,11 @@
 		E3794AD2261B65B100E14B2E /* WLTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTTableViewController.h; sourceTree = "<group>"; };
 		E3794AD3261B65B100E14B2E /* WLTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTTableViewController.m; sourceTree = "<group>"; };
 		E3794AD4261B65B100E14B2E /* WLTTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTTableViewController.swift; sourceTree = "<group>"; };
+		E395626E26206294003C5527 /* KeychainAuthTokenStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAuthTokenStorageService.swift; sourceTree = "<group>"; };
+		E3956276262062BD003C5527 /* CredentialsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsManager.swift; sourceTree = "<group>"; };
+		E39562802620633F003C5527 /* WalletCredentialsStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCredentialsStorageService.swift; sourceTree = "<group>"; };
+		E39562892620637C003C5527 /* WalletCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCredentials.swift; sourceTree = "<group>"; };
+		E3956291262064D1003C5527 /* KeychainWalletCredentialsStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWalletCredentialsStorageService.swift; sourceTree = "<group>"; };
 		E39F889326177285000E120C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E3B6DD6D261DADF000F01AA7 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		E3B6DD90261DF38C00F01AA7 /* WalletConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConfig.swift; sourceTree = "<group>"; };
@@ -4337,7 +4345,7 @@
 				E3E2F0EC261F444400126155 /* Storage */,
 				E3E2F050261F0B2A00126155 /* Utils */,
 				E3B6DD81261DF21300F01AA7 /* Managers */,
-				E35197BF26175A2A00043606 /* Model */,
+				E35197BF26175A2A00043606 /* Models */,
 				E39F889226177255000E120C /* Network */,
 				E351975D26175A2900043606 /* Legacy */,
 				E35193B926170FB400043606 /* GrapherexWallet.h */,
@@ -4349,7 +4357,6 @@
 		E351975D26175A2900043606 /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
-				E3E2F0F5261F477700126155 /* Credentials */,
 				E3E2F0C8261F2ECB00126155 /* WalletModel */,
 				E35197C826175A2A00043606 /* CurrencyFormatter */,
 				E3B6DD82261DF23500F01AA7 /* Extensions */,
@@ -4654,14 +4661,14 @@
 			path = Photos;
 			sourceTree = "<group>";
 		};
-		E35197BF26175A2A00043606 /* Model */ = {
+		E35197BF26175A2A00043606 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				E3B6DD8F261DF38100F01AA7 /* Config */,
 				E354E330261C945A00FC65D0 /* Error */,
 				E35197C026175A2A00043606 /* Wallet */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E35197C026175A2A00043606 /* Wallet */ = {
@@ -4844,6 +4851,33 @@
 			path = TableViewController;
 			sourceTree = "<group>";
 		};
+		E395627E26206312003C5527 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E3E2F135261F50A500126155 /* AuthTokenStorageService.swift */,
+				E395626E26206294003C5527 /* KeychainAuthTokenStorageService.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		E395627F2620632A003C5527 /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				E395628826206351003C5527 /* Models */,
+				E39562802620633F003C5527 /* WalletCredentialsStorageService.swift */,
+				E3956291262064D1003C5527 /* KeychainWalletCredentialsStorageService.swift */,
+			);
+			path = Credentials;
+			sourceTree = "<group>";
+		};
+		E395628826206351003C5527 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E39562892620637C003C5527 /* WalletCredentials.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E39F889226177255000E120C /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -4858,6 +4892,7 @@
 			isa = PBXGroup;
 			children = (
 				E3E2F0ED261F45DD00126155 /* AuthenticationManager.swift */,
+				E3956276262062BD003C5527 /* CredentialsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -4914,17 +4949,10 @@
 		E3E2F0EC261F444400126155 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				E3E2F135261F50A500126155 /* AuthTokenStorageService.swift */,
+				E395627F2620632A003C5527 /* Credentials */,
+				E395627E26206312003C5527 /* Authentication */,
 			);
 			path = Storage;
-			sourceTree = "<group>";
-		};
-		E3E2F0F5261F477700126155 /* Credentials */ = {
-			isa = PBXGroup;
-			children = (
-				E35197C626175A2A00043606 /* WalletCredentialsManager.swift */,
-			);
-			path = Credentials;
 			sourceTree = "<group>";
 		};
 		E3FA099F262045360056196B /* API */ = {
@@ -7098,6 +7126,7 @@
 				E351984126175A2B00043606 /* WalletMainController.swift in Sources */,
 				E3E2F13E261F540300126155 /* WalletAuthError.swift in Sources */,
 				E3794A96261B5B3C00E14B2E /* UIView+OWS.swift in Sources */,
+				E395626F26206294003C5527 /* KeychainAuthTokenStorageService.swift in Sources */,
 				E351980A26175A2B00043606 /* UIStackView + Extension.swift in Sources */,
 				E351983526175A2B00043606 /* MoneyFormatter.swift in Sources */,
 				E3E2F053261F0C6800126155 /* String+Extensions.swift in Sources */,
@@ -7107,6 +7136,7 @@
 				E35197FA26175A2B00043606 /* SendCurrencyFromWalletController.swift in Sources */,
 				E351982426175A2B00043606 /* PhotoCaptureDismiss.swift in Sources */,
 				E35197F126175A2A00043606 /* ExchangeCreatedController.swift in Sources */,
+				E39562812620633F003C5527 /* WalletCredentialsStorageService.swift in Sources */,
 				E35197EA26175A2A00043606 /* CancelPinController.swift in Sources */,
 				E35197FC26175A2B00043606 /* ExchangeHistoryView.swift in Sources */,
 				E3E2F136261F50A500126155 /* AuthTokenStorageService.swift in Sources */,
@@ -7146,12 +7176,14 @@
 				E351984326175A2B00043606 /* SecureTextField.swift in Sources */,
 				E351982B26175A2B00043606 /* Fee.swift in Sources */,
 				E351983926175A2B00043606 /* RecipientWalletPickerView.swift in Sources */,
+				E3956292262064D1003C5527 /* KeychainWalletCredentialsStorageService.swift in Sources */,
 				E354E377261CA40A00FC65D0 /* String+Extension.swift in Sources */,
 				E35197F626175A2B00043606 /* SentSucceedCurrencyController.swift in Sources */,
 				E351984426175A2B00043606 /* MoneyInputTextField.swift in Sources */,
 				E35197F026175A2A00043606 /* TransactionView.swift in Sources */,
 				E351982526175A2B00043606 /* PhotoGridViewCell.swift in Sources */,
 				E3794AD5261B65B100E14B2E /* ModalActivityIndicatorViewController.swift in Sources */,
+				E3956277262062BD003C5527 /* CredentialsManager.swift in Sources */,
 				E351982D26175A2B00043606 /* Transaction.swift in Sources */,
 				E35197FD26175A2B00043606 /* InfoCurrencyController.swift in Sources */,
 				E351983B26175A2B00043606 /* WalletPickerController.swift in Sources */,
@@ -7160,7 +7192,6 @@
 				E3794AAC261B5DA300E14B2E /* STPrimaryButton.swift in Sources */,
 				E351980E26175A2B00043606 /* AttachmentToggleButton.swift in Sources */,
 				E351982726175A2B00043606 /* PhotoCaptureViewController.swift in Sources */,
-				E351983026175A2B00043606 /* WalletCredentialsManager.swift in Sources */,
 				E351982C26175A2B00043606 /* Currency.swift in Sources */,
 				E351982E26175A2B00043606 /* RecipientWallet.swift in Sources */,
 				E3B6DD6E261DADF000F01AA7 /* NetworkRequest.swift in Sources */,
@@ -7170,6 +7201,7 @@
 				E351982926175A2B00043606 /* PhotoLibrary.swift in Sources */,
 				E35197F226175A2A00043606 /* WalletExchangeController.swift in Sources */,
 				E351980926175A2B00043606 /* String + Extension.swift in Sources */,
+				E395628A2620637C003C5527 /* WalletCredentials.swift in Sources */,
 				E3E2F0CB261F333F00126155 /* Reachability.swift in Sources */,
 				E351981426175A2B00043606 /* ReminderView.swift in Sources */,
 				E35197EF26175A2A00043606 /* WalletHeaderView.swift in Sources */,

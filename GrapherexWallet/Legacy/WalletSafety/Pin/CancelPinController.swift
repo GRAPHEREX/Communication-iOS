@@ -78,6 +78,7 @@ final class CancelPinController: ActionSheetController {
 //    private var pinType: KeyBackupService.PinType = .numeric
 
     private var topPadding: CGFloat = 0.0
+    private let credentialsManager: CredentialsManager = WalletCredentialsManager()
 
     public var walletId: String! {
         didSet {
@@ -224,11 +225,11 @@ extension CancelPinController: UITextFieldDelegate {
             backgroundBlock: { [weak self] modal in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
                     guard let self = self else { return }
-                    if !WalletCredentialsManager.resetPin(walletId: self.walletId) {
+                    self.credentialsManager.resetCredential(ofType: .pin, forWalletWithId: self.walletId) { (_) in
                         // handle error
+                        modal.dismiss { }
+                        self.close()
                     }
-                    modal.dismiss { }
-                    self.close()
                 }
         })
     }

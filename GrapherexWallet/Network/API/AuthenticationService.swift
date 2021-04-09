@@ -20,7 +20,7 @@ class WalletAuthenticationService: AuthenticationService {
     }
     
     func getToken(completion: @escaping (Result<AuthToken, Error>) -> Void) {
-        let request = NetworkRequest(urlPath: "/v1/wallet/token", method: .get, parameters: [:])
+        var request = NetworkRequest(urlPath: "/v1/wallet/token", method: .get, parameters: [:])
         request.authUserName = config.authUsername
         request.authPassword = config.authPassword
         networkService.makeRequest(request) { (result) in

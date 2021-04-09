@@ -23,6 +23,7 @@ public class APIService {
     // MARK: - Dependencies
     private var networkService: NetworkService!
     private var authManager: AuthenticationManager!
+    private var credentialsManager: CredentialsManager!
     
     // MARK: - Private Methods
     private init() {}
@@ -31,6 +32,7 @@ public class APIService {
         guard let config = config else { return }
         networkService = WalletNetworkService(baseHostURL: URL(string: config.cryptoServerURL)!)
         authManager = WalletAuthenticationManager(config: config)
+        credentialsManager = WalletCredentialsManager()
     }
     
     // MARK: - Reset
@@ -67,6 +69,7 @@ public class APIService {
         var request = NetworkRequest(urlPath: basePath + "wallets", method: .get, parameters: [:])
         request.authToken = token
         networkService.makeRequest(request) { [weak self](result) in
+            guard let self = self else { return }
             switch result {
             case .success(let response):
                 guard
@@ -80,42 +83,49 @@ public class APIService {
                     return
                 }
                 
-                let credentionals = WalletCredentialsManager.getWalletCredentials()
-                
-                let resultWallets: [Wallet] = wallets.compactMap { value in
-                    guard
-                        let dict = value as? [String: Any],
-                        let needPassword = dict["need_password"] as? Bool,
-                        let createdAt = dict["created_at"] as? Int64,
-                        let id = dict["id"] as? String,
-                        let currencyCode = dict["currency"] as? String,
-                        let currency = currencies.first(where: { $0.symbol == currencyCode }),
-                        let address = dict["address"] as? String,
-                        let balance = dict["balance_formatted"] as? String,
-                        let fiatBalance = dict["fiat_balance_formatted"] as? String,
-                        let fiatCurrency = dict["fiat_currency"] as? String
-                    else {
-                        return nil
+                self.credentialsManager.loadAllCredentials { (result) in
+                    let resultWallets: [Wallet] = wallets.compactMap { value in
+                        guard
+                            let dict = value as? [String: Any],
+                            let needPassword = dict["need_password"] as? Bool,
+                            let createdAt = dict["created_at"] as? Int64,
+                            let id = dict["id"] as? String,
+                            let currencyCode = dict["currency"] as? String,
+                            let currency = currencies.first(where: { $0.symbol == currencyCode }),
+                            let address = dict["address"] as? String,
+                            let balance = dict["balance_formatted"] as? String,
+                            let fiatBalance = dict["fiat_balance_formatted"] as? String,
+                            let fiatCurrency = dict["fiat_currency"] as? String
+                        else {
+                            return nil
+                        }
+                        var wallet = Wallet(
+                            id: id,
+                            currency: currency,
+                            balance: balance,
+                            fiatBalance: fiatBalance,
+                            fiatCurrency: fiatCurrency,
+                            address: address,
+                            needPassword: needPassword,
+                            createdAt: createdAt,
+                            credentials: nil
+                        )
+                        switch result {
+                        case .success(let credentials):
+                            wallet.credentials = credentials.first(where: { $0.id == id })
+                        case .failure(_):
+                            break
+                        }
+                        return wallet
                     }
-                    return Wallet(
-                        id: id,
-                        currency: currency,
-                        balance: balance,
-                        fiatBalance: fiatBalance,
+                    completion(.success(.init(
+                        fiatTotalBalance: fiatBalance,
                         fiatCurrency: fiatCurrency,
-                        address: address,
-                        needPassword: needPassword,
-                        createdAt: createdAt,
-                        credentials: credentionals.first(where: { $0.id == id })
-                    )
+                        wallets: resultWallets
+                    )))
                 }
-                completion(.success(.init(
-                    fiatTotalBalance: fiatBalance,
-                    fiatCurrency: fiatCurrency,
-                    wallets: resultWallets
-                )))
             case .failure(let error):
-                self?.handle(error) { [weak self] result in
+                self.handle(error) { [weak self] result in
                     guard let result = result else {
                         self?.getWallets(currencies, completion: completion)
                         return
@@ -188,6 +198,7 @@ public class APIService {
         var request = NetworkRequest(urlPath: urlPath, method: .get, parameters: [:])
         request.authToken = token
         networkService.makeRequest(request) { [weak self](result) in
+            guard let self = self else { return }
             switch result {
             case .success(let response):
                 guard
@@ -201,23 +212,30 @@ public class APIService {
                     completion(.failure(WalletError.unableToProcessServerResponseError))
                     return
                 }
-                let credentionals = WalletCredentialsManager.getWalletCredentials()
                 
-                let wallet = Wallet(
-                    id: wallet.id,
-                    currency: wallet.currency,
-                    balance: balance,
-                    fiatBalance: fiatBalance,
-                    fiatCurrency: fiatCurrency,
-                    address: wallet.address,
-                    needPassword: needPassword,
-                    createdAt: createdAt,
-                    credentials: credentionals.first(where: { $0.id == wallet.id })
-                )
-                
-                completion(.success(wallet))
+                self.credentialsManager.loadCredentials(forWalletWithId: wallet.id) { (result) in
+                    var wallet = Wallet(
+                        id: wallet.id,
+                        currency: wallet.currency,
+                        balance: balance,
+                        fiatBalance: fiatBalance,
+                        fiatCurrency: fiatCurrency,
+                        address: wallet.address,
+                        needPassword: needPassword,
+                        createdAt: createdAt,
+                        credentials: nil)
+                    switch result {
+                    case .success(let credentials):
+                        wallet.credentials = credentials
+                    case .failure(_):
+                        break
+                    }
+                    
+                    completion(.success(wallet))
+                }
+
             case .failure(let error):
-                self?.handle(error) { [weak self] result in
+                self.handle(error) { [weak self] result in
                     guard let result = result else {
                         self?.getWalletInfo(wallet: wallet, currencies: currencies, completion: completion)
                         return

@@ -5,13 +5,7 @@
 import Foundation
 import SwiftKeychainWrapper
 
-protocol AuthTokenStorageService {
-    func loadToken(completion: @escaping (Result<AuthToken, Error>) -> Void)
-    func saveToken(token: AuthToken, completion: @escaping (Error?) -> Void)
-    func removeToken(completion: @escaping (Error?) -> Void)
-}
-
-class WalletAuthTokenStorageService: AuthTokenStorageService {
+class KeychainAuthTokenStorageService: AuthTokenStorageService {
     // MARK: - Private Properties
     private struct Keys {
         static let token = "grapherexWallet.authToken"
@@ -42,3 +36,4 @@ class WalletAuthTokenStorageService: AuthTokenStorageService {
         }
     }
 }
+
