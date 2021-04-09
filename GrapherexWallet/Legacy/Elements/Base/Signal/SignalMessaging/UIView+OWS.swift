@@ -110,18 +110,6 @@ public extension UIView {
         }
     }
 
-    class func spacer(withWidth width: CGFloat) -> UIView {
-        let view = UIView()
-        view.autoSetDimension(.width, toSize: width)
-        return view
-    }
-
-    class func spacer(withHeight height: CGFloat) -> UIView {
-        let view = UIView()
-        view.autoSetDimension(.height, toSize: height)
-        return view
-    }
-
     class func spacer(matchingHeightOf matchView: UIView, withMultiplier multiplier: CGFloat) -> UIView {
         let spacer = UIView()
         spacer.autoMatch(.height, to: .height, of: matchView, withMultiplier: multiplier)
