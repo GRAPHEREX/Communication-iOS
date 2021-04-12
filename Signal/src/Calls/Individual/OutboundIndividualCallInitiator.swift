@@ -43,6 +43,23 @@ import SignalMessaging
             return false
         }
 
+        let firstMessageWasRead: Bool = SDSDatabaseStorage.shared.read(block: {
+            if let thread = AnyContactThreadFinder().contactThread(for: address, transaction: $0),
+               let message = InteractionFinder(threadUniqueId: thread.uniqueId).firstOutgoingMessage(transaction: $0) as? TSOutgoingMessage {
+                let messageStatus = MessageRecipientStatusUtils.recipientStatus(outgoingMessage: message)
+                return messageStatus == .read
+            }
+            return false
+        })
+
+        guard firstMessageWasRead else {
+            Logger.warn("aborting due to user not having a thread with a receiver.")
+            let title = NSLocalizedString("YOU_MUST_START_THREAD_BEFORE_PROCEEDING",
+                                          comment: "alert body shown when trying to initiate a call in the app before thread was created.")
+            OWSActionSheets.showActionSheet(title: title)
+            return false
+        }
+        
         guard let callUIAdapter = Self.callService.individualCallService.callUIAdapter else {
             owsFailDebug("missing callUIAdapter")
             return false
