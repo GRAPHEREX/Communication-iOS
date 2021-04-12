@@ -33,10 +33,6 @@ extension ConversationSettingsViewController {
             subtitle: groupMembersText,
             image: avatar,
             options: [
-                ProfileOptionView(option: .search,
-                                  action: { [weak self] in
-                                    self?.tappedConversationSearch()
-                }),
                 ProfileOptionView(option: .leaveGroup,
                                   action: { [weak self] in
                                     self?.didTapLeaveGroup()
@@ -61,9 +57,7 @@ extension ConversationSettingsViewController {
         
         let avatar = OWSAvatarBuilder.buildImage(thread: contactThread,
                                                  diameter: 80)
-        var options: [ProfileOptionView] = [ProfileOptionView(option: .search,
-                                                              action: { [weak self] in
-                                                                self?.tappedConversationSearch() })]
+        var options = [ProfileOptionView]()
         
         if !contactThread.isNoteToSelf {
             options.append(contentsOf: [
@@ -85,6 +79,12 @@ extension ConversationSettingsViewController {
                 : [.media, .files, .voice, .groups, .gifs]
             self.showMediaGallery(types: types)
         }))
+        
+        options.append(ProfileOptionView(option: .send,
+                                         action: { [weak self] in
+                                            guard let self = self else { return }
+                                            self.showSendFromChat(recipientAddress: self.thread.recipientAddresses[0])
+                                         }))
         
         header.setup(
             fullName: threadName,
