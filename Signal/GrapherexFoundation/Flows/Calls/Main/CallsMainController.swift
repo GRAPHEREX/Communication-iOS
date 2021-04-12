@@ -57,7 +57,7 @@ fileprivate extension CallsMainController {
         tableViewHolder.addSubview(tableViewController.view)
         tableViewController.view.autoPinEdgesToSuperviewEdges()
         tableViewController.tableView.backgroundColor = .clear
-        tableViewController.tableView.allowsSelection = false
+        tableViewController.tableView.allowsSelection = true
         self.definesPresentationContext = false
     }
     
@@ -82,7 +82,12 @@ fileprivate extension CallsMainController {
         })
 
         let item = OWSTableItem(customCell: callCell,
-                                customRowHeight: UITableView.automaticDimension)
+                                customRowHeight: UITableView.automaticDimension,
+                                actionBlock: { [weak self] in
+                                    if let address = call.threadWithSneakyTransaction?.recipientAddresses.first {
+                                        self?.outboundCallInitiator.initiateCall(address: address, isVideo: call.offerType == .video)
+                                    }
+                                })
         item.deleteAction = OWSTableItemEditAction(title: "Delete") { [weak self] in
             self?.removeCall(call)
         }
