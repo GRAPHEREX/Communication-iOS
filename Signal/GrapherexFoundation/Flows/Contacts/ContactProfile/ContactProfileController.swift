@@ -4,9 +4,8 @@
 
 import Foundation
 
-final class ContactProfileController: OWSViewController {
+final class ContactProfileController: OWSTableViewController2 {
     
-    private let tableViewController = OWSTableViewController()
     private let outboundCallInitiator = AppEnvironment.shared.outboundIndividualCallInitiator
     private var thread: TSThread!
     private var threadViewModel: ThreadViewModel?
@@ -14,9 +13,7 @@ final class ContactProfileController: OWSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Theme.backgroundColor
         title = NSLocalizedString("MAIN_PROFILE", comment: "")
-        setupTableView()
         makeCells()
         navigationItem.leftBarButtonItem = createOWSBackButton()
         navigationItem.leftBarButtonItem?.imageInsets.left = -8
@@ -54,14 +51,6 @@ fileprivate extension ContactProfileController {
         return address.uuid != nil && OWSIdentityManager.shared.identityKey(for: address) != nil
     }
     
-    func setupTableView() {
-        view.addSubview(tableViewController.view)
-        tableViewController.view.autoPinEdgesToSuperviewSafeArea()
-        tableViewController.tableView.backgroundColor = Theme.backgroundColor
-        tableViewController.tableView.separatorStyle = .none
-        self.definesPresentationContext = false
-    }
-    
     @objc func showVerificationView() {
         guard let contactThread = thread as? TSContactThread else {
             owsFailDebug("Invalid thread.")
@@ -75,29 +64,30 @@ fileprivate extension ContactProfileController {
     func makeCells() {
         let contents = OWSTableContents()
         
-        let headerSection = OWSTableSection()
-        headerSection.add(makeProfileHeaderCell())
-        
         let mainSection = OWSTableSection()
+        
+        let header = makeProfileHeaderCell()
+        header.backgroundColor = .clear
+        mainSection.customHeaderView = header
+        
 //        if let mobile = address.phoneNumber {
 //            mainSection.add(makeInfoCell(for: NSLocalizedString("MAIN_MOBILE", comment: ""),
 //                                         value: mobile))
 //        }
+        if canVerification() {
+            mainSection.add(makeUserIdCell())
+        }
+        
         mainSection.add(makeInfoCell(for: NSLocalizedString("MAIN_DISPLAY_NAME", comment: ""),
                                      value: contactsManager.displayName(for: address)))
         
-        let blockSection = OWSTableSection()
-        blockSection.add(makeBlockCell())
-        
-        contents.addSection(headerSection)
         contents.addSection(mainSection)
-        contents.addSection(blockSection)
+        contents.addSection(buildBlocSection())
         
-        tableViewController.contents = contents
+        self.contents = contents
     }
     
-    func makeProfileHeaderCell() -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
+    func makeProfileHeaderCell() -> UIView {
         let headerView = HeaderContactProfileView()
         thread = TSContactThread.getOrCreateThread(contactAddress: address)
         var options: [ProfileOptionView] = [ProfileOptionView(option: .message, action: { [weak self] in
@@ -121,13 +111,12 @@ fileprivate extension ContactProfileController {
             ])
         }
         
-        if canVerification() {
-            options.append(
-                ProfileOptionView(option: .userId, action: { [weak self] in
-                    self?.showUserIdInfo()
-                    }
-            ))
-        }
+        options.append(
+            ProfileOptionView(option: .send, action: { [weak self] in
+                guard let self = self else { return }
+                self.showSendFromChat(recipientAddress: self.address)
+            }
+        ))
         
         headerView.setup(
             fullName: contactsManager.displayName(for: address),
@@ -136,17 +125,7 @@ fileprivate extension ContactProfileController {
             options: options
         )
         
-        cell.contentView.addSubview(headerView)
-        cell.selectionStyle = .none
-        headerView.autoPinEdge(.trailing, to: .trailing, of: cell.contentView)
-        headerView.autoPinEdge(.leading, to: .leading, of: cell.contentView)
-        cell.backgroundColor = .st_neutralGrayBackground
-        headerView.autoPinEdge(.top, to: .top, of: cell.contentView)
-        headerView.autoPinEdge(.bottom, to: .bottom, of: cell.contentView)
-        
-        appendDivider(to: cell.contentView)
-        return .init(customCell: cell,
-                     customRowHeight: HeaderContactProfileView.Constact.height)
+        return headerView
     }
     
     func showMessage() {
@@ -156,6 +135,28 @@ fileprivate extension ContactProfileController {
                                                     focusMessageId: nil)
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func makeUserIdCell() -> OWSTableItem {
+        return OWSTableItem(customCellBlock: { [weak self] in
+            guard let self = self else {
+                owsFailDebug("Missing self")
+                return OWSTableItem.newCell()
+            }
+            
+            return OWSTableItem.buildDisclosureCell(name: "User Id",
+                                                    icon: .userId,
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "user_id"))
+        },
+        actionBlock: { [weak self] in
+            guard let self = self else {
+                owsFailDebug("Missing self")
+                return
+            }
+            if self.contactsManagerImpl.supportsContactEditing {
+                self.showUserIdInfo()
+            }
+        })
     }
     
     func makeInfoCell(for parameterName: String, value: String) -> OWSTableItem {
@@ -183,7 +184,6 @@ fileprivate extension ContactProfileController {
         valueLabel.autoPinLeadingToSuperviewMargin()
         valueLabel.autoPinTrailingToSuperviewMargin()
         
-        appendMarginDivider(to: cell.contentView)
         return .init(customCell: cell,
                      customRowHeight: 56)
     }
@@ -212,7 +212,6 @@ fileprivate extension ContactProfileController {
         disclosureButton.autoPinLeading(toTrailingEdgeOf: titleLabel, offset: 16)
         disclosureButton.setContentCompressionResistancePriority((.defaultHigh + 1), for: .horizontal)
       
-        appendMarginDivider(to: cell)
         return .init(customCell: cell,
                      customRowHeight: 56,
                      actionBlock: action)
@@ -225,28 +224,49 @@ fileprivate extension ContactProfileController {
         navigationController?.present(modal, animated: true, completion: nil)
     }
     
-    func makeBlockCell() -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
-        let blockLabel = UILabel()
-
-        blockLabel.font = UIFont.st_sfUiTextRegularFont(withSize: 16)
-        blockLabel.text = NSLocalizedString(blockingManager.isAddressBlocked(address) ? "MAIN_UNBLOCK" : "MAIN_BLOCK_USER" , comment: "")
-        blockLabel.textColor = blockingManager.isAddressBlocked(address) ? Theme.primaryTextColor : .st_otherRed
-
-        cell.contentView.addSubview(blockLabel)
+    func buildBlocSection() -> OWSTableSection {
+        let section = OWSTableSection()
         
-        blockLabel.autoPinEdge(.leading, to: .leading, of: cell.contentView, withOffset: 16)
-        blockLabel.autoVCenterInSuperview()
-        blockLabel.autoPinEdge(.trailing, to: .trailing, of: cell.contentView, withOffset: -16)
+        section.footerTitle = NSLocalizedString("CONVERSATION_SETTINGS_BLOCK_AND_LEAVE_SECTION_CONTACT_FOOTER",
+                                                comment: "Footer text for the 'block and leave' section of contact conversation settings view.")
         
-        appendDivider(to: cell.contentView)
-        return .init(
-            customCell: cell,
-            customRowHeight: 56,
-            actionBlock: { [weak self] in
-                self?.didBlockTap(address: self?.address)
+        let isCurrentlyBlocked = blockingManager.isThreadBlocked(thread)
+
+        section.add(OWSTableItem(customCellBlock: { [weak self] in
+            guard let self = self else {
+                owsFailDebug("Missing self")
+                return OWSTableItem.newCell()
             }
-        )
+            
+            let cellTitle: String
+            var customColor: UIColor?
+            if isCurrentlyBlocked {
+                cellTitle =
+                    (self.thread.isGroupThread
+                        ? NSLocalizedString("CONVERSATION_SETTINGS_UNBLOCK_GROUP",
+                                            comment: "Label for 'unblock group' action in conversation settings view.")
+                        : NSLocalizedString("CONVERSATION_SETTINGS_UNBLOCK_USER",
+                                            comment: "Label for 'unblock user' action in conversation settings view."))
+            } else {
+                cellTitle =
+                    (self.thread.isGroupThread
+                        ? NSLocalizedString("CONVERSATION_SETTINGS_BLOCK_GROUP",
+                                            comment: "Label for 'block group' action in conversation settings view.")
+                        : NSLocalizedString("CONVERSATION_SETTINGS_BLOCK_USER",
+                                            comment: "Label for 'block user' action in conversation settings view."))
+                customColor = UIColor.ows_accentRed
+            }
+            let cell = OWSTableItem.buildIconNameCell(icon: .settingsBlock,
+                                                      itemName: cellTitle,
+                                                      customColor: customColor,
+                                                      accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "block"))
+            return cell
+        },
+        actionBlock: { [weak self] in
+            self?.didBlockTap(address: self?.address)
+        }))
+
+        return section
     }
     
     func didBlockTap(address: SignalServiceAddress?) {
