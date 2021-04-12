@@ -3,7 +3,7 @@
 //
 
 #import "PinEntryView.h"
-#import "Signal-Swift.h"
+#import "Grapherex-Swift.h"
 #import <SignalMessaging/UIFont+OWS.h>
 #import <SignalMessaging/UIView+OWS.h>
 #import <SignalMessaging/ViewControllerUtils.h>

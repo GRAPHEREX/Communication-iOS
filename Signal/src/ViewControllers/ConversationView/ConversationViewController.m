@@ -15,7 +15,7 @@
 #import "FingerprintViewController.h"
 #import "OWSDisappearingMessagesJob.h"
 #import "OWSMath.h"
-#import "Signal-Swift.h"
+#import "Grapherex-Swift.h"
 #import "TSAttachmentPointer.h"
 #import "TSCall.h"
 #import "TSContactThread.h"

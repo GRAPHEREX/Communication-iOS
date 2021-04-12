@@ -3,7 +3,7 @@
 //
 
 #import "DebugUISessionState.h"
-#import "Signal-Swift.h"
+#import "Grapherex-Swift.h"
 #import <SignalMessaging/OWSTableViewController.h>
 #import <SignalServiceKit/OWSIdentityManager.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>

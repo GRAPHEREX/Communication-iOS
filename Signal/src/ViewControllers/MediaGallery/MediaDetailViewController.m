@@ -5,7 +5,7 @@
 #import "MediaDetailViewController.h"
 #import "AttachmentSharing.h"
 #import "ConversationViewController.h"
-#import "Signal-Swift.h"
+#import "Grapherex-Swift.h"
 #import "TSAttachmentStream.h"
 #import "TSInteraction.h"
 #import "UIUtil.h"
