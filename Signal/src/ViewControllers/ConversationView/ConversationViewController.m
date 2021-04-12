@@ -3310,7 +3310,7 @@ typedef enum : NSUInteger {
         // If this assert fails, *great* maybe we can get rid of this delay.
         OWSAssertDebug(![self.searchController.uiSearchController.searchBar canBecomeFirstResponder]);
 
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.searchController.uiSearchController.searchBar becomeFirstResponder];
         });
     }];
