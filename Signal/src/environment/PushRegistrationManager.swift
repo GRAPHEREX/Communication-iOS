@@ -100,12 +100,40 @@ public enum PushRegistrationError: Error {
                       completion: @escaping () -> Void) {
         if type == .voIP {
             // Configure the call information data structures.
-            let callerName = payload.dictionaryPayload["sender"] as? String ?? "Unknown"
+            let callerUuidOrPhoneNumber = payload.dictionaryPayload["sender"] as? String
             let isVideoCall = (Int(payload.dictionaryPayload["callType"] as? String ?? "0") ?? 0) != 0
                 
             let callUpdate = CXCallUpdate()
-            let remoteHandle = CXHandle(type: .generic, value: callerName)
-            callUpdate.remoteHandle = remoteHandle
+            
+            let callerAddress: SignalServiceAddress? = callerUuidOrPhoneNumber.flatMap {
+                if PhoneNumber.tryParsePhoneNumber(fromE164: $0) != nil {
+                    return SignalServiceAddress(phoneNumber: $0)
+                } else {
+                    return SignalServiceAddress(uuidString: $0)
+                }
+            }
+            
+            let anonymousContactName = NSLocalizedString("CALLKIT_ANONYMOUS_CONTACT_NAME", comment: "The generic name used for calls if CallKit privacy is enabled")
+            if let callerAddress = callerAddress {
+                let displayName = contactsManager.displayName(for: callerAddress)
+                if (PhoneNumber.tryParsePhoneNumber(fromE164: displayName) != nil) || (UUID(uuidString: displayName) != nil) {
+                    callUpdate.localizedCallerName = anonymousContactName
+                } else {
+                    callUpdate.localizedCallerName = displayName
+                }
+                
+                if let phoneNumber = callerAddress.phoneNumber {
+                    callUpdate.remoteHandle = CXHandle(type: .phoneNumber, value: phoneNumber)
+                } else if let uuidString = callerAddress.uuidString {
+                    let callKitId = CallKitCallManager.kAnonymousCallHandlePrefix + uuidString
+                    callUpdate.remoteHandle = CXHandle(type: .generic, value: callKitId)
+                    CallKitIdStore.setAddress(callerAddress, forCallKitId: callKitId)
+                }
+            } else {
+                callUpdate.localizedCallerName = anonymousContactName
+                callUpdate.remoteHandle = CXHandle(type: .generic, value: UUID().uuidString)
+            }
+            
             callUpdate.hasVideo = isVideoCall
             
             // Not yet supported
