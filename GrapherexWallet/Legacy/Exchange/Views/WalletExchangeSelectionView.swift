@@ -133,7 +133,7 @@ fileprivate extension WalletExchangeSelectionView {
                 
         mainImage.sd_setImage(with: URL(string: wallet.currency.icon), completed: nil)
         titleLabel.text = wallet.currency.name
-        balanceLabel.text = wallet.balance
+        balanceLabel.text = wallet.balanceStr
         hintAmount.text = NSLocalizedString("MAIN_AMOUNT", comment: "")
     }
     

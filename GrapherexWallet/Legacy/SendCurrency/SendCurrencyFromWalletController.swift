@@ -106,10 +106,10 @@ final class SendCurrencyFromWalletController: WLTViewController {
     private func balance(for isRateActive: Bool) -> String {
         if isRateActive {
             return "~ "
-                + (usdFormatter.multiply(value1: wallet.balance, value2: wallet.currency.rate) ?? "0")
+                + (usdFormatter.multiply(value1: wallet.balanceStr, value2: wallet.currency.rate) ?? "0")
                 + " " + wallet.currency.rateSymbol
         } else {
-            return wallet.balance + " " + wallet.currency.symbol
+            return wallet.balanceStr + " " + wallet.currency.symbol
         }
     }
     
@@ -550,7 +550,7 @@ fileprivate extension SendCurrencyFromWalletController {
         
         if amountTextField.amountForSending()!.doubleValue
             + feePrice.withoutSpaces.withReplacedSeparators.doubleValue
-            > wallet.balance.doubleValue {
+            > wallet.balanceStr.doubleValue {
             errorLabel.text = "Your balance is too low for this transaction"
             return false
         } else if addressTextField.text?.isEmpty != false {

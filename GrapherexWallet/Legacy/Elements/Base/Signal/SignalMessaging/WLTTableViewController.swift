@@ -52,102 +52,6 @@ public extension WLTTableItem {
         return cell
     }
 
-//    static func imageView(forIcon icon: ThemeIcon,
-//                          tintColor: UIColor? = nil,
-//                          iconSize: CGFloat = iconSize) -> UIImageView {
-//        let iconImage = Theme.iconImage(icon)
-//        let iconView = UIImageView(image: iconImage)
-//        iconView.tintColor = tintColor ?? Theme.primaryIconColor
-//        iconView.contentMode = .scaleAspectFit
-//        iconView.layer.minificationFilter = .trilinear
-//        iconView.layer.magnificationFilter = .trilinear
-//        iconView.autoSetDimensions(to: CGSize(square: iconSize))
-//        return iconView
-//    }
-//
-//    static func buildCell(name: String,
-//                          icon: ThemeIcon,
-//                          accessibilityIdentifier: String? = nil) -> UITableViewCell {
-//        let iconView = imageView(forIcon: icon)
-//        let cell = buildCell(name: name, iconView: iconView)
-//        cell.accessibilityIdentifier = accessibilityIdentifier
-//        return cell
-//    }
-//
-//    static func buildDisclosureCell(name: String,
-//                                    icon: ThemeIcon,
-//                                    accessibilityIdentifier: String) -> UITableViewCell {
-//        let cell = buildCell(name: name, icon: icon)
-//        cell.accessoryType = .disclosureIndicator
-//        cell.accessibilityIdentifier = accessibilityIdentifier
-//        return cell
-//    }
-//
-//    static func buildLabelCell(name: String,
-//                               icon: ThemeIcon,
-//                               accessibilityIdentifier: String) -> UITableViewCell {
-//        let cell = buildCell(name: name, icon: icon)
-//        cell.accessoryType = .none
-//        cell.accessibilityIdentifier = accessibilityIdentifier
-//        return cell
-//    }
-//
-//    static func disclosureItem(icon: ThemeIcon,
-//                               name: String,
-//                               accessoryText: String? = nil,
-//                               accessibilityIdentifier: String,
-//                               actionBlock: (() -> Void)?) -> WLTTableItem {
-//        item(icon: icon,
-//             name: name,
-//             accessoryText: accessoryText,
-//             accessoryType: .disclosureIndicator,
-//             accessibilityIdentifier: accessibilityIdentifier,
-//             actionBlock: actionBlock)
-//    }
-//
-//    @nonobjc
-//    static func actionItem(icon: ThemeIcon? = nil,
-//                           tintColor: UIColor? = nil,
-//                           name: String,
-//                           textColor: UIColor? = nil,
-//                           accessoryText: String? = nil,
-//                           accessoryImage: UIImage? = nil,
-//                           accessibilityIdentifier: String,
-//                           actionBlock: (() -> Void)?) -> WLTTableItem {
-//        item(icon: icon,
-//             tintColor: tintColor,
-//             name: name,
-//             textColor: textColor,
-//             accessoryText: accessoryText,
-//             accessoryImage: accessoryImage,
-//             accessibilityIdentifier: accessibilityIdentifier,
-//             actionBlock: actionBlock)
-//    }
-//
-//    @nonobjc
-//    static func item(icon: ThemeIcon? = nil,
-//                     tintColor: UIColor? = nil,
-//                     name: String,
-//                     textColor: UIColor? = nil,
-//                     accessoryText: String? = nil,
-//                     accessoryType: UITableViewCell.AccessoryType = .none,
-//                     accessoryImage: UIImage? = nil,
-//                     accessibilityIdentifier: String,
-//                     actionBlock: (() -> Void)? = nil) -> WLTTableItem {
-//
-//        WLTTableItem(customCellBlock: {
-//            WLTTableItem.buildCellWithAccessoryLabel(icon: icon,
-//                                                     tintColor: tintColor,
-//                                                     itemName: name,
-//                                                     textColor: textColor,
-//                                                     accessoryText: accessoryText,
-//                                                     accessoryType: accessoryType,
-//                                                     accessoryImage: accessoryImage,
-//                                                     accessibilityIdentifier: accessibilityIdentifier)
-//            },
-//                     actionBlock: actionBlock)
-//    }
-
     @available(swift, obsoleted: 1.0)
     static func buildCellWithAccessoryLabel(itemName: String,
                                             textColor: UIColor?,
@@ -163,25 +67,7 @@ public extension WLTTableItem {
                           accessibilityIdentifier: accessibilityIdentifier)
     }
 
-//    @nonobjc
-//    static func buildCellWithAccessoryLabel(icon: ThemeIcon? = nil,
-//                                            tintColor: UIColor? = nil,
-//                                            itemName: String,
-//                                            textColor: UIColor? = nil,
-//                                            accessoryText: String? = nil,
-//                                            accessoryType: UITableViewCell.AccessoryType = .disclosureIndicator,
-//                                            accessoryImage: UIImage? = nil,
-//                                            accessibilityIdentifier: String? = nil) -> UITableViewCell {
-//        buildIconNameCell(icon: icon,
-//                          tintColor: tintColor,
-//                          itemName: itemName,
-//                          textColor: textColor,
-//                          accessoryText: accessoryText,
-//                          accessoryType: accessoryType,
-//                          accessoryImage: accessoryImage,
-//                          accessibilityIdentifier: accessibilityIdentifier)
-//    }
-//
+
     @nonobjc
     static func buildIconNameCell(tintColor: UIColor? = nil,
                                   itemName: String,

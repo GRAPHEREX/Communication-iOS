@@ -200,8 +200,8 @@ fileprivate extension WalletDetailController {
         headerView.autoPinEdgesToSuperviewEdges()
         headerView.setup(
             currency: wallet.currency,
-            amount: wallet.balance + " " + wallet.currency.symbol,
-            currencyAmount: wallet.fiatCurrency + " " + wallet.fiatBalance,
+            amount: wallet.balanceStr + " " + wallet.currency.symbol,
+            currencyAmount: wallet.fiatCurrency + " " + wallet.fiatBalanceStr,
             options: [
                 ProfileOptionView(option: .send,
                                   action: { [weak self] in self?.send() }),

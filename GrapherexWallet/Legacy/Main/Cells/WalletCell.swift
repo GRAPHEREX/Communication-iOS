@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class WalletItemCell: UIView {
+final class WalletCell: UIView {
     
     private let mainImage: UIImageView = {
         let view = UIImageView()
@@ -66,7 +66,7 @@ final class WalletItemCell: UIView {
     }
 }
 
-fileprivate extension WalletItemCell {
+fileprivate extension WalletCell {
     
     func render() {
         guard let props = props else { return }

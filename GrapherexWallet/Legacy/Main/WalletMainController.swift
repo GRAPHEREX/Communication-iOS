@@ -26,7 +26,7 @@ final public class WalletMainController: UIViewController {
     }
     
     struct Props {
-        let wallets: [WalletItemCell.Props]
+        let wallets: [WalletCell.Props]
         let totalCurrency: String
         
         static let initial = Props(wallets: [], totalCurrency: "")
@@ -36,7 +36,7 @@ final public class WalletMainController: UIViewController {
         filteredWallets = props.wallets.filter { $0.isHidden == showOnlyHidden }
     }}
     
-    private var filteredWallets: [WalletItemCell.Props] = [] { didSet {
+    private var filteredWallets: [WalletCell.Props] = [] { didSet {
             render()
         }}
     private let credentialsManager: CredentialsManager = WalletCredentialsManager()
@@ -85,13 +85,13 @@ fileprivate extension WalletMainController {
         
         props = .init(
             wallets: wallets.map { wallet in
-                return WalletItemCell.Props(
+                return WalletCell.Props(
                     title: wallet.currency.name,
                     walletId: wallet.id,
                     currency: wallet.currency,
                     currencyIcon: self.model.getCurrencyIconUrl(wallet.currency) ?? "",
-                    balance: wallet.balance + " " + wallet.currency.symbol.lowercased(),
-                    currencyBalance: wallet.fiatCurrency + " " + wallet.fiatBalance,
+                    balance: wallet.balanceStr + " " + wallet.currency.symbol.lowercased(),
+                    currencyBalance: wallet.fiatCurrency + " " + wallet.fiatBalanceStr,
                     hasPin: wallet.credentials?.pin != nil,
                     needPassword: wallet.needPassword,
                     isHidden: wallet.credentials?.isHidden == true
@@ -265,7 +265,7 @@ fileprivate extension WalletMainController {
                         cell.layoutMargins.top = 16
                         cell.layoutMargins.bottom = 16
                         cell.layoutMargins.right = cell.layoutMargins.left
-                        let walletItem = WalletItemCell()
+                        let walletItem = WalletCell()
                         let props = $0
                         walletItem.props = props
                         cell.contentView.addSubview(walletItem)
@@ -363,13 +363,13 @@ fileprivate extension WalletMainController {
                 self?.tableViewController.tableView.backgroundView?.isHidden = true
                 self?.props = .init(
                     wallets: data.wallets.map { wallet in
-                        return WalletItemCell.Props(
+                        return WalletCell.Props(
                             title: wallet.currency.name,
                             walletId: wallet.id,
                             currency: wallet.currency,
                             currencyIcon: self?.model.getCurrencyIconUrl(wallet.currency) ?? "",
-                            balance: wallet.balance + " " + wallet.currency.symbol.lowercased(),
-                            currencyBalance: wallet.fiatCurrency + " " + wallet.fiatBalance,
+                            balance: wallet.balanceStr + " " + wallet.currency.symbol.lowercased(),
+                            currencyBalance: wallet.fiatCurrency + " " + wallet.fiatBalanceStr,
                             hasPin: wallet.credentials?.pin != nil,
                             needPassword: wallet.needPassword,
                             isHidden: wallet.credentials?.isHidden == true

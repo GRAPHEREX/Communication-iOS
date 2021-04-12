@@ -208,7 +208,7 @@ fileprivate extension WalletExchangeController {
     }
     
     func validation() -> Bool {
-        if fromWalletView.getCurrentAmount().doubleValue > fromWalletView.getCurrentWallet()!.balance.doubleValue {
+        if fromWalletView.getCurrentAmount().doubleValue > fromWalletView.getCurrentWallet()!.balanceStr.doubleValue {
             let errorSheet = ActionSheetController(title: "Your balance is too low", message: nil)
             self.presentActionSheet(errorSheet)
             return false

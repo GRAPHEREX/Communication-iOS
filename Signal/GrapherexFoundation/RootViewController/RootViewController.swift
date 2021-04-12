@@ -15,9 +15,10 @@ final class RootViewController: UITabBarController {
     let contactListContentController: OWSNavigationController = OWSNavigationController(rootViewController: UIStoryboard.makeController(ContactsMainController.self))
     let callListContentController: OWSNavigationController = OWSNavigationController(rootViewController: UIStoryboard.makeController(CallsMainController.self))
     let chatListContentController: ConversationSplitViewController = ConversationSplitViewController()
-    let walletListContentController: OWSNavigationController = OWSNavigationController(rootViewController: UIStoryboard.makeController(WalletMainController.self))
+    var walletListContentController: UINavigationController = GrapherexWalletService.shared.createWalletController()
     let settingListContentController: OWSNavigationController = AppSettingsViewController.inModalNavigationController()
-
+    
+    // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Theme.backgroundColor
@@ -67,7 +68,7 @@ extension RootViewController {
         set(selectedTab) { selectedIndex = index(forTab: selectedTab) }
     }
 
-    private func content(forTab tab: MainTab) -> OWSNavigationController {
+    private func content(forTab tab: MainTab) -> UINavigationController {
         switch tab {
             case .contactList:
                 return contactListContentController
@@ -160,7 +161,7 @@ extension RootViewController: RootViewControllerProtocol {
         return chatListContentController
     }
     
-    var selectedController: OWSNavigationController {
+    var selectedController: UINavigationController {
         return content(forTab: selectedTab)
     }
 }

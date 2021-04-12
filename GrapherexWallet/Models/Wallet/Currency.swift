@@ -29,3 +29,9 @@ struct Currency: Equatable {
         baseFee: "0.0"
     )
 }
+
+extension Currency: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+}

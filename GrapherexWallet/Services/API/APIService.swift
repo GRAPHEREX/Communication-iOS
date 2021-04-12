@@ -6,7 +6,8 @@ import Foundation
 
 public class APIService {
     // MARK: - Public Properties
-    public static let shared = APIService()
+    //TODO: Remove this
+    public static let shared = APIService(config: nil)
     public var config: WalletConfig? {
         didSet {
             updateConfig()
@@ -26,8 +27,6 @@ public class APIService {
     private var credentialsManager: CredentialsManager!
     
     // MARK: - Private Methods
-    private init() {}
-    
     private func updateConfig() {
         guard let config = config else { return }
         networkService = WalletNetworkService(baseHostURL: URL(string: config.cryptoServerURL)!)
@@ -41,6 +40,10 @@ public class APIService {
     }
     
     // MARK: - Initiation
+    public init(config: WalletConfig?) {
+        self.config = config
+        updateConfig()
+    }
     
     func initWallets(completion: @escaping (Result<(WalletResponse, [Currency]), Error>) -> Void) {
         let getCurrenciesSuccess: (([Currency]) -> Void) = { [weak self] currencies in
@@ -102,8 +105,8 @@ public class APIService {
                         var wallet = Wallet(
                             id: id,
                             currency: currency,
-                            balance: balance,
-                            fiatBalance: fiatBalance,
+                            balance: balance.doubleValue,
+                            fiatBalance: fiatBalance.doubleValue,
                             fiatCurrency: fiatCurrency,
                             address: address,
                             needPassword: needPassword,
@@ -217,8 +220,8 @@ public class APIService {
                     var wallet = Wallet(
                         id: wallet.id,
                         currency: wallet.currency,
-                        balance: balance,
-                        fiatBalance: fiatBalance,
+                        balance: balance.doubleValue,
+                        fiatBalance: fiatBalance.doubleValue,
                         fiatCurrency: fiatCurrency,
                         address: wallet.address,
                         needPassword: needPassword,

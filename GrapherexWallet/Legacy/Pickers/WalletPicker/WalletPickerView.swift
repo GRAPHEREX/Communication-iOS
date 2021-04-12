@@ -63,8 +63,8 @@ fileprivate extension WalletPickerView {
         guard let wallet = wallet else { return }
         mainImage.sd_setImage(with: URL(string: wallet.currency.icon))
         titleLabel.text = wallet.currency.name
-        balanceLabel.text = wallet.balance + " " + wallet.currency.symbol.lowercased()
-        let currencyBalance: String = wallet.fiatCurrency + " " + wallet.fiatBalance
+        balanceLabel.text = wallet.balanceStr + " " + wallet.currency.symbol.lowercased()
+        let currencyBalance: String = wallet.fiatCurrency + " " + wallet.fiatBalanceStr
         currencyBalanceLabel.attributedText = currencyBalance.decorate(
             primaryAttributes: [
                 .font: UIFont.wlt_regularFont(withSize: 14),

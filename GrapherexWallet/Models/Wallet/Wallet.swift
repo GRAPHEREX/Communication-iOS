@@ -13,19 +13,26 @@ struct WalletResponse {
 struct Wallet {
     let id: String
     let currency: Currency
-    let balance: String
-    let fiatBalance: String
+    let balance: Double
+    let fiatBalance: Double
     let fiatCurrency: String
     let address: String
     let needPassword: Bool
     let createdAt: Int64
     var credentials: WalletCredentials?
     
+    var balanceStr: String {
+        return "\(balance)"
+    }
+    var fiatBalanceStr: String {
+        return "\(fiatBalance)"
+    }
+    
     static let empty: Wallet = .init(
         id: "",
         currency: Currency.default,
-        balance: "",
-        fiatBalance: "",
+        balance: 0,
+        fiatBalance: 0,
         fiatCurrency: "",
         address: "",
         needPassword: false,

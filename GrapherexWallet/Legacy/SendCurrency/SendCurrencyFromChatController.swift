@@ -135,10 +135,10 @@ final public class SendCurrencyFromChatController: WLTViewController, UITextFiel
         guard let wallet = self.wallet else { return "" }
         if isRateActive {
             return "~ "
-                + (usdFormatter.multiply(value1: wallet.balance, value2: wallet.currency.rate) ?? "0")
+                + (usdFormatter.multiply(value1: wallet.balanceStr, value2: wallet.currency.rate) ?? "0")
                 + " " + wallet.currency.rateSymbol
         } else {
-            return wallet.balance + " " + wallet.currency.symbol
+            return wallet.balanceStr + " " + wallet.currency.symbol
         }
     }
     
@@ -629,7 +629,7 @@ fileprivate extension SendCurrencyFromChatController {
         
         if amountTextField.amountForSending()!.doubleValue
             + feePrice.withoutSpaces.withReplacedSeparators.doubleValue
-            > wallet.balance.doubleValue {
+            > wallet.balanceStr.doubleValue {
             errorLabel.text = "Your balance is too low for this transaction"
             return false
         } else if amountTextField.text?.isNotZero != true {

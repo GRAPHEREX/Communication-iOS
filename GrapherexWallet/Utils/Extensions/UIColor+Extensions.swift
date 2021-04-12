@@ -16,13 +16,21 @@ extension UIColor {
         return color(withRed: 122, green: 122, blue: 122, alpha: 1)
     }
     
+    static var wlt_darkGray47Color: UIColor {
+        return color(withRed: 47, green: 47, blue: 47, alpha: 1)
+    }
+    
+    static var wlt_darkGray63Color: UIColor {
+        return color(withRed: 63, green: 63, blue: 63, alpha: 1)
+    }
+    
     // MARK: - Backgrounds
     static var wlt_primaryBackgroundColor: UIColor {
         return .white
     }
     
     static var wlt_secondaryBackgroundColor: UIColor {
-        return UIColor(red: 245, green: 245, blue: 245, alpha: 1)
+        return UIColor(red: 235, green: 235, blue: 235, alpha: 1)
     }
 }
 
