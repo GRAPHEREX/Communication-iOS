@@ -33,6 +33,12 @@ class AppSettingsViewController: OWSTableViewController2 {
             object: nil
         )
     }
+    
+    public override func themeDidChange() {
+        super.themeDidChange()
+
+        updateTableContents()
+    }
 
     @objc
     func didTapDone() {
