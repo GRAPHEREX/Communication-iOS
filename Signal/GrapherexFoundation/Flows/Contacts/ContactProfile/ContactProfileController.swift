@@ -66,7 +66,7 @@ fileprivate extension ContactProfileController {
         
         let mainSection = OWSTableSection()
         
-        let header = makeProfileHeaderCell()
+        let header = makeProfileHeader()
         header.backgroundColor = .clear
         mainSection.customHeaderView = header
         
@@ -87,7 +87,7 @@ fileprivate extension ContactProfileController {
         self.contents = contents
     }
     
-    func makeProfileHeaderCell() -> UIView {
+    func makeProfileHeader() -> UIView {
         let headerView = HeaderContactProfileView()
         thread = TSContactThread.getOrCreateThread(contactAddress: address)
         var options: [ProfileOptionView] = [ProfileOptionView(option: .message, action: { [weak self] in

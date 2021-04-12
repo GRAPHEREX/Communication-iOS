@@ -5,12 +5,11 @@
 import Foundation
 import PromiseKit
 
-final class MyProfileViewController: OWSViewController {
+final class MyProfileViewController: OWSTableViewController2 {
     typealias CompletionHandler = (MyProfileViewController) -> Void
     @objc public var completionHandler: CompletionHandler?
     
     private let kProfileView_LastPresentedDate = "kProfileView_LastPresentedDate";
-    private let tableViewController = OWSTableViewController()
     private let headerView = HeaderMyProfileView()
     private var displayNameTextField: UITextField!
 
@@ -23,7 +22,6 @@ final class MyProfileViewController: OWSViewController {
         super.viewDidLoad()
         headerView.viewController = self
         headerView.avatarChanged = { [weak self] in self?.hasUnsavedChanges = true }
-        view.backgroundColor = Theme.backgroundColor
         title = NSLocalizedString("MAIN_PROFILE", comment: "")
         
         SDSDatabaseStorage.shared.write(block: { [weak self] transaction in
@@ -32,20 +30,8 @@ final class MyProfileViewController: OWSViewController {
         })
         
         setupTextField()
-        setupTableView()
         makeCells()
         updateMode()
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(applyTheme),
-                                               name: .ThemeDidChange, object: nil)
-    }
-    
-    @objc
-    private func applyTheme() {
-        makeCells()
-        tableViewController.view.backgroundColor = Theme.backgroundColor
-        view.backgroundColor = Theme.backgroundColor
     }
 }
 
@@ -170,47 +156,22 @@ fileprivate extension MyProfileViewController {
         }
     }
     
-    func setupTableView() {
-        view.addSubview(tableViewController.view)
-        tableViewController.view.backgroundColor = Theme.backgroundColor
-        tableViewController.view.autoPinEdgesToSuperviewSafeArea()
-        tableViewController.tableView.backgroundColor = Theme.backgroundColor
-        tableViewController.tableView.keyboardDismissMode = .onDrag
-        tableViewController.tableView.separatorStyle = .none
-        self.definesPresentationContext = false
-    }
-    
     func makeCells() {
         let contents = OWSTableContents()
         
-        let headerSection = OWSTableSection()
-        headerSection.add(makeProfileHeaderCell())
-        
         let mainSection = OWSTableSection()
+        
+        headerView.backgroundColor = .clear
+        mainSection.customHeaderView = headerView
+        
         if let mobile = TSAccountManager.localAddress?.phoneNumber {
             mainSection.add(makeInfoCell(for: NSLocalizedString("MAIN_MOBILE", comment: ""),
                                          value: mobile))
         }
         mainSection.add(makeDisplayNameCell())
-        contents.addSection(headerSection)
         contents.addSection(mainSection)
         
-        tableViewController.contents = contents
-    }
-    
-    func makeProfileHeaderCell() -> OWSTableItem {
-        let cell = OWSTableItem.newCell()
-        cell.contentView.addSubview(headerView)
-        cell.selectionStyle = .none
-        headerView.autoPinEdge(.trailing, to: .trailing, of: cell.contentView)
-        headerView.autoPinEdge(.leading, to: .leading, of: cell.contentView)
-        cell.backgroundColor = .st_neutralGrayBackground
-        headerView.autoPinEdge(.top, to: .top, of: cell.contentView)
-        headerView.autoPinEdge(.bottom, to: .bottom, of: cell.contentView)
-        
-        appendDivider(to: cell.contentView)
-        return .init(customCell: cell,
-                     customRowHeight: HeaderContactProfileView.Constact.height)
+        self.contents = contents
     }
     
     func makeInfoCell(for parameterName: String, value: String) -> OWSTableItem {
@@ -238,7 +199,6 @@ fileprivate extension MyProfileViewController {
         valueLabel.autoPinLeadingToSuperviewMargin()
         valueLabel.autoPinTrailingToSuperviewMargin()
         
-        appendMarginDivider(to: cell.contentView)
         return .init(customCell: cell,
                      customRowHeight: 56)
     }
@@ -266,29 +226,8 @@ fileprivate extension MyProfileViewController {
         displayNameTextField.autoPinLeadingToSuperviewMargin()
         displayNameTextField.autoPinTrailingToSuperviewMargin()
         
-        appendMarginDivider(to: cell.contentView)
         return .init(customCell: cell,
                      customRowHeight: 56)
-    }
-    
-    func appendDivider(to view: UIView) {
-        let divider = UIView()
-        view.addSubview(divider)
-        divider.autoSetDimension(.height, toSize: 1)
-        divider.backgroundColor = Theme.outlineColor;
-        divider.autoPinEdge(.bottom, to: .bottom, of: view)
-        divider.autoPinEdge(.leading, to: .leading, of: view)
-        divider.autoPinEdge(.trailing, to: .trailing, of: view)
-    }
-    
-    func appendMarginDivider(to view: UIView) {
-        let divider = UIView()
-        view.addSubview(divider)
-        divider.autoSetDimension(.height, toSize: 1)
-        divider.backgroundColor = Theme.outlineColor;
-        divider.autoPinLeadingToSuperviewMargin()
-        divider.autoPinEdge(.trailing, to: .trailing, of: view)
-        divider.autoPinEdge(.bottom, to: .bottom, of: view)
     }
     
     func leaveViewCheckingForUnsavedChanges() {

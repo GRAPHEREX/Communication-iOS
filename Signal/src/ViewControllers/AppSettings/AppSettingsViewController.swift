@@ -56,6 +56,7 @@ class AppSettingsViewController: OWSTableViewController2 {
                 vc.completionHandler = { completedVC in
                     completedVC.navigationController?.popViewController(animated: true)
                 }
+                vc.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
         ))
