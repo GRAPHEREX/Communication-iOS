@@ -801,7 +801,7 @@ fileprivate extension SendCurrencyFromChatController {
         tableViewController.view.backgroundColor = .clear
         tableViewController.tableView.backgroundColor = .clear
         tableViewController.tableView.contentInset.top = 16
-        tableViewController.view.autoPinEdgesToSuperviewEdges()
+        tableViewController.view.autoPinEdgesToSuperviewSafeArea()
         self.definesPresentationContext = false
         tableViewController.tableView.keyboardDismissMode = .onDrag
         
