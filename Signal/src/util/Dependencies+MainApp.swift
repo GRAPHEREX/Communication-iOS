@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import GrapherexWallet
 
 // Exposes singleton accessors for all UIViews, UIViewControllers, etc.
 @objc
@@ -96,6 +97,14 @@ public extension UIResponder {
 
     static var audioPlayer: CVAudioPlayer {
         return AppEnvironment.shared.audioPlayer
+    }
+    
+    var wallet: GrapherexWallet {
+        return AppEnvironment.shared.wallet
+    }
+    
+    static var wallet: GrapherexWallet {
+        return AppEnvironment.shared.wallet
     }
 }
 

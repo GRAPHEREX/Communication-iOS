@@ -5,6 +5,7 @@
 import Foundation
 import SignalServiceKit
 import SignalMessaging
+import GrapherexWallet
 
 @objc
 public class AppEnvironment: NSObject {
@@ -55,6 +56,9 @@ public class AppEnvironment: NSObject {
 
     @objc
     public var backupLazyRestore: BackupLazyRestore
+    
+    @objc
+    public var wallet: GrapherexWallet
 
     @objc
     let deviceTransferService = DeviceTransferService()
@@ -73,6 +77,7 @@ public class AppEnvironment: NSObject {
         self.backup = OWSBackup()
         self.backupLazyRestore = BackupLazyRestore()
         self.userNotificationActionHandler = UserNotificationActionHandler()
+        self.wallet = GrapherexWallet()
 
         super.init()
 

@@ -15,7 +15,7 @@ final class RootViewController: UITabBarController {
     let contactListContentController: OWSNavigationController = OWSNavigationController(rootViewController: UIStoryboard.makeController(ContactsMainController.self))
     let callListContentController: OWSNavigationController = OWSNavigationController(rootViewController: UIStoryboard.makeController(CallsMainController.self))
     let chatListContentController: ConversationSplitViewController = ConversationSplitViewController()
-    var walletListContentController: UINavigationController = GrapherexWalletService.shared.createWalletController()
+    var walletListContentController: UINavigationController = AppEnvironment.shared.wallet.createInitialController()
     let settingListContentController: OWSNavigationController = AppSettingsViewController.inModalNavigationController()
     
     // MARK: - Methods

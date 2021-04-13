@@ -6,8 +6,6 @@ import Foundation
 
 public class APIService {
     // MARK: - Public Properties
-    //TODO: Remove this
-    public static let shared = APIService(config: nil)
     public var config: WalletConfig? {
         didSet {
             updateConfig()

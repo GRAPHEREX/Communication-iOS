@@ -984,11 +984,12 @@
 		E39F889426177285000E120C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39F889326177285000E120C /* NetworkService.swift */; };
 		E3AD8BE92625A0DC0059B1CC /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD8BE82625A0DC0059B1CC /* Double+Extensions.swift */; };
 		E3AD8BF12625AD270059B1CC /* WalletsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD8BF02625AD270059B1CC /* WalletsInfo.swift */; };
+		E3AD8C642625EF810059B1CC /* WLTSwiftUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD8C632625EF810059B1CC /* WLTSwiftUtils.swift */; };
 		E3AE74CB26245CAD00E5CB94 /* WalletCurrencyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AE74CA26245CAD00E5CB94 /* WalletCurrencyItem.swift */; };
 		E3AE74D4262462B600E5CB94 /* WalletItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AE74D3262462B600E5CB94 /* WalletItemCell.swift */; };
 		E3B6DD6E261DADF000F01AA7 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6DD6D261DADF000F01AA7 /* NetworkRequest.swift */; };
 		E3B6DD91261DF38C00F01AA7 /* WalletConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6DD90261DF38C00F01AA7 /* WalletConfig.swift */; };
-		E3D980C42624340B007B99C5 /* GrapherexWalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D980C32624340B007B99C5 /* GrapherexWalletService.swift */; };
+		E3D980C42624340B007B99C5 /* GrapherexWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D980C32624340B007B99C5 /* GrapherexWallet.swift */; };
 		E3E2F053261F0C6800126155 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E2F052261F0C6800126155 /* String+Extensions.swift */; };
 		E3E2F0CB261F333F00126155 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E2F0CA261F333F00126155 /* Reachability.swift */; };
 		E3E2F0D9261F3F5700126155 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E2F0D8261F3F5700126155 /* AuthenticationService.swift */; };
@@ -2317,11 +2318,12 @@
 		E39F889326177285000E120C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E3AD8BE82625A0DC0059B1CC /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		E3AD8BF02625AD270059B1CC /* WalletsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsInfo.swift; sourceTree = "<group>"; };
+		E3AD8C632625EF810059B1CC /* WLTSwiftUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLTSwiftUtils.swift; sourceTree = "<group>"; };
 		E3AE74CA26245CAD00E5CB94 /* WalletCurrencyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCurrencyItem.swift; sourceTree = "<group>"; };
 		E3AE74D3262462B600E5CB94 /* WalletItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletItemCell.swift; sourceTree = "<group>"; };
 		E3B6DD6D261DADF000F01AA7 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		E3B6DD90261DF38C00F01AA7 /* WalletConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConfig.swift; sourceTree = "<group>"; };
-		E3D980C32624340B007B99C5 /* GrapherexWalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapherexWalletService.swift; sourceTree = "<group>"; };
+		E3D980C32624340B007B99C5 /* GrapherexWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapherexWallet.swift; sourceTree = "<group>"; };
 		E3E2F052261F0C6800126155 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E3E2F0CA261F333F00126155 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E3E2F0D8261F3F5700126155 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
@@ -4374,6 +4376,7 @@
 		E35193B826170FB300043606 /* GrapherexWallet */ = {
 			isa = PBXGroup;
 			children = (
+				E3D980C32624340B007B99C5 /* GrapherexWallet.swift */,
 				E3D980CB262451B7007B99C5 /* Services */,
 				E39562C6262093F4003C5527 /* Resources */,
 				E395629F262083AC003C5527 /* Flows */,
@@ -4975,6 +4978,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		E3AD8C622625EF700059B1CC /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				E3AD8C632625EF810059B1CC /* WLTSwiftUtils.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 		E3AE74C826245C7F00E5CB94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -5026,18 +5037,9 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		E3D980C2262433E8007B99C5 /* Start */ = {
-			isa = PBXGroup;
-			children = (
-				E3D980C32624340B007B99C5 /* GrapherexWalletService.swift */,
-			);
-			path = Start;
-			sourceTree = "<group>";
-		};
 		E3D980CB262451B7007B99C5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E3D980C2262433E8007B99C5 /* Start */,
 				E3FA099F262045360056196B /* API */,
 				E39F889226177255000E120C /* Network */,
 			);
@@ -5047,6 +5049,7 @@
 		E3E2F050261F0B2A00126155 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E3AD8C622625EF700059B1CC /* Debug */,
 				E3E2F0C9261F332700126155 /* Reachability */,
 				E3E2F051261F0C5700126155 /* Extensions */,
 			);
@@ -7265,7 +7268,7 @@
 				E354E37F261CA7AD00FC65D0 /* Atomics.swift in Sources */,
 				E39562A226208626003C5527 /* MainViewController.swift in Sources */,
 				E35197E726175A2A00043606 /* QRPasswordSaveController.swift in Sources */,
-				E3D980C42624340B007B99C5 /* GrapherexWalletService.swift in Sources */,
+				E3D980C42624340B007B99C5 /* GrapherexWallet.swift in Sources */,
 				E351984126175A2B00043606 /* WalletMainController.swift in Sources */,
 				E3E2F13E261F540300126155 /* WalletAuthError.swift in Sources */,
 				E3794A96261B5B3C00E14B2E /* UIView+OWS.swift in Sources */,
@@ -7316,6 +7319,7 @@
 				E3AD8BE92625A0DC0059B1CC /* Double+Extensions.swift in Sources */,
 				E3AE74D4262462B600E5CB94 /* WalletItemCell.swift in Sources */,
 				E351982126175A2B00043606 /* ImagePickerGridController.swift in Sources */,
+				E3AD8C642625EF810059B1CC /* WLTSwiftUtils.swift in Sources */,
 				E351980726175A2B00043606 /* Date + Extension.swift in Sources */,
 				E33325FB261C5E5800CFE73E /* ToastController.swift in Sources */,
 				E351980426175A2B00043606 /* Array + Extension.swift in Sources */,

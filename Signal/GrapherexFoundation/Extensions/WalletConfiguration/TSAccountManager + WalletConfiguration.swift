@@ -13,7 +13,7 @@ extension TSAccountManager {
     }
     
     @objc func resetWalletConfiguration() {
-        GrapherexWalletService.shared.reset()
+        AppEnvironment.shared.wallet.reset()
     }
     
     // MARK: - Private Methods
@@ -31,7 +31,7 @@ extension TSAccountManager {
                                   cryptoServerBasePath: "/api/crypto-backend/v2/",
                                   authUsername: authUserName,
                                   authPassword: authPassword)
-        GrapherexWalletService.shared.start(withConfig: config)
+        AppEnvironment.shared.wallet.setup(withConfig: config)
     }
 }
 

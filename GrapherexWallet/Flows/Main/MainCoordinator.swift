@@ -21,6 +21,6 @@ class MainCoordinator: Coordinator {
         let presenter = MainPresenterImpl(apiService: apiService)
         let vc = MainViewController(presenter: presenter)
         presenter.view = vc
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.setViewControllers([vc], animated: true)
     }
 }
