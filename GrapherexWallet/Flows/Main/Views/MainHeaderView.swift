@@ -23,12 +23,14 @@ final class MainHeaderView: NiblessView {
         view.font = UIFont.wlt_robotoFont(withSize: 30)
         view.textColor = UIColor.wlt_primaryLabelColor
         view.textAlignment = .right
+        view.adjustsFontSizeToFitWidth = true
         return view
     }()
     
     private lazy var balanceStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [balanceTitleLabel, balanceValueLabel])
         stack.axis = .horizontal
+        stack.spacing = 10
         return stack
     }()
     
@@ -196,7 +198,10 @@ fileprivate extension MainHeaderView {
     
     func activateConstraints() {
         balanceTitleLabel.wltSetContentHuggingHorizontalHigh()
+        balanceTitleLabel.wltSetCompressionResistanceHorizontalHigh()
         balanceValueLabel.wltSetContentHuggingHorizontalLow()
+        balanceValueLabel.wltSetCompressionResistanceHorizontalLow()
+        
         balanceStack.autoSetDimension(.height, toSize: 80)
         balanceStack.autoPinEdge(toSuperviewEdge: .leading, withInset: 10)
         balanceStack.autoPinEdge(toSuperviewEdge: .trailing, withInset: 10)

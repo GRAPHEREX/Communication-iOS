@@ -982,6 +982,8 @@
 		E39563162620A207003C5527 /* NiblessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39563152620A207003C5527 /* NiblessView.swift */; };
 		E395631E2620A2B7003C5527 /* NiblessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E395631D2620A2B7003C5527 /* NiblessViewController.swift */; };
 		E39F889426177285000E120C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39F889326177285000E120C /* NetworkService.swift */; };
+		E3AD8BE92625A0DC0059B1CC /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD8BE82625A0DC0059B1CC /* Double+Extensions.swift */; };
+		E3AD8BF12625AD270059B1CC /* WalletsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD8BF02625AD270059B1CC /* WalletsInfo.swift */; };
 		E3AE74CB26245CAD00E5CB94 /* WalletCurrencyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AE74CA26245CAD00E5CB94 /* WalletCurrencyItem.swift */; };
 		E3AE74D4262462B600E5CB94 /* WalletItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AE74D3262462B600E5CB94 /* WalletItemCell.swift */; };
 		E3B6DD6E261DADF000F01AA7 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6DD6D261DADF000F01AA7 /* NetworkRequest.swift */; };
@@ -2313,6 +2315,8 @@
 		E39563152620A207003C5527 /* NiblessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessView.swift; sourceTree = "<group>"; };
 		E395631D2620A2B7003C5527 /* NiblessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessViewController.swift; sourceTree = "<group>"; };
 		E39F889326177285000E120C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E3AD8BE82625A0DC0059B1CC /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		E3AD8BF02625AD270059B1CC /* WalletsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsInfo.swift; sourceTree = "<group>"; };
 		E3AE74CA26245CAD00E5CB94 /* WalletCurrencyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCurrencyItem.swift; sourceTree = "<group>"; };
 		E3AE74D3262462B600E5CB94 /* WalletItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletItemCell.swift; sourceTree = "<group>"; };
 		E3B6DD6D261DADF000F01AA7 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
@@ -4984,6 +4988,7 @@
 			isa = PBXGroup;
 			children = (
 				E3AE74CA26245CAD00E5CB94 /* WalletCurrencyItem.swift */,
+				E3AD8BF02625AD270059B1CC /* WalletsInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -5056,6 +5061,7 @@
 				E39562D5262094C4003C5527 /* UIColor+Extensions.swift */,
 				E35197A026175A2A00043606 /* UIStoryboard+Extensions.swift */,
 				E39562FC26209EE3003C5527 /* UIView+Extensions.swift */,
+				E3AD8BE82625A0DC0059B1CC /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -7250,6 +7256,7 @@
 				E351983726175A2B00043606 /* CurrencyPickerController.swift in Sources */,
 				E351981526175A2B00043606 /* SendMediaBottomButton.swift in Sources */,
 				E39562D6262094C4003C5527 /* UIColor+Extensions.swift in Sources */,
+				E3AD8BF12625AD270059B1CC /* WalletsInfo.swift in Sources */,
 				E3332642261C75C900CFE73E /* UIFont+WLT.m in Sources */,
 				E351981326175A2B00043606 /* ProfileOptionView.swift in Sources */,
 				E351981E26175A2B00043606 /* ScanQRController.swift in Sources */,
@@ -7306,6 +7313,7 @@
 				E3794A93261B5B3C00E14B2E /* WLTNavigationController.m in Sources */,
 				E351980026175A2B00043606 /* NoWalletController.swift in Sources */,
 				E351983D26175A2B00043606 /* FilterTransactionController.swift in Sources */,
+				E3AD8BE92625A0DC0059B1CC /* Double+Extensions.swift in Sources */,
 				E3AE74D4262462B600E5CB94 /* WalletItemCell.swift in Sources */,
 				E351982126175A2B00043606 /* ImagePickerGridController.swift in Sources */,
 				E351980726175A2B00043606 /* Date + Extension.swift in Sources */,

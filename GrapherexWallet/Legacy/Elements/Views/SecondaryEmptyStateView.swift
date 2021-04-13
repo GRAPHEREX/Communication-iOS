@@ -10,7 +10,7 @@ final class SecondaryEmptyStateView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .stwlt_neutralGray
         return label
     }()
@@ -38,7 +38,7 @@ final class SecondaryEmptyStateView: UIView {
 
 fileprivate extension SecondaryEmptyStateView {
     func setup() {
-        backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
+        backgroundColor = .wlt_primaryBackgroundColor
         illustrationView.contentMode = .scaleAspectFit
         let stackView = UIStackView(arrangedSubviews: [
             illustrationView,
@@ -50,6 +50,7 @@ fileprivate extension SecondaryEmptyStateView {
         stackView.alignment = .fill
         stackView.contentMode = .center
         stackView.autoCenterInSuperview()
+        stackView.autoPinEdgesToSuperviewMargins(with: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
 //        NotificationCenter.default.addObserver(self,
 //                                               selector: #selector(applyTheme),
 //                                               name: .ThemeDidChange, object: nil)
@@ -57,6 +58,6 @@ fileprivate extension SecondaryEmptyStateView {
     
     @objc
     func applyTheme() {
-        backgroundColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
+        backgroundColor = .wlt_primaryBackgroundColor // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
     }
 }

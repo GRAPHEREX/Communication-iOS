@@ -15,4 +15,10 @@ extension String {
     var localized: String {
         return NSLocalizedString(self, bundle: Bundle(for: GrapherexWalletService.self), comment: "")
     }
+    
+    static func getSymbolForCurrencyCode(code: String) -> String
+    {
+        let locale = NSLocale(localeIdentifier: code)
+        return locale.displayName(forKey: NSLocale.Key.currencySymbol, value: code) ?? code
+    }
 }

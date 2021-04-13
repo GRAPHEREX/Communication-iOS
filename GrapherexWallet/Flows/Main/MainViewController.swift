@@ -7,16 +7,12 @@ import UIKit
 import PureLayout
 
 protocol MainView: class {
-    func onItemsRetrieval(items: [WalletCurrencyItem])
+    func onInfoLoaded(info: WalletsInfo)
 }
 
 class MainViewController: NiblessViewController {
     
     //MARK: - Properties
-    private struct Constant {
-        static let headerHeight: CGFloat = 120
-    }
-    
     private let headerView: MainHeaderView = {
         let view = MainHeaderView()
         view.backgroundColor = .wlt_primaryBackgroundColor
@@ -51,18 +47,20 @@ class MainViewController: NiblessViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        view.backgroundColor = .wlt_primaryBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let props = MainHeaderView.Props(balance: "$20.00", marketCap: "1.6 T USD", volumeTrade: "700m USD", btcDominance: "65%")
-        headerView.props = props
+        
         presenter.fetchData()
     }
     
     override func setup() {
         setupHeaderView()
         setupTableView()
+        setupPullToRefresh()
+        mainLoadingIndicator.startAnimating()
     }
     
     private func setupHeaderView() {
@@ -79,6 +77,10 @@ class MainViewController: NiblessViewController {
         tableViewController.view.autoPinEdge(toSuperviewSafeArea: .bottom)
         tableViewController.view.autoPinEdge(.top, to: .bottom, of: headerView)
         
+        tableViewController.tableView.addSubview(mainLoadingIndicator)
+        mainLoadingIndicator.autoCenterInSuperview()
+        mainLoadingIndicator.bringSubviewToFront(tableViewController.tableView)
+        
         let contents: WLTTableContents = .init()
         tableViewController.contents = contents
     }
@@ -87,16 +89,26 @@ class MainViewController: NiblessViewController {
         navigationItem.title = "Wallet".localized
     }
     
+    private func setupPullToRefresh() {
+        let pullToRefreshView = UIRefreshControl()
+        pullToRefreshView.tintColor = .gray
+        pullToRefreshView.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableViewController.tableView.refreshControl = pullToRefreshView
+    }
+    
+    @objc
+    private func refresh(refreshControl: UIRefreshControl) {
+        presenter.fetchData {
+            refreshControl.endRefreshing()
+        }
+    }
+    
     private func setNoDataState() {
         mainLoadingIndicator.isHidden = true
         mainLoadingIndicator.stopAnimating()
         
         let contents: WLTTableContents = .init()
         let mainSection = WLTTableSection()
-        
-        var emptyItemHeight: CGFloat = 0
-        
-        emptyItemHeight += Constant.headerHeight
         
         // MARK: - SINGAL DEPENDENCY – reimplement
         //        if TSAccountManager.shared().isDeregistered() {
@@ -117,9 +129,10 @@ class MainViewController: NiblessViewController {
                 )
                 cell.contentView.addSubview(emptyView)
                 emptyView.autoCenterInSuperviewMargins()
+                emptyView.autoPinEdgesToSuperviewMargins(with: UIEdgeInsets(hMargin: 10, vMargin: 10))
                 return cell
             },
-            customRowHeight: tableViewController.tableView.frame.height - emptyItemHeight,
+            customRowHeight: UITableView.automaticDimension,
             actionBlock: nil
         )
         
@@ -151,8 +164,7 @@ class MainViewController: NiblessViewController {
                                 return .init(
                                     customCell: cell,
                                     customRowHeight: UITableView.automaticDimension,
-                                    actionBlock: { [weak self] in
-                                        
+                                    actionBlock: {
                                     }
                                 )
                         })
@@ -166,7 +178,9 @@ class MainViewController: NiblessViewController {
 }
 
 extension MainViewController: MainView {
-    func onItemsRetrieval(items: [WalletCurrencyItem]) {
-        self.props = items
+    func onInfoLoaded(info: WalletsInfo) {
+        self.props = info.items
+        let headerProps = MainHeaderView.Props(balance: info.totalBalance, marketCap: info.marketCap, volumeTrade: info.volumeTrade, btcDominance: info.btcDominance)
+        headerView.props = headerProps
     }
 }
