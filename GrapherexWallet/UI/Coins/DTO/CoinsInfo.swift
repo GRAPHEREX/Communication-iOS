@@ -4,15 +4,15 @@
 
 import Foundation
 
-struct WalletsInfo {
+struct CoinsInfo {
     let totalBalance: String
     let marketCap: String
     let volumeTrade: String
     let btcDominance: String
-    let items: [WalletCurrencyItem]
+    let items: [CoinDataItem]
     
-    static var noInfo: WalletsInfo {
-        return WalletsInfo(totalBalance: "-",
+    static var noInfo: CoinsInfo {
+        return CoinsInfo(totalBalance: "-",
                            marketCap: "-",
                            volumeTrade: "-",
                            btcDominance: "-",

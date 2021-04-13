@@ -245,7 +245,7 @@ void uncaughtExceptionHandler(NSException *exception)
         
             [self versionMigrationsDidComplete];
         
-            [[TSAccountManager shared] startWalletConfigurationObserver];
+            [[TSAccountManager shared] setupGrapherexWallet];
         }];
 
     [UIUtil setupSignalAppearence];

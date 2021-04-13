@@ -6,15 +6,15 @@ import Foundation
 import UIKit
 import PureLayout
 
-protocol MainView: class {
-    func onInfoLoaded(info: WalletsInfo)
+protocol CoinsView: class {
+    func onInfoLoaded(info: CoinsInfo)
 }
 
-class MainViewController: NiblessViewController {
+class CoinsViewController: NiblessViewController {
     
     //MARK: - Properties
-    private let headerView: MainHeaderView = {
-        let view = MainHeaderView()
+    private let headerView: CoinsHeaderView = {
+        let view = CoinsHeaderView()
         view.backgroundColor = .wlt_primaryBackgroundColor
         return view
     }()
@@ -30,16 +30,16 @@ class MainViewController: NiblessViewController {
         return indicator
     }()
     
-    private var props: [WalletCurrencyItem]? {
+    private var props: [CoinDataItem]? {
         didSet {
             render()
         }
     }
     
-    private let presenter: MainPresenter
+    private let presenter: CoinsPresenter
     
     // MARK: - Methods
-    init(presenter: MainPresenter) {
+    init(presenter: CoinsPresenter) {
         self.presenter = presenter
         super.init()
     }
@@ -157,7 +157,7 @@ class MainViewController: NiblessViewController {
                                 cell.layoutMargins.top = 16
                                 cell.layoutMargins.bottom = 16
                                 cell.layoutMargins.right = cell.layoutMargins.left
-                                let walletItem = WalletItemCell()
+                                let walletItem = CoinCell()
                                 walletItem.currencyItem = $0
                                 cell.contentView.addSubview(walletItem)
                                 walletItem.autoPinEdgesToSuperviewMargins()
@@ -177,10 +177,10 @@ class MainViewController: NiblessViewController {
     }
 }
 
-extension MainViewController: MainView {
-    func onInfoLoaded(info: WalletsInfo) {
+extension CoinsViewController: CoinsView {
+    func onInfoLoaded(info: CoinsInfo) {
         self.props = info.items
-        let headerProps = MainHeaderView.Props(balance: info.totalBalance, marketCap: info.marketCap, volumeTrade: info.volumeTrade, btcDominance: info.btcDominance)
+        let headerProps = CoinsHeaderView.Props(balance: info.totalBalance, marketCap: info.marketCap, volumeTrade: info.volumeTrade, btcDominance: info.btcDominance)
         headerView.props = headerProps
     }
 }

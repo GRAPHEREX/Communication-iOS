@@ -7,19 +7,21 @@ import SignalServiceKit
 import GrapherexWallet
 
 extension TSAccountManager {
-    @objc func startWalletConfigurationObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(onRegStateChanged), name: NSNotification.Name.registrationStateDidChange, object: nil)
-        onRegStateChanged()
+    @objc func setupGrapherexWallet() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onRegistrationStateChanged), name: NSNotification.Name.registrationStateDidChange, object: nil)
+        onRegistrationStateChanged()
     }
     
-    @objc func resetWalletConfiguration() {
+    @objc func resetGrapherexWallet() {
         AppEnvironment.shared.wallet.reset()
     }
     
     // MARK: - Private Methods
-    @objc private func onRegStateChanged() {
+    @objc private func onRegistrationStateChanged() {
         if (isRegisteredAndReady) {
             configureWallet()
+        } else if (isDeregistered()) {
+            resetGrapherexWallet()
         }
     }
     

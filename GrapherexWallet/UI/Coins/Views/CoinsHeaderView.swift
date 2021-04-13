@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 import PureLayout
 
-final class MainHeaderView: NiblessView {
+final class CoinsHeaderView: NiblessView {
     
     // MARK: - Balance
     private let balanceTitleLabel: UILabel = {
@@ -177,7 +177,7 @@ final class MainHeaderView: NiblessView {
     }
 }
 
-fileprivate extension MainHeaderView {
+fileprivate extension CoinsHeaderView {
     
     func render() {
         guard let props = props else { return }

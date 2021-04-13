@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct WalletCurrencyItem {
+struct CoinDataItem {
     let coinTitle: String
     let currency: Currency
     let currencyIcon: String

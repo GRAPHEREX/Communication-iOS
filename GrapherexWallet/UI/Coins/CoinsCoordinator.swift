@@ -5,7 +5,7 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator {
+class CoinsCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
@@ -18,8 +18,8 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let presenter = MainPresenterImpl(apiService: apiService)
-        let vc = MainViewController(presenter: presenter)
+        let presenter = CoinsPresenterImpl(apiService: apiService)
+        let vc = CoinsViewController(presenter: presenter)
         presenter.view = vc
         navigationController.setViewControllers([vc], animated: true)
     }

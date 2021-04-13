@@ -4,37 +4,37 @@
 
 import Foundation
 
-protocol MainPresenter: class {
+protocol CoinsPresenter: class {
     func fetchData(completion: (() -> Void)?)
 }
 
-extension MainPresenter {
+extension CoinsPresenter {
     func fetchData() {
         fetchData(completion: nil)
     }
 }
 
-class MainPresenterImpl: MainPresenter {
+class CoinsPresenterImpl: CoinsPresenter {
     
     // MARK: - Properties
-    weak var view: MainView?
+    weak var view: CoinsView?
     private let apiService: APIService
     
     init(apiService: APIService) {
         self.apiService = apiService
     }
     
-    // MARK: - MainPresenter
+    // MARK: - CoinsPresenter
     func fetchData(completion: (() -> Void)?) {
         apiService.initWallets { [weak self](result) in
             guard let strong = self else { return }
             switch result {
             case .failure(_):
-                strong.view?.onInfoLoaded(info: WalletsInfo.noInfo)
+                strong.view?.onInfoLoaded(info: CoinsInfo.noInfo)
             case .success(let response):
                 let wallets = response.0.wallets
                 let groupedWallets = Dictionary(grouping: wallets, by: {$0.currency})
-                var currencyItems = [WalletCurrencyItem]()
+                var currencyItems = [CoinDataItem]()
                 var totalBalance: Double = 0
                 var nextBaseCurrency: String = ""
                 
@@ -47,7 +47,7 @@ class MainPresenterImpl: MainPresenter {
                     nextBaseCurrency = nextWallets.first?.fiatCurrency ?? ""
                     let nextCurStr = nextFiatCurSum.format(f: ".0") + nextBaseCurrency
                     
-                    let nextCurItem = WalletCurrencyItem(coinTitle: nextCurrency.symbol,
+                    let nextCurItem = CoinDataItem(coinTitle: nextCurrency.symbol,
                                                          currency: nextCurrency,
                                                          currencyIcon: nextCurrency.icon,
                                                          balance: nextBalStr,
@@ -58,7 +58,7 @@ class MainPresenterImpl: MainPresenter {
                 }
                 
                 //TODO: replace static info when new API is available
-                let info = WalletsInfo(totalBalance: String.getSymbolForCurrencyCode(code: nextBaseCurrency) + totalBalance.format(f: ".2"),
+                let info = CoinsInfo(totalBalance: String.getSymbolForCurrencyCode(code: nextBaseCurrency) + totalBalance.format(f: ".2"),
                                        marketCap: "1.6 T USD",
                                        volumeTrade: "700m USD",
                                        btcDominance: "65%",

@@ -5,7 +5,7 @@
 import Foundation
 import UIKit
 
-final class WalletItemCell: NiblessView {
+final class CoinCell: NiblessView {
     
     private let coinImage: UIImageView = {
         let view = UIImageView()
@@ -64,7 +64,7 @@ final class WalletItemCell: NiblessView {
         return stack
     }()
     
-    var currencyItem: WalletCurrencyItem? {
+    var currencyItem: CoinDataItem? {
         didSet {
             render()
         }
@@ -76,7 +76,7 @@ final class WalletItemCell: NiblessView {
     }
 }
 
-fileprivate extension WalletItemCell {
+fileprivate extension CoinCell {
     
     func render() {
         guard let currencyItem = currencyItem else { return }
