@@ -42,6 +42,7 @@ protocol InteractionFinderAdapter {
     func enumerateInteractions(range: NSRange, transaction: ReadTransaction, block: @escaping (TSInteraction, UnsafeMutablePointer<ObjCBool>) -> Void) throws
     func interactionIds(inRange range: NSRange, transaction: ReadTransaction) throws -> [String]
     func existsOutgoingMessage(transaction: ReadTransaction) -> Bool
+    func firstOutgoingMessage(transaction: ReadTransaction) -> TSInteraction?
     func outgoingMessageCount(transaction: ReadTransaction) -> UInt
 
     func interaction(at index: UInt, transaction: ReadTransaction) throws -> TSInteraction?
@@ -477,6 +478,14 @@ public class InteractionFinder: NSObject, InteractionFinderAdapter {
         switch transaction.readTransaction {
         case .grdbRead(let grdbRead):
             return grdbAdapter.existsOutgoingMessage(transaction: grdbRead)
+        }
+    }
+    
+    @objc
+    public func firstOutgoingMessage(transaction: SDSAnyReadTransaction) -> TSInteraction? {
+        switch transaction.readTransaction {
+        case .grdbRead(let grdbRead):
+            return grdbAdapter.firstOutgoingMessage(transaction: grdbRead)
         }
     }
 
@@ -1114,6 +1123,19 @@ public class GRDBInteractionFinder: NSObject, InteractionFinderAdapter {
         """
         let arguments: StatementArguments = [threadUniqueId, SDSRecordType.outgoingMessage.rawValue]
         return try! Bool.fetchOne(transaction.database, sql: sql, arguments: arguments) ?? false
+    }
+    
+    func firstOutgoingMessage(transaction: GRDBReadTransaction) -> TSInteraction? {
+        let sql = """
+        SELECT *
+        FROM \(InteractionRecord.databaseTableName)
+        WHERE \(interactionColumn: .threadUniqueId) = ?
+        AND \(interactionColumn: .recordType) = ?
+        ORDER BY \(interactionColumn: .id)
+        LIMIT 1
+        """
+        let arguments: StatementArguments = [threadUniqueId, SDSRecordType.outgoingMessage.rawValue]
+        return TSInteraction.grdbFetchOne(sql: sql, arguments: arguments, transaction: transaction)
     }
 
     func hasGroupUpdateInfoMessage(transaction: GRDBReadTransaction) -> Bool {

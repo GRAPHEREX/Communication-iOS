@@ -1184,9 +1184,9 @@ extension MessageSender {
         if let message = message as? OWSOutgoingCallMessage, let offerMessage = message.offerMessage {
             let callType = offerMessage.unwrappedType
             let isVideoCall = callType == .offerVideoCall
-            let profileName = MessageSender.contactsManager.displayName(for: messageSend.localAddress)
-            if let destination = messageSend.address.phoneNumber ?? messageSend.address.uuidString {
-                let request = OWSRequestFactory.sendCallOfferVoipPush(destination, message: ["sender": profileName, "callType": isVideoCall])
+            if let sender = messageSend.localAddress.uuidString ?? messageSend.localAddress.phoneNumber,
+               let destination = messageSend.address.uuidString ?? messageSend.address.phoneNumber {
+                let request = OWSRequestFactory.sendCallOfferVoipPush(destination, message: ["sender": sender, "callType": isVideoCall])
                 MessageSender.networkManager.makeRequest(request) { _, _ in
                     OWSLogger.debug("VoIP push request was successfully send")
                 } failure: { _, _ in

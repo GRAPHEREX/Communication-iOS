@@ -4,7 +4,7 @@
 
 #import "ConversationListCell.h"
 #import "OWSAvatarBuilder.h"
-#import "Signal-Swift.h"
+#import "Grapherex-Swift.h"
 #import <SignalMessaging/SignalMessaging-Swift.h>
 #import <SignalServiceKit/OWSFormat.h>
 #import <SignalServiceKit/OWSMath.h>

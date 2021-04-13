@@ -4,7 +4,7 @@
 
 #import "RecipientPickerViewController.h"
 #import "ContactsViewHelper.h"
-#import "Signal-Swift.h"
+#import "Grapherex-Swift.h"
 #import "SignalApp.h"
 #import "UIView+OWS.h"
 #import <MessageUI/MessageUI.h>

@@ -126,6 +126,7 @@ public enum ThemeIcon: UInt {
     case emojiRecent
 
     case sealedSenderIndicator
+    case userId
 }
 
 // MARK: - Colors
@@ -397,6 +398,8 @@ public extension Theme {
 
         case .sealedSenderIndicator:
             return isDarkThemeEnabled ? "unidentified-delivery-solid-20" : "unidentified-delivery-outline-20"
+        case .userId:
+            return "icon.scan.qr"
         }
     }
 }

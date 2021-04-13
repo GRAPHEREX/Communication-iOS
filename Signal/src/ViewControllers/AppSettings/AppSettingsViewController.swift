@@ -33,6 +33,12 @@ class AppSettingsViewController: OWSTableViewController2 {
             object: nil
         )
     }
+    
+    public override func themeDidChange() {
+        super.themeDidChange()
+
+        updateTableContents()
+    }
 
     @objc
     func didTapDone() {
@@ -56,6 +62,7 @@ class AppSettingsViewController: OWSTableViewController2 {
                 vc.completionHandler = { completedVC in
                     completedVC.navigationController?.popViewController(animated: true)
                 }
+                vc.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
         ))

@@ -132,7 +132,7 @@ fileprivate extension WalletDetailController {
         tableViewController.tableView.backgroundView?.backgroundColor = .clear
         tableViewController.tableView.backgroundColor = .clear
         tableViewController.tableView.showsVerticalScrollIndicator = false
-        tableViewController.view.autoPinEdgesToSuperviewEdges()
+        tableViewController.view.autoPinEdgesToSuperviewSafeArea()
         self.definesPresentationContext = false
         setupPullToRefresh()
         

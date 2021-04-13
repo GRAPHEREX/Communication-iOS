@@ -182,7 +182,7 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
 
         // If there are only two words separated by a space, this is probably a given
         // and family name.
-        if (components.count <= 2) {
+        if (components.count == 2) {
             nameComponents.givenName = components.firstObject;
             nameComponents.familyName = components.lastObject;
         } else {
