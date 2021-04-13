@@ -4,7 +4,7 @@
 
 #import "DebugUISyncMessages.h"
 #import "DebugUIContacts.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import "ThreadUtil.h"
 #import <PromiseKit/AnyPromise.h>
 #import <SignalCoreKit/Randomness.h>

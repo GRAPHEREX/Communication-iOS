@@ -9,7 +9,7 @@
 #import "OWSOrphanDataCleaner.h"
 #import "OWSScreenLockUI.h"
 #import "Pastelog.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import "SignalApp.h"
 #import "ViewControllerUtils.h"
 #import "Firebase.h"

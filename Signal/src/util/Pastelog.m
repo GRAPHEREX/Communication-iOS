@@ -3,7 +3,7 @@
 //
 
 #import "Pastelog.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import "ThreadUtil.h"
 #import "zlib.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
