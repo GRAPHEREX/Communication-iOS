@@ -4,7 +4,7 @@
 
 #import "AvatarViewHelper.h"
 #import "OWSNavigationController.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <SignalMessaging/OWSContactsManager.h>
 #import <SignalMessaging/UIUtil.h>

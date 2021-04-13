@@ -7,7 +7,7 @@
 #import "ConversationListCell.h"
 #import "OWSNavigationController.h"
 #import "RegistrationUtils.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import "SignalApp.h"
 #import "TSAccountManager.h"
 #import "TSGroupThread.h"

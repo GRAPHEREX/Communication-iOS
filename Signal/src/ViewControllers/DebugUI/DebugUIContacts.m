@@ -4,7 +4,7 @@
 
 #import "DebugUIContacts.h"
 #import "DebugContactsUtils.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import "SignalApp.h"
 #import <Contacts/Contacts.h>
 #import <SignalCoreKit/Randomness.h>

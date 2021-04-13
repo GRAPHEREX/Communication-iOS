@@ -5,7 +5,7 @@
 #import "DebugUIMisc.h"
 #import "DebugUIMessagesAssetLoader.h"
 #import "OWSCountryMetadata.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import "ThreadUtil.h"
 #import <SignalCoreKit/Randomness.h>
 #import <SignalMessaging/AttachmentSharing.h>

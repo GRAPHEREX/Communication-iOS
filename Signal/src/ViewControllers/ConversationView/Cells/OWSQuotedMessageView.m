@@ -5,7 +5,7 @@
 #import "OWSQuotedMessageView.h"
 #import "Environment.h"
 #import "OWSBubbleView.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import <SignalMessaging/OWSContactsManager.h>
 #import <SignalMessaging/SignalMessaging-Swift.h>
 #import <SignalMessaging/UIView+OWS.h>

@@ -6,7 +6,7 @@
 #import "Environment.h"
 #import "OWSContactsManager.h"
 #import "OWSMath.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import "UIFont+OWS.h"
 #import "ViewControllerUtils.h"
 #import <PromiseKit/AnyPromise.h>

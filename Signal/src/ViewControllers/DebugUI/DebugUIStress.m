@@ -4,7 +4,7 @@
 
 #import "DebugUIStress.h"
 #import "MessageSender.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import "SignalApp.h"
 #import "ThreadUtil.h"
 #import <SignalCoreKit/Cryptography.h>

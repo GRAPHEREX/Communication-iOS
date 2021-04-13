@@ -1617,7 +1617,7 @@
 		45855F351D9498A40084F340 /* OWSContactAvatarBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSContactAvatarBuilder.h; sourceTree = "<group>"; };
 		45855F361D9498A40084F340 /* OWSContactAvatarBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSContactAvatarBuilder.m; sourceTree = "<group>"; };
 		4585C4671ED8F8D200896AEA /* SafetyNumberConfirmationSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafetyNumberConfirmationSheet.swift; sourceTree = "<group>"; };
-		4589670F1DC117CC00E9DD21 /* GrapherexTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GrapherexTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		4589670F1DC117CC00E9DD21 /* SignalTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SignalTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		458967101DC117CC00E9DD21 /* AccountManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManagerTest.swift; path = Models/AccountManagerTest.swift; sourceTree = "<group>"; };
 		458E38351D668EBF0094BD24 /* OWSDeviceProvisioningURLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSDeviceProvisioningURLParser.h; sourceTree = "<group>"; };
 		458E38361D668EBF0094BD24 /* OWSDeviceProvisioningURLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSDeviceProvisioningURLParser.m; sourceTree = "<group>"; };
@@ -1629,7 +1629,7 @@
 		45A2F004204473A3002E978A /* NewMessage.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; name = NewMessage.aifc; path = Signal/AudioFiles/NewMessage.aifc; sourceTree = SOURCE_ROOT; };
 		45A663C41F92EC760027B59E /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		45A6DAD51EBBF85500893231 /* ReminderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
-		45B201741DAECBFD00C461E0 /* Grapherex-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Grapherex-Bridging-Header.h"; sourceTree = "<group>"; };
+		45B201741DAECBFD00C461E0 /* Signal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Signal-Bridging-Header.h"; sourceTree = "<group>"; };
 		45B27B852037FFB400A539DF /* DebugUIFileBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugUIFileBrowser.swift; sourceTree = "<group>"; };
 		45B74A5B2044AAB300CD42F8 /* aurora-quiet.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "aurora-quiet.aifc"; sourceTree = "<group>"; };
 		45B74A5C2044AAB300CD42F8 /* synth-quiet.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "synth-quiet.aifc"; sourceTree = "<group>"; };
@@ -1783,7 +1783,7 @@
 		881218EF238CA51600E6F271 /* MessageReactionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageReactionPicker.swift; sourceTree = "<group>"; };
 		881677C422DD2B21007BAF49 /* OWSPinReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWSPinReminderViewController.swift; sourceTree = "<group>"; };
 		881D85B722D92C2B00E118DF /* OWSPinSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWSPinSetupViewController.swift; sourceTree = "<group>"; };
-		881FF30623B5B1520023B620 /* Grapherex-AppStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Grapherex-AppStore.entitlements"; sourceTree = "<group>"; };
+		881FF30623B5B1520023B620 /* Signal-AppStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Signal-AppStore.entitlements"; sourceTree = "<group>"; };
 		881FF30723B5B16F0023B620 /* SignalShareExtension-AppStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SignalShareExtension-AppStore.entitlements"; sourceTree = "<group>"; };
 		8821334D2304E72700353626 /* NonContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonContactTableViewCell.swift; sourceTree = "<group>"; };
 		88238EAE24EB798900F28079 /* ConversationViewController+GestureRecognizers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationViewController+GestureRecognizers.swift"; sourceTree = "<group>"; };
@@ -1954,8 +1954,8 @@
 		AC12B5FAA0E45C608224A310 /* OWSAddToContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OWSAddToContactViewController.swift; sourceTree = "<group>"; };
 		AEA97ACC8D9F89DB5E045B2B /* Pods-Signal.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Signal.profiling.xcconfig"; path = "Pods/Target Support Files/Pods-Signal/Pods-Signal.profiling.xcconfig"; sourceTree = "<group>"; };
 		B60EDE031A05A01700D73516 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		B657DDC91911A40500F45B0C /* Grapherex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Grapherex.entitlements; sourceTree = "<group>"; };
-		B660F69E1C29868000687D6E /* GrapherexTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GrapherexTests-Info.plist"; sourceTree = "<group>"; };
+		B657DDC91911A40500F45B0C /* Signal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Signal.entitlements; sourceTree = "<group>"; };
+		B660F69E1C29868000687D6E /* SignalTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SignalTests-Info.plist"; sourceTree = "<group>"; };
 		B660F69F1C29868000687D6E /* whisperFake.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = whisperFake.cer; sourceTree = "<group>"; };
 		B660F6A01C29868000687D6E /* TestUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUtil.h; sourceTree = "<group>"; };
 		B660F6AD1C29868000687D6E /* FunctionalUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionalUtilTest.m; sourceTree = "<group>"; };
@@ -1976,14 +1976,14 @@
 		D17BB5C25D615AB49813100C /* Pods_Signal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Signal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2179CFB16BB0B3A0006F3AB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D2179CFD16BB0B480006F3AB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		D221A089169C9E5E00537ABF /* Grapherex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grapherex.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D221A089169C9E5E00537ABF /* Signal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D221A08D169C9E5E00537ABF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D221A08F169C9E5E00537ABF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D221A091169C9E5E00537ABF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D221A095169C9E5E00537ABF /* Grapherex-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Grapherex-Info.plist"; sourceTree = "<group>"; };
+		D221A095169C9E5E00537ABF /* Signal-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Signal-Info.plist"; sourceTree = "<group>"; };
 		D221A099169C9E5E00537ABF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D221A09B169C9E5E00537ABF /* Grapherex-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Grapherex-Prefix.pch"; sourceTree = "<group>"; };
-		D221A0AA169C9E5F00537ABF /* GrapherexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrapherexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D221A09B169C9E5E00537ABF /* Signal-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Signal-Prefix.pch"; sourceTree = "<group>"; };
+		D221A0AA169C9E5F00537ABF /* SignalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D221A0E7169DFFC500537ABF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = ../../../../../../System/Library/Frameworks/AVFoundation.framework; sourceTree = "<group>"; };
 		D24B5BD4169F568C00681372 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = ../../../../../../System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<group>"; };
 		D2AEACDB16C426DA00C364C0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -3566,7 +3566,7 @@
 				45D231751DC7E8C50034FA89 /* Jobs */,
 				457F3AC01D14A0F700C51351 /* Models */,
 				76EB041D18170B33006006FC /* network */,
-				45B201741DAECBFD00C461E0 /* Grapherex-Bridging-Header.h */,
+				45B201741DAECBFD00C461E0 /* Signal-Bridging-Header.h */,
 				45CD81A41DBFF8CF004C9430 /* Storyboards */,
 				450DF2061E0DD28D003D14BE /* UserInterface */,
 				76EB04C818170B33006006FC /* util */,
@@ -3929,7 +3929,7 @@
 				34843B2321432293004DED45 /* SignalBaseTest.h */,
 				34843B2221432292004DED45 /* SignalBaseTest.m */,
 				4C83AC4123C55D9C00D4F2E6 /* SignalBaseTest+Swift.swift */,
-				4589670F1DC117CC00E9DD21 /* GrapherexTests-Bridging-Header.h */,
+				4589670F1DC117CC00E9DD21 /* SignalTests-Bridging-Header.h */,
 				4C3EF8002109184A0007EBF7 /* SSKTests */,
 				B660F69D1C29868000687D6E /* Supporting Files */,
 				B660F6A01C29868000687D6E /* TestUtil.h */,
@@ -3951,7 +3951,7 @@
 		B660F69D1C29868000687D6E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B660F69E1C29868000687D6E /* GrapherexTests-Info.plist */,
+				B660F69E1C29868000687D6E /* SignalTests-Info.plist */,
 				B660F69F1C29868000687D6E /* whisperFake.cer */,
 			);
 			path = "Supporting Files";
@@ -4004,8 +4004,8 @@
 		D221A08A169C9E5E00537ABF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D221A089169C9E5E00537ABF /* Grapherex.app */,
-				D221A0AA169C9E5F00537ABF /* GrapherexTests.xctest */,
+				D221A089169C9E5E00537ABF /* Signal.app */,
+				D221A0AA169C9E5F00537ABF /* SignalTests.xctest */,
 				453518681FC635DD00210559 /* SignalShareExtension.appex */,
 				453518921FC63DBF00210559 /* SignalMessaging.framework */,
 				4C10B1C323176D250099396B /* SignalPerformanceTests.xctest */,
@@ -4068,8 +4068,8 @@
 				88BFD4712335C2A4001797D7 /* Lottie */,
 				34330A581E7875FB00DF2FB9 /* Fonts */,
 				B66DBF4919D5BBC8006EA940 /* Images.xcassets */,
-				B657DDC91911A40500F45B0C /* Grapherex.entitlements */,
-				881FF30623B5B1520023B620 /* Grapherex-AppStore.entitlements */,
+				B657DDC91911A40500F45B0C /* Signal.entitlements */,
+				881FF30623B5B1520023B620 /* Signal-AppStore.entitlements */,
 				34074F54203D0722004596AE /* Sounds */,
 				76EB03C118170B33006006FC /* src */,
 				D221A094169C9E5E00537ABF /* Supporting Files */,
@@ -4085,8 +4085,8 @@
 				4C6F527B20FFE8400097DEEE /* SignalUBSan.supp */,
 				B6B6C3C419193F5B00C0B76B /* Translations */,
 				D221A099169C9E5E00537ABF /* main.m */,
-				D221A095169C9E5E00537ABF /* Grapherex-Info.plist */,
-				D221A09B169C9E5E00537ABF /* Grapherex-Prefix.pch */,
+				D221A095169C9E5E00537ABF /* Signal-Info.plist */,
+				D221A09B169C9E5E00537ABF /* Signal-Prefix.pch */,
 				882F8DE5251AB23600AA4359 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
@@ -5358,9 +5358,9 @@
 			productReference = 885AC56423AB42430077705E /* NotificationServiceExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		D221A088169C9E5E00537ABF /* Grapherex */ = {
+		D221A088169C9E5E00537ABF /* Signal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D221A0BC169C9E5F00537ABF /* Build configuration list for PBXNativeTarget "Grapherex" */;
+			buildConfigurationList = D221A0BC169C9E5F00537ABF /* Build configuration list for PBXNativeTarget "Signal" */;
 			buildPhases = (
 				1460156AE01E0DB0949D61FE /* [CP] Check Pods Manifest.lock */,
 				45AE48531E073428004D96C2 /* Swift Lint */,
@@ -5379,14 +5379,14 @@
 				453518981FC63DBF00210559 /* PBXTargetDependency */,
 				885AC56A23AB42430077705E /* PBXTargetDependency */,
 			);
-			name = Grapherex;
+			name = Signal;
 			productName = RedPhone;
-			productReference = D221A089169C9E5E00537ABF /* Grapherex.app */;
+			productReference = D221A089169C9E5E00537ABF /* Signal.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D221A0A9169C9E5F00537ABF /* GrapherexTests */ = {
+		D221A0A9169C9E5F00537ABF /* SignalTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D221A0BF169C9E5F00537ABF /* Build configuration list for PBXNativeTarget "GrapherexTests" */;
+			buildConfigurationList = D221A0BF169C9E5F00537ABF /* Build configuration list for PBXNativeTarget "SignalTests" */;
 			buildPhases = (
 				6565655F4068F9E5CDC5687F /* [CP] Check Pods Manifest.lock */,
 				D221A0A5169C9E5F00537ABF /* Sources */,
@@ -5400,9 +5400,9 @@
 				3478506E1FD9CFF4007B8332 /* PBXTargetDependency */,
 				B6AFCEBB19A93DA60098CFCB /* PBXTargetDependency */,
 			);
-			name = GrapherexTests;
+			name = SignalTests;
 			productName = RedPhoneTests;
-			productReference = D221A0AA169C9E5F00537ABF /* GrapherexTests.xctest */;
+			productReference = D221A0AA169C9E5F00537ABF /* SignalTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -5582,8 +5582,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D221A088169C9E5E00537ABF /* Grapherex */,
-				D221A0A9169C9E5F00537ABF /* GrapherexTests */,
+				D221A088169C9E5E00537ABF /* Signal */,
+				D221A0A9169C9E5F00537ABF /* SignalTests */,
 				453518671FC635DD00210559 /* SignalShareExtension */,
 				453518911FC63DBF00210559 /* SignalMessaging */,
 				4C10B17F23176D250099396B /* SignalPerformanceTests */,
@@ -6843,7 +6843,7 @@
 		};
 		4C10B18223176D250099396B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D221A088169C9E5E00537ABF /* Grapherex */;
+			target = D221A088169C9E5E00537ABF /* Signal */;
 			targetProxy = 4C10B18323176D250099396B /* PBXContainerItemProxy */;
 		};
 		885AC56A23AB42430077705E /* PBXTargetDependency */ = {
@@ -6858,7 +6858,7 @@
 		};
 		B6AFCEBB19A93DA60098CFCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D221A088169C9E5E00537ABF /* Grapherex */;
+			target = D221A088169C9E5E00537ABF /* Signal */;
 			targetProxy = B6AFCEBA19A93DA60098CFCB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -7305,7 +7305,7 @@
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Signal/Grapherex.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Signal/Signal.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -7319,7 +7319,7 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Signal/Grapherex-Prefix.pch";
+				GCC_PREFIX_HEADER = "Signal/Signal-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					HAVE_CONFIG_H,
@@ -7337,7 +7337,7 @@
 					"\"$(SRCROOT)/MMDrawerController\"",
 					"\"$(SRCROOT)/Libraries\"/**",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Signal/Grapherex-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Signal/Signal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7352,12 +7352,12 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex;
-				PRODUCT_NAME = Grapherex;
+				PRODUCT_NAME = Signal;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Development";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Grapherex-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				TEST_AFTER_BUILD = YES;
@@ -7400,7 +7400,7 @@
 					"\"$(SRCROOT)/Libraries\"/**",
 					"\"$(TARGET_TEMP_DIR)/../$(PROJECT_NAME).build/DerivedSources\"",
 				);
-				INFOPLIST_FILE = "Signal/test/Supporting Files/GrapherexTests-Info.plist";
+				INFOPLIST_FILE = "Signal/test/Supporting Files/SignalTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7417,10 +7417,10 @@
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.whispersystems.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = GrapherexTests;
+				PRODUCT_NAME = SignalTests;
 				PROVISIONING_PROFILE = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "Signal/test/GrapherexTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Signal/test/SignalTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -7867,7 +7867,7 @@
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Signal/Grapherex.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Signal/Signal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.1.3.85;
@@ -7879,7 +7879,7 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Signal/Grapherex-Prefix.pch";
+				GCC_PREFIX_HEADER = "Signal/Signal-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					HAVE_CONFIG_H,
@@ -7898,7 +7898,7 @@
 					"\"$(SRCROOT)/MMDrawerController\"",
 					"\"$(SRCROOT)/Libraries\"/**",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Signal/Grapherex-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Signal/Signal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7912,12 +7912,12 @@
 				MARKETING_VERSION = 1.1.3;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex;
-				PRODUCT_NAME = Grapherex;
+				PRODUCT_NAME = Signal;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Development";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Grapherex-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				TEST_AFTER_BUILD = YES;
@@ -7959,7 +7959,7 @@
 					"\"$(SRCROOT)/Libraries\"/**",
 					"\"$(TARGET_TEMP_DIR)/../$(PROJECT_NAME).build/DerivedSources\"",
 				);
-				INFOPLIST_FILE = "Signal/test/Supporting Files/GrapherexTests-Info.plist";
+				INFOPLIST_FILE = "Signal/test/Supporting Files/SignalTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7975,10 +7975,10 @@
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.whispersystems.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = GrapherexTests;
+				PRODUCT_NAME = SignalTests;
 				PROVISIONING_PROFILE = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "Signal/test/GrapherexTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Signal/test/SignalTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -8655,7 +8655,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
-				CODE_SIGN_ENTITLEMENTS = Signal/Grapherex.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Signal/Signal.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -8668,7 +8668,7 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Signal/Grapherex-Prefix.pch";
+				GCC_PREFIX_HEADER = "Signal/Signal-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -8687,7 +8687,7 @@
 					"\"$(SRCROOT)/MMDrawerController\"",
 					"\"$(SRCROOT)/Libraries\"/**",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Signal/Grapherex-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Signal/Signal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8702,12 +8702,12 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex;
-				PRODUCT_NAME = Grapherex;
+				PRODUCT_NAME = Signal;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Development";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Grapherex-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -8728,7 +8728,7 @@
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Signal/Grapherex-AppStore.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Signal/Signal-AppStore.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -8741,7 +8741,7 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Signal/Grapherex-Prefix.pch";
+				GCC_PREFIX_HEADER = "Signal/Signal-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					HAVE_CONFIG_H,
@@ -8760,7 +8760,7 @@
 					"\"$(SRCROOT)/MMDrawerController\"",
 					"\"$(SRCROOT)/Libraries\"/**",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Signal/Grapherex-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Signal/Signal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8774,12 +8774,12 @@
 				MARKETING_VERSION = 1.1.3;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex;
-				PRODUCT_NAME = Grapherex;
+				PRODUCT_NAME = Signal;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Appstore";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Grapherex-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				TEST_AFTER_BUILD = YES;
@@ -8822,7 +8822,7 @@
 					"\"$(SRCROOT)/Libraries\"/**",
 					"\"$(TARGET_TEMP_DIR)/../$(PROJECT_NAME).build/DerivedSources\"",
 				);
-				INFOPLIST_FILE = "Signal/test/Supporting Files/GrapherexTests-Info.plist";
+				INFOPLIST_FILE = "Signal/test/Supporting Files/SignalTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -8839,9 +8839,9 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.whispersystems.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = GrapherexTests;
+				PRODUCT_NAME = SignalTests;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Signal/test/GrapherexTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Signal/test/SignalTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -8883,7 +8883,7 @@
 					"\"$(SRCROOT)/Libraries\"/**",
 					"\"$(TARGET_TEMP_DIR)/../$(PROJECT_NAME).build/DerivedSources\"",
 				);
-				INFOPLIST_FILE = "Signal/test/Supporting Files/GrapherexTests-Info.plist";
+				INFOPLIST_FILE = "Signal/test/Supporting Files/SignalTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -8899,10 +8899,10 @@
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.whispersystems.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = GrapherexTests;
+				PRODUCT_NAME = SignalTests;
 				PROVISIONING_PROFILE = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "Signal/test/GrapherexTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Signal/test/SignalTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -8968,7 +8968,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "App Store Release";
 		};
-		D221A0BC169C9E5F00537ABF /* Build configuration list for PBXNativeTarget "Grapherex" */ = {
+		D221A0BC169C9E5F00537ABF /* Build configuration list for PBXNativeTarget "Signal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D221A0BD169C9E5F00537ABF /* Debug */,
@@ -8979,7 +8979,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "App Store Release";
 		};
-		D221A0BF169C9E5F00537ABF /* Build configuration list for PBXNativeTarget "GrapherexTests" */ = {
+		D221A0BF169C9E5F00537ABF /* Build configuration list for PBXNativeTarget "SignalTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D221A0C0169C9E5F00537ABF /* Debug */,

@@ -6,7 +6,7 @@
 #import "BlockListUIUtils.h"
 #import "ContactsViewHelper.h"
 #import "PhoneNumber.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import "UIFont+OWS.h"
 #import "UIView+OWS.h"
 #import <SignalMessaging/ContactTableViewCell.h>

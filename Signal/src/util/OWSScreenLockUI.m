@@ -4,7 +4,7 @@
 
 #import "OWSScreenLockUI.h"
 #import "OWSWindowManager.h"
-#import "Grapherex-Swift.h"
+#import "Signal-Swift.h"
 #import <SignalMessaging/ScreenLockViewController.h>
 #import <SignalMessaging/SignalMessaging-Swift.h>
 #import <SignalMessaging/UIView+OWS.h>
