@@ -62,6 +62,8 @@ final class WalletDetailController: OWSViewController {
         
         loadData()
         mainLoadingIndicator.startAnimating()
+        
+        AnalyticsService.log(event: .walletDetailsScreenOpened, parameters: nil)
     }
     
     func setNoDataState() {
@@ -281,6 +283,7 @@ fileprivate extension WalletDetailController {
                 enterController.finish = { [weak self] isSuccess in
                     guard let self = self else { return }
                     if isSuccess {
+                        setPinController.isChangePinFlow = true
                         enterController.dismiss(animated: true, completion: {
                             DispatchQueue.main.async {                                
                                 self.presentActionSheet(setPinController)
@@ -288,6 +291,7 @@ fileprivate extension WalletDetailController {
                         })
                     }
                 }
+                AnalyticsService.log(event: .walletPinChangeScreenOpened, parameters: nil)
                 self.presentActionSheet(enterController)
             } else {
                 self.presentActionSheet(setPinController)

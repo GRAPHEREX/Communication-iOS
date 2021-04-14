@@ -59,6 +59,7 @@ final class NewWalletController: ActionSheetController {
         scrollView.autoPinEdge(.top, to: .top, of: view, withOffset: topSpace + topPadding)
         setupContent()
         scrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        AnalyticsService.log(event: .newWalletScreenOpened, parameters: nil)
     }
 }
 

@@ -19,52 +19,55 @@ public enum ExperienceUpgradeId: String, CaseIterable, Dependencies {
 
     // Until this flag is true the upgrade won't display to users.
     func hasLaunched(transaction: GRDBReadTransaction) -> Bool {
-        AssertIsOnMainThread()
-
-        switch self {
-        case .introducingPins:
-            // The PIN setup flow requires an internet connection and you to not already have a PIN
-            return RemoteConfig.kbs &&
-                Self.reachabilityManager.isReachable &&
-                !KeyBackupService.hasMasterKey(transaction: transaction.asAnyRead)
-        case .pinReminder:
-            return OWS2FAManager.shared.isDueForV2Reminder(transaction: transaction.asAnyRead)
-        case .notificationPermissionReminder:
-            let (promise, resolver) = Promise<Bool>.pending()
-
-            Logger.info("Checking notification authorization")
-
-            DispatchQueue.global(qos: .userInitiated).async {
-                UNUserNotificationCenter.current().getNotificationSettings { settings in
-                    Logger.info("Checked notification authorization \(settings.authorizationStatus)")
-                    resolver.fulfill(settings.authorizationStatus == .authorized)
-                }
-            }
-
-            DispatchQueue.global().asyncAfter(deadline: .now() + 0.05) {
-                guard promise.result == nil else { return }
-                resolver.reject(OWSGenericError("timeout fetching notification permissions"))
-            }
-
-            do {
-                return !(try promise.wait())
-            } catch {
-                owsFailDebug("failed to query notification permission")
-                return false
-            }
-        case .contactPermissionReminder:
-            return CNContactStore.authorizationStatus(for: CNEntityType.contacts) != .authorized
-        case .linkPreviews:
-            return true
-        case .researchMegaphone1:
-            return RemoteConfig.researchMegaphone
-        case .groupsV2AndMentionsSplash2:
-            return FeatureFlags.groupsV2showSplash
-        case .groupCallsMegaphone:
-            return RemoteConfig.groupCalling
-        case .sharingSuggestions:
-            return true
-        }
+        // Grapherex does not use experience upgrade functionality
+        return false
+        
+//        AssertIsOnMainThread()
+//
+//        switch self {
+//        case .introducingPins:
+//            // The PIN setup flow requires an internet connection and you to not already have a PIN
+//            return RemoteConfig.kbs &&
+//                Self.reachabilityManager.isReachable &&
+//                !KeyBackupService.hasMasterKey(transaction: transaction.asAnyRead)
+//        case .pinReminder:
+//            return OWS2FAManager.shared.isDueForV2Reminder(transaction: transaction.asAnyRead)
+//        case .notificationPermissionReminder:
+//            let (promise, resolver) = Promise<Bool>.pending()
+//
+//            Logger.info("Checking notification authorization")
+//
+//            DispatchQueue.global(qos: .userInitiated).async {
+//                UNUserNotificationCenter.current().getNotificationSettings { settings in
+//                    Logger.info("Checked notification authorization \(settings.authorizationStatus)")
+//                    resolver.fulfill(settings.authorizationStatus == .authorized)
+//                }
+//            }
+//
+//            DispatchQueue.global().asyncAfter(deadline: .now() + 0.05) {
+//                guard promise.result == nil else { return }
+//                resolver.reject(OWSGenericError("timeout fetching notification permissions"))
+//            }
+//
+//            do {
+//                return !(try promise.wait())
+//            } catch {
+//                owsFailDebug("failed to query notification permission")
+//                return false
+//            }
+//        case .contactPermissionReminder:
+//            return CNContactStore.authorizationStatus(for: CNEntityType.contacts) != .authorized
+//        case .linkPreviews:
+//            return true
+//        case .researchMegaphone1:
+//            return RemoteConfig.researchMegaphone
+//        case .groupsV2AndMentionsSplash2:
+//            return FeatureFlags.groupsV2showSplash
+//        case .groupCallsMegaphone:
+//            return RemoteConfig.groupCalling
+//        case .sharingSuggestions:
+//            return true
+//        }
     }
 
     // Some upgrades stop running after a certain date. This lets

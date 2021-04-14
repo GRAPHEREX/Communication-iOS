@@ -25,6 +25,7 @@ final class SentSucceedCurrencyController: ActionSheetController {
         scrollView.autoPinEdge(.top, to: .top, of: view, withOffset: topSpace + topPadding)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(close)))
         isCancelable = true
+        AnalyticsService.log(event: .moneySendSuccess, parameters: nil)
     }
     
 }

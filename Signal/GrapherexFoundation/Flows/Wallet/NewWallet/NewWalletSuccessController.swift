@@ -33,6 +33,8 @@ class NewWalletSuccessController: ActionSheetController {
         setupLabels()
         setupCode()
         setupButton()
+        
+        AnalyticsService.log(event: .newWalletSuccess, parameters: nil)
     }
     
     @objc func nothing() {}

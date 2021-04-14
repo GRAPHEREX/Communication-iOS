@@ -937,6 +937,7 @@
 		F2D71FDF25FA4090008105BA /* NameCollisionResolutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D71FDE25FA4090008105BA /* NameCollisionResolutionViewController.swift */; };
 		F2D7200125FA49A9008105BA /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7200025FA49A9008105BA /* AppSettingsViewController.swift */; };
 		F2D7200825FA4A19008105BA /* ChatsSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7200725FA4A19008105BA /* ChatsSettingsViewController.swift */; };
+		F2E4CB92262735A800B830BC /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4CB91262735A700B830BC /* AnalyticsService.swift */; };
 		F2E97BC2261CBE1100EA9BDA /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217434E25CAEA9E00BC9476 /* Currency.swift */; };
 		F2E97BC8261CBE8800EA9BDA /* UIViewController + Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217420925CAEA9D00BC9476 /* UIViewController + Toast.swift */; };
 		F2E97BCE261CBF8200EA9BDA /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217422425CAEA9D00BC9476 /* RootViewController.swift */; };
@@ -2200,6 +2201,7 @@
 		F2D7201025FA4A70008105BA /* NotificationSettingsContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsContentViewController.swift; sourceTree = "<group>"; };
 		F2D7201125FA4A70008105BA /* NotificationSettingsSoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsSoundViewController.swift; sourceTree = "<group>"; };
 		F2D7202625FA4DA0008105BA /* DebugContactsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugContactsUtils.swift; sourceTree = "<group>"; };
+		F2E4CB91262735A700B830BC /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalyticsService.swift; path = Services/AnalyticsService.swift; sourceTree = "<group>"; };
 		F2E97C1F261CC4DC00EA9BDA /* DebugContactsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugContactsUtils.swift; sourceTree = "<group>"; };
 		F2E97C8F261CD11A00EA9BDA /* SDWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImage.h; sourceTree = "<group>"; };
 		F2E97C90261CD11A00EA9BDA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -4113,6 +4115,7 @@
 		F217420125CAEA9D00BC9476 /* GrapherexFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				F2E4CB91262735A700B830BC /* AnalyticsService.swift */,
 				F217450525CAF58800BC9476 /* Elements */,
 				F217420225CAEA9D00BC9476 /* Managers */,
 				F217420425CAEA9D00BC9476 /* Extensions */,
@@ -6638,6 +6641,7 @@
 				F2E97D4E261CD11B00EA9BDA /* SDWebImageTransition.m in Sources */,
 				F217437525CAEA9E00BC9476 /* GalleryManager.swift in Sources */,
 				F2E97D4A261CD11B00EA9BDA /* SDImageFrame.m in Sources */,
+				F2E4CB92262735A800B830BC /* AnalyticsService.swift in Sources */,
 				F2E97D2F261CD11B00EA9BDA /* UIImage+ForceDecode.m in Sources */,
 				F217442025CAEA9F00BC9476 /* PastelessTextField.swift in Sources */,
 				F2E97D47261CD11B00EA9BDA /* SDWebImageDownloaderConfig.m in Sources */,

@@ -114,7 +114,7 @@ fileprivate extension ContactProfileController {
         options.append(
             ProfileOptionView(option: .send, action: { [weak self] in
                 guard let self = self else { return }
-                self.showSendFromChat(recipientAddress: self.address)
+                self.showSendFromContacts(recipientAddress: self.address)
             }
         ))
         

@@ -27,6 +27,8 @@ final class ReceiveCurrencyController: ActionSheetController {
         setupCodeView()
         setupCodeInfo()
         setupButton()
+        
+        AnalyticsService.log(event: .moneyReceiveScreenOpened, parameters: nil)
     }
 }
 

@@ -34,6 +34,9 @@ private protocol TSConstantsProtocol: class {
     var serverPublicParamsBase64: String { get }
     
     var sslPinningCertName: String { get }
+    
+    var appsFlyerDevKey: String { get }
+    var appsFlyerAppId: String { get }
 }
 
 public struct KeyBackupEnclave: Equatable {
@@ -103,6 +106,12 @@ public class TSConstants: NSObject {
 
     @objc
     public static var serverPublicParamsBase64: String { return shared.serverPublicParamsBase64 }
+    
+    @objc
+    public static var appsFlyerDevKey: String { return shared.appsFlyerDevKey }
+    
+    @objc
+    public static var appsFlyerAppId: String { return shared.appsFlyerAppId }
 
     @objc
     public static var isUsingProductionService: Bool {
@@ -206,6 +215,9 @@ private class TSConstantsProduction: TSConstantsProtocol {
     public let serverPublicParamsBase64 = "AJ5s6oYLJTKMeGXCIZB52Vh3+aTvM/ulexj2X0OM3uM1Sg0QbMOfWLnGiQwzZEBOXHyjIAOWtfqWkJE8kysABwHe8ODl0xul0NnsQjpTxG6S4RpiRk5STFHPHtRJ/I9UIh7I36P/D3FzqoiUCaU1BkpAhTS05VeXJTwyTWPn2Eh6sE0Fkw12/dKZTBm0ImTiUTs9bd1P0LZjacfmM4kZZi4=="
     
     public let sslPinningCertName = "grapherex_prod"
+    
+    public let appsFlyerDevKey: String = "rhC4t7R59SLbh8cdAmfSDZ"
+    public let appsFlyerAppId: String = "1542360019"
 }
 
 // MARK: -
@@ -256,4 +268,7 @@ private class TSConstantsStaging: TSConstantsProtocol {
     public let serverPublicParamsBase64 = "ALRbOPkWOmalFte5ILZa4zeCyxE0e3IlPpKOWPgR3dMrRLeXssRKNsvUg/m+IugL1skJqi8WPQE9Nfk8ujsSWDOcSn5+444FYgHJ7ofg7P4QRDPkEtC0fsSGlyCfnus2Unp+qDmfd4lHTBBmpXdl4gSMpwS8cXGfwII6iY7JObE+tuVY5R4MeH0IHRw5DYiH9t1EZs9oNeqk7EEN2bM5InU=="
     
     public let sslPinningCertName = "grapherex_dev"
+    
+    public let appsFlyerDevKey: String = "rhC4t7R59SLbh8cdAmfSDZ"
+    public let appsFlyerAppId: String = "1542360019"
 }
