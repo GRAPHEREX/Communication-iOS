@@ -154,6 +154,7 @@ public class OnboardingController_Grapherex: NSObject {
 
     func showNextMilestone(navigationController: UINavigationController) {
         guard let nextMilestone = nextMilestone else {
+            AnalyticsService.log(event: .signUpSuccess, parameters: nil)
             SignalApp.shared().showConversationSplitView()
             markAsOnboarded()
             return

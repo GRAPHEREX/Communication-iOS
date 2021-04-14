@@ -195,6 +195,8 @@ final class PasswordController: ActionSheetController {
         scrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nothing)))
         setupContent()
         setupKeyboardNotifications()
+        
+        AnalyticsService.log(event: .walletPasswordChangeScreenOpened, parameters: nil)
     }
 
     @objc func nothing() {}
@@ -418,6 +420,7 @@ fileprivate extension PasswordController {
                     self.walletModel.changePassword(wallet: self.wallet, oldPassword: oldPassword, newPassword: password) { result in
                         switch result {
                         case .success:
+                            AnalyticsService.log(event: .walletPasswordChangeSuccess, parameters: nil)
                             modal.dismiss {
                                 self.next()
                             }

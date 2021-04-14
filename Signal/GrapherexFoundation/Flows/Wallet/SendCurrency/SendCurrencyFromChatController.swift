@@ -150,6 +150,8 @@ final class SendCurrencyFromChatController: OWSViewController, UITextFieldDelega
         self.thread = TSContactThread.getOrCreateThread(contactAddress: recipient.address)
         }}
     
+    public var isOpenedFromContacts = false
+    
     private var thread: TSThread!
     
     override func setup() {
@@ -168,6 +170,12 @@ final class SendCurrencyFromChatController: OWSViewController, UITextFieldDelega
         errorLabel.textAlignment = .center
         errorLabel.textColor = .st_otherRed
         errorLabel.font = UIFont.st_robotoRegularFont(withSize: 14).ows_semibold
+        
+        if isOpenedFromContacts {
+            AnalyticsService.log(event: .moneySendScreenOpenedFromContacts, parameters: nil)
+        } else {
+            AnalyticsService.log(event: .moneySendScreenOpenedFromChat, parameters: nil)
+        }
     }
 }
 
@@ -1006,6 +1014,7 @@ fileprivate extension SendCurrencyFromChatController {
                                     self.errorLabel.isHidden = false
                                 }
                             }
+                            AnalyticsService.log(event: .moneySendFailure, parameters: nil)
                         }
                 })
         })

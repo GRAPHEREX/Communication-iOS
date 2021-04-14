@@ -6,9 +6,10 @@ import Foundation
 
 @objc
 extension UIViewController {
-    public func showSendFromChat(recipient: SignalRecipient) {
+    public func showSendFromChat(recipient: SignalRecipient, isOpenedFromContacts: Bool) {
         let sendController = SendCurrencyFromChatController()
         sendController.recipient = recipient
+        sendController.isOpenedFromContacts = isOpenedFromContacts
         
         let walletModel = WalletModel.shared
         ModalActivityIndicatorViewController.present(
@@ -73,7 +74,15 @@ extension UIViewController {
         SDSDatabaseStorage.shared.read { transaction in
             signalRecipient = AnySignalRecipientFinder().signalRecipient(for: recipientAddress, transaction: transaction)
         }
-        showSendFromChat(recipient: signalRecipient)
+        showSendFromChat(recipient: signalRecipient, isOpenedFromContacts: false)
+    }
+    
+    public func showSendFromContacts(recipientAddress: SignalServiceAddress) {
+        var signalRecipient: SignalRecipient!
+        SDSDatabaseStorage.shared.read { transaction in
+            signalRecipient = AnySignalRecipientFinder().signalRecipient(for: recipientAddress, transaction: transaction)
+        }
+        showSendFromChat(recipient: signalRecipient, isOpenedFromContacts: true)
     }
     
     fileprivate func handleError(error: Error) {
