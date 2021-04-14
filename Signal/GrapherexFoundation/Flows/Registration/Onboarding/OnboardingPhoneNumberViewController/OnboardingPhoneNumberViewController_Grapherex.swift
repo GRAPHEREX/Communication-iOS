@@ -94,6 +94,7 @@ final public class OnboardingPhoneNumberViewController_Grapherex: OWSViewControl
         let tap =  UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
         setupKeyboardNotifications()
+        AnalyticsService.log(event: .signUpScreenOpened, parameters: nil)
     }
 
     private func setupKeyboardNotifications() {

@@ -9,6 +9,7 @@ final class SetPinController: ActionSheetController {
     public var finish: FinishHandler?
     
     public var customTitle: String = "Set pin of wallet"
+    public var isChangePinFlow = false
     
     private var newPinIsValid: Bool = false {
         didSet {
@@ -242,6 +243,9 @@ extension SetPinController: UITextFieldDelegate {
                         self.validationWarningLabel.text = "Something went wrong. Try later"
                         modal.dismiss { }
                     } else {
+                        if self.isChangePinFlow {
+                            AnalyticsService.log(event: .walletPinChangeSuccess, parameters: nil)
+                        }
                         modal.dismiss { }
                         self.close()
                     }

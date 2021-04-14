@@ -130,6 +130,7 @@ final class SendCurrencyFromWalletController: OWSViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(applyTheme),
                                                name: .ThemeDidChange, object: nil)
+        AnalyticsService.log(event: .moneySendScreenOpenedFromWallet, parameters: nil)
     }
     
 }
@@ -851,6 +852,8 @@ fileprivate extension SendCurrencyFromWalletController {
                                     self.errorLabel.isHidden = false
                                 }
                             }
+                            
+                            AnalyticsService.log(event: .moneySendFailure, parameters: nil)
                         }
                 })
         })

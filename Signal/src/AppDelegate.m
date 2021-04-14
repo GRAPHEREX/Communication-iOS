@@ -41,6 +41,7 @@
 #import <SignalServiceKit/TSSocketManager.h>
 #import <UserNotifications/UserNotifications.h>
 #import <WebRTC/WebRTC.h>
+#import <AppsFlyerLib/AppsFlyerLib.h>
 
 NSString *const AppDelegateStoryboardMain = @"Main";
 
@@ -91,7 +92,7 @@ void uncaughtExceptionHandler(NSException *exception)
 }
 #endif
 
-@interface AppDelegate () <UNUserNotificationCenterDelegate>
+@interface AppDelegate () <UNUserNotificationCenterDelegate, AppsFlyerLibDelegate>
 
 @property (nonatomic) BOOL areVersionMigrationsComplete;
 @property (nonatomic) BOOL didAppLaunchFail;
@@ -235,6 +236,12 @@ void uncaughtExceptionHandler(NSException *exception)
             } else {
                 [self versionMigrationsDidComplete];
             }
+        
+            [self setupAppsFlyerAnalytics];
+            [AnalyticsService logWithEvent:AnalyticsEventSessionStart parameters:nil];
+            if ([VersionMigrations isVersion:AppVersion.shared.lastCompletedLaunchAppVersion lessThan:AppVersion.shared.currentAppVersion]) {
+                [AnalyticsService logWithEvent:AnalyticsEventAppUpdated parameters:nil];
+            }
         }];
 
     [UIUtil setupSignalAppearence];
@@ -283,7 +290,7 @@ void uncaughtExceptionHandler(NSException *exception)
     OWSLogInfo(@"launchOptions: %@.", launchOptions);
 
     [OWSAnalytics appLaunchDidBegin];
-
+    
     return YES;
 }
 
@@ -421,7 +428,8 @@ void uncaughtExceptionHandler(NSException *exception)
             options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
 {
     OWSAssertIsOnMainThread();
-
+    
+    [[AppsFlyerLib shared] handleOpenUrl:url options:options];
     return [self tryToOpenUrl:url];
 }
 
@@ -568,6 +576,8 @@ void uncaughtExceptionHandler(NSException *exception)
     [self.windowManager updateWindowFrames];
 
     OWSLogInfo(@"applicationDidBecomeActive completed.");
+    
+    [[AppsFlyerLib shared] start];
 }
 
 - (void)enableBackgroundRefreshIfNecessary
@@ -908,6 +918,8 @@ void uncaughtExceptionHandler(NSException *exception)
         OWSLogWarn(@"userActivity: %@, but not yet supported.", userActivity.activityType);
     }
 
+    [[AppsFlyerLib shared] continueUserActivity:userActivity restorationHandler:restorationHandler];
+    
     // TODO Something like...
     // *phoneNumber = [[[[[[userActivity interaction] intent] contacts] firstObject] personHandle] value]
     // thread = blah
@@ -1020,11 +1032,13 @@ void uncaughtExceptionHandler(NSException *exception)
 - (void)processRemoteNotification:(NSDictionary *)userInfo completion:(nullable void (^)(void))completion
 {
     OWSAssertIsOnMainThread();
-
+    
     if (self.didAppLaunchFail) {
         OWSFailDebug(@"app launch failed");
         return;
     }
+    
+    [[AppsFlyerLib shared] handlePushNotification:userInfo];
     if (!(AppReadiness.isAppReady && [self.tsAccountManager isRegisteredAndReady])) {
         OWSLogInfo(@"Ignoring remote notification; app not ready.");
         return;
@@ -1264,6 +1278,41 @@ void uncaughtExceptionHandler(NSException *exception)
 
                     AppReadinessRunNowOrWhenAppDidBecomeReadySync(^{ [self.messageFetcherJob runObjc]; });
                 }];
+}
+
+#pragma mark - AppsFlyer
+
+- (void)setupAppsFlyerAnalytics
+{
+    [AppsFlyerLib shared].appsFlyerDevKey = TSConstants.appsFlyerDevKey;
+    [AppsFlyerLib shared].appleAppID = TSConstants.appsFlyerAppId;
+    [AppsFlyerLib shared].delegate = self;
+//    [[AppsFlyerLib shared] waitForATTUserAuthorizationWithTimeoutInterval:60];
+    /* Set isDebug to true to see AppsFlyer debug logs */
+    [AppsFlyerLib shared].isDebug = true;
+}
+
+// AppsFlyerLib implementation
+//Handle Conversion Data (Deferred Deep Link)
+-(void)onConversionDataSuccess:(NSDictionary*) installData {
+    id status = [installData objectForKey:@"af_status"];
+    if([status isEqualToString:@"Non-organic"]) {
+        id sourceID = [installData objectForKey:@"media_source"];
+        id campaign = [installData objectForKey:@"campaign"];
+        NSLog(@"This is a non-organic install. Media source: %@  Campaign: %@",sourceID,campaign);
+    } else if([status isEqualToString:@"Organic"]) {
+        NSLog(@"This is an organic install.");
+    }
+}
+-(void)onConversionDataFail:(NSError *) error {
+    NSLog(@"%@",error);
+}
+//Handle Direct Deep Link
+- (void) onAppOpenAttribution:(NSDictionary*) attributionData {
+    NSLog(@"%@",attributionData);
+}
+- (void) onAppOpenAttributionFailure:(NSError *)error {
+    NSLog(@"%@",error);
 }
 
 @end
