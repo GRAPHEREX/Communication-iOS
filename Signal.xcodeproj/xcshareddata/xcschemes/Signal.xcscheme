@@ -35,7 +35,7 @@
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
-            buildForTesting = "YES"
+            buildForTesting = "NO"
             buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
@@ -45,6 +45,20 @@
                BlueprintIdentifier = "4C10B17F23176D250099396B"
                BuildableName = "SignalPerformanceTests.xctest"
                BlueprintName = "SignalPerformanceTests"
+               ReferencedContainer = "container:Signal.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D221A0A9169C9E5F00537ABF"
+               BuildableName = "SignalTests.xctest"
+               BlueprintName = "SignalTests"
                ReferencedContainer = "container:Signal.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -72,16 +86,6 @@
          </EnvironmentVariable>
       </EnvironmentVariables>
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D221A0A9169C9E5F00537ABF"
-               BuildableName = "SignalTests.xctest"
-               BlueprintName = "SignalTests"
-               ReferencedContainer = "container:Signal.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
@@ -123,12 +127,42 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C17BF559E6F1C099B22DE41C5A3B8778"
+               BuildableName = "SignalClient-Unit-Tests.xctest"
+               BlueprintName = "SignalClient-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
             skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C10B17F23176D250099396B"
-               BuildableName = "SignalPerformanceTests.xctest"
-               BlueprintName = "SignalPerformanceTests"
+               BlueprintIdentifier = "74445091919E2B587DB292710A614AE9"
+               BuildableName = "ZKGroup-Unit-Tests.xctest"
+               BlueprintName = "ZKGroup-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8D300A82242ED19A22F93D3626932CB8"
+               BuildableName = "SignalArgon2-Unit-Tests.xctest"
+               BlueprintName = "SignalArgon2-Unit-Tests"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D221A0A9169C9E5F00537ABF"
+               BuildableName = "SignalTests.xctest"
+               BlueprintName = "SignalTests"
                ReferencedContainer = "container:Signal.xcodeproj">
             </BuildableReference>
          </TestableReference>

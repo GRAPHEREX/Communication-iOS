@@ -109,6 +109,11 @@ NS_ASSUME_NONNULL_BEGIN
     return [UIColor colorWithRGBHex:0xF0A3b3];
 }
 
++ (UIColor *)ows_taupeColor
+{
+    return [UIColor colorWithRGBHex:0x895D66];
+}
+
 + (UIColor *)ows_steelColor
 {
     return [UIColor colorWithRGBHex:0x6B6B78];
@@ -169,6 +174,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)ows_roseTintColor
 {
     return [UIColor colorWithRGBHex:0xFAD7DF];
+}
+
++ (UIColor *)ows_taupeTintColor
+{
+    return [UIColor colorWithRGBHex:0xCFB5BB];
 }
 
 + (UIColor *)ows_steelTintColor
@@ -233,6 +243,11 @@ NS_ASSUME_NONNULL_BEGIN
     return [UIColor colorWithRGBHex:0xB06172];
 }
 
++ (UIColor *)ows_taupeShadeColor
+{
+    return [UIColor colorWithRGBHex:0x6A4E54];
+}
+
 + (UIColor *)ows_steelShadeColor
 {
     return [UIColor colorWithRGBHex:0x5A5A63];
@@ -290,6 +305,10 @@ NS_ASSUME_NONNULL_BEGIN
                                                primaryColor:self.ows_roseColor
                                                  shadeColor:self.ows_roseColor // ows_roseShadeColor
                                                   tintColor:self.ows_roseTintColor],
+            [OWSConversationColor conversationColorWithName:ConversationColorNameTaupe
+                                               primaryColor:self.ows_taupeColor
+                                                 shadeColor:self.ows_taupeShadeColor
+                                                  tintColor:self.ows_taupeTintColor],
             [OWSConversationColor conversationColorWithName:ConversationColorNameSteel
                                                primaryColor:self.ows_steelColor
                                                  shadeColor:self.ows_steelColor // ows_steelShadeColor

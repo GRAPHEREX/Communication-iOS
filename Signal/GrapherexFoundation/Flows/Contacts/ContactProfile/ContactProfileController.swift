@@ -305,7 +305,7 @@ fileprivate extension ContactProfileController {
     }
     
     func didCallTap(isVideo: Bool = false) {
-        outboundCallInitiator.initiateCall(address: address, isVideo: isVideo)
+        startCall(withVideo: isVideo)
     }
     
     func appendDivider(to view: UIView) {
@@ -328,4 +328,63 @@ fileprivate extension ContactProfileController {
         divider.autoPinEdge(.bottom, to: .bottom, of: view)
     }
 
+}
+
+// MARK: - Calls
+extension ContactProfileController {
+    private func startCall(withVideo: Bool) {
+        threadViewModel = databaseStorage.uiRead {
+            ThreadViewModel(thread: self.thread, forConversationList: false, transaction: $0)
+        }
+        guard let threadViewModel = self.threadViewModel else { return }
+        guard ConversationViewController.canCall(threadViewModel: threadViewModel) else {
+            return owsFailDebug("Tried to start a can when calls are disabled")
+        }
+
+        guard !blockingManager.isThreadBlocked(thread) else {
+            didTapUnblockThread { [weak self] in
+                self?.startCall(withVideo: withVideo)
+            }
+            return
+        }
+
+        if let currentCall = callService.currentCall {
+            if currentCall.thread.uniqueId == thread.uniqueId {
+                windowManager.returnToCallView()
+            } else {
+                owsFailDebug("Tried to start call while call was ongoing")
+            }
+        } else if let groupThread = thread as? TSGroupThread {
+            // We initiated a call, so if there was a pending message request we should accept it.
+            ThreadUtil.addToProfileWhitelistIfEmptyOrPendingRequestWithSneakyTransaction(thread: thread)
+            GroupCallViewController.presentLobby(thread: groupThread)
+        } else if let contactThread = thread as? TSContactThread {
+
+            let didShowSNAlert = SafetyNumberConfirmationSheet.presentIfNecessary(
+                address: contactThread.contactAddress,
+                confirmationText: CallStrings.confirmAndCallButtonTitle
+            ) { [weak self] didConfirmIdentity in
+                guard didConfirmIdentity else { return }
+                self?.startCall(withVideo: withVideo)
+            }
+
+            guard !didShowSNAlert else { return }
+
+            // We initiated a call, so if there was a pending message request we should accept it.
+            ThreadUtil.addToProfileWhitelistIfEmptyOrPendingRequestWithSneakyTransaction(thread: thread)
+
+            outboundIndividualCallInitiator.initiateCall(address: contactThread.contactAddress, isVideo: withVideo)
+        }
+    }
+    
+    private func didTapUnblockThread(completion: @escaping () -> Void = {}) {
+        let isCurrentlyBlocked = blockingManager.isThreadBlocked(thread)
+        if !isCurrentlyBlocked {
+            owsFailDebug("Not blocked.")
+            return
+        }
+        BlockListUIUtils.showUnblockThreadActionSheet(thread, from: self) { _ in
+            completion()
+        }
+    }
 }

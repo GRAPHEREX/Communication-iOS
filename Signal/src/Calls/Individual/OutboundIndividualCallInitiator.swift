@@ -42,23 +42,6 @@ import SignalMessaging
                                                                      comment: "alert body shown when trying to use features in the app before completing registration-related setup."))
             return false
         }
-
-        let firstMessageWasRead: Bool = SDSDatabaseStorage.shared.read(block: {
-            if let thread = AnyContactThreadFinder().contactThread(for: address, transaction: $0),
-               let message = InteractionFinder(threadUniqueId: thread.uniqueId).firstOutgoingMessage(transaction: $0) as? TSOutgoingMessage {
-                let messageStatus = MessageRecipientStatusUtils.recipientStatus(outgoingMessage: message)
-                return messageStatus == .read
-            }
-            return false
-        })
-
-        guard firstMessageWasRead else {
-            Logger.warn("aborting due to user not having a thread with a receiver.")
-            let title = NSLocalizedString("YOU_MUST_START_THREAD_BEFORE_PROCEEDING",
-                                          comment: "alert body shown when trying to initiate a call in the app before thread was created.")
-            OWSActionSheets.showActionSheet(title: title)
-            return false
-        }
         
         guard let callUIAdapter = Self.callService.individualCallService.callUIAdapter else {
             owsFailDebug("missing callUIAdapter")
@@ -80,25 +63,33 @@ import SignalMessaging
             return false
         }
 
-        frontmostViewController.ows_askForMicrophonePermissions { granted in
-            guard granted == true else {
-                Logger.warn("aborting due to missing microphone permissions.")
-                frontmostViewController.ows_showNoMicrophonePermissionActionSheet()
-                return
-            }
-
-            if isVideo {
-                frontmostViewController.ows_askForCameraPermissions { granted in
-                    guard granted else {
-                        Logger.warn("aborting due to missing camera permissions.")
-                        return
-                    }
-
-                    callUIAdapter.startAndShowOutgoingCall(address: address, hasLocalVideo: true)
+        let thread = TSContactThread.getOrCreateThread(contactAddress: address)
+        let message = TypingIndicatorMessage(thread: thread, action: .stopped)
+        firstly {
+            messageSender.sendMessage(.promise, message.asPreparer)
+        }.ensure {
+            frontmostViewController.ows_askForMicrophonePermissions { granted in
+                guard granted == true else {
+                    Logger.warn("aborting due to missing microphone permissions.")
+                    frontmostViewController.ows_showNoMicrophonePermissionActionSheet()
+                    return
                 }
-            } else {
-                callUIAdapter.startAndShowOutgoingCall(address: address, hasLocalVideo: false)
+                
+                if isVideo {
+                    frontmostViewController.ows_askForCameraPermissions { granted in
+                        guard granted else {
+                            Logger.warn("aborting due to missing camera permissions.")
+                            return
+                        }
+                        
+                        callUIAdapter.startAndShowOutgoingCall(address: address, hasLocalVideo: true)
+                    }
+                } else {
+                    callUIAdapter.startAndShowOutgoingCall(address: address, hasLocalVideo: false)
+                }
             }
+        }.catch { error in
+            Logger.error("Error: \(error)")
         }
 
         return true

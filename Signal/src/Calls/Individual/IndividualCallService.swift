@@ -182,15 +182,16 @@ import SignalMessaging
     // MARK: - Signaling Functions
 
     private func allowsInboundCallsInThread(_ thread: TSContactThread) -> Bool {
-        return databaseStorage.read { transaction in
-            // IFF one of the following things is true, we can handle inbound call offers
-            // * The thread is in our profile whitelist
-            // * The thread belongs to someone in our system contacts
-            // * The thread existed before messages requests
-            return self.profileManager.isThread(inProfileWhitelist: thread, transaction: transaction)
-                || self.contactsManager.isSystemContact(address: thread.contactAddress)
-                || GRDBThreadFinder.isPreMessageRequestsThread(thread, transaction: transaction.unwrapGrdbRead)
-        }
+        return true
+//        return databaseStorage.read { transaction in
+//            // IFF one of the following things is true, we can handle inbound call offers
+//            // * The thread is in our profile whitelist
+//            // * The thread belongs to someone in our system contacts
+//            // * The thread existed before messages requests
+//            return self.profileManager.isThread(inProfileWhitelist: thread, transaction: transaction)
+//                || self.contactsManager.isSystemContact(address: thread.contactAddress)
+//                || GRDBThreadFinder.isPreMessageRequestsThread(thread, transaction: transaction.unwrapGrdbRead)
+//        }
     }
 
     private struct CallIdentityKeys {
