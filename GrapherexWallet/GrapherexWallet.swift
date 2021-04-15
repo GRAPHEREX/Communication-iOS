@@ -9,6 +9,8 @@ import Foundation
     private var coordinator: Coordinator!
     private var apiService: APIService!
     
+    private var firstAppStart = true
+    
     //MARK: - Public Methods
     /**
         Performs initial wallet module setup
@@ -17,7 +19,12 @@ import Foundation
     /// - Tag: setup
     public func setup(withConfig config: WalletConfig) {
         apiService = APIService(config: config)
-        coordinator = CoinsCoordinator(navigationController: UINavigationController(), apiService: apiService)
+        coordinator = CoinsCoordinator(navigationController: RootNavigationController(), apiService: apiService)
+        
+        if firstAppStart {
+            firstAppStart = false
+            FontManager.registerCustomFonts()
+        }
     }
     
     public func reset() {
