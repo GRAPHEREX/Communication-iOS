@@ -31,6 +31,8 @@ protocol InteractionFinderAdapter {
 
     // MARK: - instance methods
 
+    func latestInteraction(from address: SignalServiceAddress, transaction: ReadTransaction) -> TSInteraction?
+
     func mostRecentInteractionForInbox(transaction: ReadTransaction) -> TSInteraction?
 
     func earliestKnownInteractionRowId(transaction: ReadTransaction) -> Int?
@@ -251,7 +253,15 @@ public class InteractionFinder: NSObject, InteractionFinderAdapter {
     // MARK: - instance methods
 
     @objc
-    func mostRecentInteractionForInbox(transaction: SDSAnyReadTransaction) -> TSInteraction? {
+    func latestInteraction(from address: SignalServiceAddress, transaction: SDSAnyReadTransaction) -> TSInteraction? {
+        switch transaction.readTransaction {
+        case .grdbRead(let grdbRead):
+            return grdbAdapter.latestInteraction(from: address, transaction: grdbRead)
+        }
+    }
+
+    @objc
+    public func mostRecentInteractionForInbox(transaction: SDSAnyReadTransaction) -> TSInteraction? {
         switch transaction.readTransaction {
         case .grdbRead(let grdbRead):
             return grdbAdapter.mostRecentInteractionForInbox(transaction: grdbRead)
@@ -836,6 +846,38 @@ public class GRDBInteractionFinder: NSObject, InteractionFinderAdapter {
         return allResults.compactMap { $0 as? TSInfoMessage }
     }
 
+    func latestInteraction(from address: SignalServiceAddress, transaction: GRDBReadTransaction) -> TSInteraction? {
+        var latestInteraction: TSInteraction?
+
+        if let uuidString = address.uuidString {
+            let sql = """
+                SELECT *
+                FROM \(InteractionRecord.databaseTableName)
+                WHERE \(interactionColumn: .threadUniqueId) = ?
+                AND \(interactionColumn: .authorUUID) = ?
+                ORDER BY \(interactionColumn: .id) DESC
+                LIMIT 1
+            """
+            let arguments: StatementArguments = [threadUniqueId, uuidString]
+            latestInteraction = TSInteraction.grdbFetchOne(sql: sql, arguments: arguments, transaction: transaction)
+        }
+
+        if latestInteraction == nil, let phoneNumber = address.phoneNumber {
+            let sql = """
+                SELECT *
+                FROM \(InteractionRecord.databaseTableName)
+                WHERE \(interactionColumn: .threadUniqueId) = ?
+                AND \(interactionColumn: .authorPhoneNumber) = ?
+                ORDER BY \(interactionColumn: .id) DESC
+                LIMIT 1
+            """
+            let arguments: StatementArguments = [threadUniqueId, phoneNumber]
+            latestInteraction = TSInteraction.grdbFetchOne(sql: sql, arguments: arguments, transaction: transaction)
+        }
+
+        return latestInteraction
+    }
+
     func mostRecentInteractionForInbox(transaction: GRDBReadTransaction) -> TSInteraction? {
         let interactionsSql = """
                 SELECT *
@@ -1013,7 +1055,7 @@ public class GRDBInteractionFinder: NSObject, InteractionFinderAdapter {
     }
 
     @objc
-    func enumerateMessagesWithAttachments(transaction: GRDBReadTransaction, block: @escaping (TSMessage, UnsafeMutablePointer<ObjCBool>) -> Void) throws {
+    public func enumerateMessagesWithAttachments(transaction: GRDBReadTransaction, block: @escaping (TSMessage, UnsafeMutablePointer<ObjCBool>) -> Void) throws {
 
         let emptyArraySerializedDataString = NSKeyedArchiver.archivedData(withRootObject: [String]()).hexadecimalString
 

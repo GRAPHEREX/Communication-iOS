@@ -98,6 +98,10 @@ public class GRDBSchemaMigrator: NSObject {
         case addProfileBio
         case addWasIdentityVerified
         case storeMutedUntilDateAsMillisecondTimestamp
+        case addPaymentModels15
+        case addPaymentModels40
+        case fixPaymentModels
+        case addGroupMember
 
         // NOTE: Every time we add a migration id, consider
         // incrementing grdbSchemaVersionLatest.
@@ -133,10 +137,11 @@ public class GRDBSchemaMigrator: NSObject {
         case dataMigration_disableSharingSuggestionsForExistingUsers
         case dataMigration_removeOversizedGroupAvatars
         case dataMigration_scheduleStorageServiceUpdateForMutedThreads
+        case dataMigration_populateGroupMember
     }
 
     public static let grdbSchemaVersionDefault: UInt = 0
-    public static let grdbSchemaVersionLatest: UInt = 20
+    public static let grdbSchemaVersionLatest: UInt = 23
 
     // An optimization for new users, we have the first migration import the latest schema
     // and mark any other migrations as "already run".
@@ -947,6 +952,118 @@ public class GRDBSchemaMigrator: NSObject {
             }
         }
 
+        migrator.registerMigration(MigrationId.addPaymentModels15.rawValue) { db in
+            do {
+                try db.alter(table: "model_TSInteraction") { (table: TableAlteration) -> Void in
+                    table.add(column: "paymentCancellation", .blob)
+                    table.add(column: "paymentNotification", .blob)
+                    table.add(column: "paymentRequest", .blob)
+                }
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.addPaymentModels40.rawValue) { db in
+            do {
+                // PAYMENTS TODO: Remove.
+                try db.execute(sql: "DROP TABLE IF EXISTS model_TSPaymentModel")
+                try db.execute(sql: "DROP TABLE IF EXISTS model_TSPaymentRequestModel")
+
+                try db.create(table: "model_TSPaymentModel") { table in
+                    table.autoIncrementedPrimaryKey("id")
+                        .notNull()
+                    table.column("recordType", .integer)
+                        .notNull()
+                    table.column("uniqueId", .text)
+                        .notNull()
+                        .unique(onConflict: .fail)
+                    table.column("addressUuidString", .text)
+                    table.column("createdTimestamp", .integer)
+                        .notNull()
+                    table.column("isUnread", .boolean)
+                        .notNull()
+                    table.column("mcLedgerBlockIndex", .integer)
+                        .notNull()
+                    table.column("mcReceiptData", .blob)
+                    table.column("mcTransactionData", .blob)
+                    table.column("memoMessage", .text)
+                    table.column("mobileCoin", .blob)
+                    table.column("paymentAmount", .blob)
+                    table.column("paymentFailure", .integer)
+                        .notNull()
+                    table.column("paymentState", .integer)
+                        .notNull()
+                    table.column("paymentType", .integer)
+                        .notNull()
+                    table.column("requestUuidString", .text)
+                }
+
+                try db.create(index: "index_model_TSPaymentModel_on_uniqueId", on: "model_TSPaymentModel", columns: ["uniqueId"])
+                try db.create(index: "index_model_TSPaymentModel_on_paymentState", on: "model_TSPaymentModel", columns: ["paymentState"])
+                try db.create(index: "index_model_TSPaymentModel_on_mcLedgerBlockIndex", on: "model_TSPaymentModel", columns: ["mcLedgerBlockIndex"])
+                try db.create(index: "index_model_TSPaymentModel_on_mcReceiptData", on: "model_TSPaymentModel", columns: ["mcReceiptData"])
+                try db.create(index: "index_model_TSPaymentModel_on_mcTransactionData", on: "model_TSPaymentModel", columns: ["mcTransactionData"])
+                try db.create(index: "index_model_TSPaymentModel_on_isUnread", on: "model_TSPaymentModel", columns: ["isUnread"])
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.fixPaymentModels.rawValue) { db in
+            // We released a build with an out-of-date schema that didn't reflect
+            // `addPaymentModels15`. To fix this, we need to run the column adds
+            // again to get all users in a consistent state. We can safely skip
+            // this migration if it fails.
+            do {
+                try db.alter(table: "model_TSInteraction") { (table: TableAlteration) -> Void in
+                    table.add(column: "paymentCancellation", .blob)
+                    table.add(column: "paymentNotification", .blob)
+                    table.add(column: "paymentRequest", .blob)
+                }
+            } catch {
+                // We can safely skip this if it fails.
+                Logger.info("Skipping re-add of interaction payment columns.")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.addGroupMember.rawValue) { db in
+            do {
+                try db.create(table: "model_TSGroupMember") { table in
+                    table.autoIncrementedPrimaryKey("id")
+                        .notNull()
+                    table.column("recordType", .integer)
+                        .notNull()
+                    table.column("uniqueId", .text)
+                        .notNull()
+                        .unique(onConflict: .fail)
+                    table.column("groupThreadId", .text)
+                        .notNull()
+                    table.column("phoneNumber", .text)
+                    table.column("uuidString", .text)
+                    table.column("lastInteractionTimestamp", .integer)
+                        .notNull().defaults(to: 0)
+                }
+
+                try db.create(index: "index_model_TSGroupMember_on_uniqueId",
+                              on: "model_TSGroupMember",
+                              columns: ["uniqueId"])
+                try db.create(index: "index_model_TSGroupMember_on_groupThreadId",
+                              on: "model_TSGroupMember",
+                              columns: ["groupThreadId"])
+                try db.create(index: "index_model_TSGroupMember_on_uuidString_and_groupThreadId",
+                              on: "model_TSGroupMember",
+                              columns: ["uuidString", "groupThreadId"],
+                              unique: true)
+                try db.create(index: "index_model_TSGroupMember_on_phoneNumber_and_groupThreadId",
+                              on: "model_TSGroupMember",
+                              columns: ["phoneNumber", "groupThreadId"],
+                              unique: true)
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
         // MARK: - Schema Migration Insertion Point
     }
 
@@ -1137,6 +1254,39 @@ public class GRDBSchemaMigrator: NSObject {
                     Self.storageServiceManager.recordPendingUpdates(groupModel: thread.groupModel)
                 } else {
                     owsFail("Unexpected thread type \(thread)")
+                }
+            }
+        }
+
+        migrator.registerMigration(MigrationId.dataMigration_populateGroupMember.rawValue) { db in
+            let transaction = GRDBWriteTransaction(database: db)
+            defer { transaction.finalizeTransaction() }
+
+            let cursor = TSThread.grdbFetchCursor(
+                sql: "SELECT * FROM \(ThreadRecord.databaseTableName) WHERE \(threadColumn: .recordType) = \(SDSRecordType.groupThread.rawValue)",
+                transaction: transaction
+            )
+
+            while let thread = try cursor.next() {
+                guard let groupThread = thread as? TSGroupThread else {
+                    owsFail("Unexpected thread type \(thread)")
+                }
+                let interactionFinder = InteractionFinder(threadUniqueId: groupThread.uniqueId)
+                groupThread.groupMembership.fullMembers.forEach { address in
+                    // Group member addresses are low-trust, and the address cache has
+                    // not been populated yet at this point in time. We want to record
+                    // as close to a fully qualified address as we can in the database,
+                    // so defer to the address from the signal recipient (if one exists)
+                    let recipient = GRDBSignalRecipientFinder().signalRecipient(for: address, transaction: transaction)
+                    let memberAddress = recipient?.address ?? address
+
+                    let latestInteraction = interactionFinder.latestInteraction(from: memberAddress, transaction: transaction.asAnyWrite)
+                    let memberRecord = TSGroupMember(
+                        address: memberAddress,
+                        groupThreadId: groupThread.uniqueId,
+                        lastInteractionTimestamp: latestInteraction?.timestamp ?? 0
+                    )
+                    memberRecord.anyInsert(transaction: transaction.asAnyWrite)
                 }
             }
         }

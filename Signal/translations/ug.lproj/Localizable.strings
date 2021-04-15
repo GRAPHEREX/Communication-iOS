@@ -85,23 +85,26 @@
 /* The button on the 'add to group' confirmation to add the user to the group. */
 "ADD_TO_GROUP_ACTION_PROCEED_BUTTON" = "توپقا قوش";
 
-/* The title on the 'add to group' confirmation action sheet. Embeds {contact name} */
-"ADD_TO_GROUP_ACTION_SHEET_MESSAGE_FORMAT" = "%@ نى بۇ توپقا قوشامدۇ؟";
+/* The title on the 'add to group' confirmation action sheet. Embeds {contact name, group name} */
+"ADD_TO_GROUP_ACTION_SHEET_MESSAGE_FORMAT" = "«%1$@» نى «%2$@» غا قوشامدۇ؟";
 
-/* The title on the 'add to group' confirmation action sheet. Embeds {group name} */
-"ADD_TO_GROUP_ACTION_SHEET_TITLE_FORMAT" = "%@ غا قوش";
+/* The title on the 'add to group' confirmation action sheet. */
+"ADD_TO_GROUP_ACTION_SHEET_TITLE" = "يېڭى ئەزا قوش";
+
+/* Text indicating your contact is already a member of the group on the 'add to group' view. */
+"ADD_TO_GROUP_ALREADY_A_MEMBER" = "بۇ توپنىڭ ئەزاسى";
 
 /* A toast on the 'add to group' view indicating the user is already a member. Embeds {contact name} and {group name} */
 "ADD_TO_GROUP_ALREADY_MEMBER_TOAST_FORMAT" = "%@ ئاللىبۇرۇن %@ نىڭ ئەزاسى";
 
 /* The title for the 'add to group' view's recents section */
-"ADD_TO_GROUP_RECENTS_TITLE" = "يېقىنقى";
+"ADD_TO_GROUP_RECENTS_TITLE" = "يېقىنقى سۆھبەتلەر";
 
 /* A toast on the 'add to group' view indicating the user was added. Embeds {contact name} and {group name} */
 "ADD_TO_GROUP_SUCCESS_TOAST_FORMAT" = "%@ قوشۇلغان توپ %@";
 
 /* Title of the 'add to group' view. */
-"ADD_TO_GROUP_TITLE" = "باشقا بىر توپقا قوش";
+"ADD_TO_GROUP_TITLE" = "گۇرۇپپىغا قوش";
 
 /* Message shown in conversation view that offers to share your profile with a user. */
 "ADD_USER_TO_PROFILE_WHITELIST_OFFER" = "سەپلىمە ھۆججىتىڭىزنى بۇ ئىشلەتكۈچىگە ھەمبەھىرلەمسىز؟";
@@ -265,6 +268,9 @@
 /* A string indicating to the user that once they take photos, they'll be able to send them from this view. */
 "ATTACHMENT_KEYBOARD_NO_PHOTOS" = "سۈرەت تارتقاندىن كېيىن، يېقىنقى سۈرەتلەرنى بۇ جايدا يوللىيالايسىز.";
 
+/* A button to select a payment from the Attachment Keyboard */
+"ATTACHMENT_KEYBOARD_PAYMENT" = "چىقىم";
+
 /* Accessibility label for attaching photos */
 "ATTACHMENT_LABEL" = "قوشۇمچە";
 
@@ -391,8 +397,14 @@
 /* Label for 'continue' button. */
 "BUTTON_CONTINUE" = "داۋاملىق";
 
+/* Label for the 'copy' button. */
+"BUTTON_COPY" = "كۆچۈر";
+
 /* Label for generic done button. */
 "BUTTON_DONE" = "بولدى";
+
+/* Label for the 'edit' button. */
+"BUTTON_EDIT" = "تەھرىر";
 
 /* Label for the 'next' button. */
 "BUTTON_NEXT" = "كېيىنكىسى";
@@ -406,11 +418,20 @@
 /* Label for the 'okay' button. */
 "BUTTON_OKAY" = "جەزملە";
 
+/* Label for the 'previous' button. */
+"BUTTON_PREVIOUS" = "ئالدىنقى";
+
 /* Button text to enable batch selection mode */
 "BUTTON_SELECT" = "تاللا";
 
+/* Label for the 'start' button. */
+"BUTTON_START" = "باشلا";
+
 /* Label for the 'submit' button. */
 "BUTTON_SUBMIT" = "تاپشۇر";
+
+/* Label for the 'view' button. */
+"BUTTON_VIEW" = "كۆرۈش";
 
 /* Label for the 'yes' button. */
 "BUTTON_YES" = "ھەئە";
@@ -677,37 +698,43 @@
 "CONTACT_SUPPORT" = "قوللىغۇچىلار  بىلەن ئالاقىلىشىڭ";
 
 /* The localized representation of the 'feature request' support filter. */
-"CONTACT_SUPPORT_FILTER_FEATURE_REQUEST" = "I’d like to request a new feature";
+"CONTACT_SUPPORT_FILTER_FEATURE_REQUEST" = "يېڭى ئىقتىدار تەلەپ قىلماقچى ئىدىم.";
 
 /* A brief localized representation of the 'feature request' support filter. */
-"CONTACT_SUPPORT_FILTER_FEATURE_REQUEST_SHORT" = "Feature Request";
+"CONTACT_SUPPORT_FILTER_FEATURE_REQUEST_SHORT" = "ئىقتىدار ئىلتىماسى";
 
 /* The localized representation of the 'feedback' support filter. */
-"CONTACT_SUPPORT_FILTER_FEEDBACK" = "I have feedback on the app";
+"CONTACT_SUPPORT_FILTER_FEEDBACK" = "بۇ ئەپكە تەكلىپىم بار";
 
 /* A brief localized representation of the 'feedback' support filter. */
-"CONTACT_SUPPORT_FILTER_FEEDBACK_SHORT" = "App Feedback";
+"CONTACT_SUPPORT_FILTER_FEEDBACK_SHORT" = "ئەپكە تەكلىپ";
 
 /* The localized representation of the 'other' support filter. */
-"CONTACT_SUPPORT_FILTER_OTHER" = "Something else";
+"CONTACT_SUPPORT_FILTER_OTHER" = "باشقا يەنە";
 
 /* A brief localized representation of the 'other' support filter. */
 "CONTACT_SUPPORT_FILTER_OTHER_SHORT" = "باشقىلار";
 
+/* The localized representation of the 'payments' support filter. */
+"CONTACT_SUPPORT_FILTER_PAYMENTS" = "چىقىملار";
+
+/* A brief localized representation of the 'payments' support filter. */
+"CONTACT_SUPPORT_FILTER_PAYMENTS_SHORT" = "چىقىملار";
+
 /* Prompt telling the user to select a filter for their support request. */
-"CONTACT_SUPPORT_FILTER_PROMPT" = "How can we help?";
+"CONTACT_SUPPORT_FILTER_PROMPT" = "قانداق ياردەم قىلالايمىز؟";
 
 /* The localized representation of the 'question' support filter. */
-"CONTACT_SUPPORT_FILTER_QUESTION" = "I have a question";
+"CONTACT_SUPPORT_FILTER_QUESTION" = "سوئالىم بار";
 
 /* A brief localized representation of the 'question' support filter. */
-"CONTACT_SUPPORT_FILTER_QUESTION_SHORT" = "Question";
+"CONTACT_SUPPORT_FILTER_QUESTION_SHORT" = "سوئال";
 
 /* The localized representation of the 'something not working' support filter. */
-"CONTACT_SUPPORT_FILTER_SOMETHING_NOT_WORKING" = "Something’s not working";
+"CONTACT_SUPPORT_FILTER_SOMETHING_NOT_WORKING" = "بەزى نەرسە ئىشلىمەيۋاتىدۇ";
 
 /* A brief localized representation of the 'something not working' support filter. */
-"CONTACT_SUPPORT_FILTER_SOMETHING_NOT_WORKING_SHORT" = "Something Not Working";
+"CONTACT_SUPPORT_FILTER_SOMETHING_NOT_WORKING_SHORT" = "بەزى نەرسە ئىشلىمەيۋاتىدۇ";
 
 /* Alert body */
 "CONTACT_SUPPORT_PROMPT_ERROR_ALERT_BODY" = "Signal ياردەم ئىلتىماسىڭىزنى تاماملىيالمايدۇ.";
@@ -722,7 +749,7 @@
 "CONTACT_SUPPORT_PROMPT_TO_INCLUDE_DEBUG_LOG_TITLE" = "سازلاش خاتىرىسى يوللامدۇ؟";
 
 /* Placeholder telling user they must select a filter. */
-"CONTACT_SUPPORT_SELECT_A_FILTER" = "Select Reason";
+"CONTACT_SUPPORT_SELECT_A_FILTER" = "سەۋەپ تاللاڭ";
 
 /* Button text */
 "CONTACT_SUPPORT_SUBMIT_WITH_LOG" = "سازلاش خاتىرىسىنى قوشۇپ يوللا";
@@ -793,6 +820,9 @@
 /* Footer for the 'attributes access' section in conversation settings view. */
 "CONVERSATION_SETTINGS_ATTRIBUTES_ACCESS_SECTION_FOOTER" = "توپنىڭ ئىسمى، سۈرىتى ۋە كۆرۈن-غايىب ئۇچۇرنىڭ ۋاقتىنى كىم ئۆزگەرتەلەيدىغانلىقىنى تاللاڭ.";
 
+/* Button to start a audio call */
+"CONVERSATION_SETTINGS_AUDIO_CALL_BUTTON" = "ئۈن";
+
 /* Footer text for the 'block and leave' section of contact conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_AND_LEAVE_SECTION_CONTACT_FOOTER" = "ئەمدى بۇ ئىشلەتكۈچىنىڭ ئۇچۇرى ياكى يېڭىلىنىشىنى تاپشۇرۇۋالمايسىز.";
 
@@ -812,28 +842,19 @@
 "CONVERSATION_SETTINGS_EDIT" = "تەھرىر";
 
 /* Label for 'edit attributes access' action in conversation settings view. */
-"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS" = "توپنىڭ ئۇچۇرىنى كىم تەھرىرلىيەلەيدۇ";
+"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS" = "گۇرۇپپا ئۇچۇرى تەھرىر";
 
 /* Label for button that sets 'group attributes access' to 'administrators-only'. */
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "باشقۇرغۇچىلارلا";
-
-/* Description for the 'edit group attributes access' alert. */
-"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_DESCRIPTION" = "توپنىڭ ئىسمى، سۈرىتى ۋە كۆرۈن-غايىب ئۇچۇرنى كىم ئۆزگەرتەلەيدىغانلىقىنى تاللاڭ.";
 
 /* Label for button that sets 'group attributes access' to 'members-only'. */
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_MEMBERS_BUTTON" = "ھەممە ئەزالار";
 
 /* Label for 'edit membership access' action in conversation settings view. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "كىم ئەزا قوشالايدۇ";
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "ئەزا قوش";
 
-/* Label for button that sets 'group membership access' to 'administrators-only'. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "باشقۇرغۇچىلارلا";
-
-/* Description for the 'edit group membership access' alert. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_DESCRIPTION" = "بۇ توپقا كىم ئەزا قوشالايدىغانلىقىنى تاللاڭ:";
-
-/* Label for button that sets 'group membership access' to 'members-only'. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_MEMBERS_BUTTON" = "ھەممە ئەزالار";
+/* Description for the 'edit membership access'. */
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_FOOTER" = "گۇرۇپپا ئەزالىقىنى كىم تەھرىرلەشنى تاللاڭ.";
 
 /* Label for 'group link' action in conversation settings view. */
 "CONVERSATION_SETTINGS_GROUP_LINK" = "توپ ئۇلانمىسى";
@@ -845,10 +866,10 @@
 "CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_TITLE_FORMAT" = "بۇ توپ ۋە ئۇنىڭ ئەزالىرىنى %@ تەھرىرلىيەلەيدۇ.";
 
 /* Label for 'member invites' action in conversation settings view. */
-"CONVERSATION_SETTINGS_MEMBER_INVITES" = "ئەزالىق تەكلىپى";
+"CONVERSATION_SETTINGS_MEMBER_INVITES" = "تەكلىپلەر";
 
 /* Label for 'member requests & invites' action in conversation settings view. */
-"CONVERSATION_SETTINGS_MEMBER_REQUESTS_AND_INVITES" = "ئەزالىق ئىلتىماسى ۋە تەكلىپ";
+"CONVERSATION_SETTINGS_MEMBER_REQUESTS_AND_INVITES" = "ئىلتىماس ۋە تەكلىپ";
 
 /* Section title of the 'members' section in conversation settings view. */
 "CONVERSATION_SETTINGS_MEMBERS_SECTION_TITLE" = "ئەزالار";
@@ -869,13 +890,16 @@
 "CONVERSATION_SETTINGS_MENTIONS_LABEL" = "تىلغا ئالغانلار";
 
 /* Title for the mute action sheet */
-"CONVERSATION_SETTINGS_MUTE_ACTION_SHEET_TITLE" = "Mute this chat for…";
+"CONVERSATION_SETTINGS_MUTE_ACTION_SHEET_TITLE" = "بۇ سۆھبەتنى ئۈنسىزلە…";
 
 /* Label for button to mute a thread forever. */
-"CONVERSATION_SETTINGS_MUTE_ALWAYS_ACTION" = "Always";
+"CONVERSATION_SETTINGS_MUTE_ALWAYS_ACTION" = "ھەمىشە";
+
+/* Button to mute the chat */
+"CONVERSATION_SETTINGS_MUTE_BUTTON" = "ئۈنسىز";
 
 /* Label for button to mute a thread for eight hours. */
-"CONVERSATION_SETTINGS_MUTE_EIGHT_HOUR_ACTION" = "8 hours";
+"CONVERSATION_SETTINGS_MUTE_EIGHT_HOUR_ACTION" = "8 سائەت";
 
 /* label for 'mute thread' cell in conversation settings */
 "CONVERSATION_SETTINGS_MUTE_LABEL" = "ئۈنسىز";
@@ -884,25 +908,46 @@
 "CONVERSATION_SETTINGS_MUTE_NOT_MUTED" = "ئۈنسىز ئەمەس";
 
 /* Label for button to mute a thread for a day. */
-"CONVERSATION_SETTINGS_MUTE_ONE_DAY_ACTION" = "1 day";
+"CONVERSATION_SETTINGS_MUTE_ONE_DAY_ACTION" = "1 كۈن";
 
 /* Label for button to mute a thread for a hour. */
-"CONVERSATION_SETTINGS_MUTE_ONE_HOUR_ACTION" = "1 hour";
+"CONVERSATION_SETTINGS_MUTE_ONE_HOUR_ACTION" = "1 سائەت";
 
 /* Label for button to mute a thread for a minute. */
-"CONVERSATION_SETTINGS_MUTE_ONE_MINUTE_ACTION" = "1 minute";
+"CONVERSATION_SETTINGS_MUTE_ONE_MINUTE_ACTION" = "1 مىنۇت";
 
 /* Label for button to mute a thread for a week. */
-"CONVERSATION_SETTINGS_MUTE_ONE_WEEK_ACTION" = "1 week";
+"CONVERSATION_SETTINGS_MUTE_ONE_WEEK_ACTION" = "1 ھەپتە";
 
 /* Indicates that this thread is muted forever. */
-"CONVERSATION_SETTINGS_MUTED_ALWAYS" = "Always";
+"CONVERSATION_SETTINGS_MUTED_ALWAYS" = "ھەمىشە";
+
+/* Indicates that this thread is muted forever. */
+"CONVERSATION_SETTINGS_MUTED_ALWAYS_UNMUTE" = "Always muted";
+
+/* Button to unmute the chat */
+"CONVERSATION_SETTINGS_MUTED_BUTTON" = "ئۈنسىز";
 
 /* Indicates that this thread is muted until a given date or time. Embeds {{The date or time which the thread is muted until}}. */
 "CONVERSATION_SETTINGS_MUTED_UNTIL_FORMAT" = "%@ غىچە";
 
+/* Indicates that this thread is muted until a given date or time. Embeds {{The date or time which the thread is muted until}}. */
+"CONVERSATION_SETTINGS_MUTED_UNTIL_UNMUTE_FORMAT" = "Muted until %@";
+
+/* Format for the section title of the 'mutual groups' section in conversation settings view. Embeds: {{ the number of shared groups }}. */
+"CONVERSATION_SETTINGS_MUTUAL_GROUPS_SECTION_TITLE_FORMAT" = "%@ ئورتاق گۇرۇپپا";
+
 /* Label for 'new contact' button in conversation settings view. */
 "CONVERSATION_SETTINGS_NEW_CONTACT" = "يېڭى ئالاقەداش قۇر";
+
+/* Section title of the 'mutual groups' section in conversation settings view when the contact shares no mutual groups. */
+"CONVERSATION_SETTINGS_NO_MUTUAL_GROUPS_SECTION_TITLE" = "ئورتاق گۇرۇپپا يوق";
+
+/* Section title of the 'mutual groups' section in conversation settings view when the contact shares one mutual group. */
+"CONVERSATION_SETTINGS_ONE_MUTUAL_GROUPS_SECTION_TITLE" = "1 ئورتاق گۇرۇپپا";
+
+/* Label for 'permissions' action in conversation settings view. */
+"CONVERSATION_SETTINGS_PERMISSIONS" = "ھوقۇقلار";
 
 /* Label for 'remove from group' button in conversation settings view. */
 "CONVERSATION_SETTINGS_REMOVE_FROM_GROUP_BUTTON" = "توپتىن چىقىرىۋەت";
@@ -916,8 +961,8 @@
 /* Format for title for 'revoke group admin' confirmation alert. Embeds {user to revoke admin status from}. */
 "CONVERSATION_SETTINGS_REVOKE_GROUP_ADMIN_TITLE_FORMAT" = "%@ نى باشقۇرغۇچى قاتارىدىن چىقىرىۋېتەمدۇ؟";
 
-/* Table cell label in conversation settings which returns the user to the conversation with 'search mode' activated */
-"CONVERSATION_SETTINGS_SEARCH" = "سۆھبەت ئىزدە";
+/* Button to search the chat */
+"CONVERSATION_SETTINGS_SEARCH_BUTTON" = "ئىزدە";
 
 /* Label for 'unblock group' action in conversation settings view. */
 "CONVERSATION_SETTINGS_UNBLOCK_GROUP" = "توپنى چەكلىمە";
@@ -934,20 +979,14 @@
 /* The alert title if user tries to exit conversation settings view without saving changes. */
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "ساقلانمىغان ئۆزگەرتىشلەر";
 
-/* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "ھەممىنى كۆرسەت";
+/* Button to start a video call */
+"CONVERSATION_SETTINGS_VIDEO_CALL_BUTTON" = "سىن";
 
 /* Indicates that user is in the system contacts list. */
-"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "بۇ ئىشلەتكۈچى ئالاقەداشتا مەۋجۇت";
+"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "ئالاقەداش تەپسىلاتى";
 
 /* Button to confirm that user wants to share their profile with a user or group. */
 "CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE" = "سەپلىمە ھۆججەت ھەمبەھىر";
-
-/* Action that shares user profile with a group. */
-"CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE_WITH_GROUP" = "سەپلىمە ھۆججىتىڭىزنى ھەمبەھىرلەيدۇ";
-
-/* Action that shares user profile with a user. */
-"CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE_WITH_USER" = "سەپلىمە ھۆججىتىڭىزنى ھەمبەھىرلەيدۇ";
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "ئالاقەداشلارغا قوش";
@@ -1368,9 +1407,6 @@
 
 /* Error message indicating that attachment download(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_DOWNLOAD_FAILED" = "يۈكلەنمەنى چۈشۈرەلمىدى.";
-
-/* Error message when unable to receive an attachment because the sending client is too old. */
-"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "يۈكلەنمە خاتالىقى: بۇ ئۇچۇر يوللىغۇچىغا ئەڭ يېڭى Signal نەشرىنى ئورنىتىپ ئۇچۇرنى قايتا يوللاشنى ئۇقتۇرۇڭ.";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_DUPLICATE_MESSAGE" = "تەكرار ئۇچۇر تاپشۇرۇۋالدى.";
@@ -1855,14 +1891,8 @@
 /* Label for the 'enable group link' switch in the 'group link' view. */
 "GROUP_LINK_VIEW_ENABLE_GROUP_LINK_SWITCH" = "توپ ئۇلانمىسى";
 
-/* Title for the 'manage and share' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MANAGE_AND_SHARE_SECTION_TITLE" = "باشقۇرۇش ۋە ھەمبەھىر";
-
 /* Footer for the 'member requests' section of the 'group link' view. */
 "GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "گۇرۇپپا ئۇلانمىسى ئارقىلىق قوشۇلماقچى بولغان يېڭى ئەزالارنى باشقۇرغۇچى دەلىللەيدۇ.";
-
-/* Title for the 'member requests' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "ئەزا ئىلتىماسى";
 
 /* Label for the 'reset link' button in the 'group link' view. */
 "GROUP_LINK_VIEW_RESET_LINK" = "ئۇلانمىنى ئەسلىگە قايتۇر";
@@ -1997,7 +2027,7 @@
 "GROUP_MEMBERSHIP_NAME_COLLISION_MEMBER_HEADER" = "ئەزا";
 
 /* A title string for a view that allows a user to review name collisions in group membership */
-"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "ئەزالارنى تەھقىقلە";
+"GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "ئەزالارنى تەكشۈر";
 
 /* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
 "GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "توپتىكى %@ ئەزانىڭ ئاتى ئوخشىشىپ كېتىدۇ، تۆۋەندىكى ئەزالارنى كۆرۈڭ ياكى مۇناسىپ مەشغۇلاتنى تاللاڭ.";
@@ -2126,13 +2156,13 @@
 "GROUP_REMOTE_USER_REVOKED_ADMINISTRATOR_BY_REMOTE_USER_FORMAT" = "%2$@ نىڭ باشقۇرغۇچىلىق ھوقۇقىنى %1$@ بىكار قىلدى.";
 
 /* Label for the 'member requests' mode of the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "ئەزا ئىلتىماسى";
+"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "تەلەپلەر";
 
 /* Label for the 'pending invites' mode of the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "كۈتۈۋاتقان تەكلىپلەر";
+"GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "تەكلىپلەر";
 
 /* The title for the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_TITLE" = "ئەزالىق ئىلتىماسى ۋە تەكلىپ";
+"GROUP_REQUESTS_AND_INVITES_VIEW_TITLE" = "ئىلتىماس ۋە تەكلىپ";
 
 /* Info message indicating that the group was updated by an unknown user. */
 "GROUP_UPDATED" = "گۇرۇپپا يېڭىلاندى.";
@@ -2762,7 +2792,7 @@
 "MESSAGE_COMPOSEVIEW_TITLE" = "يېڭى ئۇچۇر";
 
 /* Toast indicating that the user has copied the sent timestamp. */
-"MESSAGE_DETAIL_VIEW_DID_COPY_SENT_TIMESTAMP" = "Sent time copied";
+"MESSAGE_DETAIL_VIEW_DID_COPY_SENT_TIMESTAMP" = "ئەۋەتىلگەن ۋاقىت كۆچۈرۈلدى";
 
 /* Title for the 'sent from' section on the 'message details' view. */
 "MESSAGE_DETAILS_VIEW_SENT_FROM_TITLE" = "يوللىغۇچى";
@@ -2783,7 +2813,7 @@
 "MESSAGE_METADATA_VIEW_MESSAGE_STATUS_READ" = "ئوقۇغۇچى";
 
 /* Status label for messages which are sending. */
-"MESSAGE_METADATA_VIEW_MESSAGE_STATUS_SENDING" = "Sending to";
+"MESSAGE_METADATA_VIEW_MESSAGE_STATUS_SENDING" = "ئەۋەتىلگۈچى";
 
 /* Status label for messages which are sent. */
 "MESSAGE_METADATA_VIEW_MESSAGE_STATUS_SENT" = "يوللانغۇچى";
@@ -2804,7 +2834,7 @@
 "MESSAGE_METADATA_VIEW_SOURCE_FILENAME" = "ھۆججەت نامى";
 
 /* Title for the 'message metadata' view. */
-"MESSAGE_METADATA_VIEW_TITLE" = "Message Details";
+"MESSAGE_METADATA_VIEW_TITLE" = "ئۇچۇر تەپسىلاتى";
 
 /* Action sheet action to confirm blocking a thread via a message request. */
 "MESSAGE_REQUEST_BLOCK_ACTION" = "چەكلەش";
@@ -2855,13 +2885,13 @@
 "MESSAGE_REQUEST_NAME_COLLISON_REQUESTER_HEADER" = "ئىلتىماس";
 
 /* A title string for a view that allows a user to review name collisions for an incoming message request */
-"MESSAGE_REQUEST_NAME_COLLISON_TITLE" = "ئىلتىماسنى تەھقىقلە";
+"MESSAGE_REQUEST_NAME_COLLISON_TITLE" = "ئىلتىماسنى تەكشۈر";
 
 /* A button that updates a known contact's information to resolve a name collision */
 "MESSAGE_REQUEST_NAME_COLLISON_UPDATE_CONTACT_ACTION" = "ئالاقەداش يېڭىلا";
 
 /* Button to allow user to review known name collisions with an incoming message request */
-"MESSAGE_REQUEST_REVIEW_NAME_COLLISION" = "ئىلتىماسنى تەھقىقلە";
+"MESSAGE_REQUEST_REVIEW_NAME_COLLISION" = "ئىلتىماسنى تەكشۈر";
 
 /* A button used to accept a user on an incoming message request. */
 "MESSAGE_REQUEST_VIEW_ACCEPT_BUTTON" = "قوبۇل قىلىش";
@@ -3188,10 +3218,10 @@
 "ONBOARDING_CAPTCHA_TITLE" = "ئۇچۇرىڭىزغا ھېسسىيات قوشۇڭ";
 
 /* Explanation on the 'onboarding after dropped YDB' view. */
-"ONBOARDING_DROPPED_YDB_EXPLANATION" = "Because you’ve been inactive for a long period of time, you must register again to use Signal.";
+"ONBOARDING_DROPPED_YDB_EXPLANATION" = "سىز ئۇزۇن مەزگىل ئاكتىپ بولمىغانلىقتىن، Signal غا قايتا تىزىملىتىشىڭىز كېرەك.";
 
 /* Title of the 'onboarding after dropped YDB' view. */
-"ONBOARDING_DROPPED_YDB_TITLE" = "Register for Signal";
+"ONBOARDING_DROPPED_YDB_TITLE" = "‫Signal غا تىزىملىتىش";
 
 /* button indicating that the user will register their ipad */
 "ONBOARDING_MODE_SWITCH_BUTTON_PROVISIONING" = "iPad تىزىملىتىڭ";
@@ -3325,6 +3355,210 @@
 /* info message text in conversation view. {embeds callee name} */
 "OUTGOING_CALL_FORMAT" = "%@ نى چاقىردىڭىز";
 
+/* Button used to decline a payment request. */
+"PAYMENTS_ACTION_DECLINE_REQUEST" = "رەت قىلىش ئىلتىماسى";
+
+/* Format for indicator of a payment amount converted to fiat currency with the freshness of the conversion rate. Embeds: {{ %1$@ the payment amount, %2$@ the freshness of the currency conversion rate }}. */
+"PAYMENTS_CURRENCY_CONVERSION_FRESHNESS_FORMAT" = "‫%1$@ %2$@ دە";
+
+/* Indicator for unknown currency. */
+"PAYMENTS_CURRENCY_UNKNOWN" = "؟";
+
+/* Message for the 'decline a payment request' alert. Embeds {{ the name of the user requesting payment }}. */
+"PAYMENTS_DECLINE_REQUEST_ALERT_MESSAGE_FORMAT" = "%@ رەت قىلغانلىقىڭىز ئۇقتۇرۇلىدۇ.";
+
+/* Title for the 'decline a payment request' alert. */
+"PAYMENTS_DECLINE_REQUEST_ALERT_TITLE" = "بۇ ئىلتىماسنى رەت قىلامسىز؟";
+
+/* Label for 'defragmentation' payments. */
+"PAYMENTS_DEFRAGMENTATION_PAYMENT" = "تەڭگە تازىلاش ھەققى";
+
+/* Error indicating that a payment request could not be cancelled. */
+"PAYMENTS_ERROR_PAYMENT_REQUEST_CANCEL_FAILED" = "ئىلتىماستىن ۋاز كەچكىلى بولمايدۇ.";
+
+/* Error indicating that a payment request could not be declined. */
+"PAYMENTS_ERROR_PAYMENT_REQUEST_DECLINE_FAILED" = "ئىلتىماسنى رەت قىلغىلى بولمايدۇ.";
+
+/* Status indicator for incoming payments which failed. */
+"PAYMENTS_FAILURE_INCOMING_FAILED" = "مەغلۇب بولدى";
+
+/* Status indicator for incoming payments which failed to verify. */
+"PAYMENTS_FAILURE_INCOMING_VALIDATION_FAILED" = "ئىناۋەتسىز";
+
+/* Status indicator for invalid payments which could not be processed. */
+"PAYMENTS_FAILURE_INVALID" = "ئىناۋەتسىز";
+
+/* Status indicator for outgoing payments which failed. */
+"PAYMENTS_FAILURE_OUTGOING_FAILED" = "مەغلۇب بولدى";
+
+/* Status indicator for outgoing payments which failed due to insufficient funds. */
+"PAYMENTS_FAILURE_OUTGOING_INSUFFICIENT_FUNDS" = "پۇل يەتمىدى";
+
+/* Status indicator for outgoing payments for which the notification could not be sent. */
+"PAYMENTS_FAILURE_OUTGOING_NOTIFICATION_SEND_FAILED" = "تالوننى تاپشۇرۇۋالغۇچىغا ئەۋەتەلمىدى";
+
+/* Status indicator for outgoing payments which failed to verify. */
+"PAYMENTS_FAILURE_OUTGOING_VALIDATION_FAILED" = "ئىناۋەتسىز";
+
+/* Label for the 'add memo' ui in the 'send payment' UI. */
+"PAYMENTS_NEW_PAYMENT_ADD_MEMO" = "ئىزاھات قوش";
+
+/* Format for the 'balance' indicator. Embeds {{ the current payments balance }}. */
+"PAYMENTS_NEW_PAYMENT_BALANCE_FORMAT" = "ئىشلىتىشكە بولىدىغان قالدۇق: %@";
+
+/* Label for the 'confirm payment' button. */
+"PAYMENTS_NEW_PAYMENT_CONFIRM_PAYMENT_BUTTON" = "چىقىمنى جەزىملە";
+
+/* Title for the 'confirm payment' ui in the 'send payment' UI. */
+"PAYMENTS_NEW_PAYMENT_CONFIRM_PAYMENT_TITLE" = "تۆلە";
+
+/* Format for currency amounts in the 'send payment' UI. Embeds {{ %1$@ the current payments balance, %2$@ the currency indicator }}. */
+"PAYMENTS_NEW_PAYMENT_CURRENCY_FORMAT" = "%1$@ %2$@";
+
+/* Indicates that a payment failed due to a connectivity failure. */
+"PAYMENTS_NEW_PAYMENT_ERROR_CONNECTIVITY_FAILURE" = "مۇلازىمەت بىلەن ئالاقە قىلالمىدى";
+
+/* Indicates that a payment failed due to insufficient funds. */
+"PAYMENTS_NEW_PAYMENT_ERROR_INSUFFICIENT_FUNDS" = "بۇ چىقىمنى تۆلىگىدەك MOB يوق.";
+
+/* Indicates that a payment failed due to insufficient funds. Embeds {{ current balance }}. */
+"PAYMENTS_NEW_PAYMENT_ERROR_INSUFFICIENT_FUNDS_FORMAT" = "بۇ چىقىمنى تۆلىگىدەك MOB يوق. نۆۋەتتىكى قالدۇقىڭىز %@.";
+
+/* Indicates that a payment failed due to being invalid. */
+"PAYMENTS_NEW_PAYMENT_ERROR_INVALID_TRANSACTION" = "ئىناۋەتسىز مۇئامىلە";
+
+/* Indicates that a payment failed due to an outdated client. */
+"PAYMENTS_NEW_PAYMENT_ERROR_OUTDATED_CLIENT" = "چىقىم ئىقتىدارى ئۈچۈن Signal نى يېڭىلاڭ.";
+
+/* Indicates that an unknown error occurred while sending a payment or payment request. */
+"PAYMENTS_NEW_PAYMENT_ERROR_UNKNOWN" = "چىقىم قىلىشنى تاماملىيالمىدى. تور باغلىنىشىڭىزنى تەكشۈرۈپ ئاندىن قايتا سىناڭ.";
+
+/* Label for the 'payment estimated fee' indicator. */
+"PAYMENTS_NEW_PAYMENT_ESTIMATED_FEE" = "تور ھەققى";
+
+/* Format for the 'fiat currency conversion estimate' indicator. Embeds {{ the fiat currency code }}. */
+"PAYMENTS_NEW_PAYMENT_FIAT_CONVERSION_FORMAT" = "مۆلچەرلەندى %@";
+
+/* Label for the 'invalid amount' button. */
+"PAYMENTS_NEW_PAYMENT_INVALID_AMOUNT" = "ئىناۋەتسىز سومما";
+
+/* Format for the 'message character count indicator' for the 'new payment or payment request' view. Embeds {{ %1$@ the number of characters in the message, %2$@ the maximum number of characters in the message }}. */
+"PAYMENTS_NEW_PAYMENT_MESSAGE_COUNT_FORMAT" = "%1$@ / %2$@";
+
+/* Placeholder for the new payment or payment request message. */
+"PAYMENTS_NEW_PAYMENT_MESSAGE_PLACEHOLDER" = "ئىزاھ";
+
+/* Label for the 'new payment' button. */
+"PAYMENTS_NEW_PAYMENT_PAY_BUTTON" = "تۆلە";
+
+/* Label for the 'total payment amount' indicator. */
+"PAYMENTS_NEW_PAYMENT_PAYMENT_TOTAL" = "جەمئىي سومما";
+
+/* Indicator that a new payment is being processed in the 'send payment' UI. */
+"PAYMENTS_NEW_PAYMENT_PROCESSING" = "بېجىرىۋاتىدۇ";
+
+/* Format for the 'payment recipient amount' indicator. Embeds {{ the name of the recipient of the payment }}. */
+"PAYMENTS_NEW_PAYMENT_RECIPIENT_AMOUNT_FORMAT" = "يوللانغۇچى %@ ";
+
+/* Label for the 'new payment request' button. */
+"PAYMENTS_NEW_PAYMENT_REQUEST_BUTTON" = "ئىلتىماس";
+
+/* Label for the payments notification banner for a single payment notification. */
+"PAYMENTS_NOTIFICATION_BANNER_1" = "1 يېڭى چىقىم ئۇقتۇرۇشى";
+
+/* Format for the payments notification banner for a single payment notification with details. Embeds: {{ %1$@ the name of the user who sent you the payment, %2$@ the amount of the payment }}. */
+"PAYMENTS_NOTIFICATION_BANNER_1_WITH_DETAILS_FORMAT" = "%1$@ سىزگە %2$@ ئەۋەتتى";
+
+/* Format for the payments notification banner for multiple payment notifications. Embeds: {{ the number of unread payment notifications }}. */
+"PAYMENTS_NOTIFICATION_BANNER_N_FORMAT" = "%@ يېڭى چىقىم ئۇقتۇرۇشى";
+
+/* Status indicator for incoming payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_LONG_INCOMING_COMPLETE" = "چىقىم تامام";
+
+/* Status indicator for incoming payments which have not yet been verified. */
+"PAYMENTS_PAYMENT_STATUS_LONG_INCOMING_UNVERIFIED" = "دەلىللەنمىدى";
+
+/* Status indicator for incoming payments which have been verified. */
+"PAYMENTS_PAYMENT_STATUS_LONG_INCOMING_VERIFIED" = "دەلىللەندى";
+
+/* Status indicator for outgoing payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_COMPLETE" = "چىقىم تامام";
+
+/* Status indicator for outgoing payments which are being sent. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_SENDING" = "ئەۋەتىلىۋاتىدۇ…";
+
+/* Status indicator for outgoing payments which have been sent. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_SENT" = "يوللانغان";
+
+/* Status indicator for outgoing payments which have not yet been submitted. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_UNSUBMITTED" = "تەييارلىنىۋاتىدۇ";
+
+/* Status indicator for outgoing payments which have been submitted but not yet verified. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_UNVERIFIED" = "دەلىللەنمىدى";
+
+/* Status indicator for outgoing payments which have been verified but not yet sent. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_VERIFIED" = "دەلىللەندى";
+
+/* Status indicator for payments which had an unknown failure. */
+"PAYMENTS_PAYMENT_STATUS_LONG_UNKNOWN" = "نامەلۇم مەغلۇبىيەت";
+
+/* Status indicator for incoming payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_INCOMING_COMPLETE" = "تامام";
+
+/* Status indicator for incoming payments which have not yet been verified. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_INCOMING_UNVERIFIED" = "دەلىللەنمىدى";
+
+/* Status indicator for incoming payments which have been verified. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_INCOMING_VERIFIED" = "دەلىللەندى";
+
+/* Status indicator for outgoing payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_COMPLETE" = "تامام";
+
+/* Status indicator for outgoing payments which are being sent. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_SENDING" = "ئەۋەتىلىۋاتىدۇ…";
+
+/* Status indicator for outgoing payments which have been sent. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_SENT" = "يوللانغان";
+
+/* Status indicator for outgoing payments which have not yet been submitted. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_UNSUBMITTED" = "تەييارلىنىۋاتىدۇ";
+
+/* Status indicator for outgoing payments which have been submitted but not yet verified. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_UNVERIFIED" = "دەلىللەنمىدى";
+
+/* Status indicator for outgoing payments which have been verified but not yet sent. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_VERIFIED" = "دەلىللەندى";
+
+/* Status indicator for payments which had an unknown failure. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_UNKNOWN" = "نامەلۇم مەغلۇبىيەت";
+
+/* Message for error alert indicating that a given user cannot receive payments because of a pending message request for a recipient that they have sent messages to. */
+"PAYMENTS_RECIPIENT_MISSING_PROFILE_KEY_MESSAGE_W_MESSAGES" = "بۇ ئىشلەتكۈچىگە چىقىم قىلىش ئۈچۈن، ئۇلار سىز ئەۋەتكەن ئۇچۇر ئىلتىماسىغا قوشۇلۇشى كېرەك.";
+
+/* Message for error alert indicating that a given user cannot receive payments because of a pending message request for a recipient that they have not sent message to. */
+"PAYMENTS_RECIPIENT_MISSING_PROFILE_KEY_MESSAGE_WO_MESSAGES" = "بۇ ئىشلەتكۈچىگە بىر چىقىم يوللاش ئۈچۈن، ئۇلار سىزدىن كەلگەن بىر ئۇچۇر ئىلتىماسىنى قوبۇل قىلىشى كېرەك. بىر ئۇچۇر ئىلتىماسىنى قۇرۇشى ئۈچۈن ئۇلارغا بىر ئۇچۇر ئەۋەتىڭ. ";
+
+/* Title for error alert indicating that a given user cannot receive payments because of a pending message request. */
+"PAYMENTS_RECIPIENT_MISSING_PROFILE_KEY_TITLE" = "چىقىم يوللىنالمىدى";
+
+/* Message for error alert indicating that a given user cannot receive payments because they have not enabled payments. */
+"PAYMENTS_RECIPIENT_PAYMENTS_NOT_ENABLED_MESSAGE" = "بۇ كىشى چىقىمنى ئاكتىپلىمىغان.";
+
+/* Title for error alert indicating that a given user cannot receive payments because they have not enabled payments. */
+"PAYMENTS_RECIPIENT_PAYMENTS_NOT_ENABLED_TITLE" = "ئىناۋەتسىز تاپشۇرۇۋالغۇچى";
+
+/* Label for 'transfer out' payments. */
+"PAYMENTS_TRANSFER_OUT_PAYMENT" = "يۆتكەپ چىقار";
+
+/* Indicator for unidentified incoming payments. */
+"PAYMENTS_UNIDENTIFIED_PAYMENT_INCOMING" = "تاپشۇرۇۋالغان چىقىم";
+
+/* Indicator for unidentified outgoing payments. */
+"PAYMENTS_UNIDENTIFIED_PAYMENT_OUTGOING" = "يوللانغان چىقىم";
+
+/* Label for unknown payments. */
+"PAYMENTS_UNKNOWN_PAYMENT" = "ئىناۋەتسىز چىقىم";
+
 /* Title of 'accept member request to join group' button. */
 "PENDING_GROUP_MEMBERS_ACCEPT_REQUEST_BUTTON" = "توپقا قوش";
 
@@ -3392,13 +3626,10 @@
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "ئىناۋەتسىز تەكلىپلەر";
 
 /* Title for the 'invites by other group members' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "باشقا گۇرۇپپا ئەزالىرىنىڭ تەكلىپلىرى";
-
-/* Title for the 'pending member requests' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_PENDING_MEMBER_REQUESTS" = "كۈتۈۋاتقان ئەزا تەلەپلىرى";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "باشقىلار تەكلىپ قىلغان";
 
 /* Title for the 'people you invited' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "سىز تەكلىپ قىلغان كىشىلەر";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "سىز تەكلىپ قىلغان";
 
 /* Label for view-once messages that have invalid content. */
 "PER_MESSAGE_EXPIRATION_INVALID_CONTENT" = "تاپشۇرۇۋالغان ئۇچۇرنى بىر تەرەپ قىلىۋاتقاندا خاتالىق كۆرۈلدى";
@@ -3746,7 +3977,7 @@
 "PROFILE_SETTINGS_NAME_PLACEHOLDER" = "ئىسمىڭىز";
 
 /* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
-"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "قوللانغۇچى";
+"PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "ئىشلەتكۈچى";
 
 /* Action Sheet title prompting the user for a profile avatar */
 "PROFILE_VIEW_AVATAR_ACTIONSHEET_TITLE" = "باش سۈرەتنى بەلگىلەڭ";
@@ -4294,6 +4525,9 @@
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "بىخەتەر سۆزلىشىش ئەسلىگە قايتۇرۇلدى.";
 
+/* Label for the 'see all' button. */
+"SEE_ALL_BUTTON" = "ھەممىنى كۆرسەت";
+
 /* Table section header for conversations you haven't recently used. */
 "SELECT_THREAD_TABLE_OTHER_CHATS_TITLE" = "باشقا ئالاقىداشلار";
 
@@ -4462,6 +4696,18 @@
 /* No comment provided by engineer. */
 "SETTINGS_DELETE_ACCOUNT_BUTTON" = "ھېساباتنى ئۆچۈر";
 
+/* Button for to _not_ transfer the user's payments balance before deleting their account. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_DONT_TRANSFER" = "يۆتكىمە";
+
+/* Body for the alert confirming whether the user wants transfer their payments balance before deleting their account. Embeds: {{ the current payment balance }}. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_MESSAGE_FORMAT" = "قالدۇقىڭىز %@. ئەگەر ھېساباتىڭىزنى ئۆچۈرۈشتىن ئىلگىرى پۇلىڭىزنى باشقا ھەميان ئادرېسىغا يۆتكىمىسىڭىز. ئۇنى مەڭگۈ يوقىتىسىز.";
+
+/* Title for the alert confirming whether the user wants transfer their payments balance before deleting their account. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_TITLE" = "چىقىم قالدۇقىنى يۆتكەمسىز؟";
+
+/* Button for transferring the user's payments balance before deleting their account. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_TRANSFER" = "قالدۇق يۆتكە";
+
 /* Label for 'delete data' button. */
 "SETTINGS_DELETE_DATA_BUTTON" = "ھەممە سانلىق مەلۇماتنى ئۆچۈر";
 
@@ -4474,7 +4720,7 @@
 /* Title for the 'donate to signal' link in settings. */
 "SETTINGS_DONATE" = "‫Signal غا ئىئانە قىلىڭ";
 
-/* Title for support page in app settings. */
+/* Title for help button and help pages in app settings. */
 "SETTINGS_HELP" = "ياردەم";
 
 /* Settings table view cell label */
@@ -4548,6 +4794,396 @@
 
 /* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "ئۇقتۇرۇشلار";
+
+/* Label for the 'agree to payments terms' button in the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_AGREE" = "ئاكتىپلا";
+
+/* Description for the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_DESCRIPTION" = "‫Signal نى ئىشلىتىپ MobileCoin ئەۋەتەلەيسىز ۋە تاپشۇرىۋالالايسىز. بارلىق چىقىملار MobileCoins ۋە MobileCoin ھەميانىنىڭ ئىشلىتىش شەرتلىرىگە بويسۇنىدۇ. بۇ سىناق ئىقتىدارى، شۇڭا بەزى مەسىلىلەرگە دۇچ كېلىشىڭىز ھەمدە چىقىم ياكى قالدۇقلىرىڭىزنى يوقىتىپ قويسىڭىز ئەسلىگە كەلتۈرەلمەسلىكىڭىز مۈمكىن.";
+
+/* Title for the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_TITLE" = "ئاكتىپلا";
+
+/* Label for the 'view payments terms' button in the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_VIEW_TERMS" = "MobileCoin ماددىلىرىنى كۆرسەت";
+
+/* Label for 'add money' view in the payment settings. */
+"SETTINGS_PAYMENTS_ADD_MONEY" = "مەبلەغ قوش";
+
+/* Explanation of the process for adding money in the 'add money' settings view. */
+"SETTINGS_PAYMENTS_ADD_MONEY_DESCRIPTION" = "مەبلەغ قوشۇش ئۈچۈن MobileCoin نى ھەميان ئادرېسىڭىزغا ئەۋەتىڭ. مۇئامىلىنى MobileCoin نى قوللايدىغان بىر ئالماستۇرغۇچىدىكى ھېساباتىڭىزدىن باشلاڭ، ئاندىن QR كودىنى سايىلەڭ ياكى ھەميان ئادرېسىڭىزنى كۆچۈرۈڭ.";
+
+/* Indicator that the payments wallet address has been copied to the pasteboard. */
+"SETTINGS_PAYMENTS_ADD_MONEY_WALLET_ADDRESS_COPIED" = "ھەميان ئادرېسى كۆچۈرۈلدى";
+
+/* Label for the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_ALL_RECORDS" = "بارلىق چىقىملار";
+
+/* Format string for the 'local balance converted into local currency' indicator. Embeds: {{ %1$@ the local balance in the local currency, %2$@ the local currency code, %3$@ the date the currency conversion rate was obtained. }}.. */
+"SETTINGS_PAYMENTS_BALANCE_CONVERSION_FORMAT" = "%1$@ %2$@ چېسلا %3$@";
+
+/* Error message indicating that payments could not be activated because the feature is not currently available. */
+"SETTINGS_PAYMENTS_CANNOT_ACTIVATE_PAYMENTS_KILL_SWITCH" = "‫Signal دا چىقىم ئەمدى ئىشلىمەيدۇ. سىز مەبلەغلىرىڭىزنى ئالماستۇرۇش ئورنىغا داۋاملىق يۆتكىيەلەيسىز. ئەمما ئەمدى چىقىمنى يوللاپ ۋە تاپشۇرىۋالالمايسىز ياكى مەبلەغ قوشالمايسىز.";
+
+/* Error message indicating that payments could not be deactivated because the current balance is unavailable. */
+"SETTINGS_PAYMENTS_CANNOT_DEACTIVATE_PAYMENTS_NO_BALANCE" = "چىقىم قىلىشنى چەكلىيەلمەيسىز چۈنكى قالدۇقىڭىزنى ئىشلەتكىلى بولمايدۇ. تور باغلىنىشىڭىزنى تەكشۈرۈپ ئاندىن قايتا سىناڭ.";
+
+/* Error message indicating that a payment could not be sent because the current balance is unavailable. */
+"SETTINGS_PAYMENTS_CANNOT_SEND_PAYMENT_NO_BALANCE" = "چىقىم قىلىشنى تاماملىيالمىدى چۈنكى قالدۇقىڭىزنى ئىشلەتكىلى بولمايدۇ. تور باغلىنىشىڭىزنى تەكشۈرۈپ ئاندىن قايتا سىناڭ.";
+
+/* Error message indicating that payments cannot be sent because the feature is not currently available. */
+"SETTINGS_PAYMENTS_CANNOT_SEND_PAYMENTS_KILL_SWITCH" = "‫Signal دا چىقىم ئەمدى ئىشلىمەيدۇ. سىز مەبلەغلىرىڭىزنى ئالماستۇرۇش ئورنىغا داۋاملىق يۆتكىيەلەيسىز. ئەمما ئەمدىى چىقىمنى يوللاپ ۋە تاپشۇرىۋالالمايسىز ياكى مەبلەغ قوشالمايسىز.";
+
+/* Error message indicating that you cannot transfer into your payments wallet because the feature is not currently available. */
+"SETTINGS_PAYMENTS_CANNOT_TRANSFER_IN_KILL_SWITCH" = "‫Signal دا چىقىم ئەمدى ئىشلىمەيدۇ. سىز مەبلەغلىرىڭىزنى ئالماستۇرۇش ئورنىغا داۋاملىق يۆتكىيەلەيسىز. ئەمما ئەمدىى چىقىمنى يوللاپ ۋە تاپشۇرىۋالالمايسىز ياكى مەبلەغ قوشالمايسىز.";
+
+/* Message for the 'currency conversions info' alert. */
+"SETTINGS_PAYMENTS_CURRENCY_CONVERSIONS_INFO_ALERT_MESSAGE" = "تېگىشىشلەر پەقەت مۆلچەر بولۇپ ، توغرا بولماسلىقى مۇمكىن.";
+
+/* Label for 'all currencies' section in the payment currency settings. */
+"SETTINGS_PAYMENTS_CURRENCY_VIEW_SECTION_ALL_CURRENCIES" = "بالىق پۇللار";
+
+/* Label for 'transfer balance' button in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_AFTER_TRANSFERRING_BALANCE" = "قالغان قالدۇقنى يۆتكە";
+
+/* Label for the 'deactivate payments' button in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_BUTTON" = "چەكلە";
+
+/* Label for 'deactivate payments' button in the app settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_PAYMENTS" = "چىقىمنى ئاكتىپسىزلە";
+
+/* Description for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_PAYMENTS_CONFIRM_DESCRIPTION" = "ئەگەر چىقىم قىلىشنى چەكلىسىڭىز Signal دا MobileCoin ئەۋەتىپ ياكى قوبۇللىيالمايسىز.";
+
+/* Title for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_PAYMENTS_CONFIRM_TITLE" = "چىقىملارنى چەكلەمدۇ؟";
+
+/* Label for the 'de-activate payments' view of the app settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_TITLE" = "چىقىمنى ئاكتىپسىزلە";
+
+/* Explanation of the 'deactivate payments with balance' process in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITH_BALANCE_EXPLANATION" = "چىقىم قىلىشنى چەكلەشتىن ئىلگىرى پۇلىڭىزنى باشقا ھەميان ئادرېسىغا يۆتكەش تەۋسىيە قىلىنىدۇ. ئەگەر ھازىر پۇلىڭىزنى يۆتكىمەسلىكنى تاللىسىڭىز ، ئەگەر چىقىمنى قايتا ئاكتىپلىسىڭىز ئۇلار Signal غا باغلانغان ھەميانىڭىزدا قالىدۇ.";
+
+/* Description for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFER_CONFIRM_DESCRIPTION" = "ئەگەر چىقىمنى قايتا ئاكتىپلاشنى تاللىسىڭىز ، قالدۇقىڭىز Signal غا باغلانغان ھەمياندا قالىدۇ.";
+
+/* Title for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFER_CONFIRM_TITLE" = "يۆتكىمەي تۇرۇپ ئاكتىپسىزلىسىنمۇ؟";
+
+/* Label for 'deactivate payments without transferring balance' button in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFERRING_BALANCE" = "يۆتكىمەي تۇرۇپ ئاكتىپسىزلا";
+
+/* Error indicating that payments could not be deactivated in the payments settings. */
+"SETTINGS_PAYMENTS_DEACTIVATION_FAILED" = "چىقىم قىلىشنى قايتا ئاكتىپلىيالمىدى";
+
+/* Label for the 'payments details' view of the app settings. */
+"SETTINGS_PAYMENTS_DETAIL_VIEW_TITLE" = "تەپسىلاتى";
+
+/* Label for the 'enable payments' button in the 'payments not enabled' alert. */
+"SETTINGS_PAYMENTS_ENABLE_ACTION" = "چىقىم قىلىشنى قوزغات";
+
+/* Description for the 'About MobileCoin' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ABOUT_MOBILECOIN_DESCRIPTION" = "‫MobileCoin شەخسىيەت گەۋدىلەندۈرۈلگەن يېڭى رەقەملىك پۇل.";
+
+/* Title for the 'About MobileCoin' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ABOUT_MOBILECOIN_TITLE" = "كۆچمە تەڭگە";
+
+/* Description for the 'Adding to your wallet' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ADDING_TO_YOUR_WALLET_DESCRIPTION" = "ھەميان ئادرېسىڭىزغا MobileCoin ئەۋەتىش ئارقىلىق Signal دا ئىشلىتىشكە مەبلەغ قوشالايسىز.";
+
+/* Title for the 'Adding to your wallet' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ADDING_TO_YOUR_WALLET_TITLE" = " قوشۇلغان مەبلەغ";
+
+/* Description for the 'Cashing Out' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_CASHING_OUT_DESCRIPTION" = "MobileCoin نى قوللايدىغان ئالماشتۇرغۇچىدا خالىغان ۋاقىتتا MobileCoin نى نەقلەشتۈرەلەيسىز. پەقەت بۇ ئالماشتۇرغۇچىدىكى ھېساباتىڭىزغا يۆتكىسىڭىزلا بولىدۇ.";
+
+/* Title for the 'Cashing Out' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_CASHING_OUT_TITLE" = "نەق پۇلغا ئايلاندۇر";
+
+/* Label for button in the 'Update PIN' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_UPDATE_PIN_BUTTON" = "PIN يېڭىلا";
+
+/* Description for the 'Update PIN' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_UPDATE_PIN_DESCRIPTION" = "قالدۇقىڭىز يۇقىرى بولسا، بەلكىم سان-ھەرپلىك بىر PIN غا يېڭىلاپ، ھېساباتىڭىزنى تېخىمۇ بەكرەك قوغدىغىڭىز كېلىشى مۈمكىن.";
+
+/* Title for the 'Update PIN' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_UPDATE_PIN_TITLE" = "‫PIN نىڭىزنى يېڭىلاڭ";
+
+/* Label for button in the 'View Passphrase' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_VIEW_PASSPHRASE_BUTTON" = "ئەسلىگە كەلتۈرۈش ئىبارىسىنى خاتىرىلە";
+
+/* Description for the 'View Passphrase' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_VIEW_PASSPHRASE_DESCRIPTION" = "ئەسلىگە كەلتۈرۈش ئىبارىڭىز چىقىم ھېسابىڭىزنى ئەسلىگە كەلتۈرىدىغان يەنە بىر ئۇسۇل بىلەن تەمىنلەيدۇ.";
+
+/* Title for the 'View Passphrase' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_VIEW_PASSPHRASE_TITLE" = "ئەسلىگە كەلتۈرۈش ئىبارىسىنى خاتىرىلە";
+
+/* Indicator that the payments wallet address is invalid. */
+"SETTINGS_PAYMENTS_INVALID_WALLET_ADDRESS" = "ئىناۋەتسىز ھەميان ئادرېسى";
+
+/* Message indicating that there is no payment activity to display in the payment settings. */
+"SETTINGS_PAYMENTS_NO_ACTIVITY_INDICATOR" = "يېقىنقى پائالىيەت يوق.";
+
+/* Message for the 'payments not enabled' alert. */
+"SETTINGS_PAYMENTS_NOT_ENABLED_ALERT_MESSAGE" = "چىقىم قىلىشنى قوزغىتامسىز؟";
+
+/* Title for the 'payments not enabled' alert. */
+"SETTINGS_PAYMENTS_NOT_ENABLED_ALERT_TITLE" = "چىقىم قىلىش قوزغىتىلمىدى";
+
+/* Label for 'activate' button in the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_ACTIVATE_BUTTON" = "چىقىملارنى ئاكتىپلا";
+
+/* Message shown when payments rae activated in the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_ACTIVATED_TOAST" = "چىقىم قىلىش ئاكتىپلاندى.";
+
+/* Message for the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_MESSAGE" = "سىز Signal دا MobileCoin يوللاپ ۋە قوبۇللىيالايسىز،  ئۇ شەخسىيەت گەۋدىلەندۈرۈلگەن يېڭى رەقەملىك پۇل. باشلاش ئۈچۈن ئاكتىپلاڭ.";
+
+/* Label for 'activate' button in the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_REACTIVATE_BUTTON" = "چىقىم قىلىشنى قايتا ئاكتىپلا";
+
+/* Title for the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_TITLE" = "چىقىمنى تونۇشتۇرۇش (سىناق)";
+
+/* Explanation of the 'payments passphrase' in the 'view payments passphrase' settings. */
+"SETTINGS_PAYMENTS_PASSPHRASE_EXPLANATION" = "ئەگەرSignal نى قايتا قاچىلاپ Signal PIN نى جەزىملىسىڭىز قالدۇقىڭىز ئۆزلۈكىدىن ئەسلىگە كېلىدۇ. ئەسلىگە كەلتۈرۈش ئىبارىسى ئارقىلىقمۇ قالدۇقىڭىزنى ئەسلىگە كەلتۈرەلەيسىز ، بۇ 24-سۆزلۈك ئىبارە سىزگىلا خاس. ئۇنى يېزىۋېلىپ بىخەتەر جايدا ساقلاڭ.";
+
+/* Label for the 'add money' button in the 'send payment' UI. */
+"SETTINGS_PAYMENTS_PAYMENT_ADD_MONEY" = "مەبلەغ قوش";
+
+/* Label for the 'MobileCoin block index' in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_BLOCK_INDEX" = "نومۇرنى چەكلە";
+
+/* Label for the 'MobileCoin network fee' in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_FEE" = "تور ھەققى";
+
+/* Indicates that you received a payment in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_RECEIVED" = "تاپشۇرۇۋالغان";
+
+/* Format for indicator that you received a payment in the payment details view in the app settings. Embeds: {{ the user who sent you the payment }}. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_RECEIVED_FORMAT" = "%@ دىن تاپشۇرۇۋالدى";
+
+/* Label for the sender in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENDER" = "يوللىغۇچى";
+
+/* Format for the sender info in the payment details view in the app settings. Embeds {{ %1$@ the name of the sender of the payment, %2$@ the date the transaction was sent }}. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENDER_FORMAT" = "%1$@ / %2$@";
+
+/* Indicates that you send the payment in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENDER_YOU" = "سىز";
+
+/* Indicates that you sent a payment in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENT" = "يوللانغان";
+
+/* Format for indicator that you sent a payment in the payment details view in the app settings. Embeds: {{ the user who you sent the payment to }}. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENT_FORMAT" = "%@ غا يوللاندى";
+
+/* Label for the transaction status in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_STATUS" = "ھالىتى";
+
+/* Footer string for the status section of the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_STATUS_FOOTER" = "چىقىم سوممىسى ۋە مۇئامىلە ۋاقتىنى ئۆز ئىچىگە ئالغان مۇئامىلە تەپسىلاتلىرى MobileCoin  ھېسابات دەپتىرىنىڭ بىر قىسمى.";
+
+/* Footer string for the status section of the payment details view in the app settings for defragmentation transactions. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_STATUS_FOOTER_DEFRAGMENTATION" = "قولىڭىزدىكى تەڭگىلەرنى بىرلەشتۈرۈپ مۇئامىلىنى تاماملىغىلى بولمىغاندا ، «تەڭگە تازىلاش ھەققى» ئېلىنىدۇ. تازىلاش ئارقىلىق داۋاملىق چىقىم يوللاشقا يول قويىدۇ.";
+
+/* Message for the 'insufficient balance for payment' alert. Embeds: {{ The current payments balance }}. */
+"SETTINGS_PAYMENTS_PAYMENT_INSUFFICIENT_BALANCE_ALERT_MESSAGE_FORMAT" = "بۇ چىقىمنى تۆلىگىدەك MOB يوق. نۆۋەتتىكى قالدۇقىڭىز %@.";
+
+/* Title for the 'insufficient balance for payment' alert. */
+"SETTINGS_PAYMENTS_PAYMENT_INSUFFICIENT_BALANCE_ALERT_TITLE" = "قالدۇق يەتمىدى";
+
+/* Format string for the sender of an incoming payment. Embeds: {{ the name of the sender of the payment}}. */
+"SETTINGS_PAYMENTS_PAYMENT_USER_INCOMING_FORMAT" = "يوللىغۇچى %@";
+
+/* Format string for the recipient of an outgoing payment. Embeds: {{ the name of the recipient of the payment}}. */
+"SETTINGS_PAYMENTS_PAYMENT_USER_OUTGOING_FORMAT" = "يوللانغۇچى %@ ";
+
+/* Message indicating that payments have been disabled in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_DISABLED_TOAST" = "چىقىم چەكلەندى.";
+
+/* Label for the 'all payments' mode of the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_TYPE_ALL" = "ھەممىسى";
+
+/* Label for the 'incoming payments' mode of the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_TYPE_INCOMING" = "تاپشۇرۇۋالغان";
+
+/* Label for the 'outgoing payments' mode of the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_TYPE_OUTGOING" = "يوللانغان";
+
+/* Label for the 'recent payments' section in the payment settings. */
+"SETTINGS_PAYMENTS_RECENT_PAYMENTS" = "يېقىنقى چىقىملار";
+
+/* Description for the 'record payments passphrase to disable pin' UI in the app settings. */
+"SETTINGS_PAYMENTS_RECORD_PASSPHRASE_DISABLE_PIN_DESCRIPTION" = "سىز PIN نى چەكلەشتىن ئىلگىرى، چىقىم قىلىش ھېساباتىڭىزنى ئەسلىگە كەلتۈرۈشكە كاپالەتلىك قىلىش ئۈچۈن چىقىمنى ئەسلىگە كەلتۈرۈش ئىبارىسىنى خاتىرىلىشىڭىز زۆرۈر.";
+
+/* Label for the 'record recovery passphrase' button in the 'record payments passphrase to disable pin' UI in the app settings. */
+"SETTINGS_PAYMENTS_RECORD_PASSPHRASE_DISABLE_PIN_RECORD_PASSPHRASE" = "ئەسلىگە كەلتۈرۈش ئىبارىسىنى خاتىرىلە";
+
+/* Title for the 'record payments passphrase to disable pin' UI in the app settings. */
+"SETTINGS_PAYMENTS_RECORD_PASSPHRASE_DISABLE_PIN_TITLE" = "چىقىمنى ئەسلىگە كەلتۈرۈش ئىبارىسىنى خاتىرىلەيدۇ";
+
+/* Label for the current balance in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_REMAINING_BALANCE" = "قالغان قالدۇق";
+
+/* Label for the 'remove payments details' button in the app settings. */
+"SETTINGS_PAYMENTS_REMOVE_BUTTON" = "چىقىرىۋەت";
+
+/* Label for 'restore payments' button in the payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_PAYMENTS_BUTTON" = "چىقىم ھېساباتىنى ئەسلىگە قايتۇر";
+
+/* Explanation of the 'review payments passphrase' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_COMPLETE_EXPLANATION" = "ئىبارىنى توغرا كىرگۈزگىنىڭىزنى جەزملەڭ.";
+
+/* Title for the 'review payments passphrase' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_COMPLETE_TITLE" = "ئەسلىگە كەلتۈرۈش ئىبارىسىنى جەزملە";
+
+/* Message indicating that 'restore payments wallet' is complete. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_COMPLETE_TOAST" = "چىقىم ھېسابى ئەسلىگە كەلتۈرۈلدى.";
+
+/* Label for the 'enter passphrase manually' button in the 'restore payments wallet from passphrase' view. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_ENTER_MANUALLY" = "قولدا كىرگۈزۈش";
+
+/* Error indicating that 'restore payments wallet failed' in the app payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_FAILED" = "ئەسلىگە كەلتۈرەلمىدى";
+
+/* Message for the 'invalid payments wallet passphrase' error alert in the app payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_INVALID_PASSPHRASE_MESSAGE" = "بۇ ئىناۋەتلىك ئەسلىگە كۈلتۈرۈش ئىبارىسى ئەمەس.";
+
+/* Title for the 'invalid payments wallet passphrase' error alert in the app payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_INVALID_PASSPHRASE_TITLE" = "ئىناۋەتسىز ئىبارە";
+
+/* Label for the 'restore passphrase from pasteboard' button in the 'restore payments wallet from passphrase' view. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_PASTE_FROM_PASTEBOARD" = "چاپلاش تاختىسىدىن چاپلا";
+
+/* Format for the placeholder text in the 'restore payments wallet from pasteboard' view of the app settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_PASTE_PLACEHOLDER" = "ئەسلىگە كەلتۈرۈش ئىبارىسى";
+
+/* Title for the 'restore payments wallet from pasteboard' view of the app settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_PASTE_TITLE" = "ئەسلىگە كەلتۈرۈش ئىبارىسىنى چاپلا";
+
+/* Explanation of the 'restore payments wallet' process payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_SPLASH_EXPLANATION" = "ئەسلىگە كەلتۈرۈش ئىبارىڭىز سىزگىلا خاس 12 سۆزلۈك ئىبارە. چىقىم قىلىش ھېساباتىڭىزنى ئەسلىگە كەلتۈرۈش ئۈچۈن ئىشلىتىلىدۇ.";
+
+/* Title for the first step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_SPLASH_TITLE" = "ئەسلىگە كەلتۈرۈش ئىبارىسىنى كىرگۈزۈڭ";
+
+/* Title for the 'restore payments wallet' view of the app settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_TITLE" = "ئەسلىگە كەلتۈرۈش ئىبارىسى";
+
+/* Format for the instructions for the 'enter word' step of the 'restore payments wallet' views. Embeds {{ the index of the current word }}. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_INSTRUCTIONS_FORMAT" = "%@-سۆزنى كىرگۈزۈڭ";
+
+/* Error indicating that the user has entered an invalid payments passphrase in the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_INVALID_PASSPHRASE" = "ئىناۋەتسىز ئەسلىگە كەلتۈرۈش ئىبارىسى.";
+
+/* Error indicating that the user has entered an invalid word in the 'enter word' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_INVALID_WORD" = "سۆز توغرا تەلەپپۇز قىلىنمىغان.";
+
+/* Title for the 'enter word' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_TITLE" = "ئەسلىگە كەلتۈرۈش ئىبارىسىنى كىرگۈزۈڭ";
+
+/* Instructions in the 'scan payment address QR code' view in the payment settings. */
+"SETTINGS_PAYMENTS_SCAN_QR_INSTRUCTIONS" = "تاپشۇرۇۋالغۇچىغا يۆتكەش ئۈچۈن QR كودىنى سايىلەڭ.";
+
+/* Error indicating that a QR code does not contain a valid MobileCoin public address. */
+"SETTINGS_PAYMENTS_SCAN_QR_INVALID_PUBLIC_ADDRESS" = "ئىناۋەتسىز ئادرېس";
+
+/* Error indicating that a QR code does not contain a valid MobileCoin public address URL. */
+"SETTINGS_PAYMENTS_SCAN_QR_INVALID_PUBLIC_ADDRESS_URL" = "ئىناۋەتسىز URL";
+
+/* Label for 'scan payment address QR code' view in the payment settings. */
+"SETTINGS_PAYMENTS_SCAN_QR_TITLE" = "QR كودى تارا";
+
+/* Label for 'send payment' button in the payment settings. */
+"SETTINGS_PAYMENTS_SEND_PAYMENT" = "چىقىم يوللا";
+
+/* Label for the 'send payment to recipient' view in the payment settings. */
+"SETTINGS_PAYMENTS_SEND_TO_RECIPIENT_TITLE" = "تاپشۇرۇۋالغۇچىنى تاللاڭ";
+
+/* Title for the 'set currency' view in the app settings. */
+"SETTINGS_PAYMENTS_SET_CURRENCY" = "پۇل ئالماشتۇرۇش";
+
+/* Label for the 'payments' section of the app settings. */
+"SETTINGS_PAYMENTS_TITLE" = "چىقىملار";
+
+/* Error indicating that it is not valid to send yourself a payment. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_CANNOT_SEND_TO_SELF" = "ئۆزىڭىزنىڭ Signal ھەميان ئادرېسىغا يۆتكىيەلمەيسىز. ئالماشتۇرۇشنى قوللايدىغان ھېساباتىڭىزدىن ھەميان ئادرېسىنى كىرگۈزۈڭ.";
+
+/* Footer of the 'transfer currency out' view in the payment settings. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_FOOTER" = "ئالماشتۇرغۇچى تەمىنلىگەن ھەميان ئادرېسىغا يۆتكەشنى تاماملاش ئارقىلىق MobileCoin نى يۆتكىيەلەيسىز. ھەميان ئادرېسى سان ۋە ھەرپلەرنىڭ تىزمىسى بولۇپ، كۆپىنچە QR كودىنىڭ ئاستىدا بولىدۇ. ";
+
+/* Error indicating that MobileCoin public address is not valid. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_INVALID_PUBLIC_ADDRESS" = "سىز يۆتكىمەكچى بولغان ھەميان ئادرېسىنى تەكشۈرۈپ ئاندىن قايتا سىناڭ.";
+
+/* Title for error alert indicating that MobileCoin public address is not valid. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_INVALID_PUBLIC_ADDRESS_TITLE" = "خاتا ئادرېس";
+
+/* Placeholder text for the address text field in the 'transfer currency out' settings view. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_PLACEHOLDER" = "كىمگە: پورتمال ئادرېسىنى سايىلەڭ ياكى كىرگۈزۈڭ ";
+
+/* Label for 'transfer currency out' view in the payment settings. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_TITLE" = "ئالماشتۇرۇشقا يۆتكە";
+
+/* Label for the 'transfer to exchange' button in the payment settings. */
+"SETTINGS_PAYMENTS_TRANSFER_TO_EXCHANGE" = "ئالماشتۇرۇشقا يۆتكە";
+
+/* Message indicating that 'payments passphrase review' is complete. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COMPLETE_TOAST" = "ئەسلىگە كەلتۈرۈش ئىبارىسى تەڭشەلدى.";
+
+/* Label for 'confirm' button in the 'view payments passphrase' view of the app settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM" = "جەزملە";
+
+/* Format for the explanation of the 'confirm payments passphrase word' step in the 'view payments passphrase' settings, indicating that the user needs to enter two words from their payments passphrase. Embeds: {{ %1$@ the index of the first word, %2$@ the index of the second word }}. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_EXPLANATION_FORMAT" = "ئەسلىگە كەلتۈرۈش ئىبارىسىدىكى %1$@ ۋە %2$@ سۆزنى كىرگۈزۈڭ.";
+
+/* Error indicating that at least one word of the payments passphrase is not correct in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_INVALID_WORD" = "سۆز خاتا، قايتا سىناڭ.";
+
+/* Error indicating that all words of the payments passphrase are not correct in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_INVALID_WORDS" = "ئىككىلا سۆز خاتا. قايتا سىناڭ.";
+
+/* Format for the placeholder text in the 'confirm payments passphrase' view of the app settings. Embeds: {{ the index of the word }}. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_PLACEHOLDER_FORMAT" = "%@-سۆز";
+
+/* Title for the 'confirm words' step of the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_TITLE" = "ئەسلىگە كەلتۈرۈش ئىبارىسىنى جەزىملە";
+
+/* Indicator that the payments passphrase has been copied to the clipboard in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPIED_TO_CLIPBOARD" = "ئەسلىگە كەلتۈرۈش ئىبارىسى كۆچۈرۈلدى";
+
+/* Label for the 'copy to clipboard' button in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPY_TO_CLIPBOARD" = "چاپلاش تاختىسىغا كۆچۈر";
+
+/* Message for the 'copy recovery passphrase to clipboard confirm' alert in the payment settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPY_TO_CLIPBOARD_CONFIRM_MESSAGE" = "ئەگەر ئەسلىگە كەلتۈرۈش ئىبارىسىنى رەقەملىك ساقلىماقچى بولسىڭىز، ئىشەنچلىك بىر يەردە بىخەتەر ساقلىنىشىغا كاپالەتلىك قىلىڭ. ";
+
+/* Title for the 'copy recovery passphrase to clipboard confirm' alert in the payment settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPY_TO_CLIPBOARD_CONFIRM_TITLE" = "چاپلاش تاختىسىغا كۆچۈرەمدۇ؟";
+
+/* Label for 'see passphrase again' button in the 'view payments passphrase' view of the app settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_SEE_PASSPHRASE_AGAIN" = "ئىبارىنى قايتا كۆرۈڭ";
+
+/* Title for the first step of the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_START_TITLE" = "ئەسلىگە كەلتۈرۈش ئىبارىسىنى كۆرسەت";
+
+/* Title for the 'view payments passphrase' view of the app settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_TITLE" = "ئەسلىگە كەلتۈرۈش ئىبارىسى";
+
+/* Header text for the 'review payments passphrase words' step in the 'view payments passphrase' settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_WORDS_EXPLANATION" = "تۆۋەندىكى 24 سۆزنى تەرتىپى بويىچە يېزىۋېلىڭ. تىزىملىكىڭىزنى بىخەتەر جايدا ساقلاڭ.";
+
+/* Footer text for the 'review payments passphrase words' step in the 'view payments passphrase' settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_WORDS_FOOTER" = "ئېكران كۆرۈنۈشى ئالماڭ ياكى ئېلخەت بىلەن ئەۋەتمەڭ";
+
+/* Label for 'view payments recovery passphrase' button in the app settings. */
+"SETTINGS_PAYMENTS_VIEW_RECOVERY_PASSPHRASE" = "ئەسلىگە كەلتۈرۈش ئىبارىسى";
+
+/* Title for the 'payments settings' view in the app settings. */
+"SETTINGS_PAYMENTS_VIEW_TITLE" = "چىقىملار(سىناق)";
+
+/* Label for the payments wallet address. */
+"SETTINGS_PAYMENTS_WALLET_ADDRESS_LABEL" = "ھەميان ئادرېسىڭىز";
 
 /* Label for the 'phone number discoverability' setting. */
 "SETTINGS_PHONE_NUMBER_DISCOVERABILITY" = "مېنى تېلېفون نومۇرۇم بىلەن تاپ";
@@ -4753,6 +5389,9 @@
 /* body sent to contacts when inviting to Install Signal */
 "SMS_INVITE_BODY" = "مەن Signal نى قاچىلاشقا تەكلىپ قىلىندىم! ئۇلانمىسى بۇ يەردە:";
 
+/* table cell label in conversation settings */
+"SOUND_AND_NOTIFICATION_SETTINGS" = "ئاۋاز ۋە ئۇقتۇرۇشلار";
+
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "ھېچنىمە";
 
@@ -4823,7 +5462,7 @@
 "SUPPORT_CONTACT_US_HEADER" = "بىز بىلەن ئالاقىلىشىڭ";
 
 /* Placeholder string for support description */
-"SUPPORT_DESCRIPTION_PLACEHOLDER" = "Tell us what’s going on";
+"SUPPORT_DESCRIPTION_PLACEHOLDER" = "نېمە ئىش بولغانلىقىنى بىزگە ئېيتىڭ";
 
 /* Default prompt for user description in support email requests */
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "بۇ مەسىلە ھەققىدە بىرگە سۆزلەپ بېرىڭ:";
@@ -5036,7 +5675,7 @@
 "UNSUPPORTED_FEATURE_ERROR" = "ئۈسكۈنىڭىز بۇ ئىقتىدارنى قوللىمايدۇ.";
 
 /* Description for the unverified safety number change. Embeds {name of contact with identity change} */
-"UNVERIFIED_SAFETY_NUMBER_CHANGE_DESCRIPTION_FORMAT" = "Your Safety Number with %@ changed likely because they reinstalled Signal or changed devices. Tap Verify to confirm the new safety number. This is optional.";
+"UNVERIFIED_SAFETY_NUMBER_CHANGE_DESCRIPTION_FORMAT" = "سىزنىڭ %@ بىلەن بىخەتەرلىك نومۇرىڭىز ئۆزگەرگەندەك قىلىدۇ، بەلكىم ئۇلار Signal نى قايتا قاچىلىغان ياكى ئۈسكۈنىسىنى ئۆزگەرتكەن بولۇشى مۇمكىن. يېڭى بىخەتەرلىك نومۇرىنى جەزملەشتۈرۈش ئۈچۈن «دەلىللەش» نى چېكىڭ. بۇنى قىلىش ئىختىيارىڭىز.";
 
 /* Action to verify a safety number after it has changed */
 "UNVERIFIED_SAFETY_NUMBER_VERIFY_ACTION" = "دەلىللەش";

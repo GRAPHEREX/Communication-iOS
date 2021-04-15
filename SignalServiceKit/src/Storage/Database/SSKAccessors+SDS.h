@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -143,6 +143,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, nullable, readonly) NSString *contactPhoneNumber;
 @property (nonatomic, nullable, readonly) NSString *contactUUID;
+
+@end
+
+#pragma mark -
+
+@interface TSGroupMember (SDS)
+
+@property (nonatomic, nullable, readonly) NSString *phoneNumber;
+@property (nonatomic, nullable, readonly) NSString *uuidString;
 
 @end
 

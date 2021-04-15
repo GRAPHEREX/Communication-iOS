@@ -85,23 +85,26 @@
 /* The button on the 'add to group' confirmation to add the user to the group. */
 "ADD_TO_GROUP_ACTION_PROCEED_BUTTON" = "Добавить в группу";
 
-/* The title on the 'add to group' confirmation action sheet. Embeds {contact name} */
-"ADD_TO_GROUP_ACTION_SHEET_MESSAGE_FORMAT" = "Добавить %@ в эту группу?";
+/* The title on the 'add to group' confirmation action sheet. Embeds {contact name, group name} */
+"ADD_TO_GROUP_ACTION_SHEET_MESSAGE_FORMAT" = "Add “%1$@” to “%2$@”?";
 
-/* The title on the 'add to group' confirmation action sheet. Embeds {group name} */
-"ADD_TO_GROUP_ACTION_SHEET_TITLE_FORMAT" = "Добавить в %@";
+/* The title on the 'add to group' confirmation action sheet. */
+"ADD_TO_GROUP_ACTION_SHEET_TITLE" = "Добавить нового участника";
+
+/* Text indicating your contact is already a member of the group on the 'add to group' view. */
+"ADD_TO_GROUP_ALREADY_A_MEMBER" = "Уже является участником";
 
 /* A toast on the 'add to group' view indicating the user is already a member. Embeds {contact name} and {group name} */
 "ADD_TO_GROUP_ALREADY_MEMBER_TOAST_FORMAT" = "%@ — уже в группе %@";
 
 /* The title for the 'add to group' view's recents section */
-"ADD_TO_GROUP_RECENTS_TITLE" = "Недавние";
+"ADD_TO_GROUP_RECENTS_TITLE" = "Недавние чаты";
 
 /* A toast on the 'add to group' view indicating the user was added. Embeds {contact name} and {group name} */
 "ADD_TO_GROUP_SUCCESS_TOAST_FORMAT" = "%@ был(-а) добавлен(-а) в %@";
 
 /* Title of the 'add to group' view. */
-"ADD_TO_GROUP_TITLE" = "Добавить в другую группу";
+"ADD_TO_GROUP_TITLE" = "Add to a Group";
 
 /* Message shown in conversation view that offers to share your profile with a user. */
 "ADD_USER_TO_PROFILE_WHITELIST_OFFER" = "Вы хотите открыть свой профиль этому пользователю?";
@@ -265,6 +268,9 @@
 /* A string indicating to the user that once they take photos, they'll be able to send them from this view. */
 "ATTACHMENT_KEYBOARD_NO_PHOTOS" = "Когда вы сделаете фотографии, вы сможете отправлять отсюда недавние.";
 
+/* A button to select a payment from the Attachment Keyboard */
+"ATTACHMENT_KEYBOARD_PAYMENT" = "Перевод";
+
 /* Accessibility label for attaching photos */
 "ATTACHMENT_LABEL" = "Вложение";
 
@@ -391,8 +397,14 @@
 /* Label for 'continue' button. */
 "BUTTON_CONTINUE" = "Продолжить";
 
+/* Label for the 'copy' button. */
+"BUTTON_COPY" = "Копировать";
+
 /* Label for generic done button. */
 "BUTTON_DONE" = "Готово";
+
+/* Label for the 'edit' button. */
+"BUTTON_EDIT" = "Изменить";
 
 /* Label for the 'next' button. */
 "BUTTON_NEXT" = "Далее";
@@ -406,11 +418,20 @@
 /* Label for the 'okay' button. */
 "BUTTON_OKAY" = "Хорошо";
 
+/* Label for the 'previous' button. */
+"BUTTON_PREVIOUS" = "Previous";
+
 /* Button text to enable batch selection mode */
 "BUTTON_SELECT" = "Выбрать";
 
+/* Label for the 'start' button. */
+"BUTTON_START" = "Начать";
+
 /* Label for the 'submit' button. */
 "BUTTON_SUBMIT" = "Отправить";
+
+/* Label for the 'view' button. */
+"BUTTON_VIEW" = "Просмотреть";
 
 /* Label for the 'yes' button. */
 "BUTTON_YES" = "Да";
@@ -694,6 +715,12 @@
 /* A brief localized representation of the 'other' support filter. */
 "CONTACT_SUPPORT_FILTER_OTHER_SHORT" = "Другое";
 
+/* The localized representation of the 'payments' support filter. */
+"CONTACT_SUPPORT_FILTER_PAYMENTS" = "Переводы";
+
+/* A brief localized representation of the 'payments' support filter. */
+"CONTACT_SUPPORT_FILTER_PAYMENTS_SHORT" = "Переводы";
+
 /* Prompt telling the user to select a filter for their support request. */
 "CONTACT_SUPPORT_FILTER_PROMPT" = "Как мы можем помочь?";
 
@@ -793,6 +820,9 @@
 /* Footer for the 'attributes access' section in conversation settings view. */
 "CONVERSATION_SETTINGS_ATTRIBUTES_ACCESS_SECTION_FOOTER" = "Выберите, кто может редактировать имя, фото и время исчезновения сообщений группы.";
 
+/* Button to start a audio call */
+"CONVERSATION_SETTINGS_AUDIO_CALL_BUTTON" = "audio";
+
 /* Footer text for the 'block and leave' section of contact conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_AND_LEAVE_SECTION_CONTACT_FOOTER" = "Вы больше не будете получать сообщения и обновления от этого пользователя.";
 
@@ -812,28 +842,19 @@
 "CONVERSATION_SETTINGS_EDIT" = "Изменить";
 
 /* Label for 'edit attributes access' action in conversation settings view. */
-"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS" = "Кто может редактировать информацию группы";
+"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS" = "Редактировать информацию группы";
 
 /* Label for button that sets 'group attributes access' to 'administrators-only'. */
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "Только администраторы";
-
-/* Description for the 'edit group attributes access' alert. */
-"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_DESCRIPTION" = "Выберите, кто может изменять имя, фото и исчезающие сообщения группы:";
 
 /* Label for button that sets 'group attributes access' to 'members-only'. */
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_MEMBERS_BUTTON" = "Все участники";
 
 /* Label for 'edit membership access' action in conversation settings view. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "Кто может добавлять участников";
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "Добавить участников";
 
-/* Label for button that sets 'group membership access' to 'administrators-only'. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "Только администраторы";
-
-/* Description for the 'edit group membership access' alert. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_DESCRIPTION" = "Выберите, кто может добавлять участников в эту группу:";
-
-/* Label for button that sets 'group membership access' to 'members-only'. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_MEMBERS_BUTTON" = "Все участники";
+/* Description for the 'edit membership access'. */
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_FOOTER" = "Выберите, кто может редактировать членство в группе.";
 
 /* Label for 'group link' action in conversation settings view. */
 "CONVERSATION_SETTINGS_GROUP_LINK" = "Ссылка на группу";
@@ -845,7 +866,7 @@
 "CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_TITLE_FORMAT" = "%@ сможет редактировать эту группу и её участников.";
 
 /* Label for 'member invites' action in conversation settings view. */
-"CONVERSATION_SETTINGS_MEMBER_INVITES" = "Приглашения участников";
+"CONVERSATION_SETTINGS_MEMBER_INVITES" = "Приглашения";
 
 /* Label for 'member requests & invites' action in conversation settings view. */
 "CONVERSATION_SETTINGS_MEMBER_REQUESTS_AND_INVITES" = "Запросы на участие и приглашения";
@@ -874,6 +895,9 @@
 /* Label for button to mute a thread forever. */
 "CONVERSATION_SETTINGS_MUTE_ALWAYS_ACTION" = "Всегда";
 
+/* Button to mute the chat */
+"CONVERSATION_SETTINGS_MUTE_BUTTON" = "mute";
+
 /* Label for button to mute a thread for eight hours. */
 "CONVERSATION_SETTINGS_MUTE_EIGHT_HOUR_ACTION" = "8 часов";
 
@@ -898,11 +922,32 @@
 /* Indicates that this thread is muted forever. */
 "CONVERSATION_SETTINGS_MUTED_ALWAYS" = "Всегда";
 
+/* Indicates that this thread is muted forever. */
+"CONVERSATION_SETTINGS_MUTED_ALWAYS_UNMUTE" = "Always muted";
+
+/* Button to unmute the chat */
+"CONVERSATION_SETTINGS_MUTED_BUTTON" = "muted";
+
 /* Indicates that this thread is muted until a given date or time. Embeds {{The date or time which the thread is muted until}}. */
 "CONVERSATION_SETTINGS_MUTED_UNTIL_FORMAT" = "до %@";
 
+/* Indicates that this thread is muted until a given date or time. Embeds {{The date or time which the thread is muted until}}. */
+"CONVERSATION_SETTINGS_MUTED_UNTIL_UNMUTE_FORMAT" = "Muted until %@";
+
+/* Format for the section title of the 'mutual groups' section in conversation settings view. Embeds: {{ the number of shared groups }}. */
+"CONVERSATION_SETTINGS_MUTUAL_GROUPS_SECTION_TITLE_FORMAT" = "%@ Groups in Common";
+
 /* Label for 'new contact' button in conversation settings view. */
 "CONVERSATION_SETTINGS_NEW_CONTACT" = "Создать новый контакт";
+
+/* Section title of the 'mutual groups' section in conversation settings view when the contact shares no mutual groups. */
+"CONVERSATION_SETTINGS_NO_MUTUAL_GROUPS_SECTION_TITLE" = "No Groups in Common";
+
+/* Section title of the 'mutual groups' section in conversation settings view when the contact shares one mutual group. */
+"CONVERSATION_SETTINGS_ONE_MUTUAL_GROUPS_SECTION_TITLE" = "1 Group in Common";
+
+/* Label for 'permissions' action in conversation settings view. */
+"CONVERSATION_SETTINGS_PERMISSIONS" = "Разрешения";
 
 /* Label for 'remove from group' button in conversation settings view. */
 "CONVERSATION_SETTINGS_REMOVE_FROM_GROUP_BUTTON" = "Удалить из группы";
@@ -916,8 +961,8 @@
 /* Format for title for 'revoke group admin' confirmation alert. Embeds {user to revoke admin status from}. */
 "CONVERSATION_SETTINGS_REVOKE_GROUP_ADMIN_TITLE_FORMAT" = "Удалить %@ как администратора группы?";
 
-/* Table cell label in conversation settings which returns the user to the conversation with 'search mode' activated */
-"CONVERSATION_SETTINGS_SEARCH" = "Поиск в чате";
+/* Button to search the chat */
+"CONVERSATION_SETTINGS_SEARCH_BUTTON" = "search";
 
 /* Label for 'unblock group' action in conversation settings view. */
 "CONVERSATION_SETTINGS_UNBLOCK_GROUP" = "Разблокировать группу";
@@ -934,20 +979,14 @@
 /* The alert title if user tries to exit conversation settings view without saving changes. */
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Несохранённые изменения";
 
-/* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Просмотреть всех";
+/* Button to start a video call */
+"CONVERSATION_SETTINGS_VIDEO_CALL_BUTTON" = "video";
 
 /* Indicates that user is in the system contacts list. */
-"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Этот пользователь есть в ваших контактах";
+"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Contact Details";
 
 /* Button to confirm that user wants to share their profile with a user or group. */
 "CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE" = "Открыть профиль";
-
-/* Action that shares user profile with a group. */
-"CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE_WITH_GROUP" = "Открыть свой профиль";
-
-/* Action that shares user profile with a user. */
-"CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE_WITH_USER" = "Открыть свой профиль";
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Добавить в контакты";
@@ -1368,9 +1407,6 @@
 
 /* Error message indicating that attachment download(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_DOWNLOAD_FAILED" = "Не удалось скачать вложение.";
-
-/* Error message when unable to receive an attachment because the sending client is too old. */
-"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Ошибка вложения: Попросите этот контакт отправить их сообщение снова после обновления до последней версии Signal.";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_DUPLICATE_MESSAGE" = "Получен дубликат сообщения.";
@@ -1855,14 +1891,8 @@
 /* Label for the 'enable group link' switch in the 'group link' view. */
 "GROUP_LINK_VIEW_ENABLE_GROUP_LINK_SWITCH" = "Ссылка на группу";
 
-/* Title for the 'manage and share' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MANAGE_AND_SHARE_SECTION_TITLE" = "Управлять и поделиться";
-
 /* Footer for the 'member requests' section of the 'group link' view. */
 "GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "Требовать одобрения администратором новых участников, присоединяющихся по ссылке на группу.";
-
-/* Title for the 'member requests' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "Запросы на участие";
 
 /* Label for the 'reset link' button in the 'group link' view. */
 "GROUP_LINK_VIEW_RESET_LINK" = "Сбросить ссылку";
@@ -2126,10 +2156,10 @@
 "GROUP_REMOTE_USER_REVOKED_ADMINISTRATOR_BY_REMOTE_USER_FORMAT" = "%1$@ отозвал(-а) привилегии администратора у %2$@.";
 
 /* Label for the 'member requests' mode of the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "Запросы на участие";
+"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "Запросы";
 
 /* Label for the 'pending invites' mode of the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "Приглашения в ожидании";
+"GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "Приглашения";
 
 /* The title for the 'group requests and invites' view. */
 "GROUP_REQUESTS_AND_INVITES_VIEW_TITLE" = "Запросы на участие и приглашения";
@@ -2762,7 +2792,7 @@
 "MESSAGE_COMPOSEVIEW_TITLE" = "Новое сообщение";
 
 /* Toast indicating that the user has copied the sent timestamp. */
-"MESSAGE_DETAIL_VIEW_DID_COPY_SENT_TIMESTAMP" = "Sent time copied";
+"MESSAGE_DETAIL_VIEW_DID_COPY_SENT_TIMESTAMP" = "Время отправки скопировано";
 
 /* Title for the 'sent from' section on the 'message details' view. */
 "MESSAGE_DETAILS_VIEW_SENT_FROM_TITLE" = "Отправитель";
@@ -2783,7 +2813,7 @@
 "MESSAGE_METADATA_VIEW_MESSAGE_STATUS_READ" = "Прочитано";
 
 /* Status label for messages which are sending. */
-"MESSAGE_METADATA_VIEW_MESSAGE_STATUS_SENDING" = "Sending to";
+"MESSAGE_METADATA_VIEW_MESSAGE_STATUS_SENDING" = "Отправляется";
 
 /* Status label for messages which are sent. */
 "MESSAGE_METADATA_VIEW_MESSAGE_STATUS_SENT" = "Отправлено";
@@ -2804,7 +2834,7 @@
 "MESSAGE_METADATA_VIEW_SOURCE_FILENAME" = "Имя файла";
 
 /* Title for the 'message metadata' view. */
-"MESSAGE_METADATA_VIEW_TITLE" = "Message Details";
+"MESSAGE_METADATA_VIEW_TITLE" = "Подробности сообщения";
 
 /* Action sheet action to confirm blocking a thread via a message request. */
 "MESSAGE_REQUEST_BLOCK_ACTION" = "Заблокировать";
@@ -3325,6 +3355,210 @@
 /* info message text in conversation view. {embeds callee name} */
 "OUTGOING_CALL_FORMAT" = "Вы звонили %@";
 
+/* Button used to decline a payment request. */
+"PAYMENTS_ACTION_DECLINE_REQUEST" = "Отклонить запрос";
+
+/* Format for indicator of a payment amount converted to fiat currency with the freshness of the conversion rate. Embeds: {{ %1$@ the payment amount, %2$@ the freshness of the currency conversion rate }}. */
+"PAYMENTS_CURRENCY_CONVERSION_FRESHNESS_FORMAT" = "%1$@ в %2$@";
+
+/* Indicator for unknown currency. */
+"PAYMENTS_CURRENCY_UNKNOWN" = "?";
+
+/* Message for the 'decline a payment request' alert. Embeds {{ the name of the user requesting payment }}. */
+"PAYMENTS_DECLINE_REQUEST_ALERT_MESSAGE_FORMAT" = "%@ будет уведомлен(-а), что вы отклонили.";
+
+/* Title for the 'decline a payment request' alert. */
+"PAYMENTS_DECLINE_REQUEST_ALERT_TITLE" = "Отклонить этот запрос?";
+
+/* Label for 'defragmentation' payments. */
+"PAYMENTS_DEFRAGMENTATION_PAYMENT" = "Комиссия за очистку монет";
+
+/* Error indicating that a payment request could not be cancelled. */
+"PAYMENTS_ERROR_PAYMENT_REQUEST_CANCEL_FAILED" = "Не удалось отменить запрос.";
+
+/* Error indicating that a payment request could not be declined. */
+"PAYMENTS_ERROR_PAYMENT_REQUEST_DECLINE_FAILED" = "Не удалось отклонить запрос.";
+
+/* Status indicator for incoming payments which failed. */
+"PAYMENTS_FAILURE_INCOMING_FAILED" = "Не удался";
+
+/* Status indicator for incoming payments which failed to verify. */
+"PAYMENTS_FAILURE_INCOMING_VALIDATION_FAILED" = "Недействителен";
+
+/* Status indicator for invalid payments which could not be processed. */
+"PAYMENTS_FAILURE_INVALID" = "Недействителен";
+
+/* Status indicator for outgoing payments which failed. */
+"PAYMENTS_FAILURE_OUTGOING_FAILED" = "Не удался";
+
+/* Status indicator for outgoing payments which failed due to insufficient funds. */
+"PAYMENTS_FAILURE_OUTGOING_INSUFFICIENT_FUNDS" = "Недостаточно средств";
+
+/* Status indicator for outgoing payments for which the notification could not be sent. */
+"PAYMENTS_FAILURE_OUTGOING_NOTIFICATION_SEND_FAILED" = "Не удалось отправить «квитанцию» получателю";
+
+/* Status indicator for outgoing payments which failed to verify. */
+"PAYMENTS_FAILURE_OUTGOING_VALIDATION_FAILED" = "Недействителен";
+
+/* Label for the 'add memo' ui in the 'send payment' UI. */
+"PAYMENTS_NEW_PAYMENT_ADD_MEMO" = "Добавить заметку";
+
+/* Format for the 'balance' indicator. Embeds {{ the current payments balance }}. */
+"PAYMENTS_NEW_PAYMENT_BALANCE_FORMAT" = "Доступный баланс: %@";
+
+/* Label for the 'confirm payment' button. */
+"PAYMENTS_NEW_PAYMENT_CONFIRM_PAYMENT_BUTTON" = "Подтвердить перевод";
+
+/* Title for the 'confirm payment' ui in the 'send payment' UI. */
+"PAYMENTS_NEW_PAYMENT_CONFIRM_PAYMENT_TITLE" = "Перевести";
+
+/* Format for currency amounts in the 'send payment' UI. Embeds {{ %1$@ the current payments balance, %2$@ the currency indicator }}. */
+"PAYMENTS_NEW_PAYMENT_CURRENCY_FORMAT" = "%1$@ %2$@";
+
+/* Indicates that a payment failed due to a connectivity failure. */
+"PAYMENTS_NEW_PAYMENT_ERROR_CONNECTIVITY_FAILURE" = "Не удалось связаться с сервисом";
+
+/* Indicates that a payment failed due to insufficient funds. */
+"PAYMENTS_NEW_PAYMENT_ERROR_INSUFFICIENT_FUNDS" = "У вас недостаточно MOB, чтобы завершить этот перевод.";
+
+/* Indicates that a payment failed due to insufficient funds. Embeds {{ current balance }}. */
+"PAYMENTS_NEW_PAYMENT_ERROR_INSUFFICIENT_FUNDS_FORMAT" = "У вас недостаточно MOB, чтобы завершить этот перевод. Ваш текущий баланс: %@.";
+
+/* Indicates that a payment failed due to being invalid. */
+"PAYMENTS_NEW_PAYMENT_ERROR_INVALID_TRANSACTION" = "Недействительная транзакция";
+
+/* Indicates that a payment failed due to an outdated client. */
+"PAYMENTS_NEW_PAYMENT_ERROR_OUTDATED_CLIENT" = "Обновите Signal, чтобы использовать переводы.";
+
+/* Indicates that an unknown error occurred while sending a payment or payment request. */
+"PAYMENTS_NEW_PAYMENT_ERROR_UNKNOWN" = "Не удалось завершить перевод. Проверьте ваше подключение к интернету и попробуйте ещё раз.";
+
+/* Label for the 'payment estimated fee' indicator. */
+"PAYMENTS_NEW_PAYMENT_ESTIMATED_FEE" = "Комиссия сети";
+
+/* Format for the 'fiat currency conversion estimate' indicator. Embeds {{ the fiat currency code }}. */
+"PAYMENTS_NEW_PAYMENT_FIAT_CONVERSION_FORMAT" = "Ориентировочно в %@";
+
+/* Label for the 'invalid amount' button. */
+"PAYMENTS_NEW_PAYMENT_INVALID_AMOUNT" = "Недействительная сумма";
+
+/* Format for the 'message character count indicator' for the 'new payment or payment request' view. Embeds {{ %1$@ the number of characters in the message, %2$@ the maximum number of characters in the message }}. */
+"PAYMENTS_NEW_PAYMENT_MESSAGE_COUNT_FORMAT" = "%1$@ / %2$@";
+
+/* Placeholder for the new payment or payment request message. */
+"PAYMENTS_NEW_PAYMENT_MESSAGE_PLACEHOLDER" = "Заметка";
+
+/* Label for the 'new payment' button. */
+"PAYMENTS_NEW_PAYMENT_PAY_BUTTON" = "Перевести";
+
+/* Label for the 'total payment amount' indicator. */
+"PAYMENTS_NEW_PAYMENT_PAYMENT_TOTAL" = "Общая сумма";
+
+/* Indicator that a new payment is being processed in the 'send payment' UI. */
+"PAYMENTS_NEW_PAYMENT_PROCESSING" = "Обработка";
+
+/* Format for the 'payment recipient amount' indicator. Embeds {{ the name of the recipient of the payment }}. */
+"PAYMENTS_NEW_PAYMENT_RECIPIENT_AMOUNT_FORMAT" = "Кому: %@";
+
+/* Label for the 'new payment request' button. */
+"PAYMENTS_NEW_PAYMENT_REQUEST_BUTTON" = "Запросить";
+
+/* Label for the payments notification banner for a single payment notification. */
+"PAYMENTS_NOTIFICATION_BANNER_1" = "1 новое уведомление о переводе";
+
+/* Format for the payments notification banner for a single payment notification with details. Embeds: {{ %1$@ the name of the user who sent you the payment, %2$@ the amount of the payment }}. */
+"PAYMENTS_NOTIFICATION_BANNER_1_WITH_DETAILS_FORMAT" = "%1$@ отправил(-а) вам %2$@";
+
+/* Format for the payments notification banner for multiple payment notifications. Embeds: {{ the number of unread payment notifications }}. */
+"PAYMENTS_NOTIFICATION_BANNER_N_FORMAT" = "%@ новых уведомлений о переводах";
+
+/* Status indicator for incoming payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_LONG_INCOMING_COMPLETE" = "Перевод завершён";
+
+/* Status indicator for incoming payments which have not yet been verified. */
+"PAYMENTS_PAYMENT_STATUS_LONG_INCOMING_UNVERIFIED" = "Не подтверждён";
+
+/* Status indicator for incoming payments which have been verified. */
+"PAYMENTS_PAYMENT_STATUS_LONG_INCOMING_VERIFIED" = "Подтверждён";
+
+/* Status indicator for outgoing payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_COMPLETE" = "Перевод завершён";
+
+/* Status indicator for outgoing payments which are being sent. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_SENDING" = "Отправляется…";
+
+/* Status indicator for outgoing payments which have been sent. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_SENT" = "Отправлен";
+
+/* Status indicator for outgoing payments which have not yet been submitted. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_UNSUBMITTED" = "Подготовка";
+
+/* Status indicator for outgoing payments which have been submitted but not yet verified. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_UNVERIFIED" = "Не подтверждён";
+
+/* Status indicator for outgoing payments which have been verified but not yet sent. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_VERIFIED" = "Подтверждён";
+
+/* Status indicator for payments which had an unknown failure. */
+"PAYMENTS_PAYMENT_STATUS_LONG_UNKNOWN" = "Неизвестная ошибка";
+
+/* Status indicator for incoming payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_INCOMING_COMPLETE" = "Завершён";
+
+/* Status indicator for incoming payments which have not yet been verified. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_INCOMING_UNVERIFIED" = "Не подтверждён";
+
+/* Status indicator for incoming payments which have been verified. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_INCOMING_VERIFIED" = "Подтверждён";
+
+/* Status indicator for outgoing payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_COMPLETE" = "Завершён";
+
+/* Status indicator for outgoing payments which are being sent. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_SENDING" = "Отправляется…";
+
+/* Status indicator for outgoing payments which have been sent. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_SENT" = "Отправлен";
+
+/* Status indicator for outgoing payments which have not yet been submitted. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_UNSUBMITTED" = "Подготовка";
+
+/* Status indicator for outgoing payments which have been submitted but not yet verified. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_UNVERIFIED" = "Не подтверждён";
+
+/* Status indicator for outgoing payments which have been verified but not yet sent. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_VERIFIED" = "Подтверждён";
+
+/* Status indicator for payments which had an unknown failure. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_UNKNOWN" = "Неизвестная ошибка";
+
+/* Message for error alert indicating that a given user cannot receive payments because of a pending message request for a recipient that they have sent messages to. */
+"PAYMENTS_RECIPIENT_MISSING_PROFILE_KEY_MESSAGE_W_MESSAGES" = "Чтобы вы смогли отправить перевод этому пользователю, ему необходимо принять от вас запрос на общение.";
+
+/* Message for error alert indicating that a given user cannot receive payments because of a pending message request for a recipient that they have not sent message to. */
+"PAYMENTS_RECIPIENT_MISSING_PROFILE_KEY_MESSAGE_WO_MESSAGES" = "Чтобы вы смогли отправить перевод этому пользователю, ему необходимо принять от вас запрос на общение. Отправьте ему сообщение, чтобы создать запрос на общение.";
+
+/* Title for error alert indicating that a given user cannot receive payments because of a pending message request. */
+"PAYMENTS_RECIPIENT_MISSING_PROFILE_KEY_TITLE" = "Невозможно отправить перевод";
+
+/* Message for error alert indicating that a given user cannot receive payments because they have not enabled payments. */
+"PAYMENTS_RECIPIENT_PAYMENTS_NOT_ENABLED_MESSAGE" = "Этот человек не активировал переводы.";
+
+/* Title for error alert indicating that a given user cannot receive payments because they have not enabled payments. */
+"PAYMENTS_RECIPIENT_PAYMENTS_NOT_ENABLED_TITLE" = "Недействительный получатель";
+
+/* Label for 'transfer out' payments. */
+"PAYMENTS_TRANSFER_OUT_PAYMENT" = "Вывод средств";
+
+/* Indicator for unidentified incoming payments. */
+"PAYMENTS_UNIDENTIFIED_PAYMENT_INCOMING" = "Полученный перевод";
+
+/* Indicator for unidentified outgoing payments. */
+"PAYMENTS_UNIDENTIFIED_PAYMENT_OUTGOING" = "Отправленный перевод";
+
+/* Label for unknown payments. */
+"PAYMENTS_UNKNOWN_PAYMENT" = "Недействительный перевод";
+
 /* Title of 'accept member request to join group' button. */
 "PENDING_GROUP_MEMBERS_ACCEPT_REQUEST_BUTTON" = "Добавить в группу";
 
@@ -3392,13 +3626,10 @@
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "Недействительные приглашения";
 
 /* Title for the 'invites by other group members' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "Приглашения от других участников группы";
-
-/* Title for the 'pending member requests' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_PENDING_MEMBER_REQUESTS" = "Ожидающие запросы на участие";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "Invited by Others";
 
 /* Title for the 'people you invited' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "Люди, которых пригласили вы";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "Invited by You";
 
 /* Label for view-once messages that have invalid content. */
 "PER_MESSAGE_EXPIRATION_INVALID_CONTENT" = "Ошибка при обработке входящего сообщения";
@@ -4294,6 +4525,9 @@
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "Защищенный сеанс был сброшен.";
 
+/* Label for the 'see all' button. */
+"SEE_ALL_BUTTON" = "Просмотреть всех";
+
 /* Table section header for conversations you haven't recently used. */
 "SELECT_THREAD_TABLE_OTHER_CHATS_TITLE" = "Другие контакты";
 
@@ -4462,6 +4696,18 @@
 /* No comment provided by engineer. */
 "SETTINGS_DELETE_ACCOUNT_BUTTON" = "Удалить учётную запись";
 
+/* Button for to _not_ transfer the user's payments balance before deleting their account. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_DONT_TRANSFER" = "Не переводить";
+
+/* Body for the alert confirming whether the user wants transfer their payments balance before deleting their account. Embeds: {{ the current payment balance }}. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_MESSAGE_FORMAT" = "У вас есть баланс в %@. Если вы не переведёте свои средства на кошелёк с другим адресом перед удалением своей учётной записи, вы навсегда потеряете их.";
+
+/* Title for the alert confirming whether the user wants transfer their payments balance before deleting their account. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_TITLE" = "Перевести средства?";
+
+/* Button for transferring the user's payments balance before deleting their account. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_TRANSFER" = "Перевести средства";
+
 /* Label for 'delete data' button. */
 "SETTINGS_DELETE_DATA_BUTTON" = "Удалить все данные";
 
@@ -4474,7 +4720,7 @@
 /* Title for the 'donate to signal' link in settings. */
 "SETTINGS_DONATE" = "Поддержать Signal";
 
-/* Title for support page in app settings. */
+/* Title for help button and help pages in app settings. */
 "SETTINGS_HELP" = "Помощь";
 
 /* Settings table view cell label */
@@ -4548,6 +4794,396 @@
 
 /* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Уведомления";
+
+/* Label for the 'agree to payments terms' button in the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_AGREE" = "Активировать";
+
+/* Description for the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_DESCRIPTION" = "Вы можете использовать Signal, чтобы отправлять и получать MobileCoin. Все переводы регламентируются Условиями использования MobileCoins и MobileCoin Wallet. Это бета-функция, так что вы можете столкнуться с некоторыми проблемами и переводы или средства, которые вы можете потерять, невозможно восстановить.";
+
+/* Title for the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_TITLE" = "Активировать";
+
+/* Label for the 'view payments terms' button in the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_VIEW_TERMS" = "Просмотреть Условия MobileCoin";
+
+/* Label for 'add money' view in the payment settings. */
+"SETTINGS_PAYMENTS_ADD_MONEY" = "Добавить средства";
+
+/* Explanation of the process for adding money in the 'add money' settings view. */
+"SETTINGS_PAYMENTS_ADD_MONEY_DESCRIPTION" = "Чтобы добавить средства, отправьте MobileCoin на адрес своего кошелька. Начните транзакцию в своей учётной записи в сервисе обмена, который поддерживает MobileCoin, затем просканируйте QR-код или скопируйте адрес своего кошелька.";
+
+/* Indicator that the payments wallet address has been copied to the pasteboard. */
+"SETTINGS_PAYMENTS_ADD_MONEY_WALLET_ADDRESS_COPIED" = "Адрес кошелька скопирован";
+
+/* Label for the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_ALL_RECORDS" = "Все переводы";
+
+/* Format string for the 'local balance converted into local currency' indicator. Embeds: {{ %1$@ the local balance in the local currency, %2$@ the local currency code, %3$@ the date the currency conversion rate was obtained. }}.. */
+"SETTINGS_PAYMENTS_BALANCE_CONVERSION_FORMAT" = "%1$@ %2$@ в %3$@";
+
+/* Error message indicating that payments could not be activated because the feature is not currently available. */
+"SETTINGS_PAYMENTS_CANNOT_ACTIVATE_PAYMENTS_KILL_SWITCH" = "Переводы в Signal больше не доступны. Вы можете перевести средства в сервис обмена, но больше не можете отправлять или получать переводы или добавлять средства.";
+
+/* Error message indicating that payments could not be deactivated because the current balance is unavailable. */
+"SETTINGS_PAYMENTS_CANNOT_DEACTIVATE_PAYMENTS_NO_BALANCE" = "Невозможно деактивировать переводы, так как ваш баланс недоступен. Проверьте ваше подключение к интернету и попробуйте ещё раз.";
+
+/* Error message indicating that a payment could not be sent because the current balance is unavailable. */
+"SETTINGS_PAYMENTS_CANNOT_SEND_PAYMENT_NO_BALANCE" = "Не удалось завершить перевод, так как ваш баланс недоступен. Проверьте ваше подключение к интернету и попробуйте ещё раз.";
+
+/* Error message indicating that payments cannot be sent because the feature is not currently available. */
+"SETTINGS_PAYMENTS_CANNOT_SEND_PAYMENTS_KILL_SWITCH" = "Переводы в Signal больше не доступны. Вы можете перевести средства в сервис обмена, но больше не можете отправлять или получать переводы или добавлять средства.";
+
+/* Error message indicating that you cannot transfer into your payments wallet because the feature is not currently available. */
+"SETTINGS_PAYMENTS_CANNOT_TRANSFER_IN_KILL_SWITCH" = "Переводы в Signal больше не доступны. Вы можете перевести средства в сервис обмена, но больше не можете отправлять или получать переводы или добавлять средства.";
+
+/* Message for the 'currency conversions info' alert. */
+"SETTINGS_PAYMENTS_CURRENCY_CONVERSIONS_INFO_ALERT_MESSAGE" = "Конверсии являются оценочными и могут быть неточными.";
+
+/* Label for 'all currencies' section in the payment currency settings. */
+"SETTINGS_PAYMENTS_CURRENCY_VIEW_SECTION_ALL_CURRENCIES" = "Все валюты";
+
+/* Label for 'transfer balance' button in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_AFTER_TRANSFERRING_BALANCE" = "Перевести оставшиеся средства";
+
+/* Label for the 'deactivate payments' button in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_BUTTON" = "Деактивировать";
+
+/* Label for 'deactivate payments' button in the app settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_PAYMENTS" = "Деактивировать переводы";
+
+/* Description for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_PAYMENTS_CONFIRM_DESCRIPTION" = "Вы не сможете отправлять или получать MobileCoin в Signal, если вы деактивируете переводы.";
+
+/* Title for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_PAYMENTS_CONFIRM_TITLE" = "Деактивировать переводы?";
+
+/* Label for the 'de-activate payments' view of the app settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_TITLE" = "Деактивировать переводы";
+
+/* Explanation of the 'deactivate payments with balance' process in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITH_BALANCE_EXPLANATION" = "Рекомендуется перевести ваши средства на кошелёк с другим адресом перед тем, как деактивировать переводы. Если вы не переведёте средства сейчас, они останутся в вашем кошельке, привязанном к Signal, если вы позже заново активируете переводы.";
+
+/* Description for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFER_CONFIRM_DESCRIPTION" = "Ваши средства останутся в вашем кошельке, привязанном к Signal, если вы позже заново активируете переводы.";
+
+/* Title for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFER_CONFIRM_TITLE" = "Деактивировать без перевода?";
+
+/* Label for 'deactivate payments without transferring balance' button in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFERRING_BALANCE" = "Деактивировать без перевода";
+
+/* Error indicating that payments could not be deactivated in the payments settings. */
+"SETTINGS_PAYMENTS_DEACTIVATION_FAILED" = "Не удалось деактивировать переводы";
+
+/* Label for the 'payments details' view of the app settings. */
+"SETTINGS_PAYMENTS_DETAIL_VIEW_TITLE" = "Подробнее";
+
+/* Label for the 'enable payments' button in the 'payments not enabled' alert. */
+"SETTINGS_PAYMENTS_ENABLE_ACTION" = "Включить переводы";
+
+/* Description for the 'About MobileCoin' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ABOUT_MOBILECOIN_DESCRIPTION" = "MobileCoin — это новая цифровая валюта c акцентом на конфиденциальность.";
+
+/* Title for the 'About MobileCoin' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ABOUT_MOBILECOIN_TITLE" = "О MobileCoin";
+
+/* Description for the 'Adding to your wallet' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ADDING_TO_YOUR_WALLET_DESCRIPTION" = "Вы можете добавлять средства для использования их в Signal, отправляя MobileCoin на адрес своего кошелька.";
+
+/* Title for the 'Adding to your wallet' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ADDING_TO_YOUR_WALLET_TITLE" = "Добавление средств";
+
+/* Description for the 'Cashing Out' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_CASHING_OUT_DESCRIPTION" = "Вы можете вывести MobileCoin в любое время в сервисе обмена, который поддерживает MobileCoin. Просто переведите средства на свою учётную запись в этом сервисе обмена.";
+
+/* Title for the 'Cashing Out' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_CASHING_OUT_TITLE" = "Вывод средств";
+
+/* Label for button in the 'Update PIN' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_UPDATE_PIN_BUTTON" = "Обновить PIN-код";
+
+/* Description for the 'Update PIN' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_UPDATE_PIN_DESCRIPTION" = "Так как у вас большой баланс, возможно, вы захотите обновить свой PIN-код на буквенно-цифровой, чтобы лучше защитить свою учётную запись.";
+
+/* Title for the 'Update PIN' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_UPDATE_PIN_TITLE" = "Обновите свой PIN-код";
+
+/* Label for button in the 'View Passphrase' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_VIEW_PASSPHRASE_BUTTON" = "Записать фразу восстановления";
+
+/* Description for the 'View Passphrase' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_VIEW_PASSPHRASE_DESCRIPTION" = "Ваша фраза восстановления — это дополнительный способ восстановить вашу учётную запись переводов.";
+
+/* Title for the 'View Passphrase' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_VIEW_PASSPHRASE_TITLE" = "Запишите фразу восстановления";
+
+/* Indicator that the payments wallet address is invalid. */
+"SETTINGS_PAYMENTS_INVALID_WALLET_ADDRESS" = "Недействительный адрес кошелька";
+
+/* Message indicating that there is no payment activity to display in the payment settings. */
+"SETTINGS_PAYMENTS_NO_ACTIVITY_INDICATOR" = "Нет недавней активности.";
+
+/* Message for the 'payments not enabled' alert. */
+"SETTINGS_PAYMENTS_NOT_ENABLED_ALERT_MESSAGE" = "Вы хотите включить переводы?";
+
+/* Title for the 'payments not enabled' alert. */
+"SETTINGS_PAYMENTS_NOT_ENABLED_ALERT_TITLE" = "Переводы не включены";
+
+/* Label for 'activate' button in the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_ACTIVATE_BUTTON" = "Активировать переводы";
+
+/* Message shown when payments rae activated in the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_ACTIVATED_TOAST" = "Переводы активированы.";
+
+/* Message for the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_MESSAGE" = "Используйте Signal, чтобы отправлять и получать MobileCoin — новую цифровую валюту c акцентом на конфиденциальность. Активируйте, чтобы начать.";
+
+/* Label for 'activate' button in the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_REACTIVATE_BUTTON" = "Заново активировать переводы";
+
+/* Title for the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_TITLE" = "Представляем переводы (бета)";
+
+/* Explanation of the 'payments passphrase' in the 'view payments passphrase' settings. */
+"SETTINGS_PAYMENTS_PASSPHRASE_EXPLANATION" = "Ваши средства будут автоматически восстановлены, когда вы переустановите Signal, если вы подтвердите свой PIN-код Signal. Вы также можете восстановить свои средства с помощью своей уникальной фразы восстановления, которая состоит из 24 слов. Запишите её, и храните её в безопасном месте.";
+
+/* Label for the 'add money' button in the 'send payment' UI. */
+"SETTINGS_PAYMENTS_PAYMENT_ADD_MONEY" = "Добавить средства";
+
+/* Label for the 'MobileCoin block index' in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_BLOCK_INDEX" = "Номер блока";
+
+/* Label for the 'MobileCoin network fee' in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_FEE" = "Комиссия сети";
+
+/* Indicates that you received a payment in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_RECEIVED" = "Получен";
+
+/* Format for indicator that you received a payment in the payment details view in the app settings. Embeds: {{ the user who sent you the payment }}. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_RECEIVED_FORMAT" = "Получен от %@";
+
+/* Label for the sender in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENDER" = "Отправил(-а)";
+
+/* Format for the sender info in the payment details view in the app settings. Embeds {{ %1$@ the name of the sender of the payment, %2$@ the date the transaction was sent }}. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENDER_FORMAT" = "%1$@ %2$@";
+
+/* Indicates that you send the payment in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENDER_YOU" = "Вы";
+
+/* Indicates that you sent a payment in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENT" = "Отправлен";
+
+/* Format for indicator that you sent a payment in the payment details view in the app settings. Embeds: {{ the user who you sent the payment to }}. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENT_FORMAT" = "Вы отправили %@";
+
+/* Label for the transaction status in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_STATUS" = "Статус";
+
+/* Footer string for the status section of the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_STATUS_FOOTER" = "Подробности транзакции, включая сумму перевода и время транзакции, являются частью MobileCoin Ledger.";
+
+/* Footer string for the status section of the payment details view in the app settings for defragmentation transactions. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_STATUS_FOOTER_DEFRAGMENTATION" = "«Комиссия за очистку монет» взимается, когда монеты в вашем распоряжении не могут быть объединены, чтобы завершить транзакцию. Очистка позволит вам продолжить отправлять переводы.";
+
+/* Message for the 'insufficient balance for payment' alert. Embeds: {{ The current payments balance }}. */
+"SETTINGS_PAYMENTS_PAYMENT_INSUFFICIENT_BALANCE_ALERT_MESSAGE_FORMAT" = "У вас недостаточно MOB, чтобы завершить этот перевод. Ваш текущий баланс: %@.";
+
+/* Title for the 'insufficient balance for payment' alert. */
+"SETTINGS_PAYMENTS_PAYMENT_INSUFFICIENT_BALANCE_ALERT_TITLE" = "Недостаточно средств";
+
+/* Format string for the sender of an incoming payment. Embeds: {{ the name of the sender of the payment}}. */
+"SETTINGS_PAYMENTS_PAYMENT_USER_INCOMING_FORMAT" = "От %@";
+
+/* Format string for the recipient of an outgoing payment. Embeds: {{ the name of the recipient of the payment}}. */
+"SETTINGS_PAYMENTS_PAYMENT_USER_OUTGOING_FORMAT" = "Кому: %@";
+
+/* Message indicating that payments have been disabled in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_DISABLED_TOAST" = "Переводы деактивированы.";
+
+/* Label for the 'all payments' mode of the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_TYPE_ALL" = "Все";
+
+/* Label for the 'incoming payments' mode of the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_TYPE_INCOMING" = "Получено";
+
+/* Label for the 'outgoing payments' mode of the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_TYPE_OUTGOING" = "Отправлено";
+
+/* Label for the 'recent payments' section in the payment settings. */
+"SETTINGS_PAYMENTS_RECENT_PAYMENTS" = "Недавние переводы";
+
+/* Description for the 'record payments passphrase to disable pin' UI in the app settings. */
+"SETTINGS_PAYMENTS_RECORD_PASSPHRASE_DISABLE_PIN_DESCRIPTION" = "Перед тем, как вы сможете отключить свой PIN-код, вы должны записать свою фразу восстановления переводов, чтобы вы могли восстановить свою учётную запись переводов.";
+
+/* Label for the 'record recovery passphrase' button in the 'record payments passphrase to disable pin' UI in the app settings. */
+"SETTINGS_PAYMENTS_RECORD_PASSPHRASE_DISABLE_PIN_RECORD_PASSPHRASE" = "Записать фразу восстановления";
+
+/* Title for the 'record payments passphrase to disable pin' UI in the app settings. */
+"SETTINGS_PAYMENTS_RECORD_PASSPHRASE_DISABLE_PIN_TITLE" = "Запишите фразу восстановления переводов";
+
+/* Label for the current balance in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_REMAINING_BALANCE" = "Оставшиеся средства";
+
+/* Label for the 'remove payments details' button in the app settings. */
+"SETTINGS_PAYMENTS_REMOVE_BUTTON" = "Удалить";
+
+/* Label for 'restore payments' button in the payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_PAYMENTS_BUTTON" = "Восстановить учётную запись переводов";
+
+/* Explanation of the 'review payments passphrase' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_COMPLETE_EXPLANATION" = "Убедитесь, что вы правильно ввели свою фразу.";
+
+/* Title for the 'review payments passphrase' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_COMPLETE_TITLE" = "Подтвердите фразу восстановления";
+
+/* Message indicating that 'restore payments wallet' is complete. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_COMPLETE_TOAST" = "Учётная запись переводов восстановлена.";
+
+/* Label for the 'enter passphrase manually' button in the 'restore payments wallet from passphrase' view. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_ENTER_MANUALLY" = "Ввести вручную";
+
+/* Error indicating that 'restore payments wallet failed' in the app payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_FAILED" = "Восстановление не удалось";
+
+/* Message for the 'invalid payments wallet passphrase' error alert in the app payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_INVALID_PASSPHRASE_MESSAGE" = "Это недействительная фраза восстановления.";
+
+/* Title for the 'invalid payments wallet passphrase' error alert in the app payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_INVALID_PASSPHRASE_TITLE" = "Недействительная фраза";
+
+/* Label for the 'restore passphrase from pasteboard' button in the 'restore payments wallet from passphrase' view. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_PASTE_FROM_PASTEBOARD" = "Вставить из буфера обмена";
+
+/* Format for the placeholder text in the 'restore payments wallet from pasteboard' view of the app settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_PASTE_PLACEHOLDER" = "Фраза восстановления";
+
+/* Title for the 'restore payments wallet from pasteboard' view of the app settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_PASTE_TITLE" = "Вставьте фразу восстановления";
+
+/* Explanation of the 'restore payments wallet' process payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_SPLASH_EXPLANATION" = "Ваша фраза восстановления — это уникальная фраза, состоящая из 24 слов. Используйте её, чтобы восстановить свою учётную запись переводов.";
+
+/* Title for the first step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_SPLASH_TITLE" = "Введите фразу восстановления";
+
+/* Title for the 'restore payments wallet' view of the app settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_TITLE" = "Фраза восстановления";
+
+/* Format for the instructions for the 'enter word' step of the 'restore payments wallet' views. Embeds {{ the index of the current word }}. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_INSTRUCTIONS_FORMAT" = "Введите слово № %@";
+
+/* Error indicating that the user has entered an invalid payments passphrase in the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_INVALID_PASSPHRASE" = "Недействительная фраза восстановления.";
+
+/* Error indicating that the user has entered an invalid word in the 'enter word' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_INVALID_WORD" = "Слово написано неправильно.";
+
+/* Title for the 'enter word' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_TITLE" = "Введите фразу восстановления";
+
+/* Instructions in the 'scan payment address QR code' view in the payment settings. */
+"SETTINGS_PAYMENTS_SCAN_QR_INSTRUCTIONS" = "Просканируйте QR-код получателя перевода.";
+
+/* Error indicating that a QR code does not contain a valid MobileCoin public address. */
+"SETTINGS_PAYMENTS_SCAN_QR_INVALID_PUBLIC_ADDRESS" = "Недействительный адрес";
+
+/* Error indicating that a QR code does not contain a valid MobileCoin public address URL. */
+"SETTINGS_PAYMENTS_SCAN_QR_INVALID_PUBLIC_ADDRESS_URL" = "Недействительный URL";
+
+/* Label for 'scan payment address QR code' view in the payment settings. */
+"SETTINGS_PAYMENTS_SCAN_QR_TITLE" = "Сканировать QR-код";
+
+/* Label for 'send payment' button in the payment settings. */
+"SETTINGS_PAYMENTS_SEND_PAYMENT" = "Отправить перевод";
+
+/* Label for the 'send payment to recipient' view in the payment settings. */
+"SETTINGS_PAYMENTS_SEND_TO_RECIPIENT_TITLE" = "Выберите получателя";
+
+/* Title for the 'set currency' view in the app settings. */
+"SETTINGS_PAYMENTS_SET_CURRENCY" = "Конверсия валют";
+
+/* Label for the 'payments' section of the app settings. */
+"SETTINGS_PAYMENTS_TITLE" = "Переводы";
+
+/* Error indicating that it is not valid to send yourself a payment. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_CANNOT_SEND_TO_SELF" = "Вы не можете перевести на свой собственный адрес кошелька Signal. Введите адрес кошелька из своей учётной записи в поддерживаемом сервисе обмена.";
+
+/* Footer of the 'transfer currency out' view in the payment settings. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_FOOTER" = "Вы можете перевести MobileCoin, завершив перевод на адрес кошелька, предоставленный сервисом обмена. Адрес кошелька — это строка из цифр и букв, обычно располагающаяся под QR-кодом.";
+
+/* Error indicating that MobileCoin public address is not valid. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_INVALID_PUBLIC_ADDRESS" = "Проверьте адрес кошелька, на который вы пытаетесь перевести средства, и попробуйте ещё раз.";
+
+/* Title for error alert indicating that MobileCoin public address is not valid. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_INVALID_PUBLIC_ADDRESS_TITLE" = "Недействительный адрес";
+
+/* Placeholder text for the address text field in the 'transfer currency out' settings view. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_PLACEHOLDER" = "Кому: Просканируйте или введите адрес кошелька";
+
+/* Label for 'transfer currency out' view in the payment settings. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_TITLE" = "Перевести в сервис обмена";
+
+/* Label for the 'transfer to exchange' button in the payment settings. */
+"SETTINGS_PAYMENTS_TRANSFER_TO_EXCHANGE" = "Перевести в сервис обмена";
+
+/* Message indicating that 'payments passphrase review' is complete. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COMPLETE_TOAST" = "Настройка фразы восстановления завершена.";
+
+/* Label for 'confirm' button in the 'view payments passphrase' view of the app settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM" = "Подтвердите";
+
+/* Format for the explanation of the 'confirm payments passphrase word' step in the 'view payments passphrase' settings, indicating that the user needs to enter two words from their payments passphrase. Embeds: {{ %1$@ the index of the first word, %2$@ the index of the second word }}. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_EXPLANATION_FORMAT" = "Введите слова № %1$@ и %2$@ из своей фразы восстановления.";
+
+/* Error indicating that at least one word of the payments passphrase is not correct in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_INVALID_WORD" = "Одно из слов неверно. Попробуйте ещё раз.";
+
+/* Error indicating that all words of the payments passphrase are not correct in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_INVALID_WORDS" = "Оба слова неверны. Попробуйте ещё раз.";
+
+/* Format for the placeholder text in the 'confirm payments passphrase' view of the app settings. Embeds: {{ the index of the word }}. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_PLACEHOLDER_FORMAT" = "Слово № %@";
+
+/* Title for the 'confirm words' step of the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_TITLE" = "Подтвердите фразу восстановления";
+
+/* Indicator that the payments passphrase has been copied to the clipboard in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPIED_TO_CLIPBOARD" = "Фраза восстановления скопирована";
+
+/* Label for the 'copy to clipboard' button in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPY_TO_CLIPBOARD" = "Копировать в буфер обмена";
+
+/* Message for the 'copy recovery passphrase to clipboard confirm' alert in the payment settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPY_TO_CLIPBOARD_CONFIRM_MESSAGE" = "Если вы решите хранить свою фразу восстановления в электронном виде, убедитесь, что она храниться безопасно в месте, которому вы доверяете.";
+
+/* Title for the 'copy recovery passphrase to clipboard confirm' alert in the payment settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPY_TO_CLIPBOARD_CONFIRM_TITLE" = "Копировать в буфер обмена?";
+
+/* Label for 'see passphrase again' button in the 'view payments passphrase' view of the app settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_SEE_PASSPHRASE_AGAIN" = "Просмотреть фразу ещё раз";
+
+/* Title for the first step of the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_START_TITLE" = "Просмотр фразы восстановления";
+
+/* Title for the 'view payments passphrase' view of the app settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_TITLE" = "Фраза восстановления";
+
+/* Header text for the 'review payments passphrase words' step in the 'view payments passphrase' settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_WORDS_EXPLANATION" = "Запишите следующие 24 слова по порядку. Храните свой список в безопасном месте.";
+
+/* Footer text for the 'review payments passphrase words' step in the 'view payments passphrase' settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_WORDS_FOOTER" = "Не делайте снимок экрана и не отправляйте фразу по электронной почте.";
+
+/* Label for 'view payments recovery passphrase' button in the app settings. */
+"SETTINGS_PAYMENTS_VIEW_RECOVERY_PASSPHRASE" = "Фраза восстановления";
+
+/* Title for the 'payments settings' view in the app settings. */
+"SETTINGS_PAYMENTS_VIEW_TITLE" = "Переводы (бета)";
+
+/* Label for the payments wallet address. */
+"SETTINGS_PAYMENTS_WALLET_ADDRESS_LABEL" = "Адрес вашего кошелька";
 
 /* Label for the 'phone number discoverability' setting. */
 "SETTINGS_PHONE_NUMBER_DISCOVERABILITY" = "Найти меня по номеру телефона";
@@ -4752,6 +5388,9 @@
 
 /* body sent to contacts when inviting to Install Signal */
 "SMS_INVITE_BODY" = "Предлагаю установить Signal! Вот ссылка:";
+
+/* table cell label in conversation settings */
+"SOUND_AND_NOTIFICATION_SETTINGS" = "Sounds & Notifications";
 
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "Нет";

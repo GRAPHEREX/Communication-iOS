@@ -85,23 +85,26 @@
 /* The button on the 'add to group' confirmation to add the user to the group. */
 "ADD_TO_GROUP_ACTION_PROCEED_BUTTON" = "Pridať do skupiny";
 
-/* The title on the 'add to group' confirmation action sheet. Embeds {contact name} */
-"ADD_TO_GROUP_ACTION_SHEET_MESSAGE_FORMAT" = "Pridať %@ do tejto skupiny?";
+/* The title on the 'add to group' confirmation action sheet. Embeds {contact name, group name} */
+"ADD_TO_GROUP_ACTION_SHEET_MESSAGE_FORMAT" = "Add “%1$@” to “%2$@”?";
 
-/* The title on the 'add to group' confirmation action sheet. Embeds {group name} */
-"ADD_TO_GROUP_ACTION_SHEET_TITLE_FORMAT" = "Pridať do %@";
+/* The title on the 'add to group' confirmation action sheet. */
+"ADD_TO_GROUP_ACTION_SHEET_TITLE" = "Pridať nového člena";
+
+/* Text indicating your contact is already a member of the group on the 'add to group' view. */
+"ADD_TO_GROUP_ALREADY_A_MEMBER" = "Už je členom";
 
 /* A toast on the 'add to group' view indicating the user is already a member. Embeds {contact name} and {group name} */
 "ADD_TO_GROUP_ALREADY_MEMBER_TOAST_FORMAT" = "%@ je už členom %@";
 
 /* The title for the 'add to group' view's recents section */
-"ADD_TO_GROUP_RECENTS_TITLE" = "Posledné";
+"ADD_TO_GROUP_RECENTS_TITLE" = "Nedávne čety";
 
 /* A toast on the 'add to group' view indicating the user was added. Embeds {contact name} and {group name} */
 "ADD_TO_GROUP_SUCCESS_TOAST_FORMAT" = "%@ bol(a) pridaný/á do %@";
 
 /* Title of the 'add to group' view. */
-"ADD_TO_GROUP_TITLE" = "Pridať do ďalšej skupiny";
+"ADD_TO_GROUP_TITLE" = "Add to a Group";
 
 /* Message shown in conversation view that offers to share your profile with a user. */
 "ADD_USER_TO_PROFILE_WHITELIST_OFFER" = "Chcete s týmto používateľom zdieľať svoj profil?";
@@ -265,6 +268,9 @@
 /* A string indicating to the user that once they take photos, they'll be able to send them from this view. */
 "ATTACHMENT_KEYBOARD_NO_PHOTOS" = "Keď spravíte fotky, najnovšie budete môcť poslať sem.";
 
+/* A button to select a payment from the Attachment Keyboard */
+"ATTACHMENT_KEYBOARD_PAYMENT" = "Platba";
+
 /* Accessibility label for attaching photos */
 "ATTACHMENT_LABEL" = "Príloha";
 
@@ -391,8 +397,14 @@
 /* Label for 'continue' button. */
 "BUTTON_CONTINUE" = "Pokračovať";
 
+/* Label for the 'copy' button. */
+"BUTTON_COPY" = "Kopírovať";
+
 /* Label for generic done button. */
 "BUTTON_DONE" = "Hotovo";
+
+/* Label for the 'edit' button. */
+"BUTTON_EDIT" = "Upraviť";
 
 /* Label for the 'next' button. */
 "BUTTON_NEXT" = "Ďalší";
@@ -406,11 +418,20 @@
 /* Label for the 'okay' button. */
 "BUTTON_OKAY" = "OK";
 
+/* Label for the 'previous' button. */
+"BUTTON_PREVIOUS" = "Predchádzajúce";
+
 /* Button text to enable batch selection mode */
 "BUTTON_SELECT" = "Vybrať";
 
+/* Label for the 'start' button. */
+"BUTTON_START" = "Štart";
+
 /* Label for the 'submit' button. */
 "BUTTON_SUBMIT" = "Potvrdiť";
+
+/* Label for the 'view' button. */
+"BUTTON_VIEW" = "Zobraziť";
 
 /* Label for the 'yes' button. */
 "BUTTON_YES" = "Áno";
@@ -694,6 +715,12 @@
 /* A brief localized representation of the 'other' support filter. */
 "CONTACT_SUPPORT_FILTER_OTHER_SHORT" = "Ostatné";
 
+/* The localized representation of the 'payments' support filter. */
+"CONTACT_SUPPORT_FILTER_PAYMENTS" = "Platby";
+
+/* A brief localized representation of the 'payments' support filter. */
+"CONTACT_SUPPORT_FILTER_PAYMENTS_SHORT" = "Platby";
+
 /* Prompt telling the user to select a filter for their support request. */
 "CONTACT_SUPPORT_FILTER_PROMPT" = "Ako vám môžeme pomôcť?";
 
@@ -793,6 +820,9 @@
 /* Footer for the 'attributes access' section in conversation settings view. */
 "CONVERSATION_SETTINGS_ATTRIBUTES_ACCESS_SECTION_FOOTER" = "Zvoľte, kto môže upraviť názov skupiny, fotku a časovač pre miznúce správy.";
 
+/* Button to start a audio call */
+"CONVERSATION_SETTINGS_AUDIO_CALL_BUTTON" = "audio";
+
 /* Footer text for the 'block and leave' section of contact conversation settings view. */
 "CONVERSATION_SETTINGS_BLOCK_AND_LEAVE_SECTION_CONTACT_FOOTER" = "Od tohto používateľa už viac nebudete prijímať správy či aktualizácie.";
 
@@ -812,28 +842,19 @@
 "CONVERSATION_SETTINGS_EDIT" = "Upraviť";
 
 /* Label for 'edit attributes access' action in conversation settings view. */
-"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS" = "Kto môže upraviť informácie o skupine";
+"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS" = "Upraviť informácie o skupine";
 
 /* Label for button that sets 'group attributes access' to 'administrators-only'. */
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "Len administrátori";
-
-/* Description for the 'edit group attributes access' alert. */
-"CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_DESCRIPTION" = "Zvoľte, kto môže zmeniť názov skupiny, fotku a miznúce správy:";
 
 /* Label for button that sets 'group attributes access' to 'members-only'. */
 "CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_MEMBERS_BUTTON" = "Všetci členovia";
 
 /* Label for 'edit membership access' action in conversation settings view. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "Kto môže pridávať členov";
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS" = "Pridať členov";
 
-/* Label for button that sets 'group membership access' to 'administrators-only'. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_ADMINISTRATORS_BUTTON" = "Len administrátori";
-
-/* Description for the 'edit group membership access' alert. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_DESCRIPTION" = "Zvoľte, kto môže pridať členov do tejto skupiny:";
-
-/* Label for button that sets 'group membership access' to 'members-only'. */
-"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_MEMBERS_BUTTON" = "Všetci členovia";
+/* Description for the 'edit membership access'. */
+"CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_FOOTER" = "Zvoľte, kto môže upraviť členstvo v skupine.";
 
 /* Label for 'group link' action in conversation settings view. */
 "CONVERSATION_SETTINGS_GROUP_LINK" = "Odkaz do skupiny";
@@ -845,10 +866,10 @@
 "CONVERSATION_SETTINGS_MAKE_GROUP_ADMIN_TITLE_FORMAT" = "%@ bude môcť upravovať túto skupinu a jej členov.";
 
 /* Label for 'member invites' action in conversation settings view. */
-"CONVERSATION_SETTINGS_MEMBER_INVITES" = "Pozvánky na členstvo";
+"CONVERSATION_SETTINGS_MEMBER_INVITES" = "Pozvánky";
 
 /* Label for 'member requests & invites' action in conversation settings view. */
-"CONVERSATION_SETTINGS_MEMBER_REQUESTS_AND_INVITES" = "Žiadosti o členstvo a pozvánky";
+"CONVERSATION_SETTINGS_MEMBER_REQUESTS_AND_INVITES" = "Žiadosti a pozvánky";
 
 /* Section title of the 'members' section in conversation settings view. */
 "CONVERSATION_SETTINGS_MEMBERS_SECTION_TITLE" = "Členovia";
@@ -874,6 +895,9 @@
 /* Label for button to mute a thread forever. */
 "CONVERSATION_SETTINGS_MUTE_ALWAYS_ACTION" = "Vždy";
 
+/* Button to mute the chat */
+"CONVERSATION_SETTINGS_MUTE_BUTTON" = "mute";
+
 /* Label for button to mute a thread for eight hours. */
 "CONVERSATION_SETTINGS_MUTE_EIGHT_HOUR_ACTION" = "8 hodín";
 
@@ -898,11 +922,32 @@
 /* Indicates that this thread is muted forever. */
 "CONVERSATION_SETTINGS_MUTED_ALWAYS" = "Vždy";
 
+/* Indicates that this thread is muted forever. */
+"CONVERSATION_SETTINGS_MUTED_ALWAYS_UNMUTE" = "Always muted";
+
+/* Button to unmute the chat */
+"CONVERSATION_SETTINGS_MUTED_BUTTON" = "muted";
+
 /* Indicates that this thread is muted until a given date or time. Embeds {{The date or time which the thread is muted until}}. */
 "CONVERSATION_SETTINGS_MUTED_UNTIL_FORMAT" = "do %@";
 
+/* Indicates that this thread is muted until a given date or time. Embeds {{The date or time which the thread is muted until}}. */
+"CONVERSATION_SETTINGS_MUTED_UNTIL_UNMUTE_FORMAT" = "Muted until %@";
+
+/* Format for the section title of the 'mutual groups' section in conversation settings view. Embeds: {{ the number of shared groups }}. */
+"CONVERSATION_SETTINGS_MUTUAL_GROUPS_SECTION_TITLE_FORMAT" = "%@ Groups in Common";
+
 /* Label for 'new contact' button in conversation settings view. */
 "CONVERSATION_SETTINGS_NEW_CONTACT" = "Vytvoriť nový kontakt";
+
+/* Section title of the 'mutual groups' section in conversation settings view when the contact shares no mutual groups. */
+"CONVERSATION_SETTINGS_NO_MUTUAL_GROUPS_SECTION_TITLE" = "No Groups in Common";
+
+/* Section title of the 'mutual groups' section in conversation settings view when the contact shares one mutual group. */
+"CONVERSATION_SETTINGS_ONE_MUTUAL_GROUPS_SECTION_TITLE" = "1 Group in Common";
+
+/* Label for 'permissions' action in conversation settings view. */
+"CONVERSATION_SETTINGS_PERMISSIONS" = "Povolenia";
 
 /* Label for 'remove from group' button in conversation settings view. */
 "CONVERSATION_SETTINGS_REMOVE_FROM_GROUP_BUTTON" = "Odstrániť zo skupiny";
@@ -916,8 +961,8 @@
 /* Format for title for 'revoke group admin' confirmation alert. Embeds {user to revoke admin status from}. */
 "CONVERSATION_SETTINGS_REVOKE_GROUP_ADMIN_TITLE_FORMAT" = "Odstrániť %@ spomedzi administrátorov skupiny?";
 
-/* Table cell label in conversation settings which returns the user to the conversation with 'search mode' activated */
-"CONVERSATION_SETTINGS_SEARCH" = "Hľadať v chate";
+/* Button to search the chat */
+"CONVERSATION_SETTINGS_SEARCH_BUTTON" = "search";
 
 /* Label for 'unblock group' action in conversation settings view. */
 "CONVERSATION_SETTINGS_UNBLOCK_GROUP" = "Odblokovať skupinu";
@@ -934,20 +979,14 @@
 /* The alert title if user tries to exit conversation settings view without saving changes. */
 "CONVERSATION_SETTINGS_UNSAVED_CHANGES_TITLE" = "Neuložené zmeny";
 
-/* Label for 'view all members' button in conversation settings view. */
-"CONVERSATION_SETTINGS_VIEW_ALL_MEMBERS" = "Pozrieť všetky";
+/* Button to start a video call */
+"CONVERSATION_SETTINGS_VIDEO_CALL_BUTTON" = "video";
 
 /* Indicates that user is in the system contacts list. */
-"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Tento používateľ je vo vašich kontaktoch";
+"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Contact Details";
 
 /* Button to confirm that user wants to share their profile with a user or group. */
 "CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE" = "Zdieľať profil";
-
-/* Action that shares user profile with a group. */
-"CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE_WITH_GROUP" = "Zdieľať váš profil";
-
-/* Action that shares user profile with a user. */
-"CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE_WITH_USER" = "Zdieľať váš profil";
 
 /* Message shown in conversation view that offers to add an unknown user to your phone's contacts. */
 "CONVERSATION_VIEW_ADD_TO_CONTACTS_OFFER" = "Pridať ku kontaktom";
@@ -1043,7 +1082,7 @@
 "DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_ACTION" = "Vymazať účet";
 
 /* Title for the action sheet message of the 'delete account confirmation' view controller. */
-"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_MESSAGE" = "This will delete your Signal account and reset the application. The app will close after this process is complete.";
+"DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_MESSAGE" = "Tým sa odstráni váš účet Signal a obnoví sa aplikácia. Aplikácia sa po dokončení tohto procesu zavrie. ";
 
 /* Title for the action sheet confirmation title of the 'delete account confirmation' view controller. */
 "DELETE_ACCOUNT_CONFIRMATION_ACTION_SHEEET_TITLE" = "Naozaj chcete vymazať svoj účet?";
@@ -1097,7 +1136,7 @@
 "DEVICE_LAST_ACTIVE_AT_LABEL" = "Posledná aktivita %@";
 
 /* {{Short Date}} when device was linked. */
-"DEVICE_LINKED_AT_LABEL" = "Linked %@";
+"DEVICE_LINKED_AT_LABEL" = "Prepojené %@";
 
 /* Alert title that can occur when viewing device manager. */
 "DEVICE_LIST_UPDATE_FAILED_TITLE" = "Nepodarilo sa aktualizovať zoznam zariadení.";
@@ -1368,9 +1407,6 @@
 
 /* Error message indicating that attachment download(s) failed. */
 "ERROR_MESSAGE_ATTACHMENT_DOWNLOAD_FAILED" = "Sťahovanie prílohy zlyhalo.";
-
-/* Error message when unable to receive an attachment because the sending client is too old. */
-"ERROR_MESSAGE_ATTACHMENT_FROM_OLD_CLIENT" = "Zlyhanie prílohy: Požiadajte tento kontakt, aby znovu odoslal túto správu po aktualizácii na najnovšiu verziu Signalu.";
 
 /* No comment provided by engineer. */
 "ERROR_MESSAGE_DUPLICATE_MESSAGE" = "Prijatá duplikovaná správa.";
@@ -1855,14 +1891,8 @@
 /* Label for the 'enable group link' switch in the 'group link' view. */
 "GROUP_LINK_VIEW_ENABLE_GROUP_LINK_SWITCH" = "Odkaz do skupiny";
 
-/* Title for the 'manage and share' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MANAGE_AND_SHARE_SECTION_TITLE" = "Spravovať a zdieľať";
-
 /* Footer for the 'member requests' section of the 'group link' view. */
 "GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_FOOTER" = "Vyžadovať schválenie administrátorom pri nových členoch, ktorí sa pridajú prostredníctvom odkazu do skupiny.";
-
-/* Title for the 'member requests' section of the 'group link' view. */
-"GROUP_LINK_VIEW_MEMBER_REQUESTS_SECTION_TITLE" = "Žiadosti o členstvo";
 
 /* Label for the 'reset link' button in the 'group link' view. */
 "GROUP_LINK_VIEW_RESET_LINK" = "Zresetovať odkaz";
@@ -1988,7 +2018,7 @@
 "GROUP_MEMBERS_VIDEO_CALL" = "Videohovor";
 
 /* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
-"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ group members have similar names.";
+"GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ členovia skupiny majú podobné mená.";
 
 /* Button to allow user to review known name collisions in group membership */
 "GROUP_MEMBERSHIP_NAME_COLLISION_BANNER_REVIEW_BUTTON" = "Ťuknite pre kontrolu";
@@ -2000,13 +2030,13 @@
 "GROUP_MEMBERSHIP_NAME_COLLISION_TITLE" = "Overiť členov";
 
 /* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
-"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ group members have similar names, review the members below or choose to take action.";
+"GROUP_MEMBERSHIP_NAME_MULTIPLE_COLLISION_HEADER" = "%@ členovia skupiny majú podobné mená, skontrolujte členov nižšie alebo sa rozhodnite konať.";
 
 /* A header string informing the user about a name collision in group membership. Embeds {{ total number of colliding members }} */
-"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ group members have the same name, review the members below or choose to take action.";
+"GROUP_MEMBERSHIP_NAME_SINGLE_COLLISION_HEADER" = "%@ členovia skupiny majú rovnaké meno, skontrolujte členov uvedených nižšie alebo sa rozhodnite konať.";
 
 /* Banner title alerting user to a single name collision set ub the group membership. Embeds {{ total number of colliding members }} */
-"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ group members have the same name.";
+"GROUP_MEMBERSHIP_SINGLE_COLLISION_BANNER_TITLE_FORMAT" = "%@ členovia skupiny majú rovnaké meno.";
 
 /* Placeholder text for 'group name' field. */
 "GROUP_NAME_PLACEHOLDER" = "Názov skupiny (povinné)";
@@ -2126,13 +2156,13 @@
 "GROUP_REMOTE_USER_REVOKED_ADMINISTRATOR_BY_REMOTE_USER_FORMAT" = "%1$@ odobral administrátorské oprávnenia od %2$@.";
 
 /* Label for the 'member requests' mode of the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "Žiadosti o členstvo";
+"GROUP_REQUESTS_AND_INVITES_VIEW_MEMBER_REQUESTS_MODE" = "Žiadosti";
 
 /* Label for the 'pending invites' mode of the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "Čakajúce pozvánky";
+"GROUP_REQUESTS_AND_INVITES_VIEW_PENDING_INVITES_MODE" = "Pozvánky";
 
 /* The title for the 'group requests and invites' view. */
-"GROUP_REQUESTS_AND_INVITES_VIEW_TITLE" = "Žiadosti o členstvo a pozvánky";
+"GROUP_REQUESTS_AND_INVITES_VIEW_TITLE" = "Žiadosti a pozvánky";
 
 /* Info message indicating that the group was updated by an unknown user. */
 "GROUP_UPDATED" = "Skupina aktualizovaná.";
@@ -2624,7 +2654,7 @@
 "LINK_DEVICE_SCANNING_INSTRUCTIONS" = "Naskenujte QR kód zobrazený na zariadení, ktoré chcete prepojiť.";
 
 /* Subheading for 'Link New Device' navigation */
-"LINK_NEW_DEVICE_SUBTITLE" = "Scan QR Code to link a new device.";
+"LINK_NEW_DEVICE_SUBTITLE" = "Naskenujte QR kód a pripojte nové zariadenie.";
 
 /* Navigation title when scanning QR code to add new device. */
 "LINK_NEW_DEVICE_TITLE" = "Prepojiť nové zariadenie";
@@ -2675,7 +2705,7 @@
 "LOGGING_SECTION" = "Logovanie";
 
 /* Footer for the 'logging' help section. */
-"LOGGING_SECTION_FOOTER" = "Debug logs can help Signal fix issues and crashes.";
+"LOGGING_SECTION_FOOTER" = "Záznamy ladenia môžu pomôcť pri riešení problémov a zlyhaní Signal.";
 
 /* Title for the 'long text message' view. */
 "LONG_TEXT_VIEW_TITLE" = "Správa";
@@ -2762,7 +2792,7 @@
 "MESSAGE_COMPOSEVIEW_TITLE" = "Nová správa";
 
 /* Toast indicating that the user has copied the sent timestamp. */
-"MESSAGE_DETAIL_VIEW_DID_COPY_SENT_TIMESTAMP" = "Sent time copied";
+"MESSAGE_DETAIL_VIEW_DID_COPY_SENT_TIMESTAMP" = "Čas odoslania okopírovaný";
 
 /* Title for the 'sent from' section on the 'message details' view. */
 "MESSAGE_DETAILS_VIEW_SENT_FROM_TITLE" = "Odoslané kým";
@@ -2783,7 +2813,7 @@
 "MESSAGE_METADATA_VIEW_MESSAGE_STATUS_READ" = "Prečítané kým";
 
 /* Status label for messages which are sending. */
-"MESSAGE_METADATA_VIEW_MESSAGE_STATUS_SENDING" = "Sending to";
+"MESSAGE_METADATA_VIEW_MESSAGE_STATUS_SENDING" = "Odosiela sa do";
 
 /* Status label for messages which are sent. */
 "MESSAGE_METADATA_VIEW_MESSAGE_STATUS_SENT" = "Odoslané komu";
@@ -2804,7 +2834,7 @@
 "MESSAGE_METADATA_VIEW_SOURCE_FILENAME" = "Názov súboru";
 
 /* Title for the 'message metadata' view. */
-"MESSAGE_METADATA_VIEW_TITLE" = "Message Details";
+"MESSAGE_METADATA_VIEW_TITLE" = "Podrobnosti správy";
 
 /* Action sheet action to confirm blocking a thread via a message request. */
 "MESSAGE_REQUEST_BLOCK_ACTION" = "Blokovať";
@@ -2996,7 +3026,7 @@
 "MUTED_BADGE" = "Stlmený/á";
 
 /* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
-"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Recently changed their profile name from %1$@ to %2$@.";
+"NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Nedávno zmenil/a názov svojho profilu z %1$@ na %2$@.";
 
 /* A button to skip a view. */
 "NAVIGATION_ITEM_SKIP_BUTTON" = "Preskočiť";
@@ -3188,10 +3218,10 @@
 "ONBOARDING_CAPTCHA_TITLE" = "Dodajte vašim správam nádych ľudskosti";
 
 /* Explanation on the 'onboarding after dropped YDB' view. */
-"ONBOARDING_DROPPED_YDB_EXPLANATION" = "Because you’ve been inactive for a long period of time, you must register again to use Signal.";
+"ONBOARDING_DROPPED_YDB_EXPLANATION" = "Pretože ste neaktívni dlhšiu dobu, musíte sa znova zaregistrovať, aby ste mohli používať Signal.";
 
 /* Title of the 'onboarding after dropped YDB' view. */
-"ONBOARDING_DROPPED_YDB_TITLE" = "Register for Signal";
+"ONBOARDING_DROPPED_YDB_TITLE" = "Zaregistrujte sa na Signal";
 
 /* button indicating that the user will register their ipad */
 "ONBOARDING_MODE_SWITCH_BUTTON_PROVISIONING" = "Registrovať iPad";
@@ -3325,6 +3355,210 @@
 /* info message text in conversation view. {embeds callee name} */
 "OUTGOING_CALL_FORMAT" = "Volali ste používateľovi %@";
 
+/* Button used to decline a payment request. */
+"PAYMENTS_ACTION_DECLINE_REQUEST" = "Žiadosť o odmietnutie";
+
+/* Format for indicator of a payment amount converted to fiat currency with the freshness of the conversion rate. Embeds: {{ %1$@ the payment amount, %2$@ the freshness of the currency conversion rate }}. */
+"PAYMENTS_CURRENCY_CONVERSION_FRESHNESS_FORMAT" = "%1$@ o %2$@";
+
+/* Indicator for unknown currency. */
+"PAYMENTS_CURRENCY_UNKNOWN" = "?";
+
+/* Message for the 'decline a payment request' alert. Embeds {{ the name of the user requesting payment }}. */
+"PAYMENTS_DECLINE_REQUEST_ALERT_MESSAGE_FORMAT" = "%@ bude informovaný, že ste odmietli.";
+
+/* Title for the 'decline a payment request' alert. */
+"PAYMENTS_DECLINE_REQUEST_ALERT_TITLE" = "Odmietnuť túto žiadosť?";
+
+/* Label for 'defragmentation' payments. */
+"PAYMENTS_DEFRAGMENTATION_PAYMENT" = "Poplatok za vyčistenie mincí";
+
+/* Error indicating that a payment request could not be cancelled. */
+"PAYMENTS_ERROR_PAYMENT_REQUEST_CANCEL_FAILED" = "Žiadosť sa nepodarilo zrušiť.";
+
+/* Error indicating that a payment request could not be declined. */
+"PAYMENTS_ERROR_PAYMENT_REQUEST_DECLINE_FAILED" = "Žiadosť nebolo možné odmietnuť.";
+
+/* Status indicator for incoming payments which failed. */
+"PAYMENTS_FAILURE_INCOMING_FAILED" = "Chyba";
+
+/* Status indicator for incoming payments which failed to verify. */
+"PAYMENTS_FAILURE_INCOMING_VALIDATION_FAILED" = "Neplatný";
+
+/* Status indicator for invalid payments which could not be processed. */
+"PAYMENTS_FAILURE_INVALID" = "Neplatný";
+
+/* Status indicator for outgoing payments which failed. */
+"PAYMENTS_FAILURE_OUTGOING_FAILED" = "Chyba";
+
+/* Status indicator for outgoing payments which failed due to insufficient funds. */
+"PAYMENTS_FAILURE_OUTGOING_INSUFFICIENT_FUNDS" = "Nedostatok finančných prostriedkov";
+
+/* Status indicator for outgoing payments for which the notification could not be sent. */
+"PAYMENTS_FAILURE_OUTGOING_NOTIFICATION_SEND_FAILED" = "Potvrdenie sa nepodarilo odoslať príjemcovi";
+
+/* Status indicator for outgoing payments which failed to verify. */
+"PAYMENTS_FAILURE_OUTGOING_VALIDATION_FAILED" = "Neplatný";
+
+/* Label for the 'add memo' ui in the 'send payment' UI. */
+"PAYMENTS_NEW_PAYMENT_ADD_MEMO" = "Pridať poznámku";
+
+/* Format for the 'balance' indicator. Embeds {{ the current payments balance }}. */
+"PAYMENTS_NEW_PAYMENT_BALANCE_FORMAT" = "Disponibilný zostatok: %@";
+
+/* Label for the 'confirm payment' button. */
+"PAYMENTS_NEW_PAYMENT_CONFIRM_PAYMENT_BUTTON" = "Potvrďte platbu";
+
+/* Title for the 'confirm payment' ui in the 'send payment' UI. */
+"PAYMENTS_NEW_PAYMENT_CONFIRM_PAYMENT_TITLE" = "Zaplať";
+
+/* Format for currency amounts in the 'send payment' UI. Embeds {{ %1$@ the current payments balance, %2$@ the currency indicator }}. */
+"PAYMENTS_NEW_PAYMENT_CURRENCY_FORMAT" = "%1$@ %2$@";
+
+/* Indicates that a payment failed due to a connectivity failure. */
+"PAYMENTS_NEW_PAYMENT_ERROR_CONNECTIVITY_FAILURE" = "Nepodarilo sa spojiť so službou";
+
+/* Indicates that a payment failed due to insufficient funds. */
+"PAYMENTS_NEW_PAYMENT_ERROR_INSUFFICIENT_FUNDS" = "Na dokončenie tejto platby nemáte dostatok MOB.";
+
+/* Indicates that a payment failed due to insufficient funds. Embeds {{ current balance }}. */
+"PAYMENTS_NEW_PAYMENT_ERROR_INSUFFICIENT_FUNDS_FORMAT" = "Na dokončenie tejto platby nemáte dostatok MOB. Váš súčasný zostatok je %@.";
+
+/* Indicates that a payment failed due to being invalid. */
+"PAYMENTS_NEW_PAYMENT_ERROR_INVALID_TRANSACTION" = "Neplatná transakcia";
+
+/* Indicates that a payment failed due to an outdated client. */
+"PAYMENTS_NEW_PAYMENT_ERROR_OUTDATED_CLIENT" = "Aktualizujte Signal, aby ste mohli používať platby.";
+
+/* Indicates that an unknown error occurred while sending a payment or payment request. */
+"PAYMENTS_NEW_PAYMENT_ERROR_UNKNOWN" = "Platbu sa nepodarilo dokončiť. Skontrolujte pripojenie a skúste to znova.";
+
+/* Label for the 'payment estimated fee' indicator. */
+"PAYMENTS_NEW_PAYMENT_ESTIMATED_FEE" = "Sieťový poplatok";
+
+/* Format for the 'fiat currency conversion estimate' indicator. Embeds {{ the fiat currency code }}. */
+"PAYMENTS_NEW_PAYMENT_FIAT_CONVERSION_FORMAT" = "Odhadované %@";
+
+/* Label for the 'invalid amount' button. */
+"PAYMENTS_NEW_PAYMENT_INVALID_AMOUNT" = "Neplatná suma";
+
+/* Format for the 'message character count indicator' for the 'new payment or payment request' view. Embeds {{ %1$@ the number of characters in the message, %2$@ the maximum number of characters in the message }}. */
+"PAYMENTS_NEW_PAYMENT_MESSAGE_COUNT_FORMAT" = "%1$@ / %2$@";
+
+/* Placeholder for the new payment or payment request message. */
+"PAYMENTS_NEW_PAYMENT_MESSAGE_PLACEHOLDER" = "Poznámka";
+
+/* Label for the 'new payment' button. */
+"PAYMENTS_NEW_PAYMENT_PAY_BUTTON" = "Zaplať";
+
+/* Label for the 'total payment amount' indicator. */
+"PAYMENTS_NEW_PAYMENT_PAYMENT_TOTAL" = "Celková suma";
+
+/* Indicator that a new payment is being processed in the 'send payment' UI. */
+"PAYMENTS_NEW_PAYMENT_PROCESSING" = "Spracováva sa";
+
+/* Format for the 'payment recipient amount' indicator. Embeds {{ the name of the recipient of the payment }}. */
+"PAYMENTS_NEW_PAYMENT_RECIPIENT_AMOUNT_FORMAT" = "Pre %@";
+
+/* Label for the 'new payment request' button. */
+"PAYMENTS_NEW_PAYMENT_REQUEST_BUTTON" = "Žiadosť";
+
+/* Label for the payments notification banner for a single payment notification. */
+"PAYMENTS_NOTIFICATION_BANNER_1" = "1 nové oznámenie o platbe";
+
+/* Format for the payments notification banner for a single payment notification with details. Embeds: {{ %1$@ the name of the user who sent you the payment, %2$@ the amount of the payment }}. */
+"PAYMENTS_NOTIFICATION_BANNER_1_WITH_DETAILS_FORMAT" = "%1$@ vám poslal %2$@";
+
+/* Format for the payments notification banner for multiple payment notifications. Embeds: {{ the number of unread payment notifications }}. */
+"PAYMENTS_NOTIFICATION_BANNER_N_FORMAT" = "%@ nové oznámenia o platbe";
+
+/* Status indicator for incoming payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_LONG_INCOMING_COMPLETE" = "Platba dokončená";
+
+/* Status indicator for incoming payments which have not yet been verified. */
+"PAYMENTS_PAYMENT_STATUS_LONG_INCOMING_UNVERIFIED" = "Neoverené";
+
+/* Status indicator for incoming payments which have been verified. */
+"PAYMENTS_PAYMENT_STATUS_LONG_INCOMING_VERIFIED" = "Overený";
+
+/* Status indicator for outgoing payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_COMPLETE" = "Platba dokončená";
+
+/* Status indicator for outgoing payments which are being sent. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_SENDING" = "Odosiela sa…";
+
+/* Status indicator for outgoing payments which have been sent. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_SENT" = "Odoslaná";
+
+/* Status indicator for outgoing payments which have not yet been submitted. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_UNSUBMITTED" = "Pripravuje sa";
+
+/* Status indicator for outgoing payments which have been submitted but not yet verified. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_UNVERIFIED" = "Neoverené";
+
+/* Status indicator for outgoing payments which have been verified but not yet sent. */
+"PAYMENTS_PAYMENT_STATUS_LONG_OUTGOING_VERIFIED" = "Overený";
+
+/* Status indicator for payments which had an unknown failure. */
+"PAYMENTS_PAYMENT_STATUS_LONG_UNKNOWN" = "Neznáme zlyhanie";
+
+/* Status indicator for incoming payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_INCOMING_COMPLETE" = "Dokončené";
+
+/* Status indicator for incoming payments which have not yet been verified. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_INCOMING_UNVERIFIED" = "Neoverené";
+
+/* Status indicator for incoming payments which have been verified. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_INCOMING_VERIFIED" = "Overený";
+
+/* Status indicator for outgoing payments which are complete. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_COMPLETE" = "Dokončené";
+
+/* Status indicator for outgoing payments which are being sent. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_SENDING" = "Odosiela sa…";
+
+/* Status indicator for outgoing payments which have been sent. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_SENT" = "Odoslaná";
+
+/* Status indicator for outgoing payments which have not yet been submitted. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_UNSUBMITTED" = "Pripravuje sa";
+
+/* Status indicator for outgoing payments which have been submitted but not yet verified. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_UNVERIFIED" = "Neoverené";
+
+/* Status indicator for outgoing payments which have been verified but not yet sent. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_OUTGOING_VERIFIED" = "Overený";
+
+/* Status indicator for payments which had an unknown failure. */
+"PAYMENTS_PAYMENT_STATUS_SHORT_UNKNOWN" = "Neznáme zlyhanie";
+
+/* Message for error alert indicating that a given user cannot receive payments because of a pending message request for a recipient that they have sent messages to. */
+"PAYMENTS_RECIPIENT_MISSING_PROFILE_KEY_MESSAGE_W_MESSAGES" = "Ak chcete tomuto používateľovi poslať platbu, musí od vás prijať žiadosť o správu.";
+
+/* Message for error alert indicating that a given user cannot receive payments because of a pending message request for a recipient that they have not sent message to. */
+"PAYMENTS_RECIPIENT_MISSING_PROFILE_KEY_MESSAGE_WO_MESSAGES" = "Ak chcete tomuto používateľovi poslať platbu, musí od vás prijať žiadosť o správu. Pošlite mu správu na vytvorenie žiadosti o správu.";
+
+/* Title for error alert indicating that a given user cannot receive payments because of a pending message request. */
+"PAYMENTS_RECIPIENT_MISSING_PROFILE_KEY_TITLE" = "Platbu nie je možné odoslať";
+
+/* Message for error alert indicating that a given user cannot receive payments because they have not enabled payments. */
+"PAYMENTS_RECIPIENT_PAYMENTS_NOT_ENABLED_MESSAGE" = "Táto osoba nemá aktivované platby.";
+
+/* Title for error alert indicating that a given user cannot receive payments because they have not enabled payments. */
+"PAYMENTS_RECIPIENT_PAYMENTS_NOT_ENABLED_TITLE" = "Neplatný príjemca";
+
+/* Label for 'transfer out' payments. */
+"PAYMENTS_TRANSFER_OUT_PAYMENT" = "Prevedené mimo";
+
+/* Indicator for unidentified incoming payments. */
+"PAYMENTS_UNIDENTIFIED_PAYMENT_INCOMING" = "Prijatá platba";
+
+/* Indicator for unidentified outgoing payments. */
+"PAYMENTS_UNIDENTIFIED_PAYMENT_OUTGOING" = "Odoslaná platba";
+
+/* Label for unknown payments. */
+"PAYMENTS_UNKNOWN_PAYMENT" = "Neplatná platba";
+
 /* Title of 'accept member request to join group' button. */
 "PENDING_GROUP_MEMBERS_ACCEPT_REQUEST_BUTTON" = "Pridať do skupiny";
 
@@ -3392,13 +3626,10 @@
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "Neplatné pozvánky";
 
 /* Title for the 'invites by other group members' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "Pozvánky odoslané inými členmi skupiny";
-
-/* Title for the 'pending member requests' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_PENDING_MEMBER_REQUESTS" = "Čakajúce žiadosti o členstvo";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "Invited by Others";
 
 /* Title for the 'people you invited' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "Ľudia, ktorých ste pozvali vy";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "Invited by You";
 
 /* Label for view-once messages that have invalid content. */
 "PER_MESSAGE_EXPIRATION_INVALID_CONTENT" = "Chyba pri spracovaní prichádzajúcej správy";
@@ -3560,7 +3791,7 @@
 "PIN_CREATION_PIN_PROGRESS" = "Vytvára sa PIN kód...";
 
 /* The re-creation explanation in the 'pin creation' view. */
-"PIN_CREATION_RECREATION_EXPLANATION" = "PIN si môžete zmeniť, pokiaľ je toto zariadenie registrované.";
+"PIN_CREATION_RECREATION_EXPLANATION" = "PIN si môžete zmeniť, kým je toto zariadenie registrované.";
 
 /* Title of the 'pin creation' recreation view. */
 "PIN_CREATION_RECREATION_TITLE" = "Zmente si PIN";
@@ -3737,13 +3968,13 @@
 "PROFILE_NAME_CHANGE_SYSTEM_NONCONTACT_FORMAT" = "%@ si zmenil(a) názov profilu na %@.";
 
 /* Title for the profile name view. */
-"PROFILE_NAME_VIEW_TITLE" = "Your Name";
+"PROFILE_NAME_VIEW_TITLE" = "Vaše meno";
 
 /* Placeholder when the user doesn't have an 'about' for profile settings screen. */
 "PROFILE_SETTINGS_BIO_PLACEHOLDER" = "Informácie";
 
 /* Placeholder when the user doesn't have a 'name' defined for profile settings screen. */
-"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Name";
+"PROFILE_SETTINGS_NAME_PLACEHOLDER" = "Meno";
 
 /* Placeholder when the user doesn't have a 'username' defined for profile settings screen. */
 "PROFILE_SETTINGS_USERNAME_PLACEHOLDER" = "Používateľské meno";
@@ -3992,7 +4223,7 @@
 "REPLACE_ADMIN_VIEW_TITLE" = "Vybrať nového administrátora";
 
 /* No comment provided by engineer. */
-"REREGISTER_FOR_PUSH" = "Re-register Push Notifications";
+"REREGISTER_FOR_PUSH" = "Znovu zaregistrovať push notifikácie";
 
 /* Body for research megaphone */
 "RESEARCH_MEGAPHONE_BODY" = "Aby sme zo Signalu mohli spraviť najlepšiu aplikáciu na posielanie správ na planéte, radi by sme počuli vašu spätnú väzbu.";
@@ -4294,6 +4525,9 @@
 /* No comment provided by engineer. */
 "SECURE_SESSION_RESET" = "Bezpečná relácia bola obnovená.";
 
+/* Label for the 'see all' button. */
+"SEE_ALL_BUTTON" = "Pozrieť všetky";
+
 /* Table section header for conversations you haven't recently used. */
 "SELECT_THREAD_TABLE_OTHER_CHATS_TITLE" = "Ostatné kontakty";
 
@@ -4346,7 +4580,7 @@
 "SET_WALLPAPER_TITLE" = "Nastaviť pozadie";
 
 /* Title for the 'account' link in settings. */
-"SETTINGS_ACCOUNT" = "Account";
+"SETTINGS_ACCOUNT" = "Účet";
 
 /* Title for the 'add to block list' view. */
 "SETTINGS_ADD_TO_BLOCK_LIST_TITLE" = "Blokovať";
@@ -4394,10 +4628,10 @@
 "SETTINGS_ADVANCED_VIEW_ERROR_LOG" = "Chybové záznamy";
 
 /* Footer for avatar section in appearance settings */
-"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Display system contact photos if available.";
+"SETTINGS_APPEARANCE_AVATAR_FOOTER" = "Zobraziť fotografie kontaktov systému, ak sú k dispozícii.";
 
 /* Title for switch to toggle preference between contact and profile avatars */
-"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Use System Contact Photos";
+"SETTINGS_APPEARANCE_AVATAR_PREFERENCE_LABEL" = "Použiť systémové fotky kontaktov";
 
 /* The title for the theme section in the appearance settings. */
 "SETTINGS_APPEARANCE_THEME_TITLE" = "Motív";
@@ -4433,7 +4667,7 @@
 "SETTINGS_CLEAR_HISTORY" = "Vymazať históriu chatov";
 
 /* Footer for the 'about' help section */
-"SETTINGS_COPYRIGHT" = "Copyright Signal Messenger\nLicensed under the GPLv3";
+"SETTINGS_COPYRIGHT" = "Autorské práva Signal Messenger \nLicencované pod GPLv3";
 
 /* Label for the 'data' section of the app settings. */
 "SETTINGS_DATA" = "Využitie dát";
@@ -4442,7 +4676,7 @@
 "SETTINGS_DATA_CALL_LOW_BANDWIDTH_ITEM_TITLE" = "Využívať menej dát";
 
 /* Section footer for the call section in data settings */
-"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Using less data may improve calls on bad networks.";
+"SETTINGS_DATA_CALL_SECTION_FOOTER" = "Využitie menšieho množstva dát môže zlepšiť hovory v zlých sieťach.";
 
 /* Section header for the call section in data settings */
 "SETTINGS_DATA_CALL_SECTION_HEADER" = "Volania";
@@ -4451,7 +4685,7 @@
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_FOOTER" = "Hlasové správy, médiá na jedno zobrazenie a nálepky (pod 100kb) sa vždy stiahnu automaticky.";
 
 /* Header for the 'media auto-download' section in the data settings. */
-"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Auto-Download";
+"SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_HEADER" = "Automatické stiahnutie";
 
 /* Label for for the 'reset media auto-download settings' button in the data settings. */
 "SETTINGS_DATA_MEDIA_AUTO_DOWNLOAD_RESET" = "Resetovať nastavenia automatického sťahovania médií";
@@ -4461,6 +4695,18 @@
 
 /* No comment provided by engineer. */
 "SETTINGS_DELETE_ACCOUNT_BUTTON" = "Vymazať účet";
+
+/* Button for to _not_ transfer the user's payments balance before deleting their account. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_DONT_TRANSFER" = "Nepreviesť";
+
+/* Body for the alert confirming whether the user wants transfer their payments balance before deleting their account. Embeds: {{ the current payment balance }}. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_MESSAGE_FORMAT" = "Máte zostatok %@. Ak pred vymazaním vášho účtu neprevediete vaše prostriedky na adresu inej peňaženky, váš zostatok navždy stratíte.";
+
+/* Title for the alert confirming whether the user wants transfer their payments balance before deleting their account. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_TITLE" = "Previesť platobný zostatok?";
+
+/* Button for transferring the user's payments balance before deleting their account. */
+"SETTINGS_DELETE_ACCOUNT_PAYMENTS_BALANCE_ALERT_TRANSFER" = "Previesť zostatok";
 
 /* Label for 'delete data' button. */
 "SETTINGS_DELETE_DATA_BUTTON" = "Vymazať všetky dáta";
@@ -4474,7 +4720,7 @@
 /* Title for the 'donate to signal' link in settings. */
 "SETTINGS_DONATE" = "Prispieť na Signal";
 
-/* Title for support page in app settings. */
+/* Title for help button and help pages in app settings. */
 "SETTINGS_HELP" = "Pomocník";
 
 /* Settings table view cell label */
@@ -4523,31 +4769,421 @@
 "SETTINGS_MESSAGING" = "Odosielanie správ";
 
 /* Explanation for the 'messaging' privacy settings. */
-"SETTINGS_MESSAGING_FOOTER" = "See and share when messages are being read and typed. If disabled, you won’t see read receipts or typing indicators from others.";
+"SETTINGS_MESSAGING_FOOTER" = "Sledujte a zdieľajte, kedy sú správy prečítané a napísané. Ak je deaktivované, neuvidíte potvrdenia o prečítaní ani indikátory písania od ostatných.";
 
 /* Title for settings activity */
 "SETTINGS_NAV_BAR_TITLE" = "Nastavenia";
 
 /* A setting controlling whether muted conversations are shown in the badge count */
-"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Include Muted Chats";
+"SETTINGS_NOTIFICATION_BADGE_COUNT_INCLUDES_MUTED_CONVERSATIONS" = "Zahrnúť stlmené konverzácie";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_BADGE_COUNT_TITLE" = "Počet odznakov";
 
 /* table section footer */
-"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Call and Message notifications can appear while your phone is locked.";
+"SETTINGS_NOTIFICATION_CONTENT_DESCRIPTION" = "Keď je telefón uzamknutý, môžu sa zobrazovať oznámenia o hovoroch a správach.";
 
 /* table section header */
 "SETTINGS_NOTIFICATION_CONTENT_TITLE" = "Obsah hlásení";
 
 /* When the local device discovers a contact has recently installed signal, the app can generates a message encouraging the local user to say hello. Turning this switch off disables that feature. */
-"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Contact Joins Signal";
+"SETTINGS_NOTIFICATION_EVENTS_CONTACT_JOINED_SIGNAL" = "Kontakt sa pripojí k Signal";
 
 /* table section header */
-"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Notify when…";
+"SETTINGS_NOTIFICATION_NOTIFY_WHEN_TITLE" = "Upozorniť, keď…";
 
 /* The title for the notification settings. */
 "SETTINGS_NOTIFICATIONS" = "Hlásenia";
+
+/* Label for the 'agree to payments terms' button in the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_AGREE" = "Aktivovať";
+
+/* Description for the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_DESCRIPTION" = "Signal môžete používať na posielanie a prijímanie MobileCoinu. Všetky platby podliehajú podmienkam používania MobileCoinov a peňaženky MobileCoin. Toto je beta funkcia, a tak by ste mohli naraziť na nejaké problémy. Ďalej, platby či zostatky, o ktoré by ste mohli prísť, nie je možné obnoviť.";
+
+/* Title for the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_TITLE" = "Aktivovať";
+
+/* Label for the 'view payments terms' button in the 'activate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_ACTIVATE_PAYMENTS_CONFIRM_VIEW_TERMS" = "Zobraziť podmienky MobileCoinu";
+
+/* Label for 'add money' view in the payment settings. */
+"SETTINGS_PAYMENTS_ADD_MONEY" = "Pridať prostriedky";
+
+/* Explanation of the process for adding money in the 'add money' settings view. */
+"SETTINGS_PAYMENTS_ADD_MONEY_DESCRIPTION" = "Ak chcete pridať prostriedky, pošlite MobileCoin na svoju adresu peňaženky. Začnite transakciu zo svojho účtu na burze, ktorá podporuje MobileCoin, potom naskenujte QR kód alebo skopírujte adresu svojej peňaženky.";
+
+/* Indicator that the payments wallet address has been copied to the pasteboard. */
+"SETTINGS_PAYMENTS_ADD_MONEY_WALLET_ADDRESS_COPIED" = "Adresa peňaženky okopírovaná";
+
+/* Label for the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_ALL_RECORDS" = "Všetky platby";
+
+/* Format string for the 'local balance converted into local currency' indicator. Embeds: {{ %1$@ the local balance in the local currency, %2$@ the local currency code, %3$@ the date the currency conversion rate was obtained. }}.. */
+"SETTINGS_PAYMENTS_BALANCE_CONVERSION_FORMAT" = "%1$@ %2$@ z %3$@";
+
+/* Error message indicating that payments could not be activated because the feature is not currently available. */
+"SETTINGS_PAYMENTS_CANNOT_ACTIVATE_PAYMENTS_KILL_SWITCH" = "Platby v službe Signal už nie sú k dispozícii. Stále môžete prevádzať prostriedky na burzu, ale už nemôžete posielať a prijímať platby ani pridávať prostriedky.";
+
+/* Error message indicating that payments could not be deactivated because the current balance is unavailable. */
+"SETTINGS_PAYMENTS_CANNOT_DEACTIVATE_PAYMENTS_NO_BALANCE" = "Nepodarilo sa deaktivovať platby, pretože váš zostatok nie je dostupný. Skontrolujte vaše pripojenie a skúste to znovu.";
+
+/* Error message indicating that a payment could not be sent because the current balance is unavailable. */
+"SETTINGS_PAYMENTS_CANNOT_SEND_PAYMENT_NO_BALANCE" = "Nepodarilo sa dokončiť platbu, pretože váš zostatok nie je dostupný. Skontrolujte vaše pripojenie a skúste to znovu.";
+
+/* Error message indicating that payments cannot be sent because the feature is not currently available. */
+"SETTINGS_PAYMENTS_CANNOT_SEND_PAYMENTS_KILL_SWITCH" = "Platby v službe Signal už nie sú k dispozícii. Stále môžete prevádzať prostriedky na burzu, ale už nemôžete posielať a prijímať platby ani pridávať prostriedky.";
+
+/* Error message indicating that you cannot transfer into your payments wallet because the feature is not currently available. */
+"SETTINGS_PAYMENTS_CANNOT_TRANSFER_IN_KILL_SWITCH" = "Platby v službe Signal už nie sú k dispozícii. Stále môžete prevádzať prostriedky na burzu, ale už nemôžete posielať a prijímať platby ani pridávať prostriedky.";
+
+/* Message for the 'currency conversions info' alert. */
+"SETTINGS_PAYMENTS_CURRENCY_CONVERSIONS_INFO_ALERT_MESSAGE" = "Prepočty sú len odhadmi a nemusia byť presné.";
+
+/* Label for 'all currencies' section in the payment currency settings. */
+"SETTINGS_PAYMENTS_CURRENCY_VIEW_SECTION_ALL_CURRENCIES" = "Všetky meny";
+
+/* Label for 'transfer balance' button in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_AFTER_TRANSFERRING_BALANCE" = "Previesť zostávajúcu čiastku";
+
+/* Label for the 'deactivate payments' button in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_BUTTON" = "Deaktivovať";
+
+/* Label for 'deactivate payments' button in the app settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_PAYMENTS" = "Deaktivovať platby";
+
+/* Description for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_PAYMENTS_CONFIRM_DESCRIPTION" = "Ak deaktivujete platby, nebudete môcť v Signale posielať a prijímať Mobilecoin.";
+
+/* Title for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_PAYMENTS_CONFIRM_TITLE" = "Deaktivovať platby?";
+
+/* Label for the 'de-activate payments' view of the app settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_TITLE" = "Deaktivovať platby";
+
+/* Explanation of the 'deactivate payments with balance' process in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITH_BALANCE_EXPLANATION" = "Odporúčame, aby ste pred deaktiváciou platieb vaše prostriedky previedli na adresu inej peňaženky. Ak sa rozhodnete, že vaše prostriedky neprevediete teraz, zostanú v peňaženke prepojenej so Signalom, ak platby reaktivujete.";
+
+/* Description for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFER_CONFIRM_DESCRIPTION" = "V prípade, že  sa rozhodnete opätovne aktivovať platby, váš zostatok zostane vo vašej peňaženke prepojenej so službou Signal.";
+
+/* Title for the 'deactivate payments confirmation' UI in the payment settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFER_CONFIRM_TITLE" = "Deaktivovať bez prevodu?";
+
+/* Label for 'deactivate payments without transferring balance' button in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_DEACTIVATE_WITHOUT_TRANSFERRING_BALANCE" = "Deaktivovať bez prevodu";
+
+/* Error indicating that payments could not be deactivated in the payments settings. */
+"SETTINGS_PAYMENTS_DEACTIVATION_FAILED" = "Nepodarilo sa deaktivovať platby";
+
+/* Label for the 'payments details' view of the app settings. */
+"SETTINGS_PAYMENTS_DETAIL_VIEW_TITLE" = "Podrobnosti";
+
+/* Label for the 'enable payments' button in the 'payments not enabled' alert. */
+"SETTINGS_PAYMENTS_ENABLE_ACTION" = "Povoliť platby";
+
+/* Description for the 'About MobileCoin' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ABOUT_MOBILECOIN_DESCRIPTION" = "MobileCoin je nová digitálna mena zameraná na súkromie.";
+
+/* Title for the 'About MobileCoin' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ABOUT_MOBILECOIN_TITLE" = "Čo je to MobileCoin";
+
+/* Description for the 'Adding to your wallet' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ADDING_TO_YOUR_WALLET_DESCRIPTION" = "Prostriedky na použitie v službe Signal môžete pridať poslaním MobileCoinov na adresu vašej peňaženky.";
+
+/* Title for the 'Adding to your wallet' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_ADDING_TO_YOUR_WALLET_TITLE" = "Pridávanie prostriedkov";
+
+/* Description for the 'Cashing Out' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_CASHING_OUT_DESCRIPTION" = "MobileCoin si kedykoľvek môžete zmeniť na hotovosť v zmenárni, ktorá podporuje MobileCoin. Jednoducho vykonajte prevod na váš účet v danej zmenárni.";
+
+/* Title for the 'Cashing Out' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_CASHING_OUT_TITLE" = "Zmena na hotovosť";
+
+/* Label for button in the 'Update PIN' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_UPDATE_PIN_BUTTON" = "Aktualizovať PIN kód";
+
+/* Description for the 'Update PIN' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_UPDATE_PIN_DESCRIPTION" = "Pri vysokom zostatku by ste mohli zvážiť prechod na alfanumerický PIN. Zvýšili by ste tak ochranu svojho účtu.";
+
+/* Title for the 'Update PIN' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_UPDATE_PIN_TITLE" = "Aktualizujte si PIN";
+
+/* Label for button in the 'View Passphrase' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_VIEW_PASSPHRASE_BUTTON" = "Zaznamenať frázu na obnovenie";
+
+/* Description for the 'View Passphrase' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_VIEW_PASSPHRASE_DESCRIPTION" = "Vaša fráza na obnovenie vám dáva ďalší spôsob, ako obnoviť váš platobný účet.";
+
+/* Title for the 'View Passphrase' help card in the payments settings. */
+"SETTINGS_PAYMENTS_HELP_CARD_VIEW_PASSPHRASE_TITLE" = "Zaznamenať frázu na obnovenie";
+
+/* Indicator that the payments wallet address is invalid. */
+"SETTINGS_PAYMENTS_INVALID_WALLET_ADDRESS" = "Neplatná adresa peňaženky";
+
+/* Message indicating that there is no payment activity to display in the payment settings. */
+"SETTINGS_PAYMENTS_NO_ACTIVITY_INDICATOR" = "Zatiaľ žiadna nedávna aktivita.";
+
+/* Message for the 'payments not enabled' alert. */
+"SETTINGS_PAYMENTS_NOT_ENABLED_ALERT_MESSAGE" = "Chceli by ste povoliť platby?";
+
+/* Title for the 'payments not enabled' alert. */
+"SETTINGS_PAYMENTS_NOT_ENABLED_ALERT_TITLE" = "Platby nie sú povolené.";
+
+/* Label for 'activate' button in the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_ACTIVATE_BUTTON" = "Aktivovať platby";
+
+/* Message shown when payments rae activated in the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_ACTIVATED_TOAST" = "Platby sú aktivované.";
+
+/* Message for the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_MESSAGE" = "Pomocou Signal môžete odosielať a prijímať MobileCoin, novú digitálnu menu zameranú na súkromie. Ak chcete začať, aktivujte.";
+
+/* Label for 'activate' button in the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_REACTIVATE_BUTTON" = "Reaktivovať platby";
+
+/* Title for the 'payments opt-in' view in the app settings. */
+"SETTINGS_PAYMENTS_OPT_IN_TITLE" = "Predstavujeme platby (Beta)";
+
+/* Explanation of the 'payments passphrase' in the 'view payments passphrase' settings. */
+"SETTINGS_PAYMENTS_PASSPHRASE_EXPLANATION" = "Váš zostatok sa automaticky obnoví, keď si Signal preinštalujete, ak potvrdíte váš PIN pre Signal. Váš zostatok môžete taktiež obnoviť pomocou frázy na obnovenie, čo je fráza pozostávajúca z 24 slov, ktorú máte len vy. Zapíšte si ju a uložte na bezpečné miesto.";
+
+/* Label for the 'add money' button in the 'send payment' UI. */
+"SETTINGS_PAYMENTS_PAYMENT_ADD_MONEY" = "Pridať prostriedky";
+
+/* Label for the 'MobileCoin block index' in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_BLOCK_INDEX" = "Číslo bloku";
+
+/* Label for the 'MobileCoin network fee' in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_FEE" = "Sieťový poplatok";
+
+/* Indicates that you received a payment in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_RECEIVED" = "Prijatá";
+
+/* Format for indicator that you received a payment in the payment details view in the app settings. Embeds: {{ the user who sent you the payment }}. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_RECEIVED_FORMAT" = "Prijaté od používateľa %@";
+
+/* Label for the sender in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENDER" = "Odoslané používateľom";
+
+/* Format for the sender info in the payment details view in the app settings. Embeds {{ %1$@ the name of the sender of the payment, %2$@ the date the transaction was sent }}. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENDER_FORMAT" = "%1$@ dňa %2$@";
+
+/* Indicates that you send the payment in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENDER_YOU" = "Vy";
+
+/* Indicates that you sent a payment in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENT" = "Odoslaná";
+
+/* Format for indicator that you sent a payment in the payment details view in the app settings. Embeds: {{ the user who you sent the payment to }}. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_SENT_FORMAT" = "Odoslané používateľovi %@";
+
+/* Label for the transaction status in the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_STATUS" = "Stav";
+
+/* Footer string for the status section of the payment details view in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_STATUS_FOOTER" = "Podrobnosti o transakcii vrátane sumy, platby a času transakcie sú súčasťou MobileCoin Ledger.";
+
+/* Footer string for the status section of the payment details view in the app settings for defragmentation transactions. */
+"SETTINGS_PAYMENTS_PAYMENT_DETAILS_STATUS_FOOTER_DEFRAGMENTATION" = "\"Poplatok za upratanie mincí\" sa účtuje, keď mince vo vašom vlastníctve nie je možné skombinovať na dokončenie transakcie. Upratanie vám umožní posielať platby naďalej.";
+
+/* Message for the 'insufficient balance for payment' alert. Embeds: {{ The current payments balance }}. */
+"SETTINGS_PAYMENTS_PAYMENT_INSUFFICIENT_BALANCE_ALERT_MESSAGE_FORMAT" = "Na dokončenie tejto platby nemáte dostatok MOB. Váš súčasný zostatok je %@.";
+
+/* Title for the 'insufficient balance for payment' alert. */
+"SETTINGS_PAYMENTS_PAYMENT_INSUFFICIENT_BALANCE_ALERT_TITLE" = "Nedostatočný zostatok";
+
+/* Format string for the sender of an incoming payment. Embeds: {{ the name of the sender of the payment}}. */
+"SETTINGS_PAYMENTS_PAYMENT_USER_INCOMING_FORMAT" = "Od používateľa %@";
+
+/* Format string for the recipient of an outgoing payment. Embeds: {{ the name of the recipient of the payment}}. */
+"SETTINGS_PAYMENTS_PAYMENT_USER_OUTGOING_FORMAT" = "Pre %@";
+
+/* Message indicating that payments have been disabled in the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_DISABLED_TOAST" = "Platby sú deaktivované.";
+
+/* Label for the 'all payments' mode of the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_TYPE_ALL" = "Všetko";
+
+/* Label for the 'incoming payments' mode of the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_TYPE_INCOMING" = "Prijatá";
+
+/* Label for the 'outgoing payments' mode of the 'all payment records' section of the app settings. */
+"SETTINGS_PAYMENTS_PAYMENTS_TYPE_OUTGOING" = "Odoslaná";
+
+/* Label for the 'recent payments' section in the payment settings. */
+"SETTINGS_PAYMENTS_RECENT_PAYMENTS" = "Posledné platby";
+
+/* Description for the 'record payments passphrase to disable pin' UI in the app settings. */
+"SETTINGS_PAYMENTS_RECORD_PASSPHRASE_DISABLE_PIN_DESCRIPTION" = "Pred deaktiváciou kódu PIN musíte zaznamenať frázu na obnovenie platieb, aby ste sa ubezpečili, že môžete svoj platobný účet obnoviť.";
+
+/* Label for the 'record recovery passphrase' button in the 'record payments passphrase to disable pin' UI in the app settings. */
+"SETTINGS_PAYMENTS_RECORD_PASSPHRASE_DISABLE_PIN_RECORD_PASSPHRASE" = "Zaznamenať frázu na obnovenie";
+
+/* Title for the 'record payments passphrase to disable pin' UI in the app settings. */
+"SETTINGS_PAYMENTS_RECORD_PASSPHRASE_DISABLE_PIN_TITLE" = "Zaznamenať frázu na obnovenie platieb";
+
+/* Label for the current balance in the 'deactivate payments' settings. */
+"SETTINGS_PAYMENTS_REMAINING_BALANCE" = "Zostávajúci zostatok";
+
+/* Label for the 'remove payments details' button in the app settings. */
+"SETTINGS_PAYMENTS_REMOVE_BUTTON" = "Odstrániť";
+
+/* Label for 'restore payments' button in the payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_PAYMENTS_BUTTON" = "Obnoviť platobný účet";
+
+/* Explanation of the 'review payments passphrase' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_COMPLETE_EXPLANATION" = "Uistite sa, že ste svoju frázu zadali správne.";
+
+/* Title for the 'review payments passphrase' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_COMPLETE_TITLE" = "Potvrdiť frázu na obnovenie";
+
+/* Message indicating that 'restore payments wallet' is complete. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_COMPLETE_TOAST" = "Platobný účet bol obnovený.";
+
+/* Label for the 'enter passphrase manually' button in the 'restore payments wallet from passphrase' view. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_ENTER_MANUALLY" = "Zadať manuálne";
+
+/* Error indicating that 'restore payments wallet failed' in the app payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_FAILED" = "Obnovenie zlyhalo.";
+
+/* Message for the 'invalid payments wallet passphrase' error alert in the app payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_INVALID_PASSPHRASE_MESSAGE" = "Toto nie je platná fráza na obnovenie.";
+
+/* Title for the 'invalid payments wallet passphrase' error alert in the app payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_INVALID_PASSPHRASE_TITLE" = "Neplatná fráza";
+
+/* Label for the 'restore passphrase from pasteboard' button in the 'restore payments wallet from passphrase' view. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_PASTE_FROM_PASTEBOARD" = "Prilepiť zo schránky";
+
+/* Format for the placeholder text in the 'restore payments wallet from pasteboard' view of the app settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_PASTE_PLACEHOLDER" = "Fráza na obnovenie";
+
+/* Title for the 'restore payments wallet from pasteboard' view of the app settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_PASTE_TITLE" = "Prilepiť frázu na obnovenie";
+
+/* Explanation of the 'restore payments wallet' process payments settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_SPLASH_EXPLANATION" = "Vaša fráza na obnovenie pozostáva z 12 slov a máte ju len vy. Môžete ju použiť na obnovenie vášho platobného účtu.";
+
+/* Title for the first step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_SPLASH_TITLE" = "Zadajte frázu na obnovenie";
+
+/* Title for the 'restore payments wallet' view of the app settings. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_TITLE" = "Fráza na obnovenie";
+
+/* Format for the instructions for the 'enter word' step of the 'restore payments wallet' views. Embeds {{ the index of the current word }}. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_INSTRUCTIONS_FORMAT" = "Zadajte slovo %@";
+
+/* Error indicating that the user has entered an invalid payments passphrase in the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_INVALID_PASSPHRASE" = "Neplatná fráza na obnovenie.";
+
+/* Error indicating that the user has entered an invalid word in the 'enter word' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_INVALID_WORD" = "Slovo nie je napísané správne.";
+
+/* Title for the 'enter word' step of the 'restore payments wallet' views. */
+"SETTINGS_PAYMENTS_RESTORE_WALLET_WORD_TITLE" = "Zadajte frázu na obnovenie";
+
+/* Instructions in the 'scan payment address QR code' view in the payment settings. */
+"SETTINGS_PAYMENTS_SCAN_QR_INSTRUCTIONS" = "Naskenujte QR kód pre príjemcu platby.";
+
+/* Error indicating that a QR code does not contain a valid MobileCoin public address. */
+"SETTINGS_PAYMENTS_SCAN_QR_INVALID_PUBLIC_ADDRESS" = "Neplatná adresa";
+
+/* Error indicating that a QR code does not contain a valid MobileCoin public address URL. */
+"SETTINGS_PAYMENTS_SCAN_QR_INVALID_PUBLIC_ADDRESS_URL" = "Neplatná adresa URL";
+
+/* Label for 'scan payment address QR code' view in the payment settings. */
+"SETTINGS_PAYMENTS_SCAN_QR_TITLE" = "Skenovať QR kód";
+
+/* Label for 'send payment' button in the payment settings. */
+"SETTINGS_PAYMENTS_SEND_PAYMENT" = "Odoslať platbu";
+
+/* Label for the 'send payment to recipient' view in the payment settings. */
+"SETTINGS_PAYMENTS_SEND_TO_RECIPIENT_TITLE" = "Zvoľte príjemcu";
+
+/* Title for the 'set currency' view in the app settings. */
+"SETTINGS_PAYMENTS_SET_CURRENCY" = "Prepočet meny";
+
+/* Label for the 'payments' section of the app settings. */
+"SETTINGS_PAYMENTS_TITLE" = "Platby";
+
+/* Error indicating that it is not valid to send yourself a payment. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_CANNOT_SEND_TO_SELF" = "Nemôžete vykonať prevod na adresu vašej Signal peňaženky. Zadajte adresu peňaženky z vášho účtu v podporovanej zmenárni.";
+
+/* Footer of the 'transfer currency out' view in the payment settings. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_FOOTER" = "MobileCoin môžete previesť vykonaním prevodu na adresu peňaženky poskytnutú zmenárňou. Adresa peňaženky je reťazec pozostávajúci z číslic a písmen a najčastejšie sa nachádza pod QR kódom.";
+
+/* Error indicating that MobileCoin public address is not valid. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_INVALID_PUBLIC_ADDRESS" = "Skontrolujte adresu peňaženky, do ktorej sa snažíte previesť peniaze, a skúste to znovu.";
+
+/* Title for error alert indicating that MobileCoin public address is not valid. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_INVALID_PUBLIC_ADDRESS_TITLE" = "Nesprávna adresa";
+
+/* Placeholder text for the address text field in the 'transfer currency out' settings view. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_PLACEHOLDER" = "Kam: Naskenujte alebo zadajte adresu peňaženky";
+
+/* Label for 'transfer currency out' view in the payment settings. */
+"SETTINGS_PAYMENTS_TRANSFER_OUT_TITLE" = "Previesť do zmenárne";
+
+/* Label for the 'transfer to exchange' button in the payment settings. */
+"SETTINGS_PAYMENTS_TRANSFER_TO_EXCHANGE" = "Previesť do zmenárne";
+
+/* Message indicating that 'payments passphrase review' is complete. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COMPLETE_TOAST" = "Nastavovanie frázy na obnovenie je hotové.";
+
+/* Label for 'confirm' button in the 'view payments passphrase' view of the app settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM" = "Potvrdiť";
+
+/* Format for the explanation of the 'confirm payments passphrase word' step in the 'view payments passphrase' settings, indicating that the user needs to enter two words from their payments passphrase. Embeds: {{ %1$@ the index of the first word, %2$@ the index of the second word }}. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_EXPLANATION_FORMAT" = "Zadajte slová %1$@ a %2$@ z vašej frázy na obnovenie.";
+
+/* Error indicating that at least one word of the payments passphrase is not correct in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_INVALID_WORD" = "Jedno zo slov je nesprávne. Skúste to znovu.";
+
+/* Error indicating that all words of the payments passphrase are not correct in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_INVALID_WORDS" = "Obe slová sú nesprávne. Skúste to znovu.";
+
+/* Format for the placeholder text in the 'confirm payments passphrase' view of the app settings. Embeds: {{ the index of the word }}. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_PLACEHOLDER_FORMAT" = "Slovo %@";
+
+/* Title for the 'confirm words' step of the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_CONFIRM_TITLE" = "Potvrdiť frázu na obnovenie";
+
+/* Indicator that the payments passphrase has been copied to the clipboard in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPIED_TO_CLIPBOARD" = "Fráza na obnovenie okopírovaná";
+
+/* Label for the 'copy to clipboard' button in the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPY_TO_CLIPBOARD" = "Okopírovať do schránky";
+
+/* Message for the 'copy recovery passphrase to clipboard confirm' alert in the payment settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPY_TO_CLIPBOARD_CONFIRM_MESSAGE" = "Ak sa vašu frázu na obnovenie rozhodnete uložiť digitálne, uistite sa, že je uložená bezpečne na nejakom mieste, ktorému dôverujete.";
+
+/* Title for the 'copy recovery passphrase to clipboard confirm' alert in the payment settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_COPY_TO_CLIPBOARD_CONFIRM_TITLE" = "Okopírovať do schránky?";
+
+/* Label for 'see passphrase again' button in the 'view payments passphrase' view of the app settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_SEE_PASSPHRASE_AGAIN" = "Zobraziť frázu znovu";
+
+/* Title for the first step of the 'view payments passphrase' views. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_START_TITLE" = "Zobraziť frázu na obnovenie";
+
+/* Title for the 'view payments passphrase' view of the app settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_TITLE" = "Fráza na obnovenie";
+
+/* Header text for the 'review payments passphrase words' step in the 'view payments passphrase' settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_WORDS_EXPLANATION" = "Zapíšte si nasledovných 24 slov v poradí. Tento zoznam si uložte na bezpečnom mieste.";
+
+/* Footer text for the 'review payments passphrase words' step in the 'view payments passphrase' settings. */
+"SETTINGS_PAYMENTS_VIEW_PASSPHRASE_WORDS_FOOTER" = "Neurobte si z neho snímku a ani ho neposielajte mailom.";
+
+/* Label for 'view payments recovery passphrase' button in the app settings. */
+"SETTINGS_PAYMENTS_VIEW_RECOVERY_PASSPHRASE" = "Fráza na obnovenie";
+
+/* Title for the 'payments settings' view in the app settings. */
+"SETTINGS_PAYMENTS_VIEW_TITLE" = "Platby (Beta)";
+
+/* Label for the payments wallet address. */
+"SETTINGS_PAYMENTS_WALLET_ADDRESS_LABEL" = "Adresa vašej peňaženky";
 
 /* Label for the 'phone number discoverability' setting. */
 "SETTINGS_PHONE_NUMBER_DISCOVERABILITY" = "Nájsť ma podľa telefónneho čísla";
@@ -4568,13 +5204,13 @@
 "SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_EXPLANATION" = "Uistite sa, že si svoj PIN pamätáte, alebo že ho máte bezpečne uložený, pretože ho nie je možné obnoviť. Ak váš PIN zabudnete, mohli by ste stratiť dáta pri opätovnej registrácii vášho Signal účtu.";
 
 /* The title for the dialog asking user to confirm their PIN to disable reminders */
-"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Overte váš PIN pre Signal";
+"SETTINGS_PIN_REMINDER_DISABLE_CONFIRMATION_TITLE" = "Overte svoj PIN pre Signal";
 
 /* Label for the 'pin reminder' switch of the privacy settings. */
 "SETTINGS_PIN_REMINDER_SWITCH_LABEL" = "PIN upomienky";
 
 /* Footer for the 'PINs' section of the privacy settings. */
-"SETTINGS_PINS_FOOTER" = "PINs keep information stored with Signal encrypted so only you can access it. Your PIN cannot be recovered. Your profile, settings, and contacts will restore when you reinstall Signal.";
+"SETTINGS_PINS_FOOTER" = "PINy uchovávajú informácie uložené pomocou šifrovania Signal, takže k nim máte prístup iba vy. Váš PIN nie je možné obnoviť. Po opätovnej inštalácii Signal sa váš profil, nastavenia a kontakty obnovia.";
 
 /* Label for the 'pins' item of the privacy settings when the user does have a pin. */
 "SETTINGS_PINS_ITEM" = "Zmente si PIN";
@@ -4586,7 +5222,7 @@
 "SETTINGS_PINS_TITLE" = "PIN kód Signal";
 
 /* Footer for table section */
-"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Censorship circumvention, relay calls, and sealed sender settings.";
+"SETTINGS_PRIVACY_ADVANCED_FOOTER" = "Obchádzanie cenzúry, opakované hovory a nastavenie zapečateného odosielateľa.";
 
 /* Title for the advanced privacy settings */
 "SETTINGS_PRIVACY_ADVANCED_TITLE" = "Pokročilé";
@@ -4628,10 +5264,10 @@
 "SETTINGS_SCREEN_LOCK_SWITCH_LABEL" = "Zámok obrazovky";
 
 /* No comment provided by engineer. */
-"SETTINGS_SCREEN_SECURITY" = "Hide Screen in App Switcher";
+"SETTINGS_SCREEN_SECURITY" = "Skryť obrazovku pri prepínaní aplikácií";
 
 /* Footer for table section */
-"SETTINGS_SECTION_FOOTER_CALLING" = "Show calls in the “Recents” list in the iOS Phone app.";
+"SETTINGS_SECTION_FOOTER_CALLING" = "Zobrazujte hovory v zozname Nedávne v aplikácii iOS Phone.";
 
 /* Header Label for the sounds section of settings views. */
 "SETTINGS_SECTION_SOUNDS" = "Zvuky";
@@ -4640,22 +5276,22 @@
 "SETTINGS_SECTION_TITLE_CALLING" = "Uskutočňovanie hovorov";
 
 /* Section footer */
-"SETTINGS_SECURITY_DETAIL" = "Use Touch ID, Face ID, or your iOS device passcode to unlock Signal.";
+"SETTINGS_SECURITY_DETAIL" = "Na odblokovanie Signal použite Touch ID, Face ID alebo prístupový kód zariadenia so systémom iOS.";
 
 /* Section footer */
-"SETTINGS_SECURITY_DETAIL_FACEID" = "Use Face ID to unlock Signal.";
+"SETTINGS_SECURITY_DETAIL_FACEID" = "Na odblokovanie Signal použite Face ID.";
 
 /* Section footer */
-"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Use your device passcode to unlock Signal.";
+"SETTINGS_SECURITY_DETAIL_PASSCODE" = "Na odblokovanie Signal použite prístupový kód zariadenia.";
 
 /* Section footer */
-"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Use Touch ID to unlock Signal.";
+"SETTINGS_SECURITY_DETAIL_TOUCHID" = "Na odblokovanie Signal použite Touch ID.";
 
 /* Section header */
-"SETTINGS_SECURITY_TITLE" = "App Security";
+"SETTINGS_SECURITY_TITLE" = "Zabezpečenie aplikácie";
 
 /* Setting for enabling & disabling sharing suggestions. */
-"SETTINGS_SHARING_SUGGESTIONS" = "Show Chats in Suggestions";
+"SETTINGS_SHARING_SUGGESTIONS" = "Zobraziť konverzácie v návrhoch";
 
 /* Footer for setting for enabling & disabling sharing suggestions. */
 "SETTINGS_SHARING_SUGGESTIONS_FOOTER" = "Pri zdieľaní z iných aplikácií sa Signalovské chaty zobrazujú ako návrhy.";
@@ -4664,7 +5300,7 @@
 "SETTINGS_TWO_FACTOR_AUTH_SWITCH_LABEL" = "Registračný zámok";
 
 /* Footer for the 'two factor auth' section of the privacy settings when Signal PINs are available. */
-"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Require your Signal PIN to register your phone number again with Signal.";
+"SETTINGS_TWO_FACTOR_PINS_AUTH_FOOTER" = "Na opätovné zaregistrovanie telefónneho čísla v aplikácii Signal vyžadujte svoj Signal PIN.";
 
 /* Label for the 'typing indicators' setting. */
 "SETTINGS_TYPING_INDICATORS" = "Indikátory písania";
@@ -4673,7 +5309,7 @@
 "SETTINGS_UNIDENTIFIED_DELIVERY_SECTION_TITLE" = "Šifrovaný odosielateľ";
 
 /* switch label */
-"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Show Status Icon";
+"SETTINGS_UNIDENTIFIED_DELIVERY_SHOW_INDICATORS" = "Zobraziť ikonu stavu";
 
 /* switch label */
 "SETTINGS_UNIDENTIFIED_DELIVERY_UNRESTRICTED_ACCESS" = "Povoliť od každého";
@@ -4753,6 +5389,9 @@
 /* body sent to contacts when inviting to Install Signal */
 "SMS_INVITE_BODY" = "Pozývam Vás, aby ste si nainštalovali Signal! Tu je odkaz:";
 
+/* table cell label in conversation settings */
+"SOUND_AND_NOTIFICATION_SETTINGS" = "Sounds & Notifications";
+
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "Žiadny";
 
@@ -4823,7 +5462,7 @@
 "SUPPORT_CONTACT_US_HEADER" = "Kontaktujte nás";
 
 /* Placeholder string for support description */
-"SUPPORT_DESCRIPTION_PLACEHOLDER" = "Tell us what’s going on";
+"SUPPORT_DESCRIPTION_PLACEHOLDER" = "Povedzte nám, o čo ide";
 
 /* Default prompt for user description in support email requests */
 "SUPPORT_EMAIL_DEFAULT_DESCRIPTION" = "Povedzte nám, aký máte problém: ";
@@ -5036,7 +5675,7 @@
 "UNSUPPORTED_FEATURE_ERROR" = "Vaše zariadenie nepodporuje túto funkciu.";
 
 /* Description for the unverified safety number change. Embeds {name of contact with identity change} */
-"UNVERIFIED_SAFETY_NUMBER_CHANGE_DESCRIPTION_FORMAT" = "Your Safety Number with %@ changed likely because they reinstalled Signal or changed devices. Tap Verify to confirm the new safety number. This is optional.";
+"UNVERIFIED_SAFETY_NUMBER_CHANGE_DESCRIPTION_FORMAT" = "Vaše bezpečnostné číslo s %@ sa pravdepodobne zmenilo, pretože preinštalovali signál alebo zmenili zariadenia. Klepnutím na Overiť potvrďte nové bezpečnostné číslo. Toto je voliteľné.";
 
 /* Action to verify a safety number after it has changed */
 "UNVERIFIED_SAFETY_NUMBER_VERIFY_ACTION" = "Overiť";

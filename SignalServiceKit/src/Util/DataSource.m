@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "DataSource.h"
@@ -157,7 +157,7 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 
-- (BOOL)moveToUrlAndConsume:(NSURL *)dstUrl error:(NSError **)error;
+- (BOOL)moveToUrlAndConsume:(NSURL *)dstUrl error:(NSError **)error
 {
     OWSAssertDebug(!self.isConsumed);
 
@@ -195,6 +195,10 @@ NS_ASSUME_NONNULL_BEGIN
                            }];
 
     if (!success || *error != nil) {
+        if (error == nil) {
+            OWSFailDebug(@"Missing error.");
+            *error = OWSErrorMakeAssertionError(@"Could not move data source.");
+        }
         OWSLogDebug(@"Could not write data value to: %@, %@", dstUrl, *error);
         OWSFailDebug(@"Could not write data with error: %@", *error);
         return NO;
@@ -473,7 +477,7 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 
-- (BOOL)moveToUrlAndConsume:(NSURL *)dstUrl error:(NSError **)error;
+- (BOOL)moveToUrlAndConsume:(NSURL *)dstUrl error:(NSError **)error
 {
     OWSAssertDebug(!self.isConsumed);
     OWSAssertDebug(self.fileUrl);
