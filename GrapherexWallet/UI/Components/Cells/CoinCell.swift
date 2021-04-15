@@ -10,6 +10,7 @@ final class CoinCell: NiblessView {
     
     private struct Constants {
         static let coinImageSize: CGFloat = 45.0
+        static let contentOffset: CGFloat = 16.0
     }
     
     private let coinImage: UIImageView = {
@@ -21,7 +22,7 @@ final class CoinCell: NiblessView {
     private let coinLabel: UILabel = {
         let view = UILabel()
         view.font = .wlt_robotoRegularFont(withSize: 14)
-        view.textColor = .wlt_primaryLabelColor
+        view.textColor = Theme.primaryTextColor
         return view
     }()
     
@@ -34,7 +35,7 @@ final class CoinCell: NiblessView {
     
     private let balanceLabel: UILabel = {
         let view = UILabel()
-        view.textColor = .wlt_primaryLabelColor
+        view.textColor = Theme.primaryTextColor
         view.font = .wlt_robotoRegularFont(withSize: 14)
         view.textAlignment = .right
         return view
@@ -42,7 +43,7 @@ final class CoinCell: NiblessView {
     
     private let currencyBalanceLabel: UILabel = {
         let view = UILabel()
-        view.textColor = .wlt_secondaryLabelColor
+        view.textColor = Theme.secondaryTextAndIconColor
         view.font = .wlt_robotoRegularFont(withSize: 12)
         view.textAlignment = .right
         return view
@@ -57,7 +58,7 @@ final class CoinCell: NiblessView {
     
     private let priceLabel: UILabel = {
         let view = UILabel()
-        view.textColor = .wlt_darkGray63Color
+        view.textColor = Theme.primaryTextColor
         view.font = .wlt_robotoRegularFont(withSize: 14)
         view.textAlignment = .right
         return view
@@ -117,18 +118,30 @@ fileprivate extension CoinCell {
     }
     
     func setup() {
-        backgroundColor = .wlt_primaryBackgroundColor
+        backgroundColor = Theme.primarybackgroundColor
 
         addSubview(containerStack)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onThemeChanged), name: Notification.themeChanged, object: nil)
     }
     
     func activateConstraints() {
-        containerStack.autoPinEdgesToSuperviewEdges()
+        containerStack.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: Constants.contentOffset, left: Constants.contentOffset, bottom: Constants.contentOffset, right: Constants.contentOffset))
         
         coinImage.wltSetContentHuggingHorizontalHigh()
         coinImage.autoSetDimension(.height, toSize: Constants.coinImageSize)
         coinImage.autoMatch(.height, to: .width, of: coinImage)
         coinLabel.wltSetContentHuggingHorizontalLow()
+    }
+    
+    // MARK: - Theme
+    @objc private func onThemeChanged() {
+        backgroundColor = Theme.primarybackgroundColor
+        
+        coinLabel.textColor = Theme.primaryTextColor
+        balanceLabel.textColor = Theme.primaryTextColor
+        currencyBalanceLabel.textColor = Theme.secondaryTextAndIconColor
+        priceLabel.textColor = Theme.primaryTextColor
     }
 }
 

@@ -15,19 +15,17 @@ class CoinsViewController: NiblessViewController {
     //MARK: - Properties
     private let headerView: CoinsHeaderView = {
         let view = CoinsHeaderView()
-        view.backgroundColor = .wlt_primaryBackgroundColor
         return view
     }()
 
     private let tableViewController: WLTTableViewController = {
         let tableViewController = WLTTableViewController()
-        tableViewController.tableView.backgroundColor = .clear
+        tableViewController.tableView.backgroundColor = Theme.primarybackgroundColor
         return tableViewController
     }()
     
     private let tableHeaderView: CoinsTableHeaderView = {
         let view = CoinsTableHeaderView()
-        view.backgroundColor = .wlt_primaryBackgroundColor
         return view
     }()
     
@@ -53,7 +51,9 @@ class CoinsViewController: NiblessViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        view.backgroundColor = .wlt_primaryBackgroundColor
+        view.backgroundColor = Theme.primarybackgroundColor
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onThemeChanged), name: Notification.themeChanged, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,7 +100,7 @@ class CoinsViewController: NiblessViewController {
     
     private func setupPullToRefresh() {
         let pullToRefreshView = UIRefreshControl()
-        pullToRefreshView.tintColor = .gray
+        pullToRefreshView.tintColor = Theme.secondaryTextAndIconColor
         pullToRefreshView.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableViewController.tableView.refreshControl = pullToRefreshView
     }
@@ -180,13 +180,11 @@ class CoinsViewController: NiblessViewController {
         mainSection.add(items: props.map {
                                 let cell = WLTTableItem.newCell()
                                 cell.selectionStyle = .none
-                                cell.layoutMargins.top = 16
-                                cell.layoutMargins.bottom = 16
-                                cell.layoutMargins.right = cell.layoutMargins.left
+                                cell.layoutMargins = .zero
                                 let walletItem = CoinCell()
                                 walletItem.currencyItem = $0
                                 cell.contentView.addSubview(walletItem)
-                                walletItem.autoPinEdgesToSuperviewMargins()
+                                walletItem.autoPinEdgesToSuperviewEdges()
                                 return .init(
                                     customCell: cell,
                                     customRowHeight: UITableView.automaticDimension,
@@ -201,6 +199,12 @@ class CoinsViewController: NiblessViewController {
         mainLoadingIndicator.isHidden = true
         mainLoadingIndicator.stopAnimating()
         tableViewController.contents = contents
+    }
+    
+    // MARK: - Theme
+    @objc private func onThemeChanged() {
+        view.backgroundColor = Theme.primarybackgroundColor
+        tableViewController.tableView.backgroundColor = Theme.primarybackgroundColor
     }
 }
 

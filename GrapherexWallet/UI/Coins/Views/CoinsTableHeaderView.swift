@@ -16,7 +16,7 @@ final class CoinsTableHeaderView: NiblessView {
     private let tableCurrencyLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoRegularFont(withSize: 12)
-        view.textColor = UIColor.wlt_darkGray47Color
+        view.textColor = Theme.secondaryTextAndIconColor
         view.textAlignment = .center
         view.text = "Currency".localized
         return view
@@ -25,7 +25,7 @@ final class CoinsTableHeaderView: NiblessView {
     private let tableBalanceLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoRegularFont(withSize: 12)
-        view.textColor = UIColor.wlt_darkGray47Color
+        view.textColor = Theme.secondaryTextAndIconColor
         view.textAlignment = .center
         view.text = "Balance".localized
         return view
@@ -34,7 +34,7 @@ final class CoinsTableHeaderView: NiblessView {
     private let tablePriceLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoRegularFont(withSize: 12)
-        view.textColor = UIColor.wlt_darkGray47Color
+        view.textColor = Theme.secondaryTextAndIconColor
         view.textAlignment = .center
         view.text = "Price".localized
         return view
@@ -58,10 +58,21 @@ final class CoinsTableHeaderView: NiblessView {
     }
     
     func setup() {
+        backgroundColor = Theme.primarybackgroundColor
         addSubview(tableHeaderStack)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onThemeChanged), name: Notification.themeChanged, object: nil)
     }
     
     func activateConstraints() {
         tableHeaderStack.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 0, left: Constants.contentHorizontalOffset, bottom: 0, right: Constants.contentHorizontalOffset))
+    }
+    
+    // MARK: - Theme
+    @objc private func onThemeChanged() {
+        backgroundColor = Theme.primarybackgroundColor
+        tableCurrencyLabel.textColor = Theme.secondaryTextAndIconColor
+        tableBalanceLabel.textColor = Theme.secondaryTextAndIconColor
+        tablePriceLabel.textColor = Theme.secondaryTextAndIconColor
     }
 }

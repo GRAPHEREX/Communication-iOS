@@ -987,6 +987,8 @@
 		E39E24B42628707600613495 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E24B32628707600613495 /* RootNavigationController.swift */; };
 		E39E24C32628784600613495 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E24C22628784600613495 /* UIImage+Extensions.swift */; };
 		E39E24CB26287D2200613495 /* CoinsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E24CA26287D2200613495 /* CoinsTableHeaderView.swift */; };
+		E39E24F92628AF2000613495 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E24F82628AF2000613495 /* Theme.swift */; };
+		E39E25072628AFF400613495 /* Notification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E25062628AFF400613495 /* Notification+Extensions.swift */; };
 		E39F889426177285000E120C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39F889326177285000E120C /* NetworkService.swift */; };
 		E3AD8BE92625A0DC0059B1CC /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD8BE82625A0DC0059B1CC /* Double+Extensions.swift */; };
 		E3AD8BF12625AD270059B1CC /* CoinsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD8BF02625AD270059B1CC /* CoinsInfo.swift */; };
@@ -2330,6 +2332,8 @@
 		E39E24B32628707600613495 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		E39E24C22628784600613495 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		E39E24CA26287D2200613495 /* CoinsTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTableHeaderView.swift; sourceTree = "<group>"; };
+		E39E24F82628AF2000613495 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		E39E25062628AFF400613495 /* Notification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
 		E39F889326177285000E120C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E3AD8BE82625A0DC0059B1CC /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		E3AD8BF02625AD270059B1CC /* CoinsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsInfo.swift; sourceTree = "<group>"; };
@@ -4619,7 +4623,6 @@
 			isa = PBXGroup;
 			children = (
 				E351979B26175A2A00043606 /* AttachmentToggleButton.swift */,
-				E351979C26175A2A00043606 /* SecondaryEmptyStateView.swift */,
 				E351979D26175A2A00043606 /* EmptyStateView.swift */,
 			);
 			path = Views;
@@ -4945,7 +4948,8 @@
 		E39562AF262087E9003C5527 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				E39E24BB2628711200613495 /* Theme */,
+				E39E24F72628AF1500613495 /* Theme */,
+				E39E24D226288E4C00613495 /* Views */,
 				E39E24AC26286D7700613495 /* Root */,
 				E3E8A0AA262836A0006E64EE /* Cells */,
 				E39563142620A104003C5527 /* Nibless */,
@@ -4990,9 +4994,18 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
-		E39E24BB2628711200613495 /* Theme */ = {
+		E39E24D226288E4C00613495 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E351979C26175A2A00043606 /* SecondaryEmptyStateView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E39E24F72628AF1500613495 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				E39E24F82628AF2000613495 /* Theme.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -5089,6 +5102,7 @@
 				E3AD8BE82625A0DC0059B1CC /* Double+Extensions.swift */,
 				E39E2494262866E900613495 /* Bundle+Extensions.swift */,
 				E39E24C22628784600613495 /* UIImage+Extensions.swift */,
+				E39E25062628AFF400613495 /* Notification+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -7286,6 +7300,7 @@
 				E35197EB26175A2A00043606 /* EnterPinController.swift in Sources */,
 				E351983826175A2B00043606 /* CurrencyPickerView.swift in Sources */,
 				E3794A92261B5B3C00E14B2E /* UIColor+OWS.swift in Sources */,
+				E39E24F92628AF2000613495 /* Theme.swift in Sources */,
 				E3794A83261B5A3800E14B2E /* Weak.swift in Sources */,
 				E351981026175A2B00043606 /* EmptyStateView.swift in Sources */,
 				E3332609261C629600CFE73E /* DirectionalPanGestureRecognizer.swift in Sources */,
@@ -7367,6 +7382,7 @@
 				E39562FD26209EE3003C5527 /* UIView+Extensions.swift in Sources */,
 				E3794A93261B5B3C00E14B2E /* WLTNavigationController.m in Sources */,
 				E351980026175A2B00043606 /* NoWalletController.swift in Sources */,
+				E39E25072628AFF400613495 /* Notification+Extensions.swift in Sources */,
 				E351983D26175A2B00043606 /* FilterTransactionController.swift in Sources */,
 				E3AD8BE92625A0DC0059B1CC /* Double+Extensions.swift in Sources */,
 				E351982126175A2B00043606 /* ImagePickerGridController.swift in Sources */,

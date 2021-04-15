@@ -70,6 +70,108 @@ extension UIColor {
     class var wlt_accentGreen: UIColor {
         return UIColor(rgbHex: 0x4BDC9B)
     }
+    
+    @objc(wlt_accentBlack)
+    class var wlt_accentBlack: UIColor {
+        return UIColor(rgbHex: 0x030303)
+    }
+    
+    // MARK: - GrayScale
+    
+    @objc(wlt_whiteColor)
+    class var wlt_white: UIColor {
+        return UIColor(rgbHex: 0xFFFFFF)
+    }
+    
+    @objc(wlt_gray02Color)
+    class var wlt_gray02: UIColor {
+        return UIColor(rgbHex: 0xF6F6F6)
+    }
+    
+    @objc(wlt_gray05Color)
+    class var wlt_gray05: UIColor {
+        return UIColor(rgbHex: 0xE9E9E9)
+    }
+    
+    @objc(wlt_gray10Color)
+    class var wlt_gray10: UIColor {
+        return UIColor(rgbHex: 0xf0f0f0)
+    }
+    
+    @objc(wlt_gray15Color)
+    class var wlt_gray15: UIColor {
+        return UIColor(rgbHex: 0xD4D4D4)
+    }
+    
+    @objc(wlt_gray20Color)
+    class var wlt_gray20: UIColor {
+        return UIColor(rgbHex: 0xCCCCCC)
+    }
+    
+    @objc(wlt_gray25Color)
+    class var wlt_gray25: UIColor {
+        return UIColor(rgbHex: 0xB9B9B9)
+    }
+    
+    @objc(wlt_gray40Color)
+    class var wlt_gray40: UIColor {
+        return UIColor(rgbHex: 0x999999)
+    }
+    
+    @objc(wlt_gray45Color)
+    class var wlt_gray45: UIColor {
+        return UIColor(rgbHex: 0x848484)
+    }
+    
+    @objc(wlt_gray60Color)
+    class var wlt_gray60: UIColor {
+        return UIColor(rgbHex: 0x5E5E5E)
+    }
+    
+    @objc(wlt_gray65Color)
+    class var wlt_gray65: UIColor {
+        return UIColor(rgbHex: 0x4A4A4A)
+    }
+    
+    @objc(wlt_gray75Color)
+    class var wlt_gray75: UIColor {
+        return UIColor(rgbHex: 0x3B3B3B)
+    }
+    
+    @objc(wlt_gray80Color)
+    class var wlt_gray80: UIColor {
+        return UIColor(rgbHex: 0x2E2E2E)
+    }
+    
+    @objc(wlt_gray85Color)
+    class var wlt_gray85: UIColor {
+        return UIColor(rgbHex: 0x23252A)
+    }
+    
+    @objc(wlt_gray90Color)
+    class var wlt_gray90: UIColor {
+        return UIColor(rgbHex: 0x1B1B1B)
+    }
+    
+    @objc(wlt_gray95Color)
+    class var wlt_gray95: UIColor {
+        return UIColor(rgbHex: 0x121212)
+    }
+    
+    @objc(wlt_blackColor)
+    class var wlt_black: UIColor {
+        return UIColor(rgbHex: 0x000000)
+    }
+    
+    @objc(wlt_neutralGrayMessage)
+    class var wlt_neutralGrayMessage: UIColor {
+        return UIColor(rgbHex: 0xF0F0F0)
+    }
+    
+    @objc(wlt_neutralGray)
+    class var wlt_neutralGray: UIColor {
+        return UIColor(rgbHex: 0xB3B3B3)
+    }
 }
 
 // MARK: - Utils

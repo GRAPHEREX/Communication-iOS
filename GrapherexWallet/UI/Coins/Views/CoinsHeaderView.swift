@@ -28,7 +28,7 @@ final class CoinsHeaderView: NiblessView {
     private let balanceTitleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoMediumFont(withSize: 14)
-        view.textColor = UIColor.wlt_primaryLabelColor
+        view.textColor = Theme.primaryTextColor
         view.textAlignment = .left
         view.text = "Total balance".localized
         return view
@@ -37,7 +37,7 @@ final class CoinsHeaderView: NiblessView {
     private let balanceValueLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoMediumFont(withSize: 18)
-        view.textColor = UIColor.wlt_primaryLabelColor
+        view.textColor = Theme.primaryTextColor
         view.textAlignment = .right
         view.adjustsFontSizeToFitWidth = true
         return view
@@ -54,7 +54,7 @@ final class CoinsHeaderView: NiblessView {
     private let spendTitleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoBoldFont(withSize: 12)
-        view.textColor = UIColor.wlt_primaryLabelColor
+        view.textColor = Theme.primaryTextColor
         view.textAlignment = .left
         view.text = "spend".localized
         return view
@@ -63,7 +63,7 @@ final class CoinsHeaderView: NiblessView {
     private let spendValueLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
-        view.textColor = UIColor.wlt_darkGray58Color
+        view.textColor = Theme.secondaryTextAndIconColor
         view.textAlignment = .left
         view.adjustsFontSizeToFitWidth = true
         return view
@@ -72,7 +72,7 @@ final class CoinsHeaderView: NiblessView {
     private let incomeTitleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoBoldFont(withSize: 12)
-        view.textColor = UIColor.wlt_primaryLabelColor
+        view.textColor = Theme.primaryTextColor
         view.textAlignment = .right
         view.text = "income".localized
         return view
@@ -81,7 +81,7 @@ final class CoinsHeaderView: NiblessView {
     private let incomeValueLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
-        view.textColor = UIColor.wlt_darkGray58Color
+        view.textColor = Theme.secondaryTextAndIconColor
         view.textAlignment = .right
         view.adjustsFontSizeToFitWidth = true
         return view
@@ -98,7 +98,7 @@ final class CoinsHeaderView: NiblessView {
     private let spendIncomeProgressView: UIProgressView = {
         let view = UIProgressView(progressViewStyle: .default)
         view.progressTintColor = .wlt_accentGreen
-        view.tintColor = .wlt_gray101Color
+        view.tintColor = Theme.secondaryTextAndIconColor
         return view
     }()
     
@@ -118,7 +118,7 @@ final class CoinsHeaderView: NiblessView {
     
     private lazy var balanceTopView: UIView = {
         let view = UIView()
-        view.backgroundColor = .wlt_beige245Color
+        view.backgroundColor = Theme.secondaryBackgroundColor
         view.clipsToBounds = true
         view.roundCorners(radius: 10)
         return view
@@ -128,7 +128,7 @@ final class CoinsHeaderView: NiblessView {
     private let marketCapTitleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
-        view.textColor = UIColor.wlt_primaryLabelColor
+        view.textColor = Theme.primaryTextColor
         view.textAlignment = .center
         view.text = "Market cap".localized
         return view
@@ -137,7 +137,7 @@ final class CoinsHeaderView: NiblessView {
     private let marketCapValueLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoRegularFont(withSize: 14)
-        view.textColor = UIColor.wlt_gray116Color
+        view.textColor = Theme.secondaryTextAndIconColor
         view.textAlignment = .center
         return view
     }()
@@ -153,7 +153,7 @@ final class CoinsHeaderView: NiblessView {
     private let volumeTradeTitleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
-        view.textColor = UIColor.wlt_primaryLabelColor
+        view.textColor = Theme.primaryTextColor
         view.textAlignment = .center
         view.text = "Volume trade 24h".localized
         return view
@@ -162,7 +162,7 @@ final class CoinsHeaderView: NiblessView {
     private let volumeTradeValueLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoRegularFont(withSize: 14)
-        view.textColor = UIColor.wlt_gray116Color
+        view.textColor = Theme.secondaryTextAndIconColor
         view.textAlignment = .center
         return view
     }()
@@ -178,7 +178,7 @@ final class CoinsHeaderView: NiblessView {
     private let btcDominanceTitleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
-        view.textColor = UIColor.wlt_primaryLabelColor
+        view.textColor = Theme.primaryTextColor
         view.textAlignment = .center
         view.text = "BTC dominance".localized
         return view
@@ -187,7 +187,7 @@ final class CoinsHeaderView: NiblessView {
     private let btcDominanceValueLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoRegularFont(withSize: 14)
-        view.textColor = UIColor.wlt_gray116Color
+        view.textColor = Theme.secondaryTextAndIconColor
         view.textAlignment = .center
         return view
     }()
@@ -210,7 +210,7 @@ final class CoinsHeaderView: NiblessView {
     // MARK: - Dividers
     private lazy var bottomDivider: UIView = {
         let bottomDivider = UIView.spacer(withHeight: Constants.dividerViewHeight)
-        bottomDivider.backgroundColor = .wlt_beige245Color
+        bottomDivider.backgroundColor = Theme.secondaryBackgroundColor
         return bottomDivider
     }()
     
@@ -253,12 +253,14 @@ fileprivate extension CoinsHeaderView {
     }
     
     func setup() {
-        backgroundColor = UIColor.wlt_primaryBackgroundColor
+        backgroundColor = Theme.primarybackgroundColor
         
         balanceTopView.addSubview(balanceSpendIncomeStack)
         addSubview(balanceTopView)
         addSubview(marketInfoStack)
         addSubview(bottomDivider)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onThemeChanged), name: Notification.themeChanged, object: nil)
     }
     
     // MARK: - Constraints Setup
@@ -297,6 +299,29 @@ fileprivate extension CoinsHeaderView {
         bottomDivider.autoPinEdge(toSuperviewEdge: .trailing)
         bottomDivider.autoPinEdge(toSuperviewEdge: .bottom)
         bottomDivider.autoPinEdge(.top, to: .bottom, of: marketInfoStack, withOffset: 8)
+    }
+    
+    // MARK: - Theme
+    @objc private func onThemeChanged() {
+        backgroundColor = Theme.primarybackgroundColor
+        balanceTopView.backgroundColor = Theme.secondaryBackgroundColor
+        
+        balanceTitleLabel.textColor = Theme.primaryTextColor
+        balanceValueLabel.textColor = Theme.primaryTextColor
+        spendTitleLabel.textColor = Theme.primaryTextColor
+        incomeTitleLabel.textColor = Theme.primaryTextColor
+        marketCapTitleLabel.textColor = Theme.primaryTextColor
+        volumeTradeTitleLabel.textColor = Theme.primaryTextColor
+        btcDominanceTitleLabel.textColor = Theme.primaryTextColor
+        
+        spendValueLabel.textColor = Theme.secondaryTextAndIconColor
+        incomeValueLabel.textColor = Theme.secondaryTextAndIconColor
+        marketCapValueLabel.textColor = Theme.secondaryTextAndIconColor
+        volumeTradeValueLabel.textColor = Theme.secondaryTextAndIconColor
+        btcDominanceValueLabel.textColor = Theme.secondaryTextAndIconColor
+        spendIncomeProgressView.tintColor = Theme.secondaryTextAndIconColor
+        
+        bottomDivider.backgroundColor = Theme.secondaryBackgroundColor
     }
 }
 
