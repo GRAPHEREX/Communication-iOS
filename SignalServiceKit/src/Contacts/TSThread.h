@@ -31,6 +31,7 @@ extern ConversationColorName const ConversationColorNameIndigo;
 extern ConversationColorName const ConversationColorNameViolet;
 extern ConversationColorName const ConversationColorNamePlum;
 extern ConversationColorName const ConversationColorNameRose;
+extern ConversationColorName const ConversationColorNameTaupe;
 extern ConversationColorName const ConversationColorNameSteel;
 
 extern ConversationColorName const ConversationColorNameDefault;
