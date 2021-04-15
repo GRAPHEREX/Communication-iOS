@@ -9,6 +9,9 @@ struct CoinsInfo {
     let marketCap: String
     let volumeTrade: String
     let btcDominance: String
+    let spendValue: String
+    let incomeValue: String
+    let spendIncomeProportion: Float
     let items: [CoinDataItem]
     
     static var noInfo: CoinsInfo {
@@ -16,6 +19,9 @@ struct CoinsInfo {
                            marketCap: "-",
                            volumeTrade: "-",
                            btcDominance: "-",
+                           spendValue: "-",
+                           incomeValue: "-",
+                           spendIncomeProportion: 0,
                            items: [])
     }
 }

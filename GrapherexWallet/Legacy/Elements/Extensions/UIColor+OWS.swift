@@ -9,18 +9,6 @@ import Foundation
 @objc
 public extension UIColor {
 
-    @objc(colorWithRGBHex:)
-    class func color(rgbHex: UInt) -> UIColor {
-        return UIColor(rgbHex: rgbHex)
-    }
-
-    convenience init(rgbHex value: UInt) {
-        let red = CGFloat(((value >> 16) & 0xff)) / 255.0
-        let green = CGFloat(((value >> 8) & 0xff)) / 255.0
-        let blue = CGFloat(((value >> 0) & 0xff)) / 255.0
-        self.init(red: red, green: green, blue: blue, alpha: 1)
-    }
-
 //    @objc(blendedWithColor:alpha:)
 //    func blended(with otherColor: UIColor, alpha alphaParam: CGFloat) -> UIColor {
 //        var r0: CGFloat = 0
@@ -53,101 +41,95 @@ public extension UIColor {
 
     // MARK:- SkyTech
     
-    // ACCENT COLORS
-    @objc(stwlt_accentGreen)
-    class var stwlt_accentGreen: UIColor {
-        return UIColor(rgbHex: 0x4BDC9B)
-    }
-    
-    @objc(stwlt_messageGreen)
-    class var stwlt_messageGreen: UIColor {
+    @objc(wlt_messageGreen)
+    class var wlt_messageGreen: UIColor {
         return UIColor(rgbHex: 0x43C68B)
     }
     
-    @objc(stwlt_accentBlack)
-    class var stwlt_accentBlack: UIColor {
+    @objc(wlt_accentBlack)
+    class var wlt_accentBlack: UIColor {
         return UIColor(rgbHex: 0x030303)
     }
     
-    @objc(stwlt_accentWhite)
-    class var stwlt_accentWhite: UIColor {
+    @objc(wlt_accentWhite)
+    class var wlt_accentWhite: UIColor {
         return UIColor(rgbHex: 0xFFFFFF)
     }
     
-    @objc(stwlt_accentGraySmallBackground)
-    class var stwlt_accentGraySmallBackground: UIColor {
+    @objc(wlt_accentGraySmallBackground)
+    class var wlt_accentGraySmallBackground: UIColor {
         return UIColor(rgbHex: 0xF9F9F9)
     }
     
     // NEUTRAL COLORS
-    @objc(stwlt_neutralGray)
-    class var stwlt_neutralGray: UIColor {
+    @objc(wlt_neutralGray)
+    class var wlt_neutralGray: UIColor {
         return UIColor(rgbHex: 0xB3B3B3)
     }
     
-    @objc(stwlt_neutralGrayLines)
-    class var stwlt_neutralGrayLines: UIColor {
+    @objc(wlt_neutralGrayLines)
+    class var wlt_neutralGrayLines: UIColor {
         return UIColor(rgbHex: 0xEBEFF3)
     }
     
-    @objc(stwlt_neutralGrayMessege)
-    class var stwlt_neutralGrayMessege: UIColor {
+    @objc(wlt_neutralGrayMessege)
+    class var wlt_neutralGrayMessege: UIColor {
         return UIColor(rgbHex: 0xF0F0F0)
     }
     
-    @objc(stwlt_neutralGrayBackground)
-    class var stwlt_neutralGrayBackground: UIColor {
+    @objc(wlt_neutralGrayBackground)
+    class var wlt_neutralGrayBackground: UIColor {
         return UIColor(rgbHex: 0xF5F5F5)
     }
     
-    @objc(stwlt_neutralIcon1)
-    class var stwlt_neutralIcon1: UIColor {
+    @objc(wlt_neutralIcon1)
+    class var wlt_neutralIcon1: UIColor {
         return UIColor(rgbHex: 0x808080)
     }
     
-    @objc(stwlt_neutralIcon2)
-    class var stwlt_neutralIcon2: UIColor {
+    @objc(wlt_neutralIcon2)
+    class var wlt_neutralIcon2: UIColor {
         return UIColor(rgbHex: 0xCCCCCC)
     }
     
     // OTHER COLORS
-    @objc(stwlt_otherRed)
-    class var stwlt_otherRed: UIColor {
+    @objc(wlt_otherRed)
+    class var wlt_otherRed: UIColor {
         return UIColor(rgbHex: 0xF95148)
     }
     
-    @objc(stwlt_otherYellowSearch)
-    class var stwlt_otherYellowSearch: UIColor {
+    @objc(wlt_otherYellowSearch)
+    class var wlt_otherYellowSearch: UIColor {
         return UIColor(rgbHex: 0xFFD614)
     }
     
-    @objc(stwlt_otherYellowIcon)
-    class var stwlt_otherYellowIcon: UIColor {
+    @objc(wlt_otherYellowIcon)
+    class var wlt_otherYellowIcon: UIColor {
         return UIColor(rgbHex: 0xF5B423)
     }
     
-    @objc(stwlt_otherBlueLink)
-    class var stwlt_otherBlueLink: UIColor {
+    @objc(wlt_otherBlueLink)
+    class var wlt_otherBlueLink: UIColor {
         return UIColor(rgbHex: 0x0C12FE)
     }
     
-    @objc(stwlt_otherPink)
-    class var stwlt_otherPink: UIColor {
+    @objc(wlt_otherPink)
+    class var wlt_otherPink: UIColor {
         return UIColor(rgbHex: 0xFE9B91)
     }
     
-    @objc(stwlt_otherBlue)
-    class var stwlt_otherBlue: UIColor {
+    @objc(wlt_otherBlue)
+    class var wlt_otherBlue: UIColor {
         return UIColor(rgbHex: 0x6B6BFF)
     }
     
-    @objc(stwlt_otherOrange)
-    class var stwlt_otherOrange: UIColor {
+    @objc(wlt_otherOrange)
+    class var wlt_otherOrange: UIColor {
         return UIColor(rgbHex: 0xFF840C)
     }
     
-    @objc(stwlt_otherGreenDark)
-    class var stwlt_otherGreenDark: UIColor {
+    @objc(wlt_otherGreenDark)
+    class var wlt_otherGreenDark: UIColor {
         return UIColor(rgbHex: 0x669073)
     }
     
@@ -181,12 +163,6 @@ public extension UIColor {
     @objc(wlt_accentBlueTintColor)
     class var wlt_accentBlueTint: UIColor {
         return UIColor(rgbHex: 0x4bdc9b) // it's grapherex green
-    }
-
-    /// Making calls, success states
-    @objc(wlt_accentGreenColor)
-    class var wlt_accentGreen: UIColor {
-        return UIColor(rgbHex: 0x4CAF50)
     }
 
     /// Warning, update states

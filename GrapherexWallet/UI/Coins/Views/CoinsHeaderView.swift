@@ -8,7 +8,24 @@ import PureLayout
 
 final class CoinsHeaderView: NiblessView {
     
+    private struct Constants {
+        static let currencyFlagSize: CGFloat = 36.0
+        static let totalBalanceHeaderHeight: CGFloat = 110.0
+//        static let marketInfoHeaderHeight: CGFloat = 60.0
+        static let dividerViewHeight: CGFloat = 7.0
+        static let horizontalContentOffset: CGFloat = 11.0
+        static let verticalContentOffset: CGFloat = 11.0
+        static let spendIncomeProgressViewHeight: CGFloat = 6.0
+    }
     // MARK: - Balance
+    private let currencyFlagImage: UIImageView = {
+        let view = UIImageView()
+        //TODO: Remove this when new API is introduced
+        view.image = UIImage.loadFromWalletBundle(named: "staticImages/usaFlag")
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
     private let balanceTitleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.wlt_robotoMediumFont(withSize: 14)
@@ -28,10 +45,84 @@ final class CoinsHeaderView: NiblessView {
     }()
     
     private lazy var balanceStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [balanceTitleLabel, balanceValueLabel])
+        let stack = UIStackView(arrangedSubviews: [currencyFlagImage, balanceTitleLabel, balanceValueLabel])
         stack.axis = .horizontal
         stack.spacing = 10
         return stack
+    }()
+    
+    // MARK: - Spend & Income
+    private let spendTitleLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.wlt_robotoBoldFont(withSize: 12)
+        view.textColor = UIColor.wlt_primaryLabelColor
+        view.textAlignment = .left
+        view.text = "spend".localized
+        return view
+    }()
+    
+    private let spendValueLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
+        view.textColor = UIColor.wlt_darkGray58Color
+        view.textAlignment = .left
+        view.adjustsFontSizeToFitWidth = true
+        return view
+    }()
+    
+    private let incomeTitleLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.wlt_robotoBoldFont(withSize: 12)
+        view.textColor = UIColor.wlt_primaryLabelColor
+        view.textAlignment = .right
+        view.text = "income".localized
+        return view
+    }()
+    
+    private let incomeValueLabel: UILabel = {
+        let view = UILabel()
+        view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
+        view.textColor = UIColor.wlt_darkGray58Color
+        view.textAlignment = .right
+        view.adjustsFontSizeToFitWidth = true
+        return view
+    }()
+    
+    private lazy var spendIncomeLabelStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [spendTitleLabel, spendValueLabel, incomeTitleLabel, incomeValueLabel])
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.spacing = 10
+        return stack
+    }()
+    
+    private let spendIncomeProgressView: UIProgressView = {
+        let view = UIProgressView(progressViewStyle: .default)
+        view.progressTintColor = .wlt_accentGreen
+        view.tintColor = .wlt_gray101Color
+        return view
+    }()
+    
+    private lazy var spendIncomeStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [spendIncomeLabelStack, spendIncomeProgressView])
+        stack.axis = .vertical
+        stack.spacing = 3
+        return stack
+    }()
+    
+    private lazy var balanceSpendIncomeStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [balanceStack, spendIncomeStack])
+        stack.axis = .vertical
+        stack.spacing = 0
+        return stack
+    }()
+    
+    private lazy var balanceTopView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .wlt_beige245Color
+        view.clipsToBounds = true
+        view.roundCorners(radius: 10)
+        return view
     }()
     
     // MARK: - Market Cap
@@ -46,8 +137,8 @@ final class CoinsHeaderView: NiblessView {
     
     private let marketCapValueLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.wlt_robotoFont(withSize: 14)
-        view.textColor = UIColor.wlt_primaryLabelColor
+        view.font = UIFont.wlt_robotoRegularFont(withSize: 14)
+        view.textColor = UIColor.wlt_gray116Color
         view.textAlignment = .center
         return view
     }()
@@ -55,6 +146,7 @@ final class CoinsHeaderView: NiblessView {
     private lazy var marketCapStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [marketCapTitleLabel, marketCapValueLabel])
         stack.axis = .vertical
+        stack.distribution = .fillEqually
         return stack
     }()
     
@@ -79,6 +171,7 @@ final class CoinsHeaderView: NiblessView {
     private lazy var volumeTradeStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [volumeTradeTitleLabel, volumeTradeValueLabel])
         stack.axis = .vertical
+        stack.distribution = .fillEqually
         return stack
     }()
     
@@ -103,6 +196,7 @@ final class CoinsHeaderView: NiblessView {
     private lazy var btcDominanceStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [btcDominanceTitleLabel, btcDominanceValueLabel])
         stack.axis = .vertical
+        stack.distribution = .fillEqually
         return stack
     }()
     
@@ -114,44 +208,10 @@ final class CoinsHeaderView: NiblessView {
         return stack
     }()
     
-    // MARK: - TableHeaderView
-    private let tableCurrencyLabel: UILabel = {
-        let view = UILabel()
-        view.font = UIFont.wlt_robotoFont(withSize: 12)
-        view.textColor = UIColor.wlt_darkGray47Color
-        view.textAlignment = .center
-        view.text = "Currency".localized
-        return view
-    }()
-    
-    private let tableBalanceLabel: UILabel = {
-        let view = UILabel()
-        view.font = UIFont.wlt_robotoFont(withSize: 12)
-        view.textColor = UIColor.wlt_darkGray47Color
-        view.textAlignment = .center
-        view.text = "Balance".localized
-        return view
-    }()
-    
-    private let tablePriceLabel: UILabel = {
-        let view = UILabel()
-        view.font = UIFont.wlt_robotoFont(withSize: 12)
-        view.textColor = UIColor.wlt_darkGray47Color
-        view.textAlignment = .center
-        view.text = "Price".localized
-        return view
-    }()
-    
-    private lazy var tableHeaderStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [tableCurrencyLabel, tableBalanceLabel, tablePriceLabel])
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
-        return stack
-    }()
-    
+    // MARK: - Dividers
     private lazy var bottomDivider: UIView = {
-        let bottomDivider = UIView.spacer(withHeight: 7)
-        bottomDivider.backgroundColor = UIColor.color(withRed: 235, green: 235, blue: 235, alpha: 1)
+        let bottomDivider = UIView.spacer(withHeight: Constants.dividerViewHeight)
+        bottomDivider.backgroundColor = .wlt_beige245Color
         return bottomDivider
     }()
     
@@ -160,6 +220,9 @@ final class CoinsHeaderView: NiblessView {
         let marketCap: String
         let volumeTrade: String
         let btcDominance: String
+        let spendValue: String
+        let incomeValue: String
+        let spendIncomeProportion: Float
     }
     
     var props: Props? { didSet {
@@ -185,51 +248,57 @@ fileprivate extension CoinsHeaderView {
         marketCapValueLabel.text = props.marketCap
         volumeTradeValueLabel.text = props.volumeTrade
         btcDominanceValueLabel.text = props.btcDominance
+        spendValueLabel.text = props.spendValue
+        incomeValueLabel.text = props.incomeValue
+        spendIncomeProgressView.progress = props.spendIncomeProportion
     }
     
     func setup() {
         backgroundColor = UIColor.wlt_primaryBackgroundColor
         
-        addSubview(balanceStack)
+        balanceTopView.addSubview(balanceSpendIncomeStack)
+        addSubview(balanceTopView)
         addSubview(marketInfoStack)
-        addSubview(tableHeaderStack)
         addSubview(bottomDivider)
     }
     
+    // MARK: - Constraints Setup
     func activateConstraints() {
+        activateConstraintsTopBalance()
+        activateConstraintsMarketInfo()
+        activateConstraintsDivider()
+    }
+    
+    func activateConstraintsTopBalance() {
+        currencyFlagImage.wltSetContentHuggingHorizontalHigh()
+        currencyFlagImage.wltSetCompressionResistanceHorizontalHigh()
         balanceTitleLabel.wltSetContentHuggingHorizontalHigh()
         balanceTitleLabel.wltSetCompressionResistanceHorizontalHigh()
         balanceValueLabel.wltSetContentHuggingHorizontalLow()
-        balanceValueLabel.wltSetCompressionResistanceHorizontalLow()
+        balanceValueLabel.wltSetCompressionResistanceHorizontalHigh()
         
-        balanceStack.autoSetDimension(.height, toSize: 80)
-        balanceStack.autoPinEdge(toSuperviewEdge: .leading, withInset: 10)
-        balanceStack.autoPinEdge(toSuperviewEdge: .trailing, withInset: 10)
-        balanceStack.autoPinEdge(toSuperviewEdge: .top)
+        balanceTopView.autoSetDimension(.height, toSize: Constants.totalBalanceHeaderHeight)
+        balanceTopView.autoPinEdge(toSuperviewEdge: .leading, withInset: Constants.horizontalContentOffset)
+        balanceTopView.autoPinEdge(toSuperviewEdge: .trailing, withInset: Constants.horizontalContentOffset)
+        balanceTopView.autoPinEdge(toSuperviewEdge: .top, withInset: Constants.verticalContentOffset)
         
-        marketCapTitleLabel.wltSetContentHuggingVerticalHigh()
-        marketCapValueLabel.wltSetContentHuggingVerticalLow()
+        balanceSpendIncomeStack.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 18, left: 10, bottom: 16, right: 10))
         
-        btcDominanceTitleLabel.wltSetContentHuggingVerticalHigh()
-        btcDominanceValueLabel.wltSetContentHuggingVerticalLow()
-        
-        volumeTradeTitleLabel.wltSetContentHuggingVerticalHigh()
-        volumeTradeValueLabel.wltSetContentHuggingVerticalLow()
-        
-        marketInfoStack.autoSetDimension(.height, toSize: 60)
-        marketInfoStack.autoPinEdge(toSuperviewEdge: .leading, withInset: 10)
-        marketInfoStack.autoPinEdge(toSuperviewEdge: .trailing, withInset: 10)
-        marketInfoStack.autoPinEdge(.top, to: .bottom, of: balanceStack)
-        
+        spendIncomeProgressView.autoSetDimension(.height, toSize: Constants.spendIncomeProgressViewHeight)
+    }
+    
+    func activateConstraintsMarketInfo() {
+//        marketInfoStack.autoSetDimension(.height, toSize: Constants.marketInfoHeaderHeight)
+        marketInfoStack.autoPinEdge(toSuperviewEdge: .leading, withInset: Constants.horizontalContentOffset)
+        marketInfoStack.autoPinEdge(toSuperviewEdge: .trailing, withInset: Constants.horizontalContentOffset)
+        marketInfoStack.autoPinEdge(.top, to: .bottom, of: balanceTopView, withOffset: 10)
+    }
+    
+    func activateConstraintsDivider() {
         bottomDivider.autoPinEdge(toSuperviewEdge: .leading)
         bottomDivider.autoPinEdge(toSuperviewEdge: .trailing)
-        bottomDivider.autoPinEdge(.top, to: .bottom, of: marketInfoStack)
-        
-        tableHeaderStack.autoSetDimension(.height, toSize: 50)
-        tableHeaderStack.autoPinEdge(.top, to: .bottom, of: bottomDivider)
-        tableHeaderStack.autoPinEdge(toSuperviewEdge: .leading)
-        tableHeaderStack.autoPinEdge(toSuperviewEdge: .trailing)
-        tableHeaderStack.autoPinEdge(toSuperviewEdge: .bottom)
+        bottomDivider.autoPinEdge(toSuperviewEdge: .bottom)
+        bottomDivider.autoPinEdge(.top, to: .bottom, of: marketInfoStack, withOffset: 8)
     }
 }
 

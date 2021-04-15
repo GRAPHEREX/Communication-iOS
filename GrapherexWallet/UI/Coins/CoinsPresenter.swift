@@ -47,22 +47,32 @@ class CoinsPresenterImpl: CoinsPresenter {
                     nextBaseCurrency = nextWallets.first?.fiatCurrency ?? ""
                     let nextCurStr = nextFiatCurSum.format(f: ".0") + nextBaseCurrency
                     
-                    let nextCurItem = CoinDataItem(coinTitle: nextCurrency.symbol,
-                                                         currency: nextCurrency,
-                                                         currencyIcon: nextCurrency.icon,
-                                                         balance: nextBalStr,
-                                                         currencyBalance: nextCurStr,
-                                                         stockPrice: "9000USD",
-                                                         wallets: nextWallets)
+                    //TODO: replace static info when new API is available
+                    let priceChangeStr = Int.random(in: 0...1) == 0 ? "1.7%" : "2.1%"
+                    let priceChangeDirection: CoinPriceChangeDirection = Int.random(in: 0...1) == 0 ? .positive : .negative
+                    let currencyPrice = String(Int.random(in: 5000...9000))
+                    
+                    let nextCurItem = CoinDataItem(
+                        currency: nextCurrency,
+                        balance: nextBalStr,
+                        currencyBalance: nextCurStr,
+                        stockPrice: currencyPrice.appendingLeadingCurrencySymbol(forCode: nextBaseCurrency, divider: ""),
+                        priceChange: priceChangeStr,
+                        priceChangeType: priceChangeDirection,
+                        wallets: nextWallets)
                     currencyItems.append(nextCurItem)
                 }
                 
                 //TODO: replace static info when new API is available
-                let info = CoinsInfo(totalBalance: String.getSymbolForCurrencyCode(code: nextBaseCurrency) + totalBalance.format(f: ".2"),
-                                       marketCap: "1.6 T USD",
-                                       volumeTrade: "700m USD",
-                                       btcDominance: "65%",
-                                       items: currencyItems)
+                let info = CoinsInfo(
+                    totalBalance: totalBalance.format(f: ".2").appendingLeadingCurrencySymbol(forCode: nextBaseCurrency),
+                    marketCap: "1.6 T".appendingLeadingCurrencySymbol(forCode: nextBaseCurrency),
+                    volumeTrade: "700m".appendingLeadingCurrencySymbol(forCode: nextBaseCurrency),
+                    btcDominance: "65%",
+                    spendValue: "25.3k".appendingLeadingCurrencySymbol(forCode: nextBaseCurrency),
+                    incomeValue: "100,00".appendingLeadingCurrencySymbol(forCode: nextBaseCurrency),
+                    spendIncomeProportion: 0.75,
+                    items: currencyItems)
                 strong.view?.onInfoLoaded(info: info)
             }
             completion?()

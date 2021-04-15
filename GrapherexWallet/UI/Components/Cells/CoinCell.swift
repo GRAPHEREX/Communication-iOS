@@ -6,6 +6,11 @@ import Foundation
 import UIKit
 
 final class CoinCell: NiblessView {
+    // MARK: - Properties
+    
+    private struct Constants {
+        static let coinImageSize: CGFloat = 45.0
+    }
     
     private let coinImage: UIImageView = {
         let view = UIImageView()
@@ -46,6 +51,7 @@ final class CoinCell: NiblessView {
     private lazy var balanceStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [balanceLabel, currencyBalanceLabel])
         stack.axis = .vertical
+        stack.distribution = .fillEqually
         return stack
     }()
     
@@ -57,8 +63,22 @@ final class CoinCell: NiblessView {
         return view
     }()
     
+    private let priceChangeLabel: UILabel = {
+        let view = UILabel()
+        view.font = .wlt_robotoRegularFont(withSize: 12)
+        view.textAlignment = .right
+        return view
+    }()
+    
+    private lazy var priceStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [priceLabel, priceChangeLabel])
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        return stack
+    }()
+    
     private lazy var containerStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [coinStack, balanceStack, priceLabel])
+        let stack = UIStackView(arrangedSubviews: [coinStack, balanceStack, priceStack])
         stack.axis = .horizontal
         stack.distribution = .fillEqually
         return stack
@@ -74,29 +94,41 @@ final class CoinCell: NiblessView {
         super.init(frame: frame)
         setup()
     }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        activateConstraints()
+    }
 }
 
 fileprivate extension CoinCell {
     
     func render() {
         guard let currencyItem = currencyItem else { return }
-        coinImage.sd_setImage(with: URL(string: currencyItem.currencyIcon))
-        coinLabel.text = currencyItem.coinTitle
+        coinImage.sd_setImage(with: URL(string: currencyItem.currency.icon))
+        coinLabel.text = currencyItem.currency.symbol
         balanceLabel.text = currencyItem.balance
         currencyBalanceLabel.text = currencyItem.currencyBalance
         priceLabel.text = currencyItem.stockPrice
+        
+        let arrowType = currencyItem.priceChangeType == .positive ? "▲" : "▼"
+        priceChangeLabel.text = currencyItem.priceChange + arrowType
+        priceChangeLabel.textColor = currencyItem.priceChangeType.tintColor
     }
     
     func setup() {
         backgroundColor = .wlt_primaryBackgroundColor
-        self.layoutMargins = .zero
-        
-        coinImage.wltSetContentHuggingHorizontalLow()
-        coinImage.autoSetDimension(.height, toSize: 32)
-        coinImage.autoMatch(.height, to: .width, of: coinImage)
-        coinLabel.wltSetContentHuggingHorizontalHigh()
+
         addSubview(containerStack)
+    }
+    
+    func activateConstraints() {
         containerStack.autoPinEdgesToSuperviewEdges()
+        
+        coinImage.wltSetContentHuggingHorizontalHigh()
+        coinImage.autoSetDimension(.height, toSize: Constants.coinImageSize)
+        coinImage.autoMatch(.height, to: .width, of: coinImage)
+        coinLabel.wltSetContentHuggingHorizontalLow()
     }
 }
 

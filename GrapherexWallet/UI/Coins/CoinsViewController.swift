@@ -25,6 +25,12 @@ class CoinsViewController: NiblessViewController {
         return tableViewController
     }()
     
+    private let tableHeaderView: CoinsTableHeaderView = {
+        let view = CoinsTableHeaderView()
+        view.backgroundColor = .wlt_primaryBackgroundColor
+        return view
+    }()
+    
     private let mainLoadingIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         return indicator
@@ -82,6 +88,9 @@ class CoinsViewController: NiblessViewController {
         mainLoadingIndicator.bringSubviewToFront(tableViewController.tableView)
         
         let contents: WLTTableContents = .init()
+        let headerSection = makeHeaderSection()
+        contents.addSection(headerSection)
+        
         tableViewController.contents = contents
     }
     
@@ -101,6 +110,22 @@ class CoinsViewController: NiblessViewController {
         presenter.fetchData {
             refreshControl.endRefreshing()
         }
+    }
+    
+    private func makeHeaderSection() -> WLTTableSection {
+        let headerSection = WLTTableSection()
+        let headerCell = WLTTableItem.newCell()
+        headerCell.selectionStyle = .none
+        headerCell.contentView.addSubview(tableHeaderView)
+        tableHeaderView.autoPinEdgesToSuperviewEdges()
+        
+        let tableItem = WLTTableItem(
+            customCellBlock: { return headerCell },
+            customRowHeight: 40,
+            actionBlock: nil
+        )
+        headerSection.add(tableItem)
+        return headerSection
     }
     
     private func setNoDataState() {
@@ -150,6 +175,7 @@ class CoinsViewController: NiblessViewController {
         }
         let contents: WLTTableContents = .init()
         let mainSection = WLTTableSection()
+        let headerSection = makeHeaderSection()
         
         mainSection.add(items: props.map {
                                 let cell = WLTTableItem.newCell()
@@ -170,6 +196,7 @@ class CoinsViewController: NiblessViewController {
                         })
             
         
+        contents.addSection(headerSection)
         contents.addSection(mainSection)
         mainLoadingIndicator.isHidden = true
         mainLoadingIndicator.stopAnimating()
@@ -180,7 +207,13 @@ class CoinsViewController: NiblessViewController {
 extension CoinsViewController: CoinsView {
     func onInfoLoaded(info: CoinsInfo) {
         self.props = info.items
-        let headerProps = CoinsHeaderView.Props(balance: info.totalBalance, marketCap: info.marketCap, volumeTrade: info.volumeTrade, btcDominance: info.btcDominance)
+        let headerProps = CoinsHeaderView.Props(balance: info.totalBalance,
+                                                marketCap: info.marketCap,
+                                                volumeTrade: info.volumeTrade,
+                                                btcDominance: info.btcDominance,
+                                                spendValue: info.spendValue,
+                                                incomeValue: info.incomeValue,
+                                                spendIncomeProportion: info.spendIncomeProportion)
         headerView.props = headerProps
     }
 }

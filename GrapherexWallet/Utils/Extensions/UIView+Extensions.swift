@@ -18,4 +18,10 @@ extension UIView {
         view.autoSetDimension(.height, toSize: height)
         return view
     }
+    
+    // MARK: - Corners
+    func roundCorners(radius: CGFloat) {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
+    }
 }
