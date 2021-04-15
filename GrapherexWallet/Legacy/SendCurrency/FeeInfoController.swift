@@ -29,7 +29,7 @@ extension FeeInfoController {
         closeButton.layer.cornerRadius = height / 2
         closeButton.clipsToBounds = true
         closeButton.setTitleColor(.white, for: .normal)
-//        closeButton.backgroundColor = .stwlt_accentGreen
+//        closeButton.backgroundColor = .wlt_accentGreen
         closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         closeButton.setTitle("Got it", for: .normal)
         closeButton.wltSetContentHuggingVerticalHigh()

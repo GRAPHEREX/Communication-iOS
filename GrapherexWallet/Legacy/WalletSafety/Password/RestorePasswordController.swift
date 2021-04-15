@@ -65,7 +65,7 @@ fileprivate extension RestorePasswordController {
         
         errorLabel.isHidden = true
         errorLabel.textAlignment = .center
-        errorLabel.textColor = .stwlt_otherRed
+        errorLabel.textColor = .wlt_otherRed
         errorLabel.text = "Choose QR code image"
         errorLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextSemiboldFont(withSize: 12)
         

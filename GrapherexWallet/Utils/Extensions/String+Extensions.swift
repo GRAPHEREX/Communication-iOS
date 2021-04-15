@@ -13,7 +13,12 @@ extension String {
     }
     
     var localized: String {
-        return NSLocalizedString(self, bundle: Bundle(for: GrapherexWallet.self), comment: "")
+        return NSLocalizedString(self, bundle: Bundle.walletBundle, comment: "")
+    }
+    
+    // MARK: - Currency related methods
+    func appendingLeadingCurrencySymbol(forCode code: String, divider: String = " ") -> String {
+        return String.getSymbolForCurrencyCode(code: code) + divider + self
     }
     
     static func getSymbolForCurrencyCode(code: String) -> String

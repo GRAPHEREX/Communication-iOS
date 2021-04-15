@@ -36,17 +36,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - SkyTech Fonts
 
-+ (UIFont *)stwlt_sfUiTextRegularFontWithSize:(CGFloat)size
++ (UIFont *)wlt_sfUiTextRegularFontWithSize:(CGFloat)size
 {
     return [UIFont fontWithName:@"SFUIText-Regular" size:size];
 }
 
-+ (UIFont *)stwlt_sfUiTextSemiboldFontWithSize:(CGFloat)size
++ (UIFont *)wlt_sfUiTextSemiboldFontWithSize:(CGFloat)size
 {
     return [UIFont fontWithName:@"SFUIText-Semibold" size:size];
 }
 
-+ (UIFont *)stwlt_robotoRegularFontWithSize:(CGFloat)size
++ (UIFont *)wlt_robotoRegularFontWithSize:(CGFloat)size
 {
     return [UIFont fontWithName:@"Roboto-Regular" size:size];
 }

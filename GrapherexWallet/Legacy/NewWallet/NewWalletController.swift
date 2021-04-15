@@ -78,7 +78,7 @@ extension NewWalletController: UITextFieldDelegate {
         infoLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         
         errorLabel.textAlignment = .center
-        errorLabel.textColor = .stwlt_otherRed
+        errorLabel.textColor = .wlt_otherRed
         errorLabel.isHidden = true
         errorLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14).wlt_semibold
         
@@ -220,13 +220,13 @@ extension NewWalletController: UITextFieldDelegate {
         errorLabel.text = ""
         
         if (newTextField.text != confirmTextField.text) {
-            newTitleLabel.textColor = .stwlt_otherRed
-            confirmTitleLabel.textColor = .stwlt_otherRed
+            newTitleLabel.textColor = .wlt_otherRed
+            confirmTitleLabel.textColor = .wlt_otherRed
             errorLabel.text = "Passwords do not match"
         } else if !isValidPassword(password: newTextField.text!) {
-            newTitleLabel.textColor = .stwlt_otherRed
-            confirmTitleLabel.textColor = .stwlt_otherRed
-            self.infoLabel.textColor = .stwlt_otherRed
+            newTitleLabel.textColor = .wlt_otherRed
+            confirmTitleLabel.textColor = .wlt_otherRed
+            self.infoLabel.textColor = .wlt_otherRed
             return false
         } else {
             newTitleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor
@@ -234,7 +234,7 @@ extension NewWalletController: UITextFieldDelegate {
         }
         
         if currencyTextField.text?.isEmpty != false {
-            currencyTitleLabel.textColor = .stwlt_otherRed
+            currencyTitleLabel.textColor = .wlt_otherRed
             errorLabel.text = "Choose currency"
         } else {
             currencyTitleLabel.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.primaryTextColor

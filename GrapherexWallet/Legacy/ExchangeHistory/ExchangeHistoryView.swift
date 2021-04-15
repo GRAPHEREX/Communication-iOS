@@ -28,9 +28,9 @@ final class ExchangeHistoryView: BaseView {
             var color: UIColor {
                 switch self {
                 case .income(_):
-                    return .stwlt_accentGreen
+                    return .wlt_accentGreen
                 case .loss(_):
-                    return .stwlt_otherRed
+                    return .wlt_otherRed
                 }
             }
             

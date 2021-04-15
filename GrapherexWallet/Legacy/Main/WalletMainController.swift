@@ -184,7 +184,7 @@ fileprivate extension WalletMainController {
                 let cell = WLTTableItem.newCell()
                 let emptyView = SecondaryEmptyStateView()
                 emptyView.set(
-                    image: UIImage.image(named: "wallet"),
+                    image: UIImage.loadFromWalletBundle(named: "wallet"),
                     title: "No data"
                 )
                 cell.contentView.addSubview(emptyView)
@@ -230,7 +230,7 @@ fileprivate extension WalletMainController {
                     let cell = WLTTableItem.newCell()
                     let emptyView = SecondaryEmptyStateView()
                     emptyView.set(
-                        image: UIImage.image(named: "wallet"),
+                        image: UIImage.loadFromWalletBundle(named: "wallet"),
                         title: "No wallets"
                     )
                     cell.contentView.addSubview(emptyView)
@@ -247,7 +247,7 @@ fileprivate extension WalletMainController {
                         let cell = WLTTableItem.newCell()
                         let emptyView = SecondaryEmptyStateView()
                         emptyView.set(
-                            image: UIImage.image(named: "wallet"),
+                            image: UIImage.loadFromWalletBundle(named: "wallet"),
                             title: "All wallets are hidden"
                         )
                         cell.contentView.addSubview(emptyView)
@@ -450,7 +450,7 @@ extension WalletMainController: WLTTableViewControllerEditActionDelegate, WLTTab
                 completionHandler(true)
                 self.handleHideAction(on: indexPath)
         })
-        hideAction.backgroundColor = .stwlt_otherBlue
+        hideAction.backgroundColor = .wlt_otherBlue
         
         let configuration = UISwipeActionsConfiguration(actions: [hideAction])
         return configuration
@@ -466,7 +466,7 @@ extension WalletMainController: WLTTableViewControllerEditActionDelegate, WLTTab
                 completionHandler(true)
                 self.send(wallet: wallet)
         })
-        sendAction.backgroundColor = .stwlt_accentGreen
+        sendAction.backgroundColor = .wlt_accentGreen
         
         let recieveAction = UIContextualAction(
             style: .normal, title: NSLocalizedString("MAIN_RECEIVE", comment: ""),
@@ -474,7 +474,7 @@ extension WalletMainController: WLTTableViewControllerEditActionDelegate, WLTTab
                 completionHandler(true)
                 self.receive(wallet: wallet)
         })
-        recieveAction.backgroundColor = .stwlt_accentGreen
+        recieveAction.backgroundColor = .wlt_accentGreen
         
         let configuration = UISwipeActionsConfiguration(actions: [sendAction, recieveAction])
         return configuration

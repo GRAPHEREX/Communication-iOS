@@ -83,7 +83,7 @@ class ImagePickerGridController: UICollectionViewController, PhotoLibraryDelegat
 //            }
 //            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: cancelButton)
         } else {
-            let cancelImage = UIImage.image(named: "ic_x_with_shadow")
+            let cancelImage = UIImage.loadFromWalletBundle(named: "ic_x_with_shadow")
             let cancelButton = UIBarButtonItem(image: cancelImage, style: .plain, target: self, action: #selector(didPressCancel))
             
             cancelButton.tintColor = .wlt_gray05

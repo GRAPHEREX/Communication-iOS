@@ -64,7 +64,7 @@ final class SetPinController: ActionSheetController {
     
     private let validationWarningLabel: UILabel = {
         let validationWarningLabel = UILabel()
-        validationWarningLabel.textColor = .stwlt_otherRed
+        validationWarningLabel.textColor = .wlt_otherRed
         validationWarningLabel.textAlignment = .center
         validationWarningLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         validationWarningLabel.numberOfLines = 0

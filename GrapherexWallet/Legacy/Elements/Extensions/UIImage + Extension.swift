@@ -23,8 +23,4 @@ extension UIImage {
             return (feature as? CIQRCodeFeature)?.messageString
         }
     }
-    
-    public static func image(named: String) -> UIImage? {
-        return UIImage(named: named, in: Bundle(for: GrapherexWalletBundleClass.self), compatibleWith: nil)
-    }
 }

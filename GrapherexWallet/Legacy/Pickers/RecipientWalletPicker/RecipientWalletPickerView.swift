@@ -27,7 +27,7 @@ final class RecipientWalletPickerView: UIView {
     private let addressLabel: UILabel = {
         let view = UILabel()
         view.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
-        view.font = .stwlt_sfUiTextRegularFont(withSize: 15)
+        view.font = .wlt_sfUiTextRegularFont(withSize: 15)
         return view
     }()
     

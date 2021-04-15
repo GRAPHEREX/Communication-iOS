@@ -68,7 +68,7 @@ fileprivate extension InfoCurrencyController {
         subtitleLabel.autoPinEdge(.trailing, to: .trailing, of: backgroundView)
 
         let attentionLabel = UILabel()
-        attentionLabel.textColor = .stwlt_otherRed
+        attentionLabel.textColor = .wlt_otherRed
         attentionLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 12).wlt_semibold
         attentionLabel.text = errorMessage
 

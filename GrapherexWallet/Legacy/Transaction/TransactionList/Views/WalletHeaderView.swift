@@ -105,11 +105,11 @@ internal extension WalletHeaderView {
         imageView.sd_setImage(with: URL(string: props.currency.icon), completed: nil)
         currencyAmountLabel.attributedText = props.currencyAmount.decorate(
             primaryAttributes: [
-                .font: UIFont.systemFont(ofSize: 16), //UIFont.stwlt_sfUiTextRegularFont(withSize: 16),
+                .font: UIFont.systemFont(ofSize: 16), //UIFont.wlt_sfUiTextRegularFont(withSize: 16),
                 .foregroundColor: UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/
             ],
             secondaryAttributes: [
-                .font: UIFont.systemFont(ofSize: 16), //UIFont.stwlt_sfUiTextRegularFont(withSize: 16),
+                .font: UIFont.systemFont(ofSize: 16), //UIFont.wlt_sfUiTextRegularFont(withSize: 16),
                 .foregroundColor: UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/
             ]
         )

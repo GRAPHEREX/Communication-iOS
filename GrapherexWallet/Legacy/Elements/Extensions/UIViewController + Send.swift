@@ -44,7 +44,7 @@ extension UIViewController {
 //                                        OWSActionSheets.showActionSheet(
 //                                            title: "No currencies are currently enabled",
 //                                            message: "You can't send money to this user, as he does not have available wallets",
-//                                            image: UIImage.image(named: "wallet")
+//                                            image: UIImage.loadFromWalletBundle(named: "wallet")
 //                                        )
 //                                    } else {
 //                                        sendController.hidesBottomBarWhenPushed = true

@@ -105,7 +105,7 @@ final class PasswordController: ActionSheetController {
     
     private let validationWarningLabel: UILabel = {
         let validationWarningLabel = UILabel()
-        validationWarningLabel.textColor = .stwlt_otherRed
+        validationWarningLabel.textColor = .wlt_otherRed
         validationWarningLabel.textAlignment = .center
         validationWarningLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         validationWarningLabel.numberOfLines = 0
@@ -359,8 +359,8 @@ fileprivate extension PasswordController {
         
         validationWarningLabel.isHidden = !attemptState.isInvalid
         infoLabel.textColor = attemptState.isInvalid
-            ? .stwlt_otherRed
-            : .stwlt_otherRed//Theme.secondaryTextAndIconColor
+            ? .wlt_otherRed
+            : .wlt_otherRed//Theme.secondaryTextAndIconColor
     }
     
     func isValid() -> Bool {
@@ -468,7 +468,7 @@ fileprivate extension PasswordController {
                 attemptState = .invalid
                 return false
             } else if !isValidPassword(newPasswordTextField.text!) {
-                infoLabel.textColor = .stwlt_otherRed
+                infoLabel.textColor = .wlt_otherRed
                 attemptState = .invalid
                 return false
             }

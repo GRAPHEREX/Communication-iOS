@@ -38,7 +38,7 @@ final class EnterPinController: ActionSheetController {
     private lazy var pinStrokeError = pinTextField.addBottomStroke(color: .wlt_accentRed, strokeWidth: 2)
     private let validationWarningLabel: UILabel = {
         let validationWarningLabel = UILabel()
-        validationWarningLabel.textColor = .stwlt_otherRed
+        validationWarningLabel.textColor = .wlt_otherRed
         validationWarningLabel.textAlignment = .center
         validationWarningLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
         validationWarningLabel.numberOfLines = 0
@@ -51,7 +51,7 @@ final class EnterPinController: ActionSheetController {
         label.numberOfLines = 0
         label.text = "Enter the PIN to continue"
         label.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._sfUiTextRegularFont(withSize: 14)
-        label.textColor = .stwlt_neutralGray
+        label.textColor = .wlt_neutralGray
         return label
     }()
     

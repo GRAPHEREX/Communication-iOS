@@ -24,7 +24,7 @@ final class WalletCell: UIView {
     private let balanceLabel: UILabel = {
         let view = UILabel()
         view.textColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.secondaryTextAndIconColor
-        view.font = .stwlt_sfUiTextRegularFont(withSize: 15)
+        view.font = .wlt_sfUiTextRegularFont(withSize: 15)
         return view
     }()
     

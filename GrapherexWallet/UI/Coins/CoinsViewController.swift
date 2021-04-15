@@ -124,7 +124,7 @@ class CoinsViewController: NiblessViewController {
                 let cell = WLTTableItem.newCell()
                 let emptyView = SecondaryEmptyStateView()
                 emptyView.set(
-                    image: UIImage.image(named: "wallet"),
+                    image: UIImage.loadFromWalletBundle(named: "wallet"),
                     title: "No data".localized
                 )
                 cell.contentView.addSubview(emptyView)

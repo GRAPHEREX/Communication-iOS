@@ -26,7 +26,7 @@ final class SendCurrencyFromWalletController: WLTViewController {
         let errorLabel = UILabel()
         errorLabel.isHidden = true
         errorLabel.textAlignment = .center
-        errorLabel.textColor = .stwlt_otherRed
+        errorLabel.textColor = .wlt_otherRed
         errorLabel.font = UIFont.systemFont(ofSize: 14) // MARK: - SINGAL DEPENDENCY - FONT  = UIFont.stwlt._robotoRegularFont(withSize: 14).wlt_semibold
         return errorLabel
     }()
@@ -245,11 +245,11 @@ fileprivate extension SendCurrencyFromWalletController {
         
         mainSection.add(
             makeItem(parameterTitle: NSLocalizedString("MAIN_FEE", comment: ""),
-                     infoIcon: UIImage.image(named: "profileMenu.icon.info"),
+                     infoIcon: UIImage.loadFromWalletBundle(named: "profileMenu.icon.info"),
                      textField: feeTextField,
                      button: feeButton,
                      value: "",
-                     icon: UIImage.image(named: "icon.wallet.fee"),
+                     icon: UIImage.loadFromWalletBundle(named: "icon.wallet.fee"),
                      valueTitleLabel: feeLabel,
                      valueSubTitleLabel: feeEquivalentLabel,
                      completion: {}
@@ -334,7 +334,7 @@ fileprivate extension SendCurrencyFromWalletController {
         iconView.autoSetDimensions(to: CGSize(square: 24))
         iconView.wltSetContentHuggingHorizontalHigh()
         iconView.contentMode = .scaleAspectFit
-        iconView.tintColor = .stwlt_accentGreen
+        iconView.tintColor = .wlt_accentGreen
         
         let contentStack = UIStackView(arrangedSubviews: [
             imageView,
@@ -391,7 +391,7 @@ fileprivate extension SendCurrencyFromWalletController {
         if let parameterIcon = infoIcon {
             let parameterImageView = UIImageView(image: parameterIcon)
             parameterImageView.contentMode = .scaleAspectFit
-            parameterImageView.backgroundColor = .stwlt_accentGreen
+            parameterImageView.backgroundColor = .wlt_accentGreen
             parameterImageView.widthAnchor.constraint(equalTo: parameterImageView.heightAnchor).isActive = true
             parameterImageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
             parameterImageView.layer.cornerRadius = 8
@@ -522,7 +522,7 @@ fileprivate extension SendCurrencyFromWalletController {
     func setupButton(button: UIButton, icon: UIImage) {
         button.setImage(icon.withRenderingMode(.alwaysTemplate), for: .normal)
         
-        button.tintColor = .stwlt_accentGreen
+        button.tintColor = .wlt_accentGreen
         button.autoSetDimension(.width, toSize: 40)
 
         button.contentHorizontalAlignment = .trailing
@@ -606,20 +606,20 @@ fileprivate extension SendCurrencyFromWalletController {
 
     func setupAmountFonts() {
         self.amountTextField.font = isRateActive
-            ? .stwlt_sfUiTextRegularFont(withSize: 14)
-            : (UIFont.stwlt_sfUiTextRegularFont(withSize: 16).wlt_semibold)
+            ? .wlt_sfUiTextRegularFont(withSize: 14)
+            : (UIFont.wlt_sfUiTextRegularFont(withSize: 16).wlt_semibold)
         
         self.rateAmountTextField.font = !isRateActive
-            ? .stwlt_sfUiTextRegularFont(withSize: 14)
-            : (UIFont.stwlt_sfUiTextRegularFont(withSize: 16).wlt_semibold)
+            ? .wlt_sfUiTextRegularFont(withSize: 14)
+            : (UIFont.wlt_sfUiTextRegularFont(withSize: 16).wlt_semibold)
         
         self.amountSymbolLabel.font = isRateActive
-            ? UIFont.stwlt_robotoRegularFont(withSize: 12)
-            : UIFont.stwlt_robotoRegularFont(withSize: 14)
+            ? UIFont.wlt_robotoRegularFont(withSize: 12)
+            : UIFont.wlt_robotoRegularFont(withSize: 14)
         
         self.rateAmountSymbolLabel.font = !isRateActive
-            ? UIFont.stwlt_robotoRegularFont(withSize: 12)
-            : UIFont.stwlt_robotoRegularFont(withSize: 14)
+            ? UIFont.wlt_robotoRegularFont(withSize: 12)
+            : UIFont.wlt_robotoRegularFont(withSize: 14)
         
         self.amountTextField.isEnabled = !isRateActive
         self.amountTextField.textColor = UIColor.black //isRateActive ? Theme.secondaryTextAndIconColor : UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/

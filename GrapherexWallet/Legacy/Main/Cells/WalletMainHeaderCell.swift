@@ -37,11 +37,11 @@ fileprivate extension WalletMainHeaderCell {
         balanceLabel.text = props.balance
         balanceLabel.attributedText = props.balance.decorate(
             primaryAttributes: [
-                .font: UIFont.stwlt_sfUiTextSemiboldFont(withSize: 16),
+                .font: UIFont.wlt_sfUiTextSemiboldFont(withSize: 16),
                 .foregroundColor: UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/
             ],
             secondaryAttributes: [
-                .font: UIFont.stwlt_sfUiTextSemiboldFont(withSize: 16),
+                .font: UIFont.wlt_sfUiTextSemiboldFont(withSize: 16),
                 .foregroundColor: UIColor.black /*MARK: - SINGAL DEPENDENCY - THEME*/
             ]
         )

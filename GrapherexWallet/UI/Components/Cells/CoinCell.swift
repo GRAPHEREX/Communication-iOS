@@ -15,7 +15,7 @@ final class CoinCell: NiblessView {
     
     private let coinLabel: UILabel = {
         let view = UILabel()
-        view.font = .wlt_robotoFont(withSize: 14)
+        view.font = .wlt_robotoRegularFont(withSize: 14)
         view.textColor = .wlt_primaryLabelColor
         return view
     }()
@@ -30,7 +30,7 @@ final class CoinCell: NiblessView {
     private let balanceLabel: UILabel = {
         let view = UILabel()
         view.textColor = .wlt_primaryLabelColor
-        view.font = .wlt_robotoFont(withSize: 14)
+        view.font = .wlt_robotoRegularFont(withSize: 14)
         view.textAlignment = .right
         return view
     }()
@@ -38,7 +38,7 @@ final class CoinCell: NiblessView {
     private let currencyBalanceLabel: UILabel = {
         let view = UILabel()
         view.textColor = .wlt_secondaryLabelColor
-        view.font = .wlt_robotoFont(withSize: 12)
+        view.font = .wlt_robotoRegularFont(withSize: 12)
         view.textAlignment = .right
         return view
     }()
@@ -52,7 +52,7 @@ final class CoinCell: NiblessView {
     private let priceLabel: UILabel = {
         let view = UILabel()
         view.textColor = .wlt_darkGray63Color
-        view.font = .wlt_robotoFont(withSize: 14)
+        view.font = .wlt_robotoRegularFont(withSize: 14)
         view.textAlignment = .right
         return view
     }()

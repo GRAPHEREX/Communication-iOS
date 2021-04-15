@@ -19,7 +19,7 @@ final class ProfileOptionView: BaseView {
     
     private let mainButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .stwlt_accentGreen
+        button.backgroundColor = .wlt_accentGreen
         return button
     }()
     
@@ -46,19 +46,19 @@ final class ProfileOptionView: BaseView {
         var iconValue: UIImage? {
             switch self {
             case .send:
-                return UIImage.image(named: "general.icon.enter")
+                return UIImage.loadFromWalletBundle(named: "general.icon.enter")
             case .receive:
-                return UIImage.image(named: "profileMenu.icon.plus")
+                return UIImage.loadFromWalletBundle(named: "profileMenu.icon.plus")
             case .savedMessage:
-                return UIImage.image(named: "profileMenu.icon.message")
+                return UIImage.loadFromWalletBundle(named: "profileMenu.icon.message")
             case .message, .call, .video, .search, .info:
-                return UIImage.image(named: "profileMenu.icon.\(self.rawValue.lowercased())")
+                return UIImage.loadFromWalletBundle(named: "profileMenu.icon.\(self.rawValue.lowercased())")
             case .leaveGroup:
-                return UIImage.image(named: "profileMenu.icon.leave")
+                return UIImage.loadFromWalletBundle(named: "profileMenu.icon.leave")
             case .userId:
-                return UIImage.image(named: "icon.scan.qr")
+                return UIImage.loadFromWalletBundle(named: "icon.scan.qr")
             case .gallery:
-                return UIImage.image(named: "icon.album")
+                return UIImage.loadFromWalletBundle(named: "icon.album")
             }
         }
     }

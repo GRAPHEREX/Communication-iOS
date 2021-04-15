@@ -11,7 +11,7 @@ final class CoinsHeaderView: NiblessView {
     // MARK: - Balance
     private let balanceTitleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.wlt_robotoFont(withSize: 16)
+        view.font = UIFont.wlt_robotoMediumFont(withSize: 14)
         view.textColor = UIColor.wlt_primaryLabelColor
         view.textAlignment = .left
         view.text = "Total balance".localized
@@ -20,7 +20,7 @@ final class CoinsHeaderView: NiblessView {
     
     private let balanceValueLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.wlt_robotoFont(withSize: 30)
+        view.font = UIFont.wlt_robotoMediumFont(withSize: 18)
         view.textColor = UIColor.wlt_primaryLabelColor
         view.textAlignment = .right
         view.adjustsFontSizeToFitWidth = true
@@ -37,8 +37,8 @@ final class CoinsHeaderView: NiblessView {
     // MARK: - Market Cap
     private let marketCapTitleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.wlt_robotoFont(withSize: 12)
-        view.textColor = UIColor.wlt_secondaryLabelColor
+        view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
+        view.textColor = UIColor.wlt_primaryLabelColor
         view.textAlignment = .center
         view.text = "Market cap".localized
         return view
@@ -61,8 +61,8 @@ final class CoinsHeaderView: NiblessView {
     // MARK: - Volume Trade
     private let volumeTradeTitleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.wlt_robotoFont(withSize: 12)
-        view.textColor = UIColor.wlt_secondaryLabelColor
+        view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
+        view.textColor = UIColor.wlt_primaryLabelColor
         view.textAlignment = .center
         view.text = "Volume trade 24h".localized
         return view
@@ -70,8 +70,8 @@ final class CoinsHeaderView: NiblessView {
     
     private let volumeTradeValueLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.wlt_robotoFont(withSize: 14)
-        view.textColor = UIColor.wlt_primaryLabelColor
+        view.font = UIFont.wlt_robotoRegularFont(withSize: 14)
+        view.textColor = UIColor.wlt_gray116Color
         view.textAlignment = .center
         return view
     }()
@@ -85,8 +85,8 @@ final class CoinsHeaderView: NiblessView {
     // MARK: - BTC Dominance
     private let btcDominanceTitleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.wlt_robotoFont(withSize: 12)
-        view.textColor = UIColor.wlt_secondaryLabelColor
+        view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
+        view.textColor = UIColor.wlt_primaryLabelColor
         view.textAlignment = .center
         view.text = "BTC dominance".localized
         return view
@@ -94,8 +94,8 @@ final class CoinsHeaderView: NiblessView {
     
     private let btcDominanceValueLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.wlt_robotoFont(withSize: 14)
-        view.textColor = UIColor.wlt_primaryLabelColor
+        view.font = UIFont.wlt_robotoRegularFont(withSize: 14)
+        view.textColor = UIColor.wlt_gray116Color
         view.textAlignment = .center
         return view
     }()
