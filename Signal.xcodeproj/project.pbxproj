@@ -984,12 +984,14 @@
 		E39E2495262866E900613495 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E2494262866E900613495 /* Bundle+Extensions.swift */; };
 		E39E249D262867BA00613495 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E249C262867BA00613495 /* FontManager.swift */; };
 		E39E24A5262869BE00613495 /* WalletInternalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E24A4262869BE00613495 /* WalletInternalError.swift */; };
+		E39E24B42628707600613495 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E24B32628707600613495 /* RootNavigationController.swift */; };
+		E39E24C32628784600613495 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E24C22628784600613495 /* UIImage+Extensions.swift */; };
+		E39E24CB26287D2200613495 /* CoinsTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39E24CA26287D2200613495 /* CoinsTableHeaderView.swift */; };
 		E39F889426177285000E120C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39F889326177285000E120C /* NetworkService.swift */; };
 		E3AD8BE92625A0DC0059B1CC /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD8BE82625A0DC0059B1CC /* Double+Extensions.swift */; };
 		E3AD8BF12625AD270059B1CC /* CoinsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD8BF02625AD270059B1CC /* CoinsInfo.swift */; };
 		E3AD8C642625EF810059B1CC /* WLTSwiftUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AD8C632625EF810059B1CC /* WLTSwiftUtils.swift */; };
 		E3AE74CB26245CAD00E5CB94 /* CoinDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AE74CA26245CAD00E5CB94 /* CoinDataItem.swift */; };
-		E3AE74D4262462B600E5CB94 /* CoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AE74D3262462B600E5CB94 /* CoinCell.swift */; };
 		E3B6DD6E261DADF000F01AA7 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6DD6D261DADF000F01AA7 /* NetworkRequest.swift */; };
 		E3B6DD91261DF38C00F01AA7 /* WalletConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6DD90261DF38C00F01AA7 /* WalletConfig.swift */; };
 		E3D980C42624340B007B99C5 /* GrapherexWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D980C32624340B007B99C5 /* GrapherexWallet.swift */; };
@@ -999,6 +1001,7 @@
 		E3E2F0EE261F45DD00126155 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E2F0ED261F45DD00126155 /* AuthenticationManager.swift */; };
 		E3E2F136261F50A500126155 /* AuthTokenStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E2F135261F50A500126155 /* AuthTokenStorageService.swift */; };
 		E3E2F13E261F540300126155 /* WalletAuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E2F13D261F540300126155 /* WalletAuthError.swift */; };
+		E3E8A0AC262836A1006E64EE /* CoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E8A0AB262836A0006E64EE /* CoinCell.swift */; };
 		E3E8A0B626283907006E64EE /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3E8A0B426283906006E64EE /* Roboto-Light.ttf */; };
 		E3E8A0B726283907006E64EE /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3E8A0B526283906006E64EE /* Roboto-Medium.ttf */; };
 		E3E8A0C52628580E006E64EE /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3E8A0C42628580E006E64EE /* Roboto-Bold.ttf */; };
@@ -2324,12 +2327,14 @@
 		E39E2494262866E900613495 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		E39E249C262867BA00613495 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		E39E24A4262869BE00613495 /* WalletInternalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInternalError.swift; sourceTree = "<group>"; };
+		E39E24B32628707600613495 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
+		E39E24C22628784600613495 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		E39E24CA26287D2200613495 /* CoinsTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTableHeaderView.swift; sourceTree = "<group>"; };
 		E39F889326177285000E120C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E3AD8BE82625A0DC0059B1CC /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		E3AD8BF02625AD270059B1CC /* CoinsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsInfo.swift; sourceTree = "<group>"; };
 		E3AD8C632625EF810059B1CC /* WLTSwiftUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLTSwiftUtils.swift; sourceTree = "<group>"; };
 		E3AE74CA26245CAD00E5CB94 /* CoinDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataItem.swift; sourceTree = "<group>"; };
-		E3AE74D3262462B600E5CB94 /* CoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCell.swift; sourceTree = "<group>"; };
 		E3B6DD6D261DADF000F01AA7 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		E3B6DD90261DF38C00F01AA7 /* WalletConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConfig.swift; sourceTree = "<group>"; };
 		E3D980C32624340B007B99C5 /* GrapherexWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapherexWallet.swift; sourceTree = "<group>"; };
@@ -2339,6 +2344,7 @@
 		E3E2F0ED261F45DD00126155 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		E3E2F135261F50A500126155 /* AuthTokenStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenStorageService.swift; sourceTree = "<group>"; };
 		E3E2F13D261F540300126155 /* WalletAuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAuthError.swift; sourceTree = "<group>"; };
+		E3E8A0AB262836A0006E64EE /* CoinCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinCell.swift; sourceTree = "<group>"; };
 		E3E8A0B426283906006E64EE /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		E3E8A0B526283906006E64EE /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		E3E8A0C42628580E006E64EE /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -4391,7 +4397,6 @@
 				E3D980C32624340B007B99C5 /* GrapherexWallet.swift */,
 				E3D980CB262451B7007B99C5 /* Services */,
 				E395629F262083AC003C5527 /* UI */,
-				E3E2F0EC261F444400126155 /* Storage */,
 				E3E2F050261F0B2A00126155 /* Utils */,
 				E3B6DD81261DF21300F01AA7 /* Managers */,
 				E35197BF26175A2A00043606 /* Models */,
@@ -4568,7 +4573,6 @@
 		E351978826175A2A00043606 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				E351978926175A2A00043606 /* Resources */,
 				E351978B26175A2A00043606 /* Extensions */,
 				E351979A26175A2A00043606 /* Views */,
 				E351979E26175A2A00043606 /* Base */,
@@ -4576,17 +4580,10 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
-		E351978926175A2A00043606 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E351978A26175A2A00043606 /* Images.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		E351978B26175A2A00043606 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E3794A8B261B5B3C00E14B2E /* UIColor+OWS.swift */,
 				E351978C26175A2A00043606 /* UIViewController + Send.swift */,
 				E351978D26175A2A00043606 /* UIImage + Extension.swift */,
 				E351978E26175A2A00043606 /* Array + Extension.swift */,
@@ -4874,7 +4871,6 @@
 				E3332610261C64B400CFE73E /* AvatarImageView.swift */,
 				E3794ACF261B65B000E14B2E /* ModalActivityIndicatorViewController.swift */,
 				E3794AD0261B65B000E14B2E /* WLTNavigationBar.swift */,
-				E3794A8B261B5B3C00E14B2E /* UIColor+OWS.swift */,
 				E3794A8D261B5B3C00E14B2E /* UIDevice+featureSupport.swift */,
 				E3794A8F261B5B3C00E14B2E /* UIView+OWS.swift */,
 				E3794A8C261B5B3C00E14B2E /* WLTNavigationController.m */,
@@ -4962,6 +4958,7 @@
 		E39562C6262093F4003C5527 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E351978A26175A2A00043606 /* Images.xcassets */,
 				E39562F326209B47003C5527 /* Localization */,
 				E351979526175A2A00043606 /* Fonts */,
 			);
@@ -4985,6 +4982,21 @@
 			path = Nibless;
 			sourceTree = "<group>";
 		};
+		E39E24AC26286D7700613495 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				E39E24B32628707600613495 /* RootNavigationController.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		E39E24BB2628711200613495 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		E39F889226177255000E120C /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -5003,18 +5015,11 @@
 			path = Debug;
 			sourceTree = "<group>";
 		};
-		E3AD8C772625FC420059B1CC /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				E3AE74D3262462B600E5CB94 /* CoinCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		E3AE74C826245C7F00E5CB94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				E39562BE262092BF003C5527 /* CoinsHeaderView.swift */,
+				E39E24CA26287D2200613495 /* CoinsTableHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -5057,6 +5062,7 @@
 		E3D980CB262451B7007B99C5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E3E2F0EC261F444400126155 /* Storage */,
 				E39F889226177255000E120C /* Network */,
 			);
 			path = Services;
@@ -5082,6 +5088,7 @@
 				E39562FC26209EE3003C5527 /* UIView+Extensions.swift */,
 				E3AD8BE82625A0DC0059B1CC /* Double+Extensions.swift */,
 				E39E2494262866E900613495 /* Bundle+Extensions.swift */,
+				E39E24C22628784600613495 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -7301,6 +7308,8 @@
 				E39562D6262094C4003C5527 /* UIColor+Extensions.swift in Sources */,
 				E3AD8BF12625AD270059B1CC /* CoinsInfo.swift in Sources */,
 				E3332642261C75C900CFE73E /* UIFont+WLT.m in Sources */,
+				E39E24CB26287D2200613495 /* CoinsTableHeaderView.swift in Sources */,
+				E39E24C32628784600613495 /* UIImage+Extensions.swift in Sources */,
 				E351981326175A2B00043606 /* ProfileOptionView.swift in Sources */,
 				E351981E26175A2B00043606 /* ScanQRController.swift in Sources */,
 				E351982626175A2B00043606 /* PhotoCapture.swift in Sources */,
@@ -7338,6 +7347,7 @@
 				E354E387261CA8F100FC65D0 /* CGFloat+Extension.swift in Sources */,
 				E35197F826175A2B00043606 /* EnterPasswordBeforeSendingController.swift in Sources */,
 				E351982326175A2B00043606 /* SendMediaNavigationController.swift in Sources */,
+				E39E24B42628707600613495 /* RootNavigationController.swift in Sources */,
 				E35197FB26175A2B00043606 /* WalletExchangeHistoryController.swift in Sources */,
 				E35197E826175A2A00043606 /* RestorePasswordController.swift in Sources */,
 				E351983C26175A2B00043606 /* WalletPickerView.swift in Sources */,
