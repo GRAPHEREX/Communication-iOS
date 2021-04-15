@@ -11,7 +11,6 @@ final class CoinsHeaderView: NiblessView {
     private struct Constants {
         static let currencyFlagSize: CGFloat = 36.0
         static let totalBalanceHeaderHeight: CGFloat = 110.0
-//        static let marketInfoHeaderHeight: CGFloat = 60.0
         static let dividerViewHeight: CGFloat = 7.0
         static let horizontalContentOffset: CGFloat = 11.0
         static let verticalContentOffset: CGFloat = 11.0
@@ -288,10 +287,9 @@ fileprivate extension CoinsHeaderView {
     }
     
     func activateConstraintsMarketInfo() {
-//        marketInfoStack.autoSetDimension(.height, toSize: Constants.marketInfoHeaderHeight)
         marketInfoStack.autoPinEdge(toSuperviewEdge: .leading, withInset: Constants.horizontalContentOffset)
         marketInfoStack.autoPinEdge(toSuperviewEdge: .trailing, withInset: Constants.horizontalContentOffset)
-        marketInfoStack.autoPinEdge(.top, to: .bottom, of: balanceTopView, withOffset: 10)
+        marketInfoStack.autoPinEdge(.top, to: .bottom, of: balanceTopView, withOffset: 15)
     }
     
     func activateConstraintsDivider() {
