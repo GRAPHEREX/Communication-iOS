@@ -4,43 +4,62 @@
 
 import Foundation
 
-public class APIService {
+protocol APIService {
+    func initWallets(completion: @escaping (Result<(WalletResponse, [Currency]), Error>) -> Void)
+    func getWallets(_ currencies: [Currency], completion: @escaping (Result<WalletResponse, Error>) -> Void)
+    func getCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void)
+    func getWalletInfo(wallet: Wallet, currencies: [Currency], completion: @escaping (Result<Wallet, Error>) -> Void)
+    func createWallet(_ currency: Currency, password: String, completion: @escaping (Result<String, Error>) -> ())
+    func sendCurrency(wallet: Wallet, password: String, destinationAddress: String, amount: String, fee: String?, customGasPrice: String?, customGasLimit: Int?, completion: @escaping (Result<String, Error>) -> ())
+    func getTransactions(wallet: Wallet, limit: Int, offset: Int, tx_direction: String?, sortBy: String?, currencies: [Currency], ascending: Bool, completion: @escaping (Result<[Transaction], Error>) -> ())
+    func setFirstPassword(wallet: Wallet, password: String, completion: @escaping (Result<Void, Error>) -> ())
+    func changePassword(wallet: Wallet, oldPassword: String, newPassword: String, completion: @escaping (Result<Void, Error>) -> ())
+    func getBaseFee(currency: Currency, completion: @escaping (Result<Fee, Error>) -> Void)
+    func getRecipientWallets(accountId: String, currencies:[Currency], completion: @escaping (Result<[RecipientWallet], Error>) -> Void)
+}
+
+public class DefaultAPIService: APIService {
     // MARK: - Public Properties
-    public var config: WalletConfig? {
-        didSet {
-            updateConfig()
-        }
-    }
+//    public var config: WalletConfig? {
+//        didSet {
+//            updateConfig()
+//        }
+//    }
     
     // MARK: - Private Properties
-    private var basePath: String {
-        return config?.cryptoServerBasePath ?? ""
-    }
+//    private var basePath: String {
+//        return config.cryptoServerBasePath
+//    }
     private var token: String? = nil
     private let reachability = try! Reachability()
     
     // MARK: - Dependencies
-    private var networkService: NetworkService!
-    private var authManager: AuthenticationManager!
-    private var credentialsManager: CredentialsManager!
+    private let networkService: NetworkService
+    private let authManager: AuthenticationManager
+    private let credentialsManager: CredentialsManager
+    private let basePath: String
     
     // MARK: - Private Methods
-    private func updateConfig() {
-        guard let config = config else { return }
-        networkService = WalletNetworkService(baseHostURL: URL(string: config.cryptoServerURL)!)
-        authManager = WalletAuthenticationManager(config: config)
-        credentialsManager = WalletCredentialsManager()
-    }
+//    private func updateConfig() {
+//        guard let config = config else { return }
+//        networkService = DefaultNetworkService(baseHostURL: URL(string: config.cryptoServerURL)!)
+//        authManager = DefaultAuthenticationManager(config: config)
+//        credentialsManager = DefaultCredentialsManager()
+//    }
     
     // MARK: - Reset
-    public func reset() {
+//    func reset() {
         //TODO: Credentials reset
-    }
+//    }
     
     // MARK: - Initiation
-    public init(config: WalletConfig?) {
-        self.config = config
-        updateConfig()
+    init(cryptoServerBasePath: String, networkService: NetworkService, authManager: AuthenticationManager, credentialsManager: CredentialsManager) {
+//        self.config = config
+//        updateConfig()
+        self.basePath = cryptoServerBasePath
+        self.networkService = networkService
+        self.authManager = authManager
+        self.credentialsManager = credentialsManager
     }
     
     func initWallets(completion: @escaping (Result<(WalletResponse, [Currency]), Error>) -> Void) {
@@ -505,7 +524,7 @@ public class APIService {
     }
 }
 
-fileprivate extension APIService {
+fileprivate extension DefaultAPIService {
 
     // MARK: - Error Handling
     

@@ -78,7 +78,8 @@ final class CancelPinController: ActionSheetController {
 //    private var pinType: KeyBackupService.PinType = .numeric
 
     private var topPadding: CGFloat = 0.0
-    private let credentialsManager: CredentialsManager = WalletCredentialsManager()
+    //TODO: Replace with DI
+    private let credentialsManager: CredentialsManager = DefaultCredentialsManager(storage: KeychainCredentialsStorageService())
 
     public var walletId: String! {
         didSet {

@@ -92,7 +92,8 @@ final class SetPinController: ActionSheetController {
     }
     
 //    private var pinType: KeyBackupService.PinType = .numeric
-    private let credentialsManager: CredentialsManager = WalletCredentialsManager()
+    //TODO: Replace with DI
+    private let credentialsManager: CredentialsManager = DefaultCredentialsManager(storage: KeychainCredentialsStorageService())
     private var topPadding: CGFloat = 0.0
 
     public var walletId: String! {

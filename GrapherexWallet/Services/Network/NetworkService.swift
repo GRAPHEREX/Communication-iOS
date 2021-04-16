@@ -22,7 +22,7 @@ protocol NetworkService {
 }
 
 
-class WalletNetworkService: NetworkService {
+class DefaultNetworkService: NetworkService {
     
     // MARK: - Properties
     let session: URLSession

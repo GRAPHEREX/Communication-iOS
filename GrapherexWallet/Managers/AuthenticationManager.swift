@@ -9,15 +9,15 @@ protocol AuthenticationManager {
     func refreshWalletToken(completion: @escaping (Result<AuthToken, Error>) -> Void)
 }
 
-class WalletAuthenticationManager: AuthenticationManager {
+class DefaultAuthenticationManager: AuthenticationManager {
     //MARK: - Properties
-    private let authService: AuthenticationService!
-    private let tokenStorage: AuthTokenStorageService!
+    private let authService: AuthenticationService
+    private let tokenStorage: AuthTokenStorageService
     
     //MARK: - Methods
-    init(config: WalletConfig) {
-        authService = WalletAuthenticationService(config: config)
-        tokenStorage = KeychainAuthTokenStorageService()
+    init(authService: AuthenticationService, tokenStorage: AuthTokenStorageService) {
+        self.authService = authService
+        self.tokenStorage = tokenStorage
     }
     
     func refreshWalletToken(completion: @escaping (Result<AuthToken, Error>) -> Void) {

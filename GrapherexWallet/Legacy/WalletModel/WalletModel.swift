@@ -42,7 +42,7 @@ class WalletModel {
     
     @objc
     func walletCredentionalsUpdate() {
-//        let credentionals = WalletCredentialsManager.getWalletCredentials()
+//        let credentionals = DefaultCredentialsManager.getWalletCredentials()
 //        let result: [Wallet] = wallets.map { wallet in
 //            var wallet = wallet
 //            wallet.credentials = credentionals.first(where: { wallet.id == $0.id })

@@ -5,6 +5,7 @@
 import Foundation
 
 protocol CoinsPresenter: class {
+    var view: CoinsView? { get set }
     func fetchData(completion: (() -> Void)?)
 }
 

@@ -26,7 +26,8 @@ final class WalletDetailController: WLTViewController {
     private let walletModel: WalletModel = {
         return WalletModel.shared
     }()
-    private let credentialsManager: CredentialsManager = WalletCredentialsManager()
+    //TODO: Replace with DI
+    private let credentialsManager: CredentialsManager = DefaultCredentialsManager(storage: KeychainCredentialsStorageService())
     
     private let transactionPaginationSize: Int = 50
     private let transactionHeaderView = UIView()

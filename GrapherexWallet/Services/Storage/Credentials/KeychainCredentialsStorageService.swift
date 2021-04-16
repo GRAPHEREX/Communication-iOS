@@ -6,7 +6,7 @@ import Foundation
 import SwiftKeychainWrapper
 import XCGLogger
 
-class KeychainWalletCredentialsStorageService: WalletCredentialsStorageService {
+class KeychainCredentialsStorageService: CredentialsStorageService {
     // MARK: - Private Properties
     private struct Keys {
         static let walletCredentials = "grapherexWallet.walletCredentials"

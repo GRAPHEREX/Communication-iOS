@@ -8,15 +8,15 @@ protocol AuthenticationService {
     func getToken(completion: @escaping (Result<AuthToken, Error>) -> Void)
 }
 
-class WalletAuthenticationService: AuthenticationService {
+class DefaultAuthenticationService: AuthenticationService {
     // MARK: - Dependencies
-    private var networkService: NetworkService!
+    private let networkService: NetworkService
     private let config: WalletConfig
     
     // MARK: - Methods
-    init(config: WalletConfig) {
+    init(config: WalletConfig, networkService: NetworkService) {
         self.config = config
-        networkService = WalletNetworkService(baseHostURL: URL(string: config.apiServerURL)!)
+        self.networkService = networkService
     }
     
     func getToken(completion: @escaping (Result<AuthToken, Error>) -> Void) {

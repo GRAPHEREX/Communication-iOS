@@ -20,11 +20,15 @@ protocol CredentialsManager {
     func removeAllCredentials(completion: @escaping (Error?) -> Void)
 }
 
-class WalletCredentialsManager: CredentialsManager {
+class DefaultCredentialsManager: CredentialsManager {
     //MARK: - Private Properties
-    private let storage: WalletCredentialsStorageService = KeychainWalletCredentialsStorageService()
+    private let storage: CredentialsStorageService!
     
     //MARK: - Public Methods
+    init(storage: CredentialsStorageService) {
+        self.storage = storage
+    }
+    
     func loadAllCredentials(completion: @escaping (Result<[WalletCredentials], Error>) -> Void) {
         storage.loadCredentials(completion: completion)
     }

@@ -7,7 +7,7 @@ import Foundation
 @objc public class GrapherexWallet: NSObject {
     //MARK: - Private Properties
     private var coordinator: Coordinator!
-    private var apiService: APIService!
+    private var appContainer: AppDependencyContainer!
     
     private var firstAppStart = true
     
@@ -18,8 +18,8 @@ import Foundation
      */
     /// - Tag: setup
     public func setup(withConfig config: WalletConfig) {
-        apiService = APIService(config: config)
-        coordinator = CoinsCoordinator(navigationController: RootNavigationController(), apiService: apiService)
+        appContainer = AppDependencyContainer(config: config)
+        coordinator = appContainer.makeCoinsCoordinator()
         
         if firstAppStart {
             firstAppStart = false
@@ -30,7 +30,6 @@ import Foundation
     public func reset() {
         coordinator.start()
         coordinator = nil
-        apiService = nil
     }
     
     /**
@@ -39,7 +38,6 @@ import Foundation
      */
     @objc public func createInitialController() -> UINavigationController {
         wltAssertDebug(coordinator != nil)
-        wltAssertDebug(apiService != nil)
             
         coordinator.start()
         return coordinator.navigationController
