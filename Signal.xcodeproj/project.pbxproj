@@ -1142,6 +1142,7 @@
 		F2D7201325FA4A70008105BA /* NotificationSettingsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7201025FA4A70008105BA /* NotificationSettingsContentViewController.swift */; };
 		F2D7201425FA4A70008105BA /* NotificationSettingsSoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7201125FA4A70008105BA /* NotificationSettingsSoundViewController.swift */; };
 		F2D7202725FA4DA0008105BA /* DebugContactsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7202625FA4DA0008105BA /* DebugContactsUtils.swift */; };
+		F2EC28032629972F009A4097 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC28022629972F009A4097 /* UIViewControllerPreview.swift */; };
 		FC3BD9881A30A790005B96BB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC3BD9871A30A790005B96BB /* Social.framework */; };
 		FCB11D8C1A129A76002F93FB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB11D8B1A129A76002F93FB /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
@@ -2497,6 +2498,7 @@
 		F2D7201025FA4A70008105BA /* NotificationSettingsContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsContentViewController.swift; sourceTree = "<group>"; };
 		F2D7201125FA4A70008105BA /* NotificationSettingsSoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsSoundViewController.swift; sourceTree = "<group>"; };
 		F2D7202625FA4DA0008105BA /* DebugContactsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugContactsUtils.swift; sourceTree = "<group>"; };
+		F2EC28022629972F009A4097 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
 		FC3BD9871A30A790005B96BB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FCB11D8B1A129A76002F93FB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		FD351756BE688D00B63E00CD /* Pods-SignalMessaging.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalMessaging.testable release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalMessaging/Pods-SignalMessaging.testable release.xcconfig"; sourceTree = "<group>"; };
@@ -4927,6 +4929,7 @@
 		E395629F262083AC003C5527 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F2EC280126299711009A4097 /* Previews */,
 				E39562AF262087E9003C5527 /* Components */,
 				E39562A0262083B6003C5527 /* Coins */,
 			);
@@ -5667,6 +5670,14 @@
 				F2D7201125FA4A70008105BA /* NotificationSettingsSoundViewController.swift */,
 			);
 			path = Notifications;
+			sourceTree = "<group>";
+		};
+		F2EC280126299711009A4097 /* Previews */ = {
+			isa = PBXGroup;
+			children = (
+				F2EC28022629972F009A4097 /* UIViewControllerPreview.swift */,
+			);
+			path = Previews;
 			sourceTree = "<group>";
 		};
 		FCFA64B11A24F29E0007FB87 /* UI Categories */ = {
@@ -7298,6 +7309,7 @@
 				E351983226175A2B00043606 /* UITextField+Extension.swift in Sources */,
 				E3332611261C64B400CFE73E /* AvatarImageView.swift in Sources */,
 				E35197EB26175A2A00043606 /* EnterPinController.swift in Sources */,
+				F2EC28032629972F009A4097 /* UIViewControllerPreview.swift in Sources */,
 				E351983826175A2B00043606 /* CurrencyPickerView.swift in Sources */,
 				E3794A92261B5B3C00E14B2E /* UIColor+OWS.swift in Sources */,
 				E39E24F92628AF2000613495 /* Theme.swift in Sources */,

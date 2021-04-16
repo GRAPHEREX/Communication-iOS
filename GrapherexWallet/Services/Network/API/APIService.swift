@@ -4,9 +4,23 @@
 
 import Foundation
 
-public class APIService {
+protocol APIService {
+    func initWallets(completion: @escaping (Result<(WalletResponse, [Currency]), Error>) -> Void)
+    func getWallets(_ currencies: [Currency], completion: @escaping (Result<WalletResponse, Error>) -> Void)
+    func getCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void)
+    func getWalletInfo(wallet: Wallet, currencies: [Currency], completion: @escaping (Result<Wallet, Error>) -> Void)
+    func createWallet(_ currency: Currency, password: String, completion: @escaping (Result<String, Error>) -> ())
+    func sendCurrency(wallet: Wallet, password: String, destinationAddress: String, amount: String, fee: String?, customGasPrice: String?, customGasLimit: Int?, completion: @escaping (Result<String, Error>) -> ())
+    func getTransactions(wallet: Wallet, limit: Int, offset: Int, tx_direction: String?, sortBy: String?, currencies: [Currency], ascending: Bool, completion: @escaping (Result<[Transaction], Error>) -> ())
+    func setFirstPassword(wallet: Wallet, password: String, completion: @escaping (Result<Void, Error>) -> ())
+    func changePassword(wallet: Wallet, oldPassword: String, newPassword: String, completion: @escaping (Result<Void, Error>) -> ())
+    func getBaseFee(currency: Currency, completion: @escaping (Result<Fee, Error>) -> Void)
+    func getRecipientWallets(accountId: String, currencies:[Currency], completion: @escaping (Result<[RecipientWallet], Error>) -> Void)
+}
+
+class APIServiceDefault: APIService {
     // MARK: - Public Properties
-    public var config: WalletConfig? {
+    var config: WalletConfig? {
         didSet {
             updateConfig()
         }
@@ -33,12 +47,12 @@ public class APIService {
     }
     
     // MARK: - Reset
-    public func reset() {
+    func reset() {
         //TODO: Credentials reset
     }
     
     // MARK: - Initiation
-    public init(config: WalletConfig?) {
+    init(config: WalletConfig?) {
         self.config = config
         updateConfig()
     }
@@ -138,7 +152,6 @@ public class APIService {
     }
     
     // MARK: - Get Currencies
-    
     func getCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void) {
         var request = NetworkRequest(urlPath: basePath + "currencies", method: .get, parameters: [:])
         request.authToken = token
@@ -193,7 +206,6 @@ public class APIService {
     }
     
     // MARK: - Get Wallets Info
-    
     func getWalletInfo(wallet: Wallet, currencies: [Currency], completion: @escaping (Result<Wallet, Error>) -> Void) {
         let urlPath = basePath + wallet.currency.path + "/wallet/" + wallet.id
         var request = NetworkRequest(urlPath: urlPath, method: .get, parameters: [:])
@@ -248,7 +260,6 @@ public class APIService {
     }
     
     // MARK: - Create Wallets
-    
     func createWallet(_ currency: Currency, password: String, completion: @escaping (Result<String, Error>) -> ()) {
         let urlPath = basePath + currency.path + "/wallet"
         var request = NetworkRequest(urlPath: urlPath, method: .post, parameters: [
@@ -279,7 +290,6 @@ public class APIService {
     }
     
     // MARK: - Send Currency
-    
     func sendCurrency(
         wallet: Wallet,
         password: String,
@@ -324,7 +334,6 @@ public class APIService {
     }
     
     // MARK: - Get Transactions
-    
     func getTransactions(
         wallet: Wallet,
         limit: Int,
@@ -398,7 +407,6 @@ public class APIService {
     }
     
     // MARK: - Passwords
-    
     func setFirstPassword(
         wallet: Wallet,
         password: String,
@@ -505,7 +513,7 @@ public class APIService {
     }
 }
 
-fileprivate extension APIService {
+fileprivate extension APIServiceDefault {
 
     // MARK: - Error Handling
     
@@ -528,3 +536,24 @@ fileprivate extension APIService {
         }
     }
 }
+
+
+#if DEBUG
+
+class APIServiceStub: APIService {
+    func initWallets(completion: @escaping (Result<(WalletResponse, [Currency]), Error>) -> Void) {
+        
+    }
+    func getWallets(_ currencies: [Currency], completion: @escaping (Result<WalletResponse, Error>) -> Void) {}
+    func getCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void) {}
+    func getWalletInfo(wallet: Wallet, currencies: [Currency], completion: @escaping (Result<Wallet, Error>) -> Void) {}
+    func createWallet(_ currency: Currency, password: String, completion: @escaping (Result<String, Error>) -> ()) {}
+    func sendCurrency(wallet: Wallet, password: String, destinationAddress: String, amount: String, fee: String?, customGasPrice: String?, customGasLimit: Int?, completion: @escaping (Result<String, Error>) -> ()) {}
+    func getTransactions(wallet: Wallet, limit: Int, offset: Int, tx_direction: String?, sortBy: String?, currencies: [Currency], ascending: Bool, completion: @escaping (Result<[Transaction], Error>) -> ()) {}
+    func setFirstPassword(wallet: Wallet, password: String, completion: @escaping (Result<Void, Error>) -> ()) {}
+    func changePassword(wallet: Wallet, oldPassword: String, newPassword: String, completion: @escaping (Result<Void, Error>) -> ()) {}
+    func getBaseFee(currency: Currency, completion: @escaping (Result<Fee, Error>) -> Void) {}
+    func getRecipientWallets(accountId: String, currencies:[Currency], completion: @escaping (Result<[RecipientWallet], Error>) -> Void) {}
+}
+
+#endif

@@ -18,9 +18,25 @@ class CoinsCoordinator: Coordinator {
     }
     
     func start() {
+        let vc = createCoinsViewController()
+        navigationController.setViewControllers([vc], animated: true)
+    }
+    
+    private func createCoinsViewController() -> UIViewController {
         let presenter = CoinsPresenterImpl(apiService: apiService)
         let vc = CoinsViewController(presenter: presenter)
         presenter.view = vc
-        navigationController.setViewControllers([vc], animated: true)
+        return vc
     }
 }
+
+#if DEBUG
+
+extension CoinsCoordinator {
+    static func coinsViewControllerPreview() -> UIViewController {
+        let coordinator = CoinsCoordinator(navigationController: RootNavigationController(), apiService: APIServiceStub())
+        return coordinator.createCoinsViewController()
+    }
+}
+
+#endif

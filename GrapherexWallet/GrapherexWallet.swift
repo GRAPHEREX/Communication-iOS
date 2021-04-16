@@ -18,7 +18,7 @@ import Foundation
      */
     /// - Tag: setup
     public func setup(withConfig config: WalletConfig) {
-        apiService = APIService(config: config)
+        apiService = APIServiceDefault(config: config)
         coordinator = CoinsCoordinator(navigationController: RootNavigationController(), apiService: apiService)
         
         if firstAppStart {

@@ -40,3 +40,19 @@ struct Wallet {
         credentials: nil
     )
 }
+
+#if DEBUG
+
+// MARK: - Mocked Data
+
+extension WalletResponse {
+    static let mockedData = WalletResponse(fiatTotalBalance: "fiatTotalBalance", fiatCurrency: "fiatCurrency", wallets: Wallet.mockedData)
+}
+
+extension Wallet {
+    static let mockedData: [Wallet] = [
+        Wallet(id: <#T##String#>, currency: <#T##Currency#>, balance: <#T##Double#>, fiatBalance: <#T##Double#>, fiatCurrency: <#T##String#>, address: <#T##String#>, needPassword: <#T##Bool#>, createdAt: <#T##Int64#>, credentials: <#T##WalletCredentials?#>),
+    ]
+}
+
+#endif
