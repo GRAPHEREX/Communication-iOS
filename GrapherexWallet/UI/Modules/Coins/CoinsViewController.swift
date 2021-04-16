@@ -154,7 +154,7 @@ class CoinsViewController: NiblessViewController {
                 )
                 cell.contentView.addSubview(emptyView)
                 emptyView.autoCenterInSuperviewMargins()
-                emptyView.autoPinEdgesToSuperviewMargins(with: UIEdgeInsets(hMargin: 10, vMargin: 10))
+                emptyView.autoPinEdgesToSuperviewEdges()
                 return cell
             },
             customRowHeight: UITableView.automaticDimension,
