@@ -5,7 +5,7 @@
 import Foundation
 import UIKit
 
-final class CoinCell: NiblessView {
+final class WalletDetailCell: NiblessView {
     // MARK: - Properties
     
     private enum Constants {
@@ -28,7 +28,7 @@ final class CoinCell: NiblessView {
     }()
     
     private lazy var coinStack: UIStackView = {
-       let stack = UIStackView(arrangedSubviews: [coinImage, coinLabel])
+        let stack = UIStackView(arrangedSubviews: [coinImage, coinLabel])
         stack.axis = .horizontal
         stack.spacing = 10
         return stack
@@ -57,36 +57,14 @@ final class CoinCell: NiblessView {
         return stack
     }()
     
-    private let priceLabel: UILabel = {
-        let view = UILabel()
-        view.textColor = Theme.primaryTextColor
-        view.font = .wlt_robotoRegularFont(withSize: 14)
-        view.textAlignment = .right
-        return view
-    }()
-    
-    private let priceChangeLabel: UILabel = {
-        let view = UILabel()
-        view.font = .wlt_robotoRegularFont(withSize: 12)
-        view.textAlignment = .right
-        return view
-    }()
-    
-    private lazy var priceStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [priceLabel, priceChangeLabel])
-        stack.axis = .vertical
-        stack.distribution = .fillEqually
-        return stack
-    }()
-    
     private lazy var containerStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [coinStack, balanceStack, priceStack])
+        let stack = UIStackView(arrangedSubviews: [coinStack, balanceStack])
         stack.axis = .horizontal
         stack.distribution = .fillEqually
         return stack
     }()
     
-    var currencyItem: CoinInfo? {
+    var walletInfo: Wallet? {
         didSet {
             render()
         }
@@ -103,23 +81,19 @@ final class CoinCell: NiblessView {
     }
 }
 
-fileprivate extension CoinCell {
+fileprivate extension WalletDetailCell {
     
     func render() {
-        guard let currencyItem = currencyItem else { return }
-        coinImage.sd_setImage(with: URL(string: currencyItem.currency.icon))
-        coinLabel.text = currencyItem.currency.symbol
-        balanceLabel.text = currencyItem.balance
-        currencyBalanceLabel.text = currencyItem.currencyBalance
-        priceLabel.text = currencyItem.stockPrice
-        
-        priceChangeLabel.text = currencyItem.priceChange + currencyItem.priceChangeType.icon
-        priceChangeLabel.textColor = currencyItem.priceChangeType.tintColor
+        guard let walletInfo = walletInfo else { return }
+        coinImage.sd_setImage(with: URL(string: walletInfo.currency.icon))
+        coinLabel.text = walletInfo.currency.symbol
+        balanceLabel.text = walletInfo.balanceStr
+        currencyBalanceLabel.text = walletInfo.fiatBalanceStr
     }
     
     func setup() {
         backgroundColor = Theme.primarybackgroundColor
-
+        
         addSubview(containerStack)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.onThemeChanged), name: Notification.themeChanged, object: nil)
@@ -141,7 +115,7 @@ fileprivate extension CoinCell {
         coinLabel.textColor = Theme.primaryTextColor
         balanceLabel.textColor = Theme.primaryTextColor
         currencyBalanceLabel.textColor = Theme.secondaryTextAndIconColor
-        priceLabel.textColor = Theme.primaryTextColor
     }
 }
+
 

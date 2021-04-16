@@ -52,7 +52,7 @@ class AppDependencyContainer {
     // MARK: - Coins
     public func makeCoinsCoordinator() -> CoinsCoordinator {
         let navVC = makeCoinsRootViewController()
-        return CoinsCoordinator(navigationController: navVC, apiService: sharedAPIService)
+        return CoinsCoordinatorImpl(navigationController: navVC, apiService: sharedAPIService)
     }
     
     public func makeCoinsRootViewController() -> UINavigationController {

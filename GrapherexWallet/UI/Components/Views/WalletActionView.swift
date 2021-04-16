@@ -4,11 +4,12 @@
 
 import Foundation
 
-typealias VoidHandler = () -> Void
+typealias ActionHandler = () -> Void
 
 class WalletActionView: NiblessView {
     //MARK: - Private Properties
     private struct Constants {
+        static let buttonSize: CGFloat = 40
         static let width: CGFloat = 40
         static let height: CGFloat = 64
     }
@@ -22,7 +23,7 @@ class WalletActionView: NiblessView {
     
     private let mainButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .wlt_accentGreen
+        button.backgroundColor = Theme.accentGreenColor
         return button
     }()
     
@@ -31,7 +32,7 @@ class WalletActionView: NiblessView {
                       height: Constants.height)
     }
     
-    enum Option: String {
+    enum Option: String, CustomStringConvertible {
         case send = "Send"
         case receive = "Receive"
         case newWallet = "New Wallet"
@@ -40,51 +41,63 @@ class WalletActionView: NiblessView {
         var iconValue: UIImage? {
             switch self {
             case .send:
-                return UIImage.image(named: "general.icon.enter")
+                return UIImage.loadFromWalletBundle(named: "general.icon.enter")
             case .receive:
-                return UIImage.image(named: "profileMenu.icon.plus")
+                return UIImage.loadFromWalletBundle(named: "profileMenu.icon.plus")
             case .newWallet:
-                return UIImage.image(named: "profileMenu.icon.message")
+                return UIImage.loadFromWalletBundle(named: "profileMenu.icon.message")
             case .settings:
-                return UIImage.image(named: "icon.album")
+                return UIImage.loadFromWalletBundle(named: "icon.album")
             }
+        }
+        
+        var description: String {
+            return rawValue.localized
         }
     }
     
-    var option: Option! {
+    var option: Option {
         didSet {
             render()
         }
     }
-    var action: VoidHandler!
+    let action: ActionHandler
     
-    convenience init(option: Option, action: @escaping VoidHandler) {
-        self.init()
+    init(option: Option, action: @escaping ActionHandler) {
         self.option = option
         self.action = action
+        super.init(frame: .zero)
+        
+        setup()
+    }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        activateConstraints()
         render()
     }
     
-    override func setup() {
-        super.setup()
-        
+    func setup() {
         addSubview(mainButton)
-        mainButton.wltAutoHCenterInSuperview()
-        mainButton.autoPinEdge(.top, to: .top, of: self)
         mainButton.layer.cornerRadius = Constants.buttonSize / 2
-        mainButton.autoSetDimensions(to: .init(square: Constant.buttonSize))
         mainButton.addTarget(self, action: #selector(didButtonTap), for: .touchUpInside)
         
         addSubview(titleLabel)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.applyTheme), name: Notification.themeChanged, object: nil)
+    }
+    
+    func activateConstraints() {
+        mainButton.wltAutoHCenterInSuperview()
+        mainButton.autoPinEdge(.top, to: .top, of: self)
+        mainButton.autoSetDimensions(to: .init(square: Constants.buttonSize))
+        
         titleLabel.wltAutoHCenterInSuperview()
         titleLabel.autoPinEdge(.top, to: .bottom, of: mainButton)
         titleLabel.autoPinEdge(.bottom, to: .bottom, of: self)
         titleLabel.autoPinEdge(.leading, to: .leading, of: self, withOffset: 0, relation: .equal)
         titleLabel.autoPinEdge(.trailing, to: .trailing, of: self, withOffset: 0, relation: .equal)
-        
-        //        NotificationCenter.default.addObserver(self,
-        //                                               selector: #selector(applyTheme),
-        //                                               name: .ThemeDidChange, object: nil)
     }
 }
 
@@ -92,8 +105,9 @@ fileprivate extension WalletActionView {
     func render() {
         let image = option.iconValue?.withRenderingMode(.alwaysTemplate)
         mainButton.setImage(image, for: .normal)
-        mainButton.tintColor = UIColor.white // MARK: - SINGAL DEPENDENCY - THEME  = Theme.backgroundColor
-        titleLabel.text = option.rawValue
+        mainButton.tintColor = Theme.primarybackgroundColor
+        mainButton.backgroundColor = Theme.accentGreenColor
+        titleLabel.text = option.description
     }
     
     @objc func didButtonTap() {

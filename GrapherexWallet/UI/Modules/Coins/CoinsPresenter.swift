@@ -35,7 +35,7 @@ class CoinsPresenterImpl: CoinsPresenter {
             case .success(let response):
                 let wallets = response.0.wallets
                 let groupedWallets = Dictionary(grouping: wallets, by: {$0.currency})
-                var currencyItems = [CoinDataItem]()
+                var currencyItems = [CoinInfo]()
                 var totalBalance: Double = 0
                 var nextBaseCurrency: String = ""
                 
@@ -53,7 +53,7 @@ class CoinsPresenterImpl: CoinsPresenter {
                     let priceChangeDirection: CoinPriceChangeDirection = Int.random(in: 0...1) == 0 ? .positive : .negative
                     let currencyPrice = String(Int.random(in: 5000...9000))
                     
-                    let nextCurItem = CoinDataItem(
+                    let nextCurItem = CoinInfo(
                         currency: nextCurrency,
                         balance: nextBalStr,
                         currencyBalance: nextCurStr,

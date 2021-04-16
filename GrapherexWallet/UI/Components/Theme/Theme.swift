@@ -46,4 +46,8 @@ class Theme {
     static var accentGreenColor: UIColor {
         return .wlt_accentGreen
     }
+    
+    static var outlineColor: UIColor {
+        return isDarkThemeEnabled ? .wlt_gray75 : .wlt_gray15
+    }
 }

@@ -17,7 +17,7 @@ enum CoinPriceChangeDirection {
     }
 }
 
-struct CoinDataItem {
+struct CoinInfo {
     let currency: Currency
     let balance: String
     let currencyBalance: String

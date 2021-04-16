@@ -34,13 +34,14 @@ class CoinsViewController: NiblessViewController {
         return indicator
     }()
     
-    private var props: [CoinDataItem]? {
+    private var props: [CoinInfo]? {
         didSet {
             render()
         }
     }
     
     private let presenter: CoinsPresenter
+    weak var coordinator: CoinsCoordinator?
     
     // MARK: - Methods
     init(presenter: CoinsPresenter) {
@@ -63,7 +64,6 @@ class CoinsViewController: NiblessViewController {
     }
     
     override func setup() {
-        setupHeaderView()
         setupTableView()
         setupPullToRefresh()
         mainLoadingIndicator.startAnimating()
@@ -81,7 +81,7 @@ class CoinsViewController: NiblessViewController {
         tableViewController.view.autoPinEdge(toSuperviewEdge: .leading)
         tableViewController.view.autoPinEdge(toSuperviewEdge: .trailing)
         tableViewController.view.autoPinEdge(toSuperviewSafeArea: .bottom)
-        tableViewController.view.autoPinEdge(.top, to: .bottom, of: headerView)
+        tableViewController.view.autoPinEdge(toSuperviewSafeArea: .top)
         
         tableViewController.tableView.addSubview(mainLoadingIndicator)
         mainLoadingIndicator.autoCenterInSuperview()
@@ -116,15 +116,27 @@ class CoinsViewController: NiblessViewController {
         let headerSection = WLTTableSection()
         let headerCell = WLTTableItem.newCell()
         headerCell.selectionStyle = .none
-        headerCell.contentView.addSubview(tableHeaderView)
-        tableHeaderView.autoPinEdgesToSuperviewEdges()
+        headerCell.contentView.addSubview(headerView)
+        headerView.autoPinEdgesToSuperviewEdges()
         
         let tableItem = WLTTableItem(
             customCellBlock: { return headerCell },
-            customRowHeight: 40,
+            customRowHeight: UITableView.automaticDimension,
             actionBlock: nil
         )
         headerSection.add(tableItem)
+        
+        let tableHeaderCell = WLTTableItem.newCell()
+        tableHeaderCell.selectionStyle = .none
+        tableHeaderCell.contentView.addSubview(tableHeaderView)
+        tableHeaderView.autoPinEdgesToSuperviewEdges()
+        
+        let tableHeaderItem = WLTTableItem(
+            customCellBlock: { return tableHeaderCell },
+            customRowHeight: 40,
+            actionBlock: nil
+        )
+        headerSection.add(tableHeaderItem)
         return headerSection
     }
     
@@ -182,13 +194,15 @@ class CoinsViewController: NiblessViewController {
                                 cell.selectionStyle = .none
                                 cell.layoutMargins = .zero
                                 let walletItem = CoinCell()
-                                walletItem.currencyItem = $0
+                                let coinInfo = $0
+                                walletItem.currencyItem = coinInfo
                                 cell.contentView.addSubview(walletItem)
                                 walletItem.autoPinEdgesToSuperviewEdges()
                                 return .init(
                                     customCell: cell,
                                     customRowHeight: UITableView.automaticDimension,
-                                    actionBlock: {
+                                    actionBlock: { [weak self] in
+                                        self?.coinTapped(infoItem: coinInfo)
                                     }
                                 )
                         })
@@ -199,6 +213,10 @@ class CoinsViewController: NiblessViewController {
         mainLoadingIndicator.isHidden = true
         mainLoadingIndicator.stopAnimating()
         tableViewController.contents = contents
+    }
+    
+    private func coinTapped(infoItem: CoinInfo) {
+        coordinator?.showCoinDetails(withInfo: infoItem)
     }
     
     // MARK: - Theme

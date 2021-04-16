@@ -12,7 +12,7 @@ struct CoinsInfo {
     let spendValue: String
     let incomeValue: String
     let spendIncomeProportion: Float
-    let items: [CoinDataItem]
+    let items: [CoinInfo]
     
     static var noInfo: CoinsInfo {
         return CoinsInfo(totalBalance: "-",
