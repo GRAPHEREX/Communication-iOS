@@ -540,9 +540,9 @@ fileprivate extension APIServiceDefault {
 
 #if DEBUG
 
-class APIServiceStub: APIService {
+class APIServiceForPreview: APIService {
     func initWallets(completion: @escaping (Result<(WalletResponse, [Currency]), Error>) -> Void) {
-        
+        completion(Result<(WalletResponse, [Currency]), Error>.success((WalletResponse.mockedData, Currency.mockedData)))
     }
     func getWallets(_ currencies: [Currency], completion: @escaping (Result<WalletResponse, Error>) -> Void) {}
     func getCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void) {}

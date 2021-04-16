@@ -51,7 +51,10 @@ extension WalletResponse {
 
 extension Wallet {
     static let mockedData: [Wallet] = [
-        Wallet(id: <#T##String#>, currency: <#T##Currency#>, balance: <#T##Double#>, fiatBalance: <#T##Double#>, fiatCurrency: <#T##String#>, address: <#T##String#>, needPassword: <#T##Bool#>, createdAt: <#T##Int64#>, credentials: <#T##WalletCredentials?#>),
+        Wallet.empty,
+        Wallet.empty,
+        Wallet.empty,
+        Wallet.empty,
     ]
 }
 

@@ -34,7 +34,7 @@ class CoinsCoordinator: Coordinator {
 
 extension CoinsCoordinator {
     static func coinsViewControllerPreview() -> UIViewController {
-        let coordinator = CoinsCoordinator(navigationController: RootNavigationController(), apiService: APIServiceStub())
+        let coordinator = CoinsCoordinator(navigationController: RootNavigationController(), apiService: APIServiceForPreview())
         return coordinator.createCoinsViewController()
     }
 }

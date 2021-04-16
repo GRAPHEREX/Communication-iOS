@@ -35,3 +35,16 @@ extension Currency: Hashable {
         hasher.combine(name)
     }
 }
+
+#if DEBUG
+
+extension Currency {
+    static let mockedData: [Currency] = [
+        Currency.default,
+        Currency.default,
+        Currency.default,
+        Currency.default,
+    ]
+}
+
+#endif
