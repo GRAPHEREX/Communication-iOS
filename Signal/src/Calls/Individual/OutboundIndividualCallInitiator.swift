@@ -53,16 +53,16 @@ import PromiseKit
             return false
         }
 
-        let showedAlert = SafetyNumberConfirmationSheet.presentIfNecessary(
-            address: address,
-            confirmationText: CallStrings.confirmAndCallButtonTitle
-        ) { didConfirmIdentity in
-            guard didConfirmIdentity else { return }
-            _ = self.initiateCall(address: address, isVideo: isVideo)
-        }
-        guard !showedAlert else {
-            return false
-        }
+//        let showedAlert = SafetyNumberConfirmationSheet.presentIfNecessary(
+//            address: address,
+//            confirmationText: CallStrings.confirmAndCallButtonTitle
+//        ) { didConfirmIdentity in
+//            guard didConfirmIdentity else { return }
+//            _ = self.initiateCall(address: address, isVideo: isVideo)
+//        }
+//        guard !showedAlert else {
+//            return false
+//        }
 
         let thread = TSContactThread.getOrCreateThread(contactAddress: address)
         let message = TypingIndicatorMessage(thread: thread, action: .stopped)
