@@ -5,6 +5,7 @@
 import Foundation
 import SignalServiceKit
 import SignalMessaging
+import PromiseKit
 
 /**
  * Creates an outbound call via WebRTC.
