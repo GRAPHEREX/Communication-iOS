@@ -1451,16 +1451,16 @@ typedef enum : NSUInteger {
         return;
     }
 
-    BOOL didShowSNAlert =
-        [self showSafetyNumberConfirmationIfNecessaryWithConfirmationText:[CallStrings confirmAndCallButtonTitle]
-                                                               completion:^(BOOL didConfirmIdentity) {
-                                                                   if (didConfirmIdentity) {
-                                                                       [weakSelf individualCallWithVideo:isVideo];
-                                                                   }
-                                                               }];
-    if (didShowSNAlert) {
-        return;
-    }
+//    BOOL didShowSNAlert =
+//        [self showSafetyNumberConfirmationIfNecessaryWithConfirmationText:[CallStrings confirmAndCallButtonTitle]
+//                                                               completion:^(BOOL didConfirmIdentity) {
+//                                                                   if (didConfirmIdentity) {
+//                                                                       [weakSelf individualCallWithVideo:isVideo];
+//                                                                   }
+//                                                               }];
+//    if (didShowSNAlert) {
+//        return;
+//    }
 
     // We initiated a call, so if there was a pending message request we should accept it.
     [ThreadUtil addThreadToProfileWhitelistIfEmptyOrPendingRequestWithSneakyTransaction:self.thread];
