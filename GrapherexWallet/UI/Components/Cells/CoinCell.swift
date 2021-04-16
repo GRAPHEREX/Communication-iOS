@@ -9,8 +9,9 @@ final class CoinCell: NiblessView {
     // MARK: - Properties
     
     private struct Constants {
-        static let coinImageSize: CGFloat = 45.0
-        static let contentOffset: CGFloat = 16.0
+        static let coinImageSize: CGFloat = 40.0
+        static let contentHorizontalOffset: CGFloat = 16.0
+        static let contentVerticalOffset: CGFloat = 8.0
     }
     
     private let coinImage: UIImageView = {
@@ -112,8 +113,7 @@ fileprivate extension CoinCell {
         currencyBalanceLabel.text = currencyItem.currencyBalance
         priceLabel.text = currencyItem.stockPrice
         
-        let arrowType = currencyItem.priceChangeType == .positive ? "▲" : "▼"
-        priceChangeLabel.text = currencyItem.priceChange + arrowType
+        priceChangeLabel.text = currencyItem.priceChange + currencyItem.priceChangeType.icon
         priceChangeLabel.textColor = currencyItem.priceChangeType.tintColor
     }
     
@@ -126,7 +126,7 @@ fileprivate extension CoinCell {
     }
     
     func activateConstraints() {
-        containerStack.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: Constants.contentOffset, left: Constants.contentOffset, bottom: Constants.contentOffset, right: Constants.contentOffset))
+        containerStack.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: Constants.contentVerticalOffset, left: Constants.contentHorizontalOffset, bottom: Constants.contentVerticalOffset, right: Constants.contentHorizontalOffset))
         
         coinImage.wltSetContentHuggingHorizontalHigh()
         coinImage.autoSetDimension(.height, toSize: Constants.coinImageSize)

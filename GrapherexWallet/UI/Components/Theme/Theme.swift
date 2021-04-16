@@ -42,4 +42,8 @@ class Theme {
     static var primaryTextColor: UIColor {
         return isDarkThemeEnabled ? .wlt_white : .wlt_black 
     }
+    
+    static var accentGreenColor: UIColor {
+        return .wlt_accentGreen
+    }
 }

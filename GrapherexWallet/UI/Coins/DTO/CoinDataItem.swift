@@ -11,6 +11,10 @@ enum CoinPriceChangeDirection {
     var tintColor: UIColor {
         return self == .positive ? .wlt_positiveChangeColor : .wlt_negativeChangeColor
     }
+    
+    var icon: String {
+        return self == .positive ? "▲" : "▼"
+    }
 }
 
 struct CoinDataItem {

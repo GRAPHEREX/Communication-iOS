@@ -15,7 +15,7 @@ final class CoinsTableHeaderView: NiblessView {
     // MARK: - TableHeaderView
     private let tableCurrencyLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.wlt_robotoRegularFont(withSize: 12)
+        view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
         view.textColor = Theme.secondaryTextAndIconColor
         view.textAlignment = .center
         view.text = "Currency".localized
@@ -24,7 +24,7 @@ final class CoinsTableHeaderView: NiblessView {
     
     private let tableBalanceLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.wlt_robotoRegularFont(withSize: 12)
+        view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
         view.textColor = Theme.secondaryTextAndIconColor
         view.textAlignment = .center
         view.text = "Balance".localized
@@ -33,7 +33,7 @@ final class CoinsTableHeaderView: NiblessView {
     
     private let tablePriceLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.wlt_robotoRegularFont(withSize: 12)
+        view.font = UIFont.wlt_robotoMediumFont(withSize: 12)
         view.textColor = Theme.secondaryTextAndIconColor
         view.textAlignment = .center
         view.text = "Price".localized

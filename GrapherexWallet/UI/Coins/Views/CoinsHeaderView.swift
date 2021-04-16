@@ -97,8 +97,8 @@ final class CoinsHeaderView: NiblessView {
     
     private let spendIncomeProgressView: UIProgressView = {
         let view = UIProgressView(progressViewStyle: .default)
-        view.progressTintColor = .wlt_accentGreen
-        view.tintColor = Theme.secondaryTextAndIconColor
+        view.progressTintColor = Theme.secondaryTextAndIconColor
+        view.trackTintColor = Theme.accentGreenColor
         return view
     }()
     
@@ -319,7 +319,8 @@ fileprivate extension CoinsHeaderView {
         marketCapValueLabel.textColor = Theme.secondaryTextAndIconColor
         volumeTradeValueLabel.textColor = Theme.secondaryTextAndIconColor
         btcDominanceValueLabel.textColor = Theme.secondaryTextAndIconColor
-        spendIncomeProgressView.tintColor = Theme.secondaryTextAndIconColor
+        spendIncomeProgressView.progressTintColor = Theme.secondaryTextAndIconColor
+        spendIncomeProgressView.trackTintColor = Theme.accentGreenColor
         
         bottomDivider.backgroundColor = Theme.secondaryBackgroundColor
     }
