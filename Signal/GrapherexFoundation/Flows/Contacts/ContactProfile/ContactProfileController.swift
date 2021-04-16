@@ -67,7 +67,7 @@ fileprivate extension ContactProfileController {
         let mainSection = OWSTableSection()
         
         let header = makeProfileHeader()
-        header.backgroundColor = .clear
+//        header.backgroundColor = .clear
         mainSection.customHeaderView = header
         
 //        if let mobile = address.phoneNumber {
@@ -360,15 +360,15 @@ extension ContactProfileController {
             GroupCallViewController.presentLobby(thread: groupThread)
         } else if let contactThread = thread as? TSContactThread {
 
-            let didShowSNAlert = SafetyNumberConfirmationSheet.presentIfNecessary(
-                address: contactThread.contactAddress,
-                confirmationText: CallStrings.confirmAndCallButtonTitle
-            ) { [weak self] didConfirmIdentity in
-                guard didConfirmIdentity else { return }
-                self?.startCall(withVideo: withVideo)
-            }
-
-            guard !didShowSNAlert else { return }
+//            let didShowSNAlert = SafetyNumberConfirmationSheet.presentIfNecessary(
+//                address: contactThread.contactAddress,
+//                confirmationText: CallStrings.confirmAndCallButtonTitle
+//            ) { [weak self] didConfirmIdentity in
+//                guard didConfirmIdentity else { return }
+//                self?.startCall(withVideo: withVideo)
+//            }
+//
+//            guard !didShowSNAlert else { return }
 
             // We initiated a call, so if there was a pending message request we should accept it.
             ThreadUtil.addToProfileWhitelistIfEmptyOrPendingRequestWithSneakyTransaction(thread: thread)

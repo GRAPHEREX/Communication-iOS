@@ -96,7 +96,7 @@ class HeaderContactProfileView: BaseView {
 
 internal extension HeaderContactProfileView {
     @objc func applyTheme() {
-        backgroundColor = Theme.backgroundColor
+//        backgroundColor = Theme.backgroundColor
     }
     
     @objc
