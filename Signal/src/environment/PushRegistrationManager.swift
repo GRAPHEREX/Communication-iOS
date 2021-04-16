@@ -113,6 +113,14 @@ public enum PushRegistrationError: Error {
                 }
             }
             
+            let isBlocked = checkIfCellerIsBlocked(caller: callerAddress)
+            guard !isBlocked else {
+                AppEnvironment.shared.callService.individualCallService.callUIAdapter.defaultAdaptee.getProvider()?.reportNewIncomingCall(with: UUID(), update: callUpdate, completion: { (error) in
+                    AppEnvironment.shared.callService.individualCallService.callUIAdapter.defaultAdaptee.getProvider()?.invalidate()
+                })
+                return
+            }
+            
             let anonymousContactName = NSLocalizedString("CALLKIT_ANONYMOUS_CONTACT_NAME", comment: "The generic name used for calls if CallKit privacy is enabled")
             if let callerAddress = callerAddress {
                 let displayName = contactsManager.displayName(for: callerAddress)
@@ -150,18 +158,33 @@ public enum PushRegistrationError: Error {
                     return
                 }
                 
-                self?.fetchMessages()
+                self?.fetchMessages(caller: callerAddress)
                 // Tell PushKit that the notification is handled.
                 completion()
             })
         }
     }
     
-    private func fetchMessages() {
+    private func fetchMessages(caller: SignalServiceAddress?) {
         AppReadiness.runNowOrWhenAppDidBecomeReadyAsync {
             AssertIsOnMainThread()
             self.messageFetcherJob.run()
+            let isBlocked = self.checkIfCellerIsBlocked(caller: caller)
+            guard !isBlocked else {
+                AppEnvironment.shared.callService.individualCallService.callUIAdapter.defaultAdaptee.getProvider()?.invalidate()
+                return
+            }
         }
+    }
+    
+    private func checkIfCellerIsBlocked(caller: SignalServiceAddress?) -> Bool {
+        if AppReadiness.isAppReady, let caller = caller {
+            let thread = TSContactThread.getOrCreateThread(contactAddress: caller)
+            if self.blockingManager.isThreadBlocked(thread) {
+                return true
+            }
+        }
+        return false
     }
 
     public func pushRegistry(_ registry: PKPushRegistry, didUpdate credentials: PKPushCredentials, for type: PKPushType) {
