@@ -9,8 +9,6 @@ import Foundation
     private var coordinator: Coordinator!
     private var appContainer: AppDependencyContainer!
     
-    private var firstAppStart = true
-    
     //MARK: - Public Methods
     /**
         Performs initial wallet module setup
@@ -21,8 +19,7 @@ import Foundation
         appContainer = AppDependencyContainer(config: config)
         coordinator = appContainer.makeCoinsCoordinator()
         
-        if firstAppStart {
-            firstAppStart = false
+        DispatchQueue.once {
             FontManager.registerCustomFonts()
         }
     }

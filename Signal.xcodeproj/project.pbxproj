@@ -952,6 +952,7 @@
 		E354E38F261CAA3800FC65D0 /* UnfairLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354E38E261CAA3800FC65D0 /* UnfairLock.swift */; };
 		E354E398261CAAB100FC65D0 /* WLTUnfairLock.h in Headers */ = {isa = PBXBuildFile; fileRef = E354E396261CAAB100FC65D0 /* WLTUnfairLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E354E399261CAAB100FC65D0 /* WLTUnfairLock.m in Sources */ = {isa = PBXBuildFile; fileRef = E354E397261CAAB100FC65D0 /* WLTUnfairLock.m */; };
+		E359533E2629A7C000731BA1 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E359533D2629A7C000731BA1 /* DispatchQueue+Extensions.swift */; };
 		E35BC81F261EF2120073D71C /* TSAccountManager + WalletConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35BC81E261EF2120073D71C /* TSAccountManager + WalletConfiguration.swift */; };
 		E3794A83261B5A3800E14B2E /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3794A82261B5A3800E14B2E /* Weak.swift */; };
 		E3794A92261B5B3C00E14B2E /* UIColor+OWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3794A8B261B5B3C00E14B2E /* UIColor+OWS.swift */; };
@@ -2298,6 +2299,7 @@
 		E354E38E261CAA3800FC65D0 /* UnfairLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfairLock.swift; sourceTree = "<group>"; };
 		E354E396261CAAB100FC65D0 /* WLTUnfairLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTUnfairLock.h; sourceTree = "<group>"; };
 		E354E397261CAAB100FC65D0 /* WLTUnfairLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTUnfairLock.m; sourceTree = "<group>"; };
+		E359533D2629A7C000731BA1 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
 		E35BC81E261EF2120073D71C /* TSAccountManager + WalletConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TSAccountManager + WalletConfiguration.swift"; sourceTree = "<group>"; };
 		E3794A82261B5A3800E14B2E /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		E3794A8B261B5B3C00E14B2E /* UIColor+OWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+OWS.swift"; sourceTree = "<group>"; };
@@ -5122,6 +5124,7 @@
 				E39E2494262866E900613495 /* Bundle+Extensions.swift */,
 				E39E24C22628784600613495 /* UIImage+Extensions.swift */,
 				E39E25062628AFF400613495 /* Notification+Extensions.swift */,
+				E359533D2629A7C000731BA1 /* DispatchQueue+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -7382,6 +7385,7 @@
 				E35197F826175A2B00043606 /* EnterPasswordBeforeSendingController.swift in Sources */,
 				E351982326175A2B00043606 /* SendMediaNavigationController.swift in Sources */,
 				E39E24B42628707600613495 /* RootNavigationController.swift in Sources */,
+				E359533E2629A7C000731BA1 /* DispatchQueue+Extensions.swift in Sources */,
 				E35197FB26175A2B00043606 /* WalletExchangeHistoryController.swift in Sources */,
 				E35197E826175A2A00043606 /* RestorePasswordController.swift in Sources */,
 				E351983C26175A2B00043606 /* WalletPickerView.swift in Sources */,

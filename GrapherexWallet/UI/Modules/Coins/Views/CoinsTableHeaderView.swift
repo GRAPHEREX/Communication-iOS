@@ -8,7 +8,7 @@ import PureLayout
 
 final class CoinsTableHeaderView: NiblessView {
     
-    private struct Constants {
+    private enum Constants {
         static let contentHorizontalOffset: CGFloat = 14.0
     }
     

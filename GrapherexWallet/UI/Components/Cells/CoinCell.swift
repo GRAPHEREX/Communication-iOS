@@ -8,7 +8,7 @@ import UIKit
 final class CoinCell: NiblessView {
     // MARK: - Properties
     
-    private struct Constants {
+    private enum Constants {
         static let coinImageSize: CGFloat = 40.0
         static let contentHorizontalOffset: CGFloat = 16.0
         static let contentVerticalOffset: CGFloat = 8.0

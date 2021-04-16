@@ -8,7 +8,7 @@ import PureLayout
 
 final class CoinsHeaderView: NiblessView {
     
-    private struct Constants {
+    private enum Constants {
         static let currencyFlagSize: CGFloat = 36.0
         static let totalBalanceHeaderHeight: CGFloat = 110.0
         static let dividerViewHeight: CGFloat = 7.0
