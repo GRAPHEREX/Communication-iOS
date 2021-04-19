@@ -7,7 +7,7 @@ import UIKit
 import PureLayout
 
 protocol WalletsView: class {
-    func onWalletsLoaded(wallets: [Wallet])
+    func onWalletsLoaded(walletsInfo: [WalletInfo])
 }
 
 class WalletsViewController: NiblessViewController {
@@ -20,7 +20,7 @@ class WalletsViewController: NiblessViewController {
     
     private let presenter: WalletsPresenter
     
-    private var wallets = [Wallet]()
+    private var wallets = [WalletInfo]()
     
     // MARK: - Methods
     init(presenter: WalletsPresenter) {
@@ -124,7 +124,8 @@ class WalletsViewController: NiblessViewController {
 }
 
 extension WalletsViewController: WalletsView {
-    func onWalletsLoaded(wallets: [Wallet]) {
-        
+    func onWalletsLoaded(walletsInfo: [WalletInfo]) {
+        self.wallets = walletsInfo
+        render()
     }
 }

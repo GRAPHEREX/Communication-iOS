@@ -64,7 +64,7 @@ final class WalletDetailCell: NiblessView {
         return stack
     }()
     
-    var walletInfo: Wallet? {
+    var walletInfo: WalletInfo? {
         didSet {
             render()
         }
@@ -85,10 +85,10 @@ fileprivate extension WalletDetailCell {
     
     func render() {
         guard let walletInfo = walletInfo else { return }
-        coinImage.sd_setImage(with: URL(string: walletInfo.currency.icon))
-        coinLabel.text = walletInfo.currency.symbol
-        balanceLabel.text = walletInfo.balanceStr
-        currencyBalanceLabel.text = walletInfo.fiatBalanceStr
+        coinImage.sd_setImage(with: URL(string: walletInfo.coinIcon))
+        coinLabel.text = walletInfo.coinName
+        balanceLabel.text = walletInfo.balance
+        currencyBalanceLabel.text = walletInfo.currencyBalance
     }
     
     func setup() {

@@ -33,13 +33,18 @@ class CoinsCoordinatorImpl: CoinsCoordinator {
     func showCoinDetails(withInfo coinInfo: CoinInfo)
     {
         // TODO: Replace with DI
-        let presenter = CoinDetailsPresenterImpl()
-        let vc = CoinDetailsViewController(presenter: presenter, coinInfo: coinInfo) { () -> WalletsViewController in
-            let presenter = WalletsPresenterImpl(apiService: apiService)
+        let presenter = CoinDetailsPresenterImpl(apiService: apiService, shownCurrency: coinInfo.currency)
+        
+        let walletsVCFactory = { () -> WalletsViewController in
+            // TODO: Remove self
+            let presenter = WalletsPresenterImpl(apiService: self.apiService, shownCurrency: coinInfo.currency)
             let vc = WalletsViewController(presenter: presenter)
             presenter.view = vc
             return vc
         }
+        
+        let vc = CoinDetailsViewController(presenter: presenter, walletsFactory: walletsVCFactory)
+        presenter.view = vc
         
         navigationController.pushViewController(vc, animated: true)
     }

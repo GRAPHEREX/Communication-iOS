@@ -7,7 +7,7 @@ import UIKit
 import PureLayout
 
 protocol CoinDetailsView: class {
-    func onInfoLoaded(info: CoinsInfo)
+    func onInfoLoaded(info: CoinWalletsInfo?)
 }
 
 class CoinDetailsViewController: NiblessViewController {
@@ -25,46 +25,42 @@ class CoinDetailsViewController: NiblessViewController {
     private let actionsStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
-        view.spacing = 5
+        view.spacing = 0
         view.distribution = .fillEqually
         return view
     }()
+
+    private var tabs: TZSegmentedControl?
     
-    private let segmentControl: TZSegmentedControl = {
-        let segmentControl = TZSegmentedControl(sectionTitles: ["Wallets", "Transactions"])
-        //segmentControl.segmentWidthStyle = .fixed
-        //segmentControl.borderType = .none
-        //segmentControl.selectionStyle = .fullWidth
-        segmentControl.selectionIndicatorLocation = .down
-        segmentControl.selectionIndicatorHeight = 2.0
-        
-        return segmentControl
-    }()
-    
-    private let containerScrollView: UIScrollView = {
-        let view = UIScrollView()
-        return view
-    }()
+//    private let containerScrollView: UIScrollView = {
+//        let view = UIScrollView()
+//        return view
+//    }()
     
     private let containerContentView: UIView = {
         let view = UIView()
         return view
     }()
     
+    private let tabContentView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     private let walletsVC: WalletsViewController
     
-    private var props: CoinInfo? {
+    private var props: CoinWalletsInfo? {
         didSet {
             render()
         }
     }
+    private var embeddedViewController: UIViewController?
     
     private let presenter: CoinDetailsPresenter
     
     // MARK: - Methods
-    init(presenter: CoinDetailsPresenter, coinInfo: CoinInfo?, walletsFactory: () -> WalletsViewController) {
+    init(presenter: CoinDetailsPresenter, walletsFactory: () -> WalletsViewController) {
         self.presenter = presenter
-        self.props = coinInfo
         self.walletsVC = walletsFactory()
         super.init()
     }
@@ -78,7 +74,7 @@ class CoinDetailsViewController: NiblessViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //presenter.fetchData()
+        presenter.fetchData()
         render()
     }
     
@@ -86,19 +82,19 @@ class CoinDetailsViewController: NiblessViewController {
         setupNavigationBar()
         setupContentView()
         setupActions()
-        setupTabs()
         setupStyle()
         
-//        setupTableView()
 //        setupPullToRefresh()
 //        mainLoadingIndicator.startAnimating()
+        embed(viewController: walletsVC)
     }
     
     private func setupContentView() {
-        view.addSubview(containerScrollView)
-        containerScrollView.addSubview(containerContentView)
-        
-        containerScrollView.autoPinEdgesToSuperviewSafeArea()
+//        view.addSubview(containerScrollView)
+//        containerScrollView.addSubview(containerContentView)
+//
+//        containerScrollView.autoPinEdgesToSuperviewSafeArea()
+        view.addSubview(containerContentView)
         containerContentView.autoPinEdgesToSuperviewEdges()
         containerContentView.autoPinWidth(toWidthOf: view)
         
@@ -111,20 +107,27 @@ class CoinDetailsViewController: NiblessViewController {
         actionsStackView.wltAutoHCenterInSuperview()
         actionsStackView.autoPinEdge(.top, to: .bottom, of: headerView, withOffset: 10)
         
+        let segmentControl = TZSegmentedControl(sectionTitles: ["Wallets", "Transactions"])
+        segmentControl.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 40)
+        segmentControl.segmentWidthStyle = .fixed
+        segmentControl.borderType = .none
+        segmentControl.selectionStyle = .fullWidth
+        segmentControl.selectionIndicatorLocation = .down
+        segmentControl.selectionIndicatorHeight = 2.0
+        
         containerContentView.addSubview(segmentControl)
         segmentControl.autoSetDimension(.height, toSize: Constants.tabsTitlesHeight)
         segmentControl.autoPinEdge(.top, to: .bottom, of: actionsStackView, withOffset: 10)
         segmentControl.autoPinEdge(toSuperviewEdge: .leading)
         segmentControl.autoPinEdge(toSuperviewEdge: .trailing)
         
-        addChild(walletsVC)
-        containerContentView.addSubview(walletsVC.view)
-        walletsVC.didMove(toParent: self)
+        tabs = segmentControl
         
-        walletsVC.view.autoPinEdge(.top, to: .bottom, of: segmentControl)
-        walletsVC.view.autoPinEdge(toSuperviewEdge: .leading)
-        walletsVC.view.autoPinEdge(toSuperviewEdge: .trailing)
-        walletsVC.view.autoPinEdge(toSuperviewSafeArea: .bottom)
+        containerContentView.addSubview(tabContentView)
+        tabContentView.autoPinEdge(.top, to: .bottom, of: segmentControl)
+        tabContentView.autoPinEdge(toSuperviewEdge: .leading)
+        tabContentView.autoPinEdge(toSuperviewEdge: .trailing)
+        tabContentView.autoPinEdge(toSuperviewSafeArea: .bottom)
     }
     
     private func setupActions() {
@@ -144,31 +147,6 @@ class CoinDetailsViewController: NiblessViewController {
         actionsStackView.addArrangedSubviews(actionViews)
     }
     
-    private func setupTabs() {
-        segmentControl.sectionTitles = ["Wallets", "Transactions"]
-        segmentControl.indexChangeBlock = { [weak self] selectedIndex in
-            self?.handleChangeIndex(selectedIndex)
-        }
-    }
-    
-//    private func setupTableView() {
-//        view.addSubview(tableViewController.view)
-//        tableViewController.view.autoPinEdge(toSuperviewEdge: .leading)
-//        tableViewController.view.autoPinEdge(toSuperviewEdge: .trailing)
-//        tableViewController.view.autoPinEdge(toSuperviewSafeArea: .bottom)
-//        tableViewController.view.autoPinEdge(toSuperviewSafeArea: .top)
-//
-//        tableViewController.tableView.addSubview(mainLoadingIndicator)
-//        mainLoadingIndicator.autoCenterInSuperview()
-//        mainLoadingIndicator.bringSubviewToFront(tableViewController.tableView)
-//
-//        let contents: WLTTableContents = .init()
-//        let headerSection = makeHeaderSection()
-//        contents.addSection(headerSection)
-//
-//        tableViewController.contents = contents
-//    }
-    
     private func setupNavigationBar() {
         navigationItem.title = ""
     }
@@ -182,17 +160,30 @@ class CoinDetailsViewController: NiblessViewController {
 
     private func setupStyle() {
         view.backgroundColor = Theme.primarybackgroundColor
-        segmentControl.backgroundColor = Theme.primarybackgroundColor
-        view.backgroundColor = Theme.primarybackgroundColor
-        segmentControl.selectionIndicatorColor = Theme.accentGreenColor
-        segmentControl.titleTextAttributes = [
+        tabs?.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: Theme.secondaryTextAndIconColor,
             NSAttributedString.Key.font: UIFont.wlt_sfUiTextRegularFont(withSize: 14)
         ]
-        segmentControl.selectedTitleTextAttributes = [
+        tabs?.selectedTitleTextAttributes = [
             NSAttributedString.Key.foregroundColor: Theme.primaryTextColor,
             NSAttributedString.Key.font: UIFont.wlt_sfUiTextRegularFont(withSize: 14)
         ]
+        tabs?.backgroundColor = Theme.primarybackgroundColor
+        tabs?.selectionIndicatorColor = Theme.accentGreenColor
+    }
+    
+    private func embed(viewController: UIViewController) {
+        if let currentVc = embeddedViewController {
+            // remove prev vc
+            currentVc.view.removeFromSuperview()
+            currentVc.removeFromParent()
+        }
+        
+        addChild(viewController)
+        tabContentView.addSubview(viewController.view)
+        viewController.didMove(toParent: self)
+        viewController.view.autoPinEdgesToSuperviewEdges()
+        embeddedViewController = viewController
     }
     
     func render() {
@@ -200,7 +191,8 @@ class CoinDetailsViewController: NiblessViewController {
             return
         }
         
-        headerView.props = CoinDetailsHeaderView.Props(coinInfo: props, marketCap: "$ 1.6 T", volumeTrade: "$ 700m")
+        headerView.props = CoinDetailsHeaderView.Props(info: props)
+        //(coinInfo: props, marketCap: "$ 1.6 T", volumeTrade: "$ 700m")
         
     }
     
@@ -234,7 +226,9 @@ class CoinDetailsViewController: NiblessViewController {
 }
 
 extension CoinDetailsViewController: CoinDetailsView {
-    func onInfoLoaded(info: CoinsInfo) {
+    func onInfoLoaded(info: CoinWalletsInfo?) {
+        self.props = info
+        render()
 //        self.props = info.items
 //        let headerProps = CoinsHeaderView.Props(balance: info.totalBalance,
 //                                                marketCap: info.marketCap,

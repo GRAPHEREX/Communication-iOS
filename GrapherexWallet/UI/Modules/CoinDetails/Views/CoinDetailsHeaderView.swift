@@ -10,8 +10,9 @@ final class CoinDetailsHeaderView: NiblessView {
     
     private enum Constants {
         static let coinImageSize: CGFloat = 40.0
+        static let coinBalanceViewHeight: CGFloat = 44.0
         static let dividerViewHeight: CGFloat = 7.0
-        static let horizontalContentOffset: CGFloat = 11.0
+        static let horizontalContentOffset: CGFloat = 16.0
         static let verticalContentOffset: CGFloat = 11.0
     }
     
@@ -144,27 +145,13 @@ final class CoinDetailsHeaderView: NiblessView {
     // MARK: - Market Info
     private lazy var marketInfoStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [marketCapStack, volumeTradeStack, priceStack])
-        stack.distribution = .fillProportionally
+        stack.distribution = .fillEqually
         stack.axis = .horizontal
         return stack
     }()
     
-    // MARK: - Dividers
-    private lazy var bottomDivider: UIView = {
-        let bottomDivider = UIView.spacer(withHeight: Constants.dividerViewHeight)
-        bottomDivider.backgroundColor = Theme.secondaryBackgroundColor
-        return bottomDivider
-    }()
-    
     struct Props {
-        let coinInfo: CoinInfo
-//        let balance: String
-        let marketCap: String
-        let volumeTrade: String
-//        let btcDominance: String
-//        let spendValue: String
-//        let incomeValue: String
-//        let spendIncomeProportion: Float
+        let info: CoinWalletsInfo
     }
     
     var props: Props? { didSet {
@@ -186,14 +173,14 @@ fileprivate extension CoinDetailsHeaderView {
     
     func render() {
         guard let props = props else { return }
-        coinImage.sd_setImage(with: URL(string: props.coinInfo.currency.icon))
-        coinLabel.text = props.coinInfo.currency.symbol
+        coinImage.sd_setImage(with: URL(string: props.info.coinIcon))
+        coinLabel.text = props.info.coinName
         
-        balanceLabel.text = props.coinInfo.balance
-        currencyBalanceLabel.text = props.coinInfo.currencyBalance
-        marketCapValueLabel.text = props.marketCap
-        volumeTradeValueLabel.text = props.volumeTrade
-        priceValueLabel.text = props.coinInfo.stockPrice
+        balanceLabel.text = props.info.totalBalance
+        currencyBalanceLabel.text = props.info.totalCurrencyBalance
+        marketCapValueLabel.text = props.info.marketCap
+        volumeTradeValueLabel.text = props.info.volumeTrade
+        priceValueLabel.text = props.info.price
     }
     
     func setup() {
@@ -201,7 +188,6 @@ fileprivate extension CoinDetailsHeaderView {
         
         addSubview(coinBalanceStack)
         addSubview(marketInfoStack)
-        addSubview(bottomDivider)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.onThemeChanged), name: Notification.themeChanged, object: nil)
     }
@@ -210,11 +196,13 @@ fileprivate extension CoinDetailsHeaderView {
     func activateConstraints() {
         activateConstraintsCoinBalance()
         activateConstraintsMarketInfo()
-        activateConstraintsDivider()
     }
     
     func activateConstraintsCoinBalance() {
-        coinBalanceStack.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: Constants.verticalContentOffset, left: Constants.horizontalContentOffset, bottom: Constants.verticalContentOffset, right: Constants.horizontalContentOffset))
+//        coinBalanceStack.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: Constants.verticalContentOffset, left: Constants.horizontalContentOffset, bottom: Constants.verticalContentOffset, right: Constants.horizontalContentOffset))
+        coinBalanceStack.autoPinEdge(toSuperviewEdge: .top, withInset: Constants.verticalContentOffset)
+        coinBalanceStack.autoPinEdge(toSuperviewEdge: .leading, withInset: Constants.horizontalContentOffset)
+        coinBalanceStack.autoPinEdge(toSuperviewEdge: .trailing, withInset: Constants.horizontalContentOffset)
         
         coinImage.wltSetContentHuggingHorizontalHigh()
         coinImage.autoSetDimension(.height, toSize: Constants.coinImageSize)
@@ -226,13 +214,7 @@ fileprivate extension CoinDetailsHeaderView {
         marketInfoStack.autoPinEdge(toSuperviewEdge: .leading, withInset: Constants.horizontalContentOffset)
         marketInfoStack.autoPinEdge(toSuperviewEdge: .trailing, withInset: Constants.horizontalContentOffset)
         marketInfoStack.autoPinEdge(.top, to: .bottom, of: coinBalanceStack, withOffset: 15)
-    }
-    
-    func activateConstraintsDivider() {
-        bottomDivider.autoPinEdge(toSuperviewEdge: .leading)
-        bottomDivider.autoPinEdge(toSuperviewEdge: .trailing)
-        bottomDivider.autoPinEdge(toSuperviewEdge: .bottom)
-        bottomDivider.autoPinEdge(.top, to: .bottom, of: marketInfoStack, withOffset: 8)
+        marketInfoStack.autoPinEdge(toSuperviewEdge: .bottom)
     }
     
     // MARK: - Theme
@@ -249,8 +231,6 @@ fileprivate extension CoinDetailsHeaderView {
         marketCapValueLabel.textColor = Theme.secondaryTextAndIconColor
         volumeTradeValueLabel.textColor = Theme.secondaryTextAndIconColor
         priceValueLabel.textColor = Theme.secondaryTextAndIconColor
-        
-        bottomDivider.backgroundColor = Theme.secondaryBackgroundColor
     }
 }
 

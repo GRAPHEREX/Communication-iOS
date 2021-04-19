@@ -4,7 +4,7 @@
 
 import Foundation
 
-protocol APIService {
+protocol APIService: class {
     func initWallets(completion: @escaping (Result<(WalletResponse, [Currency]), Error>) -> Void)
     func getWallets(_ currencies: [Currency], completion: @escaping (Result<WalletResponse, Error>) -> Void)
     func getCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void)
