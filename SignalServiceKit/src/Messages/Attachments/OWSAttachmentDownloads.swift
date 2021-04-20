@@ -550,11 +550,11 @@ public enum MediaDownloadType: String, Equatable, CaseIterable {
         case .photo:
             return .wifiAndCellular
         case .video:
-            return .wifiOnly
+            return .wifiAndCellular
         case .audio:
             return .wifiAndCellular
         case .document:
-            return .wifiOnly
+            return .wifiAndCellular
         }
     }
 
