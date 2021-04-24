@@ -6,6 +6,15 @@ import Foundation
 import UserNotifications
 import PromiseKit
 
+public enum AppNotificationKeys {
+    public static let category = "AppNotification_category"
+    public static let title = "AppNotificationCategory_title"
+    public static let body = "AppNotificationCategory_body"
+    public static let threadIdentifier = "AppNotificationCategory_threadIdentifier"
+    public static let userInfo = "AppNotificationCategory_userInfo"
+    public static let sound = "AppNotificationCategory_sound"
+}
+
 public class UserNotificationConfig {
 
     class var allNotificationCategories: Set<UNNotificationCategory> {
@@ -112,6 +121,20 @@ extension UserNotificationPresenterAdaptee: NotificationPresenterAdaptee {
 
     func notify(category: AppNotificationCategory, title: String?, body: String, threadIdentifier: String?, userInfo: [AnyHashable: Any], sound: OWSSound?, replacingIdentifier: String?) {
         AssertIsOnMainThread()
+        
+        // Do not present local notifications if then main app is not launched
+        // It doubles notifications
+        guard  CurrentAppContext().isMainApp else {
+            let userDefaults = CurrentAppContext().appUserDefaults()
+            userDefaults.set(category.identifier, forKey: AppNotificationKeys.category)
+            userDefaults.set(title, forKey: AppNotificationKeys.title)
+            userDefaults.set(body, forKey: AppNotificationKeys.body)
+            userDefaults.set(threadIdentifier, forKey: AppNotificationKeys.threadIdentifier)
+            userDefaults.set(userInfo, forKey: AppNotificationKeys.userInfo)
+            userDefaults.set(sound, forKey: AppNotificationKeys.sound)
+            userDefaults.synchronize()
+            return
+        }
 
         guard tsAccountManager.isOnboarded() else {
             Logger.info("suppressing notification since user hasn't yet completed onboarding.")
@@ -317,7 +340,7 @@ public protocol ConversationSplit {
 }
 
 extension OWSSound {
-    func notificationSound(isQuiet: Bool) -> UNNotificationSound {
+    public func notificationSound(isQuiet: Bool) -> UNNotificationSound {
         guard let filename = OWSSounds.filename(forSound: self, quiet: isQuiet) else {
             owsFailDebug("filename was unexpectedly nil")
             return UNNotificationSound.default

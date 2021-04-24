@@ -20,20 +20,20 @@ import PromiseKit
 /// there is no need for an Adapter, and instead the appropriate NotificationActionHandler is
 /// wired directly into the appropriate callback point.
 
-public enum AppNotificationCategory: CaseIterable {
-    case incomingMessageWithActions_CanReply
-    case incomingMessageWithActions_CannotReply
-    case incomingMessageWithoutActions
-    case incomingMessageFromNoLongerVerifiedIdentity
-    case incomingReactionWithActions_CanReply
-    case incomingReactionWithActions_CannotReply
-    case infoOrErrorMessage
-    case threadlessErrorMessage
-    case incomingCall
-    case missedCallWithActions
-    case missedCallWithoutActions
-    case missedCallFromNoLongerVerifiedIdentity
-    case grdbMigration
+public enum AppNotificationCategory: String, CaseIterable {
+    case incomingMessageWithActions_CanReply = "Signal.AppNotificationCategory.incomingMessageWithActions"
+    case incomingMessageWithActions_CannotReply = "Signal.AppNotificationCategory.incomingMessageWithActionsNoReply"
+    case incomingMessageWithoutActions = "Signal.AppNotificationCategory.incomingMessage"
+    case incomingMessageFromNoLongerVerifiedIdentity = "Signal.AppNotificationCategory.incomingMessageFromNoLongerVerifiedIdentity"
+    case incomingReactionWithActions_CanReply = "Signal.AppNotificationCategory.incomingReactionWithActions"
+    case incomingReactionWithActions_CannotReply = "Signal.AppNotificationCategory.incomingReactionWithActionsNoReply"
+    case infoOrErrorMessage = "Signal.AppNotificationCategory.infoOrErrorMessage"
+    case threadlessErrorMessage = "Signal.AppNotificationCategory.threadlessErrorMessage"
+    case incomingCall = "Signal.AppNotificationCategory.incomingCall"
+    case missedCallWithActions = "Signal.AppNotificationCategory.missedCallWithActions"
+    case missedCallWithoutActions = "Signal.AppNotificationCategory.missedCall"
+    case missedCallFromNoLongerVerifiedIdentity = "Signal.AppNotificationCategory.missedCallFromNoLongerVerifiedIdentity"
+    case grdbMigration = "Signal.AppNotificationCategory.grdbMigration"
 }
 
 public enum AppNotificationAction: String, CaseIterable {
@@ -58,35 +58,8 @@ public struct AppNotificationUserInfoKey {
 }
 
 extension AppNotificationCategory {
-    var identifier: String {
-        switch self {
-        case .incomingMessageWithActions_CanReply:
-            return "Signal.AppNotificationCategory.incomingMessageWithActions"
-        case .incomingMessageWithActions_CannotReply:
-            return "Signal.AppNotificationCategory.incomingMessageWithActionsNoReply"
-        case .incomingMessageWithoutActions:
-            return "Signal.AppNotificationCategory.incomingMessage"
-        case .incomingMessageFromNoLongerVerifiedIdentity:
-            return "Signal.AppNotificationCategory.incomingMessageFromNoLongerVerifiedIdentity"
-        case .incomingReactionWithActions_CanReply:
-            return "Signal.AppNotificationCategory.incomingReactionWithActions"
-        case .incomingReactionWithActions_CannotReply:
-            return "Signal.AppNotificationCategory.incomingReactionWithActionsNoReply"
-        case .infoOrErrorMessage:
-            return "Signal.AppNotificationCategory.infoOrErrorMessage"
-        case .threadlessErrorMessage:
-            return "Signal.AppNotificationCategory.threadlessErrorMessage"
-        case .incomingCall:
-            return "Signal.AppNotificationCategory.incomingCall"
-        case .missedCallWithActions:
-            return "Signal.AppNotificationCategory.missedCallWithActions"
-        case .missedCallWithoutActions:
-            return "Signal.AppNotificationCategory.missedCall"
-        case .missedCallFromNoLongerVerifiedIdentity:
-            return "Signal.AppNotificationCategory.missedCallFromNoLongerVerifiedIdentity"
-        case .grdbMigration:
-            return "Signal.AppNotificationCategory.grdbMigration"
-        }
+    public var identifier: String {
+        rawValue
     }
 
     var actions: [AppNotificationAction] {
@@ -190,13 +163,9 @@ public class NotificationPresenter: NSObject, NotificationsProtocol {
 
         AppReadiness.runNowOrWhenAppDidBecomeReadySync {
             NotificationCenter.default.addObserver(self, selector: #selector(self.handleMessageRead), name: .incomingMessageMarkedAsRead, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.handleAppDidBecomeActive), name: .OWSApplicationDidBecomeActive, object: nil)
-            self.handleAppDidBecomeActive()
         }
         SwiftSingletons.register(self)
     }
-
-    private var appWasJustLaunched = true
 
     var previewType: NotificationType {
         return preferences.notificationPreviewType()
@@ -383,7 +352,6 @@ public class NotificationPresenter: NSObject, NotificationsProtocol {
     }
 
     public func canNotify(for incomingMessage: TSIncomingMessage, thread: TSThread, transaction: SDSAnyReadTransaction) -> Bool {
-        guard !appWasJustLaunched else { return false }
         guard thread.isMuted else { return true }
 
         guard let localAddress = TSAccountManager.localAddress else {
@@ -818,16 +786,4 @@ public protocol IndividualCallNotificationInfo {
     var remoteAddress: SignalServiceAddress { get }
     var localId: UUID { get }
     var offerMediaType: TSRecentCallOfferType { get }
-}
-
-extension NotificationPresenter {
-    @objc
-    public func handleAppDidBecomeActive() {
-        AssertIsOnMainThread()
-
-        appWasJustLaunched = true
-        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { [weak self] _ in
-            self?.appWasJustLaunched = false
-        }
-    }
 }
