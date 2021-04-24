@@ -13,7 +13,36 @@ class NotificationService: UNNotificationServiceExtension {
     var areVersionMigrationsComplete = false
 
     func completeSilenty() {
-        contentHandler?(.init())
+        let userDefaults = CurrentAppContext().appUserDefaults()
+        guard let categoryStr = userDefaults.value(forKey: AppNotificationKeys.category) as? String,
+              let category = AppNotificationCategory(rawValue: categoryStr),
+              let body = userDefaults.value(forKey: AppNotificationKeys.body) as? String,
+              let userInfo = userDefaults.value(forKey: AppNotificationKeys.userInfo) as? [AnyHashable: Any] else {
+            contentHandler?(.init())
+            return
+        }
+              
+        let title = userDefaults.value(forKey: AppNotificationKeys.title) as? String
+        let threadIdentifier = userDefaults.value(forKey: AppNotificationKeys.threadIdentifier) as? String
+        let sound = userDefaults.value(forKey: AppNotificationKeys.sound) as? OWSSound
+        
+        let content = UNMutableNotificationContent()
+        content.categoryIdentifier = category.identifier
+        content.userInfo = userInfo
+        if let sound = sound, sound != OWSStandardSound.none.rawValue {
+            content.sound = sound.notificationSound(isQuiet: false)
+        }
+        if let displayableTitle = title?.filterForDisplay {
+            content.title = displayableTitle
+        }
+        if let displayableBody = body.filterForDisplay {
+            content.body = displayableBody
+        }
+        if let threadIdentifier = threadIdentifier {
+            content.threadIdentifier = threadIdentifier
+        }
+        
+        contentHandler?(content)
     }
 
     // The lifecycle of the NSE looks something like the following:
