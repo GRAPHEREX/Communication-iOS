@@ -1197,10 +1197,10 @@ extension MessageSender {
 
         var push: String? = nil
         if message.body != nil || message.hasAttachments() {
-            push = "{\\\"aps\\\" : { \\\"alert\\\" : \\\"New message\\\", \\\"sound\\\" : \\\"default\\\", \\\"mutable-content\\\" : \\\"1\\\" }}"
+            push = "{\\\"aps\\\" : { \\\"alert\\\" : \\\"New message\\\", \\\"sound\\\" : \\\"default\\\", \\\"mutable-content\\\" : 1 }}"
         }
         else if message.groupMetaMessage == .new {
-            push = "{\\\"aps\\\" : { \\\"alert\\\" : \\\"New group\\\", \\\"sound\\\" : \\\"default\\\", \\\"mutable-content\\\" : \\\"1\\\" }}"
+            push = "{\\\"aps\\\" : { \\\"alert\\\" : \\\"New group\\\", \\\"sound\\\" : \\\"default\\\", \\\"mutable-content\\\" : 1 }}"
         }
         
         // We had better have a session after encrypting for this recipient!
