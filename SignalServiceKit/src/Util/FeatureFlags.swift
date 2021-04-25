@@ -122,7 +122,7 @@ public class FeatureFlags: BaseFlags {
     public static let sendRecipientUpdates = false
 
     @objc
-    public static let notificationServiceExtension = build.includes(.dev)
+    public static let notificationServiceExtension = build.includes(.production)
 
     @objc
     public static let pinsForNewUsers = true
