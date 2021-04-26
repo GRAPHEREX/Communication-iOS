@@ -42,7 +42,19 @@ class NotificationService: UNNotificationServiceExtension {
             content.threadIdentifier = threadIdentifier
         }
         
+        clearNotificationDataInUserDefaults()
         contentHandler?(content)
+    }
+    
+    private func clearNotificationDataInUserDefaults() {
+        let userDefaults = CurrentAppContext().appUserDefaults()
+        userDefaults.removeObject(forKey: AppNotificationKeys.category)
+        userDefaults.removeObject(forKey: AppNotificationKeys.title)
+        userDefaults.removeObject(forKey: AppNotificationKeys.body)
+        userDefaults.removeObject(forKey: AppNotificationKeys.threadIdentifier)
+        userDefaults.removeObject(forKey: AppNotificationKeys.userInfo)
+        userDefaults.removeObject(forKey: AppNotificationKeys.sound)
+        userDefaults.synchronize()
     }
 
     // The lifecycle of the NSE looks something like the following:
