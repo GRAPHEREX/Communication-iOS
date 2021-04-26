@@ -11,12 +11,12 @@ class NotificationService: UNNotificationServiceExtension {
 
     var contentHandler: ((UNNotificationContent) -> Void)?
     var areVersionMigrationsComplete = false
-
+    private var receivedNotificationBody: String?
+    
     func completeSilenty() {
         let userDefaults = CurrentAppContext().appUserDefaults()
-        guard let categoryStr = userDefaults.value(forKey: AppNotificationKeys.category) as? String,
-              let category = AppNotificationCategory(rawValue: categoryStr),
-              let body = userDefaults.value(forKey: AppNotificationKeys.body) as? String,
+        guard /*let categoryStr = userDefaults.value(forKey: AppNotificationKeys.category) as? String,
+              let category = AppNotificationCategory(rawValue: categoryStr),*/
               let userInfo = userDefaults.value(forKey: AppNotificationKeys.userInfo) as? [AnyHashable: Any] else {
             contentHandler?(.init())
             return
@@ -27,7 +27,7 @@ class NotificationService: UNNotificationServiceExtension {
         let sound = userDefaults.value(forKey: AppNotificationKeys.sound) as? OWSSound
         
         let content = UNMutableNotificationContent()
-        content.categoryIdentifier = category.identifier
+        content.categoryIdentifier = AppNotificationCategory.incomingMessageWithoutActions.identifier //category.identifier
         content.userInfo = userInfo
         if let sound = sound, sound != OWSStandardSound.none.rawValue {
             content.sound = sound.notificationSound(isQuiet: false)
@@ -35,26 +35,18 @@ class NotificationService: UNNotificationServiceExtension {
         if let displayableTitle = title?.filterForDisplay {
             content.title = displayableTitle
         }
-        if let displayableBody = body.filterForDisplay {
-            content.body = displayableBody
-        }
+//        if let body = userDefaults.value(forKey: AppNotificationKeys.body) as? String,
+//           let displayableBody = body.filterForDisplay {
+//            content.body = displayableBody
+//        } else {
+//            content.body = receivedNotificationBody ?? "New message"
+//        }
+        content.body = NSLocalizedString(receivedNotificationBody ?? "New message", comment: "")
         if let threadIdentifier = threadIdentifier {
             content.threadIdentifier = threadIdentifier
         }
         
-        clearNotificationDataInUserDefaults()
         contentHandler?(content)
-    }
-    
-    private func clearNotificationDataInUserDefaults() {
-        let userDefaults = CurrentAppContext().appUserDefaults()
-        userDefaults.removeObject(forKey: AppNotificationKeys.category)
-        userDefaults.removeObject(forKey: AppNotificationKeys.title)
-        userDefaults.removeObject(forKey: AppNotificationKeys.body)
-        userDefaults.removeObject(forKey: AppNotificationKeys.threadIdentifier)
-        userDefaults.removeObject(forKey: AppNotificationKeys.userInfo)
-        userDefaults.removeObject(forKey: AppNotificationKeys.sound)
-        userDefaults.synchronize()
     }
 
     // The lifecycle of the NSE looks something like the following:
@@ -78,6 +70,7 @@ class NotificationService: UNNotificationServiceExtension {
     // run serially.
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
+        receivedNotificationBody = request.content.body
 
         DispatchQueue.main.sync { self.setupIfNecessary() }
 
