@@ -89,6 +89,10 @@ extension ConversationSettingsViewController {
             contents.addSection(buildBlockAndLeaveSection())
         }
 
+        if DebugFlags.internalSettings {
+            contents.addSection(buildInternalSection())
+        }
+
         let emptySection = OWSTableSection()
         emptySection.customFooterHeight = 24
         contents.addSection(emptySection)
@@ -116,7 +120,7 @@ extension ConversationSettingsViewController {
                 stackView.autoPinEdges(toSuperviewMarginsExcludingEdge: .bottom)
 
                 let totalSpacerSize = CGFloat(self.maximumRecentMedia - 1) * stackView.spacing
-                let availableWidth = self.view.width - ((Self.cellHInnerMargin + Self.cellHOuterMargin) * 2) - self.view.safeAreaInsets.totalWidth
+                let availableWidth = self.view.width - ((Self.cellHInnerMargin * 2) + self.cellOuterInsets.totalWidth + self.view.safeAreaInsets.totalWidth)
                 let imageWidth = (availableWidth - totalSpacerSize) / CGFloat(self.maximumRecentMedia)
 
                 for (attachmentStream, imageView) in self.recentMedia.orderedValues {
@@ -346,9 +350,9 @@ extension ConversationSettingsViewController {
                                                                                   comment: "table cell label in conversation settings"),
                                                       customColor: UIColor.ows_accentRed,
                                                       accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "leave_group"))
-                },
-                                     actionBlock: { [weak self] in
-                                        self?.didTapLeaveGroup()
+            },
+            actionBlock: { [weak self] in
+                self?.didTapLeaveGroup()
             }))
         }
 
@@ -383,13 +387,34 @@ extension ConversationSettingsViewController {
                                                       customColor: customColor,
                                                       accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "block"))
             return cell
-            },
-                                 actionBlock: { [weak self] in
-                                    if isCurrentlyBlocked {
-                                        self?.didTapUnblockThread()
-                                    } else {
-                                        self?.didTapBlockThread()
-                                    }
+        },
+        actionBlock: { [weak self] in
+            if isCurrentlyBlocked {
+                self?.didTapUnblockThread()
+            } else {
+                self?.didTapBlockThread()
+            }
+        }))
+
+        return section
+    }
+
+    private func buildInternalSection() -> OWSTableSection {
+        let section = OWSTableSection()
+
+        section.add(OWSTableItem(customCellBlock: { [weak self] in
+            guard let self = self else {
+                owsFailDebug("Missing self")
+                return OWSTableItem.newCell()
+            }
+
+            return OWSTableItem.buildIconNameCell(icon: .settingsAdvanced,
+                                                  itemName: "Internal",
+                                                  accessoryType: .disclosureIndicator,
+                                                  accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "internal"))
+        },
+        actionBlock: { [weak self] in
+            self?.didTapInternalSettings()
         }))
 
         return section
@@ -505,9 +530,6 @@ extension ConversationSettingsViewController {
                 }
 
                 if isLocalUser {
-                    // Use a custom avatar to avoid using the "note to self" icon.
-                    let customAvatar = Self.profileManagerImpl.localProfileAvatarImage() ?? OWSContactAvatarBuilder(forLocalUserWithDiameter: kSmallAvatarSize).buildDefaultImage()
-                    cell.setCustomAvatar(customAvatar)
                     cell.setCustomName(NSLocalizedString("GROUP_MEMBER_LOCAL_USER",
                                                          comment: "Label indicating the local user."))
                     cell.selectionStyle = .none
@@ -515,7 +537,8 @@ extension ConversationSettingsViewController {
                     cell.selectionStyle = .default
                 }
 
-                cell.configureWithSneakyTransaction(recipientAddress: memberAddress)
+                cell.configureWithSneakyTransaction(recipientAddress: memberAddress,
+                                                    localUserAvatarMode: .asUser)
 
                 if isVerified {
                     cell.setAttributedSubtitle(cell.verifiedSubtitle())

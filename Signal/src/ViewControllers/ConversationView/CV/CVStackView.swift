@@ -1,22 +1,18 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
 
-public struct CVStackViewConfig {
-    let axis: NSLayoutConstraint.Axis
-    let alignment: UIStackView.Alignment
-    let spacing: CGFloat
-    let layoutMargins: UIEdgeInsets
-}
+public typealias CVStackViewConfig = OWSStackView.Config
 
 // MARK: -
 
 class CVStackView {
 
     public static func measure(config: CVStackViewConfig,
-                               subviewSizes: [CGSize]) -> CGSize {
+                               subviewSizes: [CGSize],
+                               verboseLogging: Bool = false) -> CGSize {
 
         let spacingCount = max(0, subviewSizes.count - 1)
 
@@ -26,12 +22,28 @@ class CVStackView {
             size.width = subviewSizes.map { $0.width }.reduce(0, +)
             size.height = subviewSizes.map { $0.height }.reduce(0, max)
 
+            if verboseLogging {
+                Logger.verbose("size of subviews: \(size)")
+            }
+
             size.width += CGFloat(spacingCount) * config.spacing
+
+            if verboseLogging {
+                Logger.verbose("size of subviews and spacing: \(size)")
+            }
         case .vertical:
             size.width = subviewSizes.map { $0.width }.reduce(0, max)
             size.height = subviewSizes.map { $0.height }.reduce(0, +)
 
+            if verboseLogging {
+                Logger.verbose("size of subviews: \(size)")
+            }
+
             size.height += CGFloat(spacingCount) * config.spacing
+
+            if verboseLogging {
+                Logger.verbose("size of subviews and spacing: \(size)")
+            }
         @unknown default:
             owsFailDebug("Unknown axis: \(config.axis)")
         }
@@ -39,6 +51,9 @@ class CVStackView {
         size.width += config.layoutMargins.left + config.layoutMargins.right
         size.height += config.layoutMargins.top + config.layoutMargins.bottom
 
+        if verboseLogging {
+            Logger.verbose("size of subviews and spacing and layoutMargins: \(size)")
+        }
         return size
     }
 }

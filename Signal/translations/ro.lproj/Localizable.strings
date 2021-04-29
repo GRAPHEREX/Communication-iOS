@@ -86,13 +86,13 @@
 "ADD_TO_GROUP_ACTION_PROCEED_BUTTON" = "Adaugă la grup";
 
 /* The title on the 'add to group' confirmation action sheet. Embeds {contact name, group name} */
-"ADD_TO_GROUP_ACTION_SHEET_MESSAGE_FORMAT" = "Add “%1$@” to “%2$@”?";
+"ADD_TO_GROUP_ACTION_SHEET_MESSAGE_FORMAT" = "Adăugați pe  “%1$@” la “%2$@”?";
 
 /* The title on the 'add to group' confirmation action sheet. */
 "ADD_TO_GROUP_ACTION_SHEET_TITLE" = "Adaugă un membru nou";
 
 /* Text indicating your contact is already a member of the group on the 'add to group' view. */
-"ADD_TO_GROUP_ALREADY_A_MEMBER" = "Already a member";
+"ADD_TO_GROUP_ALREADY_A_MEMBER" = "Este deja membru";
 
 /* A toast on the 'add to group' view indicating the user is already a member. Embeds {contact name} and {group name} */
 "ADD_TO_GROUP_ALREADY_MEMBER_TOAST_FORMAT" = "%@ este deja membru din %@";
@@ -104,7 +104,7 @@
 "ADD_TO_GROUP_SUCCESS_TOAST_FORMAT" = "%@ a fost adăugat la %@";
 
 /* Title of the 'add to group' view. */
-"ADD_TO_GROUP_TITLE" = "Add to a Group";
+"ADD_TO_GROUP_TITLE" = "Adaugaţi la un grup";
 
 /* Message shown in conversation view that offers to share your profile with a user. */
 "ADD_USER_TO_PROFILE_WHITELIST_OFFER" = "Vrei să partajezi profilul tău cu acest utilizator?";
@@ -123,6 +123,15 @@
 
 /* The label for the 'save' button in action sheets. */
 "ALERT_SAVE" = "Salvează";
+
+/* Message for UI  warning about an unknown contact thread. */
+"ALERT_UNKNOWN_THREAD_WARNING_CONTACT_MESSAGE" = "Nu aveți grupuri în comun cu această persoană. Examinați cu atenție solicitările înainte de a accepta pentru a evita mesajele nedorite.";
+
+/* Message for UI warning about an unknown group thread. */
+"ALERT_UNKNOWN_THREAD_WARNING_GROUP_MESSAGE" = "You have no members in common with this group. Review requests carefully before accepting to avoid unwanted messages.";
+
+/* Label for button to learn more about message requests. */
+"ALERT_UNKNOWN_THREAD_WARNING_LEARN_MORE" = "Despre solicitări mesaj";
 
 /* notification action */
 "ANSWER_CALL_BUTTON_TITLE" = "Răspunde";
@@ -710,7 +719,7 @@
 "CONTACT_SUPPORT_FILTER_FEEDBACK_SHORT" = "App Feedback";
 
 /* The localized representation of the 'other' support filter. */
-"CONTACT_SUPPORT_FILTER_OTHER" = "Something else";
+"CONTACT_SUPPORT_FILTER_OTHER" = "Altceva";
 
 /* A brief localized representation of the 'other' support filter. */
 "CONTACT_SUPPORT_FILTER_OTHER_SHORT" = "Altul";
@@ -889,6 +898,9 @@
 /* label for 'mentions' cell in conversation settings */
 "CONVERSATION_SETTINGS_MENTIONS_LABEL" = "Mențiuni";
 
+/* Button to message the chat */
+"CONVERSATION_SETTINGS_MESSAGE_BUTTON" = "message";
+
 /* Title for the mute action sheet */
 "CONVERSATION_SETTINGS_MUTE_ACTION_SHEET_TITLE" = "Mute this chat for…";
 
@@ -935,16 +947,16 @@
 "CONVERSATION_SETTINGS_MUTED_UNTIL_UNMUTE_FORMAT" = "Muted until %@";
 
 /* Format for the section title of the 'mutual groups' section in conversation settings view. Embeds: {{ the number of shared groups }}. */
-"CONVERSATION_SETTINGS_MUTUAL_GROUPS_SECTION_TITLE_FORMAT" = "%@ Groups in Common";
+"CONVERSATION_SETTINGS_MUTUAL_GROUPS_SECTION_TITLE_FORMAT" = "%@ grupuri în comun";
 
 /* Label for 'new contact' button in conversation settings view. */
 "CONVERSATION_SETTINGS_NEW_CONTACT" = "Creează contact nou";
 
 /* Section title of the 'mutual groups' section in conversation settings view when the contact shares no mutual groups. */
-"CONVERSATION_SETTINGS_NO_MUTUAL_GROUPS_SECTION_TITLE" = "No Groups in Common";
+"CONVERSATION_SETTINGS_NO_MUTUAL_GROUPS_SECTION_TITLE" = "Niciun grup în comun";
 
 /* Section title of the 'mutual groups' section in conversation settings view when the contact shares one mutual group. */
-"CONVERSATION_SETTINGS_ONE_MUTUAL_GROUPS_SECTION_TITLE" = "1 Group in Common";
+"CONVERSATION_SETTINGS_ONE_MUTUAL_GROUPS_SECTION_TITLE" = "1 grup în comun";
 
 /* Label for 'permissions' action in conversation settings view. */
 "CONVERSATION_SETTINGS_PERMISSIONS" = "Permisiuni";
@@ -983,7 +995,7 @@
 "CONVERSATION_SETTINGS_VIDEO_CALL_BUTTON" = "video";
 
 /* Indicates that user is in the system contacts list. */
-"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Contact Details";
+"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Detalii contact";
 
 /* Button to confirm that user wants to share their profile with a user or group. */
 "CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE" = "Partajează profilul";
@@ -1024,11 +1036,23 @@
 /* Format string for a relative time, expressed as a certain number of hours in the past. Embeds {{The number of hours}}. */
 "DATE_HOURS_AGO_FORMAT" = "%@h";
 
+/* Full format string for a relative time, expressed as a certain number of hours in the past. Embeds {{The number of hours}}. */
+"DATE_HOURS_AGO_LONG_FORMAT" = "acum %@ ore";
+
 /* Format string for a relative time, expressed as a certain number of minutes in the past. Embeds {{The number of minutes}}. */
 "DATE_MINUTES_AGO_FORMAT" = "%@m";
 
+/* Full format string for a relative time, expressed as a certain number of minutes in the past. Embeds {{The number of minutes}}. */
+"DATE_MINUTES_AGO_LONG_FORMAT" = "acum %@ minute";
+
 /* The present; the current time. */
 "DATE_NOW" = "Acum";
+
+/* Full string for a relative time of one hour ago. */
+"DATE_ONE_HOUR_AGO_LONG" = "acum o oră";
+
+/* Full string for a relative time of one minute ago. */
+"DATE_ONE_MINUTE_AGO_LONG" = "acum 1 minut";
 
 /* The current day. */
 "DATE_TODAY" = "Astăzi";
@@ -1284,9 +1308,6 @@
 
 /* Error message indicating that an avatar image is invalid and cannot be used. */
 "EDIT_GROUP_ERROR_INVALID_AVATAR" = "Poză invalidă.";
-
-/* Label for the group name in the 'edit group' view. */
-"EDIT_GROUP_GROUP_NAME" = "Numele grupului";
 
 /* The title for the 'update group' button. */
 "EDIT_GROUP_UPDATE_BUTTON" = "Actualizează";
@@ -2002,20 +2023,11 @@
 /* Label indicating the local user. */
 "GROUP_MEMBER_LOCAL_USER" = "Tu";
 
-/* Accessibility label for the 'call group member' button */
-"GROUP_MEMBERS_CALL" = "Apel audio";
-
 /* Label indicating that a new group has no other members. */
 "GROUP_MEMBERS_NO_OTHER_MEMBERS" = "Puteți adăuga sau invita prieteni după crearea acestui grup.";
 
 /* Title for the 'members' section of the 'group members' view. */
 "GROUP_MEMBERS_SECTION_TITLE_MEMBERS" = "Membri";
-
-/* Accessibility label for the 'send message to group member' button */
-"GROUP_MEMBERS_SEND_MESSAGE" = "Mesaj";
-
-/* Accessibility label for the 'call group member' button */
-"GROUP_MEMBERS_VIDEO_CALL" = "Apel Video";
 
 /* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
 "GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ membri ai grupului au nume similar.";
@@ -2927,7 +2939,7 @@
 "MESSAGE_REQUEST_VIEW_NEW_GROUP_PROMPT" = "Vă alăturaţi acestui grup și împărtășiți numele și fotografia cu membrii săi? Nu vor ști că le-ai văzut mesajele până nu accepți.";
 
 /* A prompt asking if the user wants to accept a group invite. */
-"MESSAGE_REQUEST_VIEW_NEW_GROUP_PROMPT_V2" = "Vă alăturați la grup? Nu vor ști că le-ați văzut mesajele până nu veți accepta.";
+"MESSAGE_REQUEST_VIEW_NEW_GROUP_PROMPT_V2" = "Vă alăturați acestui grup? Nu vor ști că le-ați văzut mesajele până nu veți accepta.";
 
 /* A button used to unlock a blocked conversation. */
 "MESSAGE_REQUEST_VIEW_UNBLOCK_BUTTON" = "Deblochează";
@@ -4462,8 +4474,11 @@
 /* section header for search results that match a contact who doesn't have an existing conversation */
 "SEARCH_SECTION_CONTACTS" = "Alte contacte";
 
-/* section header for search results that match existing conversations (either group or contact conversations) */
+/* section header for search results that match existing 1:1 chats */
 "SEARCH_SECTION_CONVERSATIONS" = "Conversații";
+
+/* section header for search results that match existing groups */
+"SEARCH_SECTION_GROUPS" = "Grupuri";
 
 /* section header for search results that match a message in a conversation */
 "SEARCH_SECTION_MESSAGES" = "Mesaje";
@@ -4930,6 +4945,12 @@
 /* Title for the 'payments not enabled' alert. */
 "SETTINGS_PAYMENTS_NOT_ENABLED_ALERT_TITLE" = "Payments Not Enabled";
 
+/* Message for the 'payments not registered' alert. */
+"SETTINGS_PAYMENTS_NOT_REGISTERED_ALERT_MESSAGE" = "Re-register to send payments.";
+
+/* Title for the 'payments not registered' alert. */
+"SETTINGS_PAYMENTS_NOT_REGISTERED_ALERT_TITLE" = "Nu este înregistrată";
+
 /* Label for 'activate' button in the 'payments opt-in' view in the app settings. */
 "SETTINGS_PAYMENTS_OPT_IN_ACTIVATE_BUTTON" = "Activare Plăți";
 
@@ -5087,7 +5108,7 @@
 "SETTINGS_PAYMENTS_SCAN_QR_INSTRUCTIONS" = "Scan the QR Code for the transfer recipient.";
 
 /* Error indicating that a QR code does not contain a valid MobileCoin public address. */
-"SETTINGS_PAYMENTS_SCAN_QR_INVALID_PUBLIC_ADDRESS" = "Invalid address";
+"SETTINGS_PAYMENTS_SCAN_QR_INVALID_PUBLIC_ADDRESS" = "Adresă invalidă";
 
 /* Error indicating that a QR code does not contain a valid MobileCoin public address URL. */
 "SETTINGS_PAYMENTS_SCAN_QR_INVALID_PUBLIC_ADDRESS_URL" = "Invalid URL";
@@ -5518,6 +5539,12 @@
 /* Label for button to verify a user's safety number. */
 "SYSTEM_MESSAGE_ACTION_VERIFY_SAFETY_NUMBER" = "Verifică";
 
+/* Indicator warning about an unknown contact thread. */
+"SYSTEM_MESSAGE_UNKNOWN_THREAD_WARNING_CONTACT" = "Niciun grup în comun. Examinați solicitările cu atenție.";
+
+/* Indicator warning about an unknown group thread. */
+"SYSTEM_MESSAGE_UNKNOWN_THREAD_WARNING_GROUP" = "No group members in common. Review requests carefully.";
+
 /* text indicating the message was remotely deleted */
 "THIS_MESSAGE_WAS_DELETED" = "Acest mesaj a fost șters.";
 
@@ -5529,6 +5556,9 @@
 
 /* A string indicating a mutual group the user shares with this contact. Embeds {{mutual group name}} */
 "THREAD_DETAILS_ONE_MUTUAL_GROUP" = "Membru al %@";
+
+/* Indicator that a blurred avatar can be revealed by tapping. */
+"THREAD_DETAILS_TAP_TO_UNBLUR_AVATAR" = "Vizualizare";
 
 /* A string indicating three mutual groups the user shares with this contact. Embeds {{mutual group name}} */
 "THREAD_DETAILS_THREE_MUTUAL_GROUP" = "Membru al %@, %@, și %@";

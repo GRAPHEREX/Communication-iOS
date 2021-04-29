@@ -124,6 +124,15 @@
 /* The label for the 'save' button in action sheets. */
 "ALERT_SAVE" = "Vista";
 
+/* Message for UI  warning about an unknown contact thread. */
+"ALERT_UNKNOWN_THREAD_WARNING_CONTACT_MESSAGE" = "Þú átt enga hópa sameiginlega með þessum aðila. Yfirfarðu beiðnir vandlega áður en þú samþykkir þær til að forðast að fá óumbeðin skilaboð.";
+
+/* Message for UI warning about an unknown group thread. */
+"ALERT_UNKNOWN_THREAD_WARNING_GROUP_MESSAGE" = "Þú átt enga meðlimi sameiginlega með þessum aðila. Yfirfarðu beiðnir vandlega áður en þú samþykkir þær til að forðast að fá óumbeðin skilaboð.";
+
+/* Label for button to learn more about message requests. */
+"ALERT_UNKNOWN_THREAD_WARNING_LEARN_MORE" = "Um beiðnir um skilaboð";
+
 /* notification action */
 "ANSWER_CALL_BUTTON_TITLE" = "Svar";
 
@@ -889,6 +898,9 @@
 /* label for 'mentions' cell in conversation settings */
 "CONVERSATION_SETTINGS_MENTIONS_LABEL" = "Tilvísanir";
 
+/* Button to message the chat */
+"CONVERSATION_SETTINGS_MESSAGE_BUTTON" = "skilaboð";
+
 /* Title for the mute action sheet */
 "CONVERSATION_SETTINGS_MUTE_ACTION_SHEET_TITLE" = "Þagga þetta spjall í…";
 
@@ -923,7 +935,7 @@
 "CONVERSATION_SETTINGS_MUTED_ALWAYS" = "Alltaf";
 
 /* Indicates that this thread is muted forever. */
-"CONVERSATION_SETTINGS_MUTED_ALWAYS_UNMUTE" = "Always muted";
+"CONVERSATION_SETTINGS_MUTED_ALWAYS_UNMUTE" = "Alltaf þaggað";
 
 /* Button to unmute the chat */
 "CONVERSATION_SETTINGS_MUTED_BUTTON" = "þaggað";
@@ -932,7 +944,7 @@
 "CONVERSATION_SETTINGS_MUTED_UNTIL_FORMAT" = "til %@";
 
 /* Indicates that this thread is muted until a given date or time. Embeds {{The date or time which the thread is muted until}}. */
-"CONVERSATION_SETTINGS_MUTED_UNTIL_UNMUTE_FORMAT" = "Muted until %@";
+"CONVERSATION_SETTINGS_MUTED_UNTIL_UNMUTE_FORMAT" = "Þaggað til %@";
 
 /* Format for the section title of the 'mutual groups' section in conversation settings view. Embeds: {{ the number of shared groups }}. */
 "CONVERSATION_SETTINGS_MUTUAL_GROUPS_SECTION_TITLE_FORMAT" = "%@ hópar sameiginlegir";
@@ -1024,11 +1036,23 @@
 /* Format string for a relative time, expressed as a certain number of hours in the past. Embeds {{The number of hours}}. */
 "DATE_HOURS_AGO_FORMAT" = "%@klst";
 
+/* Full format string for a relative time, expressed as a certain number of hours in the past. Embeds {{The number of hours}}. */
+"DATE_HOURS_AGO_LONG_FORMAT" = "fyrir %@ klukkustundum";
+
 /* Format string for a relative time, expressed as a certain number of minutes in the past. Embeds {{The number of minutes}}. */
 "DATE_MINUTES_AGO_FORMAT" = "%@m";
 
+/* Full format string for a relative time, expressed as a certain number of minutes in the past. Embeds {{The number of minutes}}. */
+"DATE_MINUTES_AGO_LONG_FORMAT" = "fyrir %@ mínútum";
+
 /* The present; the current time. */
 "DATE_NOW" = "Núna";
+
+/* Full string for a relative time of one hour ago. */
+"DATE_ONE_HOUR_AGO_LONG" = "fyrir 1 klukkustund";
+
+/* Full string for a relative time of one minute ago. */
+"DATE_ONE_MINUTE_AGO_LONG" = "fyrir 1 mínútu";
 
 /* The current day. */
 "DATE_TODAY" = "Í dag";
@@ -1284,9 +1308,6 @@
 
 /* Error message indicating that an avatar image is invalid and cannot be used. */
 "EDIT_GROUP_ERROR_INVALID_AVATAR" = "Ógild mynd.";
-
-/* Label for the group name in the 'edit group' view. */
-"EDIT_GROUP_GROUP_NAME" = "Heiti hóps";
 
 /* The title for the 'update group' button. */
 "EDIT_GROUP_UPDATE_BUTTON" = "Uppfæra";
@@ -2002,20 +2023,11 @@
 /* Label indicating the local user. */
 "GROUP_MEMBER_LOCAL_USER" = "Þú";
 
-/* Accessibility label for the 'call group member' button */
-"GROUP_MEMBERS_CALL" = "Símtal";
-
 /* Label indicating that a new group has no other members. */
 "GROUP_MEMBERS_NO_OTHER_MEMBERS" = "Þú getur bætt við eða boðið vinum eftir það þú útbýrð þennan hóp.";
 
 /* Title for the 'members' section of the 'group members' view. */
 "GROUP_MEMBERS_SECTION_TITLE_MEMBERS" = "Meðlimir";
-
-/* Accessibility label for the 'send message to group member' button */
-"GROUP_MEMBERS_SEND_MESSAGE" = "Póstur";
-
-/* Accessibility label for the 'call group member' button */
-"GROUP_MEMBERS_VIDEO_CALL" = "Myndsamtal";
 
 /* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
 "GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ meðlimir hóps eru með svipuð nöfn.";
@@ -4462,8 +4474,11 @@
 /* section header for search results that match a contact who doesn't have an existing conversation */
 "SEARCH_SECTION_CONTACTS" = "Aðrir tengiliðir";
 
-/* section header for search results that match existing conversations (either group or contact conversations) */
+/* section header for search results that match existing 1:1 chats */
 "SEARCH_SECTION_CONVERSATIONS" = "Spjöll";
+
+/* section header for search results that match existing groups */
+"SEARCH_SECTION_GROUPS" = "Hópar";
 
 /* section header for search results that match a message in a conversation */
 "SEARCH_SECTION_MESSAGES" = "Skilaboð";
@@ -4929,6 +4944,12 @@
 
 /* Title for the 'payments not enabled' alert. */
 "SETTINGS_PAYMENTS_NOT_ENABLED_ALERT_TITLE" = "Greiðslur ekki virkar";
+
+/* Message for the 'payments not registered' alert. */
+"SETTINGS_PAYMENTS_NOT_REGISTERED_ALERT_MESSAGE" = "Endurskráðu þig til að geta sent greiðslur.";
+
+/* Title for the 'payments not registered' alert. */
+"SETTINGS_PAYMENTS_NOT_REGISTERED_ALERT_TITLE" = "Ekki skráð";
 
 /* Label for 'activate' button in the 'payments opt-in' view in the app settings. */
 "SETTINGS_PAYMENTS_OPT_IN_ACTIVATE_BUTTON" = "Virkja greiðslur";
@@ -5518,6 +5539,12 @@
 /* Label for button to verify a user's safety number. */
 "SYSTEM_MESSAGE_ACTION_VERIFY_SAFETY_NUMBER" = "Sannreyna";
 
+/* Indicator warning about an unknown contact thread. */
+"SYSTEM_MESSAGE_UNKNOWN_THREAD_WARNING_CONTACT" = "Engir sameiginlegir hópar. Yfirfarðu beiðnir vandlega.";
+
+/* Indicator warning about an unknown group thread. */
+"SYSTEM_MESSAGE_UNKNOWN_THREAD_WARNING_GROUP" = "Engir sameiginlegir hópmeðlimir. Yfirfarðu beiðnir vandlega.";
+
 /* text indicating the message was remotely deleted */
 "THIS_MESSAGE_WAS_DELETED" = "Þessum skilaboðum var eytt.";
 
@@ -5529,6 +5556,9 @@
 
 /* A string indicating a mutual group the user shares with this contact. Embeds {{mutual group name}} */
 "THREAD_DETAILS_ONE_MUTUAL_GROUP" = "Meðlimur í %@";
+
+/* Indicator that a blurred avatar can be revealed by tapping. */
+"THREAD_DETAILS_TAP_TO_UNBLUR_AVATAR" = "Skoða";
 
 /* A string indicating three mutual groups the user shares with this contact. Embeds {{mutual group name}} */
 "THREAD_DETAILS_THREE_MUTUAL_GROUP" = "Meðlimur í %@, %@ og %@";

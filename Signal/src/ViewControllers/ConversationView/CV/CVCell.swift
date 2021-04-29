@@ -18,8 +18,7 @@ public enum CVCellReuseIdentifier: String, CaseIterable {
     case typingIndicator
     case threadDetails
     case systemMessage
-    case dedicatedTextOnlyIncoming
-    case dedicatedTextOnlyOutgoing
+    case unknownThreadWarning
 }
 
 // MARK: -
@@ -175,6 +174,15 @@ public class CVCell: UICollectionViewCell, CVItemCell, CVRootComponentHost {
                                                        renderItem: renderItem,
                                                        messageSwipeActionState: messageSwipeActionState)
     }
+
+    public func buildWallpaperMask(_ wallpaperMaskBuilder: WallpaperMaskBuilder) {
+        guard let rootComponent = rootComponent,
+              let componentView = componentView else {
+            owsFailDebug("Missing component.")
+            return
+        }
+        rootComponent.buildWallpaperMask(wallpaperMaskBuilder, componentView: componentView)
+    }
 }
 
 // MARK: -
@@ -264,12 +272,12 @@ public extension CVRootComponentHost {
 
         componentView.isDedicatedCellView = rootComponent.isDedicatedCell
 
-        rootComponent.configure(cellView: hostView,
-                                cellMeasurement: renderItem.cellMeasurement,
-                                componentDelegate: componentDelegate,
-                                cellSelection: cellSelection,
-                                messageSwipeActionState: messageSwipeActionState,
-                                componentView: componentView)
+        rootComponent.configureCellRootComponent(cellView: hostView,
+                                                 cellMeasurement: renderItem.cellMeasurement,
+                                                 componentDelegate: componentDelegate,
+                                                 cellSelection: cellSelection,
+                                                 messageSwipeActionState: messageSwipeActionState,
+                                                 componentView: componentView)
 
         #if TESTABLE_BUILD
         GRDBDatabaseStorageAdapter.setCanOpenTransaction(true)

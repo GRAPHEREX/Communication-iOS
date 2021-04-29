@@ -69,16 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
     self.shouldAutoPlayVideo = shouldAutoPlayVideo;
 
     // We cache the image data in case the attachment stream is deleted.
-    __weak MediaDetailViewController *weakSelf = self;
-    _image = [galleryItemBox.attachmentStream
-        thumbnailImageLargeWithSuccess:^(UIImage *image) {
-            weakSelf.image = image;
-            [weakSelf updateContents];
-            [weakSelf updateMinZoomScale];
-        }
-        failure:^{
-            OWSLogWarn(@"Could not load media.");
-        }];
+    self.image = [galleryItemBox.attachmentStream thumbnailImageLargeSync];
 
     return self;
 }
@@ -88,14 +79,9 @@ NS_ASSUME_NONNULL_BEGIN
     return self.galleryItemBox.attachmentStream;
 }
 
-- (BOOL)isAnimated
-{
-    return self.attachmentStream.isAnimated;
-}
-
 - (BOOL)isVideo
 {
-    return self.attachmentStream.isVideo;
+    return self.attachmentStream.isVideo && !self.attachmentStream.isLoopingVideo;
 }
 
 - (void)viewDidLoad
@@ -190,7 +176,14 @@ NS_ASSUME_NONNULL_BEGIN
 
     [scrollView autoPinEdgesToSuperviewEdges];
 
-    if (self.attachmentStream.shouldBeRenderedByYY) {
+    if (self.attachmentStream.isLoopingVideo) {
+        if (self.attachmentStream.isValidVideo) {
+            self.mediaView = [self buildLoopingVideoPlayerView];
+        } else {
+            self.mediaView = [UIView new];
+            self.mediaView.backgroundColor = Theme.washColor;
+        }
+    } else if (self.attachmentStream.shouldBeRenderedByYY) {
         if (self.attachmentStream.isValidImage) {
             YYImage *animatedGif = [YYImage imageWithContentsOfFile:self.attachmentStream.originalFilePath];
             YYAnimatedImageView *animatedView = [YYAnimatedImageView new];
@@ -282,6 +275,25 @@ NS_ASSUME_NONNULL_BEGIN
         [playVideoIconView autoCenterInSuperview];
         [playVideoButton autoCenterInSuperview];
     }
+}
+
+- (UIView *)buildLoopingVideoPlayerView
+{
+    NSURL *_Nullable attachmentUrl = self.attachmentStream.originalMediaURL;
+    if (!attachmentUrl) {
+        OWSFailDebug(@"Invalid URL");
+        return [[UIView alloc] init];
+    }
+
+    LoopingVideo *_Nullable video = [[LoopingVideo alloc] initWithUrl:attachmentUrl];
+    if (!video) {
+        OWSFailDebug(@"Invalid looping video");
+        return [[UIView alloc] init];
+    }
+
+    LoopingVideoView *view = [[LoopingVideoView alloc] init];
+    view.video = video;
+    return view;
 }
 
 - (UIView *)buildVideoPlayerView

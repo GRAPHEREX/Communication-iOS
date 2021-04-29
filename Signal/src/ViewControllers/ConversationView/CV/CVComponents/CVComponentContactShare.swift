@@ -32,17 +32,17 @@ public class CVComponentContactShare: CVComponentBase, CVComponent {
             return
         }
 
-        let contactShareView = CVContactShareView(state: contactShareState.state)
-        let hostView = componentView.hostView
-        hostView.addSubview(contactShareView)
-        contactShareView.autoPinEdgesToSuperviewEdges()
+        let contactShareView = componentView.contactShareView
+        contactShareView.configureForRendering(state: contactShareState.state,
+                                               cellMeasurement: cellMeasurement)
     }
 
     public func measure(maxWidth: CGFloat, measurementBuilder: CVCellMeasurement.Builder) -> CGSize {
         owsAssertDebug(maxWidth > 0)
 
-        let height = CVContactShareView.measureHeight(state: contactShareState.state)
-        return CGSize(width: maxWidth, height: height).ceil
+        return CVContactShareView.measure(maxWidth: maxWidth,
+                                          measurementBuilder: measurementBuilder,
+                                          state: contactShareState.state)
     }
 
     public override func handleTap(sender: UITapGestureRecognizer,
@@ -61,21 +61,18 @@ public class CVComponentContactShare: CVComponentBase, CVComponent {
     @objc
     public class CVComponentViewContactShare: NSObject, CVComponentView {
 
-        // For now we simply use this view to host ContactShareView.
-        //
-        // TODO: Reuse ContactShareView.
-        fileprivate let hostView = UIView()
+        fileprivate let contactShareView = CVContactShareView(name: "CVContactShareView")
 
         public var isDedicatedCellView = false
 
         public var rootView: UIView {
-            hostView
+            contactShareView
         }
 
         public func setIsCellVisible(_ isCellVisible: Bool) {}
 
         public func reset() {
-            hostView.removeAllSubviews()
+            contactShareView.reset()
         }
     }
 }

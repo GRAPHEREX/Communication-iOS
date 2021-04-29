@@ -4,7 +4,7 @@
 
 import Foundation
 
-public class CVMessageActionButton: UILabel {
+public class CVMessageActionButton: CVLabel {
     let action: CVMessageAction
 
     required init(action: CVMessageAction) {
@@ -28,9 +28,6 @@ public class CVMessageActionButton: UILabel {
                         ? Theme.secondaryTextAndIconColor
                         : Theme.conversationButtonTextColor)
         textAlignment = .center
-        autoSetDimension(.height, toSize: Self.buttonHeight)
-        setContentHuggingVerticalHigh()
-        setCompressionResistanceVerticalHigh()
     }
 
     private static var buttonFont: UIFont {

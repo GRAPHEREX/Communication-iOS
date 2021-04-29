@@ -86,7 +86,7 @@
 "ADD_TO_GROUP_ACTION_PROCEED_BUTTON" = "Legg til gruppen";
 
 /* The title on the 'add to group' confirmation action sheet. Embeds {contact name, group name} */
-"ADD_TO_GROUP_ACTION_SHEET_MESSAGE_FORMAT" = "Add “%1$@” to “%2$@”?";
+"ADD_TO_GROUP_ACTION_SHEET_MESSAGE_FORMAT" = "Legg \"%1$@\" til i \"%2$@\"?";
 
 /* The title on the 'add to group' confirmation action sheet. */
 "ADD_TO_GROUP_ACTION_SHEET_TITLE" = "Legg til nytt medlem";
@@ -104,7 +104,7 @@
 "ADD_TO_GROUP_SUCCESS_TOAST_FORMAT" = "%@ ble lagt til %@";
 
 /* Title of the 'add to group' view. */
-"ADD_TO_GROUP_TITLE" = "Add to a Group";
+"ADD_TO_GROUP_TITLE" = "Legg til i gruppe";
 
 /* Message shown in conversation view that offers to share your profile with a user. */
 "ADD_USER_TO_PROFILE_WHITELIST_OFFER" = "Vil du dele profilen din med denne brukeren?";
@@ -123,6 +123,15 @@
 
 /* The label for the 'save' button in action sheets. */
 "ALERT_SAVE" = "Lagre";
+
+/* Message for UI  warning about an unknown contact thread. */
+"ALERT_UNKNOWN_THREAD_WARNING_CONTACT_MESSAGE" = "Du deler ingen grupper med denne personen. Se nøye gjennom forespørsler før du aksepterer, så du unngår uønskede meldinger.";
+
+/* Message for UI warning about an unknown group thread. */
+"ALERT_UNKNOWN_THREAD_WARNING_GROUP_MESSAGE" = "Du har ingen kontakter blant medlemmene i denne gruppen. Se nøye gjennom forespørsler før du aksepterer, så du unngår uønskede meldinger.";
+
+/* Label for button to learn more about message requests. */
+"ALERT_UNKNOWN_THREAD_WARNING_LEARN_MORE" = "Om meldingsforespørsler";
 
 /* notification action */
 "ANSWER_CALL_BUTTON_TITLE" = "Svar";
@@ -881,13 +890,16 @@
 "CONVERSATION_SETTINGS_MENTION_MODE_AlWAYS" = "Varsle alltid";
 
 /* label for 'never' option for mention notifications in conversation settings */
-"CONVERSATION_SETTINGS_MENTION_MODE_NEVER" = "Ingen varsling om mutet";
+"CONVERSATION_SETTINGS_MENTION_MODE_NEVER" = "Ikke varsle når dempet";
 
 /* Title of the 'mention notification mode' action sheet. */
 "CONVERSATION_SETTINGS_MENTION_NOTIFICATION_MODE_ACTION_SHEET_TITLE" = "Motta varsler når du blir nevnt i dempede samtaler?";
 
 /* label for 'mentions' cell in conversation settings */
 "CONVERSATION_SETTINGS_MENTIONS_LABEL" = "Omtaler";
+
+/* Button to message the chat */
+"CONVERSATION_SETTINGS_MESSAGE_BUTTON" = "meldinger";
 
 /* Title for the mute action sheet */
 "CONVERSATION_SETTINGS_MUTE_ACTION_SHEET_TITLE" = "Demp samtalen i...";
@@ -896,7 +908,7 @@
 "CONVERSATION_SETTINGS_MUTE_ALWAYS_ACTION" = "Evig tid";
 
 /* Button to mute the chat */
-"CONVERSATION_SETTINGS_MUTE_BUTTON" = "mute";
+"CONVERSATION_SETTINGS_MUTE_BUTTON" = "demp";
 
 /* Label for button to mute a thread for eight hours. */
 "CONVERSATION_SETTINGS_MUTE_EIGHT_HOUR_ACTION" = "8 timer";
@@ -923,28 +935,28 @@
 "CONVERSATION_SETTINGS_MUTED_ALWAYS" = "Evig tid";
 
 /* Indicates that this thread is muted forever. */
-"CONVERSATION_SETTINGS_MUTED_ALWAYS_UNMUTE" = "Always muted";
+"CONVERSATION_SETTINGS_MUTED_ALWAYS_UNMUTE" = "Alltid dempet";
 
 /* Button to unmute the chat */
-"CONVERSATION_SETTINGS_MUTED_BUTTON" = "muted";
+"CONVERSATION_SETTINGS_MUTED_BUTTON" = "dempet";
 
 /* Indicates that this thread is muted until a given date or time. Embeds {{The date or time which the thread is muted until}}. */
 "CONVERSATION_SETTINGS_MUTED_UNTIL_FORMAT" = "fram til %@";
 
 /* Indicates that this thread is muted until a given date or time. Embeds {{The date or time which the thread is muted until}}. */
-"CONVERSATION_SETTINGS_MUTED_UNTIL_UNMUTE_FORMAT" = "Muted until %@";
+"CONVERSATION_SETTINGS_MUTED_UNTIL_UNMUTE_FORMAT" = "Dempet til %@";
 
 /* Format for the section title of the 'mutual groups' section in conversation settings view. Embeds: {{ the number of shared groups }}. */
-"CONVERSATION_SETTINGS_MUTUAL_GROUPS_SECTION_TITLE_FORMAT" = "%@ Groups in Common";
+"CONVERSATION_SETTINGS_MUTUAL_GROUPS_SECTION_TITLE_FORMAT" = "%@ felles grupper";
 
 /* Label for 'new contact' button in conversation settings view. */
 "CONVERSATION_SETTINGS_NEW_CONTACT" = "Opprett ny kontakt";
 
 /* Section title of the 'mutual groups' section in conversation settings view when the contact shares no mutual groups. */
-"CONVERSATION_SETTINGS_NO_MUTUAL_GROUPS_SECTION_TITLE" = "No Groups in Common";
+"CONVERSATION_SETTINGS_NO_MUTUAL_GROUPS_SECTION_TITLE" = "Ingen felles grupper";
 
 /* Section title of the 'mutual groups' section in conversation settings view when the contact shares one mutual group. */
-"CONVERSATION_SETTINGS_ONE_MUTUAL_GROUPS_SECTION_TITLE" = "1 Group in Common";
+"CONVERSATION_SETTINGS_ONE_MUTUAL_GROUPS_SECTION_TITLE" = "1 felles gruppe";
 
 /* Label for 'permissions' action in conversation settings view. */
 "CONVERSATION_SETTINGS_PERMISSIONS" = "Tillatelser";
@@ -962,7 +974,7 @@
 "CONVERSATION_SETTINGS_REVOKE_GROUP_ADMIN_TITLE_FORMAT" = "Fjern %@ som gruppeadministrator";
 
 /* Button to search the chat */
-"CONVERSATION_SETTINGS_SEARCH_BUTTON" = "search";
+"CONVERSATION_SETTINGS_SEARCH_BUTTON" = "søk";
 
 /* Label for 'unblock group' action in conversation settings view. */
 "CONVERSATION_SETTINGS_UNBLOCK_GROUP" = "Fjern blokkering av gruppen";
@@ -983,7 +995,7 @@
 "CONVERSATION_SETTINGS_VIDEO_CALL_BUTTON" = "video";
 
 /* Indicates that user is in the system contacts list. */
-"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Contact Details";
+"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Kontaktdetaljer";
 
 /* Button to confirm that user wants to share their profile with a user or group. */
 "CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE" = "Del profil";
@@ -1024,11 +1036,23 @@
 /* Format string for a relative time, expressed as a certain number of hours in the past. Embeds {{The number of hours}}. */
 "DATE_HOURS_AGO_FORMAT" = "%@t";
 
+/* Full format string for a relative time, expressed as a certain number of hours in the past. Embeds {{The number of hours}}. */
+"DATE_HOURS_AGO_LONG_FORMAT" = "%@ timer siden";
+
 /* Format string for a relative time, expressed as a certain number of minutes in the past. Embeds {{The number of minutes}}. */
 "DATE_MINUTES_AGO_FORMAT" = "%@m";
 
+/* Full format string for a relative time, expressed as a certain number of minutes in the past. Embeds {{The number of minutes}}. */
+"DATE_MINUTES_AGO_LONG_FORMAT" = "%@ minutter siden";
+
 /* The present; the current time. */
 "DATE_NOW" = "Nå";
+
+/* Full string for a relative time of one hour ago. */
+"DATE_ONE_HOUR_AGO_LONG" = "1 time siden";
+
+/* Full string for a relative time of one minute ago. */
+"DATE_ONE_MINUTE_AGO_LONG" = "1 minutt siden";
 
 /* The current day. */
 "DATE_TODAY" = "I dag";
@@ -1284,9 +1308,6 @@
 
 /* Error message indicating that an avatar image is invalid and cannot be used. */
 "EDIT_GROUP_ERROR_INVALID_AVATAR" = "Ugyldig bilde.";
-
-/* Label for the group name in the 'edit group' view. */
-"EDIT_GROUP_GROUP_NAME" = "Gruppenavn";
 
 /* The title for the 'update group' button. */
 "EDIT_GROUP_UPDATE_BUTTON" = "Oppdater";
@@ -2002,20 +2023,11 @@
 /* Label indicating the local user. */
 "GROUP_MEMBER_LOCAL_USER" = "Deg";
 
-/* Accessibility label for the 'call group member' button */
-"GROUP_MEMBERS_CALL" = "Taleanrop";
-
 /* Label indicating that a new group has no other members. */
 "GROUP_MEMBERS_NO_OTHER_MEMBERS" = "Du kan legge til eller invitere venner etter at gruppen er opprettet.";
 
 /* Title for the 'members' section of the 'group members' view. */
 "GROUP_MEMBERS_SECTION_TITLE_MEMBERS" = "Medlemmer";
-
-/* Accessibility label for the 'send message to group member' button */
-"GROUP_MEMBERS_SEND_MESSAGE" = "Melding";
-
-/* Accessibility label for the 'call group member' button */
-"GROUP_MEMBERS_VIDEO_CALL" = "Videoanrop";
 
 /* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
 "GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ gruppemedlemmer har like navn.";
@@ -3023,7 +3035,7 @@
 "MULTIDEVICE_PAIRING_MAX_RECOVERY" = "Du har nådd det maksimale antallet enheter du kan koble til din konto. Fjern en enhet og prøv igjen.";
 
 /* Badge indicating that the user is muted. */
-"MUTED_BADGE" = "Mutet";
+"MUTED_BADGE" = "Dempet";
 
 /* Format string describing a recent profile name change that led to a name collision. Embeds {{ %1$@ old profile name }} and {{ %2$@ current profile name }} */
 "NAME_COLLISION_RECENT_CHANGE_FORMAT_STRING" = "Endret nylig profilnavn fra %1$@ til %2$@.";
@@ -3446,7 +3458,7 @@
 "PAYMENTS_NEW_PAYMENT_MESSAGE_COUNT_FORMAT" = "%1$@ / %2$@";
 
 /* Placeholder for the new payment or payment request message. */
-"PAYMENTS_NEW_PAYMENT_MESSAGE_PLACEHOLDER" = "Note";
+"PAYMENTS_NEW_PAYMENT_MESSAGE_PLACEHOLDER" = "Notat";
 
 /* Label for the 'new payment' button. */
 "PAYMENTS_NEW_PAYMENT_PAY_BUTTON" = "Betal";
@@ -3626,10 +3638,10 @@
 "PENDING_GROUP_MEMBERS_SECTION_TITLE_INVALID_INVITES" = "Ugyldige invitasjoner";
 
 /* Title for the 'invites by other group members' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "Invited by Others";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_INVITES_FROM_OTHER_MEMBERS" = "Invitert av andre";
 
 /* Title for the 'people you invited' section of the 'member requests and invites' view. */
-"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "Invited by You";
+"PENDING_GROUP_MEMBERS_SECTION_TITLE_PEOPLE_YOU_INVITED" = "Invitert av deg";
 
 /* Label for view-once messages that have invalid content. */
 "PER_MESSAGE_EXPIRATION_INVALID_CONTENT" = "Feil ved håndtering av innkommende melding";
@@ -4462,8 +4474,11 @@
 /* section header for search results that match a contact who doesn't have an existing conversation */
 "SEARCH_SECTION_CONTACTS" = "Andre kontakter";
 
-/* section header for search results that match existing conversations (either group or contact conversations) */
+/* section header for search results that match existing 1:1 chats */
 "SEARCH_SECTION_CONVERSATIONS" = "Samtaler";
+
+/* section header for search results that match existing groups */
+"SEARCH_SECTION_GROUPS" = "Grupper";
 
 /* section header for search results that match a message in a conversation */
 "SEARCH_SECTION_MESSAGES" = "Meldinger";
@@ -4577,7 +4592,7 @@
 "SET_WALLPAPER_PRESETS" = "Forhåndsvalgte";
 
 /* Title for the set wallpaper settings view. */
-"SET_WALLPAPER_TITLE" = "Sett Bakgrunnsbilde";
+"SET_WALLPAPER_TITLE" = "Sett inn bakgrunn";
 
 /* Title for the 'account' link in settings. */
 "SETTINGS_ACCOUNT" = "Konto";
@@ -4733,7 +4748,7 @@
 "SETTINGS_ITEM_NOTIFICATION_SOUND" = "Meldingslyd";
 
 /* Label for settings view that allows user to change the wallpaper. */
-"SETTINGS_ITEM_WALLPAPER" = "Samtale Bakgrunn";
+"SETTINGS_ITEM_WALLPAPER" = "Samtalebakgrunn";
 
 /* No comment provided by engineer. */
 "SETTINGS_LEGAL_TERMS_CELL" = "Vilkår og personvernerklæring";
@@ -4929,6 +4944,12 @@
 
 /* Title for the 'payments not enabled' alert. */
 "SETTINGS_PAYMENTS_NOT_ENABLED_ALERT_TITLE" = "Payments Not Enabled";
+
+/* Message for the 'payments not registered' alert. */
+"SETTINGS_PAYMENTS_NOT_REGISTERED_ALERT_MESSAGE" = "Re-register to send payments.";
+
+/* Title for the 'payments not registered' alert. */
+"SETTINGS_PAYMENTS_NOT_REGISTERED_ALERT_TITLE" = "Ikke registrert";
 
 /* Label for 'activate' button in the 'payments opt-in' view in the app settings. */
 "SETTINGS_PAYMENTS_OPT_IN_ACTIVATE_BUTTON" = "Activate Payments";
@@ -5390,7 +5411,7 @@
 "SMS_INVITE_BODY" = "Jeg inviterer deg til å installere Signal! Her er lenken:";
 
 /* table cell label in conversation settings */
-"SOUND_AND_NOTIFICATION_SETTINGS" = "Sounds & Notifications";
+"SOUND_AND_NOTIFICATION_SETTINGS" = "Lyder og varslinger";
 
 /* Label for the 'no sound' option that allows users to disable sounds for notifications, etc. */
 "SOUNDS_NONE" = "Ingen";
@@ -5518,6 +5539,12 @@
 /* Label for button to verify a user's safety number. */
 "SYSTEM_MESSAGE_ACTION_VERIFY_SAFETY_NUMBER" = "Bekreft";
 
+/* Indicator warning about an unknown contact thread. */
+"SYSTEM_MESSAGE_UNKNOWN_THREAD_WARNING_CONTACT" = "Ingen felles grupper. Gjennomgå forespørsler nøye.";
+
+/* Indicator warning about an unknown group thread. */
+"SYSTEM_MESSAGE_UNKNOWN_THREAD_WARNING_GROUP" = "Ingen gruppemedlemmer felles. Gjennomgå forespørsler nøye.";
+
 /* text indicating the message was remotely deleted */
 "THIS_MESSAGE_WAS_DELETED" = "Denne meldingen ble slettet.";
 
@@ -5529,6 +5556,9 @@
 
 /* A string indicating a mutual group the user shares with this contact. Embeds {{mutual group name}} */
 "THREAD_DETAILS_ONE_MUTUAL_GROUP" = "Medlem av %@";
+
+/* Indicator that a blurred avatar can be revealed by tapping. */
+"THREAD_DETAILS_TAP_TO_UNBLUR_AVATAR" = "Vis";
 
 /* A string indicating three mutual groups the user shares with this contact. Embeds {{mutual group name}} */
 "THREAD_DETAILS_THREE_MUTUAL_GROUP" = "Medlem av %@, %@, og %@";
@@ -5825,7 +5855,7 @@
 "WALLPAPER_PREVIEW_TITLE" = "Forhåndsvisning";
 
 /* Clear wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "Fjern Bakgrunn";
+"WALLPAPER_SETTINGS_CLEAR_WALLPAPER" = "Fjern bakgrunn";
 
 /* Confirmation dialog when clearing the wallpaper for a specific chat. */
 "WALLPAPER_SETTINGS_CLEAR_WALLPAPER_CHAT_CONFIRMATION" = "Fjern bakgrunnsbilde for denne samtalen?";
@@ -5834,7 +5864,7 @@
 "WALLPAPER_SETTINGS_CLEAR_WALLPAPER_GLOBAL_CONFIRMATION" = "Fjern bakgrunnen? Dette inkluderer ikke tilpassede bakgrunner du har angitt for samtalene dine.";
 
 /* Dim wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_DIM_WALLPAPER" = "Mørk Tema Demper Bakgrunnen";
+"WALLPAPER_SETTINGS_DIM_WALLPAPER" = "Mørkt tema demper bakgrunnen";
 
 /* An error indicating to the user that we failed to clear the wallpaper. */
 "WALLPAPER_SETTINGS_FAILED_TO_CLEAR" = "Bakgrunnen kunne ikke fjernes. Prøv igjen senere eller kontakt brukerstøtte hvis feilen vedvarer.";
@@ -5846,16 +5876,16 @@
 "WALLPAPER_SETTINGS_PREVIEW" = "Forhåndsvisning";
 
 /* Reset all wallpapers action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_RESET_ALL" = "Fjern Alle Bakgrunner";
+"WALLPAPER_SETTINGS_RESET_ALL" = "Fjern alle bakgrunner";
 
 /* Confirmation dialog when resetting all wallpapers. */
 "WALLPAPER_SETTINGS_RESET_ALL_WALLPAPERS_CONFIRMATION" = "Tilbakestille alle bakgrunner, inkludert tilpassede bakgrunner du har angitt for alle samtalene dine?";
 
 /* Set wallpaper action in wallpaper settings view. */
-"WALLPAPER_SETTINGS_SET_WALLPAPER" = "Sett Bakgrunnsbilde";
+"WALLPAPER_SETTINGS_SET_WALLPAPER" = "Sett inn bakgrunn";
 
 /* Title for the wallpaper settings view. */
-"WALLPAPER_SETTINGS_TITLE" = "Samtale Bakgrunn";
+"WALLPAPER_SETTINGS_TITLE" = "Samtalebakgrunn";
 
 /* text indicating the message was remotely deleted by you */
 "YOU_DELETED_THIS_MESSAGE" = "Du slettet denne meldingen.";

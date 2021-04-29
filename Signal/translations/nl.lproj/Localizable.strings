@@ -124,6 +124,15 @@
 /* The label for the 'save' button in action sheets. */
 "ALERT_SAVE" = "Opslaan";
 
+/* Message for UI  warning about an unknown contact thread. */
+"ALERT_UNKNOWN_THREAD_WARNING_CONTACT_MESSAGE" = "Je hebt geen gemeenschappelijke groep met deze persoon. Overweeg zorgvuldig of je dit gespreksverzoek wilt accepteren om ongewenste berichten te vermijden.";
+
+/* Message for UI warning about an unknown group thread. */
+"ALERT_UNKNOWN_THREAD_WARNING_GROUP_MESSAGE" = "Er zijn geen leden met wie je al een gesprek voert in deze groep. Overweeg zorgvuldig of je dit gespreksverzoek wilt accepteren om ongewenste berichten te vermijden.";
+
+/* Label for button to learn more about message requests. */
+"ALERT_UNKNOWN_THREAD_WARNING_LEARN_MORE" = "Over gespreksverzoeken";
+
 /* notification action */
 "ANSWER_CALL_BUTTON_TITLE" = "Beantwoorden";
 
@@ -889,6 +898,9 @@
 /* label for 'mentions' cell in conversation settings */
 "CONVERSATION_SETTINGS_MENTIONS_LABEL" = "Vermeldingen";
 
+/* Button to message the chat */
+"CONVERSATION_SETTINGS_MESSAGE_BUTTON" = "Bericht verzenden";
+
 /* Title for the mute action sheet */
 "CONVERSATION_SETTINGS_MUTE_ACTION_SHEET_TITLE" = "Dit gesprek dempen voor …";
 
@@ -923,7 +935,7 @@
 "CONVERSATION_SETTINGS_MUTED_ALWAYS" = "Voor altijd";
 
 /* Indicates that this thread is muted forever. */
-"CONVERSATION_SETTINGS_MUTED_ALWAYS_UNMUTE" = "Always muted";
+"CONVERSATION_SETTINGS_MUTED_ALWAYS_UNMUTE" = "Voor altijd gedempt";
 
 /* Button to unmute the chat */
 "CONVERSATION_SETTINGS_MUTED_BUTTON" = "Gedempt";
@@ -932,19 +944,19 @@
 "CONVERSATION_SETTINGS_MUTED_UNTIL_FORMAT" = "tot %@";
 
 /* Indicates that this thread is muted until a given date or time. Embeds {{The date or time which the thread is muted until}}. */
-"CONVERSATION_SETTINGS_MUTED_UNTIL_UNMUTE_FORMAT" = "Muted until %@";
+"CONVERSATION_SETTINGS_MUTED_UNTIL_UNMUTE_FORMAT" = "Gedempt tot %@";
 
 /* Format for the section title of the 'mutual groups' section in conversation settings view. Embeds: {{ the number of shared groups }}. */
-"CONVERSATION_SETTINGS_MUTUAL_GROUPS_SECTION_TITLE_FORMAT" = "%@ overeenkomstige groepen";
+"CONVERSATION_SETTINGS_MUTUAL_GROUPS_SECTION_TITLE_FORMAT" = "%@ gemeenschappelijke groepen";
 
 /* Label for 'new contact' button in conversation settings view. */
 "CONVERSATION_SETTINGS_NEW_CONTACT" = "Nieuw contactpersoon aanmaken";
 
 /* Section title of the 'mutual groups' section in conversation settings view when the contact shares no mutual groups. */
-"CONVERSATION_SETTINGS_NO_MUTUAL_GROUPS_SECTION_TITLE" = "Geen overeenkomstige groepen";
+"CONVERSATION_SETTINGS_NO_MUTUAL_GROUPS_SECTION_TITLE" = "Geen gemeenschappelijke groepen";
 
 /* Section title of the 'mutual groups' section in conversation settings view when the contact shares one mutual group. */
-"CONVERSATION_SETTINGS_ONE_MUTUAL_GROUPS_SECTION_TITLE" = "1 overeenkomstige groep";
+"CONVERSATION_SETTINGS_ONE_MUTUAL_GROUPS_SECTION_TITLE" = "1 gemeenschappelijke groep";
 
 /* Label for 'permissions' action in conversation settings view. */
 "CONVERSATION_SETTINGS_PERMISSIONS" = "Toestemmingen";
@@ -983,7 +995,7 @@
 "CONVERSATION_SETTINGS_VIDEO_CALL_BUTTON" = "Video";
 
 /* Indicates that user is in the system contacts list. */
-"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Contactgegevens";
+"CONVERSATION_SETTINGS_VIEW_IS_SYSTEM_CONTACT" = "Deze persoon staat ook in je systeemcontactenlijst";
 
 /* Button to confirm that user wants to share their profile with a user or group. */
 "CONVERSATION_SETTINGS_VIEW_SHARE_PROFILE" = "Profiel zichtbaar maken";
@@ -1024,11 +1036,23 @@
 /* Format string for a relative time, expressed as a certain number of hours in the past. Embeds {{The number of hours}}. */
 "DATE_HOURS_AGO_FORMAT" = "%@ u";
 
+/* Full format string for a relative time, expressed as a certain number of hours in the past. Embeds {{The number of hours}}. */
+"DATE_HOURS_AGO_LONG_FORMAT" = "%@ uur geleden";
+
 /* Format string for a relative time, expressed as a certain number of minutes in the past. Embeds {{The number of minutes}}. */
 "DATE_MINUTES_AGO_FORMAT" = "%@ min";
 
+/* Full format string for a relative time, expressed as a certain number of minutes in the past. Embeds {{The number of minutes}}. */
+"DATE_MINUTES_AGO_LONG_FORMAT" = "%@ minuten geleden";
+
 /* The present; the current time. */
 "DATE_NOW" = "Nu";
+
+/* Full string for a relative time of one hour ago. */
+"DATE_ONE_HOUR_AGO_LONG" = "1 uur geleden";
+
+/* Full string for a relative time of one minute ago. */
+"DATE_ONE_MINUTE_AGO_LONG" = "1 minuut geleden";
 
 /* The current day. */
 "DATE_TODAY" = "Vandaag";
@@ -1284,9 +1308,6 @@
 
 /* Error message indicating that an avatar image is invalid and cannot be used. */
 "EDIT_GROUP_ERROR_INVALID_AVATAR" = "Ongeldige groepsafbeelding.";
-
-/* Label for the group name in the 'edit group' view. */
-"EDIT_GROUP_GROUP_NAME" = "Groepsnaam";
 
 /* The title for the 'update group' button. */
 "EDIT_GROUP_UPDATE_BUTTON" = "Aanpassen";
@@ -2002,20 +2023,11 @@
 /* Label indicating the local user. */
 "GROUP_MEMBER_LOCAL_USER" = "Jij";
 
-/* Accessibility label for the 'call group member' button */
-"GROUP_MEMBERS_CALL" = "Audio-oproep";
-
 /* Label indicating that a new group has no other members. */
 "GROUP_MEMBERS_NO_OTHER_MEMBERS" = "Je kan na het maken van deze groep kennissen uitnodigen of toevoegen.";
 
 /* Title for the 'members' section of the 'group members' view. */
 "GROUP_MEMBERS_SECTION_TITLE_MEMBERS" = "Leden";
-
-/* Accessibility label for the 'send message to group member' button */
-"GROUP_MEMBERS_SEND_MESSAGE" = "Een bericht verzenden";
-
-/* Accessibility label for the 'call group member' button */
-"GROUP_MEMBERS_VIDEO_CALL" = "Video-oproep";
 
 /* Banner title alerting user to many name collisions in the group membership. Embeds {{ total number of colliding members }} */
 "GROUP_MEMBERSHIP_MANY_COLLISIONS_BANNER_TITLE_FORMAT" = "%@ groepsleden hebben een vergelijkbare naam.";
@@ -2873,7 +2885,7 @@
 "MESSAGE_REQUEST_LEAVE_AND_DELETE_GROUP_TITLE" = "Groep verwijderen en verlaten?";
 
 /* Banner label notifying user that a new message is from a user with the same name as an existing contact */
-"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Kijk de verzoeken zorgvuldig na! Er is een andere contactpersoon met dezelfde naam.";
+"MESSAGE_REQUEST_NAME_COLLISON_BANNER_LABEL" = "Overweeg de verzoeken zorgvuldig, want er is een andere contactpersoon met dezelfde naam.";
 
 /* A header string above a known contact's contact info */
 "MESSAGE_REQUEST_NAME_COLLISON_CONTACT_HEADER" = "Je contactpersoon";
@@ -3920,7 +3932,7 @@
 "PRIVACY_VERIFICATION_FAILURE_INVALID_QRCODE" = "De gescande code lijkt niet op een veiligheidsnummer. Gebruiken jullie allebei de laatste versie van Signal?";
 
 /* Paragraph(s) shown alongside the safety number when verifying privacy with {{contact name}} */
-"PRIVACY_VERIFICATION_INSTRUCTIONS" = "Als je wilt verifiëren dat je direct met %@ communiceert zonder dat je communicatie wordt onderschept, ga dan na dat het bovenstaande nummer overeen komt met het nummer op zijn / haar apparaat.\n\nJe kunt ook de QR-code op zijn / haar telefoon scannen, of hem / haar vragen jouw QR-code te scannen";
+"PRIVACY_VERIFICATION_INSTRUCTIONS" = "Als je wilt verifiëren dat je rechtstreeks met %@ communiceert zonder dat je communicatie wordt onderschept, ga dan na dat het bovenstaande nummer overeen komt met het nummer op zijn / haar apparaat.\n\nJe kunt ook de QR-code op zijn / haar telefoon scannen, of hem / haar vragen jouw QR-code te scannen";
 
 /* Navbar title */
 "PRIVACY_VERIFICATION_TITLE" = "Veiligheidsnummer verifiëren";
@@ -4462,8 +4474,11 @@
 /* section header for search results that match a contact who doesn't have an existing conversation */
 "SEARCH_SECTION_CONTACTS" = "Overige contactpersonen";
 
-/* section header for search results that match existing conversations (either group or contact conversations) */
+/* section header for search results that match existing 1:1 chats */
 "SEARCH_SECTION_CONVERSATIONS" = "Gesprekken";
+
+/* section header for search results that match existing groups */
+"SEARCH_SECTION_GROUPS" = "Groepen";
 
 /* section header for search results that match a message in a conversation */
 "SEARCH_SECTION_MESSAGES" = "Berichten";
@@ -4929,6 +4944,12 @@
 
 /* Title for the 'payments not enabled' alert. */
 "SETTINGS_PAYMENTS_NOT_ENABLED_ALERT_TITLE" = "Overschrijving zijn uitgeschakeld";
+
+/* Message for the 'payments not registered' alert. */
+"SETTINGS_PAYMENTS_NOT_REGISTERED_ALERT_MESSAGE" = "Registreer je telefoonnummer opnieuw om overschrijvingen te kunnen doen.";
+
+/* Title for the 'payments not registered' alert. */
+"SETTINGS_PAYMENTS_NOT_REGISTERED_ALERT_TITLE" = "Niet geregistreerd";
 
 /* Label for 'activate' button in the 'payments opt-in' view in the app settings. */
 "SETTINGS_PAYMENTS_OPT_IN_ACTIVATE_BUTTON" = "Overschrijvingen inschakelen";
@@ -5518,6 +5539,12 @@
 /* Label for button to verify a user's safety number. */
 "SYSTEM_MESSAGE_ACTION_VERIFY_SAFETY_NUMBER" = "Verifiëren";
 
+/* Indicator warning about an unknown contact thread. */
+"SYSTEM_MESSAGE_UNKNOWN_THREAD_WARNING_CONTACT" = "Geen gemeenschappelijke groepen: overweeg deze uitnodiging zorgvuldig.";
+
+/* Indicator warning about an unknown group thread. */
+"SYSTEM_MESSAGE_UNKNOWN_THREAD_WARNING_GROUP" = "Geen lid met wie je al een gesprek voert: overweeg deze uitnodiging zorgvuldig.";
+
 /* text indicating the message was remotely deleted */
 "THIS_MESSAGE_WAS_DELETED" = "Dit bericht is gewist.";
 
@@ -5529,6 +5556,9 @@
 
 /* A string indicating a mutual group the user shares with this contact. Embeds {{mutual group name}} */
 "THREAD_DETAILS_ONE_MUTUAL_GROUP" = "Lid van %@";
+
+/* Indicator that a blurred avatar can be revealed by tapping. */
+"THREAD_DETAILS_TAP_TO_UNBLUR_AVATAR" = "Weergeven";
 
 /* A string indicating three mutual groups the user shares with this contact. Embeds {{mutual group name}} */
 "THREAD_DETAILS_THREE_MUTUAL_GROUP" = "Lid van %@, %@ en %@";
@@ -5798,7 +5828,7 @@
 "VOICE_MESSAGE_TOO_SHORT_ALERT_TITLE" = "Audiobericht";
 
 /* Activity indicator title, shown upon returning to the device manager, until you complete the provisioning process on desktop */
-"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Vervolledig de installatie op Signal Desktop.";
+"WAITING_TO_COMPLETE_DEVICE_LINK_TEXT" = "Voltooi de installatie op Signal-Desktop.";
 
 /* Placeholder text for header of the wallpaper mini preview */
 "WALLPAPER_MINI_PREVIEW_CONTACT_NAME" = "Naam van contactpersoon";

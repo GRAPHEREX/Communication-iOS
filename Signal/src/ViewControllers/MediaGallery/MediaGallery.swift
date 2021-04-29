@@ -59,11 +59,11 @@ public class MediaGalleryItem: Equatable, Hashable {
     }
 
     var isVideo: Bool {
-        return attachmentStream.isVideo
+        return attachmentStream.isVideo && !attachmentStream.isLoopingVideo
     }
 
     var isAnimated: Bool {
-        return attachmentStream.isAnimated
+        return attachmentStream.isAnimated || attachmentStream.isLoopingVideo
     }
 
     var isImage: Bool {
@@ -75,8 +75,9 @@ public class MediaGalleryItem: Equatable, Hashable {
     }
 
     public typealias AsyncThumbnailBlock = (UIImage) -> Void
-    func thumbnailImage(async:@escaping AsyncThumbnailBlock) -> UIImage? {
-        return attachmentStream.thumbnailImageSmall(success: async, failure: {})
+    func thumbnailImage(async: @escaping AsyncThumbnailBlock) -> UIImage? {
+        attachmentStream.thumbnailImageSmall(success: async, failure: {})
+        return nil
     }
 
     func thumbnailImageSync() -> UIImage? {
@@ -407,19 +408,24 @@ class MediaGallery: Dependencies {
 
             // If we're loading the remainder of an album, check to see if any items in the album are not loaded yet.
             if shouldLoadAlbumRemainder {
-                let albumStart = itemIndex - item.albumIndex
-                let albumEnd = albumStart + item.message.attachmentIds.count
-                if sectionItems[albumStart..<albumEnd].contains(nil) {
-                    return true
-                }
+                let albumStart = (itemIndex - item.albumIndex)
+                    .clamp(sectionItems.startIndex, sectionItems.endIndex)
+                let albumEnd = (albumStart + item.message.attachmentIds.count)
+                    .clamp(sectionItems.startIndex, sectionItems.endIndex)
+                if sectionItems[albumStart..<albumEnd].contains(nil) { return true }
             }
 
             // Count unfetched items forward and backward.
             func countUnfetched(in slice: ArraySlice<MediaGalleryItem?>) -> Int {
                 return slice.lazy.filter { $0 == nil }.count
             }
-            let sectionSlice = sectionItems[max(0, naiveRequestRange.lowerBound) ..<
-                                                min(sectionItems.count, naiveRequestRange.upperBound)]
+
+            owsAssertDebug(naiveRequestRange.lowerBound < sectionItems.count)
+            let sectionSliceStart = naiveRequestRange.lowerBound
+                .clamp(sectionItems.startIndex, sectionItems.endIndex)
+            let sectionSliceEnd = naiveRequestRange.upperBound
+                .clamp(sectionItems.startIndex, sectionItems.endIndex)
+            let sectionSlice = sectionItems[sectionSliceStart..<sectionSliceEnd]
             var unfetchedCount = countUnfetched(in: sectionSlice)
 
             if naiveRequestRange.upperBound > sectionItems.count {

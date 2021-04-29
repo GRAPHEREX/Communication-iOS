@@ -184,7 +184,9 @@ public class ReusableMediaView: NSObject {
             return
         }
 
-        Logger.verbose("media cache miss")
+        if !DebugFlags.reduceLogChatter {
+            Logger.verbose("media cache miss")
+        }
 
         let loadState = self._loadState
 
@@ -216,7 +218,7 @@ class MediaViewAdapterBlurHash: MediaViewAdapterSwift {
 
     public let shouldBeRenderedByYY = false
     let blurHash: String
-    let imageView = UIImageView()
+    let imageView = CVImageView()
 
     init(blurHash: String) {
         self.blurHash = blurHash
@@ -260,13 +262,54 @@ class MediaViewAdapterBlurHash: MediaViewAdapterSwift {
     }
 }
 
+// MARK: - MediaViewAdapterLoopingVideo
+
+class MediaViewAdapterLoopingVideo: MediaViewAdapterSwift {
+    let attachmentStream: TSAttachmentStream
+    let videoView = LoopingVideoView()
+
+    init(attachmentStream: TSAttachmentStream) {
+        self.attachmentStream = attachmentStream
+    }
+
+    let shouldBeRenderedByYY = false
+    var mediaView: UIView { videoView }
+    var isLoaded: Bool { videoView.video != nil }
+    var cacheKey: String { attachmentStream.uniqueId }
+
+    func loadMedia() -> Promise<AnyObject> {
+        guard attachmentStream.isLoopingVideo,
+              let path = attachmentStream.originalFilePath,
+              let video = LoopingVideo(url: URL(fileURLWithPath: path)) else {
+            return Promise(error: ReusableMediaError.invalidMedia)
+        }
+        return Promise.value(video)
+    }
+
+    func applyMedia(_ media: AnyObject) {
+        AssertIsOnMainThread()
+
+        guard let video = media as? LoopingVideo else {
+            owsFailDebug("Media has unexpected type: \(type(of: media))")
+            return
+        }
+        videoView.video = video
+    }
+
+    func unloadMedia() {
+        AssertIsOnMainThread()
+
+        videoView.video = nil
+    }
+}
+
 // MARK: -
 
 class MediaViewAdapterAnimated: MediaViewAdapterSwift {
 
     public let shouldBeRenderedByYY = true
     let attachmentStream: TSAttachmentStream
-    let imageView = YYAnimatedImageView()
+    let imageView = CVAnimatedImageView()
 
     init(attachmentStream: TSAttachmentStream) {
         self.attachmentStream = attachmentStream
@@ -320,7 +363,7 @@ class MediaViewAdapterStill: MediaViewAdapterSwift {
 
     public let shouldBeRenderedByYY = false
     let attachmentStream: TSAttachmentStream
-    let imageView = UIImageView()
+    let imageView = CVImageView()
 
     init(attachmentStream: TSAttachmentStream) {
         self.attachmentStream = attachmentStream
@@ -343,16 +386,11 @@ class MediaViewAdapterStill: MediaViewAdapterSwift {
             return Promise(error: ReusableMediaError.invalidMedia)
         }
         let (promise, resolver) = Promise<AnyObject>.pending()
-        let possibleThumbnail = attachmentStream.thumbnailImageLarge(success: { (image) in
+        attachmentStream.thumbnailImageMedium(success: { (image) in
             resolver.fulfill(image)
         }, failure: {
             resolver.reject(OWSAssertionError("Could not load thumbnail"))
         })
-        // TSAttachmentStream's thumbnail methods return a UIImage sync
-        // if the thumbnail already exists. Otherwise, the callbacks are invoked async.
-        if let thumbnail = possibleThumbnail {
-            resolver.fulfill(thumbnail)
-        }
         return promise
     }
 
@@ -379,7 +417,7 @@ class MediaViewAdapterVideo: MediaViewAdapterSwift {
 
     public let shouldBeRenderedByYY = false
     let attachmentStream: TSAttachmentStream
-    let imageView = UIImageView()
+    let imageView = CVImageView()
 
     init(attachmentStream: TSAttachmentStream) {
         self.attachmentStream = attachmentStream
@@ -402,16 +440,11 @@ class MediaViewAdapterVideo: MediaViewAdapterSwift {
             return Promise(error: ReusableMediaError.invalidMedia)
         }
         let (promise, resolver) = Promise<AnyObject>.pending()
-        let possibleThumbnail = attachmentStream.thumbnailImageLarge(success: { (image) in
+        attachmentStream.thumbnailImageMedium(success: { (image) in
             resolver.fulfill(image)
         }, failure: {
             resolver.reject(OWSAssertionError("Could not load thumbnail"))
         })
-        // TSAttachmentStream's thumbnail methods return a UIImage sync
-        // if the thumbnail already exists. Otherwise, the callbacks are invoked async.
-        if let thumbnail = possibleThumbnail {
-            resolver.fulfill(thumbnail)
-        }
         return promise
     }
 
@@ -447,9 +480,9 @@ public class MediaViewAdapterSticker: NSObject, MediaViewAdapterSwift {
         self.attachmentStream = attachmentStream
 
         if shouldBeRenderedByYY {
-            imageView = YYAnimatedImageView()
+            imageView = CVAnimatedImageView()
         } else {
-            imageView = UIImageView()
+            imageView = CVImageView()
         }
 
         imageView.contentMode = .scaleAspectFit

@@ -40,7 +40,8 @@ public class WallpaperSettingsViewController: OWSTableViewController2 {
             guard let self = self else { return cell }
             let miniPreview = MiniPreviewView(thread: self.thread)
             cell.contentView.addSubview(miniPreview)
-            miniPreview.autoPinWidthToSuperview(withMargin: Self.cellHOuterMargin)
+            miniPreview.autoPinEdge(toSuperviewEdge: .left, withInset: self.cellHOuterLeftMargin)
+            miniPreview.autoPinEdge(toSuperviewEdge: .right, withInset: self.cellHOuterRightMargin)
             miniPreview.autoPinHeightToSuperview()
             return cell
         } actionBlock: {}
@@ -204,7 +205,7 @@ class MiniPreviewView: UIView {
         if let wallpaperView = databaseStorage.read(
             block: { Wallpaper.view(for: thread, transaction: $0) }
         ) {
-            stackViewContainer = wallpaperView
+            stackViewContainer = wallpaperView.asPreviewView()
         } else {
             stackViewContainer = UIView()
             stackViewContainer.backgroundColor = Theme.backgroundColor

@@ -33,6 +33,7 @@ class AvatarViewController: UIViewController, InteractivelyDismissableViewContro
         guard let avatarImage = OWSAvatarBuilder.buildImage(
                 thread: thread,
                 diameter: UInt(UIScreen.main.bounds.size.smallerAxis),
+                localUserAvatarMode: .asUser,
                 transaction: readTx) else { return nil }
 
         self.avatarImage = avatarImage
@@ -43,11 +44,27 @@ class AvatarViewController: UIViewController, InteractivelyDismissableViewContro
     }
 
     @objc
-    init?(address: SignalServiceAddress, readTx: SDSAnyReadTransaction) {
-        guard let avatarImage = OWSContactAvatarBuilder.buildImage(
-                address: address,
-                diameter: UInt(UIScreen.main.bounds.size.smallerAxis),
-                transaction: readTx) else { return nil }
+    init?(address: SignalServiceAddress, renderLocalUserAsNoteToSelf: Bool, readTx: SDSAnyReadTransaction) {
+        let diameter = UInt(UIScreen.main.bounds.size.smallerAxis)
+        guard let avatarImage: UIImage = {
+            let localUserAvatarMode: LocalUserAvatarMode = (renderLocalUserAsNoteToSelf
+                                                                ? .noteToSelf
+                                                                : .asUser)
+            if address.isLocalAddress, !renderLocalUserAsNoteToSelf {
+                return Self.profileManager.localProfileAvatarImage() ??
+                    OWSContactAvatarBuilder(
+                        forLocalUserWithDiameter: diameter,
+                        localUserAvatarMode: localUserAvatarMode,
+                        transaction: readTx
+                    ).buildDefaultImage()
+            } else {
+                return OWSContactAvatarBuilder.buildImageForNonLocalAddress(
+                    address,
+                    diameter: UInt(UIScreen.main.bounds.size.smallerAxis),
+                    transaction: readTx
+                )
+            }
+        }() else { return nil }
 
         self.avatarImage = avatarImage
         super.init(nibName: nil, bundle: nil)

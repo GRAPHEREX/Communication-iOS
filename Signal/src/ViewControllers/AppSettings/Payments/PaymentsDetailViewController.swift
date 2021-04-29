@@ -31,7 +31,8 @@ class PaymentsDetailViewController: OWSTableViewController2 {
                                                     selector: #selector(didTapRemove))
             removeButton.autoSetHeightUsingFont()
             view.addSubview(removeButton)
-            removeButton.autoPinWidthToSuperview(withMargin: Self.cellHOuterMargin)
+            removeButton.autoPinEdge(toSuperviewEdge: .left, withInset: cellHOuterLeftMargin)
+            removeButton.autoPinEdge(toSuperviewEdge: .right, withInset: cellHOuterRightMargin)
             removeButton.autoPin(toBottomLayoutGuideOf: self, withInset: 8)
         }
 
@@ -314,9 +315,7 @@ class PaymentsDetailViewController: OWSTableViewController2 {
         let footerStack = UIStackView(arrangedSubviews: [footerLabel])
         footerStack.axis = .vertical
         footerStack.alignment = .fill
-        footerStack.layoutMargins = UIEdgeInsets(hMargin: (OWSTableViewController2.cellHOuterMargin +
-                                                            OWSTableViewController2.cellHInnerMargin),
-                                                 vMargin: 12)
+        footerStack.layoutMargins = cellOuterInsetsWithMargin(hMargin: Self.cellHInnerMargin, vMargin: 12)
         footerStack.isLayoutMarginsRelativeArrangement = true
         section.customFooterView = footerStack
 
@@ -365,8 +364,8 @@ class PaymentsDetailViewController: OWSTableViewController2 {
         var stackViews = [UIView]()
 
         let avatarSize: UInt = 52
-        let avatarView = AvatarImageView()
-        avatarView.autoSetDimensions(to: .square(CGFloat(avatarSize)))
+        let avatarView = ConversationAvatarView(diameter: avatarSize,
+                                                localUserAvatarMode: .asUser)
         stackViews.append(avatarView)
         stackViews.append(UIView.spacer(withHeight: 12))
 
@@ -387,11 +386,7 @@ class PaymentsDetailViewController: OWSTableViewController2 {
         }
 
         databaseStorage.read { transaction in
-            let colorName = TSContactThread.conversationColorName(forContactAddress: address,
-                                                                  transaction: transaction)
-            avatarView.image = OWSContactAvatarBuilder(address: address,
-                                                       colorName: colorName,
-                                                       diameter: avatarSize).build(with: transaction)
+            avatarView.configure(address: address, transaction: transaction)
 
             let username = Self.contactsManager.displayName(for: address, transaction: transaction)
             let usernameFormat = (self.paymentItem.isIncoming

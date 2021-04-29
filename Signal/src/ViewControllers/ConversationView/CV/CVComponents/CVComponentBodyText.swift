@@ -14,6 +14,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         let hasTapForMore: Bool
         let shouldUseAttributedText: Bool
         let hasPendingMessageRequest: Bool
+        fileprivate let dataItems: [DataItem]
 
         public var canUseDedicatedCell: Bool {
             if hasTapForMore || searchText != nil {
@@ -71,21 +72,16 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         componentState.isJumbomojiMessage
     }
 
-    private static func buildDataDetectorWithLinks(shouldAllowLinkification: Bool) -> NSDataDetector? {
-        let uiDataDetectorTypes: UIDataDetectorTypes = (shouldAllowLinkification
-                                                            ? kOWSAllowedDataDetectorTypes
-                                                            : kOWSAllowedDataDetectorTypesExceptLinks)
-        var nsDataDetectorTypes: NSTextCheckingTypes = 0
-        if uiDataDetectorTypes.contains(UIDataDetectorTypes.link) {
-            nsDataDetectorTypes |= NSTextCheckingResult.CheckingType.link.rawValue
+    private static func buildDataDetector(shouldAllowLinkification: Bool) -> NSDataDetector? {
+        var checkingTypes = NSTextCheckingResult.CheckingType()
+        if shouldAllowLinkification {
+            checkingTypes.insert(.link)
         }
-        if uiDataDetectorTypes.contains(UIDataDetectorTypes.address) {
-            nsDataDetectorTypes |= NSTextCheckingResult.CheckingType.address.rawValue
-        }
-        // TODO: There doesn't seem to be an equivalent to UIDataDetectorTypes.calendarEvent.
+        checkingTypes.insert(.address)
+        checkingTypes.insert(.phoneNumber)
 
         do {
-            return try NSDataDetector(types: nsDataDetectorTypes)
+            return try NSDataDetector(types: checkingTypes.rawValue)
         } catch {
             owsFailDebug("Error: \(error)")
             return nil
@@ -93,11 +89,11 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
     }
 
     private static var dataDetectorWithLinks: NSDataDetector? = {
-        buildDataDetectorWithLinks(shouldAllowLinkification: true)
+        buildDataDetector(shouldAllowLinkification: true)
     }()
 
     private static var dataDetectorWithoutLinks: NSDataDetector? = {
-        buildDataDetectorWithLinks(shouldAllowLinkification: false)
+        buildDataDetector(shouldAllowLinkification: false)
     }()
 
     // DataDetectors are expensive to build, so we reuse them.
@@ -107,15 +103,27 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
 
     private static let unfairLock = UnfairLock()
 
-    private static func shouldUseAttributedText(text: String,
-                                                hasPendingMessageRequest: Bool,
-                                                shouldAllowLinkification: Bool) -> Bool {
+    fileprivate struct DataItem: Equatable {
+        enum DataType: Equatable {
+            case link
+            case address
+            case phoneNumber
+        }
+
+        let dataType: DataType
+        let range: NSRange
+        let snippet: String
+    }
+
+    private static func detectDataItems(text: String,
+                                        hasPendingMessageRequest: Bool,
+                                        shouldAllowLinkification: Bool) -> [DataItem] {
         // Use a lock to ensure that measurement on and off the main thread
         // don't conflict.
         unfairLock.withLock {
             guard !hasPendingMessageRequest else {
                 // Do not linkify if there is a pending message request.
-                return false
+                return []
             }
             // NSDataDetector and UIDataDetector behavior should be aligned.
             //
@@ -124,10 +132,68 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             guard let detector = dataDetector(shouldAllowLinkification: shouldAllowLinkification) else {
                 // If the data detectors can't be built, default to using attributed text.
                 owsFailDebug("Could not build dataDetector.")
-                return true
+                return []
             }
-            let hasLinks = !detector.matches(in: text, options: [], range: text.entireRange).isEmpty
-            return hasLinks
+            var dataItems = [DataItem]()
+            for match in detector.matches(in: text, options: [], range: text.entireRange) {
+                guard let snippet = (text as NSString).substring(with: match.range).strippedOrNil else {
+                    owsFailDebug("Invalid snippet.")
+                    continue
+                }
+
+                // NSTextCheckingResult.CheckingType
+                let dataType: DataItem.DataType
+                if match.resultType.contains(.orthography) {
+                    Logger.verbose("orthography")
+                    continue
+                } else if match.resultType.contains(.spelling) {
+                    Logger.verbose("spelling")
+                    continue
+                } else if match.resultType.contains(.grammar) {
+                    Logger.verbose("grammar")
+                    continue
+                } else if match.resultType.contains(.date) {
+                    Logger.verbose("date")
+                    continue
+                } else if match.resultType.contains(.address) {
+                    Logger.verbose("address")
+                    dataType = .address
+                } else if match.resultType.contains(.link) {
+                    Logger.verbose("link")
+                    dataType = .link
+                } else if match.resultType.contains(.quote) {
+                    Logger.verbose("quote")
+                    continue
+                } else if match.resultType.contains(.dash) {
+                    Logger.verbose("dash")
+                    continue
+                } else if match.resultType.contains(.replacement) {
+                    Logger.verbose("replacement")
+                    continue
+                } else if match.resultType.contains(.correction) {
+                    Logger.verbose("correction")
+                    continue
+                } else if match.resultType.contains(.regularExpression) {
+                    Logger.verbose("regularExpression")
+                    continue
+                } else if match.resultType.contains(.phoneNumber) {
+                    Logger.verbose("phoneNumber")
+                    dataType = .phoneNumber
+                } else if match.resultType.contains(.transitInformation) {
+                    Logger.verbose("transitInformation")
+                    continue
+                } else {
+                    let snippet = (text as NSString).substring(with: match.range)
+                    Logger.verbose("snippet: '\(snippet)'")
+                    owsFailDebug("Unknown link type: \(match.resultType.rawValue)")
+                    continue
+                }
+
+                dataItems.append(DataItem(dataType: dataType,
+                                          range: match.range,
+                                          snippet: snippet))
+            }
+            return dataItems
         }
     }
 
@@ -140,11 +206,19 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         let searchText = viewStateSnapshot.searchText
         let isTextExpanded = textExpansion.isTextExpanded(interactionId: interaction.uniqueId)
 
+        let dataItems: [DataItem]
         var shouldUseAttributedText = false
         if let displayableText = bodyText.displayableText,
            let textValue = bodyText.textValue(isTextExpanded: isTextExpanded) {
+
+            let shouldAllowLinkification = displayableText.shouldAllowLinkification
+
             switch textValue {
             case .text(let text):
+                dataItems = detectDataItems(text: text,
+                                            hasPendingMessageRequest: hasPendingMessageRequest,
+                                            shouldAllowLinkification: shouldAllowLinkification)
+
                 // UILabels are much cheaper than UITextViews, and we can
                 // usually use them for rendering body text.
                 //
@@ -156,14 +230,16 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
                 if searchText != nil {
                     shouldUseAttributedText = true
                 } else {
-                    let shouldAllowLinkification = displayableText.shouldAllowLinkification
-                    shouldUseAttributedText = self.shouldUseAttributedText(text: text,
-                                                                           hasPendingMessageRequest: hasPendingMessageRequest,
-                                                                           shouldAllowLinkification: shouldAllowLinkification)
+                    shouldUseAttributedText = !dataItems.isEmpty
                 }
-            case .attributedText:
+            case .attributedText(let attributedText):
+                dataItems = detectDataItems(text: attributedText.string,
+                                            hasPendingMessageRequest: hasPendingMessageRequest,
+                                            shouldAllowLinkification: shouldAllowLinkification)
                 shouldUseAttributedText = true
             }
+        } else {
+            dataItems = []
         }
 
         return State(bodyText: bodyText,
@@ -171,7 +247,8 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
                      searchText: searchText,
                      hasTapForMore: hasTapForMore,
                      shouldUseAttributedText: shouldUseAttributedText,
-                     hasPendingMessageRequest: hasPendingMessageRequest)
+                     hasPendingMessageRequest: hasPendingMessageRequest,
+                     dataItems: dataItems)
     }
 
     static func buildComponentState(message: TSMessage,
@@ -254,54 +331,66 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             return
         }
 
-        let hStackView = componentView.hStackView
-        hStackView.apply(config: stackViewConfig)
-
         switch bodyText {
         case .bodyText(let displayableText):
-            configureForBodyText(componentView: componentView, displayableText: displayableText)
+            configureForBodyText(componentView: componentView,
+                                 displayableText: displayableText,
+                                 cellMeasurement: cellMeasurement)
         case .oversizeTextDownloading:
             owsAssertDebug(!componentView.isDedicatedCellView)
 
-            configureForOversizeTextDownloading(componentView: componentView)
+            configureForOversizeTextDownloading(componentView: componentView,
+                                                cellMeasurement: cellMeasurement)
         case .remotelyDeleted:
             owsAssertDebug(!componentView.isDedicatedCellView)
 
-            configureForRemotelyDeleted(componentView: componentView)
+            configureForRemotelyDeleted(componentView: componentView,
+                                        cellMeasurement: cellMeasurement)
         }
     }
 
-    private func configureForRemotelyDeleted(componentView: CVComponentViewBodyText) {
+    private func configureForRemotelyDeleted(componentView: CVComponentViewBodyText,
+                                             cellMeasurement: CVCellMeasurement) {
         _ = configureForLabel(componentView: componentView,
-                              labelConfig: labelConfigForRemotelyDeleted)
+                              labelConfig: labelConfigForRemotelyDeleted,
+                              cellMeasurement: cellMeasurement)
     }
 
-    private func configureForOversizeTextDownloading(componentView: CVComponentViewBodyText) {
+    private func configureForOversizeTextDownloading(componentView: CVComponentViewBodyText,
+                                                     cellMeasurement: CVCellMeasurement) {
         _ = configureForLabel(componentView: componentView,
-                              labelConfig: labelConfigForOversizeTextDownloading)
+                              labelConfig: labelConfigForOversizeTextDownloading,
+                              cellMeasurement: cellMeasurement)
     }
 
     private func configureForLabel(componentView: CVComponentViewBodyText,
-                                   labelConfig: CVLabelConfig) -> UILabel {
+                                   labelConfig: CVLabelConfig,
+                                   cellMeasurement: CVCellMeasurement) -> UILabel {
         let label = componentView.ensuredLabel
         labelConfig.applyForRendering(label: label)
 
-        label.isHiddenInStackView = false
         if label.superview == nil {
-            let hStackView = componentView.hStackView
-            hStackView.addArrangedSubview(label)
-            label.setCompressionResistanceVerticalHigh()
+            let stackView = componentView.stackView
+            stackView.reset()
+
+            stackView.configure(config: stackViewConfig,
+                                cellMeasurement: cellMeasurement,
+                                measurementKey: Self.measurementKey_stackView,
+                                subviews: [ label ])
         }
-        componentView.possibleTextView?.isHiddenInStackView = true
 
         return label
     }
 
     public func configureForBodyText(componentView: CVComponentViewBodyText,
-                                     displayableText: DisplayableText) {
+                                     displayableText: DisplayableText,
+                                     cellMeasurement: CVCellMeasurement) {
+
         switch textConfig(displayableText: displayableText) {
         case .labelConfig(let labelConfig):
-            _ = configureForLabel(componentView: componentView, labelConfig: labelConfig)
+            _ = configureForLabel(componentView: componentView,
+                                  labelConfig: labelConfig,
+                                  cellMeasurement: cellMeasurement)
         case .textViewConfig(let textViewConfig):
             let textView = componentView.ensuredTextView
 
@@ -313,21 +402,16 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             }
             textView.shouldIgnoreEvents = shouldIgnoreEvents
 
-            if hasPendingMessageRequest {
-                // Do not linkify text if there is a pending message request for this conversation.
-                textView.dataDetectorTypes = []
-            } else {
-                textView.ensureShouldLinkifyText(displayableText.shouldAllowLinkification)
-            }
-
             textViewConfig.applyForRendering(textView: textView)
 
-            textView.isHiddenInStackView = false
             if textView.superview == nil {
-                let hStackView = componentView.hStackView
-                hStackView.addArrangedSubview(textView)
+                let stackView = componentView.stackView
+                stackView.reset()
+                stackView.configure(config: stackViewConfig,
+                                    cellMeasurement: cellMeasurement,
+                                    measurementKey: Self.measurementKey_stackView,
+                                    subviews: [ textView ])
             }
-            componentView.possibleLabel?.isHiddenInStackView = true
         }
     }
 
@@ -397,6 +481,57 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         }
     }
 
+    private func linkifyData(attributedText: NSMutableAttributedString) {
+        Self.linkifyData(attributedText: attributedText, dataItems: bodyTextState.dataItems)
+    }
+
+    public static func linkifyData(attributedText: NSMutableAttributedString,
+                                   hasPendingMessageRequest: Bool,
+                                   shouldAllowLinkification: Bool) {
+
+        let dataItems = detectDataItems(text: attributedText.string,
+                                        hasPendingMessageRequest: hasPendingMessageRequest,
+                                        shouldAllowLinkification: shouldAllowLinkification)
+        Self.linkifyData(attributedText: attributedText, dataItems: dataItems)
+    }
+
+    private static func linkifyData(attributedText: NSMutableAttributedString,
+                                    dataItems: [DataItem]) {
+        // Sort so that we can detect overlap.
+        let dataItems = dataItems.sorted { (left, right) in
+            left.range.location < right.range.location
+        }
+        var lastIndex: Int = 0
+        for dataItem in dataItems {
+            let snippet = dataItem.snippet
+            let range = dataItem.range
+
+            guard range.location >= lastIndex else {
+                owsFailDebug("Overlapping ranges.")
+                continue
+            }
+
+            let link: String
+            switch dataItem.dataType {
+            case .link:
+                link = snippet
+            case .address:
+                // https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/MapLinks/MapLinks.html
+                guard let urlEncodedAddress = snippet.encodeURIComponent else {
+                    owsFailDebug("Could not URL encode address.")
+                    continue
+                }
+                link = "https://maps.apple.com/?q=" + urlEncodedAddress
+            case .phoneNumber:
+                // https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/PhoneLinks/PhoneLinks.html
+                link = "tel:" + snippet
+            }
+            attributedText.addAttribute(.link, value: link, range: range)
+
+            lastIndex = max(lastIndex, range.location + range.length)
+        }
+    }
+
     private func textViewConfig(displayableText: DisplayableText,
                                 attributedText attributedTextParam: NSAttributedString) -> CVTextViewConfig {
 
@@ -422,6 +557,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             ],
             range: attributedText.entireRange
         )
+        linkifyData(attributedText: attributedText)
 
         if let searchText = searchText,
            searchText.count >= ConversationSearchController.kMinimumSearchTextLength {
@@ -447,22 +583,32 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
                                 linkTextAttributes: linkTextAttributes)
     }
 
+    private static let measurementKey_stackView = "CVComponentBodyText.measurementKey_stackView"
+
     public func measure(maxWidth: CGFloat, measurementBuilder: CVCellMeasurement.Builder) -> CGSize {
         owsAssertDebug(maxWidth > 0)
 
-        switch bodyText {
-        case .bodyText(let displayableText):
-            switch textConfig(displayableText: displayableText) {
-            case .labelConfig(let labelConfig):
-                return CVText.measureLabel(config: labelConfig, maxWidth: maxWidth).ceil
-            case .textViewConfig(let textViewConfig):
-                return CVText.measureTextView(config: textViewConfig, maxWidth: maxWidth).ceil
+        let textSize: CGSize = {
+            switch bodyText {
+            case .bodyText(let displayableText):
+                switch textConfig(displayableText: displayableText) {
+                case .labelConfig(let labelConfig):
+                    return CVText.measureLabel(config: labelConfig, maxWidth: maxWidth).ceil
+                case .textViewConfig(let textViewConfig):
+                    return CVText.measureTextView(config: textViewConfig, maxWidth: maxWidth).ceil
+                }
+            case .oversizeTextDownloading:
+                return CVText.measureLabel(config: labelConfigForOversizeTextDownloading, maxWidth: maxWidth).ceil
+            case .remotelyDeleted:
+                return CVText.measureLabel(config: labelConfigForRemotelyDeleted, maxWidth: maxWidth).ceil
             }
-        case .oversizeTextDownloading:
-            return CVText.measureLabel(config: labelConfigForOversizeTextDownloading, maxWidth: maxWidth).ceil
-        case .remotelyDeleted:
-            return CVText.measureLabel(config: labelConfigForRemotelyDeleted, maxWidth: maxWidth).ceil
-        }
+        }()
+        let textInfo = textSize.asManualSubviewInfo
+        let stackMeasurement = ManualStackView.measure(config: stackViewConfig,
+                                                        measurementBuilder: measurementBuilder,
+                                                        measurementKey: Self.measurementKey_stackView,
+                                                        subviewInfos: [ textInfo ])
+        return stackMeasurement.measuredSize
     }
 
     // MARK: - Events
@@ -532,7 +678,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
 
         public weak var componentDelegate: CVComponentDelegate?
 
-        fileprivate let hStackView = OWSStackView(name: "bodyText")
+        fileprivate let stackView = ManualStackView(name: "bodyText")
 
         private var _textView: OWSMessageTextView?
         fileprivate var possibleTextView: OWSMessageTextView? { _textView }
@@ -552,7 +698,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             if let label = _label {
                 return label
             }
-            let label = UILabel()
+            let label = CVLabel()
             _label = label
             return label
         }
@@ -560,7 +706,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         public var isDedicatedCellView = false
 
         public var rootView: UIView {
-            hStackView
+            stackView
         }
 
         required init(componentDelegate: CVComponentDelegate) {
@@ -579,7 +725,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
 
         public func reset() {
             if !isDedicatedCellView {
-                hStackView.reset()
+                stackView.reset()
             }
 
             _textView?.text = nil

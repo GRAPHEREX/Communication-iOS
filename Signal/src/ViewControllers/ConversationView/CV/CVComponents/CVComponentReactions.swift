@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -35,13 +35,16 @@ public class CVComponentReactions: CVComponentBase, CVComponent {
             return
         }
 
-        componentView.reactionCountsView.configure(withState: viewState)
+        let reactionCountsView = componentView.reactionCountsView
+        reactionCountsView.configure(state: viewState,
+                                     cellMeasurement: cellMeasurement)
     }
 
     public func measure(maxWidth: CGFloat, measurementBuilder: CVCellMeasurement.Builder) -> CGSize {
         owsAssertDebug(maxWidth > 0)
 
-        return CVReactionCountsView.measure(state: viewState).ceil
+        return CVReactionCountsView.measure(state: viewState,
+                                            measurementBuilder: measurementBuilder)
     }
 
     // MARK: - Events
@@ -77,6 +80,7 @@ public class CVComponentReactions: CVComponentBase, CVComponent {
         public func setIsCellVisible(_ isCellVisible: Bool) {}
 
         public func reset() {
+            reactionCountsView.reset()
         }
     }
 }

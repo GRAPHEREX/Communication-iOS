@@ -199,12 +199,16 @@ public class CVComponentState: Equatable, Dependencies {
 
     struct ThreadDetails: Equatable {
         let avatar: UIImage?
+        let isAvatarBlurred: Bool
         let titleText: String
         let bioText: String?
         let detailsText: String?
         let mutualGroupsText: NSAttributedString?
     }
     let threadDetails: ThreadDetails?
+
+    typealias UnknownThreadWarning = CVComponentState.SystemMessage
+    let unknownThreadWarning: UnknownThreadWarning?
 
     struct BottomButtons: Equatable {
         let actions: [CVMessageAction]
@@ -238,6 +242,7 @@ public class CVComponentState: Equatable, Dependencies {
                      reactions: Reactions?,
                      typingIndicator: TypingIndicator?,
                      threadDetails: ThreadDetails?,
+                     unknownThreadWarning: UnknownThreadWarning?,
                      bottomButtons: BottomButtons?,
                      failedOrPendingDownloads: FailedOrPendingDownloads?,
                      sendFailureBadge: SendFailureBadge?) {
@@ -260,6 +265,7 @@ public class CVComponentState: Equatable, Dependencies {
         self.reactions = reactions
         self.typingIndicator = typingIndicator
         self.threadDetails = threadDetails
+        self.unknownThreadWarning = unknownThreadWarning
         self.bottomButtons = bottomButtons
         self.failedOrPendingDownloads = failedOrPendingDownloads
         self.sendFailureBadge = sendFailureBadge
@@ -286,6 +292,7 @@ public class CVComponentState: Equatable, Dependencies {
                     lhs.reactions == rhs.reactions &&
                     lhs.typingIndicator == rhs.typingIndicator &&
                     lhs.threadDetails == rhs.threadDetails &&
+                    lhs.unknownThreadWarning == rhs.unknownThreadWarning &&
                     lhs.bottomButtons == rhs.bottomButtons &&
                     lhs.failedOrPendingDownloads == rhs.failedOrPendingDownloads &&
                     lhs.sendFailureBadge == rhs.sendFailureBadge)
@@ -310,6 +317,7 @@ public class CVComponentState: Equatable, Dependencies {
         typealias UnreadIndicator = CVComponentState.UnreadIndicator
         typealias TypingIndicator = CVComponentState.TypingIndicator
         typealias ThreadDetails = CVComponentState.ThreadDetails
+        typealias UnknownThreadWarning = CVComponentState.UnknownThreadWarning
         typealias FailedOrPendingDownloads = CVComponentState.FailedOrPendingDownloads
         typealias BottomButtons = CVComponentState.BottomButtons
         typealias SendFailureBadge = CVComponentState.SendFailureBadge
@@ -333,6 +341,7 @@ public class CVComponentState: Equatable, Dependencies {
         var unreadIndicator: UnreadIndicator?
         var typingIndicator: TypingIndicator?
         var threadDetails: ThreadDetails?
+        var unknownThreadWarning: UnknownThreadWarning?
         var reactions: Reactions?
         var failedOrPendingDownloads: FailedOrPendingDownloads?
         var sendFailureBadge: SendFailureBadge?
@@ -368,6 +377,7 @@ public class CVComponentState: Equatable, Dependencies {
                                     reactions: reactions,
                                     typingIndicator: typingIndicator,
                                     threadDetails: threadDetails,
+                                    unknownThreadWarning: unknownThreadWarning,
                                     bottomButtons: bottomButtons,
                                     failedOrPendingDownloads: failedOrPendingDownloads,
                                     sendFailureBadge: sendFailureBadge)
@@ -395,6 +405,9 @@ public class CVComponentState: Equatable, Dependencies {
             }
             if threadDetails != nil {
                 return .threadDetails
+            }
+            if unknownThreadWarning != nil {
+                return .unknownThreadWarning
             }
             if systemMessage != nil {
                 return .systemMessage
@@ -487,6 +500,9 @@ public class CVComponentState: Equatable, Dependencies {
         }
         if threadDetails != nil {
             result.insert(.threadDetails)
+        }
+        if unknownThreadWarning != nil {
+            result.insert(.unknownThreadWarning)
         }
         if bottomButtons != nil {
             result.insert(.bottomButtons)
@@ -589,6 +605,11 @@ fileprivate extension CVComponentState.Builder {
         switch interaction.interactionType() {
         case .threadDetails:
             self.threadDetails = buildThreadDetails()
+            return build()
+        case .unknownThreadWarning:
+            self.unknownThreadWarning = CVComponentSystemMessage.buildUnknownThreadWarningState(interaction: interaction,
+                                                                                                threadViewModel: threadViewModel,
+                                                                                                transaction: transaction)
             return build()
         case .typingIndicator:
             guard let typingIndicatorInteraction = interaction as? TypingIndicatorInteraction else {

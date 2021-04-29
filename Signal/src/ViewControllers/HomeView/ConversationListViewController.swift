@@ -33,11 +33,9 @@ public extension ConversationListViewController {
                                        comment: "Format for the payments notification banner for a single payment notification with details. Embeds: {{ %1$@ the name of the user who sent you the payment, %2$@ the amount of the payment }}.")
         let title = String(format: format, userName, formattedAmount)
 
-        let avatarImage = OWSContactAvatarBuilder(address: address,
-                                                  colorName: contactThread.conversationColorName,
-                                                  diameter: Self.paymentsBannerAvatarSize,
-                                                  transaction: transaction).build(with: transaction)
-        let avatarView = AvatarImageView(image: avatarImage)
+        let avatarView = ConversationAvatarView(diameter: Self.paymentsBannerAvatarSize,
+                                                localUserAvatarMode: .asUser)
+        avatarView.configure(address: address, transaction: transaction)
 
         let paymentsHistoryItem = PaymentsHistoryItem(paymentModel: paymentModel,
                                                       displayName: userName,
@@ -164,8 +162,12 @@ public extension ConversationListViewController {
         stack.axis = .horizontal
         stack.alignment = .center
         stack.spacing = 10
-        stack.layoutMargins = UIEdgeInsets(hMargin: OWSTableViewController2.cellHOuterMargin,
-                                           vMargin: OWSTableViewController2.cellVInnerMargin)
+        stack.layoutMargins = UIEdgeInsets(
+            top: OWSTableViewController2.cellVInnerMargin,
+            left: OWSTableViewController2.cellHOuterLeftMargin(in: view),
+            bottom: OWSTableViewController2.cellVInnerMargin,
+            right: OWSTableViewController2.cellHOuterRightMargin(in: view)
+        )
         stack.isLayoutMarginsRelativeArrangement = true
         paymentsBannerView.addSubview(stack)
         stack.autoPinEdgesToSuperviewEdges()

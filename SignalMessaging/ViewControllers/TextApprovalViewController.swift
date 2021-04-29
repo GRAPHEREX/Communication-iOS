@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -112,20 +112,27 @@ public class TextApprovalViewController: OWSViewController, MentionTextViewDeleg
     // MARK: - Link Previews
 
     private var wasLinkPreviewCancelled = false
-    private lazy var linkPreviewView = LinkPreviewView(draftDelegate: self)
+    private lazy var linkPreviewView: LinkPreviewView = {
+        let linkPreviewView = LinkPreviewView(draftDelegate: self)
+        linkPreviewView.isHidden = true
+        return linkPreviewView
+    }()
 
     private var currentPreviewUrl: URL? {
         didSet {
             guard currentPreviewUrl != oldValue else { return }
             guard let previewUrl = currentPreviewUrl else { return }
 
-            linkPreviewView.state = LinkPreviewLoading(linkType: .preview)
+            let linkPreviewView = self.linkPreviewView
+            linkPreviewView.configureForNonCVC(state: LinkPreviewLoading(linkType: .preview),
+                                               isDraft: true)
             linkPreviewView.isHidden = false
 
             linkPreviewManager.fetchLinkPreview(for: previewUrl).done { [weak self] draft in
                 guard let self = self else { return }
                 guard self.currentPreviewUrl == previewUrl else { return }
-                self.linkPreviewView.state = LinkPreviewDraft(linkPreviewDraft: draft)
+                linkPreviewView.configureForNonCVC(state: LinkPreviewDraft(linkPreviewDraft: draft),
+                                                   isDraft: true)
             }.catch { [weak self] _ in
                 self?.clearLinkPreview()
             }
@@ -148,7 +155,7 @@ public class TextApprovalViewController: OWSViewController, MentionTextViewDeleg
     private func clearLinkPreview() {
         currentPreviewUrl = nil
         linkPreviewView.isHidden = true
-        linkPreviewView.state = nil
+        linkPreviewView.reset()
     }
 
     // MARK: - Create Views

@@ -4,6 +4,7 @@
 
 #import "OWSBubbleView.h"
 #import "MainAppContext.h"
+#import <SignalMessaging/SignalMessaging-Swift.h>
 #import <SignalMessaging/UIView+OWS.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -48,8 +49,6 @@ const CGFloat kOWSMessageCellCornerRadius_Small = 4;
 @property (nonatomic) CAShapeLayer *shapeLayer;
 @property (nonatomic) CAGradientLayer *gradientLayer;
 
-@property (nonatomic, readonly) NSMutableArray<id<OWSBubbleViewPartner>> *partnerViews;
-
 @end
 
 #pragma mark -
@@ -76,7 +75,7 @@ const CGFloat kOWSMessageCellCornerRadius_Small = 4;
     self.layer.masksToBounds = YES;
     self.maskLayer = [CAShapeLayer new];
 
-    _partnerViews = [NSMutableArray new];
+    self.translatesAutoresizingMaskIntoConstraints = NO;
 
     return self;
 }
@@ -92,10 +91,6 @@ const CGFloat kOWSMessageCellCornerRadius_Small = 4;
     if (didChangeSize) {
         [self updateLayers];
     }
-
-    // We always need to inform the "bubble stroke view" (if any) if our
-    // frame/bounds/center changes. Its contents are not in local coordinates.
-    [self updatePartnerViews];
 }
 
 - (void)setBounds:(CGRect)bounds
@@ -109,19 +104,6 @@ const CGFloat kOWSMessageCellCornerRadius_Small = 4;
     if (didChangeSize) {
         [self updateLayers];
     }
-
-    // We always need to inform the "bubble stroke view" (if any) if our
-    // frame/bounds/center changes. Its contents are not in local coordinates.
-    [self updatePartnerViews];
-}
-
-- (void)setCenter:(CGPoint)center
-{
-    [super setCenter:center];
-
-    // We always need to inform the "bubble stroke view" (if any) if our
-    // frame/bounds/center changes. Its contents are not in local coordinates.
-    [self updatePartnerViews];
 }
 
 - (void)setFillColor:(nullable UIColor *)fillColor
@@ -169,6 +151,11 @@ const CGFloat kOWSMessageCellCornerRadius_Small = 4;
 {
     [super layoutSubviews];
 
+    [self ensureSubviewLayout];
+}
+
+- (void)ensureSubviewLayout
+{
     if (self.ensureSubviewsFillBounds) {
         for (UIView *subview in self.subviews) {
             subview.frame = self.bounds;
@@ -228,8 +215,9 @@ const CGFloat kOWSMessageCellCornerRadius_Small = 4;
         self.layer.mask = self.maskLayer;
     }
 
-
     [CATransaction commit];
+
+    [self ensureSubviewLayout];
 }
 
 - (nullable NSArray *)fillGradientCGColors
@@ -325,33 +313,6 @@ const CGFloat kOWSMessageCellCornerRadius_Small = 4;
     return bezierPath;
 }
 
-#pragma mark - Coordination
-
-- (void)addPartnerView:(id<OWSBubbleViewPartner>)partnerView
-{
-    OWSAssertDebug(self.partnerViews);
-
-    [partnerView setBubbleView:self];
-
-    [self.partnerViews addObject:partnerView];
-}
-
-- (void)clearPartnerViews
-{
-    OWSAssertDebug(self.partnerViews);
-
-    [self.partnerViews removeAllObjects];
-}
-
-- (void)updatePartnerViews
-{
-    [self layoutIfNeeded];
-
-    for (id<OWSBubbleViewPartner> partnerView in self.partnerViews) {
-        [partnerView updateLayers];
-    }
-}
-
 - (CGFloat)minWidth
 {
     return (kOWSMessageCellCornerRadius_Large * 2);
@@ -360,6 +321,13 @@ const CGFloat kOWSMessageCellCornerRadius_Small = 4;
 - (CGFloat)minHeight
 {
     return (kOWSMessageCellCornerRadius_Large * 2);
+}
+
+- (void)updateConstraints
+{
+    [super updateConstraints];
+
+    [self deactivateAllConstraints];
 }
 
 @end

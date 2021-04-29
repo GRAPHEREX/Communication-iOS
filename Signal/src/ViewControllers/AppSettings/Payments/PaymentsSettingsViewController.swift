@@ -40,6 +40,34 @@ public class PaymentsSettingsViewController: OWSTableViewController2 {
         super.init()
     }
 
+    // MARK: - Update Balance Timer
+
+    private var updateBalanceTimer: Timer?
+
+    private func stopUpdateBalanceTimer() {
+        updateBalanceTimer?.invalidate()
+        updateBalanceTimer = nil
+    }
+
+    private func startUpdateBalanceTimer() {
+        stopUpdateBalanceTimer()
+
+        let updateInterval = kSecondInterval * 30
+        self.updateBalanceTimer = WeakTimer.scheduledTimer(timeInterval: updateInterval,
+                                                           target: self,
+                                                           userInfo: nil,
+                                                           repeats: true) { _ in
+            Self.updateBalanceTimerDidFire()
+        }
+    }
+
+    private static func updateBalanceTimerDidFire() {
+        guard CurrentAppContext().isMainAppAndActive else {
+            return
+        }
+        Self.paymentsSwift.updateCurrentPaymentBalance()
+    }
+
     // MARK: - Help Cards
 
     private enum HelpCard: String, Equatable, CaseIterable {
@@ -162,6 +190,8 @@ public class PaymentsSettingsViewController: OWSTableViewController2 {
 
         paymentsSwift.updateCurrentPaymentBalance()
         paymentsCurrencies.updateConversationRatesIfStale()
+
+        startUpdateBalanceTimer()
     }
 
     public override func viewDidDisappear(_ animated: Bool) {
@@ -171,6 +201,8 @@ public class PaymentsSettingsViewController: OWSTableViewController2 {
            mode == .inAppSettings {
             PaymentsViewUtils.markAllUnreadPaymentsAsReadWithSneakyTransaction()
         }
+
+        stopUpdateBalanceTimer()
     }
 
     public override func applyTheme() {
@@ -258,8 +290,7 @@ public class PaymentsSettingsViewController: OWSTableViewController2 {
         let balanceStack = UIStackView(arrangedSubviews: [ balanceLabel ])
         balanceStack.axis = .vertical
         balanceStack.alignment = .fill
-        balanceStack.layoutMargins = UIEdgeInsets(hMargin: OWSTableViewController2.cellHOuterMargin,
-                                                  vMargin: 0)
+        balanceStack.layoutMargins = cellOuterInsets
         balanceStack.isLayoutMarginsRelativeArrangement = true
 
         let conversionRefreshSize: CGFloat = 20
@@ -351,10 +382,7 @@ public class PaymentsSettingsViewController: OWSTableViewController2 {
         ])
         headerStack.axis = .vertical
         headerStack.alignment = .fill
-        headerStack.layoutMargins = UIEdgeInsets(top: 30,
-                                                 leading: OWSTableViewController2.cellHOuterMargin,
-                                                 bottom: 8,
-                                                 trailing: OWSTableViewController2.cellHOuterMargin)
+        headerStack.layoutMargins = cellOuterInsetsWithMargin(top: 30, bottom: 8)
         headerStack.isLayoutMarginsRelativeArrangement = true
         cell.contentView.addSubview(headerStack)
         headerStack.autoPinEdgesToSuperviewEdges()
@@ -666,7 +694,9 @@ public class PaymentsSettingsViewController: OWSTableViewController2 {
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: selector)
 
-        section.add(OWSTableItem(customCellBlock: {
+        section.add(OWSTableItem(customCellBlock: { [weak self] in
+            guard let self = self else { return OWSTableItem.newCell() }
+
             let titleLabel = UILabel()
             titleLabel.text = title
             titleLabel.textColor = Theme.primaryTextColor
@@ -726,7 +756,7 @@ public class PaymentsSettingsViewController: OWSTableViewController2 {
             dismissIconView.autoCenterInSuperview()
             cell.contentView.addSubview(dismissButton)
             dismissButton.autoPinEdge(toSuperviewEdge: .top, withInset: 8)
-            dismissButton.autoPinEdge(toSuperviewEdge: .trailing, withInset: 8 + OWSTableViewController2.cellHOuterMargin)
+            dismissButton.autoPinEdge(toSuperviewEdge: .trailing, withInset: 8 + self.cellOuterInsets.trailing)
 
             cell.isUserInteractionEnabled = true
             cell.addGestureRecognizer(tapGestureRecognizer)

@@ -117,7 +117,9 @@ public class GRDBWriteTransaction: GRDBReadTransaction {
             return
         }
         if transactionFinalizationBlocks[key] != nil {
-            Logger.verbose("De-duplicating.")
+            if !DebugFlags.reduceLogChatter {
+                Logger.verbose("De-duplicating.")
+            }
         }
         // Always overwrite; we want to use the _last_ block.
         // For example, in the case of touching thread, a given
@@ -319,6 +321,41 @@ public extension SDSAnyWriteTransaction {
         switch writeTransaction {
         case .grdbWrite(let grdbWrite):
             return grdbWrite
+        }
+    }
+}
+
+// MARK: -
+
+public extension GRDB.Database {
+    final func throwsRead<T>(_ criticalSection: (_ database: GRDB.Database) throws -> T) throws -> T {
+        do {
+            return try criticalSection(self)
+        } catch {
+            // If the attempt to write to GRDB flagged that the database was
+            // corrupt, in addition to crashing we flag this so that we can
+            // attempt to perform recovery.
+            if let error = error as? DatabaseError, error.resultCode == .SQLITE_CORRUPT {
+                SSKPreferences.setHasGrdbDatabaseCorruption(true)
+                owsFail("Error: \(error)")
+            }
+            owsFailDebug("Error: \(error)")
+            throw error
+        }
+    }
+
+    final func strictRead<T>(_ criticalSection: (_ database: GRDB.Database) throws -> T) -> T {
+        do {
+            return try criticalSection(self)
+        } catch {
+            // If the attempt to write to GRDB flagged that the database was
+            // corrupt, in addition to crashing we flag this so that we can
+            // attempt to perform recovery.
+            if let error = error as? DatabaseError, error.resultCode == .SQLITE_CORRUPT {
+                SSKPreferences.setHasGrdbDatabaseCorruption(true)
+                owsFail("Error: \(error)")
+            }
+            owsFail("Error: \(error)")
         }
     }
 }
