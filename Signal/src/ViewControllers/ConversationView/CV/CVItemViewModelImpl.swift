@@ -214,7 +214,7 @@ extension CVItemViewModelImpl {
         }
 
         switch messageCellType {
-        case .unknown, .dateHeader, .typingIndicator, .unreadIndicator, .threadDetails, .systemMessage, .callMessage:
+        case .unknown, .dateHeader, .typingIndicator, .unreadIndicator, .threadDetails, .systemMessage, .callMessage, .unknownThreadWarning:
             return false
         case .textOnlyMessage, .audio, .genericAttachment, .contactShare, .bodyMedia, .viewOnce, .stickerMessage:
             return !hasUnloadedAttachments

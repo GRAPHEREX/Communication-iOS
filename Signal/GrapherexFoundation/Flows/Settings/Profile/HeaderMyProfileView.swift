@@ -81,7 +81,7 @@ final class HeaderMyProfileView : HeaderContactProfileView, AvatarViewHelperDele
             return image
         }
         hasClearAvatar = false
-        return OWSContactAvatarBuilder.init(forLocalUserWithDiameter: kOWSProfileManager_MaxAvatarDiameter).buildDefaultImage()
+        return OWSContactAvatarBuilder.init(forLocalUserWithDiameter: kOWSProfileManager_MaxAvatarDiameter, localUserAvatarMode: .asUser).buildDefaultImage()
     }
     
     func showUserIdInfo() {
@@ -122,7 +122,7 @@ final class HeaderMyProfileView : HeaderContactProfileView, AvatarViewHelperDele
                imageView.image = image
             } else {
                 imageView.image = OWSContactAvatarBuilder
-                .init(forLocalUserWithDiameter: kOWSProfileManager_MaxAvatarDiameter)
+                    .init(forLocalUserWithDiameter: kOWSProfileManager_MaxAvatarDiameter, localUserAvatarMode: .asUser)
                 .buildMainDefaultImage()
             }
         } else {
@@ -163,7 +163,7 @@ final class HeaderMyProfileView : HeaderContactProfileView, AvatarViewHelperDele
         avatarData = nil
         isDeletingAvatar = true
         imageView.image = OWSContactAvatarBuilder
-            .init(forLocalUserWithDiameter: kOWSProfileManager_MaxAvatarDiameter)
+            .init(forLocalUserWithDiameter: kOWSProfileManager_MaxAvatarDiameter, localUserAvatarMode: .asUser)
             .buildMainDefaultImage()
         avatarChanged?()
     }

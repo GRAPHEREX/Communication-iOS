@@ -2,6 +2,8 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
+#import <SignalMessaging/OWSContactAvatarBuilder.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
 extern const CGFloat kContactCellAvatarTextMargin;
@@ -32,12 +34,17 @@ typedef void (^CallAction)(SignalServiceAddress*); //_Nonnull
 
 @property (nonatomic) BOOL useLargeAvatars;
 
-- (void)configureWithRecipientAddressWithSneakyTransaction:(SignalServiceAddress *)address
-    NS_SWIFT_NAME(configureWithSneakyTransaction(recipientAddress:));
+- (void)configureWithSneakyTransactionWithRecipientAddress:(SignalServiceAddress *)address
+                                       localUserAvatarMode:(LocalUserAvatarMode)localUserAvatarMode
+    NS_SWIFT_NAME(configureWithSneakyTransaction(recipientAddress:localUserAvatarMode:));
 
-- (void)configureWithRecipientAddress:(SignalServiceAddress *)address transaction:(SDSAnyReadTransaction *)transaction;
+- (void)configureWithRecipientAddress:(SignalServiceAddress *)address
+                  localUserAvatarMode:(LocalUserAvatarMode)localUserAvatarMode
+                          transaction:(SDSAnyReadTransaction *)transaction;
 
-- (void)configureWithThread:(TSThread *)thread transaction:(SDSAnyReadTransaction *)transaction;
+- (void)configureWithThread:(TSThread *)thread
+        localUserAvatarMode:(LocalUserAvatarMode)localUserAvatarMode
+                transaction:(SDSAnyReadTransaction *)transaction;
 
 - (void)configureWithCall:(TSCall *)call;
 

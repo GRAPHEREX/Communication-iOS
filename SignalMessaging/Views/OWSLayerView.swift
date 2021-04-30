@@ -10,7 +10,10 @@ open class OWSLayerView: UIView {
     public var shouldAnimate = true
 
     @objc
-    public var layoutCallback: ((UIView) -> Void)
+    public var layoutCallback: (UIView) -> Void
+
+    public typealias TapBlock = () -> Void
+    private var tapBlock: TapBlock?
 
     @objc
     public init() {
@@ -64,7 +67,7 @@ open class OWSLayerView: UIView {
     public override var bounds: CGRect {
         didSet {
             if oldValue != bounds {
-                layoutCallback(self)
+                layoutSubviews()
             }
         }
     }
@@ -72,7 +75,7 @@ open class OWSLayerView: UIView {
     public override var frame: CGRect {
         didSet {
             if oldValue != frame {
-                layoutCallback(self)
+                layoutSubviews()
             }
         }
     }
@@ -80,19 +83,53 @@ open class OWSLayerView: UIView {
     public override var center: CGPoint {
         didSet {
             if oldValue != center {
-                layoutCallback(self)
+                layoutSubviews()
             }
         }
     }
 
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
+        layoutCallback(self)
+    }
+
     public func updateContent() {
         if shouldAnimate {
-            layoutCallback(self)
+            layoutSubviews()
         } else {
             CATransaction.begin()
             CATransaction.setDisableActions(true)
-            layoutCallback(self)
+            layoutSubviews()
             CATransaction.commit()
+        }
+    }
+
+    public func addTapGesture(_ tapBlock: @escaping TapBlock) {
+        self.tapBlock = tapBlock
+        isUserInteractionEnabled = true
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
+    }
+
+    @objc
+    private func didTap() {
+        guard let tapBlock = tapBlock else {
+            owsFailDebug("Missing tapBlock.")
+            return
+        }
+        tapBlock()
+    }
+
+    public func reset() {
+        removeAllSubviews()
+
+        self.layoutCallback = { _ in }
+
+        self.tapBlock = nil
+        if let gestureRecognizers = self.gestureRecognizers {
+            for gestureRecognizer in gestureRecognizers {
+                removeGestureRecognizer(gestureRecognizer)
+            }
         }
     }
 }

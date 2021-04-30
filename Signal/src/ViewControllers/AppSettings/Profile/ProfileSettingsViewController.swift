@@ -231,7 +231,9 @@ class ProfileSettingsViewController: OWSTableViewController2 {
         if let avatarData = avatarData {
             avatarImageView.image = UIImage(data: avatarData)
         } else {
-            avatarImageView.image = OWSContactAvatarBuilder(forLocalUserWithDiameter: UInt(avatarDiameter)).buildDefaultImage()
+            let avatarBuilder = OWSContactAvatarBuilder(forLocalUserWithDiameter: UInt(avatarDiameter),
+                                                        localUserAvatarMode: .asUser)
+            avatarImageView.image = avatarBuilder.buildDefaultImage()
         }
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = avatarDiameter / 2
@@ -250,6 +252,9 @@ class ProfileSettingsViewController: OWSTableViewController2 {
         cameraImageContainer.layer.shadowOpacity = 0.2
         cameraImageContainer.layer.shadowRadius = 4
         cameraImageContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cameraImageContainer.layer.shadowPath = UIBezierPath(
+            ovalIn: CGRect(origin: .zero, size: .square(32))
+        ).cgPath
 
         cell.contentView.addSubview(cameraImageContainer)
         cameraImageContainer.autoPinTrailing(toEdgeOf: avatarImageView)
@@ -260,6 +265,9 @@ class ProfileSettingsViewController: OWSTableViewController2 {
         secondaryShadowView.layer.shadowOpacity = 0.12
         secondaryShadowView.layer.shadowRadius = 16
         secondaryShadowView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        secondaryShadowView.layer.shadowPath = UIBezierPath(
+            ovalIn: CGRect(origin: .zero, size: .square(32))
+        ).cgPath
 
         cameraImageContainer.addSubview(secondaryShadowView)
         secondaryShadowView.autoPinEdgesToSuperviewEdges()

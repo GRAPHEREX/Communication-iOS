@@ -53,6 +53,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol GroupV2Updates;
 @protocol PendingReadReceiptRecorder;
 @protocol VersionedProfiles;
+@protocol Payments;
+@protocol PaymentsCurrencies;
 
 @interface SSKEnvironment : NSObject
 
@@ -104,7 +106,9 @@ NS_ASSUME_NONNULL_BEGIN
                     earlyMessageManager:(EarlyMessageManager *)earlyMessageManager
               messagePipelineSupervisor:(OWSMessagePipelineSupervisor *)messagePipelineSupervisor
                               appExpiry:(AppExpiry *)appExpiry
-                       messageProcessor:(MessageProcessor *)messageProcessor NS_DESIGNATED_INITIALIZER;
+                       messageProcessor:(MessageProcessor *)messageProcessor
+                               payments:(id<Payments>)payments
+                     paymentsCurrencies:(id<PaymentsCurrencies>)paymentsCurrencies NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, readonly, class) SSKEnvironment *shared;
 
@@ -163,6 +167,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) OWSMessagePipelineSupervisor *messagePipelineSupervisorRef;
 @property (nonatomic, readonly) AppExpiry *appExpiryRef;
 @property (nonatomic, readonly) MessageProcessor *messageProcessorRef;
+@property (nonatomic, readonly) id<Payments> paymentsRef;
+@property (nonatomic, readonly) id<PaymentsCurrencies> paymentsCurrenciesRef;
 
 // This property is configured after Environment is created.
 @property (atomic, nullable) id<OWSCallMessageHandler> callMessageHandlerRef;

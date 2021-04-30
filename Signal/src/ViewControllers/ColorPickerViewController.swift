@@ -33,7 +33,7 @@ class OWSColorPickerAccessoryView: NeverClearView {
 
 // MARK: -
 
-protocol ColorViewDelegate: class {
+protocol ColorViewDelegate: AnyObject {
     func colorViewWasTapped(_ colorView: ColorView)
 }
 
@@ -93,7 +93,7 @@ class ColorView: UIView {
 }
 
 @objc
-protocol ColorPickerDelegate: class {
+protocol ColorPickerDelegate: AnyObject {
     func colorPicker(_ colorPicker: ColorPicker, didPickConversationColor conversationColor: OWSConversationColor)
 }
 
@@ -129,7 +129,7 @@ class ColorPicker: NSObject, ColorPickerViewDelegate {
     }
 }
 
-protocol ColorPickerViewDelegate: class {
+protocol ColorPickerViewDelegate: AnyObject {
     func colorPickerView(_ colorPickerView: ColorPickerView, didPickConversationColor conversationColor: OWSConversationColor)
 }
 

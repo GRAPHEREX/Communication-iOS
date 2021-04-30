@@ -86,11 +86,9 @@ public class MediaTileViewController: OWSViewController, OWSAudioPlayerDelegate 
         self.mediaTileViewLayout.invalidateLayout()
 
         applyTheme()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(applyTheme), name: .ThemeDidChange, object: nil)
     }
     
-    @objc func applyTheme() {
+    public override func applyTheme() {
         collectionView.backgroundColor = Theme.backgroundColor
     }
         

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "DataSource.h"
@@ -154,8 +154,6 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:albumMessageId:atta
 - (NSTimeInterval)audioDurationSeconds;
 - (nullable AudioWaveform *)audioWaveform;
 
-+ (nullable NSError *)migrateToSharedData;
-
 #pragma mark - Thumbnails
 
 // On cache hit, the thumbnail will be returned synchronously and completion will never be invoked.
@@ -163,13 +161,14 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:albumMessageId:atta
 // otherwise failure will be invoked.
 //
 // success and failure are invoked async on main.
-- (nullable UIImage *)thumbnailImageWithSizeHint:(CGSize)sizeHint
-                                         success:(OWSThumbnailSuccess)success
-                                         failure:(OWSThumbnailFailure)failure;
-- (nullable UIImage *)thumbnailImageSmallWithSuccess:(OWSThumbnailSuccess)success failure:(OWSThumbnailFailure)failure;
-- (nullable UIImage *)thumbnailImageMediumWithSuccess:(OWSThumbnailSuccess)success failure:(OWSThumbnailFailure)failure;
-- (nullable UIImage *)thumbnailImageLargeWithSuccess:(OWSThumbnailSuccess)success failure:(OWSThumbnailFailure)failure;
+- (void)thumbnailImageWithSizeHint:(CGSize)sizeHint
+                           success:(OWSThumbnailSuccess)success
+                           failure:(OWSThumbnailFailure)failure;
+- (void)thumbnailImageSmallWithSuccess:(OWSThumbnailSuccess)success failure:(OWSThumbnailFailure)failure;
+- (void)thumbnailImageMediumWithSuccess:(OWSThumbnailSuccess)success failure:(OWSThumbnailFailure)failure;
+- (void)thumbnailImageLargeWithSuccess:(OWSThumbnailSuccess)success failure:(OWSThumbnailFailure)failure;
 - (nullable UIImage *)thumbnailImageSmallSync;
+- (nullable UIImage *)thumbnailImageLargeSync;
 
 // This method should only be invoked by OWSThumbnailService.
 - (NSString *)pathForThumbnailDimensionPoints:(NSUInteger)thumbnailDimensionPoints;

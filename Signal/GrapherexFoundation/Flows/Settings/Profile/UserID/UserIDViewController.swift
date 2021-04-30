@@ -122,14 +122,13 @@ final class UserIDViewController: OWSViewController {
         copyButton.autoPinTrailingToSuperviewMargin()
         copyButton.autoPin(toBottomLayoutGuideOf: self, withInset: 56)
     }
+
+    override func applyTheme() {
+        view.backgroundColor = Theme.backgroundColor
+    }
 }
 
 fileprivate extension UserIDViewController {
-    
-    @objc func applyTheme() {
-        view.backgroundColor = Theme.backgroundColor
-    }
-    
     
     @objc func closeButton() {
         self.dismiss(animated: true, completion: nil)

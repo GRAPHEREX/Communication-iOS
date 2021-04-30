@@ -96,6 +96,11 @@ final class WalletDetailController: OWSViewController {
         
         tableViewController.contents = contents
     }
+
+    override func applyTheme() {
+        setupTransactionHeader()
+        self.updateContent(allowedShowEmptyTransaction: true)
+    }
 }
 
 fileprivate extension WalletDetailController {
@@ -388,11 +393,6 @@ fileprivate extension WalletDetailController {
                 self?.presentFormSheet(controller, animated: true)
             }
         )
-    }
-    
-    @objc func applyTheme() {
-        setupTransactionHeader()
-        self.updateContent(allowedShowEmptyTransaction: true)
     }
 }
 

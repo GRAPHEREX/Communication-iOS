@@ -15,10 +15,22 @@ open class OWSTableViewController2: OWSViewController {
     public weak var delegate: OWSTableViewControllerDraggingDelegate?
 
     @objc
-    public var contents = OWSTableContents() {
-        didSet {
+    public var contents: OWSTableContents {
+        set {
+            _contents = newValue
             applyContents()
         }
+        get {
+            _contents
+        }
+    }
+
+    private var _contents = OWSTableContents()
+
+    @objc
+    public func setContents(_ contents: OWSTableContents, shouldReload: Bool = true) {
+        _contents = contents
+        applyContents(shouldReload: shouldReload)
     }
 
     @objc
@@ -32,6 +44,9 @@ open class OWSTableViewController2: OWSViewController {
     // * The top header view's edge align with the edges of the cells.
     @objc
     open var topHeader: UIView?
+
+    @objc
+    open var bottomFooter: UIView? { nil }
 
     // TODO: Remove.
     @objc
@@ -80,6 +95,13 @@ open class OWSTableViewController2: OWSViewController {
     @objc
     public override init() {
         super.init()
+
+        // We never want to show titles on back buttons, so we replace it with
+        // blank spaces. We pad it out slightly so that it's more tappable.
+        //
+        // We also do this in applyTheme(), but we also need to do it here
+        // for the case where we push multiple table views at the same time.
+        navigationItem.backBarButtonItem = .init(title: "   ", style: .plain, target: nil, action: nil)
     }
 
     open override func viewDidLoad() {
@@ -92,6 +114,7 @@ open class OWSTableViewController2: OWSViewController {
 
         view.addSubview(tableView)
 
+        // Pin top edge of tableView.
         if let topHeader = topHeader {
             view.addSubview(topHeader)
             topHeader.autoPin(toTopLayoutGuideOf: self, withInset: 0)
@@ -99,48 +122,56 @@ open class OWSTableViewController2: OWSViewController {
             topHeader.autoPinEdge(toSuperviewSafeArea: .trailing)
 
             tableView.autoPinEdge(.top, to: .bottom, of: topHeader)
-            tableView.autoPinEdge(toSuperviewEdge: .leading)
-            tableView.autoPinEdge(toSuperviewEdge: .trailing)
-
-            if shouldAvoidKeyboard {
-                autoPinView(toBottomOfViewControllerOrKeyboard: tableView, avoidNotch: true)
-            } else {
-                tableView.autoPinEdge(toSuperviewEdge: .bottom)
-            }
 
             topHeader.setContentHuggingVerticalHigh()
             topHeader.setCompressionResistanceVerticalHigh()
-            tableView.setContentHuggingVerticalLow()
-            tableView.setCompressionResistanceVerticalLow()
         } else if tableView.applyInsetsFix() {
             // if applyScrollViewInsetsFix disables contentInsetAdjustmentBehavior,
             // we need to pin to the top and bottom layout guides since UIKit
             // won't adjust our content insets.
             tableView.autoPin(toTopLayoutGuideOf: self, withInset: 0)
-            tableView.autoPin(toBottomLayoutGuideOf: self, withInset: 0)
-            tableView.autoPinEdge(toSuperviewSafeArea: .leading)
-            tableView.autoPinEdge(toSuperviewSafeArea: .trailing)
 
             // We don't need a top or bottom insets, since we pin to the top and bottom layout guides.
             automaticallyAdjustsScrollViewInsets = false
         } else {
+            tableView.autoPinEdge(toSuperviewEdge: .top)
+        }
+
+        // Pin leading & trailing edges of tableView.
+        tableView.autoPinEdge(toSuperviewEdge: .leading)
+        tableView.autoPinEdge(toSuperviewEdge: .trailing)
+        tableView.setContentHuggingVerticalLow()
+        tableView.setCompressionResistanceVerticalLow()
+
+        // Pin bottom edge of tableView.
+        if let bottomFooter = bottomFooter {
+            view.addSubview(bottomFooter)
+            bottomFooter.autoPinEdge(.top, to: .bottom, of: tableView)
+            bottomFooter.autoPinEdge(toSuperviewSafeArea: .leading)
+            bottomFooter.autoPinEdge(toSuperviewSafeArea: .trailing)
             if shouldAvoidKeyboard {
-                tableView.autoPinEdgesToSuperviewEdges(with: .zero, excludingEdge: .bottom)
-                autoPinView(toBottomOfViewControllerOrKeyboard: tableView, avoidNotch: true)
+                autoPinView(toBottomOfViewControllerOrKeyboard: bottomFooter, avoidNotch: true)
             } else {
-                tableView.autoPinEdgesToSuperviewEdges()
+                bottomFooter.autoPinEdge(toSuperviewEdge: .bottom)
             }
+
+            bottomFooter.setContentHuggingVerticalHigh()
+            bottomFooter.setCompressionResistanceVerticalHigh()
+        } else if tableView.applyInsetsFix() {
+            // if applyScrollViewInsetsFix disables contentInsetAdjustmentBehavior,
+            // we need to pin to the top and bottom layout guides since UIKit
+            // won't adjust our content insets.
+            tableView.autoPin(toBottomLayoutGuideOf: self, withInset: 0)
+        } else if shouldAvoidKeyboard {
+            autoPinView(toBottomOfViewControllerOrKeyboard: tableView, avoidNotch: true)
+        } else {
+            tableView.autoPinEdge(toSuperviewEdge: .bottom)
         }
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Self.cellIdentifier)
 
         applyContents()
         applyTheme()
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(themeDidChange),
-                                               name: .ThemeDidChange,
-                                               object: nil)
     }
 
     open override func viewWillAppear(_ animated: Bool) {
@@ -181,14 +212,14 @@ open class OWSTableViewController2: OWSViewController {
         return item
     }
 
-    private func applyContents() {
+    private func applyContents(shouldReload: Bool = true) {
         AssertIsOnMainThread()
 
         if let title = contents.title, !title.isEmpty {
             self.title = title
         }
 
-        tableView.reloadData()
+        if shouldReload { tableView.reloadData() }
     }
 
     public static func buildTopHeader(forView wrappedView: UIView,
@@ -206,11 +237,7 @@ open class OWSTableViewController2: OWSViewController {
         wrapperStack.axis = .vertical
         wrapperStack.alignment = .fill
         wrapperStack.isLayoutMarginsRelativeArrangement = true
-        let layoutMargins = UIEdgeInsets(hMargin: OWSTableViewController2.cellHOuterMargin,
-                                         vMargin: 0)
-        // TODO: Should we apply safeAreaInsets?
-        // layoutMargins.left += tableView.safeAreaInsets.left
-        // layoutMargins.right += tableView.safeAreaInsets.right
+        let layoutMargins = cellOuterInsets(in: wrappedView)
         wrapperStack.layoutMargins = layoutMargins
         return wrapperStack
     }
@@ -290,10 +317,11 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
             // _inside_.
             //
             // By applying it to the cell, ensure the correct behavior for accesories.
-            cell.layoutMargins = UIEdgeInsets(hMargin: Self.cellHOuterMargin + Self.cellHInnerMargin,
-                                              vMargin: 0)
-            var contentMargins = UIEdgeInsets(hMargin: 0,
-                                              vMargin: Self.cellVInnerMargin)
+            cell.layoutMargins = cellOuterInsetsWithMargin(hMargin: Self.cellHInnerMargin, vMargin: 0)
+            var contentMargins = UIEdgeInsets(
+                hMargin: 0,
+                vMargin: Self.cellVInnerMargin
+            )
             // Our table code is going to be vastly simpler if we DRY up the
             // spacing between the cell content and the accessory here.
             let hasAccessory = (cell.accessoryView != nil || cell.accessoryType != .none)
@@ -320,8 +348,8 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
         var separatorLayer: CAShapeLayer?
         let backgroundView = OWSLayerView(frame: .zero) { [weak self] view in
             guard let self = self else { return }
-            var pillFrame = view.bounds.inset(by: UIEdgeInsets(hMargin: OWSTableViewController2.cellHOuterMargin,
-                                                               vMargin: 0))
+            var pillFrame = view.bounds.inset(by: self.cellOuterInsets)
+
             pillFrame.x += view.safeAreaInsets.left
             pillFrame.size.width -= view.safeAreaInsets.left + view.safeAreaInsets.right
             pillLayer.frame = view.bounds
@@ -392,13 +420,10 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
         let isLastInSection = indexPath.row == tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
 
         let pillLayer = CAShapeLayer()
-        let backgroundView = OWSLayerView(frame: .zero) { view in
-            var pillFrame = view.bounds.inset(
-                by: UIEdgeInsets(
-                    hMargin: OWSTableViewController2.cellHOuterMargin,
-                    vMargin: 0
-                )
-            )
+        let backgroundView = OWSLayerView(frame: .zero) { [weak self] view in
+            guard let self = self else { return }
+            var pillFrame = view.bounds.inset(by: self.cellOuterInsets)
+
             pillFrame.x += view.safeAreaInsets.left
             pillFrame.size.width -= view.safeAreaInsets.left + view.safeAreaInsets.right
             pillLayer.frame = view.bounds
@@ -441,18 +466,70 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
 
     public static let cellRounding: CGFloat = 10
 
+    @objc
+    public static var maximumInnerWidth: CGFloat { 496 }
+
+    @objc
+    public static var defaultHOuterMargin: CGFloat {
+        UIDevice.current.isPlusSizePhone ? 20 : 16
+    }
+
     // The distance from the edge of the view to the cell border.
     @objc
-    public static var cellHOuterMargin: CGFloat {
-        if CurrentAppContext().interfaceOrientation.isLandscape,
-           !UIDevice.current.isIPad {
-            // We use a small value in landscape orientation;
-            // safeAreaInsets will ensure the correct spacing.
-            return 0
-        } else {
-            return UIDevice.current.isPlusSizePhone ? 20 : 16
+    public static func cellOuterInsets(in view: UIView) -> UIEdgeInsets {
+        var insets = UIEdgeInsets()
+
+        if view.safeAreaInsets.left <= 0 {
+            insets.left = defaultHOuterMargin
         }
+
+        if view.safeAreaInsets.right <= 0 {
+            insets.right = defaultHOuterMargin
+        }
+
+        let totalInnerWidth = view.width - insets.totalWidth
+        if totalInnerWidth > maximumInnerWidth {
+            let excessInnerWidth = totalInnerWidth - maximumInnerWidth
+            insets.left += excessInnerWidth / 2
+            insets.right += excessInnerWidth / 2
+        }
+
+        return insets
     }
+
+    @objc
+    public var cellOuterInsets: UIEdgeInsets { Self.cellOuterInsets(in: view) }
+
+    @objc
+    public func cellOuterInsetsWithMargin(top: CGFloat = .zero, left: CGFloat = .zero, bottom: CGFloat = .zero, right: CGFloat = .zero) -> UIEdgeInsets {
+        UIEdgeInsets(
+            top: top,
+            left: left + cellHOuterLeftMargin,
+            bottom: bottom,
+            right: right + cellHOuterRightMargin
+        )
+    }
+
+    @objc
+    public func cellOuterInsetsWithMargin(hMargin: CGFloat, vMargin: CGFloat) -> UIEdgeInsets {
+        cellOuterInsetsWithMargin(top: vMargin, left: hMargin, bottom: vMargin, right: hMargin)
+    }
+
+    @objc
+    public static func cellHOuterLeftMargin(in view: UIView) -> CGFloat {
+        cellOuterInsets(in: view).left
+    }
+
+    @objc
+    public var cellHOuterLeftMargin: CGFloat { Self.cellHOuterLeftMargin(in: view) }
+
+    @objc
+    public static func cellHOuterRightMargin(in view: UIView) -> CGFloat {
+        cellOuterInsets(in: view).right
+    }
+
+    @objc
+    public var cellHOuterRightMargin: CGFloat { Self.cellHOuterRightMargin(in: view) }
 
     // The distance from the the cell border to the cell content.
     @objc
@@ -488,11 +565,12 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
                                     : UIColor.ows_gray90)
             textView.font = UIFont.ows_dynamicTypeBodyClamped.ows_semibold
 
-            let cellHMargin = Self.cellHOuterMargin + Self.cellHInnerMargin * 0.5
-            var textContainerInset = UIEdgeInsets(top: (defaultSpacingBetweenSections ?? 0) + 12,
-                                                  leading: cellHMargin,
-                                                  bottom: 10,
-                                                  trailing: cellHMargin)
+            var textContainerInset = cellOuterInsetsWithMargin(
+                top: (defaultSpacingBetweenSections ?? 0) + 12,
+                left: Self.cellHInnerMargin * 0.5,
+                bottom: 10,
+                right: Self.cellHInnerMargin * 0.5
+            )
             textContainerInset.left += tableView.safeAreaInsets.left
             textContainerInset.right += tableView.safeAreaInsets.right
             textView.textContainerInset = textContainerInset
@@ -551,11 +629,12 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
             ]
             textView.linkTextAttributes = linkTextAttributes
 
-            let cellHMargin = Self.cellHOuterMargin + Self.cellHInnerMargin
-            var textContainerInset = UIEdgeInsets(top: 12,
-                                                  leading: cellHMargin,
-                                                  bottom: 0,
-                                                  trailing: cellHMargin)
+            var textContainerInset = cellOuterInsetsWithMargin(
+                top: 12,
+                left: Self.cellHInnerMargin,
+                bottom: 0,
+                right: Self.cellHInnerMargin
+            )
             textContainerInset.left += tableView.safeAreaInsets.left
             textContainerInset.right += tableView.safeAreaInsets.right
             textView.textContainerInset = textContainerInset
@@ -652,6 +731,14 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
         }
     }
 
+    public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        guard let section = contents.sections[safe: indexPath.section] else {
+            owsFailDebug("Missing section: \(indexPath.section)")
+            return true
+        }
+        return !section.shouldDisableCellSelection
+    }
+
     // MARK: - Index
 
     // tell table which section corresponds to section title/index (e.g. "B",1))
@@ -674,7 +761,7 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
 
     public func present(fromViewController: UIViewController) {
         let navigationController = OWSNavigationController(rootViewController: self)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop,
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
                                                            target: self,
                                                            action: #selector(donePressed))
         fromViewController.present(navigationController, animated: true, completion: nil)
@@ -694,15 +781,27 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
     // MARK: - Theme
 
     @objc
-    open func themeDidChange() {
+    open override func themeDidChange() {
         AssertIsOnMainThread()
 
-        applyTheme()
+        super.themeDidChange()
+
         tableView.reloadData()
     }
 
     @objc
     public var tableBackgroundColor: UIColor {
+        AssertIsOnMainThread()
+
+        return Self.tableBackgroundColor(useNewStyle: useNewStyle,
+                                         isUsingPresentedStyle: isUsingPresentedStyle,
+                                         useThemeBackgroundColors: useThemeBackgroundColors)
+    }
+
+    @objc
+    public static func tableBackgroundColor(useNewStyle: Bool = true,
+                                            isUsingPresentedStyle: Bool,
+                                            useThemeBackgroundColors: Bool = false) -> UIColor {
         AssertIsOnMainThread()
 
         if useNewStyle {
@@ -718,6 +817,14 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
 
     @objc
     public var cellBackgroundColor: UIColor {
+        Self.cellBackgroundColor(useNewStyle: useNewStyle,
+                                 isUsingPresentedStyle: isUsingPresentedStyle,
+                                 useThemeBackgroundColors: useThemeBackgroundColors)
+    }
+
+    public static func cellBackgroundColor(useNewStyle: Bool = true,
+                                           isUsingPresentedStyle: Bool,
+                                           useThemeBackgroundColors: Bool = false) -> UIColor {
         if useNewStyle {
             if isUsingPresentedStyle {
                 return Theme.tableCell2PresentedBackgroundColor
@@ -746,7 +853,7 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
     }
 
     @objc
-    open func applyTheme() {
+    open override func applyTheme() {
         AssertIsOnMainThread()
 
         applyTheme(to: self)
@@ -774,11 +881,15 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
             navigationBar.navbarBackgroundColorOverride = tableBackgroundColor
         }
 
+        Self.removeBackButtonText(viewController: viewController)
+
+        if viewController != self { applyTheme() }
+    }
+
+    public static func removeBackButtonText(viewController: UIViewController) {
         // We never want to show titles on back buttons, so we replace it with
         // blank spaces. We pad it out slightly so that it's more tappable.
         viewController.navigationItem.backBarButtonItem = .init(title: "   ", style: .plain, target: nil, action: nil)
-
-        if viewController != self { applyTheme() }
     }
 
     @objc(removeThemeFromViewController:)
@@ -900,5 +1011,17 @@ extension OWSTableViewController2: UITableViewDataSource, UITableViewDelegate {
 
     public override func viewSafeAreaInsetsDidChange() {
         tableView.reloadData()
+    }
+}
+
+// MARK: -
+
+public extension UITableViewCell {
+    func addBackgroundView(backgroundColor: UIColor) {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = backgroundColor
+        contentView.addSubview(backgroundView)
+        contentView.sendSubviewToBack(backgroundView)
+        backgroundView.autoPinEdgesToSuperviewEdges()
     }
 }

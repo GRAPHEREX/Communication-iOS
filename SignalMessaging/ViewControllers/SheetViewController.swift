@@ -5,7 +5,7 @@
 import Foundation
 
 @objc(OWSSheetViewControllerDelegate)
-public protocol SheetViewControllerDelegate: class {
+public protocol SheetViewControllerDelegate: AnyObject {
     func sheetViewControllerRequestedDismiss(_ sheetViewController: SheetViewController)
 }
 

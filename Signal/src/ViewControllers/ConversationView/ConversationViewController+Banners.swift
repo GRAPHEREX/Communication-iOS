@@ -213,8 +213,8 @@ public extension ConversationViewController {
                 if address.isLocalAddress, let profileAvatar = self.profileManager.localProfileAvatarImage() {
                     return profileAvatar.resizedImage(to: CGSize(square: 24))
                 } else {
-                    return OWSContactAvatarBuilder.buildImage(
-                        address: address,
+                    return OWSContactAvatarBuilder.buildImageForNonLocalAddress(
+                        address,
                         diameter: 24,
                         transaction: readTx)
                 }
@@ -351,7 +351,7 @@ public class GestureView: UIView {
         self.layoutMargins = .zero
     }
 
-    @available(*, unavailable, message:"use other constructor instead.")
+    @available(*, unavailable, message: "use other constructor instead.")
     @objc
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

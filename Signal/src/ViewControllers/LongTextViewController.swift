@@ -1,12 +1,12 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
 import SignalServiceKit
 import SignalMessaging
 
-protocol LongTextViewDelegate: class {
+protocol LongTextViewDelegate: AnyObject {
     func longTextViewMessageWasDeleted(_ longTextViewController: LongTextViewController)
 }
 
@@ -101,9 +101,15 @@ public class LongTextViewController: OWSViewController {
             // that differs from the message, so we re-color them here.
             Mention.updateWithStyle(.longMessageView, in: mutableText)
 
+            let hasPendingMessageRequest = databaseStorage.read { transaction in
+                itemViewModel.thread.hasPendingMessageRequest(transaction: transaction.unwrapGrdbRead)
+            }
+            CVComponentBodyText.linkifyData(attributedText: mutableText,
+                                            hasPendingMessageRequest: hasPendingMessageRequest,
+                                            shouldAllowLinkification: displayableText.shouldAllowLinkification)
+
             messageTextView.attributedText = mutableText
             messageTextView.textAlignment = displayableText.fullTextNaturalAlignment
-            messageTextView.ensureShouldLinkifyText(displayableText.shouldAllowLinkification)
         } else {
             owsFailDebug("displayableText was unexpectedly nil")
             messageTextView.text = ""

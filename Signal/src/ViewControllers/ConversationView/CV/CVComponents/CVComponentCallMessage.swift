@@ -22,12 +22,12 @@ public class CVComponentCallMessage: CVComponentBase, CVRootComponent {
     
     private var selectionViewSpacing: CGFloat { ConversationStyle.messageStackSpacing }
 
-    public func configure(cellView: UIView,
-                          cellMeasurement: CVCellMeasurement,
-                          componentDelegate: CVComponentDelegate,
-                          cellSelection: CVCellSelection,
-                          messageSwipeActionState: CVMessageSwipeActionState,
-                          componentView: CVComponentView) {
+    public func configureCellRootComponent(cellView: UIView,
+                                           cellMeasurement: CVCellMeasurement,
+                                           componentDelegate: CVComponentDelegate,
+                                           cellSelection: CVCellSelection,
+                                           messageSwipeActionState: CVMessageSwipeActionState,
+                                           componentView: CVComponentView) {
 
         guard let componentView = componentView as? CVComponentViewCallMessage else {
             owsFailDebug("Unexpected componentView.")

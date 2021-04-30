@@ -7,7 +7,8 @@ import SignalServiceKit
 
 @objc class GroupTableViewCell: UITableViewCell {
 
-    private let avatarView = AvatarImageView()
+    private let avatarView = ConversationAvatarView(diameter: kSmallAvatarSize,
+                                                    localUserAvatarMode: .asUser)
     private let nameLabel = UILabel()
     private let subtitleLabel = UILabel()
     private let accessoryLabel = UILabel()
@@ -19,14 +20,9 @@ import SignalServiceKit
 
         // Font config
         nameLabel.font = .ows_dynamicTypeBody
-        nameLabel.textColor = Theme.primaryTextColor
         subtitleLabel.font = UIFont.ows_regularFont(withSize: 11.0)
-        subtitleLabel.textColor = Theme.secondaryTextAndIconColor
 
         // Layout
-
-        avatarView.autoSetDimension(.width, toSize: CGFloat(kSmallAvatarSize))
-        avatarView.autoPinToSquareAspectRatio()
 
         let textRows = UIStackView(arrangedSubviews: [nameLabel, subtitleLabel])
         textRows.axis = .vertical
@@ -53,7 +49,7 @@ import SignalServiceKit
     }
 
     @objc
-    public func configure(thread: TSGroupThread) {
+    public func configure(thread: TSGroupThread, customSubtitle: String? = nil, customTextColor: UIColor? = nil) {
         OWSTableItem.configureCell(self)
 
         if let groupName = thread.groupModel.groupName, !groupName.isEmpty {
@@ -63,9 +59,9 @@ import SignalServiceKit
         }
 
         let groupMembersCount = thread.groupModel.groupMembership.fullMembers.count
-        self.subtitleLabel.text = GroupViewUtils.formatGroupMembersLabel(memberCount: groupMembersCount)
+        self.subtitleLabel.text = customSubtitle ?? GroupViewUtils.formatGroupMembersLabel(memberCount: groupMembersCount)
 
-        self.avatarView.image = OWSAvatarBuilder.buildImage(thread: thread, diameter: kSmallAvatarSize)
+        self.avatarView.configureWithSneakyTransaction(thread: thread)
 
         if let accessoryMessage = accessoryMessage, !accessoryMessage.isEmpty {
             accessoryLabel.text = accessoryMessage
@@ -73,6 +69,8 @@ import SignalServiceKit
         } else {
             accessoryLabel.isHidden = true
         }
-    }
 
+        nameLabel.textColor = customTextColor ?? Theme.primaryTextColor
+        subtitleLabel.textColor = customTextColor ?? Theme.secondaryTextAndIconColor
+    }
 }

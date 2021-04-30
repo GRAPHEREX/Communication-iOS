@@ -158,6 +158,7 @@ void uncaughtExceptionHandler(NSException *exception)
     if (SSKDebugFlags.audibleErrorLogging) {
         [DebugLogger.sharedLogger enableErrorReporting];
     }
+    [DebugLogger configureSwiftLogging];
 
 #ifdef DEBUG
     [SSKFeatureFlags logFlags];

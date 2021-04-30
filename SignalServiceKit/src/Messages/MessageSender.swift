@@ -1176,6 +1176,13 @@ extension MessageSender {
             }
 
             serializedMessage = Data(result.serialize())
+
+            // The message is smaller than the envelope, but if the message
+            // is larger than this limit, the envelope will be too.
+            if serializedMessage.count > MessageProcessor.largeEnvelopeWarningByteCount {
+                Logger.verbose("serializedMessage: \(serializedMessage.count) > \(MessageProcessor.largeEnvelopeWarningByteCount)")
+                owsFailDebug("Unexpectedly large encrypted message.")
+            }
         }
         
         let message = messageSend.message

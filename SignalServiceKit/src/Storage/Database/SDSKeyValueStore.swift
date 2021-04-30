@@ -477,7 +477,7 @@ public class SDSKeyValueStore: NSObject {
     }
 
     @objc
-    var asObjC: SDSKeyValueStoreObjC {
+    public var asObjC: SDSKeyValueStoreObjC {
         return SDSKeyValueStoreObjC(sdsKeyValueStore: self)
     }
 
@@ -643,7 +643,7 @@ public class SDSKeyValueStore: NSObject {
             return
         }
         // TODO: We could use setArgumentsWithValidation for more safety.
-        statement.unsafeSetArguments(statementArguments)
+        statement.setUncheckedArguments(statementArguments)
 
         do {
             try statement.execute()
@@ -666,8 +666,9 @@ public class SDSKeyValueStore: NSObject {
         FROM \(SDSKeyValueStore.table.tableName)
         WHERE \(SDSKeyValueStore.collectionColumn.columnName) == ?
         """
-        return try! String.fetchAll(grdbTransaction.database,
-                                    sql: sql,
-                                    arguments: [collection])
+
+        return grdbTransaction.database.strictRead { database in
+            try String.fetchAll(database, sql: sql, arguments: [collection])
+        }
     }
 }

@@ -91,13 +91,31 @@ struct CVItemModelBuilder: CVItemBuilding, Dependencies {
             // The thread details should have a stable timestamp.
             let threadDetailsTimestamp: UInt64
             if let firstInteraction = messageMapping.loadedInteractions.first {
-                threadDetailsTimestamp = max(1, firstInteraction.timestamp) - 1
+                threadDetailsTimestamp = max(1, firstInteraction.timestamp) - 2
             } else {
                 threadDetailsTimestamp = 1
             }
             let threadDetails = ThreadDetailsInteraction(thread: thread,
                                                          timestamp: threadDetailsTimestamp)
             let item = addItem(interaction: threadDetails)
+            owsAssertDebug(item != nil)
+        }
+
+        // UnknownThreadWarning are the second item in the thread
+        if messageMapping.shouldShowUnknownThreadWarning(thread: thread,
+                                                         transaction: transaction) {
+            Logger.debug("adding UnknownThreadWarning")
+
+            // The "Unknown Thread Warning" should have a stable timestamp.
+            let timestamp: UInt64
+            if let firstInteraction = messageMapping.loadedInteractions.first {
+                timestamp = max(1, firstInteraction.timestamp) - 1
+            } else {
+                timestamp = 2
+            }
+            let unknownThreadWarning = UnknownThreadWarningInteraction(thread: thread,
+                                                                       timestamp: timestamp)
+            let item = addItem(interaction: unknownThreadWarning)
             owsAssertDebug(item != nil)
         }
 
@@ -269,9 +287,6 @@ struct CVItemModelBuilder: CVItemBuilding, Dependencies {
             let incomingSenderAddress: SignalServiceAddress = incomingMessage.authorAddress
             owsAssertDebug(incomingSenderAddress.isValid)
             let isDisappearingMessage = incomingMessage.hasPerConversationExpiration
-            let authorName = contactsManager.displayName(for: incomingSenderAddress,
-                                                         transaction: transaction)
-            itemViewState.accessibilityAuthorName = authorName
 
             if let nextItem = nextItem,
                let nextIncomingMessage = nextItem.interaction as? TSIncomingMessage {
@@ -311,6 +326,10 @@ struct CVItemModelBuilder: CVItemBuilding, Dependencies {
                 // the previous message has the same sender name and
                 // no "date break" separates us.
                 var shouldShowSenderName = true
+                let authorName = contactsManager.displayName(for: incomingSenderAddress,
+                                                             transaction: transaction)
+                itemViewState.accessibilityAuthorName = authorName
+
                 if let previousItem = previousItem,
                    let previousIncomingMessage = previousItem.interaction as? TSIncomingMessage {
                     let previousIncomingSenderAddress = previousIncomingMessage.authorAddress
@@ -331,7 +350,14 @@ struct CVItemModelBuilder: CVItemBuilding, Dependencies {
                     let nextIncomingSenderAddress: SignalServiceAddress = nextIncomingMessage.authorAddress
                     itemViewState.shouldShowSenderAvatar = incomingSenderAddress != nextIncomingSenderAddress
                 }
+            } else {
+                // In a 1:1 thread, we can avoid cluttering up voiceover string with the recipient's
+                // full name. Group thread's will continue to read off the full name.
+                itemViewState.accessibilityAuthorName = contactsManager.shortDisplayName(
+                    for: incomingSenderAddress,
+                    transaction: transaction)
             }
+
         } else if [.call, .info, .error].contains(interaction.interactionType()) {
             // clustering
 
@@ -592,6 +618,11 @@ fileprivate extension CVMessageMapping {
     var shouldShowThreadDetails: Bool {
         !canLoadOlder
     }
+    func shouldShowUnknownThreadWarning(thread: TSThread,
+                                        transaction: SDSAnyReadTransaction) -> Bool {
+        !canLoadOlder && Self.contactsManagerImpl.shouldBlurAvatar(thread: thread,
+                                                                   transaction: transaction)
+    }
 }
 
 // MARK: -
@@ -624,7 +655,7 @@ private class ItemBuilder {
 
     var canShowDate: Bool {
         switch interaction.interactionType() {
-        case .unknown, .typingIndicator, .threadDetails, .dateHeader:
+        case .unknown, .typingIndicator, .threadDetails, .dateHeader, .unknownThreadWarning:
             return false
         case .info:
             guard let infoMessage = interaction as? TSInfoMessage else {

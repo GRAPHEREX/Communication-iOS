@@ -621,7 +621,7 @@ public class ProfileViewController: OWSTableViewController {
         if let avatarData = avatarData {
             avatarView.image = UIImage(data: avatarData)
         } else {
-            avatarView.image = OWSContactAvatarBuilder(forLocalUserWithDiameter: avatarSize).buildDefaultImage()
+            avatarView.image = OWSContactAvatarBuilder(forLocalUserWithDiameter: avatarSize, localUserAvatarMode: .asUser).buildDefaultImage()
         }
     }
 

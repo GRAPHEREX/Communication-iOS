@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-const NSUInteger kMinimumSearchLength = 2;
+const NSUInteger kMinimumSearchLength = 1;
 
 @interface RecipientPickerViewController () <UISearchBarDelegate,
     ContactsViewHelperObserver,
@@ -120,8 +120,6 @@ OWSTableViewControllerDraggingDelegate,
             @"Placeholder text indicating the user can search for contacts by name or phone number.");
     }
     [searchBar sizeToFit];
-    searchBar.layoutMargins
-        = UIEdgeInsetsMake(0, OWSTableViewController2.cellHOuterMargin, 0, OWSTableViewController2.cellHOuterMargin);
 
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, searchBar);
     searchBar.textField.accessibilityIdentifier = ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"contact_search");
@@ -161,11 +159,12 @@ OWSTableViewControllerDraggingDelegate,
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, pullToRefreshView);
 
     [self updateTableContents];
+}
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(themeDidChange:)
-                                                 name:ThemeDidChangeNotification
-                                               object:nil];
+- (void)viewSafeAreaInsetsDidChange
+{
+    [super viewSafeAreaInsetsDidChange];
+    self.searchBar.layoutMargins = self.tableViewController.cellOuterInsets;
 }
 
 - (void)dealloc
@@ -1279,16 +1278,11 @@ OWSTableViewControllerDraggingDelegate,
 
 #pragma mark - Theme
 
-- (void)themeDidChange:(NSNotification *)notification
-{
-    OWSAssertIsOnMainThread();
-
-    [self applyTheme];
-}
-
 - (void)applyTheme
 {
     OWSAssertIsOnMainThread();
+
+    [super applyTheme];
 
     [self.tableViewController applyThemeToViewController:self];
     self.searchBar.searchFieldBackgroundColorOverride

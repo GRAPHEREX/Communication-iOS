@@ -141,7 +141,8 @@ extension ForwardMessageNavigationController {
             approvalViewController.messageBody = approvalMessageBody
 
             pushViewController(approvalViewController, animated: true)
-        case .unknown, .viewOnce, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .systemMessage, .callMessage:
+        case .unknown, .viewOnce, .dateHeader, .unreadIndicator, .typingIndicator,
+             .threadDetails, .systemMessage, .callMessage, .unknownThreadWarning:
             throw OWSAssertionError("Invalid message type.")
         }
     }
@@ -255,7 +256,8 @@ extension ForwardMessageNavigationController {
                     // TODO: Do we need to call a delegate method?
                 }
 //            }
-        case .unknown, .viewOnce, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .systemMessage, .callMessage:
+        case .unknown, .viewOnce, .dateHeader, .unreadIndicator, .typingIndicator,
+             .threadDetails, .systemMessage, .callMessage, .unknownThreadWarning:
             throw OWSAssertionError("Invalid message type.")
         }
     }
@@ -509,6 +511,7 @@ extension TSAttachmentStream {
         }
         signalAttachment.captionText = caption
         signalAttachment.isBorderless = isBorderless
+        signalAttachment.isLoopingVideo = isLoopingVideo
         return signalAttachment
     }
 }

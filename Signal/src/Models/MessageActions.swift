@@ -1,11 +1,11 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
 
 @objc
-protocol MessageActionsDelegate: class {
+protocol MessageActionsDelegate: AnyObject {
     func messageActionsShowDetailsForItem(_ itemViewModel: CVItemViewModelImpl)
     func messageActionsReplyToItem(_ itemViewModel: CVItemViewModelImpl)
     func messageActionsForwardItem(_ itemViewModel: CVItemViewModelImpl)

@@ -9,7 +9,7 @@ public enum GalleryDirection {
     case before, after, around
 }
 
-public enum GalleryType: String {
+public enum GalleryType: String, CaseIterable {
     case media = "Media"
     case files = "Files"
     case voice = "Voice"
@@ -18,7 +18,7 @@ public enum GalleryType: String {
     case gifs = "GIFs"
 }
 
-protocol MediaGalleryDelegate: class {
+protocol MediaGalleryDelegate: AnyObject {
     func mediaGallery(_ mediaGallery: MediaGallery, willDelete items: [MediaGalleryItem], initiatedBy: AnyObject)
     func mediaGallery(_ mediaGallery: MediaGallery, deletedSections: IndexSet, deletedItems: [IndexPath])
 }

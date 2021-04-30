@@ -442,7 +442,7 @@ const NSString *kNSNotificationKey_WasLocallyInitiated = @"kNSNotificationKey_Wa
 - (void)reuploadLocalProfile
 {
     [self reuploadLocalProfilePromise].then(^{ OWSLogInfo(@"Done."); }).catch(^(NSError *error) {
-        OWSFailDebug(@"Error: %@", error);
+        OWSFailDebugUnlessNetworkFailure(error);
     });
 }
 

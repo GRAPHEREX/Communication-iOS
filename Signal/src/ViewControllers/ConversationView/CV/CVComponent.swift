@@ -6,7 +6,7 @@ import Foundation
 
 // Represents some _renderable_ portion of an Conversation View item.
 // It could be the entire item or some part thereof.
-public protocol CVComponent: class {
+public protocol CVComponent: AnyObject {
 
     var itemModel: CVItemModel { get }
 
@@ -55,6 +55,9 @@ public protocol CVComponent: class {
     func cellDidBecomeVisible(componentView: CVComponentView,
                               renderItem: CVRenderItem,
                               messageSwipeActionState: CVMessageSwipeActionState)
+
+    func buildWallpaperMask(_ wallpaperMaskBuilder: WallpaperMaskBuilder,
+                            componentView: CVComponentView)
 }
 
 // MARK: -
@@ -65,12 +68,12 @@ public protocol CVRootComponent: CVComponent {
 
     var cellReuseIdentifier: CVCellReuseIdentifier { get }
 
-    func configure(cellView: UIView,
-                   cellMeasurement: CVCellMeasurement,
-                   componentDelegate: CVComponentDelegate,
-                   cellSelection: CVCellSelection,
-                   messageSwipeActionState: CVMessageSwipeActionState,
-                   componentView: CVComponentView)
+    func configureCellRootComponent(cellView: UIView,
+                                    cellMeasurement: CVCellMeasurement,
+                                    componentDelegate: CVComponentDelegate,
+                                    cellSelection: CVCellSelection,
+                                    messageSwipeActionState: CVMessageSwipeActionState,
+                                    componentView: CVComponentView)
 
     var isDedicatedCell: Bool { get }
 }
@@ -82,56 +85,6 @@ public protocol CVAccessibilityComponent: CVComponent {
 
     // TODO: We should have a getter for "accessiblity actions",
     //       presumably as [CVMessageAction].
-}
-
-// MARK: -
-
-// CVCellMeasurement captures the measurement state from the load.
-// This lets us pin cell views to their measured sizes.  This is
-// necessary because some UIViews (like UIImageView) set up
-// layout contraints based on their content that we want to override.
-public struct CVCellMeasurement: Equatable {
-    let cellSize: CGSize
-    private let sizes: [String: CGSize]
-    private let values: [String: CGFloat]
-
-    public class Builder {
-        var cellSize: CGSize = .zero
-        private var sizes = [String: CGSize]()
-        private var values = [String: CGFloat]()
-
-        func build() -> CVCellMeasurement {
-            CVCellMeasurement(cellSize: cellSize,
-                              sizes: sizes,
-                              values: values)
-        }
-
-        func setSize(key: String, size: CGSize) {
-            sizes[key] = size
-        }
-
-        func setValue(key: String, value: CGFloat) {
-            values[key] = value
-        }
-    }
-
-    func size(key: String) -> CGSize? {
-        sizes[key]
-    }
-
-    func value(key: String) -> CGFloat? {
-        values[key]
-    }
-
-    public var debugDescription: String {
-        "[cellSize: \(cellSize), sizes: \(sizes), values: \(values)]"
-    }
-
-    public func debugLog() {
-        Logger.verbose("cellSize: \(cellSize)")
-        Logger.verbose("sizes: \(sizes)")
-        Logger.verbose("values: \(values)")
-    }
 }
 
 // MARK: -
@@ -203,6 +156,36 @@ public class CVComponentBase: NSObject {
     var isShowingSelectionUI: Bool {
         itemModel.itemViewState.isShowingSelectionUI
     }
+
+    // MARK: - Root Components
+
+    public static func configureCellRootComponent(rootComponent: CVRootComponent,
+                                                  cellView: UIView,
+                                                  cellMeasurement: CVCellMeasurement,
+                                                  componentDelegate: CVComponentDelegate,
+                                                  componentView: CVComponentView) {
+        owsAssertDebug(cellView.layoutMargins == .zero)
+
+        rootComponent.configureForRendering(componentView: componentView,
+                                            cellMeasurement: cellMeasurement,
+                                            componentDelegate: componentDelegate)
+
+        let rootView = componentView.rootView
+        if rootView.superview == nil {
+            owsAssertDebug(cellView.subviews.isEmpty)
+
+            cellView.addSubview(rootView)
+            cellView.layoutMargins = .zero
+            rootView.autoPinEdgesToSuperviewEdges()
+        }
+    }
+
+    // MARK: - 
+
+    public func buildWallpaperMask(_ wallpaperMaskBuilder: WallpaperMaskBuilder,
+                                   componentView: CVComponentView) {
+        // Do nothing.
+    }
 }
 
 // MARK: -
@@ -246,19 +229,6 @@ extension CVComponentBase: CVNode {
             return conversationStyle.bubbleColor(isIncoming: true)
         }
         return conversationStyle.bubbleColor(message: message)
-    }
-}
-
-// MARK: -
-
-extension CVComponentBase {
-    public func buildBlurView(conversationStyle: ConversationStyle) -> UIVisualEffectView {
-        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
-        let blurOverlay = UIView()
-        blurOverlay.backgroundColor = conversationStyle.isDarkThemeEnabled ? .ows_blackAlpha40 : .ows_whiteAlpha60
-        blurView.contentView.addSubview(blurOverlay)
-        blurOverlay.autoPinEdgesToSuperviewEdges()
-        return blurView
     }
 }
 
@@ -312,6 +282,7 @@ public enum CVComponentKey: CustomStringConvertible, CaseIterable {
     case typingIndicator
     case threadDetails
     case failedOrPendingDownloads
+    case unknownThreadWarning
 
     public var description: String {
         switch self {
@@ -353,6 +324,8 @@ public enum CVComponentKey: CustomStringConvertible, CaseIterable {
             return ".typingIndicator"
         case .threadDetails:
             return ".threadDetails"
+        case .unknownThreadWarning:
+            return ".unknownThreadWarning"
         case .failedOrPendingDownloads:
             return ".failedOrPendingDownloads"
         case .sendFailureBadge:

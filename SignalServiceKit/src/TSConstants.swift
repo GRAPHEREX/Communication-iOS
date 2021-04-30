@@ -2,7 +2,7 @@
 //  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
 //
 
-private protocol TSConstantsProtocol: class {
+private protocol TSConstantsProtocol: AnyObject {
     var textSecureWebSocketAPI: String { get }
     var textSecureServerURL: String { get }
     var walletServerURL: String { get }

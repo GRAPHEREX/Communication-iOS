@@ -5,7 +5,8 @@
 import Foundation
 
 class SetWallpaperViewController: OWSTableViewController2 {
-    lazy var collectionView = WallpaperCollectionView { [weak self] wallpaper in
+    lazy var collectionView = WallpaperCollectionView(container: self,
+                                                      thread: thread) { [weak self] wallpaper in
         guard let self = self else { return }
         let vc = PreviewWallpaperViewController(
             mode: .preset(selectedWallpaper: wallpaper),
@@ -141,11 +142,17 @@ extension SetWallpaperViewController: PreviewWallpaperDelegate {
 }
 
 class WallpaperCollectionView: UICollectionView {
+    let thread: TSThread?
     let flowLayout = UICollectionViewFlowLayout()
     let selectionHandler: (Wallpaper) -> Void
     lazy var heightConstraint = autoSetDimension(.height, toSize: 0)
+    weak var container: OWSTableViewController2!
 
-    init(selectionHandler: @escaping (Wallpaper) -> Void) {
+    init(container: OWSTableViewController2,
+         thread: TSThread?,
+         selectionHandler: @escaping (Wallpaper) -> Void) {
+        self.container = container
+        self.thread = thread
         self.selectionHandler = selectionHandler
 
         flowLayout.minimumLineSpacing = 4
@@ -168,7 +175,8 @@ class WallpaperCollectionView: UICollectionView {
         let numberOfColumns: CGFloat = 3
         let numberOfRows = CGFloat(Wallpaper.defaultWallpapers.count) / numberOfColumns
 
-        let availableWidth = reference.width - ((OWSTableViewController2.cellHOuterMargin * 2) + (OWSTableViewController2.cellHInnerMargin * 2) + 8 + safeAreaInsets.totalWidth)
+        let availableWidth = reference.width -
+            ((OWSTableViewController2.cellHInnerMargin * 2) + container.cellOuterInsets.totalWidth + 8 + safeAreaInsets.totalWidth)
 
         let itemWidth = availableWidth / numberOfColumns
         let itemHeight = itemWidth / CurrentAppContext().frame.size.aspectRatio
@@ -205,7 +213,7 @@ extension WallpaperCollectionView: UICollectionViewDataSource, UICollectionViewD
             return cell
         }
 
-        wallpaperCell.configure(for: wallpaper)
+        wallpaperCell.configure(for: wallpaper, thread: thread)
 
         return wallpaperCell
     }
@@ -225,12 +233,15 @@ class WallpaperCell: UICollectionViewCell {
     var wallpaperView: UIView?
     var wallpaper: Wallpaper?
 
-    func configure(for wallpaper: Wallpaper) {
+    func configure(for wallpaper: Wallpaper, thread: TSThread?) {
         guard wallpaper != self.wallpaper else { return }
 
         self.wallpaper = wallpaper
         wallpaperView?.removeFromSuperview()
-        wallpaperView = Wallpaper.view(for: wallpaper)
+        let shouldDim = databaseStorage.read { transaction in
+            Wallpaper.shouldDim(thread: thread, transaction: transaction)
+        }
+        wallpaperView = Wallpaper.view(for: wallpaper, shouldDim: shouldDim)?.asPreviewView()
 
         guard let wallpaperView = wallpaperView else {
             return owsFailDebug("Missing wallpaper view")

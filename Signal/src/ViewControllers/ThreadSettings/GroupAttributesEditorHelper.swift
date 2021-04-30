@@ -6,7 +6,7 @@ import Foundation
 import PromiseKit
 import UIKit
 
-protocol GroupAttributesEditorHelperDelegate: class {
+protocol GroupAttributesEditorHelperDelegate: AnyObject {
     func groupAttributesEditorContentsDidChange()
 }
 
@@ -188,7 +188,7 @@ class GroupAttributesEditorHelper: NSObject {
     }
 
     @objc
-    func didTapAvatarView(sender: UIGestureRecognizer) {
+    func didTapAvatarView() {
         showAvatarUI()
     }
 

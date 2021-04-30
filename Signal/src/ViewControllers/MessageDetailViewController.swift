@@ -150,7 +150,7 @@ class MessageDetailViewController: OWSTableViewController2 {
             let conversationStyle = ConversationStyle(
                 type: .messageDetails,
                 thread: thread,
-                viewWidth: view.width - (Self.cellHOuterMargin + Self.cellHInnerMargin),
+                viewWidth: view.width - (cellOuterInsets.totalWidth + (Self.cellHInnerMargin * 2)),
                 hasWallpaper: false
             )
 
@@ -184,7 +184,8 @@ class MessageDetailViewController: OWSTableViewController2 {
         cellContainer.addSubview(cellView)
         cellView.autoPinHeightToSuperviewMargins()
 
-        cellView.autoPinEdge(toSuperviewEdge: isIncoming ? .leading : .trailing)
+        cellView.autoPinEdge(toSuperviewEdge: .leading)
+        cellView.autoPinEdge(toSuperviewEdge: .trailing)
 
         messageStack.addArrangedSubview(cellContainer)
 
@@ -301,14 +302,12 @@ class MessageDetailViewController: OWSTableViewController2 {
 
             let sectionTitle = self.sectionTitle(for: statusGroup)
             if let iconName = sectionIconName(for: statusGroup) {
-                let cellHMargin = Self.cellHOuterMargin + Self.cellHInnerMargin * 0.5
-
                 let headerView = UIView()
-                headerView.layoutMargins = UIEdgeInsets(
+                headerView.layoutMargins = cellOuterInsetsWithMargin(
                     top: (defaultSpacingBetweenSections ?? 0) + 12,
-                    leading: cellHMargin,
+                    left: Self.cellHInnerMargin * 0.5,
                     bottom: 10,
-                    trailing: cellHMargin
+                    right: Self.cellHInnerMargin * 0.5
                 )
 
                 let label = UILabel()
@@ -356,14 +355,15 @@ class MessageDetailViewController: OWSTableViewController2 {
             customCellBlock: { [weak self] in
                 let cell = ContactTableViewCell()
                 guard let self = self else { return cell }
-                cell.configureWithSneakyTransaction(recipientAddress: address)
+                cell.configureWithSneakyTransaction(recipientAddress: address,
+                                                    localUserAvatarMode: .asUser)
                 cell.ows_setAccessoryView(self.buildAccessoryView(text: accessoryText, displayUDIndicator: displayUDIndicator))
                 return cell
             },
             actionBlock: { [weak self] in
                 guard let self = self else { return }
                 let actionSheet = MemberActionSheet(address: address, groupViewHelper: nil)
-                actionSheet.present(fromViewController: self)
+                actionSheet.present(from: self)
             }
         )
     }
@@ -977,6 +977,11 @@ extension MessageDetailViewController: CVComponentDelegate {
 
     // TODO:
     func cvc_didTapViewOnceExpired(_ interaction: TSInteraction) {}
+
+    // TODO:
+    func cvc_didTapUnknownThreadWarningGroup() {}
+    // TODO:
+    func cvc_didTapUnknownThreadWarningContact() {}
 }
 
 extension MessageDetailViewController: UINavigationControllerDelegate {
@@ -1071,6 +1076,13 @@ private class AnimationController: NSObject, UIViewControllerAnimatedTransitioni
                 toView.removeFromSuperview()
             } else {
                 fromView.removeFromSuperview()
+
+                // When completing the transition, the first responder chain gets
+                // messed with. We don't want the keyboard to present when returning
+                // from message details, so we dismiss it when we leave the view.
+                if let fromViewController = transitionContext.viewController(forKey: .from) as? ConversationViewController {
+                    fromViewController.dismissKeyBoard()
+                }
             }
 
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)

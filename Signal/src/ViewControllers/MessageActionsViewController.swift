@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -58,7 +58,7 @@ public class MessageAction: NSObject {
 }
 
 @objc
-public protocol MessageActionsViewControllerDelegate: class {
+public protocol MessageActionsViewControllerDelegate: AnyObject {
     func messageActionsViewControllerRequestedDismissal(_ messageActionsViewController: MessageActionsViewController, withAction: MessageAction?)
     func messageActionsViewControllerRequestedDismissal(_ messageActionsViewController: MessageActionsViewController, withReaction: String, isRemoving: Bool)
     func messageActionsViewController(_ messageActionsViewController: MessageActionsViewController,
@@ -381,7 +381,7 @@ public class MessageActionsViewController: UIViewController {
                 isRemoving: emojiString == self.reactionState?.localUserEmoji
             )
         }
-        picker.backdropView = backdropView
+        picker.externalBackdropView = backdropView
         anyReactionPicker = picker
 
         // Presenting the emoji picker causes the conversation view controller
@@ -420,7 +420,7 @@ extension MessageActionsViewController: MessageActionsToolbarDelegate {
     }
 }
 
-public protocol MessageActionsToolbarDelegate: class {
+public protocol MessageActionsToolbarDelegate: AnyObject {
     func messageActionsToolbar(_ messageActionsToolbar: MessageActionsToolbar, executedAction: MessageAction)
 }
 

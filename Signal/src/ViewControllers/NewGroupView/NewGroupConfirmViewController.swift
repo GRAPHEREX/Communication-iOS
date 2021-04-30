@@ -99,7 +99,8 @@ public class NewGroupConfirmViewController: OWSViewController {
             cornerRadius: OWSTableViewController2.cellRounding
         )
         view.addSubview(firstSection)
-        firstSection.autoPinWidthToSuperview(withMargin: OWSTableViewController2.cellHOuterMargin)
+        firstSection.autoPinEdge(toSuperviewEdge: .left, withInset: OWSTableViewController2.cellHOuterLeftMargin(in: view))
+        firstSection.autoPinEdge(toSuperviewEdge: .right, withInset: OWSTableViewController2.cellHOuterRightMargin(in: view))
         firstSection.autoPin(toTopLayoutGuideOf: self, withInset: 20)
 
         var lastSection: UIView = firstSection
@@ -229,7 +230,8 @@ public class NewGroupConfirmViewController: OWSViewController {
                             cell.setAttributedSubtitle(warning.attributedString())
                         }
 
-                        cell.configureWithSneakyTransaction(recipientAddress: address)
+                        cell.configureWithSneakyTransaction(recipientAddress: address,
+                                                            localUserAvatarMode: .asUser)
 
                         return cell
                 }))
@@ -512,7 +514,8 @@ class NewLegacyGroupView: UIView {
                 customCellBlock: {
                     let cell = ContactTableViewCell()
                     cell.selectionStyle = .none
-                    cell.configureWithSneakyTransaction(recipientAddress: address)
+                    cell.configureWithSneakyTransaction(recipientAddress: address,
+                                                        localUserAvatarMode: .asUser)
                     return cell
             }))
         }

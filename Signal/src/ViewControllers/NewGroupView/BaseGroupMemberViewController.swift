@@ -5,7 +5,7 @@
 import Foundation
 import PromiseKit
 
-protocol GroupMemberViewDelegate: class {
+protocol GroupMemberViewDelegate: AnyObject {
     var groupMemberViewRecipientSet: OrderedSet<PickedRecipient> { get }
 
     var groupMemberViewHasUnsavedChanges: Bool { get }
@@ -289,7 +289,7 @@ public class BaseGroupMemberViewController: OWSViewController {
             return
         }
         if navigationController.viewControllers.count == 1 {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop,
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
                                                                target: self,
                                                                action: #selector(dismissPressed))
         }
@@ -555,6 +555,11 @@ extension BaseGroupMemberViewController: RecipientPickerDelegate {
 
     func recipientPicker(_ recipientPickerViewController: RecipientPickerViewController,
                          attributedSubtitleForRecipient recipient: PickedRecipient) -> NSAttributedString? {
+
+        guard let groupMemberViewDelegate = groupMemberViewDelegate else {
+            owsFailDebug("Missing delegate.")
+            return nil
+        }
         guard let address = recipient.address else {
             owsFailDebug("Recipient missing address.")
             return nil
@@ -565,8 +570,13 @@ extension BaseGroupMemberViewController: RecipientPickerDelegate {
             items.append("No UUID")
         }
         databaseStorage.read { transaction in
+            let hasProfileKey = nil != Self.profileManager.profileKeyData(for: address,
+                                                                          transaction: transaction)
+            // Only show the "missing gv2 capability" warning if we have the
+            // user's profile key.
             if !GroupManager.doesUserHaveGroupsV2Capability(address: address,
-                                                            transaction: transaction) {
+                                                            transaction: transaction),
+               hasProfileKey {
                 // This is internal-only; we don't need to localize.
                 items.append("No capability")
             }

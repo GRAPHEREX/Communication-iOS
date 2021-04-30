@@ -161,21 +161,11 @@ public class GroupMigrationActionSheet: UIView {
         }
 
         mutating func addMemberRow(address: SignalServiceAddress,
-                          transaction: SDSAnyReadTransaction) {
+                                   transaction: SDSAnyReadTransaction) {
 
-            let avatarSize: UInt = 28
-            let conversationColorName = TSContactThread.conversationColorName(forContactAddress: address,
-                                                                              transaction: transaction)
-            let avatarBuilder = OWSContactAvatarBuilder(address: address,
-                                                        colorName: conversationColorName,
-                                                        diameter: avatarSize,
-                                                        transaction: transaction)
-            let avatar = avatarBuilder.build(with: transaction)
-
-            let avatarView = AvatarImageView()
-            avatarView.image = avatar
-            avatarView.autoSetDimensions(to: CGSize(square: CGFloat(avatarSize)))
-            avatarView.setContentHuggingHorizontalHigh()
+            let avatarView = ConversationAvatarView(diameter: 28,
+                                                    localUserAvatarMode: .asUser)
+            avatarView.configure(address: address, transaction: transaction)
 
             let label = buildLabel()
             label.font = .ows_dynamicTypeBody
@@ -465,10 +455,7 @@ public class GroupMigrationActionSheet: UIView {
             owsFailDebug("Missing frontmostViewController.")
             return
         }
-
-        let toastController = ToastController(text: text)
-        let toastInset = viewController.bottomLayoutGuide.length + 8
-        toastController.presentToastView(fromBottomOfView: viewController.view, inset: toastInset)
+        viewController.presentToast(text: text)
     }
 
     // MARK: - Events

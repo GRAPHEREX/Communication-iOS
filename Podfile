@@ -7,9 +7,11 @@ use_frameworks!
 # OWS Pods
 ###
 
-pod 'SwiftProtobuf', "1.7.0"
+source 'https://cdn.cocoapods.org/'
 
-pod 'SignalCoreKit', git: 'https://github.com/signalapp/SignalCoreKit.git', testspecs: ["Tests"]
+pod 'SwiftProtobuf', ">= 1.14.0"
+
+pod 'SignalCoreKit', git: 'https://github.com/signalapp/SignalCoreKit', testspecs: ["Tests"]
 # pod 'SignalCoreKit', path: '../SignalCoreKit', testspecs: ["Tests"]
 
 pod 'SignalClient', git: 'https://github.com/signalapp/libsignal-client.git', testspecs: ["Tests"]
@@ -34,7 +36,7 @@ pod 'SignalArgon2', git: 'https://github.com/signalapp/Argon2.git', submodules: 
 pod 'PromiseKit'
 
 # pod 'GRDB.swift/SQLCipher', path: '../GRDB.swift'
-pod 'GRDB.swift/SQLCipher'
+pod 'GRDB.swift/SQLCipher', '< 5.0.0'
 
 pod 'SQLCipher', ">= 4.0.1"
 
@@ -64,14 +66,20 @@ pod 'YYImage', git: 'https://github.com/signalapp/YYImage', :inhibit_warnings =>
 # third party pods
 ####
 
-pod 'AFNetworking/NSURLSession', inhibit_warnings: true
-pod 'PureLayout', :inhibit_warnings => true
+pod 'AFNetworking/NSURLSession', '< 4.0.0', inhibit_warnings: true
+pod 'PureLayout', '3.1.4', :inhibit_warnings => true
 pod 'Reachability', :inhibit_warnings => true
 pod 'lottie-ios', :inhibit_warnings => true
 pod 'BonMot', inhibit_warnings: true
 
 # For catalyst we need to be on master until 3.6.7 or later is released
 pod 'ZXingObjC', git: 'https://github.com/zxingify/zxingify-objc.git', inhibit_warnings: true, binary: true
+
+pod 'LibMobileCoin', git: 'https://github.com/signalapp/libmobilecoin-ios-artifacts.git', branch: 'signal/1.0.0'
+
+pod 'MobileCoin'
+# pod 'MobileCoin', git: 'https://github.com/mobilecoinofficial/MobileCoin-Swift.git'
+# pod 'MobileCoin', path: '../MobileCoin-Swift'
 
 target 'Signal' do
   project 'Signal.xcodeproj', 'Debug' => :debug, 'Release' => :release
@@ -101,6 +109,7 @@ post_install do |installer|
   configure_warning_flags(installer)
   configure_testable_build(installer)
   disable_bitcode(installer)
+  disable_armv7(installer)
   disable_non_development_pod_warnings(installer)
   copy_acknowledgements
   fix_deployment_target(installer)
@@ -173,6 +182,14 @@ def disable_bitcode(installer)
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['ENABLE_BITCODE'] = 'NO'
+    end
+  end
+end
+
+def disable_armv7(installer)
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['EXCLUDED_ARCHS'] = 'armv7'
     end
   end
 end

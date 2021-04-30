@@ -114,8 +114,8 @@ public class GroupsV2OutgoingChangesImpl: NSObject, GroupsV2OutgoingChanges {
         }
 
         // GroupsV2 TODO: Will production implementation of encryptString() pad?
-        let oldTitle = oldGroupModel.groupName?.stripped ?? " "
-        let newTitle = newGroupModel.groupName?.stripped ?? " "
+        let oldTitle = oldGroupModel.groupName?.ows_stripped() ?? " "
+        let newTitle = newGroupModel.groupName?.ows_stripped() ?? " "
         if oldTitle != newTitle {
             setTitle(newTitle)
         }
@@ -347,7 +347,8 @@ public class GroupsV2OutgoingChangesImpl: NSObject, GroupsV2OutgoingChanges {
         let addressesForProfileKeyCredentials: [SignalServiceAddress] = uuidsForProfileKeyCredentials.map { SignalServiceAddress(uuid: $0) }
 
         return firstly {
-            groupsV2Impl.tryToEnsureProfileKeyCredentials(for: addressesForProfileKeyCredentials)
+            groupsV2Impl.tryToEnsureProfileKeyCredentials(for: addressesForProfileKeyCredentials,
+                                                          ignoreMissingProfiles: false)
         }.then(on: .global()) { (_) -> Promise<ProfileKeyCredentialMap> in
             groupsV2Impl.loadProfileKeyCredentialData(for: Array(uuidsForProfileKeyCredentials))
         }.map(on: .global()) { (profileKeyCredentialMap: ProfileKeyCredentialMap) throws -> GroupsProtoGroupChangeActions in

@@ -144,7 +144,7 @@ extension NewGroupMembersBar: UICollectionViewDelegate {
 
 // MARK: -
 
-public protocol NewGroupMemberCellDelegate: class {
+public protocol NewGroupMemberCellDelegate: AnyObject {
     func removeRecipient(_ recipient: PickedRecipient)
 }
 
@@ -154,7 +154,8 @@ private class NewGroupMemberCell: UICollectionViewCell {
 
     static let reuseIdentifier = "NewGroupMemberCell"
 
-    private let avatarImageView = AvatarImageView()
+    private let avatarView = ConversationAvatarView(diameter: NewGroupMemberCell.minAvatarDiameter,
+                                                    localUserAvatarMode: .asUser)
     private let textLabel = UILabel(frame: .zero)
 
     fileprivate weak var delegate: NewGroupMemberCellDelegate?
@@ -193,12 +194,10 @@ private class NewGroupMemberCell: UICollectionViewCell {
         removeButton.autoSetDimensions(to: CGSize(square: buttonSize))
         removeButton.setContentHuggingHigh()
 
-        avatarImageView.autoSetDimensions(to: CGSize(square: CGFloat(Self.minAvatarDiameter)))
-        avatarImageView.setContentHuggingHigh()
-        contentView.addSubview(avatarImageView)
-        avatarImageView.autoPinEdge(toSuperviewEdge: .leading)
-        avatarImageView.autoPinEdge(toSuperviewMargin: .top, relation: .greaterThanOrEqual)
-        avatarImageView.autoPinEdge(toSuperviewMargin: .bottom, relation: .greaterThanOrEqual)
+        contentView.addSubview(avatarView)
+        avatarView.autoPinEdge(toSuperviewEdge: .leading)
+        avatarView.autoPinEdge(toSuperviewMargin: .top, relation: .greaterThanOrEqual)
+        avatarView.autoPinEdge(toSuperviewMargin: .bottom, relation: .greaterThanOrEqual)
 
         let stackView = UIStackView(arrangedSubviews: [
             textLabel,
@@ -209,7 +208,7 @@ private class NewGroupMemberCell: UICollectionViewCell {
         stackView.layoutMargins = UIEdgeInsets(top: Self.vMargin, leading: 4, bottom: Self.vMargin, trailing: 2)
         stackView.isLayoutMarginsRelativeArrangement = true
         contentView.addSubview(stackView)
-        stackView.autoPinLeading(toTrailingEdgeOf: avatarImageView)
+        stackView.autoPinLeading(toTrailingEdgeOf: avatarView)
         stackView.autoPinEdges(toSuperviewMarginsExcludingEdge: .leading)
         stackView.setContentHuggingHorizontalLow()
         stackView.setCompressionResistanceHorizontalLow()
@@ -220,7 +219,7 @@ private class NewGroupMemberCell: UICollectionViewCell {
         contentView.layer.cornerRadius = contentView.height / 2
     }
 
-    @available(*, unavailable, message:"use other constructor instead.")
+    @available(*, unavailable, message: "use other constructor instead.")
     @objc
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -229,10 +228,7 @@ private class NewGroupMemberCell: UICollectionViewCell {
     func configure(member: NewGroupMember) {
         self.member = member
 
-        let avatarBuilder = OWSContactAvatarBuilder(address: member.address,
-                                                    colorName: member.conversationColorName,
-                                                    diameter: Self.minAvatarDiameter)
-        avatarImageView.image = avatarBuilder.build()
+        avatarView.configureWithSneakyTransaction(address: member.address)
         textLabel.text = member.shortName
     }
 
@@ -240,7 +236,7 @@ private class NewGroupMemberCell: UICollectionViewCell {
         super.prepareForReuse()
 
         member = nil
-        avatarImageView.image = nil
+        avatarView.reset()
         textLabel.text = nil
         delegate = nil
     }
@@ -267,7 +263,7 @@ extension NewGroupMembersBar: NewGroupMembersBarLayoutDelegate {
 
 // MARK: -
 
-private protocol NewGroupMembersBarLayoutDelegate: class {
+private protocol NewGroupMembersBarLayoutDelegate: AnyObject {
     func cellForLayoutMeasurement(at indexPath: IndexPath) -> UICollectionViewCell
 }
 
@@ -288,7 +284,7 @@ private class NewGroupMembersBarLayout: UICollectionViewLayout {
         super.init()
     }
 
-    @available(*, unavailable, message:"use other constructor instead.")
+    @available(*, unavailable, message: "use other constructor instead.")
     required init?(coder aDecoder: NSCoder) {
         notImplemented()
     }

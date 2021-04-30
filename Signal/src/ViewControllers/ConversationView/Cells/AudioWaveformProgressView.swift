@@ -1,10 +1,11 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
 import Lottie
 
+// TODO: Convert to manual layout.
 @objc
 class AudioWaveformProgressView: UIView {
     @objc
@@ -125,6 +126,10 @@ class AudioWaveformProgressView: UIView {
         loadingAnimation.stop()
         loadingAnimation.isHidden = true
         thumbImageView.isHidden = false
+
+        guard width > 0 else {
+            return
+        }
 
         let sampleWidth: CGFloat = 2
         let minSampleSpacing: CGFloat = 2

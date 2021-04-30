@@ -150,7 +150,7 @@ fileprivate extension ContactsMainController {
         let contactView = ContactCellView()
         contactView.shouldShowStatus = false
         databaseStorage.uiRead { transaction in
-            contactView.configure(withRecipientAddress: account.recipientAddress, transaction: transaction)
+            contactView.configure(withRecipientAddress: account.recipientAddress, localUserAvatarMode: .asUser, transaction: transaction)
         }
 
         cell.contentView.addSubview(contactView)

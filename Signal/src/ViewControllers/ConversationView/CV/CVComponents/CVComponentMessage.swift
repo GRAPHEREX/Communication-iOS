@@ -8,29 +8,10 @@ import Foundation
 public class CVComponentMessage: CVComponentBase, CVRootComponent {
 
     public var cellReuseIdentifier: CVCellReuseIdentifier {
-        guard !isShowingSelectionUI else {
-            return .`default`
-        }
-        if let bodyTextState = itemViewState.bodyTextState,
-           !bodyTextState.canUseDedicatedCell {
-            return .`default`
-        }
-        let dedicatedTextOnlyKeys: [CVComponentKey] = [
-            .bodyText
-        ]
-        let activeKeys = activeComponentKeys()
-        if activeKeys == Set(dedicatedTextOnlyKeys) {
-            return isIncoming ? .dedicatedTextOnlyIncoming : .dedicatedTextOnlyOutgoing
-        } else {
-            return .`default`
-        }
+        .`default`
     }
 
-    public var isDedicatedCell: Bool {
-        // TODO: Re-enable reuse of this component.
-        // cellReuseIdentifier != .`default`
-        return false
-    }
+    public var isDedicatedCell: Bool { false }
 
     private var bodyText: CVComponent?
 
@@ -72,7 +53,6 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
     private var bottomButtons: CVComponent?
 
     private var swipeActionProgress: CVMessageSwipeActionState.Progress?
-    private var swipeActionReference: CVMessageSwipeActionState.Reference?
 
     private var hasSendFailureBadge = false
 
@@ -140,16 +120,16 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
         // We don't render sender avatars with a subcomponent.
         case .senderAvatar:
             return nil
-        case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge:
+        case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge, .unknownThreadWarning:
             return nil
         }
     }
 
     private var canFooterOverlayMedia: Bool {
-        hasBodyMediaWithThumbnail && !isBorderless
+        hasBodyMedia && !isBorderless
     }
 
-    private var hasBodyMediaWithThumbnail: Bool {
+    private var hasBodyMedia: Bool {
         bodyMedia != nil
     }
 
@@ -274,81 +254,20 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
         }
     }
 
-    public func configure(cellView: UIView,
-                          cellMeasurement: CVCellMeasurement,
-                          componentDelegate: CVComponentDelegate,
-                          cellSelection: CVCellSelection,
-                          messageSwipeActionState: CVMessageSwipeActionState,
-                          componentView: CVComponentView) {
+    public func configureCellRootComponent(cellView: UIView,
+                                           cellMeasurement: CVCellMeasurement,
+                                           componentDelegate: CVComponentDelegate,
+                                           cellSelection: CVCellSelection,
+                                           messageSwipeActionState: CVMessageSwipeActionState,
+                                           componentView: CVComponentView) {
 
-        guard let componentView = componentView as? CVComponentViewMessage else {
-            owsFailDebug("Unexpected componentView.")
-            return
-        }
+        Self.configureCellRootComponent(rootComponent: self,
+                                        cellView: cellView,
+                                        cellMeasurement: cellMeasurement,
+                                        componentDelegate: componentDelegate,
+                                        componentView: componentView)
 
-        configureForRendering(componentView: componentView,
-                              cellMeasurement: cellMeasurement,
-                              componentDelegate: componentDelegate)
-        let rootView = componentView.rootView
-        let isReusing = rootView.superview != nil
-        if !isReusing {
-            owsAssertDebug(cellView.layoutMargins == .zero)
-            owsAssertDebug(cellView.subviews.isEmpty)
-
-            cellView.layoutMargins = cellLayoutMargins
-            cellView.addSubview(rootView)
-            rootView.autoPinEdge(toSuperviewEdge: .top)
-        }
-        let bottomInset = reactions != nil ? reactionsVProtrusion : 0
-        componentView.layoutConstraints.append(rootView.autoPinEdge(toSuperviewEdge: .bottom, withInset: bottomInset))
-
-        self.swipeActionReference = nil
         self.swipeActionProgress = messageSwipeActionState.getProgress(interactionId: interaction.uniqueId)
-
-        var leadingView: UIView?
-        if isShowingSelectionUI {
-            owsAssertDebug(!isReusing)
-
-            let selectionView = componentView.selectionView
-            selectionView.isSelected = componentDelegate.cvc_isMessageSelected(interaction)
-            cellView.addSubview(selectionView)
-            selectionView.autoPinEdges(toSuperviewMarginsExcludingEdge: .trailing)
-            leadingView = selectionView
-        }
-
-        if isReusing {
-            owsAssertDebug(leadingView == nil)
-            owsAssertDebug(!hasSendFailureBadge)
-        } else if isIncoming {
-            if let leadingView = leadingView {
-                rootView.autoPinEdge(.leading, to: .trailing, of: leadingView, withOffset: selectionViewSpacing)
-            } else {
-                rootView.autoPinEdge(toSuperviewMargin: .leading)
-            }
-        } else if hasSendFailureBadge {
-            // Send failures are rare, so it's cheaper to only build these views when we need them.
-            let sendFailureBadge = UIImageView()
-            sendFailureBadge.contentMode = .center
-            sendFailureBadge.setTemplateImageName("error-outline-24", tintColor: .ows_accentRed)
-            sendFailureBadge.autoSetDimensions(to: CGSize(square: sendFailureBadgeSize))
-            cellView.addSubview(sendFailureBadge)
-            sendFailureBadge.autoPinEdge(toSuperviewMargin: .trailing)
-
-            if conversationStyle.hasWallpaper {
-                sendFailureBadge.backgroundColor = conversationStyle.bubbleColor(isIncoming: true)
-                sendFailureBadge.layer.cornerRadius = sendFailureBadgeSize / 2
-                sendFailureBadge.clipsToBounds = true
-
-                sendFailureBadge.autoPinEdge(.bottom, to: .bottom, of: rootView)
-            } else {
-                let sendFailureBadgeBottomMargin = round(conversationStyle.lastTextLineAxis - sendFailureBadgeSize * 0.5)
-                sendFailureBadge.autoPinEdge(.bottom, to: .bottom, of: rootView, withOffset: -sendFailureBadgeBottomMargin)
-            }
-
-            rootView.autoPinEdge(.trailing, to: .leading, of: sendFailureBadge, withOffset: -sendFailureBadgeSpacing)
-        } else {
-            rootView.autoPinEdge(toSuperviewMargin: .trailing)
-        }
     }
 
     public func buildComponentView(componentDelegate: CVComponentDelegate) -> CVComponentView {
@@ -359,10 +278,7 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
     public static let bodyMediaQuotedReplyVSpacing: CGFloat = 6
     public static let quotedReplyTopMargin: CGFloat = 6
 
-    private var selectionViewSpacing: CGFloat { ConversationStyle.messageStackSpacing }
-    private var selectionViewWidth: CGFloat { ConversationStyle.selectionViewWidth }
     private var sendFailureBadgeSize: CGFloat { conversationStyle.hasWallpaper ? 40 : 24 }
-    private var sendFailureBadgeSpacing: CGFloat { ConversationStyle.messageStackSpacing }
 
     // The "message" contents of this component are vertically
     // stacked in four sections.  Ordering of the keys in each
@@ -380,48 +296,7 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
             return
         }
 
-        let isReusing = componentView.rootView.superview != nil
-        guard !isReusing else {
-            // This "dedicated" component already has the correct
-            // configuration; we only need to update the contents
-            // of the subcomponents.
-            let bodyTextResult = configureSubcomponentForStack(messageView: componentView,
-                                                               axis: .vertical,
-                                                               cellMeasurement: cellMeasurement,
-                                                               componentDelegate: componentDelegate,
-                                                               key: .bodyText)
-            owsAssertDebug(bodyTextResult != nil)
-
-            _ = configureSubcomponentForStack(messageView: componentView,
-                                              axis: .vertical,
-                                              cellMeasurement: cellMeasurement,
-                                              componentDelegate: componentDelegate,
-                                              key: .footer)
-
-            return
-        }
-
-        let cellHStack = componentView.cellHStack
-        cellHStack.apply(config: cellHStackConfig)
-
-        var outerAvatarView: AvatarImageView?
         var outerBubbleView: OWSBubbleView?
-        let outerContentView: UIView
-
-        if hasSenderAvatarLayout,
-           let senderAvatar = self.senderAvatar {
-            if hasSenderAvatar {
-                componentView.avatarView.image = senderAvatar.senderAvatar
-            }
-            outerAvatarView = componentView.avatarView
-        }
-
-        let topFullWidthSubcomponents = subcomponents(forKeys: topFullWidthCVComponentKeys)
-        let topNestedSubcomponents = subcomponents(forKeys: topNestedCVComponentKeys)
-        let bottomFullWidthSubcomponents = subcomponents(forKeys: bottomFullWidthCVComponentKeys)
-        let bottomNestedSubcomponents = subcomponents(forKeys: bottomNestedCVComponentKeys)
-        let stickerOverlaySubcomponent = subcomponent(forKey: .sticker)
-
         func configureBubbleView() {
             let bubbleView = componentView.bubbleView
             bubbleView.backgroundColor = bubbleBackgroundColor
@@ -436,13 +311,222 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
             outerBubbleView = bubbleView
         }
 
-        func configureStackView(_ stackView: OWSStackView,
-                                config: CVStackViewConfig,
-                                componentKeys keys: [CVComponentKey]) -> OWSStackView {
+        let outerContentView = configureContentStack(componentView: componentView,
+                                                     cellMeasurement: cellMeasurement,
+                                                     componentDelegate: componentDelegate)
+
+        let stickerOverlaySubcomponent = subcomponent(forKey: .sticker)
+        if nil == stickerOverlaySubcomponent {
+            // TODO: We don't always use the bubble view for media.
+            configureBubbleView()
+        }
+
+        // hInnerStack
+
+        let hInnerStack = componentView.hInnerStack
+        hInnerStack.reset()
+        var hInnerStackSubviews = [UIView]()
+
+        if hasSenderAvatarLayout,
+           let senderAvatar = self.senderAvatar {
+            if hasSenderAvatar {
+                componentView.avatarView.image = senderAvatar.senderAvatar
+            }
+            // Add the view wrapper, not the view.
+            hInnerStackSubviews.append(componentView.avatarViewSwipeToReplyWrapper)
+        }
+
+        let contentViewSwipeToReplyWrapper = componentView.contentViewSwipeToReplyWrapper
+        if let bubbleView = outerBubbleView {
+            bubbleView.addSubview(outerContentView)
+            bubbleView.ensureSubviewsFillBounds = true
+            contentViewSwipeToReplyWrapper.subview = bubbleView
+
+            if let componentAndView = findActiveComponentAndView(key: .bodyMedia,
+                                                                 messageView: componentView) {
+                if let bodyMediaComponent = componentAndView.component as? CVComponentBodyMedia {
+                    if let bubbleViewPartner = bodyMediaComponent.bubbleViewPartner(componentView: componentAndView.componentView) {
+                        bubbleViewPartner.setBubbleView(bubbleView)
+                        contentViewSwipeToReplyWrapper.addLayoutBlock { _ in
+                            // The "bubble view partner" must update it's layers
+                            // to reflect the bubble view state.
+                            bubbleViewPartner.updateLayers()
+                        }
+                        hInnerStack.addLayoutBlock { _ in
+                            // The "bubble view partner" must update it's layers
+                            // to reflect the bubble view state.
+                            bubbleViewPartner.updateLayers()
+                        }
+                    }
+                } else {
+                    owsFailDebug("Invalid component.")
+                }
+            }
+        } else {
+            contentViewSwipeToReplyWrapper.subview = outerContentView
+        }
+        // Use the view wrapper, not the view.
+        let contentRootView = contentViewSwipeToReplyWrapper
+        hInnerStackSubviews.append(contentRootView)
+
+        hInnerStack.configure(config: hInnerStackConfig,
+                              cellMeasurement: cellMeasurement,
+                              measurementKey: Self.measurementKey_hInnerStack,
+                              subviews: hInnerStackSubviews)
+
+        // hOuterStack
+
+        var hOuterStackSubviews = [UIView]()
+        if isShowingSelectionUI {
+            let selectionView = componentView.selectionView
+            selectionView.isSelected = componentDelegate.cvc_isMessageSelected(interaction)
+            hOuterStackSubviews.append(selectionView)
+        }
+        if isOutgoing {
+            hOuterStackSubviews.append(componentView.cellSpacer)
+        }
+        hOuterStackSubviews.append(hInnerStack)
+        if isIncoming {
+            hOuterStackSubviews.append(componentView.cellSpacer)
+        }
+        if hasSendFailureBadge {
+            // Send failures are rare, so it's cheaper to only build these views when we need them.
+            let sendFailureBadge = CVImageView()
+            sendFailureBadge.contentMode = .center
+            sendFailureBadge.setTemplateImageName("error-outline-24", tintColor: .ows_accentRed)
+            if conversationStyle.hasWallpaper {
+                sendFailureBadge.backgroundColor = conversationStyle.bubbleColor(isIncoming: true)
+                sendFailureBadge.layer.cornerRadius = sendFailureBadgeSize / 2
+                sendFailureBadge.clipsToBounds = true
+            }
+
+            let sendFailureWrapper = ManualLayoutView(name: "sendFailureWrapper")
+            hOuterStackSubviews.append(sendFailureWrapper)
+            sendFailureWrapper.addSubview(sendFailureBadge)
+            let sendFailureBadgeSize = self.sendFailureBadgeSize
+            let conversationStyle = self.conversationStyle
+            sendFailureWrapper.addLayoutBlock { view in
+                var sendFailureFrame = CGRect(origin: .zero,
+                                              size: CGSize(square: sendFailureBadgeSize))
+                // Bottom align.
+                sendFailureFrame.y = view.bounds.height - sendFailureFrame.height
+                if !conversationStyle.hasWallpaper {
+                    let sendFailureBadgeBottomMargin = round(conversationStyle.lastTextLineAxis - sendFailureBadgeSize * 0.5)
+                    sendFailureFrame.y -= sendFailureBadgeBottomMargin
+                }
+                sendFailureBadge.frame = sendFailureFrame
+            }
+        }
+
+        let hOuterStack = componentView.hOuterStack
+        hOuterStack.reset()
+        hOuterStack.configure(config: hOuterStackConfig,
+                              cellMeasurement: cellMeasurement,
+                              measurementKey: Self.measurementKey_hOuterStack,
+                              subviews: hOuterStackSubviews)
+
+        let swipeToReplyIconView = componentView.swipeToReplyIconView
+        swipeToReplyIconView.contentMode = .center
+        swipeToReplyIconView.alpha = 0
+        let swipeToReplyIconSwipeToReplyWrapper = componentView.swipeToReplyIconSwipeToReplyWrapper
+        // Add the view wrapper, not the view.
+        let swipeToReplyView = swipeToReplyIconSwipeToReplyWrapper
+        hInnerStack.addSubview(swipeToReplyView)
+        hInnerStack.sendSubviewToBack(swipeToReplyView)
+
+        let swipeToReplySize: CGFloat
+        if conversationStyle.hasWallpaper {
+            swipeToReplyIconView.backgroundColor = conversationStyle.bubbleColor(isIncoming: true)
+            swipeToReplyIconView.clipsToBounds = true
+            swipeToReplySize = 34
+            swipeToReplyIconView.setTemplateImageName("reply-outline-20",
+                                                      tintColor: .ows_gray45)
+        } else {
+            swipeToReplyIconView.backgroundColor = .clear
+            swipeToReplyIconView.clipsToBounds = false
+            swipeToReplySize = 24
+            swipeToReplyIconView.setTemplateImageName("reply-outline-24",
+                                                      tintColor: .ows_gray45)
+        }
+        hInnerStack.addLayoutBlock { _ in
+            guard let superview = swipeToReplyView.superview else {
+                return
+            }
+            let contentFrame = superview.convert(contentRootView.bounds, from: contentRootView)
+            var swipeToReplyFrame = CGRect(origin: .zero, size: .square(swipeToReplySize))
+            // swipeToReplyIconView.autoPinEdge(.leading, to: .leading, of: swipeActionContentView, withOffset: 8)
+            if CurrentAppContext().isRTL {
+                swipeToReplyFrame.x = contentFrame.maxX - (swipeToReplySize + 8)
+            } else {
+                swipeToReplyFrame.x = contentFrame.x + 8
+            }
+            // swipeToReplyIconView.autoAlignAxis(.horizontal, toSameAxisOf: swipeActionContentView)
+            swipeToReplyFrame.y = contentFrame.y + (contentFrame.height - swipeToReplyFrame.height) * 0.5
+            swipeToReplyView.frame = swipeToReplyFrame
+        }
+
+        if let reactions = self.reactions,
+           let reactionsSize = cellMeasurement.size(key: Self.measurementKey_reactions) {
+            let reactionsView = configureSubcomponentView(messageView: componentView,
+                                                          subcomponent: reactions,
+                                                          cellMeasurement: cellMeasurement,
+                                                          componentDelegate: componentDelegate,
+                                                          key: .reactions)
+
+            // Use the view wrapper, not the view.
+            let reactionsSwipeToReplyWrapper = componentView.reactionsSwipeToReplyWrapper
+            reactionsSwipeToReplyWrapper.subview = reactionsView.rootView
+            let reactionsRootView = reactionsSwipeToReplyWrapper
+
+            hInnerStack.addSubview(reactionsRootView)
+            let reactionsVOverlap = self.reactionsVOverlap
+            let reactionsHInset = self.reactionsHInset
+            let isIncoming = self.isIncoming
+            // We want the reaction bubbles to stick to the middle of the screen inset from
+            // the edge of the bubble with a small amount of padding unless the bubble is smaller
+            // than the reactions view in which case it will break these constraints and extend
+            // further into the middle of the screen than the message itself.
+            hInnerStack.addLayoutBlock { _ in
+                guard let superview = reactionsRootView.superview else {
+                    return
+                }
+                let contentFrame = superview.convert(outerContentView.bounds, from: outerContentView)
+                var reactionsFrame = CGRect(origin: .zero, size: reactionsSize)
+                reactionsFrame.y = contentFrame.maxY - reactionsVOverlap
+                let leftAlignX = contentFrame.minX + reactionsHInset
+                let rightAlignX = contentFrame.maxX - (reactionsSize.width + reactionsHInset)
+                if isIncoming ^ CurrentAppContext().isRTL {
+                    reactionsFrame.x = max(leftAlignX, rightAlignX)
+                } else {
+                    reactionsFrame.x = min(leftAlignX, rightAlignX)
+                }
+                reactionsRootView.frame = reactionsFrame
+            }
+        }
+
+        componentView.hInnerStack.accessibilityLabel = buildAccessibilityLabel(componentView: componentView)
+        componentView.hInnerStack.isAccessibilityElement = true
+    }
+
+    private func configureContentStack(componentView: CVComponentViewMessage,
+                                       cellMeasurement: CVCellMeasurement,
+                                       componentDelegate: CVComponentDelegate) -> UIView {
+
+        let topFullWidthSubcomponents = subcomponents(forKeys: topFullWidthCVComponentKeys)
+        let topNestedSubcomponents = subcomponents(forKeys: topNestedCVComponentKeys)
+        let bottomFullWidthSubcomponents = subcomponents(forKeys: bottomFullWidthCVComponentKeys)
+        let bottomNestedSubcomponents = subcomponents(forKeys: bottomNestedCVComponentKeys)
+        let stickerOverlaySubcomponent = subcomponent(forKey: .sticker)
+
+        func configureStackView(_ stackView: ManualStackView,
+                                stackConfig: CVStackViewConfig,
+                                measurementKey: String,
+                                componentKeys keys: [CVComponentKey]) -> ManualStackView {
             self.configureSubcomponentStack(messageView: componentView,
                                             stackView: stackView,
-                                            config: config,
+                                            stackConfig: stackConfig,
                                             cellMeasurement: cellMeasurement,
+                                            measurementKey: measurementKey,
                                             componentDelegate: componentDelegate,
                                             keys: keys)
             return stackView
@@ -454,37 +538,35 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
             // Stack is borderless.
             //
             // Optional senderName and footer.
-            outerContentView = configureStackView(componentView.contentStackView,
-                                                  config: buildBorderlessStackViewConfig(),
-                                                  componentKeys: [.senderName, .sticker, .footer])
+            return configureStackView(componentView.contentStack,
+                                      stackConfig: buildBorderlessStackConfig(),
+                                      measurementKey: Self.measurementKey_contentStack,
+                                      componentKeys: [.senderName, .sticker, .footer])
         } else {
             // Has full-width components.
 
-            // TODO: We don't always use the bubble view for media.
-            configureBubbleView()
-
-            let contentStackView = componentView.contentStackView
-            contentStackView.apply(config: buildNoMarginsStackViewConfig())
-            outerContentView = contentStackView
+            var contentSubviews = [UIView]()
 
             if !topFullWidthSubcomponents.isEmpty {
-                let config = buildFullWidthStackViewConfig(includeTopMargin: false)
+                let stackConfig = buildFullWidthStackConfig(includeTopMargin: false)
                 let topFullWidthStackView = configureStackView(componentView.topFullWidthStackView,
-                                                               config: config,
+                                                               stackConfig: stackConfig,
+                                                               measurementKey: Self.measurementKey_topFullWidthStackView,
                                                                componentKeys: topFullWidthCVComponentKeys)
-                contentStackView.addArrangedSubview(topFullWidthStackView)
+                contentSubviews.append(topFullWidthStackView)
             }
             if !topNestedSubcomponents.isEmpty {
                 let hasNeighborsAbove = !topFullWidthSubcomponents.isEmpty
                 let hasNeighborsBelow = (!bottomFullWidthSubcomponents.isEmpty ||
                                             !bottomNestedSubcomponents.isEmpty ||
                                             nil != bottomButtons)
-                let config = buildNestedStackViewConfig(hasNeighborsAbove: hasNeighborsAbove,
-                                                        hasNeighborsBelow: hasNeighborsBelow)
+                let stackConfig = buildNestedStackConfig(hasNeighborsAbove: hasNeighborsAbove,
+                                                         hasNeighborsBelow: hasNeighborsBelow)
                 let topNestedStackView = configureStackView(componentView.topNestedStackView,
-                                                            config: config,
+                                                            stackConfig: stackConfig,
+                                                            measurementKey: Self.measurementKey_topNestedStackView,
                                                             componentKeys: topNestedCVComponentKeys)
-                contentStackView.addArrangedSubview(topNestedStackView)
+                contentSubviews.append(topNestedStackView)
             }
             if !bottomFullWidthSubcomponents.isEmpty {
                 // If a quoted reply is the top-most subcomponent,
@@ -492,155 +574,46 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
                 let applyTopMarginToFullWidthStack = (topFullWidthSubcomponents.isEmpty &&
                                                         topNestedSubcomponents.isEmpty &&
                                                         quotedReply != nil)
-                let config = buildFullWidthStackViewConfig(includeTopMargin: applyTopMarginToFullWidthStack)
+                let stackConfig = buildFullWidthStackConfig(includeTopMargin: applyTopMarginToFullWidthStack)
                 let bottomFullWidthStackView = configureStackView(componentView.bottomFullWidthStackView,
-                                                                  config: config,
+                                                                  stackConfig: stackConfig,
+                                                                  measurementKey: Self.measurementKey_bottomFullWidthStackView,
                                                                   componentKeys: bottomFullWidthCVComponentKeys)
-                contentStackView.addArrangedSubview(bottomFullWidthStackView)
+                contentSubviews.append(bottomFullWidthStackView)
             }
             if !bottomNestedSubcomponents.isEmpty {
                 let hasNeighborsAbove = (!topFullWidthSubcomponents.isEmpty ||
                                             !topNestedSubcomponents.isEmpty ||
                                             !bottomFullWidthSubcomponents.isEmpty)
                 let hasNeighborsBelow = (nil != bottomButtons)
-                let config = buildNestedStackViewConfig(hasNeighborsAbove: hasNeighborsAbove,
-                                                        hasNeighborsBelow: hasNeighborsBelow)
+                let stackConfig = buildNestedStackConfig(hasNeighborsAbove: hasNeighborsAbove,
+                                                         hasNeighborsBelow: hasNeighborsBelow)
                 let bottomNestedStackView = configureStackView(componentView.bottomNestedStackView,
-                                                               config: config,
+                                                               stackConfig: stackConfig,
+                                                               measurementKey: Self.measurementKey_bottomNestedStackView,
                                                                componentKeys: bottomNestedCVComponentKeys)
-                contentStackView.addArrangedSubview(bottomNestedStackView)
+                contentSubviews.append(bottomNestedStackView)
             }
             if nil != bottomButtons {
-                if let componentAndView = configureSubcomponentForStack(messageView: componentView,
-                                                                        axis: .vertical,
-                                                                        cellMeasurement: cellMeasurement,
-                                                                        componentDelegate: componentDelegate,
-                                                                        key: .bottomButtons) {
+                if let componentAndView = configureSubcomponent(messageView: componentView,
+                                                                cellMeasurement: cellMeasurement,
+                                                                componentDelegate: componentDelegate,
+                                                                key: .bottomButtons) {
                     let subview = componentAndView.componentView.rootView
-                    contentStackView.addArrangedSubview(subview)
+                    contentSubviews.append(subview)
                 } else {
                     owsFailDebug("Couldn't configure bottomButtons.")
                 }
             }
+
+            let contentStack = componentView.contentStack
+            contentStack.reset()
+            contentStack.configure(config: buildNoMarginsStackConfig(),
+                                   cellMeasurement: cellMeasurement,
+                                   measurementKey: Self.measurementKey_contentStack,
+                                   subviews: contentSubviews)
+            return contentStack
         }
-
-        if let contentWidth = cellMeasurement.value(key: contentWidthKey) {
-            componentView.layoutConstraints.append(outerContentView.autoSetDimension(.width, toSize: contentWidth))
-        } else {
-            owsFailDebug("Missing contentWidth.")
-        }
-
-        if let subview = outerAvatarView {
-            subview.setContentHuggingHigh()
-            subview.setCompressionResistanceHigh()
-            cellHStack.addArrangedSubview(subview)
-        }
-
-        let swipeActionContentView: UIView
-        if let bubbleView = outerBubbleView {
-            outerContentView.setContentHuggingLow()
-            outerContentView.setCompressionResistanceLow()
-            bubbleView.addSubview(outerContentView)
-            outerContentView.autoPinEdgesToSuperviewEdges()
-            bubbleView.setContentHuggingLow()
-            bubbleView.setCompressionResistanceLow()
-            cellHStack.addArrangedSubview(bubbleView)
-            swipeActionContentView = bubbleView
-
-            if let componentAndView = findActiveComponentAndView(key: .bodyMedia,
-                                                                 messageView: componentView) {
-                if let bodyMediaComponent = componentAndView.component as? CVComponentBodyMedia {
-                    if let bubbleViewPartner = bodyMediaComponent.bubbleViewPartner(componentView: componentAndView.componentView) {
-                        bubbleView.addPartnerView(bubbleViewPartner)
-                    }
-                } else {
-                    owsFailDebug("Invalid component.")
-                }
-            }
-        } else {
-            outerContentView.setContentHuggingLow()
-            outerContentView.setCompressionResistanceLow()
-            cellHStack.addArrangedSubview(outerContentView)
-            swipeActionContentView = outerContentView
-        }
-
-        componentView.swipeActionContentView = swipeActionContentView
-        let swipeToReplyIconView = componentView.swipeToReplyIconView
-        swipeToReplyIconView.contentMode = .center
-        swipeToReplyIconView.alpha = 0
-        cellHStack.addSubview(swipeToReplyIconView)
-        cellHStack.sendSubviewToBack(swipeToReplyIconView)
-        swipeToReplyIconView.autoAlignAxis(.horizontal, toSameAxisOf: swipeActionContentView)
-        swipeToReplyIconView.autoPinEdge(.leading, to: .leading, of: swipeActionContentView, withOffset: 8)
-
-        if conversationStyle.hasWallpaper {
-            swipeToReplyIconView.backgroundColor = conversationStyle.bubbleColor(isIncoming: true)
-            swipeToReplyIconView.layer.cornerRadius = 17
-            swipeToReplyIconView.clipsToBounds = true
-            swipeToReplyIconView.autoSetDimensions(to: CGSize(square: 34))
-
-            swipeToReplyIconView.setTemplateImageName("reply-outline-20",
-                                                      tintColor: .ows_gray45)
-        } else {
-            swipeToReplyIconView.backgroundColor = .clear
-            swipeToReplyIconView.layer.cornerRadius = 0
-            swipeToReplyIconView.clipsToBounds = false
-            swipeToReplyIconView.autoSetDimensions(to: CGSize(square: 24))
-
-            swipeToReplyIconView.setTemplateImageName("reply-outline-24",
-                                                      tintColor: .ows_gray45)
-        }
-
-        if let reactions = self.reactions {
-            let reactionsView = configureSubcomponentView(messageView: componentView,
-                                                          subcomponent: reactions,
-                                                          cellMeasurement: cellMeasurement,
-                                                          componentDelegate: componentDelegate,
-                                                          key: .reactions)
-
-            cellHStack.addSubview(reactionsView.rootView)
-            if isIncoming {
-                reactionsView.rootView.autoPinEdge(.leading,
-                                                   to: .leading,
-                                                   of: outerContentView,
-                                                   withOffset: +reactionsHInset,
-                                                   relation: .greaterThanOrEqual)
-            } else {
-                reactionsView.rootView.autoPinEdge(.trailing,
-                                                   to: .trailing,
-                                                   of: outerContentView,
-                                                   withOffset: -reactionsHInset,
-                                                   relation: .lessThanOrEqual)
-            }
-
-            // We want the reaction bubbles to stick to the middle of the screen inset from
-            // the edge of the bubble with a small amount of padding unless the bubble is smaller
-            // than the reactions view in which case it will break these constraints and extend
-            // further into the middle of the screen than the message itself.
-            NSLayoutConstraint.autoSetPriority(.defaultLow) {
-                //            [NSLayoutConstraint autoSetPriority:UILayoutPriorityDefaultLow
-                //            forConstraints:^{
-                if self.isIncoming {
-                    reactionsView.rootView.autoPinEdge(.trailing,
-                                                       to: .trailing,
-                                                       of: outerContentView,
-                                                       withOffset: -reactionsHInset)
-                } else {
-                    reactionsView.rootView.autoPinEdge(.leading,
-                                                       to: .leading,
-                                                       of: outerContentView,
-                                                       withOffset: +reactionsHInset)
-                }
-            }
-
-            reactionsView.rootView.autoPinEdge(.top,
-                                               to: .bottom,
-                                               of: outerContentView,
-                                               withOffset: -reactionsVOverlap)
-        }
-
-        componentView.rootView.accessibilityLabel = buildAccessibilityLabel(componentView: componentView)
-        componentView.rootView.isAccessibilityElement = true
     }
 
     // Builds an accessibility label for the entire message.
@@ -710,14 +683,19 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
         return result
     }
 
-    private var cellLayoutMargins: UIEdgeInsets {
-        UIEdgeInsets(top: 0,
-                     leading: conversationStyle.fullWidthGutterLeading,
-                     bottom: 0,
-                     trailing: conversationStyle.fullWidthGutterTrailing)
+    private var hOuterStackConfig: CVStackViewConfig {
+        let bottomInset = reactions != nil ? reactionsVProtrusion : 0
+        let cellLayoutMargins = UIEdgeInsets(top: 0,
+                                             leading: conversationStyle.fullWidthGutterLeading,
+                                             bottom: bottomInset,
+                                             trailing: conversationStyle.fullWidthGutterTrailing)
+        return CVStackViewConfig(axis: .horizontal,
+                          alignment: .fill,
+                          spacing: ConversationStyle.messageStackSpacing,
+                          layoutMargins: cellLayoutMargins)
     }
 
-    private var cellHStackConfig: CVStackViewConfig {
+    private var hInnerStackConfig: CVStackViewConfig {
         CVStackViewConfig(axis: .horizontal,
                           alignment: .bottom,
                           spacing: ConversationStyle.messageStackSpacing,
@@ -753,65 +731,119 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
         }
     }
 
-    private func measureStackView(config: CVStackViewConfig,
-                                  measurementBuilder: CVCellMeasurement.Builder,
-                                  componentKeys keys: [CVComponentKey],
-                                  maxWidth: CGFloat) -> CGSize {
+    private static let measurementKey_hOuterStack = "CVComponentMessage.measurementKey_hOuterStack"
+    private static let measurementKey_hInnerStack = "CVComponentMessage.measurementKey_hInnerStack"
+    private static let measurementKey_contentStack = "CVComponentMessage.measurementKey_contentStack"
+    private static let measurementKey_topFullWidthStackView = "CVComponentMessage.measurementKey_topFullWidthStackView"
+    private static let measurementKey_topNestedStackView = "CVComponentMessage.measurementKey_topNestedStackView"
+    private static let measurementKey_bottomFullWidthStackView = "CVComponentMessage.measurementKey_bottomFullWidthStackView"
+    private static let measurementKey_bottomNestedStackView = "CVComponentMessage.measurementKey_bottomNestedStackView"
+    private static let measurementKey_reactions = "CVComponentMessage.measurementKey_reactions"
 
-        let maxWidth = maxWidth - config.layoutMargins.left + config.layoutMargins.right
-        var subviewSizes = [CGSize]()
-        for key in keys {
-            guard let subcomponent = self.subcomponent(forKey: key) else {
-                // Not all subcomponents may be present.
-                continue
-            }
-            let subviewSize = subcomponent.measure(maxWidth: maxWidth, measurementBuilder: measurementBuilder)
-            subviewSizes.append(subviewSize)
+    public func measure(maxWidth: CGFloat, measurementBuilder: CVCellMeasurement.Builder) -> CGSize {
+        owsAssertDebug(maxWidth > 0)
 
-            // We store the measured size so that we can pin the
-            // subcomponent view during configuration for rendering.
-            measurementBuilder.setSize(key: key.asKey, size: subviewSize)
-        }
+        let selectionViewWidth = ConversationStyle.selectionViewWidth
 
-        return CVStackView.measure(config: config, subviewSizes: subviewSizes)
-    }
-
-    private let contentWidthKey = "contentWidthKey"
-
-    public func measure(maxWidth maxWidthChatHistory: CGFloat, measurementBuilder: CVCellMeasurement.Builder) -> CGSize {
-        owsAssertDebug(maxWidthChatHistory > 0)
-
-        let outerStackViewMaxWidth = max(0, maxWidthChatHistory - cellLayoutMargins.totalWidth)
-        var cellHStackSize = CGSize.zero
-        var outerStackViewSize: CGSize = .zero
-
-        if hasSenderAvatarLayout {
-            // Sender avatar in groups.
-            outerStackViewSize.width += ConversationStyle.groupMessageAvatarDiameter + ConversationStyle.messageStackSpacing
-            outerStackViewSize.height = max(outerStackViewSize.height, ConversationStyle.groupMessageAvatarDiameter)
-        }
+        let hOuterStackConfig = self.hOuterStackConfig
+        var contentMaxWidth = maxWidth - hOuterStackConfig.layoutMargins.totalWidth
+        contentMaxWidth -= ConversationStyle.messageDirectionSpacing
         if isShowingSelectionUI {
-            outerStackViewSize.width += selectionViewWidth + selectionViewSpacing
+            contentMaxWidth -= selectionViewWidth + hOuterStackConfig.spacing
         }
         if !isIncoming, hasSendFailureBadge {
-            outerStackViewSize.width += sendFailureBadgeSize + sendFailureBadgeSpacing
+            contentMaxWidth -= sendFailureBadgeSize + hOuterStackConfig.spacing
         }
-        // The message cell's "outer" stack can contain many views:
-        // sender avatar, selection UI, send failure badge.
-        // The message cell's "content" stack must fit within the
-        // remaining space in the "outer" stack.
-        let contentMaxWidth = max(0,
-                                  min(conversationStyle.maxMessageWidth,
-                                      outerStackViewMaxWidth - (outerStackViewSize.width +
-                                                                    ConversationStyle.messageDirectionSpacing)))
+        if hasSenderAvatarLayout {
+            // Sender avatar in groups.
+            contentMaxWidth -= ConversationStyle.groupMessageAvatarDiameter + ConversationStyle.messageStackSpacing
+        }
 
-        func measureStackView(config: CVStackViewConfig,
-                              componentKeys keys: [CVComponentKey]) -> CGSize {
-            let maxStackWidth = max(0, contentMaxWidth - config.layoutMargins.totalWidth)
-            return self.measureStackView(config: config,
-                                         measurementBuilder: measurementBuilder,
-                                         componentKeys: keys,
-                                         maxWidth: maxStackWidth)
+        owsAssertDebug(conversationStyle.maxMediaMessageWidth <= conversationStyle.maxMessageWidth)
+        if hasBodyMedia {
+            contentMaxWidth = max(0, min(conversationStyle.maxMediaMessageWidth, contentMaxWidth))
+        } else {
+            contentMaxWidth = max(0, min(conversationStyle.maxMessageWidth, contentMaxWidth))
+        }
+
+        let contentStackSize = measureContentStack(maxWidth: contentMaxWidth,
+                                                   measurementBuilder: measurementBuilder)
+
+        var hInnerStackSubviewInfos = [ManualStackSubviewInfo]()
+        if hasSenderAvatarLayout,
+           nil != self.senderAvatar {
+            // Sender avatar in groups.
+            let avatarSize = CGSize.square(ConversationStyle.groupMessageAvatarDiameter)
+            hInnerStackSubviewInfos.append(avatarSize.asManualSubviewInfo(hasFixedSize: true))
+        }
+        // NOTE: The contentStackSize does not have fixed width and may grow
+        //       to reflect the minBubbleWidth below.
+        hInnerStackSubviewInfos.append(contentStackSize.asManualSubviewInfo)
+        let hInnerStackMeasurement = ManualStackView.measure(config: hInnerStackConfig,
+                                                             measurementBuilder: measurementBuilder,
+                                                             measurementKey: Self.measurementKey_hInnerStack,
+                                                             subviewInfos: hInnerStackSubviewInfos)
+        var hInnerStackSize = hInnerStackMeasurement.measuredSize
+        let minBubbleWidth = kOWSMessageCellCornerRadius_Large * 2
+        hInnerStackSize.width = max(hInnerStackSize.width, minBubbleWidth)
+
+        var hOuterStackSubviewInfos = [ManualStackSubviewInfo]()
+        if isShowingSelectionUI {
+            let selectionViewSize = CGSize(width: selectionViewWidth, height: 0)
+            hOuterStackSubviewInfos.append(selectionViewSize.asManualSubviewInfo(hasFixedWidth: true))
+        }
+        if isOutgoing {
+            // cellSpacer
+            hOuterStackSubviewInfos.append(CGSize.zero.asManualSubviewInfo)
+        }
+        hOuterStackSubviewInfos.append(hInnerStackSize.asManualSubviewInfo(hasFixedWidth: true))
+        if isIncoming {
+            // cellSpacer
+            hOuterStackSubviewInfos.append(CGSize.zero.asManualSubviewInfo)
+        }
+        if !isIncoming, hasSendFailureBadge {
+            let sendFailureBadgeSize = CGSize(square: self.sendFailureBadgeSize)
+            hOuterStackSubviewInfos.append(sendFailureBadgeSize.asManualSubviewInfo(hasFixedWidth: true))
+        }
+        let hOuterStackMeasurement = ManualStackView.measure(config: hOuterStackConfig,
+                                                             measurementBuilder: measurementBuilder,
+                                                             measurementKey: Self.measurementKey_hOuterStack,
+                                                             subviewInfos: hOuterStackSubviewInfos)
+
+        if let reactionsSubcomponent = subcomponent(forKey: .reactions) {
+            let reactionsSize = reactionsSubcomponent.measure(maxWidth: maxWidth,
+                                                                     measurementBuilder: measurementBuilder)
+            measurementBuilder.setSize(key: Self.measurementKey_reactions, size: reactionsSize)
+        }
+
+        return hOuterStackMeasurement.measuredSize
+    }
+
+    private func measureContentStack(maxWidth contentMaxWidth: CGFloat,
+                                     measurementBuilder: CVCellMeasurement.Builder) -> CGSize {
+
+        func measure(stackConfig: CVStackViewConfig,
+                     measurementKey: String,
+                     componentKeys keys: [CVComponentKey]) -> CGSize {
+            let maxWidth = contentMaxWidth - stackConfig.layoutMargins.totalWidth
+            var subviewSizes = [CGSize]()
+            for key in keys {
+                guard let subcomponent = self.subcomponent(forKey: key) else {
+                    // Not all subcomponents may be present.
+                    continue
+                }
+                let subviewSize = subcomponent.measure(maxWidth: maxWidth,
+                                                       measurementBuilder: measurementBuilder)
+                subviewSizes.append(subviewSize)
+            }
+            let subviewInfos: [ManualStackSubviewInfo] = subviewSizes.map { subviewSize in
+                subviewSize.asManualSubviewInfo
+            }
+            let stackMeasurement = ManualStackView.measure(config: stackConfig,
+                                                           measurementBuilder: measurementBuilder,
+                                                           measurementKey: measurementKey,
+                                                           subviewInfos: subviewInfos)
+            return stackMeasurement.measuredSize
         }
 
         let topFullWidthSubcomponents = subcomponents(forKeys: topFullWidthCVComponentKeys)
@@ -820,21 +852,14 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
         let bottomNestedSubcomponents = subcomponents(forKeys: bottomNestedCVComponentKeys)
         let stickerOverlaySubcomponent = subcomponent(forKey: .sticker)
 
-        func applyContentMeasurement(_ size: CGSize) {
-            outerStackViewSize.width += size.width
-            outerStackViewSize.height = max(outerStackViewSize.height, size.height)
-
-            measurementBuilder.setValue(key: contentWidthKey, value: size.width)
-        }
-
         if nil != stickerOverlaySubcomponent {
             // Sticker message.
             //
             // Stack is borderless.
             // Optional footer.
-
-            applyContentMeasurement(measureStackView(config: buildBorderlessStackViewConfig(),
-                                                     componentKeys: [.senderName, .sticker, .footer]))
+            return measure(stackConfig: buildBorderlessStackConfig(),
+                           measurementKey: Self.measurementKey_contentStack,
+                           componentKeys: [.senderName, .sticker, .footer])
         } else {
             // There are full-width components.
             // Use multiple stacks.
@@ -842,19 +867,21 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
             var subviewSizes = [CGSize]()
 
             if !topFullWidthSubcomponents.isEmpty {
-                let config = buildFullWidthStackViewConfig(includeTopMargin: false)
-                subviewSizes.append(measureStackView(config: config,
-                                                     componentKeys: topFullWidthCVComponentKeys))
+                let stackConfig = buildFullWidthStackConfig(includeTopMargin: false)
+                subviewSizes.append(measure(stackConfig: stackConfig,
+                                            measurementKey: Self.measurementKey_topFullWidthStackView,
+                                            componentKeys: topFullWidthCVComponentKeys))
             }
             if !topNestedSubcomponents.isEmpty {
                 let hasNeighborsAbove = !topFullWidthSubcomponents.isEmpty
                 let hasNeighborsBelow = (!bottomFullWidthSubcomponents.isEmpty ||
                                             !bottomNestedSubcomponents.isEmpty ||
                                             nil != bottomButtons)
-                let config = buildNestedStackViewConfig(hasNeighborsAbove: hasNeighborsAbove,
-                                                        hasNeighborsBelow: hasNeighborsBelow)
-                subviewSizes.append(measureStackView(config: config,
-                                                     componentKeys: topNestedCVComponentKeys))
+                let stackConfig = buildNestedStackConfig(hasNeighborsAbove: hasNeighborsAbove,
+                                                         hasNeighborsBelow: hasNeighborsBelow)
+                subviewSizes.append(measure(stackConfig: stackConfig,
+                                            measurementKey: Self.measurementKey_topNestedStackView,
+                                            componentKeys: topNestedCVComponentKeys))
             }
             if !bottomFullWidthSubcomponents.isEmpty {
                 // If a quoted reply is the top-most subcomponent,
@@ -862,46 +889,36 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
                 let applyTopMarginToFullWidthStack = (topFullWidthSubcomponents.isEmpty &&
                                                         topNestedSubcomponents.isEmpty &&
                                                         quotedReply != nil)
-                let config = buildFullWidthStackViewConfig(includeTopMargin: applyTopMarginToFullWidthStack)
-                subviewSizes.append(measureStackView(config: config,
-                                                     componentKeys: bottomFullWidthCVComponentKeys))
+                let stackConfig = buildFullWidthStackConfig(includeTopMargin: applyTopMarginToFullWidthStack)
+                subviewSizes.append(measure(stackConfig: stackConfig,
+                                            measurementKey: Self.measurementKey_bottomFullWidthStackView,
+                                            componentKeys: bottomFullWidthCVComponentKeys))
             }
             if !bottomNestedSubcomponents.isEmpty {
                 let hasNeighborsAbove = (!topFullWidthSubcomponents.isEmpty ||
                                             !topNestedSubcomponents.isEmpty ||
                                             !bottomFullWidthSubcomponents.isEmpty)
                 let hasNeighborsBelow = (nil != bottomButtons)
-                let config = buildNestedStackViewConfig(hasNeighborsAbove: hasNeighborsAbove,
-                                                        hasNeighborsBelow: hasNeighborsBelow)
-                subviewSizes.append(measureStackView(config: config,
-                                                     componentKeys: bottomNestedCVComponentKeys))
+                let stackConfig = buildNestedStackConfig(hasNeighborsAbove: hasNeighborsAbove,
+                                                         hasNeighborsBelow: hasNeighborsBelow)
+                subviewSizes.append(measure(stackConfig: stackConfig,
+                                            measurementKey: Self.measurementKey_bottomNestedStackView,
+                                            componentKeys: bottomNestedCVComponentKeys))
             }
             if let bottomButtons = bottomButtons {
                 let subviewSize = bottomButtons.measure(maxWidth: contentMaxWidth,
                                                         measurementBuilder: measurementBuilder)
-
-                // We store the measured size so that we can pin the
-                // subcomponent view during configuration for rendering.
-                let key = CVComponentKey.bottomButtons
-                measurementBuilder.setSize(key: key.asKey, size: subviewSize)
-
                 subviewSizes.append(subviewSize)
             }
 
-            applyContentMeasurement(CVStackView.measure(config: buildNoMarginsStackViewConfig(),
-                                                        subviewSizes: subviewSizes))
+            let subviewInfos: [ManualStackSubviewInfo] = subviewSizes.map { subviewSize in
+                subviewSize.asManualSubviewInfo
+            }
+            return ManualStackView.measure(config: buildNoMarginsStackConfig(),
+                                           measurementBuilder: measurementBuilder,
+                                           measurementKey: Self.measurementKey_contentStack,
+                                           subviewInfos: subviewInfos).measuredSize
         }
-
-        cellHStackSize.width += outerStackViewSize.width
-        let minBubbleWidth = kOWSMessageCellCornerRadius_Large * 2
-        cellHStackSize.width = max(cellHStackSize.width, minBubbleWidth)
-        cellHStackSize.height = max(cellHStackSize.height, outerStackViewSize.height)
-
-        if nil != reactions {
-            cellHStackSize.height += reactionsVProtrusion
-        }
-
-        return cellHStackSize.ceil
     }
 
     // MARK: - Events
@@ -1104,38 +1121,69 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
     @objc
     public class CVComponentViewMessage: NSObject, CVComponentView {
 
-        // Contains the "outer" contents which are arranged horizontally:
+        // Contains the cell contents which are arranged horizontally:
         //
         // * Gutters
-        // * Group sender bubble
-        // * Content view wrapped in message bubble _or_ unwrapped content view.
-        // * Reactions view, which uses a custom layout block.
-        fileprivate let cellHStack = OWSStackView(name: "cellHStack")
+        // * Message Selection UI
+        // * hInnerStack
+        // * "Send failure" badge
+        fileprivate let hOuterStack = ManualStackView(name: "message.hOuterStack")
 
-        fileprivate let avatarView = AvatarImageView()
+        // Contains the cell contents which are arranged horizontally:
+        //
+        // * Group sender avatar
+        // * Content view wrapped in message bubble _or_ unwrapped content view.
+        //
+        // Additionally, it contains:
+        //
+        // * Reactions view, which uses a custom layout block.
+        fileprivate let hInnerStack = ManualStackView(name: "message.hInnerStack")
+
+        fileprivate let avatarView = AvatarImageView(shouldDeactivateConstraints: true)
 
         fileprivate let bubbleView = OWSBubbleView()
-        fileprivate let contentStackView = OWSStackView(name: "contentStackView")
+
+        // Contains the actual renderable message content, arranged vertically.
+        fileprivate let contentStack = ManualStackView(name: "message.contentStack")
 
         // We use these stack views when there is a mixture of subcomponents,
         // some of which are full-width and some of which are not.
-        fileprivate let topFullWidthStackView = OWSStackView(name: "topFullWidthStackView")
-        fileprivate let topNestedStackView = OWSStackView(name: "topNestedStackView")
-        fileprivate let bottomFullWidthStackView = OWSStackView(name: "bottomFullWidthStackView")
-        fileprivate let bottomNestedStackView = OWSStackView(name: "bottomNestedStackView")
+        fileprivate let topFullWidthStackView = ManualStackView(name: "message.topFullWidthStackView")
+        fileprivate let topNestedStackView = ManualStackView(name: "message.topNestedStackView")
+        fileprivate let bottomFullWidthStackView = ManualStackView(name: "message.bottomFullWidthStackView")
+        fileprivate let bottomNestedStackView = ManualStackView(name: "message.bottomNestedStackView")
 
         fileprivate let selectionView = MessageSelectionView()
 
-        fileprivate var swipeActionContentView: UIView?
+        fileprivate let swipeToReplyIconView = CVImageView.circleView()
 
-        fileprivate let swipeToReplyIconView = UIImageView()
+        fileprivate let cellSpacer = UIView()
 
-        fileprivate var layoutConstraints = [NSLayoutConstraint]()
+        fileprivate let avatarViewSwipeToReplyWrapper = SwipeToReplyWrapper(name: "avatarViewSwipeToReplyWrapper",
+                                                                            useSlowOffset: true,
+                                                                            shouldReset: false)
+        fileprivate let swipeToReplyIconSwipeToReplyWrapper = SwipeToReplyWrapper(name: "swipeToReplyIconSwipeToReplyWrapper",
+                                                                                  useSlowOffset: true,
+                                                                                  shouldReset: false)
+        fileprivate var contentViewSwipeToReplyWrapper = SwipeToReplyWrapper(name: "contentViewSwipeToReplyWrapper",
+                                                                             useSlowOffset: false,
+                                                                             shouldReset: true)
+        fileprivate var reactionsSwipeToReplyWrapper = SwipeToReplyWrapper(name: "reactionsSwipeToReplyWrapper",
+                                                                           useSlowOffset: false,
+                                                                           shouldReset: true)
+        fileprivate var swipeToReplyWrappers: [SwipeToReplyWrapper] {
+            [
+                avatarViewSwipeToReplyWrapper,
+                swipeToReplyIconSwipeToReplyWrapper,
+                contentViewSwipeToReplyWrapper,
+                reactionsSwipeToReplyWrapper
+            ]
+        }
 
         public var isDedicatedCellView = false
 
         public var rootView: UIView {
-            cellHStack
+            hOuterStack
         }
 
         // MARK: - Subcomponents
@@ -1191,7 +1239,7 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
             case .senderAvatar:
                 owsFailDebug("Invalid component key: \(key)")
                 return nil
-            case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge:
+            case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge, .unknownThreadWarning:
                 owsFailDebug("Invalid component key: \(key)")
                 return nil
             }
@@ -1229,7 +1277,7 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
             // We don't render sender avatars with a subcomponent.
             case .senderAvatar:
                 owsAssertDebug(subcomponentView == nil)
-            case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge:
+            case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge, .unknownThreadWarning:
                 owsAssertDebug(subcomponentView == nil)
             }
         }
@@ -1237,9 +1285,12 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
         // MARK: -
 
         override required init() {
-            avatarView.autoSetDimensions(to: CGSize(square: ConversationStyle.groupMessageAvatarDiameter))
-
             bubbleView.layoutMargins = .zero
+
+            avatarViewSwipeToReplyWrapper.subview = avatarView
+            swipeToReplyIconSwipeToReplyWrapper.subview = swipeToReplyIconView
+            // Configure contentViewSwipeToReplyWrapper and
+            // reactionsSwipeToReplyWrapper later.
         }
 
         public func setIsCellVisible(_ isCellVisible: Bool) {
@@ -1248,32 +1299,48 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
             }
         }
 
+        public func setSwipeToReplyOffset(fastOffset: CGPoint,
+                                          slowOffset: CGPoint) {
+            for swipeToReplyWrapper in swipeToReplyWrappers {
+                let offset = (swipeToReplyWrapper.useSlowOffset
+                                ? slowOffset
+                                : fastOffset)
+                swipeToReplyWrapper.offset = offset
+            }
+        }
+
         public func reset() {
             removeSwipeActionAnimations()
 
             if !isDedicatedCellView {
-                cellHStack.reset()
+                hOuterStack.reset()
+                hInnerStack.reset()
                 bubbleView.removeAllSubviews()
-                contentStackView.reset()
+                contentStack.reset()
                 topFullWidthStackView.reset()
                 topNestedStackView.reset()
                 bottomFullWidthStackView.reset()
                 bottomNestedStackView.reset()
+
+                for swipeToReplyWrapper in swipeToReplyWrappers {
+                    if swipeToReplyWrapper.shouldReset {
+                        swipeToReplyWrapper.reset()
+                    } else {
+                        swipeToReplyWrapper.offset = .zero
+                    }
+                }
             }
 
             avatarView.image = nil
 
-            bubbleView.clearPartnerViews()
-
             if !isDedicatedCellView {
-                swipeActionContentView = nil
                 swipeToReplyIconView.image = nil
             }
             swipeToReplyIconView.alpha = 0
 
-            // We use cellHStack.frame to detect whether or not
+            // We use hInnerStack.frame to detect whether or not
             // the cell has been laid out yet. Therefore we clear it here.
-            cellHStack.frame = .zero
+            hInnerStack.frame = .zero
 
             if isDedicatedCellView {
                 for subcomponentView in allSubcomponentViews {
@@ -1293,16 +1360,12 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
                     }
                 }
             }
-
-            NSLayoutConstraint.deactivate(layoutConstraints)
-            layoutConstraints = []
         }
 
         fileprivate func removeSwipeActionAnimations() {
-            swipeActionContentView?.layer.removeAllAnimations()
-            avatarView.layer.removeAllAnimations()
-            swipeToReplyIconView.layer.removeAllAnimations()
-            reactionsView?.rootView.layer.removeAllAnimations()
+            for swipeToReplyWrapper in swipeToReplyWrappers {
+                swipeToReplyWrapper.layer.removeAllAnimations()
+            }
         }
     }
 
@@ -1329,14 +1392,6 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
                                                            renderItem: renderItem,
                                                            messageSwipeActionState: messageSwipeActionState) {
             return panHandler
-        }
-
-        tryToUpdateSwipeActionReference(componentView: componentView,
-                                        renderItem: renderItem,
-                                        messageSwipeActionState: messageSwipeActionState)
-        guard swipeActionReference != nil else {
-            owsFailDebug("Missing reference[\(renderItem.interactionUniqueId)].")
-            return nil
         }
 
         return CVPanHandler(delegate: componentDelegate,
@@ -1372,9 +1427,6 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
                                             renderItem: renderItem,
                                             messageSwipeActionState: messageSwipeActionState)
         case .messageSwipeAction:
-            tryToUpdateSwipeActionReference(componentView: componentView,
-                                            renderItem: renderItem,
-                                            messageSwipeActionState: messageSwipeActionState)
             updateSwipeActionProgress(sender: sender,
                                       panHandler: panHandler,
                                       componentDelegate: componentDelegate,
@@ -1454,9 +1506,6 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
             owsFailDebug("Unexpected componentView.")
             return
         }
-        tryToUpdateSwipeActionReference(componentView: componentView,
-                                        renderItem: renderItem,
-                                        messageSwipeActionState: messageSwipeActionState)
         tryToApplySwipeAction(componentView: componentView, isAnimated: false)
     }
 
@@ -1469,46 +1518,7 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
             owsFailDebug("Unexpected componentView.")
             return
         }
-        tryToUpdateSwipeActionReference(componentView: componentView,
-                                        renderItem: renderItem,
-                                        messageSwipeActionState: messageSwipeActionState)
         tryToApplySwipeAction(componentView: componentView, isAnimated: false)
-    }
-
-    private func tryToUpdateSwipeActionReference(componentView: CVComponentViewMessage,
-                                                 renderItem: CVRenderItem,
-                                                 messageSwipeActionState: CVMessageSwipeActionState) {
-        AssertIsOnMainThread()
-
-        guard swipeActionReference == nil else {
-            // Reference already set.
-            return
-        }
-
-        guard let contentView = componentView.swipeActionContentView else {
-            owsFailDebug("Missing outerContentView.")
-            return
-        }
-        let avatarView = componentView.avatarView
-        let iconView = componentView.swipeToReplyIconView
-        let cellHStack = componentView.cellHStack
-
-        let contentViewCenter = contentView.center
-        let avatarViewCenter = avatarView.center
-        let iconViewCenter = iconView.center
-        guard cellHStack.frame != .zero else {
-            // Cell has not been laid out yet.
-            return
-        }
-        var reactionsViewCenter: CGPoint?
-        if let reactionsView = componentView.reactionsView {
-            reactionsViewCenter = reactionsView.rootView.center
-        }
-        let reference = CVMessageSwipeActionState.Reference(contentViewCenter: contentViewCenter,
-                                                            reactionsViewCenter: reactionsViewCenter,
-                                                            avatarViewCenter: avatarViewCenter,
-                                                            iconViewCenter: iconViewCenter)
-        self.swipeActionReference = reference
     }
 
     private let swipeActionOffsetThreshold: CGFloat = 55
@@ -1658,17 +1668,10 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
     ) {
         AssertIsOnMainThread()
 
-        guard let contentView = componentView.swipeActionContentView else {
-            owsFailDebug("Missing outerContentView.")
-            return
-        }
-        guard let swipeActionReference = swipeActionReference,
-              let swipeActionProgress = swipeActionProgress else {
+        guard let swipeActionProgress = swipeActionProgress else {
             return
         }
         let swipeToReplyIconView = componentView.swipeToReplyIconView
-        let avatarView = componentView.avatarView
-        let iconView = componentView.swipeToReplyIconView
 
         // Scale the translation above or below the desired range,
         // to produce an elastic feeling when you overscroll.
@@ -1704,13 +1707,8 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
 
         let animations = {
             swipeToReplyIconView.alpha = iconAlpha
-            contentView.center = swipeActionReference.contentViewCenter.plusX(position)
-            avatarView.center = swipeActionReference.avatarViewCenter.plusX(slowPosition)
-            iconView.center = swipeActionReference.iconViewCenter.plusX(slowPosition)
-            if let reactionsViewCenter = swipeActionReference.reactionsViewCenter,
-               let reactionsView = componentView.reactionsView {
-                reactionsView.rootView.center = reactionsViewCenter.plusX(position)
-            }
+            componentView.setSwipeToReplyOffset(fastOffset: CGPoint(x: position, y: 0),
+                                                slowOffset: CGPoint(x: slowPosition, y: 0))
         }
         if isAnimated {
             UIView.animate(withDuration: 0.1,
@@ -1732,26 +1730,11 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
 
         messageSwipeActionState.resetProgress(interactionId: renderItem.interactionUniqueId)
 
-        guard let contentView = componentView.swipeActionContentView else {
-            owsFailDebug("Missing outerContentView.")
-            return
-        }
-        let avatarView = componentView.avatarView
         let iconView = componentView.swipeToReplyIconView
-        guard let swipeActionReference = swipeActionReference else {
-            return
-        }
 
         let animations = {
-            contentView.center = swipeActionReference.contentViewCenter
-            avatarView.center = swipeActionReference.avatarViewCenter
-            iconView.center = swipeActionReference.iconViewCenter
+            componentView.setSwipeToReplyOffset(fastOffset: .zero, slowOffset: .zero)
             iconView.alpha = 0
-
-            if let reactionsViewCenter = swipeActionReference.reactionsViewCenter,
-               let reactionsView = componentView.reactionsView {
-                reactionsView.rootView.center = reactionsViewCenter
-            }
         }
 
         if isAnimated {
@@ -1778,7 +1761,6 @@ fileprivate extension CVComponentMessage {
             subcomponent.configureForRendering(componentView: subcomponentView,
                                                cellMeasurement: cellMeasurement,
                                                componentDelegate: componentDelegate)
-            // TODO: Pin to measured height?
             return subcomponentView
         } else {
             let subcomponentView = subcomponent.buildComponentView(componentDelegate: componentDelegate)
@@ -1786,7 +1768,6 @@ fileprivate extension CVComponentMessage {
             subcomponent.configureForRendering(componentView: subcomponentView,
                                                cellMeasurement: cellMeasurement,
                                                componentDelegate: componentDelegate)
-            // TODO: Pin to measured height?
             return subcomponentView
         }
     }
@@ -1806,8 +1787,8 @@ fileprivate extension CVComponentMessage {
         return CVComponentAndView(key: key, component: subcomponent, componentView: subcomponentView)
     }
 
-    func buildNestedStackViewConfig(hasNeighborsAbove: Bool,
-                                    hasNeighborsBelow: Bool) -> CVStackViewConfig {
+    func buildNestedStackConfig(hasNeighborsAbove: Bool,
+                                hasNeighborsBelow: Bool) -> CVStackViewConfig {
         var layoutMargins = conversationStyle.textInsets
         if hasNeighborsAbove {
             layoutMargins.top = Self.textViewVSpacing
@@ -1821,11 +1802,11 @@ fileprivate extension CVComponentMessage {
                                  layoutMargins: layoutMargins)
     }
 
-    func buildBorderlessStackViewConfig() -> CVStackViewConfig {
-        buildNoMarginsStackViewConfig()
+    func buildBorderlessStackConfig() -> CVStackViewConfig {
+        buildNoMarginsStackConfig()
     }
 
-    func buildFullWidthStackViewConfig(includeTopMargin: Bool) -> CVStackViewConfig {
+    func buildFullWidthStackConfig(includeTopMargin: Bool) -> CVStackViewConfig {
         var layoutMargins = UIEdgeInsets.zero
         if includeTopMargin {
             layoutMargins.top = conversationStyle.textInsets.top
@@ -1836,7 +1817,7 @@ fileprivate extension CVComponentMessage {
                                  layoutMargins: layoutMargins)
     }
 
-    func buildNoMarginsStackViewConfig() -> CVStackViewConfig {
+    func buildNoMarginsStackConfig() -> CVStackViewConfig {
         CVStackViewConfig(axis: .vertical,
                           alignment: .fill,
                           spacing: Self.textViewVSpacing,
@@ -1844,59 +1825,29 @@ fileprivate extension CVComponentMessage {
     }
 
     func configureSubcomponentStack(messageView: CVComponentViewMessage,
-                                    stackView: OWSStackView,
-                                    config: CVStackViewConfig,
+                                    stackView: ManualStackView,
+                                    stackConfig: CVStackViewConfig,
                                     cellMeasurement: CVCellMeasurement,
+                                    measurementKey: String,
                                     componentDelegate: CVComponentDelegate,
                                     keys: [CVComponentKey]) {
 
-        stackView.apply(config: config)
-
-        for key in keys {
+        let subviews: [UIView] = keys.compactMap { key in
             // TODO: configureSubcomponent should probably just return the componentView.
-            if let componentAndView = configureSubcomponentForStack(messageView: messageView,
-                                                                    axis: config.axis,
-                                                                    cellMeasurement: cellMeasurement,
-                                                                    componentDelegate: componentDelegate,
-                                                                    key: key) {
-                let subview = componentAndView.componentView.rootView
-                stackView.addArrangedSubview(subview)
+            guard let componentAndView = configureSubcomponent(messageView: messageView,
+                                                               cellMeasurement: cellMeasurement,
+                                                               componentDelegate: componentDelegate,
+                                                               key: key) else {
+                return nil
             }
-        }
-    }
-
-    func configureSubcomponentForStack(messageView: CVComponentViewMessage,
-                                       axis: NSLayoutConstraint.Axis,
-                                       cellMeasurement: CVCellMeasurement,
-                                       componentDelegate: CVComponentDelegate,
-                                       key: CVComponentKey) -> CVComponentAndView? {
-
-        guard let componentAndView = configureSubcomponent(messageView: messageView,
-                                                           cellMeasurement: cellMeasurement,
-                                                           componentDelegate: componentDelegate,
-                                                           key: key) else {
-            return nil
-        }
-        let subview = componentAndView.componentView.rootView
-
-        // We pin the subcomponent view to its measured size
-        // during configuration for rendering.
-        if let subcomponentSize = cellMeasurement.size(key: key.asKey) {
-            switch axis {
-            case .horizontal:
-                owsAssertDebug(subcomponentSize.width > 0)
-                messageView.layoutConstraints.append(subview.autoSetDimension(.width, toSize: subcomponentSize.width))
-            case .vertical:
-                owsAssertDebug(subcomponentSize.height > 0)
-                messageView.layoutConstraints.append(subview.autoSetDimension(.height, toSize: subcomponentSize.height))
-            @unknown default:
-                owsFailDebug("Invalid axis.")
-            }
-        } else {
-            owsFailDebug("Missing size for key: \(key)")
+            return componentAndView.componentView.rootView
         }
 
-        return componentAndView
+        stackView.reset()
+        stackView.configure(config: stackConfig,
+                            cellMeasurement: cellMeasurement,
+                            measurementKey: measurementKey,
+                            subviews: subviews)
     }
 
     func subcomponents(forKeys keys: [CVComponentKey]) -> [CVComponent] {
@@ -1919,5 +1870,75 @@ fileprivate extension CVComponentMessage {
             result[key] = subcomponent
         }
         return result
+    }
+}
+
+// MARK: -
+
+class SwipeToReplyWrapper: ManualLayoutView {
+
+    var offset: CGPoint = .zero {
+        didSet {
+            layoutSubviews()
+        }
+    }
+
+    var subview: UIView? {
+        didSet {
+            // This view should only be configured after being reset.
+            owsAssertDebug((subview == nil) || (oldValue == nil))
+
+            oldValue?.removeFromSuperview()
+
+            if let subview = subview {
+                owsAssertDebug(subview.superview == nil)
+                addSubview(subview)
+
+                layoutSubviews()
+            }
+        }
+    }
+
+    let useSlowOffset: Bool
+    let shouldReset: Bool
+
+    public required init(name: String,
+                         useSlowOffset: Bool,
+                         shouldReset: Bool) {
+        self.useSlowOffset = useSlowOffset
+        self.shouldReset = shouldReset
+
+        super.init(name: name)
+
+        addDefaultLayoutBlock()
+    }
+
+    private func addDefaultLayoutBlock() {
+        addLayoutBlock { view in
+            guard let view = view as? SwipeToReplyWrapper else {
+                owsFailDebug("Invalid reference view.")
+                return
+            }
+            guard let subview = view.subview else {
+                return
+            }
+            var subviewFrame = view.bounds
+            subviewFrame.origin = subviewFrame.origin + view.offset
+            subview.frame = subviewFrame
+        }
+    }
+
+    @available(*, unavailable, message: "use other constructor instead.")
+    @objc
+    public required init(name: String) {
+        notImplemented()
+    }
+
+    override func reset() {
+        super.reset()
+
+        subview = nil
+        offset = .zero
+        addDefaultLayoutBlock()
     }
 }

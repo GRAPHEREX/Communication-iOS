@@ -141,7 +141,6 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, nullable, weak) ReactionsDetailSheet *reactionsDetailSheet;
 @property (nonatomic) MessageActionsToolbar *selectionToolbar;
-@property (nonatomic, readonly) SelectionHighlightView *selectionHighlightView;
 
 @property (nonatomic) DebouncedEvent *otherUsersProfileDidChangeEvent;
 
@@ -274,10 +273,6 @@ typedef enum : NSUInteger {
                                              selector:@selector(profileWhitelistDidChange:)
                                                  name:kNSNotificationNameProfileWhitelistDidChange
                                                object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(themeDidChange:)
-                                                 name:ThemeDidChangeNotification
-                                               object:nil];
 }
 
 - (BOOL)isGroupConversation
@@ -342,8 +337,10 @@ typedef enum : NSUInteger {
     [self ensureBannerState];
 }
 
-- (void)themeDidChange:(NSNotification *)notification
+- (void)themeDidChange
 {
+    [super themeDidChange];
+
     [self updateThemeIfNecessary];
 }
 
@@ -478,45 +475,19 @@ typedef enum : NSUInteger {
 
     [self registerReuseIdentifiers];
 
-    UIView *wallpaperContainer = self.viewState.wallpaperContainer;
-    [self.view addSubview:wallpaperContainer];
-    [wallpaperContainer autoPinEdgesToSuperviewEdges];
-    [self setupWallpaper];
-
     // The view controller will only automatically adjust content insets for a
     // scrollView at index 0, so we need the collection view to remain subview index 0.
-    // But the wallpaper should appear visually behind the collection view.
-    wallpaperContainer.layer.zPosition = -1;
-    wallpaperContainer.userInteractionEnabled = NO;
+    // But the background views should appear visually behind the collection view.
+    UIView *backgroundContainer = self.viewState.backgroundContainer;
+    [self.view addSubview:backgroundContainer];
+    [backgroundContainer autoPinEdgesToSuperviewEdges];
+    [self setupWallpaper];
 
     [self.view addSubview:self.bottomBar];
     self.bottomBarBottomConstraint = [self.bottomBar autoPinEdgeToSuperviewEdge:ALEdgeBottom];
     [self.bottomBar autoPinWidthToSuperview];
 
     _selectionToolbar = [self buildSelectionToolbar];
-    _selectionHighlightView = [SelectionHighlightView new];
-    self.selectionHighlightView.userInteractionEnabled = NO;
-    [self.collectionView addSubview:self.selectionHighlightView];
-#if TESTABLE_BUILD
-    self.selectionHighlightView.accessibilityIdentifier = @"selectionHighlightView";
-#endif
-
-    // Selection Highlight View Layout:
-    //
-    // We want the highlight view to have the same frame as the collectionView
-    // but [selectionHighlightView autoPinEdgesToSuperviewEdges] undesirably
-    // affects the size of the collection view. To witness this, you can longpress
-    // on an item and see the collectionView offsets change. Pinning to just the
-    // top left and the same height/width achieves the desired results without
-    // the negative side effects.
-    [self.selectionHighlightView autoPinEdgeToSuperviewEdge:ALEdgeTop];
-    [self.selectionHighlightView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
-    [self.selectionHighlightView autoMatchDimension:ALDimensionWidth
-                                        toDimension:ALDimensionWidth
-                                             ofView:self.collectionView];
-    [self.selectionHighlightView autoMatchDimension:ALDimensionHeight
-                                        toDimension:ALDimensionHeight
-                                             ofView:self.collectionView];
 
     // This should kick off the first load.
     OWSAssertDebug(!self.hasRenderState);
@@ -930,6 +901,11 @@ typedef enum : NSUInteger {
 - (BOOL)isBlockedConversation
 {
     return [self.blockingManager isThreadBlocked:self.thread];
+}
+
+- (BOOL)isGroup
+{
+    return self.thread.isGroupThread;
 }
 
 - (int)blockedGroupMemberCount
@@ -2718,6 +2694,41 @@ typedef enum : NSUInteger {
     [self presentFormSheetViewController:navigationController animated:YES completion:nil];
 }
 
+- (void)paymentButtonPressed
+{
+    OWSAssertIsOnMainThread();
+
+    [self showSendPaymentUIWithPaymentRequest:nil];
+}
+
+- (void)showSendPaymentUIWithPaymentRequest:(nullable TSPaymentRequestModel *)paymentRequestModel
+{
+    OWSAssertIsOnMainThread();
+
+    if (![self.thread isKindOfClass:[TSContactThread class]]) {
+        OWSFailDebug(@"Not a contact thread.");
+        return;
+    }
+
+    [self dismissKeyBoard];
+
+    if (RemoteConfig.paymentsResetKillSwitch) {
+        [OWSActionSheets
+            showErrorAlertWithMessage:NSLocalizedString(@"SETTINGS_PAYMENTS_CANNOT_SEND_PAYMENTS_KILL_SWITCH",
+                                          @"Error message indicating that payments cannot be sent because the feature "
+                                          @"is not currently available.")];
+        return;
+    }
+
+    TSContactThread *thread = (TSContactThread *)self.thread;
+    [SendPaymentViewController presentFromConversationView:self
+                                                  delegate:self
+                                          recipientAddress:thread.contactAddress
+                                       paymentRequestModel:paymentRequestModel
+                                      initialPaymentAmount:nil
+                                        isOutgoingTransfer:NO];
+}
+
 - (void)didSelectRecentPhotoWithAsset:(PHAsset *)asset attachment:(SignalAttachment *)attachment
 {
     OWSAssertIsOnMainThread();
@@ -2968,6 +2979,8 @@ typedef enum : NSUInteger {
 {
     OWSAssertIsOnMainThread();
 
+    [super applyTheme];
+
     if (!self.hasViewWillAppearEverBegun) {
         OWSFailDebug(@"InputToolbar not yet ready.");
         return;
@@ -3115,6 +3128,8 @@ typedef enum : NSUInteger {
     [self configureScrollDownButtons];
 
     [self scheduleScrollUpdateTimer];
+
+    [self updateScrollingContent];
 }
 
 - (void)scheduleScrollUpdateTimer
@@ -3226,6 +3241,8 @@ typedef enum : NSUInteger {
     if (oldSize.width != newSize.width) {
         [self resetForSizeOrOrientationChange];
     }
+
+    [self updateScrollingContent];
 }
 
 - (void)collectionViewWillAnimate
@@ -3310,10 +3327,35 @@ typedef enum : NSUInteger {
         // If this assert fails, *great* maybe we can get rid of this delay.
         OWSAssertDebug(![self.searchController.uiSearchController.searchBar canBecomeFirstResponder]);
 
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.searchController.uiSearchController.searchBar becomeFirstResponder];
-        });
+        // We wait N seconds for it to become ready.
+        CGFloat initialDelay = 0.4;
+        [self performSelector:@selector(tryToBecomeFirstResponderForSearchWithCumulativeDelay:)
+                   withObject:@(initialDelay)
+                   afterDelay:initialDelay];
     }];
+}
+
+- (void)tryToBecomeFirstResponderForSearchWithCumulativeDelay:(NSNumber *)cumulativeDelay
+{
+    // If this took more than N seconds, assume we're not going
+    // to be able to present search and bail.
+    if (cumulativeDelay.floatValue >= 1.5) {
+        OWSFailDebug(@"Giving up presenting search after excessive retry attempts.");
+        self.uiMode = ConversationUIMode_Normal;
+        return;
+    }
+
+    // Sometimes it takes longer, so we'll keep retrying..
+    if (![self.searchController.uiSearchController.searchBar canBecomeFirstResponder]) {
+        CGFloat additionalDelay = 0.05;
+        [self performSelector:@selector(tryToBecomeFirstResponderForSearchWithCumulativeDelay:)
+                   withObject:@(cumulativeDelay.floatValue + additionalDelay)
+                   afterDelay:additionalDelay];
+        return;
+    }
+
+    OWSLogDebug(@"Search controller became ready after %@ seconds", cumulativeDelay);
+    [self.searchController.uiSearchController.searchBar becomeFirstResponder];
 }
 
 #pragma mark ConversationSearchControllerDelegate
@@ -3588,6 +3630,7 @@ typedef enum : NSUInteger {
     for (CVCell *cell in self.collectionView.visibleCells) {
         cell.isCellVisible = isCellVisible;
     }
+    [self updateScrollingContent];
 }
 
 #pragma mark - ContactsPickerDelegate
@@ -3957,7 +4000,7 @@ typedef enum : NSUInteger {
 
 - (void)handleKeyboardStateChange:(NSTimeInterval)animationDuration animationCurve:(UIViewAnimationCurve)animationCurve
 {
-    if (self.isInteractiveTransitionInProgress) {
+    if (self.transitionCoordinator.isInteractive) {
         return;
     }
 
@@ -4160,6 +4203,20 @@ typedef enum : NSUInteger {
     OWSAssertIsOnMainThread();
 
     [self showGroupLobbyOrActiveCall];
+}
+
+- (void)cvc_didTapUnknownThreadWarningGroup
+{
+    OWSAssertIsOnMainThread();
+
+    [self showUnknownThreadWarningAlert];
+}
+
+- (void)cvc_didTapUnknownThreadWarningContact
+{
+    OWSAssertIsOnMainThread();
+
+    [self showUnknownThreadWarningAlert];
 }
 
 - (BOOL)isCurrentCallForThread

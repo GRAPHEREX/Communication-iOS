@@ -6,7 +6,7 @@ public enum PhotoGridItemType {
     case photo, animated, video
 }
 
-public protocol PhotoGridItem: class {
+public protocol PhotoGridItem: AnyObject {
     var type: PhotoGridItemType { get }
     func asyncThumbnail(completion: @escaping (UIImage?) -> Void) -> UIImage?
 }
@@ -163,7 +163,7 @@ public class PhotoGridViewCell: UICollectionViewCell {
         // `configure(item:)` multiple times because the high-quality image eventually applied
         // last time it was called will be momentarily replaced by a progression of lower
         // quality images.
-        image = item.asyncThumbnail { [weak self] image in
+        item.asyncThumbnail { [weak self] image in
             guard let self = self else { return }
 
             guard let currentItem = self.item else {

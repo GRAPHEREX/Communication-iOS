@@ -19,11 +19,11 @@ FOUNDATION_EXPORT const unsigned char SignalMessagingVersionString[];
 #import <SignalMessaging/ContactTableViewCell.h>
 #import <SignalMessaging/ContactsViewHelper.h>
 #import <SignalMessaging/CountryCodeViewController.h>
+#import <SignalMessaging/DateUtil.h>
 #import <SignalMessaging/DebugLogger.h>
 #import <SignalMessaging/Environment.h>
 #import <SignalMessaging/OWSAnyTouchGestureRecognizer.h>
 #import <SignalMessaging/OWSAudioPlayer.h>
-#import <SignalMessaging/OWSBubbleShapeView.h>
 #import <SignalMessaging/OWSBubbleView.h>
 #import <SignalMessaging/OWSContactAvatarBuilder.h>
 #import <SignalMessaging/OWSContactsManager.h>

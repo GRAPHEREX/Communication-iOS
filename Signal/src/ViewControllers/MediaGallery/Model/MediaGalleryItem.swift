@@ -44,7 +44,8 @@ public class MediaGalleryItem: Equatable, Hashable {
 
     public typealias AsyncThumbnailBlock = (UIImage) -> Void
     func thumbnailImage(async:@escaping AsyncThumbnailBlock) -> UIImage? {
-        return attachmentStream.thumbnailImageSmall(success: async, failure: {})
+        attachmentStream.thumbnailImageSmall(success: async, failure: {})
+        return nil
     }
 
     func thumbnailImageSync() -> UIImage? {

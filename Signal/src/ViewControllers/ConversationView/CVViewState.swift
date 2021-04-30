@@ -6,7 +6,7 @@ import Foundation
 import PromiseKit
 
 @objc
-public protocol CVViewStateDelegate: class {
+public protocol CVViewStateDelegate: AnyObject {
     func uiModeDidChange()
 }
 
@@ -129,7 +129,7 @@ public class CVViewState: NSObject {
     #endif
 
     @objc
-    public var wallpaperContainer = UIView()
+    public let backgroundContainer = CVBackgroundContainer()
 
     // MARK: - 
 
@@ -429,12 +429,6 @@ public class CVTextExpansion {
 // MARK: -
 
 public class CVMessageSwipeActionState {
-    public struct Reference {
-        let contentViewCenter: CGPoint
-        let reactionsViewCenter: CGPoint?
-        let avatarViewCenter: CGPoint
-        let iconViewCenter: CGPoint
-    }
     public struct Progress {
         let xOffset: CGFloat
     }

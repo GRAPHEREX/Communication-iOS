@@ -24,8 +24,6 @@ public extension ThreadUtil {
     class func enqueueMessage(outgoingMessageBuilder builder: TSOutgoingMessageBuilder,
                               thread: TSThread) -> TSOutgoingMessage {
 
-        // PAYMENTS TODO: Is there any reason for this to be main-thread only?
-
         let dmConfiguration = databaseStorage.read { transaction in
             return thread.disappearingMessagesConfiguration(with: transaction)
         }
@@ -46,8 +44,6 @@ public extension ThreadUtil {
     class func enqueueMessage(outgoingMessageBuilder builder: TSOutgoingMessageBuilder,
                               thread: TSThread,
                               transaction: SDSAnyWriteTransaction) -> TSOutgoingMessage {
-
-        // PAYMENTS TODO: Is there any reason for this to be main-thread only?
 
         let dmConfiguration = thread.disappearingMessagesConfiguration(with: transaction)
         builder.expiresInSeconds = dmConfiguration.isEnabled ? dmConfiguration.durationSeconds : 0
@@ -196,7 +192,10 @@ extension TSThread {
             sender: nil
         )
 
-        if let threadAvatar = OWSAvatarBuilder.buildImage(thread: self, diameter: 400, transaction: transaction),
+        if let threadAvatar = OWSAvatarBuilder.buildImage(thread: self,
+                                                          diameter: 400,
+                                                          localUserAvatarMode: .noteToSelf,
+                                                          transaction: transaction),
            let threadAvatarPng = threadAvatar.pngData() {
             let image = INImage(imageData: threadAvatarPng)
             sendMessageIntent.setImage(image, forParameterNamed: \.speakableGroupName)

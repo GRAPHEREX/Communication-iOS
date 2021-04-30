@@ -69,8 +69,7 @@ final class WalletExchangeController: OWSViewController {
                                                name: .ThemeDidChange, object: nil)
     }
     
-    @objc
-    func applyTheme() {
+    override func applyTheme() {
         view.backgroundColor = Theme.backgroundColor
         changeButton.tintColor = Theme.primaryTextColor
     }

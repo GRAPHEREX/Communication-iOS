@@ -22,6 +22,7 @@ public class SignalServiceProfile: NSObject {
     public let avatarUrlPath: String?
     public let credentials: String?
     public let bucket: String?
+    public let paymentAddressEncrypted: Data?
     public let unidentifiedAccessVerifier: Data?
     public let hasUnrestrictedUnidentifiedAccess: Bool
     public let supportsGroupsV2: Bool
@@ -67,6 +68,8 @@ public class SignalServiceProfile: NSObject {
         self.avatarUrlPath = try avatar?.optional(key: "attachmentId")
         self.bucket = try avatar?.optional(key: "bucket")
         self.credentials = try avatar?.optional(key: "credential")
+
+        self.paymentAddressEncrypted = try params.optionalBase64EncodedData(key: "paymentAddress")
 
         self.unidentifiedAccessVerifier = try params.optionalBase64EncodedData(key: "unidentifiedAccess")
 

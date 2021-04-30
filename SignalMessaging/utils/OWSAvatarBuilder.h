@@ -10,6 +10,12 @@ extern const NSUInteger kMediumAvatarSize;
 extern const NSUInteger kBigAvatarSize;
 extern const NSUInteger kLargeAvatarSize;
 
+typedef NS_CLOSED_ENUM(NSUInteger, LocalUserAvatarMode) {
+    // We should use this value by default.
+    LocalUserAvatarModeAsUser = 0,
+    LocalUserAvatarModeNoteToSelf,
+};
+
 @class SDSAnyReadTransaction;
 @class TSThread;
 @class UIImage;
@@ -19,11 +25,15 @@ extern const NSUInteger kLargeAvatarSize;
 typedef void (^OWSAvatarDrawBlock)(CGContextRef context);
 
 + (nullable UIImage *)buildImageForThread:(TSThread *)thread
-                                 diameter:(NSUInteger)diameter NS_SWIFT_NAME(buildImage(thread:diameter:));
+                                 diameter:(NSUInteger)diameter
+                      localUserAvatarMode:(LocalUserAvatarMode)localUserAvatarMode
+    NS_SWIFT_NAME(buildImage(thread:diameter:localUserAvatarMode:));
 
 + (nullable UIImage *)buildImageForThread:(TSThread *)thread
                                  diameter:(NSUInteger)diameter
-                              transaction:(SDSAnyReadTransaction *)transaction NS_SWIFT_NAME(buildImage(thread:diameter:transaction:));
+                      localUserAvatarMode:(LocalUserAvatarMode)localUserAvatarMode
+                              transaction:(SDSAnyReadTransaction *)transaction
+    NS_SWIFT_NAME(buildImage(thread:diameter:localUserAvatarMode:transaction:));
 
 + (nullable UIImage *)buildRandomAvatarWithDiameter:(NSUInteger)diameter;
 + (nullable UIImage *)buildNoiseAvatarWithDiameter:(NSUInteger)diameter;

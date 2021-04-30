@@ -441,6 +441,22 @@ public extension NSObject {
     static var notificationPresenter: NotificationsProtocol? {
         SSKEnvironment.shared.notificationsManager
     }
+
+    final var payments: Payments {
+        SSKEnvironment.shared.paymentsRef
+    }
+
+    static var payments: Payments {
+        SSKEnvironment.shared.paymentsRef
+    }
+
+    final var paymentsCurrencies: PaymentsCurrencies {
+        SSKEnvironment.shared.paymentsCurrenciesRef
+    }
+
+    static var paymentsCurrencies: PaymentsCurrencies {
+        SSKEnvironment.shared.paymentsCurrenciesRef
+    }
 }
 
 // MARK: - Obj-C Dependencies
@@ -866,6 +882,22 @@ public extension Dependencies {
     static var notificationPresenter: NotificationsProtocol? {
         SSKEnvironment.shared.notificationsManager
     }
+
+    var payments: Payments {
+        SSKEnvironment.shared.paymentsRef
+    }
+
+    static var payments: Payments {
+        SSKEnvironment.shared.paymentsRef
+    }
+
+    var paymentsCurrencies: PaymentsCurrencies {
+        SSKEnvironment.shared.paymentsCurrenciesRef
+    }
+
+    static var paymentsCurrencies: PaymentsCurrencies {
+        SSKEnvironment.shared.paymentsCurrenciesRef
+    }
 }
 
 // MARK: - Swift-only Dependencies
@@ -895,6 +927,22 @@ public extension NSObject {
     static var serviceClient: SignalServiceClient {
         SignalServiceRestClient.shared
     }
+
+    final var paymentsSwift: PaymentsSwift {
+        SSKEnvironment.shared.paymentsRef as! PaymentsSwift
+    }
+
+    static var paymentsSwift: PaymentsSwift {
+        SSKEnvironment.shared.paymentsRef as! PaymentsSwift
+    }
+
+    final var paymentsCurrenciesSwift: PaymentsCurrenciesSwift {
+        SSKEnvironment.shared.paymentsCurrenciesRef as! PaymentsCurrenciesSwift
+    }
+
+    static var paymentsCurrenciesSwift: PaymentsCurrenciesSwift {
+        SSKEnvironment.shared.paymentsCurrenciesRef as! PaymentsCurrenciesSwift
+    }
 }
 
 // MARK: - Swift-only Dependencies
@@ -923,6 +971,22 @@ public extension Dependencies {
 
     static var serviceClient: SignalServiceClient {
         SignalServiceRestClient.shared
+    }
+
+    var paymentsSwift: PaymentsSwift {
+        SSKEnvironment.shared.paymentsRef as! PaymentsSwift
+    }
+
+    static var paymentsSwift: PaymentsSwift {
+        SSKEnvironment.shared.paymentsRef as! PaymentsSwift
+    }
+
+    var paymentsCurrenciesSwift: PaymentsCurrenciesSwift {
+        SSKEnvironment.shared.paymentsCurrenciesRef as! PaymentsCurrenciesSwift
+    }
+
+    static var paymentsCurrenciesSwift: PaymentsCurrenciesSwift {
+        SSKEnvironment.shared.paymentsCurrenciesRef as! PaymentsCurrenciesSwift
     }
 }
 

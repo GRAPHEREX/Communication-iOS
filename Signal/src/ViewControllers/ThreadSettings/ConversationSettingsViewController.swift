@@ -18,7 +18,7 @@ public enum ConversationSettingsPresentationMode: UInt {
 // MARK: -
 
 @objc
-public protocol ConversationSettingsViewDelegate: class {
+public protocol ConversationSettingsViewDelegate: AnyObject {
 
     func conversationColorWasUpdated()
 
@@ -38,7 +38,7 @@ class ConversationSettingsViewController: OWSTableViewController2 {
     @objc
     public weak var conversationSettingsViewDelegate: ConversationSettingsViewDelegate?
 
-    private var threadViewModel: ThreadViewModel
+    private(set) var threadViewModel: ThreadViewModel
 
     var thread: TSThread {
         threadViewModel.threadRecord
@@ -65,6 +65,7 @@ class ConversationSettingsViewController: OWSTableViewController2 {
     private var colorPicker: ColorPicker?
 
     var isShowingAllGroupMembers = false
+    var isShowingAllMutualGroups = false
 
     @objc
     public required init(threadViewModel: ThreadViewModel) {
@@ -78,6 +79,8 @@ class ConversationSettingsViewController: OWSTableViewController2 {
 
         super.init()
 
+        callService.addObserver(observer: self, syncStateImmediately: false)
+        databaseStorage.appendUIDatabaseSnapshotDelegate(self)
         contactsViewHelper.addObserver(self)
         groupViewHelper.delegate = self
     }
@@ -95,9 +98,17 @@ class ConversationSettingsViewController: OWSTableViewController2 {
                                                selector: #selector(profileWhitelistDidChange(notification:)),
                                                name: .profileWhitelistDidChange,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateTableContents),
+                                               name: UIContentSizeCategory.didChangeNotification,
+                                               object: nil)
     }
 
     // MARK: - Accessors
+
+    var isBlockedByMigration: Bool {
+        return groupViewHelper.isBlockedByMigration
+    }
 
     var canEditConversationAttributes: Bool {
         return groupViewHelper.canEditConversationAttributes
@@ -134,9 +145,6 @@ class ConversationSettingsViewController: OWSTableViewController2 {
 
         if isGroupThread {
             updateNavigationBar()
-        } else {
-            self.title = NSLocalizedString(
-                "CONVERSATION_SETTINGS_CONTACT_INFO_TITLE", comment: "Navbar title when viewing settings for a 1-on-1 thread")
         }
 
         // The header should "extend" offscreen so that we
@@ -158,27 +166,27 @@ class ConversationSettingsViewController: OWSTableViewController2 {
 
         observeNotifications()
 
+        updateRecentAttachments()
+        updateMutualGroupThreads()
         reloadThreadAndUpdateContent()
 
         updateNavigationBar()
     }
 
     func updateNavigationBar() {
-        if !thread.isNoteToSelf && thread.hasSafetyNumbers() && (thread.isGroupThread || thread.recipientAddresses[0].uuid != nil), let contactThread = thread as? TSContactThread {
-            
-            let icon: UIImage
-            if OWSIdentityManager.shared.verificationState(for: contactThread.contactAddress) == .verified {
-                icon = Theme.iconImage(.verificationActive, alwaysTemplate: false).withRenderingMode(.alwaysOriginal)
-            }
-            else {
-                icon = Theme.iconImage(.verificationNonActive, alwaysTemplate: false).withRenderingMode(.alwaysOriginal)
-            }
-            
-            navigationItem.rightBarButtonItem = .init(
-                image: icon,
+        guard canEditConversationAttributes else {
+            navigationItem.rightBarButtonItem = nil
+            return
+        }
+
+        if isGroupThread || contactsManagerImpl.isSystemContactsAuthorized {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title: NSLocalizedString("CONVERSATION_SETTINGS_EDIT",
+                                         comment: "Label for the 'edit' button in conversation settings view."),
                 style: .plain,
                 target: self,
-                action: #selector(showVerificationView))
+                action: #selector(editButtonWasPressed))
+
         } else {
             navigationItem.rightBarButtonItem = nil
         }
@@ -209,7 +217,51 @@ class ConversationSettingsViewController: OWSTableViewController2 {
         updateTableContents()
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate { _ in } completion: { _ in
+            self.updateTableContents()
+        }
+    }
+
     // MARK: -
+
+    private(set) var groupMemberStateMap = [SignalServiceAddress: OWSVerificationState]()
+    private(set) var sortedGroupMembers = [SignalServiceAddress]()
+    func updateGroupMembers(transaction: SDSAnyReadTransaction) {
+        guard let groupModel = currentGroupModel, !groupModel.isPlaceholder, let localAddress = tsAccountManager.localAddress else {
+            groupMemberStateMap = [:]
+            sortedGroupMembers = []
+            return
+        }
+
+        let groupMembership = groupModel.groupMembership
+        let allMembers = groupMembership.fullMembers
+        var allMembersSorted = [SignalServiceAddress]()
+        var verificationStateMap = [SignalServiceAddress: OWSVerificationState]()
+
+        for memberAddress in allMembers {
+            verificationStateMap[memberAddress] = self.identityManager.verificationState(for: memberAddress,
+                                                                                         transaction: transaction)
+        }
+        allMembersSorted = self.contactsManagerImpl.sortSignalServiceAddresses(Array(allMembers),
+                                                                               transaction: transaction)
+
+        var membersToRender = [SignalServiceAddress]()
+        if groupMembership.isFullMember(localAddress) {
+            // Make sure local user is first.
+            membersToRender.insert(localAddress, at: 0)
+        }
+        // Admin users are second.
+        let adminMembers = allMembersSorted.filter { $0 != localAddress && groupMembership.isFullMemberAndAdministrator($0) }
+        membersToRender += adminMembers
+        // Non-admin users are third.
+        let nonAdminMembers = allMembersSorted.filter { $0 != localAddress && !groupMembership.isFullMemberAndAdministrator($0) }
+        membersToRender += nonAdminMembers
+
+        self.groupMemberStateMap = verificationStateMap
+        self.sortedGroupMembers = membersToRender
+    }
 
     func reloadThreadAndUpdateContent() {
         let didUpdate = self.databaseStorage.read { transaction -> Bool in
@@ -223,8 +275,12 @@ class ConversationSettingsViewController: OWSTableViewController2 {
             self.threadViewModel = newThreadViewModel
             self.groupViewHelper = GroupViewHelper(threadViewModel: newThreadViewModel)
             self.groupViewHelper.delegate = self
+
+            self.updateGroupMembers(transaction: transaction)
+
             return true
         }
+
         if !didUpdate {
             owsFailDebug("Invalid thread.")
             navigationController?.popViewController(animated: true)
@@ -259,7 +315,7 @@ class ConversationSettingsViewController: OWSTableViewController2 {
             return
         }
         let memberActionSheet = MemberActionSheet(address: memberAddress, groupViewHelper: groupViewHelper)
-        memberActionSheet.present(fromViewController: self)
+        memberActionSheet.present(from: self)
     }
 
     func showAddToSystemContactsActionSheet(contactThread: TSContactThread) {
@@ -289,7 +345,7 @@ class ConversationSettingsViewController: OWSTableViewController2 {
     // MARK: -
 
     private var hasUnsavedChangesToDisappearingMessagesConfiguration: Bool {
-        return databaseStorage.uiRead { transaction in
+        return databaseStorage.read { transaction in
             if let groupThread = self.thread as? TSGroupThread {
                 guard let latestThread = TSGroupThread.fetch(groupId: groupThread.groupModel.groupId, transaction: transaction) else {
                     // Thread no longer exists.
@@ -306,37 +362,15 @@ class ConversationSettingsViewController: OWSTableViewController2 {
 
     // MARK: - Actions
 
-    @objc func conversationNameTouched(sender: UIGestureRecognizer) {
-        guard sender.state == .recognized else { return }
-        guard let avatarView = avatarView else {
-            owsFailDebug("Missing avatarView.")
-            return
+    func tappedAvatar() {
+        guard avatarView != nil, !thread.isGroupThread || (thread as? TSGroupThread)?.groupModel.groupAvatarData != nil else {
+            return // Not a valid avatar
         }
 
-        let didTapAvatar = avatarView.containsGestureLocation(sender)
-        let hasValidAvatar = !thread.isGroupThread || (thread as? TSGroupThread)?.groupModel.groupAvatarData != nil
-
-        if didTapAvatar, hasValidAvatar {
-            presentAvatarViewController()
-        } else if canEditConversationAttributes {
-            if didTapAvatar, isGroupThread {
-                showGroupAttributesView(editAction: .avatar)
-            } else if isGroupThread {
-                showGroupAttributesView(editAction: .name)
-            } else if contactsManagerImpl.supportsContactEditing {
-//                presentContactViewController()
-            }
-        }
+        presentAvatarViewController()
     }
 
-    func showShareProfileAlert() {
-        profileManagerImpl.presentAddThread(toProfileWhitelist: thread,
-                                            from: self) {
-            self.updateTableContents()
-        }
-    }
-
-    @objc func showVerificationView() {
+    func showVerificationView() {
         guard let contactThread = thread as? TSContactThread else {
             owsFailDebug("Invalid thread.")
             return
@@ -346,197 +380,65 @@ class ConversationSettingsViewController: OWSTableViewController2 {
         FingerprintViewController.present(from: self, address: contactAddress)
     }
 
-    func showSoundSettingsView() {
-        let vc = NotificationSettingsSoundViewController(thread: thread) { [weak self] in
-            self?.updateTableContents()
-        }
-        presentFormSheet(OWSNavigationController(rootViewController: vc), animated: true)
-    }
-
     func showWallpaperSettingsView() {
         let vc = WallpaperSettingsViewController(thread: thread)
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    func showAllGroupMembers() {
+    func showSoundAndNotificationsSettingsView() {
+        let vc = SoundAndNotificationsSettingsViewController(thread: thread)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func showPermissionsSettingsView() {
+        let vc = GroupPermissionsSettingsViewController(threadViewModel: threadViewModel, delegate: self)
+        presentFormSheet(OWSNavigationController(rootViewController: vc), animated: true)
+    }
+
+    func showAllGroupMembers(revealingIndices: [IndexPath]? = nil) {
         isShowingAllGroupMembers = true
-        updateTableContents()
+        updateForSeeAll(revealingIndices: revealingIndices)
+    }
+
+    func showAllMutualGroups(revealingIndices: [IndexPath]? = nil) {
+        isShowingAllMutualGroups = true
+        updateForSeeAll(revealingIndices: revealingIndices)
+    }
+
+    func updateForSeeAll(revealingIndices: [IndexPath]? = nil) {
+        if let revealingIndices = revealingIndices, !revealingIndices.isEmpty, let firstIndex = revealingIndices.first {
+            tableView.beginUpdates()
+
+            // Delete the "See All" row.
+            tableView.deleteRows(at: [IndexPath(row: firstIndex.row, section: firstIndex.section)], with: .top)
+
+            // Insert the new rows.
+            tableView.insertRows(at: revealingIndices, with: .top)
+
+            updateTableContents(shouldReload: false)
+            tableView.endUpdates()
+        } else {
+            updateTableContents()
+        }
     }
 
     func showGroupAttributesView(editAction: GroupAttributesViewController.EditAction) {
+         guard canEditConversationAttributes else {
+             owsFailDebug("!canEditConversationAttributes")
+             return
+         }
 
-        guard canEditConversationAttributes else {
-            owsFailDebug("!canEditConversationAttributes")
-            return
-        }
+         assert(conversationSettingsViewDelegate != nil)
 
-        assert(conversationSettingsViewDelegate != nil)
-
-        guard let groupThread = thread as? TSGroupThread else {
-            owsFailDebug("Invalid thread.")
-            return
-        }
-        let groupAttributesViewController = GroupAttributesViewController(groupThread: groupThread,
-                                                                          editAction: editAction,
-                                                                          delegate: self)
-        navigationController?.pushViewController(groupAttributesViewController, animated: true)
-    }
-
-    func showGroupAttributesAccessView() {
-
-        guard canEditConversationAccess else {
-            owsFailDebug("!canEditConversationAccess")
-            return
-        }
-        guard let groupThread = thread as? TSGroupThread,
-            let groupModelV2 = groupThread.groupModel as? TSGroupModelV2 else {
-                owsFailDebug("Invalid thread.")
-                return
-        }
-
-        let currentValue = groupModelV2.access.attributes
-
-        let alert = ActionSheetController(title: NSLocalizedString("CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS",
-                                                                   comment: "Label for 'edit attributes access' action in conversation settings view."),
-                                          message: NSLocalizedString("CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_DESCRIPTION",
-                                                                     comment: "Description for the 'edit group attributes access' alert."))
-
-        let memberAction = ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_MEMBERS_BUTTON",
-                                                                      comment: "Label for button that sets 'group attributes access' to 'members-only'."),
-                                             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self,
-                                                                                                     name: "group_attributes_access_members"),
-                                             style: .default) { _ in
-                                                self.setGroupAttributesAccess(groupModelV2: groupModelV2,
-                                                                              access: .member)
-        }
-        if currentValue == .member {
-            memberAction.trailingIcon = .checkCircle
-        }
-        alert.addAction(memberAction)
-
-        let adminAction = ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_EDIT_ATTRIBUTES_ACCESS_ALERT_ADMINISTRATORS_BUTTON",
-                                                                     comment: "Label for button that sets 'group attributes access' to 'administrators-only'."),
-                                            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self,
-                                                                                                    name: "group_attributes_access_administrators"),
-                                            style: .default) { _ in
-                                                self.setGroupAttributesAccess(groupModelV2: groupModelV2,
-                                                                              access: .administrator)
-        }
-        if currentValue == .administrator {
-            adminAction.trailingIcon = .checkCircle
-        }
-        alert.addAction(adminAction)
-
-        alert.addAction(OWSActionSheets.cancelAction)
-
-        presentActionSheet(alert)
-    }
-
-    private func setGroupAttributesAccess(groupModelV2: TSGroupModelV2,
-                                          access: GroupV2Access) {
-        GroupViewUtils.updateGroupWithActivityIndicator(fromViewController: self,
-                                                        updatePromiseBlock: {
-                                                            self.setGroupAttributesAccessPromise(groupModelV2: groupModelV2,
-                                                                                                 access: access)
-        },
-                                                        completion: { [weak self] _ in
-                                                            self?.reloadThreadAndUpdateContent()
-        })
-    }
-
-    private func setGroupAttributesAccessPromise(groupModelV2: TSGroupModelV2,
-                                                 access: GroupV2Access) -> Promise<Void> {
-        let thread = self.thread
-
-        return firstly { () -> Promise<Void> in
-            return GroupManager.messageProcessingPromise(for: thread,
-                                                         description: "Update group attributes access")
-        }.map(on: .global()) {
-            // We're sending a message, so we're accepting any pending message request.
-            ThreadUtil.addToProfileWhitelistIfEmptyOrPendingRequestWithSneakyTransaction(thread: thread)
-        }.then(on: .global()) {
-            GroupManager.changeGroupAttributesAccessV2(groupModel: groupModelV2,
-                                                       access: access)
-        }.asVoid()
-    }
-
-    func showGroupMembershipAccessView() {
-
-        guard canEditConversationAccess else {
-            owsFailDebug("!canEditConversationAccess")
-            return
-        }
-        guard let groupThread = thread as? TSGroupThread,
-            let groupModelV2 = groupThread.groupModel as? TSGroupModelV2 else {
-                owsFailDebug("Invalid thread.")
-                return
-        }
-
-        let currentValue = groupModelV2.access.members
-
-        let alert = ActionSheetController(title: NSLocalizedString("CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS",
-                                                                   comment: "Label for 'edit membership access' action in conversation settings view."),
-                                          message: NSLocalizedString("CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_DESCRIPTION",
-                                                                     comment: "Description for the 'edit group membership access' alert."))
-
-        let memberAction = ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_MEMBERS_BUTTON",
-                                                                      comment: "Label for button that sets 'group membership access' to 'members-only'."),
-                                             accessibilityIdentifier: UIView.accessibilityIdentifier(in: self,
-                                                                                                     name: "group_membership_access_members"),
-                                             style: .default) { _ in
-                                                self.setGroupMembershipAccess(groupModelV2: groupModelV2,
-                                                                              access: .member)
-        }
-        if currentValue == .member {
-            memberAction.trailingIcon = .checkCircle
-        }
-        alert.addAction(memberAction)
-
-        let adminAction = ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_EDIT_MEMBERSHIP_ACCESS_ALERT_ADMINISTRATORS_BUTTON",
-                                                                     comment: "Label for button that sets 'group membership access' to 'administrators-only'."),
-                                            accessibilityIdentifier: UIView.accessibilityIdentifier(in: self,
-                                                                                                    name: "group_membership_access_administrators"),
-                                            style: .default) { _ in
-                                                self.setGroupMembershipAccess(groupModelV2: groupModelV2,
-                                                                              access: .administrator)
-        }
-        if currentValue == .administrator {
-            adminAction.trailingIcon = .checkCircle
-        }
-        alert.addAction(adminAction)
-
-        alert.addAction(OWSActionSheets.cancelAction)
-
-        presentActionSheet(alert)
-    }
-
-    private func setGroupMembershipAccess(groupModelV2: TSGroupModelV2,
-                                          access: GroupV2Access) {
-        GroupViewUtils.updateGroupWithActivityIndicator(fromViewController: self,
-                                                        updatePromiseBlock: {
-                                                            self.setGroupMembershipAccessPromise(groupModelV2: groupModelV2,
-                                                                                                 access: access)
-        },
-                                                        completion: { [weak self] _ in
-                                                            self?.reloadThreadAndUpdateContent()
-        })
-    }
-
-    private func setGroupMembershipAccessPromise(groupModelV2: TSGroupModelV2,
-                                                 access: GroupV2Access) -> Promise<Void> {
-        let thread = self.thread
-
-        return firstly { () -> Promise<Void> in
-            return GroupManager.messageProcessingPromise(for: thread,
-                                                         description: "Update group membership access")
-        }.map(on: .global()) {
-            // We're sending a message, so we're accepting any pending message request.
-            ThreadUtil.addToProfileWhitelistIfEmptyOrPendingRequestWithSneakyTransaction(thread: thread)
-        }.then(on: .global()) {
-            GroupManager.changeGroupMembershipAccessV2(groupModel: groupModelV2,
-                                                       access: access)
-        }.asVoid()
-    }
+         guard let groupThread = thread as? TSGroupThread else {
+             owsFailDebug("Invalid thread.")
+             return
+         }
+         let groupAttributesViewController = GroupAttributesViewController(groupThread: groupThread,
+                                                                           editAction: editAction,
+                                                                           delegate: self)
+         navigationController?.pushViewController(groupAttributesViewController, animated: true)
+     }
 
     func showAddMembersView() {
         guard canEditConversationMembership else {
@@ -550,6 +452,14 @@ class ConversationSettingsViewController: OWSTableViewController2 {
         let addGroupMembersViewController = AddGroupMembersViewController(groupThread: groupThread)
         addGroupMembersViewController.addGroupMembersViewControllerDelegate = self
         navigationController?.pushViewController(addGroupMembersViewController, animated: true)
+    }
+
+    func showAddToGroupView() {
+        guard let thread = thread as? TSContactThread else {
+            return owsFailDebug("Tried to present for unexpected thread")
+        }
+        let vc = AddToGroupViewController(address: thread.contactAddress)
+        presentFormSheet(OWSNavigationController(rootViewController: vc), animated: true)
     }
 
     func showMemberRequestsAndInvitesView() {
@@ -608,7 +518,7 @@ class ConversationSettingsViewController: OWSTableViewController2 {
 
     func presentAvatarViewController() {
         guard let avatarView = avatarView, avatarView.image != nil else { return }
-        guard let vc = databaseStorage.uiRead(block: { readTx in
+        guard let vc = databaseStorage.read(block: { readTx in
             AvatarViewController(thread: self.thread, readTx: readTx)
         }) else {
             return
@@ -749,7 +659,7 @@ class ConversationSettingsViewController: OWSTableViewController2 {
         }
     }
 
-    func didTapUnblockGroup() {
+    func didTapUnblockThread(completion: @escaping () -> Void = {}) {
         let isCurrentlyBlocked = blockingManager.isThreadBlocked(thread)
         if !isCurrentlyBlocked {
             owsFailDebug("Not blocked.")
@@ -757,10 +667,11 @@ class ConversationSettingsViewController: OWSTableViewController2 {
         }
         BlockListUIUtils.showUnblockThreadActionSheet(thread, from: self) { [weak self] _ in
             self?.updateTableContents()
+            completion()
         }
     }
 
-    func didTapBlockGroup() {
+    func didTapBlockThread() {
         let isCurrentlyBlocked = blockingManager.isThreadBlocked(thread)
         if isCurrentlyBlocked {
             owsFailDebug("Already blocked.")
@@ -771,9 +682,50 @@ class ConversationSettingsViewController: OWSTableViewController2 {
         }
     }
 
-    func showMuteUnmuteActionSheet() {
+    func didTapInternalSettings() {
+        let view = ConversationInternalViewController(thread: thread)
+        navigationController?.pushViewController(view, animated: true)
+    }
+
+    class func showMuteUnmuteActionSheet(for thread: TSThread, from fromVC: UIViewController, actionExecuted: @escaping () -> Void) {
+        var unmuteTitle: String?
+        if thread.isMuted {
+            let now = Date()
+
+            if thread.mutedUntilTimestamp == TSThread.alwaysMutedTimestamp {
+                unmuteTitle = NSLocalizedString(
+                    "CONVERSATION_SETTINGS_MUTED_ALWAYS_UNMUTE",
+                    comment: "Indicates that this thread is muted forever."
+                )
+            } else if let mutedUntilDate = thread.mutedUntilDate, mutedUntilDate > now {
+                let calendar = Calendar.current
+                let muteUntilComponents = calendar.dateComponents([.year, .month, .day], from: mutedUntilDate)
+                let nowComponents = calendar.dateComponents([.year, .month, .day], from: now)
+                let dateFormatter = DateFormatter()
+                if nowComponents.year != muteUntilComponents.year
+                    || nowComponents.month != muteUntilComponents.month
+                    || nowComponents.day != muteUntilComponents.day {
+
+                    dateFormatter.dateStyle = .short
+                    dateFormatter.timeStyle = .short
+                } else {
+                    dateFormatter.dateStyle = .none
+                    dateFormatter.timeStyle = .short
+                }
+
+                let formatString = NSLocalizedString(
+                    "CONVERSATION_SETTINGS_MUTED_UNTIL_UNMUTE_FORMAT",
+                    comment: "Indicates that this thread is muted until a given date or time. Embeds {{The date or time which the thread is muted until}}."
+                )
+                unmuteTitle = String(
+                    format: formatString,
+                    dateFormatter.string(from: mutedUntilDate)
+                )
+            }
+        }
+
         let actionSheet = ActionSheetController(
-            message: thread.isMuted ? nil : NSLocalizedString(
+            title: thread.isMuted ? unmuteTitle : NSLocalizedString(
                 "CONVERSATION_SETTINGS_MUTE_ACTION_SHEET_TITLE",
                 comment: "Title for the mute action sheet"
             )
@@ -783,70 +735,77 @@ class ConversationSettingsViewController: OWSTableViewController2 {
             let action =
                 ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_UNMUTE_ACTION",
                                                            comment: "Label for button to unmute a thread."),
-                                  accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "unmute")) { [weak self] _ in
-                                    self?.setThreadMutedUntilTimestamp(0)
-            }
+                                  accessibilityIdentifier: UIView.accessibilityIdentifier(in: fromVC, name: "unmute")) { _ in
+                    setThreadMutedUntilTimestamp(0, thread: thread)
+                    actionExecuted()
+                }
             actionSheet.addAction(action)
         } else {
             #if DEBUG
             actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_ONE_MINUTE_ACTION",
                                                                              comment: "Label for button to mute a thread for a minute."),
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_minute")) { [weak self] _ in
-                                                        self?.setThreadMuted {
-                                                            var dateComponents = DateComponents()
-                                                            dateComponents.minute = 1
-                                                            return dateComponents
-                                                        }
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: fromVC, name: "mute_1_minute")) { _ in
+                setThreadMuted(thread: thread) {
+                    var dateComponents = DateComponents()
+                    dateComponents.minute = 1
+                    return dateComponents
+                }
+                actionExecuted()
             })
             #endif
             actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_ONE_HOUR_ACTION",
                                                                              comment: "Label for button to mute a thread for a hour."),
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_hour")) { [weak self] _ in
-                                                        self?.setThreadMuted {
-                                                            var dateComponents = DateComponents()
-                                                            dateComponents.hour = 1
-                                                            return dateComponents
-                                                        }
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: fromVC, name: "mute_1_hour")) { _ in
+                setThreadMuted(thread: thread) {
+                    var dateComponents = DateComponents()
+                    dateComponents.hour = 1
+                    return dateComponents
+                }
+                actionExecuted()
             })
             actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_EIGHT_HOUR_ACTION",
                                                                              comment: "Label for button to mute a thread for eight hours."),
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_8_hour")) { [weak self] _ in
-                                                        self?.setThreadMuted {
-                                                            var dateComponents = DateComponents()
-                                                            dateComponents.hour = 8
-                                                            return dateComponents
-                                                        }
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: fromVC, name: "mute_8_hour")) { _ in
+                setThreadMuted(thread: thread) {
+                    var dateComponents = DateComponents()
+                    dateComponents.hour = 8
+                    return dateComponents
+                }
+                actionExecuted()
             })
             actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_ONE_DAY_ACTION",
                                                                              comment: "Label for button to mute a thread for a day."),
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_day")) { [weak self] _ in
-                                                        self?.setThreadMuted {
-                                                            var dateComponents = DateComponents()
-                                                            dateComponents.day = 1
-                                                            return dateComponents
-                                                        }
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: fromVC, name: "mute_1_day")) { _ in
+                setThreadMuted(thread: thread) {
+                    var dateComponents = DateComponents()
+                    dateComponents.day = 1
+                    return dateComponents
+                }
+                actionExecuted()
             })
             actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_ONE_WEEK_ACTION",
                                                                              comment: "Label for button to mute a thread for a week."),
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_1_week")) { [weak self] _ in
-                                                        self?.setThreadMuted {
-                                                            var dateComponents = DateComponents()
-                                                            dateComponents.day = 7
-                                                            return dateComponents
-                                                        }
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: fromVC, name: "mute_1_week")) { _ in
+                setThreadMuted(thread: thread) {
+                    var dateComponents = DateComponents()
+                    dateComponents.day = 7
+                    return dateComponents
+                }
+                actionExecuted()
             })
             actionSheet.addAction(ActionSheetAction(title: NSLocalizedString("CONVERSATION_SETTINGS_MUTE_ALWAYS_ACTION",
                                                                              comment: "Label for button to mute a thread forever."),
-                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "mute_always")) { [weak self] _ in
-                self?.setThreadMutedUntilTimestamp(TSThread.alwaysMutedTimestamp)
+                                                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: fromVC, name: "mute_always")) { _ in
+                setThreadMutedUntilTimestamp(TSThread.alwaysMutedTimestamp, thread: thread)
+                actionExecuted()
             })
         }
 
         actionSheet.addAction(OWSActionSheets.cancelAction)
-        presentActionSheet(actionSheet)
+        fromVC.presentActionSheet(actionSheet)
     }
 
-    private func setThreadMuted(dateBlock: () -> DateComponents) {
+    private class func setThreadMuted(thread: TSThread, dateBlock: () -> DateComponents) {
         guard let timeZone = TimeZone(identifier: "UTC") else {
             owsFailDebug("Invalid timezone.")
             return
@@ -858,52 +817,68 @@ class ConversationSettingsViewController: OWSTableViewController2 {
             owsFailDebug("Couldn't modify date.")
             return
         }
-        self.setThreadMutedUntilTimestamp(mutedUntilDate.ows_millisecondsSince1970)
+        self.setThreadMutedUntilTimestamp(mutedUntilDate.ows_millisecondsSince1970, thread: thread)
     }
 
-    private func setThreadMutedUntilTimestamp(_ value: UInt64) {
+    private class func setThreadMutedUntilTimestamp(_ value: UInt64, thread: TSThread) {
         databaseStorage.write { transaction in
-            self.thread.updateWithMuted(untilTimestamp: value, updateStorageService: true, transaction: transaction)
+            thread.updateWithMuted(untilTimestamp: value, updateStorageService: true, transaction: transaction)
         }
-
-        updateTableContents()
     }
 
-    func showMentionNotificationModeActionSheet() {
-        let actionSheet = ActionSheetController(
-            title: NSLocalizedString("CONVERSATION_SETTINGS_MENTION_NOTIFICATION_MODE_ACTION_SHEET_TITLE",
-                                     comment: "Title of the 'mention notification mode' action sheet.")
-        )
-
-        for mode: TSThreadMentionNotificationMode in [.always, .never] {
-            let action =
-                ActionSheetAction(
-                    title: nameForMentionMode(mode),
-                    accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: String(describing: mode))
-                ) { [weak self] _ in
-                    self?.setMentionNotificationMode(mode)
-            }
-            actionSheet.addAction(action)
-        }
-
-        actionSheet.addAction(OWSActionSheets.cancelAction)
-        presentActionSheet(actionSheet)
-    }
-
-    private func setMentionNotificationMode(_ value: TSThreadMentionNotificationMode) {
-        databaseStorage.write { transaction in
-            self.thread.updateWithMentionNotificationMode(value, transaction: transaction)
-        }
-
-        updateTableContents()
-    }
-
-    func showMediaGallery(types: [GalleryType]) {
+    func showMediaGallery() {
         Logger.debug("")
 
         let tileVC = MediaTileViewController()
-        tileVC.configure(types: types, thread: thread)
+        tileVC.configure(types: GalleryType.allCases, thread: thread)
         navigationController?.pushViewController(tileVC, animated: true)
+    }
+
+    func showMediaPageView(for attachmentStream: TSAttachmentStream) {
+        let vc = MediaPageViewController(initialMediaAttachment: attachmentStream, thread: thread)
+        present(vc, animated: true)
+    }
+
+    let maximumRecentMedia = 4
+    private(set) var recentMedia = OrderedDictionary<String, (attachment: TSAttachmentStream, imageView: UIImageView)>() {
+        didSet { AssertIsOnMainThread() }
+    }
+    private lazy var mediaGalleryFinder = MediaGalleryFinder(thread: thread)
+    func updateRecentAttachments() {
+        let recentAttachments = databaseStorage.uiRead { transaction in
+            mediaGalleryFinder.recentMediaAttachments(limit: maximumRecentMedia, transaction: transaction.unwrapGrdbRead)
+        }
+        recentMedia = recentAttachments.reduce(into: OrderedDictionary(), { result, attachment in
+            guard let attachmentStream = attachment as? TSAttachmentStream else {
+                return owsFailDebug("Unexpected type of attachment")
+            }
+
+            let imageView = UIImageView()
+            imageView.clipsToBounds = true
+            imageView.layer.cornerRadius = 4
+            imageView.contentMode = .scaleAspectFill
+
+            attachmentStream.thumbnailImageSmall { imageView.image = $0 } failure: {}
+
+            result.append(key: attachmentStream.uniqueId, value: (attachmentStream, imageView))
+        })
+    }
+
+    private(set) var mutualGroupThreads = [TSGroupThread]() {
+        didSet { AssertIsOnMainThread() }
+    }
+    private(set) var hasGroupThreads = false {
+        didSet { AssertIsOnMainThread() }
+    }
+    func updateMutualGroupThreads() {
+        guard let contactThread = thread as? TSContactThread else { return }
+        databaseStorage.uiRead { transaction in
+            self.hasGroupThreads = GRDBThreadFinder.existsGroupThread(transaction: transaction.unwrapGrdbRead)
+            self.mutualGroupThreads = TSGroupThread.groupThreads(
+                with: contactThread.contactAddress,
+                transaction: transaction
+            ).filter { $0.isLocalUserFullMember && $0.shouldThreadBeVisible }
+        }
     }
 
     func tappedConversationSearch() {
@@ -1147,18 +1122,79 @@ extension ConversationSettingsViewController: ReplaceAdminViewControllerDelegate
 
 extension ConversationSettingsViewController: MediaPresentationContextProvider {
     func mediaPresentationContext(item: Media, in coordinateSpace: UICoordinateSpace) -> MediaPresentationContext? {
-        guard let avatarView = self.avatarView, let superview = avatarView.superview else {
+        let mediaView: UIView
+        switch item {
+        case .gallery(let galleryItem):
+            guard let imageView = recentMedia[galleryItem.attachmentStream.uniqueId]?.imageView else { return nil }
+            mediaView = imageView
+        case .image:
+            guard let avatarView = self.avatarView else { return nil }
+            mediaView = avatarView
+        }
+
+        guard let mediaSuperview = mediaView.superview else {
+            owsFailDebug("mediaSuperview was unexpectedly nil")
             return nil
         }
 
-        let presentationFrame = coordinateSpace.convert(avatarView.frame, from: superview)
-        return MediaPresentationContext(
-            mediaView: avatarView,
-            presentationFrame: presentationFrame,
-            cornerRadius: presentationFrame.width / 2)
+        let presentationFrame = coordinateSpace.convert(mediaView.frame, from: mediaSuperview)
+
+        return MediaPresentationContext(mediaView: mediaView, presentationFrame: presentationFrame, cornerRadius: 0)
     }
 
     func snapshotOverlayView(in coordinateSpace: UICoordinateSpace) -> (UIView, CGRect)? {
         return nil
+    }
+}
+
+extension ConversationSettingsViewController: GroupPermissionsSettingsDelegate {
+    func groupPermissionSettingsDidUpdate() {
+        reloadThreadAndUpdateContent()
+    }
+}
+
+extension ConversationSettingsViewController: UIDatabaseSnapshotDelegate {
+    public func uiDatabaseSnapshotWillUpdate() {}
+
+    public func uiDatabaseSnapshotDidUpdate(databaseChanges: UIDatabaseChanges) {
+        AssertIsOnMainThread()
+
+        var didUpdate = false
+
+        if databaseChanges.didUpdateModel(collection: TSAttachment.collection()) {
+            updateRecentAttachments()
+            didUpdate = true
+        }
+
+        if databaseChanges.didUpdateModel(collection: TSGroupMember.collection()) {
+            updateMutualGroupThreads()
+            didUpdate = true
+        }
+
+        if didUpdate {
+            updateTableContents()
+        }
+    }
+
+    public func uiDatabaseSnapshotDidUpdateExternally() {
+        AssertIsOnMainThread()
+
+        updateRecentAttachments()
+        updateMutualGroupThreads()
+        updateTableContents()
+    }
+
+    public func uiDatabaseSnapshotDidReset() {
+        AssertIsOnMainThread()
+
+        updateRecentAttachments()
+        updateMutualGroupThreads()
+        updateTableContents()
+    }
+}
+
+extension ConversationSettingsViewController: CallServiceObserver {
+    func didUpdateCall(from oldValue: SignalCall?, to newValue: SignalCall?) {
+        updateTableContents()
     }
 }

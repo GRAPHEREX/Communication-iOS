@@ -127,7 +127,7 @@ let kNotificationDelayForRemoteRead: TimeInterval = 20
 let kAudioNotificationsThrottleCount = 2
 let kAudioNotificationsThrottleInterval: TimeInterval = 5
 
-protocol NotificationPresenterAdaptee: class {
+protocol NotificationPresenterAdaptee: AnyObject {
 
     func registerNotificationSettings() -> Promise<Void>
 
@@ -183,7 +183,9 @@ public class NotificationPresenter: NSObject, NotificationsProtocol {
 
         switch notification.object {
         case let incomingMessage as TSIncomingMessage:
-            Logger.debug("canceled notification for message: \(incomingMessage)")
+            if !DebugFlags.reduceLogChatter {
+                Logger.debug("canceled notification for message: \(incomingMessage)")
+            }
             cancelNotifications(messageId: incomingMessage.uniqueId)
         default:
             break
@@ -499,14 +501,14 @@ public class NotificationPresenter: NSObject, NotificationsProtocol {
                 notificationBody = String(format: NotificationStrings.incomingReactionAlbumMessageFormat, reaction.emoji)
             } else if firstAttachment?.isImage == true {
                 notificationBody = String(format: NotificationStrings.incomingReactionPhotoMessageFormat, reaction.emoji)
+            } else if firstAttachment?.isAnimated == true || firstAttachment?.isLoopingVideo == true {
+                notificationBody = String(format: NotificationStrings.incomingReactionGifMessageFormat, reaction.emoji)
             } else if firstAttachment?.isVideo == true {
                 notificationBody = String(format: NotificationStrings.incomingReactionVideoMessageFormat, reaction.emoji)
             } else if firstAttachment?.isVoiceMessage == true {
                 notificationBody = String(format: NotificationStrings.incomingReactionVoiceMessageFormat, reaction.emoji)
             } else if firstAttachment?.isAudio == true {
                 notificationBody = String(format: NotificationStrings.incomingReactionAudioMessageFormat, reaction.emoji)
-            } else if firstAttachment?.isAnimated == true {
-                notificationBody = String(format: NotificationStrings.incomingReactionGifMessageFormat, reaction.emoji)
             } else {
                 notificationBody = String(format: NotificationStrings.incomingReactionFileMessageFormat, reaction.emoji)
             }

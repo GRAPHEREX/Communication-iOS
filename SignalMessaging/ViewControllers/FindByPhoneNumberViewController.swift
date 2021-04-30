@@ -6,7 +6,7 @@ import Foundation
 import PromiseKit
 
 @objc
-public protocol FindByPhoneNumberDelegate: class {
+public protocol FindByPhoneNumberDelegate: AnyObject {
     func findByPhoneNumber(_ findByPhoneNumber: FindByPhoneNumberViewController,
                            didSelectAddress address: SignalServiceAddress)
 }
@@ -165,7 +165,9 @@ public class FindByPhoneNumberViewController: OWSViewController {
         applyTheme()
     }
 
-    private func applyTheme() {
+    public override func applyTheme() {
+        super.applyTheme()
+
         view.backgroundColor = backgroundColor
         countryRowTitleLabel.textColor = Theme.primaryTextColor
         phoneNumberRowTitleLabel.textColor = Theme.primaryTextColor

@@ -19,8 +19,7 @@ public enum CVCellReuseIdentifier: String, CaseIterable {
     case threadDetails
     case systemMessage
     case callMessage
-    case dedicatedTextOnlyIncoming
-    case dedicatedTextOnlyOutgoing
+    case unknownThreadWarning
 }
 
 // MARK: -
@@ -176,6 +175,15 @@ public class CVCell: UICollectionViewCell, CVItemCell, CVRootComponentHost {
                                                        renderItem: renderItem,
                                                        messageSwipeActionState: messageSwipeActionState)
     }
+
+    public func buildWallpaperMask(_ wallpaperMaskBuilder: WallpaperMaskBuilder) {
+        guard let rootComponent = rootComponent,
+              let componentView = componentView else {
+            owsFailDebug("Missing component.")
+            return
+        }
+        rootComponent.buildWallpaperMask(wallpaperMaskBuilder, componentView: componentView)
+    }
 }
 
 // MARK: -
@@ -232,7 +240,7 @@ public class CVCellView: UIView, CVRootComponentHost {
 
 // MARK: -
 
-public protocol CVRootComponentHost: class {
+public protocol CVRootComponentHost: AnyObject {
     var renderItem: CVRenderItem? { get set }
     var componentView: CVComponentView? { get set }
     var hostView: UIView { get }
@@ -265,12 +273,12 @@ public extension CVRootComponentHost {
 
         componentView.isDedicatedCellView = rootComponent.isDedicatedCell
 
-        rootComponent.configure(cellView: hostView,
-                                cellMeasurement: renderItem.cellMeasurement,
-                                componentDelegate: componentDelegate,
-                                cellSelection: cellSelection,
-                                messageSwipeActionState: messageSwipeActionState,
-                                componentView: componentView)
+        rootComponent.configureCellRootComponent(cellView: hostView,
+                                                 cellMeasurement: renderItem.cellMeasurement,
+                                                 componentDelegate: componentDelegate,
+                                                 cellSelection: cellSelection,
+                                                 messageSwipeActionState: messageSwipeActionState,
+                                                 componentView: componentView)
 
         #if TESTABLE_BUILD
         GRDBDatabaseStorageAdapter.setCanOpenTransaction(true)

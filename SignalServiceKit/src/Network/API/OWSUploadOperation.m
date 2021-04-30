@@ -46,8 +46,8 @@ NSString *const kAttachmentUploadAttachmentIDKey = @"kAttachmentUploadAttachment
         operationQueue = [NSOperationQueue new];
         operationQueue.name = @"Uploads";
 
-        // TODO - stream uploads from file and raise this limit.
-        operationQueue.maxConcurrentOperationCount = 1;
+        // TODO: Tune this limit.
+        operationQueue.maxConcurrentOperationCount = 8;
     });
 
     return operationQueue;
@@ -109,17 +109,16 @@ NSString *const kAttachmentUploadAttachmentIDKey = @"kAttachmentUploadAttachment
     
     [self fireNotificationWithProgress:0];
 
-    OWSAttachmentUploadV4 *upload = [OWSAttachmentUploadV4 new];
+    OWSAttachmentUploadV4 *upload = [[OWSAttachmentUploadV4 alloc] initWithAttachmentStream:attachmentStream];
     [BlurHash ensureBlurHashForAttachmentStream:attachmentStream]
         .catchInBackground(^{
             // Swallow these errors; blurHashes are strictly optional.
             OWSLogWarn(@"Error generating blurHash.");
         })
         .thenInBackground(^{
-            return [upload uploadAttachmentToService:attachmentStream
-                                       progressBlock:^(NSProgress *uploadProgress) {
-                                           [self fireNotificationWithProgress:uploadProgress.fractionCompleted];
-                                       }];
+            return [upload uploadWithProgressBlock:^(NSProgress *uploadProgress) {
+                [self fireNotificationWithProgress:uploadProgress.fractionCompleted];
+            }];
         })
         .thenInBackground(^{
             DatabaseStorageWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {

@@ -613,7 +613,12 @@ class GRDBFullTextSearcherTest: SignalBaseTest {
 
                 let getMatchCount = { (searchText: String) -> UInt in
                     var count: UInt = 0
-                    finder.enumerateObjects(searchText: searchText, transaction: transaction) { (match, snippet, _) in
+                    finder.enumerateObjects(
+                        searchText: searchText,
+                        collections: [TSMessage.collection()],
+                        maxResults: 500,
+                        transaction: transaction
+                    ) { (match, snippet, _) in
                         Logger.verbose("searchText: \(searchText), match: \(match), snippet: \(snippet)")
                         count += 1
                     }
@@ -658,7 +663,9 @@ class GRDBFullTextSearcherTest: SignalBaseTest {
 
     private func searchConversations(searchText: String) -> [ThreadViewModel] {
         let results = getResultSet(searchText: searchText)
-        return results.conversations.map { $0.thread }
+        let contactThreads = results.contactThreads.map { $0.thread }
+        let groupThreads = results.groupThreads.map { $0.thread }
+        return contactThreads + groupThreads
     }
 
     private func getResultSet(searchText: String) -> HomeScreenSearchResultSet {

@@ -17,29 +17,32 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
         super.init(itemModel: itemModel)
     }
 
-    public func configure(cellView: UIView,
-                          cellMeasurement: CVCellMeasurement,
-                          componentDelegate: CVComponentDelegate,
-                          cellSelection: CVCellSelection,
-                          messageSwipeActionState: CVMessageSwipeActionState,
-                          componentView: CVComponentView) {
-
-        configureForRendering(componentView: componentView,
-                              cellMeasurement: cellMeasurement,
-                              componentDelegate: componentDelegate)
-
-        let rootView = componentView.rootView
-        if rootView.superview == nil {
-            owsAssertDebug(cellView.layoutMargins == .zero)
-            owsAssertDebug(cellView.subviews.isEmpty)
-
-            cellView.addSubview(rootView)
-            rootView.autoPinEdgesToSuperviewMargins()
-        }
+    public func configureCellRootComponent(cellView: UIView,
+                                           cellMeasurement: CVCellMeasurement,
+                                           componentDelegate: CVComponentDelegate,
+                                           cellSelection: CVCellSelection,
+                                           messageSwipeActionState: CVMessageSwipeActionState,
+                                           componentView: CVComponentView) {
+        Self.configureCellRootComponent(rootComponent: self,
+                                        cellView: cellView,
+                                        cellMeasurement: cellMeasurement,
+                                        componentDelegate: componentDelegate,
+                                        componentView: componentView)
     }
 
     public func buildComponentView(componentDelegate: CVComponentDelegate) -> CVComponentView {
         CVComponentViewUnreadIndicator()
+    }
+
+    public override func buildWallpaperMask(_ wallpaperMaskBuilder: WallpaperMaskBuilder,
+                                            componentView: CVComponentView) {
+        super.buildWallpaperMask(wallpaperMaskBuilder, componentView: componentView)
+
+        guard let componentView = componentView as? CVComponentViewUnreadIndicator else {
+            owsFailDebug("Unexpected componentView.")
+            return
+        }
+        wallpaperMaskBuilder.append(blurView: componentView.blurView)
     }
 
     public func configureForRendering(componentView: CVComponentView,
@@ -50,34 +53,11 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
             return
         }
 
-        let vStackView = componentView.vStackView
-        let hStackView = componentView.hStackView
-        let contentView = componentView.contentView
+        let outerStack = componentView.outerStack
+        let innerStack = componentView.innerStack
 //        let strokeView = componentView.strokeView
         let titleLabel = componentView.titleLabel
         titleLabelConfig.applyForRendering(label: titleLabel)
-
-        let isReusing = componentView.rootView.superview != nil
-        if !isReusing {
-            vStackView.apply(config: vStackConfig)
-            hStackView.apply(config: hStackConfig)
-
-//            vStackView.addArrangedSubview(strokeView)
-            vStackView.addArrangedSubview(hStackView)
-
-            let leadingSpacer = UIView.hStretchingSpacer()
-            let trailingSpacer = UIView.hStretchingSpacer()
-
-            hStackView.addArrangedSubview(leadingSpacer)
-            hStackView.addArrangedSubview(contentView)
-            hStackView.addArrangedSubview(trailingSpacer)
-
-            leadingSpacer.autoMatch(.width, to: .width, of: trailingSpacer)
-
-            contentView.addSubview(titleLabel)
-            titleLabel.autoPinWidthToSuperview(withMargin: titleHMargin)
-            titleLabel.autoPinHeightToSuperview(withMargin: titleVMargin)
-        }
 
         let themeHasChanged = conversationStyle.isDarkThemeEnabled != componentView.isDarkThemeEnabled
         componentView.isDarkThemeEnabled = conversationStyle.isDarkThemeEnabled
@@ -86,24 +66,44 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
         let wallpaperModeHasChanged = hasWallpaper != componentView.hasWallpaper
         componentView.hasWallpaper = hasWallpaper
 
-        if !isReusing || themeHasChanged || wallpaperModeHasChanged {
+        let isReusing = (componentView.rootView.superview != nil &&
+                            !themeHasChanged &&
+                            !wallpaperModeHasChanged)
+        if isReusing {
+            innerStack.configureForReuse(config: innerStackConfig,
+                                         cellMeasurement: cellMeasurement,
+                                         measurementKey: Self.measurementKey_innerStack)
+            outerStack.configureForReuse(config: outerStackConfig,
+                                         cellMeasurement: cellMeasurement,
+                                         measurementKey: Self.measurementKey_outerStack)
+        } else {
+            outerStack.reset()
+            titleLabel.removeFromSuperview()
             componentView.blurView?.removeFromSuperview()
             componentView.blurView = nil
 
+            innerStack.reset()
+            innerStack.configure(config: innerStackConfig,
+                                 cellMeasurement: cellMeasurement,
+                                 measurementKey: Self.measurementKey_innerStack,
+                                 subviews: [ titleLabel ])
+
             if hasWallpaper {
-                let blurView = buildBlurView(conversationStyle: conversationStyle)
-                componentView.blurView = blurView
-
-                contentView.insertSubview(blurView, at: 0)
-                blurView.autoPinEdgesToSuperviewEdges()
-
-                blurView.clipsToBounds = true
-                blurView.layer.cornerRadius = 8
-
 //                strokeView.backgroundColor = .ows_blackAlpha80
+                let blurView = innerStack
+                blurView.layer.cornerRadius = 8
+                componentView.blurView = blurView
             } else {
 //                strokeView.backgroundColor = .ows_gray45
             }
+
+            outerStack.configure(config: outerStackConfig,
+                                 cellMeasurement: cellMeasurement,
+                                 measurementKey: Self.measurementKey_outerStack,
+                                 subviews: [
+//                                    strokeView,
+                                    innerStack
+                                 ])
         }
     }
 
@@ -117,40 +117,50 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
                       textAlignment: .center)
     }
 
-    private var vStackConfig: CVStackViewConfig {
+    private var outerStackConfig: CVStackViewConfig {
         CVStackViewConfig(axis: .vertical,
                           alignment: .fill,
                           spacing: 12,
-                          layoutMargins: cellLayoutMargins)
+                          layoutMargins: UIEdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
     }
 
-    private var titleHMargin: CGFloat { 10 }
-    private var titleVMargin: CGFloat { 4 }
-
-    private var hStackConfig: CVStackViewConfig {
-        CVStackViewConfig(axis: .horizontal,
+    private var innerStackConfig: CVStackViewConfig {
+        CVStackViewConfig(axis: .vertical,
                           alignment: .center,
                           spacing: 0,
-                          layoutMargins: .zero)
+                          layoutMargins: UIEdgeInsets(hMargin: 10, vMargin: 4))
     }
 
-    private var cellLayoutMargins: UIEdgeInsets {
-        UIEdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0)
-    }
+    private static let measurementKey_outerStack = "CVComponentUnreadIndicator.measurementKey_outerStack"
+    private static let measurementKey_innerStack = "CVComponentUnreadIndicator.measurementKey_innerStack"
 
     public func measure(maxWidth: CGFloat, measurementBuilder: CVCellMeasurement.Builder) -> CGSize {
         owsAssertDebug(maxWidth > 0)
 
-        // Full width.
-        let width = maxWidth
+        let availableWidth = max(0, maxWidth -
+                                    (innerStackConfig.layoutMargins.totalWidth +
+                                        outerStackConfig.layoutMargins.totalWidth))
+        let labelSize = CVText.measureLabel(config: titleLabelConfig, maxWidth: availableWidth)
+        let strokeSize = CGSize(width: 0, height: 1)
 
-        let titleHeight = titleLabelConfig.font.lineHeight
-        let height = (strokeHeight + vStackConfig.spacing + titleHeight + cellLayoutMargins.totalHeight + (titleVMargin * 2))
+        let labelInfo = labelSize.asManualSubviewInfo
+        let innerStackMeasurement = ManualStackView.measure(config: innerStackConfig,
+                                                        measurementBuilder: measurementBuilder,
+                                                        measurementKey: Self.measurementKey_innerStack,
+        subviewInfos: [ labelInfo ])
 
-        return CGSizeCeil(CGSize(width: width, height: height))
+        let strokeInfo = strokeSize.asManualSubviewInfo(hasFixedHeight: true)
+        let innerStackInfo = innerStackMeasurement.measuredSize.asManualSubviewInfo(hasFixedWidth: true)
+        let vStackMeasurement = ManualStackView.measure(config: outerStackConfig,
+                                                        measurementBuilder: measurementBuilder,
+                                                        measurementKey: Self.measurementKey_outerStack,
+        subviewInfos: [
+            strokeInfo,
+            innerStackInfo
+                                                        ])
+
+        return vStackMeasurement.measuredSize
     }
-
-    private let strokeHeight: CGFloat = 1
 
     // MARK: -
 
@@ -159,13 +169,12 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
     @objc
     public class CVComponentViewUnreadIndicator: NSObject, CVComponentView {
 
-        fileprivate let vStackView = OWSStackView(name: "unreadIndicator.vStackView")
-        fileprivate let hStackView = OWSStackView(name: "unreadIndicator.hStackView")
+        fileprivate let outerStack = ManualStackView(name: "unreadIndicator.outerStack")
+        fileprivate let innerStack = ManualStackView(name: "unreadIndicator.innerStack")
 
-        fileprivate let contentView = UIView()
-        fileprivate let titleLabel = UILabel()
+        fileprivate let titleLabel = CVLabel()
 
-        fileprivate var blurView: UIVisualEffectView?
+        fileprivate var blurView: UIView?
 
         fileprivate var hasWallpaper = false
         fileprivate var isDarkThemeEnabled = false
@@ -175,15 +184,10 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
         public var isDedicatedCellView = false
 
         public var rootView: UIView {
-            vStackView
+            outerStack
         }
 
         // MARK: -
-
-        override required init() {
-//            strokeView.autoSetDimension(.height, toSize: 1)
-        }
-
         public func setIsCellVisible(_ isCellVisible: Bool) {}
 
         public func reset() {
@@ -192,8 +196,8 @@ public class CVComponentUnreadIndicator: CVComponentBase, CVRootComponent {
             titleLabel.text = nil
 
             if !isDedicatedCellView {
-                vStackView.reset()
-                hStackView.reset()
+                outerStack.reset()
+                innerStack.reset()
 
                 blurView?.removeFromSuperview()
                 blurView = nil

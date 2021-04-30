@@ -52,7 +52,7 @@ public protocol DurableOperation: class, Equatable {
     var remainingRetries: UInt { get set }
 }
 
-public protocol DurableOperationDelegate: class {
+public protocol DurableOperationDelegate: AnyObject {
     associatedtype DurableOperationType: DurableOperation
 
     func durableOperationDidSucceed(_ operation: DurableOperationType, transaction: SDSAnyWriteTransaction)

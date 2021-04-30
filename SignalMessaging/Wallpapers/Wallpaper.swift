@@ -141,7 +141,9 @@ public enum Wallpaper: String, CaseIterable {
         return dimInDarkMode
     }
 
-    public static func view(for thread: TSThread? = nil, transaction: SDSAnyReadTransaction) -> UIView? {
+    public static func view(for thread: TSThread? = nil,
+                            maskDataSource: WallpaperMaskDataSource? = nil,
+                            transaction: SDSAnyReadTransaction) -> WallpaperView? {
         AssertIsOnMainThread()
 
         guard let wallpaper: Wallpaper = {
@@ -170,40 +172,52 @@ public enum Wallpaper: String, CaseIterable {
             return nil
         }
 
-        guard let view = view(for: wallpaper, photo: photo) else { return nil }
+        let shouldDim = (Theme.isDarkThemeEnabled &&
+                            dimInDarkMode(for: thread, transaction: transaction))
 
-        if Theme.isDarkThemeEnabled && dimInDarkMode(for: thread, transaction: transaction) {
-            let dimmingView = UIView()
-            dimmingView.backgroundColor = .ows_blackAlpha20
-            view.addSubview(dimmingView)
-            dimmingView.autoPinEdgesToSuperviewEdges()
-        }
+        guard let view = view(for: wallpaper,
+                              photo: photo,
+                              maskDataSource: maskDataSource,
+                              shouldDim: shouldDim) else {
+            return nil
+       }
 
         return view
     }
 
-    public static func view(for wallpaper: Wallpaper, photo: UIImage? = nil) -> UIView? {
+    public static func shouldDim(thread: TSThread?,
+                                 transaction: SDSAnyReadTransaction) -> Bool {
+        (Theme.isDarkThemeEnabled &&
+            dimInDarkMode(for: thread, transaction: transaction))
+    }
+
+    public static func view(for wallpaper: Wallpaper,
+                            photo: UIImage? = nil,
+                            maskDataSource: WallpaperMaskDataSource? = nil,
+                            shouldDim: Bool) -> WallpaperView? {
         AssertIsOnMainThread()
 
-        if let solidColor = wallpaper.solidColor {
-            let view = UIView()
-            view.backgroundColor = solidColor
-            return view
-        } else if let gradientView = wallpaper.gradientView {
-            return gradientView
-        } else if case .photo = wallpaper {
-            guard let photo = photo else {
-                owsFailDebug("Missing photo for wallpaper \(wallpaper)")
+        guard let mode = { () -> WallpaperView.Mode? in
+            if let solidColor = wallpaper.solidColor {
+                return .solidColor(solidColor: solidColor)
+            } else if let gradientView = wallpaper.gradientView {
+                return .gradientView(gradientView: gradientView)
+            } else if case .photo = wallpaper {
+                guard let photo = photo else {
+                    owsFailDebug("Missing photo for wallpaper \(wallpaper)")
+                    return nil
+                }
+                return .image(image: photo)
+            } else {
+                owsFailDebug("Unexpected wallpaper type \(wallpaper)")
                 return nil
             }
-            let imageView = UIImageView(image: photo)
-            imageView.contentMode = .scaleAspectFill
-            imageView.clipsToBounds = true
-            return imageView
-        } else {
-            owsFailDebug("Unexpected wallpaper type \(wallpaper)")
+        }() else {
             return nil
         }
+        return WallpaperView(mode: mode,
+                             maskDataSource: maskDataSource,
+                             shouldDim: shouldDim)
     }
 }
 
@@ -337,5 +351,263 @@ fileprivate extension Wallpaper {
             throw OWSAssertionError("Failed to percent encode filename")
         }
         return URL(fileURLWithPath: filename, relativeTo: wallpaperDirectory)
+    }
+}
+
+// MARK: -
+
+public struct WallpaperMaskBuilder {
+    fileprivate let maskPath = UIBezierPath()
+    public let referenceView: UIView
+
+    public func append(blurPath: UIBezierPath) {
+        maskPath.append(blurPath)
+    }
+
+    public func append(blurView: UIView?) {
+        guard let blurView = blurView else {
+            Logger.warn("Missing blurView.")
+            return
+        }
+        let blurFrame = referenceView.convert(blurView.bounds, from: blurView)
+        let blurPath: UIBezierPath = {
+            return UIBezierPath(roundedRect: blurFrame,
+                                byRoundingCorners: blurView.layer.maskedCorners.asUIRectCorner,
+                                cornerRadii: .square(blurView.layer.cornerRadius))
+        }()
+        append(blurPath: blurPath)
+    }
+}
+
+// MARK: -
+
+public protocol WallpaperMaskDataSource: AnyObject {
+    func buildWallpaperMask(_ wallpaperMaskBuilder: WallpaperMaskBuilder)
+}
+
+// MARK: -
+
+public class WallpaperView {
+    fileprivate enum Mode {
+        case solidColor(solidColor: UIColor)
+        case gradientView(gradientView: UIView)
+        case image(image: UIImage)
+    }
+
+    private var _blurView: BlurView?
+
+    public var blurView: UIView? { _blurView }
+
+    public private(set) var contentView: UIView?
+
+    public private(set) var dimmingView: UIView?
+
+    private let mode: Mode
+
+    fileprivate init(mode: Mode,
+                     maskDataSource: WallpaperMaskDataSource?,
+                     shouldDim: Bool) {
+        self.mode = mode
+
+        configure(maskDataSource: maskDataSource, shouldDim: shouldDim)
+    }
+
+    @available(swift, obsoleted: 1.0)
+    required init(name: String) {
+        owsFail("Do not use this initializer.")
+    }
+
+    public func asPreviewView() -> UIView {
+        let previewView = UIView.container()
+        if let contentView = self.contentView {
+            previewView.addSubview(contentView)
+            contentView.autoPinEdgesToSuperviewEdges()
+        }
+        if let dimmingView = self.dimmingView {
+            previewView.addSubview(dimmingView)
+            dimmingView.autoPinEdgesToSuperviewEdges()
+        }
+        if let blurView = self.blurView {
+            previewView.addSubview(blurView)
+            blurView.autoPinEdgesToSuperviewEdges()
+        }
+        return previewView
+    }
+
+    private func configure(maskDataSource: WallpaperMaskDataSource?,
+                           shouldDim: Bool) {
+        switch mode {
+        case .solidColor(let solidColor):
+            let contentView = UIView()
+            contentView.backgroundColor = solidColor
+            self.contentView = contentView
+        case .gradientView(let gradientView):
+            self.contentView = gradientView
+
+            addBlurView(contentView: gradientView, maskDataSource: maskDataSource)
+        case .image(let image):
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
+            self.contentView = imageView
+
+            addBlurView(contentView: imageView, maskDataSource: maskDataSource)
+        }
+
+        if shouldDim {
+            let dimmingView = UIView()
+            dimmingView.backgroundColor = .ows_blackAlpha20
+            self.dimmingView = dimmingView
+        }
+    }
+
+    private func addBlurView(contentView: UIView,
+                             maskDataSource: WallpaperMaskDataSource?) {
+        guard let maskDataSource = maskDataSource else {
+            return
+        }
+        let blurView = BlurView(contentView: contentView, maskDataSource: maskDataSource)
+        _blurView = blurView
+    }
+
+    public func updateBlurContentAndMask() {
+        _blurView?.updateContentAndMask()
+    }
+
+    public func updateBlurMask() {
+        _blurView?.updateMask()
+    }
+
+    // MARK: -
+
+    private class BlurView: UIImageView {
+        private let contentView: UIView
+        private let maskLayer = CAShapeLayer()
+        private weak var maskDataSource: WallpaperMaskDataSource?
+
+        init(contentView: UIView, maskDataSource: WallpaperMaskDataSource) {
+            self.contentView = contentView
+            self.maskDataSource = maskDataSource
+
+            super.init(frame: .zero)
+
+            self.contentMode = .scaleAspectFill
+            self.clipsToBounds = true
+
+            self.layer.mask = maskLayer
+
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(themeDidChange),
+                                                   name: .ThemeDidChange,
+                                                   object: nil)
+        }
+
+        @available(swift, obsoleted: 1.0)
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
+        @objc
+        private func themeDidChange() {
+            updateContent()
+        }
+
+        func updateContentAndMask() {
+            updateContent()
+            updateMask()
+        }
+
+        func updateMask() {
+            guard let maskDataSource = self.maskDataSource else {
+                owsFailDebug("Missing maskDataSource.")
+                resetMask()
+                return
+            }
+            let builder = WallpaperMaskBuilder(referenceView: self)
+            maskDataSource.buildWallpaperMask(builder)
+            maskLayer.path = builder.maskPath.cgPath
+        }
+
+        private struct ContentToken: Equatable {
+            let contentSize: CGSize
+            let isDarkThemeEnabled: Bool
+        }
+        private var contentToken: ContentToken?
+
+        func updateContent() {
+            // De-bounce.
+            let isDarkThemeEnabled = Theme.isDarkThemeEnabled
+            let newContentToken = ContentToken(contentSize: bounds.size,
+                                               isDarkThemeEnabled: isDarkThemeEnabled)
+            guard contentToken != newContentToken else {
+                return
+            }
+
+            do {
+                guard bounds.width > 0, bounds.height > 0 else {
+                    resetContent()
+                    return
+                }
+                guard let contentImage = contentView.renderAsImage() else {
+                    owsFailDebug("Could not render contentView.")
+                    resetContent()
+                    return
+                }
+                // We approximate the behavior of UIVisualEffectView(effect: UIBlurEffect(style: .regular)).
+                let tintColor: UIColor = (isDarkThemeEnabled
+                                            ? UIColor.ows_black.withAlphaComponent(0.9)
+                                            : .ows_whiteAlpha60)
+                let resizeFactor: CGFloat = 8
+                let resizeDimension = contentImage.size.largerAxis / resizeFactor
+                guard let scaledImage = contentImage.resized(withMaxDimensionPoints: resizeDimension) else {
+                    owsFailDebug("Could not resize contentImage.")
+                    resetContent()
+                    return
+                }
+                let blurRadius: CGFloat = 32 / resizeFactor
+                let blurredImage = try scaledImage.withGausianBlur(radius: blurRadius,
+                                                                   tintColor: tintColor)
+                self.image = blurredImage
+                self.contentToken = newContentToken
+            } catch {
+                owsFailDebug("Error: \(error).")
+                resetContent()
+            }
+        }
+
+        private func reset() {
+            resetContent()
+            resetMask()
+        }
+
+        private func resetMask() {
+            maskLayer.path = nil
+        }
+
+        private func resetContent() {
+            image = nil
+            contentToken = nil
+        }
+    }
+}
+
+// MARK: -
+
+extension CACornerMask {
+    var asUIRectCorner: UIRectCorner {
+        var corners = UIRectCorner()
+        if self.contains(.layerMinXMinYCorner) {
+            corners.formUnion(.topLeft)
+        }
+        if self.contains(.layerMaxXMinYCorner) {
+            corners.formUnion(.topRight)
+        }
+        if self.contains(.layerMinXMaxYCorner) {
+            corners.formUnion(.bottomLeft)
+        }
+        if self.contains(.layerMaxXMaxYCorner) {
+            corners.formUnion(.bottomRight)
+        }
+        return corners
     }
 }

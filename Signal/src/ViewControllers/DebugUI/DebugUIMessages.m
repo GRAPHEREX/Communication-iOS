@@ -3160,6 +3160,7 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
                                        ActionFailureBlock failure) {
                                        OWSContact *contact = contactBlock(transaction);
                                        OWSLogVerbose(@"sending contact: %@", contact.debugDescription);
+        
                                        [ThreadUtil enqueueMessageWithContactShare:contact thread:thread];
 
                                        success();
@@ -3436,11 +3437,12 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
 {
     OWSAssertDebug(thread);
 
-    SignalServiceAddress *otherAddress = [[SignalServiceAddress alloc] initWithPhoneNumber:@"+19174054215"];
-    if ([thread isKindOfClass:TSContactThread.class]) {
-        TSContactThread *contactThread = (TSContactThread *)thread;
-        otherAddress = contactThread.contactAddress;
+    SignalServiceAddress *_Nullable incomingSenderAddress = [DebugUIMessages anyIncomingSenderAddressForThread:thread];
+    if (incomingSenderAddress == nil) {
+        OWSFailDebug(@"Missing incomingSenderAddress.");
+        return @[];
     }
+    SignalServiceAddress *otherAddress = incomingSenderAddress;
 
     NSMutableArray<TSInteraction *> *result = [NSMutableArray new];
 
@@ -3783,6 +3785,12 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
 {
     OWSLogInfo(@"createFakeMessages: %lu", (unsigned long)counter);
 
+    SignalServiceAddress *_Nullable incomingSenderAddress = [DebugUIMessages anyIncomingSenderAddressForThread:thread];
+    if (incomingSenderAddress == nil) {
+        OWSFailDebug(@"Missing incomingSenderAddress.");
+        return;
+    }
+
     for (NSUInteger i = 0; i < counter; i++) {
         NSString *randomText
             = (messageContentType == MessageContentTypeShortText ? [self randomShortText] : [self randomText]);
@@ -3796,8 +3804,7 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
             case 0: {
                 TSIncomingMessageBuilder *incomingMessageBuilder =
                     [TSIncomingMessageBuilder incomingMessageBuilderWithThread:thread messageBody:randomText];
-                incomingMessageBuilder.authorAddress =
-                    [[SignalServiceAddress alloc] initWithPhoneNumber:@"+19174054215"];
+                incomingMessageBuilder.authorAddress = incomingSenderAddress;
                 TSIncomingMessage *message = [incomingMessageBuilder build];
                 [message anyInsertWithTransaction:transaction];
                 [message debugonly_markAsReadNowWithTransaction:transaction];
@@ -3840,8 +3847,7 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
                 [pointer anyInsertWithTransaction:transaction];
                 TSIncomingMessageBuilder *incomingMessageBuilder =
                     [TSIncomingMessageBuilder incomingMessageBuilderWithThread:thread messageBody:nil];
-                incomingMessageBuilder.authorAddress =
-                    [[SignalServiceAddress alloc] initWithPhoneNumber:@"+19174054215"];
+                incomingMessageBuilder.authorAddress = incomingSenderAddress;
                 incomingMessageBuilder.attachmentIds = [@[
                     pointer.uniqueId,
                 ] mutableCopy];
@@ -4253,11 +4259,13 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
         @(now - 1 * (long long)kMonthInMs),
         @(now - 2 * (long long)kMonthInMs),
     ];
-    NSMutableArray<SignalServiceAddress *> *addresses = [thread.recipientAddresses mutableCopy];
-    [addresses removeObject:TSAccountManager.localAddress];
-    SignalServiceAddress *address
-        = (addresses.count > 0 ? addresses.firstObject
-                               : [[SignalServiceAddress alloc] initWithPhoneNumber:@"+19174054215"]);
+
+    SignalServiceAddress *_Nullable incomingSenderAddress = [DebugUIMessages anyIncomingSenderAddressForThread:thread];
+    if (incomingSenderAddress == nil) {
+        OWSFailDebug(@"Missing incomingSenderAddress.");
+        return;
+    }
+    SignalServiceAddress *address = incomingSenderAddress;
 
     DatabaseStorageWrite(SDSDatabaseStorage.shared, ^(SDSAnyWriteTransaction *transaction) {
         for (NSNumber *timestamp in timestamps) {
@@ -4650,9 +4658,14 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
         [attachmentIds addObject:attachmentId];
     }
 
+    SignalServiceAddress *_Nullable incomingSenderAddress = [DebugUIMessages anyIncomingSenderAddressForThread:thread];
+    SignalServiceAddress *address
+        = (incomingSenderAddress != nil ? incomingSenderAddress
+                                        : [[SignalServiceAddress alloc] initWithPhoneNumber:@"+19174054215"]);
+
     TSIncomingMessageBuilder *incomingMessageBuilder =
         [TSIncomingMessageBuilder incomingMessageBuilderWithThread:thread messageBody:messageBody];
-    incomingMessageBuilder.authorAddress = [[SignalServiceAddress alloc] initWithPhoneNumber:@"+19174054215"];
+    incomingMessageBuilder.authorAddress = address;
     incomingMessageBuilder.attachmentIds = attachmentIds;
     incomingMessageBuilder.quotedMessage = quotedMessage;
     TSIncomingMessage *message = [incomingMessageBuilder build];
@@ -4756,8 +4769,14 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
         DebugUIMessagesAssetLoader *fakeAssetLoader
             = fakeAssetLoaders[arc4random_uniform((uint32_t)fakeAssetLoaders.count)];
         OWSAssertDebug([NSFileManager.defaultManager fileExistsAtPath:fakeAssetLoader.filePath]);
+
+        NSString *fileExtension = fakeAssetLoader.filePath.pathExtension;
+        NSString *tempFilePath = [OWSFileSystem temporaryFilePathWithFileExtension:fileExtension];
         NSError *error;
-        id<DataSource> dataSource = [DataSourcePath dataSourceWithFilePath:fakeAssetLoader.filePath
+        [NSFileManager.defaultManager copyItemAtPath:fakeAssetLoader.filePath toPath:tempFilePath error:&error];
+        OWSAssertDebug(error == nil);
+
+        id<DataSource> dataSource = [DataSourcePath dataSourceWithFilePath:tempFilePath
                                                 shouldDeleteOnDeallocation:NO
                                                                      error:&error];
         OWSAssertDebug(error == nil);
@@ -4795,6 +4814,7 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
         [DebugUIMessagesAssetLoader tinyPngInstance],
         [DebugUIMessagesAssetLoader gifInstance],
         [DebugUIMessagesAssetLoader mp4Instance],
+        [DebugUIMessagesAssetLoader mediumFilesizePngInstance],
     ];
     [DebugUIMessagesAssetLoader prepareAssetLoaders:fakeAssetLoaders
         success:^{

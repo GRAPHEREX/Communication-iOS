@@ -112,6 +112,8 @@ NS_ASSUME_NONNULL_BEGIN
         BroadcastMediaMessageJobQueue *broadcastMediaMessageJobQueue = [BroadcastMediaMessageJobQueue new];
         MessageProcessor *messageProcessor = [MessageProcessor new];
         OWSOrphanDataCleaner *orphanDataCleaner = [OWSOrphanDataCleaner new];
+        id<Payments> payments = [PaymentsImpl new];
+        id<PaymentsCurrencies> paymentsCurrencies = [PaymentsCurrenciesImpl new];
 
         [Environment setShared:[[Environment alloc] initWithAudioSession:audioSession
                                              incomingContactSyncJobQueue:incomingContactSyncJobQueue
@@ -170,7 +172,9 @@ NS_ASSUME_NONNULL_BEGIN
                                                               earlyMessageManager:earlyMessageManager
                                                         messagePipelineSupervisor:messagePipelineSupervisor
                                                                         appExpiry:appExpiry
-                                                                 messageProcessor:messageProcessor]];
+                                                                 messageProcessor:messageProcessor
+                                                                         payments:payments
+                                                               paymentsCurrencies:paymentsCurrencies]];
 
         appSpecificSingletonBlock();
 

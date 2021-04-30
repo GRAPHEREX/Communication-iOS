@@ -299,7 +299,8 @@ fileprivate extension ContactProfileController {
         let avatarBuilder = OWSContactAvatarBuilder(
             address: address,
             colorName: colorName_,
-            diameter: UInt(80)
+            diameter: UInt(80),
+            localUserAvatarMode: .asUser
         )
         return avatarBuilder.build()
     }

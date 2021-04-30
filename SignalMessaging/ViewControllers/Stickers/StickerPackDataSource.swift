@@ -6,14 +6,14 @@ import Foundation
 import SignalServiceKit
 
 // Supplies sticker pack data
-public protocol StickerPackDataSourceDelegate: class {
+public protocol StickerPackDataSourceDelegate: AnyObject {
     func stickerPackDataDidChange()
 }
 
 // MARK: -
 
 // Supplies sticker pack data
-public protocol StickerPackDataSource: class {
+public protocol StickerPackDataSource: AnyObject {
     func add(delegate: StickerPackDataSourceDelegate)
 
     // This will be nil for the "recents" source.
@@ -458,10 +458,6 @@ public class TransientStickerPackDataSource: BaseStickerPackDataSource {
         // This sticker is not downloaded; try to download now.
         firstly(on: .global()) {
             StickerManager.tryToDownloadSticker(stickerPack: stickerPack, stickerInfo: stickerInfo)
-        }.map(on: .global()) { (stickerData: Data) -> URL in
-            let temporaryFileUrl = OWSFileSystem.temporaryFileUrl(fileExtension: stickerPackItem.stickerType.fileExtension)
-            try stickerData.write(to: temporaryFileUrl)
-            return temporaryFileUrl
         }.done { [weak self] (temporaryFileUrl) in
             guard let self = self else {
                 return

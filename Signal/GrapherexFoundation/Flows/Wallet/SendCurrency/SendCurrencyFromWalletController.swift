@@ -126,13 +126,16 @@ final class SendCurrencyFromWalletController: OWSViewController {
         setupElements()
         setupContent()
         title = NSLocalizedString("MAIN_SEND", comment: "")
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(applyTheme),
-                                               name: .ThemeDidChange, object: nil)
+
         AnalyticsService.log(event: .moneySendScreenOpenedFromWallet, parameters: nil)
     }
-    
+
+    override func applyTheme() {
+        view.backgroundColor = Theme.backgroundColor
+        tableViewController.tableView.backgroundColor = Theme.backgroundColor
+        tableViewController.tableView.backgroundView?.backgroundColor = Theme.backgroundColor
+        setupContent()
+    }
 }
 
 extension SendCurrencyFromWalletController: UITextFieldDelegate {
@@ -902,13 +905,6 @@ fileprivate extension SendCurrencyFromWalletController {
             tableViewController.tableView.contentInset = insents
             tableViewController.tableView.scrollIndicatorInsets = insents
         }
-    }
-    
-    @objc func applyTheme() {
-        view.backgroundColor = Theme.backgroundColor
-        tableViewController.tableView.backgroundColor = Theme.backgroundColor
-        tableViewController.tableView.backgroundView?.backgroundColor = Theme.backgroundColor
-        setupContent()
     }
 }
 

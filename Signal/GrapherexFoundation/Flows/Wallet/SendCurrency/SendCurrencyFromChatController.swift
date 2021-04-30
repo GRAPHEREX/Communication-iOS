@@ -177,6 +177,13 @@ final class SendCurrencyFromChatController: OWSViewController, UITextFieldDelega
             AnalyticsService.log(event: .moneySendScreenOpenedFromChat, parameters: nil)
         }
     }
+
+    override func applyTheme() {
+        view.backgroundColor = Theme.backgroundColor
+        tableViewController.tableView.backgroundColor = Theme.backgroundColor
+        tableViewController.tableView.backgroundView?.backgroundColor = Theme.backgroundColor
+        setupContent()
+    }
 }
 
 fileprivate extension SendCurrencyFromChatController {
@@ -659,7 +666,8 @@ fileprivate extension SendCurrencyFromChatController {
         let avatarBuilder = OWSContactAvatarBuilder(
             address: recipient.address,
             colorName: colorName_,
-            diameter: UInt(80)
+            diameter: UInt(80),
+            localUserAvatarMode: .asUser
         )
         return avatarBuilder.build()
     }
@@ -1067,12 +1075,5 @@ fileprivate extension SendCurrencyFromChatController {
             tableViewController.tableView.contentInset = insents
             tableViewController.tableView.scrollIndicatorInsets = insents
         }
-    }
-    
-    @objc func applyTheme() {
-        view.backgroundColor = Theme.backgroundColor
-        tableViewController.tableView.backgroundColor = Theme.backgroundColor
-        tableViewController.tableView.backgroundView?.backgroundColor = Theme.backgroundColor
-        setupContent()
     }
 }

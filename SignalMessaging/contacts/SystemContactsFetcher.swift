@@ -155,7 +155,7 @@ public enum ContactStoreAuthorizationStatus: UInt {
          authorized
 }
 
-@objc public protocol SystemContactsFetcherDelegate: class {
+@objc public protocol SystemContactsFetcherDelegate: AnyObject {
     func systemContactsFetcher(_ systemContactsFetcher: SystemContactsFetcher, updatedContacts contacts: [Contact], isUserRequested: Bool)
     func systemContactsFetcher(_ systemContactsFetcher: SystemContactsFetcher, hasAuthorizationStatus authorizationStatus: ContactStoreAuthorizationStatus)
 }
@@ -195,7 +195,8 @@ public class SystemContactsFetcher: NSObject {
     public private(set) var systemContactsHaveBeenRequestedAtLeastOnce = false
     private var hasSetupObservation = false
 
-    override init() {
+    @objc
+    public override init() {
         self.contactStoreAdapter = ContactsFrameworkContactStoreAdaptee()
 
         super.init()

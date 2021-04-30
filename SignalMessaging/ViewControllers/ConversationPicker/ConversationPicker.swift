@@ -548,7 +548,6 @@ extension ConversationPickerViewController: UITableViewDelegate {
                                             comment: "Momentarily shown to the user when attempting to select more conversations than is allowed. Embeds {{max number of conversations}} that can be selected.")
 
         let toastText = String(format: toastFormat, NSNumber(value: kMaxPickerSelection))
-
         let toastController = ToastController(text: toastText)
 
         let bottomInset = (view.bounds.height - tableView.frame.height)
@@ -652,7 +651,9 @@ private class ConversationPickerCell: ContactTableViewCell {
 
         switch conversationItem.messageRecipient {
         case .contact(let address):
-            super.configure(withRecipientAddress: address, transaction: transaction)
+            super.configure(withRecipientAddress: address,
+                            localUserAvatarMode: .noteToSelf,
+                            transaction: transaction)
         case .group(let groupThreadId):
             guard let groupThread = TSGroupThread.anyFetchGroupThread(
                 uniqueId: groupThreadId,
@@ -661,7 +662,9 @@ private class ConversationPickerCell: ContactTableViewCell {
                 owsFailDebug("Failed to find group thread")
                 break
             }
-            super.configure(with: groupThread, transaction: transaction)
+            super.configure(with: groupThread,
+                            localUserAvatarMode: .noteToSelf,
+                            transaction: transaction)
         }
 
         selectionStyle = .none

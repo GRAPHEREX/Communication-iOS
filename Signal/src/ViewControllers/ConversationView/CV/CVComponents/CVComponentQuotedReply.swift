@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -38,21 +38,27 @@ public class CVComponentQuotedReply: CVComponentBase, CVComponent {
             return
         }
 
-        let quotedMessageView = QuotedMessageView(state: quotedReply.viewState,
-                                                  sharpCorners: sharpCornersForQuotedMessage)
-        quotedMessageView.createContents()
-        quotedMessageView.layoutMargins = .zero
-        quotedMessageView.translatesAutoresizingMaskIntoConstraints = false
+        let quotedMessageView = componentView.quotedMessageView
+        let adapter = QuotedMessageViewAdapter(interactionUniqueId: interaction.uniqueId)
+        quotedMessageView.configureForRendering(state: quotedReply.viewState,
+                                                delegate: adapter,
+                                                sharpCorners: sharpCornersForQuotedMessage,
+                                                cellMeasurement: cellMeasurement)
+    }
 
-        let hostView = componentView.hostView
-        hostView.addSubview(quotedMessageView)
-        quotedMessageView.autoPinEdgesToSuperviewEdges()
+    private var stackConfig: CVStackViewConfig {
+        CVStackViewConfig(axis: .vertical,
+                          alignment: .fill,
+                          spacing: 0,
+                          layoutMargins: .zero)
     }
 
     public func measure(maxWidth: CGFloat, measurementBuilder: CVCellMeasurement.Builder) -> CGSize {
         owsAssertDebug(maxWidth > 0)
 
-        return QuotedMessageView.measure(state: quotedReply.viewState, maxWidth: maxWidth).ceil
+        return QuotedMessageView.measure(state: quotedReply.viewState,
+                                         maxWidth: maxWidth,
+                                         measurementBuilder: measurementBuilder)
     }
 
     // MARK: - Events
@@ -73,21 +79,47 @@ public class CVComponentQuotedReply: CVComponentBase, CVComponent {
     @objc
     public class CVComponentViewQuotedReply: NSObject, CVComponentView {
 
-        // For now we simply use this view to host QuotedMessageView.
-        //
-        // TODO: Reuse QuotedMessageView.
-        fileprivate let hostView = UIView()
+        fileprivate let quotedMessageView = QuotedMessageView(name: "quotedMessageView")
 
         public var isDedicatedCellView = false
 
         public var rootView: UIView {
-            hostView
+            quotedMessageView
         }
 
         public func setIsCellVisible(_ isCellVisible: Bool) {}
 
         public func reset() {
-            hostView.removeAllSubviews()
+            quotedMessageView.reset()
         }
+    }
+}
+
+// MARK: -
+
+private class QuotedMessageViewAdapter: QuotedMessageViewDelegate, Dependencies {
+
+    private let interactionUniqueId: String
+
+    init(interactionUniqueId: String) {
+        self.interactionUniqueId = interactionUniqueId
+    }
+
+    func didTapQuotedReply(_ quotedReply: OWSQuotedReplyModel,
+                           failedThumbnailDownloadAttachmentPointer attachmentPointer: TSAttachmentPointer) {
+        Self.attachmentDownloads.enqueueDownloadOfAttachments(forMessageId: interactionUniqueId,
+                                                              attachmentGroup: .allAttachmentsOfAnyKind,
+                                                              downloadBehavior: .default,
+                                                              touchMessageImmediately: true,
+                                                              success: { _ in
+                                                                Logger.info("Success.")
+                                                              },
+                                                              failure: { error in
+                                                                owsFailDebugUnlessNetworkFailure(error)
+                                                              })
+    }
+
+    func didCancelQuotedReply() {
+        owsFailDebug("Unexpected method invocation.")
     }
 }

@@ -25,7 +25,7 @@ const CGFloat callIconSize = 24;
 @interface ContactCellView ()
 
 @property (nonatomic) UILabel *nameLabel;
-@property (nonatomic) UIImageView *avatarView;
+@property (nonatomic) ConversationAvatarView *avatarView;
 @property (nonatomic) UILabel *subtitleLabel;
 @property (nonatomic) UILabel *accessoryLabel;
 @property (nonatomic) UIStackView *nameContainerView;
@@ -37,7 +37,6 @@ const CGFloat callIconSize = 24;
 
 @property (nonatomic, nullable) TSThread *thread;
 @property (nonatomic) SignalServiceAddress *address;
-@property (nonatomic, nullable) NSArray<NSLayoutConstraint *> *layoutConstraints;
 
 @property (nonatomic, nullable) UIImage *callIconImage;
 
@@ -61,7 +60,8 @@ const CGFloat callIconSize = 24;
 
     self.layoutMargins = UIEdgeInsetsZero;
 
-    _avatarView = [AvatarImageView new];
+    self.avatarView = [[ConversationAvatarView alloc] initWithDiameter:self.avatarSize
+                                                   localUserAvatarMode:LocalUserAvatarModeAsUser];
 
     self.asCallView = NO;
     self.shouldShowStatus = NO;
@@ -85,7 +85,6 @@ const CGFloat callIconSize = 24;
     self.nameContainerView.axis = UILayoutConstraintAxisVertical;
     self.nameContainerView.alignment = UIStackViewAlignmentLeading;
 
-    [self.avatarView setContentHuggingHorizontalHigh];
     [self.nameContainerView setContentHuggingHorizontalLow];
     [self.accessoryViewContainer setContentHuggingHorizontalHigh];
 
@@ -96,7 +95,6 @@ const CGFloat callIconSize = 24;
     [self addArrangedSubview:self.nameContainerView];
     [self addArrangedSubview:self.accessoryViewContainer];
 
-    [self configureStatusView];
     [self configureFontsAndColors];
 }
 
@@ -119,26 +117,17 @@ const CGFloat callIconSize = 24;
     }
 }
 
--(void)configureStatusView
+- (void)configureWithSneakyTransactionWithRecipientAddress:(SignalServiceAddress *)address
+                                       localUserAvatarMode:(LocalUserAvatarMode)localUserAvatarMode
 {
-//    self.statusView = [UIView new];
-//    self.statusView.backgroundColor = [self statusViewColor:NO];
-//    [self.statusView addBorderWithColor:Theme.backgroundColor];
-//    self.statusView.layer.cornerRadius = statusSize / 2;
-//    [self.statusView autoSetDimensionsToSize:CGSizeMake(statusSize, statusSize)];
-//    [self addSubview:self.statusView];
-//    [self.statusView autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.avatarView];
-//    [self.statusView autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.avatarView];
+    [self.databaseStorage uiReadWithBlock:^(SDSAnyReadTransaction *transaction) {
+        [self configureWithRecipientAddress:address localUserAvatarMode:localUserAvatarMode transaction:transaction];
+    }];
 }
 
-
-- (void)configureWithRecipientAddressWithSneakyTransaction:(SignalServiceAddress *)address
-{
-    [self.databaseStorage uiReadWithBlock:^(
-        SDSAnyReadTransaction *transaction) { [self configureWithRecipientAddress:address transaction:transaction]; }];
-}
-
-- (void)configureWithRecipientAddress:(SignalServiceAddress *)address transaction:(SDSAnyReadTransaction *)transaction
+- (void)configureWithRecipientAddress:(SignalServiceAddress *)address
+                  localUserAvatarMode:(LocalUserAvatarMode)localUserAvatarMode
+                          transaction:(SDSAnyReadTransaction *)transaction
 {
     OWSAssertDebug(address.isValid);
 
@@ -148,12 +137,14 @@ const CGFloat callIconSize = 24;
     self.address = address;
     self.thread = [TSContactThread getThreadWithContactAddress:address transaction:transaction];
 
+    self.avatarView.localUserAvatarMode = localUserAvatarMode;
+    [self.avatarView configureWithAddress:address transaction:transaction];
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(otherUsersProfileDidChange:)
                                                  name:kNSNotificationNameOtherUsersProfileDidChange
                                                object:nil];
     [self updateNameLabels];
-    [self updateAvatarWithTransaction:transaction];
 
     if (self.shouldShowStatus) {
         self.subtitleLabel.text = @"last Seen";
@@ -170,11 +161,16 @@ const CGFloat callIconSize = 24;
     [self layoutSubviews];
 }
 
-- (void)configureWithThread:(TSThread *)thread transaction:(SDSAnyReadTransaction *)transaction
+- (void)configureWithThread:(TSThread *)thread
+        localUserAvatarMode:(LocalUserAvatarMode)localUserAvatarMode
+                transaction:(SDSAnyReadTransaction *)transaction
 {
     OWSAssertDebug(thread);
     self.thread = thread;
-    
+
+    self.avatarView.localUserAvatarMode = localUserAvatarMode;
+    [self.avatarView configureWithThread:self.thread transaction:transaction];
+
     // Update fonts to reflect changes to dynamic type.
     [self configureFontsAndColors];
 
@@ -200,11 +196,6 @@ const CGFloat callIconSize = 24;
                                             }];
         self.nameLabel.attributedText = attributedText;
     }
-
-    self.layoutConstraints = [self.avatarView autoSetDimensionsToSize:CGSizeMake(self.avatarSize, self.avatarSize)];
-    self.avatarView.image = [OWSAvatarBuilder buildImageForThread:thread
-                                                         diameter:self.avatarSize
-                                                      transaction:transaction];
 
     if (self.accessoryMessage) {
         self.accessoryLabel.text = self.accessoryMessage;
@@ -344,34 +335,36 @@ const CGFloat callIconSize = 24;
 
 - (void)updateAvatarWithTransaction:(SDSAnyReadTransaction *)transaction
 {
-    self.layoutConstraints = [self.avatarView autoSetDimensionsToSize:CGSizeMake(self.avatarSize, self.avatarSize)];
 
     if (self.customAvatar != nil) {
         self.avatarView.image = self.customAvatar;
         return;
     }
 
-    SignalServiceAddress *address = self.address;
-    if (!address.isValid) {
-        OWSFailDebug(@"address should not be invalid");
-        self.avatarView.image = nil;
-        return;
-    }
-
-    ConversationColorName colorName = ^{
-        if (self.thread) {
-            return self.thread.conversationColorName;
-        } else {
-            return [TSThread stableColorNameForNewConversationWithString:address.stringForDisplay];
-        }
-    }();
-
-    OWSContactAvatarBuilder *avatarBuilder = [[OWSContactAvatarBuilder alloc] initWithAddress:address
-                                                                                    colorName:colorName
-                                                                                     diameter:self.avatarSize
-                                                                                  transaction:transaction];
-
-    self.avatarView.image = [avatarBuilder build];
+    self.avatarView.localUserAvatarMode = LocalUserAvatarModeAsUser;
+    [self.avatarView configureWithThread:self.thread transaction:transaction];
+    
+//    SignalServiceAddress *address = self.address;
+//    if (!address.isValid) {
+//        OWSFailDebug(@"address should not be invalid");
+//        self.avatarView.image = nil;
+//        return;
+//    }
+//
+//    ConversationColorName colorName = ^{
+//        if (self.thread) {
+//            return self.thread.conversationColorName;
+//        } else {
+//            return [TSThread stableColorNameForNewConversationWithString:address.stringForDisplay];
+//        }
+//    }();
+//
+//    OWSContactAvatarBuilder *avatarBuilder = [[OWSContactAvatarBuilder alloc] initWithAddress:address
+//                                                                                    colorName:colorName
+//                                                                                     diameter:self.avatarSize
+//                                                                                  transaction:transaction];
+//
+//    self.avatarView.image = [avatarBuilder build];
 }
 
 - (NSUInteger)avatarSize
@@ -411,6 +404,8 @@ const CGFloat callIconSize = 24;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
+    [self.avatarView reset];
+
     self.forceDarkAppearance = NO;
     self.thread = nil;
     self.callIconImage = nil;
@@ -427,8 +422,6 @@ const CGFloat callIconSize = 24;
     for (UIView *subview in self.accessoryViewContainer.subviews) {
         [subview removeFromSuperview];
     }
-    [NSLayoutConstraint deactivateConstraints:self.layoutConstraints];
-    self.layoutConstraints = nil;
     self.useLargeAvatars = NO;
 }
 
@@ -441,8 +434,6 @@ const CGFloat callIconSize = 24;
 
     if (address.isValid && [self.address isEqualToAddress:address]) {
         [self updateNameLabels];
-        [self.databaseStorage
-            uiReadWithBlock:^(SDSAnyReadTransaction *transaction) { [self updateAvatarWithTransaction:transaction]; }];
     }
 }
 

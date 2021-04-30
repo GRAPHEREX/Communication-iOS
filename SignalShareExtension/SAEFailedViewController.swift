@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import UIKit
@@ -7,7 +7,7 @@ import SignalMessaging
 import PureLayout
 
 // All Observer methods will be invoked from the main thread.
-protocol SAEFailedViewDelegate: class {
+protocol SAEFailedViewDelegate: AnyObject {
     func shareViewWasCancelled()
 }
 
@@ -27,7 +27,7 @@ class SAEFailedViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    @available(*, unavailable, message:"use other constructor instead.")
+    @available(*, unavailable, message: "use other constructor instead.")
     required init?(coder aDecoder: NSCoder) {
         notImplemented()
     }

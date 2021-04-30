@@ -40,8 +40,7 @@ final class WalletExchangeHistoryController: OWSViewController {
         setupEmptyView()
     }
     
-    @objc
-    private func applyTheme() {
+    override func applyTheme() {
         view.backgroundColor = Theme.backgroundColor
         setupContent()
     }

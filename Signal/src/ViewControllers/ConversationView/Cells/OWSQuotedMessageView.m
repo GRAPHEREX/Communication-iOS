@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "OWSQuotedMessageView.h"
@@ -272,7 +272,7 @@ const CGFloat kRemotelySourcedContentRowSpacing = 3;
             UIImageView *contentImageView = [self imageViewForImage:contentIcon];
             contentImageView.contentMode = UIViewContentModeScaleAspectFit;
 
-            UIView *wrapper = [UIView containerView];
+            UIView *wrapper = [UIView transparentContainer];
             [wrapper addSubview:contentImageView];
             [contentImageView autoCenterInSuperview];
             [contentImageView autoSetDimension:ALDimensionWidth toSize:self.quotedAttachmentSize * 0.5f];
@@ -287,7 +287,7 @@ const CGFloat kRemotelySourcedContentRowSpacing = 3;
         // If there's no attachment, add an empty view so that
         // the stack view's spacing serves as a margin between
         // the text views and the trailing edge.
-        UIView *emptyView = [UIView containerView];
+        UIView *emptyView = [UIView transparentContainer];
         [hStackView addArrangedSubview:emptyView];
         [emptyView setContentHuggingHigh];
         [emptyView autoSetDimension:ALDimensionWidth toSize:0.f];

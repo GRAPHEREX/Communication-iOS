@@ -4,7 +4,7 @@
 
 import Foundation
 
-protocol SupportRequestTextViewDelegate: class {
+protocol SupportRequestTextViewDelegate: AnyObject {
     /// A method invoked by the description field when its cursor/selection changed without any change
     /// to the text
     func textViewDidUpdateSelection(_ textView: SupportRequestTextView)

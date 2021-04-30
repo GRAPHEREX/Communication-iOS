@@ -136,7 +136,9 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
     if (!self) {
         return self;
     }
-    OWSLogVerbose(@"init attachment with uniqueId: %@", self.uniqueId);
+    if (!SSKDebugFlags.reduceLogChatter) {
+        OWSLogVerbose(@"init attachment with uniqueId: %@", self.uniqueId);
+    }
 
     _contentType = contentType;
     _byteCount = byteCount;
@@ -299,7 +301,10 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
     NSString *attachmentString;
 
     if (self.isAnimated) {
-        if ([self.contentType caseInsensitiveCompare:OWSMimeTypeImageGif] == NSOrderedSame) {
+        BOOL isGIF = ([self.contentType caseInsensitiveCompare:OWSMimeTypeImageGif] == NSOrderedSame);
+        BOOL isLoopingVideo = self.isLoopingVideo && ([MIMETypeUtil isVideo:self.contentType]);
+
+        if (isGIF || isLoopingVideo) {
             attachmentString = NSLocalizedString(@"ATTACHMENT_TYPE_GIF",
                 @"Short text label for a gif attachment, used for thread preview and on the lock screen");
         } else {
@@ -345,7 +350,7 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
 
 - (NSString *)emojiForMimeType
 {
-    if (self.isAnimated) {
+    if (self.isAnimated || self.isLoopingVideo) {
         return @"🎡";
     } else if ([MIMETypeUtil isImage:self.contentType]) {
         return @"📷";
@@ -412,6 +417,11 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
 - (BOOL)isBorderless
 {
     return self.attachmentType == TSAttachmentTypeBorderless;
+}
+
+- (BOOL)isLoopingVideo
+{
+    return self.attachmentType == TSAttachmentTypeGIF && self.isVideo;
 }
 
 - (BOOL)isVisualMedia

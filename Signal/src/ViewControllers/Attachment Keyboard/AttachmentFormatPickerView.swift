@@ -5,13 +5,16 @@
 import Foundation
 import PromiseKit
 
-protocol AttachmentFormatPickerDelegate: class {
+protocol AttachmentFormatPickerDelegate: AnyObject {
     func didTapCamera()
     func didTapGif()
     func didTapFile()
     func didTapContact()
     func didTapLocation()
     func didTapMoney()
+    func didTapPayment()
+
+    var isGroup: Bool { get }
 }
 
 class AttachmentFormatPickerView: UICollectionView {
@@ -26,6 +29,14 @@ class AttachmentFormatPickerView: UICollectionView {
     }
 
     private let collectionViewFlowLayout = UICollectionViewFlowLayout()
+
+    private var isGroup: Bool {
+        guard let attachmentFormatPickerDelegate = attachmentFormatPickerDelegate else {
+            owsFailDebug("Missing attachmentFormatPickerDelegate.")
+            return false
+        }
+        return attachmentFormatPickerDelegate.isGroup
+    }
 
     init() {
         super.init(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
@@ -62,20 +73,43 @@ class AttachmentFormatPickerView: UICollectionView {
     }
 }
 
-enum AttachmentType: String, CaseIterable {
+enum AttachmentType: String, CaseIterable, Dependencies {
     case camera
     case gif
     case file
+    case payment
     case contact
     case location
     case money
+
+    static var contactCases: [AttachmentType] {
+        if payments.shouldShowPaymentsUI {
+            return allCases
+        } else {
+            return everythingExceptPayments
+        }
+    }
+
+    static var groupCases: [AttachmentType] {
+        everythingExceptPayments
+    }
+
+    static var everythingExceptPayments: [AttachmentType] {
+        return allCases.filter { (value: AttachmentType) in
+            value != .payment
+        }
+    }
+
+    static func cases(isGroup: Bool, hideMoney: Bool) -> [AttachmentType] {
+        return (isGroup ? groupCases : contactCases).filter ({ !(hideMoney && $0 == .money) })
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 
 extension AttachmentFormatPickerView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch AttachmentType.allCases.filter ({ !(hideMoney && $0 == .money) }) [indexPath.row] {
+        switch AttachmentType.cases(isGroup: isGroup, hideMoney: hideMoney)[indexPath.row] {
         case .camera:
             attachmentFormatPickerDelegate?.didTapCamera()
         case .contact:
@@ -88,6 +122,8 @@ extension AttachmentFormatPickerView: UICollectionViewDelegate {
             attachmentFormatPickerDelegate?.didTapLocation()
         case .money:
             attachmentFormatPickerDelegate?.didTapMoney()
+        case .payment:
+            attachmentFormatPickerDelegate?.didTapPayment()
         }
     }
 }
@@ -101,7 +137,7 @@ extension AttachmentFormatPickerView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection sectionIdx: Int) -> Int {
-        return AttachmentType.allCases.filter{ !(hideMoney && $0 == .money) }.count
+        return AttachmentType.cases(isGroup: isGroup, hideMoney: hideMoney).count
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -109,7 +145,7 @@ extension AttachmentFormatPickerView: UICollectionViewDataSource {
             owsFail("cell was unexpectedly nil")
         }
 
-        let type = AttachmentType.allCases.filter{ !(hideMoney && $0 == .money) }[indexPath.item]
+        let type = AttachmentType.cases(isGroup: isGroup, hideMoney: hideMoney)[indexPath.item]
         cell.configure(type: type)
         return cell
     }
@@ -190,6 +226,9 @@ class AttachmentFormatCell: UICollectionViewCell {
         case .money:
             text = NSLocalizedString("ATTACHMENT_KEYBOARD_MONEY", comment: "A button to select a wallet from the Attachment Keyboard")
             imageName = Theme.iconName(.attachmentMoney)
+        case .payment:
+            text = NSLocalizedString("ATTACHMENT_KEYBOARD_PAYMENT", comment: "A button to select a payment from the Attachment Keyboard")
+            imageName = Theme.iconName(.attachmentPayment)
         }
 
         // The light theme images come with a background baked in, so we don't tint them.

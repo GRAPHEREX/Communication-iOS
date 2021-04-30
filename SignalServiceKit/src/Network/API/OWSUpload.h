@@ -53,24 +53,24 @@ typedef void (^UploadProgressBlock)(NSProgress *progress);
 
 #pragma mark -
 
-// A strong reference should be maintained to this object
-// until it completes.  If it is deallocated, the upload
-// may be cancelled.
+//// A strong reference should be maintained to this object
+//// until it completes.  If it is deallocated, the upload
+//// may be cancelled.
+////
+//// This class can be safely accessed and used from any thread.
+//@interface OWSAttachmentUploadV4 : NSObject
 //
-// This class can be safely accessed and used from any thread.
-@interface OWSAttachmentUploadV4 : NSObject
-
-// These properties are set on success.
-@property (nonatomic, nullable) NSData *encryptionKey;
-@property (nonatomic, nullable) NSData *digest;
-@property (nonatomic) UInt64 serverId;
-@property (nonatomic) NSString *bucket;
-@property (nonatomic) NSString *credentionals;
-@property (nonatomic) UInt64 uploadTimestamp;
-
-- (AnyPromise *)uploadAttachmentToService:(TSAttachmentStream *)attachmentStream
-                            progressBlock:(UploadProgressBlock)progressBlock;
-
-@end
+//// These properties are set on success.
+//@property (nonatomic, nullable) NSData *encryptionKey;
+//@property (nonatomic, nullable) NSData *digest;
+//@property (nonatomic) UInt64 serverId;
+//@property (nonatomic) NSString *bucket;
+//@property (nonatomic) NSString *credentionals;
+//@property (nonatomic) UInt64 uploadTimestamp;
+//
+//- (AnyPromise *)uploadAttachmentToService:(TSAttachmentStream *)attachmentStream
+//                            progressBlock:(UploadProgressBlock)progressBlock;
+//
+//@end
 
 NS_ASSUME_NONNULL_END

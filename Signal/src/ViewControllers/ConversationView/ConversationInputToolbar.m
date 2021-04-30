@@ -103,6 +103,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
 @property (nonatomic) KeyboardType desiredKeyboardType;
 @property (nonatomic, readonly) StickerKeyboard *stickerKeyboard;
 @property (nonatomic, readonly) AttachmentKeyboard *attachmentKeyboard;
+@property (nonatomic) BOOL hasMeasuredKeyboardHeight;
 
 @end
 
@@ -172,7 +173,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     // gap between the keyboard and the bottom of the input bar during
     // the animation. Extend the background below the toolbar's bounds
     // by this much to mask that extra space.
-    CGFloat backgroundExtension = 100;
+    CGFloat backgroundExtension = 500;
 
 //    if (UIAccessibilityIsReduceTransparencyEnabled()) {
         self.backgroundColor = Theme.toolbarBackgroundColor;
@@ -554,7 +555,9 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     [quotedMessagePreview autoPinEdgesToSuperviewMargins];
     SET_SUBVIEW_ACCESSIBILITY_IDENTIFIER(self, quotedMessagePreview);
 
-    self.linkPreviewView.hasAsymmetricalRounding = !self.quotedReply;
+    // hasAsymmetricalRounding may have changed.
+    [self clearLinkPreviewView];
+    [self updateInputLinkPreview];
 
     [self clearDesiredKeyboard];
 }
@@ -1363,11 +1366,11 @@ const CGFloat kMaxIPadTextViewHeight = 142;
 {
     OWSAssertIsOnMainThread();
 
+    // TODO: We could re-use LinkPreviewView now.
     [self clearLinkPreviewView];
 
     LinkPreviewView *linkPreviewView = [[LinkPreviewView alloc] initWithDraftDelegate:self];
-    linkPreviewView.state = state;
-    linkPreviewView.hasAsymmetricalRounding = !self.quotedReply;
+    [linkPreviewView configureForNonCVCWithState:state isDraft:YES hasAsymmetricalRounding:!self.quotedReply];
     self.linkPreviewView = linkPreviewView;
 
     self.linkPreviewWrapper.hidden = NO;
@@ -1525,7 +1528,7 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     // We only measure the keyboard if the toolbar isn't hidden.
     // If it's hidden, we're likely here from a peek interaction
     // and don't want to show the keyboard. We'll measure it later.
-    if (!self.inputTextView.isFirstResponder && !self.isHidden) {
+    if (!self.hasMeasuredKeyboardHeight && !self.inputTextView.isFirstResponder && !self.isHidden) {
 
         // Flag that we're measuring the system keyboard's height, so
         // even if though it won't be the first responder by the time
@@ -1579,7 +1582,10 @@ const CGFloat kMaxIPadTextViewHeight = 142;
         if (newHeight > 0) {
             [self.stickerKeyboard updateSystemKeyboardHeight:newHeight];
             [self.attachmentKeyboard updateSystemKeyboardHeight:newHeight];
-            self.isMeasuringKeyboardHeight = NO;
+            if (self.isMeasuringKeyboardHeight) {
+                self.isMeasuringKeyboardHeight = NO;
+                self.hasMeasuredKeyboardHeight = YES;
+            }
         }
     }
 }
@@ -1631,6 +1637,16 @@ const CGFloat kMaxIPadTextViewHeight = 142;
     OWSAssertIsOnMainThread();
 
     _conversationStyle = conversationStyle;
+}
+
+- (void)didTapPayment
+{
+    [self.inputToolbarDelegate paymentButtonPressed];
+}
+
+- (BOOL)isGroup
+{
+    return self.inputToolbarDelegate.isGroup;
 }
 
 @end

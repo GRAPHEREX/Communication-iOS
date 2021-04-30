@@ -292,7 +292,7 @@ public class OWSLinkPreviewManager: NSObject, Dependencies {
         let allMatches = detector.matches(
             in: searchString,
             options: [],
-            range: NSRange(searchString.startIndex..<searchString.endIndex, in: searchString))
+            range: searchString.entireRange)
 
         return allMatches.first(where: {
             guard let parsedUrl = $0.url else { return false }
@@ -566,8 +566,10 @@ public class OWSLinkPreviewManager: NSObject, Dependencies {
         }.then(on: Self.workQueue) { (stickerPack) -> Promise<OWSLinkPreviewDraft> in
             let coverInfo = stickerPack.coverInfo
             // tryToDownloadSticker will use locally saved data if possible.
-            return firstly { () -> Promise<Data> in
+            return firstly { () -> Promise<URL> in
                 StickerManager.tryToDownloadSticker(stickerPack: stickerPack, stickerInfo: coverInfo)
+            }.map(on: Self.workQueue) { coverUrl in
+                return try Data(contentsOf: coverUrl)
             }.then(on: Self.workQueue) { (coverData) -> Promise<PreviewThumbnail?> in
                 Self.previewThumbnail(srcImageData: coverData, srcMimeType: OWSMimeTypeImageWebp)
             }.map(on: Self.workQueue) { (previewThumbnail: PreviewThumbnail?) -> OWSLinkPreviewDraft in

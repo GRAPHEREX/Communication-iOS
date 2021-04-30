@@ -654,11 +654,6 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
     [self configureTableLayoutMargins];
     [self applyContents];
     [self applyTheme];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(themeDidChange:)
-                                                 name:ThemeDidChangeNotification
-                                               object:nil];
 }
 
 - (void)dealloc
@@ -981,11 +976,12 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
 
 #pragma mark - Theme
 
-- (void)themeDidChange:(NSNotification *)notification
+- (void)themeDidChange
 {
     OWSAssertIsOnMainThread();
 
-    [self applyTheme];
+    [super themeDidChange];
+
     [self.tableView reloadData];
 }
 
@@ -999,6 +995,8 @@ NSString *const kOWSTableCellIdentifier = @"kOWSTableCellIdentifier";
 - (void)applyTheme
 {
     OWSAssertIsOnMainThread();
+
+    [super applyTheme];
 
     UIColor *backgroundColor = (self.useThemeBackgroundColors ? Theme.tableViewBackgroundColor : Theme.backgroundColor);
     self.view.backgroundColor = backgroundColor;
