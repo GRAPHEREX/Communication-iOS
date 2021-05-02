@@ -44,15 +44,12 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
         CVComponentViewThreadDetails()
     }
 
-    public override func buildWallpaperMask(_ wallpaperMaskBuilder: WallpaperMaskBuilder,
-                                            componentView: CVComponentView) {
-        super.buildWallpaperMask(wallpaperMaskBuilder, componentView: componentView)
-
+    public override func wallpaperBlurView(componentView: CVComponentView) -> CVWallpaperBlurView? {
         guard let componentView = componentView as? CVComponentViewThreadDetails else {
             owsFailDebug("Unexpected componentView.")
-            return
+            return nil
         }
-        wallpaperMaskBuilder.append(blurView: componentView.blurView)
+        return componentView.wallpaperBlurView
     }
 
     public func configureForRendering(componentView componentViewParam: CVComponentView,
@@ -84,8 +81,8 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
             innerViews.append(avatarWrapper)
 
             var unblurAvatarSubviewInfos = [ManualStackSubviewInfo]()
-            let unblurAvatarIconView = UIImageView.withTemplateImageName("tap-outline-24",
-                                                                         tintColor: .ows_white)
+            let unblurAvatarIconView = CVImageView()
+            unblurAvatarIconView.setTemplateImageName("tap-outline-24", tintColor: .ows_white)
             unblurAvatarSubviewInfos.append(CGSize.square(24).asManualSubviewInfo(hasFixedSize: true))
 
             let unblurAvatarLabelConfig = CVLabelConfig(text: NSLocalizedString("THREAD_DETAILS_TAP_TO_UNBLUR_AVATAR",
@@ -94,7 +91,7 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
                                                         textColor: .ows_white)
             let unblurAvatarLabelSize = CVText.measureLabel(config: unblurAvatarLabelConfig, maxWidth: avatarDiameter - 12)
             unblurAvatarSubviewInfos.append(unblurAvatarLabelSize.asManualSubviewInfo)
-            let unblurAvatarLabel = UILabel()
+            let unblurAvatarLabel = CVLabel()
             unblurAvatarLabelConfig.applyForRendering(label: unblurAvatarLabel)
             let unblurAvatarStackConfig = ManualStackView.Config(axis: .vertical,
                                                                  alignment: .center,
@@ -117,8 +114,11 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
         innerViews.append(UIView.spacer(withHeight: 1))
 
         if conversationStyle.hasWallpaper {
-            innerStackView.layer.cornerRadius = 12
-            componentView.blurView = innerStackView
+            let wallpaperBlurView = componentView.ensureWallpaperBlurView()
+            configureWallpaperBlurView(wallpaperBlurView: wallpaperBlurView,
+                                       maskCornerRadius: 12,
+                                       componentDelegate: componentDelegate)
+            innerStackView.addSubviewToFillSuperviewEdges(wallpaperBlurView)
         }
 
         let titleLabel = componentView.titleLabel
@@ -227,6 +227,7 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
                                             avatarBuilder: CVAvatarBuilder) -> CVComponentState.ThreadDetails {
 
         let avatar = avatarBuilder.buildAvatar(forAddress: contactThread.contactAddress,
+                                               localUserAvatarMode: .noteToSelf,
                                                diameter: avatarDiameter)
 
         let isAvatarBlurred = contactsManagerImpl.shouldBlurContactAvatar(contactThread: contactThread,
@@ -456,7 +457,8 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
         let outerStackMeasurement = ManualStackView.measure(config: outerStackConfig,
                                                             measurementBuilder: measurementBuilder,
                                                             measurementKey: Self.measurementKey_outerStack,
-                                                            subviewInfos: outerSubviewInfos)
+                                                            subviewInfos: outerSubviewInfos,
+                                                            maxWidth: maxWidth)
         return outerStackMeasurement.measuredSize
     }
 
@@ -513,7 +515,15 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
         fileprivate let outerStackView = ManualStackView(name: "Thread details outer")
         fileprivate let innerStackView = ManualStackView(name: "Thread details inner")
 
-        fileprivate var blurView: UIView?
+        fileprivate var wallpaperBlurView: CVWallpaperBlurView?
+        fileprivate func ensureWallpaperBlurView() -> CVWallpaperBlurView {
+            if let wallpaperBlurView = self.wallpaperBlurView {
+                return wallpaperBlurView
+            }
+            let wallpaperBlurView = CVWallpaperBlurView()
+            self.wallpaperBlurView = wallpaperBlurView
+            return wallpaperBlurView
+        }
 
         public var isDedicatedCellView = false
 
@@ -535,8 +545,8 @@ public class CVComponentThreadDetails: CVComponentBase, CVRootComponent {
             mutualGroupsLabel.text = nil
             avatarView = nil
 
-            blurView?.removeFromSuperview()
-            blurView = nil
+            wallpaperBlurView?.removeFromSuperview()
+            wallpaperBlurView?.resetContentAndConfiguration()
         }
     }
 }

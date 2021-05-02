@@ -37,6 +37,10 @@ public class CVComponentSystemMessage: CVComponentBase, CVRootComponent {
                                         componentView: componentView)
     }
 
+    private var bubbleBackgroundColor: UIColor {
+        Theme.backgroundColor
+    }
+
     private var outerHStackConfig: CVStackViewConfig {
         let cellLayoutMargins = UIEdgeInsets(top: 0,
                                              leading: conversationStyle.fullWidthGutterLeading,
@@ -63,15 +67,12 @@ public class CVComponentSystemMessage: CVComponentBase, CVRootComponent {
                                  layoutMargins: .zero)
     }
 
-    public override func buildWallpaperMask(_ wallpaperMaskBuilder: WallpaperMaskBuilder,
-                                            componentView: CVComponentView) {
-        super.buildWallpaperMask(wallpaperMaskBuilder, componentView: componentView)
-
+    public override func wallpaperBlurView(componentView: CVComponentView) -> CVWallpaperBlurView? {
         guard let componentView = componentView as? CVComponentViewSystemMessage else {
             owsFailDebug("Unexpected componentView.")
-            return
+            return nil
         }
-        wallpaperMaskBuilder.append(blurView: componentView.blurView)
+        return componentView.wallpaperBlurView
     }
 
     public func buildComponentView(componentDelegate: CVComponentDelegate) -> CVComponentView {
@@ -192,8 +193,8 @@ public class CVComponentSystemMessage: CVComponentBase, CVRootComponent {
                                   measurementKey: Self.measurementKey_outerHStack,
                                   subviews: outerHStackViews)
 
-            componentView.blurView?.removeFromSuperview()
-            componentView.blurView = nil
+            componentView.wallpaperBlurView?.removeFromSuperview()
+            componentView.wallpaperBlurView = nil
 
             componentView.backgroundView?.removeFromSuperview()
             componentView.backgroundView = nil
@@ -201,14 +202,16 @@ public class CVComponentSystemMessage: CVComponentBase, CVRootComponent {
             let bubbleView: UIView
 
             if hasWallpaper {
-                let blurView = UIView.transparentContainer()
-                componentView.blurView = blurView
-                bubbleView = blurView
+                let wallpaperBlurView = componentView.ensureWallpaperBlurView()
+                configureWallpaperBlurView(wallpaperBlurView: wallpaperBlurView,
+                                           maskCornerRadius: 0,
+                                           componentDelegate: componentDelegate)
+                bubbleView = wallpaperBlurView
             } else {
                 let backgroundView = UIView()
+                backgroundView.backgroundColor = Theme.backgroundColor
                 componentView.backgroundView = backgroundView
                 bubbleView = backgroundView
-                backgroundView.backgroundColor = Theme.backgroundColor
             }
 
             if isFirstInCluster && isLastInCluster {
@@ -260,7 +263,7 @@ public class CVComponentSystemMessage: CVComponentBase, CVRootComponent {
     }
 
     private var buttonContentEdgeInsets: UIEdgeInsets {
-        UIEdgeInsets(top: 3, leading: 12, bottom: 3, trailing: 12)
+        UIEdgeInsets(hMargin: 12, vMargin: 6)
     }
 
     private static var titleLabelFont: UIFont {
@@ -329,7 +332,8 @@ public class CVComponentSystemMessage: CVComponentBase, CVRootComponent {
         let outerHStackMeasurement = ManualStackView.measure(config: outerHStackConfig,
                                                              measurementBuilder: measurementBuilder,
                                                              measurementKey: Self.measurementKey_outerHStack,
-                                                             subviewInfos: outerHStackSubviewInfos)
+                                                             subviewInfos: outerHStackSubviewInfos,
+                                                             maxWidth: maxWidth)
         return outerHStackMeasurement.measuredSize
     }
 
@@ -394,7 +398,16 @@ public class CVComponentSystemMessage: CVComponentBase, CVRootComponent {
         fileprivate let titleLabel = CVLabel()
         fileprivate let selectionView = MessageSelectionView()
 
-        fileprivate var blurView: UIView?
+        fileprivate var wallpaperBlurView: CVWallpaperBlurView?
+        fileprivate func ensureWallpaperBlurView() -> CVWallpaperBlurView {
+            if let wallpaperBlurView = self.wallpaperBlurView {
+                return wallpaperBlurView
+            }
+            let wallpaperBlurView = CVWallpaperBlurView()
+            self.wallpaperBlurView = wallpaperBlurView
+            return wallpaperBlurView
+        }
+
         fileprivate var backgroundView: UIView?
 
         fileprivate var button: OWSButton?
@@ -431,8 +444,8 @@ public class CVComponentSystemMessage: CVComponentBase, CVRootComponent {
                 innerVStack.reset()
                 outerVStack.reset()
 
-                blurView?.removeFromSuperview()
-                blurView = nil
+                wallpaperBlurView?.removeFromSuperview()
+                wallpaperBlurView?.resetContentAndConfiguration()
 
                 backgroundView?.removeFromSuperview()
                 backgroundView = nil
@@ -744,10 +757,18 @@ extension CVComponentSystemMessage {
         if threadViewModel.isGroupThread {
             let title = NSLocalizedString("SYSTEM_MESSAGE_UNKNOWN_THREAD_WARNING_GROUP",
                                           comment: "Indicator warning about an unknown group thread.")
+
+            let labelText = NSMutableAttributedString()
+            labelText.appendTemplatedImage(named: Theme.iconName(.info16),
+                                           font: Self.titleLabelFont,
+                                           heightReference: ImageAttachmentHeightReference.lineHeight)
+            labelText.append("  ", attributes: [:])
+            labelText.append(title, attributes: [:])
+
             let action = Action(title: CommonStrings.learnMore,
                                 accessibilityIdentifier: "unknown_thread_warning",
                                 action: .cvc_didTapUnknownThreadWarningGroup)
-            return CVComponentState.SystemMessage(title: title.attributedString(),
+            return CVComponentState.SystemMessage(title: labelText,
                                                   titleColor: titleColor,
                                                   action: action)
         } else {

@@ -241,7 +241,8 @@ class WallpaperCell: UICollectionViewCell {
         let shouldDim = databaseStorage.read { transaction in
             Wallpaper.shouldDim(thread: thread, transaction: transaction)
         }
-        wallpaperView = Wallpaper.view(for: wallpaper, shouldDim: shouldDim)?.asPreviewView()
+        wallpaperView = Wallpaper.view(for: wallpaper,
+                                       shouldDim: shouldDim)?.asPreviewView()
 
         guard let wallpaperView = wallpaperView else {
             return owsFailDebug("Missing wallpaper view")

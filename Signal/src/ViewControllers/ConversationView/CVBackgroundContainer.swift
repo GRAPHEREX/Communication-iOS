@@ -7,6 +7,8 @@ import Foundation
 @objc
 public protocol CVBackgroundContainerDelegate: class {
     func updateSelectionHighlight()
+    func updateScrollingContent()
+    func updateCellWallpaperBlur()
 }
 
 // MARK: -
@@ -18,7 +20,6 @@ public class CVBackgroundContainer: ManualLayoutViewWithLayer {
         case wallpaperContent = 0
         case wallpaperDimming = 1
         case selectionHighlight = 2
-        case wallpaperBlur = 3
     }
 
     fileprivate var wallpaperView: WallpaperView?
@@ -51,7 +52,6 @@ public class CVBackgroundContainer: ManualLayoutViewWithLayer {
     }
 
     public func set(wallpaperView: WallpaperView?) {
-        self.wallpaperView?.blurView?.removeFromSuperview()
         self.wallpaperView?.contentView?.removeFromSuperview()
         self.wallpaperView?.dimmingView?.removeFromSuperview()
         self.wallpaperView = wallpaperView
@@ -67,10 +67,6 @@ public class CVBackgroundContainer: ManualLayoutViewWithLayer {
                 addSubview(dimmingView)
                 dimmingView.layer.zPosition = ZPositioning.wallpaperDimming.rawValue
             }
-            if let blurView = wallpaperView.blurView {
-                addSubview(blurView)
-                blurView.layer.zPosition = ZPositioning.wallpaperBlur.rawValue
-            }
 
             setNeedsLayout()
         } else {
@@ -83,17 +79,13 @@ public class CVBackgroundContainer: ManualLayoutViewWithLayer {
 
         super.layoutSubviews()
 
-        let shouldUpdateWallpaperBlur = wallpaperView?.blurView?.frame != bounds
         let shouldUpdateSelectionHighlight = selectionHighlightView.frame != bounds
 
-        wallpaperView?.blurView?.frame = bounds
         wallpaperView?.contentView?.frame = bounds
         wallpaperView?.dimmingView?.frame = bounds
         selectionHighlightView.frame = bounds
 
-        if shouldUpdateWallpaperBlur {
-            wallpaperView?.updateBlurContentAndMask()
-        }
+        delegate?.updateCellWallpaperBlur()
         if shouldUpdateSelectionHighlight {
             delegate?.updateSelectionHighlight()
         }
@@ -102,16 +94,35 @@ public class CVBackgroundContainer: ManualLayoutViewWithLayer {
 
 // MARK: -
 
+@objc
+extension CVBackgroundContainer: WallpaperBlurProvider {
+    public var wallpaperBlurState: WallpaperBlurState? {
+        wallpaperView?.blurProvider?.wallpaperBlurState
+    }
+}
+
+// MARK: -
+
 extension ConversationViewController: CVBackgroundContainerDelegate {
     var selectionHighlightView: SelectionHighlightView {
-        viewState.backgroundContainer.selectionHighlightView
+        backgroundContainer.selectionHighlightView
     }
 
     @objc
     public func updateScrollingContent() {
         AssertIsOnMainThread()
 
-        viewState.backgroundContainer.wallpaperView?.updateBlurMask()
+        updateCellWallpaperBlur()
         updateSelectionHighlight()
+    }
+
+    public func updateCellWallpaperBlur() {
+        for cell in collectionView.visibleCells {
+            guard let cell = cell as? CVCell else {
+                owsFailDebug("Invalid cell.")
+                continue
+            }
+            cell.updateWallpaperBlur()
+        }
     }
 }

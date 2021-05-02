@@ -621,6 +621,7 @@ fileprivate extension CVComponentState.Builder {
                     return nil
                 }
                 return self.avatarBuilder.buildAvatar(forAddress: typingIndicatorInteraction.address,
+                                                      localUserAvatarMode: .asUser,
                                                       diameter: UInt(ConversationStyle.groupMessageAvatarDiameter))
             }()
             self.typingIndicator = TypingIndicator(address: typingIndicatorInteraction.address,
@@ -660,6 +661,7 @@ fileprivate extension CVComponentState.Builder {
             return nil
         }
         guard let avatar = self.avatarBuilder.buildAvatar(forAddress: incomingMessage.authorAddress,
+                                                          localUserAvatarMode: .asUser,
                                                           diameter: UInt(ConversationStyle.groupMessageAvatarDiameter)) else {
             owsFailDebug("Could build avatar image")
             return nil
@@ -1077,9 +1079,6 @@ fileprivate extension CVComponentState.Builder {
                 return attachmentStream
             }()
 
-            //            self.linkPreview = LinkPreview(linkPreview: linkPreview,
-            //                                           linkPreviewAttachment: linkPreviewAttachment,
-            //                                           groupInviteLinkViewModel: nil)
             let state = LinkPreviewSent(linkPreview: linkPreview,
                                         imageAttachment: linkPreviewAttachment,
                                         conversationStyle: conversationStyle)
