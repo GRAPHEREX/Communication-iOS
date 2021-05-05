@@ -180,7 +180,6 @@
 		347030C625F66C24006C3BF5 /* PaymentsDeactivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347030C525F66C24006C3BF5 /* PaymentsDeactivateViewController.swift */; };
 		3470518C254B320700A19468 /* CVRenderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470518B254B320700A19468 /* CVRenderState.swift */; };
 		3470518E254B511B00A19468 /* ConversationViewController+CVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470518D254B511B00A19468 /* ConversationViewController+CVC.swift */; };
-		347091D025B74B820061A8FF /* indeterminate_spinner_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 347091CC25B74B820061A8FF /* indeterminate_spinner_blue.json */; };
 		3470C8742554926200F5847C /* QuotedMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470C8732554926200F5847C /* QuotedMessageView.swift */; };
 		3470C8772555883600F5847C /* CVLoadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470C8752555883600F5847C /* CVLoadRequest.swift */; };
 		3470C8782555883600F5847C /* CVLoadContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470C8762555883600F5847C /* CVLoadContext.swift */; };
@@ -922,6 +921,17 @@
 		F217451925CAF58800BC9476 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217451025CAF58800BC9476 /* Throttler.swift */; };
 		F217451A25CAF58800BC9476 /* UIStoryboard+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217451125CAF58800BC9476 /* UIStoryboard+ViewController.swift */; };
 		F217451B25CAF58800BC9476 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217451225CAF58800BC9476 /* BaseView.swift */; };
+		F2505B552642B111001488B0 /* GroupCallTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E98015261FAD4A00EA9BDA /* GroupCallTooltip.swift */; };
+		F2505B5B2642B1D8001488B0 /* SDAsyncBlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E97D20261CD11B00EA9BDA /* SDAsyncBlockOperation.m */; };
+		F2505B612642B1EF001488B0 /* SDAnimatedImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E97C99261CD11A00EA9BDA /* SDAnimatedImageView+WebCache.m */; };
+		F2505B672642B1F8001488B0 /* SDWebImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E97C9E261CD11A00EA9BDA /* SDWebImageOperation.m */; };
+		F2505B6D2642B218001488B0 /* SDAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E97CAE261CD11A00EA9BDA /* SDAnimatedImage.m */; };
+		F2505B732642B234001488B0 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E97CC1261CD11A00EA9BDA /* UIImage+MultiFormat.m */; };
+		F2505B792642B269001488B0 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E97CE6261CD11A00EA9BDA /* UIImageView+WebCache.m */; };
+		F2505B7F2642B2C8001488B0 /* SDAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E97CAF261CD11A00EA9BDA /* SDAnimatedImageView.m */; };
+		F2505BA02642BA46001488B0 /* indeterminate_spinner_blue.json in Resources */ = {isa = PBXBuildFile; fileRef = F2505B9F2642BA46001488B0 /* indeterminate_spinner_blue.json */; };
+		F2505BAE2642BA70001488B0 /* indeterminate_spinner_white.json in Resources */ = {isa = PBXBuildFile; fileRef = F2505BAD2642BA70001488B0 /* indeterminate_spinner_white.json */; };
+		F25BB2672642CA1400758B61 /* determinate_spinner_white.json in Resources */ = {isa = PBXBuildFile; fileRef = F25BB2662642CA1400758B61 /* determinate_spinner_white.json */; };
 		F25BBCC7261CB5E9005DDC3B /* OWSContactsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 346129A21FD1F09100532771 /* OWSContactsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F296F9AB25E796BA00B89378 /* LinkGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9A625E796BA00B89378 /* LinkGridViewCell.swift */; };
 		F296F9AC25E796BA00B89378 /* FileGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9A725E796BA00B89378 /* FileGridViewCell.swift */; };
@@ -931,8 +941,6 @@
 		F296F9C825E7997E00B89378 /* MediaGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9C425E7997E00B89378 /* MediaGallery.swift */; };
 		F296F9C925E7997F00B89378 /* MediaGalleryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9C525E7997E00B89378 /* MediaGalleryItem.swift */; };
 		F296F9CA25E7997F00B89378 /* MediaGalleryAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F296F9C625E7997E00B89378 /* MediaGalleryAlbum.swift */; };
-		F2A411F22611F24E00DD6832 /* indeterminate_spinner_white.json in Resources */ = {isa = PBXBuildFile; fileRef = F2A411F12611F24D00DD6832 /* indeterminate_spinner_white.json */; };
-		F2A411F92611F26800DD6832 /* determinate_spinner_white.json in Resources */ = {isa = PBXBuildFile; fileRef = F2A411F82611F26800DD6832 /* determinate_spinner_white.json */; };
 		F2B36828263C464B00D518F1 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B36827263C464B00D518F1 /* CoreServices.framework */; };
 		F2B36829263C485F00D518F1 /* MobileCoinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3474C56926111605006723D2 /* MobileCoinAPI.swift */; };
 		F2B3682A263C486400D518F1 /* MobileCoinAPI+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3474C56C26111605006723D2 /* MobileCoinAPI+Configuration.swift */; };
@@ -2239,6 +2247,9 @@
 		F217451025CAF58800BC9476 /* Throttler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		F217451125CAF58800BC9476 /* UIStoryboard+ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+ViewController.swift"; sourceTree = "<group>"; };
 		F217451225CAF58800BC9476 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		F2505B9F2642BA46001488B0 /* indeterminate_spinner_blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = indeterminate_spinner_blue.json; sourceTree = "<group>"; };
+		F2505BAD2642BA70001488B0 /* indeterminate_spinner_white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = indeterminate_spinner_white.json; sourceTree = "<group>"; };
+		F25BB2662642CA1400758B61 /* determinate_spinner_white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = determinate_spinner_white.json; sourceTree = "<group>"; };
 		F296F9A625E796BA00B89378 /* LinkGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkGridViewCell.swift; sourceTree = "<group>"; };
 		F296F9A725E796BA00B89378 /* FileGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileGridViewCell.swift; sourceTree = "<group>"; };
 		F296F9A825E796BA00B89378 /* GroupGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupGridViewCell.swift; sourceTree = "<group>"; };
@@ -4028,6 +4039,9 @@
 				346EFC3925FFDC6900F493C7 /* update-pin-dark.json */,
 				346EFC3A25FFDC6A00F493C7 /* update-pin.json */,
 				88BFD4722335C2B3001797D7 /* waveformLoading.json */,
+				F2505B9F2642BA46001488B0 /* indeterminate_spinner_blue.json */,
+				F2505BAD2642BA70001488B0 /* indeterminate_spinner_white.json */,
+				F25BB2662642CA1400758B61 /* determinate_spinner_white.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -5817,6 +5831,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2D35DF6263C23340074F273 /* SFUIText-Regular.ttf in Resources */,
+				F2505BA02642BA46001488B0 /* indeterminate_spinner_blue.json in Resources */,
 				3406D33225DD832800885B14 /* payments_spinner_dark.json in Resources */,
 				4C63CC00210A620B003AE45C /* SignalTSan.supp in Resources */,
 				4C6F527C20FFE8400097DEEE /* SignalUBSan.supp in Resources */,
@@ -5845,6 +5860,7 @@
 				347C3855252DF8DC00F3D941 /* splash_groupsv2_iOS_light.json in Resources */,
 				886CB07824E77E5B00753909 /* silence.aiff in Resources */,
 				34330A5E1E787BD800DF2FB9 /* ElegantIcons.ttf in Resources */,
+				F2505BAE2642BA70001488B0 /* indeterminate_spinner_white.json in Resources */,
 				F217451425CAF58800BC9476 /* SFUIText-Semibold.ttf in Resources */,
 				45A2F005204473A3002E978A /* NewMessage.aifc in Resources */,
 				F2155E0A25D4412A0089AA63 /* Launch Screen.storyboard in Resources */,
@@ -5870,7 +5886,6 @@
 				347C3854252DF8DC00F3D941 /* splash_groupsv2_iOS_dark.json in Resources */,
 				45B74A892044AAB600CD42F8 /* circles-quiet.aifc in Resources */,
 				F21743DA25CAEA9F00BC9476 /* CallsMainController.storyboard in Resources */,
-				F2A411F92611F26800DD6832 /* determinate_spinner_white.json in Resources */,
 				4503F1BF20470A5B00CEE724 /* classic.aifc in Resources */,
 				34848D6125D43ADD00E5034B /* add-money.json in Resources */,
 				4503F1BE20470A5B00CEE724 /* classic-quiet.aifc in Resources */,
@@ -5881,13 +5896,12 @@
 				34848D5E25D43ADD00E5034B /* cash-out.json in Resources */,
 				88D6E93F254CF712003142D9 /* group_call_leave.aiff in Resources */,
 				45B74A772044AAB600CD42F8 /* hello.aifc in Resources */,
-				F2A411F22611F24E00DD6832 /* indeterminate_spinner_white.json in Resources */,
-				347091D025B74B820061A8FF /* indeterminate_spinner_blue.json in Resources */,
 				45B74A7C2044AAB600CD42F8 /* hello-quiet.aifc in Resources */,
 				45B74A792044AAB600CD42F8 /* input.aifc in Resources */,
 				45B74A8C2044AAB600CD42F8 /* input-quiet.aifc in Resources */,
 				F217440825CAEA9F00BC9476 /* NewUserDisplayNameController.storyboard in Resources */,
 				45B74A7A2044AAB600CD42F8 /* keys.aifc in Resources */,
+				F25BB2672642CA1400758B61 /* determinate_spinner_white.json in Resources */,
 				45B74A762044AAB600CD42F8 /* keys-quiet.aifc in Resources */,
 				F2155E2725D44EA20089AA63 /* notificationPermission1.png in Resources */,
 				45B74A862044AAB600CD42F8 /* note.aifc in Resources */,
@@ -6424,6 +6438,7 @@
 				F2E98046261FAD4A00EA9BDA /* TurnServerInfo.swift in Sources */,
 				349767E425B8744700ECE1B0 /* StickerPackViewController.swift in Sources */,
 				3415217525B0CB31009F177F /* CVAttachmentProgressView.swift in Sources */,
+				F2505B552642B111001488B0 /* GroupCallTooltip.swift in Sources */,
 				F2155AEC25CFFD390089AA63 /* SecondaryLinkingSetDeviceNameViewController_Grapherex.swift in Sources */,
 				F2E97D64261CD11B00EA9BDA /* SDFileAttributeHelper.m in Sources */,
 				F2D35DF1263C22970074F273 /* Currency.swift in Sources */,
@@ -6494,6 +6509,7 @@
 				3470C8782555883600F5847C /* CVLoadContext.swift in Sources */,
 				34D99CE4217509C2000AFB39 /* AppEnvironment.swift in Sources */,
 				F2E97D5F261CD11B00EA9BDA /* SDImageCachesManagerOperation.m in Sources */,
+				F2505B792642B269001488B0 /* UIImageView+WebCache.m in Sources */,
 				F217442A25CAEA9F00BC9476 /* InfoCurrencyController.swift in Sources */,
 				4C68FDAE2385F5A4002576B1 /* DebugUIDataStoreViewController.swift in Sources */,
 				F2E97C82261CCF7C00EA9BDA /* AttachmentToggleButton.swift in Sources */,
@@ -6709,6 +6725,7 @@
 				88238EB224F19D0B00F28079 /* Emoji+SkinTones.swift in Sources */,
 				348815C2255341F300D4F4C4 /* CVComponentAudioAttachment.swift in Sources */,
 				F2D35E02263C2EE00074F273 /* GroupGridViewCell.swift in Sources */,
+				F2505B732642B234001488B0 /* UIImage+MultiFormat.m in Sources */,
 				F2D35DF3263C22A60074F273 /* SecondaryLinkingPrepViewController_Grapherex.swift in Sources */,
 				F217440D25CAEA9F00BC9476 /* ContactsMainController.swift in Sources */,
 				347C384B252D085900F3D941 /* CVComponentUnreadIndicator.swift in Sources */,
@@ -6747,6 +6764,7 @@
 				F217441025CAEA9F00BC9476 /* Image + Extension.swift in Sources */,
 				3448E15C22133274004B052E /* OnboardingPermissionsViewController.swift in Sources */,
 				3495FF0325F908FE00959D6E /* PaymentsViewPassphraseConfirmViewController.swift in Sources */,
+				F2505B672642B1F8001488B0 /* SDWebImageOperation.m in Sources */,
 				8837F74123DA0B0F00772A32 /* MegaphoneView.swift in Sources */,
 				34C7C7152625D8E100F4DC2A /* DebugUIMessages.swift in Sources */,
 				348BB25D20A0C5530047AEC2 /* ContactShareViewHelper.swift in Sources */,
@@ -6792,8 +6810,10 @@
 				887CD47F247307D900FDD265 /* DeviceTransferService+Restore.swift in Sources */,
 				880D9025247F8841003D2B14 /* Emoji+Name.swift in Sources */,
 				888B6D4D25B2523800E2A662 /* ConversationViewController+Wallpaper.swift in Sources */,
+				F2505B6D2642B218001488B0 /* SDAnimatedImage.m in Sources */,
 				F217442D25CAEA9F00BC9476 /* NoWalletController.swift in Sources */,
 				347C3847252CE6C900F3D941 /* CVComponentBodyMedia.swift in Sources */,
+				F2505B612642B1EF001488B0 /* SDAnimatedImageView+WebCache.m in Sources */,
 				F217443825CAEA9F00BC9476 /* MoneyFormatter.swift in Sources */,
 				88C659B024688335002AC115 /* SelfSignedIdentity.swift in Sources */,
 				347C3857252E1E2300F3D941 /* CVComponentThreadDetails.swift in Sources */,
@@ -6901,6 +6921,7 @@
 				F2D35DCF263C1FB80074F273 /* PhoneNumberDiscoverabilitySettingsTableViewController.swift in Sources */,
 				F2E97D4F261CD11B00EA9BDA /* SDImageTransformer.m in Sources */,
 				32A9E22624C11B3F00C43518 /* EmojiMoodPickerView.swift in Sources */,
+				F2505B5B2642B1D8001488B0 /* SDAsyncBlockOperation.m in Sources */,
 				F217440B25CAEA9F00BC9476 /* ProfileOptionView.swift in Sources */,
 				881218F0238CA51600E6F271 /* MessageReactionPicker.swift in Sources */,
 				457F671B20746193000EABCD /* QuotedReplyPreview.swift in Sources */,
@@ -7000,6 +7021,7 @@
 				F2D35DF9263C23F20074F273 /* EnterPinController.swift in Sources */,
 				F217442425CAEA9F00BC9476 /* EnterPasswordBeforeSendingController.swift in Sources */,
 				459311FC1D75C948008DD4F0 /* OWSDeviceTableViewCell.m in Sources */,
+				F2505B7F2642B2C8001488B0 /* SDAnimatedImageView.m in Sources */,
 				34EB0CEB26289D8800B62DC3 /* MessageTimerView.swift in Sources */,
 				AC12B86D0DA4943DF1DE9CE6 /* OWSAddToContactViewController.swift in Sources */,
 			);
