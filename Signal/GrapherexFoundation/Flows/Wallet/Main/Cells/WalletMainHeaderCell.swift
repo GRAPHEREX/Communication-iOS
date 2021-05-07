@@ -58,7 +58,7 @@ fileprivate extension WalletMainHeaderCell {
         balanceLabel.autoPinTrailingToSuperviewMargin(withInset: 32)
         
         let bottomDivider = UIView.spacer(withHeight: 16)
-        bottomDivider.backgroundColor = Theme.secondaryBackgroundColor.withAlphaComponent(0.5)
+//        bottomDivider.backgroundColor = Theme.secondaryBackgroundColor.withAlphaComponent(0.5)
         addSubview(bottomDivider)
         bottomDivider.autoPinEdge(toSuperviewEdge: .leading, withInset: 0)
         bottomDivider.autoPinEdge(toSuperviewEdge: .trailing, withInset: 0)

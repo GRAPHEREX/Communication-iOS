@@ -233,7 +233,7 @@ public class OWSAttachmentUploadV4: NSObject {
         return firstly(on: Self.serialQueue) {
             // Fetch attachment upload form.
             return self.performRequest {
-                return OWSRequestFactory.allocAttachmentRequestV2()
+                return OWSRequestFactory.allocAttachmentRequestV4()
             }
         }.then(on: Self.serialQueue) { [weak self] (formResponseObject: Any?) -> Promise<OWSUploadFormV4> in
             guard let self = self else {

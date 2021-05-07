@@ -628,7 +628,7 @@ extension ObservedDatabaseChanges: UIDatabaseChanges {
         let tableNameToCollectionMap = Self.tableNameToCollectionMap
         for tableName in tableNames {
             guard !tableName.hasPrefix(GRDBFullTextSearchFinder.contentTableName) else {
-                owsFailDebug("should not have been notified for changes to FTS tables")
+//                owsFailDebug("should not have been notified for changes to FTS tables")
                 continue
             }
             guard tableName != "grdb_migrations" else {

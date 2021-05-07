@@ -207,15 +207,15 @@ public class CVComponentFooter: CVComponentBase, CVComponent {
                                                   isAnimated: true)
             case .sent, .skipped:
                 statusIndicator = StatusIndicator(imageName: "message_status_sent",
-                                                  imageSize: .square(12),
+                                                  imageSize: .init(width: 16, height: 12),
                                                   isAnimated: false)
             case .delivered:
                 statusIndicator = StatusIndicator(imageName: "message_status_delivered",
-                                                  imageSize: .init(width: 18, height: 12),
+                                                  imageSize: .init(width: 16, height: 12),
                                                   isAnimated: false)
             case .read:
                 statusIndicator = StatusIndicator(imageName: "message_status_read",
-                                                  imageSize: .init(width: 18, height: 12),
+                                                  imageSize: .init(width: 16, height: 12),
                                                   isAnimated: false)
             case .failed:
                 // No status indicator icon.
