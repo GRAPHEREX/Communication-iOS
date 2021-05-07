@@ -69,7 +69,8 @@ NS_ASSUME_NONNULL_BEGIN
     _viewConstraints = [NSMutableArray new];
 
     self.avatarView = [[ConversationAvatarView alloc] initWithDiameter:self.avatarSize
-                                                   localUserAvatarMode:LocalUserAvatarModeNoteToSelf];
+                                                  localUserDisplayMode:LocalUserDisplayModeNoteToSelf
+                                                       shouldLoadAsync:NO];
     [self.contentView addSubview:self.avatarView];
     [self.avatarView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:16];
     [self.avatarView autoVCenterInSuperview];
@@ -349,6 +350,7 @@ NS_ASSUME_NONNULL_BEGIN
                 shouldHideStatusIndicator = outgoingMessage.wasRemotelyDeleted;
                 break;
             case MessageReceiptStatusRead:
+            case MessageReceiptStatusViewed:
                 statusIndicatorImage = [UIImage imageNamed:@"message_status_read"];
                 shouldHideStatusIndicator = outgoingMessage.wasRemotelyDeleted;
                 break;
@@ -433,6 +435,30 @@ NS_ASSUME_NONNULL_BEGIN
                          NSForegroundColorAttributeName : currentColor,
                      }];
             [snippetText append:draftText
+                     attributes:@{
+                         NSFontAttributeName : snippetFont,
+                         NSForegroundColorAttributeName : currentColor,
+                     }];
+        } else if (thread.conversationListInfo.hasVoiceMemoDraft && !self.hasUnreadStyle) {
+            [snippetText append:NSLocalizedString(
+                                    @"HOME_VIEW_DRAFT_PREFIX", @"A prefix indicating that a message preview is a draft")
+                     attributes:@{
+                         NSFontAttributeName : self.snippetFont.ows_italic,
+                         NSForegroundColorAttributeName : currentColor,
+                     }];
+            [snippetText append:@"🎤"
+                     attributes:@{
+                         NSFontAttributeName : snippetFont,
+                         NSForegroundColorAttributeName : currentColor,
+                     }];
+            [snippetText append:@" "
+                     attributes:@{
+                         NSFontAttributeName : snippetFont,
+                         NSForegroundColorAttributeName : currentColor,
+                     }];
+            [snippetText append:NSLocalizedString(@"ATTACHMENT_TYPE_VOICE_MESSAGE",
+                                    @"Short text label for a voice message attachment, used for thread preview and on "
+                                    @"the lock screen")
                      attributes:@{
                          NSFontAttributeName : snippetFont,
                          NSForegroundColorAttributeName : currentColor,

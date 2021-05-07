@@ -523,7 +523,7 @@ extension StorageServiceProtoAccountRecord: Dependencies {
             builder.setNoteToSelfMarkedUnread(thread.isMarkedUnread)
         }
 
-        let readReceiptsEnabled = readReceiptManager.areReadReceiptsEnabled()
+        let readReceiptsEnabled = receiptManager.areReadReceiptsEnabled()
         builder.setReadReceipts(readReceiptsEnabled)
 
         let sealedSenderIndicatorsEnabled = preferences.shouldShowUnidentifiedDeliveryIndicators(transaction: transaction)
@@ -561,6 +561,12 @@ extension StorageServiceProtoAccountRecord: Dependencies {
         if let unknownFields = unknownFields {
             builder.setUnknownFields(unknownFields)
         }
+
+        builder.setUniversalExpireTimer(
+            OWSDisappearingMessagesConfiguration
+                .fetchOrBuildDefaultUniversalConfiguration(with: transaction)
+                .durationSeconds
+        )
 
         return try builder.build()
     }
@@ -647,9 +653,9 @@ extension StorageServiceProtoAccountRecord: Dependencies {
             }
         }
 
-        let localReadReceiptsEnabled = readReceiptManager.areReadReceiptsEnabled()
+        let localReadReceiptsEnabled = receiptManager.areReadReceiptsEnabled()
         if readReceipts != localReadReceiptsEnabled {
-            readReceiptManager.setAreReadReceiptsEnabled(readReceipts, transaction: transaction)
+            receiptManager.setAreReadReceiptsEnabled(readReceipts, transaction: transaction)
         }
 
         let sealedSenderIndicatorsEnabled = preferences.shouldShowUnidentifiedDeliveryIndicators(transaction: transaction)
@@ -727,6 +733,13 @@ extension StorageServiceProtoAccountRecord: Dependencies {
             Self.paymentsSwift.setPaymentsState(mergedPaymentsState,
                                                 updateStorageService: false,
                                                 transaction: transaction)
+        }
+
+        let localConfiguration = OWSDisappearingMessagesConfiguration.fetchOrBuildDefaultUniversalConfiguration(with: transaction)
+        let localExpireToken = localConfiguration.asToken
+        let remoteExpireToken = DisappearingMessageToken.token(forProtoExpireTimer: universalExpireTimer)
+        if localExpireToken != remoteExpireToken {
+            localConfiguration.applyToken(remoteExpireToken, transaction: transaction)
         }
 
         return mergeState

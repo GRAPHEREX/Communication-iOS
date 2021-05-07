@@ -225,6 +225,7 @@ public class GroupManager: NSObject {
                                            groupId: Data? = nil,
                                            name: String? = nil,
                                            avatarImage: UIImage?,
+                                           disappearingMessageToken: DisappearingMessageToken,
                                            newGroupSeed: NewGroupSeed? = nil,
                                            shouldSendMessage: Bool) -> Promise<TSGroupThread> {
 
@@ -235,6 +236,7 @@ public class GroupManager: NSObject {
                                        groupId: groupId,
                                        name: name,
                                        avatarData: avatarData,
+                                       disappearingMessageToken: disappearingMessageToken,
                                        newGroupSeed: newGroupSeed,
                                        shouldSendMessage: shouldSendMessage)
         }
@@ -245,15 +247,13 @@ public class GroupManager: NSObject {
                                            groupId: Data? = nil,
                                            name: String? = nil,
                                            avatarData: Data? = nil,
+                                           disappearingMessageToken: DisappearingMessageToken,
                                            newGroupSeed: NewGroupSeed? = nil,
                                            shouldSendMessage: Bool) -> Promise<TSGroupThread> {
 
         guard let localAddress = tsAccountManager.localAddress else {
             return Promise(error: OWSAssertionError("Missing localAddress."))
         }
-
-        // By default, DMs are disable for new groups.
-        let disappearingMessageToken = DisappearingMessageToken.disabledToken
 
         return firstly { () -> Promise<Void> in
             return self.ensureLocalProfileHasCommitmentIfNecessary()
@@ -496,6 +496,7 @@ public class GroupManager: NSObject {
                                                groupId: Data?,
                                                name: String,
                                                avatarImage: UIImage?,
+                                               disappearingMessageToken: DisappearingMessageToken,
                                                newGroupSeed: NewGroupSeed?,
                                                shouldSendMessage: Bool,
                                                success: @escaping (TSGroupThread) -> Void,
@@ -505,6 +506,7 @@ public class GroupManager: NSObject {
                                      groupId: groupId,
                                      name: name,
                                      avatarImage: avatarImage,
+                                     disappearingMessageToken: disappearingMessageToken,
                                      newGroupSeed: newGroupSeed,
                                      shouldSendMessage: shouldSendMessage)
         }.done { thread in
@@ -520,6 +522,7 @@ public class GroupManager: NSObject {
                                                groupId: Data?,
                                                name: String,
                                                avatarData: Data?,
+                                               disappearingMessageToken: DisappearingMessageToken,
                                                newGroupSeed: NewGroupSeed?,
                                                shouldSendMessage: Bool,
                                                success: @escaping (TSGroupThread) -> Void,
@@ -529,6 +532,7 @@ public class GroupManager: NSObject {
                                 groupId: groupId,
                                 name: name,
                                 avatarData: avatarData,
+                                disappearingMessageToken: disappearingMessageToken,
                                 newGroupSeed: newGroupSeed,
                                 shouldSendMessage: shouldSendMessage)
         }.done { thread in
@@ -2215,7 +2219,7 @@ public class GroupManager: NSObject {
            groupUpdateSourceAddress.isLocalAddress {
             infoMessage.markAsRead(atTimestamp: NSDate.ows_millisecondTimeStamp(),
                                    thread: groupThread,
-                                   circumstance: .readOnThisDevice,
+                                   circumstance: .onThisDevice,
                                    transaction: transaction)
         } else if !wasLocalUserInGroup && isLocalUserInGroup {
             // Notify when the local user is added or invited to a group.

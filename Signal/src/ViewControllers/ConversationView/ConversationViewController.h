@@ -25,8 +25,10 @@ typedef NS_ENUM(NSUInteger, ConversationViewAction) {
 @class ConversationStyle;
 @class ConversationViewLayout;
 @class MessageActionsToolbar;
+@class MessageBody;
 @class SDSAnyReadTransaction;
 @class SDSDatabaseStorage;
+@class SignalAttachment;
 @class TSMessage;
 @class TSThread;
 @class ThreadViewModel;
@@ -51,7 +53,8 @@ typedef NS_ENUM(NSUInteger, ConversationViewAction) {
 
 - (ConversationInputToolbar *)buildInputToolbar:(ConversationStyle *)conversationStyle
                                    messageDraft:(nullable MessageBody *)messageDraft
-    NS_SWIFT_NAME(buildInputToolbar(conversationStyle:messageDraft:));
+                                 voiceMemoDraft:(nullable VoiceMessageModel *)voiceMemoDraft
+    NS_SWIFT_NAME(buildInputToolbar(conversationStyle:messageDraft:voiceMemoDraft:));
 
 #pragma mark 3D Touch/UIContextMenu Methods
 
@@ -90,11 +93,14 @@ typedef NS_CLOSED_ENUM(NSUInteger, ConversationUIMode) {
 @property (nonatomic, readonly) ConversationViewLayout *layout;
 @property (nonatomic, readonly) CVViewState *viewState;
 
+- (void)tryToSendAttachments:(NSArray<SignalAttachment *> *)attachments
+                 messageBody:(MessageBody *_Nullable)messageBody NS_SWIFT_NAME(tryToSendAttachments(_:messageBody:));
+
 - (void)updateBarButtonItems;
 - (void)ensureBannerState;
 
 // TODO: Remove or rework method.
-- (void)reloadCollectionView;
+- (void)reloadCollectionViewForReset;
 
 - (void)updateNavigationBarSubtitleLabel;
 - (void)dismissMessageActionsIfNecessary;
@@ -106,7 +112,8 @@ typedef NS_CLOSED_ENUM(NSUInteger, ConversationUIMode) {
 - (void)performBatchUpdates:(void (^_Nonnull)(void))batchUpdates
                  completion:(void (^_Nonnull)(BOOL))completion
             logFailureBlock:(void (^_Nonnull)(void))logFailureBlock
-       shouldAnimateUpdates:(BOOL)shouldAnimateUpdates;
+       shouldAnimateUpdates:(BOOL)shouldAnimateUpdates
+             isLoadAdjacent:(BOOL)isLoadAdjacent;
 - (BOOL)autoLoadMoreIfNecessary;
 
 #pragma mark - Search

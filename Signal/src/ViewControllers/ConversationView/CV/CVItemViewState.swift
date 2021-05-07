@@ -26,6 +26,7 @@ public struct CVItemViewState: Equatable {
     let footerState: CVComponentFooter.State?
     let dateHeaderState: CVComponentDateHeader.State?
     let bodyTextState: CVComponentBodyText.State?
+    let nextAudioAttachment: AudioAttachment?
 
     let isShowingSelectionUI: Bool
 
@@ -40,6 +41,7 @@ public struct CVItemViewState: Equatable {
         var footerState: CVComponentFooter.State?
         var dateHeaderState: CVComponentDateHeader.State?
         var bodyTextState: CVComponentBodyText.State?
+        var nextAudioAttachment: AudioAttachment?
         var isShowingSelectionUI = false
 
         func build() -> CVItemViewState {
@@ -53,6 +55,7 @@ public struct CVItemViewState: Equatable {
                             footerState: footerState,
                             dateHeaderState: dateHeaderState,
                             bodyTextState: bodyTextState,
+                            nextAudioAttachment: nextAudioAttachment,
                             isShowingSelectionUI: isShowingSelectionUI)
         }
     }
@@ -131,20 +134,17 @@ struct CVItemModelBuilder: CVItemBuilding, Dependencies {
             owsAssertDebug(item != nil)
         }
 
-        // TODO: We need to handle unsavedOutgoingMessages, ie. optimistically
-        //       inserting messages into the "view model" so that sent messages
-        //       appear as quickly as possible.
-        //
-        //            if (self.unsavedOutgoingMessages.count > 0) {
-        //                for (TSOutgoingMessage *outgoingMessage in self.unsavedOutgoingMessages) {
-        //                    if ([interactionIds containsObject:outgoingMessage.uniqueId]) {
-        //                        owsFailDebug("Duplicate interaction(2): %@", outgoingMessage.uniqueId);
-        //                        continue;
-        //                    }
-        //                    tryToAddViewItemForInteraction(outgoingMessage);
-        //                    [interactionIds addObject:outgoingMessage.uniqueId];
-        //                }
-        //            }
+        if messageMapping.shouldShowDefaultDisappearingMessageTimer(
+            thread: thread,
+            transaction: transaction
+        ) {
+            let interaction = DefaultDisappearingMessageTimerInteraction(
+                thread: thread,
+                timestamp: NSDate.ows_millisecondTimeStamp() - 1
+            )
+            let item = addItem(interaction: interaction)
+            owsAssertDebug(item != nil)
+        }
 
         if let typingIndicatorsSender = viewStateSnapshot.typingIndicatorsSender {
             let interaction = TypingIndicatorInteraction(thread: thread,
@@ -427,6 +427,13 @@ struct CVItemModelBuilder: CVItemBuilding, Dependencies {
         if interaction.receivedAtTimestamp > collapseCutoffTimestamp {
             itemViewState.shouldHideFooter = false
         }
+
+        if let nextMessage = nextItem?.interaction as? TSMessage,
+           let attachment = nextMessage.mediaAttachments(with: transaction.unwrapGrdbRead).first,
+           attachment.isAudio {
+
+            itemViewState.nextAudioAttachment = AudioAttachment(attachment: attachment, owningMessage: nextMessage)
+        }
     }
 
     private mutating func addDateHeaderViewItemIfNecessary(item: ItemBuilder) {
@@ -623,6 +630,9 @@ fileprivate extension CVMessageMapping {
         !canLoadOlder && Self.contactsManagerImpl.shouldShowUnknownThreadWarning(thread: thread,
                                                                                  transaction: transaction)
     }
+    func shouldShowDefaultDisappearingMessageTimer(thread: TSThread, transaction: SDSAnyReadTransaction) -> Bool {
+        GRDBThreadFinder.shouldSetDefaultDisappearingMessageTimer(thread: thread, transaction: transaction.unwrapGrdbRead)
+    }
 }
 
 // MARK: -
@@ -655,7 +665,7 @@ private class ItemBuilder {
 
     var canShowDate: Bool {
         switch interaction.interactionType() {
-        case .unknown, .typingIndicator, .threadDetails, .dateHeader, .unknownThreadWarning:
+        case .unknown, .typingIndicator, .threadDetails, .dateHeader, .unknownThreadWarning, .defaultDisappearingMessageTimer:
             return false
         case .info:
             guard let infoMessage = interaction as? TSInfoMessage else {

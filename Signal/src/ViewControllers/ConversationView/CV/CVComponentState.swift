@@ -210,6 +210,9 @@ public class CVComponentState: Equatable, Dependencies {
     typealias UnknownThreadWarning = CVComponentState.SystemMessage
     let unknownThreadWarning: UnknownThreadWarning?
 
+    typealias DefaultDisappearingMessageTimer = CVComponentState.SystemMessage
+    let defaultDisappearingMessageTimer: DefaultDisappearingMessageTimer?
+
     struct BottomButtons: Equatable {
         let actions: [CVMessageAction]
     }
@@ -243,6 +246,7 @@ public class CVComponentState: Equatable, Dependencies {
                      typingIndicator: TypingIndicator?,
                      threadDetails: ThreadDetails?,
                      unknownThreadWarning: UnknownThreadWarning?,
+                     defaultDisappearingMessageTimer: DefaultDisappearingMessageTimer?,
                      bottomButtons: BottomButtons?,
                      failedOrPendingDownloads: FailedOrPendingDownloads?,
                      sendFailureBadge: SendFailureBadge?) {
@@ -266,6 +270,7 @@ public class CVComponentState: Equatable, Dependencies {
         self.typingIndicator = typingIndicator
         self.threadDetails = threadDetails
         self.unknownThreadWarning = unknownThreadWarning
+        self.defaultDisappearingMessageTimer = defaultDisappearingMessageTimer
         self.bottomButtons = bottomButtons
         self.failedOrPendingDownloads = failedOrPendingDownloads
         self.sendFailureBadge = sendFailureBadge
@@ -293,6 +298,7 @@ public class CVComponentState: Equatable, Dependencies {
                     lhs.typingIndicator == rhs.typingIndicator &&
                     lhs.threadDetails == rhs.threadDetails &&
                     lhs.unknownThreadWarning == rhs.unknownThreadWarning &&
+                    lhs.defaultDisappearingMessageTimer == rhs.defaultDisappearingMessageTimer &&
                     lhs.bottomButtons == rhs.bottomButtons &&
                     lhs.failedOrPendingDownloads == rhs.failedOrPendingDownloads &&
                     lhs.sendFailureBadge == rhs.sendFailureBadge)
@@ -318,6 +324,7 @@ public class CVComponentState: Equatable, Dependencies {
         typealias TypingIndicator = CVComponentState.TypingIndicator
         typealias ThreadDetails = CVComponentState.ThreadDetails
         typealias UnknownThreadWarning = CVComponentState.UnknownThreadWarning
+        typealias DefaultDisappearingMessageTimer = CVComponentState.DefaultDisappearingMessageTimer
         typealias FailedOrPendingDownloads = CVComponentState.FailedOrPendingDownloads
         typealias BottomButtons = CVComponentState.BottomButtons
         typealias SendFailureBadge = CVComponentState.SendFailureBadge
@@ -342,6 +349,7 @@ public class CVComponentState: Equatable, Dependencies {
         var typingIndicator: TypingIndicator?
         var threadDetails: ThreadDetails?
         var unknownThreadWarning: UnknownThreadWarning?
+        var defaultDisappearingMessageTimer: DefaultDisappearingMessageTimer?
         var reactions: Reactions?
         var failedOrPendingDownloads: FailedOrPendingDownloads?
         var sendFailureBadge: SendFailureBadge?
@@ -378,6 +386,7 @@ public class CVComponentState: Equatable, Dependencies {
                                     typingIndicator: typingIndicator,
                                     threadDetails: threadDetails,
                                     unknownThreadWarning: unknownThreadWarning,
+                                    defaultDisappearingMessageTimer: defaultDisappearingMessageTimer,
                                     bottomButtons: bottomButtons,
                                     failedOrPendingDownloads: failedOrPendingDownloads,
                                     sendFailureBadge: sendFailureBadge)
@@ -408,6 +417,9 @@ public class CVComponentState: Equatable, Dependencies {
             }
             if unknownThreadWarning != nil {
                 return .unknownThreadWarning
+            }
+            if defaultDisappearingMessageTimer != nil {
+                return .defaultDisappearingMessageTimer
             }
             if systemMessage != nil {
                 return .systemMessage
@@ -503,6 +515,9 @@ public class CVComponentState: Equatable, Dependencies {
         }
         if unknownThreadWarning != nil {
             result.insert(.unknownThreadWarning)
+        }
+        if defaultDisappearingMessageTimer != nil {
+            result.insert(.defaultDisappearingMessageTimer)
         }
         if bottomButtons != nil {
             result.insert(.bottomButtons)
@@ -611,6 +626,13 @@ fileprivate extension CVComponentState.Builder {
                                                                                                 threadViewModel: threadViewModel,
                                                                                                 transaction: transaction)
             return build()
+        case .defaultDisappearingMessageTimer:
+            self.defaultDisappearingMessageTimer = CVComponentSystemMessage.buildDefaultDisappearingMessageTimerState(
+                interaction: interaction,
+                threadViewModel: threadViewModel,
+                transaction: transaction
+            )
+            return build()
         case .typingIndicator:
             guard let typingIndicatorInteraction = interaction as? TypingIndicatorInteraction else {
                 owsFailDebug("Invalid typingIndicator.")
@@ -621,7 +643,7 @@ fileprivate extension CVComponentState.Builder {
                     return nil
                 }
                 return self.avatarBuilder.buildAvatar(forAddress: typingIndicatorInteraction.address,
-                                                      localUserAvatarMode: .asUser,
+                                                      localUserDisplayMode: .asUser,
                                                       diameter: UInt(ConversationStyle.groupMessageAvatarDiameter))
             }()
             self.typingIndicator = TypingIndicator(address: typingIndicatorInteraction.address,
@@ -661,7 +683,7 @@ fileprivate extension CVComponentState.Builder {
             return nil
         }
         guard let avatar = self.avatarBuilder.buildAvatar(forAddress: incomingMessage.authorAddress,
-                                                          localUserAvatarMode: .asUser,
+                                                          localUserDisplayMode: .asUser,
                                                           diameter: UInt(ConversationStyle.groupMessageAvatarDiameter)) else {
             owsFailDebug("Could build avatar image")
             return nil
@@ -887,10 +909,9 @@ fileprivate extension CVComponentState.Builder {
             throw OWSAssertionError("Missing sticker attachment.")
         }
         if let attachmentStream = attachment as? TSAttachmentStream {
-            let mediaSize = attachmentStream.imageSize()
+            let mediaSize = attachmentStream.imageSizePoints
             guard attachmentStream.isValidImage,
-                  mediaSize.width > 0,
-                  mediaSize.height > 0 else {
+                  mediaSize.isNonEmpty else {
                 throw OWSAssertionError("Invalid sticker.")
             }
             let stickerType = StickerManager.stickerType(forContentType: attachmentStream.contentType)
@@ -972,8 +993,7 @@ fileprivate extension CVComponentState.Builder {
             guard let attachmentStream = attachment as? TSAttachmentStream else {
                 var mediaSize: CGSize = .zero
                 if let attachmentPointer = attachment as? TSAttachmentPointer,
-                   attachmentPointer.mediaSize.width > 0,
-                   attachmentPointer.mediaSize.height > 0 {
+                   attachmentPointer.mediaSize.isNonEmpty {
                     mediaSize = attachmentPointer.mediaSize
                 } else {
                     owsFailDebug("Invalid attachment.")
@@ -993,8 +1013,8 @@ fileprivate extension CVComponentState.Builder {
                                                         mediaSize: .zero))
                 continue
             }
-            let mediaSize = attachmentStream.imageSize()
-            if mediaSize.width <= 0 || mediaSize.height <= 0 {
+            let mediaSize = attachmentStream.imageSizePixels
+            if !mediaSize.isNonEmpty {
                 Logger.warn("Filtering media with invalid size.")
                 mediaAlbumItems.append(CVMediaAlbumItem(attachment: attachment,
                                                         attachmentStream: nil,
@@ -1017,7 +1037,7 @@ fileprivate extension CVComponentState.Builder {
             throw OWSAssertionError("Missing attachment.")
         }
 
-        if attachment.isAudio, let audioAttachment = AudioAttachment(attachment: attachment) {
+        if attachment.isAudio, let audioAttachment = AudioAttachment(attachment: attachment, owningMessage: interaction as? TSMessage) {
             self.audioAttachment = audioAttachment
             return
         }

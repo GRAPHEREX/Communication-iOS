@@ -1,11 +1,13 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
 
 protocol CVAudioPlayerListener {
-    func audioPlayerStateDidChange()
+    func audioPlayerStateDidChange(attachmentId: String)
+    func audioPlayerDidFinish(attachmentId: String)
+    func audioPlayerDidMarkViewed(attachmentId: String)
 }
 
 // MARK: -
@@ -42,6 +44,8 @@ public class CVAudioPlayer: NSObject {
         }
     }
 
+    private var autoplayAttachmentId: String?
+
     // Views need to update to reflect playback progress, state changes.
     private var listeners = WeakArray<CVAudioPlayerListener>()
 
@@ -72,8 +76,10 @@ public class CVAudioPlayer: NSObject {
         return audioPlayback.audioPlaybackState
     }
 
-    private func ensurePlayback(forAttachmentStream attachmentStream: TSAttachmentStream) -> CVAudioPlayback? {
+    private func ensurePlayback(forAttachmentStream attachmentStream: TSAttachmentStream, forAutoplay: Bool = false) -> CVAudioPlayback? {
         AssertIsOnMainThread()
+
+        autoplayAttachmentId = forAutoplay ? attachmentStream.uniqueId : nil
 
         let attachmentId = attachmentStream.uniqueId
         if let audioPlayback = self.audioPlayback,
@@ -94,14 +100,75 @@ public class CVAudioPlayer: NSObject {
     }
 
     @objc
-    public func togglePlayState(forAttachmentStream attachmentStream: TSAttachmentStream) {
+    public func togglePlayState(forAudioAttachment audioAttachment: AudioAttachment) {
         AssertIsOnMainThread()
+
+        guard let attachmentStream = audioAttachment.attachmentStream else { return }
 
         guard let audioPlayback = ensurePlayback(forAttachmentStream: attachmentStream) else {
             owsFailDebug("Could not play audio attachment.")
             return
         }
+
+        if audioAttachment.markOwningMessageAsViewed() {
+            for listener in listeners.elements {
+                listener.audioPlayerDidMarkViewed(attachmentId: audioPlayback.attachmentId)
+            }
+        }
+
         audioPlayback.togglePlayState()
+    }
+
+    public var audioPlaybackState: AudioPlaybackState = .stopped
+    private var soundPlayer: OWSAudioPlayer?
+    private var soundComplete: (() -> Void)?
+    private func playStandardSound(_ sound: OWSStandardSound, completion: (() -> Void)? = nil) {
+        AssertIsOnMainThread()
+
+        if let soundPlayer = soundPlayer {
+            soundPlayer.stop()
+            soundComplete?()
+        }
+
+        soundPlayer = OWSSounds.audioPlayer(forSound: sound.rawValue, audioBehavior: .audioMessagePlayback)
+        soundPlayer?.delegate = self
+        soundPlayer?.play()
+        soundComplete = completion
+    }
+
+    @objc
+    public func autoplayNextAudioAttachment(_ audioAttachment: AudioAttachment?) {
+        AssertIsOnMainThread()
+
+        guard let audioAttachment = audioAttachment, let attachmentStream = audioAttachment.attachmentStream else {
+            if audioPlayback?.attachmentId == autoplayAttachmentId {
+                // Play a tone indicating the last track completed.
+                playStandardSound(.endLastTrack)
+            }
+            return
+        }
+
+        guard let audioPlayback = ensurePlayback(forAttachmentStream: attachmentStream, forAutoplay: true) else {
+            owsFailDebug("Could not play audio attachment.")
+            return
+        }
+
+        // Play a tone indicating the next track is starting.
+        playStandardSound(.beginNextTrack) { [weak self] in
+            // Make sure the user didn't start another attachment while the tone was playing.
+            guard self?.autoplayAttachmentId == attachmentStream.uniqueId else { return }
+            guard self?.audioPlayback?.attachmentId == attachmentStream.uniqueId else { return }
+            guard audioPlayback.audioPlaybackState != .playing else { return }
+
+            if audioAttachment.markOwningMessageAsViewed() {
+                for listener in self?.listeners.elements ?? [] {
+                    listener.audioPlayerDidMarkViewed(attachmentId: audioPlayback.attachmentId)
+                }
+            }
+
+            audioPlayback.setProgress(0)
+            audioPlayback.togglePlayState()
+        }
     }
 
     @objc
@@ -109,11 +176,10 @@ public class CVAudioPlayer: NSObject {
                                     forAttachmentStream attachmentStream: TSAttachmentStream) {
         AssertIsOnMainThread()
 
-        guard let audioPlayback = ensurePlayback(forAttachmentStream: attachmentStream) else {
-            owsFailDebug("Could not play audio attachment.")
-            return
+        progressCache[attachmentStream.uniqueId] = progress
+        if let audioPlayback = audioPlayback, audioPlayback.attachmentId == attachmentStream.uniqueId {
+            audioPlayback.setProgress(progress)
         }
-        audioPlayback.setProgress(progress)
     }
 
     @objc
@@ -137,6 +203,20 @@ public class CVAudioPlayer: NSObject {
     }
 }
 
+extension CVAudioPlayer: OWSAudioPlayerDelegate {
+    public func setAudioProgress(_ progress: TimeInterval, duration: TimeInterval) {}
+
+    public func audioPlayerDidFinish() {
+        DispatchMainThreadSafe { [weak self] in
+            self?.soundPlayer?.stop()
+            self?.soundPlayer = nil
+
+            self?.soundComplete?()
+            self?.soundComplete = nil
+        }
+    }
+}
+
 // MARK: -
 
 extension CVAudioPlayer: CVAudioPlaybackDelegate {
@@ -145,6 +225,7 @@ extension CVAudioPlayer: CVAudioPlaybackDelegate {
 
         switch audioPlayback.audioPlaybackState {
         case .playing:
+            if audioPlayback != self.audioPlayback { audioPlayback.togglePlayState() }
             progressCache[audioPlayback.attachmentId] = audioPlayback.progress
         case .stopped:
             progressCache[audioPlayback.attachmentId] = 0
@@ -153,7 +234,17 @@ extension CVAudioPlayer: CVAudioPlaybackDelegate {
         }
 
         for listener in listeners.elements {
-            listener.audioPlayerStateDidChange()
+            listener.audioPlayerStateDidChange(attachmentId: audioPlayback.attachmentId)
+        }
+    }
+
+    fileprivate func audioPlaybackDidFinish(_ audioPlayback: CVAudioPlayback) {
+        AssertIsOnMainThread()
+
+        progressCache[audioPlayback.attachmentId] = 0
+
+        for listener in listeners.elements {
+            listener.audioPlayerDidFinish(attachmentId: audioPlayback.attachmentId)
         }
     }
 }
@@ -162,6 +253,7 @@ extension CVAudioPlayer: CVAudioPlaybackDelegate {
 
 private protocol CVAudioPlaybackDelegate: class {
     func audioPlaybackStateDidChange(_ audioPlayback: CVAudioPlayback)
+    func audioPlaybackDidFinish(_ audioPlayback: CVAudioPlayback)
 }
 
 // MARK: -
@@ -231,7 +323,7 @@ private class CVAudioPlayback: NSObject, OWSAudioPlayerDelegate {
         // Clear progress, preserve duration.
         audioTiming.set(AudioTiming(progress: 0, duration: duration))
 
-        delegate?.audioPlaybackStateDidChange(self)
+        delegate?.audioPlaybackDidFinish(self)
     }
 
     @objc

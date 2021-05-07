@@ -53,10 +53,6 @@ class MessageDetailViewController: OWSTableViewController2 {
 
     private let byteCountFormatter: ByteCountFormatter = ByteCountFormatter()
 
-    private lazy var shouldShowUD: Bool = {
-        return self.preferences.shouldShowUnidentifiedDeliveryIndicators()
-    }()
-
     private lazy var contactShareViewHelper: ContactShareViewHelper = {
         let contactShareViewHelper = ContactShareViewHelper()
         contactShareViewHelper.delegate = self
@@ -105,6 +101,8 @@ class MessageDetailViewController: OWSTableViewController2 {
         if let interactivePopGestureRecognizer = navigationController?.interactivePopGestureRecognizer {
             interactivePopGestureRecognizer.require(toFail: panGesture)
         }
+
+        tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier)
 
         refreshContent()
     }
@@ -275,7 +273,7 @@ class MessageDetailViewController: OWSTableViewController2 {
     }
 
     private func buildStatusSections() -> [OWSTableSection] {
-        guard let outgoingMessage = message as? TSOutgoingMessage else {
+        guard nil != message as? TSOutgoingMessage else {
             owsFailDebug("Unexpected message type")
             return []
         }
@@ -283,6 +281,7 @@ class MessageDetailViewController: OWSTableViewController2 {
         var sections = [OWSTableSection]()
 
         let orderedStatusGroups: [MessageReceiptStatus] = [
+            .viewed,
             .read,
             .delivered,
             .sent,
@@ -336,7 +335,7 @@ class MessageDetailViewController: OWSTableViewController2 {
                 section.headerTitle = sectionTitle
             }
 
-            section.separatorInsetLeading = NSNumber(value: Float(Self.cellHInnerMargin + CGFloat(kSmallAvatarSize) + kContactCellAvatarTextMargin))
+            section.separatorInsetLeading = NSNumber(value: Float(Self.cellHInnerMargin + CGFloat(kSmallAvatarSize) + ContactCellView.avatarTextHSpacing))
 
             for recipient in recipients {
                 section.add(contactItem(
@@ -351,13 +350,24 @@ class MessageDetailViewController: OWSTableViewController2 {
     }
 
     private func contactItem(for address: SignalServiceAddress, accessoryText: String, displayUDIndicator: Bool) -> OWSTableItem {
+        let tableView = self.tableView
         return .init(
             customCellBlock: { [weak self] in
-                let cell = ContactTableViewCell()
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.reuseIdentifier) as? ContactTableViewCell else {
+                    owsFailDebug("Missing cell.")
+                    return UITableViewCell()
+                }
                 guard let self = self else { return cell }
-                cell.configureWithSneakyTransaction(recipientAddress: address,
-                                                    localUserAvatarMode: .asUser)
-                cell.ows_setAccessoryView(self.buildAccessoryView(text: accessoryText, displayUDIndicator: displayUDIndicator))
+
+                Self.databaseStorage.read { transaction in
+                    let configuration = ContactCellConfiguration.build(address: address,
+                                                                       localUserDisplayMode: .asUser,
+                                                                       transaction: transaction)
+                    configuration.accessoryView = self.buildAccessoryView(text: accessoryText,
+                                                                          displayUDIndicator: displayUDIndicator,
+                                                                          transaction: transaction)
+                    cell.configure(configuration: configuration, transaction: transaction)
+                }
                 return cell
             },
             actionBlock: { [weak self] in
@@ -368,23 +378,40 @@ class MessageDetailViewController: OWSTableViewController2 {
         )
     }
 
-    private func buildAccessoryView(text: String, displayUDIndicator: Bool) -> UIView {
-        let label = UILabel()
-        label.textColor = Theme.ternaryTextColor
-        label.text = text
+    private func buildAccessoryView(text: String,
+                                    displayUDIndicator: Bool,
+                                    transaction: SDSAnyReadTransaction) -> ContactCellAccessoryView {
+        let label = CVLabel()
         label.textAlignment = .right
-        label.font = .ows_dynamicTypeFootnoteClamped
+        let labelConfig = CVLabelConfig(text: text,
+                                        font: .ows_dynamicTypeFootnoteClamped,
+                                        textColor: Theme.ternaryTextColor)
+        labelConfig.applyForRendering(label: label)
+        let labelSize = CVText.measureLabel(config: labelConfig, maxWidth: .greatestFiniteMagnitude)
 
-        guard displayUDIndicator && shouldShowUD else { return label }
+        let shouldShowUD = preferences.shouldShowUnidentifiedDeliveryIndicators(transaction: transaction)
 
-        let imageView = UIImageView()
+        guard displayUDIndicator && shouldShowUD else {
+            return ContactCellAccessoryView(accessoryView: label, size: labelSize)
+        }
+
+        let imageView = CVImageView()
         imageView.setTemplateImageName(Theme.iconName(.sealedSenderIndicator), tintColor: Theme.ternaryTextColor)
+        let imageSize = CGSize.square(20)
 
-        let hStack = UIStackView(arrangedSubviews: [imageView, label])
-        hStack.axis = .horizontal
-        hStack.spacing = 8
-
-        return hStack
+        let hStack = ManualStackView(name: "hStack")
+        let hStackConfig = CVStackViewConfig(axis: .horizontal,
+                                             alignment: .center,
+                                             spacing: 8,
+                                             layoutMargins: .zero)
+        let hStackMeasurement = hStack.configure(config: hStackConfig,
+                                                 subviews: [imageView, label],
+                                                 subviewInfos: [
+                                                    imageSize.asManualSubviewInfo(hasFixedSize: true),
+                                                    labelSize.asManualSubviewInfo
+                                                 ])
+        let hStackSize = hStackMeasurement.measuredSize
+        return ContactCellAccessoryView(accessoryView: hStack, size: hStackSize)
     }
 
     private func buildValueLabel(name: String, value: String) -> UILabel {
@@ -409,7 +436,7 @@ class MessageDetailViewController: OWSTableViewController2 {
             return "message_status_sent"
         case .delivered:
             return "message_status_delivered"
-        case .read:
+        case .read, .viewed:
             return "message_status_read"
         case .failed, .skipped:
             return nil
@@ -439,6 +466,9 @@ class MessageDetailViewController: OWSTableViewController2 {
         case .skipped:
             return NSLocalizedString("MESSAGE_METADATA_VIEW_MESSAGE_STATUS_SKIPPED",
                                      comment: "Status label for messages which were skipped.")
+        case .viewed:
+            return NSLocalizedString("MESSAGE_METADATA_VIEW_MESSAGE_STATUS_VIEWED",
+                              comment: "Status label for messages which are viewed.")
         }
     }
 
@@ -733,7 +763,7 @@ extension MessageDetailViewController: UIDatabaseSnapshotDelegate {
                 var bucket = result[status] ?? []
 
                 switch status {
-                case .delivered, .read, .sent:
+                case .delivered, .read, .sent, .viewed:
                     bucket.append(MessageRecipientModel(
                         address: address,
                         accessoryText: statusMessage,
@@ -897,6 +927,10 @@ extension MessageDetailViewController: CVComponentDelegate {
     func cvc_didTapShowMessageDetail(_ itemViewModel: CVItemViewModelImpl) {}
 
     func cvc_prepareMessageDetailForInteractivePresentation(_ itemViewModel: CVItemViewModelImpl) {}
+
+    func cvc_beginCellAnimation(maximumDuration: TimeInterval) -> EndCellAnimation {
+        return {}
+    }
 
     var isConversationPreview: Bool { true }
 

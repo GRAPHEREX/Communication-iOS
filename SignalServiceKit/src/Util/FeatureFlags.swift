@@ -20,7 +20,7 @@ extension FeatureBuild {
     }
 }
 
-let build: FeatureBuild = OWSIsDebugBuild() ? .dev : .qa
+let build: FeatureBuild = OWSIsDebugBuild() ? .dev : .beta
 
 // MARK: -
 
@@ -170,6 +170,9 @@ public class FeatureFlags: BaseFlags {
 
     @objc
     public static let paymentsScrubDetails = false
+
+    @objc
+    public static let universalDisappearingMessages = build.includes(.qa)
 
     public static func buildFlagMap() -> [String: Any] {
         BaseFlags.buildFlagMap(for: FeatureFlags.self) { (key: String) -> Any? in
@@ -399,6 +402,9 @@ public class DebugFlags: BaseFlags {
 
     @objc
     public static let fastPerfTests = false
+
+    @objc
+    public static let forceViewedReceiptSending = build.includes(.qa)
 
     @objc
     public static let extraDebugLogs = build.includes(.openPreview)

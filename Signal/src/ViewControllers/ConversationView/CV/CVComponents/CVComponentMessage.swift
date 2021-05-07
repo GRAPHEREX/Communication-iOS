@@ -120,13 +120,9 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
         // We don't render sender avatars with a subcomponent.
         case .senderAvatar:
             return nil
-        case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge, .unknownThreadWarning:
+        case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge, .unknownThreadWarning, .defaultDisappearingMessageTimer:
             return nil
         }
-    }
-
-    private var canFooterOverlayMedia: Bool {
-        hasBodyMedia && !isBorderless
     }
 
     private var hasBodyMedia: Bool {
@@ -189,10 +185,6 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
         if let viewOnceState = componentState.viewOnce {
             self.viewOnce = CVComponentViewOnce(itemModel: itemModel, viewOnce: viewOnceState)
         }
-        if let audioAttachmentState = componentState.audioAttachment {
-            self.audioAttachment = CVComponentAudioAttachment(itemModel: itemModel,
-                                                              audioAttachment: audioAttachmentState)
-        }
         if let genericAttachmentState = componentState.genericAttachment {
             self.genericAttachment = CVComponentGenericAttachment(itemModel: itemModel,
                                                                   genericAttachment: genericAttachmentState)
@@ -210,9 +202,32 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
         }
 
         var footerOverlay: CVComponentFooter?
+
+        if let audioAttachmentState = componentState.audioAttachment {
+            let shouldFooterOverlayAudio = (bodyText == nil && !itemViewState.shouldHideFooter && !hasTapForMore)
+            if shouldFooterOverlayAudio {
+                if let footerState = itemViewState.footerState {
+                    footerOverlay = CVComponentFooter(itemModel: itemModel,
+                                                      footerState: footerState,
+                                                      isOverlayingMedia: false,
+                                                      isOutsideBubble: false)
+                } else {
+                    owsFailDebug("Missing footerState.")
+                }
+            }
+
+            self.audioAttachment = CVComponentAudioAttachment(
+                itemModel: itemModel,
+                audioAttachment: audioAttachmentState,
+                nextAudioAttachment: itemViewState.nextAudioAttachment,
+                footerOverlay: footerOverlay
+            )
+        }
+
         if let bodyMediaState = componentState.bodyMedia {
             let shouldFooterOverlayMedia = (bodyText == nil && !isBorderless && !itemViewState.shouldHideFooter && !hasTapForMore)
             if shouldFooterOverlayMedia {
+                owsAssertDebug(footerOverlay == nil)
                 if let footerState = itemViewState.footerState {
                     footerOverlay = CVComponentFooter(itemModel: itemModel,
                                                       footerState: footerState,
@@ -760,7 +775,9 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
         }
 
         owsAssertDebug(conversationStyle.maxMediaMessageWidth <= conversationStyle.maxMessageWidth)
-        if hasBodyMedia {
+        let shouldUseNarrowMaxWidth = (bodyMedia != nil ||
+                                        linkPreview != nil)
+        if shouldUseNarrowMaxWidth {
             contentMaxWidth = max(0, min(conversationStyle.maxMediaMessageWidth, contentMaxWidth))
         } else {
             contentMaxWidth = max(0, min(conversationStyle.maxMessageWidth, contentMaxWidth))
@@ -1250,7 +1267,7 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
             case .senderAvatar:
                 owsFailDebug("Invalid component key: \(key)")
                 return nil
-            case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge, .unknownThreadWarning:
+            case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge, .unknownThreadWarning, .defaultDisappearingMessageTimer:
                 owsFailDebug("Invalid component key: \(key)")
                 return nil
             }
@@ -1288,7 +1305,7 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
             // We don't render sender avatars with a subcomponent.
             case .senderAvatar:
                 owsAssertDebug(subcomponentView == nil)
-            case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge, .unknownThreadWarning:
+            case .systemMessage, .dateHeader, .unreadIndicator, .typingIndicator, .threadDetails, .failedOrPendingDownloads, .sendFailureBadge, .unknownThreadWarning, .defaultDisappearingMessageTimer:
                 owsAssertDebug(subcomponentView == nil)
             }
         }

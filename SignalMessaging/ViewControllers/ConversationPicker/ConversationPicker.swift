@@ -413,7 +413,8 @@ extension ConversationPickerViewController: UITableViewDataSource {
             owsFail("conversation was unexpectedly nil")
         }
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ConversationPickerCell.reuseIdentifier, for: indexPath) as? ConversationPickerCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ConversationPickerCell.reuseIdentifier,
+                                                       for: indexPath) as? ConversationPickerCell else {
             owsFail("cell was unexpectedly nil for indexPath: \(indexPath)")
         }
 
@@ -628,7 +629,7 @@ extension ConversationPickerViewController {
 // MARK: - ConversationPickerCell
 
 private class ConversationPickerCell: ContactTableViewCell {
-    static let reuseIdentifier = "ConversationPickerCell"
+    open override class var reuseIdentifier: String { "ConversationPickerCell" }
 
     // MARK: - UITableViewCell
 
@@ -641,31 +642,28 @@ private class ConversationPickerCell: ContactTableViewCell {
     // MARK: - ContactTableViewCell
 
     public func configure(conversationItem: ConversationItem, transaction: SDSAnyReadTransaction) {
-        if conversationItem.isBlocked {
-            setAccessoryMessage(MessageStrings.conversationIsBlocked)
-        } else {
-            ows_setAccessoryView(
-                buildAccessoryView(disappearingMessagesConfig: conversationItem.disappearingMessagesConfig)
-            )
-        }
-
+        let content: ConversationContent
         switch conversationItem.messageRecipient {
         case .contact(let address):
-            super.configure(withRecipientAddress: address,
-                            localUserAvatarMode: .noteToSelf,
-                            transaction: transaction)
+            content = ConversationContent.forAddress(address, transaction: transaction)
         case .group(let groupThreadId):
             guard let groupThread = TSGroupThread.anyFetchGroupThread(
                 uniqueId: groupThreadId,
                 transaction: transaction
             ) else {
                 owsFailDebug("Failed to find group thread")
-                break
+                return
             }
-            super.configure(with: groupThread,
-                            localUserAvatarMode: .noteToSelf,
-                            transaction: transaction)
+            content = ConversationContent.forThread(groupThread)
         }
+        let configuration = ContactCellConfiguration(content: content,
+                                                     localUserDisplayMode: .noteToSelf)
+        if conversationItem.isBlocked {
+            configuration.accessoryMessage = MessageStrings.conversationIsBlocked
+        } else {
+            configuration.accessoryView = buildAccessoryView(disappearingMessagesConfig: conversationItem.disappearingMessagesConfig)
+        }
+        super.configure(configuration: configuration, transaction: transaction)
 
         selectionStyle = .none
     }
@@ -689,21 +687,33 @@ private class ConversationPickerCell: ContactTableViewCell {
         return container
     }()
 
-    func buildAccessoryView(disappearingMessagesConfig: OWSDisappearingMessagesConfiguration?) -> UIView {
+    func buildAccessoryView(disappearingMessagesConfig: OWSDisappearingMessagesConfiguration?) -> ContactCellAccessoryView {
+
+        let selectionWrapper = ManualLayoutView.wrapSubviewUsingIOSAutoLayout(selectionView)
+
         guard let disappearingMessagesConfig = disappearingMessagesConfig,
             disappearingMessagesConfig.isEnabled else {
-            return selectionView
+            return ContactCellAccessoryView(accessoryView: selectionWrapper,
+                                            size: selectionBadgeSize)
         }
 
         let timerView = DisappearingTimerConfigurationView(durationSeconds: disappearingMessagesConfig.durationSeconds)
         timerView.tintColor = Theme.middleGrayColor
-        timerView.autoSetDimensions(to: CGSize(square: 44))
-        timerView.setCompressionResistanceHigh()
+        let timerSize = CGSize(square: 44)
 
-        let stackView = UIStackView(arrangedSubviews: [timerView, selectionView])
-        stackView.alignment = .center
-        stackView.setCompressionResistanceHigh()
-        return stackView
+        let stackView = ManualStackView(name: "stackView")
+        let stackConfig = OWSStackView.Config(axis: .horizontal,
+                                              alignment: .center,
+                                              spacing: 0,
+                                              layoutMargins: .zero)
+        let stackMeasurement = stackView.configure(config: stackConfig,
+                                                   subviews: [timerView, selectionWrapper],
+                                                   subviewInfos: [
+                                                    timerSize.asManualSubviewInfo,
+                                                    selectionBadgeSize.asManualSubviewInfo
+                                                   ])
+        let stackSize = stackMeasurement.measuredSize
+        return ContactCellAccessoryView(accessoryView: stackView, size: stackSize)
     }
 
     lazy var unselectedBadgeView: UIView = {
