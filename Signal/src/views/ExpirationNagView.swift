@@ -5,7 +5,7 @@
 import UIKit
 
 class ExpirationNagView: ReminderView {
-    private static let updateLink = URL(string: "itms-apps://itunes.apple.com/app/id874139669")!
+    private static let updateLink = URL(string: "itms-apps://itunes.apple.com/app/id1542360019")!
 
     @objc convenience init() {
         self.init(mode: .nag, text: "") {
