@@ -4078,7 +4078,7 @@ typedef enum : NSUInteger {
 {
     OWSAssertIsOnMainThread();
 
-    NSString *url = @"https://itunes.apple.com/us/app/signal-private-messenger/id874139669?mt=8";
+    NSString *url = @"https://apps.apple.com/ru/app/grapherex/id1542360019?l=en";
     [UIApplication.sharedApplication openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
 }
 

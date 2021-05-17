@@ -284,6 +284,10 @@ void uncaughtExceptionHandler(NSException *exception)
                                              selector:@selector(registrationLockDidChange:)
                                                  name:NSNotificationName_2FAStateDidChange
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appExpiryDidChange:)
+                                                 name:AppExpiry.AppExpiryDidChange
+                                               object:nil];
 
     OWSLogInfo(@"application: didFinishLaunchingWithOptions completed.");
 
@@ -1313,6 +1317,33 @@ void uncaughtExceptionHandler(NSException *exception)
 }
 - (void) onAppOpenAttributionFailure:(NSError *)error {
     NSLog(@"%@",error);
+}
+
+#pragma mark - App's Expiry
+
+- (void)appExpiryDidChange:(NSNotification *)notification
+{
+    OWSAssertIsOnMainThread();
+
+    AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{
+        if (SSKEnvironment.shared.appExpiryRef.isExpired) {
+            UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Launch Screen"
+                                                                          bundle:nil] instantiateInitialViewController];
+            self.window.rootViewController = viewController;
+            [self.window makeKeyAndVisible];
+
+            NSString *alertTitle = NSLocalizedString(@"EXPIRATION_ERROR", @"Message for the 'app expiration' alert.");
+            ActionSheetController *actionSheet = [[ActionSheetController alloc] initWithTitle:alertTitle message:nil];
+
+            [actionSheet
+                addAction:[[ActionSheetAction alloc] initWithTitle:NSLocalizedString(@"APP_UPDATE_NAG_ALERT_UPDATE_BUTTON", nil)
+                                                             style:ActionSheetActionStyleDefault
+                                                           handler:^(ActionSheetAction *_Nonnull action) {
+                [UIApplication.sharedApplication openURL:[NSURL URLWithString: @"itms-apps://itunes.apple.com/app/id1542360019"] options:@{} completionHandler:nil];
+            }]];
+            [viewController presentActionSheet:actionSheet];
+        }
+    });
 }
 
 @end

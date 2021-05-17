@@ -385,6 +385,7 @@ private extension FlagType {
         case "groupsV2MaxGroupSizeHardLimit": return "global.groupsv2.groupSizeHardLimit"
         case "researchMegaphone": return "research.megaphone.1"
         case "cdsSyncInterval": return "cds.syncInterval.seconds"
+        case "clientExpiration": return "global.clientExpiration"
         default: return Flags.prefix + rawValue
         }
     }
