@@ -323,7 +323,7 @@ final class CallKitCallUIAdaptee: NSObject, CallUIAdaptee, CXProviderDelegate {
         }
     }
 
-    private var waitingCallToBeFetchedBySocketRetryCount = 50
+    private var waitingCallToBeFetchedBySocketRetryCount = 10
     func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
         AssertIsOnMainThread()
 
