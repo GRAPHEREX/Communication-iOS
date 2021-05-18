@@ -108,7 +108,7 @@ public class IndividualCall: NSObject, IndividualCallNotificationInfo {
 
     // Distinguishes between calls locally, e.g. in CallKit
     @objc
-    public let localId: UUID
+    public var localId: UUID
 
     public let thread: TSContactThread
 
