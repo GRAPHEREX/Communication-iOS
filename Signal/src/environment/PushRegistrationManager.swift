@@ -113,7 +113,7 @@ public enum PushRegistrationError: Error {
                 }
             }
             
-            let isBlocked = checkIfCellerIsBlocked(caller: callerAddress)
+            let isBlocked = checkIfCallerIsBlocked(caller: callerAddress)
             guard !isBlocked else {
                 AppEnvironment.shared.callService.individualCallService.callUIAdapter.defaultAdaptee.getProvider()?.reportNewIncomingCall(with: UUID(), update: callUpdate, completion: { (error) in
                     AppEnvironment.shared.callService.individualCallService.callUIAdapter.defaultAdaptee.getProvider()?.invalidate()
@@ -169,7 +169,7 @@ public enum PushRegistrationError: Error {
         AppReadiness.runNowOrWhenAppDidBecomeReadyAsync {
             AssertIsOnMainThread()
             self.messageFetcherJob.run()
-            let isBlocked = self.checkIfCellerIsBlocked(caller: caller)
+            let isBlocked = self.checkIfCallerIsBlocked(caller: caller)
             guard !isBlocked else {
                 AppEnvironment.shared.callService.individualCallService.callUIAdapter.defaultAdaptee.getProvider()?.invalidate()
                 return
@@ -177,7 +177,7 @@ public enum PushRegistrationError: Error {
         }
     }
     
-    private func checkIfCellerIsBlocked(caller: SignalServiceAddress?) -> Bool {
+    private func checkIfCallerIsBlocked(caller: SignalServiceAddress?) -> Bool {
         if AppReadiness.isAppReady, let caller = caller {
             let thread = TSContactThread.getOrCreateThread(contactAddress: caller)
             if self.blockingManager.isThreadBlocked(thread) {
