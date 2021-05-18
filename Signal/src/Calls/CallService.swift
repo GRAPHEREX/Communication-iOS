@@ -530,7 +530,7 @@ public final class CallService: NSObject {
         }
 
         let newCall = SignalCall.incomingIndividualCall(
-            localId: PushRegistrationManager.getUUID(),
+            localId: UUID(),
             remoteAddress: thread.contactAddress,
             sentAtTimestamp: sentAtTimestamp,
             offerMediaType: offerMediaType

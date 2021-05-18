@@ -329,7 +329,7 @@ final class CallKitCallUIAdaptee: NSObject, CallUIAdaptee, CXProviderDelegate {
 
         Logger.info("Received \(#function) CXAnswerCallAction")
         // Retrieve the instance corresponding to the action's call UUID
-        guard let call = callManager.callWithLocalId(action.callUUID) else {
+        guard let call = callManager.latestCall() else {
             if waitingCallToBeFetchedBySocketRetryCount > 0 {
                 waitingCallToBeFetchedBySocketRetryCount -= 1
                 DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
@@ -341,6 +341,7 @@ final class CallKitCallUIAdaptee: NSObject, CallUIAdaptee, CXProviderDelegate {
             }
             return
         }
+        call.individualCall.localId = action.callUUID
 
         self.showCall(call)
         self.callService.individualCallService.handleAcceptCall(call)
@@ -351,11 +352,12 @@ final class CallKitCallUIAdaptee: NSObject, CallUIAdaptee, CXProviderDelegate {
         AssertIsOnMainThread()
 
         Logger.info("Received \(#function) CXEndCallAction")
-        guard let call = callManager.callWithLocalId(action.callUUID) else {
+        guard let call = callManager.latestCall() else {
             Logger.error("trying to end unknown call with localId: \(action.callUUID)")
             action.fail()
             return
         }
+        call.individualCall.localId = action.callUUID
 
         self.callService.individualCallService.handleLocalHangupCall(call)
 

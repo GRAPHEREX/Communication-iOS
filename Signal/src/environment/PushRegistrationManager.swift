@@ -19,19 +19,6 @@ public enum PushRegistrationError: Error {
  * Singleton used to integrate with push notification services - registration and routing received remote notifications.
  */
 @objc public class PushRegistrationManager: NSObject, PKPushRegistryDelegate {
-
-    private static var currentCallUUID: UUID? = nil
-    
-    static func getUUID() -> UUID {
-        if let uuid = currentCallUUID {
-            currentCallUUID = nil
-            return uuid
-        }
-        else {
-            currentCallUUID = UUID()
-            return currentCallUUID!
-        }
-    }
     
     override init() {
         super.init()
@@ -151,7 +138,7 @@ public enum PushRegistrationError: Error {
             callUpdate.supportsDTMF = false
             
             // Report the call to CallKit, and let it display the call UI.
-            AppEnvironment.shared.callService.individualCallService.callUIAdapter.defaultAdaptee.getProvider()?.reportNewIncomingCall(with: PushRegistrationManager.getUUID(), update: callUpdate, completion: { [weak self] (error) in
+            AppEnvironment.shared.callService.individualCallService.callUIAdapter.defaultAdaptee.getProvider()?.reportNewIncomingCall(with: UUID(), update: callUpdate, completion: { [weak self] (error) in
                 guard error == nil else {
                     completion()
                     Logger.error("failed to report new incoming call, error: \(error!)")
