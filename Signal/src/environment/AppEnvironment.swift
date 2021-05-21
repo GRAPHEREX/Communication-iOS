@@ -5,6 +5,7 @@
 import Foundation
 import SignalServiceKit
 import SignalMessaging
+import CryptoWallet
 
 @objc
 public class AppEnvironment: NSObject {
@@ -55,6 +56,9 @@ public class AppEnvironment: NSObject {
 
     @objc
     let cvAudioPlayerRef = CVAudioPlayer()
+    
+    @objc
+    public var wallet: GrapherexWallet
 
     private override init() {
         self.callMessageHandlerRef = WebRTCCallMessageHandler()
@@ -65,7 +69,8 @@ public class AppEnvironment: NSObject {
         self.pushRegistrationManagerRef = PushRegistrationManager()
         self.sessionResetJobQueueRef = SessionResetJobQueue()
         self.userNotificationActionHandlerRef = UserNotificationActionHandler()
-
+        self.wallet = GrapherexWallet()
+        
         super.init()
 
         SwiftSingletons.register(self)
