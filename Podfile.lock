@@ -15,11 +15,11 @@ PODS:
     - CocoaLumberjack/Core (= 3.7.0)
   - CocoaLumberjack/Core (3.7.0)
   - CryptoWallet (0.1.2):
+    - KeychainAccess
     - PromiseKit
     - PureLayout
     - SDWebImage
     - SwiftGen
-    - SwiftKeychainWrapper
     - XCGLogger
     - ZXingObjC
   - Curve25519Kit (2.1.0):
@@ -33,6 +33,7 @@ PODS:
   - GRDB.swift/SQLCipher (4.3.0):
     - SQLCipher (>= 3.4.0)
   - GRKOpenSSLFramework (1.0.2.19)
+  - KeychainAccess (4.2.2)
   - libPhoneNumber-iOS (0.9.15)
   - libwebp (1.0.2):
     - libwebp/core (= 1.0.2)
@@ -159,7 +160,6 @@ PODS:
   - SSZipArchive (2.1.4)
   - Starscream (3.0.6)
   - SwiftGen (6.4.0)
-  - SwiftKeychainWrapper (4.0.1)
   - SwiftProtobuf (1.7.0)
   - XCGLogger (7.0.1):
     - XCGLogger/Core (= 7.0.1)
@@ -181,7 +181,7 @@ DEPENDENCIES:
   - AppsFlyerFramework
   - blurhash (from `https://github.com/signalapp/blurhash`, branch `signal-master`)
   - BonMot
-  - CryptoWallet (from `https://github.com/grapherex/CryptoWallet.git`, branch `develop`)
+  - CryptoWallet (from `https://github.com/grapherex/CryptoWallet.git`, branch `feature/grapherex-integration-fixes`)
   - "Curve25519Kit (from `ssh://git@github.com/signalapp/Curve25519Kit`, branch `feature/SignalClient-adoption`)"
   - "Curve25519Kit/Tests (from `ssh://git@github.com/signalapp/Curve25519Kit`, branch `feature/SignalClient-adoption`)"
   - GRDB.swift/SQLCipher
@@ -219,6 +219,7 @@ SPEC REPOS:
     - BonMot
     - CocoaLumberjack
     - GRDB.swift
+    - KeychainAccess
     - libwebp
     - lottie-ios
     - ObjcExceptionBridging
@@ -230,7 +231,6 @@ SPEC REPOS:
     - SQLCipher
     - SSZipArchive
     - SwiftGen
-    - SwiftKeychainWrapper
     - SwiftProtobuf
     - XCGLogger
 
@@ -239,7 +239,7 @@ EXTERNAL SOURCES:
     :branch: signal-master
     :git: https://github.com/signalapp/blurhash
   CryptoWallet:
-    :branch: develop
+    :branch: feature/grapherex-integration-fixes
     :git: https://github.com/grapherex/CryptoWallet.git
   Curve25519Kit:
     :branch: feature/SignalClient-adoption
@@ -282,7 +282,7 @@ CHECKOUT OPTIONS:
     :commit: 890ffdab14207154819415da7e6c969e9dfff0e9
     :git: https://github.com/signalapp/blurhash
   CryptoWallet:
-    :commit: 12184d86bae522c2dae5d344f934e2be8f34de54
+    :commit: a24b333f84fb447e7e1f46c0aab4a7af7e1a8eb6
     :git: https://github.com/grapherex/CryptoWallet.git
   Curve25519Kit:
     :commit: 87bfaf0748ecbac417fe90219b529d4f6f0eb272
@@ -328,10 +328,11 @@ SPEC CHECKSUMS:
   blurhash: 4b3b2b8909cf41ab59fa349788654b8387284ff4
   BonMot: 2217a66e5ddc6a8d2ffb759fe8c85a8528e0d3e7
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
-  CryptoWallet: 31842f5d10ef336221125fb9b03b1686524cc43a
+  CryptoWallet: cbf6680c834b8886ddf57b9f5175af5b114358d1
   Curve25519Kit: 4b6cddbe2d44be0ccb37e15ba719a145edab8aff
   GRDB.swift: 083ec261ce573888d8ed2eae1b49bc0bf40d9e2c
   GRKOpenSSLFramework: 4abc733a8fcbc37060619a86a54202d2938dd70e
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   libPhoneNumber-iOS: 0a32a9525cf8744fe02c5206eb30d571e38f7d75
   libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
   lottie-ios: 496ac5cea1bbf1a7bd1f1f472f3232eb1b8d744b
@@ -352,13 +353,12 @@ SPEC CHECKSUMS:
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   Starscream: 8aaf1a7feb805c816d0e7d3190ef23856f6665b9
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
-  SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
   SwiftProtobuf: 4fd9645e69b72cbae6ec8da5be0cdd20ca6565dd
   XCGLogger: 1943831ef907df55108b0b18657953f868de973b
   YYImage: 6db68da66f20d9f169ceb94dfb9947c3867b9665
   ZKGroup: 15a08eed5870a44b9dd14af0824ac95f6eed7380
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 630447cb57cf8326b6825e6f8e12f7d59cf1b3a4
+PODFILE CHECKSUM: 69fbce84caf0a93800723b20e69454c6adc4dc32
 
 COCOAPODS: 1.9.2
