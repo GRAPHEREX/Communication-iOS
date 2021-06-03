@@ -241,7 +241,7 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
     OWSLogInfo(@"");
     [DDLog flushLog];
 
-    [WalletCredentialsManager reset];
+    [[TSAccountManager shared] resetGrapherexWallet];
     [self.databaseStorage resetAllStorage];
     [OWSUserProfile resetProfileStorage];
     [Environment.shared.preferences removeAllValues];

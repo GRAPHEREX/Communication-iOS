@@ -237,6 +237,7 @@ void uncaughtExceptionHandler(NSException *exception)
                 [self versionMigrationsDidComplete];
             }
         
+            [[TSAccountManager shared] setupGrapherexWallet];
             [self setupAppsFlyerAnalytics];
             [AnalyticsService logWithEvent:AnalyticsEventSessionStart parameters:nil];
             if ([VersionMigrations isVersion:AppVersion.shared.lastCompletedLaunchAppVersion lessThan:AppVersion.shared.currentAppVersion]) {
