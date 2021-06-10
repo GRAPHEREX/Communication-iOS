@@ -9,6 +9,7 @@ final class CallsMainController: UIViewController {
     private let segmentedControl = UISegmentedControl()
     private let callManager = AppEnvironment.shared.callService
     private let outboundCallInitiator = AppEnvironment.shared.outboundIndividualCallInitiator
+    private let spinner = UIActivityIndicatorView(style: .white)
     
     private var calls: [TSCall] = []
     
@@ -30,6 +31,7 @@ final class CallsMainController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Theme.backgroundColor
         setupTableView()
+        setupSpinner()
         setupEmptyState()
         setupNavigationBar()
         AppEnvironment.shared.callService.addObserverAndSyncState(observer: self)
@@ -51,6 +53,7 @@ fileprivate extension CallsMainController {
                                   action: { [weak self] in
                                    self?.startNewCall()
                })
+        emptyStateView.isHidden = true
     }
     
     func setupTableView() {
@@ -59,6 +62,11 @@ fileprivate extension CallsMainController {
         tableViewController.tableView.backgroundColor = .clear
         tableViewController.tableView.allowsSelection = true
         self.definesPresentationContext = false
+    }
+
+    func setupSpinner() {
+        tableViewHolder.addSubview(spinner)
+        spinner.autoCenterInSuperview()
     }
     
     func makeCells() {
@@ -110,10 +118,19 @@ fileprivate extension CallsMainController {
     }
     
     func setupData() {
-        calls = callManager.getCallsList()
-        calls.sort(by: { ($0 as TSInteraction).sortId > ($1 as TSInteraction).sortId })
-        filteredCalls = calls
-        didMenuTap()
+        if calls.isEmpty {
+            spinner.isHidden = false
+            if !spinner.isAnimating { spinner.startAnimating() }
+        }
+        DispatchQueue.global().async {
+            self.calls = self.callManager.getCallsList().sorted(by: { ($0 as TSInteraction).sortId > ($1 as TSInteraction).sortId })
+            DispatchQueue.main.async {
+                self.spinner.isHidden = true
+                self.spinner.stopAnimating()
+                self.filteredCalls = self.calls
+                self.didMenuTap()
+            }
+        }
     }
     
     @objc func didMenuTap() {
