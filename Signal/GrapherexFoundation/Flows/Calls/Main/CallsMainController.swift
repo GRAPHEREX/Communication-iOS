@@ -9,7 +9,7 @@ final class CallsMainController: UIViewController {
     private let segmentedControl = UISegmentedControl()
     private let callManager = AppEnvironment.shared.callService
     private let outboundCallInitiator = AppEnvironment.shared.outboundIndividualCallInitiator
-    private let spinner = UIActivityIndicatorView(style: .white)
+    private let spinner = UIActivityIndicatorView(style: Theme.isDarkThemeEnabled ? .white : .gray)
     
     private var calls: [TSCall] = []
     
