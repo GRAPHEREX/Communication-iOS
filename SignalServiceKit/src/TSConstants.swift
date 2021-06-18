@@ -6,6 +6,7 @@ private protocol TSConstantsProtocol: class {
     var textSecureWebSocketAPI: String { get }
     var textSecureServerURL: String { get }
     var walletServerURL: String { get }
+    var walletSocketServerURL: String { get }
     var textSecureCDN0ServerURL: String { get }
     var textSecureCDN2ServerURL: String { get }
     var contactDiscoveryURL: String { get }
@@ -62,6 +63,8 @@ public class TSConstants: NSObject {
     public static var textSecureServerURL: String { return shared.textSecureServerURL }
     @objc
     public static var walletServerURL: String { return shared.walletServerURL }
+    @objc
+    public static var walletSocketServerURL: String { return shared.walletSocketServerURL }
     @objc
     public static var textSecureCDN0ServerURL: String { return shared.textSecureCDN0ServerURL }
     @objc
@@ -174,6 +177,7 @@ private class TSConstantsProduction: TSConstantsProtocol {
     public let textSecureWebSocketAPI = "wss://api.grapherex.com/v1/websocket/"
     public let textSecureServerURL = "https://api.grapherex.com/"
     public let walletServerURL = "https://wcs.grapherex.com/"
+    public let walletSocketServerURL = "wss://wcs.grapherex.com/api/crypto-backend/v2/ws"
     public let textSecureCDN0ServerURL = "https://cdn.grapherex.com"
     public let textSecureCDN2ServerURL = "https://cdn.grapherex.com"
     public let contactDiscoveryURL = "https://directory.grapherex.com"
@@ -227,6 +231,7 @@ private class TSConstantsStaging: TSConstantsProtocol {
     public let textSecureWebSocketAPI = "wss://api.grapherextests.com/v1/websocket/"
     public let textSecureServerURL = "https://api.grapherextests.com/"
     public let walletServerURL = "https://crypto.grapherextests.com/"
+    public let walletSocketServerURL = "wss://crypto.grapherextests.com/api/crypto-backend/v2/ws"
     public let textSecureCDN0ServerURL = "https://cdn.grapherextests.com"
     public let textSecureCDN2ServerURL = "https://cdn.grapherextests.com"
     public let contactDiscoveryURL = "https://directory.grapherex.com"

@@ -19,6 +19,7 @@ PODS:
     - PromiseKit
     - PureLayout
     - SDWebImage
+    - Starscream (~> 3.0.6)
     - SwiftGen
     - XCGLogger
     - ZXingObjC
@@ -181,7 +182,7 @@ DEPENDENCIES:
   - AppsFlyerFramework
   - blurhash (from `https://github.com/signalapp/blurhash`, branch `signal-master`)
   - BonMot
-  - CryptoWallet (from `https://github.com/grapherex/CryptoWallet.git`, branch `develop`)
+  - CryptoWallet (from `https://github.com/grapherex/CryptoWallet.git`, branch `feature/websockets`)
   - "Curve25519Kit (from `ssh://git@github.com/signalapp/Curve25519Kit`, branch `feature/SignalClient-adoption`)"
   - "Curve25519Kit/Tests (from `ssh://git@github.com/signalapp/Curve25519Kit`, branch `feature/SignalClient-adoption`)"
   - GRDB.swift/SQLCipher
@@ -239,7 +240,7 @@ EXTERNAL SOURCES:
     :branch: signal-master
     :git: https://github.com/signalapp/blurhash
   CryptoWallet:
-    :branch: develop
+    :branch: feature/websockets
     :git: https://github.com/grapherex/CryptoWallet.git
   Curve25519Kit:
     :branch: feature/SignalClient-adoption
@@ -282,7 +283,7 @@ CHECKOUT OPTIONS:
     :commit: 890ffdab14207154819415da7e6c969e9dfff0e9
     :git: https://github.com/signalapp/blurhash
   CryptoWallet:
-    :commit: 72c9318b6003bd03a73ebebbc0c83521bb21dbf8
+    :commit: 943d0e9db60a983f7f3d073d725d0944c02cb546
     :git: https://github.com/grapherex/CryptoWallet.git
   Curve25519Kit:
     :commit: 87bfaf0748ecbac417fe90219b529d4f6f0eb272
@@ -328,7 +329,7 @@ SPEC CHECKSUMS:
   blurhash: 4b3b2b8909cf41ab59fa349788654b8387284ff4
   BonMot: 2217a66e5ddc6a8d2ffb759fe8c85a8528e0d3e7
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
-  CryptoWallet: b4443e28b5ebd1364105ac74a57885a2d35b6a48
+  CryptoWallet: 3cc70a85915e55775dfee7de030d1f2c16f033a4
   Curve25519Kit: 4b6cddbe2d44be0ccb37e15ba719a145edab8aff
   GRDB.swift: 083ec261ce573888d8ed2eae1b49bc0bf40d9e2c
   GRKOpenSSLFramework: 4abc733a8fcbc37060619a86a54202d2938dd70e
@@ -359,6 +360,6 @@ SPEC CHECKSUMS:
   ZKGroup: 15a08eed5870a44b9dd14af0824ac95f6eed7380
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 630447cb57cf8326b6825e6f8e12f7d59cf1b3a4
+PODFILE CHECKSUM: 401da0c231fab6b21ae8803aa34fde330366bc7a
 
 COCOAPODS: 1.9.2

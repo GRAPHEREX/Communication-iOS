@@ -32,6 +32,7 @@ extension TSAccountManager {
         let config = WalletConfig(apiServerURL: TSConstants.textSecureServerURL,
                                   cryptoServerURL: TSConstants.walletServerURL,
                                   cryptoServerBasePath: "/api/crypto-backend/v2/",
+                                  websocketServerURL: TSConstants.walletSocketServerURL,
                                   authUsername: authUserName,
                                   authPassword: authPassword,
                                   serviceName: serviceName)
