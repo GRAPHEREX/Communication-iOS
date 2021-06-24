@@ -80,7 +80,7 @@ target 'Signal' do
   pod 'SSZipArchive', :inhibit_warnings => true
   pod 'SignalRingRTC', path: 'ThirdParty/SignalRingRTC.podspec', inhibit_warnings: true
   pod 'AppsFlyerFramework', inhibit_warnings: true
-  pod 'CryptoWallet', git: 'https://github.com/grapherex/CryptoWallet.git', branch: 'feature/websockets', inhibit_warnings: true
+  pod 'CryptoWallet', git: 'https://github.com/grapherex/CryptoWallet.git', branch: 'feature/core-data-tests', inhibit_warnings: true
 
   target 'SignalTests' do
     inherit! :search_paths

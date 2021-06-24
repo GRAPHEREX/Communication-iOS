@@ -182,7 +182,7 @@ DEPENDENCIES:
   - AppsFlyerFramework
   - blurhash (from `https://github.com/signalapp/blurhash`, branch `signal-master`)
   - BonMot
-  - CryptoWallet (from `https://github.com/grapherex/CryptoWallet.git`, branch `feature/websockets`)
+  - CryptoWallet (from `https://github.com/grapherex/CryptoWallet.git`, branch `feature/core-data-tests`)
   - "Curve25519Kit (from `ssh://git@github.com/signalapp/Curve25519Kit`, branch `feature/SignalClient-adoption`)"
   - "Curve25519Kit/Tests (from `ssh://git@github.com/signalapp/Curve25519Kit`, branch `feature/SignalClient-adoption`)"
   - GRDB.swift/SQLCipher
@@ -240,7 +240,7 @@ EXTERNAL SOURCES:
     :branch: signal-master
     :git: https://github.com/signalapp/blurhash
   CryptoWallet:
-    :branch: feature/websockets
+    :branch: feature/core-data-tests
     :git: https://github.com/grapherex/CryptoWallet.git
   Curve25519Kit:
     :branch: feature/SignalClient-adoption
@@ -283,7 +283,7 @@ CHECKOUT OPTIONS:
     :commit: 890ffdab14207154819415da7e6c969e9dfff0e9
     :git: https://github.com/signalapp/blurhash
   CryptoWallet:
-    :commit: 943d0e9db60a983f7f3d073d725d0944c02cb546
+    :commit: f5cac21566863cbb0d0c9893ba489814dd3c72dc
     :git: https://github.com/grapherex/CryptoWallet.git
   Curve25519Kit:
     :commit: 87bfaf0748ecbac417fe90219b529d4f6f0eb272
@@ -360,6 +360,6 @@ SPEC CHECKSUMS:
   ZKGroup: 15a08eed5870a44b9dd14af0824ac95f6eed7380
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 401da0c231fab6b21ae8803aa34fde330366bc7a
+PODFILE CHECKSUM: 18222642ede4b687901453d5ae315dfa46b006cc
 
 COCOAPODS: 1.9.2
