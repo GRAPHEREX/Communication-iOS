@@ -37,6 +37,7 @@ extension TSAccountManager {
                                   authPassword: authPassword,
                                   serviceName: serviceName)
         AppEnvironment.shared.wallet.setup(withConfig: config)
+        AppEnvironment.shared.wallet.preloadWalletData()
     }
     
     private func normalizeService(service: String) -> String {
