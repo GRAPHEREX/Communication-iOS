@@ -20,7 +20,11 @@ extension TSAccountManager {
     @objc private func onRegistrationStateChanged() {
         if (isRegisteredAndReady) {
             configureWallet()
-        } else if (isDeregistered()) {
+        } else if storedServerUsername != nil,
+               storedServerAuthToken() != nil {
+            // Intentionally configure the wallet to show no data state (the case when phone is de-registered)
+            configureWallet()
+        } else {
             resetGrapherexWallet()
         }
     }
