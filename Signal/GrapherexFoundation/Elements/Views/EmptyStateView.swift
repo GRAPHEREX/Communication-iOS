@@ -69,7 +69,7 @@ fileprivate extension EmptyStateView {
         let topSpacer = UIView.vStretchingSpacer()
         let middleSpacer = UIView.vStretchingSpacer()
         let bottomSpacer = UIView.vStretchingSpacer()
-        illustrationView.contentMode = .scaleAspectFit
+        illustrationView.contentMode = .center
         let topTitleSpacer = UIView.vStretchingSpacer()
         let bottomTitleSpacer = UIView.vStretchingSpacer()
         
