@@ -70,6 +70,7 @@ fileprivate extension EmptyStateView {
         let middleSpacer = UIView.vStretchingSpacer()
         let bottomSpacer = UIView.vStretchingSpacer()
         illustrationView.contentMode = .center
+        illustrationView.tintColor = Theme.primaryTextColor
         let topTitleSpacer = UIView.vStretchingSpacer()
         let bottomTitleSpacer = UIView.vStretchingSpacer()
         
