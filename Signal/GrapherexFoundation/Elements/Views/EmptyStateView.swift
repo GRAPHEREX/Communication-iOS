@@ -61,6 +61,7 @@ fileprivate extension EmptyStateView {
     
     @objc func applyTheme() {
         backgroundColor = Theme.backgroundColor
+        illustrationView.tintColor = Theme.primaryTextColor
     }
     
     func setup() {
