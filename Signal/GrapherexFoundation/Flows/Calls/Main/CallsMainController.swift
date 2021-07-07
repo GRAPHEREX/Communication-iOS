@@ -46,7 +46,7 @@ fileprivate extension CallsMainController {
     func setupEmptyState() {
         emptyStateView.set(image: UIImage(imageLiteralResourceName: "Calls"),
                                   title: NSLocalizedString("CALLS_VIEW_EMPTY_TITLE", comment: ""),
-                                  subtitle: NSLocalizedString("CALLS_VIEW_EMPTY_SUBTITLE", comment: ""),
+                                  subtitle: "",
                                   buttonTitle: NSLocalizedString("CALLS_VIEW_EMPTY_BUTTON_TITLE", comment: ""),
                                   action: { [weak self] in
                                    self?.startNewCall()
