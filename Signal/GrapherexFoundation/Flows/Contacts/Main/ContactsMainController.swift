@@ -108,7 +108,7 @@ fileprivate extension ContactsMainController {
         emptyStateView.set(
             image: UIImage(imageLiteralResourceName: "Contacts"),
             title: NSLocalizedString("CONTACTS_VIEW_EMPTY_TITLE", comment: ""),
-            subtitle: NSLocalizedString("CONTACTS_VIEW_EMPTY_SUBTITLE", comment: ""),
+            subtitle: "",
             buttonTitle: NSLocalizedString("CONTACTS_VIEW_EMPTY_BUTTON_TITLE", comment: ""),
             action: { [weak self] in
                 self?.inviteFriends()

@@ -407,7 +407,7 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
     UIImage *image = [UIImage imageNamed:@"Chats"];
     [emptyView setWithImage:image
                       title: NSLocalizedString(@"CHATS_VIEW_EMPTY_TITLE", comment: "")
-                   subtitle: NSLocalizedString(@"CHATS_VIEW_EMPTY_SUBTITLE", comment: "")
+                   subtitle: @""
                 buttonTitle: NSLocalizedString(@"CHATS_VIEW_EMPTY_BUTTON_TITLE", comment: "")
                      action: ^{
         __weak ConversationListViewController *weakSelf = self;
