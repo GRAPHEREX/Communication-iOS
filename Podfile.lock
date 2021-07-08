@@ -14,7 +14,7 @@ PODS:
   - CocoaLumberjack (3.7.0):
     - CocoaLumberjack/Core (= 3.7.0)
   - CocoaLumberjack/Core (3.7.0)
-  - CryptoWallet (0.1.4):
+  - CryptoWallet (0.1.5):
     - KeychainAccess
     - PromiseKit
     - PureLayout
@@ -182,7 +182,7 @@ DEPENDENCIES:
   - AppsFlyerFramework
   - blurhash (from `https://github.com/signalapp/blurhash`, branch `signal-master`)
   - BonMot
-  - CryptoWallet (from `https://github.com/grapherex/CryptoWallet.git`, branch `feature/code-cleanup-and-testing`)
+  - CryptoWallet (from `https://github.com/grapherex/CryptoWallet.git`, branch `develop`)
   - "Curve25519Kit (from `ssh://git@github.com/signalapp/Curve25519Kit`, branch `feature/SignalClient-adoption`)"
   - "Curve25519Kit/Tests (from `ssh://git@github.com/signalapp/Curve25519Kit`, branch `feature/SignalClient-adoption`)"
   - GRDB.swift/SQLCipher
@@ -240,7 +240,7 @@ EXTERNAL SOURCES:
     :branch: signal-master
     :git: https://github.com/signalapp/blurhash
   CryptoWallet:
-    :branch: feature/code-cleanup-and-testing
+    :branch: develop
     :git: https://github.com/grapherex/CryptoWallet.git
   Curve25519Kit:
     :branch: feature/SignalClient-adoption
@@ -283,7 +283,7 @@ CHECKOUT OPTIONS:
     :commit: 890ffdab14207154819415da7e6c969e9dfff0e9
     :git: https://github.com/signalapp/blurhash
   CryptoWallet:
-    :commit: dbecd5c1e74a1e4d07b1f2cde5669206ce56addb
+    :commit: e61df41998e97c2598bd43bdfa0b2e83a4ae52a2
     :git: https://github.com/grapherex/CryptoWallet.git
   Curve25519Kit:
     :commit: 87bfaf0748ecbac417fe90219b529d4f6f0eb272
@@ -329,7 +329,7 @@ SPEC CHECKSUMS:
   blurhash: 4b3b2b8909cf41ab59fa349788654b8387284ff4
   BonMot: 2217a66e5ddc6a8d2ffb759fe8c85a8528e0d3e7
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
-  CryptoWallet: b7e540f92c817f312e9ae76c75cc803b1299d153
+  CryptoWallet: 4857709beb29a4f4e6a6378c4b4b61b6f2befdf3
   Curve25519Kit: 4b6cddbe2d44be0ccb37e15ba719a145edab8aff
   GRDB.swift: 083ec261ce573888d8ed2eae1b49bc0bf40d9e2c
   GRKOpenSSLFramework: 4abc733a8fcbc37060619a86a54202d2938dd70e
@@ -360,6 +360,6 @@ SPEC CHECKSUMS:
   ZKGroup: 15a08eed5870a44b9dd14af0824ac95f6eed7380
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: dc4dd7986191b232f4b2e4cd7fe51c93e6dc3373
+PODFILE CHECKSUM: 630447cb57cf8326b6825e6f8e12f7d59cf1b3a4
 
 COCOAPODS: 1.9.2
