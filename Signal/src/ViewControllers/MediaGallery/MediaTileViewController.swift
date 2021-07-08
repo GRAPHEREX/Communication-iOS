@@ -250,7 +250,7 @@ extension MediaTileViewController: UICollectionViewDelegate, UICollectionViewDat
         if count == 0 {
             let emptyView = SecondaryEmptyStateView()
             emptyView.set(
-                image: UIImage(named: "SignNumber"),
+                image: UIImage(named: "attachment.icon.gallery"),
                 title: "No \(currentType.rawValue.lowercased()) here yet..."
             )
             collectionView.backgroundView = emptyView
