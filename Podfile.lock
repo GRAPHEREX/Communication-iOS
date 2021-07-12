@@ -14,11 +14,12 @@ PODS:
   - CocoaLumberjack (3.7.0):
     - CocoaLumberjack/Core (= 3.7.0)
   - CocoaLumberjack/Core (3.7.0)
-  - CryptoWallet (0.1.2):
+  - CryptoWallet (0.1.5):
     - KeychainAccess
     - PromiseKit
     - PureLayout
     - SDWebImage
+    - Starscream (~> 3.0.6)
     - SwiftGen
     - XCGLogger
     - ZXingObjC
@@ -282,7 +283,7 @@ CHECKOUT OPTIONS:
     :commit: 890ffdab14207154819415da7e6c969e9dfff0e9
     :git: https://github.com/signalapp/blurhash
   CryptoWallet:
-    :commit: 72c9318b6003bd03a73ebebbc0c83521bb21dbf8
+    :commit: e61df41998e97c2598bd43bdfa0b2e83a4ae52a2
     :git: https://github.com/grapherex/CryptoWallet.git
   Curve25519Kit:
     :commit: 87bfaf0748ecbac417fe90219b529d4f6f0eb272
@@ -328,7 +329,7 @@ SPEC CHECKSUMS:
   blurhash: 4b3b2b8909cf41ab59fa349788654b8387284ff4
   BonMot: 2217a66e5ddc6a8d2ffb759fe8c85a8528e0d3e7
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
-  CryptoWallet: b4443e28b5ebd1364105ac74a57885a2d35b6a48
+  CryptoWallet: 4857709beb29a4f4e6a6378c4b4b61b6f2befdf3
   Curve25519Kit: 4b6cddbe2d44be0ccb37e15ba719a145edab8aff
   GRDB.swift: 083ec261ce573888d8ed2eae1b49bc0bf40d9e2c
   GRKOpenSSLFramework: 4abc733a8fcbc37060619a86a54202d2938dd70e

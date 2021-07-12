@@ -28,6 +28,7 @@ final class AddNewContactController: UIViewController {
             inputTextField.placeholder = NSLocalizedString("MAIN_USER_KEY", comment: "")
             inputTextField.autocorrectionType = .no
             inputTextField.textColor = .st_accentBlack
+            inputTextField.textAlignment = .natural
         }
     }
     @IBOutlet var descScanLabel: UILabel!{

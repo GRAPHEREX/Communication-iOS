@@ -61,6 +61,7 @@ fileprivate extension EmptyStateView {
     
     @objc func applyTheme() {
         backgroundColor = Theme.backgroundColor
+        illustrationView.tintColor = Theme.primaryTextColor
     }
     
     func setup() {
@@ -69,7 +70,8 @@ fileprivate extension EmptyStateView {
         let topSpacer = UIView.vStretchingSpacer()
         let middleSpacer = UIView.vStretchingSpacer()
         let bottomSpacer = UIView.vStretchingSpacer()
-        illustrationView.contentMode = .scaleAspectFit
+        illustrationView.contentMode = .center
+        illustrationView.tintColor = Theme.primaryTextColor
         let topTitleSpacer = UIView.vStretchingSpacer()
         let bottomTitleSpacer = UIView.vStretchingSpacer()
         
