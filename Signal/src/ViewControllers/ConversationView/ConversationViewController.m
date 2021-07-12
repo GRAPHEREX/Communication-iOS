@@ -631,14 +631,7 @@ typedef enum : NSUInteger {
 
     [super viewWillAppear:animated];
 
-    UINavigationBar *navbar = self.navigationController.navigationBar;
-    if (navbar != nil) {
-        for (UIView *subview in navbar.subviews) {
-            subview.alpha = 1.0;
-        }
-        navbar.translucent = NO;
-        navbar.backgroundColor = Theme.backgroundColor;
-    }
+    [self updateNavigationBarBackground];
     
     if (self.inputToolbar == nil) {
         // This will create the input toolbar for the first time.
@@ -1372,6 +1365,17 @@ typedef enum : NSUInteger {
 //    }
 
     self.headerView.attributedSubtitle = subtitleText;
+}
+
+- (void)updateNavigationBarBackground {
+    UINavigationBar *navbar = self.navigationController.navigationBar;
+    if (navbar != nil) {
+        for (UIView *subview in navbar.subviews) {
+            subview.alpha = 1.0;
+        }
+        navbar.translucent = NO;
+        navbar.backgroundColor = Theme.backgroundColor;
+    }
 }
 
 
@@ -2980,6 +2984,7 @@ typedef enum : NSUInteger {
 
     [self updateNavigationTitle];
     [self updateNavigationBarSubtitleLabel];
+    [self updateNavigationBarBackground];
 
     [self updateInputToolbar];
     [self updateInputToolbarLayout];

@@ -231,18 +231,23 @@ extension MediaTileViewController: UICollectionViewDelegate, UICollectionViewDat
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection sectionIdx: Int) -> Int {
         let count: Int
-        
+        var img: UIImage?
         switch currentType {
         case .media:
             count = mediaGallery.mediaItems.count
+            img = UIImage(named: "media.chat.icon.gallery")
         case .files:
             count = mediaGallery.fileItems.count
+            img = UIImage(named: "media.chat.icon.file")
         case .gifs:
             count = mediaGallery.gifItems.count
+            img = UIImage(named: "media.chat.icon.gif")
         case .voice:
             count = mediaGallery.voiceItems.count
+            img = UIImage(named: "media.chat.icon.voice")
         case .groups:
             count = mediaGallery.groupsItems.count
+            img = UIImage(named: "media.chat.icon.group")
 //        case .links:
 //            count = mediaGallery.linkItems.count
         }
@@ -250,7 +255,7 @@ extension MediaTileViewController: UICollectionViewDelegate, UICollectionViewDat
         if count == 0 {
             let emptyView = SecondaryEmptyStateView()
             emptyView.set(
-                image: UIImage(named: "SignNumber"),
+                image: img,
                 title: "No \(currentType.rawValue.lowercased()) here yet..."
             )
             collectionView.backgroundView = emptyView

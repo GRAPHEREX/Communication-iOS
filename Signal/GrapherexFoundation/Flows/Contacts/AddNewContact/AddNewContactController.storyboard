@@ -17,8 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Contacts" translatesAutoresizingMaskIntoConstraints="NO" id="Buj-3C-5mu">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Contacts" translatesAutoresizingMaskIntoConstraints="NO" id="Buj-3C-5mu">
                                 <rect key="frame" x="16" y="64" width="382" height="224"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qb4-pq-M8x">
                                 <rect key="frame" x="16" y="424" width="382" height="48"/>
@@ -41,8 +42,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dnn-NP-z4O">
                                 <rect key="frame" x="16" y="288" width="382" height="136"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnJ-9R-ecO">
-                                        <rect key="frame" x="170.5" y="58" width="41.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label cLabel Label " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnJ-9R-ecO">
+                                        <rect key="frame" x="8.5" y="37.5" width="365.5" height="61"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -53,6 +54,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="8lW-3b-HW7"/>
                                     <constraint firstItem="LnJ-9R-ecO" firstAttribute="centerX" secondItem="dnn-NP-z4O" secondAttribute="centerX" id="FBZ-nl-eRs"/>
                                     <constraint firstItem="LnJ-9R-ecO" firstAttribute="centerY" secondItem="dnn-NP-z4O" secondAttribute="centerY" id="HYY-P2-VtP"/>
+                                    <constraint firstItem="LnJ-9R-ecO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dnn-NP-z4O" secondAttribute="leading" id="rAd-zj-oeY"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="50" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ixn-S5-JtQ">
@@ -129,7 +131,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Contacts" width="96" height="116"/>
+        <image name="Contacts" width="50" height="50"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

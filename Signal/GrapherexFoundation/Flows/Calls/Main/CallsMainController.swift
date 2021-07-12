@@ -9,7 +9,7 @@ final class CallsMainController: UIViewController {
     private let segmentedControl = UISegmentedControl()
     private let callManager = AppEnvironment.shared.callService
     private let outboundCallInitiator = AppEnvironment.shared.outboundIndividualCallInitiator
-    private let spinner = UIActivityIndicatorView(style: .white)
+    private let spinner = UIActivityIndicatorView(style: Theme.isDarkThemeEnabled ? .white : .gray)
     
     private var calls: [TSCall] = []
     
@@ -48,7 +48,7 @@ fileprivate extension CallsMainController {
     func setupEmptyState() {
         emptyStateView.set(image: UIImage(imageLiteralResourceName: "Calls"),
                                   title: NSLocalizedString("CALLS_VIEW_EMPTY_TITLE", comment: ""),
-                                  subtitle: NSLocalizedString("CALLS_VIEW_EMPTY_SUBTITLE", comment: ""),
+                                  subtitle: "",
                                   buttonTitle: NSLocalizedString("CALLS_VIEW_EMPTY_BUTTON_TITLE", comment: ""),
                                   action: { [weak self] in
                                    self?.startNewCall()
