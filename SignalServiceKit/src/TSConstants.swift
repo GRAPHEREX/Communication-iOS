@@ -34,7 +34,7 @@ private protocol TSConstantsProtocol: class {
 
     var serverPublicParamsBase64: String { get }
     
-    var sslPinningCertName: String { get }
+    var sslPinningCertNames: [String] { get }
     
     var appsFlyerDevKey: String { get }
     var appsFlyerAppId: String { get }
@@ -167,7 +167,7 @@ public class TSConstants: NSObject {
     }
     
     @objc
-    public static var sslPinningCertName: String { return shared.sslPinningCertName }
+    public static var sslPinningCertNames: [String] { return shared.sslPinningCertNames }
 }
 
 // MARK: -
@@ -218,7 +218,7 @@ private class TSConstantsProduction: TSConstantsProtocol {
     // See: GroupsV2Impl.verifyServerPublicParams(...)
     public let serverPublicParamsBase64 = "AJ5s6oYLJTKMeGXCIZB52Vh3+aTvM/ulexj2X0OM3uM1Sg0QbMOfWLnGiQwzZEBOXHyjIAOWtfqWkJE8kysABwHe8ODl0xul0NnsQjpTxG6S4RpiRk5STFHPHtRJ/I9UIh7I36P/D3FzqoiUCaU1BkpAhTS05VeXJTwyTWPn2Eh6sE0Fkw12/dKZTBm0ImTiUTs9bd1P0LZjacfmM4kZZi4=="
     
-    public let sslPinningCertName = "grapherex_prod"
+    public let sslPinningCertNames = ["grapherex_prod"]
     
     public let appsFlyerDevKey: String = "rhC4t7R59SLbh8cdAmfSDZ"
     public let appsFlyerAppId: String = "1542360019"
@@ -272,7 +272,7 @@ private class TSConstantsStaging: TSConstantsProtocol {
     // See: GroupsV2Impl.verifyServerPublicParams(...)
     public let serverPublicParamsBase64 = "ALRbOPkWOmalFte5ILZa4zeCyxE0e3IlPpKOWPgR3dMrRLeXssRKNsvUg/m+IugL1skJqi8WPQE9Nfk8ujsSWDOcSn5+444FYgHJ7ofg7P4QRDPkEtC0fsSGlyCfnus2Unp+qDmfd4lHTBBmpXdl4gSMpwS8cXGfwII6iY7JObE+tuVY5R4MeH0IHRw5DYiH9t1EZs9oNeqk7EEN2bM5InU=="
     
-    public let sslPinningCertName = "grapherex_dev"
+    public let sslPinningCertNames = ["grapherex_dev_2020", "grapherex_dev_2021"]
     
     public let appsFlyerDevKey: String = "rhC4t7R59SLbh8cdAmfSDZ"
     public let appsFlyerAppId: String = "1542360019"

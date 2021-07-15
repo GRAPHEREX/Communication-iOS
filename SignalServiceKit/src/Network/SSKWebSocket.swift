@@ -106,7 +106,7 @@ class SSKWebSocketImpl: SSKWebSocket {
 
         socket.disableSSLCertValidation = true
         socket.socketSecurityLevel = StreamSocketSecurityLevel.tlSv1_2
-        let security = SSLSecurity(certs: [TextSecureCertificate()], usePublicKeys: false)
+        let security = SSLSecurity(certs: TextSecureCertificates(), usePublicKeys: false)
         security.validateEntireChain = false
         socket.security = security
 
@@ -206,13 +206,41 @@ extension SSKWebSocketImpl: WebSocketDelegate {
     }
 }
 
-private func TextSecureCertificate() -> SSLCert {
+private func TextSecureCertificates() -> [SSLCert] {
     let data = SSKTextSecureServiceCertificateData()
-    return SSLCert(data: data)
+    let mainCert = SSLCert(data: data)
+    let additionalCerts = additionalTextSecureCertificates()
+    return [mainCert] + additionalCerts
 }
 
 private extension StreamSocketSecurityLevel {
     static var tlSv1_2: StreamSocketSecurityLevel {
         return StreamSocketSecurityLevel(rawValue: "kCFStreamSocketSecurityLevelTLSv1_2")
     }
+}
+
+// MARK: - Additional ssl certificates
+
+func dataFromCertificate(forService service: String) -> Data? {
+    let bundle = Bundle(for: OWSHTTPSecurityPolicy.self)
+    
+    guard let path = bundle.path(forResource: service, ofType: "cer") else {
+        owsFailDebug("ssl certificate path not found for name \(service)")
+        return nil
+    }
+    guard FileManager.default.fileExists(atPath: path) else {
+        owsFailDebug("ssl certificate not found for path \(path)")
+        return nil
+    }
+    
+    return NSData(contentsOfFile: path) as Data?
+}
+
+func additionalTextSecureCertificates() -> [SSLCert] {
+    let certNames = Array(TSConstants.sslPinningCertNames.dropFirst())
+    let certs = certNames
+        .lazy
+        .compactMap({ dataFromCertificate(forService: $0) })
+        .compactMap({ SSLCert(data: $0) })
+    return Array(certs)
 }
