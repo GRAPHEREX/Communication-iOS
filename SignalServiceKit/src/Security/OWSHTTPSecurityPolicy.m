@@ -23,9 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
     self = [[super class] defaultPolicy];
 
     if (self) {
-        self.pinnedCertificates = [NSSet setWithArray:@[
-            [self.class certificateDataForService:TSConstants.sslPinningCertName]
-        ]];
+        NSMutableSet *certs = [NSMutableSet setWithCapacity:[TSConstants.sslPinningCertNames count]];
+        for (NSString* nextCertName in TSConstants.sslPinningCertNames) {
+            [certs addObject:[self.class certificateDataForService:nextCertName]];
+        }
+        self.pinnedCertificates = [NSSet setWithSet:certs];
     }
 
     return self;
@@ -33,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSData *)dataFromCertificateFileForService:(NSString *)service
 {
-    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    NSBundle *bundle = [NSBundle bundleForClass: self.class];
     NSString *path = [bundle pathForResource:service ofType:@"cer"];
 
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
@@ -102,7 +104,7 @@ _out:
 
 NSData *SSKTextSecureServiceCertificateData()
 {
-    return [OWSHTTPSecurityPolicy dataFromCertificateFileForService:TSConstants.sslPinningCertName];
+    return [OWSHTTPSecurityPolicy dataFromCertificateFileForService:[TSConstants.sslPinningCertNames firstObject]];
 }
 
 @end
