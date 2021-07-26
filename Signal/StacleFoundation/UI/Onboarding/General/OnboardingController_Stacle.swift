@@ -187,74 +187,9 @@ public class OnboardingController_Stacle: NSObject {
 
         Logger.info("")
 
-//        let view = OnboardingPermissionsViewController_Grapherex(onboardingController: self)
-//        viewController.navigationController?.pushViewController(view, animated: true)
-        guard let navigationController = viewController.navigationController else {
-            owsFailDebug("navigationController was unexpectedly nil")
-            return
-        }
-
-        pushStartDeviceRegistrationView(onto: navigationController)
+        let view = OnboardingPermissionsViewController_Stacle(onboardingController: self)
+        viewController.navigationController?.pushViewController(view, animated: true)
     }
-
-    public func onboardingSplashRequestedModeSwitch(viewController: UIViewController) {
-        AssertIsOnMainThread()
-
-        Logger.info("")
-
-        // TODO: Figure out if we need this
-//        let view = OnboardingModeSwitchConfirmationViewController_Grapherex(onboardingController: self)
-//        viewController.navigationController?.pushViewController(view, animated: true)
-    }
-
-    public func toggleModeSwitch(viewController: UIViewController) {
-        AssertIsOnMainThread()
-
-        Logger.info("")
-        // TODO: Figure out if we need thist
-
-//        let wasOverridden = isOnboardingModeOverriden
-//        switch onboardingMode {
-//        case .provisioning:
-//            onboardingMode  = .registering
-//        case .registering:
-//            onboardingMode = .provisioning
-//        }
-//
-//        if wasOverridden {
-//            onboardingMode = OnboardingController_Stacle.defaultOnboardingMode
-//            viewController.navigationController?.popToRootViewController(animated: true)
-//        } else {
-//            let view = OnboardingPermissionsViewController_Grapherex(onboardingController: self)
-//            viewController.navigationController?.pushViewController(view, animated: true)
-//        }
-    }
-
-//    public func onboardingPermissionsWasSkipped(viewController: UIViewController) {
-//        AssertIsOnMainThread()
-//
-//        Logger.info("")
-//
-//        guard let navigationController = viewController.navigationController else {
-//            owsFailDebug("navigationController was unexpectedly nil")
-//            return
-//        }
-//
-//        pushStartDeviceRegistrationView(onto: navigationController)
-//    }
-//
-//    public func onboardingPermissionsDidComplete(viewController: UIViewController) {
-//        AssertIsOnMainThread()
-//
-//        Logger.info("")
-//
-//        guard let navigationController = viewController.navigationController else {
-//            owsFailDebug("navigationController was unexpectedly nil")
-//            return
-//        }
-//
-//        pushStartDeviceRegistrationView(onto: navigationController)
-//    }
 
     private func pushStartDeviceRegistrationView(onto navigationController: UINavigationController) {
         AssertIsOnMainThread()
@@ -280,28 +215,6 @@ public class OnboardingController_Stacle: NSObject {
             view.onboardingController = self
             viewController.navigationController?.pushViewController(view, animated: true)
         }
-    }
-
-    public func onboardingDidRequireCaptcha(viewController: UIViewController) {
-        AssertIsOnMainThread()
-
-        Logger.info("")
-
-//        guard let navigationController = viewController.navigationController else {
-//            owsFailDebug("Missing navigationController.")
-//            return
-//        }
-//
-//        // The service could demand CAPTCHA from the "phone number" view or later
-//        // from the "code verification" view.  The "Captcha" view should always appear
-//        // immediately after the "phone number" view.
-//        while navigationController.viewControllers.count > 1 &&
-//            !(navigationController.topViewController is OnboardingPhoneNumberViewController) {
-//                navigationController.popViewController(animated: false)
-//        }
-//
-//        let view = OnboardingCaptchaViewController_Stacle(onboardingController: self)
-//        navigationController.pushViewController(view, animated: true)
     }
 
     @objc
@@ -550,6 +463,32 @@ public class OnboardingController_Stacle: NSObject {
             }
         }
     }
+    
+    public func onboardingPermissionsWasSkipped(viewController: UIViewController) {
+        AssertIsOnMainThread()
+
+        Logger.info("")
+
+        guard let navigationController = viewController.navigationController else {
+            owsFailDebug("navigationController was unexpectedly nil")
+            return
+        }
+
+        pushStartDeviceRegistrationView(onto: navigationController)
+    }
+
+    public func onboardingPermissionsDidComplete(viewController: UIViewController) {
+        AssertIsOnMainThread()
+
+        Logger.info("")
+
+        guard let navigationController = viewController.navigationController else {
+            owsFailDebug("navigationController was unexpectedly nil")
+            return
+        }
+
+        pushStartDeviceRegistrationView(onto: navigationController)
+    }
 
     private func requestingVerificationDidFail(viewController: UIViewController, error: Error) {
         if let statusCode = error.httpStatusCode {
@@ -567,9 +506,10 @@ public class OnboardingController_Stacle: NSObject {
             }
         }
 
-        if case AccountServiceClientError.captchaRequired = error {
-            return onboardingDidRequireCaptcha(viewController: viewController)
-        }
+        //TODO: Check if this is needed
+//        if case AccountServiceClientError.captchaRequired = error {
+//            return onboardingDidRequireCaptcha(viewController: viewController)
+//        }
 
         let nsError = error as NSError
         owsFailDebug("unexpected error: \(nsError)")

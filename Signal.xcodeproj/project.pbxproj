@@ -390,6 +390,7 @@
 		3A34ED7E26AEC9C20047EFA0 /* OnboardingUserIdViewController_Stacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13F955269F45F100427DC2 /* OnboardingUserIdViewController_Stacle.swift */; };
 		3A34ED8426AECA080047EFA0 /* OnboardingSplashViewController_Stacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13F95F269F494200427DC2 /* OnboardingSplashViewController_Stacle.swift */; };
 		3A34ED8A26AECA0E0047EFA0 /* OnboardingUserIdViewController_Stacle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A13F954269F45F000427DC2 /* OnboardingUserIdViewController_Stacle.storyboard */; };
+		3A34ED9726AED6EC0047EFA0 /* OnboardingPermissionsViewController_Stacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34ED9626AED6EC0047EFA0 /* OnboardingPermissionsViewController_Stacle.swift */; };
 		4503F1BE20470A5B00CEE724 /* classic-quiet.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 4503F1BB20470A5B00CEE724 /* classic-quiet.aifc */; };
 		4503F1BF20470A5B00CEE724 /* classic.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 4503F1BC20470A5B00CEE724 /* classic.aifc */; };
 		450998651FD8A34D00D89EB3 /* DeviceSleepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348F2EAD1F0D21BC00D4ECE0 /* DeviceSleepManager.swift */; };
@@ -1555,6 +1556,7 @@
 		3A34ED0C26AEC1250047EFA0 /* OnboardingVerificationViewController_Stacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingVerificationViewController_Stacle.swift; sourceTree = "<group>"; };
 		3A34ED1026AEC1250047EFA0 /* OnboardingPinAttemptsExhaustedViewController_Stacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPinAttemptsExhaustedViewController_Stacle.swift; sourceTree = "<group>"; };
 		3A34ED3626AEC78D0047EFA0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		3A34ED9626AED6EC0047EFA0 /* OnboardingPermissionsViewController_Stacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController_Stacle.swift; sourceTree = "<group>"; };
 		4224D4E5D7921F25823ECDCA /* Pods-SignalPerformanceTests.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalPerformanceTests.testable release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalPerformanceTests/Pods-SignalPerformanceTests.testable release.xcconfig"; sourceTree = "<group>"; };
 		435EAC2E5E22D3F087EB3192 /* Pods-SignalShareExtension.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalShareExtension.app store release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalShareExtension/Pods-SignalShareExtension.app store release.xcconfig"; sourceTree = "<group>"; };
 		4503F1BB20470A5B00CEE724 /* classic-quiet.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "classic-quiet.aifc"; sourceTree = "<group>"; };
@@ -3296,6 +3298,7 @@
 		3A13F952269F3D0600427DC2 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				3A34ED9526AED6D90047EFA0 /* Permissions */,
 				3A34ED0726AEC1250047EFA0 /* AuthCode */,
 				3A34ED0F26AEC1250047EFA0 /* PinAttemptsExausted */,
 				3A34ECF826AEBE690047EFA0 /* PhoneNumber */,
@@ -3374,6 +3377,14 @@
 				3A34ED3626AEC78D0047EFA0 /* Colors.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3A34ED9526AED6D90047EFA0 /* Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				3A34ED9626AED6EC0047EFA0 /* OnboardingPermissionsViewController_Stacle.swift */,
+			);
+			path = Permissions;
 			sourceTree = "<group>";
 		};
 		450DF2061E0DD28D003D14BE /* UserInterface */ = {
@@ -6148,6 +6159,7 @@
 				3490D57F25ADE49800F5F96C /* ActionSheetContentBuilder.swift in Sources */,
 				347C3845252CE6C900F3D941 /* CVComponentQuotedReply.swift in Sources */,
 				88A357B923639384009D6B9A /* MemberActionSheet.swift in Sources */,
+				3A34ED9726AED6EC0047EFA0 /* OnboardingPermissionsViewController_Stacle.swift in Sources */,
 				34B0796D1FCF46B100E248C2 /* MainAppContext.m in Sources */,
 				34E3EF101EFC2684007F6822 /* DebugUIPage.m in Sources */,
 				349767E325B8744700ECE1B0 /* ManageStickersViewController.swift in Sources */,
