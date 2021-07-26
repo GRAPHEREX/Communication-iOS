@@ -218,7 +218,7 @@ private class TSConstantsProduction: TSConstantsProtocol {
     // See: GroupsV2Impl.verifyServerPublicParams(...)
     public let serverPublicParamsBase64 = "AJ5s6oYLJTKMeGXCIZB52Vh3+aTvM/ulexj2X0OM3uM1Sg0QbMOfWLnGiQwzZEBOXHyjIAOWtfqWkJE8kysABwHe8ODl0xul0NnsQjpTxG6S4RpiRk5STFHPHtRJ/I9UIh7I36P/D3FzqoiUCaU1BkpAhTS05VeXJTwyTWPn2Eh6sE0Fkw12/dKZTBm0ImTiUTs9bd1P0LZjacfmM4kZZi4=="
     
-    public let sslPinningCertNames = ["grapherex_prod"]
+    public let sslPinningCertNames = ["grapherex_prod_2020", "grapherex_prod_2021"]
     
     public let appsFlyerDevKey: String = "rhC4t7R59SLbh8cdAmfSDZ"
     public let appsFlyerAppId: String = "1542360019"
