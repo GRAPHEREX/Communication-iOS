@@ -266,10 +266,10 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
     self.rootViewController = rootViewController;
 }
 
-- (void)showOnboardingView:(OnboardingController_Grapherex *)onboardingController
+- (void)showOnboardingView:(OnboardingController_Stacle *)onboardingController
 {
-    OnboardingNavigationController_Grapherex *navController =
-        [[OnboardingNavigationController_Grapherex alloc] initWithOnboardingController:onboardingController];
+    OnboardingNavigationController_Stacle *navController =
+        [[OnboardingNavigationController_Stacle alloc] initWithOnboardingController:onboardingController];
 
 //#if TESTABLE_BUILD
 //    AccountManager *accountManager = AppEnvironment.shared.accountManager;
@@ -304,7 +304,7 @@ NSString *const kNSUserDefaults_DidTerminateKey = @"kNSUserDefaults_DidTerminate
     NSTimeInterval startupDuration = CACurrentMediaTime() - launchStartedAt;
     OWSLogInfo(@"Presenting app %.2f seconds after launch started.", startupDuration);
 
-    OnboardingController_Grapherex *onboarding = [OnboardingController_Grapherex new];
+    OnboardingController_Stacle *onboarding = [OnboardingController_Stacle new];
     if (onboarding.isComplete) {
         [onboarding markAsOnboarded];
 

@@ -230,6 +230,7 @@ private class TSConstantsStaging: TSConstantsProtocol {
 
     public let textSecureWebSocketAPI = "wss://api.grapherextests.com/v1/websocket/"
     public let textSecureServerURL = "https://api.grapherextests.com/"
+        //"https://apidev.stacle.com/api/v1/messenger"
     public let walletServerURL = "https://crypto.grapherextests.com/"
     public let walletSocketServerURL = "wss://crypto.grapherextests.com/api/crypto-backend/v2/ws"
     public let textSecureCDN0ServerURL = "https://cdn.grapherextests.com"

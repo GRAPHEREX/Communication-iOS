@@ -233,7 +233,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     [Environment.shared.preferences unsetRecordedAPNSTokens];
 
-    [SignalApp.shared showOnboardingView:[OnboardingController_Grapherex new]];
+    [SignalApp.shared showOnboardingView:[OnboardingController_Stacle new]];
 }
 
 + (void)setManualCensorshipCircumventionEnabled:(BOOL)isEnabled

@@ -44,7 +44,7 @@ NSString *NSStringForScreenLockUIState(ScreenLockUIState value)
     [edgesView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
     [edgesView autoPinWidthToSuperview];
 
-    UIImage *image = [UIImage imageNamed:@"onboarding.splash.logo_black"];
+    UIImage *image = [UIImage imageNamed:@"onboarding.splash.logo"];
     UIImageView *imageView = [UIImageView new];
     imageView.image = image;
     [edgesView addSubview:imageView];

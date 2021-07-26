@@ -454,3 +454,42 @@ public class AccountManager: NSObject {
         return Cryptography.generateRandomBytes(16).hexadecimalString
     }
 }
+
+// MARK: - Convenience methods for Stacle
+//extension AccountManager {
+//    func registerForStacle(uid: String, serverAuthToken: String, serverRefreshToken: String, tokenExpirationDate: Date, completion: @escaping (Bool)->Void) {
+//        var success = false
+//
+//        tsAccountManager.phoneNumberAwaitingVerification = uid
+//        tsAccountManager.uuidAwaitingVerification = UUID() // TODO: EShuman007 - get this uuid from server when it's implemented
+//
+//        StacleServerAuthenticator.shared.storeAuthToken(serverAuthToken,
+//                                                        refreshToken: serverRefreshToken,
+//                                                        expirationDate: tokenExpirationDate)
+//
+//        databaseStorage.write { transaction in
+//            self.tsAccountManager.setStoredServerAuthToken(serverAuthToken,
+//                                                           deviceId: OWSDevicePrimaryDeviceId,
+//                                                           transaction: transaction)
+//            self.tsAccountManager.setIsOnboarded(true, transaction: transaction)
+//            self.tsAccountManager.setStacleDeviceId(Device.current.id, transaction: transaction)
+//        }
+//
+//        firstly {
+//            self.createPreKeys()
+//        }.done {
+//            success = true
+//            self.completeRegistration()
+//
+//            if let userName = uid.components(separatedBy: "@").first {
+//                OWSProfileManager.updateLocalProfilePromise(profileGivenName: userName.ows_stripped(), profileFamilyName: nil, profileBio: nil, profileBioEmoji: nil, profileAvatarData: nil).catch { _ in }
+//            }
+//
+//        }.catch { error in
+//            success = false
+//            Logger.debug(error.localizedDescription)
+//        }.finally {
+//            completion(success)
+//        }
+//    }
+//}

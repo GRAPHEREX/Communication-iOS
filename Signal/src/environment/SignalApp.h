@@ -6,7 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class OnboardingController_Grapherex;
+@class OnboardingController_Stacle;
 @class SignalServiceAddress;
 @class TSThread;
 @class RootViewController;
@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)resetAppData;
 
-- (void)showOnboardingView:(OnboardingController_Grapherex *)onboardingController;
+- (void)showOnboardingView:(OnboardingController_Stacle *)onboardingController;
 - (void)showConversationSplitView;
 - (void)ensureRootViewController:(NSTimeInterval)launchStartedAt;
 - (BOOL)receivedVerificationCode:(NSString *)verificationCode;

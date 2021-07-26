@@ -3,7 +3,7 @@ import PromiseKit
 import SafariServices
 
 @objc
-public class OnboardingSplashViewController_Grapherex: OnboardingBaseViewController_Grapherex {
+public class OnboardingSplashViewController_Stacle: OnboardingBaseViewController_Stacle {
 
     let modeSwitchButton = UIButton()
 
