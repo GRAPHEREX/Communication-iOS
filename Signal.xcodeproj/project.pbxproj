@@ -391,6 +391,28 @@
 		3A34ED8426AECA080047EFA0 /* OnboardingSplashViewController_Stacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13F95F269F494200427DC2 /* OnboardingSplashViewController_Stacle.swift */; };
 		3A34ED8A26AECA0E0047EFA0 /* OnboardingUserIdViewController_Stacle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A13F954269F45F000427DC2 /* OnboardingUserIdViewController_Stacle.storyboard */; };
 		3A34ED9726AED6EC0047EFA0 /* OnboardingPermissionsViewController_Stacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34ED9626AED6EC0047EFA0 /* OnboardingPermissionsViewController_Stacle.swift */; };
+		3A34EDA126AEDAB70047EFA0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34ED9E26AEDAB70047EFA0 /* NetworkService.swift */; };
+		3A34EDA226AEDAB70047EFA0 /* NetworkServiceHttpTransportCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34ED9F26AEDAB70047EFA0 /* NetworkServiceHttpTransportCoder.swift */; };
+		3A34EDAD26AEE0AC0047EFA0 /* DefaultAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDAA26AEE0AC0047EFA0 /* DefaultAuthorizationManager.swift */; };
+		3A34EDAE26AEE0AD0047EFA0 /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDAB26AEE0AC0047EFA0 /* AuthorizationError.swift */; };
+		3A34EDAF26AEE0AD0047EFA0 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDAC26AEE0AC0047EFA0 /* AuthorizationManager.swift */; };
+		3A34EDC126AEE1290047EFA0 /* VerifyCodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDBD26AEE1290047EFA0 /* VerifyCodeOperation.swift */; };
+		3A34EDC226AEE1290047EFA0 /* SetPasswordOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDBE26AEE1290047EFA0 /* SetPasswordOperation.swift */; };
+		3A34EDC326AEE1290047EFA0 /* RefreshAccessTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDBF26AEE1290047EFA0 /* RefreshAccessTokenOperation.swift */; };
+		3A34EDC426AEE1290047EFA0 /* GetAccessTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDC026AEE1290047EFA0 /* GetAccessTokenOperation.swift */; };
+		3A34EDD726AEE18B0047EFA0 /* HttpTransportCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDCB26AEE18B0047EFA0 /* HttpTransportCoder.swift */; };
+		3A34EDD826AEE18B0047EFA0 /* HttpTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDCC26AEE18B0047EFA0 /* HttpTransport.swift */; };
+		3A34EDD926AEE18B0047EFA0 /* HttpAuthenticationScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDCD26AEE18B0047EFA0 /* HttpAuthenticationScheme.swift */; };
+		3A34EDDA26AEE18B0047EFA0 /* UriScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDCE26AEE18B0047EFA0 /* UriScheme.swift */; };
+		3A34EDDB26AEE18B0047EFA0 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDCF26AEE18B0047EFA0 /* HttpRequest.swift */; };
+		3A34EDDC26AEE18B0047EFA0 /* HttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDD026AEE18B0047EFA0 /* HttpResponse.swift */; };
+		3A34EDDD26AEE18B0047EFA0 /* HttpHeaderFieldName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDD126AEE18B0047EFA0 /* HttpHeaderFieldName.swift */; };
+		3A34EDDE26AEE18B0047EFA0 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDD226AEE18B0047EFA0 /* HttpMethod.swift */; };
+		3A34EDDF26AEE18B0047EFA0 /* HttpTransportError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDD326AEE18B0047EFA0 /* HttpTransportError.swift */; };
+		3A34EDE026AEE18B0047EFA0 /* MediaTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDD426AEE18B0047EFA0 /* MediaTypeName.swift */; };
+		3A34EDE126AEE18B0047EFA0 /* HttpTransportCoderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDD526AEE18B0047EFA0 /* HttpTransportCoderError.swift */; };
+		3A34EDE226AEE18B0047EFA0 /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDD626AEE18B0047EFA0 /* HttpStatusCode.swift */; };
+		3A34EDEA26AEE2380047EFA0 /* CryptoAuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDE926AEE2380047EFA0 /* CryptoAuthError.swift */; };
 		4503F1BE20470A5B00CEE724 /* classic-quiet.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 4503F1BB20470A5B00CEE724 /* classic-quiet.aifc */; };
 		4503F1BF20470A5B00CEE724 /* classic.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 4503F1BC20470A5B00CEE724 /* classic.aifc */; };
 		450998651FD8A34D00D89EB3 /* DeviceSleepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348F2EAD1F0D21BC00D4ECE0 /* DeviceSleepManager.swift */; };
@@ -1557,6 +1579,28 @@
 		3A34ED1026AEC1250047EFA0 /* OnboardingPinAttemptsExhaustedViewController_Stacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPinAttemptsExhaustedViewController_Stacle.swift; sourceTree = "<group>"; };
 		3A34ED3626AEC78D0047EFA0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		3A34ED9626AED6EC0047EFA0 /* OnboardingPermissionsViewController_Stacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController_Stacle.swift; sourceTree = "<group>"; };
+		3A34ED9E26AEDAB70047EFA0 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		3A34ED9F26AEDAB70047EFA0 /* NetworkServiceHttpTransportCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceHttpTransportCoder.swift; sourceTree = "<group>"; };
+		3A34EDAA26AEE0AC0047EFA0 /* DefaultAuthorizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAuthorizationManager.swift; sourceTree = "<group>"; };
+		3A34EDAB26AEE0AC0047EFA0 /* AuthorizationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationError.swift; path = "../New Group/AuthorizationError.swift"; sourceTree = "<group>"; };
+		3A34EDAC26AEE0AC0047EFA0 /* AuthorizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
+		3A34EDBD26AEE1290047EFA0 /* VerifyCodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeOperation.swift; sourceTree = "<group>"; };
+		3A34EDBE26AEE1290047EFA0 /* SetPasswordOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPasswordOperation.swift; sourceTree = "<group>"; };
+		3A34EDBF26AEE1290047EFA0 /* RefreshAccessTokenOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshAccessTokenOperation.swift; sourceTree = "<group>"; };
+		3A34EDC026AEE1290047EFA0 /* GetAccessTokenOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAccessTokenOperation.swift; sourceTree = "<group>"; };
+		3A34EDCB26AEE18B0047EFA0 /* HttpTransportCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTransportCoder.swift; sourceTree = "<group>"; };
+		3A34EDCC26AEE18B0047EFA0 /* HttpTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTransport.swift; sourceTree = "<group>"; };
+		3A34EDCD26AEE18B0047EFA0 /* HttpAuthenticationScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpAuthenticationScheme.swift; sourceTree = "<group>"; };
+		3A34EDCE26AEE18B0047EFA0 /* UriScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UriScheme.swift; sourceTree = "<group>"; };
+		3A34EDCF26AEE18B0047EFA0 /* HttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		3A34EDD026AEE18B0047EFA0 /* HttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpResponse.swift; sourceTree = "<group>"; };
+		3A34EDD126AEE18B0047EFA0 /* HttpHeaderFieldName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpHeaderFieldName.swift; sourceTree = "<group>"; };
+		3A34EDD226AEE18B0047EFA0 /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		3A34EDD326AEE18B0047EFA0 /* HttpTransportError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTransportError.swift; sourceTree = "<group>"; };
+		3A34EDD426AEE18B0047EFA0 /* MediaTypeName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTypeName.swift; sourceTree = "<group>"; };
+		3A34EDD526AEE18B0047EFA0 /* HttpTransportCoderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTransportCoderError.swift; sourceTree = "<group>"; };
+		3A34EDD626AEE18B0047EFA0 /* HttpStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
+		3A34EDE926AEE2380047EFA0 /* CryptoAuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAuthError.swift; sourceTree = "<group>"; };
 		4224D4E5D7921F25823ECDCA /* Pods-SignalPerformanceTests.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalPerformanceTests.testable release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalPerformanceTests/Pods-SignalPerformanceTests.testable release.xcconfig"; sourceTree = "<group>"; };
 		435EAC2E5E22D3F087EB3192 /* Pods-SignalShareExtension.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalShareExtension.app store release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalShareExtension/Pods-SignalShareExtension.app store release.xcconfig"; sourceTree = "<group>"; };
 		4503F1BB20470A5B00CEE724 /* classic-quiet.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "classic-quiet.aifc"; sourceTree = "<group>"; };
@@ -3246,21 +3290,14 @@
 		3A13F876269EF65600427DC2 /* StacleFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				3A34EDBB26AEE0EF0047EFA0 /* Models */,
+				3A34EDA826AEE08F0047EFA0 /* Managers */,
+				3A13F93C269F034F00427DC2 /* Utils */,
 				3A34ED3526AEC7710047EFA0 /* Resources */,
 				3A13F951269F3CF400427DC2 /* Services */,
 				3A13F950269F3CE100427DC2 /* UI */,
-				3A13F887269EFD7400427DC2 /* StacleKit */,
 			);
 			path = StacleFoundation;
-			sourceTree = "<group>";
-		};
-		3A13F887269EFD7400427DC2 /* StacleKit */ = {
-			isa = PBXGroup;
-			children = (
-				3A13F93C269F034F00427DC2 /* Utils */,
-				3A13F92F269F029C00427DC2 /* Extensions */,
-			);
-			path = StacleKit;
 			sourceTree = "<group>";
 		};
 		3A13F92F269F029C00427DC2 /* Extensions */ = {
@@ -3274,6 +3311,8 @@
 		3A13F93C269F034F00427DC2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3A34EDCA26AEE18B0047EFA0 /* HTTP */,
+				3A13F92F269F029C00427DC2 /* Extensions */,
 				3A13F93D269F035E00427DC2 /* CurrentValuePublisher.swift */,
 				3A13F949269F0F8A00427DC2 /* Device.swift */,
 			);
@@ -3291,6 +3330,7 @@
 		3A13F951269F3CF400427DC2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3A34ED9D26AEDAB70047EFA0 /* Network */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -3385,6 +3425,88 @@
 				3A34ED9626AED6EC0047EFA0 /* OnboardingPermissionsViewController_Stacle.swift */,
 			);
 			path = Permissions;
+			sourceTree = "<group>";
+		};
+		3A34ED9D26AEDAB70047EFA0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3A34ED9E26AEDAB70047EFA0 /* NetworkService.swift */,
+				3A34ED9F26AEDAB70047EFA0 /* NetworkServiceHttpTransportCoder.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3A34EDA826AEE08F0047EFA0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3A34EDA926AEE0AC0047EFA0 /* Authorization */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		3A34EDA926AEE0AC0047EFA0 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				3A34EDB526AEE0B30047EFA0 /* Models */,
+				3A34EDAA26AEE0AC0047EFA0 /* DefaultAuthorizationManager.swift */,
+				3A34EDAC26AEE0AC0047EFA0 /* AuthorizationManager.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		3A34EDB526AEE0B30047EFA0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A34EDAB26AEE0AC0047EFA0 /* AuthorizationError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3A34EDBB26AEE0EF0047EFA0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A34EDE826AEE22B0047EFA0 /* Errors */,
+				3A34EDBC26AEE1290047EFA0 /* Operations */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3A34EDBC26AEE1290047EFA0 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				3A34EDBD26AEE1290047EFA0 /* VerifyCodeOperation.swift */,
+				3A34EDBE26AEE1290047EFA0 /* SetPasswordOperation.swift */,
+				3A34EDBF26AEE1290047EFA0 /* RefreshAccessTokenOperation.swift */,
+				3A34EDC026AEE1290047EFA0 /* GetAccessTokenOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		3A34EDCA26AEE18B0047EFA0 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				3A34EDCB26AEE18B0047EFA0 /* HttpTransportCoder.swift */,
+				3A34EDCC26AEE18B0047EFA0 /* HttpTransport.swift */,
+				3A34EDCD26AEE18B0047EFA0 /* HttpAuthenticationScheme.swift */,
+				3A34EDCE26AEE18B0047EFA0 /* UriScheme.swift */,
+				3A34EDCF26AEE18B0047EFA0 /* HttpRequest.swift */,
+				3A34EDD026AEE18B0047EFA0 /* HttpResponse.swift */,
+				3A34EDD126AEE18B0047EFA0 /* HttpHeaderFieldName.swift */,
+				3A34EDD226AEE18B0047EFA0 /* HttpMethod.swift */,
+				3A34EDD326AEE18B0047EFA0 /* HttpTransportError.swift */,
+				3A34EDD426AEE18B0047EFA0 /* MediaTypeName.swift */,
+				3A34EDD526AEE18B0047EFA0 /* HttpTransportCoderError.swift */,
+				3A34EDD626AEE18B0047EFA0 /* HttpStatusCode.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		3A34EDE826AEE22B0047EFA0 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				3A34EDE926AEE2380047EFA0 /* CryptoAuthError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		450DF2061E0DD28D003D14BE /* UserInterface */ = {
@@ -6000,6 +6122,7 @@
 				F2E97D42261CD11B00EA9BDA /* NSButton+WebCache.m in Sources */,
 				3470518C254B320700A19468 /* CVRenderState.swift in Sources */,
 				4CC0B59C20EC5F2E00CF6EE0 /* ConversationConfigurationSyncOperation.swift in Sources */,
+				3A34EDDB26AEE18B0047EFA0 /* HttpRequest.swift in Sources */,
 				3434AE1C22AEDE7D002EE04E /* ViewOnceMessageViewController.swift in Sources */,
 				F2E98046261FAD4A00EA9BDA /* TurnServerInfo.swift in Sources */,
 				F25BBD3F261CB73A005DDC3B /* ProfileBioViewController.swift in Sources */,
@@ -6037,6 +6160,7 @@
 				88C4E38024635337009C9B97 /* DeviceTransferService.swift in Sources */,
 				348EE28F25B897BF00814FC2 /* ReusableMediaView.swift in Sources */,
 				F2E9803E261FAD4A00EA9BDA /* CallButton.swift in Sources */,
+				3A34EDAD26AEE0AC0047EFA0 /* DefaultAuthorizationManager.swift in Sources */,
 				34D1F0501F7D45A60066283D /* GifPickerCell.swift in Sources */,
 				F2E97D5D261CD11B00EA9BDA /* SDWebImageDownloaderRequestModifier.m in Sources */,
 				F2E97D3D261CD11B00EA9BDA /* SDImageAPNGCoder.m in Sources */,
@@ -6067,6 +6191,7 @@
 				F2E97D5F261CD11B00EA9BDA /* SDImageCachesManagerOperation.m in Sources */,
 				4C68FDAE2385F5A4002576B1 /* DebugUIDataStoreViewController.swift in Sources */,
 				F2E97C82261CCF7C00EA9BDA /* AttachmentToggleButton.swift in Sources */,
+				3A34EDD726AEE18B0047EFA0 /* HttpTransportCoder.swift in Sources */,
 				4CD675C522E7CF22008010D2 /* ConversationViewController+OWS.swift in Sources */,
 				F2E97D58261CD11B00EA9BDA /* SDWebImageOptionsProcessor.m in Sources */,
 				F2E97BC8261CBE8800EA9BDA /* UIViewController + Toast.swift in Sources */,
@@ -6086,6 +6211,7 @@
 				88A4CC0E246CD6CC0082211F /* OnboardingTransferProgressViewController.swift in Sources */,
 				4C0C36F8226647FE0083F19A /* ThreadMapping.swift in Sources */,
 				F2E97D2C261CD11B00EA9BDA /* UIImageView+HighlightedWebCache.m in Sources */,
+				3A34EDDD26AEE18B0047EFA0 /* HttpHeaderFieldName.swift in Sources */,
 				F2E97D36261CD11B00EA9BDA /* SDWebImageIndicator.m in Sources */,
 				34B14D8D24F02A9600CC3A9A /* GroupLinkViewController.swift in Sources */,
 				34D2CCE0206939B400CB1A14 /* DebugUIMessagesAssetLoader.m in Sources */,
@@ -6107,9 +6233,11 @@
 				F25BBD12261CB70A005DDC3B /* OWSLinkDeviceViewController.m in Sources */,
 				F217437B25CAEA9E00BC9476 /* String + Extension.swift in Sources */,
 				F2E97D25261CD11B00EA9BDA /* NSImage+Compatibility.m in Sources */,
+				3A34EDD826AEE18B0047EFA0 /* HttpTransport.swift in Sources */,
 				4C20B2B920CA10DE001BAC90 /* ConversationSearchViewController.swift in Sources */,
 				345772B6257E4E01001D7D44 /* CVViewStateSnapshot.swift in Sources */,
 				34386A54207D271D009F5D9C /* NeverClearView.swift in Sources */,
+				3A34EDC426AEE1290047EFA0 /* GetAccessTokenOperation.swift in Sources */,
 				88A505F423DA16E10005C012 /* ExperienceUpgradeManager.swift in Sources */,
 				F25BBD41261CB73B005DDC3B /* UsernameViewController.swift in Sources */,
 				F296F9AE25E796BA00B89378 /* PhotoGridViewCell.swift in Sources */,
@@ -6159,6 +6287,7 @@
 				3490D57F25ADE49800F5F96C /* ActionSheetContentBuilder.swift in Sources */,
 				347C3845252CE6C900F3D941 /* CVComponentQuotedReply.swift in Sources */,
 				88A357B923639384009D6B9A /* MemberActionSheet.swift in Sources */,
+				3A34EDA226AEDAB70047EFA0 /* NetworkServiceHttpTransportCoder.swift in Sources */,
 				3A34ED9726AED6EC0047EFA0 /* OnboardingPermissionsViewController_Stacle.swift in Sources */,
 				34B0796D1FCF46B100E248C2 /* MainAppContext.m in Sources */,
 				34E3EF101EFC2684007F6822 /* DebugUIPage.m in Sources */,
@@ -6166,6 +6295,7 @@
 				F217438925CAEA9E00BC9476 /* User.swift in Sources */,
 				887889B1247F2E72001B5FCF /* Emoji+Category.swift in Sources */,
 				34A8B3512190A40E00218A25 /* CVMediaAlbumView.swift in Sources */,
+				3A34EDE026AEE18B0047EFA0 /* MediaTypeName.swift in Sources */,
 				4C4AEC4520EC343B0020E72B /* DismissableTextField.swift in Sources */,
 				4CB5F26720F6E1E2004D1B42 /* MessageActionsViewController.swift in Sources */,
 				F2E97D4D261CD11B00EA9BDA /* SDImageCachesManager.m in Sources */,
@@ -6184,6 +6314,7 @@
 				8835DE01230DBF7E00DC6B66 /* ComposeViewController.swift in Sources */,
 				34A17D81253F7237009F8C02 /* ConversationSettingsViewController+LegacyGroups.swift in Sources */,
 				452037D11EE84975004E4CDF /* DebugUISessionState.m in Sources */,
+				3A34EDAF26AEE0AD0047EFA0 /* AuthorizationManager.swift in Sources */,
 				F2E97D63261CD11B00EA9BDA /* SDInternalMacros.m in Sources */,
 				88A4CC12246CE2F50082211F /* QRCodeView.swift in Sources */,
 				D221A09A169C9E5E00537ABF /* main.m in Sources */,
@@ -6199,6 +6330,7 @@
 				341D392925472F3B00996E7B /* CVViewState.swift in Sources */,
 				F2BC1AD42602532100ABE62A /* NetworkInterfacePreferenceViewController.swift in Sources */,
 				F2E97D39261CD11B00EA9BDA /* SDImageCodersManager.m in Sources */,
+				3A34EDEA26AEE2380047EFA0 /* CryptoAuthError.swift in Sources */,
 				F2BC1AD32602532100ABE62A /* MediaDownloadSettingsViewController.swift in Sources */,
 				45638BDC1F3DD0D400128435 /* DebugUICalling.swift in Sources */,
 				F2E9802E261FAD4A00EA9BDA /* GroupCallRemoteVideoManager.swift in Sources */,
@@ -6207,13 +6339,16 @@
 				F2D7200825FA4A19008105BA /* ChatsSettingsViewController.swift in Sources */,
 				34D1F0521F7E8EA30066283D /* GiphyDownloader.swift in Sources */,
 				F296F9CB25E7997F00B89378 /* MediaGalleryDate.swift in Sources */,
+				3A34EDDE26AEE18B0047EFA0 /* HttpMethod.swift in Sources */,
 				34995F1B2411838D00C70546 /* NewGroupMembersViewController.swift in Sources */,
+				3A34EDDF26AEE18B0047EFA0 /* HttpTransportError.swift in Sources */,
 				340FC8BC204DAC8D007AEB0F /* FingerprintViewController.m in Sources */,
 				F2E97D59261CD11B00EA9BDA /* UIView+WebCacheOperation.m in Sources */,
 				34A4C61E221613D00042EF2E /* OnboardingVerificationViewController.swift in Sources */,
 				F2E97D2B261CD11B00EA9BDA /* SDImageIOAnimatedCoder.m in Sources */,
 				F296F9C925E7997F00B89378 /* MediaGalleryItem.swift in Sources */,
 				884EFBAC251478D0006B9457 /* ResearchMegaphone.swift in Sources */,
+				3A34EDDA26AEE18B0047EFA0 /* UriScheme.swift in Sources */,
 				3A12E0992656E7FD0033D049 /* TSAccountManager + WalletConfiguration.swift in Sources */,
 				4CC613362227A00400E21A3A /* ConversationSearch.swift in Sources */,
 				F2E97D53261CD11B00EA9BDA /* SDImageCacheDefine.m in Sources */,
@@ -6239,6 +6374,7 @@
 				88238EB824F20F1600F28079 /* EmojiWithSkinTones.swift in Sources */,
 				45C0DC1E1E69011F00E04C47 /* UIStoryboard+OWS.swift in Sources */,
 				F2BC1AC62602531100ABE62A /* DeleteAccountConfirmationViewController.swift in Sources */,
+				3A34EDAE26AEE0AD0047EFA0 /* AuthorizationError.swift in Sources */,
 				F25BBD30261CB730005DDC3B /* PhoneNumberSharingSettingsTableViewController.swift in Sources */,
 				F217438A25CAEA9E00BC9476 /* Call.swift in Sources */,
 				F2E97D34261CD11B00EA9BDA /* SDImageLoader.m in Sources */,
@@ -6247,6 +6383,7 @@
 				3470C87A2555DE5F00F5847C /* CVComponentContactShare.swift in Sources */,
 				F25BBD05261CB6F6005DDC3B /* TestingViewController.swift in Sources */,
 				F217451725CAF58800BC9476 /* SecondaryEmptyStateView.swift in Sources */,
+				3A34EDE226AEE18B0047EFA0 /* HttpStatusCode.swift in Sources */,
 				F25BBD42261CB73B005DDC3B /* ProfileSettingsViewController.swift in Sources */,
 				F21743F425CAEA9F00BC9476 /* OnboardingBaseViewController_Grapherex.swift in Sources */,
 				886BB3D225BA0C9D00079781 /* PreviewWallpaperViewController.swift in Sources */,
@@ -6262,15 +6399,18 @@
 				348815C2255341F300D4F4C4 /* CVComponentAudioAttachment.swift in Sources */,
 				F217440D25CAEA9F00BC9476 /* ContactsMainController.swift in Sources */,
 				347C384B252D085900F3D941 /* CVComponentUnreadIndicator.swift in Sources */,
+				3A34EDDC26AEE18B0047EFA0 /* HttpResponse.swift in Sources */,
 				4CA485BB2232339F004B9E7D /* PhotoCaptureViewController.swift in Sources */,
 				F2E97D41261CD11B00EA9BDA /* SDImageCoderHelper.m in Sources */,
 				34235F3824213550008C74CB /* ConversationSettingsViewController.swift in Sources */,
 				3A34ED7826AEC9BA0047EFA0 /* OnboardingController_Stacle.swift in Sources */,
+				3A34EDA126AEDAB70047EFA0 /* NetworkService.swift in Sources */,
 				3448E16422135FFA004B052E /* OnboardingPhoneNumberViewController.swift in Sources */,
 				F25BBD31261CB730005DDC3B /* PrivacySettingsViewController.swift in Sources */,
 				8829883C25B9FD9E00DEE1E3 /* MockConversationView.swift in Sources */,
 				34330AA31E79686200DF2FB9 /* OWSProgressView.m in Sources */,
 				F2E97D65261CD11B00EA9BDA /* NSBezierPath+SDRoundedCorners.m in Sources */,
+				3A34EDC326AEE1290047EFA0 /* RefreshAccessTokenOperation.swift in Sources */,
 				886BB3D325BA0CA400079781 /* SetWallpaperViewController.swift in Sources */,
 				F2E97BD4261CC0E200EA9BDA /* EmptyStateView.swift in Sources */,
 				887CD47D2473051D00FDD265 /* DeviceTransferService+Manifest.swift in Sources */,
@@ -6291,6 +6431,7 @@
 				327CF66825ACE7DD00DA0A6F /* GetStartedBannerViewController.swift in Sources */,
 				88A941992409A391000E9700 /* LottieToggleButton.swift in Sources */,
 				F217441025CAEA9F00BC9476 /* Image + Extension.swift in Sources */,
+				3A34EDC226AEE1290047EFA0 /* SetPasswordOperation.swift in Sources */,
 				3448E15C22133274004B052E /* OnboardingPermissionsViewController.swift in Sources */,
 				8837F74123DA0B0F00772A32 /* MegaphoneView.swift in Sources */,
 				F2E98031261FAD4A00EA9BDA /* GroupCallNotificationView.swift in Sources */,
@@ -6319,6 +6460,7 @@
 				34B6A903218B3F63007C4606 /* TypingIndicatorView.swift in Sources */,
 				F217440F25CAEA9F00BC9476 /* QRCreator.swift in Sources */,
 				F2155ADE25CFFBF10089AA63 /* ProvisioningController_Grapherex.swift in Sources */,
+				3A34EDD926AEE18B0047EFA0 /* HttpAuthenticationScheme.swift in Sources */,
 				F21743FD25CAEA9F00BC9476 /* OnboardingCodeView_old.swift in Sources */,
 				3A13F94A269F0F8A00427DC2 /* Device.swift in Sources */,
 				8855DF89238F2E690066D96F /* EmojiCountsCollectionView.swift in Sources */,
@@ -6397,6 +6539,7 @@
 				F217437725CAEA9E00BC9476 /* Array + Extension.swift in Sources */,
 				887CD47B247304B600FDD265 /* DeviceTransferService+URL.swift in Sources */,
 				F2BC1AC82602531100ABE62A /* AppearanceSettingsTableViewController.swift in Sources */,
+				3A34EDE126AEE18B0047EFA0 /* HttpTransportCoderError.swift in Sources */,
 				F217438825CAEA9E00BC9476 /* CallSet.swift in Sources */,
 				34798A8525AF370D00EC89B4 /* ProfileViewController.swift in Sources */,
 				888B6D4225B16F3500E2A662 /* SharingSuggestionsMegaphone.swift in Sources */,
@@ -6451,6 +6594,7 @@
 				347C3842252CE6C900F3D941 /* CVComponentMessage.swift in Sources */,
 				F2E97D27261CD11B00EA9BDA /* SDImageCoder.m in Sources */,
 				F21743ED25CAEA9F00BC9476 /* ProfileRegistrationViewController.m in Sources */,
+				3A34EDC126AEE1290047EFA0 /* VerifyCodeOperation.swift in Sources */,
 				887889A52476E999001B5FCF /* OWSPinConfirmationViewController.swift in Sources */,
 				F2E97D28261CD11B00EA9BDA /* SDWebImageOperation.m in Sources */,
 				F2E98040261FAD4A00EA9BDA /* NonCallKitCallUIAdaptee.swift in Sources */,
