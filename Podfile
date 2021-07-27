@@ -73,8 +73,8 @@ pod 'BonMot', inhibit_warnings: true
 # For catalyst we need to be on master until 3.6.7 or later is released
 pod 'ZXingObjC', git: 'https://github.com/zxingify/zxingify-objc.git', inhibit_warnings: true, binary: true
 
-target 'Signal' do
-  project 'Signal.xcodeproj', 'Debug' => :debug, 'Release' => :release
+target 'Stacle' do
+  project 'Stacle.xcodeproj', 'Debug' => :debug, 'Release' => :release
 
   # Pods only available inside the main Signal app
   pod 'SSZipArchive', :inhibit_warnings => true
@@ -82,17 +82,17 @@ target 'Signal' do
   pod 'AppsFlyerFramework', inhibit_warnings: true
   pod 'CryptoWallet', git: 'https://github.com/grapherex/CryptoWallet.git', branch: 'develop', inhibit_warnings: true
 
-  target 'SignalTests' do
+  target 'StacleTests' do
     inherit! :search_paths
   end
 
-  target 'SignalPerformanceTests' do
+  target 'StaclePerformanceTests' do
     inherit! :search_paths
   end
 end
 
 # These extensions inherit all of the pods
-target 'SignalShareExtension'
+target 'StacleShareExtension'
 target 'SignalMessaging'
 target 'NotificationServiceExtension'
 
@@ -103,7 +103,7 @@ post_install do |installer|
   configure_testable_build(installer)
   disable_bitcode(installer)
   disable_non_development_pod_warnings(installer)
-  copy_acknowledgements
+  #copy_acknowledgements
   fix_deployment_target(installer)
 end
 
@@ -210,11 +210,11 @@ def disable_non_development_pod_warnings(installer)
   end
 end
 
-def copy_acknowledgements
-  raw_acknowledgements = File.read('Pods/Target Support Files/Pods-Signal/Pods-Signal-Acknowledgements.plist')
-  formatted_acknowledgements = raw_acknowledgements.gsub(/(?<!>)(?<!\n)\n( *)(?![ \*])(?![ -])(?!\n)(?!<)/, ' ')
-  File.open('Signal/Settings.bundle/Acknowledgements.plist', "w") { |file| file.puts formatted_acknowledgements }
-end
+# def copy_acknowledgements
+#   raw_acknowledgements = File.read('Pods/Target Support Files/Pods-Stacle/Pods-Stacle-Acknowledgements.plist')
+#   formatted_acknowledgements = raw_acknowledgements.gsub(/(?<!>)(?<!\n)\n( *)(?![ \*])(?![ -])(?!\n)(?!<)/, ' ')
+#   File.open('Stacle/Settings.bundle/Acknowledgements.plist', "w") { |file| file.puts formatted_acknowledgements }
+# end
 
 def fix_deployment_target(installer)
   installer.pods_project.targets.each do |target|
