@@ -92,7 +92,7 @@ target 'Stacle' do
 end
 
 # These extensions inherit all of the pods
-target 'StacleShareExtension'
+target 'AppShareExtension'
 target 'StacleMessaging'
 target 'NotificationServiceExtension'
 

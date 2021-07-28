@@ -446,7 +446,7 @@
 		452D1AF12081059C00A67F7F /* StringAdditionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452D1AF02081059C00A67F7F /* StringAdditionsTest.swift */; };
 		4535186B1FC635DD00210559 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535186A1FC635DD00210559 /* ShareViewController.swift */; };
 		4535186E1FC635DD00210559 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4535186C1FC635DD00210559 /* MainInterface.storyboard */; };
-		453518721FC635DD00210559 /* StacleShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 453518681FC635DD00210559 /* StacleShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		453518721FC635DD00210559 /* AppShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 453518681FC635DD00210559 /* AppShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		453518961FC63DBF00210559 /* StacleMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 453518941FC63DBF00210559 /* StacleMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		453518991FC63DBF00210559 /* StacleMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453518921FC63DBF00210559 /* StacleMessaging.framework */; };
 		4535189A1FC63DBF00210559 /* StacleMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 453518921FC63DBF00210559 /* StacleMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -1116,7 +1116,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				882E0B7723C7BD1900E8CE49 /* NotificationServiceExtension.appex in Embed App Extensions */,
-				453518721FC635DD00210559 /* StacleShareExtension.appex in Embed App Extensions */,
+				453518721FC635DD00210559 /* AppShareExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1241,8 +1241,8 @@
 		343D3D9A1E9283F100165CA4 /* BlockListUIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockListUIUtils.m; sourceTree = "<group>"; };
 		34480B341FD0929200BC14EF /* ShareAppExtensionContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareAppExtensionContext.h; sourceTree = "<group>"; };
 		34480B351FD0929200BC14EF /* ShareAppExtensionContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareAppExtensionContext.m; sourceTree = "<group>"; };
-		34480B371FD092A900BC14EF /* SignalShareExtension-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SignalShareExtension-Bridging-Header.h"; sourceTree = "<group>"; };
-		34480B381FD092E300BC14EF /* SignalShareExtension-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SignalShareExtension-Prefix.pch"; sourceTree = "<group>"; };
+		34480B371FD092A900BC14EF /* AppShareExtension-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppShareExtension-Bridging-Header.h"; sourceTree = "<group>"; };
+		34480B381FD092E300BC14EF /* AppShareExtension-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppShareExtension-Prefix.pch"; sourceTree = "<group>"; };
 		34480B4D1FD0A7A300BC14EF /* DebugLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLogger.h; sourceTree = "<group>"; };
 		34480B4E1FD0A7A300BC14EF /* DebugLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLogger.m; sourceTree = "<group>"; };
 		34480B4F1FD0A7A300BC14EF /* OWSScrubbingLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSScrubbingLogFormatter.h; sourceTree = "<group>"; };
@@ -1457,7 +1457,7 @@
 		34AC0A0D211B39EA00997B47 /* ThreadViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadViewHelper.h; sourceTree = "<group>"; };
 		34B0796B1FCF46B000E248C2 /* MainAppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAppContext.m; sourceTree = "<group>"; };
 		34B0796C1FCF46B000E248C2 /* MainAppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAppContext.h; sourceTree = "<group>"; };
-		34B0796E1FD07B1E00E248C2 /* SignalShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SignalShareExtension.entitlements; sourceTree = "<group>"; };
+		34B0796E1FD07B1E00E248C2 /* AppShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppShareExtension.entitlements; sourceTree = "<group>"; };
 		34B14D8A24F0012100CC3A9A /* GroupsPerfTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsPerfTest.swift; sourceTree = "<group>"; };
 		34B14D8C24F02A9500CC3A9A /* GroupLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLinkViewController.swift; sourceTree = "<group>"; };
 		34B14D8E24F41C4200CC3A9A /* GroupLinkQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLinkQRCodeViewController.swift; sourceTree = "<group>"; };
@@ -1620,7 +1620,7 @@
 		4523149F1F7E9E18003A428C /* DirectionalPanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionalPanGestureRecognizer.swift; sourceTree = "<group>"; };
 		452B998F20A34B6B006F2F9E /* AddContactShareToExistingContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactShareToExistingContactViewController.swift; sourceTree = "<group>"; };
 		452D1AF02081059C00A67F7F /* StringAdditionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAdditionsTest.swift; sourceTree = "<group>"; };
-		453518681FC635DD00210559 /* StacleShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StacleShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		453518681FC635DD00210559 /* AppShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AppShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4535186A1FC635DD00210559 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		4535186D1FC635DD00210559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		4535186F1FC635DD00210559 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1815,7 +1815,7 @@
 		881677C422DD2B21007BAF49 /* OWSPinReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWSPinReminderViewController.swift; sourceTree = "<group>"; };
 		881D85B722D92C2B00E118DF /* OWSPinSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWSPinSetupViewController.swift; sourceTree = "<group>"; };
 		881FF30623B5B1520023B620 /* Stacle-AppStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Stacle-AppStore.entitlements"; sourceTree = "<group>"; };
-		881FF30723B5B16F0023B620 /* SignalShareExtension-AppStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SignalShareExtension-AppStore.entitlements"; sourceTree = "<group>"; };
+		881FF30723B5B16F0023B620 /* AppShareExtension-AppStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "AppShareExtension-AppStore.entitlements"; sourceTree = "<group>"; };
 		8821334D2304E72700353626 /* NonContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonContactTableViewCell.swift; sourceTree = "<group>"; };
 		88238EAE24EB798900F28079 /* ConversationViewController+GestureRecognizers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationViewController+GestureRecognizers.swift"; sourceTree = "<group>"; };
 		88238EB024EE29F400F28079 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = translations/hr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -3558,7 +3558,7 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		453518691FC635DD00210559 /* SignalShareExtension */ = {
+		453518691FC635DD00210559 /* AppShareExtension */ = {
 			isa = PBXGroup;
 			children = (
 				4535186F1FC635DD00210559 /* Info.plist */,
@@ -3569,13 +3569,13 @@
 				34641E1E2088DA6D00E2EDE5 /* SAEScreenLockViewController.m */,
 				4535186A1FC635DD00210559 /* ShareViewController.swift */,
 				88EFF4FB25AD4230000FAFBA /* SharingThreadPickerViewController.swift */,
-				34480B371FD092A900BC14EF /* SignalShareExtension-Bridging-Header.h */,
-				34480B381FD092E300BC14EF /* SignalShareExtension-Prefix.pch */,
-				34B0796E1FD07B1E00E248C2 /* SignalShareExtension.entitlements */,
-				881FF30723B5B16F0023B620 /* SignalShareExtension-AppStore.entitlements */,
+				34480B371FD092A900BC14EF /* AppShareExtension-Bridging-Header.h */,
+				34480B381FD092E300BC14EF /* AppShareExtension-Prefix.pch */,
+				34B0796E1FD07B1E00E248C2 /* AppShareExtension.entitlements */,
+				881FF30723B5B16F0023B620 /* AppShareExtension-AppStore.entitlements */,
 				34480B2F1FD0921000BC14EF /* utils */,
 			);
-			path = SignalShareExtension;
+			path = AppShareExtension;
 			sourceTree = "<group>";
 		};
 		453518931FC63DBF00210559 /* StacleMessaging */ = {
@@ -4191,7 +4191,7 @@
 			isa = PBXGroup;
 			children = (
 				D221A093169C9E5E00537ABF /* Stacle */,
-				453518691FC635DD00210559 /* SignalShareExtension */,
+				453518691FC635DD00210559 /* AppShareExtension */,
 				453518931FC63DBF00210559 /* StacleMessaging */,
 				885AC56523AB42430077705E /* NotificationServiceExtension */,
 				D221A08C169C9E5E00537ABF /* Frameworks */,
@@ -4206,7 +4206,7 @@
 			children = (
 				D221A089169C9E5E00537ABF /* Stacle.app */,
 				D221A0AA169C9E5F00537ABF /* StacleTests.xctest */,
-				453518681FC635DD00210559 /* StacleShareExtension.appex */,
+				453518681FC635DD00210559 /* AppShareExtension.appex */,
 				453518921FC63DBF00210559 /* StacleMessaging.framework */,
 				4C10B1C323176D250099396B /* StaclePerformanceTests.xctest */,
 				885AC56423AB42430077705E /* NotificationServiceExtension.appex */,
@@ -5182,9 +5182,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		453518671FC635DD00210559 /* StacleShareExtension */ = {
+		453518671FC635DD00210559 /* AppShareExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 453518761FC635DD00210559 /* Build configuration list for PBXNativeTarget "StacleShareExtension" */;
+			buildConfigurationList = 453518761FC635DD00210559 /* Build configuration list for PBXNativeTarget "AppShareExtension" */;
 			buildPhases = (
 				9F2CB4F5A748FAFE5E46223F /* [CP] Check Pods Manifest.lock */,
 				453518641FC635DD00210559 /* Sources */,
@@ -5197,9 +5197,9 @@
 			dependencies = (
 				34480B3A1FD0950000BC14EF /* PBXTargetDependency */,
 			);
-			name = StacleShareExtension;
+			name = AppShareExtension;
 			productName = SignalShareExtension;
-			productReference = 453518681FC635DD00210559 /* StacleShareExtension.appex */;
+			productReference = 453518681FC635DD00210559 /* AppShareExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		453518911FC63DBF00210559 /* StacleMessaging */ = {
@@ -5487,7 +5487,7 @@
 			targets = (
 				D221A088169C9E5E00537ABF /* Stacle */,
 				D221A0A9169C9E5F00537ABF /* StacleTests */,
-				453518671FC635DD00210559 /* StacleShareExtension */,
+				453518671FC635DD00210559 /* AppShareExtension */,
 				453518911FC63DBF00210559 /* StacleMessaging */,
 				4C10B17F23176D250099396B /* StaclePerformanceTests */,
 				885AC56323AB42430077705E /* NotificationServiceExtension */,
@@ -6737,7 +6737,7 @@
 		};
 		453518711FC635DD00210559 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 453518671FC635DD00210559 /* StacleShareExtension */;
+			target = 453518671FC635DD00210559 /* AppShareExtension */;
 			targetProxy = 453518701FC635DD00210559 /* PBXContainerItemProxy */;
 		};
 		453518981FC63DBF00210559 /* PBXTargetDependency */ = {
@@ -6865,7 +6865,7 @@
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = SignalShareExtension/SignalShareExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AppShareExtension/AppShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
@@ -6877,10 +6877,10 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SignalShareExtension/StacleShareExtension-Prefix.pch";
+				GCC_PREFIX_HEADER = "AppShareExtension/AppShareExtension-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = SignalShareExtension/Info.plist;
+				INFOPLIST_FILE = AppShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6895,7 +6895,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Share Extension Dev";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "SignalShareExtension/SignalShareExtension-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppShareExtension/AppShareExtension-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -6932,7 +6932,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "SignalShareExtension/SignalShareExtension-AppStore.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "AppShareExtension/AppShareExtension-AppStore.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
@@ -6946,14 +6946,14 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SignalShareExtension/StacleShareExtension-Prefix.pch";
+				GCC_PREFIX_HEADER = "AppShareExtension/AppShareExtension-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = SignalShareExtension/Info.plist;
+				INFOPLIST_FILE = AppShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6968,7 +6968,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "SignalShareExtension/SignalShareExtension-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppShareExtension/AppShareExtension-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -7378,7 +7378,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = SignalShareExtension/SignalShareExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AppShareExtension/AppShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
@@ -7392,14 +7392,14 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SignalShareExtension/StacleShareExtension-Prefix.pch";
+				GCC_PREFIX_HEADER = "AppShareExtension/AppShareExtension-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = SignalShareExtension/Info.plist;
+				INFOPLIST_FILE = AppShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7415,7 +7415,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "SignalShareExtension/SignalShareExtension-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppShareExtension/AppShareExtension-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -7938,7 +7938,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = SignalShareExtension/SignalShareExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AppShareExtension/AppShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
@@ -7951,14 +7951,14 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SignalShareExtension/StacleShareExtension-Prefix.pch";
+				GCC_PREFIX_HEADER = "AppShareExtension/AppShareExtension-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = SignalShareExtension/Info.plist;
+				INFOPLIST_FILE = AppShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7973,7 +7973,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "SignalShareExtension/SignalShareExtension-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppShareExtension/AppShareExtension-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -8837,7 +8837,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		453518761FC635DD00210559 /* Build configuration list for PBXNativeTarget "StacleShareExtension" */ = {
+		453518761FC635DD00210559 /* Build configuration list for PBXNativeTarget "AppShareExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				453518731FC635DD00210559 /* Debug */,
