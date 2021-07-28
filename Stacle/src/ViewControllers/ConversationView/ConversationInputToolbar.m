@@ -10,8 +10,8 @@
 #import "UIFont+OWS.h"
 #import "ViewControllerUtils.h"
 #import <PromiseKit/AnyPromise.h>
-#import <StacleMessaging/StacleMessaging-Swift.h>
-#import <StacleMessaging/UIView+OWS.h>
+#import <AppMessaging/AppMessaging-Swift.h>
+#import <AppMessaging/UIView+OWS.h>
 #import <SignalServiceKit/NSTimer+OWS.h>
 #import <SignalServiceKit/OWSFormat.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>

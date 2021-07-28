@@ -4,7 +4,7 @@
 
 import XCTest
 @testable import Signal
-@testable import StacleMessaging
+@testable import AppMessaging
 
 extension ImageEditorModel {
     func itemIds() -> [String] {

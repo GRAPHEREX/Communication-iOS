@@ -4,11 +4,11 @@
 
 #import "OWSDeviceTableViewCell.h"
 #import "DateUtil.h"
-#import <StacleMessaging/OWSTableViewController.h>
-#import <StacleMessaging/StacleMessaging-Swift.h>
-#import <StacleMessaging/Theme.h>
-#import <StacleMessaging/UIFont+OWS.h>
-#import <StacleMessaging/UIView+OWS.h>
+#import <AppMessaging/OWSTableViewController.h>
+#import <AppMessaging/AppMessaging-Swift.h>
+#import <AppMessaging/Theme.h>
+#import <AppMessaging/UIFont+OWS.h>
+#import <AppMessaging/UIView+OWS.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

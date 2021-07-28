@@ -3,8 +3,8 @@
 //
 
 #import "ShareAppExtensionContext.h"
-#import <StacleMessaging/DebugLogger.h>
-#import <StacleMessaging/UIViewController+OWS.h>
+#import <AppMessaging/DebugLogger.h>
+#import <AppMessaging/UIViewController+OWS.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <SignalServiceKit/TSConstants.h>
 

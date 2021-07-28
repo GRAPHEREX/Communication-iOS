@@ -5,7 +5,7 @@
 import Foundation
 import QuickLook
 import SignalServiceKit
-import StacleMessaging
+import AppMessaging
 
 protocol MessageDetailViewDelegate: AnyObject {
     func detailViewMessageWasDeleted(_ messageDetailViewController: MessageDetailViewController)

@@ -5,9 +5,9 @@
 #import "OWSScreenLockUI.h"
 #import "OWSWindowManager.h"
 #import "Stacle-Swift.h"
-#import <StacleMessaging/ScreenLockViewController.h>
-#import <StacleMessaging/StacleMessaging-Swift.h>
-#import <StacleMessaging/UIView+OWS.h>
+#import <AppMessaging/ScreenLockViewController.h>
+#import <AppMessaging/AppMessaging-Swift.h>
+#import <AppMessaging/UIView+OWS.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

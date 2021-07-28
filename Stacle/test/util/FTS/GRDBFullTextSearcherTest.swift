@@ -5,7 +5,7 @@
 import XCTest
 import Contacts
 @testable import Signal
-@testable import StacleMessaging
+@testable import AppMessaging
 @testable import SignalServiceKit
 import Contacts
 

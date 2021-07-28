@@ -2,7 +2,7 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import <StacleMessaging/OWSViewController.h>
+#import <AppMessaging/OWSViewController.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

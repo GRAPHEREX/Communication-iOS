@@ -3,7 +3,7 @@
 //
 
 #import "ConversationInputToolbar.h"
-#import <StacleMessaging/OWSViewController.h>
+#import <AppMessaging/OWSViewController.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

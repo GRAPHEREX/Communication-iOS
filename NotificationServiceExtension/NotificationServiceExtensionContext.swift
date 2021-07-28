@@ -4,7 +4,7 @@
 
 import Foundation
 import SignalServiceKit
-import StacleMessaging
+import AppMessaging
 
 class NotificationServiceExtensionContext: NSObject, AppContext {
     let isMainApp = false

@@ -10,8 +10,8 @@
 #import <SignalCoreKit/Cryptography.h>
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalCoreKit/Randomness.h>
-#import <StacleMessaging/Environment.h>
-#import <StacleMessaging/OWSTableViewController.h>
+#import <AppMessaging/Environment.h>
+#import <AppMessaging/OWSTableViewController.h>
 #import <SignalServiceKit/OWSDynamicOutgoingMessage.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <SignalServiceKit/TSAccountManager.h>

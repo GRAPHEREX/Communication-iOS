@@ -5,9 +5,9 @@
 #import "MainAppContext.h"
 #import "Stacle-Swift.h"
 #import <SignalCoreKit/Threading.h>
-#import <StacleMessaging/Environment.h>
-#import <StacleMessaging/OWSProfileManager.h>
-#import <StacleMessaging/StacleMessaging-Swift.h>
+#import <AppMessaging/Environment.h>
+#import <AppMessaging/OWSProfileManager.h>
+#import <AppMessaging/AppMessaging-Swift.h>
 #import <SignalServiceKit/OWSIdentityManager.h>
 
 NS_ASSUME_NONNULL_BEGIN

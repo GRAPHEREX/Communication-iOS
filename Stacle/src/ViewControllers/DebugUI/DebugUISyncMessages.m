@@ -8,8 +8,8 @@
 #import "ThreadUtil.h"
 #import <PromiseKit/AnyPromise.h>
 #import <SignalCoreKit/Randomness.h>
-#import <StacleMessaging/Environment.h>
-#import <StacleMessaging/OWSTableViewController.h>
+#import <AppMessaging/Environment.h>
+#import <AppMessaging/OWSTableViewController.h>
 #import <SignalServiceKit/OWSBlockingManager.h>
 #import <SignalServiceKit/OWSDisappearingMessagesConfiguration.h>
 #import <SignalServiceKit/OWSIdentityManager.h>

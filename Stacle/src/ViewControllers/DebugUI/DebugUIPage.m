@@ -3,7 +3,7 @@
 //
 
 #import "DebugUIPage.h"
-#import <StacleMessaging/OWSTableViewController.h>
+#import <AppMessaging/OWSTableViewController.h>
 
 #ifdef DEBUG
 

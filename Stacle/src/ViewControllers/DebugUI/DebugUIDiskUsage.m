@@ -6,7 +6,7 @@
 #import "OWSOrphanDataCleaner.h"
 #import "Stacle-Swift.h"
 #import <SignalCoreKit/NSDate+OWS.h>
-#import <StacleMessaging/OWSTableViewController.h>
+#import <AppMessaging/OWSTableViewController.h>
 #import <SignalServiceKit/TSInteraction.h>
 
 #ifdef DEBUG

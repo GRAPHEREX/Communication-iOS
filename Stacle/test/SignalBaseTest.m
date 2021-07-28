@@ -4,7 +4,7 @@
 
 #import "SignalBaseTest.h"
 #import "Environment.h"
-#import <StacleMessaging/StacleMessaging-Swift.h>
+#import <AppMessaging/AppMessaging-Swift.h>
 #import <SignalServiceKit/SDSDatabaseStorage+Objc.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <SignalServiceKit/TestAppContext.h>

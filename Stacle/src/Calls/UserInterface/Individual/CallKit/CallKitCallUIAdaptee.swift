@@ -7,7 +7,7 @@ import UIKit
 import CallKit
 import AVFoundation
 import SignalServiceKit
-import StacleMessaging
+import AppMessaging
 
 /**
  * Connects user interface to the CallService using CallKit.

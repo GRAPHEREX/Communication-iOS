@@ -3,7 +3,7 @@
 //
 
 #import "OWSViewController.h"
-#import <StacleMessaging/ScreenLockViewController.h>
+#import <AppMessaging/ScreenLockViewController.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

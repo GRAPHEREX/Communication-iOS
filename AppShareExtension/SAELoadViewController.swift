@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import StacleMessaging
+import AppMessaging
 import PureLayout
 
 class SAELoadViewController: UIViewController {

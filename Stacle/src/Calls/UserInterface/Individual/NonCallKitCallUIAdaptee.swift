@@ -4,7 +4,7 @@
 
 import Foundation
 import SignalServiceKit
-import StacleMessaging
+import AppMessaging
 
 /**
  * Manage call related UI in a pre-CallKit world.

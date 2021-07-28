@@ -4,7 +4,7 @@
 
 #import "DebugUISessionState.h"
 #import "Stacle-Swift.h"
-#import <StacleMessaging/OWSTableViewController.h>
+#import <AppMessaging/OWSTableViewController.h>
 #import <SignalServiceKit/OWSIdentityManager.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <SignalServiceKit/TSContactThread.h>

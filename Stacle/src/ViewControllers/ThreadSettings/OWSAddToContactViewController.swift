@@ -7,7 +7,7 @@ import UIKit
 import Contacts
 import ContactsUI
 import SignalServiceKit
-import StacleMessaging
+import AppMessaging
 
 @objc
 public class OWSAddToContactViewController: OWSViewController {

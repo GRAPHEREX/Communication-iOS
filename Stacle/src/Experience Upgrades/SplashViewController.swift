@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import StacleMessaging
+import AppMessaging
 
 @objc
 public class SplashViewController: OWSViewController, ExperienceUpgradeView {

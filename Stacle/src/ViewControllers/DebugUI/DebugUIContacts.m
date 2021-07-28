@@ -8,7 +8,7 @@
 #import "SignalApp.h"
 #import <Contacts/Contacts.h>
 #import <SignalCoreKit/Randomness.h>
-#import <StacleMessaging/OWSTableViewController.h>
+#import <AppMessaging/OWSTableViewController.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 
 #ifdef DEBUG

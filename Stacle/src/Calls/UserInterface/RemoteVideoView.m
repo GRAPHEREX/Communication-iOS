@@ -8,7 +8,7 @@
 #import <MetalKit/MetalKit.h>
 #import <PureLayout/PureLayout.h>
 #import <SignalCoreKit/Threading.h>
-#import <StacleMessaging/StacleMessaging-Swift.h>
+#import <AppMessaging/AppMessaging-Swift.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <WebRTC/RTCEAGLVideoView.h>
 #import <WebRTC/RTCMTLVideoView.h>

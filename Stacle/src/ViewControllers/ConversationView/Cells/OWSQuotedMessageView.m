@@ -6,9 +6,9 @@
 #import "Environment.h"
 #import "OWSBubbleView.h"
 #import "Stacle-Swift.h"
-#import <StacleMessaging/OWSContactsManager.h>
-#import <StacleMessaging/StacleMessaging-Swift.h>
-#import <StacleMessaging/UIView+OWS.h>
+#import <AppMessaging/OWSContactsManager.h>
+#import <AppMessaging/AppMessaging-Swift.h>
+#import <AppMessaging/UIView+OWS.h>
 #import <SignalServiceKit/TSAttachmentStream.h>
 #import <SignalServiceKit/TSMessage.h>
 

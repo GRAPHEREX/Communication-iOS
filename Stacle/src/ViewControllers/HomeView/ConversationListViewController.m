@@ -16,10 +16,10 @@
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalCoreKit/Threading.h>
 #import <SignalCoreKit/iOSVersions.h>
-#import <StacleMessaging/OWSContactsManager.h>
-#import <StacleMessaging/StacleMessaging-Swift.h>
-#import <StacleMessaging/Theme.h>
-#import <StacleMessaging/UIUtil.h>
+#import <AppMessaging/OWSContactsManager.h>
+#import <AppMessaging/AppMessaging-Swift.h>
+#import <AppMessaging/Theme.h>
+#import <AppMessaging/UIUtil.h>
 #import <SignalServiceKit/MessageSender.h>
 #import <SignalServiceKit/OWSFormat.h>
 #import <SignalServiceKit/OWSMessageUtils.h>

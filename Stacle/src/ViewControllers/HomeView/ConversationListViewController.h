@@ -3,7 +3,7 @@
 //
 
 #import "ConversationViewController.h"
-#import <StacleMessaging/OWSViewController.h>
+#import <AppMessaging/OWSViewController.h>
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN

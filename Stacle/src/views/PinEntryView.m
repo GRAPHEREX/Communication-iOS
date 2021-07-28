@@ -4,9 +4,9 @@
 
 #import "PinEntryView.h"
 #import "Stacle-Swift.h"
-#import <StacleMessaging/UIFont+OWS.h>
-#import <StacleMessaging/UIView+OWS.h>
-#import <StacleMessaging/ViewControllerUtils.h>
+#import <AppMessaging/UIFont+OWS.h>
+#import <AppMessaging/UIView+OWS.h>
+#import <AppMessaging/ViewControllerUtils.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

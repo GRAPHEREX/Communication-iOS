@@ -5,8 +5,8 @@
 #import "ConversationScrollButton.h"
 #import "UIFont+OWS.h"
 #import "UIView+OWS.h"
-#import <StacleMessaging/StacleMessaging-Swift.h>
-#import <StacleMessaging/Theme.h>
+#import <AppMessaging/AppMessaging-Swift.h>
+#import <AppMessaging/Theme.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

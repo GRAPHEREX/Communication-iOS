@@ -8,9 +8,9 @@
 #import "UIFont+OWS.h"
 #import "UIView+OWS.h"
 #import "UIViewController+Permissions.h"
-#import <StacleMessaging/Environment.h>
-#import <StacleMessaging/OWSContactsManager.h>
-#import <StacleMessaging/UIUtil.h>
+#import <AppMessaging/Environment.h>
+#import <AppMessaging/OWSContactsManager.h>
+#import <AppMessaging/UIUtil.h>
 #import <SignalServiceKit/OWSError.h>
 #import <SignalServiceKit/OWSFingerprint.h>
 #import <SignalServiceKit/OWSFingerprintBuilder.h>

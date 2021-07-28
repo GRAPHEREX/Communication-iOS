@@ -13,11 +13,11 @@
 #import <PromiseKit/AnyPromise.h>
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalCoreKit/NSString+OWS.h>
-#import <StacleMessaging/OWSNavigationController.h>
-#import <StacleMessaging/OWSProfileManager.h>
-#import <StacleMessaging/StacleMessaging-Swift.h>
-#import <StacleMessaging/UIUtil.h>
-#import <StacleMessaging/UIViewController+OWS.h>
+#import <AppMessaging/OWSNavigationController.h>
+#import <AppMessaging/OWSProfileManager.h>
+#import <AppMessaging/AppMessaging-Swift.h>
+#import <AppMessaging/UIUtil.h>
+#import <AppMessaging/UIViewController+OWS.h>
 
 @import SafariServices;
 

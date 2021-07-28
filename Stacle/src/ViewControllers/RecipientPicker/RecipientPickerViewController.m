@@ -9,10 +9,10 @@
 #import "UIView+OWS.h"
 #import <MessageUI/MessageUI.h>
 #import <PromiseKit/AnyPromise.h>
-#import <StacleMessaging/ContactTableViewCell.h>
-#import <StacleMessaging/Environment.h>
-#import <StacleMessaging/OWSTableViewController.h>
-#import <StacleMessaging/UIUtil.h>
+#import <AppMessaging/ContactTableViewCell.h>
+#import <AppMessaging/Environment.h>
+#import <AppMessaging/OWSTableViewController.h>
+#import <AppMessaging/UIUtil.h>
 #import <SignalServiceKit/AppVersion.h>
 #import <SignalServiceKit/PhoneNumberUtil.h>
 #import <SignalServiceKit/SignalAccount.h>

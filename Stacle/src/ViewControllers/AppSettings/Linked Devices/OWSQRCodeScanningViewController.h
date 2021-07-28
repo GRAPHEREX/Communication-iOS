@@ -3,7 +3,7 @@
 //
 
 #import <AVFoundation/AVFoundation.h>
-#import <StacleMessaging/OWSViewController.h>
+#import <AppMessaging/OWSViewController.h>
 #import <UIKit/UIKit.h>
 #import <ZXingObjC/ZXingObjC.h>
 
