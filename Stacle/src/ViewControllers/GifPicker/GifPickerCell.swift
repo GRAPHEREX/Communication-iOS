@@ -5,7 +5,7 @@
 import Foundation
 import PromiseKit
 import SignalServiceKit
-import SignalMessaging
+import StacleMessaging
 import YYImage
 
 class GifPickerCell: UICollectionViewCell {

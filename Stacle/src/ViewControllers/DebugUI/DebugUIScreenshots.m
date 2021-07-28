@@ -8,8 +8,8 @@
 #import "Stacle-Swift.h"
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalCoreKit/Randomness.h>
-#import <SignalMessaging/Environment.h>
-#import <SignalMessaging/OWSTableViewController.h>
+#import <StacleMessaging/Environment.h>
+#import <StacleMessaging/OWSTableViewController.h>
 #import <SignalServiceKit/MIMETypeUtil.h>
 #import <SignalServiceKit/OWSDisappearingMessagesConfiguration.h>
 #import <SignalServiceKit/OWSMessageUtils.h>

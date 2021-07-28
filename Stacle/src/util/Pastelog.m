@@ -9,9 +9,9 @@
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import <SSZipArchive/SSZipArchive.h>
 #import <SignalCoreKit/Threading.h>
-#import <SignalMessaging/AttachmentSharing.h>
-#import <SignalMessaging/DebugLogger.h>
-#import <SignalMessaging/Environment.h>
+#import <StacleMessaging/AttachmentSharing.h>
+#import <StacleMessaging/DebugLogger.h>
+#import <StacleMessaging/Environment.h>
 #import <SignalServiceKit/AppContext.h>
 #import <SignalServiceKit/MimeTypeUtil.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>

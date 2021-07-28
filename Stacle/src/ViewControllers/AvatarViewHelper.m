@@ -6,8 +6,8 @@
 #import "OWSNavigationController.h"
 #import "Stacle-Swift.h"
 #import <MobileCoreServices/UTCoreTypes.h>
-#import <SignalMessaging/OWSContactsManager.h>
-#import <SignalMessaging/UIUtil.h>
+#import <StacleMessaging/OWSContactsManager.h>
+#import <StacleMessaging/UIUtil.h>
 #import <SignalServiceKit/PhoneNumber.h>
 #import <SignalServiceKit/TSGroupThread.h>
 #import <SignalServiceKit/TSThread.h>

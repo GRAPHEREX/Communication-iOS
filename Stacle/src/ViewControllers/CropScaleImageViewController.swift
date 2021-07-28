@@ -4,7 +4,7 @@
 
 import Foundation
 import MediaPlayer
-import SignalMessaging
+import StacleMessaging
 
 // This kind of view is tricky.  I've tried to organize things in the 
 // simplest possible way.

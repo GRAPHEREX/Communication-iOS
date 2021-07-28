@@ -7,7 +7,7 @@ import PromiseKit
 import SignalRingRTC
 import WebRTC
 import SignalServiceKit
-import SignalMessaging
+import StacleMessaging
 
 // MARK: - CallService
 

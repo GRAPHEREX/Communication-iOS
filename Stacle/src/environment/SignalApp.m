@@ -7,8 +7,8 @@
 #import "ConversationViewController.h"
 #import "Stacle-Swift.h"
 #import <SignalCoreKit/Threading.h>
-#import <SignalMessaging/DebugLogger.h>
-#import <SignalMessaging/Environment.h>
+#import <StacleMessaging/DebugLogger.h>
+#import <StacleMessaging/Environment.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <SignalServiceKit/TSContactThread.h>
 #import <SignalServiceKit/TSGroupThread.h>

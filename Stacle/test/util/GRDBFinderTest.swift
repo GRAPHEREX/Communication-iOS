@@ -5,7 +5,7 @@
 import XCTest
 @testable import SignalServiceKit
 @testable import Signal
-@testable import SignalMessaging
+@testable import StacleMessaging
 
 class GRDBFinderTest: SignalBaseTest {
 

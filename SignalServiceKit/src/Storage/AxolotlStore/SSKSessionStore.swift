@@ -7,7 +7,7 @@ import SignalClient
 public class SSKSessionStore: NSObject {
     fileprivate typealias SessionsByDeviceDictionary = [Int32: AnyObject]
 
-    @objc // Used by migration, exposed in <SignalMessaging/PrivateMethodsForMigration.h>
+    @objc // Used by migration, exposed in <StacleMessaging/PrivateMethodsForMigration.h>
     private let keyValueStore = SDSKeyValueStore(collection: "TSStorageManagerSessionStoreCollection")
 
     public override init() {

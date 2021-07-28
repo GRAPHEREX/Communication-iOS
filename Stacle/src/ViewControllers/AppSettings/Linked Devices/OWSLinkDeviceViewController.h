@@ -3,7 +3,7 @@
 //
 
 #import "OWSQRCodeScanningViewController.h"
-#import <SignalMessaging/OWSViewController.h>
+#import <StacleMessaging/OWSViewController.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

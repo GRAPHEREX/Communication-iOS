@@ -5,7 +5,7 @@
 import Foundation
 import AVFoundation
 import SignalServiceKit
-import SignalMessaging
+import StacleMessaging
 import AVKit
 import SignalRingRTC
 

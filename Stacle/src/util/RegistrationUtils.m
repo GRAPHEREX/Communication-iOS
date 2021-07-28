@@ -6,9 +6,9 @@
 #import "OWSNavigationController.h"
 #import "Stacle-Swift.h"
 #import <PromiseKit/PromiseKit.h>
-#import <SignalMessaging/Environment.h>
-#import <SignalMessaging/OWSPreferences.h>
-#import <SignalMessaging/SignalMessaging-Swift.h>
+#import <StacleMessaging/Environment.h>
+#import <StacleMessaging/OWSPreferences.h>
+#import <StacleMessaging/StacleMessaging-Swift.h>
 #import <SignalServiceKit/TSAccountManager.h>
 
 NS_ASSUME_NONNULL_BEGIN

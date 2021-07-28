@@ -4,7 +4,7 @@
 
 import Foundation
 import SignalServiceKit
-import SignalMessaging
+import StacleMessaging
 
 #if DEBUG
 

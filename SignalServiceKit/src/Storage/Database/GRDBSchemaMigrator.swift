@@ -1055,7 +1055,7 @@ public class GRDBSchemaMigrator: NSObject {
             defer { transaction.finalizeTransaction() }
 
             // Declare the key value store here, since it's normally only
-            // available in SignalMessaging (OWSPreferences).
+            // available in StacleMessaging (OWSPreferences).
             let preferencesKeyValueStore = SDSKeyValueStore(collection: "SignalPreferences")
             let screenSecurityKey = "Screen Security Key"
             guard !preferencesKeyValueStore.hasValue(

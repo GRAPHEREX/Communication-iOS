@@ -413,6 +413,7 @@
 		3A34EDE126AEE18B0047EFA0 /* HttpTransportCoderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDD526AEE18B0047EFA0 /* HttpTransportCoderError.swift */; };
 		3A34EDE226AEE18B0047EFA0 /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDD626AEE18B0047EFA0 /* HttpStatusCode.swift */; };
 		3A34EDEA26AEE2380047EFA0 /* CryptoAuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDE926AEE2380047EFA0 /* CryptoAuthError.swift */; };
+		3AA9CB5426B1511900C126B8 /* Pods_StacleMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9CB5326B1511900C126B8 /* Pods_StacleMessaging.framework */; };
 		3ACD407226B0583B0038328F /* MediaPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F32C1D205718B000A300D5 /* MediaPageViewController.swift */; };
 		4503F1BE20470A5B00CEE724 /* classic-quiet.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 4503F1BB20470A5B00CEE724 /* classic-quiet.aifc */; };
 		4503F1BF20470A5B00CEE724 /* classic.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 4503F1BC20470A5B00CEE724 /* classic.aifc */; };
@@ -446,10 +447,10 @@
 		4535186B1FC635DD00210559 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535186A1FC635DD00210559 /* ShareViewController.swift */; };
 		4535186E1FC635DD00210559 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4535186C1FC635DD00210559 /* MainInterface.storyboard */; };
 		453518721FC635DD00210559 /* StacleShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 453518681FC635DD00210559 /* StacleShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		453518961FC63DBF00210559 /* SignalMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 453518941FC63DBF00210559 /* SignalMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		453518991FC63DBF00210559 /* SignalMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453518921FC63DBF00210559 /* SignalMessaging.framework */; };
-		4535189A1FC63DBF00210559 /* SignalMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 453518921FC63DBF00210559 /* SignalMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		453518A21FC63E2900210559 /* SignalMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453518921FC63DBF00210559 /* SignalMessaging.framework */; };
+		453518961FC63DBF00210559 /* StacleMessaging.h in Headers */ = {isa = PBXBuildFile; fileRef = 453518941FC63DBF00210559 /* StacleMessaging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		453518991FC63DBF00210559 /* StacleMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453518921FC63DBF00210559 /* StacleMessaging.framework */; };
+		4535189A1FC63DBF00210559 /* StacleMessaging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 453518921FC63DBF00210559 /* StacleMessaging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		453518A21FC63E2900210559 /* StacleMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453518921FC63DBF00210559 /* StacleMessaging.framework */; };
 		45360B911F952AA900FA666C /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E5A6981F61E6DD001E4A8A /* MarqueeLabel.swift */; };
 		4539B5861F79348F007141FF /* PushRegistrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539B5851F79348F007141FF /* PushRegistrationManager.swift */; };
 		4541B71D209D3B7A0008608F /* ContactShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541B71A209D2DAE0008608F /* ContactShareViewModel.swift */; };
@@ -701,7 +702,7 @@
 		888B6D5225B25D2800E2A662 /* Wallpaper+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888B6D4A25B2464F00E2A662 /* Wallpaper+Gradient.swift */; };
 		888C828223D795FA0059464B /* pinCreationFail.json in Resources */ = {isa = PBXBuildFile; fileRef = 888C827F23D795F90059464B /* pinCreationFail.json */; };
 		888C828323D795FA0059464B /* pinCreationInProgress.json in Resources */ = {isa = PBXBuildFile; fileRef = 888C828023D795FA0059464B /* pinCreationInProgress.json */; };
-		888F188623AC5A9E000780E9 /* SignalMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453518921FC63DBF00210559 /* SignalMessaging.framework */; };
+		888F188623AC5A9E000780E9 /* StacleMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453518921FC63DBF00210559 /* StacleMessaging.framework */; };
 		88905E9E229CCA96004E4234 /* ExpirationNagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88905E9D229CCA96004E4234 /* ExpirationNagView.swift */; };
 		889C8A8D248831AC00C3D3D8 /* BlurTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889C8A8C248831AC00C3D3D8 /* BlurTooltip.swift */; };
 		88A357B923639384009D6B9A /* MemberActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A357B823639384009D6B9A /* MemberActionSheet.swift */; };
@@ -794,7 +795,6 @@
 		D221A0E8169DFFC500537ABF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D221A0E7169DFFC500537ABF /* AVFoundation.framework */; };
 		D24B5BD5169F568C00681372 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D24B5BD4169F568C00681372 /* AudioToolbox.framework */; };
 		D2AEACDC16C426DA00C364C0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AEACDB16C426DA00C364C0 /* CFNetwork.framework */; };
-		DA9C5D7D05456BB58A963795 /* Pods_StacleMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC19BE94983A02145434344 /* Pods_StacleMessaging.framework */; };
 		E1368CBE18A1C36B00109378 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9EB5ABC1884C002007CBB57 /* MessageUI.framework */; };
 		E44AD4E624E98F440035D7B8 /* PhotoCaptureDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44AD4E524E98F430035D7B8 /* PhotoCaptureDismiss.swift */; };
 		E4A0808C786F586EC8D134BB /* Pods_Stacle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1405E6D1F74461514481DE3C /* Pods_Stacle.framework */; };
@@ -1127,7 +1127,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4535189A1FC63DBF00210559 /* SignalMessaging.framework in Embed Frameworks */,
+				4535189A1FC63DBF00210559 /* StacleMessaging.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1604,6 +1604,7 @@
 		3A34EDD526AEE18B0047EFA0 /* HttpTransportCoderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTransportCoderError.swift; sourceTree = "<group>"; };
 		3A34EDD626AEE18B0047EFA0 /* HttpStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 		3A34EDE926AEE2380047EFA0 /* CryptoAuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAuthError.swift; sourceTree = "<group>"; };
+		3AA9CB5326B1511900C126B8 /* Pods_StacleMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_StacleMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ACC21DC6744A48EEFD3C604 /* Pods-StacleShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-StacleShareExtension/Pods-StacleShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		3CAE1BAB4E840E376FCB5E5F /* Pods-StaclePerformanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaclePerformanceTests.debug.xcconfig"; path = "Target Support Files/Pods-StaclePerformanceTests/Pods-StaclePerformanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4503F1BB20470A5B00CEE724 /* classic-quiet.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "classic-quiet.aifc"; sourceTree = "<group>"; };
@@ -1623,8 +1624,8 @@
 		4535186A1FC635DD00210559 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		4535186D1FC635DD00210559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		4535186F1FC635DD00210559 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		453518921FC63DBF00210559 /* SignalMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SignalMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		453518941FC63DBF00210559 /* SignalMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignalMessaging.h; sourceTree = "<group>"; };
+		453518921FC63DBF00210559 /* StacleMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StacleMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		453518941FC63DBF00210559 /* StacleMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StacleMessaging.h; sourceTree = "<group>"; };
 		453518951FC63DBF00210559 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45360B8C1F9521F800FA666C /* Searcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searcher.swift; sourceTree = "<group>"; };
 		4539B5851F79348F007141FF /* PushRegistrationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushRegistrationManager.swift; sourceTree = "<group>"; };
@@ -2019,7 +2020,6 @@
 		E8269B1A125AED5B4D760BCE /* Pods-StaclePerformanceTests.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaclePerformanceTests.profiling.xcconfig"; path = "Target Support Files/Pods-StaclePerformanceTests/Pods-StaclePerformanceTests.profiling.xcconfig"; sourceTree = "<group>"; };
 		E8A81A37974B4B9F97C8340D /* Pods-StaclePerformanceTests.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaclePerformanceTests.testable release.xcconfig"; path = "Target Support Files/Pods-StaclePerformanceTests/Pods-StaclePerformanceTests.testable release.xcconfig"; sourceTree = "<group>"; };
 		EB559A1E8D99B09DC19ECB78 /* Pods-StacleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleTests.debug.xcconfig"; path = "Target Support Files/Pods-StacleTests/Pods-StacleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EFC19BE94983A02145434344 /* Pods_StacleMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StacleMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F215596A25CC3DB50089AA63 /* STGhostButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STGhostButton.swift; sourceTree = "<group>"; };
 		F215596B25CC3DB50089AA63 /* STSecondaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STSecondaryButton.swift; sourceTree = "<group>"; };
 		F215596C25CC3DB50089AA63 /* STPrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STPrimaryButton.swift; sourceTree = "<group>"; };
@@ -2369,7 +2369,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				453518A21FC63E2900210559 /* SignalMessaging.framework in Frameworks */,
+				453518A21FC63E2900210559 /* StacleMessaging.framework in Frameworks */,
 				A4BA3DE7BA4496F03FADC312 /* Pods_StacleShareExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2378,7 +2378,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA9C5D7D05456BB58A963795 /* Pods_StacleMessaging.framework in Frameworks */,
+				3AA9CB5426B1511900C126B8 /* Pods_StacleMessaging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2409,7 +2409,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				888F188623AC5A9E000780E9 /* SignalMessaging.framework in Frameworks */,
+				888F188623AC5A9E000780E9 /* StacleMessaging.framework in Frameworks */,
 				2E2A2DC0ECA81170AC571FBF /* Pods_NotificationServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2433,7 +2433,7 @@
 				F217438125CAEA9E00BC9476 /* FirebaseInstallations.xcframework in Frameworks */,
 				70377AAB1918450100CAF501 /* MobileCoreServices.framework in Frameworks */,
 				B9EB5ABD1884C002007CBB57 /* MessageUI.framework in Frameworks */,
-				453518991FC63DBF00210559 /* SignalMessaging.framework in Frameworks */,
+				453518991FC63DBF00210559 /* StacleMessaging.framework in Frameworks */,
 				76C87F19181EFCE600C4ACAB /* MediaPlayer.framework in Frameworks */,
 				768A1A2B17FC9CD300E00ED8 /* libz.dylib in Frameworks */,
 				A11CD70D17FA230600A2D1B1 /* QuartzCore.framework in Frameworks */,
@@ -3578,7 +3578,7 @@
 			path = SignalShareExtension;
 			sourceTree = "<group>";
 		};
-		453518931FC63DBF00210559 /* SignalMessaging */ = {
+		453518931FC63DBF00210559 /* StacleMessaging */ = {
 			isa = PBXGroup;
 			children = (
 				3469419C215D2EE400B5BFAD /* appearance */,
@@ -3591,7 +3591,7 @@
 				88D23D0823CEBF4400B0E74B /* Notifications */,
 				346129B01FD1F7E800532771 /* profiles */,
 				34480B5A1FD0A7E300BC14EF /* StacleMessaging-Prefix.pch */,
-				453518941FC63DBF00210559 /* SignalMessaging.h */,
+				453518941FC63DBF00210559 /* StacleMessaging.h */,
 				88E34F2522F269B600966CC2 /* Storage Service */,
 				34480B471FD0A60200BC14EF /* utils */,
 				451F8A361FD7115D005CB9DA /* ViewControllers */,
@@ -3599,7 +3599,7 @@
 				346129CE1FD207F200532771 /* Views */,
 				888B6D4325B2223200E2A662 /* Wallpapers */,
 			);
-			path = SignalMessaging;
+			path = StacleMessaging;
 			sourceTree = "<group>";
 		};
 		4541B71C209D3B4F0008608F /* ViewModels */ = {
@@ -4192,7 +4192,7 @@
 			children = (
 				D221A093169C9E5E00537ABF /* Stacle */,
 				453518691FC635DD00210559 /* SignalShareExtension */,
-				453518931FC63DBF00210559 /* SignalMessaging */,
+				453518931FC63DBF00210559 /* StacleMessaging */,
 				885AC56523AB42430077705E /* NotificationServiceExtension */,
 				D221A08C169C9E5E00537ABF /* Frameworks */,
 				D221A08A169C9E5E00537ABF /* Products */,
@@ -4207,7 +4207,7 @@
 				D221A089169C9E5E00537ABF /* Stacle.app */,
 				D221A0AA169C9E5F00537ABF /* StacleTests.xctest */,
 				453518681FC635DD00210559 /* StacleShareExtension.appex */,
-				453518921FC63DBF00210559 /* SignalMessaging.framework */,
+				453518921FC63DBF00210559 /* StacleMessaging.framework */,
 				4C10B1C323176D250099396B /* StaclePerformanceTests.xctest */,
 				885AC56423AB42430077705E /* NotificationServiceExtension.appex */,
 			);
@@ -4217,6 +4217,7 @@
 		D221A08C169C9E5E00537ABF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AA9CB5326B1511900C126B8 /* Pods_StacleMessaging.framework */,
 				347C37FE2526005800F3D941 /* CloudKit.framework */,
 				38AD4FA92310B7E00038BA75 /* SignalRingRTC.framework */,
 				4C9CA25C217E676900607C63 /* ZXingObjC.framework */,
@@ -4253,7 +4254,6 @@
 				D221A091169C9E5E00537ABF /* CoreGraphics.framework */,
 				74837CC0BAF5B7FCCCD31EB9 /* Pods_NotificationServiceExtension.framework */,
 				1405E6D1F74461514481DE3C /* Pods_Stacle.framework */,
-				EFC19BE94983A02145434344 /* Pods_StacleMessaging.framework */,
 				0D4ADC87A3B0E6CA32E0FD9A /* Pods_StaclePerformanceTests.framework */,
 				07FEADEBA35E09F4E2BAA9B5 /* Pods_StacleShareExtension.framework */,
 				1329ED9F3BA299B0AE2592FC /* Pods_StacleTests.framework */,
@@ -5151,7 +5151,7 @@
 				342950892124CB0A0000B063 /* OWSSearchBar.h in Headers */,
 				346941A1215D2EE400B5BFAD /* Theme.h in Headers */,
 				346129E21FD5C0BE00532771 /* VersionMigrations.h in Headers */,
-				453518961FC63DBF00210559 /* SignalMessaging.h in Headers */,
+				453518961FC63DBF00210559 /* StacleMessaging.h in Headers */,
 				346941A4215D2EE400B5BFAD /* OWSConversationColor.h in Headers */,
 				3461295A1FD1D74C00532771 /* Environment.h in Headers */,
 				450C801020AD1AE400F3A091 /* OWSWindowManager.h in Headers */,
@@ -5202,9 +5202,9 @@
 			productReference = 453518681FC635DD00210559 /* StacleShareExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		453518911FC63DBF00210559 /* SignalMessaging */ = {
+		453518911FC63DBF00210559 /* StacleMessaging */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4535189E1FC63DBF00210559 /* Build configuration list for PBXNativeTarget "SignalMessaging" */;
+			buildConfigurationList = 4535189E1FC63DBF00210559 /* Build configuration list for PBXNativeTarget "StacleMessaging" */;
 			buildPhases = (
 				A63A12701BD9EDC6929E903F /* [CP] Check Pods Manifest.lock */,
 				4535188D1FC63DBF00210559 /* Sources */,
@@ -5216,9 +5216,9 @@
 			);
 			dependencies = (
 			);
-			name = SignalMessaging;
+			name = StacleMessaging;
 			productName = SignalMessaging;
-			productReference = 453518921FC63DBF00210559 /* SignalMessaging.framework */;
+			productReference = 453518921FC63DBF00210559 /* StacleMessaging.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4C10B17F23176D250099396B /* StaclePerformanceTests */ = {
@@ -5488,7 +5488,7 @@
 				D221A088169C9E5E00537ABF /* Stacle */,
 				D221A0A9169C9E5F00537ABF /* StacleTests */,
 				453518671FC635DD00210559 /* StacleShareExtension */,
-				453518911FC63DBF00210559 /* SignalMessaging */,
+				453518911FC63DBF00210559 /* StacleMessaging */,
 				4C10B17F23176D250099396B /* StaclePerformanceTests */,
 				885AC56323AB42430077705E /* NotificationServiceExtension */,
 			);
@@ -6727,12 +6727,12 @@
 /* Begin PBXTargetDependency section */
 		34480B3A1FD0950000BC14EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 453518911FC63DBF00210559 /* SignalMessaging */;
+			target = 453518911FC63DBF00210559 /* StacleMessaging */;
 			targetProxy = 34480B391FD0950000BC14EF /* PBXContainerItemProxy */;
 		};
 		3478506E1FD9CFF4007B8332 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 453518911FC63DBF00210559 /* SignalMessaging */;
+			target = 453518911FC63DBF00210559 /* StacleMessaging */;
 			targetProxy = 3478506D1FD9CFF4007B8332 /* PBXContainerItemProxy */;
 		};
 		453518711FC635DD00210559 /* PBXTargetDependency */ = {
@@ -6742,12 +6742,12 @@
 		};
 		453518981FC63DBF00210559 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 453518911FC63DBF00210559 /* SignalMessaging */;
+			target = 453518911FC63DBF00210559 /* StacleMessaging */;
 			targetProxy = 453518971FC63DBF00210559 /* PBXContainerItemProxy */;
 		};
 		4C10B18023176D250099396B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 453518911FC63DBF00210559 /* SignalMessaging */;
+			target = 453518911FC63DBF00210559 /* StacleMessaging */;
 			targetProxy = 4C10B18123176D250099396B /* PBXContainerItemProxy */;
 		};
 		4C10B18223176D250099396B /* PBXTargetDependency */ = {
@@ -6762,7 +6762,7 @@
 		};
 		888F188523AC5A93000780E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 453518911FC63DBF00210559 /* SignalMessaging */;
+			target = 453518911FC63DBF00210559 /* StacleMessaging */;
 			targetProxy = 888F188423AC5A93000780E9 /* PBXContainerItemProxy */;
 		};
 		B6AFCEBB19A93DA60098CFCB /* PBXTargetDependency */ = {
@@ -7010,12 +7010,12 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SignalMessaging/StacleMessaging-Prefix.pch";
+				GCC_PREFIX_HEADER = "StacleMessaging/StacleMessaging-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = SignalMessaging/Info.plist;
+				INFOPLIST_FILE = StacleMessaging/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7029,11 +7029,12 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -7088,16 +7089,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SignalMessaging/StacleMessaging-Prefix.pch";
+				GCC_PREFIX_HEADER = "StacleMessaging/StacleMessaging-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = SignalMessaging/Info.plist;
+				INFOPLIST_FILE = StacleMessaging/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7111,11 +7112,12 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -7471,16 +7473,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SignalMessaging/StacleMessaging-Prefix.pch";
+				GCC_PREFIX_HEADER = "StacleMessaging/StacleMessaging-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = SignalMessaging/Info.plist;
+				INFOPLIST_FILE = StacleMessaging/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7495,11 +7497,12 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -8027,16 +8030,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SignalMessaging/StacleMessaging-Prefix.pch";
+				GCC_PREFIX_HEADER = "StacleMessaging/StacleMessaging-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = SignalMessaging/Info.plist;
+				INFOPLIST_FILE = StacleMessaging/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -8050,11 +8053,12 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -8844,7 +8848,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "App Store Release";
 		};
-		4535189E1FC63DBF00210559 /* Build configuration list for PBXNativeTarget "SignalMessaging" */ = {
+		4535189E1FC63DBF00210559 /* Build configuration list for PBXNativeTarget "StacleMessaging" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4535189B1FC63DBF00210559 /* Debug */,

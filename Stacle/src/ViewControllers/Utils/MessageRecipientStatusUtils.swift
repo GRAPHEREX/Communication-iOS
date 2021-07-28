@@ -4,7 +4,7 @@
 
 import Foundation
 import SignalServiceKit
-import SignalMessaging
+import StacleMessaging
 
 @objc public enum MessageReceiptStatus: Int {
     case uploading

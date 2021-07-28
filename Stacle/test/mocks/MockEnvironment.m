@@ -5,10 +5,10 @@
 #import "MockEnvironment.h"
 #import "OWSOrphanDataCleaner.h"
 #import "OWSWindowManager.h"
-#import <SignalMessaging/ContactsViewHelper.h>
-#import <SignalMessaging/OWSPreferences.h>
-#import <SignalMessaging/OWSSounds.h>
-#import <SignalMessaging/SignalMessaging-Swift.h>
+#import <StacleMessaging/ContactsViewHelper.h>
+#import <StacleMessaging/OWSPreferences.h>
+#import <StacleMessaging/OWSSounds.h>
+#import <StacleMessaging/StacleMessaging-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

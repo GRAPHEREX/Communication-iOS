@@ -6,7 +6,7 @@
 #import "OWSDeviceProvisioningURLParser.h"
 #import "Stacle-Swift.h"
 #import <SignalCoreKit/Cryptography.h>
-#import <SignalMessaging/OWSProfileManager.h>
+#import <StacleMessaging/OWSProfileManager.h>
 #import <SignalServiceKit/OWSDevice.h>
 #import <SignalServiceKit/OWSDeviceProvisioner.h>
 #import <SignalServiceKit/OWSIdentityManager.h>

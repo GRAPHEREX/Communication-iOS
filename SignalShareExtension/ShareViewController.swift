@@ -4,7 +4,7 @@
 
 import UIKit
 
-import SignalMessaging
+import StacleMessaging
 import PureLayout
 import SignalServiceKit
 import PromiseKit

@@ -3,7 +3,7 @@
 //
 
 import UserNotifications
-import SignalMessaging
+import StacleMessaging
 import SignalServiceKit
 import PromiseKit
 

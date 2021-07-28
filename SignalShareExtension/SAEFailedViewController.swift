@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import SignalMessaging
+import StacleMessaging
 import PureLayout
 
 // All Observer methods will be invoked from the main thread.

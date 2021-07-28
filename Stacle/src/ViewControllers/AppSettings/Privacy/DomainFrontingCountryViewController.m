@@ -7,8 +7,8 @@
 #import "Stacle-Swift.h"
 #import "UIFont+OWS.h"
 #import "UIView+OWS.h"
-#import <SignalMessaging/OWSTableViewController.h>
-#import <SignalMessaging/Theme.h>
+#import <StacleMessaging/OWSTableViewController.h>
+#import <StacleMessaging/Theme.h>
 #import <SignalServiceKit/OWSSignalService.h>
 
 NS_ASSUME_NONNULL_BEGIN

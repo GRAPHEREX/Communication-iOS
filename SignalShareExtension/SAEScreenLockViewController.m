@@ -3,8 +3,8 @@
 //
 
 #import "SAEScreenLockViewController.h"
-#import <SignalMessaging/SignalMessaging-Swift.h>
-#import <SignalMessaging/Theme.h>
+#import <StacleMessaging/StacleMessaging-Swift.h>
+#import <StacleMessaging/Theme.h>
 #import <SignalServiceKit/AppContext.h>
 
 NS_ASSUME_NONNULL_BEGIN

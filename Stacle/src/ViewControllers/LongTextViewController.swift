@@ -4,7 +4,7 @@
 
 import Foundation
 import SignalServiceKit
-import SignalMessaging
+import StacleMessaging
 
 protocol LongTextViewDelegate: class {
     func longTextViewMessageWasDeleted(_ longTextViewController: LongTextViewController)

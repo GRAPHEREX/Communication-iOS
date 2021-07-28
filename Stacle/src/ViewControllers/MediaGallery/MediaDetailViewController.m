@@ -13,7 +13,7 @@
 #import <AVKit/AVKit.h>
 #import <MediaPlayer/MPMoviePlayerViewController.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import <SignalMessaging/SignalMessaging-Swift.h>
+#import <StacleMessaging/StacleMessaging-Swift.h>
 #import <SignalServiceKit/NSData+Image.h>
 #import <YYImage/YYImage.h>
 

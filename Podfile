@@ -93,7 +93,7 @@ end
 
 # These extensions inherit all of the pods
 target 'StacleShareExtension'
-target 'SignalMessaging'
+target 'StacleMessaging'
 target 'NotificationServiceExtension'
 
 post_install do |installer|

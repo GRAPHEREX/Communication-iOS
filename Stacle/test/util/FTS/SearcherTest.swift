@@ -4,7 +4,7 @@
 
 import XCTest
 @testable import Signal
-@testable import SignalMessaging
+@testable import StacleMessaging
 
 class SearcherTest: SignalBaseTest {
 

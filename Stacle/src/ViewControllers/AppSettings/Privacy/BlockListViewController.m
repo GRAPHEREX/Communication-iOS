@@ -9,10 +9,10 @@
 #import "Stacle-Swift.h"
 #import "UIFont+OWS.h"
 #import "UIView+OWS.h"
-#import <SignalMessaging/ContactTableViewCell.h>
-#import <SignalMessaging/Environment.h>
-#import <SignalMessaging/OWSContactsManager.h>
-#import <SignalMessaging/OWSTableViewController.h>
+#import <StacleMessaging/ContactTableViewCell.h>
+#import <StacleMessaging/Environment.h>
+#import <StacleMessaging/OWSContactsManager.h>
+#import <StacleMessaging/OWSTableViewController.h>
 #import <SignalServiceKit/OWSBlockingManager.h>
 #import <SignalServiceKit/TSGroupThread.h>
 

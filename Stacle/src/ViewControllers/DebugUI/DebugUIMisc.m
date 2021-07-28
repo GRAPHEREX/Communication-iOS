@@ -8,9 +8,9 @@
 #import "Stacle-Swift.h"
 #import "ThreadUtil.h"
 #import <SignalCoreKit/Randomness.h>
-#import <SignalMessaging/AttachmentSharing.h>
-#import <SignalMessaging/Environment.h>
-#import <SignalMessaging/OWSTableViewController.h>
+#import <StacleMessaging/AttachmentSharing.h>
+#import <StacleMessaging/Environment.h>
+#import <StacleMessaging/OWSTableViewController.h>
 #import <SignalServiceKit/OWSBlockingManager.h>
 #import <SignalServiceKit/OWSDisappearingMessagesConfiguration.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>

@@ -5,7 +5,7 @@
 #import "ConversationListCell.h"
 #import "OWSAvatarBuilder.h"
 #import "Stacle-Swift.h"
-#import <SignalMessaging/SignalMessaging-Swift.h>
+#import <StacleMessaging/StacleMessaging-Swift.h>
 #import <SignalServiceKit/OWSFormat.h>
 #import <SignalServiceKit/OWSMath.h>
 #import <SignalServiceKit/OWSMessageManager.h>

@@ -4,7 +4,7 @@
 
 import Foundation
 import SignalServiceKit
-import SignalMessaging
+import StacleMessaging
 
 @objc(OWSWebRTCCallMessageHandler)
 public class WebRTCCallMessageHandler: NSObject, OWSCallMessageHandler {
