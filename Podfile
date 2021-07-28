@@ -82,18 +82,18 @@ target 'Stacle' do
   pod 'AppsFlyerFramework', inhibit_warnings: true
   pod 'CryptoWallet', git: 'https://github.com/grapherex/CryptoWallet.git', branch: 'develop', inhibit_warnings: true
 
-  target 'StacleTests' do
+  target 'AppTests' do
     inherit! :search_paths
   end
 
-  target 'StaclePerformanceTests' do
+  target 'AppPerformanceTests' do
     inherit! :search_paths
   end
 end
 
 # These extensions inherit all of the pods
 target 'AppShareExtension'
-target 'StacleMessaging'
+target 'AppMessaging'
 target 'NotificationServiceExtension'
 
 post_install do |installer|

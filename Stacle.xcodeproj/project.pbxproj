@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		001E7FB39569DED24124BB63 /* Pods_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8231B9DD3A7776A4542E9F4 /* Pods_AppTests.framework */; };
 		17B78E0E260529E900E24A9E /* newlyInitializedSessionState in Resources */ = {isa = PBXBuildFile; fileRef = 17B78E0C2605299E00E24A9E /* newlyInitializedSessionState */; };
-		20A633AB7C3228EF63464CBF /* Pods_StacleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1329ED9F3BA299B0AE2592FC /* Pods_StacleTests.framework */; };
 		2E2A2DC0ECA81170AC571FBF /* Pods_NotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74837CC0BAF5B7FCCCD31EB9 /* Pods_NotificationServiceExtension.framework */; };
 		3236FCC42592B67B006D33B9 /* NameCollisionReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236FCC32592B67B006D33B9 /* NameCollisionReviewCell.swift */; };
 		323C4FE524EE7B0F00DC94B8 /* LinkPreviewsMegaphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323C4FE424EE7B0F00DC94B8 /* LinkPreviewsMegaphone.swift */; };
@@ -413,7 +413,6 @@
 		3A34EDE126AEE18B0047EFA0 /* HttpTransportCoderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDD526AEE18B0047EFA0 /* HttpTransportCoderError.swift */; };
 		3A34EDE226AEE18B0047EFA0 /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDD626AEE18B0047EFA0 /* HttpStatusCode.swift */; };
 		3A34EDEA26AEE2380047EFA0 /* CryptoAuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34EDE926AEE2380047EFA0 /* CryptoAuthError.swift */; };
-		3AA9CB5426B1511900C126B8 /* Pods_StacleMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9CB5326B1511900C126B8 /* Pods_StacleMessaging.framework */; };
 		3ACD407226B0583B0038328F /* MediaPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F32C1D205718B000A300D5 /* MediaPageViewController.swift */; };
 		4503F1BE20470A5B00CEE724 /* classic-quiet.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 4503F1BB20470A5B00CEE724 /* classic-quiet.aifc */; };
 		4503F1BF20470A5B00CEE724 /* classic.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 4503F1BC20470A5B00CEE724 /* classic.aifc */; };
@@ -613,9 +612,11 @@
 		4CD675C722E7D393008010D2 /* MediaPresentationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD675C622E7D393008010D2 /* MediaPresentationContext.swift */; };
 		4CFF115323A9C2130007F9D7 /* UnreadIndicatorInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFF115223A9C2130007F9D7 /* UnreadIndicatorInteraction.swift */; };
 		70377AAB1918450100CAF501 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70377AAA1918450100CAF501 /* MobileCoreServices.framework */; };
+		755DDF1E4D6272FBE478F458 /* Pods_AppMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5B8118656279AB74337D95 /* Pods_AppMessaging.framework */; };
 		768A1A2B17FC9CD300E00ED8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 768A1A2A17FC9CD300E00ED8 /* libz.dylib */; };
 		76C87F19181EFCE600C4ACAB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C87F18181EFCE600C4ACAB /* MediaPlayer.framework */; };
 		76EB054018170B33006006FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EB03C318170B33006006FC /* AppDelegate.m */; };
+		85910F94D1CBBA01D96B0AB4 /* Pods_AppShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAA73334995FD43BE40717D /* Pods_AppShareExtension.framework */; };
 		8806EF19248DBD7200E764C7 /* NotificationPermissionReminderMegaphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8806EF18248DBD7200E764C7 /* NotificationPermissionReminderMegaphone.swift */; };
 		8806EF1B248DBFC100E764C7 /* ContactPermissionReminderMegaphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8806EF1A248DBFC100E764C7 /* ContactPermissionReminderMegaphone.swift */; };
 		88081437234D80150004C187 /* UIResponder+OWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88081436234D80150004C187 /* UIResponder+OWS.swift */; };
@@ -756,6 +757,7 @@
 		88F67A0C24E5126D00435A71 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C090A1A210FD9C7001FD7F9 /* HapticFeedback.swift */; };
 		88F8195A2383569A007914E8 /* CNContactViewController+OWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F819592383569A007914E8 /* CNContactViewController+OWS.m */; };
 		88FE237E249C22080041670F /* ConversationViewController+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */; };
+		9403366C7B17007F6EA79CB2 /* Pods_AppPerformanceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB0D5CDEBCF88A754F6BDD7 /* Pods_AppPerformanceTests.framework */; };
 		954AEE6A1DF33E01002E5410 /* ContactsPickerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AEE681DF33D32002E5410 /* ContactsPickerTest.swift */; };
 		A10FDF79184FB4BB007FF963 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C87F18181EFCE600C4ACAB /* MediaPlayer.framework */; };
 		A11CD70D17FA230600A2D1B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11CD70C17FA230600A2D1B1 /* QuartzCore.framework */; };
@@ -767,7 +769,6 @@
 		A1A018531805C60D00A052A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D221A091169C9E5E00537ABF /* CoreGraphics.framework */; };
 		A1C32D5017A06538000A904E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C32D4F17A06537000A904E /* AddressBookUI.framework */; };
 		A1C32D5117A06544000A904E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C32D4D17A0652C000A904E /* AddressBook.framework */; };
-		A4BA3DE7BA4496F03FADC312 /* Pods_StacleShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FEADEBA35E09F4E2BAA9B5 /* Pods_StacleShareExtension.framework */; };
 		A5E7C675248C5443007C949A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5E7C673248C5442007C949A /* InfoPlist.strings */; };
 		AC12B86D0DA4943DF1DE9CE6 /* OWSAddToContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12B5FAA0E45C608224A310 /* OWSAddToContactViewController.swift */; };
 		B60EDE041A05A01700D73516 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B60EDE031A05A01700D73516 /* AudioToolbox.framework */; };
@@ -1039,7 +1040,6 @@
 		F2E9804A261FAD4A00EA9BDA /* IndividualCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E9802B261FAD4A00EA9BDA /* IndividualCall.swift */; };
 		FC3BD9881A30A790005B96BB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC3BD9871A30A790005B96BB /* Social.framework */; };
 		FCB11D8C1A129A76002F93FB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB11D8B1A129A76002F93FB /* CoreMedia.framework */; };
-		FF8534C35E4052ADA570315F /* Pods_StaclePerformanceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4ADC87A3B0E6CA32E0FD9A /* Pods_StaclePerformanceTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1137,14 +1137,15 @@
 /* Begin PBXFileReference section */
 		01664BE6E094D65D22A8BB7C /* Pods-StacleTests.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleTests.profiling.xcconfig"; path = "Target Support Files/Pods-StacleTests/Pods-StacleTests.profiling.xcconfig"; sourceTree = "<group>"; };
 		0396CD3BCA3F35AB3C694378 /* Pods-NotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		07FEADEBA35E09F4E2BAA9B5 /* Pods_StacleShareExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StacleShareExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D4ADC87A3B0E6CA32E0FD9A /* Pods_StaclePerformanceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StaclePerformanceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1329ED9F3BA299B0AE2592FC /* Pods_StacleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StacleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04B01B2A70AFFDE06095626A /* Pods-AppShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-AppShareExtension/Pods-AppShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		099C7A5381CAB92985493B1D /* Pods-AppPerformanceTests.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPerformanceTests.app store release.xcconfig"; path = "Target Support Files/Pods-AppPerformanceTests/Pods-AppPerformanceTests.app store release.xcconfig"; sourceTree = "<group>"; };
 		1405E6D1F74461514481DE3C /* Pods_Stacle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stacle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B78E0C2605299E00E24A9E /* newlyInitializedSessionState */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = newlyInitializedSessionState; sourceTree = "<group>"; };
 		1970D36F8309784BC655DD01 /* Pods-Stacle.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stacle.profiling.xcconfig"; path = "Target Support Files/Pods-Stacle/Pods-Stacle.profiling.xcconfig"; sourceTree = "<group>"; };
+		2041F86E317FB268DCD44844 /* Pods-AppPerformanceTests.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPerformanceTests.profiling.xcconfig"; path = "Target Support Files/Pods-AppPerformanceTests/Pods-AppPerformanceTests.profiling.xcconfig"; sourceTree = "<group>"; };
 		20575EB18238FB7BF1557D10 /* Pods-StacleShareExtension.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleShareExtension.app store release.xcconfig"; path = "Target Support Files/Pods-StacleShareExtension/Pods-StacleShareExtension.app store release.xcconfig"; sourceTree = "<group>"; };
 		211D5FD166C7CF50E80F0746 /* Pods-Stacle.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stacle.app store release.xcconfig"; path = "Target Support Files/Pods-Stacle/Pods-Stacle.app store release.xcconfig"; sourceTree = "<group>"; };
+		29F04B3EB16C1D3075F525FC /* Pods-AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTests.debug.xcconfig"; path = "Target Support Files/Pods-AppTests/Pods-AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2EA668DA22D19922A2C52FE2 /* Pods-StacleShareExtension.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleShareExtension.profiling.xcconfig"; path = "Target Support Files/Pods-StacleShareExtension/Pods-StacleShareExtension.profiling.xcconfig"; sourceTree = "<group>"; };
 		3236FCC32592B67B006D33B9 /* NameCollisionReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCollisionReviewCell.swift; sourceTree = "<group>"; };
 		323C4FE424EE7B0F00DC94B8 /* LinkPreviewsMegaphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewsMegaphone.swift; sourceTree = "<group>"; };
@@ -1564,6 +1565,7 @@
 		34FDB29121FF986600A01202 /* UIView+OWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+OWS.swift"; sourceTree = "<group>"; };
 		366A81ADD4EBB4C1076B75F3 /* Pods-StaclePerformanceTests.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaclePerformanceTests.app store release.xcconfig"; path = "Target Support Files/Pods-StaclePerformanceTests/Pods-StaclePerformanceTests.app store release.xcconfig"; sourceTree = "<group>"; };
 		38AD4FA92310B7E00038BA75 /* SignalRingRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SignalRingRTC.framework; path = ThirdParty/WebRTC/Build/SignalRingRTC.framework; sourceTree = "<group>"; };
+		39309F83B81E7CE97B5DB9B4 /* Pods-AppMessaging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppMessaging.debug.xcconfig"; path = "Target Support Files/Pods-AppMessaging/Pods-AppMessaging.debug.xcconfig"; sourceTree = "<group>"; };
 		3A12E0982656E7FD0033D049 /* TSAccountManager + WalletConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TSAccountManager + WalletConfiguration.swift"; sourceTree = "<group>"; };
 		3A13F930269F02C800427DC2 /* CustomNSError+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomNSError+Extensions.swift"; sourceTree = "<group>"; };
 		3A13F93D269F035E00427DC2 /* CurrentValuePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentValuePublisher.swift; sourceTree = "<group>"; };
@@ -1604,7 +1606,7 @@
 		3A34EDD526AEE18B0047EFA0 /* HttpTransportCoderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTransportCoderError.swift; sourceTree = "<group>"; };
 		3A34EDD626AEE18B0047EFA0 /* HttpStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 		3A34EDE926AEE2380047EFA0 /* CryptoAuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAuthError.swift; sourceTree = "<group>"; };
-		3AA9CB5326B1511900C126B8 /* Pods_StacleMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_StacleMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A646AC2909C903A6598D8A9 /* Pods-AppPerformanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPerformanceTests.debug.xcconfig"; path = "Target Support Files/Pods-AppPerformanceTests/Pods-AppPerformanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3ACC21DC6744A48EEFD3C604 /* Pods-StacleShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-StacleShareExtension/Pods-StacleShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		3CAE1BAB4E840E376FCB5E5F /* Pods-StaclePerformanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaclePerformanceTests.debug.xcconfig"; path = "Target Support Files/Pods-StaclePerformanceTests/Pods-StaclePerformanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4503F1BB20470A5B00CEE724 /* classic-quiet.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "classic-quiet.aifc"; sourceTree = "<group>"; };
@@ -1707,6 +1709,7 @@
 		45F170AB1E2F0351003FC1F2 /* OWSAudioSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OWSAudioSession.swift; sourceTree = "<group>"; };
 		45F32C1D205718B000A300D5 /* MediaPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPageViewController.swift; sourceTree = "<group>"; };
 		45F59A092029140500E8D2B0 /* OWSVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWSVideoPlayer.swift; sourceTree = "<group>"; };
+		48D9FC481501FBC344EF9160 /* Pods-AppShareExtension.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppShareExtension.app store release.xcconfig"; path = "Target Support Files/Pods-AppShareExtension/Pods-AppShareExtension.app store release.xcconfig"; sourceTree = "<group>"; };
 		4C0387522339B3220062D293 /* UIColor+OWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+OWS.swift"; sourceTree = "<group>"; };
 		4C043929220A9EC800BAEA63 /* VoiceNoteLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceNoteLock.swift; sourceTree = "<group>"; };
 		4C046AA6236148880035B234 /* OWSGroupSyncProcessingJobQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWSGroupSyncProcessingJobQueue.swift; sourceTree = "<group>"; };
@@ -1785,6 +1788,9 @@
 		4CD675C622E7D393008010D2 /* MediaPresentationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPresentationContext.swift; sourceTree = "<group>"; };
 		4CFF115223A9C2130007F9D7 /* UnreadIndicatorInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadIndicatorInteraction.swift; sourceTree = "<group>"; };
 		4CFF4C0920F55BBA005DA313 /* MessageActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageActionsViewController.swift; sourceTree = "<group>"; };
+		4D5B8118656279AB74337D95 /* Pods_AppMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AAA73334995FD43BE40717D /* Pods_AppShareExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppShareExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EC4C8F3B3CCEF3068479471 /* Pods-AppTests.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTests.profiling.xcconfig"; path = "Target Support Files/Pods-AppTests/Pods-AppTests.profiling.xcconfig"; sourceTree = "<group>"; };
 		70377AAA1918450100CAF501 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		709015E68C8FA13278A62232 /* Pods-StacleMessaging.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleMessaging.testable release.xcconfig"; path = "Target Support Files/Pods-StacleMessaging/Pods-StacleMessaging.testable release.xcconfig"; sourceTree = "<group>"; };
 		74837CC0BAF5B7FCCCD31EB9 /* Pods_NotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1792,8 +1798,11 @@
 		76C87F18181EFCE600C4ACAB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		76EB03C218170B33006006FC /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		76EB03C318170B33006006FC /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7CB0D5CDEBCF88A754F6BDD7 /* Pods_AppPerformanceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppPerformanceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF133B0638F4C34509379AC /* Pods-StacleTests.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleTests.testable release.xcconfig"; path = "Target Support Files/Pods-StacleTests/Pods-StacleTests.testable release.xcconfig"; sourceTree = "<group>"; };
 		7D3892EAC10C6BDF256CC3B5 /* Pods-Stacle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stacle.debug.xcconfig"; path = "Target Support Files/Pods-Stacle/Pods-Stacle.debug.xcconfig"; sourceTree = "<group>"; };
+		7E6844606649F8352C885247 /* Pods-AppMessaging.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppMessaging.profiling.xcconfig"; path = "Target Support Files/Pods-AppMessaging/Pods-AppMessaging.profiling.xcconfig"; sourceTree = "<group>"; };
+		8431EE59E81BE6CA30095D69 /* Pods-AppMessaging.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppMessaging.app store release.xcconfig"; path = "Target Support Files/Pods-AppMessaging/Pods-AppMessaging.app store release.xcconfig"; sourceTree = "<group>"; };
 		8806EF18248DBD7200E764C7 /* NotificationPermissionReminderMegaphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionReminderMegaphone.swift; sourceTree = "<group>"; };
 		8806EF1A248DBFC100E764C7 /* ContactPermissionReminderMegaphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPermissionReminderMegaphone.swift; sourceTree = "<group>"; };
 		88081436234D80150004C187 /* UIResponder+OWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+OWS.swift"; sourceTree = "<group>"; };
@@ -1969,6 +1978,7 @@
 		88F819582383569A007914E8 /* CNContactViewController+OWS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CNContactViewController+OWS.h"; sourceTree = "<group>"; };
 		88F819592383569A007914E8 /* CNContactViewController+OWS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNContactViewController+OWS.m"; sourceTree = "<group>"; };
 		88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationViewController+Scroll.swift"; sourceTree = "<group>"; };
+		89A7F1495EFE82F0EC5E5E88 /* Pods-AppShareExtension.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppShareExtension.profiling.xcconfig"; path = "Target Support Files/Pods-AppShareExtension/Pods-AppShareExtension.profiling.xcconfig"; sourceTree = "<group>"; };
 		954AEE681DF33D32002E5410 /* ContactsPickerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsPickerTest.swift; sourceTree = "<group>"; };
 		965D860673E98622A063A9FC /* Pods-NotificationServiceExtension.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.app store release.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.app store release.xcconfig"; sourceTree = "<group>"; };
 		997F7E3F03D69B0C405CAC47 /* Pods-StacleMessaging.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleMessaging.profiling.xcconfig"; path = "Target Support Files/Pods-StacleMessaging/Pods-StacleMessaging.profiling.xcconfig"; sourceTree = "<group>"; };
@@ -1979,9 +1989,12 @@
 		A1C32D4F17A06537000A904E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		A1FDCBEE16DAA6C300868894 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A5E7C674248C5442007C949A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = translations/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A8231B9DD3A7776A4542E9F4 /* Pods_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A973B4CCC492AA69F279AB4F /* Pods-NotificationServiceExtension.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.testable release.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.testable release.xcconfig"; sourceTree = "<group>"; };
+		AAD7EF12D2726A0AAEA47B49 /* Pods-AppMessaging.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppMessaging.testable release.xcconfig"; path = "Target Support Files/Pods-AppMessaging/Pods-AppMessaging.testable release.xcconfig"; sourceTree = "<group>"; };
 		AC12B5FAA0E45C608224A310 /* OWSAddToContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OWSAddToContactViewController.swift; sourceTree = "<group>"; };
 		AD58CD29C5BB1019E1FB0113 /* Pods-NotificationServiceExtension.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.profiling.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.profiling.xcconfig"; sourceTree = "<group>"; };
+		B381935C10E07A25ACA72C3B /* Pods-AppTests.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTests.testable release.xcconfig"; path = "Target Support Files/Pods-AppTests/Pods-AppTests.testable release.xcconfig"; sourceTree = "<group>"; };
 		B60EDE031A05A01700D73516 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B657DDC91911A40500F45B0C /* Stacle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stacle.entitlements; sourceTree = "<group>"; };
 		B660F69E1C29868000687D6E /* StacleTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "StacleTests-Info.plist"; sourceTree = "<group>"; };
@@ -1999,6 +2012,7 @@
 		B97940251832BD2400BD66CB /* UIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtil.h; sourceTree = "<group>"; };
 		B97940261832BD2400BD66CB /* UIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtil.m; sourceTree = "<group>"; };
 		B9EB5ABC1884C002007CBB57 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		CF3D233989D16953B7419FB9 /* Pods-AppTests.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTests.app store release.xcconfig"; path = "Target Support Files/Pods-AppTests/Pods-AppTests.app store release.xcconfig"; sourceTree = "<group>"; };
 		D044E6A32495A4A90087A0C2 /* OWSCellAccessibilityCustomAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWSCellAccessibilityCustomAction.swift; sourceTree = "<group>"; };
 		D2179CFB16BB0B3A0006F3AB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D2179CFD16BB0B480006F3AB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -2012,6 +2026,7 @@
 		D221A0AA169C9E5F00537ABF /* StacleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StacleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D221A0E7169DFFC500537ABF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = ../../../../../../System/Library/Frameworks/AVFoundation.framework; sourceTree = "<group>"; };
 		D24B5BD4169F568C00681372 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = ../../../../../../System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<group>"; };
+		D25B8508A00EF6F817740424 /* Pods-AppPerformanceTests.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPerformanceTests.testable release.xcconfig"; path = "Target Support Files/Pods-AppPerformanceTests/Pods-AppPerformanceTests.testable release.xcconfig"; sourceTree = "<group>"; };
 		D2AEACDB16C426DA00C364C0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D6DB1EA29EB5F4B81F222410 /* Pods-StacleMessaging.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleMessaging.app store release.xcconfig"; path = "Target Support Files/Pods-StacleMessaging/Pods-StacleMessaging.app store release.xcconfig"; sourceTree = "<group>"; };
 		E0BE2A526CFD8CC891A556E8 /* Pods-StacleMessaging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleMessaging.debug.xcconfig"; path = "Target Support Files/Pods-StacleMessaging/Pods-StacleMessaging.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2358,6 +2373,7 @@
 		F2E98029261FAD4A00EA9BDA /* IndividualCallService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualCallService.swift; sourceTree = "<group>"; };
 		F2E9802A261FAD4A00EA9BDA /* OutboundIndividualCallInitiator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutboundIndividualCallInitiator.swift; sourceTree = "<group>"; };
 		F2E9802B261FAD4A00EA9BDA /* IndividualCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualCall.swift; sourceTree = "<group>"; };
+		F589A4371CA861DF3C71DDDC /* Pods-AppShareExtension.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppShareExtension.testable release.xcconfig"; path = "Target Support Files/Pods-AppShareExtension/Pods-AppShareExtension.testable release.xcconfig"; sourceTree = "<group>"; };
 		FC3BD9871A30A790005B96BB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FCB11D8B1A129A76002F93FB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		FCDA35E32D23E33DF4BEA856 /* Pods-StacleShareExtension.testable release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StacleShareExtension.testable release.xcconfig"; path = "Target Support Files/Pods-StacleShareExtension/Pods-StacleShareExtension.testable release.xcconfig"; sourceTree = "<group>"; };
@@ -2370,7 +2386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				453518A21FC63E2900210559 /* AppMessaging.framework in Frameworks */,
-				A4BA3DE7BA4496F03FADC312 /* Pods_StacleShareExtension.framework in Frameworks */,
+				85910F94D1CBBA01D96B0AB4 /* Pods_AppShareExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2378,7 +2394,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AA9CB5426B1511900C126B8 /* Pods_StacleMessaging.framework in Frameworks */,
+				755DDF1E4D6272FBE478F458 /* Pods_AppMessaging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2401,7 +2417,7 @@
 				4C10B1B323176D250099396B /* CFNetwork.framework in Frameworks */,
 				4C10B1B423176D250099396B /* UIKit.framework in Frameworks */,
 				4C10B1B523176D250099396B /* Foundation.framework in Frameworks */,
-				FF8534C35E4052ADA570315F /* Pods_StaclePerformanceTests.framework in Frameworks */,
+				9403366C7B17007F6EA79CB2 /* Pods_AppPerformanceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2477,7 +2493,7 @@
 				D202868116DBE0E7009068E9 /* CFNetwork.framework in Frameworks */,
 				D221A0AD169C9E5F00537ABF /* UIKit.framework in Frameworks */,
 				D221A0AE169C9E5F00537ABF /* Foundation.framework in Frameworks */,
-				20A633AB7C3228EF63464CBF /* Pods_StacleTests.framework in Frameworks */,
+				001E7FB39569DED24124BB63 /* Pods_AppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3699,6 +3715,22 @@
 				FCFD3B0BDB8B51F31A2ABFCF /* Pods-StacleTests.app store release.xcconfig */,
 				01664BE6E094D65D22A8BB7C /* Pods-StacleTests.profiling.xcconfig */,
 				7CF133B0638F4C34509379AC /* Pods-StacleTests.testable release.xcconfig */,
+				39309F83B81E7CE97B5DB9B4 /* Pods-AppMessaging.debug.xcconfig */,
+				8431EE59E81BE6CA30095D69 /* Pods-AppMessaging.app store release.xcconfig */,
+				7E6844606649F8352C885247 /* Pods-AppMessaging.profiling.xcconfig */,
+				AAD7EF12D2726A0AAEA47B49 /* Pods-AppMessaging.testable release.xcconfig */,
+				3A646AC2909C903A6598D8A9 /* Pods-AppPerformanceTests.debug.xcconfig */,
+				099C7A5381CAB92985493B1D /* Pods-AppPerformanceTests.app store release.xcconfig */,
+				2041F86E317FB268DCD44844 /* Pods-AppPerformanceTests.profiling.xcconfig */,
+				D25B8508A00EF6F817740424 /* Pods-AppPerformanceTests.testable release.xcconfig */,
+				04B01B2A70AFFDE06095626A /* Pods-AppShareExtension.debug.xcconfig */,
+				48D9FC481501FBC344EF9160 /* Pods-AppShareExtension.app store release.xcconfig */,
+				89A7F1495EFE82F0EC5E5E88 /* Pods-AppShareExtension.profiling.xcconfig */,
+				F589A4371CA861DF3C71DDDC /* Pods-AppShareExtension.testable release.xcconfig */,
+				29F04B3EB16C1D3075F525FC /* Pods-AppTests.debug.xcconfig */,
+				CF3D233989D16953B7419FB9 /* Pods-AppTests.app store release.xcconfig */,
+				6EC4C8F3B3CCEF3068479471 /* Pods-AppTests.profiling.xcconfig */,
+				B381935C10E07A25ACA72C3B /* Pods-AppTests.testable release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -4217,7 +4249,6 @@
 		D221A08C169C9E5E00537ABF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3AA9CB5326B1511900C126B8 /* Pods_StacleMessaging.framework */,
 				347C37FE2526005800F3D941 /* CloudKit.framework */,
 				38AD4FA92310B7E00038BA75 /* SignalRingRTC.framework */,
 				4C9CA25C217E676900607C63 /* ZXingObjC.framework */,
@@ -4254,9 +4285,10 @@
 				D221A091169C9E5E00537ABF /* CoreGraphics.framework */,
 				74837CC0BAF5B7FCCCD31EB9 /* Pods_NotificationServiceExtension.framework */,
 				1405E6D1F74461514481DE3C /* Pods_Stacle.framework */,
-				0D4ADC87A3B0E6CA32E0FD9A /* Pods_StaclePerformanceTests.framework */,
-				07FEADEBA35E09F4E2BAA9B5 /* Pods_StacleShareExtension.framework */,
-				1329ED9F3BA299B0AE2592FC /* Pods_StacleTests.framework */,
+				4D5B8118656279AB74337D95 /* Pods_AppMessaging.framework */,
+				7CB0D5CDEBCF88A754F6BDD7 /* Pods_AppPerformanceTests.framework */,
+				5AAA73334995FD43BE40717D /* Pods_AppShareExtension.framework */,
+				A8231B9DD3A7776A4542E9F4 /* Pods_AppTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -5650,15 +5682,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StaclePerformanceTests/Pods-StaclePerformanceTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AppPerformanceTests/Pods-AppPerformanceTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StaclePerformanceTests/Pods-StaclePerformanceTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AppPerformanceTests/Pods-AppPerformanceTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StaclePerformanceTests/Pods-StaclePerformanceTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppPerformanceTests/Pods-AppPerformanceTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		34C239432180B01B00B6108F /* Run Script: update_plist_info */ = {
@@ -5721,7 +5753,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StaclePerformanceTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AppPerformanceTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -5761,7 +5793,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StacleTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AppTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -5783,7 +5815,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StacleShareExtension-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AppShareExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -5805,7 +5837,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StacleMessaging-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AppMessaging-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -5818,15 +5850,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StacleTests/Pods-StacleTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AppTests/Pods-AppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StacleTests/Pods-StacleTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AppTests/Pods-AppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StacleTests/Pods-StacleTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppTests/Pods-AppTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DF486FF629227609B3640C10 /* [CP] Check Pods Manifest.lock */ = {
@@ -6851,7 +6883,7 @@
 /* Begin XCBuildConfiguration section */
 		453518731FC635DD00210559 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3ACC21DC6744A48EEFD3C604 /* Pods-StacleShareExtension.debug.xcconfig */;
+			baseConfigurationReference = 04B01B2A70AFFDE06095626A /* Pods-AppShareExtension.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -6904,7 +6936,7 @@
 		};
 		453518751FC635DD00210559 /* App Store Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20575EB18238FB7BF1557D10 /* Pods-StacleShareExtension.app store release.xcconfig */;
+			baseConfigurationReference = 48D9FC481501FBC344EF9160 /* Pods-AppShareExtension.app store release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -6978,7 +7010,7 @@
 		};
 		4535189B1FC63DBF00210559 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0BE2A526CFD8CC891A556E8 /* Pods-StacleMessaging.debug.xcconfig */;
+			baseConfigurationReference = 39309F83B81E7CE97B5DB9B4 /* Pods-AppMessaging.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -7042,7 +7074,7 @@
 		};
 		4535189D1FC63DBF00210559 /* App Store Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6DB1EA29EB5F4B81F222410 /* Pods-StacleMessaging.app store release.xcconfig */;
+			baseConfigurationReference = 8431EE59E81BE6CA30095D69 /* Pods-AppMessaging.app store release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -7287,7 +7319,7 @@
 		};
 		4C10B17C23176CEB0099396B /* Testable Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CF133B0638F4C34509379AC /* Pods-StacleTests.testable release.xcconfig */;
+			baseConfigurationReference = B381935C10E07A25ACA72C3B /* Pods-AppTests.testable release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Signal.app/Signal";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -7350,7 +7382,7 @@
 		};
 		4C10B17D23176CEB0099396B /* Testable Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCDA35E32D23E33DF4BEA856 /* Pods-StacleShareExtension.testable release.xcconfig */;
+			baseConfigurationReference = F589A4371CA861DF3C71DDDC /* Pods-AppShareExtension.testable release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -7425,7 +7457,7 @@
 		};
 		4C10B17E23176CEB0099396B /* Testable Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 709015E68C8FA13278A62232 /* Pods-StacleMessaging.testable release.xcconfig */;
+			baseConfigurationReference = AAD7EF12D2726A0AAEA47B49 /* Pods-AppMessaging.testable release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -7511,7 +7543,7 @@
 		};
 		4C10B1C023176D250099396B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CAE1BAB4E840E376FCB5E5F /* Pods-StaclePerformanceTests.debug.xcconfig */;
+			baseConfigurationReference = 3A646AC2909C903A6598D8A9 /* Pods-AppPerformanceTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Signal.app/Signal";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -7573,7 +7605,7 @@
 		};
 		4C10B1C123176D250099396B /* App Store Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 366A81ADD4EBB4C1076B75F3 /* Pods-StaclePerformanceTests.app store release.xcconfig */;
+			baseConfigurationReference = 099C7A5381CAB92985493B1D /* Pods-AppPerformanceTests.app store release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Signal.app/Signal";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -7634,7 +7666,7 @@
 		};
 		4C10B1C223176D250099396B /* Testable Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8A81A37974B4B9F97C8340D /* Pods-StaclePerformanceTests.testable release.xcconfig */;
+			baseConfigurationReference = D25B8508A00EF6F817740424 /* Pods-AppPerformanceTests.testable release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Signal.app/Signal";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -7849,7 +7881,7 @@
 		};
 		88238EA924EAD2FD00F28079 /* Profiling */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01664BE6E094D65D22A8BB7C /* Pods-StacleTests.profiling.xcconfig */;
+			baseConfigurationReference = 6EC4C8F3B3CCEF3068479471 /* Pods-AppTests.profiling.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Signal.app/Signal";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -7910,7 +7942,7 @@
 		};
 		88238EAA24EAD2FD00F28079 /* Profiling */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2EA668DA22D19922A2C52FE2 /* Pods-StacleShareExtension.profiling.xcconfig */;
+			baseConfigurationReference = 89A7F1495EFE82F0EC5E5E88 /* Pods-AppShareExtension.profiling.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -7983,7 +8015,7 @@
 		};
 		88238EAB24EAD2FD00F28079 /* Profiling */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 997F7E3F03D69B0C405CAC47 /* Pods-StacleMessaging.profiling.xcconfig */;
+			baseConfigurationReference = 7E6844606649F8352C885247 /* Pods-AppMessaging.profiling.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -8067,7 +8099,7 @@
 		};
 		88238EAC24EAD2FD00F28079 /* Profiling */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8269B1A125AED5B4D760BCE /* Pods-StaclePerformanceTests.profiling.xcconfig */;
+			baseConfigurationReference = 2041F86E317FB268DCD44844 /* Pods-AppPerformanceTests.profiling.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Signal.app/Signal";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -8713,7 +8745,7 @@
 		};
 		D221A0C0169C9E5F00537ABF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB559A1E8D99B09DC19ECB78 /* Pods-StacleTests.debug.xcconfig */;
+			baseConfigurationReference = 29F04B3EB16C1D3075F525FC /* Pods-AppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Signal.app/Signal";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -8775,7 +8807,7 @@
 		};
 		D221A0C1169C9E5F00537ABF /* App Store Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCFD3B0BDB8B51F31A2ABFCF /* Pods-StacleTests.app store release.xcconfig */;
+			baseConfigurationReference = CF3D233989D16953B7419FB9 /* Pods-AppTests.app store release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Signal.app/Signal";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
