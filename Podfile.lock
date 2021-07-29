@@ -6,6 +6,46 @@ PODS:
   - AFNetworking/Reachability (3.2.1)
   - AFNetworking/Security (3.2.1)
   - AFNetworking/Serialization (3.2.1)
+  - AppServiceKit (0.9.0):
+    - AFNetworking/NSURLSession
+    - blurhash
+    - CocoaLumberjack
+    - Curve25519Kit
+    - GRDB.swift/SQLCipher
+    - GRKOpenSSLFramework
+    - libPhoneNumber-iOS
+    - libwebp
+    - Mantle
+    - PromiseKit (~> 6.0)
+    - Reachability
+    - SAMKeychain
+    - SignalArgon2
+    - SignalClient
+    - SignalCoreKit
+    - SignalMetadataKit
+    - Starscream
+    - SwiftProtobuf
+    - YYImage/WebP
+  - AppServiceKit/Tests (0.9.0):
+    - AFNetworking/NSURLSession
+    - blurhash
+    - CocoaLumberjack
+    - Curve25519Kit
+    - GRDB.swift/SQLCipher
+    - GRKOpenSSLFramework
+    - libPhoneNumber-iOS
+    - libwebp
+    - Mantle
+    - PromiseKit (~> 6.0)
+    - Reachability
+    - SAMKeychain
+    - SignalArgon2
+    - SignalClient
+    - SignalCoreKit
+    - SignalMetadataKit
+    - Starscream
+    - SwiftProtobuf
+    - YYImage/WebP
   - AppsFlyerFramework (6.2.5):
     - AppsFlyerFramework/Main (= 6.2.5)
   - AppsFlyerFramework/Main (6.2.5)
@@ -36,30 +76,15 @@ PODS:
   - GRKOpenSSLFramework (1.0.2.19)
   - KeychainAccess (4.2.2)
   - libPhoneNumber-iOS (0.9.15)
-  - libwebp (1.0.2):
-    - libwebp/core (= 1.0.2)
-    - libwebp/dec (= 1.0.2)
-    - libwebp/demux (= 1.0.2)
-    - libwebp/dsp (= 1.0.2)
-    - libwebp/enc (= 1.0.2)
-    - libwebp/mux (= 1.0.2)
-    - libwebp/utils (= 1.0.2)
-    - libwebp/webp (= 1.0.2)
-  - libwebp/core (1.0.2):
+  - libwebp (1.2.0):
+    - libwebp/demux (= 1.2.0)
+    - libwebp/mux (= 1.2.0)
+    - libwebp/webp (= 1.2.0)
+  - libwebp/demux (1.2.0):
     - libwebp/webp
-  - libwebp/dec (1.0.2):
-    - libwebp/core
-  - libwebp/demux (1.0.2):
-    - libwebp/core
-  - libwebp/dsp (1.0.2):
-    - libwebp/core
-  - libwebp/enc (1.0.2):
-    - libwebp/core
-  - libwebp/mux (1.0.2):
-    - libwebp/core
-  - libwebp/utils (1.0.2):
-    - libwebp/core
-  - libwebp/webp (1.0.2)
+  - libwebp/mux (1.2.0):
+    - libwebp/demux
+  - libwebp/webp (1.2.0)
   - lottie-ios (3.1.3)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
@@ -113,46 +138,6 @@ PODS:
   - SignalRingRTC/WebRTC (2.9.4):
     - PromiseKit
     - SignalCoreKit
-  - SignalServiceKit (0.9.0):
-    - AFNetworking/NSURLSession
-    - blurhash
-    - CocoaLumberjack
-    - Curve25519Kit
-    - GRDB.swift/SQLCipher
-    - GRKOpenSSLFramework
-    - libPhoneNumber-iOS
-    - libwebp
-    - Mantle
-    - PromiseKit (~> 6.0)
-    - Reachability
-    - SAMKeychain
-    - SignalArgon2
-    - SignalClient
-    - SignalCoreKit
-    - SignalMetadataKit
-    - Starscream
-    - SwiftProtobuf
-    - YYImage/WebP
-  - SignalServiceKit/Tests (0.9.0):
-    - AFNetworking/NSURLSession
-    - blurhash
-    - CocoaLumberjack
-    - Curve25519Kit
-    - GRDB.swift/SQLCipher
-    - GRKOpenSSLFramework
-    - libPhoneNumber-iOS
-    - libwebp
-    - Mantle
-    - PromiseKit (~> 6.0)
-    - Reachability
-    - SAMKeychain
-    - SignalArgon2
-    - SignalClient
-    - SignalCoreKit
-    - SignalMetadataKit
-    - Starscream
-    - SwiftProtobuf
-    - YYImage/WebP
   - SQLCipher (4.3.0):
     - SQLCipher/standard (= 4.3.0)
   - SQLCipher/common (4.3.0)
@@ -179,6 +164,8 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking/NSURLSession
+  - AppServiceKit (from `.`)
+  - AppServiceKit/Tests (from `.`)
   - AppsFlyerFramework
   - blurhash (from `https://github.com/signalapp/blurhash`, branch `signal-master`)
   - BonMot
@@ -202,8 +189,6 @@ DEPENDENCIES:
   - "SignalMetadataKit (from `ssh://git@github.com/signalapp/SignalMetadataKit`, branch `feature/SignalClient-adoption`)"
   - "SignalMetadataKit/Tests (from `ssh://git@github.com/signalapp/SignalMetadataKit`, branch `feature/SignalClient-adoption`)"
   - SignalRingRTC (from `ThirdParty/SignalRingRTC.podspec`)
-  - SignalServiceKit (from `.`)
-  - SignalServiceKit/Tests (from `.`)
   - SQLCipher (>= 4.0.1)
   - SSZipArchive
   - Starscream (from `https://github.com/signalapp/Starscream.git`, branch `signal-release`)
@@ -236,6 +221,8 @@ SPEC REPOS:
     - XCGLogger
 
 EXTERNAL SOURCES:
+  AppServiceKit:
+    :path: "."
   blurhash:
     :branch: signal-master
     :git: https://github.com/signalapp/blurhash
@@ -266,8 +253,6 @@ EXTERNAL SOURCES:
     :git: "ssh://git@github.com/signalapp/SignalMetadataKit"
   SignalRingRTC:
     :path: ThirdParty/SignalRingRTC.podspec
-  SignalServiceKit:
-    :path: "."
   Starscream:
     :branch: signal-release
     :git: https://github.com/signalapp/Starscream.git
@@ -325,6 +310,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AppServiceKit: df18f95f52e7384f7ec20f1b2cb0dd20a3b1652e
   AppsFlyerFramework: a222d1c388bd7b6199237c6a0b0b63ccb7d59bd2
   blurhash: 4b3b2b8909cf41ab59fa349788654b8387284ff4
   BonMot: 2217a66e5ddc6a8d2ffb759fe8c85a8528e0d3e7
@@ -335,7 +321,7 @@ SPEC CHECKSUMS:
   GRKOpenSSLFramework: 4abc733a8fcbc37060619a86a54202d2938dd70e
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   libPhoneNumber-iOS: 0a32a9525cf8744fe02c5206eb30d571e38f7d75
-  libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
+  libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
   lottie-ios: 496ac5cea1bbf1a7bd1f1f472f3232eb1b8d744b
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
@@ -349,7 +335,6 @@ SPEC CHECKSUMS:
   SignalCoreKit: 43daa8f15d6125d54705f35628ac35051bb205c6
   SignalMetadataKit: eb928ec98376ab5a6ef2108a7fcd3b2d792b8c65
   SignalRingRTC: 1769d40e1a155a2d6ddd95c404e7822bedd97076
-  SignalServiceKit: 998e9bce294e9e4eb88b13ccd58f7016bb0c8021
   SQLCipher: d305a7bd9af4b64f095c79bdc1a1fa50f2a15116
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   Starscream: 8aaf1a7feb805c816d0e7d3190ef23856f6665b9
@@ -360,6 +345,6 @@ SPEC CHECKSUMS:
   ZKGroup: 15a08eed5870a44b9dd14af0824ac95f6eed7380
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: e0e9ab0d215b04913a25be466b692e69590fe810
+PODFILE CHECKSUM: 2639c324b2701e1ab7e34ad60d175c80d83b0870
 
 COCOAPODS: 1.9.2

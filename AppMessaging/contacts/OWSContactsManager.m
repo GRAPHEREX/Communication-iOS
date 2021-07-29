@@ -14,11 +14,11 @@
 #import <SignalCoreKit/iOSVersions.h>
 #import <AppMessaging/AppMessaging-Swift.h>
 #import <AppMessaging/UIFont+OWS.h>
-#import <SignalServiceKit/NSNotificationCenter+OWS.h>
-#import <SignalServiceKit/OWSError.h>
-#import <SignalServiceKit/PhoneNumber.h>
-#import <SignalServiceKit/SignalAccount.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <AppServiceKit/NSNotificationCenter+OWS.h>
+#import <AppServiceKit/OWSError.h>
+#import <AppServiceKit/PhoneNumber.h>
+#import <AppServiceKit/SignalAccount.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

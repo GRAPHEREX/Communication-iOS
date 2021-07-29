@@ -12,11 +12,11 @@
 #import <AppMessaging/AttachmentSharing.h>
 #import <AppMessaging/DebugLogger.h>
 #import <AppMessaging/Environment.h>
-#import <SignalServiceKit/AppContext.h>
-#import <SignalServiceKit/MimeTypeUtil.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSAccountManager.h>
-#import <SignalServiceKit/TSContactThread.h>
+#import <AppServiceKit/AppContext.h>
+#import <AppServiceKit/MimeTypeUtil.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSAccountManager.h>
+#import <AppServiceKit/TSContactThread.h>
 #import <sys/sysctl.h>
 
 NS_ASSUME_NONNULL_BEGIN

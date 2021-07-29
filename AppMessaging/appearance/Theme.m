@@ -5,8 +5,8 @@
 #import "Theme.h"
 #import "UIUtil.h"
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/NSNotificationCenter+OWS.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <AppServiceKit/NSNotificationCenter+OWS.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -9,8 +9,8 @@
 #import <AppMessaging/OWSContactsManager.h>
 #import <AppMessaging/AppMessaging-Swift.h>
 #import <AppMessaging/UIView+OWS.h>
-#import <SignalServiceKit/TSAttachmentStream.h>
-#import <SignalServiceKit/TSMessage.h>
+#import <AppServiceKit/TSAttachmentStream.h>
+#import <AppServiceKit/TSMessage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

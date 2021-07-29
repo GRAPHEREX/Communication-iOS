@@ -6,11 +6,11 @@
 #import "OWSAvatarBuilder.h"
 #import "Stacle-Swift.h"
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/OWSFormat.h>
-#import <SignalServiceKit/OWSMath.h>
-#import <SignalServiceKit/OWSMessageManager.h>
-#import <SignalServiceKit/TSContactThread.h>
-#import <SignalServiceKit/TSGroupThread.h>
+#import <AppServiceKit/OWSFormat.h>
+#import <AppServiceKit/OWSMath.h>
+#import <AppServiceKit/OWSMessageManager.h>
+#import <AppServiceKit/TSContactThread.h>
+#import <AppServiceKit/TSGroupThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

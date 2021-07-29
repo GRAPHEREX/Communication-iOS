@@ -3,7 +3,7 @@
 //
 
 import XCTest
-@testable import SignalServiceKit
+@testable import AppServiceKit
 @testable import Signal
 @testable import AppMessaging
 

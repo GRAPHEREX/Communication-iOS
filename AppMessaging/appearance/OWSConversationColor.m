@@ -5,7 +5,7 @@
 #import "OWSConversationColor.h"
 #import "Theme.h"
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

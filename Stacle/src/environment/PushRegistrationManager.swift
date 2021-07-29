@@ -5,7 +5,7 @@
 import Foundation
 import PromiseKit
 import PushKit
-import SignalServiceKit
+import AppServiceKit
 import AppMessaging
 import CallKit
 

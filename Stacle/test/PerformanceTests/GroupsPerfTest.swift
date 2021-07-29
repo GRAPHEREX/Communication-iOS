@@ -4,7 +4,7 @@
 
 import Foundation
 import XCTest
-import SignalServiceKit
+import AppServiceKit
 
 class GroupsPerfTest: PerformanceBaseTest {
 

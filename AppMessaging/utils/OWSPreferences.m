@@ -3,13 +3,13 @@
 //
 
 #import "OWSPreferences.h"
-#import <SignalServiceKit/AppContext.h>
-#import <SignalServiceKit/NSNotificationCenter+OWS.h>
-#import <SignalServiceKit/NSUserDefaults+OWS.h>
-#import <SignalServiceKit/SSKEnvironment.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/StorageCoordinator.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/AppContext.h>
+#import <AppServiceKit/NSNotificationCenter+OWS.h>
+#import <AppServiceKit/NSUserDefaults+OWS.h>
+#import <AppServiceKit/SSKEnvironment.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/StorageCoordinator.h>
+#import <AppServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -13,8 +13,8 @@
 #import <AppMessaging/Environment.h>
 #import <AppMessaging/OWSContactsManager.h>
 #import <AppMessaging/OWSTableViewController.h>
-#import <SignalServiceKit/OWSBlockingManager.h>
-#import <SignalServiceKit/TSGroupThread.h>
+#import <AppServiceKit/OWSBlockingManager.h>
+#import <AppServiceKit/TSGroupThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

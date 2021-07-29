@@ -4,7 +4,7 @@
 
 import XCTest
 
-@testable import SignalServiceKit
+@testable import AppServiceKit
 import SwiftProtobuf
 
 class SSKProtoEnvelopeTest: SignalBaseTest {
@@ -47,7 +47,7 @@ class SSKProtoEnvelopeTest: SignalBaseTest {
 
     func testParse_invalidData() {
         // `encodedData` was derived thus:
-        // var proto = SignalServiceKit.SignalServiceProtos_Envelope()
+        // var proto = AppServiceKit.SignalServiceProtos_Envelope()
         // proto.source = "+15551231234"
         // proto.sourceDevice = 1
         // // MISSING TIMESTAMP!

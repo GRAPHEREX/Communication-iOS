@@ -9,9 +9,9 @@
 #import <SignalCoreKit/Threading.h>
 #import <AppMessaging/DebugLogger.h>
 #import <AppMessaging/Environment.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSContactThread.h>
-#import <SignalServiceKit/TSGroupThread.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSContactThread.h>
+#import <AppServiceKit/TSGroupThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

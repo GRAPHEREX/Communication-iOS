@@ -9,7 +9,7 @@
 #import <AppMessaging/Environment.h>
 #import <AppMessaging/OWSPreferences.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/TSAccountManager.h>
+#import <AppServiceKit/TSAccountManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

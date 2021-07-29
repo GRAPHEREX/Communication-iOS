@@ -12,22 +12,22 @@
 #import <PromiseKit/AnyPromise.h>
 #import <SignalCoreKit/Cryptography.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/AppReadiness.h>
-#import <SignalServiceKit/DataSource.h>
-#import <SignalServiceKit/MIMETypeUtil.h>
-#import <SignalServiceKit/MessageSender.h>
-#import <SignalServiceKit/NSNotificationCenter+OWS.h>
-#import <SignalServiceKit/OWSError.h>
-#import <SignalServiceKit/OWSSyncConfigurationMessage.h>
-#import <SignalServiceKit/OWSSyncContactsMessage.h>
-#import <SignalServiceKit/OWSSyncFetchLatestMessage.h>
-#import <SignalServiceKit/OWSSyncGroupsMessage.h>
-#import <SignalServiceKit/OWSSyncKeysMessage.h>
-#import <SignalServiceKit/OWSSyncRequestMessage.h>
-#import <SignalServiceKit/SSKEnvironment.h>
-#import <SignalServiceKit/SignalAccount.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSAccountManager.h>
+#import <AppServiceKit/AppReadiness.h>
+#import <AppServiceKit/DataSource.h>
+#import <AppServiceKit/MIMETypeUtil.h>
+#import <AppServiceKit/MessageSender.h>
+#import <AppServiceKit/NSNotificationCenter+OWS.h>
+#import <AppServiceKit/OWSError.h>
+#import <AppServiceKit/OWSSyncConfigurationMessage.h>
+#import <AppServiceKit/OWSSyncContactsMessage.h>
+#import <AppServiceKit/OWSSyncFetchLatestMessage.h>
+#import <AppServiceKit/OWSSyncGroupsMessage.h>
+#import <AppServiceKit/OWSSyncKeysMessage.h>
+#import <AppServiceKit/OWSSyncRequestMessage.h>
+#import <AppServiceKit/SSKEnvironment.h>
+#import <AppServiceKit/SignalAccount.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSAccountManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

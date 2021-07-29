@@ -4,7 +4,7 @@
 
 #import "SignalBaseTest.h"
 #import <SignalCoreKit/NSData+OWS.h>
-#import <SignalServiceKit/RemoteAttestationSigningCertificate.h>
+#import <AppServiceKit/RemoteAttestationSigningCertificate.h>
 
 @interface RemoteAttestationSigningCertificateTest : SignalBaseTest
 

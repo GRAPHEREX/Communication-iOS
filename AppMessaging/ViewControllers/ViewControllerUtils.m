@@ -7,7 +7,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <SignalCoreKit/NSString+OWS.h>
 #import <AppMessaging/Environment.h>
-#import <SignalServiceKit/PhoneNumberUtil.h>
+#import <AppServiceKit/PhoneNumberUtil.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

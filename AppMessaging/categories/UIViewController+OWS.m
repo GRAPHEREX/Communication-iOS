@@ -8,7 +8,7 @@
 #import "UIView+OWS.h"
 #import <SignalCoreKit/iOSVersions.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/AppContext.h>
+#import <AppServiceKit/AppContext.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

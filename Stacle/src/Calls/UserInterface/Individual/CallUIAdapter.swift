@@ -5,7 +5,7 @@
 import Foundation
 import PromiseKit
 import CallKit
-import SignalServiceKit
+import AppServiceKit
 import AppMessaging
 import WebRTC
 

@@ -4,7 +4,7 @@
 
 import Foundation
 import XCTest
-import SignalServiceKit
+import AppServiceKit
 
 public class PerformanceBaseTest: XCTestCase {
 

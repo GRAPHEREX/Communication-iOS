@@ -6,8 +6,8 @@
 #import "SignalBaseTest.h"
 #import <SignalCoreKit/NSData+OWS.h>
 #import <SignalCoreKit/Randomness.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSGroupThread.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSGroupThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

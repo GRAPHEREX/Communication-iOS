@@ -9,7 +9,7 @@
 #import <Contacts/Contacts.h>
 #import <SignalCoreKit/Randomness.h>
 #import <AppMessaging/OWSTableViewController.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
 
 #ifdef DEBUG
 

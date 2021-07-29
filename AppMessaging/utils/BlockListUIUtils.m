@@ -7,11 +7,11 @@
 #import "PhoneNumber.h"
 #import <PromiseKit/AnyPromise.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/Contact.h>
-#import <SignalServiceKit/OWSBlockingManager.h>
-#import <SignalServiceKit/SignalAccount.h>
-#import <SignalServiceKit/TSAccountManager.h>
-#import <SignalServiceKit/TSGroupThread.h>
+#import <AppServiceKit/Contact.h>
+#import <AppServiceKit/OWSBlockingManager.h>
+#import <AppServiceKit/SignalAccount.h>
+#import <AppServiceKit/TSAccountManager.h>
+#import <AppServiceKit/TSGroupThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

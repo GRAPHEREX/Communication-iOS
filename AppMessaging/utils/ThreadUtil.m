@@ -9,17 +9,17 @@
 #import <SignalCoreKit/SignalCoreKit-Swift.h>
 #import <AppMessaging/OWSProfileManager.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/MessageSender.h>
-#import <SignalServiceKit/OWSDisappearingMessagesConfiguration.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSAccountManager.h>
-#import <SignalServiceKit/TSCall.h>
-#import <SignalServiceKit/TSContactThread.h>
-#import <SignalServiceKit/TSIncomingMessage.h>
-#import <SignalServiceKit/TSInvalidIdentityKeyErrorMessage.h>
-#import <SignalServiceKit/TSOutgoingMessage.h>
-#import <SignalServiceKit/TSThread.h>
-#import <SignalServiceKit/TSUnreadIndicatorInteraction.h>
+#import <AppServiceKit/MessageSender.h>
+#import <AppServiceKit/OWSDisappearingMessagesConfiguration.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSAccountManager.h>
+#import <AppServiceKit/TSCall.h>
+#import <AppServiceKit/TSContactThread.h>
+#import <AppServiceKit/TSIncomingMessage.h>
+#import <AppServiceKit/TSInvalidIdentityKeyErrorMessage.h>
+#import <AppServiceKit/TSOutgoingMessage.h>
+#import <AppServiceKit/TSThread.h>
+#import <AppServiceKit/TSUnreadIndicatorInteraction.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

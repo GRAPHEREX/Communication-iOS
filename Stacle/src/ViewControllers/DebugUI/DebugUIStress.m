@@ -12,12 +12,12 @@
 #import <SignalCoreKit/Randomness.h>
 #import <AppMessaging/Environment.h>
 #import <AppMessaging/OWSTableViewController.h>
-#import <SignalServiceKit/OWSDynamicOutgoingMessage.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSAccountManager.h>
-#import <SignalServiceKit/TSContactThread.h>
-#import <SignalServiceKit/TSGroupThread.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/OWSDynamicOutgoingMessage.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSAccountManager.h>
+#import <AppServiceKit/TSContactThread.h>
+#import <AppServiceKit/TSGroupThread.h>
+#import <AppServiceKit/TSThread.h>
 
 #ifdef DEBUG
 

@@ -6,7 +6,7 @@
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalCoreKit/NSString+OWS.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/OWSFormat.h>
+#import <AppServiceKit/OWSFormat.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -5,11 +5,11 @@
 #import "SignalBaseTest.h"
 #import <SignalCoreKit/NSData+OWS.h>
 #import <SignalCoreKit/Randomness.h>
-#import <SignalServiceKit/ContactsManagerProtocol.h>
-#import <SignalServiceKit/OWSContactsOutputStream.h>
-#import <SignalServiceKit/OWSGroupsOutputStream.h>
-#import <SignalServiceKit/SignalAccount.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <AppServiceKit/ContactsManagerProtocol.h>
+#import <AppServiceKit/OWSContactsOutputStream.h>
+#import <AppServiceKit/OWSGroupsOutputStream.h>
+#import <AppServiceKit/SignalAccount.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

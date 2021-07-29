@@ -3,12 +3,12 @@
 //
 
 #import "ThreadViewHelper.h"
-#import <SignalServiceKit/AppContext.h>
-#import <SignalServiceKit/AppReadiness.h>
-#import <SignalServiceKit/SSKEnvironment.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/StorageCoordinator.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/AppContext.h>
+#import <AppServiceKit/AppReadiness.h>
+#import <AppServiceKit/SSKEnvironment.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/StorageCoordinator.h>
+#import <AppServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

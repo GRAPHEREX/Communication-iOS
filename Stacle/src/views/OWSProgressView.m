@@ -4,7 +4,7 @@
 
 #import "OWSProgressView.h"
 #import <AppMessaging/UIView+OWS.h>
-#import <SignalServiceKit/OWSMath.h>
+#import <AppServiceKit/OWSMath.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

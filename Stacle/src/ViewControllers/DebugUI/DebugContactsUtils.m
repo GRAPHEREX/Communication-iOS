@@ -6,7 +6,7 @@
 #import "Stacle-Swift.h"
 #import <Contacts/Contacts.h>
 #import <SignalCoreKit/Randomness.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

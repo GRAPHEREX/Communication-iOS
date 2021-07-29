@@ -10,25 +10,25 @@
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalCoreKit/NSString+OWS.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/AppContext.h>
-#import <SignalServiceKit/AppReadiness.h>
-#import <SignalServiceKit/MIMETypeUtil.h>
-#import <SignalServiceKit/MessageSender.h>
-#import <SignalServiceKit/NSData+Image.h>
-#import <SignalServiceKit/NSNotificationCenter+OWS.h>
-#import <SignalServiceKit/OWSBlockingManager.h>
-#import <SignalServiceKit/OWSFileSystem.h>
-#import <SignalServiceKit/OWSProfileKeyMessage.h>
-#import <SignalServiceKit/OWSSignalService.h>
-#import <SignalServiceKit/OWSUpload.h>
-#import <SignalServiceKit/OWSUserProfile.h>
-#import <SignalServiceKit/SSKEnvironment.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSAccountManager.h>
-#import <SignalServiceKit/TSGroupThread.h>
-#import <SignalServiceKit/TSNetworkManager.h>
-#import <SignalServiceKit/TSThread.h>
-#import <SignalServiceKit/UIImage+OWS.h>
+#import <AppServiceKit/AppContext.h>
+#import <AppServiceKit/AppReadiness.h>
+#import <AppServiceKit/MIMETypeUtil.h>
+#import <AppServiceKit/MessageSender.h>
+#import <AppServiceKit/NSData+Image.h>
+#import <AppServiceKit/NSNotificationCenter+OWS.h>
+#import <AppServiceKit/OWSBlockingManager.h>
+#import <AppServiceKit/OWSFileSystem.h>
+#import <AppServiceKit/OWSProfileKeyMessage.h>
+#import <AppServiceKit/OWSSignalService.h>
+#import <AppServiceKit/OWSUpload.h>
+#import <AppServiceKit/OWSUserProfile.h>
+#import <AppServiceKit/SSKEnvironment.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSAccountManager.h>
+#import <AppServiceKit/TSGroupThread.h>
+#import <AppServiceKit/TSNetworkManager.h>
+#import <AppServiceKit/TSThread.h>
+#import <AppServiceKit/UIImage+OWS.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

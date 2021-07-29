@@ -12,8 +12,8 @@
 #import "DebugUIStress.h"
 #import "DebugUISyncMessages.h"
 #import "Stacle-Swift.h"
-#import <SignalServiceKit/TSContactThread.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/TSContactThread.h>
+#import <AppServiceKit/TSThread.h>
 
 #ifdef DEBUG
 

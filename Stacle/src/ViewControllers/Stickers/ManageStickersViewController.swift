@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import SignalServiceKit
+import AppServiceKit
 
 private class StickerPackActionButton: UIView {
 

@@ -8,7 +8,7 @@
 #import "UIView+OWS.h"
 #import <QuartzCore/QuartzCore.h>
 #import <SignalCoreKit/NSDate+OWS.h>
-#import <SignalServiceKit/NSTimer+OWS.h>
+#import <AppServiceKit/NSTimer+OWS.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

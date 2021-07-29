@@ -4,7 +4,7 @@
 
 import Foundation
 import MediaPlayer
-import SignalServiceKit
+import AppServiceKit
 import PromiseKit
 
 // A modal view that be used during blocking interactions (e.g. waiting on response from

@@ -4,7 +4,7 @@
 
 import Foundation
 import PromiseKit
-import SignalServiceKit
+import AppServiceKit
 import ZKGroup
 
 // Represents a proposed set of changes to a group.

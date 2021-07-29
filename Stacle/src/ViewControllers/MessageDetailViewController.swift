@@ -4,7 +4,7 @@
 
 import Foundation
 import QuickLook
-import SignalServiceKit
+import AppServiceKit
 import AppMessaging
 
 protocol MessageDetailViewDelegate: AnyObject {

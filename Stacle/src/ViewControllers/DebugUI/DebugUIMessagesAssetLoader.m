@@ -6,10 +6,10 @@
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import <PromiseKit/AnyPromise.h>
 #import <SignalCoreKit/Randomness.h>
-#import <SignalServiceKit/MIMETypeUtil.h>
-#import <SignalServiceKit/OWSFileSystem.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSAttachment.h>
+#import <AppServiceKit/MIMETypeUtil.h>
+#import <AppServiceKit/OWSFileSystem.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSAttachment.h>
 
 #ifdef DEBUG
 

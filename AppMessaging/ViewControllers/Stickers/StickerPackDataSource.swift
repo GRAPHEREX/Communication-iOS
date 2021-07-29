@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import SignalServiceKit
+import AppServiceKit
 
 // Supplies sticker pack data
 public protocol StickerPackDataSourceDelegate: class {

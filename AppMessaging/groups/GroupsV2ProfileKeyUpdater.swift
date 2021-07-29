@@ -4,7 +4,7 @@
 
 import Foundation
 import PromiseKit
-import SignalServiceKit
+import AppServiceKit
 
 // Whenever we rotate our profile key, we need to update all
 // v2 groups of which we are a non-pending member.

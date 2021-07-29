@@ -8,7 +8,7 @@
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalCoreKit/NSObject+OWS.h>
 #import <SignalCoreKit/NSString+OWS.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
 
 @interface DateUtil (Test)
 

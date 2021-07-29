@@ -9,11 +9,11 @@
 #import "UIView+OWS.h"
 #import "DateUtil.h"
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/SignalAccount.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSContactThread.h>
-#import <SignalServiceKit/TSGroupThread.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/SignalAccount.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSContactThread.h>
+#import <AppServiceKit/TSGroupThread.h>
+#import <AppServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

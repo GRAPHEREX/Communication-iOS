@@ -8,10 +8,10 @@
 #import <AudioToolbox/AudioServices.h>
 #import <CocoaLumberjack/DDTTYLogger.h>
 #import <SignalCoreKit/NSDate+OWS.h>
-#import <SignalServiceKit/AppContext.h>
-#import <SignalServiceKit/OWSFileSystem.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TestAppContext.h>
+#import <AppServiceKit/AppContext.h>
+#import <AppServiceKit/OWSFileSystem.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TestAppContext.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

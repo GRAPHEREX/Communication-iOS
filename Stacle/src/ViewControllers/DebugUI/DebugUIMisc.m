@@ -11,13 +11,13 @@
 #import <AppMessaging/AttachmentSharing.h>
 #import <AppMessaging/Environment.h>
 #import <AppMessaging/OWSTableViewController.h>
-#import <SignalServiceKit/OWSBlockingManager.h>
-#import <SignalServiceKit/OWSDisappearingMessagesConfiguration.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSCall.h>
-#import <SignalServiceKit/TSPreKeyManager.h>
-#import <SignalServiceKit/TSThread.h>
-#import <SignalServiceKit/UIImage+OWS.h>
+#import <AppServiceKit/OWSBlockingManager.h>
+#import <AppServiceKit/OWSDisappearingMessagesConfiguration.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSCall.h>
+#import <AppServiceKit/TSPreKeyManager.h>
+#import <AppServiceKit/TSThread.h>
+#import <AppServiceKit/UIImage+OWS.h>
 
 #ifdef DEBUG
 

@@ -5,13 +5,13 @@
 #import "VersionMigrations.h"
 #import "Environment.h"
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/AppContext.h>
-#import <SignalServiceKit/AppVersion.h>
-#import <SignalServiceKit/NSUserDefaults+OWS.h>
-#import <SignalServiceKit/OWSRequestFactory.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSAccountManager.h>
-#import <SignalServiceKit/TSNetworkManager.h>
+#import <AppServiceKit/AppContext.h>
+#import <AppServiceKit/AppVersion.h>
+#import <AppServiceKit/NSUserDefaults+OWS.h>
+#import <AppServiceKit/OWSRequestFactory.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSAccountManager.h>
+#import <AppServiceKit/TSNetworkManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

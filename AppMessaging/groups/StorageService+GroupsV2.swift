@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import SignalServiceKit
+import AppServiceKit
 import ZKGroup
 
 public struct GroupsV2Request {

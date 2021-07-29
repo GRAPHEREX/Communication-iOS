@@ -13,11 +13,11 @@
 #import <AppMessaging/Environment.h>
 #import <AppMessaging/OWSTableViewController.h>
 #import <AppMessaging/UIUtil.h>
-#import <SignalServiceKit/AppVersion.h>
-#import <SignalServiceKit/PhoneNumberUtil.h>
-#import <SignalServiceKit/SignalAccount.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSAccountManager.h>
+#import <AppServiceKit/AppVersion.h>
+#import <AppServiceKit/PhoneNumberUtil.h>
+#import <AppServiceKit/SignalAccount.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSAccountManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

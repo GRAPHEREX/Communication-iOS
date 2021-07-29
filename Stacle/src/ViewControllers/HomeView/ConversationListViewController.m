@@ -20,12 +20,12 @@
 #import <AppMessaging/AppMessaging-Swift.h>
 #import <AppMessaging/Theme.h>
 #import <AppMessaging/UIUtil.h>
-#import <SignalServiceKit/MessageSender.h>
-#import <SignalServiceKit/OWSFormat.h>
-#import <SignalServiceKit/OWSMessageUtils.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSAccountManager.h>
-#import <SignalServiceKit/TSOutgoingMessage.h>
+#import <AppServiceKit/MessageSender.h>
+#import <AppServiceKit/OWSFormat.h>
+#import <AppServiceKit/OWSMessageUtils.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSAccountManager.h>
+#import <AppServiceKit/TSOutgoingMessage.h>
 #import <StoreKit/StoreKit.h>
 
 NS_ASSUME_NONNULL_BEGIN

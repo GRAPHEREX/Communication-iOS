@@ -7,7 +7,7 @@
 #import "TSGroupThread.h"
 #import <SignalCoreKit/NSData+OWS.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/SSKEnvironment.h>
+#import <AppServiceKit/SSKEnvironment.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

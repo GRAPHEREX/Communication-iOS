@@ -4,7 +4,7 @@
 
 import Foundation
 import MobileCoreServices
-import SignalServiceKit
+import AppServiceKit
 import PromiseKit
 import AVFoundation
 import YYImage

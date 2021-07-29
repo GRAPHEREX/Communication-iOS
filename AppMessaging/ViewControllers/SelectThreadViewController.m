@@ -15,12 +15,12 @@
 #import "UIView+OWS.h"
 #import <SignalCoreKit/NSString+OWS.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/PhoneNumber.h>
-#import <SignalServiceKit/SignalAccount.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSAccountManager.h>
-#import <SignalServiceKit/TSContactThread.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/PhoneNumber.h>
+#import <AppServiceKit/SignalAccount.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSAccountManager.h>
+#import <AppServiceKit/TSContactThread.h>
+#import <AppServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

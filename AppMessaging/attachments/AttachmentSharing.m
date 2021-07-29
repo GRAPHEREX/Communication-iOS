@@ -5,9 +5,9 @@
 #import "AttachmentSharing.h"
 #import "UIUtil.h"
 #import <SignalCoreKit/Threading.h>
-#import <SignalServiceKit/AppContext.h>
-#import <SignalServiceKit/FunctionalUtil.h>
-#import <SignalServiceKit/TSAttachmentStream.h>
+#import <AppServiceKit/AppContext.h>
+#import <AppServiceKit/FunctionalUtil.h>
+#import <AppServiceKit/TSAttachmentStream.h>
 #import <YYImage/YYImage.h>
 
 NS_ASSUME_NONNULL_BEGIN

@@ -8,7 +8,7 @@ import XCTest
 //
 
 import XCTest
-@testable import SignalServiceKit
+@testable import AppServiceKit
 import GRDB
 
 class MessageSendingPerformanceTest: PerformanceBaseTest {

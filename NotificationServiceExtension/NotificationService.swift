@@ -4,7 +4,7 @@
 
 import UserNotifications
 import AppMessaging
-import SignalServiceKit
+import AppServiceKit
 import PromiseKit
 
 class NotificationService: UNNotificationServiceExtension {

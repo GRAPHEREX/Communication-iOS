@@ -9,7 +9,7 @@
 #import "UIView+OWS.h"
 #import <AppMessaging/OWSTableViewController.h>
 #import <AppMessaging/Theme.h>
-#import <SignalServiceKit/OWSSignalService.h>
+#import <AppServiceKit/OWSSignalService.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

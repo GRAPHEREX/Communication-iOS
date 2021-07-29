@@ -24,7 +24,7 @@ pod 'SignalMetadataKit', git: 'ssh://git@github.com/signalapp/SignalMetadataKit'
 pod 'blurhash', git: 'https://github.com/signalapp/blurhash', branch: 'signal-master'
 # pod 'blurhash', path: '../blurhash'
 
-pod 'SignalServiceKit', path: '.', testspecs: ["Tests"]
+pod 'AppServiceKit', path: '.', testspecs: ["Tests"]
 
 pod 'ZKGroup', git: 'https://github.com/signalapp/signal-zkgroup-swift', testspecs: ["Tests"]
 

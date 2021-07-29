@@ -3,7 +3,7 @@
 //
 
 #import "DebugUIMessagesAction.h"
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
 
 #ifdef DEBUG
 

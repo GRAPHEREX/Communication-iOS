@@ -8,9 +8,9 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AppMessaging/OWSContactsManager.h>
 #import <AppMessaging/UIUtil.h>
-#import <SignalServiceKit/PhoneNumber.h>
-#import <SignalServiceKit/TSGroupThread.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/PhoneNumber.h>
+#import <AppServiceKit/TSGroupThread.h>
+#import <AppServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

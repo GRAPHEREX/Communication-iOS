@@ -6,7 +6,7 @@ import UIKit
 
 import AppMessaging
 import PureLayout
-import SignalServiceKit
+import AppServiceKit
 import PromiseKit
 import Intents
 

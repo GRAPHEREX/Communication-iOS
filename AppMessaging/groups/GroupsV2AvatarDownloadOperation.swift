@@ -4,7 +4,7 @@
 
 import Foundation
 import PromiseKit
-import SignalServiceKit
+import AppServiceKit
 
 class GroupsV2AvatarDownloadOperation: CDNDownloadOperation {
 

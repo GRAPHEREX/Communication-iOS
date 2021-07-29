@@ -19,9 +19,9 @@
 #import <AppMessaging/UIFont+OWS.h>
 #import <AppMessaging/UIView+OWS.h>
 #import <AppMessaging/VersionMigrations.h>
-#import <SignalServiceKit/AppContext.h>
-#import <SignalServiceKit/AppReadiness.h>
-#import <SignalServiceKit/AppVersion.h>
-#import <SignalServiceKit/MessageSender.h>
-#import <SignalServiceKit/OWSMath.h>
-#import <SignalServiceKit/TSAccountManager.h>
+#import <AppServiceKit/AppContext.h>
+#import <AppServiceKit/AppReadiness.h>
+#import <AppServiceKit/AppVersion.h>
+#import <AppServiceKit/MessageSender.h>
+#import <AppServiceKit/OWSMath.h>
+#import <AppServiceKit/TSAccountManager.h>

@@ -3,7 +3,7 @@
 //
 
 #import "CVItemViewModel.h"
-#import <SignalServiceKit/TSQuotedMessage.h>
+#import <AppServiceKit/TSQuotedMessage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

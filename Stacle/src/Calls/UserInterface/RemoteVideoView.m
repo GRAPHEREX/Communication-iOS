@@ -9,7 +9,7 @@
 #import <PureLayout/PureLayout.h>
 #import <SignalCoreKit/Threading.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
 #import <WebRTC/RTCEAGLVideoView.h>
 #import <WebRTC/RTCMTLVideoView.h>
 #import <WebRTC/RTCVideoFrame.h>

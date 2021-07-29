@@ -12,10 +12,10 @@
 #import <PromiseKit/AnyPromise.h>
 #import <AppMessaging/AppMessaging-Swift.h>
 #import <AppMessaging/UIView+OWS.h>
-#import <SignalServiceKit/NSTimer+OWS.h>
-#import <SignalServiceKit/OWSFormat.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSQuotedMessage.h>
+#import <AppServiceKit/NSTimer+OWS.h>
+#import <AppServiceKit/OWSFormat.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSQuotedMessage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

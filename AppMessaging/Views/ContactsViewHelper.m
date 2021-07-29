@@ -9,12 +9,12 @@
 #import <SignalCoreKit/NSString+OWS.h>
 #import <AppMessaging/OWSProfileManager.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/AppContext.h>
-#import <SignalServiceKit/Contact.h>
-#import <SignalServiceKit/OWSBlockingManager.h>
-#import <SignalServiceKit/PhoneNumber.h>
-#import <SignalServiceKit/SignalAccount.h>
-#import <SignalServiceKit/TSAccountManager.h>
+#import <AppServiceKit/AppContext.h>
+#import <AppServiceKit/Contact.h>
+#import <AppServiceKit/OWSBlockingManager.h>
+#import <AppServiceKit/PhoneNumber.h>
+#import <AppServiceKit/SignalAccount.h>
+#import <AppServiceKit/TSAccountManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

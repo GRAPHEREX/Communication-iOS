@@ -5,9 +5,9 @@
 #import "DebugUISessionState.h"
 #import "Stacle-Swift.h"
 #import <AppMessaging/OWSTableViewController.h>
-#import <SignalServiceKit/OWSIdentityManager.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSContactThread.h>
+#import <AppServiceKit/OWSIdentityManager.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSContactThread.h>
 
 #ifdef DEBUG
 

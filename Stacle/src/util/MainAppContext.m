@@ -8,7 +8,7 @@
 #import <AppMessaging/Environment.h>
 #import <AppMessaging/OWSProfileManager.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/OWSIdentityManager.h>
+#import <AppServiceKit/OWSIdentityManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

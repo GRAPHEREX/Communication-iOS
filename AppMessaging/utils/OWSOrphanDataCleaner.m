@@ -6,23 +6,23 @@
 #import "DateUtil.h"
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <AppMessaging/OWSProfileManager.h>
-#import <SignalServiceKit/AppReadiness.h>
-#import <SignalServiceKit/AppVersion.h>
-#import <SignalServiceKit/OWSBroadcastMediaMessageJobRecord.h>
-#import <SignalServiceKit/OWSContact.h>
-#import <SignalServiceKit/OWSFileSystem.h>
-#import <SignalServiceKit/OWSIncomingContactSyncJobRecord.h>
-#import <SignalServiceKit/OWSIncomingGroupSyncJobRecord.h>
-#import <SignalServiceKit/OWSReaction.h>
-#import <SignalServiceKit/OWSUserProfile.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSAccountManager.h>
-#import <SignalServiceKit/TSAttachmentStream.h>
-#import <SignalServiceKit/TSInteraction.h>
-#import <SignalServiceKit/TSMention.h>
-#import <SignalServiceKit/TSMessage.h>
-#import <SignalServiceKit/TSQuotedMessage.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/AppReadiness.h>
+#import <AppServiceKit/AppVersion.h>
+#import <AppServiceKit/OWSBroadcastMediaMessageJobRecord.h>
+#import <AppServiceKit/OWSContact.h>
+#import <AppServiceKit/OWSFileSystem.h>
+#import <AppServiceKit/OWSIncomingContactSyncJobRecord.h>
+#import <AppServiceKit/OWSIncomingGroupSyncJobRecord.h>
+#import <AppServiceKit/OWSReaction.h>
+#import <AppServiceKit/OWSUserProfile.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSAccountManager.h>
+#import <AppServiceKit/TSAttachmentStream.h>
+#import <AppServiceKit/TSInteraction.h>
+#import <AppServiceKit/TSMention.h>
+#import <AppServiceKit/TSMessage.h>
+#import <AppServiceKit/TSQuotedMessage.h>
+#import <AppServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

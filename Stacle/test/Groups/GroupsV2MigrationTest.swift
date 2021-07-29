@@ -4,7 +4,7 @@
 
 import XCTest
 import PromiseKit
-//import SignalServiceKit
+//import AppServiceKit
 @testable import Signal
 
 class GroupsV2MigrationTest: SignalBaseTest {

@@ -4,16 +4,16 @@
 
 #import "OWSQuotedReplyModel.h"
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/MIMETypeUtil.h>
-#import <SignalServiceKit/MessageSender.h>
-#import <SignalServiceKit/TSAccountManager.h>
-#import <SignalServiceKit/TSAttachmentPointer.h>
-#import <SignalServiceKit/TSAttachmentStream.h>
-#import <SignalServiceKit/TSIncomingMessage.h>
-#import <SignalServiceKit/TSMessage.h>
-#import <SignalServiceKit/TSOutgoingMessage.h>
-#import <SignalServiceKit/TSQuotedMessage.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/MIMETypeUtil.h>
+#import <AppServiceKit/MessageSender.h>
+#import <AppServiceKit/TSAccountManager.h>
+#import <AppServiceKit/TSAttachmentPointer.h>
+#import <AppServiceKit/TSAttachmentStream.h>
+#import <AppServiceKit/TSIncomingMessage.h>
+#import <AppServiceKit/TSMessage.h>
+#import <AppServiceKit/TSOutgoingMessage.h>
+#import <AppServiceKit/TSQuotedMessage.h>
+#import <AppServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -9,17 +9,17 @@
 #import <AppMessaging/OWSProfileManager.h>
 #import <AppMessaging/AppMessaging-Swift.h>
 #import <SignalMetadataKit/SignalMetadataKit-Swift.h>
-#import <SignalServiceKit/OWS2FAManager.h>
-#import <SignalServiceKit/OWSBackgroundTask.h>
-#import <SignalServiceKit/OWSBlockingManager.h>
-#import <SignalServiceKit/OWSDisappearingMessagesJob.h>
-#import <SignalServiceKit/OWSIdentityManager.h>
-#import <SignalServiceKit/OWSMessageManager.h>
-#import <SignalServiceKit/OWSOutgoingReceiptManager.h>
-#import <SignalServiceKit/OWSReadReceiptManager.h>
-#import <SignalServiceKit/SSKEnvironment.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSSocketManager.h>
+#import <AppServiceKit/OWS2FAManager.h>
+#import <AppServiceKit/OWSBackgroundTask.h>
+#import <AppServiceKit/OWSBlockingManager.h>
+#import <AppServiceKit/OWSDisappearingMessagesJob.h>
+#import <AppServiceKit/OWSIdentityManager.h>
+#import <AppServiceKit/OWSMessageManager.h>
+#import <AppServiceKit/OWSOutgoingReceiptManager.h>
+#import <AppServiceKit/OWSReadReceiptManager.h>
+#import <AppServiceKit/SSKEnvironment.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSSocketManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

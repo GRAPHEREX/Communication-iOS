@@ -5,8 +5,8 @@
 #import "ShareAppExtensionContext.h"
 #import <AppMessaging/DebugLogger.h>
 #import <AppMessaging/UIViewController+OWS.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSConstants.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSConstants.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

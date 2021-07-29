@@ -7,9 +7,9 @@
 #import "OWSAudioPlayer.h"
 #import <SignalCoreKit/Cryptography.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/OWSFileSystem.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/OWSFileSystem.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSThread.h>
 
 NSString *const kOWSSoundsStorageGlobalNotificationKey = @"kOWSSoundsStorageGlobalNotificationKey";
 // This name is specified in the payload by the Signal Service when requesting fallback push notifications.

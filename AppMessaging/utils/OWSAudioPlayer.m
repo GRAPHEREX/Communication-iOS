@@ -6,7 +6,7 @@
 #import "TSAttachmentStream.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/NSTimer+OWS.h>
+#import <AppServiceKit/NSTimer+OWS.h>
 
 @import MediaPlayer;
 

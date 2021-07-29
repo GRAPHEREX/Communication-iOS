@@ -7,11 +7,11 @@
 #import "Stacle-Swift.h"
 #import <SignalCoreKit/Cryptography.h>
 #import <AppMessaging/OWSProfileManager.h>
-#import <SignalServiceKit/OWSDevice.h>
-#import <SignalServiceKit/OWSDeviceProvisioner.h>
-#import <SignalServiceKit/OWSIdentityManager.h>
-#import <SignalServiceKit/OWSReadReceiptManager.h>
-#import <SignalServiceKit/TSAccountManager.h>
+#import <AppServiceKit/OWSDevice.h>
+#import <AppServiceKit/OWSDeviceProvisioner.h>
+#import <AppServiceKit/OWSIdentityManager.h>
+#import <AppServiceKit/OWSReadReceiptManager.h>
+#import <AppServiceKit/TSAccountManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

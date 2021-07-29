@@ -10,13 +10,13 @@
 #import <SignalCoreKit/Randomness.h>
 #import <AppMessaging/Environment.h>
 #import <AppMessaging/OWSTableViewController.h>
-#import <SignalServiceKit/MIMETypeUtil.h>
-#import <SignalServiceKit/OWSDisappearingMessagesConfiguration.h>
-#import <SignalServiceKit/OWSMessageUtils.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
-#import <SignalServiceKit/TSIncomingMessage.h>
-#import <SignalServiceKit/TSOutgoingMessage.h>
-#import <SignalServiceKit/TSThread.h>
+#import <AppServiceKit/MIMETypeUtil.h>
+#import <AppServiceKit/OWSDisappearingMessagesConfiguration.h>
+#import <AppServiceKit/OWSMessageUtils.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
+#import <AppServiceKit/TSIncomingMessage.h>
+#import <AppServiceKit/TSOutgoingMessage.h>
+#import <AppServiceKit/TSThread.h>
 
 #ifdef DEBUG
 

@@ -5,7 +5,7 @@
 #import "UIUtil.h"
 #import "Theme.h"
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/AppContext.h>
+#import <AppServiceKit/AppContext.h>
 
 #define CONTACT_PICTURE_VIEW_BORDER_WIDTH 0.5f
 

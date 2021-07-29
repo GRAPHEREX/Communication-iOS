@@ -7,7 +7,7 @@
 #import "Stacle-Swift.h"
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <AppMessaging/OWSTableViewController.h>
-#import <SignalServiceKit/TSInteraction.h>
+#import <AppServiceKit/TSInteraction.h>
 
 #ifdef DEBUG
 

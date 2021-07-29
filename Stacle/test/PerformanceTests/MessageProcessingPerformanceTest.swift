@@ -3,7 +3,7 @@
 //
 
 import XCTest
-@testable import SignalServiceKit
+@testable import AppServiceKit
 import GRDB
 
 class MessageProcessingPerformanceTest: PerformanceBaseTest {

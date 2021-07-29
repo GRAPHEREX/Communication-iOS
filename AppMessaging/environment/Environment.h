@@ -2,7 +2,7 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import <SignalServiceKit/SSKEnvironment.h>
+#import <AppServiceKit/SSKEnvironment.h>
 
 @class BroadcastMediaMessageJobQueue;
 @class ContactsViewHelper;

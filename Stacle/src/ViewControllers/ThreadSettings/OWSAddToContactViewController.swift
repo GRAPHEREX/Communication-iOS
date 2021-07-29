@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 import Contacts
 import ContactsUI
-import SignalServiceKit
+import AppServiceKit
 import AppMessaging
 
 @objc

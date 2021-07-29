@@ -4,7 +4,7 @@
 
 import Foundation
 import PromiseKit
-import SignalServiceKit
+import AppServiceKit
 import ZKGroup
 
 public struct GroupV2SnapshotImpl: GroupV2Snapshot {

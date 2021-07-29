@@ -11,7 +11,7 @@
 #import "UIFont+OWS.h"
 #import "UIView+OWS.h"
 #import <AppMessaging/AppMessaging-Swift.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <AppServiceKit/AppServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
