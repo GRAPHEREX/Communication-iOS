@@ -36,8 +36,8 @@ public struct AttachmentRecord: SDSRecord {
     public let contentType: String
     public let encryptionKey: Data?
     public let serverId: UInt64
-    public let credentionals: String
-    public let bucket: String
+//    public let credentionals: String
+//    public let bucket: String
     public let sourceFilename: String?
     public let cachedAudioDurationSeconds: Double?
     public let cachedImageHeight: Double?
@@ -69,8 +69,8 @@ public struct AttachmentRecord: SDSRecord {
         case contentType
         case encryptionKey
         case serverId
-        case credentionals
-        case bucket
+//        case credentionals
+//        case bucket
         case sourceFilename
         case cachedAudioDurationSeconds
         case cachedImageHeight
@@ -123,8 +123,8 @@ public extension AttachmentRecord {
         contentType = row[8]
         encryptionKey = row[9]
         serverId = row[10]
-        credentionals = row[11]
-        bucket = row[12]
+//        credentionals = row[11]
+//        bucket = row[12]
         sourceFilename = row[13]
         cachedAudioDurationSeconds = row[14]
         cachedImageHeight = row[15]
@@ -184,8 +184,8 @@ extension TSAttachment {
             let contentType: String = record.contentType
             let encryptionKey: Data? = SDSDeserialization.optionalData(record.encryptionKey, name: "encryptionKey")
             let serverId: UInt64 = record.serverId
-            let credentionals: String = record.credentionals
-            let bucket: String = record.bucket
+//            let credentionals: String = record.credentionals
+//            let bucket: String = record.bucket
             let sourceFilename: String? = record.sourceFilename
             let uploadTimestamp: UInt64 = record.uploadTimestamp
 
@@ -201,8 +201,8 @@ extension TSAttachment {
                                 contentType: contentType,
                                 encryptionKey: encryptionKey,
                                 serverId: serverId,
-                                credentionals: credentionals,
-                                bucket: bucket,
+//                                credentionals: credentionals,
+//                                bucket: bucket,
                                 sourceFilename: sourceFilename,
                                 uploadTimestamp: uploadTimestamp)
 
@@ -219,8 +219,8 @@ extension TSAttachment {
             let contentType: String = record.contentType
             let encryptionKey: Data? = SDSDeserialization.optionalData(record.encryptionKey, name: "encryptionKey")
             let serverId: UInt64 = record.serverId
-            let credentionals: String = record.credentionals
-            let bucket: String = record.bucket
+//            let credentionals: String = record.credentionals
+//            let bucket: String = record.bucket
             let sourceFilename: String? = record.sourceFilename
             let uploadTimestamp: UInt64 = record.uploadTimestamp
             let digest: Data? = SDSDeserialization.optionalData(record.digest, name: "digest")
@@ -246,8 +246,8 @@ extension TSAttachment {
                                        contentType: contentType,
                                        encryptionKey: encryptionKey,
                                        serverId: serverId,
-                                       credentionals: credentionals,
-                                       bucket: bucket,
+//                                       credentionals: credentionals,
+//                                       bucket: bucket,
                                        sourceFilename: sourceFilename,
                                        uploadTimestamp: uploadTimestamp,
                                        digest: digest,
@@ -269,8 +269,8 @@ extension TSAttachment {
             let contentType: String = record.contentType
             let encryptionKey: Data? = SDSDeserialization.optionalData(record.encryptionKey, name: "encryptionKey")
             let serverId: UInt64 = record.serverId
-            let credentionals: String = record.credentionals
-            let bucket: String = record.bucket
+//            let credentionals: String = record.credentionals
+//            let bucket: String = record.bucket
             let sourceFilename: String? = record.sourceFilename
             let uploadTimestamp: UInt64 = record.uploadTimestamp
             let cachedAudioDurationSeconds: NSNumber? = SDSDeserialization.optionalNumericAsNSNumber(record.cachedAudioDurationSeconds, name: "cachedAudioDurationSeconds", conversion: { NSNumber(value: $0) })
@@ -299,8 +299,8 @@ extension TSAttachment {
                                       contentType: contentType,
                                       encryptionKey: encryptionKey,
                                       serverId: serverId,
-                                      credentionals: credentionals,
-                                      bucket: bucket,
+//                                      credentionals: credentionals,
+//                                      bucket: bucket,
                                       sourceFilename: sourceFilename,
                                       uploadTimestamp: uploadTimestamp,
                                       cachedAudioDurationSeconds: cachedAudioDurationSeconds,
@@ -378,8 +378,8 @@ extension TSAttachment: DeepCopyable {
             let contentType: String = modelToCopy.contentType
             let encryptionKey: Data? = modelToCopy.encryptionKey
             let serverId: UInt64 = modelToCopy.serverId
-            let credentionals: String = modelToCopy.credentionals
-            let bucket: String = modelToCopy.bucket
+//            let credentionals: String = modelToCopy.credentionals
+//            let bucket: String = modelToCopy.bucket
             let sourceFilename: String? = modelToCopy.sourceFilename
             let uploadTimestamp: UInt64 = modelToCopy.uploadTimestamp
             let cachedAudioDurationSeconds: NSNumber? = modelToCopy.cachedAudioDurationSeconds
@@ -405,8 +405,8 @@ extension TSAttachment: DeepCopyable {
                                       contentType: contentType,
                                       encryptionKey: encryptionKey,
                                       serverId: serverId,
-                                      credentionals: credentionals,
-                                      bucket: bucket,
+//                                      credentionals: credentionals,
+//                                      bucket: bucket,
                                       sourceFilename: sourceFilename,
                                       uploadTimestamp: uploadTimestamp,
                                       cachedAudioDurationSeconds: cachedAudioDurationSeconds,
@@ -434,8 +434,8 @@ extension TSAttachment: DeepCopyable {
             let contentType: String = modelToCopy.contentType
             let encryptionKey: Data? = modelToCopy.encryptionKey
             let serverId: UInt64 = modelToCopy.serverId
-            let credentionals: String = modelToCopy.credentionals
-            let bucket: String = modelToCopy.bucket
+//            let credentionals: String = modelToCopy.credentionals
+//            let bucket: String = modelToCopy.bucket
             let sourceFilename: String? = modelToCopy.sourceFilename
             let uploadTimestamp: UInt64 = modelToCopy.uploadTimestamp
             let digest: Data? = modelToCopy.digest
@@ -456,8 +456,8 @@ extension TSAttachment: DeepCopyable {
                                        contentType: contentType,
                                        encryptionKey: encryptionKey,
                                        serverId: serverId,
-                                       credentionals: credentionals,
-                                       bucket: bucket,
+//                                       credentionals: credentionals,
+//                                       bucket: bucket,
                                        sourceFilename: sourceFilename,
                                        uploadTimestamp: uploadTimestamp,
                                        digest: digest,
@@ -481,8 +481,8 @@ extension TSAttachment: DeepCopyable {
             let contentType: String = modelToCopy.contentType
             let encryptionKey: Data? = modelToCopy.encryptionKey
             let serverId: UInt64 = modelToCopy.serverId
-            let credentionals: String = modelToCopy.credentionals
-            let bucket: String = modelToCopy.bucket
+//            let credentionals: String = modelToCopy.credentionals
+//            let bucket: String = modelToCopy.bucket
             let sourceFilename: String? = modelToCopy.sourceFilename
             let uploadTimestamp: UInt64 = modelToCopy.uploadTimestamp
 
@@ -498,8 +498,8 @@ extension TSAttachment: DeepCopyable {
                                 contentType: contentType,
                                 encryptionKey: encryptionKey,
                                 serverId: serverId,
-                                credentionals: credentionals,
-                                bucket: bucket,
+//                                credentionals: credentionals,
+//                                bucket: bucket,
                                 sourceFilename: sourceFilename,
                                 uploadTimestamp: uploadTimestamp)
         }
@@ -999,8 +999,8 @@ class TSAttachmentSerializer: SDSSerializer {
         let contentType: String = model.contentType
         let encryptionKey: Data? = model.encryptionKey
         let serverId: UInt64 = model.serverId
-        let credentionals: String = model.credentionals
-        let bucket: String = model.bucket
+//        let credentionals: String = model.credentionals
+//        let bucket: String = model.bucket
         let sourceFilename: String? = model.sourceFilename
         let cachedAudioDurationSeconds: Double? = nil
         let cachedImageHeight: Double? = nil
@@ -1020,7 +1020,7 @@ class TSAttachmentSerializer: SDSSerializer {
         let cdnNumber: UInt32 = model.cdnNumber
         let isAnimatedCached: Bool? = nil
 
-        return AttachmentRecord(delegate: model, id: id, recordType: recordType, uniqueId: uniqueId, albumMessageId: albumMessageId, attachmentType: attachmentType, blurHash: blurHash, byteCount: byteCount, caption: caption, contentType: contentType, encryptionKey: encryptionKey, serverId: serverId, credentionals: credentionals, bucket: bucket, sourceFilename: sourceFilename, cachedAudioDurationSeconds: cachedAudioDurationSeconds, cachedImageHeight: cachedImageHeight, cachedImageWidth: cachedImageWidth, creationTimestamp: creationTimestamp, digest: digest, isUploaded: isUploaded, isValidImageCached: isValidImageCached, isValidVideoCached: isValidVideoCached, lazyRestoreFragmentId: lazyRestoreFragmentId, localRelativeFilePath: localRelativeFilePath, mediaSize: mediaSize, pointerType: pointerType, state: state, uploadTimestamp: uploadTimestamp, cdnKey: cdnKey, cdnNumber: cdnNumber, isAnimatedCached: isAnimatedCached)
+        return AttachmentRecord(delegate: model, id: id, recordType: recordType, uniqueId: uniqueId, albumMessageId: albumMessageId, attachmentType: attachmentType, blurHash: blurHash, byteCount: byteCount, caption: caption, contentType: contentType, encryptionKey: encryptionKey, serverId: serverId, /*credentionals: credentionals, bucket: bucket,*/ sourceFilename: sourceFilename, cachedAudioDurationSeconds: cachedAudioDurationSeconds, cachedImageHeight: cachedImageHeight, cachedImageWidth: cachedImageWidth, creationTimestamp: creationTimestamp, digest: digest, isUploaded: isUploaded, isValidImageCached: isValidImageCached, isValidVideoCached: isValidVideoCached, lazyRestoreFragmentId: lazyRestoreFragmentId, localRelativeFilePath: localRelativeFilePath, mediaSize: mediaSize, pointerType: pointerType, state: state, uploadTimestamp: uploadTimestamp, cdnKey: cdnKey, cdnNumber: cdnNumber, isAnimatedCached: isAnimatedCached)
     }
 }
 

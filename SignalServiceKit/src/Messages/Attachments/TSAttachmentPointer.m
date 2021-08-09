@@ -72,8 +72,8 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value)
 }
 
 - (instancetype)initWithServerId:(UInt64)serverId
-                   credentionals:(nonnull NSString *)credentionals
-                          bucket:(nonnull NSString *)bucket
+//                   credentionals:(nonnull NSString *)credentionals
+//                          bucket:(nonnull NSString *)bucket
                           cdnKey:(NSString *)cdnKey
                        cdnNumber:(UInt32)cdnNumber
                              key:(NSData *)key
@@ -89,8 +89,8 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value)
                  uploadTimestamp:(unsigned long long)uploadTimestamp
 {
     self = [super initWithServerId:serverId
-                     credentionals:credentionals
-                            bucket:bucket
+//                     credentionals:credentionals
+//                            bucket:bucket
                             cdnKey:cdnKey
                          cdnNumber:cdnNumber
                      encryptionKey:key
@@ -153,8 +153,8 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value)
                      contentType:(NSString *)contentType
                    encryptionKey:(nullable NSData *)encryptionKey
                         serverId:(unsigned long long)serverId
-                 credentionals:(NSString *)credentionals
-                        bucket:(NSString *)bucket
+//                 credentionals:(NSString *)credentionals
+//                        bucket:(NSString *)bucket
                   sourceFilename:(nullable NSString *)sourceFilename
                  uploadTimestamp:(unsigned long long)uploadTimestamp
                           digest:(nullable NSData *)digest
@@ -175,8 +175,8 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value)
                        contentType:contentType
                      encryptionKey:encryptionKey
                           serverId:serverId
-                   credentionals:credentionals
-                          bucket:bucket
+//                   credentionals:credentionals
+//                          bucket:bucket
                     sourceFilename:sourceFilename
                    uploadTimestamp:uploadTimestamp];
 
@@ -272,8 +272,8 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value)
     }
 
     TSAttachmentPointer *pointer = [[TSAttachmentPointer alloc] initWithServerId:serverId
-                                                                   credentionals:attachmentProto.credentionals
-                                                                          bucket:attachmentProto.bucket
+//                                                                   credentionals:attachmentProto.credentionals
+//                                                                          bucket:attachmentProto.bucket
                                                                           cdnKey:attachmentProto.cdnKey
                                                                        cdnNumber:attachmentProto.cdnNumber
                                                                              key:attachmentProto.key

@@ -48,6 +48,21 @@
 #import <SignalServiceKit/OWSUnknownProtocolVersionMessage.h>
 #import <SignalServiceKit/SignalRecipient.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/AppReadiness.h>
+#import <SignalServiceKit/CallKitIdStore.h>
+#import <SignalServiceKit/DarwinNotificationCenter.h>
+#import <SignalServiceKit/MessageSender.h>
+#import <SignalServiceKit/OWS2FAManager.h>
+#import <SignalServiceKit/OWSDisappearingMessagesJob.h>
+#import <SignalServiceKit/OWSMath.h>
+#import <SignalServiceKit/OWSMessageManager.h>
+#import <SignalServiceKit/OWSReadReceiptManager.h>
+#import <SignalServiceKit/SSKEnvironment.h>
+#import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/StickerInfo.h>
+#import <SignalServiceKit/TSAccountManager.h>
+#import <SignalServiceKit/TSPreKeyManager.h>
+#import <SignalServiceKit/TSSocketManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -955,25 +970,26 @@ NS_ASSUME_NONNULL_BEGIN
         }
     }
 
-    if ([callMessage hasProfileKey]) {
-        NSData *profileKey = [callMessage profileKey];
-        SignalServiceAddress *address = envelope.sourceAddress;
-        if (address.isLocalAddress && self.tsAccountManager.isPrimaryDevice) {
-            OWSLogVerbose(@"Ignoring profile key for local device on primary.");
-        } else if (profileKey.length != kAES256_KeyByteLength) {
-            OWSFailDebug(
-                @"Unexpected profile key length: %lu on message from: %@", (unsigned long)profileKey.length, address);
-        } else {
-            [self.profileManager setProfileKeyData:profileKey
-                                        forAddress:address
-                               wasLocallyInitiated:YES
-                                       transaction:transaction];
-        }
-    }
+    // TODO:
+//    if ([callMessage hasProfileKey]) {
+//        NSData *profileKey = [callMessage profileKey];
+//        SignalServiceAddress *address = envelope.sourceAddress;
+//        if (address.isLocalAddress && self.tsAccountManager.isPrimaryDevice) {
+//            OWSLogVerbose(@"Ignoring profile key for local device on primary.");
+//        } else if (profileKey.length != kAES256_KeyByteLength) {
+//            OWSFailDebug(
+//                @"Unexpected profile key length: %lu on message from: %@", (unsigned long)profileKey.length, address);
+//        } else {
+//            [self.profileManager setProfileKeyData:profileKey
+//                                        forAddress:address
+//                               wasLocallyInitiated:YES
+//                                       transaction:transaction];
+//        }
+//    }
 
     BOOL supportsMultiRing = false;
-    if ([callMessage hasSupportsMultiRing]) {
-        supportsMultiRing = callMessage.supportsMultiRing;
+    if ([callMessage hasMultiRing]) {
+        supportsMultiRing = callMessage.hasMultiRing;
     }
 
     // By dispatching async, we introduce the possibility that these messages might be lost
@@ -1548,12 +1564,15 @@ NS_ASSUME_NONNULL_BEGIN
                 case OWSReactionProcessingResultInvalidReaction:
                     break;
                 case OWSReactionProcessingResultAssociatedMessageMissing:
-                    [self.earlyMessageManager recordEarlyEnvelope:envelope
-                                                    plainTextData:plaintextData
-                                                  wasReceivedByUD:wasReceivedByUD
-                                          serverDeliveryTimestamp:serverDeliveryTimestamp
-                                       associatedMessageTimestamp:dataMessage.reaction.timestamp
-                                          associatedMessageAuthor:dataMessage.reaction.authorAddress];
+                    // TODO: - Messaging
+//                    SignalServiceAddress *_Nullable authorAddress = [[SignalServiceAddress alloc] initWithUuidString: dataMessage.reaction.targetAuthorUuid];
+                    
+//                    [self.earlyMessageManager recordEarlyEnvelope:envelope
+//                                                    plainTextData:plaintextData
+//                                                  wasReceivedByUD:wasReceivedByUD
+//                                          serverDeliveryTimestamp:serverDeliveryTimestamp
+//                                       associatedMessageTimestamp:dataMessage.reaction.targetSentTimestamp
+//                                          associatedMessageAuthor:dataMessage.reaction.tar];
                     break;
             }
         } else if (dataMessage.delete != nil) {
@@ -1981,12 +2000,14 @@ NS_ASSUME_NONNULL_BEGIN
             case OWSReactionProcessingResultInvalidReaction:
                 break;
             case OWSReactionProcessingResultAssociatedMessageMissing:
-                [self.earlyMessageManager recordEarlyEnvelope:envelope
-                                                plainTextData:plaintextData
-                                              wasReceivedByUD:wasReceivedByUD
-                                      serverDeliveryTimestamp:serverDeliveryTimestamp
-                                   associatedMessageTimestamp:dataMessage.reaction.timestamp
-                                      associatedMessageAuthor:dataMessage.reaction.authorAddress];
+                // TODO: - Messaging
+//                SignalServiceAddress *_Nullable authorAddress = [[SignalServiceAddress alloc] initWithUuidString: dataMessage.reaction.targetAuthorUuid];
+//                [self.earlyMessageManager recordEarlyEnvelope:envelope
+//                                                plainTextData:plaintextData
+//                                              wasReceivedByUD:wasReceivedByUD
+//                                      serverDeliveryTimestamp:serverDeliveryTimestamp
+//                                   associatedMessageTimestamp:dataMessage.reaction.targetSentTimestamp
+//                                      associatedMessageAuthor:authorAddress];
                 break;
         }
 

@@ -3406,7 +3406,7 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
         }
     }();
 
-    SSKProtoEnvelopeBuilder *envelopeBuilder = [SSKProtoEnvelope builderWithTimestamp:timestamp];
+    SSKProtoEnvelopeBuilder *envelopeBuilder = [SSKProtoEnvelope builder];
     [envelopeBuilder setType:SSKProtoEnvelopeTypeCiphertext];
     [envelopeBuilder setSourceE164:source.phoneNumber];
     [envelopeBuilder setSourceUuid:source.uuidString];
@@ -3821,8 +3821,8 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
                 UInt32 filesize = 64;
                 TSAttachmentPointer *pointer =
                     [[TSAttachmentPointer alloc] initWithServerId:237391539706350548
-                                                    credentionals:@""
-                                                           bucket:@""
+//                                                    credentionals:@""
+//                                                           bucket:@""
                                                            cdnKey:@""
                                                         cdnNumber:0
                                                               key:[self createRandomNSDataOfSize:filesize]
@@ -3942,7 +3942,8 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
         } else {
             TSGroupThread *groupThread = (TSGroupThread *)thread;
             SSKProtoGroupContextBuilder *groupBuilder =
-                [SSKProtoGroupContext builderWithId:groupThread.groupModel.groupId];
+                [SSKProtoGroupContext builder];
+            [groupBuilder setId: groupThread.groupModel.groupId];
             [groupBuilder setType:SSKProtoGroupContextTypeDeliver];
             [dataMessageBuilder setGroup:groupBuilder.buildIgnoringErrors];
         }
@@ -3967,7 +3968,7 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
     SSKProtoEnvelopeType envelopeType = SSKProtoEnvelopeTypeCiphertext;
     NSData *content = plaintextData;
 
-    SSKProtoEnvelopeBuilder *envelopeBuilder = [SSKProtoEnvelope builderWithTimestamp:timestamp];
+    SSKProtoEnvelopeBuilder *envelopeBuilder = [SSKProtoEnvelope builder];
     [envelopeBuilder setType:envelopeType];
     [envelopeBuilder setSourceE164:source.phoneNumber];
     [envelopeBuilder setSourceUuid:source.uuidString];
@@ -4692,8 +4693,8 @@ typedef OWSContact * (^OWSContactBlock)(SDSAnyWriteTransaction *transaction);
         UInt32 filesize = 64;
         TSAttachmentPointer *attachmentPointer =
             [[TSAttachmentPointer alloc] initWithServerId:237391539706350548
-                                            credentionals:@""
-                                                   bucket:@""
+//                                            credentionals:@""
+//                                                   bucket:@""
                                                    cdnKey:@""
                                                 cdnNumber:0
                                                       key:[self createRandomNSDataOfSize:filesize]

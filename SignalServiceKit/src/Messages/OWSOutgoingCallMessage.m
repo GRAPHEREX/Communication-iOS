@@ -195,7 +195,7 @@ NS_ASSUME_NONNULL_BEGIN
                                   transaction:transaction];
 
     // All call messages must indicate multi-ring capability.
-    [builder setSupportsMultiRing:YES];
+    [builder setMultiRing:YES];
 
     NSError *error;
     SSKProtoCallMessage *_Nullable result = [builder buildAndReturnError:&error];

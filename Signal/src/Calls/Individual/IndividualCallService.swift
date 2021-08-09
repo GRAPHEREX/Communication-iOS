@@ -819,11 +819,12 @@ import SignalMessaging
         Logger.info("shouldSendOffer")
 
         firstly { () throws -> Promise<Void> in
-            let offerBuilder = SSKProtoCallMessageOffer.builder(id: callId)
+            let offerBuilder = SSKProtoCallMessageOffer.builder()
+            offerBuilder.setId(callId)
             offerBuilder.setOpaque(opaque)
             switch callMediaType {
-            case .audioCall: offerBuilder.setType(.offerAudioCall)
-            case .videoCall: offerBuilder.setType(.offerVideoCall)
+            case .audioCall: offerBuilder.setType(SSKProtoCallMessageOfferType.offerAudioCall)
+            case .videoCall: offerBuilder.setType(SSKProtoCallMessageOfferType.offerVideoCall)
             }
             let callMessage = OWSOutgoingCallMessage(thread: call.individualCall.thread, offerMessage: try offerBuilder.build(), destinationDeviceId: NSNumber(value: destinationDeviceId))
             return messageSender.sendMessage(.promise, callMessage.asPreparer)
@@ -842,7 +843,8 @@ import SignalMessaging
         Logger.info("shouldSendAnswer")
 
         firstly { () throws -> Promise<Void> in
-            let answerBuilder = SSKProtoCallMessageAnswer.builder(id: callId)
+            let answerBuilder = SSKProtoCallMessageAnswer.builder()
+            answerBuilder.setId(callId)
             answerBuilder.setOpaque(opaque)
             let callMessage = OWSOutgoingCallMessage(thread: call.individualCall.thread, answerMessage: try answerBuilder.build(), destinationDeviceId: NSNumber(value: destinationDeviceId))
             return messageSender.sendMessage(.promise, callMessage.asPreparer)
@@ -865,7 +867,8 @@ import SignalMessaging
 
             for iceCandidate in candidates {
                 let iceUpdateProto: SSKProtoCallMessageIceUpdate
-                let iceUpdateBuilder = SSKProtoCallMessageIceUpdate.builder(id: callId)
+                let iceUpdateBuilder = SSKProtoCallMessageIceUpdate.builder()
+                iceUpdateBuilder.setId(callId)
                 iceUpdateBuilder.setOpaque(iceCandidate)
 
                 iceUpdateProto = try iceUpdateBuilder.build()
@@ -893,14 +896,15 @@ import SignalMessaging
         Logger.info("shouldSendHangup")
 
         firstly { () throws -> Promise<Void> in
-            let hangupBuilder = SSKProtoCallMessageHangup.builder(id: callId)
+            let hangupBuilder = SSKProtoCallMessageHangup.builder()
+            hangupBuilder.setId(callId)
 
             switch hangupType {
-            case .normal: hangupBuilder.setType(.hangupNormal)
-            case .accepted: hangupBuilder.setType(.hangupAccepted)
-            case .declined: hangupBuilder.setType(.hangupDeclined)
-            case .busy: hangupBuilder.setType(.hangupBusy)
-            case .needPermission: hangupBuilder.setType(.hangupNeedPermission)
+            case .normal: hangupBuilder.setType(SSKProtoCallMessageHangupType.hangupNormal)
+            case .accepted: hangupBuilder.setType(SSKProtoCallMessageHangupType.hangupAccepted)
+            case .declined: hangupBuilder.setType(SSKProtoCallMessageHangupType.hangupDeclined)
+            case .busy: hangupBuilder.setType(SSKProtoCallMessageHangupType.hangupBusy)
+            case .needPermission: hangupBuilder.setType(SSKProtoCallMessageHangupType.hangupNeedPermission)
             }
 
             if hangupType != .normal {
@@ -931,7 +935,8 @@ import SignalMessaging
         Logger.info("shouldSendBusy")
 
         firstly { () throws -> Promise<Void> in
-            let busyBuilder = SSKProtoCallMessageBusy.builder(id: callId)
+            let busyBuilder = SSKProtoCallMessageBusy.builder()
+            busyBuilder.setId(callId)
             let callMessage = OWSOutgoingCallMessage(thread: call.individualCall.thread, busyMessage: try busyBuilder.build(), destinationDeviceId: NSNumber(value: destinationDeviceId))
             return messageSender.sendMessage(.promise, callMessage.asPreparer)
         }.done {

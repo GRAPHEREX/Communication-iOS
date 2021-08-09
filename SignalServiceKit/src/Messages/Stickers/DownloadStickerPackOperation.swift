@@ -46,12 +46,12 @@ class DownloadStickerPackOperation: CDNDownloadOperation {
             }
 
             do {
-                let plaintext = try StickerManager.decrypt(ciphertext: data, packKey: self.stickerPackInfo.packKey)
+//                let plaintext = try StickerManager.decrypt(ciphertext: data, packKey: self.stickerPackInfo.packKey)
 
-                let stickerPack = try self.parseStickerPackManifest(stickerPackInfo: self.stickerPackInfo,
-                                                                    manifestData: plaintext)
-
-                self.success(stickerPack)
+//                let stickerPack = try self.parseStickerPackManifest(stickerPackInfo: self.stickerPackInfo,
+//                                                                    manifestData: plaintext)
+//
+//                self.success(stickerPack)
                 self.reportSuccess()
             } catch {
                 owsFailDebug("Decryption failed: \(error)")
@@ -73,35 +73,35 @@ class DownloadStickerPackOperation: CDNDownloadOperation {
         }
     }
 
-    private func parseStickerPackManifest(stickerPackInfo: StickerPackInfo,
-                                          manifestData: Data) throws -> StickerPack {
-        assert(manifestData.count > 0)
-
-        let manifestProto: SSKProtoPack
-        do {
-            manifestProto = try SSKProtoPack(serializedData: manifestData)
-        } catch let error as NSError {
-            owsFailDebug("Couldn't parse protos: \(error)")
-            throw StickerError.invalidInput
-        }
-        let title = parseOptionalString(manifestProto.title)
-        let author = parseOptionalString(manifestProto.author)
-        let manifestCover = parsePackItem(manifestProto.cover)
-        var items = [StickerPackItem]()
-        for stickerProto in manifestProto.stickers {
-            if let item = parsePackItem(stickerProto) {
-                items.append(item)
-            }
-        }
-        guard let firstItem = items.first else {
-            owsFailDebug("Invalid manifest, no stickers")
-            throw StickerError.invalidInput
-        }
-        let cover = manifestCover ?? firstItem
-
-        let stickerPack = StickerPack(info: stickerPackInfo, title: title, author: author, cover: cover, stickers: items)
-        return stickerPack
-    }
+//    private func parseStickerPackManifest(stickerPackInfo: StickerPackInfo,
+//                                          manifestData: Data) throws -> StickerPack {
+//        assert(manifestData.count > 0)
+//
+//        let manifestProto: SSKProtoPack
+//        do {
+//            manifestProto = try SSKProtoPack(serializedData: manifestData)
+//        } catch let error as NSError {
+//            owsFailDebug("Couldn't parse protos: \(error)")
+//            throw StickerError.invalidInput
+//        }
+//        let title = parseOptionalString(manifestProto.title)
+//        let author = parseOptionalString(manifestProto.author)
+//        let manifestCover = parsePackItem(manifestProto.cover)
+//        var items = [StickerPackItem]()
+//        for stickerProto in manifestProto.stickers {
+//            if let item = parsePackItem(stickerProto) {
+//                items.append(item)
+//            }
+//        }
+//        guard let firstItem = items.first else {
+//            owsFailDebug("Invalid manifest, no stickers")
+//            throw StickerError.invalidInput
+//        }
+//        let cover = manifestCover ?? firstItem
+//
+//        let stickerPack = StickerPack(info: stickerPackInfo, title: title, author: author, cover: cover, stickers: items)
+//        return stickerPack
+//    }
 
     private func parseOptionalString(_ value: String?) -> String? {
         guard let value = value?.ows_stripped(), value.count > 0 else {
@@ -110,15 +110,15 @@ class DownloadStickerPackOperation: CDNDownloadOperation {
         return value
     }
 
-    private func parsePackItem(_ proto: SSKProtoPackSticker?) -> StickerPackItem? {
-        guard let proto = proto else {
-            return nil
-        }
-        let stickerId = proto.id
-        let emojiString = parseOptionalString(proto.emoji) ?? ""
-        let contentType = parseOptionalString(proto.contentType) ?? ""
-        return StickerPackItem(stickerId: stickerId, emojiString: emojiString, contentType: contentType)
-    }
+//    private func parsePackItem(_ proto: SSKProtoPackSticker?) -> StickerPackItem? {
+//        guard let proto = proto else {
+//            return nil
+//        }
+//        let stickerId = proto.id
+//        let emojiString = parseOptionalString(proto.emoji) ?? ""
+//        let contentType = parseOptionalString(proto.contentType) ?? ""
+//        return StickerPackItem(stickerId: stickerId, emojiString: emojiString, contentType: contentType)
+//    }
 
     override public func didFail(error: Error) {
         Logger.error("Download exhausted retries: \(error)")

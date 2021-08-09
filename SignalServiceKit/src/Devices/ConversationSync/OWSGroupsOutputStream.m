@@ -27,7 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
     TSGroupModel *group = groupThread.groupModel;
     OWSAssertDebug(group);
 
-    SSKProtoGroupDetailsBuilder *groupBuilder = [SSKProtoGroupDetails builderWithId:group.groupId];
+    SSKProtoGroupDetailsBuilder *groupBuilder = [SSKProtoGroupDetails builder];
+    [groupBuilder setId:group.groupId];
     [groupBuilder setName:group.groupName];
 
     NSMutableArray *membersE164 = [NSMutableArray new];

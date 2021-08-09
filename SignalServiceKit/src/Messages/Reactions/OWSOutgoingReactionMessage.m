@@ -58,7 +58,9 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     SSKProtoDataMessageReactionBuilder *reactionBuilder =
-        [SSKProtoDataMessageReaction builderWithEmoji:self.emoji timestamp:message.timestamp];
+    [SSKProtoDataMessageReaction builder];//WithEmoji:self.emoji timestamp:message.timestamp];
+    [reactionBuilder setEmoji:self.emoji];
+    [reactionBuilder setTargetSentTimestamp:message.timestamp];
     [reactionBuilder setRemove:self.isRemoving];
 
     SignalServiceAddress *_Nullable messageAuthor;
@@ -74,12 +76,12 @@ NS_ASSUME_NONNULL_BEGIN
         return nil;
     }
 
-    if (messageAuthor.phoneNumber && !SSKFeatureFlags.phoneNumberSharing) {
-        reactionBuilder.authorE164 = messageAuthor.phoneNumber;
-    }
+//    if (messageAuthor.phoneNumber && !SSKFeatureFlags.phoneNumberSharing) {
+//        reactionBuilder.authorE164 = messageAuthor.phoneNumber;
+//    }
 
     if (messageAuthor.uuidString) {
-        reactionBuilder.authorUuid = messageAuthor.uuidString;
+        reactionBuilder.targetAuthorUuid = messageAuthor.uuidString;
     } else {
         OWSAssertDebug(!SSKFeatureFlags.phoneNumberSharing);
     }

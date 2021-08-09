@@ -22,8 +22,8 @@ typedef NS_ENUM(NSUInteger, TSAttachmentType) {
 // incoming attachment) and TSAttachmentStream (an outgoing or already-downloaded
 // incoming attachment).
 @property (atomic, readwrite) UInt64 serverId;
-@property (atomic, readwrite) NSString *credentionals;
-@property (atomic, readwrite) NSString *bucket;
+//@property (atomic, readwrite) NSString *credentionals;
+//@property (atomic, readwrite) NSString *bucket;
 @property (atomic) NSString *cdnKey;
 @property (atomic) UInt32 cdnNumber;
 @property (atomic, readwrite, nullable) NSData *encryptionKey;
@@ -67,8 +67,8 @@ typedef NS_ENUM(NSUInteger, TSAttachmentType) {
 // This constructor is used for new instances of TSAttachmentPointer,
 // i.e. undownloaded incoming attachments.
 - (instancetype)initWithServerId:(UInt64)serverId
-                   credentionals:(NSString *)credentionals
-                          bucket:(NSString *)bucket
+//                   credentionals:(NSString *)credentionals
+//                          bucket:(NSString *)bucket
                           cdnKey:(NSString *)cdnKey
                        cdnNumber:(UInt32)cdnNumber
                    encryptionKey:(NSData *)encryptionKey
@@ -119,8 +119,8 @@ typedef NS_ENUM(NSUInteger, TSAttachmentType) {
                      contentType:(NSString *)contentType
                    encryptionKey:(nullable NSData *)encryptionKey
                         serverId:(unsigned long long)serverId
-                 credentionals:(NSString *)credentionals
-                        bucket:(NSString *)bucket
+//                 credentionals:(NSString *)credentionals
+//                        bucket:(NSString *)bucket
                   sourceFilename:(nullable NSString *)sourceFilename
                  uploadTimestamp:(unsigned long long)uploadTimestamp
 NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:albumMessageId:attachmentType:blurHash:byteCount:caption:cdnKey:cdnNumber:contentType:encryptionKey:serverId:credentionals:bucket:sourceFilename:uploadTimestamp:));

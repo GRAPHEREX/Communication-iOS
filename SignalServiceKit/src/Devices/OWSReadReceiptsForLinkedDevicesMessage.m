@@ -38,7 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
     SSKProtoSyncMessageBuilder *syncMessageBuilder = [SSKProtoSyncMessage builder];
     for (OWSLinkedDeviceReadReceipt *readReceipt in self.readReceipts) {
         SSKProtoSyncMessageReadBuilder *readProtoBuilder =
-            [SSKProtoSyncMessageRead builderWithTimestamp:readReceipt.messageIdTimestamp];
+            [SSKProtoSyncMessageRead builder];
+        [readProtoBuilder setTimestamp:readReceipt.messageIdTimestamp];
 
         [readProtoBuilder setSenderE164:readReceipt.senderAddress.phoneNumber];
         [readProtoBuilder setSenderUuid:readReceipt.senderAddress.uuidString];

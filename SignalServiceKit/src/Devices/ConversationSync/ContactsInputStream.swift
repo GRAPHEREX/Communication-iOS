@@ -46,9 +46,7 @@ public class ContactsInputStream {
             }
         }
 
-        guard let address = contactDetails.contactAddress, address.isValid else {
-            throw OWSAssertionError("address was unexpectedly invalid")
-        }
+        let address = SignalServiceAddress(uuidString: contactDetails.uuid, phoneNumber: contactDetails.number)
 
         return ContactDetails(address: address,
                               name: contactDetails.name,

@@ -129,20 +129,20 @@ public class ReactionManager: NSObject {
         timestamp: UInt64,
         transaction: SDSAnyWriteTransaction
     ) -> ReactionProcessingResult {
-        guard reaction.emoji.isSingleEmoji else {
+        guard reaction.emoji?.isSingleEmoji != nil else {
             owsFailDebug("Received invalid emoji")
             return .invalidReaction
         }
 
-        guard let messageAuthor = reaction.authorAddress else {
+        guard let messageAuthor = reaction.targetAuthorUuid else {
             owsFailDebug("reaction missing author address")
             return .invalidReaction
         }
 
         guard let message = InteractionFinder.findMessage(
-            withTimestamp: reaction.timestamp,
+            withTimestamp: reaction.targetSentTimestamp,
             threadId: threadId,
-            author: messageAuthor,
+            author: SignalServiceAddress(uuidString: messageAuthor),
             transaction: transaction
         ) else {
             // This is potentially normal. For example, we could've deleted the message locally.
@@ -162,7 +162,7 @@ public class ReactionManager: NSObject {
         } else {
             let reaction = message.recordReaction(
                 for: reactor,
-                emoji: reaction.emoji,
+                emoji: reaction.emoji!,
                 sentAtTimestamp: timestamp,
                 receivedAtTimestamp: NSDate.ows_millisecondTimeStamp(),
                 transaction: transaction

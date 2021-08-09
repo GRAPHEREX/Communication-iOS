@@ -446,8 +446,8 @@ NS_ASSUME_NONNULL_BEGIN
 
     // TSAttachment
     [[[TSAttachmentPointer alloc] initWithServerId:12345
-                                     credentionals: @""
-                                            bucket: @""
+//                                     credentionals: @""
+//                                            bucket: @""
                                             cdnKey:@""
                                          cdnNumber:0
                                                key:[Randomness generateRandomBytes:16]

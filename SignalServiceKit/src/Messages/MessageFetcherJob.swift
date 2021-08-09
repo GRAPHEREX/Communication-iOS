@@ -337,7 +337,7 @@ public class MessageFetcherJob: NSObject {
                 throw ParamParser.ParseError.invalidFormat("timestamp")
             }
 
-            let builder = SSKProtoEnvelope.builder(timestamp: timestamp)
+            let builder = SSKProtoEnvelope.builder()
             builder.setType(type)
 
             if let source: String = try params.optional(key: "source") {

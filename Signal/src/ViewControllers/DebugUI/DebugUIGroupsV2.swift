@@ -925,8 +925,9 @@ class DebugUIGroupsV2: DebugUIPage {
         let groupModel = groupThread.groupModel
         let timestamp = NSDate.ows_millisecondTimeStamp()
         let message = OWSDynamicOutgoingMessage(thread: groupThread) { (_: SignalServiceAddress) -> Data in
-            let groupContextBuilder = SSKProtoGroupContext.builder(id: groupModel.groupId)
-            groupContextBuilder.setType(.update)
+            let groupContextBuilder = SSKProtoGroupContext.builder()
+            groupContextBuilder.setId(groupModel.groupId)
+            groupContextBuilder.setType(SSKProtoGroupContextType.update)
             groupContextBuilder.addMembersE164(localAddress.phoneNumber!)
 
             let memberBuilder = SSKProtoGroupContextMember.builder()

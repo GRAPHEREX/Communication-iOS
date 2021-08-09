@@ -1198,8 +1198,8 @@ public class StickerManager: NSObject {
             return
         }
 
-        let packID: Data = proto.packID
-        let packKey: Data = proto.packKey
+        let packID: Data = proto.packID!
+        let packKey: Data = proto.packKey!
         guard let stickerPackInfo = StickerPackInfo.parse(packId: packID, packKey: packKey) else {
             owsFailDebug("Invalid pack info.")
             return

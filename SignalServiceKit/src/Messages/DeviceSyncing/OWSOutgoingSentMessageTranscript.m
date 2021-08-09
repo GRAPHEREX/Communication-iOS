@@ -111,7 +111,8 @@ NS_ASSUME_NONNULL_BEGIN
             switch (groupThread.groupModel.groupsVersion) {
                 case GroupsVersionV1: {
                     SSKProtoGroupContextBuilder *groupBuilder =
-                        [SSKProtoGroupContext builderWithId:groupThread.groupModel.groupId];
+                        [SSKProtoGroupContext builder];
+                    [groupBuilder setId:groupThread.groupModel.groupId];
                     [groupBuilder setType:SSKProtoGroupContextTypeDeliver];
                     NSError *error;
                     SSKProtoGroupContext *_Nullable groupContextProto = [groupBuilder buildAndReturnError:&error];

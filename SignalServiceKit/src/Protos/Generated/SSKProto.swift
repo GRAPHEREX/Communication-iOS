@@ -22,6 +22,7 @@ public enum SSKProtoEnvelopeType: Int32 {
     case prekeyBundle = 3
     case receipt = 5
     case unidentifiedSender = 6
+    case plaintextContent = 8
 }
 
 private func SSKProtoEnvelopeTypeWrap(_ value: SignalServiceProtos_Envelope.TypeEnum) -> SSKProtoEnvelopeType {
@@ -32,6 +33,7 @@ private func SSKProtoEnvelopeTypeWrap(_ value: SignalServiceProtos_Envelope.Type
     case .prekeyBundle: return .prekeyBundle
     case .receipt: return .receipt
     case .unidentifiedSender: return .unidentifiedSender
+    case .plaintextContent: return .plaintextContent
     }
 }
 
@@ -43,6 +45,7 @@ private func SSKProtoEnvelopeTypeUnwrap(_ value: SSKProtoEnvelopeType) -> Signal
     case .prekeyBundle: return .prekeyBundle
     case .receipt: return .receipt
     case .unidentifiedSender: return .unidentifiedSender
+    case .plaintextContent: return .plaintextContent
     }
 }
 
@@ -54,25 +57,31 @@ public class SSKProtoEnvelope: NSObject, Codable {
     // MARK: - SSKProtoEnvelopeBuilder
 
     @objc
-    public static func builder(timestamp: UInt64) -> SSKProtoEnvelopeBuilder {
-        return SSKProtoEnvelopeBuilder(timestamp: timestamp)
+    public static func builder() -> SSKProtoEnvelopeBuilder {
+        return SSKProtoEnvelopeBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoEnvelopeBuilder {
-        let builder = SSKProtoEnvelopeBuilder(timestamp: timestamp)
+        let builder = SSKProtoEnvelopeBuilder()
         if let _value = type {
             builder.setType(_value)
         }
         if let _value = sourceE164 {
             builder.setSourceE164(_value)
         }
+        if let _value = sourceUuid {
+            builder.setSourceUuid(_value)
+        }
         if hasSourceDevice {
             builder.setSourceDevice(sourceDevice)
         }
         if let _value = relay {
             builder.setRelay(_value)
+        }
+        if hasTimestamp {
+            builder.setTimestamp(timestamp)
         }
         if let _value = legacyMessage {
             builder.setLegacyMessage(_value)
@@ -85,9 +94,6 @@ public class SSKProtoEnvelope: NSObject, Codable {
         }
         if hasServerTimestamp {
             builder.setServerTimestamp(serverTimestamp)
-        }
-        if let _value = sourceUuid {
-            builder.setSourceUuid(_value)
         }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
@@ -104,13 +110,6 @@ public class SSKProtoEnvelope: NSObject, Codable {
         fileprivate override init() {}
 
         @objc
-        fileprivate init(timestamp: UInt64) {
-            super.init()
-
-            setTimestamp(timestamp)
-        }
-
-        @objc
         public func setType(_ valueParam: SSKProtoEnvelopeType) {
             proto.type = SSKProtoEnvelopeTypeUnwrap(valueParam)
         }
@@ -124,6 +123,17 @@ public class SSKProtoEnvelope: NSObject, Codable {
 
         public func setSourceE164(_ valueParam: String) {
             proto.sourceE164 = valueParam
+        }
+
+        @objc
+        @available(swift, obsoleted: 1.0)
+        public func setSourceUuid(_ valueParam: String?) {
+            guard let valueParam = valueParam else { return }
+            proto.sourceUuid = valueParam
+        }
+
+        public func setSourceUuid(_ valueParam: String) {
+            proto.sourceUuid = valueParam
         }
 
         @objc
@@ -185,17 +195,6 @@ public class SSKProtoEnvelope: NSObject, Codable {
             proto.serverTimestamp = valueParam
         }
 
-        @objc
-        @available(swift, obsoleted: 1.0)
-        public func setSourceUuid(_ valueParam: String?) {
-            guard let valueParam = valueParam else { return }
-            proto.sourceUuid = valueParam
-        }
-
-        public func setSourceUuid(_ valueParam: String) {
-            proto.sourceUuid = valueParam
-        }
-
         public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
             proto.unknownFields = unknownFields
         }
@@ -212,9 +211,6 @@ public class SSKProtoEnvelope: NSObject, Codable {
     }
 
     fileprivate let proto: SignalServiceProtos_Envelope
-
-    @objc
-    public let timestamp: UInt64
 
     public var type: SSKProtoEnvelopeType? {
         guard hasType else {
@@ -249,6 +245,18 @@ public class SSKProtoEnvelope: NSObject, Codable {
     }
 
     @objc
+    public var sourceUuid: String? {
+        guard hasSourceUuid else {
+            return nil
+        }
+        return proto.sourceUuid
+    }
+    @objc
+    public var hasSourceUuid: Bool {
+        return proto.hasSourceUuid && !proto.sourceUuid.isEmpty
+    }
+
+    @objc
     public var sourceDevice: UInt32 {
         return proto.sourceDevice
     }
@@ -267,6 +275,15 @@ public class SSKProtoEnvelope: NSObject, Codable {
     @objc
     public var hasRelay: Bool {
         return proto.hasRelay
+    }
+
+    @objc
+    public var timestamp: UInt64 {
+        return proto.timestamp
+    }
+    @objc
+    public var hasTimestamp: Bool {
+        return proto.hasTimestamp
     }
 
     @objc
@@ -315,18 +332,6 @@ public class SSKProtoEnvelope: NSObject, Codable {
     }
 
     @objc
-    public var sourceUuid: String? {
-        guard hasSourceUuid else {
-            return nil
-        }
-        return proto.sourceUuid
-    }
-    @objc
-    public var hasSourceUuid: Bool {
-        return proto.hasSourceUuid && !proto.sourceUuid.isEmpty
-    }
-
-    @objc
     public var hasValidSource: Bool {
         return sourceAddress != nil
     }
@@ -341,10 +346,8 @@ public class SSKProtoEnvelope: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_Envelope,
-                 timestamp: UInt64) {
+    private init(proto: SignalServiceProtos_Envelope) {
         self.proto = proto
-        self.timestamp = timestamp
 
         let hasSourceUuid = proto.hasSourceUuid && !proto.sourceUuid.isEmpty
         let hasSourceE164 = proto.hasSourceE164 && !proto.sourceE164.isEmpty
@@ -382,7 +385,7 @@ public class SSKProtoEnvelope: NSObject, Codable {
                 return sourceE164
             }()
 
-            let address = SignalServiceAddress(uuidString: uuidString, phoneNumber: phoneNumber, trustLevel: .high)
+            let address = SignalServiceAddress(uuidString: uuidString, phoneNumber: phoneNumber, trustLevel: .low)
             guard address.isValid else {
                 owsFailDebug("address was unexpectedly invalid")
                 return nil
@@ -404,17 +407,11 @@ public class SSKProtoEnvelope: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_Envelope) throws {
-        guard proto.hasTimestamp else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: timestamp")
-        }
-        let timestamp = proto.timestamp
-
         // MARK: - Begin Validation Logic for SSKProtoEnvelope -
 
         // MARK: - End Validation Logic for SSKProtoEnvelope -
 
-        self.init(proto: proto,
-                  timestamp: timestamp)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -445,217 +442,6 @@ extension SSKProtoEnvelope {
 extension SSKProtoEnvelope.SSKProtoEnvelopeBuilder {
     @objc
     public func buildIgnoringErrors() -> SSKProtoEnvelope? {
-        return try! self.build()
-    }
-}
-
-#endif
-
-// MARK: - SSKProtoTypingMessageAction
-
-@objc
-public enum SSKProtoTypingMessageAction: Int32 {
-    case started = 0
-    case stopped = 1
-}
-
-private func SSKProtoTypingMessageActionWrap(_ value: SignalServiceProtos_TypingMessage.Action) -> SSKProtoTypingMessageAction {
-    switch value {
-    case .started: return .started
-    case .stopped: return .stopped
-    }
-}
-
-private func SSKProtoTypingMessageActionUnwrap(_ value: SSKProtoTypingMessageAction) -> SignalServiceProtos_TypingMessage.Action {
-    switch value {
-    case .started: return .started
-    case .stopped: return .stopped
-    }
-}
-
-// MARK: - SSKProtoTypingMessage
-
-@objc
-public class SSKProtoTypingMessage: NSObject, Codable {
-
-    // MARK: - SSKProtoTypingMessageBuilder
-
-    @objc
-    public static func builder(timestamp: UInt64) -> SSKProtoTypingMessageBuilder {
-        return SSKProtoTypingMessageBuilder(timestamp: timestamp)
-    }
-
-    // asBuilder() constructs a builder that reflects the proto's contents.
-    @objc
-    public func asBuilder() -> SSKProtoTypingMessageBuilder {
-        let builder = SSKProtoTypingMessageBuilder(timestamp: timestamp)
-        if let _value = action {
-            builder.setAction(_value)
-        }
-        if let _value = groupID {
-            builder.setGroupID(_value)
-        }
-        if let _value = unknownFields {
-            builder.setUnknownFields(_value)
-        }
-        return builder
-    }
-
-    @objc
-    public class SSKProtoTypingMessageBuilder: NSObject {
-
-        private var proto = SignalServiceProtos_TypingMessage()
-
-        @objc
-        fileprivate override init() {}
-
-        @objc
-        fileprivate init(timestamp: UInt64) {
-            super.init()
-
-            setTimestamp(timestamp)
-        }
-
-        @objc
-        public func setTimestamp(_ valueParam: UInt64) {
-            proto.timestamp = valueParam
-        }
-
-        @objc
-        public func setAction(_ valueParam: SSKProtoTypingMessageAction) {
-            proto.action = SSKProtoTypingMessageActionUnwrap(valueParam)
-        }
-
-        @objc
-        @available(swift, obsoleted: 1.0)
-        public func setGroupID(_ valueParam: Data?) {
-            guard let valueParam = valueParam else { return }
-            proto.groupID = valueParam
-        }
-
-        public func setGroupID(_ valueParam: Data) {
-            proto.groupID = valueParam
-        }
-
-        public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
-            proto.unknownFields = unknownFields
-        }
-
-        @objc
-        public func build() throws -> SSKProtoTypingMessage {
-            return try SSKProtoTypingMessage(proto)
-        }
-
-        @objc
-        public func buildSerializedData() throws -> Data {
-            return try SSKProtoTypingMessage(proto).serializedData()
-        }
-    }
-
-    fileprivate let proto: SignalServiceProtos_TypingMessage
-
-    @objc
-    public let timestamp: UInt64
-
-    public var action: SSKProtoTypingMessageAction? {
-        guard hasAction else {
-            return nil
-        }
-        return SSKProtoTypingMessageActionWrap(proto.action)
-    }
-    // This "unwrapped" accessor should only be used if the "has value" accessor has already been checked.
-    @objc
-    public var unwrappedAction: SSKProtoTypingMessageAction {
-        if !hasAction {
-            // TODO: We could make this a crashing assert.
-            owsFailDebug("Unsafe unwrap of missing optional: TypingMessage.action.")
-        }
-        return SSKProtoTypingMessageActionWrap(proto.action)
-    }
-    @objc
-    public var hasAction: Bool {
-        return proto.hasAction
-    }
-
-    @objc
-    public var groupID: Data? {
-        guard hasGroupID else {
-            return nil
-        }
-        return proto.groupID
-    }
-    @objc
-    public var hasGroupID: Bool {
-        return proto.hasGroupID
-    }
-
-    public var hasUnknownFields: Bool {
-        return !proto.unknownFields.data.isEmpty
-    }
-    public var unknownFields: SwiftProtobuf.UnknownStorage? {
-        guard hasUnknownFields else { return nil }
-        return proto.unknownFields
-    }
-
-    private init(proto: SignalServiceProtos_TypingMessage,
-                 timestamp: UInt64) {
-        self.proto = proto
-        self.timestamp = timestamp
-    }
-
-    @objc
-    public func serializedData() throws -> Data {
-        return try self.proto.serializedData()
-    }
-
-    @objc
-    public convenience init(serializedData: Data) throws {
-        let proto = try SignalServiceProtos_TypingMessage(serializedData: serializedData)
-        try self.init(proto)
-    }
-
-    fileprivate convenience init(_ proto: SignalServiceProtos_TypingMessage) throws {
-        guard proto.hasTimestamp else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: timestamp")
-        }
-        let timestamp = proto.timestamp
-
-        // MARK: - Begin Validation Logic for SSKProtoTypingMessage -
-
-        // MARK: - End Validation Logic for SSKProtoTypingMessage -
-
-        self.init(proto: proto,
-                  timestamp: timestamp)
-    }
-
-    public required convenience init(from decoder: Swift.Decoder) throws {
-        let singleValueContainer = try decoder.singleValueContainer()
-        let serializedData = try singleValueContainer.decode(Data.self)
-        try self.init(serializedData: serializedData)
-    }
-    public func encode(to encoder: Swift.Encoder) throws {
-        var singleValueContainer = encoder.singleValueContainer()
-        try singleValueContainer.encode(try serializedData())
-    }
-
-    @objc
-    public override var debugDescription: String {
-        return "\(proto)"
-    }
-}
-
-#if DEBUG
-
-extension SSKProtoTypingMessage {
-    @objc
-    public func serializedDataIgnoringErrors() -> Data? {
-        return try! self.serializedData()
-    }
-}
-
-extension SSKProtoTypingMessage.SSKProtoTypingMessageBuilder {
-    @objc
-    public func buildIgnoringErrors() -> SSKProtoTypingMessage? {
         return try! self.build()
     }
 }
@@ -695,6 +481,12 @@ public class SSKProtoContent: NSObject, Codable {
         }
         if let _value = typingMessage {
             builder.setTypingMessage(_value)
+        }
+        if let _value = senderKeyDistributionMessage {
+            builder.setSenderKeyDistributionMessage(_value)
+        }
+        if let _value = decryptionErrorMessage {
+            builder.setDecryptionErrorMessage(_value)
         }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
@@ -776,6 +568,28 @@ public class SSKProtoContent: NSObject, Codable {
             proto.typingMessage = valueParam.proto
         }
 
+        @objc
+        @available(swift, obsoleted: 1.0)
+        public func setSenderKeyDistributionMessage(_ valueParam: Data?) {
+            guard let valueParam = valueParam else { return }
+            proto.senderKeyDistributionMessage = valueParam
+        }
+
+        public func setSenderKeyDistributionMessage(_ valueParam: Data) {
+            proto.senderKeyDistributionMessage = valueParam
+        }
+
+        @objc
+        @available(swift, obsoleted: 1.0)
+        public func setDecryptionErrorMessage(_ valueParam: Data?) {
+            guard let valueParam = valueParam else { return }
+            proto.decryptionErrorMessage = valueParam
+        }
+
+        public func setDecryptionErrorMessage(_ valueParam: Data) {
+            proto.decryptionErrorMessage = valueParam
+        }
+
         public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
             proto.unknownFields = unknownFields
         }
@@ -810,6 +624,30 @@ public class SSKProtoContent: NSObject, Codable {
 
     @objc
     public let typingMessage: SSKProtoTypingMessage?
+
+    @objc
+    public var senderKeyDistributionMessage: Data? {
+        guard hasSenderKeyDistributionMessage else {
+            return nil
+        }
+        return proto.senderKeyDistributionMessage
+    }
+    @objc
+    public var hasSenderKeyDistributionMessage: Bool {
+        return proto.hasSenderKeyDistributionMessage
+    }
+
+    @objc
+    public var decryptionErrorMessage: Data? {
+        guard hasDecryptionErrorMessage else {
+            return nil
+        }
+        return proto.decryptionErrorMessage
+    }
+    @objc
+    public var hasDecryptionErrorMessage: Bool {
+        return proto.hasDecryptionErrorMessage
+    }
 
     public var hasUnknownFields: Bool {
         return !proto.unknownFields.data.isEmpty
@@ -954,14 +792,17 @@ public class SSKProtoCallMessageOffer: NSObject, Codable {
     // MARK: - SSKProtoCallMessageOfferBuilder
 
     @objc
-    public static func builder(id: UInt64) -> SSKProtoCallMessageOfferBuilder {
-        return SSKProtoCallMessageOfferBuilder(id: id)
+    public static func builder() -> SSKProtoCallMessageOfferBuilder {
+        return SSKProtoCallMessageOfferBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoCallMessageOfferBuilder {
-        let builder = SSKProtoCallMessageOfferBuilder(id: id)
+        let builder = SSKProtoCallMessageOfferBuilder()
+        if hasID {
+            builder.setId(id)
+        }
         if let _value = sdp {
             builder.setSdp(_value)
         }
@@ -984,13 +825,6 @@ public class SSKProtoCallMessageOffer: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(id: UInt64) {
-            super.init()
-
-            setId(id)
-        }
 
         @objc
         public func setId(_ valueParam: UInt64) {
@@ -1042,7 +876,13 @@ public class SSKProtoCallMessageOffer: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_CallMessage.Offer
 
     @objc
-    public let id: UInt64
+    public var id: UInt64 {
+        return proto.id
+    }
+    @objc
+    public var hasID: Bool {
+        return proto.hasID
+    }
 
     @objc
     public var sdp: String? {
@@ -1096,10 +936,8 @@ public class SSKProtoCallMessageOffer: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_CallMessage.Offer,
-                 id: UInt64) {
+    private init(proto: SignalServiceProtos_CallMessage.Offer) {
         self.proto = proto
-        self.id = id
     }
 
     @objc
@@ -1114,17 +952,11 @@ public class SSKProtoCallMessageOffer: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_CallMessage.Offer) throws {
-        guard proto.hasID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: id")
-        }
-        let id = proto.id
-
         // MARK: - Begin Validation Logic for SSKProtoCallMessageOffer -
 
         // MARK: - End Validation Logic for SSKProtoCallMessageOffer -
 
-        self.init(proto: proto,
-                  id: id)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -1169,14 +1001,17 @@ public class SSKProtoCallMessageAnswer: NSObject, Codable {
     // MARK: - SSKProtoCallMessageAnswerBuilder
 
     @objc
-    public static func builder(id: UInt64) -> SSKProtoCallMessageAnswerBuilder {
-        return SSKProtoCallMessageAnswerBuilder(id: id)
+    public static func builder() -> SSKProtoCallMessageAnswerBuilder {
+        return SSKProtoCallMessageAnswerBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoCallMessageAnswerBuilder {
-        let builder = SSKProtoCallMessageAnswerBuilder(id: id)
+        let builder = SSKProtoCallMessageAnswerBuilder()
+        if hasID {
+            builder.setId(id)
+        }
         if let _value = sdp {
             builder.setSdp(_value)
         }
@@ -1196,13 +1031,6 @@ public class SSKProtoCallMessageAnswer: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(id: UInt64) {
-            super.init()
-
-            setId(id)
-        }
 
         @objc
         public func setId(_ valueParam: UInt64) {
@@ -1249,7 +1077,13 @@ public class SSKProtoCallMessageAnswer: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_CallMessage.Answer
 
     @objc
-    public let id: UInt64
+    public var id: UInt64 {
+        return proto.id
+    }
+    @objc
+    public var hasID: Bool {
+        return proto.hasID
+    }
 
     @objc
     public var sdp: String? {
@@ -1283,10 +1117,8 @@ public class SSKProtoCallMessageAnswer: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_CallMessage.Answer,
-                 id: UInt64) {
+    private init(proto: SignalServiceProtos_CallMessage.Answer) {
         self.proto = proto
-        self.id = id
     }
 
     @objc
@@ -1301,17 +1133,11 @@ public class SSKProtoCallMessageAnswer: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_CallMessage.Answer) throws {
-        guard proto.hasID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: id")
-        }
-        let id = proto.id
-
         // MARK: - Begin Validation Logic for SSKProtoCallMessageAnswer -
 
         // MARK: - End Validation Logic for SSKProtoCallMessageAnswer -
 
-        self.init(proto: proto,
-                  id: id)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -1356,14 +1182,17 @@ public class SSKProtoCallMessageIceUpdate: NSObject, Codable {
     // MARK: - SSKProtoCallMessageIceUpdateBuilder
 
     @objc
-    public static func builder(id: UInt64) -> SSKProtoCallMessageIceUpdateBuilder {
-        return SSKProtoCallMessageIceUpdateBuilder(id: id)
+    public static func builder() -> SSKProtoCallMessageIceUpdateBuilder {
+        return SSKProtoCallMessageIceUpdateBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoCallMessageIceUpdateBuilder {
-        let builder = SSKProtoCallMessageIceUpdateBuilder(id: id)
+        let builder = SSKProtoCallMessageIceUpdateBuilder()
+        if hasID {
+            builder.setId(id)
+        }
         if let _value = mid {
             builder.setMid(_value)
         }
@@ -1389,13 +1218,6 @@ public class SSKProtoCallMessageIceUpdate: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(id: UInt64) {
-            super.init()
-
-            setId(id)
-        }
 
         @objc
         public func setId(_ valueParam: UInt64) {
@@ -1458,7 +1280,13 @@ public class SSKProtoCallMessageIceUpdate: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_CallMessage.IceUpdate
 
     @objc
-    public let id: UInt64
+    public var id: UInt64 {
+        return proto.id
+    }
+    @objc
+    public var hasID: Bool {
+        return proto.hasID
+    }
 
     @objc
     public var mid: String? {
@@ -1513,10 +1341,8 @@ public class SSKProtoCallMessageIceUpdate: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_CallMessage.IceUpdate,
-                 id: UInt64) {
+    private init(proto: SignalServiceProtos_CallMessage.IceUpdate) {
         self.proto = proto
-        self.id = id
     }
 
     @objc
@@ -1531,17 +1357,11 @@ public class SSKProtoCallMessageIceUpdate: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_CallMessage.IceUpdate) throws {
-        guard proto.hasID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: id")
-        }
-        let id = proto.id
-
         // MARK: - Begin Validation Logic for SSKProtoCallMessageIceUpdate -
 
         // MARK: - End Validation Logic for SSKProtoCallMessageIceUpdate -
 
-        self.init(proto: proto,
-                  id: id)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -1586,14 +1406,17 @@ public class SSKProtoCallMessageBusy: NSObject, Codable {
     // MARK: - SSKProtoCallMessageBusyBuilder
 
     @objc
-    public static func builder(id: UInt64) -> SSKProtoCallMessageBusyBuilder {
-        return SSKProtoCallMessageBusyBuilder(id: id)
+    public static func builder() -> SSKProtoCallMessageBusyBuilder {
+        return SSKProtoCallMessageBusyBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoCallMessageBusyBuilder {
-        let builder = SSKProtoCallMessageBusyBuilder(id: id)
+        let builder = SSKProtoCallMessageBusyBuilder()
+        if hasID {
+            builder.setId(id)
+        }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
         }
@@ -1607,13 +1430,6 @@ public class SSKProtoCallMessageBusy: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(id: UInt64) {
-            super.init()
-
-            setId(id)
-        }
 
         @objc
         public func setId(_ valueParam: UInt64) {
@@ -1638,7 +1454,13 @@ public class SSKProtoCallMessageBusy: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_CallMessage.Busy
 
     @objc
-    public let id: UInt64
+    public var id: UInt64 {
+        return proto.id
+    }
+    @objc
+    public var hasID: Bool {
+        return proto.hasID
+    }
 
     public var hasUnknownFields: Bool {
         return !proto.unknownFields.data.isEmpty
@@ -1648,10 +1470,8 @@ public class SSKProtoCallMessageBusy: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_CallMessage.Busy,
-                 id: UInt64) {
+    private init(proto: SignalServiceProtos_CallMessage.Busy) {
         self.proto = proto
-        self.id = id
     }
 
     @objc
@@ -1666,17 +1486,11 @@ public class SSKProtoCallMessageBusy: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_CallMessage.Busy) throws {
-        guard proto.hasID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: id")
-        }
-        let id = proto.id
-
         // MARK: - Begin Validation Logic for SSKProtoCallMessageBusy -
 
         // MARK: - End Validation Logic for SSKProtoCallMessageBusy -
 
-        self.init(proto: proto,
-                  id: id)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -1752,14 +1566,17 @@ public class SSKProtoCallMessageHangup: NSObject, Codable {
     // MARK: - SSKProtoCallMessageHangupBuilder
 
     @objc
-    public static func builder(id: UInt64) -> SSKProtoCallMessageHangupBuilder {
-        return SSKProtoCallMessageHangupBuilder(id: id)
+    public static func builder() -> SSKProtoCallMessageHangupBuilder {
+        return SSKProtoCallMessageHangupBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoCallMessageHangupBuilder {
-        let builder = SSKProtoCallMessageHangupBuilder(id: id)
+        let builder = SSKProtoCallMessageHangupBuilder()
+        if hasID {
+            builder.setId(id)
+        }
         if let _value = type {
             builder.setType(_value)
         }
@@ -1779,13 +1596,6 @@ public class SSKProtoCallMessageHangup: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(id: UInt64) {
-            super.init()
-
-            setId(id)
-        }
 
         @objc
         public func setId(_ valueParam: UInt64) {
@@ -1820,7 +1630,13 @@ public class SSKProtoCallMessageHangup: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_CallMessage.Hangup
 
     @objc
-    public let id: UInt64
+    public var id: UInt64 {
+        return proto.id
+    }
+    @objc
+    public var hasID: Bool {
+        return proto.hasID
+    }
 
     public var type: SSKProtoCallMessageHangupType? {
         guard hasType else {
@@ -1859,10 +1675,8 @@ public class SSKProtoCallMessageHangup: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_CallMessage.Hangup,
-                 id: UInt64) {
+    private init(proto: SignalServiceProtos_CallMessage.Hangup) {
         self.proto = proto
-        self.id = id
     }
 
     @objc
@@ -1877,17 +1691,11 @@ public class SSKProtoCallMessageHangup: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_CallMessage.Hangup) throws {
-        guard proto.hasID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: id")
-        }
-        let id = proto.id
-
         // MARK: - Begin Validation Logic for SSKProtoCallMessageHangup -
 
         // MARK: - End Validation Logic for SSKProtoCallMessageHangup -
 
-        self.init(proto: proto,
-                  id: id)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -2091,14 +1899,11 @@ public class SSKProtoCallMessage: NSObject, Codable {
         if let _value = busy {
             builder.setBusy(_value)
         }
-        if let _value = profileKey {
-            builder.setProfileKey(_value)
-        }
         if let _value = hangup {
             builder.setHangup(_value)
         }
-        if hasSupportsMultiRing {
-            builder.setSupportsMultiRing(supportsMultiRing)
+        if hasMultiRing {
+            builder.setMultiRing(multiRing)
         }
         if hasDestinationDeviceID {
             builder.setDestinationDeviceID(destinationDeviceID)
@@ -2176,17 +1981,6 @@ public class SSKProtoCallMessage: NSObject, Codable {
 
         @objc
         @available(swift, obsoleted: 1.0)
-        public func setProfileKey(_ valueParam: Data?) {
-            guard let valueParam = valueParam else { return }
-            proto.profileKey = valueParam
-        }
-
-        public func setProfileKey(_ valueParam: Data) {
-            proto.profileKey = valueParam
-        }
-
-        @objc
-        @available(swift, obsoleted: 1.0)
         public func setHangup(_ valueParam: SSKProtoCallMessageHangup?) {
             guard let valueParam = valueParam else { return }
             proto.hangup = valueParam.proto
@@ -2197,8 +1991,8 @@ public class SSKProtoCallMessage: NSObject, Codable {
         }
 
         @objc
-        public func setSupportsMultiRing(_ valueParam: Bool) {
-            proto.supportsMultiRing = valueParam
+        public func setMultiRing(_ valueParam: Bool) {
+            proto.multiRing = valueParam
         }
 
         @objc
@@ -2256,24 +2050,12 @@ public class SSKProtoCallMessage: NSObject, Codable {
     public let opaque: SSKProtoCallMessageOpaque?
 
     @objc
-    public var profileKey: Data? {
-        guard hasProfileKey else {
-            return nil
-        }
-        return proto.profileKey
+    public var multiRing: Bool {
+        return proto.multiRing
     }
     @objc
-    public var hasProfileKey: Bool {
-        return proto.hasProfileKey
-    }
-
-    @objc
-    public var supportsMultiRing: Bool {
-        return proto.supportsMultiRing
-    }
-    @objc
-    public var hasSupportsMultiRing: Bool {
-        return proto.hasSupportsMultiRing
+    public var hasMultiRing: Bool {
+        return proto.hasMultiRing
     }
 
     @objc
@@ -2404,24 +2186,177 @@ extension SSKProtoCallMessage.SSKProtoCallMessageBuilder {
 
 #endif
 
-// MARK: - SSKProtoDataMessageQuoteQuotedAttachmentFlags
+// MARK: - SSKProtoDataMessageBodyRange
 
 @objc
-public enum SSKProtoDataMessageQuoteQuotedAttachmentFlags: Int32 {
-    case voiceMessage = 1
-}
+public class SSKProtoDataMessageBodyRange: NSObject, Codable {
 
-private func SSKProtoDataMessageQuoteQuotedAttachmentFlagsWrap(_ value: SignalServiceProtos_DataMessage.Quote.QuotedAttachment.Flags) -> SSKProtoDataMessageQuoteQuotedAttachmentFlags {
-    switch value {
-    case .voiceMessage: return .voiceMessage
+    // MARK: - SSKProtoDataMessageBodyRangeBuilder
+
+    @objc
+    public static func builder() -> SSKProtoDataMessageBodyRangeBuilder {
+        return SSKProtoDataMessageBodyRangeBuilder()
+    }
+
+    // asBuilder() constructs a builder that reflects the proto's contents.
+    @objc
+    public func asBuilder() -> SSKProtoDataMessageBodyRangeBuilder {
+        let builder = SSKProtoDataMessageBodyRangeBuilder()
+        if hasStart {
+            builder.setStart(start)
+        }
+        if hasLength {
+            builder.setLength(length)
+        }
+        if let _value = mentionUuid {
+            builder.setMentionUuid(_value)
+        }
+        if let _value = unknownFields {
+            builder.setUnknownFields(_value)
+        }
+        return builder
+    }
+
+    @objc
+    public class SSKProtoDataMessageBodyRangeBuilder: NSObject {
+
+        private var proto = SignalServiceProtos_DataMessage.BodyRange()
+
+        @objc
+        fileprivate override init() {}
+
+        @objc
+        public func setStart(_ valueParam: UInt32) {
+            proto.start = valueParam
+        }
+
+        @objc
+        public func setLength(_ valueParam: UInt32) {
+            proto.length = valueParam
+        }
+
+        @objc
+        @available(swift, obsoleted: 1.0)
+        public func setMentionUuid(_ valueParam: String?) {
+            guard let valueParam = valueParam else { return }
+            proto.mentionUuid = valueParam
+        }
+
+        public func setMentionUuid(_ valueParam: String) {
+            proto.mentionUuid = valueParam
+        }
+
+        public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
+            proto.unknownFields = unknownFields
+        }
+
+        @objc
+        public func build() throws -> SSKProtoDataMessageBodyRange {
+            return try SSKProtoDataMessageBodyRange(proto)
+        }
+
+        @objc
+        public func buildSerializedData() throws -> Data {
+            return try SSKProtoDataMessageBodyRange(proto).serializedData()
+        }
+    }
+
+    fileprivate let proto: SignalServiceProtos_DataMessage.BodyRange
+
+    @objc
+    public var start: UInt32 {
+        return proto.start
+    }
+    @objc
+    public var hasStart: Bool {
+        return proto.hasStart
+    }
+
+    @objc
+    public var length: UInt32 {
+        return proto.length
+    }
+    @objc
+    public var hasLength: Bool {
+        return proto.hasLength
+    }
+
+    @objc
+    public var mentionUuid: String? {
+        guard hasMentionUuid else {
+            return nil
+        }
+        return proto.mentionUuid
+    }
+    @objc
+    public var hasMentionUuid: Bool {
+        return proto.hasMentionUuid && !proto.mentionUuid.isEmpty
+    }
+
+    public var hasUnknownFields: Bool {
+        return !proto.unknownFields.data.isEmpty
+    }
+    public var unknownFields: SwiftProtobuf.UnknownStorage? {
+        guard hasUnknownFields else { return nil }
+        return proto.unknownFields
+    }
+
+    private init(proto: SignalServiceProtos_DataMessage.BodyRange) {
+        self.proto = proto
+    }
+
+    @objc
+    public func serializedData() throws -> Data {
+        return try self.proto.serializedData()
+    }
+
+    @objc
+    public convenience init(serializedData: Data) throws {
+        let proto = try SignalServiceProtos_DataMessage.BodyRange(serializedData: serializedData)
+        try self.init(proto)
+    }
+
+    fileprivate convenience init(_ proto: SignalServiceProtos_DataMessage.BodyRange) throws {
+        // MARK: - Begin Validation Logic for SSKProtoDataMessageBodyRange -
+
+        // MARK: - End Validation Logic for SSKProtoDataMessageBodyRange -
+
+        self.init(proto: proto)
+    }
+
+    public required convenience init(from decoder: Swift.Decoder) throws {
+        let singleValueContainer = try decoder.singleValueContainer()
+        let serializedData = try singleValueContainer.decode(Data.self)
+        try self.init(serializedData: serializedData)
+    }
+    public func encode(to encoder: Swift.Encoder) throws {
+        var singleValueContainer = encoder.singleValueContainer()
+        try singleValueContainer.encode(try serializedData())
+    }
+
+    @objc
+    public override var debugDescription: String {
+        return "\(proto)"
     }
 }
 
-private func SSKProtoDataMessageQuoteQuotedAttachmentFlagsUnwrap(_ value: SSKProtoDataMessageQuoteQuotedAttachmentFlags) -> SignalServiceProtos_DataMessage.Quote.QuotedAttachment.Flags {
-    switch value {
-    case .voiceMessage: return .voiceMessage
+#if DEBUG
+
+extension SSKProtoDataMessageBodyRange {
+    @objc
+    public func serializedDataIgnoringErrors() -> Data? {
+        return try! self.serializedData()
     }
 }
+
+extension SSKProtoDataMessageBodyRange.SSKProtoDataMessageBodyRangeBuilder {
+    @objc
+    public func buildIgnoringErrors() -> SSKProtoDataMessageBodyRange? {
+        return try! self.build()
+    }
+}
+
+#endif
 
 // MARK: - SSKProtoDataMessageQuoteQuotedAttachment
 
@@ -2447,9 +2382,6 @@ public class SSKProtoDataMessageQuoteQuotedAttachment: NSObject, Codable {
         }
         if let _value = thumbnail {
             builder.setThumbnail(_value)
-        }
-        if hasFlags {
-            builder.setFlags(flags)
         }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
@@ -2498,11 +2430,6 @@ public class SSKProtoDataMessageQuoteQuotedAttachment: NSObject, Codable {
             proto.thumbnail = valueParam.proto
         }
 
-        @objc
-        public func setFlags(_ valueParam: UInt32) {
-            proto.flags = valueParam
-        }
-
         public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
             proto.unknownFields = unknownFields
         }
@@ -2545,15 +2472,6 @@ public class SSKProtoDataMessageQuoteQuotedAttachment: NSObject, Codable {
     @objc
     public var hasFileName: Bool {
         return proto.hasFileName
-    }
-
-    @objc
-    public var flags: UInt32 {
-        return proto.flags
-    }
-    @objc
-    public var hasFlags: Bool {
-        return proto.hasFlags
     }
 
     public var hasUnknownFields: Bool {
@@ -2637,14 +2555,17 @@ public class SSKProtoDataMessageQuote: NSObject, Codable {
     // MARK: - SSKProtoDataMessageQuoteBuilder
 
     @objc
-    public static func builder(id: UInt64) -> SSKProtoDataMessageQuoteBuilder {
-        return SSKProtoDataMessageQuoteBuilder(id: id)
+    public static func builder() -> SSKProtoDataMessageQuoteBuilder {
+        return SSKProtoDataMessageQuoteBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoDataMessageQuoteBuilder {
-        let builder = SSKProtoDataMessageQuoteBuilder(id: id)
+        let builder = SSKProtoDataMessageQuoteBuilder()
+        if hasID {
+            builder.setId(id)
+        }
         if let _value = authorE164 {
             builder.setAuthorE164(_value)
         }
@@ -2669,13 +2590,6 @@ public class SSKProtoDataMessageQuote: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(id: UInt64) {
-            super.init()
-
-            setId(id)
-        }
 
         @objc
         public func setId(_ valueParam: UInt64) {
@@ -2753,13 +2667,19 @@ public class SSKProtoDataMessageQuote: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_DataMessage.Quote
 
     @objc
-    public let id: UInt64
-
-    @objc
     public let attachments: [SSKProtoDataMessageQuoteQuotedAttachment]
 
     @objc
     public let bodyRanges: [SSKProtoDataMessageBodyRange]
+
+    @objc
+    public var id: UInt64 {
+        return proto.id
+    }
+    @objc
+    public var hasID: Bool {
+        return proto.hasID
+    }
 
     @objc
     public var authorE164: String? {
@@ -2813,11 +2733,9 @@ public class SSKProtoDataMessageQuote: NSObject, Codable {
     }
 
     private init(proto: SignalServiceProtos_DataMessage.Quote,
-                 id: UInt64,
                  attachments: [SSKProtoDataMessageQuoteQuotedAttachment],
                  bodyRanges: [SSKProtoDataMessageBodyRange]) {
         self.proto = proto
-        self.id = id
         self.attachments = attachments
         self.bodyRanges = bodyRanges
 
@@ -2879,11 +2797,6 @@ public class SSKProtoDataMessageQuote: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_DataMessage.Quote) throws {
-        guard proto.hasID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: id")
-        }
-        let id = proto.id
-
         var attachments: [SSKProtoDataMessageQuoteQuotedAttachment] = []
         attachments = try proto.attachments.map { try SSKProtoDataMessageQuoteQuotedAttachment($0) }
 
@@ -2895,7 +2808,6 @@ public class SSKProtoDataMessageQuote: NSObject, Codable {
         // MARK: - End Validation Logic for SSKProtoDataMessageQuote -
 
         self.init(proto: proto,
-                  id: id,
                   attachments: attachments,
                   bodyRanges: bodyRanges)
     }
@@ -4425,14 +4337,17 @@ public class SSKProtoDataMessagePreview: NSObject, Codable {
     // MARK: - SSKProtoDataMessagePreviewBuilder
 
     @objc
-    public static func builder(url: String) -> SSKProtoDataMessagePreviewBuilder {
-        return SSKProtoDataMessagePreviewBuilder(url: url)
+    public static func builder() -> SSKProtoDataMessagePreviewBuilder {
+        return SSKProtoDataMessagePreviewBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoDataMessagePreviewBuilder {
-        let builder = SSKProtoDataMessagePreviewBuilder(url: url)
+        let builder = SSKProtoDataMessagePreviewBuilder()
+        if let _value = url {
+            builder.setUrl(_value)
+        }
         if let _value = title {
             builder.setTitle(_value)
         }
@@ -4458,13 +4373,6 @@ public class SSKProtoDataMessagePreview: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(url: String) {
-            super.init()
-
-            setUrl(url)
-        }
 
         @objc
         @available(swift, obsoleted: 1.0)
@@ -4533,10 +4441,19 @@ public class SSKProtoDataMessagePreview: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_DataMessage.Preview
 
     @objc
-    public let url: String
+    public let image: SSKProtoAttachmentPointer?
 
     @objc
-    public let image: SSKProtoAttachmentPointer?
+    public var url: String? {
+        guard hasURL else {
+            return nil
+        }
+        return proto.url
+    }
+    @objc
+    public var hasURL: Bool {
+        return proto.hasURL
+    }
 
     @objc
     public var title: String? {
@@ -4580,10 +4497,8 @@ public class SSKProtoDataMessagePreview: NSObject, Codable {
     }
 
     private init(proto: SignalServiceProtos_DataMessage.Preview,
-                 url: String,
                  image: SSKProtoAttachmentPointer?) {
         self.proto = proto
-        self.url = url
         self.image = image
     }
 
@@ -4599,11 +4514,6 @@ public class SSKProtoDataMessagePreview: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_DataMessage.Preview) throws {
-        guard proto.hasURL else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: url")
-        }
-        let url = proto.url
-
         var image: SSKProtoAttachmentPointer?
         if proto.hasImage {
             image = try SSKProtoAttachmentPointer(proto.image)
@@ -4614,7 +4524,6 @@ public class SSKProtoDataMessagePreview: NSObject, Codable {
         // MARK: - End Validation Logic for SSKProtoDataMessagePreview -
 
         self.init(proto: proto,
-                  url: url,
                   image: image)
     }
 
@@ -4660,14 +4569,26 @@ public class SSKProtoDataMessageSticker: NSObject, Codable {
     // MARK: - SSKProtoDataMessageStickerBuilder
 
     @objc
-    public static func builder(packID: Data, packKey: Data, stickerID: UInt32, data: SSKProtoAttachmentPointer) -> SSKProtoDataMessageStickerBuilder {
-        return SSKProtoDataMessageStickerBuilder(packID: packID, packKey: packKey, stickerID: stickerID, data: data)
+    public static func builder() -> SSKProtoDataMessageStickerBuilder {
+        return SSKProtoDataMessageStickerBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoDataMessageStickerBuilder {
-        let builder = SSKProtoDataMessageStickerBuilder(packID: packID, packKey: packKey, stickerID: stickerID, data: data)
+        let builder = SSKProtoDataMessageStickerBuilder()
+        if let _value = packID {
+            builder.setPackID(_value)
+        }
+        if let _value = packKey {
+            builder.setPackKey(_value)
+        }
+        if hasStickerID {
+            builder.setStickerID(stickerID)
+        }
+        if let _value = data {
+            builder.setData(_value)
+        }
         if let _value = emoji {
             builder.setEmoji(_value)
         }
@@ -4684,16 +4605,6 @@ public class SSKProtoDataMessageSticker: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(packID: Data, packKey: Data, stickerID: UInt32, data: SSKProtoAttachmentPointer) {
-            super.init()
-
-            setPackID(packID)
-            setPackKey(packKey)
-            setStickerID(stickerID)
-            setData(data)
-        }
 
         @objc
         @available(swift, obsoleted: 1.0)
@@ -4762,16 +4673,40 @@ public class SSKProtoDataMessageSticker: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_DataMessage.Sticker
 
     @objc
-    public let packID: Data
+    public let data: SSKProtoAttachmentPointer?
 
     @objc
-    public let packKey: Data
+    public var packID: Data? {
+        guard hasPackID else {
+            return nil
+        }
+        return proto.packID
+    }
+    @objc
+    public var hasPackID: Bool {
+        return proto.hasPackID
+    }
 
     @objc
-    public let stickerID: UInt32
+    public var packKey: Data? {
+        guard hasPackKey else {
+            return nil
+        }
+        return proto.packKey
+    }
+    @objc
+    public var hasPackKey: Bool {
+        return proto.hasPackKey
+    }
 
     @objc
-    public let data: SSKProtoAttachmentPointer
+    public var stickerID: UInt32 {
+        return proto.stickerID
+    }
+    @objc
+    public var hasStickerID: Bool {
+        return proto.hasStickerID
+    }
 
     @objc
     public var emoji: String? {
@@ -4794,14 +4729,8 @@ public class SSKProtoDataMessageSticker: NSObject, Codable {
     }
 
     private init(proto: SignalServiceProtos_DataMessage.Sticker,
-                 packID: Data,
-                 packKey: Data,
-                 stickerID: UInt32,
-                 data: SSKProtoAttachmentPointer) {
+                 data: SSKProtoAttachmentPointer?) {
         self.proto = proto
-        self.packID = packID
-        self.packKey = packKey
-        self.stickerID = stickerID
         self.data = data
     }
 
@@ -4817,34 +4746,16 @@ public class SSKProtoDataMessageSticker: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_DataMessage.Sticker) throws {
-        guard proto.hasPackID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: packID")
+        var data: SSKProtoAttachmentPointer?
+        if proto.hasData {
+            data = try SSKProtoAttachmentPointer(proto.data)
         }
-        let packID = proto.packID
-
-        guard proto.hasPackKey else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: packKey")
-        }
-        let packKey = proto.packKey
-
-        guard proto.hasStickerID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: stickerID")
-        }
-        let stickerID = proto.stickerID
-
-        guard proto.hasData else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: data")
-        }
-        let data = try SSKProtoAttachmentPointer(proto.data)
 
         // MARK: - Begin Validation Logic for SSKProtoDataMessageSticker -
 
         // MARK: - End Validation Logic for SSKProtoDataMessageSticker -
 
         self.init(proto: proto,
-                  packID: packID,
-                  packKey: packKey,
-                  stickerID: stickerID,
                   data: data)
     }
 
@@ -4890,22 +4801,25 @@ public class SSKProtoDataMessageReaction: NSObject, Codable {
     // MARK: - SSKProtoDataMessageReactionBuilder
 
     @objc
-    public static func builder(emoji: String, timestamp: UInt64) -> SSKProtoDataMessageReactionBuilder {
-        return SSKProtoDataMessageReactionBuilder(emoji: emoji, timestamp: timestamp)
+    public static func builder() -> SSKProtoDataMessageReactionBuilder {
+        return SSKProtoDataMessageReactionBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoDataMessageReactionBuilder {
-        let builder = SSKProtoDataMessageReactionBuilder(emoji: emoji, timestamp: timestamp)
+        let builder = SSKProtoDataMessageReactionBuilder()
+        if let _value = emoji {
+            builder.setEmoji(_value)
+        }
         if hasRemove {
             builder.setRemove(remove)
         }
-        if let _value = authorE164 {
-            builder.setAuthorE164(_value)
+        if let _value = targetAuthorUuid {
+            builder.setTargetAuthorUuid(_value)
         }
-        if let _value = authorUuid {
-            builder.setAuthorUuid(_value)
+        if hasTargetSentTimestamp {
+            builder.setTargetSentTimestamp(targetSentTimestamp)
         }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
@@ -4920,14 +4834,6 @@ public class SSKProtoDataMessageReaction: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(emoji: String, timestamp: UInt64) {
-            super.init()
-
-            setEmoji(emoji)
-            setTimestamp(timestamp)
-        }
 
         @objc
         @available(swift, obsoleted: 1.0)
@@ -4947,29 +4853,18 @@ public class SSKProtoDataMessageReaction: NSObject, Codable {
 
         @objc
         @available(swift, obsoleted: 1.0)
-        public func setAuthorE164(_ valueParam: String?) {
+        public func setTargetAuthorUuid(_ valueParam: String?) {
             guard let valueParam = valueParam else { return }
-            proto.authorE164 = valueParam
+            proto.targetAuthorUuid = valueParam
         }
 
-        public func setAuthorE164(_ valueParam: String) {
-            proto.authorE164 = valueParam
+        public func setTargetAuthorUuid(_ valueParam: String) {
+            proto.targetAuthorUuid = valueParam
         }
 
         @objc
-        @available(swift, obsoleted: 1.0)
-        public func setAuthorUuid(_ valueParam: String?) {
-            guard let valueParam = valueParam else { return }
-            proto.authorUuid = valueParam
-        }
-
-        public func setAuthorUuid(_ valueParam: String) {
-            proto.authorUuid = valueParam
-        }
-
-        @objc
-        public func setTimestamp(_ valueParam: UInt64) {
-            proto.timestamp = valueParam
+        public func setTargetSentTimestamp(_ valueParam: UInt64) {
+            proto.targetSentTimestamp = valueParam
         }
 
         public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
@@ -4990,10 +4885,16 @@ public class SSKProtoDataMessageReaction: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_DataMessage.Reaction
 
     @objc
-    public let emoji: String
-
+    public var emoji: String? {
+        guard hasEmoji else {
+            return nil
+        }
+        return proto.emoji
+    }
     @objc
-    public let timestamp: UInt64
+    public var hasEmoji: Bool {
+        return proto.hasEmoji
+    }
 
     @objc
     public var remove: Bool {
@@ -5005,35 +4906,25 @@ public class SSKProtoDataMessageReaction: NSObject, Codable {
     }
 
     @objc
-    public var authorE164: String? {
-        guard hasAuthorE164 else {
+    public var targetAuthorUuid: String? {
+        guard hasTargetAuthorUuid else {
             return nil
         }
-        return proto.authorE164
+        return proto.targetAuthorUuid
     }
     @objc
-    public var hasAuthorE164: Bool {
-        return proto.hasAuthorE164 && !proto.authorE164.isEmpty
+    public var hasTargetAuthorUuid: Bool {
+        return proto.hasTargetAuthorUuid && !proto.targetAuthorUuid.isEmpty
     }
 
     @objc
-    public var authorUuid: String? {
-        guard hasAuthorUuid else {
-            return nil
-        }
-        return proto.authorUuid
+    public var targetSentTimestamp: UInt64 {
+        return proto.targetSentTimestamp
     }
     @objc
-    public var hasAuthorUuid: Bool {
-        return proto.hasAuthorUuid && !proto.authorUuid.isEmpty
+    public var hasTargetSentTimestamp: Bool {
+        return proto.hasTargetSentTimestamp
     }
-
-    @objc
-    public var hasValidAuthor: Bool {
-        return authorAddress != nil
-    }
-    @objc
-    public let authorAddress: SignalServiceAddress?
 
     public var hasUnknownFields: Bool {
         return !proto.unknownFields.data.isEmpty
@@ -5043,57 +4934,8 @@ public class SSKProtoDataMessageReaction: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_DataMessage.Reaction,
-                 emoji: String,
-                 timestamp: UInt64) {
+    private init(proto: SignalServiceProtos_DataMessage.Reaction) {
         self.proto = proto
-        self.emoji = emoji
-        self.timestamp = timestamp
-
-        let hasAuthorUuid = proto.hasAuthorUuid && !proto.authorUuid.isEmpty
-        let hasAuthorE164 = proto.hasAuthorE164 && !proto.authorE164.isEmpty
-        let authorUuid: String? = proto.authorUuid
-        let authorE164: String? = proto.authorE164
-        self.authorAddress = {
-            guard hasAuthorE164 || hasAuthorUuid else { return nil }
-
-            let uuidString: String? = {
-                guard hasAuthorUuid else { return nil }
-
-                guard let authorUuid = authorUuid else {
-                    owsFailDebug("authorUuid was unexpectedly nil")
-                    return nil
-                }
-
-                return authorUuid
-            }()
-
-            let phoneNumber: String? = {
-                guard hasAuthorE164 else {
-                    return nil
-                }
-
-                guard let authorE164 = authorE164 else {
-                    owsFailDebug("authorE164 was unexpectedly nil")
-                    return nil
-                }
-
-                guard !authorE164.isEmpty else {
-                    owsFailDebug("authorE164 was unexpectedly empty")
-                    return nil
-                }
-
-                return authorE164
-            }()
-
-            let address = SignalServiceAddress(uuidString: uuidString, phoneNumber: phoneNumber, trustLevel: .low)
-            guard address.isValid else {
-                owsFailDebug("address was unexpectedly invalid")
-                return nil
-            }
-
-            return address
-        }()
     }
 
     @objc
@@ -5108,23 +4950,11 @@ public class SSKProtoDataMessageReaction: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_DataMessage.Reaction) throws {
-        guard proto.hasEmoji else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: emoji")
-        }
-        let emoji = proto.emoji
-
-        guard proto.hasTimestamp else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: timestamp")
-        }
-        let timestamp = proto.timestamp
-
         // MARK: - Begin Validation Logic for SSKProtoDataMessageReaction -
 
         // MARK: - End Validation Logic for SSKProtoDataMessageReaction -
 
-        self.init(proto: proto,
-                  emoji: emoji,
-                  timestamp: timestamp)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -5169,14 +4999,17 @@ public class SSKProtoDataMessageDelete: NSObject, Codable {
     // MARK: - SSKProtoDataMessageDeleteBuilder
 
     @objc
-    public static func builder(targetSentTimestamp: UInt64) -> SSKProtoDataMessageDeleteBuilder {
-        return SSKProtoDataMessageDeleteBuilder(targetSentTimestamp: targetSentTimestamp)
+    public static func builder() -> SSKProtoDataMessageDeleteBuilder {
+        return SSKProtoDataMessageDeleteBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoDataMessageDeleteBuilder {
-        let builder = SSKProtoDataMessageDeleteBuilder(targetSentTimestamp: targetSentTimestamp)
+        let builder = SSKProtoDataMessageDeleteBuilder()
+        if hasTargetSentTimestamp {
+            builder.setTargetSentTimestamp(targetSentTimestamp)
+        }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
         }
@@ -5190,13 +5023,6 @@ public class SSKProtoDataMessageDelete: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(targetSentTimestamp: UInt64) {
-            super.init()
-
-            setTargetSentTimestamp(targetSentTimestamp)
-        }
 
         @objc
         public func setTargetSentTimestamp(_ valueParam: UInt64) {
@@ -5221,7 +5047,13 @@ public class SSKProtoDataMessageDelete: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_DataMessage.Delete
 
     @objc
-    public let targetSentTimestamp: UInt64
+    public var targetSentTimestamp: UInt64 {
+        return proto.targetSentTimestamp
+    }
+    @objc
+    public var hasTargetSentTimestamp: Bool {
+        return proto.hasTargetSentTimestamp
+    }
 
     public var hasUnknownFields: Bool {
         return !proto.unknownFields.data.isEmpty
@@ -5231,10 +5063,8 @@ public class SSKProtoDataMessageDelete: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_DataMessage.Delete,
-                 targetSentTimestamp: UInt64) {
+    private init(proto: SignalServiceProtos_DataMessage.Delete) {
         self.proto = proto
-        self.targetSentTimestamp = targetSentTimestamp
     }
 
     @objc
@@ -5249,17 +5079,11 @@ public class SSKProtoDataMessageDelete: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_DataMessage.Delete) throws {
-        guard proto.hasTargetSentTimestamp else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: targetSentTimestamp")
-        }
-        let targetSentTimestamp = proto.targetSentTimestamp
-
         // MARK: - Begin Validation Logic for SSKProtoDataMessageDelete -
 
         // MARK: - End Validation Logic for SSKProtoDataMessageDelete -
 
-        self.init(proto: proto,
-                  targetSentTimestamp: targetSentTimestamp)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -5290,178 +5114,6 @@ extension SSKProtoDataMessageDelete {
 extension SSKProtoDataMessageDelete.SSKProtoDataMessageDeleteBuilder {
     @objc
     public func buildIgnoringErrors() -> SSKProtoDataMessageDelete? {
-        return try! self.build()
-    }
-}
-
-#endif
-
-// MARK: - SSKProtoDataMessageBodyRange
-
-@objc
-public class SSKProtoDataMessageBodyRange: NSObject, Codable {
-
-    // MARK: - SSKProtoDataMessageBodyRangeBuilder
-
-    @objc
-    public static func builder() -> SSKProtoDataMessageBodyRangeBuilder {
-        return SSKProtoDataMessageBodyRangeBuilder()
-    }
-
-    // asBuilder() constructs a builder that reflects the proto's contents.
-    @objc
-    public func asBuilder() -> SSKProtoDataMessageBodyRangeBuilder {
-        let builder = SSKProtoDataMessageBodyRangeBuilder()
-        if hasStart {
-            builder.setStart(start)
-        }
-        if hasLength {
-            builder.setLength(length)
-        }
-        if let _value = mentionUuid {
-            builder.setMentionUuid(_value)
-        }
-        if let _value = unknownFields {
-            builder.setUnknownFields(_value)
-        }
-        return builder
-    }
-
-    @objc
-    public class SSKProtoDataMessageBodyRangeBuilder: NSObject {
-
-        private var proto = SignalServiceProtos_DataMessage.BodyRange()
-
-        @objc
-        fileprivate override init() {}
-
-        @objc
-        public func setStart(_ valueParam: UInt32) {
-            proto.start = valueParam
-        }
-
-        @objc
-        public func setLength(_ valueParam: UInt32) {
-            proto.length = valueParam
-        }
-
-        @objc
-        @available(swift, obsoleted: 1.0)
-        public func setMentionUuid(_ valueParam: String?) {
-            guard let valueParam = valueParam else { return }
-            proto.mentionUuid = valueParam
-        }
-
-        public func setMentionUuid(_ valueParam: String) {
-            proto.mentionUuid = valueParam
-        }
-
-        public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
-            proto.unknownFields = unknownFields
-        }
-
-        @objc
-        public func build() throws -> SSKProtoDataMessageBodyRange {
-            return try SSKProtoDataMessageBodyRange(proto)
-        }
-
-        @objc
-        public func buildSerializedData() throws -> Data {
-            return try SSKProtoDataMessageBodyRange(proto).serializedData()
-        }
-    }
-
-    fileprivate let proto: SignalServiceProtos_DataMessage.BodyRange
-
-    @objc
-    public var start: UInt32 {
-        return proto.start
-    }
-    @objc
-    public var hasStart: Bool {
-        return proto.hasStart
-    }
-
-    @objc
-    public var length: UInt32 {
-        return proto.length
-    }
-    @objc
-    public var hasLength: Bool {
-        return proto.hasLength
-    }
-
-    @objc
-    public var mentionUuid: String? {
-        guard hasMentionUuid else {
-            return nil
-        }
-        return proto.mentionUuid
-    }
-    @objc
-    public var hasMentionUuid: Bool {
-        return proto.hasMentionUuid && !proto.mentionUuid.isEmpty
-    }
-
-    public var hasUnknownFields: Bool {
-        return !proto.unknownFields.data.isEmpty
-    }
-    public var unknownFields: SwiftProtobuf.UnknownStorage? {
-        guard hasUnknownFields else { return nil }
-        return proto.unknownFields
-    }
-
-    private init(proto: SignalServiceProtos_DataMessage.BodyRange) {
-        self.proto = proto
-    }
-
-    @objc
-    public func serializedData() throws -> Data {
-        return try self.proto.serializedData()
-    }
-
-    @objc
-    public convenience init(serializedData: Data) throws {
-        let proto = try SignalServiceProtos_DataMessage.BodyRange(serializedData: serializedData)
-        try self.init(proto)
-    }
-
-    fileprivate convenience init(_ proto: SignalServiceProtos_DataMessage.BodyRange) throws {
-        // MARK: - Begin Validation Logic for SSKProtoDataMessageBodyRange -
-
-        // MARK: - End Validation Logic for SSKProtoDataMessageBodyRange -
-
-        self.init(proto: proto)
-    }
-
-    public required convenience init(from decoder: Swift.Decoder) throws {
-        let singleValueContainer = try decoder.singleValueContainer()
-        let serializedData = try singleValueContainer.decode(Data.self)
-        try self.init(serializedData: serializedData)
-    }
-    public func encode(to encoder: Swift.Encoder) throws {
-        var singleValueContainer = encoder.singleValueContainer()
-        try singleValueContainer.encode(try serializedData())
-    }
-
-    @objc
-    public override var debugDescription: String {
-        return "\(proto)"
-    }
-}
-
-#if DEBUG
-
-extension SSKProtoDataMessageBodyRange {
-    @objc
-    public func serializedDataIgnoringErrors() -> Data? {
-        return try! self.serializedData()
-    }
-}
-
-extension SSKProtoDataMessageBodyRange.SSKProtoDataMessageBodyRangeBuilder {
-    @objc
-    public func buildIgnoringErrors() -> SSKProtoDataMessageBodyRange? {
         return try! self.build()
     }
 }
@@ -5642,6 +5294,7 @@ public enum SSKProtoDataMessageProtocolVersion: Int32 {
     case reactions = 4
     case cdnSelectorAttachments = 5
     case mentions = 6
+    case payments = 7
 }
 
 private func SSKProtoDataMessageProtocolVersionWrap(_ value: SignalServiceProtos_DataMessage.ProtocolVersion) -> SSKProtoDataMessageProtocolVersion {
@@ -5653,6 +5306,7 @@ private func SSKProtoDataMessageProtocolVersionWrap(_ value: SignalServiceProtos
     case .reactions: return .reactions
     case .cdnSelectorAttachments: return .cdnSelectorAttachments
     case .mentions: return .mentions
+    case .payments: return .payments
     }
 }
 
@@ -5665,6 +5319,7 @@ private func SSKProtoDataMessageProtocolVersionUnwrap(_ value: SSKProtoDataMessa
     case .reactions: return .reactions
     case .cdnSelectorAttachments: return .cdnSelectorAttachments
     case .mentions: return .mentions
+    case .payments: return .payments
     }
 }
 
@@ -6316,12 +5971,14 @@ extension SSKProtoNullMessage.SSKProtoNullMessageBuilder {
 public enum SSKProtoReceiptMessageType: Int32 {
     case delivery = 0
     case read = 1
+    case viewed = 2
 }
 
 private func SSKProtoReceiptMessageTypeWrap(_ value: SignalServiceProtos_ReceiptMessage.TypeEnum) -> SSKProtoReceiptMessageType {
     switch value {
     case .delivery: return .delivery
     case .read: return .read
+    case .viewed: return .viewed
     }
 }
 
@@ -6329,6 +5986,7 @@ private func SSKProtoReceiptMessageTypeUnwrap(_ value: SSKProtoReceiptMessageTyp
     switch value {
     case .delivery: return .delivery
     case .read: return .read
+    case .viewed: return .viewed
     }
 }
 
@@ -6482,6 +6140,211 @@ extension SSKProtoReceiptMessage {
 extension SSKProtoReceiptMessage.SSKProtoReceiptMessageBuilder {
     @objc
     public func buildIgnoringErrors() -> SSKProtoReceiptMessage? {
+        return try! self.build()
+    }
+}
+
+#endif
+
+// MARK: - SSKProtoTypingMessageAction
+
+@objc
+public enum SSKProtoTypingMessageAction: Int32 {
+    case started = 0
+    case stopped = 1
+}
+
+private func SSKProtoTypingMessageActionWrap(_ value: SignalServiceProtos_TypingMessage.Action) -> SSKProtoTypingMessageAction {
+    switch value {
+    case .started: return .started
+    case .stopped: return .stopped
+    }
+}
+
+private func SSKProtoTypingMessageActionUnwrap(_ value: SSKProtoTypingMessageAction) -> SignalServiceProtos_TypingMessage.Action {
+    switch value {
+    case .started: return .started
+    case .stopped: return .stopped
+    }
+}
+
+// MARK: - SSKProtoTypingMessage
+
+@objc
+public class SSKProtoTypingMessage: NSObject, Codable {
+
+    // MARK: - SSKProtoTypingMessageBuilder
+
+    @objc
+    public static func builder() -> SSKProtoTypingMessageBuilder {
+        return SSKProtoTypingMessageBuilder()
+    }
+
+    // asBuilder() constructs a builder that reflects the proto's contents.
+    @objc
+    public func asBuilder() -> SSKProtoTypingMessageBuilder {
+        let builder = SSKProtoTypingMessageBuilder()
+        if hasTimestamp {
+            builder.setTimestamp(timestamp)
+        }
+        if let _value = action {
+            builder.setAction(_value)
+        }
+        if let _value = groupID {
+            builder.setGroupID(_value)
+        }
+        if let _value = unknownFields {
+            builder.setUnknownFields(_value)
+        }
+        return builder
+    }
+
+    @objc
+    public class SSKProtoTypingMessageBuilder: NSObject {
+
+        private var proto = SignalServiceProtos_TypingMessage()
+
+        @objc
+        fileprivate override init() {}
+
+        @objc
+        public func setTimestamp(_ valueParam: UInt64) {
+            proto.timestamp = valueParam
+        }
+
+        @objc
+        public func setAction(_ valueParam: SSKProtoTypingMessageAction) {
+            proto.action = SSKProtoTypingMessageActionUnwrap(valueParam)
+        }
+
+        @objc
+        @available(swift, obsoleted: 1.0)
+        public func setGroupID(_ valueParam: Data?) {
+            guard let valueParam = valueParam else { return }
+            proto.groupID = valueParam
+        }
+
+        public func setGroupID(_ valueParam: Data) {
+            proto.groupID = valueParam
+        }
+
+        public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
+            proto.unknownFields = unknownFields
+        }
+
+        @objc
+        public func build() throws -> SSKProtoTypingMessage {
+            return try SSKProtoTypingMessage(proto)
+        }
+
+        @objc
+        public func buildSerializedData() throws -> Data {
+            return try SSKProtoTypingMessage(proto).serializedData()
+        }
+    }
+
+    fileprivate let proto: SignalServiceProtos_TypingMessage
+
+    @objc
+    public var timestamp: UInt64 {
+        return proto.timestamp
+    }
+    @objc
+    public var hasTimestamp: Bool {
+        return proto.hasTimestamp
+    }
+
+    public var action: SSKProtoTypingMessageAction? {
+        guard hasAction else {
+            return nil
+        }
+        return SSKProtoTypingMessageActionWrap(proto.action)
+    }
+    // This "unwrapped" accessor should only be used if the "has value" accessor has already been checked.
+    @objc
+    public var unwrappedAction: SSKProtoTypingMessageAction {
+        if !hasAction {
+            // TODO: We could make this a crashing assert.
+            owsFailDebug("Unsafe unwrap of missing optional: TypingMessage.action.")
+        }
+        return SSKProtoTypingMessageActionWrap(proto.action)
+    }
+    @objc
+    public var hasAction: Bool {
+        return proto.hasAction
+    }
+
+    @objc
+    public var groupID: Data? {
+        guard hasGroupID else {
+            return nil
+        }
+        return proto.groupID
+    }
+    @objc
+    public var hasGroupID: Bool {
+        return proto.hasGroupID
+    }
+
+    public var hasUnknownFields: Bool {
+        return !proto.unknownFields.data.isEmpty
+    }
+    public var unknownFields: SwiftProtobuf.UnknownStorage? {
+        guard hasUnknownFields else { return nil }
+        return proto.unknownFields
+    }
+
+    private init(proto: SignalServiceProtos_TypingMessage) {
+        self.proto = proto
+    }
+
+    @objc
+    public func serializedData() throws -> Data {
+        return try self.proto.serializedData()
+    }
+
+    @objc
+    public convenience init(serializedData: Data) throws {
+        let proto = try SignalServiceProtos_TypingMessage(serializedData: serializedData)
+        try self.init(proto)
+    }
+
+    fileprivate convenience init(_ proto: SignalServiceProtos_TypingMessage) throws {
+        // MARK: - Begin Validation Logic for SSKProtoTypingMessage -
+
+        // MARK: - End Validation Logic for SSKProtoTypingMessage -
+
+        self.init(proto: proto)
+    }
+
+    public required convenience init(from decoder: Swift.Decoder) throws {
+        let singleValueContainer = try decoder.singleValueContainer()
+        let serializedData = try singleValueContainer.decode(Data.self)
+        try self.init(serializedData: serializedData)
+    }
+    public func encode(to encoder: Swift.Encoder) throws {
+        var singleValueContainer = encoder.singleValueContainer()
+        try singleValueContainer.encode(try serializedData())
+    }
+
+    @objc
+    public override var debugDescription: String {
+        return "\(proto)"
+    }
+}
+
+#if DEBUG
+
+extension SSKProtoTypingMessage {
+    @objc
+    public func serializedDataIgnoringErrors() -> Data? {
+        return try! self.serializedData()
+    }
+}
+
+extension SSKProtoTypingMessage.SSKProtoTypingMessageBuilder {
+    @objc
+    public func buildIgnoringErrors() -> SSKProtoTypingMessage? {
         return try! self.build()
     }
 }
@@ -7362,16 +7225,19 @@ public class SSKProtoSyncMessageContacts: NSObject, Codable {
     // MARK: - SSKProtoSyncMessageContactsBuilder
 
     @objc
-    public static func builder(blob: SSKProtoAttachmentPointer) -> SSKProtoSyncMessageContactsBuilder {
-        return SSKProtoSyncMessageContactsBuilder(blob: blob)
+    public static func builder() -> SSKProtoSyncMessageContactsBuilder {
+        return SSKProtoSyncMessageContactsBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoSyncMessageContactsBuilder {
-        let builder = SSKProtoSyncMessageContactsBuilder(blob: blob)
-        if hasIsComplete {
-            builder.setIsComplete(isComplete)
+        let builder = SSKProtoSyncMessageContactsBuilder()
+        if let _value = blob {
+            builder.setBlob(_value)
+        }
+        if hasComplete {
+            builder.setComplete(complete)
         }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
@@ -7388,13 +7254,6 @@ public class SSKProtoSyncMessageContacts: NSObject, Codable {
         fileprivate override init() {}
 
         @objc
-        fileprivate init(blob: SSKProtoAttachmentPointer) {
-            super.init()
-
-            setBlob(blob)
-        }
-
-        @objc
         @available(swift, obsoleted: 1.0)
         public func setBlob(_ valueParam: SSKProtoAttachmentPointer?) {
             guard let valueParam = valueParam else { return }
@@ -7406,8 +7265,8 @@ public class SSKProtoSyncMessageContacts: NSObject, Codable {
         }
 
         @objc
-        public func setIsComplete(_ valueParam: Bool) {
-            proto.isComplete = valueParam
+        public func setComplete(_ valueParam: Bool) {
+            proto.complete = valueParam
         }
 
         public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
@@ -7428,15 +7287,15 @@ public class SSKProtoSyncMessageContacts: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_SyncMessage.Contacts
 
     @objc
-    public let blob: SSKProtoAttachmentPointer
+    public let blob: SSKProtoAttachmentPointer?
 
     @objc
-    public var isComplete: Bool {
-        return proto.isComplete
+    public var complete: Bool {
+        return proto.complete
     }
     @objc
-    public var hasIsComplete: Bool {
-        return proto.hasIsComplete
+    public var hasComplete: Bool {
+        return proto.hasComplete
     }
 
     public var hasUnknownFields: Bool {
@@ -7448,7 +7307,7 @@ public class SSKProtoSyncMessageContacts: NSObject, Codable {
     }
 
     private init(proto: SignalServiceProtos_SyncMessage.Contacts,
-                 blob: SSKProtoAttachmentPointer) {
+                 blob: SSKProtoAttachmentPointer?) {
         self.proto = proto
         self.blob = blob
     }
@@ -7465,10 +7324,10 @@ public class SSKProtoSyncMessageContacts: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_SyncMessage.Contacts) throws {
-        guard proto.hasBlob else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: blob")
+        var blob: SSKProtoAttachmentPointer?
+        if proto.hasBlob {
+            blob = try SSKProtoAttachmentPointer(proto.blob)
         }
-        let blob = try SSKProtoAttachmentPointer(proto.blob)
 
         // MARK: - Begin Validation Logic for SSKProtoSyncMessageContacts -
 
@@ -7666,8 +7525,8 @@ public class SSKProtoSyncMessageBlocked: NSObject, Codable {
     public func asBuilder() -> SSKProtoSyncMessageBlockedBuilder {
         let builder = SSKProtoSyncMessageBlockedBuilder()
         builder.setNumbers(numbers)
-        builder.setGroupIds(groupIds)
         builder.setUuids(uuids)
+        builder.setGroupIds(groupIds)
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
         }
@@ -7693,16 +7552,6 @@ public class SSKProtoSyncMessageBlocked: NSObject, Codable {
         }
 
         @objc
-        public func addGroupIds(_ valueParam: Data) {
-            proto.groupIds.append(valueParam)
-        }
-
-        @objc
-        public func setGroupIds(_ wrappedItems: [Data]) {
-            proto.groupIds = wrappedItems
-        }
-
-        @objc
         public func addUuids(_ valueParam: String) {
             proto.uuids.append(valueParam)
         }
@@ -7710,6 +7559,16 @@ public class SSKProtoSyncMessageBlocked: NSObject, Codable {
         @objc
         public func setUuids(_ wrappedItems: [String]) {
             proto.uuids = wrappedItems
+        }
+
+        @objc
+        public func addGroupIds(_ valueParam: Data) {
+            proto.groupIds.append(valueParam)
+        }
+
+        @objc
+        public func setGroupIds(_ wrappedItems: [Data]) {
+            proto.groupIds = wrappedItems
         }
 
         public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
@@ -7735,13 +7594,13 @@ public class SSKProtoSyncMessageBlocked: NSObject, Codable {
     }
 
     @objc
-    public var groupIds: [Data] {
-        return proto.groupIds
+    public var uuids: [String] {
+        return proto.uuids
     }
 
     @objc
-    public var uuids: [String] {
-        return proto.uuids
+    public var groupIds: [Data] {
+        return proto.groupIds
     }
 
     public var hasUnknownFields: Bool {
@@ -7991,19 +7850,22 @@ public class SSKProtoSyncMessageRead: NSObject, Codable {
     // MARK: - SSKProtoSyncMessageReadBuilder
 
     @objc
-    public static func builder(timestamp: UInt64) -> SSKProtoSyncMessageReadBuilder {
-        return SSKProtoSyncMessageReadBuilder(timestamp: timestamp)
+    public static func builder() -> SSKProtoSyncMessageReadBuilder {
+        return SSKProtoSyncMessageReadBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoSyncMessageReadBuilder {
-        let builder = SSKProtoSyncMessageReadBuilder(timestamp: timestamp)
+        let builder = SSKProtoSyncMessageReadBuilder()
         if let _value = senderE164 {
             builder.setSenderE164(_value)
         }
         if let _value = senderUuid {
             builder.setSenderUuid(_value)
+        }
+        if hasTimestamp {
+            builder.setTimestamp(timestamp)
         }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
@@ -8018,13 +7880,6 @@ public class SSKProtoSyncMessageRead: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(timestamp: UInt64) {
-            super.init()
-
-            setTimestamp(timestamp)
-        }
 
         @objc
         @available(swift, obsoleted: 1.0)
@@ -8071,9 +7926,6 @@ public class SSKProtoSyncMessageRead: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_SyncMessage.Read
 
     @objc
-    public let timestamp: UInt64
-
-    @objc
     public var senderE164: String? {
         guard hasSenderE164 else {
             return nil
@@ -8098,6 +7950,15 @@ public class SSKProtoSyncMessageRead: NSObject, Codable {
     }
 
     @objc
+    public var timestamp: UInt64 {
+        return proto.timestamp
+    }
+    @objc
+    public var hasTimestamp: Bool {
+        return proto.hasTimestamp
+    }
+
+    @objc
     public var hasValidSender: Bool {
         return senderAddress != nil
     }
@@ -8112,10 +7973,8 @@ public class SSKProtoSyncMessageRead: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_SyncMessage.Read,
-                 timestamp: UInt64) {
+    private init(proto: SignalServiceProtos_SyncMessage.Read) {
         self.proto = proto
-        self.timestamp = timestamp
 
         let hasSenderUuid = proto.hasSenderUuid && !proto.senderUuid.isEmpty
         let hasSenderE164 = proto.hasSenderE164 && !proto.senderE164.isEmpty
@@ -8175,17 +8034,11 @@ public class SSKProtoSyncMessageRead: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_SyncMessage.Read) throws {
-        guard proto.hasTimestamp else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: timestamp")
-        }
-        let timestamp = proto.timestamp
-
         // MARK: - Begin Validation Logic for SSKProtoSyncMessageRead -
 
         // MARK: - End Validation Logic for SSKProtoSyncMessageRead -
 
-        self.init(proto: proto,
-                  timestamp: timestamp)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -8216,6 +8069,239 @@ extension SSKProtoSyncMessageRead {
 extension SSKProtoSyncMessageRead.SSKProtoSyncMessageReadBuilder {
     @objc
     public func buildIgnoringErrors() -> SSKProtoSyncMessageRead? {
+        return try! self.build()
+    }
+}
+
+#endif
+
+// MARK: - SSKProtoSyncMessageViewed
+
+@objc
+public class SSKProtoSyncMessageViewed: NSObject, Codable {
+
+    // MARK: - SSKProtoSyncMessageViewedBuilder
+
+    @objc
+    public static func builder() -> SSKProtoSyncMessageViewedBuilder {
+        return SSKProtoSyncMessageViewedBuilder()
+    }
+
+    // asBuilder() constructs a builder that reflects the proto's contents.
+    @objc
+    public func asBuilder() -> SSKProtoSyncMessageViewedBuilder {
+        let builder = SSKProtoSyncMessageViewedBuilder()
+        if let _value = senderE164 {
+            builder.setSenderE164(_value)
+        }
+        if let _value = senderUuid {
+            builder.setSenderUuid(_value)
+        }
+        if hasTimestamp {
+            builder.setTimestamp(timestamp)
+        }
+        if let _value = unknownFields {
+            builder.setUnknownFields(_value)
+        }
+        return builder
+    }
+
+    @objc
+    public class SSKProtoSyncMessageViewedBuilder: NSObject {
+
+        private var proto = SignalServiceProtos_SyncMessage.Viewed()
+
+        @objc
+        fileprivate override init() {}
+
+        @objc
+        @available(swift, obsoleted: 1.0)
+        public func setSenderE164(_ valueParam: String?) {
+            guard let valueParam = valueParam else { return }
+            proto.senderE164 = valueParam
+        }
+
+        public func setSenderE164(_ valueParam: String) {
+            proto.senderE164 = valueParam
+        }
+
+        @objc
+        @available(swift, obsoleted: 1.0)
+        public func setSenderUuid(_ valueParam: String?) {
+            guard let valueParam = valueParam else { return }
+            proto.senderUuid = valueParam
+        }
+
+        public func setSenderUuid(_ valueParam: String) {
+            proto.senderUuid = valueParam
+        }
+
+        @objc
+        public func setTimestamp(_ valueParam: UInt64) {
+            proto.timestamp = valueParam
+        }
+
+        public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
+            proto.unknownFields = unknownFields
+        }
+
+        @objc
+        public func build() throws -> SSKProtoSyncMessageViewed {
+            return try SSKProtoSyncMessageViewed(proto)
+        }
+
+        @objc
+        public func buildSerializedData() throws -> Data {
+            return try SSKProtoSyncMessageViewed(proto).serializedData()
+        }
+    }
+
+    fileprivate let proto: SignalServiceProtos_SyncMessage.Viewed
+
+    @objc
+    public var senderE164: String? {
+        guard hasSenderE164 else {
+            return nil
+        }
+        return proto.senderE164
+    }
+    @objc
+    public var hasSenderE164: Bool {
+        return proto.hasSenderE164 && !proto.senderE164.isEmpty
+    }
+
+    @objc
+    public var senderUuid: String? {
+        guard hasSenderUuid else {
+            return nil
+        }
+        return proto.senderUuid
+    }
+    @objc
+    public var hasSenderUuid: Bool {
+        return proto.hasSenderUuid && !proto.senderUuid.isEmpty
+    }
+
+    @objc
+    public var timestamp: UInt64 {
+        return proto.timestamp
+    }
+    @objc
+    public var hasTimestamp: Bool {
+        return proto.hasTimestamp
+    }
+
+    @objc
+    public var hasValidSender: Bool {
+        return senderAddress != nil
+    }
+    @objc
+    public let senderAddress: SignalServiceAddress?
+
+    public var hasUnknownFields: Bool {
+        return !proto.unknownFields.data.isEmpty
+    }
+    public var unknownFields: SwiftProtobuf.UnknownStorage? {
+        guard hasUnknownFields else { return nil }
+        return proto.unknownFields
+    }
+
+    private init(proto: SignalServiceProtos_SyncMessage.Viewed) {
+        self.proto = proto
+
+        let hasSenderUuid = proto.hasSenderUuid && !proto.senderUuid.isEmpty
+        let hasSenderE164 = proto.hasSenderE164 && !proto.senderE164.isEmpty
+        let senderUuid: String? = proto.senderUuid
+        let senderE164: String? = proto.senderE164
+        self.senderAddress = {
+            guard hasSenderE164 || hasSenderUuid else { return nil }
+
+            let uuidString: String? = {
+                guard hasSenderUuid else { return nil }
+
+                guard let senderUuid = senderUuid else {
+                    owsFailDebug("senderUuid was unexpectedly nil")
+                    return nil
+                }
+
+                return senderUuid
+            }()
+
+            let phoneNumber: String? = {
+                guard hasSenderE164 else {
+                    return nil
+                }
+
+                guard let senderE164 = senderE164 else {
+                    owsFailDebug("senderE164 was unexpectedly nil")
+                    return nil
+                }
+
+                guard !senderE164.isEmpty else {
+                    owsFailDebug("senderE164 was unexpectedly empty")
+                    return nil
+                }
+
+                return senderE164
+            }()
+
+            let address = SignalServiceAddress(uuidString: uuidString, phoneNumber: phoneNumber, trustLevel: .low)
+            guard address.isValid else {
+                owsFailDebug("address was unexpectedly invalid")
+                return nil
+            }
+
+            return address
+        }()
+    }
+
+    @objc
+    public func serializedData() throws -> Data {
+        return try self.proto.serializedData()
+    }
+
+    @objc
+    public convenience init(serializedData: Data) throws {
+        let proto = try SignalServiceProtos_SyncMessage.Viewed(serializedData: serializedData)
+        try self.init(proto)
+    }
+
+    fileprivate convenience init(_ proto: SignalServiceProtos_SyncMessage.Viewed) throws {
+        // MARK: - Begin Validation Logic for SSKProtoSyncMessageViewed -
+
+        // MARK: - End Validation Logic for SSKProtoSyncMessageViewed -
+
+        self.init(proto: proto)
+    }
+
+    public required convenience init(from decoder: Swift.Decoder) throws {
+        let singleValueContainer = try decoder.singleValueContainer()
+        let serializedData = try singleValueContainer.decode(Data.self)
+        try self.init(serializedData: serializedData)
+    }
+    public func encode(to encoder: Swift.Encoder) throws {
+        var singleValueContainer = encoder.singleValueContainer()
+        try singleValueContainer.encode(try serializedData())
+    }
+
+    @objc
+    public override var debugDescription: String {
+        return "\(proto)"
+    }
+}
+
+#if DEBUG
+
+extension SSKProtoSyncMessageViewed {
+    @objc
+    public func serializedDataIgnoringErrors() -> Data? {
+        return try! self.serializedData()
+    }
+}
+
+extension SSKProtoSyncMessageViewed.SSKProtoSyncMessageViewedBuilder {
+    @objc
+    public func buildIgnoringErrors() -> SSKProtoSyncMessageViewed? {
         return try! self.build()
     }
 }
@@ -8449,14 +8535,20 @@ public class SSKProtoSyncMessageStickerPackOperation: NSObject, Codable {
     // MARK: - SSKProtoSyncMessageStickerPackOperationBuilder
 
     @objc
-    public static func builder(packID: Data, packKey: Data) -> SSKProtoSyncMessageStickerPackOperationBuilder {
-        return SSKProtoSyncMessageStickerPackOperationBuilder(packID: packID, packKey: packKey)
+    public static func builder() -> SSKProtoSyncMessageStickerPackOperationBuilder {
+        return SSKProtoSyncMessageStickerPackOperationBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoSyncMessageStickerPackOperationBuilder {
-        let builder = SSKProtoSyncMessageStickerPackOperationBuilder(packID: packID, packKey: packKey)
+        let builder = SSKProtoSyncMessageStickerPackOperationBuilder()
+        if let _value = packID {
+            builder.setPackID(_value)
+        }
+        if let _value = packKey {
+            builder.setPackKey(_value)
+        }
         if let _value = type {
             builder.setType(_value)
         }
@@ -8473,14 +8565,6 @@ public class SSKProtoSyncMessageStickerPackOperation: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(packID: Data, packKey: Data) {
-            super.init()
-
-            setPackID(packID)
-            setPackKey(packKey)
-        }
 
         @objc
         @available(swift, obsoleted: 1.0)
@@ -8527,10 +8611,28 @@ public class SSKProtoSyncMessageStickerPackOperation: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_SyncMessage.StickerPackOperation
 
     @objc
-    public let packID: Data
+    public var packID: Data? {
+        guard hasPackID else {
+            return nil
+        }
+        return proto.packID
+    }
+    @objc
+    public var hasPackID: Bool {
+        return proto.hasPackID
+    }
 
     @objc
-    public let packKey: Data
+    public var packKey: Data? {
+        guard hasPackKey else {
+            return nil
+        }
+        return proto.packKey
+    }
+    @objc
+    public var hasPackKey: Bool {
+        return proto.hasPackKey
+    }
 
     public var type: SSKProtoSyncMessageStickerPackOperationType? {
         guard hasType else {
@@ -8560,12 +8662,8 @@ public class SSKProtoSyncMessageStickerPackOperation: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_SyncMessage.StickerPackOperation,
-                 packID: Data,
-                 packKey: Data) {
+    private init(proto: SignalServiceProtos_SyncMessage.StickerPackOperation) {
         self.proto = proto
-        self.packID = packID
-        self.packKey = packKey
     }
 
     @objc
@@ -8580,23 +8678,11 @@ public class SSKProtoSyncMessageStickerPackOperation: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_SyncMessage.StickerPackOperation) throws {
-        guard proto.hasPackID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: packID")
-        }
-        let packID = proto.packID
-
-        guard proto.hasPackKey else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: packKey")
-        }
-        let packKey = proto.packKey
-
         // MARK: - Begin Validation Logic for SSKProtoSyncMessageStickerPackOperation -
 
         // MARK: - End Validation Logic for SSKProtoSyncMessageStickerPackOperation -
 
-        self.init(proto: proto,
-                  packID: packID,
-                  packKey: packKey)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -8641,19 +8727,22 @@ public class SSKProtoSyncMessageViewOnceOpen: NSObject, Codable {
     // MARK: - SSKProtoSyncMessageViewOnceOpenBuilder
 
     @objc
-    public static func builder(timestamp: UInt64) -> SSKProtoSyncMessageViewOnceOpenBuilder {
-        return SSKProtoSyncMessageViewOnceOpenBuilder(timestamp: timestamp)
+    public static func builder() -> SSKProtoSyncMessageViewOnceOpenBuilder {
+        return SSKProtoSyncMessageViewOnceOpenBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoSyncMessageViewOnceOpenBuilder {
-        let builder = SSKProtoSyncMessageViewOnceOpenBuilder(timestamp: timestamp)
+        let builder = SSKProtoSyncMessageViewOnceOpenBuilder()
         if let _value = senderE164 {
             builder.setSenderE164(_value)
         }
         if let _value = senderUuid {
             builder.setSenderUuid(_value)
+        }
+        if hasTimestamp {
+            builder.setTimestamp(timestamp)
         }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
@@ -8668,13 +8757,6 @@ public class SSKProtoSyncMessageViewOnceOpen: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(timestamp: UInt64) {
-            super.init()
-
-            setTimestamp(timestamp)
-        }
 
         @objc
         @available(swift, obsoleted: 1.0)
@@ -8721,9 +8803,6 @@ public class SSKProtoSyncMessageViewOnceOpen: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_SyncMessage.ViewOnceOpen
 
     @objc
-    public let timestamp: UInt64
-
-    @objc
     public var senderE164: String? {
         guard hasSenderE164 else {
             return nil
@@ -8748,6 +8827,15 @@ public class SSKProtoSyncMessageViewOnceOpen: NSObject, Codable {
     }
 
     @objc
+    public var timestamp: UInt64 {
+        return proto.timestamp
+    }
+    @objc
+    public var hasTimestamp: Bool {
+        return proto.hasTimestamp
+    }
+
+    @objc
     public var hasValidSender: Bool {
         return senderAddress != nil
     }
@@ -8762,10 +8850,8 @@ public class SSKProtoSyncMessageViewOnceOpen: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_SyncMessage.ViewOnceOpen,
-                 timestamp: UInt64) {
+    private init(proto: SignalServiceProtos_SyncMessage.ViewOnceOpen) {
         self.proto = proto
-        self.timestamp = timestamp
 
         let hasSenderUuid = proto.hasSenderUuid && !proto.senderUuid.isEmpty
         let hasSenderE164 = proto.hasSenderE164 && !proto.senderE164.isEmpty
@@ -8825,17 +8911,11 @@ public class SSKProtoSyncMessageViewOnceOpen: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_SyncMessage.ViewOnceOpen) throws {
-        guard proto.hasTimestamp else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: timestamp")
-        }
-        let timestamp = proto.timestamp
-
         // MARK: - Begin Validation Logic for SSKProtoSyncMessageViewOnceOpen -
 
         // MARK: - End Validation Logic for SSKProtoSyncMessageViewOnceOpen -
 
-        self.init(proto: proto,
-                  timestamp: timestamp)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -9530,6 +9610,7 @@ public class SSKProtoSyncMessage: NSObject, Codable {
         if let _value = messageRequestResponse {
             builder.setMessageRequestResponse(_value)
         }
+        builder.setViewed(viewed)
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
         }
@@ -9696,6 +9777,16 @@ public class SSKProtoSyncMessage: NSObject, Codable {
             proto.messageRequestResponse = valueParam.proto
         }
 
+        @objc
+        public func addViewed(_ valueParam: SSKProtoSyncMessageViewed) {
+            proto.viewed.append(valueParam.proto)
+        }
+
+        @objc
+        public func setViewed(_ wrappedItems: [SSKProtoSyncMessageViewed]) {
+            proto.viewed = wrappedItems.map { $0.proto }
+        }
+
         public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
             proto.unknownFields = unknownFields
         }
@@ -9753,6 +9844,9 @@ public class SSKProtoSyncMessage: NSObject, Codable {
     public let messageRequestResponse: SSKProtoSyncMessageMessageRequestResponse?
 
     @objc
+    public let viewed: [SSKProtoSyncMessageViewed]
+
+    @objc
     public var padding: Data? {
         guard hasPadding else {
             return nil
@@ -9785,7 +9879,8 @@ public class SSKProtoSyncMessage: NSObject, Codable {
                  viewOnceOpen: SSKProtoSyncMessageViewOnceOpen?,
                  fetchLatest: SSKProtoSyncMessageFetchLatest?,
                  keys: SSKProtoSyncMessageKeys?,
-                 messageRequestResponse: SSKProtoSyncMessageMessageRequestResponse?) {
+                 messageRequestResponse: SSKProtoSyncMessageMessageRequestResponse?,
+                 viewed: [SSKProtoSyncMessageViewed]) {
         self.proto = proto
         self.sent = sent
         self.contacts = contacts
@@ -9800,6 +9895,7 @@ public class SSKProtoSyncMessage: NSObject, Codable {
         self.fetchLatest = fetchLatest
         self.keys = keys
         self.messageRequestResponse = messageRequestResponse
+        self.viewed = viewed
     }
 
     @objc
@@ -9875,6 +9971,9 @@ public class SSKProtoSyncMessage: NSObject, Codable {
             messageRequestResponse = try SSKProtoSyncMessageMessageRequestResponse(proto.messageRequestResponse)
         }
 
+        var viewed: [SSKProtoSyncMessageViewed] = []
+        viewed = try proto.viewed.map { try SSKProtoSyncMessageViewed($0) }
+
         // MARK: - Begin Validation Logic for SSKProtoSyncMessage -
 
         // MARK: - End Validation Logic for SSKProtoSyncMessage -
@@ -9892,7 +9991,8 @@ public class SSKProtoSyncMessage: NSObject, Codable {
                   viewOnceOpen: viewOnceOpen,
                   fetchLatest: fetchLatest,
                   keys: keys,
-                  messageRequestResponse: messageRequestResponse)
+                  messageRequestResponse: messageRequestResponse,
+                  viewed: viewed)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -9935,12 +10035,14 @@ extension SSKProtoSyncMessage.SSKProtoSyncMessageBuilder {
 public enum SSKProtoAttachmentPointerFlags: Int32 {
     case voiceMessage = 1
     case borderless = 2
+    case gif = 4
 }
 
 private func SSKProtoAttachmentPointerFlagsWrap(_ value: SignalServiceProtos_AttachmentPointer.Flags) -> SSKProtoAttachmentPointerFlags {
     switch value {
     case .voiceMessage: return .voiceMessage
     case .borderless: return .borderless
+    case .gif: return .gif
     }
 }
 
@@ -9948,6 +10050,7 @@ private func SSKProtoAttachmentPointerFlagsUnwrap(_ value: SSKProtoAttachmentPoi
     switch value {
     case .voiceMessage: return .voiceMessage
     case .borderless: return .borderless
+    case .gif: return .gif
     }
 }
 
@@ -9972,12 +10075,6 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
         }
         if let _value = cdnKey {
             builder.setCdnKey(_value)
-        }
-        if let _value = credentionals {
-            builder.setCredentionals(_value)
-        }
-        if let _value = bucket {
-            builder.setBucket(_value)
         }
         if let _value = contentType {
             builder.setContentType(_value)
@@ -10046,16 +10143,6 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
 
         public func setCdnKey(_ valueParam: String) {
             proto.cdnKey = valueParam
-        }
-        
-        @objc
-        public func setCredentionals(_ valueParam: String) {
-            proto.credentionals = valueParam
-        }
-        
-        @objc
-        public func setBucket(_ valueParam: String) {
-            proto.bucket = valueParam
         }
 
         @objc
@@ -10201,15 +10288,6 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
     @objc
     public var hasCdnKey: Bool {
         return proto.hasCdnKey
-    }
-    
-    @objc
-    public var credentionals: String? {
-        return proto.credentionals
-    }
-    @objc
-    public var bucket: String? {
-        return proto.bucket
     }
 
     @objc
@@ -10592,14 +10670,17 @@ public class SSKProtoGroupContext: NSObject, Codable {
     // MARK: - SSKProtoGroupContextBuilder
 
     @objc
-    public static func builder(id: Data) -> SSKProtoGroupContextBuilder {
-        return SSKProtoGroupContextBuilder(id: id)
+    public static func builder() -> SSKProtoGroupContextBuilder {
+        return SSKProtoGroupContextBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoGroupContextBuilder {
-        let builder = SSKProtoGroupContextBuilder(id: id)
+        let builder = SSKProtoGroupContextBuilder()
+        if let _value = id {
+            builder.setId(_value)
+        }
         if let _value = type {
             builder.setType(_value)
         }
@@ -10607,10 +10688,10 @@ public class SSKProtoGroupContext: NSObject, Codable {
             builder.setName(_value)
         }
         builder.setMembersE164(membersE164)
+        builder.setMembers(members)
         if let _value = avatar {
             builder.setAvatar(_value)
         }
-        builder.setMembers(members)
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
         }
@@ -10624,13 +10705,6 @@ public class SSKProtoGroupContext: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(id: Data) {
-            super.init()
-
-            setId(id)
-        }
 
         @objc
         @available(swift, obsoleted: 1.0)
@@ -10670,6 +10744,16 @@ public class SSKProtoGroupContext: NSObject, Codable {
         }
 
         @objc
+        public func addMembers(_ valueParam: SSKProtoGroupContextMember) {
+            proto.members.append(valueParam.proto)
+        }
+
+        @objc
+        public func setMembers(_ wrappedItems: [SSKProtoGroupContextMember]) {
+            proto.members = wrappedItems.map { $0.proto }
+        }
+
+        @objc
         @available(swift, obsoleted: 1.0)
         public func setAvatar(_ valueParam: SSKProtoAttachmentPointer?) {
             guard let valueParam = valueParam else { return }
@@ -10678,16 +10762,6 @@ public class SSKProtoGroupContext: NSObject, Codable {
 
         public func setAvatar(_ valueParam: SSKProtoAttachmentPointer) {
             proto.avatar = valueParam.proto
-        }
-
-        @objc
-        public func addMembers(_ valueParam: SSKProtoGroupContextMember) {
-            proto.members.append(valueParam.proto)
-        }
-
-        @objc
-        public func setMembers(_ wrappedItems: [SSKProtoGroupContextMember]) {
-            proto.members = wrappedItems.map { $0.proto }
         }
 
         public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
@@ -10708,13 +10782,22 @@ public class SSKProtoGroupContext: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_GroupContext
 
     @objc
-    public let id: Data
+    public let members: [SSKProtoGroupContextMember]
 
     @objc
     public let avatar: SSKProtoAttachmentPointer?
 
     @objc
-    public let members: [SSKProtoGroupContextMember]
+    public var id: Data? {
+        guard hasID else {
+            return nil
+        }
+        return proto.id
+    }
+    @objc
+    public var hasID: Bool {
+        return proto.hasID
+    }
 
     public var type: SSKProtoGroupContextType? {
         guard hasType else {
@@ -10762,13 +10845,11 @@ public class SSKProtoGroupContext: NSObject, Codable {
     }
 
     private init(proto: SignalServiceProtos_GroupContext,
-                 id: Data,
-                 avatar: SSKProtoAttachmentPointer?,
-                 members: [SSKProtoGroupContextMember]) {
+                 members: [SSKProtoGroupContextMember],
+                 avatar: SSKProtoAttachmentPointer?) {
         self.proto = proto
-        self.id = id
-        self.avatar = avatar
         self.members = members
+        self.avatar = avatar
     }
 
     @objc
@@ -10783,27 +10864,21 @@ public class SSKProtoGroupContext: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_GroupContext) throws {
-        guard proto.hasID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: id")
-        }
-        let id = proto.id
+        var members: [SSKProtoGroupContextMember] = []
+        members = try proto.members.map { try SSKProtoGroupContextMember($0) }
 
         var avatar: SSKProtoAttachmentPointer?
         if proto.hasAvatar {
             avatar = try SSKProtoAttachmentPointer(proto.avatar)
         }
 
-        var members: [SSKProtoGroupContextMember] = []
-        members = try proto.members.map { try SSKProtoGroupContextMember($0) }
-
         // MARK: - Begin Validation Logic for SSKProtoGroupContext -
 
         // MARK: - End Validation Logic for SSKProtoGroupContext -
 
         self.init(proto: proto,
-                  id: id,
-                  avatar: avatar,
-                  members: members)
+                  members: members,
+                  avatar: avatar)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -11192,11 +11267,11 @@ public class SSKProtoContactDetails: NSObject, Codable {
     @objc
     public func asBuilder() -> SSKProtoContactDetailsBuilder {
         let builder = SSKProtoContactDetailsBuilder()
-        if let _value = contactE164 {
-            builder.setContactE164(_value)
+        if let _value = number {
+            builder.setNumber(_value)
         }
-        if let _value = contactUuid {
-            builder.setContactUuid(_value)
+        if let _value = uuid {
+            builder.setUuid(_value)
         }
         if let _value = name {
             builder.setName(_value)
@@ -11241,24 +11316,24 @@ public class SSKProtoContactDetails: NSObject, Codable {
 
         @objc
         @available(swift, obsoleted: 1.0)
-        public func setContactE164(_ valueParam: String?) {
+        public func setNumber(_ valueParam: String?) {
             guard let valueParam = valueParam else { return }
-            proto.contactE164 = valueParam
+            proto.number = valueParam
         }
 
-        public func setContactE164(_ valueParam: String) {
-            proto.contactE164 = valueParam
+        public func setNumber(_ valueParam: String) {
+            proto.number = valueParam
         }
 
         @objc
         @available(swift, obsoleted: 1.0)
-        public func setContactUuid(_ valueParam: String?) {
+        public func setUuid(_ valueParam: String?) {
             guard let valueParam = valueParam else { return }
-            proto.contactUuid = valueParam
+            proto.uuid = valueParam
         }
 
-        public func setContactUuid(_ valueParam: String) {
-            proto.contactUuid = valueParam
+        public func setUuid(_ valueParam: String) {
+            proto.uuid = valueParam
         }
 
         @objc
@@ -11360,27 +11435,27 @@ public class SSKProtoContactDetails: NSObject, Codable {
     public let verified: SSKProtoVerified?
 
     @objc
-    public var contactE164: String? {
-        guard hasContactE164 else {
+    public var number: String? {
+        guard hasNumber else {
             return nil
         }
-        return proto.contactE164
+        return proto.number
     }
     @objc
-    public var hasContactE164: Bool {
-        return proto.hasContactE164 && !proto.contactE164.isEmpty
+    public var hasNumber: Bool {
+        return proto.hasNumber
     }
 
     @objc
-    public var contactUuid: String? {
-        guard hasContactUuid else {
+    public var uuid: String? {
+        guard hasUuid else {
             return nil
         }
-        return proto.contactUuid
+        return proto.uuid
     }
     @objc
-    public var hasContactUuid: Bool {
-        return proto.hasContactUuid && !proto.contactUuid.isEmpty
+    public var hasUuid: Bool {
+        return proto.hasUuid
     }
 
     @objc
@@ -11455,13 +11530,6 @@ public class SSKProtoContactDetails: NSObject, Codable {
         return proto.hasArchived
     }
 
-    @objc
-    public var hasValidContact: Bool {
-        return contactAddress != nil
-    }
-    @objc
-    public let contactAddress: SignalServiceAddress?
-
     public var hasUnknownFields: Bool {
         return !proto.unknownFields.data.isEmpty
     }
@@ -11476,51 +11544,6 @@ public class SSKProtoContactDetails: NSObject, Codable {
         self.proto = proto
         self.avatar = avatar
         self.verified = verified
-
-        let hasContactUuid = proto.hasContactUuid && !proto.contactUuid.isEmpty
-        let hasContactE164 = proto.hasContactE164 && !proto.contactE164.isEmpty
-        let contactUuid: String? = proto.contactUuid
-        let contactE164: String? = proto.contactE164
-        self.contactAddress = {
-            guard hasContactE164 || hasContactUuid else { return nil }
-
-            let uuidString: String? = {
-                guard hasContactUuid else { return nil }
-
-                guard let contactUuid = contactUuid else {
-                    owsFailDebug("contactUuid was unexpectedly nil")
-                    return nil
-                }
-
-                return contactUuid
-            }()
-
-            let phoneNumber: String? = {
-                guard hasContactE164 else {
-                    return nil
-                }
-
-                guard let contactE164 = contactE164 else {
-                    owsFailDebug("contactE164 was unexpectedly nil")
-                    return nil
-                }
-
-                guard !contactE164.isEmpty else {
-                    owsFailDebug("contactE164 was unexpectedly empty")
-                    return nil
-                }
-
-                return contactE164
-            }()
-
-            let address = SignalServiceAddress(uuidString: uuidString, phoneNumber: phoneNumber, trustLevel: .high)
-            guard address.isValid else {
-                owsFailDebug("address was unexpectedly invalid")
-                return nil
-            }
-
-            return address
-        }()
     }
 
     @objc
@@ -11889,18 +11912,22 @@ public class SSKProtoGroupDetails: NSObject, Codable {
     // MARK: - SSKProtoGroupDetailsBuilder
 
     @objc
-    public static func builder(id: Data) -> SSKProtoGroupDetailsBuilder {
-        return SSKProtoGroupDetailsBuilder(id: id)
+    public static func builder() -> SSKProtoGroupDetailsBuilder {
+        return SSKProtoGroupDetailsBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
     public func asBuilder() -> SSKProtoGroupDetailsBuilder {
-        let builder = SSKProtoGroupDetailsBuilder(id: id)
+        let builder = SSKProtoGroupDetailsBuilder()
+        if let _value = id {
+            builder.setId(_value)
+        }
         if let _value = name {
             builder.setName(_value)
         }
         builder.setMembersE164(membersE164)
+        builder.setMembers(members)
         if let _value = avatar {
             builder.setAvatar(_value)
         }
@@ -11916,7 +11943,6 @@ public class SSKProtoGroupDetails: NSObject, Codable {
         if hasBlocked {
             builder.setBlocked(blocked)
         }
-        builder.setMembers(members)
         if hasInboxPosition {
             builder.setInboxPosition(inboxPosition)
         }
@@ -11936,13 +11962,6 @@ public class SSKProtoGroupDetails: NSObject, Codable {
 
         @objc
         fileprivate override init() {}
-
-        @objc
-        fileprivate init(id: Data) {
-            super.init()
-
-            setId(id)
-        }
 
         @objc
         @available(swift, obsoleted: 1.0)
@@ -11974,6 +11993,16 @@ public class SSKProtoGroupDetails: NSObject, Codable {
         @objc
         public func setMembersE164(_ wrappedItems: [String]) {
             proto.membersE164 = wrappedItems
+        }
+
+        @objc
+        public func addMembers(_ valueParam: SSKProtoGroupDetailsMember) {
+            proto.members.append(valueParam.proto)
+        }
+
+        @objc
+        public func setMembers(_ wrappedItems: [SSKProtoGroupDetailsMember]) {
+            proto.members = wrappedItems.map { $0.proto }
         }
 
         @objc
@@ -12014,16 +12043,6 @@ public class SSKProtoGroupDetails: NSObject, Codable {
         }
 
         @objc
-        public func addMembers(_ valueParam: SSKProtoGroupDetailsMember) {
-            proto.members.append(valueParam.proto)
-        }
-
-        @objc
-        public func setMembers(_ wrappedItems: [SSKProtoGroupDetailsMember]) {
-            proto.members = wrappedItems.map { $0.proto }
-        }
-
-        @objc
         public func setInboxPosition(_ valueParam: UInt32) {
             proto.inboxPosition = valueParam
         }
@@ -12051,13 +12070,22 @@ public class SSKProtoGroupDetails: NSObject, Codable {
     fileprivate let proto: SignalServiceProtos_GroupDetails
 
     @objc
-    public let id: Data
+    public let members: [SSKProtoGroupDetailsMember]
 
     @objc
     public let avatar: SSKProtoGroupDetailsAvatar?
 
     @objc
-    public let members: [SSKProtoGroupDetailsMember]
+    public var id: Data? {
+        guard hasID else {
+            return nil
+        }
+        return proto.id
+    }
+    @objc
+    public var hasID: Bool {
+        return proto.hasID
+    }
 
     @objc
     public var name: String? {
@@ -12142,13 +12170,11 @@ public class SSKProtoGroupDetails: NSObject, Codable {
     }
 
     private init(proto: SignalServiceProtos_GroupDetails,
-                 id: Data,
-                 avatar: SSKProtoGroupDetailsAvatar?,
-                 members: [SSKProtoGroupDetailsMember]) {
+                 members: [SSKProtoGroupDetailsMember],
+                 avatar: SSKProtoGroupDetailsAvatar?) {
         self.proto = proto
-        self.id = id
-        self.avatar = avatar
         self.members = members
+        self.avatar = avatar
     }
 
     @objc
@@ -12163,27 +12189,21 @@ public class SSKProtoGroupDetails: NSObject, Codable {
     }
 
     fileprivate convenience init(_ proto: SignalServiceProtos_GroupDetails) throws {
-        guard proto.hasID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: id")
-        }
-        let id = proto.id
+        var members: [SSKProtoGroupDetailsMember] = []
+        members = try proto.members.map { try SSKProtoGroupDetailsMember($0) }
 
         var avatar: SSKProtoGroupDetailsAvatar?
         if proto.hasAvatar {
             avatar = try SSKProtoGroupDetailsAvatar(proto.avatar)
         }
 
-        var members: [SSKProtoGroupDetailsMember] = []
-        members = try proto.members.map { try SSKProtoGroupDetailsMember($0) }
-
         // MARK: - Begin Validation Logic for SSKProtoGroupDetails -
 
         // MARK: - End Validation Logic for SSKProtoGroupDetails -
 
         self.init(proto: proto,
-                  id: id,
-                  avatar: avatar,
-                  members: members)
+                  members: members,
+                  avatar: avatar)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -12220,27 +12240,27 @@ extension SSKProtoGroupDetails.SSKProtoGroupDetailsBuilder {
 
 #endif
 
-// MARK: - SSKProtoPackSticker
+// MARK: - SSKProtoPaymentAddressMobileCoinAddress
 
 @objc
-public class SSKProtoPackSticker: NSObject, Codable {
+public class SSKProtoPaymentAddressMobileCoinAddress: NSObject, Codable {
 
-    // MARK: - SSKProtoPackStickerBuilder
+    // MARK: - SSKProtoPaymentAddressMobileCoinAddressBuilder
 
     @objc
-    public static func builder(id: UInt32) -> SSKProtoPackStickerBuilder {
-        return SSKProtoPackStickerBuilder(id: id)
+    public static func builder() -> SSKProtoPaymentAddressMobileCoinAddressBuilder {
+        return SSKProtoPaymentAddressMobileCoinAddressBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
-    public func asBuilder() -> SSKProtoPackStickerBuilder {
-        let builder = SSKProtoPackStickerBuilder(id: id)
-        if let _value = emoji {
-            builder.setEmoji(_value)
+    public func asBuilder() -> SSKProtoPaymentAddressMobileCoinAddressBuilder {
+        let builder = SSKProtoPaymentAddressMobileCoinAddressBuilder()
+        if let _value = address {
+            builder.setAddress(_value)
         }
-        if let _value = contentType {
-            builder.setContentType(_value)
+        if let _value = signature {
+            builder.setSignature(_value)
         }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
@@ -12249,45 +12269,33 @@ public class SSKProtoPackSticker: NSObject, Codable {
     }
 
     @objc
-    public class SSKProtoPackStickerBuilder: NSObject {
+    public class SSKProtoPaymentAddressMobileCoinAddressBuilder: NSObject {
 
-        private var proto = SignalServiceProtos_Pack.Sticker()
+        private var proto = SignalServiceProtos_PaymentAddress.MobileCoinAddress()
 
         @objc
         fileprivate override init() {}
 
         @objc
-        fileprivate init(id: UInt32) {
-            super.init()
-
-            setId(id)
+        @available(swift, obsoleted: 1.0)
+        public func setAddress(_ valueParam: Data?) {
+            guard let valueParam = valueParam else { return }
+            proto.address = valueParam
         }
 
-        @objc
-        public func setId(_ valueParam: UInt32) {
-            proto.id = valueParam
+        public func setAddress(_ valueParam: Data) {
+            proto.address = valueParam
         }
 
         @objc
         @available(swift, obsoleted: 1.0)
-        public func setEmoji(_ valueParam: String?) {
+        public func setSignature(_ valueParam: Data?) {
             guard let valueParam = valueParam else { return }
-            proto.emoji = valueParam
+            proto.signature = valueParam
         }
 
-        public func setEmoji(_ valueParam: String) {
-            proto.emoji = valueParam
-        }
-
-        @objc
-        @available(swift, obsoleted: 1.0)
-        public func setContentType(_ valueParam: String?) {
-            guard let valueParam = valueParam else { return }
-            proto.contentType = valueParam
-        }
-
-        public func setContentType(_ valueParam: String) {
-            proto.contentType = valueParam
+        public func setSignature(_ valueParam: Data) {
+            proto.signature = valueParam
         }
 
         public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
@@ -12295,43 +12303,40 @@ public class SSKProtoPackSticker: NSObject, Codable {
         }
 
         @objc
-        public func build() throws -> SSKProtoPackSticker {
-            return try SSKProtoPackSticker(proto)
+        public func build() throws -> SSKProtoPaymentAddressMobileCoinAddress {
+            return try SSKProtoPaymentAddressMobileCoinAddress(proto)
         }
 
         @objc
         public func buildSerializedData() throws -> Data {
-            return try SSKProtoPackSticker(proto).serializedData()
+            return try SSKProtoPaymentAddressMobileCoinAddress(proto).serializedData()
         }
     }
 
-    fileprivate let proto: SignalServiceProtos_Pack.Sticker
+    fileprivate let proto: SignalServiceProtos_PaymentAddress.MobileCoinAddress
 
     @objc
-    public let id: UInt32
-
-    @objc
-    public var emoji: String? {
-        guard hasEmoji else {
+    public var address: Data? {
+        guard hasAddress else {
             return nil
         }
-        return proto.emoji
+        return proto.address
     }
     @objc
-    public var hasEmoji: Bool {
-        return proto.hasEmoji
+    public var hasAddress: Bool {
+        return proto.hasAddress
     }
 
     @objc
-    public var contentType: String? {
-        guard hasContentType else {
+    public var signature: Data? {
+        guard hasSignature else {
             return nil
         }
-        return proto.contentType
+        return proto.signature
     }
     @objc
-    public var hasContentType: Bool {
-        return proto.hasContentType
+    public var hasSignature: Bool {
+        return proto.hasSignature
     }
 
     public var hasUnknownFields: Bool {
@@ -12342,10 +12347,8 @@ public class SSKProtoPackSticker: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_Pack.Sticker,
-                 id: UInt32) {
+    private init(proto: SignalServiceProtos_PaymentAddress.MobileCoinAddress) {
         self.proto = proto
-        self.id = id
     }
 
     @objc
@@ -12355,22 +12358,16 @@ public class SSKProtoPackSticker: NSObject, Codable {
 
     @objc
     public convenience init(serializedData: Data) throws {
-        let proto = try SignalServiceProtos_Pack.Sticker(serializedData: serializedData)
+        let proto = try SignalServiceProtos_PaymentAddress.MobileCoinAddress(serializedData: serializedData)
         try self.init(proto)
     }
 
-    fileprivate convenience init(_ proto: SignalServiceProtos_Pack.Sticker) throws {
-        guard proto.hasID else {
-            throw SSKProtoError.invalidProtobuf(description: "\(Self.logTag()) missing required field: id")
-        }
-        let id = proto.id
+    fileprivate convenience init(_ proto: SignalServiceProtos_PaymentAddress.MobileCoinAddress) throws {
+        // MARK: - Begin Validation Logic for SSKProtoPaymentAddressMobileCoinAddress -
 
-        // MARK: - Begin Validation Logic for SSKProtoPackSticker -
+        // MARK: - End Validation Logic for SSKProtoPaymentAddressMobileCoinAddress -
 
-        // MARK: - End Validation Logic for SSKProtoPackSticker -
-
-        self.init(proto: proto,
-                  id: id)
+        self.init(proto: proto)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -12391,48 +12388,41 @@ public class SSKProtoPackSticker: NSObject, Codable {
 
 #if DEBUG
 
-extension SSKProtoPackSticker {
+extension SSKProtoPaymentAddressMobileCoinAddress {
     @objc
     public func serializedDataIgnoringErrors() -> Data? {
         return try! self.serializedData()
     }
 }
 
-extension SSKProtoPackSticker.SSKProtoPackStickerBuilder {
+extension SSKProtoPaymentAddressMobileCoinAddress.SSKProtoPaymentAddressMobileCoinAddressBuilder {
     @objc
-    public func buildIgnoringErrors() -> SSKProtoPackSticker? {
+    public func buildIgnoringErrors() -> SSKProtoPaymentAddressMobileCoinAddress? {
         return try! self.build()
     }
 }
 
 #endif
 
-// MARK: - SSKProtoPack
+// MARK: - SSKProtoPaymentAddress
 
 @objc
-public class SSKProtoPack: NSObject, Codable {
+public class SSKProtoPaymentAddress: NSObject, Codable {
 
-    // MARK: - SSKProtoPackBuilder
+    // MARK: - SSKProtoPaymentAddressBuilder
 
     @objc
-    public static func builder() -> SSKProtoPackBuilder {
-        return SSKProtoPackBuilder()
+    public static func builder() -> SSKProtoPaymentAddressBuilder {
+        return SSKProtoPaymentAddressBuilder()
     }
 
     // asBuilder() constructs a builder that reflects the proto's contents.
     @objc
-    public func asBuilder() -> SSKProtoPackBuilder {
-        let builder = SSKProtoPackBuilder()
-        if let _value = title {
-            builder.setTitle(_value)
+    public func asBuilder() -> SSKProtoPaymentAddressBuilder {
+        let builder = SSKProtoPaymentAddressBuilder()
+        if let _value = mobileCoinAddress {
+            builder.setMobileCoinAddress(_value)
         }
-        if let _value = author {
-            builder.setAuthor(_value)
-        }
-        if let _value = cover {
-            builder.setCover(_value)
-        }
-        builder.setStickers(stickers)
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
         }
@@ -12440,54 +12430,22 @@ public class SSKProtoPack: NSObject, Codable {
     }
 
     @objc
-    public class SSKProtoPackBuilder: NSObject {
+    public class SSKProtoPaymentAddressBuilder: NSObject {
 
-        private var proto = SignalServiceProtos_Pack()
+        private var proto = SignalServiceProtos_PaymentAddress()
 
         @objc
         fileprivate override init() {}
 
         @objc
         @available(swift, obsoleted: 1.0)
-        public func setTitle(_ valueParam: String?) {
+        public func setMobileCoinAddress(_ valueParam: SSKProtoPaymentAddressMobileCoinAddress?) {
             guard let valueParam = valueParam else { return }
-            proto.title = valueParam
+            proto.mobileCoinAddress = valueParam.proto
         }
 
-        public func setTitle(_ valueParam: String) {
-            proto.title = valueParam
-        }
-
-        @objc
-        @available(swift, obsoleted: 1.0)
-        public func setAuthor(_ valueParam: String?) {
-            guard let valueParam = valueParam else { return }
-            proto.author = valueParam
-        }
-
-        public func setAuthor(_ valueParam: String) {
-            proto.author = valueParam
-        }
-
-        @objc
-        @available(swift, obsoleted: 1.0)
-        public func setCover(_ valueParam: SSKProtoPackSticker?) {
-            guard let valueParam = valueParam else { return }
-            proto.cover = valueParam.proto
-        }
-
-        public func setCover(_ valueParam: SSKProtoPackSticker) {
-            proto.cover = valueParam.proto
-        }
-
-        @objc
-        public func addStickers(_ valueParam: SSKProtoPackSticker) {
-            proto.stickers.append(valueParam.proto)
-        }
-
-        @objc
-        public func setStickers(_ wrappedItems: [SSKProtoPackSticker]) {
-            proto.stickers = wrappedItems.map { $0.proto }
+        public func setMobileCoinAddress(_ valueParam: SSKProtoPaymentAddressMobileCoinAddress) {
+            proto.mobileCoinAddress = valueParam.proto
         }
 
         public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
@@ -12495,47 +12453,20 @@ public class SSKProtoPack: NSObject, Codable {
         }
 
         @objc
-        public func build() throws -> SSKProtoPack {
-            return try SSKProtoPack(proto)
+        public func build() throws -> SSKProtoPaymentAddress {
+            return try SSKProtoPaymentAddress(proto)
         }
 
         @objc
         public func buildSerializedData() throws -> Data {
-            return try SSKProtoPack(proto).serializedData()
+            return try SSKProtoPaymentAddress(proto).serializedData()
         }
     }
 
-    fileprivate let proto: SignalServiceProtos_Pack
+    fileprivate let proto: SignalServiceProtos_PaymentAddress
 
     @objc
-    public let cover: SSKProtoPackSticker?
-
-    @objc
-    public let stickers: [SSKProtoPackSticker]
-
-    @objc
-    public var title: String? {
-        guard hasTitle else {
-            return nil
-        }
-        return proto.title
-    }
-    @objc
-    public var hasTitle: Bool {
-        return proto.hasTitle
-    }
-
-    @objc
-    public var author: String? {
-        guard hasAuthor else {
-            return nil
-        }
-        return proto.author
-    }
-    @objc
-    public var hasAuthor: Bool {
-        return proto.hasAuthor
-    }
+    public let mobileCoinAddress: SSKProtoPaymentAddressMobileCoinAddress?
 
     public var hasUnknownFields: Bool {
         return !proto.unknownFields.data.isEmpty
@@ -12545,12 +12476,10 @@ public class SSKProtoPack: NSObject, Codable {
         return proto.unknownFields
     }
 
-    private init(proto: SignalServiceProtos_Pack,
-                 cover: SSKProtoPackSticker?,
-                 stickers: [SSKProtoPackSticker]) {
+    private init(proto: SignalServiceProtos_PaymentAddress,
+                 mobileCoinAddress: SSKProtoPaymentAddressMobileCoinAddress?) {
         self.proto = proto
-        self.cover = cover
-        self.stickers = stickers
+        self.mobileCoinAddress = mobileCoinAddress
     }
 
     @objc
@@ -12560,26 +12489,22 @@ public class SSKProtoPack: NSObject, Codable {
 
     @objc
     public convenience init(serializedData: Data) throws {
-        let proto = try SignalServiceProtos_Pack(serializedData: serializedData)
+        let proto = try SignalServiceProtos_PaymentAddress(serializedData: serializedData)
         try self.init(proto)
     }
 
-    fileprivate convenience init(_ proto: SignalServiceProtos_Pack) throws {
-        var cover: SSKProtoPackSticker?
-        if proto.hasCover {
-            cover = try SSKProtoPackSticker(proto.cover)
+    fileprivate convenience init(_ proto: SignalServiceProtos_PaymentAddress) throws {
+        var mobileCoinAddress: SSKProtoPaymentAddressMobileCoinAddress?
+        if proto.hasMobileCoinAddress {
+            mobileCoinAddress = try SSKProtoPaymentAddressMobileCoinAddress(proto.mobileCoinAddress)
         }
 
-        var stickers: [SSKProtoPackSticker] = []
-        stickers = try proto.stickers.map { try SSKProtoPackSticker($0) }
+        // MARK: - Begin Validation Logic for SSKProtoPaymentAddress -
 
-        // MARK: - Begin Validation Logic for SSKProtoPack -
-
-        // MARK: - End Validation Logic for SSKProtoPack -
+        // MARK: - End Validation Logic for SSKProtoPaymentAddress -
 
         self.init(proto: proto,
-                  cover: cover,
-                  stickers: stickers)
+                  mobileCoinAddress: mobileCoinAddress)
     }
 
     public required convenience init(from decoder: Swift.Decoder) throws {
@@ -12600,16 +12525,188 @@ public class SSKProtoPack: NSObject, Codable {
 
 #if DEBUG
 
-extension SSKProtoPack {
+extension SSKProtoPaymentAddress {
     @objc
     public func serializedDataIgnoringErrors() -> Data? {
         return try! self.serializedData()
     }
 }
 
-extension SSKProtoPack.SSKProtoPackBuilder {
+extension SSKProtoPaymentAddress.SSKProtoPaymentAddressBuilder {
     @objc
-    public func buildIgnoringErrors() -> SSKProtoPack? {
+    public func buildIgnoringErrors() -> SSKProtoPaymentAddress? {
+        return try! self.build()
+    }
+}
+
+#endif
+
+// MARK: - SSKProtoDecryptionErrorMessage
+
+@objc
+public class SSKProtoDecryptionErrorMessage: NSObject, Codable {
+
+    // MARK: - SSKProtoDecryptionErrorMessageBuilder
+
+    @objc
+    public static func builder() -> SSKProtoDecryptionErrorMessageBuilder {
+        return SSKProtoDecryptionErrorMessageBuilder()
+    }
+
+    // asBuilder() constructs a builder that reflects the proto's contents.
+    @objc
+    public func asBuilder() -> SSKProtoDecryptionErrorMessageBuilder {
+        let builder = SSKProtoDecryptionErrorMessageBuilder()
+        if let _value = ratchetKey {
+            builder.setRatchetKey(_value)
+        }
+        if hasTimestamp {
+            builder.setTimestamp(timestamp)
+        }
+        if hasDeviceID {
+            builder.setDeviceID(deviceID)
+        }
+        if let _value = unknownFields {
+            builder.setUnknownFields(_value)
+        }
+        return builder
+    }
+
+    @objc
+    public class SSKProtoDecryptionErrorMessageBuilder: NSObject {
+
+        private var proto = SignalServiceProtos_DecryptionErrorMessage()
+
+        @objc
+        fileprivate override init() {}
+
+        @objc
+        @available(swift, obsoleted: 1.0)
+        public func setRatchetKey(_ valueParam: Data?) {
+            guard let valueParam = valueParam else { return }
+            proto.ratchetKey = valueParam
+        }
+
+        public func setRatchetKey(_ valueParam: Data) {
+            proto.ratchetKey = valueParam
+        }
+
+        @objc
+        public func setTimestamp(_ valueParam: UInt64) {
+            proto.timestamp = valueParam
+        }
+
+        @objc
+        public func setDeviceID(_ valueParam: UInt32) {
+            proto.deviceID = valueParam
+        }
+
+        public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
+            proto.unknownFields = unknownFields
+        }
+
+        @objc
+        public func build() throws -> SSKProtoDecryptionErrorMessage {
+            return try SSKProtoDecryptionErrorMessage(proto)
+        }
+
+        @objc
+        public func buildSerializedData() throws -> Data {
+            return try SSKProtoDecryptionErrorMessage(proto).serializedData()
+        }
+    }
+
+    fileprivate let proto: SignalServiceProtos_DecryptionErrorMessage
+
+    @objc
+    public var ratchetKey: Data? {
+        guard hasRatchetKey else {
+            return nil
+        }
+        return proto.ratchetKey
+    }
+    @objc
+    public var hasRatchetKey: Bool {
+        return proto.hasRatchetKey
+    }
+
+    @objc
+    public var timestamp: UInt64 {
+        return proto.timestamp
+    }
+    @objc
+    public var hasTimestamp: Bool {
+        return proto.hasTimestamp
+    }
+
+    @objc
+    public var deviceID: UInt32 {
+        return proto.deviceID
+    }
+    @objc
+    public var hasDeviceID: Bool {
+        return proto.hasDeviceID
+    }
+
+    public var hasUnknownFields: Bool {
+        return !proto.unknownFields.data.isEmpty
+    }
+    public var unknownFields: SwiftProtobuf.UnknownStorage? {
+        guard hasUnknownFields else { return nil }
+        return proto.unknownFields
+    }
+
+    private init(proto: SignalServiceProtos_DecryptionErrorMessage) {
+        self.proto = proto
+    }
+
+    @objc
+    public func serializedData() throws -> Data {
+        return try self.proto.serializedData()
+    }
+
+    @objc
+    public convenience init(serializedData: Data) throws {
+        let proto = try SignalServiceProtos_DecryptionErrorMessage(serializedData: serializedData)
+        try self.init(proto)
+    }
+
+    fileprivate convenience init(_ proto: SignalServiceProtos_DecryptionErrorMessage) throws {
+        // MARK: - Begin Validation Logic for SSKProtoDecryptionErrorMessage -
+
+        // MARK: - End Validation Logic for SSKProtoDecryptionErrorMessage -
+
+        self.init(proto: proto)
+    }
+
+    public required convenience init(from decoder: Swift.Decoder) throws {
+        let singleValueContainer = try decoder.singleValueContainer()
+        let serializedData = try singleValueContainer.decode(Data.self)
+        try self.init(serializedData: serializedData)
+    }
+    public func encode(to encoder: Swift.Encoder) throws {
+        var singleValueContainer = encoder.singleValueContainer()
+        try singleValueContainer.encode(try serializedData())
+    }
+
+    @objc
+    public override var debugDescription: String {
+        return "\(proto)"
+    }
+}
+
+#if DEBUG
+
+extension SSKProtoDecryptionErrorMessage {
+    @objc
+    public func serializedDataIgnoringErrors() -> Data? {
+        return try! self.serializedData()
+    }
+}
+
+extension SSKProtoDecryptionErrorMessage.SSKProtoDecryptionErrorMessageBuilder {
+    @objc
+    public func buildIgnoringErrors() -> SSKProtoDecryptionErrorMessage? {
         return try! self.build()
     }
 }

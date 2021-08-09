@@ -69,8 +69,8 @@ class TSAttachmentStreamSerializer: SDSSerializer {
         let contentType: String = model.contentType
         let encryptionKey: Data? = model.encryptionKey
         let serverId: UInt64 = model.serverId
-        let credentionals: String = model.credentionals
-        let bucket: String = model.bucket
+//        let credentionals: String = model.credentionals
+//        let bucket: String = model.bucket
         let sourceFilename: String? = model.sourceFilename
         let cachedAudioDurationSeconds: Double? = archiveOptionalNSNumber(model.cachedAudioDurationSeconds, conversion: { $0.doubleValue })
         let cachedImageHeight: Double? = archiveOptionalNSNumber(model.cachedImageHeight, conversion: { $0.doubleValue })
@@ -90,6 +90,6 @@ class TSAttachmentStreamSerializer: SDSSerializer {
         let cdnNumber: UInt32 = model.cdnNumber
         let isAnimatedCached: Bool? = archiveOptionalNSNumber(model.isAnimatedCached, conversion: { $0.boolValue })
 
-        return AttachmentRecord(delegate: model, id: id, recordType: recordType, uniqueId: uniqueId, albumMessageId: albumMessageId, attachmentType: attachmentType, blurHash: blurHash, byteCount: byteCount, caption: caption, contentType: contentType, encryptionKey: encryptionKey, serverId: serverId, credentionals: credentionals, bucket: bucket, sourceFilename: sourceFilename, cachedAudioDurationSeconds: cachedAudioDurationSeconds, cachedImageHeight: cachedImageHeight, cachedImageWidth: cachedImageWidth, creationTimestamp: creationTimestamp, digest: digest, isUploaded: isUploaded, isValidImageCached: isValidImageCached, isValidVideoCached: isValidVideoCached, lazyRestoreFragmentId: lazyRestoreFragmentId, localRelativeFilePath: localRelativeFilePath, mediaSize: mediaSize, pointerType: pointerType, state: state, uploadTimestamp: uploadTimestamp, cdnKey: cdnKey, cdnNumber: cdnNumber, isAnimatedCached: isAnimatedCached)
+        return AttachmentRecord(delegate: model, id: id, recordType: recordType, uniqueId: uniqueId, albumMessageId: albumMessageId, attachmentType: attachmentType, blurHash: blurHash, byteCount: byteCount, caption: caption, contentType: contentType, encryptionKey: encryptionKey, serverId: serverId, /*credentionals: credentionals, bucket: bucket,*/ sourceFilename: sourceFilename, cachedAudioDurationSeconds: cachedAudioDurationSeconds, cachedImageHeight: cachedImageHeight, cachedImageWidth: cachedImageWidth, creationTimestamp: creationTimestamp, digest: digest, isUploaded: isUploaded, isValidImageCached: isValidImageCached, isValidVideoCached: isValidVideoCached, lazyRestoreFragmentId: lazyRestoreFragmentId, localRelativeFilePath: localRelativeFilePath, mediaSize: mediaSize, pointerType: pointerType, state: state, uploadTimestamp: uploadTimestamp, cdnKey: cdnKey, cdnNumber: cdnNumber, isAnimatedCached: isAnimatedCached)
     }
 }
