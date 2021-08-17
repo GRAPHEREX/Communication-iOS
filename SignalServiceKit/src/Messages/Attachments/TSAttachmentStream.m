@@ -137,8 +137,8 @@ typedef void (^OWSLoadedThumbnailSuccess)(OWSLoadedThumbnail *loadedThumbnail);
                      contentType:(NSString *)contentType
                    encryptionKey:(nullable NSData *)encryptionKey
                         serverId:(unsigned long long)serverId
-//                 credentionals:(NSString *)credentionals
-//                        bucket:(NSString *)bucket
+                 credentionals:(NSString *)credentionals
+                        bucket:(NSString *)bucket
                   sourceFilename:(nullable NSString *)sourceFilename
                  uploadTimestamp:(unsigned long long)uploadTimestamp
       cachedAudioDurationSeconds:(nullable NSNumber *)cachedAudioDurationSeconds
@@ -164,8 +164,8 @@ typedef void (^OWSLoadedThumbnailSuccess)(OWSLoadedThumbnail *loadedThumbnail);
                        contentType:contentType
                      encryptionKey:encryptionKey
                           serverId:serverId
-//                   credentionals:credentionals
-//                          bucket:bucket
+                   credentionals:credentionals
+                          bucket:bucket
                     sourceFilename:sourceFilename
                    uploadTimestamp:uploadTimestamp];
 
@@ -1042,8 +1042,8 @@ typedef void (^OWSLoadedThumbnailSuccess)(OWSLoadedThumbnail *loadedThumbnail);
 - (void)updateAsUploadedWithEncryptionKey:(NSData *)encryptionKey
                                    digest:(NSData *)digest
                                  serverId:(UInt64)serverId
-//                                   bucket:(NSString *)bucket
-//                            credentionals:(NSString *)credentionals
+                                   bucket:(NSString *)bucket
+                            credentionals:(NSString *)credentionals
                                    cdnKey:(NSString *)cdnKey
                                 cdnNumber:(UInt32)cdnNumber
                           uploadTimestamp:(unsigned long long)uploadTimestamp
@@ -1059,8 +1059,8 @@ typedef void (^OWSLoadedThumbnailSuccess)(OWSLoadedThumbnail *loadedThumbnail);
                                                  [attachment setEncryptionKey:encryptionKey];
                                                  [attachment setDigest:digest];
                                                  [attachment setServerId:serverId];
-//                                                 [attachment setBucket:bucket];
-//                                                 [attachment setCredentionals:credentionals];
+                                                 [attachment setBucket:bucket];
+                                                 [attachment setCredentionals:credentionals];
                                                  [attachment setCdnKey:cdnKey];
                                                  [attachment setCdnNumber:cdnNumber];
                                                  [attachment setUploadTimestamp:uploadTimestamp];
@@ -1125,8 +1125,8 @@ typedef void (^OWSLoadedThumbnailSuccess)(OWSLoadedThumbnail *loadedThumbnail);
 
     SSKProtoAttachmentPointerBuilder *builder = [SSKProtoAttachmentPointer builder];
     builder.cdnID = self.serverId;
-//    builder.credentionals = self.credentionals;
-//    builder.bucket = self.bucket;
+    builder.credentionals = self.credentionals;
+    builder.bucket = self.bucket;
     if (self.cdnKey.length > 0) {
         builder.cdnKey = self.cdnKey;
     }

@@ -133,12 +133,14 @@ public class OWSLinkPreview: MTLModel {
         }
         let urlString = previewProto.url
 
-        guard let url = URL(string: urlString!), url.isPermittedLinkPreviewUrl() else {
+        guard let urlString = urlString,
+              let url = URL(string: urlString),
+              url.isPermittedLinkPreviewUrl() else {
             Logger.error("Could not parse preview url.")
             throw LinkPreviewError.invalidPreview
         }
 
-        guard let body = body, body.contains(urlString!) else {
+        guard let body = body, body.contains(urlString) else {
             Logger.error("Url not present in body")
             throw LinkPreviewError.invalidPreview
         }
@@ -169,7 +171,7 @@ public class OWSLinkPreview: MTLModel {
             }
         }
 
-        let linkPreview = OWSLinkPreview(urlString: urlString!, title: title, imageAttachmentId: imageAttachmentId)
+        let linkPreview = OWSLinkPreview(urlString: urlString, title: title, imageAttachmentId: imageAttachmentId)
         linkPreview.previewDescription = previewDescription
 
         // Zero check required. Some devices in the wild will explicitly set zero to mean "no date"

@@ -10076,6 +10076,12 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
         if let _value = cdnKey {
             builder.setCdnKey(_value)
         }
+        if let _value = credentionals {
+            builder.setCredentionals(_value)
+        }
+        if let _value = bucket {
+            builder.setBucket(_value)
+        }
         if let _value = contentType {
             builder.setContentType(_value)
         }
@@ -10143,6 +10149,16 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
 
         public func setCdnKey(_ valueParam: String) {
             proto.cdnKey = valueParam
+        }
+        
+        @objc
+        public func setCredentionals(_ valueParam: String) {
+            proto.credentionals = valueParam
+        }
+        
+        @objc
+        public func setBucket(_ valueParam: String) {
+            proto.bucket = valueParam
         }
 
         @objc
@@ -10288,6 +10304,15 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
     @objc
     public var hasCdnKey: Bool {
         return proto.hasCdnKey
+    }
+    
+    @objc
+    public var credentionals: String? {
+        return proto.credentionals
+    }
+    @objc
+    public var bucket: String? {
+        return proto.bucket
     }
 
     @objc

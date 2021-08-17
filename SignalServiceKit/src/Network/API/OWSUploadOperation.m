@@ -126,8 +126,8 @@ NSString *const kAttachmentUploadAttachmentIDKey = @"kAttachmentUploadAttachment
                 [attachmentStream updateAsUploadedWithEncryptionKey:upload.encryptionKey
                                                              digest:upload.digest
                                                            serverId:upload.serverId
-//                                                             bucket:upload.bucket
-//                                                      credentionals:upload.credentionals
+                                                             bucket:upload.bucket
+                                                      credentionals:upload.credentionals
                                                              cdnKey:@""
                                                           cdnNumber:0
                                                     uploadTimestamp:upload.uploadTimestamp
