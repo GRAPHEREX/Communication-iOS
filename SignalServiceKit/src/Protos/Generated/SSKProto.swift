@@ -10076,12 +10076,6 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
         if let _value = cdnKey {
             builder.setCdnKey(_value)
         }
-        if let _value = credentionals {
-            builder.setCredentionals(_value)
-        }
-        if let _value = bucket {
-            builder.setBucket(_value)
-        }
         if let _value = contentType {
             builder.setContentType(_value)
         }
@@ -10121,6 +10115,12 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
         if hasCdnNumber {
             builder.setCdnNumber(cdnNumber)
         }
+        if let _value = credentionals {
+            builder.setCredentionals(_value)
+        }
+        if let _value = bucket {
+            builder.setBucket(_value)
+        }
         if let _value = unknownFields {
             builder.setUnknownFields(_value)
         }
@@ -10149,16 +10149,6 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
 
         public func setCdnKey(_ valueParam: String) {
             proto.cdnKey = valueParam
-        }
-        
-        @objc
-        public func setCredentionals(_ valueParam: String) {
-            proto.credentionals = valueParam
-        }
-        
-        @objc
-        public func setBucket(_ valueParam: String) {
-            proto.bucket = valueParam
         }
 
         @objc
@@ -10268,6 +10258,28 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
             proto.cdnNumber = valueParam
         }
 
+        @objc
+        @available(swift, obsoleted: 1.0)
+        public func setCredentionals(_ valueParam: String?) {
+            guard let valueParam = valueParam else { return }
+            proto.credentionals = valueParam
+        }
+
+        public func setCredentionals(_ valueParam: String) {
+            proto.credentionals = valueParam
+        }
+
+        @objc
+        @available(swift, obsoleted: 1.0)
+        public func setBucket(_ valueParam: String?) {
+            guard let valueParam = valueParam else { return }
+            proto.bucket = valueParam
+        }
+
+        public func setBucket(_ valueParam: String) {
+            proto.bucket = valueParam
+        }
+
         public func setUnknownFields(_ unknownFields: SwiftProtobuf.UnknownStorage) {
             proto.unknownFields = unknownFields
         }
@@ -10304,15 +10316,6 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
     @objc
     public var hasCdnKey: Bool {
         return proto.hasCdnKey
-    }
-    
-    @objc
-    public var credentionals: String? {
-        return proto.credentionals
-    }
-    @objc
-    public var bucket: String? {
-        return proto.bucket
     }
 
     @objc
@@ -10451,6 +10454,30 @@ public class SSKProtoAttachmentPointer: NSObject, Codable {
     @objc
     public var hasCdnNumber: Bool {
         return proto.hasCdnNumber
+    }
+
+    @objc
+    public var credentionals: String? {
+        guard hasCredentionals else {
+            return nil
+        }
+        return proto.credentionals
+    }
+    @objc
+    public var hasCredentionals: Bool {
+        return proto.hasCredentionals
+    }
+
+    @objc
+    public var bucket: String? {
+        guard hasBucket else {
+            return nil
+        }
+        return proto.bucket
+    }
+    @objc
+    public var hasBucket: Bool {
+        return proto.hasBucket
     }
 
     public var hasUnknownFields: Bool {

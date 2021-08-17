@@ -527,6 +527,8 @@ message AttachmentPointer {
   optional string  blurHash        = 12;
   optional uint64  uploadTimestamp = 13;
   optional uint32  cdnNumber       = 14;
+  optional string  credentionals   = 16;
+  optional string  bucket          = 17;
   // Next ID: 16
 }
 

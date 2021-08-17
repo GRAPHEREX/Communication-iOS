@@ -1004,37 +1004,39 @@ struct SignalServiceProtos_DataMessage {
       // methods supported on all messages.
 
       var contentType: String {
-        get {return _storage._contentType ?? String()}
-        set {_uniqueStorage()._contentType = newValue}
+        get {return _contentType ?? String()}
+        set {_contentType = newValue}
       }
       /// Returns true if `contentType` has been explicitly set.
-      var hasContentType: Bool {return _storage._contentType != nil}
+      var hasContentType: Bool {return self._contentType != nil}
       /// Clears the value of `contentType`. Subsequent reads from it will return its default value.
-      mutating func clearContentType() {_uniqueStorage()._contentType = nil}
+      mutating func clearContentType() {self._contentType = nil}
 
       var fileName: String {
-        get {return _storage._fileName ?? String()}
-        set {_uniqueStorage()._fileName = newValue}
+        get {return _fileName ?? String()}
+        set {_fileName = newValue}
       }
       /// Returns true if `fileName` has been explicitly set.
-      var hasFileName: Bool {return _storage._fileName != nil}
+      var hasFileName: Bool {return self._fileName != nil}
       /// Clears the value of `fileName`. Subsequent reads from it will return its default value.
-      mutating func clearFileName() {_uniqueStorage()._fileName = nil}
+      mutating func clearFileName() {self._fileName = nil}
 
       var thumbnail: SignalServiceProtos_AttachmentPointer {
-        get {return _storage._thumbnail ?? SignalServiceProtos_AttachmentPointer()}
-        set {_uniqueStorage()._thumbnail = newValue}
+        get {return _thumbnail ?? SignalServiceProtos_AttachmentPointer()}
+        set {_thumbnail = newValue}
       }
       /// Returns true if `thumbnail` has been explicitly set.
-      var hasThumbnail: Bool {return _storage._thumbnail != nil}
+      var hasThumbnail: Bool {return self._thumbnail != nil}
       /// Clears the value of `thumbnail`. Subsequent reads from it will return its default value.
-      mutating func clearThumbnail() {_uniqueStorage()._thumbnail = nil}
+      mutating func clearThumbnail() {self._thumbnail = nil}
 
       var unknownFields = SwiftProtobuf.UnknownStorage()
 
       init() {}
 
-      fileprivate var _storage = _StorageClass.defaultInstance
+      fileprivate var _contentType: String? = nil
+      fileprivate var _fileName: String? = nil
+      fileprivate var _thumbnail: SignalServiceProtos_AttachmentPointer? = nil
     }
 
     init() {}
@@ -1051,46 +1053,37 @@ struct SignalServiceProtos_DataMessage {
     // methods supported on all messages.
 
     var name: SignalServiceProtos_DataMessage.Contact.Name {
-      get {return _storage._name ?? SignalServiceProtos_DataMessage.Contact.Name()}
-      set {_uniqueStorage()._name = newValue}
+      get {return _name ?? SignalServiceProtos_DataMessage.Contact.Name()}
+      set {_name = newValue}
     }
     /// Returns true if `name` has been explicitly set.
-    var hasName: Bool {return _storage._name != nil}
+    var hasName: Bool {return self._name != nil}
     /// Clears the value of `name`. Subsequent reads from it will return its default value.
-    mutating func clearName() {_uniqueStorage()._name = nil}
+    mutating func clearName() {self._name = nil}
 
-    var number: [SignalServiceProtos_DataMessage.Contact.Phone] {
-      get {return _storage._number}
-      set {_uniqueStorage()._number = newValue}
-    }
+    var number: [SignalServiceProtos_DataMessage.Contact.Phone] = []
 
-    var email: [SignalServiceProtos_DataMessage.Contact.Email] {
-      get {return _storage._email}
-      set {_uniqueStorage()._email = newValue}
-    }
+    var email: [SignalServiceProtos_DataMessage.Contact.Email] = []
 
-    var address: [SignalServiceProtos_DataMessage.Contact.PostalAddress] {
-      get {return _storage._address}
-      set {_uniqueStorage()._address = newValue}
-    }
+    var address: [SignalServiceProtos_DataMessage.Contact.PostalAddress] = []
 
     var avatar: SignalServiceProtos_DataMessage.Contact.Avatar {
-      get {return _storage._avatar ?? SignalServiceProtos_DataMessage.Contact.Avatar()}
-      set {_uniqueStorage()._avatar = newValue}
+      get {return _avatar ?? SignalServiceProtos_DataMessage.Contact.Avatar()}
+      set {_avatar = newValue}
     }
     /// Returns true if `avatar` has been explicitly set.
-    var hasAvatar: Bool {return _storage._avatar != nil}
+    var hasAvatar: Bool {return self._avatar != nil}
     /// Clears the value of `avatar`. Subsequent reads from it will return its default value.
-    mutating func clearAvatar() {_uniqueStorage()._avatar = nil}
+    mutating func clearAvatar() {self._avatar = nil}
 
     var organization: String {
-      get {return _storage._organization ?? String()}
-      set {_uniqueStorage()._organization = newValue}
+      get {return _organization ?? String()}
+      set {_organization = newValue}
     }
     /// Returns true if `organization` has been explicitly set.
-    var hasOrganization: Bool {return _storage._organization != nil}
+    var hasOrganization: Bool {return self._organization != nil}
     /// Clears the value of `organization`. Subsequent reads from it will return its default value.
-    mutating func clearOrganization() {_uniqueStorage()._organization = nil}
+    mutating func clearOrganization() {self._organization = nil}
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1474,7 +1467,9 @@ struct SignalServiceProtos_DataMessage {
 
     init() {}
 
-    fileprivate var _storage = _StorageClass.defaultInstance
+    fileprivate var _name: SignalServiceProtos_DataMessage.Contact.Name? = nil
+    fileprivate var _avatar: SignalServiceProtos_DataMessage.Contact.Avatar? = nil
+    fileprivate var _organization: String? = nil
   }
 
   struct Preview {
@@ -1483,55 +1478,59 @@ struct SignalServiceProtos_DataMessage {
     // methods supported on all messages.
 
     var url: String {
-      get {return _storage._url ?? String()}
-      set {_uniqueStorage()._url = newValue}
+      get {return _url ?? String()}
+      set {_url = newValue}
     }
     /// Returns true if `url` has been explicitly set.
-    var hasURL: Bool {return _storage._url != nil}
+    var hasURL: Bool {return self._url != nil}
     /// Clears the value of `url`. Subsequent reads from it will return its default value.
-    mutating func clearURL() {_uniqueStorage()._url = nil}
+    mutating func clearURL() {self._url = nil}
 
     var title: String {
-      get {return _storage._title ?? String()}
-      set {_uniqueStorage()._title = newValue}
+      get {return _title ?? String()}
+      set {_title = newValue}
     }
     /// Returns true if `title` has been explicitly set.
-    var hasTitle: Bool {return _storage._title != nil}
+    var hasTitle: Bool {return self._title != nil}
     /// Clears the value of `title`. Subsequent reads from it will return its default value.
-    mutating func clearTitle() {_uniqueStorage()._title = nil}
+    mutating func clearTitle() {self._title = nil}
 
     var image: SignalServiceProtos_AttachmentPointer {
-      get {return _storage._image ?? SignalServiceProtos_AttachmentPointer()}
-      set {_uniqueStorage()._image = newValue}
+      get {return _image ?? SignalServiceProtos_AttachmentPointer()}
+      set {_image = newValue}
     }
     /// Returns true if `image` has been explicitly set.
-    var hasImage: Bool {return _storage._image != nil}
+    var hasImage: Bool {return self._image != nil}
     /// Clears the value of `image`. Subsequent reads from it will return its default value.
-    mutating func clearImage() {_uniqueStorage()._image = nil}
+    mutating func clearImage() {self._image = nil}
 
     var previewDescription: String {
-      get {return _storage._previewDescription ?? String()}
-      set {_uniqueStorage()._previewDescription = newValue}
+      get {return _previewDescription ?? String()}
+      set {_previewDescription = newValue}
     }
     /// Returns true if `previewDescription` has been explicitly set.
-    var hasPreviewDescription: Bool {return _storage._previewDescription != nil}
+    var hasPreviewDescription: Bool {return self._previewDescription != nil}
     /// Clears the value of `previewDescription`. Subsequent reads from it will return its default value.
-    mutating func clearPreviewDescription() {_uniqueStorage()._previewDescription = nil}
+    mutating func clearPreviewDescription() {self._previewDescription = nil}
 
     var date: UInt64 {
-      get {return _storage._date ?? 0}
-      set {_uniqueStorage()._date = newValue}
+      get {return _date ?? 0}
+      set {_date = newValue}
     }
     /// Returns true if `date` has been explicitly set.
-    var hasDate: Bool {return _storage._date != nil}
+    var hasDate: Bool {return self._date != nil}
     /// Clears the value of `date`. Subsequent reads from it will return its default value.
-    mutating func clearDate() {_uniqueStorage()._date = nil}
+    mutating func clearDate() {self._date = nil}
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
     init() {}
 
-    fileprivate var _storage = _StorageClass.defaultInstance
+    fileprivate var _url: String? = nil
+    fileprivate var _title: String? = nil
+    fileprivate var _image: SignalServiceProtos_AttachmentPointer? = nil
+    fileprivate var _previewDescription: String? = nil
+    fileprivate var _date: UInt64? = nil
   }
 
   struct Sticker {
@@ -1540,55 +1539,59 @@ struct SignalServiceProtos_DataMessage {
     // methods supported on all messages.
 
     var packID: Data {
-      get {return _storage._packID ?? Data()}
-      set {_uniqueStorage()._packID = newValue}
+      get {return _packID ?? Data()}
+      set {_packID = newValue}
     }
     /// Returns true if `packID` has been explicitly set.
-    var hasPackID: Bool {return _storage._packID != nil}
+    var hasPackID: Bool {return self._packID != nil}
     /// Clears the value of `packID`. Subsequent reads from it will return its default value.
-    mutating func clearPackID() {_uniqueStorage()._packID = nil}
+    mutating func clearPackID() {self._packID = nil}
 
     var packKey: Data {
-      get {return _storage._packKey ?? Data()}
-      set {_uniqueStorage()._packKey = newValue}
+      get {return _packKey ?? Data()}
+      set {_packKey = newValue}
     }
     /// Returns true if `packKey` has been explicitly set.
-    var hasPackKey: Bool {return _storage._packKey != nil}
+    var hasPackKey: Bool {return self._packKey != nil}
     /// Clears the value of `packKey`. Subsequent reads from it will return its default value.
-    mutating func clearPackKey() {_uniqueStorage()._packKey = nil}
+    mutating func clearPackKey() {self._packKey = nil}
 
     var stickerID: UInt32 {
-      get {return _storage._stickerID ?? 0}
-      set {_uniqueStorage()._stickerID = newValue}
+      get {return _stickerID ?? 0}
+      set {_stickerID = newValue}
     }
     /// Returns true if `stickerID` has been explicitly set.
-    var hasStickerID: Bool {return _storage._stickerID != nil}
+    var hasStickerID: Bool {return self._stickerID != nil}
     /// Clears the value of `stickerID`. Subsequent reads from it will return its default value.
-    mutating func clearStickerID() {_uniqueStorage()._stickerID = nil}
+    mutating func clearStickerID() {self._stickerID = nil}
 
     var data: SignalServiceProtos_AttachmentPointer {
-      get {return _storage._data ?? SignalServiceProtos_AttachmentPointer()}
-      set {_uniqueStorage()._data = newValue}
+      get {return _data ?? SignalServiceProtos_AttachmentPointer()}
+      set {_data = newValue}
     }
     /// Returns true if `data` has been explicitly set.
-    var hasData: Bool {return _storage._data != nil}
+    var hasData: Bool {return self._data != nil}
     /// Clears the value of `data`. Subsequent reads from it will return its default value.
-    mutating func clearData() {_uniqueStorage()._data = nil}
+    mutating func clearData() {self._data = nil}
 
     var emoji: String {
-      get {return _storage._emoji ?? String()}
-      set {_uniqueStorage()._emoji = newValue}
+      get {return _emoji ?? String()}
+      set {_emoji = newValue}
     }
     /// Returns true if `emoji` has been explicitly set.
-    var hasEmoji: Bool {return _storage._emoji != nil}
+    var hasEmoji: Bool {return self._emoji != nil}
     /// Clears the value of `emoji`. Subsequent reads from it will return its default value.
-    mutating func clearEmoji() {_uniqueStorage()._emoji = nil}
+    mutating func clearEmoji() {self._emoji = nil}
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
     init() {}
 
-    fileprivate var _storage = _StorageClass.defaultInstance
+    fileprivate var _packID: Data? = nil
+    fileprivate var _packKey: Data? = nil
+    fileprivate var _stickerID: UInt32? = nil
+    fileprivate var _data: SignalServiceProtos_AttachmentPointer? = nil
+    fileprivate var _emoji: String? = nil
   }
 
   struct Reaction {
@@ -1633,10 +1636,6 @@ struct SignalServiceProtos_DataMessage {
     mutating func clearTargetSentTimestamp() {self._targetSentTimestamp = nil}
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
-    
-    var targetAuthorAddress: SignalServiceAddress {
-        return SignalServiceAddress(uuidString: targetAuthorUuid)
-    }
 
     init() {}
 
@@ -2783,151 +2782,159 @@ struct SignalServiceProtos_AttachmentPointer {
 
   ///  oneof attachment_identifier {
   var cdnID: UInt64 {
-    get {return _cdnID ?? 0}
-    set {_cdnID = newValue}
+    get {return _storage._cdnID ?? 0}
+    set {_uniqueStorage()._cdnID = newValue}
   }
   /// Returns true if `cdnID` has been explicitly set.
-  var hasCdnID: Bool {return self._cdnID != nil}
+  var hasCdnID: Bool {return _storage._cdnID != nil}
   /// Clears the value of `cdnID`. Subsequent reads from it will return its default value.
-  mutating func clearCdnID() {self._cdnID = nil}
+  mutating func clearCdnID() {_uniqueStorage()._cdnID = nil}
 
-    var credentionals: String {
-      get {return _credentionals ?? ""}
-      set {_credentionals = newValue}
-    }
-      
-    var bucket: String {
-      get {return _bucket ?? ""}
-      set {_bucket = newValue}
-    }
-    
   var cdnKey: String {
-    get {return _cdnKey ?? String()}
-    set {_cdnKey = newValue}
+    get {return _storage._cdnKey ?? String()}
+    set {_uniqueStorage()._cdnKey = newValue}
   }
   /// Returns true if `cdnKey` has been explicitly set.
-  var hasCdnKey: Bool {return self._cdnKey != nil}
+  var hasCdnKey: Bool {return _storage._cdnKey != nil}
   /// Clears the value of `cdnKey`. Subsequent reads from it will return its default value.
-  mutating func clearCdnKey() {self._cdnKey = nil}
+  mutating func clearCdnKey() {_uniqueStorage()._cdnKey = nil}
 
   ///  }
   var contentType: String {
-    get {return _contentType ?? String()}
-    set {_contentType = newValue}
+    get {return _storage._contentType ?? String()}
+    set {_uniqueStorage()._contentType = newValue}
   }
   /// Returns true if `contentType` has been explicitly set.
-  var hasContentType: Bool {return self._contentType != nil}
+  var hasContentType: Bool {return _storage._contentType != nil}
   /// Clears the value of `contentType`. Subsequent reads from it will return its default value.
-  mutating func clearContentType() {self._contentType = nil}
+  mutating func clearContentType() {_uniqueStorage()._contentType = nil}
 
   var key: Data {
-    get {return _key ?? Data()}
-    set {_key = newValue}
+    get {return _storage._key ?? Data()}
+    set {_uniqueStorage()._key = newValue}
   }
   /// Returns true if `key` has been explicitly set.
-  var hasKey: Bool {return self._key != nil}
+  var hasKey: Bool {return _storage._key != nil}
   /// Clears the value of `key`. Subsequent reads from it will return its default value.
-  mutating func clearKey() {self._key = nil}
+  mutating func clearKey() {_uniqueStorage()._key = nil}
 
   var size: UInt32 {
-    get {return _size ?? 0}
-    set {_size = newValue}
+    get {return _storage._size ?? 0}
+    set {_uniqueStorage()._size = newValue}
   }
   /// Returns true if `size` has been explicitly set.
-  var hasSize: Bool {return self._size != nil}
+  var hasSize: Bool {return _storage._size != nil}
   /// Clears the value of `size`. Subsequent reads from it will return its default value.
-  mutating func clearSize() {self._size = nil}
+  mutating func clearSize() {_uniqueStorage()._size = nil}
 
   var thumbnail: Data {
-    get {return _thumbnail ?? Data()}
-    set {_thumbnail = newValue}
+    get {return _storage._thumbnail ?? Data()}
+    set {_uniqueStorage()._thumbnail = newValue}
   }
   /// Returns true if `thumbnail` has been explicitly set.
-  var hasThumbnail: Bool {return self._thumbnail != nil}
+  var hasThumbnail: Bool {return _storage._thumbnail != nil}
   /// Clears the value of `thumbnail`. Subsequent reads from it will return its default value.
-  mutating func clearThumbnail() {self._thumbnail = nil}
+  mutating func clearThumbnail() {_uniqueStorage()._thumbnail = nil}
 
   var digest: Data {
-    get {return _digest ?? Data()}
-    set {_digest = newValue}
+    get {return _storage._digest ?? Data()}
+    set {_uniqueStorage()._digest = newValue}
   }
   /// Returns true if `digest` has been explicitly set.
-  var hasDigest: Bool {return self._digest != nil}
+  var hasDigest: Bool {return _storage._digest != nil}
   /// Clears the value of `digest`. Subsequent reads from it will return its default value.
-  mutating func clearDigest() {self._digest = nil}
+  mutating func clearDigest() {_uniqueStorage()._digest = nil}
 
   var fileName: String {
-    get {return _fileName ?? String()}
-    set {_fileName = newValue}
+    get {return _storage._fileName ?? String()}
+    set {_uniqueStorage()._fileName = newValue}
   }
   /// Returns true if `fileName` has been explicitly set.
-  var hasFileName: Bool {return self._fileName != nil}
+  var hasFileName: Bool {return _storage._fileName != nil}
   /// Clears the value of `fileName`. Subsequent reads from it will return its default value.
-  mutating func clearFileName() {self._fileName = nil}
+  mutating func clearFileName() {_uniqueStorage()._fileName = nil}
 
   var flags: UInt32 {
-    get {return _flags ?? 0}
-    set {_flags = newValue}
+    get {return _storage._flags ?? 0}
+    set {_uniqueStorage()._flags = newValue}
   }
   /// Returns true if `flags` has been explicitly set.
-  var hasFlags: Bool {return self._flags != nil}
+  var hasFlags: Bool {return _storage._flags != nil}
   /// Clears the value of `flags`. Subsequent reads from it will return its default value.
-  mutating func clearFlags() {self._flags = nil}
+  mutating func clearFlags() {_uniqueStorage()._flags = nil}
 
   var width: UInt32 {
-    get {return _width ?? 0}
-    set {_width = newValue}
+    get {return _storage._width ?? 0}
+    set {_uniqueStorage()._width = newValue}
   }
   /// Returns true if `width` has been explicitly set.
-  var hasWidth: Bool {return self._width != nil}
+  var hasWidth: Bool {return _storage._width != nil}
   /// Clears the value of `width`. Subsequent reads from it will return its default value.
-  mutating func clearWidth() {self._width = nil}
+  mutating func clearWidth() {_uniqueStorage()._width = nil}
 
   var height: UInt32 {
-    get {return _height ?? 0}
-    set {_height = newValue}
+    get {return _storage._height ?? 0}
+    set {_uniqueStorage()._height = newValue}
   }
   /// Returns true if `height` has been explicitly set.
-  var hasHeight: Bool {return self._height != nil}
+  var hasHeight: Bool {return _storage._height != nil}
   /// Clears the value of `height`. Subsequent reads from it will return its default value.
-  mutating func clearHeight() {self._height = nil}
+  mutating func clearHeight() {_uniqueStorage()._height = nil}
 
   var caption: String {
-    get {return _caption ?? String()}
-    set {_caption = newValue}
+    get {return _storage._caption ?? String()}
+    set {_uniqueStorage()._caption = newValue}
   }
   /// Returns true if `caption` has been explicitly set.
-  var hasCaption: Bool {return self._caption != nil}
+  var hasCaption: Bool {return _storage._caption != nil}
   /// Clears the value of `caption`. Subsequent reads from it will return its default value.
-  mutating func clearCaption() {self._caption = nil}
+  mutating func clearCaption() {_uniqueStorage()._caption = nil}
 
   var blurHash: String {
-    get {return _blurHash ?? String()}
-    set {_blurHash = newValue}
+    get {return _storage._blurHash ?? String()}
+    set {_uniqueStorage()._blurHash = newValue}
   }
   /// Returns true if `blurHash` has been explicitly set.
-  var hasBlurHash: Bool {return self._blurHash != nil}
+  var hasBlurHash: Bool {return _storage._blurHash != nil}
   /// Clears the value of `blurHash`. Subsequent reads from it will return its default value.
-  mutating func clearBlurHash() {self._blurHash = nil}
+  mutating func clearBlurHash() {_uniqueStorage()._blurHash = nil}
 
   var uploadTimestamp: UInt64 {
-    get {return _uploadTimestamp ?? 0}
-    set {_uploadTimestamp = newValue}
+    get {return _storage._uploadTimestamp ?? 0}
+    set {_uniqueStorage()._uploadTimestamp = newValue}
   }
   /// Returns true if `uploadTimestamp` has been explicitly set.
-  var hasUploadTimestamp: Bool {return self._uploadTimestamp != nil}
+  var hasUploadTimestamp: Bool {return _storage._uploadTimestamp != nil}
   /// Clears the value of `uploadTimestamp`. Subsequent reads from it will return its default value.
-  mutating func clearUploadTimestamp() {self._uploadTimestamp = nil}
+  mutating func clearUploadTimestamp() {_uniqueStorage()._uploadTimestamp = nil}
 
-  /// Next ID: 16
   var cdnNumber: UInt32 {
-    get {return _cdnNumber ?? 0}
-    set {_cdnNumber = newValue}
+    get {return _storage._cdnNumber ?? 0}
+    set {_uniqueStorage()._cdnNumber = newValue}
   }
   /// Returns true if `cdnNumber` has been explicitly set.
-  var hasCdnNumber: Bool {return self._cdnNumber != nil}
+  var hasCdnNumber: Bool {return _storage._cdnNumber != nil}
   /// Clears the value of `cdnNumber`. Subsequent reads from it will return its default value.
-  mutating func clearCdnNumber() {self._cdnNumber = nil}
+  mutating func clearCdnNumber() {_uniqueStorage()._cdnNumber = nil}
+
+  var credentionals: String {
+    get {return _storage._credentionals ?? String()}
+    set {_uniqueStorage()._credentionals = newValue}
+  }
+  /// Returns true if `credentionals` has been explicitly set.
+  var hasCredentionals: Bool {return _storage._credentionals != nil}
+  /// Clears the value of `credentionals`. Subsequent reads from it will return its default value.
+  mutating func clearCredentionals() {_uniqueStorage()._credentionals = nil}
+
+  /// Next ID: 16
+  var bucket: String {
+    get {return _storage._bucket ?? String()}
+    set {_uniqueStorage()._bucket = newValue}
+  }
+  /// Returns true if `bucket` has been explicitly set.
+  var hasBucket: Bool {return _storage._bucket != nil}
+  /// Clears the value of `bucket`. Subsequent reads from it will return its default value.
+  mutating func clearBucket() {_uniqueStorage()._bucket = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -2962,23 +2969,7 @@ struct SignalServiceProtos_AttachmentPointer {
 
   init() {}
 
-  fileprivate var _cdnID: UInt64?
-  fileprivate var _cdnKey: String?
-  fileprivate var _credentionals: String?
-  fileprivate var _bucket: String?
-  fileprivate var _contentType: String?
-  fileprivate var _key: Data?
-  fileprivate var _size: UInt32?
-  fileprivate var _thumbnail: Data?
-  fileprivate var _digest: Data?
-  fileprivate var _fileName: String?
-  fileprivate var _flags: UInt32?
-  fileprivate var _width: UInt32?
-  fileprivate var _height: UInt32?
-  fileprivate var _caption: String?
-  fileprivate var _blurHash: String?
-  fileprivate var _uploadTimestamp: UInt64?
-  fileprivate var _cdnNumber: UInt32?
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 #if swift(>=4.2)
@@ -2995,50 +2986,44 @@ struct SignalServiceProtos_GroupContext {
   // methods supported on all messages.
 
   var id: Data {
-    get {return _storage._id ?? Data()}
-    set {_uniqueStorage()._id = newValue}
+    get {return _id ?? Data()}
+    set {_id = newValue}
   }
   /// Returns true if `id` has been explicitly set.
-  var hasID: Bool {return _storage._id != nil}
+  var hasID: Bool {return self._id != nil}
   /// Clears the value of `id`. Subsequent reads from it will return its default value.
-  mutating func clearID() {_uniqueStorage()._id = nil}
+  mutating func clearID() {self._id = nil}
 
   var type: SignalServiceProtos_GroupContext.TypeEnum {
-    get {return _storage._type ?? .unknown}
-    set {_uniqueStorage()._type = newValue}
+    get {return _type ?? .unknown}
+    set {_type = newValue}
   }
   /// Returns true if `type` has been explicitly set.
-  var hasType: Bool {return _storage._type != nil}
+  var hasType: Bool {return self._type != nil}
   /// Clears the value of `type`. Subsequent reads from it will return its default value.
-  mutating func clearType() {_uniqueStorage()._type = nil}
+  mutating func clearType() {self._type = nil}
 
   var name: String {
-    get {return _storage._name ?? String()}
-    set {_uniqueStorage()._name = newValue}
+    get {return _name ?? String()}
+    set {_name = newValue}
   }
   /// Returns true if `name` has been explicitly set.
-  var hasName: Bool {return _storage._name != nil}
+  var hasName: Bool {return self._name != nil}
   /// Clears the value of `name`. Subsequent reads from it will return its default value.
-  mutating func clearName() {_uniqueStorage()._name = nil}
+  mutating func clearName() {self._name = nil}
 
-  var membersE164: [String] {
-    get {return _storage._membersE164}
-    set {_uniqueStorage()._membersE164 = newValue}
-  }
+  var membersE164: [String] = []
 
-  var members: [SignalServiceProtos_GroupContext.Member] {
-    get {return _storage._members}
-    set {_uniqueStorage()._members = newValue}
-  }
+  var members: [SignalServiceProtos_GroupContext.Member] = []
 
   var avatar: SignalServiceProtos_AttachmentPointer {
-    get {return _storage._avatar ?? SignalServiceProtos_AttachmentPointer()}
-    set {_uniqueStorage()._avatar = newValue}
+    get {return _avatar ?? SignalServiceProtos_AttachmentPointer()}
+    set {_avatar = newValue}
   }
   /// Returns true if `avatar` has been explicitly set.
-  var hasAvatar: Bool {return _storage._avatar != nil}
+  var hasAvatar: Bool {return self._avatar != nil}
   /// Clears the value of `avatar`. Subsequent reads from it will return its default value.
-  mutating func clearAvatar() {_uniqueStorage()._avatar = nil}
+  mutating func clearAvatar() {self._avatar = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -3100,7 +3085,10 @@ struct SignalServiceProtos_GroupContext {
 
   init() {}
 
-  fileprivate var _storage = _StorageClass.defaultInstance
+  fileprivate var _id: Data? = nil
+  fileprivate var _type: SignalServiceProtos_GroupContext.TypeEnum? = nil
+  fileprivate var _name: String? = nil
+  fileprivate var _avatar: SignalServiceProtos_AttachmentPointer? = nil
 }
 
 #if swift(>=4.2)
@@ -4469,73 +4457,37 @@ extension SignalServiceProtos_DataMessage.Quote.QuotedAttachment: SwiftProtobuf.
     3: .same(proto: "thumbnail"),
   ]
 
-  fileprivate class _StorageClass {
-    var _contentType: String? = nil
-    var _fileName: String? = nil
-    var _thumbnail: SignalServiceProtos_AttachmentPointer? = nil
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _contentType = source._contentType
-      _fileName = source._fileName
-      _thumbnail = source._thumbnail
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        // The use of inline closures is to circumvent an issue where the compiler
-        // allocates stack space for every case branch when no optimizations are
-        // enabled. https://github.com/apple/swift-protobuf/issues/1034
-        switch fieldNumber {
-        case 1: try { try decoder.decodeSingularStringField(value: &_storage._contentType) }()
-        case 2: try { try decoder.decodeSingularStringField(value: &_storage._fileName) }()
-        case 3: try { try decoder.decodeSingularMessageField(value: &_storage._thumbnail) }()
-        default: break
-        }
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self._contentType) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._fileName) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._thumbnail) }()
+      default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if let v = _storage._contentType {
-        try visitor.visitSingularStringField(value: v, fieldNumber: 1)
-      }
-      if let v = _storage._fileName {
-        try visitor.visitSingularStringField(value: v, fieldNumber: 2)
-      }
-      if let v = _storage._thumbnail {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-      }
+    if let v = self._contentType {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    }
+    if let v = self._fileName {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    }
+    if let v = self._thumbnail {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SignalServiceProtos_DataMessage.Quote.QuotedAttachment, rhs: SignalServiceProtos_DataMessage.Quote.QuotedAttachment) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._contentType != rhs_storage._contentType {return false}
-        if _storage._fileName != rhs_storage._fileName {return false}
-        if _storage._thumbnail != rhs_storage._thumbnail {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
+    if lhs._contentType != rhs._contentType {return false}
+    if lhs._fileName != rhs._fileName {return false}
+    if lhs._thumbnail != rhs._thumbnail {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -4552,94 +4504,52 @@ extension SignalServiceProtos_DataMessage.Contact: SwiftProtobuf.Message, SwiftP
     7: .same(proto: "organization"),
   ]
 
-  fileprivate class _StorageClass {
-    var _name: SignalServiceProtos_DataMessage.Contact.Name? = nil
-    var _number: [SignalServiceProtos_DataMessage.Contact.Phone] = []
-    var _email: [SignalServiceProtos_DataMessage.Contact.Email] = []
-    var _address: [SignalServiceProtos_DataMessage.Contact.PostalAddress] = []
-    var _avatar: SignalServiceProtos_DataMessage.Contact.Avatar? = nil
-    var _organization: String? = nil
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _name = source._name
-      _number = source._number
-      _email = source._email
-      _address = source._address
-      _avatar = source._avatar
-      _organization = source._organization
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        // The use of inline closures is to circumvent an issue where the compiler
-        // allocates stack space for every case branch when no optimizations are
-        // enabled. https://github.com/apple/swift-protobuf/issues/1034
-        switch fieldNumber {
-        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._name) }()
-        case 3: try { try decoder.decodeRepeatedMessageField(value: &_storage._number) }()
-        case 4: try { try decoder.decodeRepeatedMessageField(value: &_storage._email) }()
-        case 5: try { try decoder.decodeRepeatedMessageField(value: &_storage._address) }()
-        case 6: try { try decoder.decodeSingularMessageField(value: &_storage._avatar) }()
-        case 7: try { try decoder.decodeSingularStringField(value: &_storage._organization) }()
-        default: break
-        }
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._name) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.number) }()
+      case 4: try { try decoder.decodeRepeatedMessageField(value: &self.email) }()
+      case 5: try { try decoder.decodeRepeatedMessageField(value: &self.address) }()
+      case 6: try { try decoder.decodeSingularMessageField(value: &self._avatar) }()
+      case 7: try { try decoder.decodeSingularStringField(value: &self._organization) }()
+      default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if let v = _storage._name {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-      }
-      if !_storage._number.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._number, fieldNumber: 3)
-      }
-      if !_storage._email.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._email, fieldNumber: 4)
-      }
-      if !_storage._address.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._address, fieldNumber: 5)
-      }
-      if let v = _storage._avatar {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
-      }
-      if let v = _storage._organization {
-        try visitor.visitSingularStringField(value: v, fieldNumber: 7)
-      }
+    if let v = self._name {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }
+    if !self.number.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.number, fieldNumber: 3)
+    }
+    if !self.email.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.email, fieldNumber: 4)
+    }
+    if !self.address.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.address, fieldNumber: 5)
+    }
+    if let v = self._avatar {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    }
+    if let v = self._organization {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 7)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SignalServiceProtos_DataMessage.Contact, rhs: SignalServiceProtos_DataMessage.Contact) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._name != rhs_storage._name {return false}
-        if _storage._number != rhs_storage._number {return false}
-        if _storage._email != rhs_storage._email {return false}
-        if _storage._address != rhs_storage._address {return false}
-        if _storage._avatar != rhs_storage._avatar {return false}
-        if _storage._organization != rhs_storage._organization {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
+    if lhs._name != rhs._name {return false}
+    if lhs.number != rhs.number {return false}
+    if lhs.email != rhs.email {return false}
+    if lhs.address != rhs.address {return false}
+    if lhs._avatar != rhs._avatar {return false}
+    if lhs._organization != rhs._organization {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -4949,87 +4859,47 @@ extension SignalServiceProtos_DataMessage.Preview: SwiftProtobuf.Message, SwiftP
     5: .same(proto: "date"),
   ]
 
-  fileprivate class _StorageClass {
-    var _url: String? = nil
-    var _title: String? = nil
-    var _image: SignalServiceProtos_AttachmentPointer? = nil
-    var _previewDescription: String? = nil
-    var _date: UInt64? = nil
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _url = source._url
-      _title = source._title
-      _image = source._image
-      _previewDescription = source._previewDescription
-      _date = source._date
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        // The use of inline closures is to circumvent an issue where the compiler
-        // allocates stack space for every case branch when no optimizations are
-        // enabled. https://github.com/apple/swift-protobuf/issues/1034
-        switch fieldNumber {
-        case 1: try { try decoder.decodeSingularStringField(value: &_storage._url) }()
-        case 2: try { try decoder.decodeSingularStringField(value: &_storage._title) }()
-        case 3: try { try decoder.decodeSingularMessageField(value: &_storage._image) }()
-        case 4: try { try decoder.decodeSingularStringField(value: &_storage._previewDescription) }()
-        case 5: try { try decoder.decodeSingularUInt64Field(value: &_storage._date) }()
-        default: break
-        }
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self._url) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._title) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._image) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self._previewDescription) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self._date) }()
+      default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if let v = _storage._url {
-        try visitor.visitSingularStringField(value: v, fieldNumber: 1)
-      }
-      if let v = _storage._title {
-        try visitor.visitSingularStringField(value: v, fieldNumber: 2)
-      }
-      if let v = _storage._image {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-      }
-      if let v = _storage._previewDescription {
-        try visitor.visitSingularStringField(value: v, fieldNumber: 4)
-      }
-      if let v = _storage._date {
-        try visitor.visitSingularUInt64Field(value: v, fieldNumber: 5)
-      }
+    if let v = self._url {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    }
+    if let v = self._title {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    }
+    if let v = self._image {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    }
+    if let v = self._previewDescription {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 4)
+    }
+    if let v = self._date {
+      try visitor.visitSingularUInt64Field(value: v, fieldNumber: 5)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SignalServiceProtos_DataMessage.Preview, rhs: SignalServiceProtos_DataMessage.Preview) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._url != rhs_storage._url {return false}
-        if _storage._title != rhs_storage._title {return false}
-        if _storage._image != rhs_storage._image {return false}
-        if _storage._previewDescription != rhs_storage._previewDescription {return false}
-        if _storage._date != rhs_storage._date {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
+    if lhs._url != rhs._url {return false}
+    if lhs._title != rhs._title {return false}
+    if lhs._image != rhs._image {return false}
+    if lhs._previewDescription != rhs._previewDescription {return false}
+    if lhs._date != rhs._date {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -5045,87 +4915,47 @@ extension SignalServiceProtos_DataMessage.Sticker: SwiftProtobuf.Message, SwiftP
     5: .same(proto: "emoji"),
   ]
 
-  fileprivate class _StorageClass {
-    var _packID: Data? = nil
-    var _packKey: Data? = nil
-    var _stickerID: UInt32? = nil
-    var _data: SignalServiceProtos_AttachmentPointer? = nil
-    var _emoji: String? = nil
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _packID = source._packID
-      _packKey = source._packKey
-      _stickerID = source._stickerID
-      _data = source._data
-      _emoji = source._emoji
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        // The use of inline closures is to circumvent an issue where the compiler
-        // allocates stack space for every case branch when no optimizations are
-        // enabled. https://github.com/apple/swift-protobuf/issues/1034
-        switch fieldNumber {
-        case 1: try { try decoder.decodeSingularBytesField(value: &_storage._packID) }()
-        case 2: try { try decoder.decodeSingularBytesField(value: &_storage._packKey) }()
-        case 3: try { try decoder.decodeSingularUInt32Field(value: &_storage._stickerID) }()
-        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._data) }()
-        case 5: try { try decoder.decodeSingularStringField(value: &_storage._emoji) }()
-        default: break
-        }
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBytesField(value: &self._packID) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self._packKey) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self._stickerID) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._data) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self._emoji) }()
+      default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if let v = _storage._packID {
-        try visitor.visitSingularBytesField(value: v, fieldNumber: 1)
-      }
-      if let v = _storage._packKey {
-        try visitor.visitSingularBytesField(value: v, fieldNumber: 2)
-      }
-      if let v = _storage._stickerID {
-        try visitor.visitSingularUInt32Field(value: v, fieldNumber: 3)
-      }
-      if let v = _storage._data {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
-      }
-      if let v = _storage._emoji {
-        try visitor.visitSingularStringField(value: v, fieldNumber: 5)
-      }
+    if let v = self._packID {
+      try visitor.visitSingularBytesField(value: v, fieldNumber: 1)
+    }
+    if let v = self._packKey {
+      try visitor.visitSingularBytesField(value: v, fieldNumber: 2)
+    }
+    if let v = self._stickerID {
+      try visitor.visitSingularUInt32Field(value: v, fieldNumber: 3)
+    }
+    if let v = self._data {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    }
+    if let v = self._emoji {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 5)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SignalServiceProtos_DataMessage.Sticker, rhs: SignalServiceProtos_DataMessage.Sticker) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._packID != rhs_storage._packID {return false}
-        if _storage._packKey != rhs_storage._packKey {return false}
-        if _storage._stickerID != rhs_storage._stickerID {return false}
-        if _storage._data != rhs_storage._data {return false}
-        if _storage._emoji != rhs_storage._emoji {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
+    if lhs._packID != rhs._packID {return false}
+    if lhs._packKey != rhs._packKey {return false}
+    if lhs._stickerID != rhs._stickerID {return false}
+    if lhs._data != rhs._data {return false}
+    if lhs._emoji != rhs._emoji {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -6273,110 +6103,174 @@ extension SignalServiceProtos_AttachmentPointer: SwiftProtobuf.Message, SwiftPro
     13: .same(proto: "uploadTimestamp"),
     14: .same(proto: "cdnNumber"),
     16: .same(proto: "credentionals"),
-    17: .same(proto: "bucket")
+    17: .same(proto: "bucket"),
   ]
 
+  fileprivate class _StorageClass {
+    var _cdnID: UInt64? = nil
+    var _cdnKey: String? = nil
+    var _contentType: String? = nil
+    var _key: Data? = nil
+    var _size: UInt32? = nil
+    var _thumbnail: Data? = nil
+    var _digest: Data? = nil
+    var _fileName: String? = nil
+    var _flags: UInt32? = nil
+    var _width: UInt32? = nil
+    var _height: UInt32? = nil
+    var _caption: String? = nil
+    var _blurHash: String? = nil
+    var _uploadTimestamp: UInt64? = nil
+    var _cdnNumber: UInt32? = nil
+    var _credentionals: String? = nil
+    var _bucket: String? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _cdnID = source._cdnID
+      _cdnKey = source._cdnKey
+      _contentType = source._contentType
+      _key = source._key
+      _size = source._size
+      _thumbnail = source._thumbnail
+      _digest = source._digest
+      _fileName = source._fileName
+      _flags = source._flags
+      _width = source._width
+      _height = source._height
+      _caption = source._caption
+      _blurHash = source._blurHash
+      _uploadTimestamp = source._uploadTimestamp
+      _cdnNumber = source._cdnNumber
+      _credentionals = source._credentionals
+      _bucket = source._bucket
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularFixed64Field(value: &self._cdnID) }()
-      case 2: try { try decoder.decodeSingularStringField(value: &self._contentType) }()
-      case 3: try { try decoder.decodeSingularBytesField(value: &self._key) }()
-      case 4: try { try decoder.decodeSingularUInt32Field(value: &self._size) }()
-      case 5: try { try decoder.decodeSingularBytesField(value: &self._thumbnail) }()
-      case 6: try { try decoder.decodeSingularBytesField(value: &self._digest) }()
-      case 7: try { try decoder.decodeSingularStringField(value: &self._fileName) }()
-      case 8: try { try decoder.decodeSingularUInt32Field(value: &self._flags) }()
-      case 9: try { try decoder.decodeSingularUInt32Field(value: &self._width) }()
-      case 10: try { try decoder.decodeSingularUInt32Field(value: &self._height) }()
-      case 11: try { try decoder.decodeSingularStringField(value: &self._caption) }()
-      case 12: try { try decoder.decodeSingularStringField(value: &self._blurHash) }()
-      case 13: try { try decoder.decodeSingularUInt64Field(value: &self._uploadTimestamp) }()
-      case 14: try { try decoder.decodeSingularUInt32Field(value: &self._cdnNumber) }()
-      case 15: try { try decoder.decodeSingularStringField(value: &self._cdnKey) }()
-      case 16: try { try decoder.decodeSingularStringField(value: &self._credentionals) }()
-      case 17: try { try decoder.decodeSingularStringField(value: &self._bucket) }()
-      default: break
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularFixed64Field(value: &_storage._cdnID) }()
+        case 2: try { try decoder.decodeSingularStringField(value: &_storage._contentType) }()
+        case 3: try { try decoder.decodeSingularBytesField(value: &_storage._key) }()
+        case 4: try { try decoder.decodeSingularUInt32Field(value: &_storage._size) }()
+        case 5: try { try decoder.decodeSingularBytesField(value: &_storage._thumbnail) }()
+        case 6: try { try decoder.decodeSingularBytesField(value: &_storage._digest) }()
+        case 7: try { try decoder.decodeSingularStringField(value: &_storage._fileName) }()
+        case 8: try { try decoder.decodeSingularUInt32Field(value: &_storage._flags) }()
+        case 9: try { try decoder.decodeSingularUInt32Field(value: &_storage._width) }()
+        case 10: try { try decoder.decodeSingularUInt32Field(value: &_storage._height) }()
+        case 11: try { try decoder.decodeSingularStringField(value: &_storage._caption) }()
+        case 12: try { try decoder.decodeSingularStringField(value: &_storage._blurHash) }()
+        case 13: try { try decoder.decodeSingularUInt64Field(value: &_storage._uploadTimestamp) }()
+        case 14: try { try decoder.decodeSingularUInt32Field(value: &_storage._cdnNumber) }()
+        case 15: try { try decoder.decodeSingularStringField(value: &_storage._cdnKey) }()
+        case 16: try { try decoder.decodeSingularStringField(value: &_storage._credentionals) }()
+        case 17: try { try decoder.decodeSingularStringField(value: &_storage._bucket) }()
+        default: break
+        }
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if let v = self._cdnID {
-      try visitor.visitSingularFixed64Field(value: v, fieldNumber: 1)
-    }
-    if let v = self._contentType {
-      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
-    }
-    if let v = self._key {
-      try visitor.visitSingularBytesField(value: v, fieldNumber: 3)
-    }
-    if let v = self._size {
-      try visitor.visitSingularUInt32Field(value: v, fieldNumber: 4)
-    }
-    if let v = self._thumbnail {
-      try visitor.visitSingularBytesField(value: v, fieldNumber: 5)
-    }
-    if let v = self._digest {
-      try visitor.visitSingularBytesField(value: v, fieldNumber: 6)
-    }
-    if let v = self._fileName {
-      try visitor.visitSingularStringField(value: v, fieldNumber: 7)
-    }
-    if let v = self._flags {
-      try visitor.visitSingularUInt32Field(value: v, fieldNumber: 8)
-    }
-    if let v = self._width {
-      try visitor.visitSingularUInt32Field(value: v, fieldNumber: 9)
-    }
-    if let v = self._height {
-      try visitor.visitSingularUInt32Field(value: v, fieldNumber: 10)
-    }
-    if let v = self._caption {
-      try visitor.visitSingularStringField(value: v, fieldNumber: 11)
-    }
-    if let v = self._blurHash {
-      try visitor.visitSingularStringField(value: v, fieldNumber: 12)
-    }
-    if let v = self._uploadTimestamp {
-      try visitor.visitSingularUInt64Field(value: v, fieldNumber: 13)
-    }
-    if let v = self._cdnNumber {
-      try visitor.visitSingularUInt32Field(value: v, fieldNumber: 14)
-    }
-    if let v = self._cdnKey {
-      try visitor.visitSingularStringField(value: v, fieldNumber: 15)
-    }
-    if let v = self._credentionals {
-      try visitor.visitSingularStringField(value: v, fieldNumber: 16)
-    }
-    if let v = self._bucket {
-      try visitor.visitSingularStringField(value: v, fieldNumber: 17)
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._cdnID {
+        try visitor.visitSingularFixed64Field(value: v, fieldNumber: 1)
+      }
+      if let v = _storage._contentType {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+      }
+      if let v = _storage._key {
+        try visitor.visitSingularBytesField(value: v, fieldNumber: 3)
+      }
+      if let v = _storage._size {
+        try visitor.visitSingularUInt32Field(value: v, fieldNumber: 4)
+      }
+      if let v = _storage._thumbnail {
+        try visitor.visitSingularBytesField(value: v, fieldNumber: 5)
+      }
+      if let v = _storage._digest {
+        try visitor.visitSingularBytesField(value: v, fieldNumber: 6)
+      }
+      if let v = _storage._fileName {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 7)
+      }
+      if let v = _storage._flags {
+        try visitor.visitSingularUInt32Field(value: v, fieldNumber: 8)
+      }
+      if let v = _storage._width {
+        try visitor.visitSingularUInt32Field(value: v, fieldNumber: 9)
+      }
+      if let v = _storage._height {
+        try visitor.visitSingularUInt32Field(value: v, fieldNumber: 10)
+      }
+      if let v = _storage._caption {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 11)
+      }
+      if let v = _storage._blurHash {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 12)
+      }
+      if let v = _storage._uploadTimestamp {
+        try visitor.visitSingularUInt64Field(value: v, fieldNumber: 13)
+      }
+      if let v = _storage._cdnNumber {
+        try visitor.visitSingularUInt32Field(value: v, fieldNumber: 14)
+      }
+      if let v = _storage._cdnKey {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 15)
+      }
+      if let v = _storage._credentionals {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 16)
+      }
+      if let v = _storage._bucket {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 17)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SignalServiceProtos_AttachmentPointer, rhs: SignalServiceProtos_AttachmentPointer) -> Bool {
-    if lhs._cdnID != rhs._cdnID {return false}
-    if lhs._cdnKey != rhs._cdnKey {return false}
-    if lhs._credentionals != rhs._credentionals {return false}
-    if lhs._bucket != rhs._bucket {return false}
-    if lhs._contentType != rhs._contentType {return false}
-    if lhs._key != rhs._key {return false}
-    if lhs._size != rhs._size {return false}
-    if lhs._thumbnail != rhs._thumbnail {return false}
-    if lhs._digest != rhs._digest {return false}
-    if lhs._fileName != rhs._fileName {return false}
-    if lhs._flags != rhs._flags {return false}
-    if lhs._width != rhs._width {return false}
-    if lhs._height != rhs._height {return false}
-    if lhs._caption != rhs._caption {return false}
-    if lhs._blurHash != rhs._blurHash {return false}
-    if lhs._uploadTimestamp != rhs._uploadTimestamp {return false}
-    if lhs._cdnNumber != rhs._cdnNumber {return false}
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._cdnID != rhs_storage._cdnID {return false}
+        if _storage._cdnKey != rhs_storage._cdnKey {return false}
+        if _storage._contentType != rhs_storage._contentType {return false}
+        if _storage._key != rhs_storage._key {return false}
+        if _storage._size != rhs_storage._size {return false}
+        if _storage._thumbnail != rhs_storage._thumbnail {return false}
+        if _storage._digest != rhs_storage._digest {return false}
+        if _storage._fileName != rhs_storage._fileName {return false}
+        if _storage._flags != rhs_storage._flags {return false}
+        if _storage._width != rhs_storage._width {return false}
+        if _storage._height != rhs_storage._height {return false}
+        if _storage._caption != rhs_storage._caption {return false}
+        if _storage._blurHash != rhs_storage._blurHash {return false}
+        if _storage._uploadTimestamp != rhs_storage._uploadTimestamp {return false}
+        if _storage._cdnNumber != rhs_storage._cdnNumber {return false}
+        if _storage._credentionals != rhs_storage._credentionals {return false}
+        if _storage._bucket != rhs_storage._bucket {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -6401,94 +6295,52 @@ extension SignalServiceProtos_GroupContext: SwiftProtobuf.Message, SwiftProtobuf
     5: .same(proto: "avatar"),
   ]
 
-  fileprivate class _StorageClass {
-    var _id: Data? = nil
-    var _type: SignalServiceProtos_GroupContext.TypeEnum? = nil
-    var _name: String? = nil
-    var _membersE164: [String] = []
-    var _members: [SignalServiceProtos_GroupContext.Member] = []
-    var _avatar: SignalServiceProtos_AttachmentPointer? = nil
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _id = source._id
-      _type = source._type
-      _name = source._name
-      _membersE164 = source._membersE164
-      _members = source._members
-      _avatar = source._avatar
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        // The use of inline closures is to circumvent an issue where the compiler
-        // allocates stack space for every case branch when no optimizations are
-        // enabled. https://github.com/apple/swift-protobuf/issues/1034
-        switch fieldNumber {
-        case 1: try { try decoder.decodeSingularBytesField(value: &_storage._id) }()
-        case 2: try { try decoder.decodeSingularEnumField(value: &_storage._type) }()
-        case 3: try { try decoder.decodeSingularStringField(value: &_storage._name) }()
-        case 4: try { try decoder.decodeRepeatedStringField(value: &_storage._membersE164) }()
-        case 5: try { try decoder.decodeSingularMessageField(value: &_storage._avatar) }()
-        case 6: try { try decoder.decodeRepeatedMessageField(value: &_storage._members) }()
-        default: break
-        }
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBytesField(value: &self._id) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self._type) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._name) }()
+      case 4: try { try decoder.decodeRepeatedStringField(value: &self.membersE164) }()
+      case 5: try { try decoder.decodeSingularMessageField(value: &self._avatar) }()
+      case 6: try { try decoder.decodeRepeatedMessageField(value: &self.members) }()
+      default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if let v = _storage._id {
-        try visitor.visitSingularBytesField(value: v, fieldNumber: 1)
-      }
-      if let v = _storage._type {
-        try visitor.visitSingularEnumField(value: v, fieldNumber: 2)
-      }
-      if let v = _storage._name {
-        try visitor.visitSingularStringField(value: v, fieldNumber: 3)
-      }
-      if !_storage._membersE164.isEmpty {
-        try visitor.visitRepeatedStringField(value: _storage._membersE164, fieldNumber: 4)
-      }
-      if let v = _storage._avatar {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
-      }
-      if !_storage._members.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._members, fieldNumber: 6)
-      }
+    if let v = self._id {
+      try visitor.visitSingularBytesField(value: v, fieldNumber: 1)
+    }
+    if let v = self._type {
+      try visitor.visitSingularEnumField(value: v, fieldNumber: 2)
+    }
+    if let v = self._name {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    }
+    if !self.membersE164.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.membersE164, fieldNumber: 4)
+    }
+    if let v = self._avatar {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    }
+    if !self.members.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.members, fieldNumber: 6)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: SignalServiceProtos_GroupContext, rhs: SignalServiceProtos_GroupContext) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._id != rhs_storage._id {return false}
-        if _storage._type != rhs_storage._type {return false}
-        if _storage._name != rhs_storage._name {return false}
-        if _storage._membersE164 != rhs_storage._membersE164 {return false}
-        if _storage._members != rhs_storage._members {return false}
-        if _storage._avatar != rhs_storage._avatar {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
+    if lhs._id != rhs._id {return false}
+    if lhs._type != rhs._type {return false}
+    if lhs._name != rhs._name {return false}
+    if lhs.membersE164 != rhs.membersE164 {return false}
+    if lhs.members != rhs.members {return false}
+    if lhs._avatar != rhs._avatar {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
