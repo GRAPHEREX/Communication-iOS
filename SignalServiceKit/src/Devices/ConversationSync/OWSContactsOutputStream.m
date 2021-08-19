@@ -35,8 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
     OWSAssertDebug(contactsManager);
 
     SSKProtoContactDetailsBuilder *contactBuilder = [SSKProtoContactDetails builder];
-    [contactBuilder setContactE164:signalAccount.recipientAddress.phoneNumber];
-    [contactBuilder setContactUuid:signalAccount.recipientAddress.uuidString];
+    [contactBuilder setNumber:signalAccount.recipientAddress.phoneNumber];
+    [contactBuilder setUuid:signalAccount.recipientAddress.uuidString];
     [contactBuilder setName:signalAccount.contact.fullName];
     [contactBuilder setColor:conversationColorName];
 

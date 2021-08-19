@@ -12,7 +12,10 @@ pod 'SwiftProtobuf', "1.7.0"
 pod 'SignalCoreKit', git: 'https://github.com/signalapp/SignalCoreKit.git', testspecs: ["Tests"]
 # pod 'SignalCoreKit', path: '../SignalCoreKit', testspecs: ["Tests"]
 
-pod 'SignalClient', git: 'https://github.com/signalapp/libsignal-client.git', testspecs: ["Tests"]
+#pod 'SignalClient', :git => 'https://github.com/signalapp/libsignal-client.git', :tag => 'swift-0.3.1', testspecs: ["Tests"]
+pod 'SignalClient', :git => 'https://github.com/signalapp/libsignal-client.git', :tag => 'v0.8.3', testspecs: ["Tests"]
+
+
 # pod 'SignalClient', path: '../libsignal-client', testspecs: ["Tests"]
 
 pod 'Curve25519Kit', git: 'ssh://git@github.com/signalapp/Curve25519Kit', testspecs: ["Tests"], branch: 'feature/SignalClient-adoption'

@@ -367,60 +367,60 @@ NS_ASSUME_NONNULL_BEGIN
                                                     [[contentBuilder buildIgnoringErrors] serializedDataIgnoringErrors];
                                             }];
                         }]];
-    [items
-        addObject:[OWSTableItem
-                      itemWithTitle:@"Send malformed sync sent message 4"
-                        actionBlock:^{
-                            [DebugUIStress
-                                sendStressMessage:thread
-                                            block:^(SignalServiceAddress *address) {
-                                                SSKProtoContentBuilder *contentBuilder = [SSKProtoContent builder];
-                                                SSKProtoSyncMessageBuilder *syncMessageBuilder =
-                                                    [SSKProtoSyncMessage builder];
-                                                SSKProtoSyncMessageSentBuilder *sentBuilder =
-                                                    [SSKProtoSyncMessageSent builder];
-                                                sentBuilder.destinationE164 = @"abc";
-                                                sentBuilder.timestamp = 0;
-                                                SSKProtoDataMessageBuilder *dataBuilder = [SSKProtoDataMessage builder];
-                                                dataBuilder.body = @" ";
-                                                SSKProtoGroupContextBuilder *groupBuilder = [SSKProtoGroupContext
-                                                    builderWithId:[Cryptography generateRandomBytes:1]];
-                                                [groupBuilder setType:SSKProtoGroupContextTypeDeliver];
-                                                dataBuilder.group = [groupBuilder buildIgnoringErrors];
-                                                sentBuilder.message = [dataBuilder buildIgnoringErrors];
-                                                syncMessageBuilder.sent = [sentBuilder buildIgnoringErrors];
-                                                contentBuilder.syncMessage = [syncMessageBuilder buildIgnoringErrors];
-                                                return
-                                                    [[contentBuilder buildIgnoringErrors] serializedDataIgnoringErrors];
-                                            }];
-                        }]];
-    [items
-        addObject:[OWSTableItem
-                      itemWithTitle:@"Send malformed sync sent message 5"
-                        actionBlock:^{
-                            [DebugUIStress
-                                sendStressMessage:thread
-                                            block:^(SignalServiceAddress *address) {
-                                                SSKProtoContentBuilder *contentBuilder = [SSKProtoContent builder];
-                                                SSKProtoSyncMessageBuilder *syncMessageBuilder =
-                                                    [SSKProtoSyncMessage builder];
-                                                SSKProtoSyncMessageSentBuilder *sentBuilder =
-                                                    [SSKProtoSyncMessageSent builder];
-                                                sentBuilder.destinationE164 = @"abc";
-                                                sentBuilder.timestamp = 0;
-                                                SSKProtoDataMessageBuilder *dataBuilder = [SSKProtoDataMessage builder];
-                                                dataBuilder.body = @" ";
-                                                SSKProtoGroupContextBuilder *groupBuilder = [SSKProtoGroupContext
-                                                    builderWithId:[Cryptography generateRandomBytes:1]];
-                                                [groupBuilder setType:SSKProtoGroupContextTypeDeliver];
-                                                dataBuilder.group = [groupBuilder buildIgnoringErrors];
-                                                sentBuilder.message = [dataBuilder buildIgnoringErrors];
-                                                syncMessageBuilder.sent = [sentBuilder buildIgnoringErrors];
-                                                contentBuilder.syncMessage = [syncMessageBuilder buildIgnoringErrors];
-                                                return
-                                                    [[contentBuilder buildIgnoringErrors] serializedDataIgnoringErrors];
-                                            }];
-                        }]];
+//    [items
+//        addObject:[OWSTableItem
+//                      itemWithTitle:@"Send malformed sync sent message 4"
+//                        actionBlock:^{
+//                            [DebugUIStress
+//                                sendStressMessage:thread
+//                                            block:^(SignalServiceAddress *address) {
+//                                                SSKProtoContentBuilder *contentBuilder = [SSKProtoContent builder];
+//                                                SSKProtoSyncMessageBuilder *syncMessageBuilder =
+//                                                    [SSKProtoSyncMessage builder];
+//                                                SSKProtoSyncMessageSentBuilder *sentBuilder =
+//                                                    [SSKProtoSyncMessageSent builder];
+//                                                sentBuilder.destinationE164 = @"abc";
+//                                                sentBuilder.timestamp = 0;
+//                                                SSKProtoDataMessageBuilder *dataBuilder = [SSKProtoDataMessage builder];
+//                                                dataBuilder.body = @" ";
+//                                                SSKProtoGroupContextBuilder *groupBuilder = [SSKProtoGroupContext
+//                                                    builderWithId:[Cryptography generateRandomBytes:1]];
+//                                                [groupBuilder setType:SSKProtoGroupContextTypeDeliver];
+//                                                dataBuilder.group = [groupBuilder buildIgnoringErrors];
+//                                                sentBuilder.message = [dataBuilder buildIgnoringErrors];
+//                                                syncMessageBuilder.sent = [sentBuilder buildIgnoringErrors];
+//                                                contentBuilder.syncMessage = [syncMessageBuilder buildIgnoringErrors];
+//                                                return
+//                                                    [[contentBuilder buildIgnoringErrors] serializedDataIgnoringErrors];
+//                                            }];
+//                        }]];
+//    [items
+//        addObject:[OWSTableItem
+//                      itemWithTitle:@"Send malformed sync sent message 5"
+//                        actionBlock:^{
+//                            [DebugUIStress
+//                                sendStressMessage:thread
+//                                            block:^(SignalServiceAddress *address) {
+//                                                SSKProtoContentBuilder *contentBuilder = [SSKProtoContent builder];
+//                                                SSKProtoSyncMessageBuilder *syncMessageBuilder =
+//                                                    [SSKProtoSyncMessage builder];
+//                                                SSKProtoSyncMessageSentBuilder *sentBuilder =
+//                                                    [SSKProtoSyncMessageSent builder];
+//                                                sentBuilder.destinationE164 = @"abc";
+//                                                sentBuilder.timestamp = 0;
+//                                                SSKProtoDataMessageBuilder *dataBuilder = [SSKProtoDataMessage builder];
+//                                                dataBuilder.body = @" ";
+//                                                SSKProtoGroupContextBuilder *groupBuilder = [SSKProtoGroupContext
+//                                                    builderWithId:[Cryptography generateRandomBytes:1]];
+//                                                [groupBuilder setType:SSKProtoGroupContextTypeDeliver];
+//                                                dataBuilder.group = [groupBuilder buildIgnoringErrors];
+//                                                sentBuilder.message = [dataBuilder buildIgnoringErrors];
+//                                                syncMessageBuilder.sent = [sentBuilder buildIgnoringErrors];
+//                                                contentBuilder.syncMessage = [syncMessageBuilder buildIgnoringErrors];
+//                                                return
+//                                                    [[contentBuilder buildIgnoringErrors] serializedDataIgnoringErrors];
+//                                            }];
+//                        }]];
     [items addObject:[OWSTableItem itemWithTitle:@"Send empty sync sent message 6"
                                      actionBlock:^{
                                          [DebugUIStress sendStressMessage:thread
@@ -505,7 +505,7 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     TSGroupThread *groupThread = (TSGroupThread *)thread;
-    SSKProtoGroupContextBuilder *groupBuilder = [SSKProtoGroupContext builderWithId:groupThread.groupModel.groupId];
+    SSKProtoGroupContextBuilder *groupBuilder = [SSKProtoGroupContext builder];
     [groupBuilder setType:SSKProtoGroupContextTypeDeliver];
     [groupBuilder setId:groupThread.groupModel.groupId];
     [dataBuilder setGroup:groupBuilder.buildIgnoringErrors];

@@ -44,7 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
                                                           transaction:(SDSAnyReadTransaction *)transaction
 {
     SSKProtoDataMessageDeleteBuilder *deleteBuilder =
-        [SSKProtoDataMessageDelete builderWithTargetSentTimestamp:self.messageTimestamp];
+        [SSKProtoDataMessageDelete builder];
+    [deleteBuilder setTargetSentTimestamp:self.messageTimestamp];
 
     NSError *error;
     SSKProtoDataMessageDelete *_Nullable deleteProto = [deleteBuilder buildAndReturnError:&error];

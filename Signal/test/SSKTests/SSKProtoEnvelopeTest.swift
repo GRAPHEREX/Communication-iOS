@@ -67,7 +67,8 @@ class SSKProtoEnvelopeTest: SignalBaseTest {
     }
 
     func testParse_roundtrip() {
-        let builder = SSKProtoEnvelope.builder(timestamp: 123)
+        let builder = SSKProtoEnvelope.builder()
+        builder.setTimestamp(123)
         builder.setType(SSKProtoEnvelopeType.prekeyBundle)
         builder.setSourceE164("+13213214321")
         builder.setSourceDevice(1)

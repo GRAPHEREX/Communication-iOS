@@ -72,9 +72,11 @@ NS_ASSUME_NONNULL_BEGIN
     OWSAssertDebug(callMessageBuilder);
     OWSAssertDebug(transaction);
 
-    if ([self shouldMessageHaveLocalProfileKey:thread address:address transaction:transaction]) {
-        [callMessageBuilder setProfileKey:self.localProfileKey.keyData];
-    }
+    // TODO: -
+//    if ([self shouldMessageHaveLocalProfileKey:thread address:address transaction:transaction]) {
+//
+//        [callMessageBuilder setProfileKey:self.localProfileKey.keyData];
+//    }
 }
 
 @end

@@ -29,7 +29,8 @@ class DebugUICalling: DebugUIPage {
                 let kFakeCallId = UInt64(12345)
                 var hangupMessage: SSKProtoCallMessageHangup
                 do {
-                    let hangupBuilder = SSKProtoCallMessageHangup.builder(id: kFakeCallId)
+                    let hangupBuilder = SSKProtoCallMessageHangup.builder()
+                    hangupBuilder.setId(kFakeCallId)
                     hangupMessage = try hangupBuilder.build()
                 } catch {
                     owsFailDebug("could not build proto")
@@ -49,7 +50,8 @@ class DebugUICalling: DebugUIPage {
                 let kFakeCallId = UInt64(12345)
                 var busyMessage: SSKProtoCallMessageBusy
                 do {
-                    let busyBuilder = SSKProtoCallMessageBusy.builder(id: kFakeCallId)
+                    let busyBuilder = SSKProtoCallMessageBusy.builder()
+                    busyBuilder.setId(kFakeCallId)
                     busyMessage = try busyBuilder.build()
                 } catch {
                     owsFailDebug("Couldn't build proto")

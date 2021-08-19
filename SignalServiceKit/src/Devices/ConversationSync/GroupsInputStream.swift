@@ -45,7 +45,7 @@ public class GroupsInputStream {
             }
         }
 
-        return GroupDetails(groupId: groupDetails.id,
+        return GroupDetails(groupId: groupDetails.id!,
                             name: groupDetails.name,
                             memberAddresses: groupDetails.memberAddresses,
                             conversationColorName: groupDetails.color,

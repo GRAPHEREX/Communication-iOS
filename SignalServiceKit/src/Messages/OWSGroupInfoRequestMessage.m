@@ -45,7 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable SSKProtoDataMessageBuilder *)dataMessageBuilderWithThread:(TSThread *)thread
                                                           transaction:(SDSAnyReadTransaction *)transaction
 {
-    SSKProtoGroupContextBuilder *groupContextBuilder = [SSKProtoGroupContext builderWithId:self.groupId];
+    SSKProtoGroupContextBuilder *groupContextBuilder = [SSKProtoGroupContext builder];
+    [groupContextBuilder setId:self.groupId];
     [groupContextBuilder setType:SSKProtoGroupContextTypeRequestInfo];
 
     NSError *error;

@@ -84,9 +84,9 @@ PODS:
   - SDWebImage/Core (5.11.1)
   - SignalArgon2 (1.3.2)
   - SignalArgon2/Tests (1.3.2)
-  - SignalClient (0.3.1):
+  - SignalClient (0.8.3):
     - SignalCoreKit
-  - SignalClient/Tests (0.3.1):
+  - SignalClient/Tests (0.8.3):
     - SignalCoreKit
   - SignalCoreKit (1.0.0):
     - CocoaLumberjack
@@ -195,8 +195,8 @@ DEPENDENCIES:
   - Reachability
   - SignalArgon2 (from `https://github.com/signalapp/Argon2.git`)
   - SignalArgon2/Tests (from `https://github.com/signalapp/Argon2.git`)
-  - SignalClient (from `https://github.com/signalapp/libsignal-client.git`)
-  - SignalClient/Tests (from `https://github.com/signalapp/libsignal-client.git`)
+  - SignalClient (from `https://github.com/signalapp/libsignal-client.git`, tag `v0.8.3`)
+  - SignalClient/Tests (from `https://github.com/signalapp/libsignal-client.git`, tag `v0.8.3`)
   - SignalCoreKit (from `https://github.com/signalapp/SignalCoreKit.git`)
   - SignalCoreKit/Tests (from `https://github.com/signalapp/SignalCoreKit.git`)
   - "SignalMetadataKit (from `ssh://git@github.com/signalapp/SignalMetadataKit`, branch `feature/SignalClient-adoption`)"
@@ -259,6 +259,7 @@ EXTERNAL SOURCES:
     :submodules: true
   SignalClient:
     :git: https://github.com/signalapp/libsignal-client.git
+    :tag: v0.8.3
   SignalCoreKit:
     :git: https://github.com/signalapp/SignalCoreKit.git
   SignalMetadataKit:
@@ -302,8 +303,8 @@ CHECKOUT OPTIONS:
     :git: https://github.com/signalapp/Argon2.git
     :submodules: true
   SignalClient:
-    :commit: a983a564ac58148cdd69dc69aaf45149db3dde63
     :git: https://github.com/signalapp/libsignal-client.git
+    :tag: v0.8.3
   SignalCoreKit:
     :commit: 96b09fe32d71f3f52131b906c6ac33f132e80bce
     :git: https://github.com/signalapp/SignalCoreKit.git
@@ -345,7 +346,7 @@ SPEC CHECKSUMS:
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SignalArgon2: 1c24183835ca861e6af06631c18b1671cdf35571
-  SignalClient: 33768bc23cd46f738665d597323bea8f9e3965d0
+  SignalClient: f6e1d9c32c299e7e067aa4498c2131682ac1823d
   SignalCoreKit: 43daa8f15d6125d54705f35628ac35051bb205c6
   SignalMetadataKit: eb928ec98376ab5a6ef2108a7fcd3b2d792b8c65
   SignalRingRTC: 1769d40e1a155a2d6ddd95c404e7822bedd97076
@@ -360,6 +361,6 @@ SPEC CHECKSUMS:
   ZKGroup: 15a08eed5870a44b9dd14af0824ac95f6eed7380
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 630447cb57cf8326b6825e6f8e12f7d59cf1b3a4
+PODFILE CHECKSUM: 29f9c8020075b96410d6fe6ad26f02a50e1da3e6
 
 COCOAPODS: 1.9.2

@@ -61,7 +61,8 @@ public class TypingIndicatorMessage: TSOutgoingMessage {
                                             thread: TSThread,
                                             transaction: SDSAnyReadTransaction) -> Data? {
 
-        let typingBuilder = SSKProtoTypingMessage.builder(timestamp: self.timestamp)
+        let typingBuilder = SSKProtoTypingMessage.builder()
+        typingBuilder.setTimestamp(self.timestamp)
         typingBuilder.setAction(protoAction(forAction: action))
 
         if let groupThread = thread as? TSGroupThread {

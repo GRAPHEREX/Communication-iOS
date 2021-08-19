@@ -1051,7 +1051,8 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     // Link Preview
     if (self.linkPreview) {
         SSKProtoDataMessagePreviewBuilder *previewBuilder =
-            [SSKProtoDataMessagePreview builderWithUrl:self.linkPreview.urlString];
+            [SSKProtoDataMessagePreview builder];
+            [previewBuilder setUrl:self.linkPreview.urlString];
         if (self.linkPreview.title.length > 0) {
             [previewBuilder setTitle:self.linkPreview.title];
         }
@@ -1090,10 +1091,11 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
             OWSFailDebug(@"Could not build sticker attachment protobuf.");
         } else {
             SSKProtoDataMessageStickerBuilder *stickerBuilder =
-                [SSKProtoDataMessageSticker builderWithPackID:self.messageSticker.packId
-                                                      packKey:self.messageSticker.packKey
-                                                    stickerID:self.messageSticker.stickerId
-                                                         data:attachmentProto];
+            [SSKProtoDataMessageSticker builder];
+            [stickerBuilder setPackID:self.messageSticker.packId];
+            [stickerBuilder setPackKey:self.messageSticker.packKey];
+            [stickerBuilder setStickerID:self.messageSticker.stickerId];
+            [stickerBuilder setData:attachmentProto];
             if (self.messageSticker.emoji.length > 0) {
                 [stickerBuilder setEmoji:self.messageSticker.emoji];
             }
@@ -1137,7 +1139,8 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
             break;
     }
     BOOL attachmentWasGroupAvatar = NO;
-    SSKProtoGroupContextBuilder *groupBuilder = [SSKProtoGroupContext builderWithId:groupModel.groupId];
+    SSKProtoGroupContextBuilder *groupBuilder = [SSKProtoGroupContext builder];
+    [groupBuilder setId:groupModel.groupId];
     [groupBuilder setType:groupMessageType];
     if (groupMessageType == SSKProtoGroupContextTypeUpdate) {
         if (groupModel.groupAvatarData != nil && self.attachmentIds.count == 1) {
@@ -1267,7 +1270,8 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     }
     TSQuotedMessage *quotedMessage = self.quotedMessage;
 
-    SSKProtoDataMessageQuoteBuilder *quoteBuilder = [SSKProtoDataMessageQuote builderWithId:quotedMessage.timestamp];
+    SSKProtoDataMessageQuoteBuilder *quoteBuilder = [SSKProtoDataMessageQuote builder];
+    [quoteBuilder setId:quotedMessage.timestamp];
 
     if (quotedMessage.authorAddress.phoneNumber && !SSKFeatureFlags.phoneNumberSharing) {
         quoteBuilder.authorE164 = quotedMessage.authorAddress.phoneNumber;

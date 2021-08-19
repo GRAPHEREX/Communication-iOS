@@ -60,8 +60,9 @@ NS_ASSUME_NONNULL_BEGIN
         return nil;
     }
 
-    SSKProtoSyncMessageContactsBuilder *contactsBuilder = [SSKProtoSyncMessageContacts builderWithBlob:attachmentProto];
-    [contactsBuilder setIsComplete:YES];
+    SSKProtoSyncMessageContactsBuilder *contactsBuilder = [SSKProtoSyncMessageContacts builder];
+    [contactsBuilder setBlob:attachmentProto];
+    [contactsBuilder setComplete:YES];
 
     NSError *error;
     SSKProtoSyncMessageContacts *_Nullable contactsProto = [contactsBuilder buildAndReturnError:&error];

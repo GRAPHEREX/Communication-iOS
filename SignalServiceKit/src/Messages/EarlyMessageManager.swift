@@ -27,6 +27,7 @@ public class EarlyMessageManager: NSObject {
             switch receiptType {
             case .delivery: self = .outgoingMessageDelivered(sender: sender, timestamp: timestamp)
             case .read: self = .outgoingMessageRead(sender: sender, timestamp: timestamp)
+            case .viewed: self = .outgoingMessageRead(sender: sender, timestamp: timestamp)
             }
         }
     }

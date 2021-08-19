@@ -133,7 +133,9 @@ public class OWSLinkPreview: MTLModel {
         }
         let urlString = previewProto.url
 
-        guard let url = URL(string: urlString), url.isPermittedLinkPreviewUrl() else {
+        guard let urlString = urlString,
+              let url = URL(string: urlString),
+              url.isPermittedLinkPreviewUrl() else {
             Logger.error("Could not parse preview url.")
             throw LinkPreviewError.invalidPreview
         }
