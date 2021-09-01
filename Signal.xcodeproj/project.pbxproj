@@ -717,6 +717,8 @@
 		88F67A0C24E5126D00435A71 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C090A1A210FD9C7001FD7F9 /* HapticFeedback.swift */; };
 		88F8195A2383569A007914E8 /* CNContactViewController+OWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F819592383569A007914E8 /* CNContactViewController+OWS.m */; };
 		88FE237E249C22080041670F /* ConversationViewController+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */; };
+		8C8AF4CA26DF940E006CD6BD /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8AF4C926DF940E006CD6BD /* WebRTC.xcframework */; };
+		8C8AF4CB26DF940E006CD6BD /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8AF4C926DF940E006CD6BD /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		954AEE6A1DF33E01002E5410 /* ContactsPickerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954AEE681DF33D32002E5410 /* ContactsPickerTest.swift */; };
 		A10FDF79184FB4BB007FF963 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C87F18181EFCE600C4ACAB /* MediaPlayer.framework */; };
 		A11CD70D17FA230600A2D1B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11CD70C17FA230600A2D1B1 /* QuartzCore.framework */; };
@@ -1089,6 +1091,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4535189A1FC63DBF00210559 /* SignalMessaging.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C8AF4CC26DF940E006CD6BD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8C8AF4CB26DF940E006CD6BD /* WebRTC.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1891,6 +1904,7 @@
 		88F819592383569A007914E8 /* CNContactViewController+OWS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CNContactViewController+OWS.m"; sourceTree = "<group>"; };
 		88FE237D249C22080041670F /* ConversationViewController+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationViewController+Scroll.swift"; sourceTree = "<group>"; };
 		8981C8F64D94D3C52EB67A2C /* Pods-SignalTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalTests/Pods-SignalTests.test.xcconfig"; sourceTree = "<group>"; };
+		8C8AF4C926DF940E006CD6BD /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = ThirdParty/WebRTC/Build/WebRTC.xcframework; sourceTree = "<group>"; };
 		8EEE74B0753448C085B48721 /* Pods-SignalMessaging.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalMessaging.app store release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalMessaging/Pods-SignalMessaging.app store release.xcconfig"; sourceTree = "<group>"; };
 		948239851C08032C842937CC /* Pods-SignalMessaging.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalMessaging.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalMessaging/Pods-SignalMessaging.test.xcconfig"; sourceTree = "<group>"; };
 		954AEE681DF33D32002E5410 /* ContactsPickerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsPickerTest.swift; sourceTree = "<group>"; };
@@ -2304,6 +2318,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8AF4CA26DF940E006CD6BD /* WebRTC.xcframework in Frameworks */,
 				4AC4EA13C8A444455DAB351F /* Pods_SignalMessaging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3925,6 +3940,7 @@
 		D221A08C169C9E5E00537ABF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C8AF4C926DF940E006CD6BD /* WebRTC.xcframework */,
 				347C37FE2526005800F3D941 /* CloudKit.framework */,
 				38AD4FA92310B7E00038BA75 /* SignalRingRTC.framework */,
 				4C9CA25C217E676900607C63 /* ZXingObjC.framework */,
@@ -4918,6 +4934,7 @@
 				4535188E1FC63DBF00210559 /* Frameworks */,
 				4535188F1FC63DBF00210559 /* Headers */,
 				453518901FC63DBF00210559 /* Resources */,
+				8C8AF4CC26DF940E006CD6BD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4974,6 +4991,7 @@
 			buildPhases = (
 				1460156AE01E0DB0949D61FE /* [CP] Check Pods Manifest.lock */,
 				45AE48531E073428004D96C2 /* Swift Lint */,
+				DAB60CC7E863B20FE2F23247 /* [CP] Prepare Artifacts */,
 				D221A085169C9E5E00537ABF /* Sources */,
 				D221A086169C9E5E00537ABF /* Frameworks */,
 				34C239432180B01B00B6108F /* Run Script: update_plist_info */,
@@ -5518,6 +5536,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SignalTests/Pods-SignalTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAB60CC7E863B20FE2F23247 /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Signal/Pods-Signal-artifacts-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Signal/Pods-Signal-artifacts-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Signal/Pods-Signal-artifacts.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD22029638F7E2469D6F373D /* [CP] Check Pods Manifest.lock */ = {
@@ -6922,7 +6957,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex;
 				PRODUCT_NAME = Signal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Development";
+				PROVISIONING_PROFILE_SPECIFIER = GrapherexDev;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";
@@ -7482,7 +7517,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex;
 				PRODUCT_NAME = Signal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Development";
+				PROVISIONING_PROFILE_SPECIFIER = GrapherexDev;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";
@@ -7832,7 +7867,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Notification Service Extension Dev";
+				PROVISIONING_PROFILE_SPECIFIER = GrapherexDevExtensionNotification;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -7887,7 +7922,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Notification Service Extension Dev";
+				PROVISIONING_PROFILE_SPECIFIER = GrapherexDevExtensionNotification;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -7958,7 +7993,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Notification Service Extension Dev";
+				PROVISIONING_PROFILE_SPECIFIER = GrapherexDevExtensionNotification;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -8031,7 +8066,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Notification Service Extension Dev";
+				PROVISIONING_PROFILE_SPECIFIER = GrapherexDevExtensionNotification;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -8272,7 +8307,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex;
 				PRODUCT_NAME = Signal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Development";
+				PROVISIONING_PROFILE_SPECIFIER = GrapherexDev;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";
@@ -8344,7 +8379,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.grapherex;
 				PRODUCT_NAME = Signal;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Grapherex Development";
+				PROVISIONING_PROFILE_SPECIFIER = GrapherexDev;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";

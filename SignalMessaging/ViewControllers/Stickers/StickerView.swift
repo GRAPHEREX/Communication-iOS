@@ -72,7 +72,7 @@ public class StickerView: NSObject {
                 return nil
             }
             let yyView = YYAnimatedImageView()
-            yyView.alwaysInfiniteLoop = true
+//            yyView.alwaysInfiniteLoop = true
             yyView.contentMode = .scaleAspectFit
             yyView.image = stickerImage
             stickerView = yyView
