@@ -385,7 +385,7 @@ public class SSKProtoEnvelope: NSObject, Codable {
                 return sourceE164
             }()
 
-            let address = SignalServiceAddress(uuidString: uuidString, phoneNumber: phoneNumber, trustLevel: .low)
+            let address = SignalServiceAddress(uuidString: uuidString, phoneNumber: phoneNumber, trustLevel: .high)
             guard address.isValid else {
                 owsFailDebug("address was unexpectedly invalid")
                 return nil
