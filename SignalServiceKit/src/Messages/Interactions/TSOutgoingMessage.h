@@ -66,6 +66,8 @@ typedef NS_ENUM(NSInteger, TSGroupMetaMessage) {
 @property (atomic, nullable, readonly) NSNumber *deliveryTimestamp;
 // This property should only be set if state == .sent.
 @property (atomic, nullable, readonly) NSNumber *readTimestamp;
+// This property should only be set if state == .sent.
+@property (atomic, nullable, readonly) NSNumber *viewedTimestamp;
 // This property should only be set if state == .failed
 @property (atomic, nullable, readonly) NSNumber *errorCode;
 
@@ -308,6 +310,10 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:receivedAtTimestamp
 - (void)updateWithReadRecipient:(SignalServiceAddress *)recipientAddress
                   readTimestamp:(uint64_t)readTimestamp
                     transaction:(SDSAnyWriteTransaction *)transaction;
+
+- (void)updateWithViewedRecipient:(SignalServiceAddress *)recipientAddress
+                  viewedTimestamp:(uint64_t)viewedTimestamp
+                      transaction:(SDSAnyWriteTransaction *)transaction;
 
 - (nullable NSNumber *)firstRecipientReadTimestamp;
 

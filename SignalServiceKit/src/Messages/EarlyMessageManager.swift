@@ -21,13 +21,14 @@ public class EarlyMessageManager: NSObject {
     private enum EarlyReceipt {
         case outgoingMessageRead(sender: SignalServiceAddress, timestamp: UInt64)
         case outgoingMessageDelivered(sender: SignalServiceAddress, timestamp: UInt64)
+        case outgoingMessageViewed(sender: SignalServiceAddress, timestamp: UInt64)
         case messageReadOnLinkedDevice(timestamp: UInt64)
 
         init(receiptType: SSKProtoReceiptMessageType, sender: SignalServiceAddress, timestamp: UInt64) {
             switch receiptType {
             case .delivery: self = .outgoingMessageDelivered(sender: sender, timestamp: timestamp)
             case .read: self = .outgoingMessageRead(sender: sender, timestamp: timestamp)
-            case .viewed: self = .outgoingMessageRead(sender: sender, timestamp: timestamp)
+            case .viewed: self = .outgoingMessageViewed(sender: sender, timestamp: timestamp)
             }
         }
     }
@@ -210,6 +211,18 @@ public class EarlyMessageManager: NSObject {
                 message.update(
                     withDeliveredRecipient: sender,
                     deliveryTimestamp: NSNumber(value: timestamp),
+                    transaction: transaction
+                )
+            case .outgoingMessageViewed(let sender, let timestamp):
+                Logger.info("Applying early viewed receipt from \(sender) for outgoing message \(identifier)")
+
+                guard let message = message as? TSOutgoingMessage else {
+                    owsFailDebug("Unexpected message type for early read receipt for outgoing message.")
+                    continue
+                }
+                message.update(
+                    withViewedRecipient: sender,
+                    viewedTimestamp: timestamp,
                     transaction: transaction
                 )
             case .messageReadOnLinkedDevice(let timestamp):
