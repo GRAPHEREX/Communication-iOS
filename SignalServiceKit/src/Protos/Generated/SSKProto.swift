@@ -11581,6 +11581,14 @@ public class SSKProtoContactDetails: NSObject, Codable {
     public var hasArchived: Bool {
         return proto.hasArchived
     }
+    
+    @objc
+    public var hasValidContact: Bool {
+        return contactAddress != nil
+    }
+    
+    @objc
+    public let contactAddress: SignalServiceAddress?
 
     public var hasUnknownFields: Bool {
         return !proto.unknownFields.data.isEmpty
@@ -11596,6 +11604,51 @@ public class SSKProtoContactDetails: NSObject, Codable {
         self.proto = proto
         self.avatar = avatar
         self.verified = verified
+        
+        let hasContactUuid = proto.hasUuid && !proto.uuid.isEmpty
+        let hasContactE164 = proto.hasNumber && !proto.number.isEmpty
+        let contactUuid: String? = proto.uuid
+        let contactE164: String? = proto.number
+        self.contactAddress = {
+            guard hasContactE164 || hasContactUuid else { return nil }
+
+            let uuidString: String? = {
+                guard hasContactUuid else { return nil }
+
+                guard let contactUuid = contactUuid else {
+                    owsFailDebug("contactUuid was unexpectedly nil")
+                    return nil
+                }
+
+                return contactUuid
+            }()
+
+            let phoneNumber: String? = {
+                guard hasContactE164 else {
+                    return nil
+                }
+
+                guard let contactE164 = contactE164 else {
+                    owsFailDebug("contactE164 was unexpectedly nil")
+                    return nil
+                }
+
+                guard !contactE164.isEmpty else {
+                    owsFailDebug("contactE164 was unexpectedly empty")
+                    return nil
+                }
+
+                return contactE164
+            }()
+
+            let address = SignalServiceAddress(uuidString: uuidString, phoneNumber: phoneNumber, trustLevel: .high)
+            guard address.isValid else {
+                owsFailDebug("address was unexpectedly invalid")
+                return nil
+            }
+
+            return address
+        }()
     }
 
     @objc
