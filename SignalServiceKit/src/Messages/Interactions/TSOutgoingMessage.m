@@ -73,6 +73,7 @@ NSString *NSStringForOutgoingMessageRecipientState(OWSOutgoingMessageRecipientSt
 @property (atomic) OWSOutgoingMessageRecipientState state;
 @property (atomic, nullable) NSNumber *deliveryTimestamp;
 @property (atomic, nullable) NSNumber *readTimestamp;
+@property (atomic, nullable) NSNumber *viewedTimestamp;
 @property (atomic, nullable) NSNumber *errorCode;
 @property (atomic) BOOL wasSentByUD;
 
@@ -763,6 +764,37 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
                                                 }
                                                 recipientState.state = OWSOutgoingMessageRecipientStateSent;
                                                 recipientState.readTimestamp = @(readTimestamp);
+                                                recipientState.errorCode = nil;
+                                            }];
+}
+
+- (void)updateWithViewedRecipient:(SignalServiceAddress *)recipientAddress
+                  viewedTimestamp:(uint64_t)viewedTimestamp
+                      transaction:(SDSAnyWriteTransaction *)transaction
+{
+    OWSAssertDebug(recipientAddress.isValid);
+    OWSAssertDebug(transaction);
+
+    // Ignore receipts for messages that have been deleted.
+    // They are no longer relevant to this message.
+    if (self.wasRemotelyDeleted) {
+        return;
+    }
+
+    [self anyUpdateOutgoingMessageWithTransaction:transaction
+                                            block:^(TSOutgoingMessage *message) {
+                                                TSOutgoingMessageRecipientState *_Nullable recipientState
+                                                    = message.recipientAddressStates[recipientAddress];
+                                                if (!recipientState) {
+                                                    OWSFailDebug(@"Missing recipient state for delivered recipient: %@",
+                                                        recipientAddress);
+                                                    return;
+                                                }
+                                                if (recipientState.state != OWSOutgoingMessageRecipientStateSent) {
+                                                    OWSLogWarn(@"marking unsent message as delivered.");
+                                                }
+                                                recipientState.state = OWSOutgoingMessageRecipientStateSent;
+                                                recipientState.viewedTimestamp = @(viewedTimestamp);
                                                 recipientState.errorCode = nil;
                                             }];
 }
