@@ -43,6 +43,8 @@ pod 'GRDB.swift/SQLCipher'
 
 pod 'SQLCipher', ">= 4.0.1"
 
+pod 'Logging', '>= 1.4.0'
+
 ###
 # forked third party pods
 ###

@@ -80,13 +80,12 @@ public class GroupViewUtils {
                                                 style: .default) { _ in
                                                     self.showCantAddMemberView(fromViewController: fromViewController)
         })
-        actionSheet.addAction(ActionSheetAction(title: CommonStrings.okayButton,
-                                                style: .default))
+        actionSheet.addAction(OWSActionSheets.okayAction)
         fromViewController.presentActionSheet(actionSheet)
     }
 
     private static func showCantAddMemberView(fromViewController: UIViewController) {
-        guard let url = URL(string: "https://support.grapherex.com") else {
+        guard let url = URL(string: "https://support.signal.org/hc/articles/360007319331") else {
             owsFailDebug("Invalid url.")
             return
         }

@@ -1,16 +1,17 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
 import SignalRingRTC
 
 // All Observer methods will be invoked from the main thread.
-public protocol CallObserver: class {
+public protocol CallObserver: AnyObject {
     func individualCallStateDidChange(_ call: SignalCall, state: CallState)
     func individualCallLocalVideoMuteDidChange(_ call: SignalCall, isVideoMuted: Bool)
     func individualCallLocalAudioMuteDidChange(_ call: SignalCall, isAudioMuted: Bool)
     func individualCallRemoteVideoMuteDidChange(_ call: SignalCall, isVideoMuted: Bool)
+    func individualCallRemoteSharingScreenDidChange(_ call: SignalCall, isRemoteSharingScreen: Bool)
     func individualCallHoldDidChange(_ call: SignalCall, isOnHold: Bool)
 
     func groupCallLocalDeviceStateChanged(_ call: SignalCall)
@@ -30,6 +31,7 @@ public extension CallObserver {
     func individualCallLocalVideoMuteDidChange(_ call: SignalCall, isVideoMuted: Bool) {}
     func individualCallLocalAudioMuteDidChange(_ call: SignalCall, isAudioMuted: Bool) {}
     func individualCallRemoteVideoMuteDidChange(_ call: SignalCall, isVideoMuted: Bool) {}
+    func individualCallRemoteSharingScreenDidChange(_ call: SignalCall, isRemoteSharingScreen: Bool) {}
     func individualCallHoldDidChange(_ call: SignalCall, isOnHold: Bool) {}
 
     func groupCallLocalDeviceStateChanged(_ call: SignalCall) {}
@@ -141,10 +143,11 @@ public class SignalCall: NSObject, CallManagerCallReference {
         owsAssertDebug(thread.groupModel.groupsVersion == .V2)
 
         let videoCaptureController = VideoCaptureController()
+        let sfuURL = DebugFlags.callingUseTestSFU.get() ? TSConstants.sfuTestURL : TSConstants.sfuURL
 
         guard let groupCall = Self.callService.callManager.createGroupCall(
             groupId: thread.groupModel.groupId,
-            sfuUrl: TSConstants.sfuURL,
+            sfuUrl: sfuURL,
             videoCaptureController: videoCaptureController
         ) else {
             owsFailDebug("Failed to create group call")
@@ -174,16 +177,18 @@ public class SignalCall: NSObject, CallManagerCallReference {
         sentAtTimestamp: UInt64,
         offerMediaType: TSRecentCallOfferType
     ) -> SignalCall {
-//        // If this is a video call, we want to use in the in app call screen
-//        // because CallKit has poor support for video calls.
-//        let callAdapterType: CallAdapterType
-//        if offerMediaType == .video {
-//            callAdapterType = .nonCallKit
-//        } else {
-//            callAdapterType = .default
-//        }
-        
-        let callAdapterType: CallAdapterType = .default
+        // If this is a video call, we want to use in the in app call screen
+        // because CallKit has poor support for video calls. On iOS 14+ we
+        // always use CallKit, because as of iOS 14 AVAudioPlayer is no longer
+        // able to start playing sounds in the background.
+        let callAdapterType: CallAdapterType
+        if #available(iOS 14, *) {
+            callAdapterType = .default
+        } else if offerMediaType == .video {
+            callAdapterType = .nonCallKit
+        } else {
+            callAdapterType = .default
+        }
 
         let individualCall = IndividualCall(
             direction: .incoming,
@@ -301,6 +306,10 @@ extension SignalCall: IndividualCallDelegate {
 
     public func individualCallRemoteVideoMuteDidChange(_ call: IndividualCall, isVideoMuted: Bool) {
         observers.elements.forEach { $0.individualCallRemoteVideoMuteDidChange(self, isVideoMuted: isVideoMuted) }
+    }
+
+    public func individualCallRemoteSharingScreenDidChange(_ call: IndividualCall, isRemoteSharingScreen: Bool) {
+        observers.elements.forEach { $0.individualCallRemoteSharingScreenDidChange(self, isRemoteSharingScreen: isRemoteSharingScreen) }
     }
 }
 

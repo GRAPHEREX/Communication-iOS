@@ -8,7 +8,7 @@ import PromiseKit
 
 // All Observer methods will be invoked from the main thread.
 @objc(OWSCallServiceObserver)
-protocol CallServiceObserver: class {
+protocol CallServiceObserver: AnyObject {
     /**
      * Fired whenever the call changes.
      */
@@ -140,7 +140,7 @@ public final class CallService: NSObject {
             object: nil)
 
         AppReadiness.runNowOrWhenAppDidBecomeReadyAsync {
-            SDSDatabaseStorage.shared.appendUIDatabaseSnapshotDelegate(self)
+            SDSDatabaseStorage.shared.appendDatabaseChangeDelegate(self)
         }
     }
 
@@ -553,28 +553,20 @@ public final class CallService: NSObject {
         self.updateIsVideoEnabled()
     }
 
-    @objc public func getCallsList() -> [TSCall] {
-        databaseStorage.read(block: { transaction in
-            return TSCall.anyFetchAll(transaction: transaction).compactMap { $0 as? TSCall }
-        })
-    }
-    
-    @objc public func removeCall(_ call: TSCall) {
-        databaseStorage.write { transaction in
-            call.anyRemove(transaction: transaction)
-        }
-    }
-
     // MARK: -
 
     private func updateGroupMembersForCurrentCallIfNecessary() {
-        guard let call = currentCall, call.isGroupCall,
-              let groupThread = call.thread as? TSGroupThread,
-              let memberInfo = groupMemberInfo(for: groupThread) else { return }
-        call.groupCall.updateGroupMembers(members: memberInfo)
+        DispatchQueue.main.async {
+            guard let call = self.currentCall, call.isGroupCall,
+                  let groupThread = call.thread as? TSGroupThread,
+                  let memberInfo = self.groupMemberInfo(for: groupThread) else { return }
+            call.groupCall.updateGroupMembers(members: memberInfo)
+        }
     }
 
     private func groupMemberInfo(for thread: TSGroupThread) -> [GroupMemberInfo]? {
+        AssertIsOnMainThread()
+
         // Make sure we're working with the latest group state.
         databaseStorage.read { thread.anyReload(transaction: $0) }
 
@@ -711,6 +703,7 @@ extension CallService {
 
     @objc @available(swift, obsoleted: 1.0)
     func peekCallAndUpdateThread(_ thread: TSGroupThread) {
+        AssertIsOnMainThread()
         self.peekCallAndUpdateThread(thread)
     }
 
@@ -718,7 +711,7 @@ extension CallService {
     func peekCallAndUpdateThread(_ thread: TSGroupThread, expectedEraId: String? = nil, triggerEventTimestamp: UInt64 = NSDate.ows_millisecondTimeStamp()) {
         AssertIsOnMainThread()
 
-        guard RemoteConfig.groupCalling else { return }
+        guard RemoteConfig.groupCalling, thread.isLocalUserFullMember else { return }
 
         // If the currentCall is for the provided thread, we don't need to perform an explict
         // peek. Connected calls will receive automatic updates from RingRTC
@@ -726,32 +719,42 @@ extension CallService {
             Logger.info("Ignoring peek request for the current call")
             return
         }
-        guard let memberInfo = groupMemberInfo(for: thread) else {
+        guard let memberInfo = self.groupMemberInfo(for: thread) else {
             owsFailDebug("Failed to fetch group member info to peek \(thread.uniqueId)")
             return
         }
-
-        if let expectedEraId = expectedEraId {
-            // If we're expecting a call with `expectedEraId`, prepopulate an entry in the database.
-            // If it's the current call, we'll update with the PeekInfo once fetched
-            // Otherwise, it'll be marked as ended as soon as we complete the fetch
-            // If we fail to fetch, the entry will be kept around until the next PeekInfo fetch completes.
-            self.insertPlaceholderGroupCallMessageIfNecessary(eraId: expectedEraId, timestamp: triggerEventTimestamp, thread: thread)
-        }
-
-        firstly {
-            fetchGroupMembershipProof(for: thread)
-        }.then(on: .main) { proof in
-            self.callManager.peekGroupCall(sfuUrl: TSConstants.sfuURL, membershipProof: proof, groupMembers: memberInfo)
-        }.done(on: .main) { info in
-            // If we're expecting an eraId, the timestamp is only valid for PeekInfo with the same eraId.
-            // We may have a more appropriate timestamp waiting in the message processing queue.
-            Logger.info("Fetched group call PeekInfo for thread: \(thread.uniqueId) eraId: \(info.eraId ?? "(null)")")
-            if expectedEraId == nil || info.eraId == nil || expectedEraId == info.eraId {
-                self.updateGroupCallMessageWithInfo(info, for: thread, timestamp: triggerEventTimestamp)
+        firstly(on: .global()) {
+            if let expectedEraId = expectedEraId {
+                // If we're expecting a call with `expectedEraId`, prepopulate an entry in the database.
+                // If it's the current call, we'll update with the PeekInfo once fetched
+                // Otherwise, it'll be marked as ended as soon as we complete the fetch
+                // If we fail to fetch, the entry will be kept around until the next PeekInfo fetch completes.
+                self.insertPlaceholderGroupCallMessageIfNecessary(eraId: expectedEraId,
+                                                                  timestamp: triggerEventTimestamp,
+                                                                  thread: thread)
             }
-        }.catch(on: .main) { error in
-            Logger.error("Failed to fetch PeekInfo for \(thread.uniqueId): \(error)")
+
+            firstly {
+                self.fetchGroupMembershipProof(for: thread)
+            }.then(on: .main) { (proof: Data) -> Promise<PeekInfo> in
+                let sfuURL = DebugFlags.callingUseTestSFU.get() ? TSConstants.sfuTestURL : TSConstants.sfuURL
+                return self.callManager.peekGroupCall(sfuUrl: sfuURL, membershipProof: proof, groupMembers: memberInfo)
+            }.done(on: .main) { info in
+                // If we're expecting an eraId, the timestamp is only valid for PeekInfo with the same eraId.
+                // We may have a more appropriate timestamp waiting in the message processing queue.
+                Logger.info("Fetched group call PeekInfo for thread: \(thread.uniqueId) eraId: \(info.eraId ?? "(null)")")
+                if expectedEraId == nil || info.eraId == nil || expectedEraId == info.eraId {
+                    self.updateGroupCallMessageWithInfo(info, for: thread, timestamp: triggerEventTimestamp)
+                }
+            }.catch(on: .global()) { error in
+                if error.isNetworkFailureOrTimeout {
+                    Logger.warn("Failed to fetch PeekInfo for \(thread.uniqueId): \(error)")
+                } else {
+                    owsFailDebug("Failed to fetch PeekInfo for \(thread.uniqueId): \(error)")
+                }
+            }
+        }.catch(on: .global()) { error in
+            owsFailDebug("Failed to fetch PeekInfo for \(thread.uniqueId): \(error)")
         }
     }
 
@@ -826,10 +829,10 @@ extension CallService {
     }
 }
 
-extension CallService: UIDatabaseSnapshotDelegate {
-    public func uiDatabaseSnapshotWillUpdate() {}
+extension CallService: DatabaseChangeDelegate {
+    public func databaseChangesWillUpdate() {}
 
-    public func uiDatabaseSnapshotDidUpdate(databaseChanges: UIDatabaseChanges) {
+    public func databaseChangesDidUpdate(databaseChanges: DatabaseChanges) {
         AssertIsOnMainThread()
         owsAssertDebug(AppReadiness.isAppReady)
 
@@ -840,14 +843,14 @@ extension CallService: UIDatabaseSnapshotDelegate {
         updateGroupMembersForCurrentCallIfNecessary()
     }
 
-    public func uiDatabaseSnapshotDidUpdateExternally() {
+    public func databaseChangesDidUpdateExternally() {
         AssertIsOnMainThread()
         owsAssertDebug(AppReadiness.isAppReady)
 
         updateGroupMembersForCurrentCallIfNecessary()
     }
 
-    public func uiDatabaseSnapshotDidReset() {
+    public func databaseChangesDidReset() {
         AssertIsOnMainThread()
         owsAssertDebug(AppReadiness.isAppReady)
 

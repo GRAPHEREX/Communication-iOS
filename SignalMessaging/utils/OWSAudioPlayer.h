@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 NS_ASSUME_NONNULL_BEGIN
@@ -33,13 +33,10 @@ typedef NS_ENUM(NSUInteger, OWSAudioBehavior) {
 
 @interface OWSAudioPlayer : NSObject
 
-@property (nonatomic, weak) id<OWSAudioPlayerDelegate> delegate;
-
-// This property can be used to associate instances of the player with view
-// or model objects.
-@property (nonatomic, weak) id owner;
+@property (nonatomic, nullable, weak) id<OWSAudioPlayerDelegate> delegate;
 
 @property (nonatomic) BOOL isLooping;
+@property (nonatomic, readonly) NSTimeInterval duration;
 
 - (instancetype)initWithMediaUrl:(NSURL *)mediaUrl audioBehavior:(OWSAudioBehavior)audioBehavior;
 

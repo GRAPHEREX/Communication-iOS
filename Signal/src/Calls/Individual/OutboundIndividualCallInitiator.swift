@@ -5,7 +5,6 @@
 import Foundation
 import SignalServiceKit
 import SignalMessaging
-import PromiseKit
 
 /**
  * Creates an outbound call via WebRTC.
@@ -43,7 +42,7 @@ import PromiseKit
                                                                      comment: "alert body shown when trying to use features in the app before completing registration-related setup."))
             return false
         }
-        
+
         guard let callUIAdapter = Self.callService.individualCallService.callUIAdapter else {
             owsFailDebug("missing callUIAdapter")
             return false
@@ -53,44 +52,36 @@ import PromiseKit
             return false
         }
 
-//        let showedAlert = SafetyNumberConfirmationSheet.presentIfNecessary(
-//            address: address,
-//            confirmationText: CallStrings.confirmAndCallButtonTitle
-//        ) { didConfirmIdentity in
-//            guard didConfirmIdentity else { return }
-//            _ = self.initiateCall(address: address, isVideo: isVideo)
-//        }
-//        guard !showedAlert else {
-//            return false
-//        }
+        let showedAlert = SafetyNumberConfirmationSheet.presentIfNecessary(
+            address: address,
+            confirmationText: CallStrings.confirmAndCallButtonTitle
+        ) { didConfirmIdentity in
+            guard didConfirmIdentity else { return }
+            _ = self.initiateCall(address: address, isVideo: isVideo)
+        }
+        guard !showedAlert else {
+            return false
+        }
 
-        let thread = TSContactThread.getOrCreateThread(contactAddress: address)
-        let message = TypingIndicatorMessage(thread: thread, action: .stopped)
-        firstly {
-            messageSender.sendMessage(.promise, message.asPreparer)
-        }.ensure {
-            frontmostViewController.ows_askForMicrophonePermissions { granted in
-                guard granted == true else {
-                    Logger.warn("aborting due to missing microphone permissions.")
-                    frontmostViewController.ows_showNoMicrophonePermissionActionSheet()
-                    return
-                }
-                
-                if isVideo {
-                    frontmostViewController.ows_askForCameraPermissions { granted in
-                        guard granted else {
-                            Logger.warn("aborting due to missing camera permissions.")
-                            return
-                        }
-                        
-                        callUIAdapter.startAndShowOutgoingCall(address: address, hasLocalVideo: true)
-                    }
-                } else {
-                    callUIAdapter.startAndShowOutgoingCall(address: address, hasLocalVideo: false)
-                }
+        frontmostViewController.ows_askForMicrophonePermissions { granted in
+            guard granted == true else {
+                Logger.warn("aborting due to missing microphone permissions.")
+                frontmostViewController.ows_showNoMicrophonePermissionActionSheet()
+                return
             }
-        }.catch { error in
-            Logger.error("Error: \(error)")
+
+            if isVideo {
+                frontmostViewController.ows_askForCameraPermissions { granted in
+                    guard granted else {
+                        Logger.warn("aborting due to missing camera permissions.")
+                        return
+                    }
+
+                    callUIAdapter.startAndShowOutgoingCall(address: address, hasLocalVideo: true)
+                }
+            } else {
+                callUIAdapter.startAndShowOutgoingCall(address: address, hasLocalVideo: false)
+            }
         }
 
         return true

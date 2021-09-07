@@ -139,6 +139,30 @@ public extension NSObject {
     static var orphanDataCleaner: OWSOrphanDataCleaner {
         Environment.shared.orphanDataCleanerRef
     }
+
+    final var paymentsImpl: PaymentsImpl {
+        SSKEnvironment.shared.paymentsRef as! PaymentsImpl
+    }
+
+    static var paymentsImpl: PaymentsImpl {
+        SSKEnvironment.shared.paymentsRef as! PaymentsImpl
+    }
+
+    var chatColors: ChatColors {
+        Environment.shared.chatColorsRef
+    }
+
+    static var chatColors: ChatColors {
+        Environment.shared.chatColorsRef
+    }
+
+    var avatarBuilder: AvatarBuilder {
+        Environment.shared.avatarBuilderRef
+    }
+
+    static var avatarBuilder: AvatarBuilder {
+        Environment.shared.avatarBuilderRef
+    }
 }
 
 // MARK: - Obj-C Dependencies
@@ -275,18 +299,40 @@ public extension Dependencies {
     static var orphanDataCleaner: OWSOrphanDataCleaner {
         Environment.shared.orphanDataCleanerRef
     }
+
+    var paymentsImpl: PaymentsImpl {
+        SSKEnvironment.shared.paymentsRef as! PaymentsImpl
+    }
+
+    static var paymentsImpl: PaymentsImpl {
+        SSKEnvironment.shared.paymentsRef as! PaymentsImpl
+    }
+
+    var chatColors: ChatColors {
+        Environment.shared.chatColorsRef
+    }
+
+    static var chatColors: ChatColors {
+        Environment.shared.chatColorsRef
+    }
+
+    var avatarBuilder: AvatarBuilder {
+        Environment.shared.avatarBuilderRef
+    }
+
+    static var avatarBuilder: AvatarBuilder {
+        Environment.shared.avatarBuilderRef
+    }
 }
 
 // MARK: - Swift-only Dependencies
 
 public extension NSObject {
-
 }
 
 // MARK: - Swift-only Dependencies
 
 public extension Dependencies {
-
 }
 
 // MARK: -

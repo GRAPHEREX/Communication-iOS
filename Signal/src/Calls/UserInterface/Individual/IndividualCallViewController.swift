@@ -68,7 +68,8 @@ class IndividualCallViewController: OWSViewController, CallObserver, CallAudioSe
     // MARK: - Contact Views
 
     private lazy var contactNameLabel = MarqueeLabel()
-    private lazy var contactAvatarView = AvatarImageView()
+    private lazy var contactAvatarView = ConversationAvatarView(diameterPoints: 200,
+                                                                localUserDisplayMode: .asUser)
     private lazy var contactAvatarContainerView = UIView.container()
     private lazy var callStatusLabel = UILabel()
     private lazy var backButton = UIButton()
@@ -498,8 +499,12 @@ class IndividualCallViewController: OWSViewController, CallObserver, CallAudioSe
 
     @objc
     func updateAvatarImage() {
-        contactAvatarView.image = OWSAvatarBuilder.buildImage(thread: thread, diameter: 400)
-        backgroundAvatarView.image = contactsManagerImpl.imageForAddress(withSneakyTransaction: thread.contactAddress)
+        databaseStorage.read { transaction in
+            contactAvatarView.configure(thread: thread, transaction: transaction)
+            backgroundAvatarView.image = contactsManagerImpl.avatarImage(forAddress: thread.contactAddress,
+                                                                         shouldValidate: true,
+                                                                         transaction: transaction)
+        }
     }
 
     func createIncomingCallControls() {
@@ -598,7 +603,6 @@ class IndividualCallViewController: OWSViewController, CallObserver, CallAudioSe
         contactAvatarContainerView.autoPinWidthToSuperview(withMargin: avatarMargin)
 
         contactAvatarView.autoCenterInSuperview()
-        contactAvatarView.autoSetDimensions(to: CGSize(square: 200))
 
         ongoingAudioCallControls.autoPinEdge(toSuperviewEdge: .top, withInset: gradientMargin)
         incomingVideoCallControls.autoPinEdge(toSuperviewEdge: .top)
@@ -839,6 +843,8 @@ class IndividualCallViewController: OWSViewController, CallObserver, CallAudioSe
 
         // Rework control state if remote video is available.
         let hasRemoteVideo = !remoteVideoView.isHidden
+        remoteVideoView.isFullScreen = true
+        remoteVideoView.isScreenShare = call.individualCall.isRemoteSharingScreen
         contactAvatarView.isHidden = hasRemoteVideo || isRenderingLocalVanityVideo
 
         // Layout controls immediately to avoid spurious animation.
@@ -969,7 +975,7 @@ class IndividualCallViewController: OWSViewController, CallObserver, CallAudioSe
         needPermissionStack.addArrangedSubview(contactAvatarContainerView)
         contactAvatarContainerView.autoSetDimension(.height, toSize: 200)
 
-        let shortName = SDSDatabaseStorage.shared.uiRead {
+        let shortName = SDSDatabaseStorage.shared.read {
             return self.contactsManager.shortDisplayName(
                 for: self.thread.contactAddress,
                 transaction: $0
@@ -1160,6 +1166,11 @@ class IndividualCallViewController: OWSViewController, CallObserver, CallAudioSe
     func individualCallRemoteVideoMuteDidChange(_ call: SignalCall, isVideoMuted: Bool) {
         AssertIsOnMainThread()
         updateRemoteVideoTrack(remoteVideoTrack: isVideoMuted ? nil : call.individualCall.remoteVideoTrack)
+    }
+
+    func individualCallRemoteSharingScreenDidChange(_ call: SignalCall, isRemoteSharingScreen: Bool) {
+        AssertIsOnMainThread()
+        self.updateCallUI()
     }
 
     // MARK: - CallAudioServiceDelegate

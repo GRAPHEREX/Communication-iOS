@@ -8,6 +8,44 @@ import PromiseKit
 @objc
 public extension ThreadUtil {
 
+    typealias PersistenceCompletion = () -> Void
+
+    @discardableResult
+    class func enqueueMessage(body messageBody: MessageBody?,
+                              mediaAttachments: [SignalAttachment],
+                              thread: TSThread,
+                              quotedReplyModel: OWSQuotedReplyModel?,
+                              linkPreviewDraft: OWSLinkPreviewDraft?,
+                              persistenceCompletionHandler persistenceCompletion: PersistenceCompletion?,
+                              transaction readTransaction: SDSAnyReadTransaction) -> TSOutgoingMessage {
+        AssertIsOnMainThread()
+
+        let outgoingMessagePreparer = OutgoingMessagePreparer(messageBody: messageBody,
+                                                              mediaAttachments: mediaAttachments,
+                                                              thread: thread,
+                                                              quotedReplyModel: quotedReplyModel,
+                                                              transaction: readTransaction)
+        let message: TSOutgoingMessage = outgoingMessagePreparer.unpreparedMessage
+
+        BenchManager.benchAsync(title: "Saving outgoing message") { benchmarkCompletion in
+            Self.databaseStorage.asyncWrite { writeTransaction in
+                outgoingMessagePreparer.insertMessage(linkPreviewDraft: linkPreviewDraft,
+                                                      transaction: writeTransaction)
+                Self.messageSenderJobQueue.add(message: outgoingMessagePreparer,
+                                               transaction: writeTransaction)
+                writeTransaction.addAsyncCompletionOnMain {
+                    benchmarkCompletion()
+                    persistenceCompletion?()
+                }
+            }
+        }
+
+        if message.hasRenderableContent() {
+            thread.donateSendMessageIntent(transaction: readTransaction)
+        }
+        return message
+    }
+
     @discardableResult
     class func enqueueMessage(withContactShare contactShare: OWSContact,
                               thread: TSThread) -> TSOutgoingMessage {
@@ -23,8 +61,6 @@ public extension ThreadUtil {
     @discardableResult
     class func enqueueMessage(outgoingMessageBuilder builder: TSOutgoingMessageBuilder,
                               thread: TSThread) -> TSOutgoingMessage {
-
-        // PAYMENTS TODO: Is there any reason for this to be main-thread only?
 
         let dmConfiguration = databaseStorage.read { transaction in
             return thread.disappearingMessagesConfiguration(with: transaction)
@@ -46,8 +82,6 @@ public extension ThreadUtil {
     class func enqueueMessage(outgoingMessageBuilder builder: TSOutgoingMessageBuilder,
                               thread: TSThread,
                               transaction: SDSAnyWriteTransaction) -> TSOutgoingMessage {
-
-        // PAYMENTS TODO: Is there any reason for this to be main-thread only?
 
         let dmConfiguration = thread.disappearingMessagesConfiguration(with: transaction)
         builder.expiresInSeconds = dmConfiguration.isEnabled ? dmConfiguration.durationSeconds : 0
@@ -196,7 +230,10 @@ extension TSThread {
             sender: nil
         )
 
-        if let threadAvatar = OWSAvatarBuilder.buildImage(thread: self, diameter: 400, transaction: transaction),
+        if let threadAvatar = Self.avatarBuilder.avatarImage(forThread: self,
+                                                             diameterPoints: 400,
+                                                             localUserDisplayMode: .noteToSelf,
+                                                             transaction: transaction),
            let threadAvatarPng = threadAvatar.pngData() {
             let image = INImage(imageData: threadAvatarPng)
             sendMessageIntent.setImage(image, forParameterNamed: \.speakableGroupName)

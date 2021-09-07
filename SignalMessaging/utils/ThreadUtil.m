@@ -48,35 +48,13 @@ NS_ASSUME_NONNULL_BEGIN
                              linkPreviewDraft:(nullable nullable OWSLinkPreviewDraft *)linkPreviewDraft
                                   transaction:(SDSAnyReadTransaction *)transaction
 {
-    OWSAssertIsOnMainThread();
-    OWSAssertDebug(thread);
-
-    OutgoingMessagePreparer *outgoingMessagePreparer =
-        [[OutgoingMessagePreparer alloc] initWithMessageBody:messageBody
-                                            mediaAttachments:mediaAttachments
-                                                      thread:thread
-                                            quotedReplyModel:quotedReplyModel
-                                                 transaction:transaction];
-
-    [BenchManager benchAsyncWithTitle:@"Saving outgoing message"
-                                block:^(void (^benchmarkCompletion)(void)) {
-                                    DatabaseStorageAsyncWrite(
-                                        SDSDatabaseStorage.shared, ^(SDSAnyWriteTransaction *writeTransaction) {
-                                            [outgoingMessagePreparer
-                                                insertMessageWithLinkPreviewDraft:linkPreviewDraft
-                                                                      transaction:writeTransaction];
-                                            [self.messageSenderJobQueue addMessage:outgoingMessagePreparer
-                                                                       transaction:writeTransaction];
-
-                                            [writeTransaction addAsyncCompletion:benchmarkCompletion];
-                                        });
-                                }];
-
-    TSOutgoingMessage *message = outgoingMessagePreparer.unpreparedMessage;
-    if (message.hasRenderableContent) {
-        [thread donateSendMessageIntentWithTransaction:transaction];
-    }
-    return message;
+    return [[self class] enqueueMessageWithBody:messageBody
+                               mediaAttachments:mediaAttachments
+                                         thread:thread
+                               quotedReplyModel:quotedReplyModel
+                               linkPreviewDraft:linkPreviewDraft
+                   persistenceCompletionHandler:nil
+                                    transaction:transaction];
 }
 
 + (nullable TSOutgoingMessage *)createUnsentMessageWithBody:(nullable MessageBody *)messageBody
@@ -271,14 +249,39 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Profile Whitelist
 
-+ (BOOL)addThreadToProfileWhitelistIfEmptyOrPendingRequestWithSneakyTransaction:(TSThread *)thread
++ (BOOL)addThreadToProfileWhitelistIfEmptyOrPendingRequestAndSetDefaultTimerWithSneakyTransaction:(TSThread *)thread
 {
     OWSAssertDebug(thread);
 
     __block BOOL hasPendingMessageRequest;
+    __block BOOL needsDefaultTimerSet;
+    __block DisappearingMessageToken *defaultTimerToken;
     [self.databaseStorage readWithBlock:^(SDSAnyReadTransaction *transaction) {
         hasPendingMessageRequest = [thread hasPendingMessageRequestWithTransaction:transaction.unwrapGrdbRead];
+
+        defaultTimerToken =
+            [OWSDisappearingMessagesConfiguration fetchOrBuildDefaultUniversalConfigurationWithTransaction:transaction]
+                .asToken;
+        needsDefaultTimerSet =
+            [GRDBThreadFinder shouldSetDefaultDisappearingMessageTimerWithThread:thread
+                                                                     transaction:transaction.unwrapGrdbRead];
     }];
+
+    if (needsDefaultTimerSet) {
+        DatabaseStorageWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
+            OWSDisappearingMessagesConfiguration *configuration =
+                [OWSDisappearingMessagesConfiguration applyToken:defaultTimerToken
+                                                        toThread:thread
+                                                     transaction:transaction];
+
+            OWSDisappearingConfigurationUpdateInfoMessage *infoMessage =
+                [[OWSDisappearingConfigurationUpdateInfoMessage alloc] initWithThread:thread
+                                                                        configuration:configuration
+                                                                  createdByRemoteName:nil
+                                                               createdInExistingGroup:NO];
+            [infoMessage anyInsertWithTransaction:transaction];
+        });
+    }
 
     // If we're creating this thread or we have a pending message request,
     // any action we trigger should share our profile.
@@ -290,10 +293,29 @@ NS_ASSUME_NONNULL_BEGIN
     return NO;
 }
 
-+ (BOOL)addThreadToProfileWhitelistIfEmptyOrPendingRequest:(TSThread *)thread
-                                               transaction:(SDSAnyWriteTransaction *)transaction
++ (BOOL)addThreadToProfileWhitelistIfEmptyOrPendingRequestAndSetDefaultTimer:(TSThread *)thread
+                                                                 transaction:(SDSAnyWriteTransaction *)transaction
 {
     OWSAssertDebug(thread);
+
+    DisappearingMessageToken *defaultTimerToken =
+        [OWSDisappearingMessagesConfiguration fetchOrBuildDefaultUniversalConfigurationWithTransaction:transaction]
+            .asToken;
+    BOOL needsDefaultTimerSet =
+        [GRDBThreadFinder shouldSetDefaultDisappearingMessageTimerWithThread:thread
+                                                                 transaction:transaction.unwrapGrdbRead];
+
+    if (needsDefaultTimerSet) {
+        OWSDisappearingMessagesConfiguration *configuration =
+            [OWSDisappearingMessagesConfiguration applyToken:defaultTimerToken toThread:thread transaction:transaction];
+
+        OWSDisappearingConfigurationUpdateInfoMessage *infoMessage =
+            [[OWSDisappearingConfigurationUpdateInfoMessage alloc] initWithThread:thread
+                                                                    configuration:configuration
+                                                              createdByRemoteName:nil
+                                                           createdInExistingGroup:NO];
+        [infoMessage anyInsertWithTransaction:transaction];
+    }
 
     BOOL hasPendingMessageRequest = [thread hasPendingMessageRequestWithTransaction:transaction.unwrapGrdbRead];
     // If we're creating this thread or we have a pending message request,

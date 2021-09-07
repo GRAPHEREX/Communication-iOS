@@ -24,33 +24,21 @@ import Foundation
     public class func showActionSheet(title: String?, message: String) {
         self.showActionSheet(title: title, message: message, buttonTitle: nil)
     }
-    
-    @objc
-    public class func showActionSheet(title: String?, message: String, image: UIImage?) {
-        self.showActionSheet(title: title, message: message, buttonTitle: nil, image: image)
-    }
 
     @objc
-    public class func showActionSheet(title: String?, message: String? = nil, buttonTitle: String? = nil, image: UIImage? = nil, buttonAction: ActionSheetAction.Handler? = nil) {
+    public class func showActionSheet(title: String?, message: String? = nil, buttonTitle: String? = nil, buttonAction: ActionSheetAction.Handler? = nil) {
         guard let fromViewController = CurrentAppContext().frontmostViewController() else {
             return
         }
         showActionSheet(title: title, message: message, buttonTitle: buttonTitle, buttonAction: buttonAction,
                   fromViewController: fromViewController)
     }
-    
-    @objc
-       public class func showActionSheet(title: String?, message: String? = nil, buttonTitle: String? = nil,
-                                         buttonAction: ActionSheetAction.Handler? = nil, fromViewController: UIViewController?) {
-        self.showActionSheet(title: title, message: message, buttonTitle: buttonTitle, fromViewController: fromViewController, image: nil)
-    }
 
     @objc
-    public class func showActionSheet(title: String?, message: String? = nil, buttonTitle: String? = nil, buttonAction: ActionSheetAction.Handler? = nil, fromViewController: UIViewController?, image: UIImage? = nil) {
+    public class func showActionSheet(title: String?, message: String? = nil, buttonTitle: String? = nil, buttonAction: ActionSheetAction.Handler? = nil, fromViewController: UIViewController?) {
 
         let actionSheet = ActionSheetController(title: title, message: message)
-        actionSheet.addImage(image: image)
-        
+
         let actionTitle = buttonTitle ?? CommonStrings.okButton
         let okAction = ActionSheetAction(title: actionTitle, style: .default, handler: buttonAction)
         okAction.accessibilityIdentifier = "OWSActionSheets.\("ok")"
@@ -80,6 +68,19 @@ import Foundation
     @objc
     public class func showErrorAlert(message: String) {
         self.showActionSheet(title: CommonStrings.errorAlertTitle, message: message, buttonTitle: nil)
+    }
+
+    @objc
+    public class var okayAction: ActionSheetAction {
+        let action = ActionSheetAction(
+            title: CommonStrings.okButton,
+            accessibilityIdentifier: "OWSActionSheets.okay",
+            style: .cancel
+        ) { _ in
+            Logger.debug("Okay item")
+            // Do nothing.
+        }
+        return action
     }
 
     @objc

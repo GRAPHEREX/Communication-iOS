@@ -27,7 +27,7 @@ const UIWindowLevel UIWindowLevel_ReturnToCall(void)
 const UIWindowLevel UIWindowLevel_CallView(void);
 const UIWindowLevel UIWindowLevel_CallView(void)
 {
-    return UIWindowLevelNormal + 1.f;
+    return UIWindowLevelNormal + 2.f;
 }
 
 // In front of the status bar and CallView

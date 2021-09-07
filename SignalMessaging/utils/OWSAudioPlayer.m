@@ -12,26 +12,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-// A no-op delegate implementation to be used when we don't need a delegate.
-@interface OWSAudioPlayerDelegateStub : NSObject <OWSAudioPlayerDelegate>
-
-@property (nonatomic) AudioPlaybackState audioPlaybackState;
-
-@end
-
-#pragma mark -
-
-@implementation OWSAudioPlayerDelegateStub
-
-- (void)setAudioProgress:(NSTimeInterval)progress duration:(NSTimeInterval)duration
-{
-    // Do nothing;
-}
-
-@end
-
-#pragma mark -
-
 @interface OWSAudioPlayer () <AVAudioPlayerDelegate>
 
 @property (nonatomic, readonly) NSURL *mediaUrl;
@@ -56,7 +36,6 @@ NS_ASSUME_NONNULL_BEGIN
     OWSAssertDebug(mediaUrl);
 
     _mediaUrl = mediaUrl;
-    _delegate = [OWSAudioPlayerDelegateStub new];
 
     NSString *audioActivityDescription = [NSString stringWithFormat:@"%@ %@", self.logTag, self.mediaUrl];
     _audioActivity = [[OWSAudioActivity alloc] initWithAudioDescription:audioActivityDescription behavior:audioBehavior];
@@ -76,6 +55,11 @@ NS_ASSUME_NONNULL_BEGIN
     [DeviceSleepManager.shared removeBlockWithBlockObject:self];
 
     [self stop];
+}
+
+- (NSTimeInterval)duration
+{
+    return self.audioPlayer.duration;
 }
 
 #pragma mark -
@@ -177,11 +161,12 @@ NS_ASSUME_NONNULL_BEGIN
     self.delegate.audioPlaybackState = AudioPlaybackState_Playing;
     [self.audioPlayer play];
     [self.audioPlayerPoller invalidate];
-    self.audioPlayerPoller = [NSTimer weakScheduledTimerWithTimeInterval:.05f
-                                                                  target:self
-                                                                selector:@selector(audioPlayerUpdated:)
-                                                                userInfo:nil
-                                                                 repeats:YES];
+    self.audioPlayerPoller = [NSTimer weakTimerWithTimeInterval:.05f
+                                                         target:self
+                                                       selector:@selector(audioPlayerUpdated:)
+                                                       userInfo:nil
+                                                        repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.audioPlayerPoller forMode:NSRunLoopCommonModes];
 
     // Prevent device from sleeping while playing audio.
     [DeviceSleepManager.shared addBlockWithBlockObject:self];
@@ -241,8 +226,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)stop
 {
-    OWSAssertIsOnMainThread();
-
     self.delegate.audioPlaybackState = AudioPlaybackState_Stopped;
     [self.audioPlayer pause];
     [self.audioPlayerPoller invalidate];
@@ -271,6 +254,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setCurrentTime:(NSTimeInterval)currentTime
 {
+    [self setupAudioPlayer];
+
     self.audioPlayer.currentTime = currentTime;
 
     [self.delegate setAudioProgress:self.audioPlayer.currentTime duration:self.audioPlayer.duration];

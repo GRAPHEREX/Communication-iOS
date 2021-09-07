@@ -182,16 +182,15 @@ import SignalMessaging
     // MARK: - Signaling Functions
 
     private func allowsInboundCallsInThread(_ thread: TSContactThread) -> Bool {
-        return true
-//        return databaseStorage.read { transaction in
-//            // IFF one of the following things is true, we can handle inbound call offers
-//            // * The thread is in our profile whitelist
-//            // * The thread belongs to someone in our system contacts
-//            // * The thread existed before messages requests
-//            return self.profileManager.isThread(inProfileWhitelist: thread, transaction: transaction)
-//                || self.contactsManager.isSystemContact(address: thread.contactAddress)
-//                || GRDBThreadFinder.isPreMessageRequestsThread(thread, transaction: transaction.unwrapGrdbRead)
-//        }
+        return databaseStorage.read { transaction in
+            // IFF one of the following things is true, we can handle inbound call offers
+            // * The thread is in our profile whitelist
+            // * The thread belongs to someone in our system contacts
+            // * The thread existed before messages requests
+            return self.profileManager.isThread(inProfileWhitelist: thread, transaction: transaction)
+                || self.contactsManager.isSystemContact(address: thread.contactAddress)
+                || GRDBThreadFinder.isPreMessageRequestsThread(thread, transaction: transaction.unwrapGrdbRead)
+        }
     }
 
     private struct CallIdentityKeys {
@@ -503,7 +502,7 @@ import SignalMessaging
 
             var isUnknownCaller = false
             if call.individualCall.direction == .incoming {
-                isUnknownCaller = !self.contactsManagerImpl.hasSignalAccount(for: call.individualCall.thread.contactAddress)
+                isUnknownCaller = !self.contactsManagerImpl.isSystemContactWithSignalAccount(call.individualCall.thread.contactAddress)
                 if isUnknownCaller {
                     Logger.warn("Using relay server because remote user is an unknown caller")
                 }
@@ -756,14 +755,14 @@ import SignalMessaging
                 callService.cleanupStaleCall(call)
                 return
             }
-//            call.individualCall.isRemoteSharingScreen = true
+            call.individualCall.isRemoteSharingScreen = true
 
         case .remoteSharingScreenDisable:
             guard call === callService.currentCall else {
                 callService.cleanupStaleCall(call)
                 return
             }
-//            call.individualCall.isRemoteSharingScreen = false
+            call.individualCall.isRemoteSharingScreen = false
 
         case .reconnecting:
             self.handleReconnecting(call: call)
@@ -833,12 +832,11 @@ import SignalMessaging
         Logger.info("shouldSendOffer")
 
         firstly { () throws -> Promise<Void> in
-            let offerBuilder = SSKProtoCallMessageOffer.builder()
-            offerBuilder.setId(callId)
+            let offerBuilder = SSKProtoCallMessageOffer.builder(id: callId)
             offerBuilder.setOpaque(opaque)
             switch callMediaType {
-            case .audioCall: offerBuilder.setType(SSKProtoCallMessageOfferType.offerAudioCall)
-            case .videoCall: offerBuilder.setType(SSKProtoCallMessageOfferType.offerVideoCall)
+            case .audioCall: offerBuilder.setType(.offerAudioCall)
+            case .videoCall: offerBuilder.setType(.offerVideoCall)
             }
             let callMessage = OWSOutgoingCallMessage(thread: call.individualCall.thread, offerMessage: try offerBuilder.build(), destinationDeviceId: NSNumber(value: destinationDeviceId))
             return messageSender.sendMessage(.promise, callMessage.asPreparer)
@@ -857,8 +855,7 @@ import SignalMessaging
         Logger.info("shouldSendAnswer")
 
         firstly { () throws -> Promise<Void> in
-            let answerBuilder = SSKProtoCallMessageAnswer.builder()
-            answerBuilder.setId(callId)
+            let answerBuilder = SSKProtoCallMessageAnswer.builder(id: callId)
             answerBuilder.setOpaque(opaque)
             let callMessage = OWSOutgoingCallMessage(thread: call.individualCall.thread, answerMessage: try answerBuilder.build(), destinationDeviceId: NSNumber(value: destinationDeviceId))
             return messageSender.sendMessage(.promise, callMessage.asPreparer)
@@ -881,8 +878,7 @@ import SignalMessaging
 
             for iceCandidate in candidates {
                 let iceUpdateProto: SSKProtoCallMessageIceUpdate
-                let iceUpdateBuilder = SSKProtoCallMessageIceUpdate.builder()
-                iceUpdateBuilder.setId(callId)
+                let iceUpdateBuilder = SSKProtoCallMessageIceUpdate.builder(id: callId)
                 iceUpdateBuilder.setOpaque(iceCandidate)
 
                 iceUpdateProto = try iceUpdateBuilder.build()
@@ -910,15 +906,14 @@ import SignalMessaging
         Logger.info("shouldSendHangup")
 
         firstly { () throws -> Promise<Void> in
-            let hangupBuilder = SSKProtoCallMessageHangup.builder()
-            hangupBuilder.setId(callId)
+            let hangupBuilder = SSKProtoCallMessageHangup.builder(id: callId)
 
             switch hangupType {
-            case .normal: hangupBuilder.setType(SSKProtoCallMessageHangupType.hangupNormal)
-            case .accepted: hangupBuilder.setType(SSKProtoCallMessageHangupType.hangupAccepted)
-            case .declined: hangupBuilder.setType(SSKProtoCallMessageHangupType.hangupDeclined)
-            case .busy: hangupBuilder.setType(SSKProtoCallMessageHangupType.hangupBusy)
-            case .needPermission: hangupBuilder.setType(SSKProtoCallMessageHangupType.hangupNeedPermission)
+            case .normal: hangupBuilder.setType(.hangupNormal)
+            case .accepted: hangupBuilder.setType(.hangupAccepted)
+            case .declined: hangupBuilder.setType(.hangupDeclined)
+            case .busy: hangupBuilder.setType(.hangupBusy)
+            case .needPermission: hangupBuilder.setType(.hangupNeedPermission)
             }
 
             if hangupType != .normal {
@@ -949,8 +944,7 @@ import SignalMessaging
         Logger.info("shouldSendBusy")
 
         firstly { () throws -> Promise<Void> in
-            let busyBuilder = SSKProtoCallMessageBusy.builder()
-            busyBuilder.setId(callId)
+            let busyBuilder = SSKProtoCallMessageBusy.builder(id: callId)
             let callMessage = OWSOutgoingCallMessage(thread: call.individualCall.thread, busyMessage: try busyBuilder.build(), destinationDeviceId: NSNumber(value: destinationDeviceId))
             return messageSender.sendMessage(.promise, callMessage.asPreparer)
         }.done {

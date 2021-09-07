@@ -172,7 +172,7 @@ private class BannerView: UIView {
             backgroundColor = .ows_blackAlpha40
         }
 
-        let displayNames = databaseStorage.uiRead { transaction in
+        let displayNames = databaseStorage.read { transaction in
             return addresses.map { address in
                 return (
                     displayName: self.contactsManager.displayName(for: address, transaction: transaction),
@@ -240,20 +240,14 @@ private class BannerView: UIView {
             avatarView.autoVCenterInSuperview()
             avatarView.autoMatch(.height, to: .width, of: avatarView)
 
-            let conversationColorName = databaseStorage.uiRead { transaction in
-                return self.contactsManager.conversationColorName(for: address, transaction: transaction)
-            }
-
-            let avatarBuilder = OWSContactAvatarBuilder(
-                address: address,
-                colorName: conversationColorName,
-                diameter: 40
-            )
-
-            if address.isLocalAddress {
-                avatarView.image = profileManager.localProfileAvatarImage() ?? avatarBuilder.buildDefaultImage()
+            if address.isLocalAddress,
+               let avatarImage = profileManager.localProfileAvatarImage() {
+                avatarView.image = avatarImage
             } else {
-                avatarView.image = avatarBuilder.build()
+                let avatar = Self.avatarBuilder.avatarImageWithSneakyTransaction(forAddress: address,
+                                                                                 diameterPoints: 40,
+                                                                                 localUserDisplayMode: .asUser)
+                avatarView.image = avatar
             }
         }
 

@@ -32,8 +32,8 @@ public class Mention: NSObject {
     public var length: Int { (text as NSString).length }
 
     public class func withSneakyTransaction(address: SignalServiceAddress, style: Style) -> Mention {
-        return SDSDatabaseStorage.shared.uiRead { transaction in
-            return Mention(address: address, style: style, transaction: transaction.unwrapGrdbRead)
+        databaseStorage.read { transaction in
+            Mention(address: address, style: style, transaction: transaction.unwrapGrdbRead)
         }
     }
 
@@ -68,7 +68,7 @@ public class Mention: NSObject {
             attributes[.backgroundColor] = Theme.isDarkThemeEnabled ? UIColor.ows_gray60 : UIColor.ows_gray20
             attributes[.foregroundColor] = ConversationStyle.bubbleTextColorIncoming
         case .outgoing:
-            attributes[.backgroundColor] = UIColor.ows_signalBlueDark
+            attributes[.backgroundColor] = UIColor(white: 0, alpha: 0.25)
             attributes[.foregroundColor] = ConversationStyle.bubbleTextColorOutgoing
         case .composingAttachment:
             attributes[.backgroundColor] = UIColor.ows_gray75

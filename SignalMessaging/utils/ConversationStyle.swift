@@ -69,7 +69,7 @@ public class ConversationStyle: NSObject {
     public let fullWidthGutterTrailing: CGFloat
 
     @objc
-    static public let groupMessageAvatarDiameter: CGFloat = 28
+    static public let groupMessageAvatarDiameter: UInt = 28
     @objc
     static public let selectionViewWidth: CGFloat = 24
     @objc
@@ -93,6 +93,8 @@ public class ConversationStyle: NSObject {
     public let maxMessageWidth: CGFloat
     @objc
     public let maxMediaMessageWidth: CGFloat
+    @objc
+    public let maxAudioMessageWidth: CGFloat
 
     @objc
     public let textInsetTop: CGFloat
@@ -126,18 +128,24 @@ public class ConversationStyle: NSObject {
     @objc
     public static let messageDirectionSpacing: CGFloat = 12
 
-    @objc
+    // ChatColor is used for persistence, logging and comparison.
+    public let chatColor: ChatColor
+    // ColorOrGradientValue is used for rendering.
+    public let chatColorValue: ColorOrGradientValue
+
     public required init(type: ConversationStyleType,
                          thread: TSThread,
                          viewWidth: CGFloat,
-                         hasWallpaper: Bool) {
+                         hasWallpaper: Bool,
+                         chatColor: ChatColor) {
 
         self.type = type
-        self.conversationColor = ConversationStyle.conversationColor(thread: thread)
         self.viewWidth = viewWidth
         self.isDarkThemeEnabled = Theme.isDarkThemeEnabled
         self.primaryTextColor = Theme.primaryTextColor
         self.hasWallpaper = hasWallpaper
+        self.chatColor = chatColor
+        self.chatColorValue = chatColor.setting.asValue
 
         if type == .messageDetails {
             gutterLeading = 0
@@ -177,7 +185,7 @@ public class ConversationStyle: NSObject {
         maxMessageWidth -= Self.messageDirectionSpacing
 
         if thread.isGroupThread {
-            maxMessageWidth -= (Self.groupMessageAvatarDiameter + Self.messageStackSpacing)
+            maxMessageWidth -= (CGFloat(Self.groupMessageAvatarDiameter) + Self.messageStackSpacing)
         }
         self.maxMessageWidth = maxMessageWidth
 
@@ -186,71 +194,55 @@ public class ConversationStyle: NSObject {
         let kMaxBodyMediaSize: CGFloat = 350
         maxMediaMessageWidth = floor(min(maxMessageWidth, kMaxBodyMediaSize))
 
+        let kMaxAudioMessageWidth: CGFloat = 244
+        maxAudioMessageWidth = floor(min(maxMessageWidth, kMaxAudioMessageWidth))
+
         super.init()
     }
 
     // MARK: Colors
 
     @objc
-    public let conversationColor: OWSConversationColor
-
-    private class func conversationColor(thread: TSThread) -> OWSConversationColor {
-        let colorName = thread.conversationColorName
-
-        return OWSConversationColor.conversationColorOrDefault(colorName: colorName)
-    }
-
-    @objc
-    private var defaultBubbleColorIncoming: UIColor {
+    public static func bubbleColorIncoming(hasWallpaper: Bool,
+                                           isDarkThemeEnabled: Bool) -> UIColor {
         if hasWallpaper {
             return isDarkThemeEnabled ? .ows_gray95 : .white
         } else {
-            return isDarkThemeEnabled ? UIColor.ows_gray85 : UIColor.ows_gray05
+            return isDarkThemeEnabled ? UIColor.ows_gray80 : UIColor.ows_gray05
         }
     }
-
     @objc
-    public var bubbleColorOutgoingFailed: UIColor {
-        return Theme.isDarkThemeEnabled ? UIColor.ows_gray75 : UIColor.st_messageGreen
+    public var bubbleColorIncoming: UIColor {
+        Self.bubbleColorIncoming(hasWallpaper: hasWallpaper,
+                                 isDarkThemeEnabled: isDarkThemeEnabled)
     }
 
     @objc
-    public var bubbleColorOutgoingSending: UIColor {
-        return Theme.isDarkThemeEnabled ? UIColor.ows_gray75 : UIColor.st_messageGreen
-    }
+    public let dateBreakTextColor = UIColor.ows_gray60
 
-    @objc
-    public var bubbleColorOutgoingSent: UIColor {
-        return Theme.isDarkThemeEnabled ? UIColor.ows_gray75 : UIColor.st_messageGreen
-    }
-
-    @objc
-    public let dateBreakTextColor = UIColor.clear
-
-    @objc
-    public func bubbleColor(message: TSMessage) -> UIColor {
+    public func bubbleChatColor(message: TSMessage) -> ColorOrGradientValue {
         if message.wasRemotelyDeleted {
-            return Theme.backgroundColor
+            return .solidColor(color: Theme.backgroundColor)
         } else if message is TSIncomingMessage {
-            return defaultBubbleColorIncoming
-        } else if let outgoingMessage = message as? TSOutgoingMessage {
-            switch outgoingMessage.messageState {
-            case .failed:
-                return bubbleColorOutgoingFailed
-            case .sending:
-                return bubbleColorOutgoingSending
-            default:
-                return bubbleColorOutgoingSent
-            }
+            return .solidColor(color: bubbleColorIncoming)
+        } else if message is TSOutgoingMessage {
+            return bubbleChatColorOutgoing
         } else {
             owsFailDebug("Unexpected message type: \(message)")
-            return bubbleColorOutgoingSent
+            return .solidColor(color: UIColor.ows_accentBlue)
         }
     }
 
-    @objc
-    public func bubbleColor(isIncoming: Bool) -> UIColor {
-        isIncoming ? defaultBubbleColorIncoming : bubbleColorOutgoingSent
+    public func bubbleChatColor(isIncoming: Bool) -> ColorOrGradientValue {
+        if isIncoming {
+            return .solidColor(color: bubbleColorIncoming)
+        } else {
+            return bubbleChatColorOutgoing
+        }
+    }
+
+    public var bubbleChatColorOutgoing: ColorOrGradientValue {
+        chatColorValue
     }
 
     @objc
@@ -328,47 +320,18 @@ public class ConversationStyle: NSObject {
     }
 
     @objc
-    public var quotedReplyBubbleColor: UIColor {
-        .clear
-//        isDarkThemeEnabled ? .st_neutralIcon1 : .st_neutralIcon2
-    }
-
-    @objc
-    public func quotedReplyStripeColor(isIncoming: Bool, isForPreview: Bool) -> UIColor {
-        if isForPreview {
-            return isDarkThemeEnabled ? .ows_white : .ows_black
-        }
-        return .ows_white
-//        if isDarkThemeEnabled {
-//            if isIncoming {
-//                return .st_neutralIcon1
-//            } else {
-//                return .ows_black
-//            }
-//        } else if isIncoming {
-//            return .st_accentGreen
-//        } else {
-//            return .ows_white
-//        }
-    }
-
-    @objc
-    public func quotingSelfHighlightColor() -> UIColor {
-        // TODO:
+    public func quotedReplyHighlightColor() -> UIColor {
         UIColor.init(rgbHex: 0xB5B5B5)
     }
 
     @objc
-    public func quotedReplyAuthorColor(isIncoming: Bool, isForPreview: Bool) -> UIColor {
-        quotedReplyTextColor(isIncoming: isIncoming, isForPreview: isForPreview)
+    public func quotedReplyAuthorColor() -> UIColor {
+        quotedReplyTextColor()
     }
 
     @objc
-    public func quotedReplyTextColor(isIncoming: Bool, isForPreview: Bool) -> UIColor {
-        if isForPreview {
-            return isDarkThemeEnabled ? .ows_gray05 : .ows_gray90
-        }
-        return bubbleTextColor(isIncoming: isIncoming)
+    public func quotedReplyTextColor() -> UIColor {
+        isDarkThemeEnabled ? .ows_gray05 : .ows_gray90
     }
 
     @objc
@@ -383,7 +346,6 @@ public class ConversationStyle: NSObject {
         (type.isValid == other.type.isValid &&
             viewWidth == other.viewWidth &&
             dynamicBodyTypePointSize == other.dynamicBodyTypePointSize &&
-            conversationColor == other.conversationColor &&
             isDarkThemeEnabled == other.isDarkThemeEnabled &&
             hasWallpaper == other.hasWallpaper &&
             maxMessageWidth == other.maxMessageWidth &&
@@ -394,7 +356,10 @@ public class ConversationStyle: NSObject {
             fullWidthGutterLeading == other.fullWidthGutterLeading &&
             fullWidthGutterTrailing == other.fullWidthGutterTrailing &&
             textInsets == other.textInsets &&
-            lastTextLineAxis == other.lastTextLineAxis)
+            lastTextLineAxis == other.lastTextLineAxis &&
+            // We don't need to compare chatColor or all of chatColor;
+            // it is sufficient to compare chatColor.setting.
+            chatColor.setting == other.chatColor.setting)
     }
 
     @objc
@@ -403,7 +368,6 @@ public class ConversationStyle: NSObject {
             "type.isValid: \(type.isValid), " +
             "viewWidth: \(viewWidth), " +
             "dynamicBodyTypePointSize: \(dynamicBodyTypePointSize), " +
-            "conversationColor: \(conversationColor), " +
             "isDarkThemeEnabled: \(isDarkThemeEnabled), " +
             "maxMessageWidth: \(maxMessageWidth), " +
             "maxMediaMessageWidth: \(maxMediaMessageWidth), " +
@@ -414,6 +378,7 @@ public class ConversationStyle: NSObject {
             "fullWidthGutterTrailing: \(fullWidthGutterTrailing), " +
             "textInsets: \(textInsets), " +
             "lastTextLineAxis: \(lastTextLineAxis), " +
+            "chatColor: \(chatColor), " +
             "]"
     }
 }

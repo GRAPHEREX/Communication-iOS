@@ -116,10 +116,6 @@ final class CallKitCallManager: NSObject {
         return calls[index]
     }
 
-    func latestCall() -> SignalCall? {
-        return calls.last
-    }
-
     func addCall(_ call: SignalCall) {
         Logger.verbose("call: \(call)")
         owsAssertDebug(call.isIndividualCall)

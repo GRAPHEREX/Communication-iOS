@@ -16,6 +16,17 @@ public class OWSFlatButton: UIView {
     private var downColor: UIColor?
 
     @objc
+    public var cornerRadius: CGFloat {
+        set {
+            button.layer.cornerRadius = newValue
+            button.clipsToBounds = newValue > 0
+        }
+        get {
+            button.layer.cornerRadius
+        }
+    }
+
+    @objc
     public override var accessibilityIdentifier: String? {
         didSet {
             guard let accessibilityIdentifier = self.accessibilityIdentifier else {
@@ -60,7 +71,7 @@ public class OWSFlatButton: UIView {
         createContent()
     }
 
-    @available(*, unavailable, message:"use other constructor instead.")
+    @available(*, unavailable, message: "use other constructor instead.")
     required public init?(coder aDecoder: NSCoder) {
         notImplemented()
     }
@@ -136,8 +147,7 @@ public class OWSFlatButton: UIView {
 
     @objc
     public class func heightForFont(_ font: UIFont) -> CGFloat {
-        // Button height should be 48pt if the font is 17pt.
-        return font.pointSize * 48 / 17
+        font.lineHeight * 2.5
     }
 
     // MARK: Methods
@@ -231,7 +241,7 @@ public class OWSFlatButton: UIView {
             owsFailDebug("Missing button font.")
             return
         }
-        autoSetDimension(.height, toSize: font.lineHeight * 2.5)
+        autoSetDimension(.height, toSize: Self.heightForFont(font))
     }
 
     override public var intrinsicContentSize: CGSize {
