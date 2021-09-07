@@ -62,6 +62,11 @@ NS_ASSUME_NONNULL_BEGIN
     return YES;
 }
 
+- (BOOL)isNSE
+{
+    return NO;
+}
+
 - (UIApplicationState)mainApplicationStateOnLaunch
 {
     OWSFailDebug(@"Not main app.");

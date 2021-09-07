@@ -2,28 +2,26 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "MockSSKEnvironment.h"
-#import "OWS2FAManager.h"
-#import "OWSBlockingManager.h"
-#import "OWSDisappearingMessagesJob.h"
-#import "OWSFakeCallMessageHandler.h"
-#import "OWSFakeContactsUpdater.h"
-#import "OWSFakeMessageSender.h"
-#import "OWSFakeNetworkManager.h"
-#import "OWSFakeProfileManager.h"
-#import "OWSIdentityManager.h"
-#import "OWSMessageManager.h"
-#import "OWSOutgoingReceiptManager.h"
-#import "OWSReadReceiptManager.h"
-#import "SSKPreKeyStore.h"
-#import "SSKSignedPreKeyStore.h"
-#import "StorageCoordinator.h"
-#import "TSAccountManager.h"
-#import "TSSocketManager.h"
 #import <PromiseKit/AnyPromise.h>
+#import <SignalServiceKit/MockSSKEnvironment.h>
+#import <SignalServiceKit/OWS2FAManager.h>
 #import <SignalServiceKit/OWSBackgroundTask.h>
+#import <SignalServiceKit/OWSDisappearingMessagesJob.h>
+#import <SignalServiceKit/OWSFakeCallMessageHandler.h>
+#import <SignalServiceKit/OWSFakeMessageSender.h>
+#import <SignalServiceKit/OWSFakeNetworkManager.h>
+#import <SignalServiceKit/OWSFakeProfileManager.h>
+#import <SignalServiceKit/OWSIdentityManager.h>
+#import <SignalServiceKit/OWSMessageManager.h>
+#import <SignalServiceKit/OWSOutgoingReceiptManager.h>
+#import <SignalServiceKit/OWSReceiptManager.h>
 #import <SignalServiceKit/ProfileManagerProtocol.h>
+#import <SignalServiceKit/SSKPreKeyStore.h>
+#import <SignalServiceKit/SSKSignedPreKeyStore.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/StorageCoordinator.h>
+#import <SignalServiceKit/TSAccountManager.h>
+#import <SignalServiceKit/TSSocketManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -55,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
     MessageSenderJobQueue *messageSenderJobQueue = [MessageSenderJobQueue new];
 
     OWSMessageManager *messageManager = [OWSMessageManager new];
-    OWSBlockingManager *blockingManager = [OWSBlockingManager new];
+    BlockingManager *blockingManager = [BlockingManager new];
     OWSIdentityManager *identityManager = [[OWSIdentityManager alloc] initWithDatabaseStorage:databaseStorage];
     id<RemoteConfigManager> remoteConfigManager = [StubbableRemoteConfigManager new];
     SSKSessionStore *sessionStore = [SSKSessionStore new];
@@ -68,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
     TSAccountManager *tsAccountManager = [TSAccountManager new];
     OWS2FAManager *ows2FAManager = [OWS2FAManager new];
     OWSDisappearingMessagesJob *disappearingMessagesJob = [OWSDisappearingMessagesJob new];
-    OWSReadReceiptManager *readReceiptManager = [OWSReadReceiptManager new];
+    OWSReceiptManager *receiptManager = [OWSReceiptManager new];
     OWSOutgoingReceiptManager *outgoingReceiptManager = [OWSOutgoingReceiptManager new];
     id<SSKReachabilityManager> reachabilityManager = [SSKReachabilityManagerImpl new];
     id<SyncManagerProtocol> syncManager = [[OWSMockSyncManager alloc] init];
@@ -90,14 +88,17 @@ NS_ASSUME_NONNULL_BEGIN
     OWSMessagePipelineSupervisor *messagePipelineSupervisor = [OWSMessagePipelineSupervisor createStandardSupervisor];
     AppExpiry *appExpiry = [AppExpiry new];
     MessageProcessor *messageProcessor = [MessageProcessor new];
+    id<Payments> payments = [MockPayments new];
+    id<PaymentsCurrencies> paymentsCurrencies = [MockPaymentsCurrencies new];
+    SpamChallengeResolver *spamChallengeResolver = [SpamChallengeResolver new];
+    SenderKeyStore *senderKeyStore = [SenderKeyStore new];
 
     self = [super initWithContactsManager:contactsManager
                        linkPreviewManager:linkPreviewManager
                             messageSender:messageSender
                     messageSenderJobQueue:messageSenderJobQueue
-               pendingReadReceiptRecorder:[NoopPendingReadReceiptRecorder new]
+                   pendingReceiptRecorder:[NoopPendingReceiptRecorder new]
                            profileManager:[OWSFakeProfileManager new]
-                          contactsUpdater:[OWSFakeContactsUpdater new]
                            networkManager:networkManager
                            messageManager:messageManager
                           blockingManager:blockingManager
@@ -113,7 +114,7 @@ NS_ASSUME_NONNULL_BEGIN
                          tsAccountManager:tsAccountManager
                             ows2FAManager:ows2FAManager
                   disappearingMessagesJob:disappearingMessagesJob
-                       readReceiptManager:readReceiptManager
+                           receiptManager:receiptManager
                    outgoingReceiptManager:outgoingReceiptManager
                       reachabilityManager:reachabilityManager
                               syncManager:syncManager
@@ -136,7 +137,11 @@ NS_ASSUME_NONNULL_BEGIN
                       earlyMessageManager:earlyMessageManager
                 messagePipelineSupervisor:messagePipelineSupervisor
                                 appExpiry:appExpiry
-                         messageProcessor:messageProcessor];
+                         messageProcessor:messageProcessor
+                                 payments:payments
+                       paymentsCurrencies:paymentsCurrencies
+                    spamChallengeResolver:spamChallengeResolver
+                           senderKeyStore:senderKeyStore];
 
     if (!self) {
         return nil;

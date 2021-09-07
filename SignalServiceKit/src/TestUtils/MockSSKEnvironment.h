@@ -2,7 +2,7 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "SSKEnvironment.h"
+#import <SignalServiceKit/SSKEnvironment.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) id<ProfileManagerProtocol> profileManagerRef;
 @property (nonatomic) TSNetworkManager *networkManagerRef;
 @property (nonatomic) OWSMessageManager *messageManagerRef;
-@property (nonatomic) OWSBlockingManager *blockingManagerRef;
+@property (nonatomic) BlockingManager *blockingManagerRef;
 @property (nonatomic) OWSIdentityManager *identityManagerRef;
 @property (nonatomic) id<OWSUDManager> udManagerRef;
 @property (nonatomic) OWSMessageDecrypter *messageDecrypterRef;
@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) TSAccountManager *tsAccountManagerRef;
 @property (nonatomic) OWS2FAManager *ows2FAManagerRef;
 @property (nonatomic) OWSDisappearingMessagesJob *disappearingMessagesJobRef;
-@property (nonatomic) OWSReadReceiptManager *readReceiptManagerRef;
+@property (nonatomic) OWSReceiptManager *receiptManagerRef;
 @property (nonatomic) OWSOutgoingReceiptManager *outgoingReceiptManagerRef;
 @property (nonatomic) id<SyncManagerProtocol> syncManagerRef;
 @property (nonatomic) id<SSKReachabilityManager> reachabilityManagerRef;
@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) SDSDatabaseStorage *databaseStorageRef;
 @property (nonatomic) AccountServiceClient *accountServiceClientRef;
 @property (nonatomic) id<GroupsV2> groupsV2Ref;
+@property (nonatomic) id<Payments> paymentsRef;
+@property (nonatomic) id<PaymentsCurrencies> paymentsCurrenciesRef;
 
 @end
 

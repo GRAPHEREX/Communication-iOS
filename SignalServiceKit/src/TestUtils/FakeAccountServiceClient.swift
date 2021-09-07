@@ -1,16 +1,18 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
 import PromiseKit
 
-class FakeAccountServiceClient: AccountServiceClient {
-    override init() {}
+@objc
+public class FakeAccountServiceClient: AccountServiceClient {
+    @objc
+    public override init() {}
 
     // MARK: - Public
 
-    public override func requestPreauthChallenge(recipientId: String, pushToken: String) -> Promise<Void> {
+    public override func requestPreauthChallenge(recipientId: String, pushToken: String, isVoipToken: Bool) -> Promise<Void> {
         return Promise { $0.fulfill(()) }
     }
 

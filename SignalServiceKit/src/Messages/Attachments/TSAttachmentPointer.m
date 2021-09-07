@@ -2,11 +2,11 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "TSAttachmentPointer.h"
-#import "OWSBackupFragment.h"
-#import "TSAttachmentStream.h"
 #import <SignalServiceKit/MimeTypeUtil.h>
+#import <SignalServiceKit/OWSBackupFragment.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSAttachmentPointer.h>
+#import <SignalServiceKit/TSAttachmentStream.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -72,8 +72,6 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value)
 }
 
 - (instancetype)initWithServerId:(UInt64)serverId
-                   credentionals:(nonnull NSString *)credentionals
-                          bucket:(nonnull NSString *)bucket
                           cdnKey:(NSString *)cdnKey
                        cdnNumber:(UInt32)cdnNumber
                              key:(NSData *)key
@@ -89,8 +87,6 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value)
                  uploadTimestamp:(unsigned long long)uploadTimestamp
 {
     self = [super initWithServerId:serverId
-                     credentionals:credentionals
-                            bucket:bucket
                             cdnKey:cdnKey
                          cdnNumber:cdnNumber
                      encryptionKey:key
@@ -153,8 +149,6 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value)
                      contentType:(NSString *)contentType
                    encryptionKey:(nullable NSData *)encryptionKey
                         serverId:(unsigned long long)serverId
-                 credentionals:(NSString *)credentionals
-                        bucket:(NSString *)bucket
                   sourceFilename:(nullable NSString *)sourceFilename
                  uploadTimestamp:(unsigned long long)uploadTimestamp
                           digest:(nullable NSData *)digest
@@ -175,8 +169,6 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value)
                        contentType:contentType
                      encryptionKey:encryptionKey
                           serverId:serverId
-                   credentionals:credentionals
-                          bucket:bucket
                     sourceFilename:sourceFilename
                    uploadTimestamp:uploadTimestamp];
 
@@ -230,10 +222,12 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value)
     TSAttachmentType attachmentType = TSAttachmentTypeDefault;
     if ([attachmentProto hasFlags]) {
         UInt32 flags = attachmentProto.flags;
-        if ((flags & (UInt32)SSKProtoAttachmentPointerFlagsVoiceMessage) > 0) {
+        if ((flags & SSKProtoAttachmentPointerFlagsVoiceMessage) > 0) {
             attachmentType = TSAttachmentTypeVoiceMessage;
-        } else if ((flags & (UInt32)SSKProtoAttachmentPointerFlagsBorderless) > 0) {
+        } else if ((flags & SSKProtoAttachmentPointerFlagsBorderless) > 0) {
             attachmentType = TSAttachmentTypeBorderless;
+        } else if ((flags & SSKProtoAttachmentPointerFlagsGif) > 0) {
+            attachmentType = TSAttachmentTypeGIF;
         }
     }
     NSString *_Nullable caption;
@@ -272,8 +266,6 @@ NSString *NSStringForTSAttachmentPointerState(TSAttachmentPointerState value)
     }
 
     TSAttachmentPointer *pointer = [[TSAttachmentPointer alloc] initWithServerId:serverId
-                                                                   credentionals:attachmentProto.credentionals
-                                                                          bucket:attachmentProto.bucket
                                                                           cdnKey:attachmentProto.cdnKey
                                                                        cdnNumber:attachmentProto.cdnNumber
                                                                              key:attachmentProto.key

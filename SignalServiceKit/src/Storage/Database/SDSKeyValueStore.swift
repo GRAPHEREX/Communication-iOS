@@ -434,6 +434,33 @@ public class SDSKeyValueStore: NSObject {
     }
 
     @objc
+    public func allUIntValuesMap(transaction: SDSAnyReadTransaction) -> [String: UInt] {
+        let pairs = allPairs(transaction: transaction)
+        var result = [String: UInt]()
+        for pair in pairs {
+            guard let key = pair.key else {
+                owsFailDebug("missing key.")
+                continue
+            }
+            guard let value = pair.value else {
+                owsFailDebug("missing value.")
+                continue
+            }
+            guard let rawObject = parseArchivedValue(value) else {
+                owsFailDebug("Could not parse value.")
+                continue
+            }
+            guard let number: NSNumber = parseValueAs(key: key,
+                                                      rawObject: rawObject) else {
+                                                        owsFailDebug("Invalid value.")
+                                                        continue
+            }
+            result[key] = number.uintValue
+        }
+        return result
+    }
+
+    @objc
     public func anyDataValue(transaction: SDSAnyReadTransaction) -> Data? {
         let keys = allKeys(transaction: transaction).shuffled()
         guard let firstKey = keys.first else {
@@ -477,13 +504,24 @@ public class SDSKeyValueStore: NSObject {
     }
 
     @objc
-    var asObjC: SDSKeyValueStoreObjC {
+    public var asObjC: SDSKeyValueStoreObjC {
         return SDSKeyValueStoreObjC(sdsKeyValueStore: self)
     }
 
     // MARK: -
 
+    @available(*, deprecated, message: "Did you mean removeValue(forKey:transaction:) or setCodable(optional:key:transaction)?")
+    public func setCodable<T: Encodable>(_ value: T?, key: String, transaction: SDSAnyWriteTransaction) throws {
+        try setCodable(optional: value, key: key, transaction: transaction)
+    }
+
     public func setCodable<T: Encodable>(_ value: T, key: String, transaction: SDSAnyWriteTransaction) throws {
+        // The only difference between setCodable(optional:...) and setCodable(_...) is
+        // the non-optional variant has a deprecated overload to warn callers of the ambiguity.
+        try setCodable(optional: value, key: key, transaction: transaction)
+    }
+
+    public func setCodable<T: Encodable>(optional value: T, key: String, transaction: SDSAnyWriteTransaction) throws {
         do {
             let data = try JSONEncoder().encode(value)
             setData(data, key: key, transaction: transaction)
@@ -666,8 +704,9 @@ public class SDSKeyValueStore: NSObject {
         FROM \(SDSKeyValueStore.table.tableName)
         WHERE \(SDSKeyValueStore.collectionColumn.columnName) == ?
         """
-        return try! String.fetchAll(grdbTransaction.database,
-                                    sql: sql,
-                                    arguments: [collection])
+
+        return grdbTransaction.database.strictRead { database in
+            try String.fetchAll(database, sql: sql, arguments: [collection])
+        }
     }
 }

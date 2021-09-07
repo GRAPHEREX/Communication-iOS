@@ -25,7 +25,8 @@ public class AttachmentMultisend: Dependencies {
                                               sourceFilename: attachment.filenameOrDefault,
                                               caption: attachment.captionText,
                                               albumMessageId: nil,
-                                              isBorderless: attachment.isBorderless)
+                                              isBorderless: attachment.isBorderless,
+                                              isLoopingVideo: attachment.isLoopingVideo)
             }
 
             var threads: [TSThread] = []
@@ -39,7 +40,7 @@ public class AttachmentMultisend: Dependencies {
                     }
 
                     // If this thread has a pending message request, treat it as accepted.
-                    ThreadUtil.addThread(toProfileWhitelistIfEmptyOrPendingRequest: thread, transaction: transaction)
+                    ThreadUtil.addThread(toProfileWhitelistIfEmptyOrPendingRequestAndSetDefaultTimer: thread, transaction: transaction)
 
                     let message = try! ThreadUtil.createUnsentMessage(with: approvalMessageBody,
                                                                       mediaAttachments: attachments,
@@ -95,7 +96,8 @@ public class AttachmentMultisend: Dependencies {
                                               sourceFilename: attachment.filenameOrDefault,
                                               caption: attachment.captionText,
                                               albumMessageId: nil,
-                                              isBorderless: attachment.isBorderless)
+                                              isBorderless: attachment.isBorderless,
+                                              isLoopingVideo: attachment.isLoopingVideo)
             }
 
             var threads: [TSThread] = []
@@ -111,7 +113,7 @@ public class AttachmentMultisend: Dependencies {
                     }
 
                     // If this thread has a pending message request, treat it as accepted.
-                    ThreadUtil.addThread(toProfileWhitelistIfEmptyOrPendingRequest: thread, transaction: transaction)
+                    ThreadUtil.addThread(toProfileWhitelistIfEmptyOrPendingRequestAndSetDefaultTimer: thread, transaction: transaction)
 
                     let message = try! ThreadUtil.createUnsentMessage(with: approvalMessageBody,
                                                                       mediaAttachments: attachments,

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 @objc
@@ -25,6 +25,11 @@ public class NoopNotificationsManager: NSObject, NotificationsProtocol {
         Logger.warn("skipping notification for: \(errorMessage.description)")
     }
 
+    public func notifyInternalUsers(ofErrorMessage errorString: String) {
+        owsFailDebug("Internal error message: \(errorString)")
+        Logger.warn("Skipping internal error notification: \(errorString)")
+    }
+
     public func clearAllNotifications() {
         Logger.warn("clearAllNotifications")
     }
@@ -35,9 +40,5 @@ public class NoopNotificationsManager: NSObject, NotificationsProtocol {
 
     public func cancelNotifications(reactionId: String) {
         Logger.warn("cancelNotifications for reactionId: \(reactionId)")
-    }
-
-    public func notifyUserForGRDBMigration() {
-        Logger.warn("notifyUserForGRDBMigration")
     }
 }

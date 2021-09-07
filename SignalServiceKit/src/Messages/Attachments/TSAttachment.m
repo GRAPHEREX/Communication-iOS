@@ -2,13 +2,13 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "TSAttachment.h"
-#import "MIMETypeUtil.h"
-#import "TSAttachmentPointer.h"
-#import "TSMessage.h"
 #import <SignalCoreKit/NSString+OWS.h>
 #import <SignalCoreKit/iOSVersions.h>
+#import <SignalServiceKit/MIMETypeUtil.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSAttachment.h>
+#import <SignalServiceKit/TSAttachmentPointer.h>
+#import <SignalServiceKit/TSMessage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,8 +33,6 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
 // This constructor is used for new instances of TSAttachmentPointer,
 // i.e. undownloaded incoming attachments.
 - (instancetype)initWithServerId:(UInt64)serverId
-                   credentionals:(NSString *)credentionals
-                          bucket:(NSString *)bucket
                           cdnKey:(NSString *)cdnKey
                        cdnNumber:(UInt32)cdnNumber
                    encryptionKey:(NSData *)encryptionKey
@@ -65,8 +63,6 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
     }
 
     _serverId = serverId;
-    _credentionals = credentionals;
-    _bucket = bucket;
     _cdnKey = cdnKey;
     _cdnNumber = cdnNumber;
     _encryptionKey = encryptionKey;
@@ -136,7 +132,9 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
     if (!self) {
         return self;
     }
-    OWSLogVerbose(@"init attachment with uniqueId: %@", self.uniqueId);
+    if (!SSKDebugFlags.reduceLogChatter) {
+        OWSLogVerbose(@"init attachment with uniqueId: %@", self.uniqueId);
+    }
 
     _contentType = contentType;
     _byteCount = byteCount;
@@ -240,8 +238,6 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
                      contentType:(NSString *)contentType
                    encryptionKey:(nullable NSData *)encryptionKey
                         serverId:(unsigned long long)serverId
-                 credentionals:(NSString *)credentionals
-                        bucket:(NSString *)bucket
                   sourceFilename:(nullable NSString *)sourceFilename
                  uploadTimestamp:(unsigned long long)uploadTimestamp
 {
@@ -262,8 +258,6 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
     _contentType = contentType;
     _encryptionKey = encryptionKey;
     _serverId = serverId;
-    _credentionals = credentionals;
-    _bucket = bucket;
     _sourceFilename = sourceFilename;
     _uploadTimestamp = uploadTimestamp;
 
@@ -299,7 +293,10 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
     NSString *attachmentString;
 
     if (self.isAnimated) {
-        if ([self.contentType caseInsensitiveCompare:OWSMimeTypeImageGif] == NSOrderedSame) {
+        BOOL isGIF = ([self.contentType caseInsensitiveCompare:OWSMimeTypeImageGif] == NSOrderedSame);
+        BOOL isLoopingVideo = self.isLoopingVideo && ([MIMETypeUtil isVideo:self.contentType]);
+
+        if (isGIF || isLoopingVideo) {
             attachmentString = NSLocalizedString(@"ATTACHMENT_TYPE_GIF",
                 @"Short text label for a gif attachment, used for thread preview and on the lock screen");
         } else {
@@ -345,7 +342,7 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
 
 - (NSString *)emojiForMimeType
 {
-    if (self.isAnimated) {
+    if (self.isAnimated || self.isLoopingVideo) {
         return @"🎡";
     } else if ([MIMETypeUtil isImage:self.contentType]) {
         return @"📷";
@@ -412,6 +409,11 @@ NSUInteger const TSAttachmentSchemaVersion = 5;
 - (BOOL)isBorderless
 {
     return self.attachmentType == TSAttachmentTypeBorderless;
+}
+
+- (BOOL)isLoopingVideo
+{
+    return self.attachmentType == TSAttachmentTypeGIF && self.isVideo;
 }
 
 - (BOOL)isVisualMedia

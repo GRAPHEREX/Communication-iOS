@@ -78,8 +78,7 @@ public class OWSAttachmentDownloads: NSObject {
     private var activeJobMap = [AttachmentId: Job]()
     // This property should only be accessed with unfairLock.
     private var jobQueue = [Job]()
-    // This property should only be accessed with unfairLock.
-    private var completeAttachmentMap = Set<AttachmentId>()
+    private var completeAttachmentMap = LRUCache<AttachmentId, Bool>(maxSize: 256)
 
     @objc
     public override init() {
@@ -87,10 +86,21 @@ public class OWSAttachmentDownloads: NSObject {
 
         SwiftSingletons.register(self)
 
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(profileWhitelistDidChange(notification:)),
-                                               name: .profileWhitelistDidChange,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(profileWhitelistDidChange(notification:)),
+            name: .profileWhitelistDidChange,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applicationDidBecomeActive),
+            name: .OWSApplicationDidBecomeActive,
+            object: nil
+        )
+
+        AppReadiness.runNowOrWhenMainAppDidBecomeReadyAsync { self.startPendingNewMessageDownloads() }
     }
 
     @objc
@@ -119,6 +129,42 @@ public class OWSAttachmentDownloads: NSObject {
         }
     }
 
+    @objc
+    func applicationDidBecomeActive() {
+        AppReadiness.runNowOrWhenMainAppDidBecomeReadyAsync { self.startPendingNewMessageDownloads() }
+    }
+
+    // MARK: -
+
+    private static let pendingNewMessageDownloads = SDSKeyValueStore(collection: "PendingNewMessageDownloads")
+
+    private func startPendingNewMessageDownloads() {
+        owsAssertDebug(CurrentAppContext().isMainApp)
+
+        let pendingNewMessageDownloads = databaseStorage.read { transaction in
+            Self.pendingNewMessageDownloads.allUIntValuesMap(transaction: transaction)
+        }
+
+        guard !pendingNewMessageDownloads.isEmpty else { return }
+
+        databaseStorage.asyncWrite { transaction in
+            for (pendingNewMessageId, rawDownloadBehavior) in pendingNewMessageDownloads {
+                guard let downloadBehavior = AttachmentDownloadBehavior(rawValue: rawDownloadBehavior) else {
+                    owsFailDebug("Unexpected download behavior \(rawDownloadBehavior)")
+                    Self.pendingNewMessageDownloads.removeValue(forKey: pendingNewMessageId, transaction: transaction)
+                    continue
+                }
+
+                self.enqueueDownloadOfAttachmentsForNewMessageId(
+                    pendingNewMessageId,
+                    downloadBehavior: downloadBehavior,
+                    touchMessageImmediately: true,
+                    transaction: transaction
+                )
+            }
+        }
+    }
+
     // MARK: -
 
     public func downloadProgress(forAttachmentId attachmentId: AttachmentId) -> CGFloat? {
@@ -126,7 +172,7 @@ public class OWSAttachmentDownloads: NSObject {
             if let job = activeJobMap[attachmentId] {
                 return job.progress
             }
-            if completeAttachmentMap.contains(attachmentId) {
+            if nil != completeAttachmentMap[attachmentId] {
                 return 1.0
             }
             return nil
@@ -173,8 +219,8 @@ public class OWSAttachmentDownloads: NSObject {
             cancellationRequestMap[attachmentId] = nil
 
             if isAttachmentDownloaded {
-                owsAssertDebug(!completeAttachmentMap.contains(attachmentId))
-                completeAttachmentMap.insert(attachmentId)
+                owsAssertDebug(nil == completeAttachmentMap[attachmentId])
+                completeAttachmentMap[attachmentId] = true
             }
         }
         tryToStartNextDownload()
@@ -222,8 +268,8 @@ public class OWSAttachmentDownloads: NSObject {
                 owsFailDebug("Attachment already downloaded: \(job.category).")
 
                 Self.unfairLock.withLock {
-                    owsAssertDebug(!self.completeAttachmentMap.contains(job.attachmentId))
-                    self.completeAttachmentMap.insert(job.attachmentId)
+                    owsAssertDebug(nil == completeAttachmentMap[job.attachmentId])
+                    completeAttachmentMap[job.attachmentId] = true
                 }
 
                 return nil
@@ -550,11 +596,11 @@ public enum MediaDownloadType: String, Equatable, CaseIterable {
         case .photo:
             return .wifiAndCellular
         case .video:
-            return .wifiAndCellular
+            return .wifiOnly
         case .audio:
             return .wifiAndCellular
         case .document:
-            return .wifiAndCellular
+            return .wifiOnly
         }
     }
 
@@ -678,22 +724,6 @@ public extension OWSAttachmentDownloads {
                         failure: failure)
     }
 
-    @objc(enqueueMessageDownloadWithAttachmentPointer:message:category:downloadBehavior:success:failure:)
-    func enqueueMessageDownload(attachmentPointer: TSAttachmentPointer,
-                                message: TSMessage,
-                                category: AttachmentCategory,
-                                downloadBehavior: AttachmentDownloadBehavior,
-                                success: @escaping ([TSAttachmentStream]) -> Void,
-                                failure: @escaping (Error) -> Void) {
-        let jobType: JobType = .messageAttachment(attachmentId: attachmentPointer.uniqueId,
-                                                  message: message)
-        let jobRequest = JobRequest(jobType: jobType, category: category)
-        enqueueDownload(jobRequest: jobRequest,
-                        downloadBehavior: downloadBehavior,
-                        success: success,
-                        failure: failure)
-    }
-
     private func enqueueDownload(jobRequest: JobRequest,
                                  downloadBehavior: AttachmentDownloadBehavior,
                                  success: @escaping ([TSAttachmentStream]) -> Void,
@@ -761,6 +791,103 @@ public extension OWSAttachmentDownloads {
             }
         } catch {
             owsFailDebug("Error: \(error)")
+        }
+    }
+
+    @objc
+    func enqueueDownloadOfAttachmentsForNewMessage(_ message: TSMessage, transaction: SDSAnyWriteTransaction) {
+        // No attachments, nothing to do.
+        guard !message.allAttachmentIds().isEmpty else { return }
+
+        enqueueDownloadOfAttachmentsForNewMessageId(
+            message.uniqueId,
+            downloadBehavior: message is TSOutgoingMessage ? .bypassAll : .default,
+            touchMessageImmediately: false,
+            transaction: transaction
+        )
+    }
+
+    private func enqueueDownloadOfAttachmentsForNewMessageId(
+        _ messageId: String,
+        downloadBehavior: AttachmentDownloadBehavior,
+        touchMessageImmediately: Bool,
+        transaction: SDSAnyWriteTransaction
+    ) {
+        // If we're not the main app, queue up the download for the next time
+        // the main app launches.
+        guard CurrentAppContext().isMainApp else {
+            Self.pendingNewMessageDownloads.setUInt(
+                downloadBehavior.rawValue,
+                key: messageId,
+                transaction: transaction
+            )
+            return
+        }
+
+        Self.pendingNewMessageDownloads.removeValue(forKey: messageId, transaction: transaction)
+
+        // Don't enqueue the attachment downloads until the write
+        // transaction is committed or attachmentDownloads might race
+        // and not be able to find the attachment(s)/message/thread.
+        transaction.addAsyncCompletionOffMain {
+            self.enqueueDownloadOfAttachments(
+                forMessageId: messageId,
+                attachmentGroup: .allAttachmentsIncoming,
+                downloadBehavior: downloadBehavior,
+                touchMessageImmediately: touchMessageImmediately
+            ) { streams in
+                Logger.debug("Successfully fetched attachments: \(streams.count) for message: \(messageId)")
+            } failure: { error in
+                Logger.warn("Failed to fetch attachments for message: \(messageId) with error: \(error)")
+            }
+        }
+    }
+
+    @objc
+    func enqueueDownloadOfAttachments(forMessageId messageId: String,
+                                      attachmentGroup: AttachmentGroup,
+                                      downloadBehavior: AttachmentDownloadBehavior,
+                                      touchMessageImmediately: Bool,
+                                      success: @escaping ([TSAttachmentStream]) -> Void,
+                                      failure: @escaping (Error) -> Void) {
+
+        Self.serialQueue.async {
+            guard !CurrentAppContext().isRunningTests else {
+                failure(Self.buildError())
+                return
+            }
+            Self.databaseStorage.read { transaction in
+                guard let message = TSMessage.anyFetchMessage(uniqueId: messageId, transaction: transaction) else {
+                    failure(Self.buildError())
+                    return
+                }
+                let jobRequests = Self.buildJobRequests(forMessage: message,
+                                                        attachmentGroup: attachmentGroup,
+                                                        transaction: transaction)
+                guard !jobRequests.isEmpty else {
+                    success([])
+                    return
+                }
+                self.enqueueJobs(jobRequests: jobRequests,
+                                 downloadBehavior: downloadBehavior,
+                                 transaction: transaction,
+                                 success: { attachmentStreams in
+                                    success(attachmentStreams)
+
+                                    Self.updateQuotedMessageThumbnail(messageId: messageId,
+                                                                      jobRequests: jobRequests,
+                                                                      attachmentStreams: attachmentStreams)
+                                 },
+                                 failure: failure)
+
+                if touchMessageImmediately {
+                    Self.databaseStorage.asyncWrite { transaction in
+                        Self.databaseStorage.touch(interaction: message,
+                                                   shouldReindex: false,
+                                                   transaction: transaction)
+                    }
+                }
+            }
         }
     }
 
@@ -946,54 +1073,6 @@ public extension OWSAttachmentDownloads {
         }
 
         return jobRequests
-    }
-
-    @objc
-    func enqueueDownloadOfAttachments(forMessageId messageId: String,
-                                      attachmentGroup: AttachmentGroup,
-                                      downloadBehavior: AttachmentDownloadBehavior,
-                                      touchMessageImmediately: Bool,
-                                      success: @escaping ([TSAttachmentStream]) -> Void,
-                                      failure: @escaping (Error) -> Void) {
-
-        Self.serialQueue.async {
-            guard !CurrentAppContext().isRunningTests else {
-                failure(Self.buildError())
-                return
-            }
-            Self.databaseStorage.read { transaction in
-                guard let message = TSMessage.anyFetchMessage(uniqueId: messageId, transaction: transaction) else {
-                    failure(Self.buildError())
-                    return
-                }
-                let jobRequests = Self.buildJobRequests(forMessage: message,
-                                                        attachmentGroup: attachmentGroup,
-                                                        transaction: transaction)
-                guard !jobRequests.isEmpty else {
-                    success([])
-                    return
-                }
-                self.enqueueJobs(jobRequests: jobRequests,
-                                 downloadBehavior: downloadBehavior,
-                                 transaction: transaction,
-                                 success: { attachmentStreams in
-                                    success(attachmentStreams)
-
-                                    Self.updateQuotedMessageThumbnail(messageId: messageId,
-                                                                      jobRequests: jobRequests,
-                                                                      attachmentStreams: attachmentStreams)
-                                 },
-                                 failure: failure)
-
-                if touchMessageImmediately {
-                    Self.databaseStorage.asyncWrite { transaction in
-                        Self.databaseStorage.touch(interaction: message,
-                                                   shouldReindex: false,
-                                                   transaction: transaction)
-                    }
-                }
-            }
-        }
     }
 
     private class func updateQuotedMessageThumbnail(messageId: String,
@@ -1215,7 +1294,7 @@ public extension OWSAttachmentDownloads {
             }
             urlPath = "attachments/\(encodedKey)"
         } else {
-            urlPath = String(format: "api/v1/osp/objects/%@/%llu", attachmentPointer.bucket, attachmentPointer.serverId)
+            urlPath = String(format: "attachments/%llu", attachmentPointer.serverId)
         }
         return urlPath
     }
@@ -1272,36 +1351,37 @@ public extension OWSAttachmentDownloads {
         // Use serialQueue to ensure that we only load into memory
         // & decrypt a single attachment at a time.
         return firstly(on: Self.serialQueue) { () -> TSAttachmentStream in
-            let cipherText = try Data(contentsOf: encryptedFileUrl)
-            return try Self.decrypt(cipherText: cipherText,
-                                    attachmentPointer: attachmentPointer)
+            return try autoreleasepool {
+                let attachmentStream = databaseStorage.read { transaction in
+                    TSAttachmentStream(pointer: attachmentPointer, transaction: transaction)
+                }
+
+                guard let originalMediaURL = attachmentStream.originalMediaURL else {
+                    throw OWSAssertionError("Missing originalMediaURL.")
+                }
+
+                guard let encryptionKey = attachmentPointer.encryptionKey else {
+                    throw OWSAssertionError("Missing encryptionKey.")
+                }
+
+                try Cryptography.decryptAttachment(
+                    at: encryptedFileUrl,
+                    metadata: EncryptionMetadata(
+                        key: encryptionKey,
+                        digest: attachmentPointer.digest,
+                        plaintextLength: Int(attachmentPointer.byteCount)
+                    ),
+                    output: originalMediaURL
+                )
+
+                return attachmentStream
+            }
         }.ensure(on: Self.serialQueue) {
             do {
                 try OWSFileSystem.deleteFileIfExists(url: encryptedFileUrl)
             } catch {
                 owsFailDebug("Error: \(error).")
             }
-        }
-    }
-
-    private class func decrypt(cipherText: Data,
-                               attachmentPointer: TSAttachmentPointer) throws -> TSAttachmentStream {
-
-        guard let encryptionKey = attachmentPointer.encryptionKey else {
-            throw OWSAssertionError("Missing encryptionKey.")
-        }
-        return try autoreleasepool {
-            let plaintext: Data = try Cryptography.decryptAttachment(cipherText,
-                                                                     withKey: encryptionKey,
-                                                                     digest: attachmentPointer.digest,
-                                                                     unpaddedSize: attachmentPointer.byteCount)
-
-            let attachmentStream = databaseStorage.read { transaction in
-                TSAttachmentStream(pointer: attachmentPointer, transaction: transaction)
-            }
-            try attachmentStream.write(plaintext)
-
-            return attachmentStream
         }
     }
 

@@ -1,8 +1,8 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSFakeCallMessageHandler.h"
+#import <SignalServiceKit/OWSFakeCallMessageHandler.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -64,6 +64,15 @@ NS_ASSUME_NONNULL_BEGIN
                serverReceivedTimestamp:(uint64_t)serverReceivedTimestamp
 {
     OWSLogInfo(@"");
+}
+
+- (BOOL)externallyHandleCallMessageWithEnvelope:(SSKProtoEnvelope *)envelope
+                                  plaintextData:(NSData *)plaintextData
+                                wasReceivedByUD:(BOOL)wasReceivedByUD
+                        serverDeliveryTimestamp:(uint64_t)serverDeliveryTimestamp
+                                    transaction:(SDSAnyWriteTransaction *)transaction
+{
+    return NO;
 }
 
 @end

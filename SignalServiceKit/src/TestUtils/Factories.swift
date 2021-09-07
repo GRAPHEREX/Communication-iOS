@@ -248,13 +248,15 @@ public class OutgoingMessageFactory: NSObject, Factory {
     @objc
     public func buildDeliveryReceipt(transaction: SDSAnyWriteTransaction) -> OWSReceiptsForSenderMessage {
         let item = OWSReceiptsForSenderMessage.deliveryReceiptsForSenderMessage(with: threadCreator(transaction),
-                                                                                messageTimestamps: messageTimestampsBuilder())
+                                                                                receiptSet: receiptSetBuilder())
         return item
     }
 
     @objc
-    public var messageTimestampsBuilder: () -> [NSNumber] = {
-        return [1]
+    var receiptSetBuilder: () -> MessageReceiptSet = {
+        let set = MessageReceiptSet()
+        set.insert(timestamp: 1, messageUniqueId: "hello")
+        return set
     }
 }
 
@@ -284,6 +286,7 @@ public class IncomingMessageFactory: NSObject, Factory {
                                                        messageSticker: messageStickerBuilder(),
                                                        serverTimestamp: serverTimestampBuilder(),
                                                        serverDeliveryTimestamp: serverDeliveryTimestampBuilder(),
+                                                       serverGuid: serverGuidBuilder(),
                                                        wasReceivedByUD: wasReceivedByUDBuilder(),
                                                        isViewOnceMessage: isViewOnceMessageBuilder())
         let item = builder.build()
@@ -372,6 +375,11 @@ public class IncomingMessageFactory: NSObject, Factory {
     @objc
     public var serverDeliveryTimestampBuilder: () -> UInt64 = {
         return 0
+    }
+
+    @objc
+    public var serverGuidBuilder: () -> String? = {
+        return nil
     }
 
     @objc
@@ -467,8 +475,6 @@ public class ConversationFactory: NSObject {
                 attachment.updateAsUploaded(withEncryptionKey: Randomness.generateRandomBytes(16),
                                             digest: Randomness.generateRandomBytes(16),
                                             serverId: 1,
-                                            bucket:"",
-                                            credentionals:"",
                                             cdnKey: "",
                                             cdnNumber: 0,
                                             uploadTimestamp: 1,
@@ -494,7 +500,8 @@ public class ConversationFactory: NSObject {
                                       sourceFilename: nil,
                                       caption: caption,
                                       albumMessageId: outgoingMessage.uniqueId,
-                                      isBorderless: false)
+                                      isBorderless: false,
+                                      isLoopingVideo: false)
     }
 
 }
@@ -605,8 +612,7 @@ public class ContactFactory {
                        userTextPhoneNumbers: userTextPhoneNumbers,
                        phoneNumberNameMap: phoneNumberNameMap,
                        parsedPhoneNumbers: parsedPhoneNumbers,
-                       emails: emailsBuilder(),
-                       imageDataToHash: imageDataToHashBuilder())
+                       emails: emailsBuilder())
     }
 
     public var localClientPhonenumber: String = "+13235551234"
@@ -641,10 +647,6 @@ public class ContactFactory {
 
     public var emailsBuilder: () -> [String] = {
         return [CommonGenerator.email()]
-    }
-
-    public var imageDataToHashBuilder: () -> Data? = {
-        return nil
     }
 }
 

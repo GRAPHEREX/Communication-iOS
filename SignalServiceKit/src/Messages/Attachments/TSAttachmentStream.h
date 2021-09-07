@@ -1,9 +1,9 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "DataSource.h"
-#import "TSAttachment.h"
+#import <SignalServiceKit/DataSource.h>
+#import <SignalServiceKit/TSAttachment.h>
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
@@ -18,6 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^OWSThumbnailSuccess)(UIImage *image);
 typedef void (^OWSThumbnailFailure)(void);
+
+typedef NS_CLOSED_ENUM(NSUInteger, AttachmentThumbnailQuality) {
+    AttachmentThumbnailQuality_Small,
+    AttachmentThumbnailQuality_Medium,
+    AttachmentThumbnailQuality_MediumLarge,
+    AttachmentThumbnailQuality_Large
+};
+NSString *NSStringForAttachmentThumbnailQuality(AttachmentThumbnailQuality value);
 
 @interface TSAttachmentStream : TSAttachment
 
@@ -86,8 +94,6 @@ typedef void (^OWSThumbnailFailure)(void);
                      contentType:(NSString *)contentType
                    encryptionKey:(nullable NSData *)encryptionKey
                         serverId:(unsigned long long)serverId
-                 credentionals:(NSString *)credentionals
-                        bucket:(NSString *)bucket
                   sourceFilename:(nullable NSString *)sourceFilename
                  uploadTimestamp:(unsigned long long)uploadTimestamp
       cachedAudioDurationSeconds:(nullable NSNumber *)cachedAudioDurationSeconds
@@ -100,7 +106,7 @@ typedef void (^OWSThumbnailFailure)(void);
               isValidImageCached:(nullable NSNumber *)isValidImageCached
               isValidVideoCached:(nullable NSNumber *)isValidVideoCached
            localRelativeFilePath:(nullable NSString *)localRelativeFilePath
-NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:albumMessageId:attachmentType:blurHash:byteCount:caption:cdnKey:cdnNumber:contentType:encryptionKey:serverId:credentionals:bucket:sourceFilename:uploadTimestamp:cachedAudioDurationSeconds:cachedImageHeight:cachedImageWidth:creationTimestamp:digest:isAnimatedCached:isUploaded:isValidImageCached:isValidVideoCached:localRelativeFilePath:));
+NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:albumMessageId:attachmentType:blurHash:byteCount:caption:cdnKey:cdnNumber:contentType:encryptionKey:serverId:sourceFilename:uploadTimestamp:cachedAudioDurationSeconds:cachedImageHeight:cachedImageWidth:creationTimestamp:digest:isAnimatedCached:isUploaded:isValidImageCached:isValidVideoCached:localRelativeFilePath:));
 
 // clang-format on
 
@@ -148,13 +154,11 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:albumMessageId:atta
 + (NSString *)legacyAttachmentsDirPath;
 + (NSString *)sharedDataAttachmentsDirPath;
 
-- (BOOL)shouldHaveImageSize;
-- (CGSize)imageSize;
+@property (nonatomic, readonly) BOOL shouldHaveImageSize;
+@property (nonatomic, readonly) CGSize imageSizePixels;
 
 - (NSTimeInterval)audioDurationSeconds;
 - (nullable AudioWaveform *)audioWaveform;
-
-+ (nullable NSError *)migrateToSharedData;
 
 #pragma mark - Thumbnails
 
@@ -163,13 +167,15 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:albumMessageId:atta
 // otherwise failure will be invoked.
 //
 // success and failure are invoked async on main.
-- (nullable UIImage *)thumbnailImageWithSizeHint:(CGSize)sizeHint
-                                         success:(OWSThumbnailSuccess)success
-                                         failure:(OWSThumbnailFailure)failure;
-- (nullable UIImage *)thumbnailImageSmallWithSuccess:(OWSThumbnailSuccess)success failure:(OWSThumbnailFailure)failure;
-- (nullable UIImage *)thumbnailImageMediumWithSuccess:(OWSThumbnailSuccess)success failure:(OWSThumbnailFailure)failure;
-- (nullable UIImage *)thumbnailImageLargeWithSuccess:(OWSThumbnailSuccess)success failure:(OWSThumbnailFailure)failure;
-- (nullable UIImage *)thumbnailImageSmallSync;
+- (void)thumbnailImageWithSizeHint:(CGSize)sizeHint
+                           success:(OWSThumbnailSuccess)success
+                           failure:(OWSThumbnailFailure)failure;
+- (void)thumbnailImageWithQuality:(AttachmentThumbnailQuality)quality
+                          success:(OWSThumbnailSuccess)success
+                          failure:(OWSThumbnailFailure)failure NS_SWIFT_NAME(thumbnailImage(quality:success:failure:));
+
+- (nullable UIImage *)thumbnailImageSyncWithQuality:(AttachmentThumbnailQuality)quality
+    NS_SWIFT_NAME(thumbnailImageSync(quality:));
 
 // This method should only be invoked by OWSThumbnailService.
 - (NSString *)pathForThumbnailDimensionPoints:(NSUInteger)thumbnailDimensionPoints;
@@ -187,8 +193,6 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:albumMessageId:atta
 - (void)updateAsUploadedWithEncryptionKey:(NSData *)encryptionKey
                                    digest:(NSData *)digest
                                  serverId:(UInt64)serverId
-                                   bucket:(NSString *)bucket
-                            credentionals:(NSString *)credentionals
                                    cdnKey:(NSString *)cdnKey
                                 cdnNumber:(UInt32)cdnNumber
                           uploadTimestamp:(unsigned long long)uploadTimestamp
