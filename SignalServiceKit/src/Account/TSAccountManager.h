@@ -2,7 +2,7 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "TSConstants.h"
+#import <SignalServiceKit/TSConstants.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -77,6 +77,8 @@ NSString *NSStringForOWSRegistrationState(OWSRegistrationState value);
 - (nullable SignalServiceAddress *)localAddressWithTransaction:(SDSAnyReadTransaction *)transaction
     NS_SWIFT_NAME(localAddress(with:));
 
+- (nullable NSDate *)registrationDateWithTransaction:(SDSAnyReadTransaction *)transaction;
+
 /**
  *  Symmetric key that's used to encrypt message payloads from the server,
  *
@@ -139,7 +141,7 @@ NSString *NSStringForOWSRegistrationState(OWSRegistrationState value);
  *  @param pushToken Apple's Push Token
  */
 - (void)registerForPushNotificationsWithPushToken:(NSString *)pushToken
-                                        voipToken:(NSString *)voipToken
+                                        voipToken:(nullable NSString *)voipToken
                                           success:(void (^)(void))successHandler
                                           failure:(void (^)(NSError *error))failureHandler
     NS_SWIFT_NAME(registerForPushNotifications(pushToken:voipToken:success:failure:));
@@ -176,6 +178,7 @@ NSString *NSStringForOWSRegistrationState(OWSRegistrationState value);
 // Returns YES on success.
 - (BOOL)resetForReregistration;
 - (nullable NSString *)reregistrationPhoneNumber;
+- (nullable NSUUID *)reregistrationUUID;
 @property (nonatomic, readonly) BOOL isReregistering;
 
 #pragma mark - Manual Message Fetch

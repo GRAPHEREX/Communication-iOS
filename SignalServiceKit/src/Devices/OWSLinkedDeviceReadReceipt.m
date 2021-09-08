@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "OWSLinkedDeviceReadReceipt.h"
@@ -20,6 +20,7 @@ NSUInteger const OWSLinkedDeviceReadReceiptSchemaVersion = 1;
 @implementation OWSLinkedDeviceReadReceipt
 
 - (instancetype)initWithSenderAddress:(SignalServiceAddress *)address
+                      messageUniqueId:(nullable NSString *)messageUniqueId
                    messageIdTimestamp:(uint64_t)messageIdTimestamp
                         readTimestamp:(uint64_t)readTimestamp
 {
@@ -32,6 +33,7 @@ NSUInteger const OWSLinkedDeviceReadReceiptSchemaVersion = 1;
 
     _senderPhoneNumber = address.phoneNumber;
     _senderUUID = address.uuidString;
+    _messageUniqueId = messageUniqueId;
     _messageIdTimestamp = messageIdTimestamp;
     _readTimestamp = readTimestamp;
     _linkedDeviceReadReceiptSchemaVersion = OWSLinkedDeviceReadReceiptSchemaVersion;

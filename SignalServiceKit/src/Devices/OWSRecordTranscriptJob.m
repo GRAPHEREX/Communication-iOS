@@ -3,28 +3,26 @@
 //
 
 #import "OWSRecordTranscriptJob.h"
-#import "FunctionalUtil.h"
-#import "OWSDisappearingMessagesJob.h"
-#import "OWSIncomingSentMessageTranscript.h"
-#import "OWSReadReceiptManager.h"
-#import "SSKEnvironment.h"
-#import "TSAttachmentPointer.h"
-#import "TSGroupThread.h"
-#import "TSInfoMessage.h"
-#import "TSNetworkManager.h"
-#import "TSOutgoingMessage.h"
-#import "TSQuotedMessage.h"
-#import "TSThread.h"
+#import <SignalServiceKit/FunctionalUtil.h>
+#import <SignalServiceKit/OWSDisappearingMessagesJob.h>
+#import <SignalServiceKit/OWSIncomingSentMessageTranscript.h>
+#import <SignalServiceKit/OWSReceiptManager.h>
 #import <SignalServiceKit/OWSUnknownProtocolVersionMessage.h>
+#import <SignalServiceKit/SSKEnvironment.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSAttachmentPointer.h>
+#import <SignalServiceKit/TSGroupThread.h>
+#import <SignalServiceKit/TSInfoMessage.h>
+#import <SignalServiceKit/TSNetworkManager.h>
+#import <SignalServiceKit/TSOutgoingMessage.h>
+#import <SignalServiceKit/TSQuotedMessage.h>
+#import <SignalServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation OWSRecordTranscriptJob
 
 + (void)processIncomingSentMessageTranscript:(OWSIncomingSentMessageTranscript *)transcript
-                           attachmentHandler:(void (^)(
-                                                 NSArray<TSAttachmentStream *> *attachmentStreams))attachmentHandler
                                  transaction:(SDSAnyWriteTransaction *)transaction
 {
     OWSAssertDebug(transcript);
@@ -82,13 +80,39 @@ NS_ASSUME_NONNULL_BEGIN
         return;
     }
 
+    uint64_t messageTimestamp = (transcript.serverTimestamp > 0 ? transcript.serverTimestamp : transcript.timestamp);
+    OWSAssertDebug(messageTimestamp > 0);
+
+    if (transcript.paymentRequest != nil) {
+        OWSLogInfo(@"Processing payment request from sync transcript.");
+        [self.payments processReceivedTranscriptPaymentRequestWithThread:transcript.thread
+                                                          paymentRequest:transcript.paymentRequest
+                                                        messageTimestamp:messageTimestamp
+                                                             transaction:transaction];
+        return;
+    } else if (transcript.paymentNotification != nil) {
+        OWSLogInfo(@"Processing payment notification from sync transcript.");
+        [self.payments processReceivedTranscriptPaymentNotificationWithThread:transcript.thread
+                                                          paymentNotification:transcript.paymentNotification
+                                                             messageTimestamp:messageTimestamp
+                                                                  transaction:transaction];
+        return;
+    } else if (transcript.paymentCancellation != nil) {
+        OWSLogInfo(@"Processing payment cancellation from sync transcript.");
+        [self.payments processReceivedTranscriptPaymentCancellationWithThread:transcript.thread
+                                                          paymentCancellation:transcript.paymentCancellation
+                                                             messageTimestamp:messageTimestamp
+                                                                  transaction:transaction];
+        return;
+    }
+
     // The builder() factory method requires us to specify every
     // property so that this will break if we add any new properties.
     TSOutgoingMessage *outgoingMessage = [[TSOutgoingMessageBuilder builderWithThread:transcript.thread
                                                                             timestamp:transcript.timestamp
                                                                           messageBody:transcript.body
                                                                            bodyRanges:transcript.bodyRanges
-                                                                        attachmentIds:[NSMutableArray new]
+                                                                        attachmentIds:@[]
                                                                      expiresInSeconds:transcript.expirationDuration
                                                                       expireStartedAt:transcript.expirationStartedAt
                                                                        isVoiceMessage:false
@@ -111,13 +135,13 @@ NS_ASSUME_NONNULL_BEGIN
     }
     outgoingMessage.attachmentIds = [attachmentIds copy];
 
-    if (!transcript.thread.isGroupV2Thread) {
-        SignalServiceAddress *_Nullable localAddress = self.tsAccountManager.localAddress;
-        if (localAddress == nil) {
-            OWSFailDebug(@"Missing localAddress.");
-            return;
-        }
+    SignalServiceAddress *_Nullable localAddress = self.tsAccountManager.localAddress;
+    if (localAddress == nil) {
+        OWSFailDebug(@"Missing localAddress.");
+        return;
+    }
 
+    if (!transcript.thread.isGroupV2Thread) {
         [GroupManager remoteUpdateDisappearingMessagesWithContactOrV1GroupThread:transcript.thread
                                                         disappearingMessageToken:transcript.disappearingMessageToken
                                                         groupUpdateSourceAddress:localAddress
@@ -142,7 +166,7 @@ NS_ASSUME_NONNULL_BEGIN
         return;
     }
 
-    [outgoingMessage anyInsertWithTransaction:transaction];
+    [outgoingMessage insertOrReplacePlaceholderFrom:localAddress transaction:transaction];
     [outgoingMessage updateWithWasSentFromLinkedDeviceWithUDRecipientAddresses:transcript.udRecipientAddresses
                                                        nonUdRecipientAddresses:transcript.nonUdRecipientAddresses
                                                                   isSentUpdate:NO
@@ -157,49 +181,11 @@ NS_ASSUME_NONNULL_BEGIN
     [self.earlyMessageManager applyPendingMessagesFor:outgoingMessage transaction:transaction];
 
     if (outgoingMessage.isViewOnceMessage) {
+        // Don't download attachments for "view-once" messages from linked devices.
         // To be extra-conservative, always mark as complete immediately.
         [ViewOnceMessages markAsCompleteWithMessage:outgoingMessage sendSyncMessages:NO transaction:transaction];
-    } else if (outgoingMessage.allAttachmentIds.count > 0) {
-        // Don't download attachments for "view-once" messages from linked devices.
-        //
-        // Don't enqueue the attachment downloads until the write
-        // transaction is committed or attachmentDownloads might race
-        // and not be able to find the attachment(s)/message/thread.
-        [transaction addAsyncCompletionOffMain:^{
-            [self.attachmentDownloads enqueueDownloadOfAttachmentsForMessageId:outgoingMessage.uniqueId
-                attachmentGroup:AttachmentGroupAllAttachmentsIncoming
-                downloadBehavior:AttachmentDownloadBehaviorBypassAll
-                touchMessageImmediately:NO
-                success:^(NSArray *attachmentStreams) {
-                    NSString *_Nullable quotedThumbnailPointerId
-                        = transcript.quotedMessage.thumbnailAttachmentPointerId;
-                    TSAttachmentStream *_Nullable quotedThumbnailStream = nil;
-                    if (quotedThumbnailPointerId) {
-                        // If we have a thumbnail attachment pointer, find the corresponding stream
-                        for (TSAttachmentStream *candidate in attachmentStreams) {
-                            if ([candidate.uniqueId
-                                    isEqualToString:transcript.quotedMessage.thumbnailAttachmentPointerId]) {
-                                quotedThumbnailStream = candidate;
-                                break;
-                            }
-                        }
-                    }
-                    DatabaseStorageWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
-                        if (quotedThumbnailStream) {
-                            [outgoingMessage
-                                anyUpdateMessageWithTransaction:transaction
-                                                          block:^(TSMessage *message) {
-                                                              [message setQuotedMessageThumbnailAttachmentStream:
-                                                                           quotedThumbnailStream];
-                                                          }];
-                        }
-                    });
-                    attachmentHandler(attachmentStreams);
-                }
-                failure:^(NSError *error) {
-                    OWSLogError(@"failed to fetch transcripts attachments for message: %@", outgoingMessage);
-                }];
-        }];
+    } else {
+        [self.attachmentDownloads enqueueDownloadOfAttachmentsForNewMessage:outgoingMessage transaction:transaction];
     }
 }
 

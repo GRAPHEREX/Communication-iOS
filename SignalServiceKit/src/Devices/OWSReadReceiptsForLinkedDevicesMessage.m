@@ -1,9 +1,9 @@
 //
-//  Copyright (c) 2019 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 #import "OWSReadReceiptsForLinkedDevicesMessage.h"
-#import "OWSLinkedDeviceReadReceipt.h"
+#import <SignalServiceKit/OWSLinkedDeviceReadReceipt.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -38,8 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
     SSKProtoSyncMessageBuilder *syncMessageBuilder = [SSKProtoSyncMessage builder];
     for (OWSLinkedDeviceReadReceipt *readReceipt in self.readReceipts) {
         SSKProtoSyncMessageReadBuilder *readProtoBuilder =
-            [SSKProtoSyncMessageRead builder];
-        [readProtoBuilder setTimestamp:readReceipt.messageIdTimestamp];
+            [SSKProtoSyncMessageRead builderWithTimestamp:readReceipt.messageIdTimestamp];
 
         [readProtoBuilder setSenderE164:readReceipt.senderAddress.phoneNumber];
         [readProtoBuilder setSenderUuid:readReceipt.senderAddress.uuidString];
@@ -54,6 +53,18 @@ NS_ASSUME_NONNULL_BEGIN
     }
     return syncMessageBuilder;
 }
+
+- (NSSet<NSString *> *)relatedUniqueIds
+{
+    NSMutableArray<NSString *> *messageUniqueIds = [[NSMutableArray alloc] init];
+    for (OWSLinkedDeviceReadReceipt *readReceipt in self.readReceipts) {
+        if (readReceipt.messageUniqueId) {
+            [messageUniqueIds addObject:readReceipt.messageUniqueId];
+        }
+    }
+    return [[super relatedUniqueIds] setByAddingObjectsFromArray:messageUniqueIds];
+}
+
 
 @end
 

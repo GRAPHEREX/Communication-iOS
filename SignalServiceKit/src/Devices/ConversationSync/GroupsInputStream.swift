@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -8,7 +8,6 @@ public struct GroupDetails {
     public let groupId: Data
     public let name: String?
     public let memberAddresses: [SignalServiceAddress]
-    public let conversationColorName: String?
     public let isBlocked: Bool
     public let expireTimer: UInt32
     public let avatarData: Data?
@@ -30,6 +29,10 @@ public class GroupsInputStream {
 
         var groupDataLength: UInt32 = 0
         try inputStream.decodeSingularUInt32Field(value: &groupDataLength)
+        guard groupDataLength > 0 else {
+            Logger.warn("Empty groupDataLength.")
+            return nil
+        }
 
         var groupData: Data = Data()
         try inputStream.decodeData(value: &groupData, count: Int(groupDataLength))
@@ -45,10 +48,9 @@ public class GroupsInputStream {
             }
         }
 
-        return GroupDetails(groupId: groupDetails.id!,
+        return GroupDetails(groupId: groupDetails.id,
                             name: groupDetails.name,
                             memberAddresses: groupDetails.memberAddresses,
-                            conversationColorName: groupDetails.color,
                             isBlocked: groupDetails.blocked,
                             expireTimer: groupDetails.expireTimer,
                             avatarData: avatarData,

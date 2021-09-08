@@ -1,8 +1,8 @@
 //
-//  Copyright (c) 2019 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSStickerPackSyncMessage.h"
+#import <SignalServiceKit/OWSStickerPackSyncMessage.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -54,10 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     for (StickerPackInfo *pack in self.packs) {
         SSKProtoSyncMessageStickerPackOperationBuilder *packOperationBuilder =
-        [SSKProtoSyncMessageStickerPackOperation builder];
-        [packOperationBuilder setPackID:pack.packId];
-        [packOperationBuilder setPackKey:pack.packKey];
-             //WithPackID:pack.packId packKey:pack.packKey];
+            [SSKProtoSyncMessageStickerPackOperation builderWithPackID:pack.packId packKey:pack.packKey];
         [packOperationBuilder setType:operationType];
 
         NSError *error;
@@ -71,6 +68,11 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     return syncMessageBuilder;
+}
+
+- (SealedSenderContentHint)contentHint
+{
+    return SealedSenderContentHintImplicit;
 }
 
 @end

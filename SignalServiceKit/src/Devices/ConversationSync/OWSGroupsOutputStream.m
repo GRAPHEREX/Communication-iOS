@@ -2,14 +2,13 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSGroupsOutputStream.h"
-#import "MIMETypeUtil.h"
-#import "OWSBlockingManager.h"
-#import "OWSDisappearingMessagesConfiguration.h"
-#import "TSGroupModel.h"
-#import "TSGroupThread.h"
+#import <SignalServiceKit/MIMETypeUtil.h>
 #import <SignalServiceKit/NSData+Image.h>
+#import <SignalServiceKit/OWSDisappearingMessagesConfiguration.h>
+#import <SignalServiceKit/OWSGroupsOutputStream.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSGroupModel.h>
+#import <SignalServiceKit/TSGroupThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,11 +23,12 @@ NS_ASSUME_NONNULL_BEGIN
         return;
     }
 
+    ThreadAssociatedData *associatedData = [ThreadAssociatedData fetchOrDefaultForThread:groupThread
+                                                                             transaction:transaction];
     TSGroupModel *group = groupThread.groupModel;
     OWSAssertDebug(group);
 
-    SSKProtoGroupDetailsBuilder *groupBuilder = [SSKProtoGroupDetails builder];
-    [groupBuilder setId:group.groupId];
+    SSKProtoGroupDetailsBuilder *groupBuilder = [SSKProtoGroupDetails builderWithId:group.groupId];
     [groupBuilder setName:group.groupName];
 
     NSMutableArray *membersE164 = [NSMutableArray new];
@@ -61,13 +61,11 @@ NS_ASSUME_NONNULL_BEGIN
     [groupBuilder setMembersE164:membersE164];
     [groupBuilder setMembers:members];
 
-    [groupBuilder setColor:groupThread.conversationColorName];
-
-    if ([OWSBlockingManager.shared isGroupIdBlocked:group.groupId]) {
+    if ([BlockingManager.shared isGroupIdBlocked:group.groupId]) {
         [groupBuilder setBlocked:YES];
     }
 
-    [groupBuilder setArchived:groupThread.isArchived];
+    [groupBuilder setArchived:associatedData.isArchived];
     NSNumber *_Nullable sortIndex = [[AnyThreadFinder new] sortIndexObjcWithThread:groupThread transaction:transaction];
     if (sortIndex != nil) {
         [groupBuilder setInboxPosition:sortIndex.intValue];

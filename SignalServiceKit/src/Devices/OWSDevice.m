@@ -4,18 +4,20 @@
 
 #import "OWSDevice.h"
 #import "NSNotificationCenter+OWS.h"
-#import "OWSError.h"
-#import "SSKEnvironment.h"
-#import "TSAccountManager.h"
 #import <Mantle/MTLValueTransformer.h>
 #import <SignalCoreKit/NSDate+OWS.h>
+#import <SignalServiceKit/AppReadiness.h>
+#import <SignalServiceKit/OWSError.h>
 #import <SignalServiceKit/OWSIdentityManager.h>
+#import <SignalServiceKit/SSKEnvironment.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSAccountManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 uint32_t const OWSDevicePrimaryDeviceId = 1;
 NSString *const kMayHaveLinkedDevicesKey = @"kTSStorageManager_MayHaveLinkedDevices";
+NSString *const kLastReceivedSyncMessageKey = @"kLastReceivedSyncMessage";
 
 @interface OWSDeviceManager ()
 
@@ -49,7 +51,22 @@ NSString *const kMayHaveLinkedDevicesKey = @"kTSStorageManager_MayHaveLinkedDevi
 
 - (instancetype)initDefault
 {
-    return [super init];
+    self = [super init];
+
+    if (!self) {
+        return self;
+    }
+
+    OWSSingletonAssert();
+
+    AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{
+        [self.databaseStorage readWithBlock:^(SDSAnyReadTransaction *transaction) {
+            self.lastReceivedSyncMessage = [OWSDeviceManager.keyValueStore getDate:kLastReceivedSyncMessageKey
+                                                                       transaction:transaction];
+        }];
+    });
+
+    return self;
 }
 
 - (BOOL)mayHaveLinkedDevicesWithTransaction:(SDSAnyReadTransaction *)transaction
@@ -77,9 +94,13 @@ NSString *const kMayHaveLinkedDevicesKey = @"kTSStorageManager_MayHaveLinkedDevi
 - (void)setMayHaveLinkedDevices
 {
     // Note that we write async to avoid opening transactions within transactions.
-    DatabaseStorageAsyncWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
-        [OWSDeviceManager.keyValueStore setBool:YES key:kMayHaveLinkedDevicesKey transaction:transaction];
-    });
+    DatabaseStorageAsyncWrite(self.databaseStorage,
+        ^(SDSAnyWriteTransaction *transaction) { [self setMayHaveLinkedDevicesWithTransaction:transaction]; });
+}
+
+- (void)setMayHaveLinkedDevicesWithTransaction:(SDSAnyWriteTransaction *)transaction
+{
+    [OWSDeviceManager.keyValueStore setBool:YES key:kMayHaveLinkedDevicesKey transaction:transaction];
 }
 
 - (BOOL)hasReceivedSyncMessageInLastSeconds:(NSTimeInterval)intervalSeconds
@@ -89,9 +110,16 @@ NSString *const kMayHaveLinkedDevicesKey = @"kTSStorageManager_MayHaveLinkedDevi
 
 - (void)setHasReceivedSyncMessage
 {
-    self.lastReceivedSyncMessage = [NSDate new];
+    NSDate *lastReceivedSyncMessage = [NSDate new];
+    self.lastReceivedSyncMessage = lastReceivedSyncMessage;
 
-    [self setMayHaveLinkedDevices];
+    // Note that we write async to avoid opening transactions within transactions.
+    DatabaseStorageAsyncWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
+        [OWSDeviceManager.keyValueStore setDate:lastReceivedSyncMessage
+                                            key:kLastReceivedSyncMessageKey
+                                    transaction:transaction];
+        [self setMayHaveLinkedDevicesWithTransaction:transaction];
+    });
 }
 
 @end
