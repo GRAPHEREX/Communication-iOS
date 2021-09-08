@@ -17,7 +17,6 @@
 #import <SignalServiceKit/OWSAddToContactsOfferMessage.h>
 #import <SignalServiceKit/OWSAddToProfileWhitelistOfferMessage.h>
 #import <SignalServiceKit/OWSBackupFragment.h>
-#import <SignalServiceKit/OWSBlockingManager.h>
 #import <SignalServiceKit/OWSBroadcastMediaMessageJobRecord.h>
 #import <SignalServiceKit/OWSDevice.h>
 #import <SignalServiceKit/OWSDisappearingConfigurationUpdateInfoMessage.h>
@@ -27,7 +26,6 @@
 #import <SignalServiceKit/OWSDispatch.h>
 #import <SignalServiceKit/OWSError.h>
 #import <SignalServiceKit/OWSFileSystem.h>
-#import <SignalServiceKit/OWSFormat.h>
 #import <SignalServiceKit/OWSGroupCallMessage.h>
 #import <SignalServiceKit/OWSIdentityManager.h>
 #import <SignalServiceKit/OWSIncomingContactSyncJobRecord.h>
@@ -36,11 +34,14 @@
 #import <SignalServiceKit/OWSMessageDecryptJob.h>
 #import <SignalServiceKit/OWSMessageManager.h>
 #import <SignalServiceKit/OWSOperation.h>
+#import <SignalServiceKit/OWSOutgoingPaymentMessage.h>
 #import <SignalServiceKit/OWSOutgoingReceiptManager.h>
+#import <SignalServiceKit/OWSOutgoingResendRequest.h>
 #import <SignalServiceKit/OWSOutgoingSyncMessage.h>
 #import <SignalServiceKit/OWSReaction.h>
-#import <SignalServiceKit/OWSReadReceiptManager.h>
+#import <SignalServiceKit/OWSReceiptManager.h>
 #import <SignalServiceKit/OWSRecipientIdentity.h>
+#import <SignalServiceKit/OWSRecoverableDecryptionPlaceholder.h>
 #import <SignalServiceKit/OWSRequestFactory.h>
 #import <SignalServiceKit/OWSSessionResetJobRecord.h>
 #import <SignalServiceKit/OWSSignalService.h>
@@ -50,6 +51,7 @@
 #import <SignalServiceKit/OWSUpload.h>
 #import <SignalServiceKit/OWSUserProfile.h>
 #import <SignalServiceKit/OWSVerificationStateChangeMessage.h>
+#import <SignalServiceKit/OutgoingPaymentSyncMessage.h>
 #import <SignalServiceKit/PhoneNumber.h>
 #import <SignalServiceKit/PreKeyBundle+jsonDict.h>
 #import <SignalServiceKit/RemoteAttestation.h>
@@ -68,6 +70,7 @@
 #import <SignalServiceKit/TSCall.h>
 #import <SignalServiceKit/TSContactThread.h>
 #import <SignalServiceKit/TSErrorMessage.h>
+#import <SignalServiceKit/TSGroupMember.h>
 #import <SignalServiceKit/TSGroupModel.h>
 #import <SignalServiceKit/TSGroupThread.h>
 #import <SignalServiceKit/TSIncomingMessage.h>
@@ -77,6 +80,9 @@
 #import <SignalServiceKit/TSMention.h>
 #import <SignalServiceKit/TSNetworkManager.h>
 #import <SignalServiceKit/TSOutgoingMessage.h>
+#import <SignalServiceKit/TSPaymentModel.h>
+#import <SignalServiceKit/TSPaymentModels.h>
+#import <SignalServiceKit/TSPaymentRequestModel.h>
 #import <SignalServiceKit/TSSocketManager.h>
 #import <SignalServiceKit/TSThread.h>
 #import <SignalServiceKit/TSUnreadIndicatorInteraction.h>

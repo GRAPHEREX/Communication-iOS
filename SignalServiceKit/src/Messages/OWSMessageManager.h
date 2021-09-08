@@ -2,7 +2,7 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSMessageHandler.h"
+#import <SignalServiceKit/OWSMessageHandler.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,10 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 //
 // Returns YES on success.
 - (BOOL)processEnvelope:(SSKProtoEnvelope *)envelope
-              plaintextData:(NSData *_Nullable)plaintextData
-            wasReceivedByUD:(BOOL)wasReceivedByUD
-    serverDeliveryTimestamp:(uint64_t)serverDeliveryTimestamp
-                transaction:(SDSAnyWriteTransaction *)transaction;
+                   plaintextData:(NSData *_Nullable)plaintextData
+                 wasReceivedByUD:(BOOL)wasReceivedByUD
+         serverDeliveryTimestamp:(uint64_t)serverDeliveryTimestamp
+    shouldDiscardVisibleMessages:(BOOL)shouldDiscardVisibleMessages
+                     transaction:(SDSAnyWriteTransaction *)transaction;
 
 @end
 

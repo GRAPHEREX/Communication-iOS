@@ -53,7 +53,7 @@ public enum HTTPMethod {
 // MARK: -
 
 public enum OWSHTTPError: Error {
-    case requestError(statusCode: Int, httpUrlResponse: HTTPURLResponse)
+    case requestError(statusCode: Int, httpUrlResponse: HTTPURLResponse, responseData: Data?)
 }
 
 // MARK: -
@@ -321,8 +321,9 @@ public class OWSURLSession: NSObject {
                     }
                     #endif
 
-                    if requestConfig.failOnError {
-                        owsFailDebug("Request failed: \(error)")
+                    if requestConfig.failOnError,
+                       !error.isUnknownDomainError {
+                        owsFailDebugUnlessNetworkFailure(error)
                     } else {
                         Logger.error("Request failed: \(error)")
                     }
@@ -341,7 +342,7 @@ public class OWSURLSession: NSObject {
                     Logger.verbose("Status code: \(statusCode)")
                     #endif
 
-                    throw OWSHTTPError.requestError(statusCode: statusCode, httpUrlResponse: httpUrlResponse)
+                    throw OWSHTTPError.requestError(statusCode: statusCode, httpUrlResponse: httpUrlResponse, responseData: responseData)
                 }
             }
 
@@ -512,6 +513,9 @@ public class OWSURLSession: NSObject {
     private func removeCompletedTaskState(_ task: URLSessionTask) -> TaskState? {
         lock.withLock { () -> TaskState? in
             guard let taskState = self.taskStateMap[task.taskIdentifier] else {
+                // This isn't necessarily an error or bug.
+                // A task might "succeed" after it "fails" in certain edge cases,
+                // although we make a best effort to avoid them.
                 owsFailDebug("Missing TaskState.")
                 return nil
             }
@@ -542,6 +546,7 @@ public class OWSURLSession: NSObject {
             return
         }
         taskState.reject(error: error)
+        task.cancel()
     }
 
     // MARK: -
@@ -1181,3 +1186,13 @@ private class URLSessionDelegateBox: NSObject {
                                  didReceive: data)
     }
  }
+
+// MARK: -
+
+extension Error {
+    var isUnknownDomainError: Bool {
+        let nsError = self as NSError
+        return (nsError.domain == NSURLErrorDomain &&
+                    nsError.code == -1003)
+    }
+}

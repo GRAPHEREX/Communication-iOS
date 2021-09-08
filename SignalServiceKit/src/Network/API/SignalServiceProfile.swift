@@ -20,12 +20,13 @@ public class SignalServiceProfile: NSObject {
     public let bioEmojiEncrypted: Data?
     public let username: String?
     public let avatarUrlPath: String?
-    public let credentials: String?
-    public let bucket: String?
+    public let paymentAddressEncrypted: Data?
     public let unidentifiedAccessVerifier: Data?
     public let hasUnrestrictedUnidentifiedAccess: Bool
     public let supportsGroupsV2: Bool
     public let supportsGroupsV2Migration: Bool
+    public let supportsAnnouncementOnlyGroups: Bool
+    public let supportsSenderKey: Bool
     public let credential: Data?
 
     public init(address: SignalServiceAddress?, responseObject: Any?) throws {
@@ -63,10 +64,10 @@ public class SignalServiceProfile: NSObject {
 
         self.username = try params.optional(key: "username")
 
-        let avatar = ParamParser(responseObject: try params.optional(key: "avatar"))
-        self.avatarUrlPath = try avatar?.optional(key: "attachmentId")
-        self.bucket = try avatar?.optional(key: "bucket")
-        self.credentials = try avatar?.optional(key: "credential")
+        let avatarUrlPath: String? = try params.optional(key: "avatar")
+        self.avatarUrlPath = avatarUrlPath
+
+        self.paymentAddressEncrypted = try params.optionalBase64EncodedData(key: "paymentAddress")
 
         self.unidentifiedAccessVerifier = try params.optionalBase64EncodedData(key: "unidentifiedAccess")
 
@@ -75,10 +76,15 @@ public class SignalServiceProfile: NSObject {
         self.supportsGroupsV2 = Self.parseCapabilityFlag(capabilityKey: "gv2",
                                                          params: params,
                                                          requireCapability: true)
-        self.supportsGroupsV2Migration = true
-//        self.supportsGroupsV2Migration = Self.parseCapabilityFlag(capabilityKey: "gv1-migration",
-//                                                                  params: params,
-//                                                                  requireCapability: true)
+        self.supportsGroupsV2Migration = Self.parseCapabilityFlag(capabilityKey: "gv1-migration",
+                                                                  params: params,
+                                                                  requireCapability: true)
+        self.supportsAnnouncementOnlyGroups = Self.parseCapabilityFlag(capabilityKey: "announcementGroup",
+                                                                       params: params,
+                                                                       requireCapability: true)
+        self.supportsSenderKey = Self.parseCapabilityFlag(capabilityKey: "senderKey",
+                                                          params: params,
+                                                          requireCapability: true)
 
         self.credential = try params.optionalBase64EncodedData(key: "credential")
     }
@@ -86,13 +92,14 @@ public class SignalServiceProfile: NSObject {
     private static func parseCapabilityFlag(capabilityKey: String,
                                             params: ParamParser,
                                             requireCapability: Bool) -> Bool {
-
         do {
-            if let capabilities = ParamParser(responseObject: try params.required(key: "capabilities")) {
+            let capabilitiesJson: Any? = try params.required(key: "capabilities")
+            if let capabilities = ParamParser(responseObject: capabilitiesJson) {
                 if let value: Bool = try capabilities.optional(key: capabilityKey) {
                     return value
                 } else {
                     if requireCapability {
+                        Logger.verbose("capabilitiesJson: \(capabilitiesJson)")
                         owsFailDebug("Missing capability: \(capabilityKey).")
                     } else {
                         Logger.warn("Missing capability: \(capabilityKey).")

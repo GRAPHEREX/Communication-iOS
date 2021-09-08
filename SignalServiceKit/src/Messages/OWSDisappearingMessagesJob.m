@@ -2,20 +2,20 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSDisappearingMessagesJob.h"
-#import "AppContext.h"
-#import "AppReadiness.h"
-#import "ContactsManagerProtocol.h"
+#import <SignalServiceKit/OWSDisappearingMessagesJob.h>
 #import "NSTimer+OWS.h"
-#import "OWSBackgroundTask.h"
-#import "OWSDisappearingMessagesConfiguration.h"
-#import "OWSDisappearingMessagesFinder.h"
-#import "SSKEnvironment.h"
-#import "TSIncomingMessage.h"
-#import "TSMessage.h"
-#import "TSThread.h"
 #import <SignalCoreKit/NSDate+OWS.h>
+#import <SignalServiceKit/AppContext.h>
+#import <SignalServiceKit/AppReadiness.h>
+#import <SignalServiceKit/ContactsManagerProtocol.h>
+#import <SignalServiceKit/OWSBackgroundTask.h>
+#import <SignalServiceKit/OWSDisappearingMessagesConfiguration.h>
+#import <SignalServiceKit/OWSDisappearingMessagesFinder.h>
+#import <SignalServiceKit/SSKEnvironment.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSIncomingMessage.h>
+#import <SignalServiceKit/TSMessage.h>
+#import <SignalServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable) NSTimer *fallbackTimer;
 
 @end
+
+void AssertIsOnDisappearingMessagesQueue(void);
 
 void AssertIsOnDisappearingMessagesQueue()
 {
@@ -56,14 +58,12 @@ void AssertIsOnDisappearingMessagesQueue()
 
     // suspenders in case a deletion schedule is missed.
     NSTimeInterval kFallBackTimerInterval = 5 * kMinuteInterval;
-    AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{
-        if (CurrentAppContext().isMainApp) {
-            self.fallbackTimer = [NSTimer weakScheduledTimerWithTimeInterval:kFallBackTimerInterval
-                                                                      target:self
-                                                                    selector:@selector(fallbackTimerDidFire)
-                                                                    userInfo:nil
-                                                                     repeats:YES];
-        }
+    AppReadinessRunNowOrWhenMainAppDidBecomeReadyAsync(^{
+        self.fallbackTimer = [NSTimer weakScheduledTimerWithTimeInterval:kFallBackTimerInterval
+                                                                  target:self
+                                                                selector:@selector(fallbackTimerDidFire)
+                                                                userInfo:nil
+                                                                 repeats:YES];
     });
 
     OWSSingletonAssert();
@@ -174,7 +174,7 @@ void AssertIsOnDisappearingMessagesQueue()
         [message updateWithExpireStartedAt:expirationStartedAt transaction:transaction];
     }
 
-    [transaction addAsyncCompletion:^{
+    [transaction addAsyncCompletionOffMain:^{
         // Necessary that the async expiration run happens *after* the message is saved with it's new
         // expiration configuration.
         [self scheduleRunByDate:[NSDate ows_dateWithMillisecondsSince1970:message.expiresAt]];
@@ -305,7 +305,7 @@ void AssertIsOnDisappearingMessagesQueue()
         return;
     }
 
-    AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{
+    AppReadinessRunNowOrWhenMainAppDidBecomeReadyAsync(^{
         dispatch_async(OWSDisappearingMessagesJob.serialQueue, ^{
             NSUInteger deletedCount = [self runLoop];
 

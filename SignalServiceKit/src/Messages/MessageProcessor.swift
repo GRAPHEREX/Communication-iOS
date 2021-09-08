@@ -117,16 +117,22 @@ public class MessageProcessor: NSObject {
         }
     }
 
+    public struct EnvelopeJob {
+        let encryptedEnvelopeData: Data
+        let encryptedEnvelope: SSKProtoEnvelope?
+        let completion: (Error?) -> Void
+    }
+
     public func processEncryptedEnvelopes(
-        envelopes: [(encryptedEnvelopeData: Data, encryptedEnvelope: SSKProtoEnvelope?, completion: (Error?) -> Void)],
+        envelopeJobs: [EnvelopeJob],
         serverDeliveryTimestamp: UInt64
     ) {
-        for envelope in envelopes {
+        for envelopeJob in envelopeJobs {
             processEncryptedEnvelopeData(
-                envelope.encryptedEnvelopeData,
-                encryptedEnvelope: envelope.encryptedEnvelope,
+                envelopeJob.encryptedEnvelopeData,
+                encryptedEnvelope: envelopeJob.encryptedEnvelope,
                 serverDeliveryTimestamp: serverDeliveryTimestamp,
-                completion: envelope.completion
+                completion: envelopeJob.completion
             )
         }
     }
@@ -152,6 +158,7 @@ public class MessageProcessor: NSObject {
         // Take note of any messages larger than we expect, but still process them.
         // This likely indicates a misbehaving sending client.
         if encryptedEnvelopeData.count > Self.largeEnvelopeWarningByteCount {
+            Logger.verbose("encryptedEnvelopeData: \(encryptedEnvelopeData.count) > : \(Self.largeEnvelopeWarningByteCount)")
             owsFailDebug("Unexpectedly large envelope.")
         }
 
@@ -201,9 +208,31 @@ public class MessageProcessor: NSObject {
         drainPendingEnvelopes()
     }
 
+    // The NSE has tight memory constraints.
+    // For perf reasons, MessageProcessor keeps its queue in memory.
+    // It is not safe for the NSE to fetch more messages
+    // and cause this queue to grow in an unbounded way.
+    // Therefore, the NSE should wait to fetch more messages if
+    // the queue has "some/enough" content.
+    // However, the NSE needs to process messages with high
+    // throughput.
+    // Therfore we need to identify a constant N small enough to
+    // place an acceptable upper bound on memory usage of the processor
+    // (N + next fetched batch size, fetch size in practice is 100),
+    // large enough to avoid introducing latency (e.g. the next fetch
+    // will complete before the queue is empty).
+    // This is tricky since there are multiple variables (e.g. network
+    // perf affects fetch, CPU perf affects processing).
+    public var hasSomeQueuedContent: Bool {
+        pendingEnvelopesLock.withLock {
+            return pendingEnvelopes.count >= 25
+        }
+    }
+
     private static let maxEnvelopeByteCount = 250 * 1024
-    private static let largeEnvelopeWarningByteCount = 25 * 1024
-    private let serialQueue = DispatchQueue(label: "MessageProcessor.processingQueue")
+    public static let largeEnvelopeWarningByteCount = 25 * 1024
+    private let serialQueue = DispatchQueue(label: "MessageProcessor.processingQueue",
+                                            autoreleaseFrequency: .workItem)
 
     private let pendingEnvelopesLock = UnfairLock()
     private var pendingEnvelopes = [PendingEnvelope]()
@@ -227,39 +256,45 @@ public class MessageProcessor: NSObject {
     private func drainNextBatch() {
         assertOnQueue(serialQueue)
 
-        // We want a value that is just high enough to yield perf benefits.
-        let kIncomingMessageBatchSize = 16
-        // If the app is in the background, use batch size of 1.
-        // This reduces the risk of us never being able to drain any
-        // messages from the queue. We should fine tune this number
-        // to yield the best perf we can get.
-        let batchSize = CurrentAppContext().isInBackground() ? 1 : kIncomingMessageBatchSize
-        let batchEnvelopes = pendingEnvelopesLock.withLock {
-            pendingEnvelopes.prefix(batchSize)
-        }
-
-        guard !batchEnvelopes.isEmpty else {
-            isDrainingPendingEnvelopes = false
-            NotificationCenter.default.postNotificationNameAsync(Self.messageProcessorDidFlushQueue, object: nil)
-            return
-        }
-
-        Logger.info("Processing batch of \(batchEnvelopes.count) received envelope(s).")
-
-        SDSDatabaseStorage.shared.write { transaction in
-            batchEnvelopes.forEach { self.processEnvelope($0, transaction: transaction) }
-        }
-
-        // Remove the processed envelopes from the pending list.
-        pendingEnvelopesLock.withLock {
-            guard pendingEnvelopes.count > batchEnvelopes.count else {
-                pendingEnvelopes = []
-                return
+        let shouldContinue: Bool = autoreleasepool {
+            // We want a value that is just high enough to yield perf benefits.
+            let kIncomingMessageBatchSize = 16
+            // If the app is in the background, use batch size of 1.
+            // This reduces the risk of us never being able to drain any
+            // messages from the queue. We should fine tune this number
+            // to yield the best perf we can get.
+            let batchSize = CurrentAppContext().isInBackground() ? 1 : kIncomingMessageBatchSize
+            let batchEnvelopes = pendingEnvelopesLock.withLock {
+                pendingEnvelopes.prefix(batchSize)
             }
-            pendingEnvelopes = Array(pendingEnvelopes.suffix(from: batchEnvelopes.count))
+
+            guard !batchEnvelopes.isEmpty else {
+                isDrainingPendingEnvelopes = false
+                NotificationCenter.default.postNotificationNameAsync(Self.messageProcessorDidFlushQueue, object: nil)
+                return false
+            }
+
+            Logger.info("Processing batch of \(batchEnvelopes.count) received envelope(s).")
+
+            SDSDatabaseStorage.shared.write { transaction in
+                batchEnvelopes.forEach { self.processEnvelope($0, transaction: transaction) }
+            }
+
+            // Remove the processed envelopes from the pending list.
+            pendingEnvelopesLock.withLock {
+                guard pendingEnvelopes.count > batchEnvelopes.count else {
+                    pendingEnvelopes = []
+                    return
+                }
+                pendingEnvelopes = Array(pendingEnvelopes.suffix(from: batchEnvelopes.count))
+            }
+
+            return true
         }
 
-        drainNextBatch()
+        if shouldContinue {
+            self.drainNextBatch()
+        }
     }
 
     private func processEnvelope(_ pendingEnvelope: PendingEnvelope, transaction: SDSAnyWriteTransaction) {
@@ -278,13 +313,52 @@ public class MessageProcessor: NSObject {
                 return
             }
 
-            if let groupContextV2 = GroupsV2MessageProcessor.groupContextV2(
-                forEnvelope: envelope,
-                plaintextData: result.plaintextData
-            ), !GroupsV2MessageProcessor.canContextBeProcessedImmediately(
-                groupContext: groupContextV2,
-                transaction: transaction
-            ) {
+            enum ProcessingStep {
+                case discard
+                case enqueueForGroupProcessing
+                case processNow(shouldDiscardVisibleMessages: Bool)
+            }
+            let processingStep = { () -> ProcessingStep in
+                guard let groupContextV2 = GroupsV2MessageProcessor.groupContextV2(
+                    forEnvelope: envelope,
+                    plaintextData: result.plaintextData
+                ) else {
+                    // Non-v2-group messages can be processed immediately.
+                    return .processNow(shouldDiscardVisibleMessages: false)
+                }
+
+                guard GroupsV2MessageProcessor.canContextBeProcessedImmediately(
+                    groupContext: groupContextV2,
+                    transaction: transaction
+                ) else {
+                    // Some v2 group messages required group state to be
+                    // updated before they can be processed.
+                    return .enqueueForGroupProcessing
+                }
+                let discardMode = GroupsMessageProcessor.discardMode(
+                    envelopeData: result.envelopeData,
+                    plaintextData: result.plaintextData,
+                    groupContext: groupContextV2,
+                    wasReceivedByUD: result.wasReceivedByUD,
+                    serverDeliveryTimestamp: result.serverDeliveryTimestamp,
+                    transaction: transaction
+                )
+                if discardMode == .discard {
+                    // Some v2 group messages should be discarded and not processed.
+                    Logger.verbose("Discarding job.")
+                    return .discard
+                }
+                // Some v2 group messages should be processed, but
+                // discarding any "visible" messages, e.g. text messages
+                // or calls.
+                return .processNow(shouldDiscardVisibleMessages: discardMode == .discardVisibleMessages)
+            }()
+
+            switch processingStep {
+            case .discard:
+                // Do nothing.
+                Logger.verbose("Discarding job.")
+            case .enqueueForGroupProcessing:
                 // If we can't process the message immediately, we enqueue it for
                 // for processing in the same transaction within which it was decrypted
                 // to prevent data loss.
@@ -296,7 +370,7 @@ public class MessageProcessor: NSObject {
                     serverDeliveryTimestamp: result.serverDeliveryTimestamp,
                     transaction: transaction
                 )
-            } else {
+            case .processNow(let shouldDiscardVisibleMessages):
                 // Envelopes can be processed immediately if they're:
                 // 1. Not a GV2 message.
                 // 2. A GV2 message that doesn't require updating the group.
@@ -315,6 +389,7 @@ public class MessageProcessor: NSObject {
                     plaintextData: result.plaintextData,
                     wasReceivedByUD: result.wasReceivedByUD,
                     serverDeliveryTimestamp: result.serverDeliveryTimestamp,
+                    shouldDiscardVisibleMessages: shouldDiscardVisibleMessages,
                     transaction: transaction
                 )
             }

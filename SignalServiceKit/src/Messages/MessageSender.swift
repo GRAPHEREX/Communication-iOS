@@ -14,6 +14,8 @@ public enum MessageSenderError: Int, Error {
     case missingDevice
     case blockedContactRecipient
     case threadMissing
+    case spamChallengeRequired
+    case spamChallengeResolved
 }
 
 // MARK: -
@@ -48,6 +50,24 @@ public extension MessageSender {
         }
     }
 
+    class func isSpamChallengeRequiredError(_ error: Error) -> Bool {
+        switch error {
+        case MessageSenderError.spamChallengeRequired:
+            return true
+        default:
+            return false
+        }
+    }
+
+    class func isSpamChallengeResolvedError(_ error: Error) -> Bool {
+        switch error {
+        case MessageSenderError.spamChallengeResolved:
+            return true
+        default:
+            return false
+        }
+    }
+
     class func ensureSessionsforMessageSendsObjc(_ messageSends: [OWSMessageSend],
                                                  ignoreErrors: Bool) -> AnyPromise {
         AnyPromise(ensureSessions(forMessageSends: messageSends,
@@ -65,7 +85,7 @@ extension MessageSender {
         let failure = AtomicUInt(0)
     }
 
-    private class func ensureSessions(forMessageSends messageSends: [OWSMessageSend],
+    class func ensureSessions(forMessageSends messageSends: [OWSMessageSend],
                                       ignoreErrors: Bool) -> Promise<Void> {
         let promise = firstly(on: .global()) { () -> Promise<Void> in
             var promises = [Promise<Void>]()
@@ -173,7 +193,7 @@ extension MessageSender {
                 switch error {
                 case MessageSenderError.missingDevice:
                     self.databaseStorage.write { transaction in
-                        MessageSender.updateDevices(messageSend: messageSend,
+                        MessageSender.updateDevices(address: messageSend.address,
                                                     devicesToAdd: [],
                                                     devicesToRemove: [NSNumber(value: deviceId)],
                                                     transaction: transaction)
@@ -194,12 +214,6 @@ extension MessageSender {
 }
 
 // MARK: -
-
-fileprivate extension ProtocolAddress {
-    convenience init(from recipientAddress: SignalServiceAddress, deviceId: UInt32) throws {
-        try self.init(name: recipientAddress.uuidString ?? recipientAddress.phoneNumber!, deviceId: deviceId)
-    }
-}
 
 @objc
 public extension MessageSender {
@@ -273,9 +287,38 @@ public extension MessageSender {
                     return failure(MessageSenderError.missingDevice)
                 } else if httpStatusCode == 413 {
                     return failure(MessageSenderError.prekeyRateLimit)
+                } else if httpStatusCode == 428 {
+                    // SPAM TODO: Only retry messages with -hasRenderableContent
+                    var unpackedError = error
+                    if case NetworkManagerError.taskError(_, let underlyingError) = unpackedError {
+                        unpackedError = underlyingError
+                    }
+                    let userInfo = (unpackedError as NSError).userInfo
+                    let responseData = userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] as? Data
+                    let expiry = unpackedError.httpRetryAfterDate
+
+                    if let body = responseData, let expiry = expiry {
+                        // The resolver has 10s to asynchronously resolve a challenge
+                        // If it resolves, great! We'll let MessageSender auto-retry
+                        // Otherwise, it'll be marked as "pending"
+                        spamChallengeResolver.handleServerChallengeBody(
+                            body,
+                            retryAfter: expiry
+                        ) { didResolve in
+                            if didResolve {
+                                failure(MessageSenderError.spamChallengeResolved)
+                            } else {
+                                failure(MessageSenderError.spamChallengeRequired)
+                            }
+                        }
+                    } else {
+                        owsFailDebug("No response body for spam challenge")
+                        return failure(MessageSenderError.spamChallengeRequired)
+                    }
                 }
+            } else {
+                failure(error)
             }
-            failure(error)
         }
     }
 
@@ -692,54 +735,52 @@ extension MessageSender {
 
     private static func ensureRecipientAddresses(_ addresses: [SignalServiceAddress],
                                                  message: TSOutgoingMessage) -> Promise<[SignalServiceAddress]> {
-        // SkyTech: we assume that all addresses are valid
-        return Promise.value(addresses)
-        
-//        let invalidRecipients = addresses.filter { $0.uuid == nil }
-//        guard !invalidRecipients.isEmpty else {
-//            // All recipients are already valid.
-//            return Promise.value(addresses)
-//        }
-//
-//        let knownUndiscoverable = ContactDiscoveryTask.addressesRecentlyMarkedAsUndiscoverableForMessageSends(invalidRecipients)
-//        if Set(knownUndiscoverable) == Set(invalidRecipients) {
-//            // If CDS has recently indicated that all of the invalid recipients are undiscoverable,
-//            // assume they are still undiscoverable and skip them.
-//            //
-//            // If _any_ invalid recipient isn't known to be undiscoverable,
-//            // use CDS to look up all invalid recipients.
-//            Logger.warn("Skipping invalid recipient(s) which are known to be undiscoverable: \(invalidRecipients.count)")
-//            let validRecipients = Set(addresses).subtracting(invalidRecipients)
-//            return Promise.value(Array(validRecipients))
-//        }
-//
-//        let phoneNumbersToFetch = invalidRecipients.compactMap { $0.phoneNumber }
-//        guard !phoneNumbersToFetch.isEmpty else {
-//            owsFailDebug("Invalid recipients have neither phone number nor UUID.")
-//            let validRecipients = Set(addresses).subtracting(invalidRecipients)
-//            return Promise.value(Array(validRecipients))
-//        }
-//
-//        return firstly(on: .global()) { () -> Promise<Set<SignalRecipient>> in
-//            return ContactDiscoveryTask(phoneNumbers: Set(phoneNumbersToFetch)).perform()
-//        }.map(on: .sharedUtility) { (signalRecipients: Set<SignalRecipient>) -> [SignalServiceAddress] in
-//            for signalRecipient in signalRecipients {
-//                owsAssertDebug(signalRecipient.address.phoneNumber != nil)
-//                owsAssertDebug(signalRecipient.address.uuid != nil)
-//            }
-//            var validRecipients = Set(addresses).subtracting(invalidRecipients)
-//            validRecipients.formUnion(signalRecipients.compactMap { $0.address })
-//            return Array(validRecipients)
-//
-//        }.recover(on: .sharedUtility) { error -> Promise<[SignalServiceAddress]> in
-//            let nsError = error as NSError
-////            if let cdsError = nsError as? ContactDiscoveryError {
-////                nsError.isRetryable = cdsError.retrySuggested
-////            } else {
-//                nsError.isRetryable = true
-////            }
-//            throw nsError
-//        }
+
+        let invalidRecipients = addresses.filter { $0.uuid == nil }
+        guard !invalidRecipients.isEmpty else {
+            // All recipients are already valid.
+            return Promise.value(addresses)
+        }
+
+        let knownUndiscoverable = ContactDiscoveryTask.addressesRecentlyMarkedAsUndiscoverableForMessageSends(invalidRecipients)
+        if Set(knownUndiscoverable) == Set(invalidRecipients) {
+            // If CDS has recently indicated that all of the invalid recipients are undiscoverable,
+            // assume they are still undiscoverable and skip them.
+            //
+            // If _any_ invalid recipient isn't known to be undiscoverable,
+            // use CDS to look up all invalid recipients.
+            Logger.warn("Skipping invalid recipient(s) which are known to be undiscoverable: \(invalidRecipients.count)")
+            let validRecipients = Set(addresses).subtracting(invalidRecipients)
+            return Promise.value(Array(validRecipients))
+        }
+
+        let phoneNumbersToFetch = invalidRecipients.compactMap { $0.phoneNumber }
+        guard !phoneNumbersToFetch.isEmpty else {
+            owsFailDebug("Invalid recipients have neither phone number nor UUID.")
+            let validRecipients = Set(addresses).subtracting(invalidRecipients)
+            return Promise.value(Array(validRecipients))
+        }
+
+        return firstly(on: .global()) { () -> Promise<Set<SignalRecipient>> in
+            return ContactDiscoveryTask(phoneNumbers: Set(phoneNumbersToFetch)).perform()
+        }.map(on: .sharedUtility) { (signalRecipients: Set<SignalRecipient>) -> [SignalServiceAddress] in
+            for signalRecipient in signalRecipients {
+                owsAssertDebug(signalRecipient.address.phoneNumber != nil)
+                owsAssertDebug(signalRecipient.address.uuid != nil)
+            }
+            var validRecipients = Set(addresses).subtracting(invalidRecipients)
+            validRecipients.formUnion(signalRecipients.compactMap { $0.address })
+            return Array(validRecipients)
+
+        }.recover(on: .sharedUtility) { error -> Promise<[SignalServiceAddress]> in
+            let nsError = error as NSError
+            if let cdsError = nsError as? ContactDiscoveryError {
+                nsError.isRetryable = cdsError.retrySuggested
+            } else {
+                nsError.isRetryable = true
+            }
+            throw nsError
+        }
     }
 }
 
@@ -880,6 +921,23 @@ public extension MessageSender {
         }
 
         Self.databaseStorage.write { transaction in
+            deviceMessages.forEach { messageDict in
+                guard let uuidString = messageDict["destination"] as? String,
+                      let uuid = UUID(uuidString: uuidString),
+                      let deviceId = messageDict["destinationDeviceId"] as? Int64,
+                      uuid == messageSend.address.uuid else {
+                    owsFailDebug("Expected a destination deviceId")
+                    return
+                }
+
+                if let payloadId = messageSend.plaintextPayloadId {
+                    MessageSendLog.recordPendingDelivery(
+                        payloadId: payloadId,
+                        recipientUuid: uuid,
+                        recipientDeviceId: deviceId,
+                        transaction: transaction)
+                }
+            }
             message.update(withSentRecipient: address, wasSentByUD: wasSentByUD, transaction: transaction)
 
             // If we've just delivered a message to a user, we know they
@@ -983,7 +1041,7 @@ public extension MessageSender {
                 return
             }
 
-            handleStaleDevices(response, address: address)
+            handleStaleDevices(staleDevices: response.staleDevices, address: address)
 
             if messageSend.isLocalAddress {
                 // Don't use websocket; it may have obsolete cached state.
@@ -991,6 +1049,34 @@ public extension MessageSender {
             }
 
             retrySend()
+        case 428:
+            // SPAM TODO: Only retry messages with -hasRenderableContent
+            Logger.warn("Server requested user complete spam challenge.")
+
+            let errorDescription = NSLocalizedString("ERROR_DESCRIPTION_SUSPECTED_SPAM", comment: "Description for errors returned from the server due to suspected spam.")
+            let error = OWSErrorWithCodeDescription(.serverRejectedSuspectedSpam, errorDescription) as NSError
+            error.isRetryable = false
+            error.isFatal = false
+
+            if let data = responseData, let expiry = responseError.httpRetryAfterDate {
+                // The resolver has 10s to asynchronously resolve a challenge
+                // If it resolves, great! We'll let MessageSender auto-retry
+                // Otherwise, it'll be marked as "pending"
+                spamChallengeResolver.handleServerChallengeBody(
+                    data,
+                    retryAfter: expiry
+                ) { didResolve in
+                    if didResolve {
+                        retrySend()
+                    } else {
+                        messageSend.failure(error)
+                    }
+                }
+            } else {
+                owsFailDebug("Expected response body from server")
+                messageSend.failure(error)
+            }
+
         default:
             retrySend()
         }
@@ -1006,7 +1092,9 @@ public extension MessageSender {
 
         let isSyncMessage = nil != message as? OWSOutgoingSyncMessage
         if !isSyncMessage {
-            markAddressAsUnregistered(address, message: message, thread: messageSend.thread)
+            databaseStorage.write { writeTx in
+                markAddressAsUnregistered(address, message: message, thread: messageSend.thread, transaction: writeTx)
+            }
         }
 
         let error = OWSErrorMakeNoSuchSignalRecipientError() as NSError
@@ -1019,30 +1107,27 @@ public extension MessageSender {
         messageSend.failure(error)
     }
 
-    private func markAddressAsUnregistered(_ address: SignalServiceAddress,
+    func markAddressAsUnregistered(_ address: SignalServiceAddress,
                                              message: TSOutgoingMessage,
-                                             thread: TSThread) {
+                                             thread: TSThread,
+                                             transaction: SDSAnyWriteTransaction) {
         owsAssertDebug(!Thread.isMainThread)
 
-        Self.databaseStorage.write { transaction in
-            if thread.isGroupThread {
-                // Mark as "skipped" group members who no longer have signal accounts.
-                message.update(withSkippedRecipient: address, transaction: transaction)
-            }
-
-            if !SignalRecipient.isRegisteredRecipient(address, transaction: transaction) {
-                return
-            }
-
-            SignalRecipient.mark(asUnregistered: address, transaction: transaction)
-            // TODO: Should we deleteAllSessionsForContact here?
-            //       If so, we'll need to avoid doing a prekey fetch every
-            //       time we try to send a message to an unregistered user.
+        if thread.isGroupThread {
+            // Mark as "skipped" group members who no longer have signal accounts.
+            message.update(withSkippedRecipient: address, transaction: transaction)
         }
+
+        if !SignalRecipient.isRegisteredRecipient(address, transaction: transaction) {
+            return
+        }
+
+        SignalRecipient.mark(asUnregistered: address, transaction: transaction)
+        // TODO: Should we deleteAllSessionsForContact here?
+        //       If so, we'll need to avoid doing a prekey fetch every
+        //       time we try to send a message to an unregistered user.
     }
 }
-
-// MARK: -
 
 extension MessageSender {
     private func handleMismatchedDevices(_ response: MessageSendFailureResponse,
@@ -1055,7 +1140,7 @@ extension MessageSender {
         let devicesToRemove = extraDevices.map { NSNumber(value: $0) }
 
         Self.databaseStorage.write { transaction in
-            MessageSender.updateDevices(messageSend: messageSend,
+            MessageSender.updateDevices(address: messageSend.address,
                                         devicesToAdd: devicesToAdd,
                                         devicesToRemove: devicesToRemove,
                                         transaction: transaction)
@@ -1063,11 +1148,10 @@ extension MessageSender {
     }
 
     // Called when the server indicates that the devices no longer exist - e.g. when the remote recipient has reinstalled.
-    private func handleStaleDevices(_ response: MessageSendFailureResponse,
+    func handleStaleDevices(staleDevices devicesIn: [Int]?,
                                     address: SignalServiceAddress) {
         owsAssertDebug(!Thread.isMainThread)
-
-        let staleDevices = response.staleDevices ?? []
+        let staleDevices = devicesIn ?? []
 
         Logger.info("staleDevices: \(staleDevices) for \(address)")
 
@@ -1086,7 +1170,7 @@ extension MessageSender {
     }
 
     @objc
-    public static func updateDevices(messageSend: OWSMessageSend,
+    public static func updateDevices(address: SignalServiceAddress,
                                      devicesToAdd: [NSNumber],
                                      devicesToRemove: [NSNumber],
                                      transaction: SDSAnyWriteTransaction) {
@@ -1097,12 +1181,12 @@ extension MessageSender {
         }
         owsAssertDebug(Set(devicesToAdd).intersection(Set(devicesToRemove)).isEmpty)
 
-        if !devicesToAdd.isEmpty, messageSend.isLocalAddress {
+        if !devicesToAdd.isEmpty, address.isLocalAddress {
             deviceManager.setMayHaveLinkedDevices()
         }
 
         SignalRecipient.update(
-            with: messageSend.address,
+            with: address,
             devicesToAdd: devicesToAdd,
             devicesToRemove: devicesToRemove,
             transaction: transaction
@@ -1111,7 +1195,7 @@ extension MessageSender {
         if !devicesToRemove.isEmpty {
             Logger.info("Archiving sessions for extra devices: \(devicesToRemove), \(devicesToRemove)")
             for deviceId in devicesToRemove {
-                sessionStore.archiveSession(for: messageSend.address, deviceId: deviceId.int32Value, transaction: transaction)
+                sessionStore.archiveSession(for: address, deviceId: deviceId.int32Value, transaction: transaction)
             }
         }
     }
@@ -1122,10 +1206,9 @@ extension MessageSender {
         case missingSession(recipientAddress: SignalServiceAddress, deviceId: Int32)
     }
 
-    @objc(encryptedMessageForMessageSend:deviceId:plainText:transaction:error:)
+    @objc(encryptedMessageForMessageSend:deviceId:transaction:error:)
     private func encryptedMessage(for messageSend: OWSMessageSend,
                                   deviceId: Int32,
-                                  plainText: Data,
                                   transaction: SDSAnyWriteTransaction) throws -> NSDictionary {
         owsAssertDebug(!Thread.isMainThread)
 
@@ -1136,6 +1219,9 @@ extension MessageSender {
                                                       deviceId: deviceId,
                                                       transaction: transaction) else {
             throw EncryptionError.missingSession(recipientAddress: recipientAddress, deviceId: deviceId)
+        }
+        guard let plainText = messageSend.plaintextContent else {
+            throw OWSAssertionError("Missing message content")
         }
 
         let paddedPlaintext = (plainText as NSData).paddedMessageBody()
@@ -1149,7 +1235,8 @@ extension MessageSender {
             let secretCipher = try SMKSecretSessionCipher(sessionStore: Self.sessionStore,
                                                           preKeyStore: Self.preKeyStore,
                                                           signedPreKeyStore: Self.signedPreKeyStore,
-                                                          identityStore: Self.identityManager)
+                                                          identityStore: Self.identityManager,
+                                                          senderKeyStore: Self.senderKeyStore)
 
             serializedMessage = try secretCipher.throwswrapped_encryptMessage(
                 recipient: SMKAddress(uuid: recipientAddress.uuid, e164: recipientAddress.phoneNumber),
@@ -1171,57 +1258,35 @@ extension MessageSender {
                 messageType = .encryptedWhisperMessageType
             case .preKey:
                 messageType = .preKeyWhisperMessageType
+            case .plaintext:
+                messageType = .plaintextMessageType
             default:
+                owsFailDebug("Unrecognized message type")
                 messageType = .unknownMessageType
             }
 
             serializedMessage = Data(result.serialize())
-        }
-        
-        let message = messageSend.message
-        
-        // if isVoIP send reqest for push
-        if let message = message as? OWSOutgoingCallMessage, let offerMessage = message.offerMessage {
-            let callType = offerMessage.unwrappedType
-            let isVideoCall = callType == .offerVideoCall
-            if let sender = messageSend.localAddress.uuidString ?? messageSend.localAddress.phoneNumber,
-               let destination = messageSend.address.uuidString ?? messageSend.address.phoneNumber {
-                let request = OWSRequestFactory.sendCallOfferVoipPush(destination, message: ["sender": sender, "callType": isVideoCall])
-                MessageSender.networkManager.makeRequest(request) { _, _ in
-                    OWSLogger.debug("VoIP push request was successfully send")
-                } failure: { _, _ in
-                    OWSLogger.debug("VoIP push request failed")
-                }
+
+            // The message is smaller than the envelope, but if the message
+            // is larger than this limit, the envelope will be too.
+            if serializedMessage.count > MessageProcessor.largeEnvelopeWarningByteCount {
+                Logger.verbose("serializedMessage: \(serializedMessage.count) > \(MessageProcessor.largeEnvelopeWarningByteCount)")
+                owsFailDebug("Unexpectedly large encrypted message.")
             }
         }
 
-        var push: String? = nil
-        if message.body != nil || message.hasAttachments() {
-            push = "{\\\"aps\\\" : { \\\"alert\\\" : \\\"New message\\\", \\\"sound\\\" : \\\"default\\\", \\\"mutable-content\\\" : 1 }}"
-        }
-        else if message.groupMetaMessage == .new {
-            push = "{\\\"aps\\\" : { \\\"alert\\\" : \\\"New group\\\", \\\"sound\\\" : \\\"default\\\", \\\"mutable-content\\\" : 1 }}"
-        }
-        
         // We had better have a session after encrypting for this recipient!
         let session = try Self.sessionStore.loadSession(for: protocolAddress, context: transaction)!
 
         // Returns the per-device-message parameters used when submitting a message to
         // the Signal Web Service.
         // See: https://github.com/signalapp/Signal-Server/blob/master/service/src/main/java/org/whispersystems/textsecuregcm/entities/IncomingMessage.java
-        var dict: [String: Any] = [
+        return [
             "type": messageType.rawValue,
             "destination": protocolAddress.name,
             "destinationDeviceId": protocolAddress.deviceId,
             "destinationRegistrationId": Int32(bitPattern: try session.remoteRegistrationId()),
-            "content": serializedMessage.base64EncodedString(),
-            "isOnline": message.isOnline
+            "content": serializedMessage.base64EncodedString()
         ]
-        
-        if let push = push {
-            dict["push"] = push
-        }
-        
-        return dict as NSDictionary
     }
 }

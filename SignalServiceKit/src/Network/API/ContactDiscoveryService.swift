@@ -6,12 +6,6 @@ import Foundation
 import PromiseKit
 
 public struct ContactDiscoveryService: Dependencies {
-    enum ServiceError: Error {
-        case error5xx(httpCode: Int)
-        case tooManyRequests(httpCode: Int)
-        case error4xx(httpCode: Int)
-        case invalidResponse(_ description: String)
-    }
 
     public struct IntersectionQuery: Codable {
         public let addressCount: UInt
@@ -26,7 +20,7 @@ public struct ContactDiscoveryService: Dependencies {
             public let iv: Data
             public let mac: Data
         }
-        public let envelopes: [EnclaveEnvelope]
+        public let envelopes: [RemoteAttestation.CDSAttestation.Id: EnclaveEnvelope]
     }
 
     public struct IntersectionResponse {
@@ -46,45 +40,26 @@ public struct ContactDiscoveryService: Dependencies {
                                          host: String,
                                          censorshipCircumventionPrefix: String) -> Promise<IntersectionResponse> {
 
-        let request = buildIntersectionRequest(query: query,
-                                               cookies: cookies,
-                                               authUsername: authUsername,
-                                               authPassword: authPassword,
-                                               enclaveName: enclaveName,
-                                               host: host,
-                                               censorshipCircumventionPrefix: censorshipCircumventionPrefix)
+        firstly(on: .sharedUtility) { () -> Promise<TSNetworkManager.Response> in
+            self.networkManager.makePromise(request: self.buildIntersectionRequest(
+                query: query,
+                cookies: cookies,
+                authUsername: authUsername,
+                authPassword: authPassword,
+                enclaveName: enclaveName,
+                host: host,
+                censorshipCircumventionPrefix: censorshipCircumventionPrefix)
+            )
 
-        return firstly { () -> Promise<TSNetworkManager.Response> in
-            self.networkManager.makePromise(request: request)
-            }.map { (_: URLSessionDataTask, responseObject: Any?) throws -> IntersectionResponse in
-                guard let params = ParamParser(responseObject: responseObject) else {
-                    throw ContactDiscoveryError.parseError(description: "missing response dict")
-                }
-
-                return IntersectionResponse(requestId: try params.requiredBase64EncodedData(key: "requestId"),
-                                            data: try params.requiredBase64EncodedData(key: "data"),
-                                            iv: try params.requiredBase64EncodedData(key: "iv", byteCount: 12),
-                                            mac: try params.requiredBase64EncodedData(key: "mac", byteCount: 16))
-            }.recover { error -> Promise<IntersectionResponse> in
-                guard !IsNetworkConnectivityFailure(error) else {
-                    Logger.warn("Network error: \(error)")
-                    throw error
-                }
-
-                if let statusCode = error.httpStatusCode {
-                    if statusCode == 429 {
-                        // TODO add Retry-After for rate limiting
-                        throw ServiceError.tooManyRequests(httpCode: statusCode)
-                    } else if statusCode / 100 == 4 {
-                        throw ServiceError.error4xx(httpCode: statusCode)
-                    } else if statusCode / 100 == 5 {
-                        // TODO add Retry-After for rate limiting
-                        throw ServiceError.error5xx(httpCode: statusCode)
-                    }
-                }
-
-                owsFailDebug("unexpected error: \(error)")
-                throw error
+        }.map(on: .sharedUtility) { (_: URLSessionDataTask, responseObject: Any?) throws -> IntersectionResponse in
+            guard let params = ParamParser(responseObject: responseObject) else {
+                throw ContactDiscoveryError.assertionError(description: "missing response dict")
+            }
+            return IntersectionResponse(
+                requestId: try params.requiredBase64EncodedData(key: "requestId"),
+                data: try params.requiredBase64EncodedData(key: "data"),
+                iv: try params.requiredBase64EncodedData(key: "iv", byteCount: 12),
+                mac: try params.requiredBase64EncodedData(key: "mac", byteCount: 16))
         }
     }
 
@@ -104,7 +79,7 @@ public struct ContactDiscoveryService: Dependencies {
             "data": query.data.base64EncodedString(),
             "iv": query.iv.base64EncodedString(),
             "mac": query.mac.base64EncodedString(),
-            "envelopes": query.envelopes.map {
+            "envelopes": query.envelopes.mapValues {
                 [
                     "requestId": $0.requestId.base64EncodedString(),
                     "data": $0.data.base64EncodedString(),

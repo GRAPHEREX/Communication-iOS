@@ -3,28 +3,28 @@
 //
 
 #import "OWSIdentityManager.h"
-#import "AppContext.h"
-#import "AppReadiness.h"
-#import "MessageSender.h"
 #import "NSNotificationCenter+OWS.h"
-#import "NotificationsProtocol.h"
-#import "OWSError.h"
-#import "OWSFileSystem.h"
-#import "OWSOutgoingNullMessage.h"
-#import "OWSRecipientIdentity.h"
-#import "OWSVerificationStateChangeMessage.h"
-#import "OWSVerificationStateSyncMessage.h"
-#import "SSKEnvironment.h"
-#import "TSAccountManager.h"
-#import "TSContactThread.h"
-#import "TSErrorMessage.h"
-#import "TSGroupThread.h"
-#import "UnfairLock.h"
 #import <Curve25519Kit/Curve25519.h>
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalCoreKit/SCKExceptionWrapper.h>
+#import <SignalServiceKit/AppContext.h>
+#import <SignalServiceKit/AppReadiness.h>
+#import <SignalServiceKit/MessageSender.h>
 #import <SignalServiceKit/NSData+keyVersionByte.h>
+#import <SignalServiceKit/NotificationsProtocol.h>
+#import <SignalServiceKit/OWSError.h>
+#import <SignalServiceKit/OWSFileSystem.h>
+#import <SignalServiceKit/OWSOutgoingNullMessage.h>
+#import <SignalServiceKit/OWSRecipientIdentity.h>
+#import <SignalServiceKit/OWSVerificationStateChangeMessage.h>
+#import <SignalServiceKit/OWSVerificationStateSyncMessage.h>
+#import <SignalServiceKit/SSKEnvironment.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSAccountManager.h>
+#import <SignalServiceKit/TSContactThread.h>
+#import <SignalServiceKit/TSErrorMessage.h>
+#import <SignalServiceKit/TSGroupThread.h>
+#import <SignalServiceKit/UnfairLock.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -434,7 +434,7 @@ NSNotificationName const kNSNotificationNameIdentityStateDidChange = @"kNSNotifi
 
 - (void)fireIdentityStateChangeNotificationAfterTransaction:(SDSAnyWriteTransaction *)transaction
 {
-    [transaction addAsyncCompletion:^{
+    [transaction addAsyncCompletionOnMain:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:kNSNotificationNameIdentityStateDidChange
                                                             object:nil];
     }];
@@ -603,7 +603,7 @@ NSNotificationName const kNSNotificationNameIdentityStateDidChange = @"kNSNotifi
 {
     OWSAssertIsOnMainThread();
 
-    AppReadinessRunNowOrWhenAppDidBecomeReadyAsync(^{ [self syncQueuedVerificationStates]; });
+    AppReadinessRunNowOrWhenMainAppDidBecomeReadyAsync(^{ [self syncQueuedVerificationStates]; });
 }
 
 - (void)syncQueuedVerificationStates
@@ -947,30 +947,30 @@ NSNotificationName const kNSNotificationNameIdentityStateDidChange = @"kNSNotifi
                        isLocalChange:(BOOL)isLocalChange
                          transaction:(SDSAnyWriteTransaction *)transaction
 {
-//    OWSAssertDebug(address.isValid);
-//    OWSAssertDebug(transaction);
-//
-//    NSMutableArray<TSMessage *> *messages = [NSMutableArray new];
-//
-//    TSContactThread *contactThread = [TSContactThread getOrCreateThreadWithContactAddress:address
-//                                                                              transaction:transaction];
-//    OWSAssertDebug(contactThread);
-//    [messages addObject:[[OWSVerificationStateChangeMessage alloc] initWithThread:contactThread
-//                                                                 recipientAddress:address
-//                                                                verificationState:verificationState
-//                                                                    isLocalChange:isLocalChange]];
-//
-//    for (TSGroupThread *groupThread in [TSGroupThread groupThreadsWithAddress:address transaction:transaction]) {
-//        [messages addObject:[[OWSVerificationStateChangeMessage alloc] initWithThread:groupThread
-//                                                                     recipientAddress:address
-//                                                                    verificationState:verificationState
-//                                                                        isLocalChange:isLocalChange]];
-//    }
-//
-//    // MJK TODO - why not save in-line, vs storing in an array and saving the array?
-//    for (TSMessage *message in messages) {
-//        [message anyInsertWithTransaction:transaction];
-//    }
+    OWSAssertDebug(address.isValid);
+    OWSAssertDebug(transaction);
+
+    NSMutableArray<TSMessage *> *messages = [NSMutableArray new];
+
+    TSContactThread *contactThread = [TSContactThread getOrCreateThreadWithContactAddress:address
+                                                                              transaction:transaction];
+    OWSAssertDebug(contactThread);
+    [messages addObject:[[OWSVerificationStateChangeMessage alloc] initWithThread:contactThread
+                                                                 recipientAddress:address
+                                                                verificationState:verificationState
+                                                                    isLocalChange:isLocalChange]];
+
+    for (TSGroupThread *groupThread in [TSGroupThread groupThreadsWithAddress:address transaction:transaction]) {
+        [messages addObject:[[OWSVerificationStateChangeMessage alloc] initWithThread:groupThread
+                                                                     recipientAddress:address
+                                                                    verificationState:verificationState
+                                                                        isLocalChange:isLocalChange]];
+    }
+
+    // MJK TODO - why not save in-line, vs storing in an array and saving the array?
+    for (TSMessage *message in messages) {
+        [message anyInsertWithTransaction:transaction];
+    }
 }
 
 #pragma mark - Debug

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -8,7 +8,7 @@ import SignalCoreKit
 @objc
 public class ContentProxy: NSObject {
 
-    @available(*, unavailable, message:"do not instantiate this class.")
+    @available(*, unavailable, message: "do not instantiate this class.")
     private override init() {
     }
 
@@ -40,7 +40,7 @@ public class ContentProxy: NSObject {
         return jsonSessionManager
     }
 
-    static let userAgent = "Grapherex iOS (+https://grapherex.com)"
+    static let userAgent = "Signal iOS (+https://signal.org/download)"
 
     public class func configureProxiedRequest(request: inout URLRequest) -> Bool {
         request.addValue(userAgent, forHTTPHeaderField: "User-Agent")

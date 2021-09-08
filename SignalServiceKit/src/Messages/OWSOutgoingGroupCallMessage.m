@@ -1,8 +1,8 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSOutgoingGroupCallMessage.h"
+#import <SignalServiceKit/OWSOutgoingGroupCallMessage.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 
 @interface OWSOutgoingGroupCallMessage ()
@@ -46,6 +46,11 @@
     SSKProtoDataMessageBuilder *builder = [super dataMessageBuilderWithThread:thread transaction:transaction];
     [builder setGroupCallUpdate:updateMessage];
     return builder;
+}
+
+- (SealedSenderContentHint)contentHint
+{
+    return SealedSenderContentHintDefault;
 }
 
 @end

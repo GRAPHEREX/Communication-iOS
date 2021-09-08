@@ -2,21 +2,21 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSUploadOperation.h"
-#import "MIMETypeUtil.h"
 #import "NSError+OWSOperation.h"
 #import "NSNotificationCenter+OWS.h"
-#import "OWSDispatch.h"
-#import "OWSError.h"
-#import "OWSOperation.h"
-#import "OWSRequestFactory.h"
-#import "OWSUpload.h"
-#import "SSKEnvironment.h"
-#import "TSAttachmentStream.h"
-#import "TSNetworkManager.h"
 #import <PromiseKit/AnyPromise.h>
 #import <SignalCoreKit/Cryptography.h>
+#import <SignalServiceKit/MIMETypeUtil.h>
+#import <SignalServiceKit/OWSDispatch.h>
+#import <SignalServiceKit/OWSError.h>
+#import <SignalServiceKit/OWSOperation.h>
+#import <SignalServiceKit/OWSRequestFactory.h>
+#import <SignalServiceKit/OWSUpload.h>
+#import <SignalServiceKit/OWSUploadOperation.h>
+#import <SignalServiceKit/SSKEnvironment.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSAttachmentStream.h>
+#import <SignalServiceKit/TSNetworkManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -46,8 +46,8 @@ NSString *const kAttachmentUploadAttachmentIDKey = @"kAttachmentUploadAttachment
         operationQueue = [NSOperationQueue new];
         operationQueue.name = @"Uploads";
 
-        // TODO - stream uploads from file and raise this limit.
-        operationQueue.maxConcurrentOperationCount = 1;
+        // TODO: Tune this limit.
+        operationQueue.maxConcurrentOperationCount = 8;
     });
 
     return operationQueue;
@@ -109,27 +109,24 @@ NSString *const kAttachmentUploadAttachmentIDKey = @"kAttachmentUploadAttachment
     
     [self fireNotificationWithProgress:0];
 
-    OWSAttachmentUploadV4 *upload = [OWSAttachmentUploadV4 new];
+    OWSAttachmentUploadV2 *upload = [[OWSAttachmentUploadV2 alloc] initWithAttachmentStream:attachmentStream
+                                                                                   canUseV3:self.canUseV3];
     [BlurHash ensureBlurHashForAttachmentStream:attachmentStream]
         .catchInBackground(^{
             // Swallow these errors; blurHashes are strictly optional.
             OWSLogWarn(@"Error generating blurHash.");
         })
         .thenInBackground(^{
-            return [upload uploadAttachmentToService:attachmentStream
-                                       progressBlock:^(NSProgress *uploadProgress) {
-                                           [self fireNotificationWithProgress:uploadProgress.fractionCompleted];
-                                       }];
+            return [upload uploadWithProgressBlock:^(
+                NSProgress *uploadProgress) { [self fireNotificationWithProgress:uploadProgress.fractionCompleted]; }];
         })
         .thenInBackground(^{
             DatabaseStorageWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
                 [attachmentStream updateAsUploadedWithEncryptionKey:upload.encryptionKey
                                                              digest:upload.digest
                                                            serverId:upload.serverId
-                                                             bucket:upload.bucket
-                                                      credentionals:upload.credentionals
-                                                             cdnKey:@""
-                                                          cdnNumber:0
+                                                             cdnKey:upload.cdnKey
+                                                          cdnNumber:upload.cdnNumber
                                                     uploadTimestamp:upload.uploadTimestamp
                                                         transaction:transaction];
 

@@ -121,14 +121,14 @@ public class MessagePipelineSupervisor: NSObject {
         // - We're in a context that will try processing messages
         // - We're not in a testing context. runNowOrWhenApp...Ready blocks never get invoked during tests,
         //   and this prevents a UUIDBackfillTask from ever starting.
-//        let shouldBackfillUUIDs = CurrentAppContext().shouldProcessIncomingMessages &&
-//                                  !CurrentAppContext().isRunningTests
-//        if shouldBackfillUUIDs {
-//            let uuidBackfillSuspension = suspendMessageProcessing(for: "UUID Backfill")
-//            UUIDBackfillTask().performWithCompletion {
-//                uuidBackfillSuspension.invalidate()
-//            }
-//        }
+        let shouldBackfillUUIDs = CurrentAppContext().shouldProcessIncomingMessages &&
+                                  !CurrentAppContext().isRunningTests
+        if shouldBackfillUUIDs {
+            let uuidBackfillSuspension = suspendMessageProcessing(for: "UUID Backfill")
+            UUIDBackfillTask().performWithCompletion {
+                uuidBackfillSuspension.invalidate()
+            }
+        }
     }
 }
 

@@ -2,21 +2,21 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "TSNetworkManager.h"
-#import "AppContext.h"
-#import "MIMETypeUtil.h"
+#import <SignalServiceKit/TSNetworkManager.h>
 #import "NSError+OWSOperation.h"
 #import "NSURLSessionDataTask+OWS_HTTP.h"
-#import "OWSError.h"
-#import "OWSQueues.h"
-#import "OWSSignalService.h"
-#import "SSKEnvironment.h"
-#import "TSAccountManager.h"
-#import "TSRequest.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import <SignalCoreKit/NSData+OWS.h>
 #import <SignalCoreKit/NSDate+OWS.h>
+#import <SignalServiceKit/AppContext.h>
+#import <SignalServiceKit/MIMETypeUtil.h>
+#import <SignalServiceKit/OWSError.h>
+#import <SignalServiceKit/OWSQueues.h>
+#import <SignalServiceKit/OWSSignalService.h>
+#import <SignalServiceKit/SSKEnvironment.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSAccountManager.h>
+#import <SignalServiceKit/TSRequest.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -285,7 +285,7 @@ dispatch_queue_t NetworkManagerQueue()
     AssertOnDispatchQueue(NetworkManagerQueue());
 
     OWSAssertDebug(sessionManager);
-    const NSUInteger kMaxPoolSize = 32;
+    const NSUInteger kMaxPoolSize = CurrentAppContext().isNSE ? 5 : 32;
     if (self.pool.count >= kMaxPoolSize || [self shouldDiscardSessionManager:sessionManager]) {
         // Discard.
         return;
@@ -449,6 +449,8 @@ dispatch_queue_t NetworkManagerQueue()
         NSString *_Nullable contentType = task.originalRequest.allHTTPHeaderFields[@"Content-Type"];
         BOOL isJson = [contentType isEqualToString:OWSMimeTypeJson];
         BOOL isProtobuf = [contentType isEqualToString:@"application/x-protobuf"];
+        BOOL isFormData = [contentType isEqualToString:@"application/x-www-form-urlencoded"];
+        BOOL isSenderKeyMessage = [contentType isEqualToString:@"application/vnd.signal-messenger.mrm"];
         if (isJson) {
             NSString *jsonBody = [[NSString alloc] initWithData:task.originalRequest.HTTPBody
                                                        encoding:NSUTF8StringEncoding];
@@ -457,7 +459,7 @@ dispatch_queue_t NetworkManagerQueue()
             OWSAssertDebug([jsonBody rangeOfString:@"'"].location == NSNotFound);
             [curlComponents addObject:@"--data-ascii"];
             [curlComponents addObject:[NSString stringWithFormat:@"'%@'", jsonBody]];
-        } else if (isProtobuf) {
+        } else if (isProtobuf || isFormData || isSenderKeyMessage) {
             NSData *bodyData = task.originalRequest.HTTPBody;
             NSString *filename = [NSString stringWithFormat:@"%@.tmp", NSUUID.UUID.UUIDString];
 

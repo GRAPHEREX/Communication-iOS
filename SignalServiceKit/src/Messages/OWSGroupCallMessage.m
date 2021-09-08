@@ -2,11 +2,11 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSGroupCallMessage.h"
-#import "TSGroupThread.h"
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalServiceKit/FunctionalUtil.h>
+#import <SignalServiceKit/OWSGroupCallMessage.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSGroupThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -126,7 +126,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)markAsReadAtTimestamp:(uint64_t)readTimestamp
                        thread:(TSThread *)thread
-                 circumstance:(OWSReadCircumstance)circumstance
+                 circumstance:(OWSReceiptCircumstance)circumstance
                   transaction:(SDSAnyWriteTransaction *)transaction
 {
 

@@ -2,12 +2,12 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSOutgoingCallMessage.h"
-#import "ProtoUtils.h"
-#import "SignalRecipient.h"
-#import "TSContactThread.h"
 #import <SignalCoreKit/NSDate+OWS.h>
+#import <SignalServiceKit/OWSOutgoingCallMessage.h>
+#import <SignalServiceKit/ProtoUtils.h>
+#import <SignalServiceKit/SignalRecipient.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSContactThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -133,14 +133,10 @@ NS_ASSUME_NONNULL_BEGIN
     return NO;
 }
 
-- (nullable NSData *)buildPlainTextData:(SignalServiceAddress *)address
-                                 thread:(TSThread *)thread
-                            transaction:(SDSAnyReadTransaction *)transaction
+- (nullable NSData *)buildPlainTextData:(TSThread *)thread transaction:(SDSAnyReadTransaction *)transaction
 {
-    OWSAssertDebug(address.isValid);
-
     SSKProtoContentBuilder *builder = [SSKProtoContent builder];
-    builder.callMessage = [self buildCallMessage:address thread:thread transaction:transaction];
+    builder.callMessage = [self buildCallMessage:thread transaction:transaction];
 
     NSError *error;
     NSData *_Nullable data = [builder buildSerializedDataAndReturnError:&error];
@@ -151,9 +147,7 @@ NS_ASSUME_NONNULL_BEGIN
     return data;
 }
 
-- (nullable SSKProtoCallMessage *)buildCallMessage:(SignalServiceAddress *)address
-                                            thread:(TSThread *)thread
-                                       transaction:(SDSAnyReadTransaction *)transaction
+- (nullable SSKProtoCallMessage *)buildCallMessage:(TSThread *)thread transaction:(SDSAnyReadTransaction *)transaction
 {
     SSKProtoCallMessageBuilder *builder = [SSKProtoCallMessage builder];
 
@@ -190,12 +184,11 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     [ProtoUtils addLocalProfileKeyIfNecessary:thread
-                                      address:address
                            callMessageBuilder:builder
                                   transaction:transaction];
 
     // All call messages must indicate multi-ring capability.
-    [builder setMultiRing:YES];
+    [builder setSupportsMultiRing:YES];
 
     NSError *error;
     SSKProtoCallMessage *_Nullable result = [builder buildAndReturnError:&error];
@@ -235,6 +228,16 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     return [NSString stringWithFormat:@"%@ with payload: %@", className, payload];
+}
+
+- (BOOL)shouldRecordSendLog
+{
+    return NO;
+}
+
+- (SealedSenderContentHint)contentHint
+{
+    return SealedSenderContentHintDefault;
 }
 
 @end
