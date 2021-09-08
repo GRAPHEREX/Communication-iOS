@@ -1,8 +1,8 @@
 //
-//  Copyright (c) 2019 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSSyncRequestMessage.h"
+#import <SignalServiceKit/OWSSyncRequestMessage.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 
-- (nullable SSKProtoSyncMessageBuilder *)syncMessageBuilderWithTransaction:(SDSAnyReadTransaction *)transaction;
+- (nullable SSKProtoSyncMessageBuilder *)syncMessageBuilderWithTransaction:(SDSAnyReadTransaction *)transaction
 {
     SSKProtoSyncMessageRequestBuilder *requestBuilder = [SSKProtoSyncMessageRequest builder];
     requestBuilder.type = self.protoRequestType;
@@ -57,6 +57,11 @@ NS_ASSUME_NONNULL_BEGIN
     SSKProtoSyncMessageBuilder *builder = [SSKProtoSyncMessage builder];
     builder.request = messageRequest;
     return builder;
+}
+
+- (SealedSenderContentHint)contentHint
+{
+    return SealedSenderContentHintImplicit;
 }
 
 @end

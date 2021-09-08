@@ -2,11 +2,11 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "TSGroupThread.h"
-#import "TSAttachmentStream.h"
 #import <SignalCoreKit/NSData+OWS.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <SignalServiceKit/TSAccountManager.h>
+#import <SignalServiceKit/TSAttachmentStream.h>
+#import <SignalServiceKit/TSGroupThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -31,10 +31,10 @@ NSString *const TSGroupThread_NotificationKey_UniqueId = @"TSGroupThread_Notific
 
 - (instancetype)initWithGrdbId:(int64_t)grdbId
                       uniqueId:(NSString *)uniqueId
-           conversationColorName:(ConversationColorName)conversationColorName
+   conversationColorNameObsolete:(NSString *)conversationColorNameObsolete
                     creationDate:(nullable NSDate *)creationDate
-                      isArchived:(BOOL)isArchived
-                  isMarkedUnread:(BOOL)isMarkedUnread
+              isArchivedObsolete:(BOOL)isArchivedObsolete
+          isMarkedUnreadObsolete:(BOOL)isMarkedUnreadObsolete
             lastInteractionRowId:(int64_t)lastInteractionRowId
        lastVisibleSortIdObsolete:(uint64_t)lastVisibleSortIdObsolete
 lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPercentageObsolete
@@ -42,16 +42,16 @@ lastVisibleSortIdOnScreenPercentageObsolete:(double)lastVisibleSortIdOnScreenPer
                     messageDraft:(nullable NSString *)messageDraft
           messageDraftBodyRanges:(nullable MessageBodyRanges *)messageDraftBodyRanges
           mutedUntilDateObsolete:(nullable NSDate *)mutedUntilDateObsolete
-             mutedUntilTimestamp:(uint64_t)mutedUntilTimestamp
+     mutedUntilTimestampObsolete:(uint64_t)mutedUntilTimestampObsolete
            shouldThreadBeVisible:(BOOL)shouldThreadBeVisible
                       groupModel:(TSGroupModel *)groupModel
 {
     self = [super initWithGrdbId:grdbId
                         uniqueId:uniqueId
-             conversationColorName:conversationColorName
+     conversationColorNameObsolete:conversationColorNameObsolete
                       creationDate:creationDate
-                        isArchived:isArchived
-                    isMarkedUnread:isMarkedUnread
+                isArchivedObsolete:isArchivedObsolete
+            isMarkedUnreadObsolete:isMarkedUnreadObsolete
               lastInteractionRowId:lastInteractionRowId
          lastVisibleSortIdObsolete:lastVisibleSortIdObsolete
 lastVisibleSortIdOnScreenPercentageObsolete:lastVisibleSortIdOnScreenPercentageObsolete
@@ -59,7 +59,7 @@ lastVisibleSortIdOnScreenPercentageObsolete:lastVisibleSortIdOnScreenPercentageO
                       messageDraft:messageDraft
             messageDraftBodyRanges:messageDraftBodyRanges
             mutedUntilDateObsolete:mutedUntilDateObsolete
-               mutedUntilTimestamp:mutedUntilTimestamp
+       mutedUntilTimestampObsolete:mutedUntilTimestampObsolete
              shouldThreadBeVisible:shouldThreadBeVisible];
 
     if (!self) {
@@ -124,32 +124,6 @@ lastVisibleSortIdOnScreenPercentageObsolete:lastVisibleSortIdOnScreenPercentageO
     return [groupMembers copy];
 }
 
-// @returns all threads to which the recipient is a member.
-//
-// @note If this becomes a hotspot we can extract into a YapDB View.
-// As is, the number of groups should be small (dozens, *maybe* hundreds), and we only enumerate them upon SN changes.
-+ (NSArray<TSGroupThread *> *)groupThreadsWithAddress:(SignalServiceAddress *)address
-                                          transaction:(SDSAnyReadTransaction *)transaction
-{
-    OWSAssertDebug(address.isValid);
-    OWSAssertDebug(transaction);
-
-    NSMutableArray<TSGroupThread *> *groupThreads = [NSMutableArray new];
-
-    [TSThread anyEnumerateWithTransaction:transaction
-                                  batched:YES
-                                    block:^(TSThread *thread, BOOL *stop) {
-                                        if ([thread isKindOfClass:[TSGroupThread class]]) {
-                                            TSGroupThread *groupThread = (TSGroupThread *)thread;
-                                            if ([groupThread.groupModel.groupMembers containsObject:address]) {
-                                                [groupThreads addObject:groupThread];
-                                            }
-                                        }
-                                    }];
-
-    return [groupThreads copy];
-}
-
 - (NSString *)groupNameOrDefault
 {
     return self.groupModel.groupNameOrDefault;
@@ -196,9 +170,7 @@ lastVisibleSortIdOnScreenPercentageObsolete:lastVisibleSortIdOnScreenPercentageO
                                         }];
 
     if (didAvatarChange) {
-        [transaction addAsyncCompletion:^{
-            [self fireAvatarChangedNotification];
-        }];
+        [transaction addAsyncCompletionOnMain:^{ [self fireAvatarChangedNotification]; }];
     }
 }
 
@@ -213,20 +185,13 @@ lastVisibleSortIdOnScreenPercentageObsolete:lastVisibleSortIdOnScreenPercentageO
                                                       userInfo:userInfo];
 }
 
-+ (ConversationColorName)defaultConversationColorNameForGroupId:(NSData *)groupId
-{
-    OWSAssertDebug(groupId.length > 0);
-
-    NSString *threadUniqueId = [self defaultThreadIdForGroupId:groupId];
-    return [self.class stableColorNameForNewConversationWithString:threadUniqueId];
-}
-
 - (void)anyWillRemoveWithTransaction:(SDSAnyWriteTransaction *)transaction
 {
     if (self.isGroupV2Thread) {
         OWSFailDebug(@"In normal usage we should only soft delete v2 groups.");
     }
     [super anyWillRemoveWithTransaction:transaction];
+    [self updateGroupMemberRecordsWithTransaction:transaction];
 }
 
 #pragma mark -
@@ -236,6 +201,7 @@ lastVisibleSortIdOnScreenPercentageObsolete:lastVisibleSortIdOnScreenPercentageO
     [super anyWillInsertWithTransaction:transaction];
 
     [self protectV2Migration:transaction];
+    [self updateGroupMemberRecordsWithTransaction:transaction];
 }
 
 - (void)anyWillUpdateWithTransaction:(SDSAnyWriteTransaction *)transaction
@@ -243,6 +209,7 @@ lastVisibleSortIdOnScreenPercentageObsolete:lastVisibleSortIdOnScreenPercentageO
     [super anyWillUpdateWithTransaction:transaction];
 
     [self protectV2Migration:transaction];
+    [self updateGroupMemberRecordsWithTransaction:transaction];
 }
 
 - (void)protectV2Migration:(SDSAnyWriteTransaction *)transaction
@@ -261,6 +228,30 @@ lastVisibleSortIdOnScreenPercentageObsolete:lastVisibleSortIdOnScreenPercentageO
 
     if (databaseCopy.groupModel.groupsVersion == GroupsVersionV2) {
         OWSFail(@"v1-to-v2 group migration can not be reversed.");
+    }
+}
+
+- (void)updateWithInsertedMessage:(TSInteraction *)message transaction:(SDSAnyWriteTransaction *)transaction
+{
+    [super updateWithInsertedMessage:message transaction:transaction];
+
+    SignalServiceAddress *_Nullable senderAddress;
+    if ([message isKindOfClass:[TSOutgoingMessage class]]) {
+        senderAddress = self.tsAccountManager.localAddress;
+    } else if ([message isKindOfClass:[TSIncomingMessage class]]) {
+        TSIncomingMessage *incomingMessage = (TSIncomingMessage *)message;
+        senderAddress = incomingMessage.authorAddress;
+    }
+
+    if (senderAddress) {
+        TSGroupMember *_Nullable groupMember = [TSGroupMember groupMemberForAddress:senderAddress
+                                                                    inGroupThreadId:self.uniqueId
+                                                                        transaction:transaction];
+        if (groupMember) {
+            [groupMember updateWithLastInteractionTimestamp:message.timestamp transaction:transaction];
+        } else {
+            OWSFailDebug(@"Unexpectedly missing group member record");
+        }
     }
 }
 

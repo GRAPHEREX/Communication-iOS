@@ -1,9 +1,9 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSReadTracking.h"
-#import "TSMessage.h"
+#import <SignalServiceKit/OWSReadTracking.h>
+#import <SignalServiceKit/TSMessage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly, nullable) NSNumber *serverTimestamp;
 @property (nonatomic, readonly) uint64_t serverDeliveryTimestamp;
+@property (nonatomic, readonly, nullable) NSString *serverGuid;
 
 @property (nonatomic, readonly) BOOL wasReceivedByUD;
 
@@ -77,10 +78,12 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(incomingMessageWithBuilder:));
                       authorUUID:(nullable NSString *)authorUUID
                             read:(BOOL)read
          serverDeliveryTimestamp:(uint64_t)serverDeliveryTimestamp
+                      serverGuid:(nullable NSString *)serverGuid
                  serverTimestamp:(nullable NSNumber *)serverTimestamp
                   sourceDeviceId:(unsigned int)sourceDeviceId
+                          viewed:(BOOL)viewed
                  wasReceivedByUD:(BOOL)wasReceivedByUD
-NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:receivedAtTimestamp:sortId:timestamp:uniqueThreadId:attachmentIds:body:bodyRanges:contactShare:expireStartedAt:expiresAt:expiresInSeconds:isViewOnceComplete:isViewOnceMessage:linkPreview:messageSticker:quotedMessage:storedShouldStartExpireTimer:wasRemotelyDeleted:authorPhoneNumber:authorUUID:read:serverDeliveryTimestamp:serverTimestamp:sourceDeviceId:wasReceivedByUD:));
+NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:receivedAtTimestamp:sortId:timestamp:uniqueThreadId:attachmentIds:body:bodyRanges:contactShare:expireStartedAt:expiresAt:expiresInSeconds:isViewOnceComplete:isViewOnceMessage:linkPreview:messageSticker:quotedMessage:storedShouldStartExpireTimer:wasRemotelyDeleted:authorPhoneNumber:authorUUID:read:serverDeliveryTimestamp:serverGuid:serverTimestamp:sourceDeviceId:viewed:wasReceivedByUD:));
 
 // clang-format on
 
@@ -92,6 +95,13 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:receivedAtTimestamp
 @property (nonatomic, readonly) SignalServiceAddress *authorAddress;
 @property (nonatomic, readonly, nullable) NSString *authorPhoneNumber;
 @property (nonatomic, readonly, nullable) NSString *authorUUID;
+
+@property (nonatomic, readonly, getter=wasViewed) BOOL viewed;
+
+- (void)markAsViewedAtTimestamp:(uint64_t)viewedTimestamp
+                         thread:(TSThread *)thread
+                   circumstance:(OWSReceiptCircumstance)circumstance
+                    transaction:(SDSAnyWriteTransaction *)transaction;
 
 // convenience method for expiring a message which was just read
 - (void)debugonly_markAsReadNowWithTransaction:(SDSAnyWriteTransaction *)transaction

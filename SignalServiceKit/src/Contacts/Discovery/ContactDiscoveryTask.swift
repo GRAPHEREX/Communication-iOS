@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -54,9 +54,9 @@ public class ContactDiscoveryTask: NSObject {
         guard e164FetchSet.count > 0 else {
             return .value(Set())
         }
-//        if let retryAfterDate = Self.rateLimiter.currentRetryAfterDate(forCriticalPriority: isCriticalPriority) {
-//            return Promise(error: ContactDiscoveryError.rateLimit(expiryDate: retryAfterDate))
-//        }
+        if let retryAfterDate = Self.rateLimiter.currentRetryAfterDate(forCriticalPriority: isCriticalPriority) {
+            return Promise(error: ContactDiscoveryError.rateLimit(expiryDate: retryAfterDate))
+        }
 
         let workQueue = DispatchQueue(
             label: "org.whispersystems.signal.\(type(of: self))",
@@ -88,9 +88,9 @@ public class ContactDiscoveryTask: NSObject {
             } else {
                 Logger.error("ContactDiscoverTask failure: \(error)")
             }
-//            if let retryAfterDate = (error as? ContactDiscoveryError)?.retryAfterDate {
-//                Self.rateLimiter.updateRetryAfter(with: retryAfterDate, criticalPriority: self.isCriticalPriority)
-//            }
+            if let retryAfterDate = (error as? ContactDiscoveryError)?.retryAfterDate {
+                Self.rateLimiter.updateRetryAfter(with: retryAfterDate, criticalPriority: self.isCriticalPriority)
+            }
             throw error
         }
     }
@@ -175,7 +175,8 @@ public extension ContactDiscoveryTask {
 public extension ContactDiscoveryTask {
 
     private static let unfairLock = UnfairLock()
-    private static let undiscoverableUserCache = NSCache<NSString, NSDate>()
+    @nonobjc
+    private static let undiscoverableUserCache = LRUCache<String, Date>(maxSize: 1024)
 
     fileprivate static func markUsersAsRecentlyKnownToBeUndiscoverable(_ addresses: [SignalServiceAddress]) {
         guard !addresses.isEmpty else {
@@ -183,7 +184,7 @@ public extension ContactDiscoveryTask {
         }
         Logger.verbose("Marking users as known to be undiscoverable: \(addresses.count)")
 
-        let markAsUndiscoverableDate = Date() as NSDate
+        let markAsUndiscoverableDate = Date()
         unfairLock.withLock {
             for address in addresses {
                 guard let phoneNumber = address.phoneNumber else {
@@ -195,7 +196,7 @@ public extension ContactDiscoveryTask {
                     owsFailDebug("address unexpectedly had UUID")
                     continue
                 }
-                Self.undiscoverableUserCache.setObject(markAsUndiscoverableDate, forKey: phoneNumber as NSString)
+                Self.undiscoverableUserCache.setObject(markAsUndiscoverableDate, forKey: phoneNumber)
             }
         }
     }
@@ -221,7 +222,7 @@ public extension ContactDiscoveryTask {
                     owsFailDebug("address unexpectedly had UUID")
                     return false
                 }
-                guard let markAsUndiscoverableDate = Self.undiscoverableUserCache.object(forKey: phoneNumber as NSString) else {
+                guard let markAsUndiscoverableDate = Self.undiscoverableUserCache.object(forKey: phoneNumber) else {
                     // Not marked as undiscoverable.
                     return false
                 }

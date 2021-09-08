@@ -90,7 +90,7 @@ public class OWSUDSendingAccess: NSObject {
     }
 }
 
-@objc public protocol OWSUDManager: class {
+@objc public protocol OWSUDManager: AnyObject {
     @objc
     var keyValueStore: SDSKeyValueStore { get }
     @objc
@@ -177,6 +177,8 @@ public class OWSUDManagerImpl: NSObject, OWSUDManager {
     private let unfairLock = UnfairLock()
 
     // These two caches should only be accessed using unfairLock.
+    //
+    // TODO: We might not want to use comprehensive caches here.
     private var phoneNumberAccessCache = [String: UnidentifiedAccessMode]()
     private var uuidAccessCache = [UUID: UnidentifiedAccessMode]()
 

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -36,8 +36,57 @@ public extension TSThread {
         isGroupV1Thread && GroupManager.areMigrationsBlocking
     }
 
-    var canSendToThread: Bool {
-        !isBlockedByMigration
+    var canSendReactionToThread: Bool {
+        guard !isBlockedByMigration else {
+            return false
+        }
+        return true
+    }
+
+    var canSendNonChatMessagesToThread: Bool {
+        guard !isBlockedByMigration else {
+            return false
+        }
+        return true
+    }
+
+    @available(swift, obsoleted: 1.0)
+    func canSendChatMessagesToThread() -> Bool {
+        canSendChatMessagesToThread(ignoreAnnouncementOnly: false)
+    }
+
+    func canSendChatMessagesToThread(ignoreAnnouncementOnly: Bool = false) -> Bool {
+        guard !isBlockedByMigration else {
+            return false
+        }
+        if !ignoreAnnouncementOnly {
+            guard !isBlockedByAnnouncementOnly else {
+                return false
+            }
+        }
+        return true
+    }
+
+    var isBlockedByAnnouncementOnly: Bool {
+        guard let groupThread = self as? TSGroupThread else {
+            return false
+        }
+        guard let groupModel = groupThread.groupModel as? TSGroupModelV2 else {
+            return false
+        }
+        // In "announcement-only" groups, only admins can send messages and start group calls.
+        return (groupModel.isAnnouncementsOnly &&
+                    !groupModel.groupMembership.isLocalUserFullMemberAndAdministrator)
+    }
+
+    var isAnnouncementOnlyGroupThread: Bool {
+        guard let groupThread = self as? TSGroupThread else {
+            return false
+        }
+        guard let groupModel = groupThread.groupModel as? TSGroupModelV2 else {
+            return false
+        }
+        return groupModel.isAnnouncementsOnly
     }
 }
 
@@ -121,5 +170,36 @@ public extension TSThread {
             return
         }
         lastVisibleInteractionStore.setData(data, key: thread.uniqueId, transaction: transaction)
+    }
+}
+
+// MARK: - Drafts
+
+extension TSThread {
+
+    @objc
+    public func currentDraft(transaction: SDSAnyReadTransaction) -> MessageBody? {
+        currentDraft(shouldFetchLatest: true, transaction: transaction)
+    }
+
+    @objc
+    public func currentDraft(shouldFetchLatest: Bool,
+                             transaction: SDSAnyReadTransaction) -> MessageBody? {
+        if shouldFetchLatest {
+            guard let thread = TSThread.anyFetch(uniqueId: uniqueId, transaction: transaction) else {
+                return nil
+            }
+            return Self.draft(forThread: thread)
+        } else {
+            return Self.draft(forThread: self)
+        }
+    }
+
+    private static func draft(forThread thread: TSThread) -> MessageBody? {
+        guard let messageDraft = thread.messageDraft else {
+            return nil
+        }
+        let ranges: MessageBodyRanges = thread.messageDraftBodyRanges ?? .empty
+        return MessageBody(text: messageDraft, ranges: ranges)
     }
 }

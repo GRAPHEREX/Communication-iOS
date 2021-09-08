@@ -2,9 +2,9 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "PhoneNumber.h"
 #import "NSString+SSK.h"
-#import "PhoneNumberUtil.h"
+#import <SignalServiceKit/PhoneNumber.h>
+#import <SignalServiceKit/PhoneNumberUtil.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <libPhoneNumber_iOS/NBAsYouTypeFormatter.h>
 #import <libPhoneNumber_iOS/NBMetadataHelper.h>
@@ -122,15 +122,16 @@ static NSString *const RPDefaultsKeyPhoneNumberCanonical = @"RPDefaultsKeyPhoneN
 + (NSString *)bestEffortFormatPartialUserSpecifiedTextToLookLikeAPhoneNumber:(NSString *)input
                                                      withSpecifiedRegionCode:(NSString *)regionCode {
 
-    static NSMutableDictionary<NSString *, NSString *> *cache = nil;
+    static AnyLRUCache *cache = nil;
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        cache = [NSMutableDictionary new];
-    });
+    dispatch_once(
+        &onceToken, ^{ cache = [[AnyLRUCache alloc] initWithMaxSize:256
+                                                         nseMaxSize:0
+                                         shouldEvacuateInBackground:NO]; });
 
     @synchronized(cache) {
         NSString *cacheKey = [[input stringByAppendingString:@"@"] stringByAppendingString:regionCode];
-        NSString *_Nullable cachedValue = cache[cacheKey];
+        NSString *_Nullable cachedValue = (NSString *)[cache getWithKey:cacheKey];
         if (cachedValue != nil) {
             return cachedValue;
         }
@@ -140,7 +141,7 @@ static NSString *const RPDefaultsKeyPhoneNumberCanonical = @"RPDefaultsKeyPhoneN
         for (NSUInteger i = 0; i < input.length; i++) {
             result = [formatter inputDigit:[input substringWithRange:NSMakeRange(i, 1)]];
         }
-        cache[cacheKey] = result;
+        [cache setObject:result forKey:cacheKey];
         return result;
     }
 }

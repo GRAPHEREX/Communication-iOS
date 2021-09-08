@@ -43,6 +43,8 @@ public enum GroupUpdateType: Int {
     case userMembershipState_invalidInvitesRemoved
     case userRole
     case groupName
+    case groupDescriptionUpdated
+    case groupDescriptionRemoved
     case groupAvatar
     case accessMembers
     case accessAttributes
@@ -50,6 +52,7 @@ public enum GroupUpdateType: Int {
     case disappearingMessagesState_enabled
     case disappearingMessagesState_disabled
     case groupInviteLink
+    case isAnnouncementOnly
     case generic
     case groupMigrated
     case groupMigrated_usersDropped
@@ -177,6 +180,8 @@ struct GroupUpdateCopy: Dependencies {
                                               newToken: newDisappearingMessageToken)
 
                 addGroupInviteLinkUpdates(oldGroupModel: oldGroupModel)
+
+                addIsAnnouncementOnlyLinkUpdates(oldGroupModel: oldGroupModel)
             }
         } else {
             // We're just learning of the group.
@@ -349,6 +354,71 @@ extension GroupUpdateCopy {
                 case .unknown:
                     addItem(.groupAvatar, copy: NSLocalizedString("GROUP_UPDATED_AVATAR_REMOVED",
                                                                   comment: "Message indicating that the group's avatar was removed."))
+                }
+            }
+        }
+
+        guard let oldGroupModel = oldGroupModel as? TSGroupModelV2,
+              let newGroupModel = newGroupModel as? TSGroupModelV2 else { return }
+
+        let groupDescription = { (groupModel: TSGroupModelV2) -> String? in
+            if let name = groupModel.descriptionText?.stripped, name.count > 0 {
+                return name
+            }
+            return nil
+        }
+        let oldGroupDescription = groupDescription(oldGroupModel)
+        let newGroupDescription = groupDescription(newGroupModel)
+        if oldGroupDescription != newGroupDescription {
+            if newGroupDescription != nil {
+                switch updater {
+                case .localUser:
+                    addItem(
+                        .groupDescriptionUpdated,
+                        copy: NSLocalizedString(
+                            "GROUP_UPDATED_DESCRIPTION_UPDATED_BY_LOCAL_USER",
+                            comment: "Message indicating that the group's description was changed by the local user.."
+                        )
+                    )
+                case .otherUser(let updaterName, _):
+                    let format = NSLocalizedString(
+                        "GROUP_UPDATED_DESCRIPTION_UPDATED_BY_REMOTE_USER_FORMAT",
+                        comment: "Message indicating that the group's description was changed by a remote user. Embeds {{ user who changed the name }}."
+                    )
+                    addItem(.groupDescriptionUpdated, format: format, updaterName)
+                case .unknown:
+                    addItem(
+                        .groupDescriptionUpdated,
+                        copy: NSLocalizedString(
+                            "GROUP_UPDATED_DESCRIPTION_UPDATED",
+                            comment: "Message indicating that the group's description was changed."
+                        )
+                    )
+                }
+            } else {
+                switch updater {
+                case .localUser:
+                    addItem(
+                        .groupDescriptionRemoved,
+                        copy: NSLocalizedString(
+                            "GROUP_UPDATED_DESCRIPTION_REMOVED_BY_LOCAL_USER",
+                            comment: "Message indicating that the group's description was removed by the local user."
+                        )
+                    )
+                case .otherUser(let updaterName, _):
+                    let format = NSLocalizedString(
+                        "GROUP_UPDATED_DESCRIPTION_REMOVED_BY_REMOTE_USER_FORMAT",
+                        comment: "Message indicating that the group's description was removed by a remote user. Embeds {{user who removed the name}}."
+                    )
+                    addItem(.groupDescriptionRemoved, format: format, updaterName)
+                case .unknown:
+                    addItem(
+                        .groupDescriptionRemoved,
+                        copy: NSLocalizedString(
+                            "GROUP_UPDATED_DESCRIPTION_REMOVED",
+                            comment: "Message indicating that the group's description was removed."
+                        )
+                    )
                 }
             }
         }
@@ -1469,8 +1539,18 @@ extension GroupUpdateCopy {
 
         guard let oldToken = oldToken else {
             if newToken.isEnabled {
-                let format = NSLocalizedString("DISAPPEARING_MESSAGES_CONFIGURATION_GROUP_EXISTING_FORMAT",
-                                               comment: "Info Message when added to a group which has enabled disappearing messages. Embeds {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context.")
+                let format: String
+                if updater == .localUser {
+                    format = NSLocalizedString(
+                        "YOU_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION",
+                        comment: "Info Message when you update disappearing messages duration. Embeds a {{time amount}} before messages disappear. see the *_TIME_AMOUNT strings for context."
+                    )
+                } else {
+                    format = NSLocalizedString(
+                        "DISAPPEARING_MESSAGES_CONFIGURATION_GROUP_EXISTING_FORMAT",
+                        comment: "Info Message when added to a group which has enabled disappearing messages. Embeds {{time amount}} before messages disappear. See the *_TIME_AMOUNT strings for context."
+                    )
+                }
                 addItem(.disappearingMessagesState_enabled, format: format, durationString)
             }
             return
@@ -1532,8 +1612,8 @@ extension GroupUpdateCopy {
 
         guard oldGroupInviteLinkMode != newGroupInviteLinkMode else {
             if let oldInviteLinkPassword = oldGroupModel.inviteLinkPassword,
-                let newInviteLinkPassword = newGroupModel.inviteLinkPassword,
-                oldInviteLinkPassword != newInviteLinkPassword {
+               let newInviteLinkPassword = newGroupModel.inviteLinkPassword,
+               oldInviteLinkPassword != newInviteLinkPassword {
                 switch updater {
                 case .localUser:
                     let format = NSLocalizedString("GROUP_INVITE_LINK_RESET_BY_LOCAL_USER",
@@ -1635,6 +1715,56 @@ extension GroupUpdateCopy {
                                                    comment: "Message indicating that the group invite link was set to require approval.")
                     addItem(.groupInviteLink, format: format)
                 }
+            }
+        }
+    }
+
+    // MARK: - Announcement-Only Groups
+
+    mutating func addIsAnnouncementOnlyLinkUpdates(oldGroupModel: TSGroupModel) {
+        guard let oldGroupModel = oldGroupModel as? TSGroupModelV2 else {
+            return
+        }
+        guard let newGroupModel = newGroupModel as? TSGroupModelV2 else {
+            owsFailDebug("Invalid group model.")
+            return
+        }
+        let oldIsAnnouncementsOnly = oldGroupModel.isAnnouncementsOnly
+        let newIsAnnouncementsOnly = newGroupModel.isAnnouncementsOnly
+
+        guard oldIsAnnouncementsOnly != newIsAnnouncementsOnly else {
+            return
+        }
+
+        if newIsAnnouncementsOnly {
+            switch updater {
+            case .localUser:
+                let format = NSLocalizedString("GROUP_IS_ANNOUNCEMENT_ONLY_ENABLED_BY_LOCAL_USER",
+                                               comment: "Message indicating that 'announcement-only' mode was enabled by the local user.")
+                addItem(.isAnnouncementOnly, format: format)
+            case .otherUser(let updaterName, _):
+                let format = NSLocalizedString("GROUP_IS_ANNOUNCEMENT_ONLY_ENABLED_BY_REMOTE_USER_FORMAT",
+                                               comment: "Message indicating that 'announcement-only' mode was enabled by a remote user. Embeds {{ user who enabled 'announcement-only' mode }}.")
+                addItem(.isAnnouncementOnly, format: format, updaterName)
+            case .unknown:
+                let format = NSLocalizedString("GROUP_IS_ANNOUNCEMENT_ONLY_ENABLED",
+                                               comment: "Message indicating that 'announcement-only' mode was enabled.")
+                addItem(.isAnnouncementOnly, format: format)
+            }
+        } else {
+            switch updater {
+            case .localUser:
+                let format = NSLocalizedString("GROUP_IS_ANNOUNCEMENT_ONLY_DISABLED_BY_LOCAL_USER",
+                                               comment: "Message indicating that 'announcement-only' mode was disabled by the local user.")
+                addItem(.isAnnouncementOnly, format: format)
+            case .otherUser(let updaterName, _):
+                let format = NSLocalizedString("GROUP_IS_ANNOUNCEMENT_ONLY_DISABLED_BY_REMOTE_USER_FORMAT",
+                                               comment: "Message indicating that 'announcement-only' mode was disabled by a remote user. Embeds {{ user who disabled 'announcement-only' mode }}.")
+                addItem(.isAnnouncementOnly, format: format, updaterName)
+            case .unknown:
+                let format = NSLocalizedString("GROUP_IS_ANNOUNCEMENT_ONLY_DISABLED",
+                                               comment: "Message indicating that 'announcement-only' mode was disabled.")
+                addItem(.isAnnouncementOnly, format: format)
             }
         }
     }
@@ -1831,7 +1961,7 @@ extension GroupUpdateCopy {
 
     // MARK: - Updater
 
-    enum Updater {
+    enum Updater: Equatable {
         case localUser
         case otherUser(updaterName: String, updaterAddress: SignalServiceAddress)
         case unknown

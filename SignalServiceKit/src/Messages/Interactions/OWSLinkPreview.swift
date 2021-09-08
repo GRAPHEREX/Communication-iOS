@@ -133,9 +133,7 @@ public class OWSLinkPreview: MTLModel {
         }
         let urlString = previewProto.url
 
-        guard let urlString = urlString,
-              let url = URL(string: urlString),
-              url.isPermittedLinkPreviewUrl() else {
+        guard let url = URL(string: urlString), url.isPermittedLinkPreviewUrl() else {
             Logger.error("Could not parse preview url.")
             throw LinkPreviewError.invalidPreview
         }
@@ -294,7 +292,7 @@ public class OWSLinkPreviewManager: NSObject, Dependencies {
         let allMatches = detector.matches(
             in: searchString,
             options: [],
-            range: NSRange(searchString.startIndex..<searchString.endIndex, in: searchString))
+            range: searchString.entireRange)
 
         return allMatches.first(where: {
             guard let parsedUrl = $0.url else { return false }
@@ -496,7 +494,7 @@ public class OWSLinkPreviewManager: NSObject, Dependencies {
                 }
 
                 var stillThumbnail = stillImage
-                let imageSize = stillImage.pixelSize()
+                let imageSize = stillImage.pixelSize
                 let shouldResize = imageSize.width > maxImageSize || imageSize.height > maxImageSize
                 if shouldResize {
                     guard let resizedImage = stillImage.resized(withMaxDimensionPixels: maxImageSize) else {
@@ -568,8 +566,10 @@ public class OWSLinkPreviewManager: NSObject, Dependencies {
         }.then(on: Self.workQueue) { (stickerPack) -> Promise<OWSLinkPreviewDraft> in
             let coverInfo = stickerPack.coverInfo
             // tryToDownloadSticker will use locally saved data if possible.
-            return firstly { () -> Promise<Data> in
+            return firstly { () -> Promise<URL> in
                 StickerManager.tryToDownloadSticker(stickerPack: stickerPack, stickerInfo: coverInfo)
+            }.map(on: Self.workQueue) { coverUrl in
+                return try Data(contentsOf: coverUrl)
             }.then(on: Self.workQueue) { (coverData) -> Promise<PreviewThumbnail?> in
                 Self.previewThumbnail(srcImageData: coverData, srcMimeType: OWSMimeTypeImageWebp)
             }.map(on: Self.workQueue) { (previewThumbnail: PreviewThumbnail?) -> OWSLinkPreviewDraft in
@@ -724,7 +724,7 @@ fileprivate extension OWSLinkPreviewManager {
             return stickerPackShareDomain(forUrl: url)
         }
         if GroupManager.isPossibleGroupInviteLink(url) {
-            return "grapherex.com"
+            return "signal.org"
         }
         return url.host
     }

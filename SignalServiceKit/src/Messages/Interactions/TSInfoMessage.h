@@ -1,9 +1,9 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSReadTracking.h"
-#import "TSMessage.h"
+#import <SignalServiceKit/OWSReadTracking.h>
+#import <SignalServiceKit/TSMessage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TSInfoMessage : TSMessage <OWSReadTracking>
 
-typedef NS_ENUM(NSInteger, TSInfoMessageType) {
+typedef NS_CLOSED_ENUM(NSInteger, TSInfoMessageType) {
     TSInfoMessageTypeSessionDidEnd,
     TSInfoMessageUserNotRegistered,
     // TSInfoMessageTypeUnsupportedMessage appears to be obsolete.
@@ -26,8 +26,7 @@ typedef NS_ENUM(NSInteger, TSInfoMessageType) {
     TSInfoMessageUnknownProtocolVersion,
     TSInfoMessageUserJoinedSignal,
     TSInfoMessageSyncedThread,
-    TSInfoMessageProfileUpdate,
-    TSInfoMessageSuccessTransaction
+    TSInfoMessageProfileUpdate
 };
 
 

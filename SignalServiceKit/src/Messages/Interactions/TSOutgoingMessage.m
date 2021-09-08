@@ -3,22 +3,22 @@
 //
 
 #import "TSOutgoingMessage.h"
-#import "MessageSender.h"
 #import "NSError+OWSOperation.h"
-#import "OWSContact.h"
-#import "OWSOutgoingSyncMessage.h"
-#import "ProtoUtils.h"
-#import "SSKEnvironment.h"
-#import "SignalRecipient.h"
-#import "TSAccountManager.h"
-#import "TSAttachmentStream.h"
-#import "TSContactThread.h"
-#import "TSGroupThread.h"
-#import "TSQuotedMessage.h"
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalCoreKit/NSString+OWS.h>
 #import <SignalServiceKit/AppReadiness.h>
+#import <SignalServiceKit/MessageSender.h>
+#import <SignalServiceKit/OWSContact.h>
+#import <SignalServiceKit/OWSOutgoingSyncMessage.h>
+#import <SignalServiceKit/ProtoUtils.h>
+#import <SignalServiceKit/SSKEnvironment.h>
+#import <SignalServiceKit/SignalRecipient.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSAccountManager.h>
+#import <SignalServiceKit/TSAttachmentStream.h>
+#import <SignalServiceKit/TSContactThread.h>
+#import <SignalServiceKit/TSGroupThread.h>
+#import <SignalServiceKit/TSQuotedMessage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -41,6 +41,8 @@ NSString *NSStringForOutgoingMessageState(TSOutgoingMessageState value)
             return @"TSOutgoingMessageStateDelivered_OBSOLETE";
         case TSOutgoingMessageStateSent:
             return @"TSOutgoingMessageStateSent";
+        case TSOutgoingMessageStatePending:
+            return @"TSOutgoingMessageStatePending";
     }
 }
 
@@ -55,6 +57,8 @@ NSString *NSStringForOutgoingMessageRecipientState(OWSOutgoingMessageRecipientSt
             return @"OWSOutgoingMessageRecipientStateSkipped";
         case OWSOutgoingMessageRecipientStateSent:
             return @"OWSOutgoingMessageRecipientStateSent";
+        case OWSOutgoingMessageRecipientStatePending:
+            return @"OWSOutgoingMessageRecipientStatePending";
     }
 }
 
@@ -73,6 +77,7 @@ NSString *NSStringForOutgoingMessageRecipientState(OWSOutgoingMessageRecipientSt
 @property (atomic) OWSOutgoingMessageRecipientState state;
 @property (atomic, nullable) NSNumber *deliveryTimestamp;
 @property (atomic, nullable) NSNumber *readTimestamp;
+@property (atomic, nullable) NSNumber *viewedTimestamp;
 @property (atomic, nullable) NSNumber *errorCode;
 @property (atomic) BOOL wasSentByUD;
 
@@ -410,10 +415,13 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     OWSAssertDebug(recipientStates);
 
     // If there are any "sending" recipients, consider this message "sending".
+    // If there are any "pending" recipients, consider this message "pending".
     BOOL hasFailed = NO;
     for (TSOutgoingMessageRecipientState *recipientState in recipientStates) {
         if (recipientState.state == OWSOutgoingMessageRecipientStateSending) {
             return TSOutgoingMessageStateSending;
+        } else if (recipientState.state == OWSOutgoingMessageRecipientStatePending) {
+            return TSOutgoingMessageStatePending;
         } else if (recipientState.state == OWSOutgoingMessageRecipientStateFailed) {
             hasFailed = YES;
         }
@@ -432,6 +440,9 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
 
 - (BOOL)shouldBeSaved
 {
+    if (!super.shouldBeSaved) {
+        return NO;
+    }
     if (self.groupMetaMessage == TSGroupMetaMessageDeliver || self.groupMetaMessage == TSGroupMetaMessageUnspecified) {
         return YES;
     }
@@ -499,7 +510,8 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     NSMutableArray<SignalServiceAddress *> *result = [NSMutableArray new];
     for (SignalServiceAddress *recipientAddress in self.recipientAddressStates) {
         TSOutgoingMessageRecipientState *recipientState = self.recipientAddressStates[recipientAddress];
-        if (recipientState.state == OWSOutgoingMessageRecipientStateSending) {
+        if (recipientState.state == OWSOutgoingMessageRecipientStateSending
+            || recipientState.state == OWSOutgoingMessageRecipientStatePending) {
             [result addObject:recipientAddress];
         }
     }
@@ -542,6 +554,18 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     return result;
 }
 
+- (NSArray<SignalServiceAddress *> *)viewedRecipientAddresses
+{
+    NSMutableArray<SignalServiceAddress *> *result = [NSMutableArray new];
+    for (SignalServiceAddress *recipientAddress in self.recipientAddressStates) {
+        TSOutgoingMessageRecipientState *recipientState = self.recipientAddressStates[recipientAddress];
+        if (recipientState.viewedTimestamp != nil) {
+            [result addObject:recipientAddress];
+        }
+    }
+    return result;
+}
+
 - (NSUInteger)sentRecipientsCount
 {
     return [self.recipientAddressStates
@@ -552,7 +576,7 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     }]].count;
 }
 
-- (nullable TSOutgoingMessageRecipientState *)recipientStateForAddress:(SignalServiceAddress *)address;
+- (nullable TSOutgoingMessageRecipientState *)recipientStateForAddress:(SignalServiceAddress *)address
 {
     OWSAssertDebug(address.isValid);
 
@@ -607,7 +631,7 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     return NO;
 }
 
-- (void)updateAllUnsentRecipientsAsSendingWithTransaction:(SDSAnyWriteTransaction *)transaction;
+- (void)updateAllUnsentRecipientsAsSendingWithTransaction:(SDSAnyWriteTransaction *)transaction
 {
     OWSAssertDebug(transaction);
 
@@ -686,21 +710,29 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
         error,
         error.isRetryable);
 
-    [self anyUpdateOutgoingMessageWithTransaction:transaction
-                                            block:^(TSOutgoingMessage *message) {
-                                                TSOutgoingMessageRecipientState *_Nullable recipientState
-                                                    = message.recipientAddressStates[recipientAddress];
-                                                if (!recipientState) {
-                                                    OWSFailDebug(
-                                                        @"Missing recipient state for recipient: %@", recipientAddress);
-                                                    return;
-                                                }
-                                                recipientState.state = OWSOutgoingMessageRecipientStateFailed;
-                                                recipientState.errorCode = @(error.code);
-                                            }];
+    [self
+        anyUpdateOutgoingMessageWithTransaction:transaction
+                                          block:^(TSOutgoingMessage *message) {
+                                              TSOutgoingMessageRecipientState *_Nullable recipientState
+                                                  = message.recipientAddressStates[recipientAddress];
+                                              if (!recipientState) {
+                                                  OWSFailDebug(
+                                                      @"Missing recipient state for recipient: %@", recipientAddress);
+                                                  return;
+                                              }
+
+                                              if ([error
+                                                      ows_isSSKErrorWithCode:OWSErrorCodeServerRejectedSuspectedSpam]) {
+                                                  recipientState.state = OWSOutgoingMessageRecipientStatePending;
+                                              } else {
+                                                  recipientState.state = OWSOutgoingMessageRecipientStateFailed;
+                                              }
+                                              recipientState.errorCode = @(error.code);
+                                          }];
 }
 
 - (void)updateWithDeliveredRecipient:(SignalServiceAddress *)recipientAddress
+                   recipientDeviceId:(uint32_t)deviceId
                    deliveryTimestamp:(NSNumber *_Nullable)deliveryTimestamp
                          transaction:(SDSAnyWriteTransaction *)transaction
 {
@@ -717,6 +749,10 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     if (!deliveryTimestamp) {
         deliveryTimestamp = @([NSDate ows_millisecondTimeStamp]);
     }
+
+    [self clearMessageSendLogEntryForRecipient:recipientAddress
+                                      deviceId:deviceId
+                                   transaction:transaction];
 
     [self anyUpdateOutgoingMessageWithTransaction:transaction
                                             block:^(TSOutgoingMessage *message) {
@@ -737,6 +773,7 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
 }
 
 - (void)updateWithReadRecipient:(SignalServiceAddress *)recipientAddress
+              recipientDeviceId:(uint32_t)deviceId
                   readTimestamp:(uint64_t)readTimestamp
                     transaction:(SDSAnyWriteTransaction *)transaction
 {
@@ -748,6 +785,12 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     if (self.wasRemotelyDeleted) {
         return;
     }
+
+    // This is only really necessary for delivery receipts, but while we're here with
+    // an open write transaction, might as well double check we've cleared it.
+    [self clearMessageSendLogEntryForRecipient:recipientAddress
+                                      deviceId:deviceId
+                                   transaction:transaction];
 
     [self anyUpdateOutgoingMessageWithTransaction:transaction
                                             block:^(TSOutgoingMessage *message) {
@@ -763,6 +806,44 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
                                                 }
                                                 recipientState.state = OWSOutgoingMessageRecipientStateSent;
                                                 recipientState.readTimestamp = @(readTimestamp);
+                                                recipientState.errorCode = nil;
+                                            }];
+}
+
+- (void)updateWithViewedRecipient:(SignalServiceAddress *)recipientAddress
+                recipientDeviceId:(uint32_t)deviceId
+                  viewedTimestamp:(uint64_t)viewedTimestamp
+                      transaction:(SDSAnyWriteTransaction *)transaction
+{
+    OWSAssertDebug(recipientAddress.isValid);
+    OWSAssertDebug(transaction);
+
+    // Ignore receipts for messages that have been deleted.
+    // They are no longer relevant to this message.
+    if (self.wasRemotelyDeleted) {
+        return;
+    }
+
+    // This is only really necessary for delivery receipts, but while we're here with
+    // an open write transaction, might as well double check we've cleared it.
+    [self clearMessageSendLogEntryForRecipient:recipientAddress
+                                      deviceId:deviceId
+                                   transaction:transaction];
+
+    [self anyUpdateOutgoingMessageWithTransaction:transaction
+                                            block:^(TSOutgoingMessage *message) {
+                                                TSOutgoingMessageRecipientState *_Nullable recipientState
+                                                    = message.recipientAddressStates[recipientAddress];
+                                                if (!recipientState) {
+                                                    OWSFailDebug(@"Missing recipient state for delivered recipient: %@",
+                                                        recipientAddress);
+                                                    return;
+                                                }
+                                                if (recipientState.state != OWSOutgoingMessageRecipientStateSent) {
+                                                    OWSLogWarn(@"marking unsent message as delivered.");
+                                                }
+                                                recipientState.state = OWSOutgoingMessageRecipientStateSent;
+                                                recipientState.viewedTimestamp = @(viewedTimestamp);
                                                 recipientState.errorCode = nil;
                                             }];
 }
@@ -903,6 +984,21 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
                                             }];
 }
 
+- (void)clearMessageSendLogEntryForRecipient:(SignalServiceAddress *)address
+                                    deviceId:(uint32_t)deviceId
+                                 transaction:(SDSAnyWriteTransaction *)transaction
+{
+    // MSL entries will only exist for addresses with UUIDs
+    if (address.uuid) {
+        NSDate *interactionTimestamp = [NSDate ows_dateWithMillisecondsSince1970:self.timestamp];
+
+        [MessageSendLog recordSuccessfulDeliveryWithTimestamp:interactionTimestamp
+                                                recipientUuid:address.uuid
+                                            recipientDeviceId:deviceId
+                                                  transaction:transaction];
+    }
+}
+
 #ifdef TESTABLE_BUILD
 - (void)updateWithFakeMessageState:(TSOutgoingMessageState)messageState
                        transaction:(SDSAnyWriteTransaction *)transaction
@@ -923,6 +1019,10 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
                                                             break;
                                                         case TSOutgoingMessageStateSent:
                                                             recipientState.state = OWSOutgoingMessageRecipientStateSent;
+                                                            break;
+                                                        case TSOutgoingMessageStatePending:
+                                                            recipientState.state
+                                                                = OWSOutgoingMessageRecipientStatePending;
                                                             break;
                                                         default:
                                                             OWSFailDebug(@"unexpected message state.");
@@ -1051,8 +1151,7 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     // Link Preview
     if (self.linkPreview) {
         SSKProtoDataMessagePreviewBuilder *previewBuilder =
-            [SSKProtoDataMessagePreview builder];
-            [previewBuilder setUrl:self.linkPreview.urlString];
+            [SSKProtoDataMessagePreview builderWithUrl:self.linkPreview.urlString];
         if (self.linkPreview.title.length > 0) {
             [previewBuilder setTitle:self.linkPreview.title];
         }
@@ -1091,11 +1190,10 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
             OWSFailDebug(@"Could not build sticker attachment protobuf.");
         } else {
             SSKProtoDataMessageStickerBuilder *stickerBuilder =
-            [SSKProtoDataMessageSticker builder];
-            [stickerBuilder setPackID:self.messageSticker.packId];
-            [stickerBuilder setPackKey:self.messageSticker.packKey];
-            [stickerBuilder setStickerID:self.messageSticker.stickerId];
-            [stickerBuilder setData:attachmentProto];
+                [SSKProtoDataMessageSticker builderWithPackID:self.messageSticker.packId
+                                                      packKey:self.messageSticker.packKey
+                                                    stickerID:self.messageSticker.stickerId
+                                                         data:attachmentProto];
             if (self.messageSticker.emoji.length > 0) {
                 [stickerBuilder setEmoji:self.messageSticker.emoji];
             }
@@ -1139,8 +1237,7 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
             break;
     }
     BOOL attachmentWasGroupAvatar = NO;
-    SSKProtoGroupContextBuilder *groupBuilder = [SSKProtoGroupContext builder];
-    [groupBuilder setId:groupModel.groupId];
+    SSKProtoGroupContextBuilder *groupBuilder = [SSKProtoGroupContext builderWithId:groupModel.groupId];
     [groupBuilder setType:groupMessageType];
     if (groupMessageType == SSKProtoGroupContextTypeUpdate) {
         if (groupModel.groupAvatarData != nil && self.attachmentIds.count == 1) {
@@ -1270,8 +1367,7 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     }
     TSQuotedMessage *quotedMessage = self.quotedMessage;
 
-    SSKProtoDataMessageQuoteBuilder *quoteBuilder = [SSKProtoDataMessageQuote builder];
-    [quoteBuilder setId:quotedMessage.timestamp];
+    SSKProtoDataMessageQuoteBuilder *quoteBuilder = [SSKProtoDataMessageQuote builderWithId:quotedMessage.timestamp];
 
     if (quotedMessage.authorAddress.phoneNumber && !SSKFeatureFlags.phoneNumberSharing) {
         quoteBuilder.authorE164 = quotedMessage.authorAddress.phoneNumber;
@@ -1332,9 +1428,7 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
 }
 
 // recipientId is nil when building "sent" sync messages for messages sent to groups.
-- (nullable SSKProtoDataMessage *)buildDataMessage:(SignalServiceAddress *_Nullable)address
-                                            thread:(TSThread *)thread
-                                       transaction:(SDSAnyReadTransaction *)transaction
+- (nullable SSKProtoDataMessage *)buildDataMessage:(TSThread *)thread transaction:(SDSAnyReadTransaction *)transaction
 {
     OWSAssertDebug(thread);
     OWSAssertDebug([thread.uniqueId isEqualToString:self.uniqueThreadId]);
@@ -1345,7 +1439,6 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     }
 
     [ProtoUtils addLocalProfileKeyIfNecessary:thread
-                                      address:address
                            dataMessageBuilder:builder
                                   transaction:transaction];
 
@@ -1358,12 +1451,10 @@ NSUInteger const TSOutgoingMessageSchemaVersion = 1;
     return dataProto;
 }
 
-- (nullable NSData *)buildPlainTextData:(SignalServiceAddress *)address
-                                 thread:(TSThread *)thread
-                            transaction:(SDSAnyReadTransaction *)transaction
+- (nullable NSData *)buildPlainTextData:(TSThread *)thread transaction:(SDSAnyReadTransaction *)transaction
 {
     NSError *error;
-    SSKProtoDataMessage *_Nullable dataMessage = [self buildDataMessage:address thread:thread transaction:transaction];
+    SSKProtoDataMessage *_Nullable dataMessage = [self buildDataMessage:thread transaction:transaction];
     if (error || !dataMessage) {
         OWSFailDebug(@"could not build protobuf: %@", error);
         return nil;

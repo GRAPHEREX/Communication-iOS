@@ -3,7 +3,7 @@
 //
 
 #import "StorageCoordinator.h"
-#import "AppReadiness.h"
+#import <SignalServiceKit/AppReadiness.h>
 #import <SignalServiceKit/NSNotificationCenter+OWS.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 #import <SignalServiceKit/YDBStorage.h>
@@ -115,23 +115,6 @@ NSString *NSStringForDataStore(DataStore value)
 {
     // TODO:
     return DataStoreGrdb;
-}
-
-+ (void)showGRDBMigrationNotification
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        // Dispatch async so that Environments are configured.
-        dispatch_async(dispatch_get_main_queue(), ^{
-            OWSLogInfo(@"");
-            // This notification be cleared by:
-            //
-            // * Main app when it becomes active (along with the other notifications).
-            // * When any other notification is presented (e.g. if processing
-            //   background notifications).
-            [self.notificationsManager notifyUserForGRDBMigration];
-        });
-    });
 }
 
 - (void)configure

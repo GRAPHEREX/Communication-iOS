@@ -13,13 +13,10 @@ public class GRDBReadTransaction: NSObject {
 
     public let database: Database
 
-    public let isUIRead: Bool
-
     public let startDate = Date()
 
-    init(database: Database, isUIRead: Bool) {
+    init(database: Database) {
         self.database = database
-        self.isUIRead = isUIRead
     }
 
     @objc
@@ -40,8 +37,8 @@ public class GRDBWriteTransaction: GRDBReadTransaction {
     }
     private var transactionState: TransactionState = .open
 
-    init(database: Database) {
-        super.init(database: database, isUIRead: false)
+    override init(database: Database) {
+        super.init(database: database)
     }
 
     deinit {
@@ -117,7 +114,9 @@ public class GRDBWriteTransaction: GRDBReadTransaction {
             return
         }
         if transactionFinalizationBlocks[key] != nil {
-            Logger.verbose("De-duplicating.")
+            if !DebugFlags.reduceLogChatter {
+                Logger.verbose("De-duplicating.")
+            }
         }
         // Always overwrite; we want to use the _last_ block.
         // For example, in the case of touching thread, a given
@@ -155,13 +154,6 @@ public class SDSAnyReadTransaction: NSObject {
     init(_ readTransaction: ReadTransactionType) {
         self.readTransaction = readTransaction
     }
-
-    public var isUIRead: Bool {
-        switch readTransaction {
-        case .grdbRead(let grdbRead):
-            return grdbRead.isUIRead
-        }
-    }
 }
 
 @objc
@@ -196,18 +188,18 @@ public class SDSAnyWriteTransaction: SDSAnyReadTransaction, StoreContext {
 
     // Objective-C doesn't honor default arguments.
     @objc
-    public func addAsyncCompletion(_ block: @escaping () -> Void) {
-        addAsyncCompletion(queue: DispatchQueue.main, block: block)
+    public func addAsyncCompletionOnMain(_ block: @escaping () -> Void) {
+        addAsyncCompletion(queue: .main, block: block)
     }
 
     // Objective-C doesn't honor default arguments.
     @objc
     public func addAsyncCompletionOffMain(_ block: @escaping () -> Void) {
-        addAsyncCompletion(queue: DispatchQueue.global(), block: block)
+        addAsyncCompletion(queue: .global(), block: block)
     }
 
     @objc
-    public func addAsyncCompletion(queue: DispatchQueue = DispatchQueue.main, block: @escaping () -> Void) {
+    public func addAsyncCompletion(queue: DispatchQueue, block: @escaping () -> Void) {
         switch writeTransaction {
         case .grdbWrite(let grdbWrite):
             grdbWrite.addAsyncCompletion(queue: queue, block: block)
@@ -319,6 +311,41 @@ public extension SDSAnyWriteTransaction {
         switch writeTransaction {
         case .grdbWrite(let grdbWrite):
             return grdbWrite
+        }
+    }
+}
+
+// MARK: -
+
+public extension GRDB.Database {
+    final func throwsRead<T>(_ criticalSection: (_ database: GRDB.Database) throws -> T) throws -> T {
+        do {
+            return try criticalSection(self)
+        } catch {
+            // If the attempt to write to GRDB flagged that the database was
+            // corrupt, in addition to crashing we flag this so that we can
+            // attempt to perform recovery.
+            if let error = error as? DatabaseError, error.resultCode == .SQLITE_CORRUPT {
+                SSKPreferences.setHasGrdbDatabaseCorruption(true)
+                owsFail("Error: \(error)")
+            }
+            owsFailDebug("Error: \(error)")
+            throw error
+        }
+    }
+
+    final func strictRead<T>(_ criticalSection: (_ database: GRDB.Database) throws -> T) -> T {
+        do {
+            return try criticalSection(self)
+        } catch {
+            // If the attempt to write to GRDB flagged that the database was
+            // corrupt, in addition to crashing we flag this so that we can
+            // attempt to perform recovery.
+            if let error = error as? DatabaseError, error.resultCode == .SQLITE_CORRUPT {
+                SSKPreferences.setHasGrdbDatabaseCorruption(true)
+                owsFail("Error: \(error)")
+            }
+            owsFail("Error: \(error)")
         }
     }
 }

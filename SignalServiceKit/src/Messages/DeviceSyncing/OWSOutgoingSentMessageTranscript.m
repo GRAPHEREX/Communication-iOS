@@ -2,10 +2,10 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSOutgoingSentMessageTranscript.h"
-#import "TSOutgoingMessage.h"
-#import "TSThread.h"
+#import <SignalServiceKit/OWSOutgoingSentMessageTranscript.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSOutgoingMessage.h>
+#import <SignalServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,9 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  * recipientId is nil when building "sent" sync messages for messages
  * sent to groups.
  */
-- (nullable SSKProtoDataMessage *)buildDataMessage:(SignalServiceAddress *_Nullable)address
-                                            thread:(TSThread *)thread
-                                       transaction:(SDSAnyReadTransaction *)transaction;
+- (nullable SSKProtoDataMessage *)buildDataMessage:(TSThread *)thread transaction:(SDSAnyReadTransaction *)transaction;
 
 @end
 
@@ -111,8 +109,7 @@ NS_ASSUME_NONNULL_BEGIN
             switch (groupThread.groupModel.groupsVersion) {
                 case GroupsVersionV1: {
                     SSKProtoGroupContextBuilder *groupBuilder =
-                        [SSKProtoGroupContext builder];
-                    [groupBuilder setId:groupThread.groupModel.groupId];
+                        [SSKProtoGroupContext builderWithId:groupThread.groupModel.groupId];
                     [groupBuilder setType:SSKProtoGroupContextTypeDeliver];
                     NSError *error;
                     SSKProtoGroupContext *_Nullable groupContextProto = [groupBuilder buildAndReturnError:&error];
@@ -152,9 +149,7 @@ NS_ASSUME_NONNULL_BEGIN
             return nil;
         }
     } else {
-        dataMessage = [self.message buildDataMessage:self.sentRecipientAddress
-                                              thread:self.messageThread
-                                         transaction:transaction];
+        dataMessage = [self.message buildDataMessage:self.messageThread transaction:transaction];
     }
 
     if (!dataMessage) {
@@ -202,6 +197,11 @@ NS_ASSUME_NONNULL_BEGIN
     SSKProtoSyncMessageBuilder *syncMessageBuilder = [SSKProtoSyncMessage builder];
     [syncMessageBuilder setSent:sentProto];
     return syncMessageBuilder;
+}
+
+- (NSSet<NSString *> *)relatedUniqueIds
+{
+    return [[super relatedUniqueIds] setByAddingObjectsFromArray:@[ self.message.uniqueId ]];
 }
 
 @end

@@ -2,17 +2,17 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSContact.h"
-#import "Contact.h"
-#import "MimeTypeUtil.h"
 #import "OWSContact+Private.h"
-#import "PhoneNumber.h"
-#import "TSAttachment.h"
-#import "TSAttachmentPointer.h"
-#import "TSAttachmentStream.h"
 #import <Contacts/Contacts.h>
 #import <SignalCoreKit/NSString+OWS.h>
+#import <SignalServiceKit/Contact.h>
+#import <SignalServiceKit/MimeTypeUtil.h>
+#import <SignalServiceKit/OWSContact.h>
+#import <SignalServiceKit/PhoneNumber.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSAttachment.h>
+#import <SignalServiceKit/TSAttachmentPointer.h>
+#import <SignalServiceKit/TSAttachmentStream.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -544,18 +544,20 @@ NSString *NSStringForContactAddressType(OWSContactAddressType value)
 - (NSArray<NSString *> *)systemContactsWithSignalAccountPhoneNumbers
 {
     return [self.e164PhoneNumbers
-        filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSString *_Nullable recipientId,
+        filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSString *_Nullable phoneNumber,
                                         NSDictionary<NSString *, id> *_Nullable bindings) {
-            return [OWSContact.contactsManager isSystemContactWithSignalAccount:recipientId];
+            SignalServiceAddress *address = [[SignalServiceAddress alloc] initWithPhoneNumber:phoneNumber];
+            return [OWSContact.contactsManager isSystemContactWithSignalAccount:address];
         }]];
 }
 
 - (NSArray<NSString *> *)systemContactsWithSignalAccountPhoneNumbersWithTransaction:(SDSAnyReadTransaction *)transaction
 {
     return [self.e164PhoneNumbers
-        filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSString *_Nullable recipientId,
+        filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSString *_Nullable phoneNumber,
                                         NSDictionary<NSString *, id> *_Nullable bindings) {
-            return [OWSContact.contactsManager isSystemContactWithSignalAccount:recipientId transaction:transaction];
+            SignalServiceAddress *address = [[SignalServiceAddress alloc] initWithPhoneNumber:phoneNumber];
+            return [OWSContact.contactsManager isSystemContactWithSignalAccount:address transaction:transaction];
         }]];
 }
 

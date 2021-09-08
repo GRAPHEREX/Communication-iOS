@@ -3,9 +3,9 @@
 //
 
 #import "TSInteraction.h"
-#import "TSThread.h"
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,6 +32,10 @@ NSString *NSStringFromOWSInteractionType(OWSInteractionType value)
             return @"OWSInteractionType_UnreadIndicator";
         case OWSInteractionType_DateHeader:
             return @"OWSInteractionType_DateHeader";
+        case OWSInteractionType_UnknownThreadWarning:
+            return @"OWSInteractionType_UnknownThreadWarning";
+        case OWSInteractionType_DefaultDisappearingMessageTimer:
+            return @"OWSInteractionType_DefaultDisappearingMessageTimer";
     }
 }
 
@@ -41,6 +45,7 @@ NSString *NSStringFromOWSInteractionType(OWSInteractionType value)
 
 @property (nonatomic) uint64_t sortId;
 @property (nonatomic) uint64_t receivedAtTimestamp;
+@property (nonatomic) uint64_t timestamp;
 
 @end
 
@@ -214,14 +219,14 @@ NSString *NSStringFromOWSInteractionType(OWSInteractionType value)
 
 #pragma mark Date operations
 
-- (uint64_t)timestampForLegacySorting
-{
-    return self.timestamp;
-}
-
 - (NSDate *)receivedAtDate
 {
     return [NSDate ows_dateWithMillisecondsSince1970:self.receivedAtTimestamp];
+}
+
+- (NSDate *)timestampDate
+{
+    return [NSDate ows_dateWithMillisecondsSince1970:self.timestamp];
 }
 
 - (NSComparisonResult)compareForSorting:(TSInteraction *)other
@@ -251,11 +256,6 @@ NSString *NSStringFromOWSInteractionType(OWSInteractionType value)
 {
     return [NSString
         stringWithFormat:@"%@ in thread: %@ timestamp: %llu", [super description], self.uniqueThreadId, self.timestamp];
-}
-
-- (BOOL)isSpecialMessage
-{
-    return [self isDynamicInteraction];
 }
 
 #pragma mark - Any Transaction Hooks
@@ -297,6 +297,7 @@ NSString *NSStringFromOWSInteractionType(OWSInteractionType value)
         [fetchedThread updateWithRemovedMessage:self transaction:transaction];
     }
 
+    [MessageSendLog deleteAllPayloadsForInteraction:self transaction:transaction];
     [self.modelReadCaches.interactionReadCache didRemoveInteraction:self transaction:transaction];
 }
 

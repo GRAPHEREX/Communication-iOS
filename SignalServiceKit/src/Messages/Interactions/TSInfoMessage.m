@@ -2,11 +2,11 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "TSInfoMessage.h"
-#import "ContactsManagerProtocol.h"
-#import "SSKEnvironment.h"
 #import <SignalCoreKit/NSDate+OWS.h>
+#import <SignalServiceKit/ContactsManagerProtocol.h>
+#import <SignalServiceKit/SSKEnvironment.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSInfoMessage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -264,8 +264,6 @@ NSUInteger TSInfoMessageSchemaVersion = 2;
             return @"";
         case TSInfoMessageProfileUpdate:
             return [self profileChangeDescriptionWithTransaction:transaction];
-        case TSInfoMessageSuccessTransaction:
-            return @"Success transaction";
     }
 
     OWSFailDebug(@"Unknown info message type");
@@ -290,7 +288,6 @@ NSUInteger TSInfoMessageSchemaVersion = 2;
         case TSInfoMessageUnknownProtocolVersion:
         case TSInfoMessageSyncedThread:
         case TSInfoMessageProfileUpdate:
-        case TSInfoMessageSuccessTransaction:
             return NO;
         case TSInfoMessageUserJoinedSignal:
             // In the conversation list, we want conversations with an unread "new user" notification to
@@ -306,7 +303,7 @@ NSUInteger TSInfoMessageSchemaVersion = 2;
 
 - (void)markAsReadAtTimestamp:(uint64_t)readTimestamp
                        thread:(TSThread *)thread
-                 circumstance:(OWSReadCircumstance)circumstance
+                 circumstance:(OWSReceiptCircumstance)circumstance
                   transaction:(SDSAnyWriteTransaction *)transaction
 {
     OWSAssertDebug(transaction);

@@ -1,12 +1,12 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "TSOutgoingMessage.h"
+#import <SignalServiceKit/TSOutgoingMessage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NSData *_Nonnull (^DynamicOutgoingMessageBlock)(SignalServiceAddress *);
+typedef NSData *_Nonnull (^DynamicOutgoingMessageBlock)(void);
 
 /// This class is only used in debug tools
 @interface OWSDynamicOutgoingMessage : TSOutgoingMessage

@@ -2,15 +2,15 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "SignalAccount.h"
-#import "Contact.h"
-#import "ContactsManagerProtocol.h"
 #import "NSData+Image.h"
-#import "SSKEnvironment.h"
-#import "SignalRecipient.h"
 #import "UIImage+OWS.h"
 #import <SignalCoreKit/Cryptography.h>
 #import <SignalCoreKit/NSString+OWS.h>
+#import <SignalServiceKit/Contact.h>
+#import <SignalServiceKit/ContactsManagerProtocol.h>
+#import <SignalServiceKit/SSKEnvironment.h>
+#import <SignalServiceKit/SignalAccount.h>
+#import <SignalServiceKit/SignalRecipient.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -29,6 +29,8 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
 
 @property (nonatomic) NSString *multipleAccountLabelText;
 
+@property (nonatomic, nullable) Contact *contact;
+
 @end
 
 #pragma mark -
@@ -42,11 +44,12 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
 
 - (instancetype)initWithSignalRecipient:(SignalRecipient *)signalRecipient
                                 contact:(nullable Contact *)contact
+                      contactAvatarHash:(nullable NSData *)contactAvatarHash
                multipleAccountLabelText:(nullable NSString *)multipleAccountLabelText
 {
-    OWSAssertDebug(signalRecipient);
     return [self initWithSignalServiceAddress:signalRecipient.address
                                       contact:contact
+                            contactAvatarHash:contactAvatarHash
                      multipleAccountLabelText:multipleAccountLabelText];
 }
 
@@ -59,13 +62,24 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
                                      contact:(nullable Contact *)contact
                     multipleAccountLabelText:(nullable NSString *)multipleAccountLabelText
 {
+    return [self initWithSignalServiceAddress:serviceAddress
+                                      contact:contact
+                            contactAvatarHash:nil
+                     multipleAccountLabelText:multipleAccountLabelText];
+}
+
+- (instancetype)initWithSignalServiceAddress:(SignalServiceAddress *)serviceAddress
+                                     contact:(nullable Contact *)contact
+                           contactAvatarHash:(nullable NSData *)contactAvatarHash
+                    multipleAccountLabelText:(nullable NSString *)multipleAccountLabelText
+{
     OWSAssertDebug(serviceAddress.isValid);
     if (self = [super init]) {
-        _isDeleted = NO;
         _recipientUUID = serviceAddress.uuidString;
         _recipientPhoneNumber = serviceAddress.phoneNumber;
         _accountSchemaVersion = SignalAccountSchemaVersion;
         _contact = contact;
+        _contactAvatarHash = contactAvatarHash;
         _multipleAccountLabelText = multipleAccountLabelText;
     }
     return self;
@@ -78,7 +92,6 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
         return self;
     }
 
-    _isDeleted = NO;
     // Migrating from an everyone has a phone number world to a
     // world in which we have UUIDs
     if (_accountSchemaVersion == 0) {
@@ -95,12 +108,9 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
 
 - (instancetype)initWithContact:(nullable Contact *)contact
               contactAvatarHash:(nullable NSData *)contactAvatarHash
-          contactAvatarJpegData:(nullable NSData *)contactAvatarJpegData
        multipleAccountLabelText:(NSString *)multipleAccountLabelText
            recipientPhoneNumber:(nullable NSString *)recipientPhoneNumber
                   recipientUUID:(nullable NSString *)recipientUUID
-                      st_userID:(nullable NSString *)st_userID
-                      isDeleted:(BOOL)isDeleted
 {
     self = [super init];
     if (!self) {
@@ -111,13 +121,10 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
 
     _contact = contact;
     _contactAvatarHash = contactAvatarHash;
-    _contactAvatarJpegData = contactAvatarJpegData;
     _multipleAccountLabelText = multipleAccountLabelText;
     _recipientPhoneNumber = recipientPhoneNumber;
     _recipientUUID = recipientUUID;
-    _st_userID = st_userID;
     _accountSchemaVersion = SignalAccountSchemaVersion;
-    _isDeleted = isDeleted;
 
     return self;
 }
@@ -132,12 +139,10 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
                       uniqueId:(NSString *)uniqueId
                          contact:(nullable Contact *)contact
                contactAvatarHash:(nullable NSData *)contactAvatarHash
-           contactAvatarJpegData:(nullable NSData *)contactAvatarJpegData
+   contactAvatarJpegDataObsolete:(nullable NSData *)contactAvatarJpegDataObsolete
         multipleAccountLabelText:(NSString *)multipleAccountLabelText
             recipientPhoneNumber:(nullable NSString *)recipientPhoneNumber
                    recipientUUID:(nullable NSString *)recipientUUID
-                     st_userID:(nullable NSString *)st_userID
-                     isDeleted:(BOOL)isDeleted
 {
     self = [super initWithGrdbId:grdbId
                         uniqueId:uniqueId];
@@ -148,12 +153,12 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
 
     _contact = contact;
     _contactAvatarHash = contactAvatarHash;
-    _contactAvatarJpegData = contactAvatarJpegData;
+    _contactAvatarJpegDataObsolete = contactAvatarJpegDataObsolete;
     _multipleAccountLabelText = multipleAccountLabelText;
     _recipientPhoneNumber = recipientPhoneNumber;
     _recipientUUID = recipientUUID;
-    _st_userID = st_userID;
-    _isDeleted = isDeleted;
+
+    [self sdsFinalizeSignalAccount];
 
     return self;
 }
@@ -161,6 +166,11 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
 // clang-format on
 
 // --- CODE GENERATION MARKER
+
+- (void)sdsFinalizeSignalAccount
+{
+    _contactAvatarJpegDataObsolete = nil;
+}
 
 - (BOOL)shouldUseNicknames
 {
@@ -182,7 +192,7 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
 
         // If there are only two words separated by a space, this is probably a given
         // and family name.
-        if (components.count == 2) {
+        if (components.count <= 2) {
             nameComponents.givenName = components.firstObject;
             nameComponents.familyName = components.lastObject;
         } else {
@@ -211,9 +221,7 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
     if (components.nickname.length > 0 && self.shouldUseNicknames) {
         result = components.nickname;
     } else if (components.givenName.length > 0 || components.familyName.length > 0) {
-        result = [NSPersonNameComponentsFormatter localizedStringFromPersonNameComponents: components
-                                                                                    style: NSPersonNameComponentsFormatterStyleDefault
-                                                                                  options: 0];
+        return [[OWSFormat formatNameComponents:components] filterStringForDisplay];
     } else {
         // The components might have a nickname but !shouldUseNicknames.
         OWSLogWarn(@"Invalid name components.");
@@ -281,39 +289,6 @@ static NSString *kSignalPreferNicknamesPreference = @"NSPersonNameDefaultShouldP
         [NSObject isNullableObject:self.contact equalTo:other.contact] &&
         [NSObject isNullableObject:self.multipleAccountLabelText equalTo:other.multipleAccountLabelText] &&
         [NSObject isNullableObject:self.contactAvatarHash equalTo:other.contactAvatarHash]);
-}
-
-- (void)tryToCacheContactAvatarData
-{
-    OWSAssertDebug(self.contactAvatarHash == nil);
-    OWSAssertDebug(self.contactAvatarJpegData == nil);
-
-    if (self.contact == nil) {
-        OWSFailDebug(@"Missing contact.");
-        return;
-    }
-
-    if (self.contact.isFromContactSync) {
-        OWSLogVerbose(@"not caching data for synced contact");
-        return;
-    }
-
-    OWSAssertDebug(self.contact.cnContactId);
-    NSData *_Nullable contactAvatarData = [self.contactsManager avatarDataForCNContactId:self.contact.cnContactId];
-    if (contactAvatarData == nil) {
-        return;
-    }
-    _contactAvatarHash = [Cryptography computeSHA256Digest:contactAvatarData];
-    OWSAssertDebug(self.contactAvatarHash != nil);
-    if (self.contactAvatarHash == nil) {
-        return;
-    }
-
-    _contactAvatarJpegData = [UIImage validJpegDataFromAvatarData:contactAvatarData];
-    if (self.contactAvatarJpegData == nil) {
-        OWSFailDebug(@"Could not convert avatar to JPEG.");
-        return;
-    }
 }
 
 - (void)anyDidInsertWithTransaction:(SDSAnyWriteTransaction *)transaction

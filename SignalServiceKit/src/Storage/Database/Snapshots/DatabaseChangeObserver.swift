@@ -6,11 +6,11 @@ import Foundation
 import GRDB
 
 @objc
-public protocol UIDatabaseSnapshotDelegate: AnyObject {
-    func uiDatabaseSnapshotWillUpdate()
-    func uiDatabaseSnapshotDidUpdate(databaseChanges: UIDatabaseChanges)
-    func uiDatabaseSnapshotDidUpdateExternally()
-    func uiDatabaseSnapshotDidReset()
+public protocol DatabaseChangeDelegate: AnyObject {
+    func databaseChangesWillUpdate()
+    func databaseChangesDidUpdate(databaseChanges: DatabaseChanges)
+    func databaseChangesDidUpdateExternally()
+    func databaseChangesDidReset()
 }
 
 // MARK: -
@@ -31,67 +31,66 @@ enum DatabaseObserverError: Error {
 
 // MARK: -
 
-func AssertHasUIDatabaseObserverLock() {
-    assert(UIDatabaseObserver.hasUIDatabaseObserverLock)
+func AssertHasDatabaseChangeObserverLock() {
+    assert(DatabaseChangeObserver.hasDatabaseChangeObserverLock)
 }
 
 // MARK: -
 
 @objc
-public class UIDatabaseObserver: NSObject {
-
-    @objc
-    public static let didUpdateUIDatabaseSnapshotNotification = Notification.Name("didUpdateUIDatabaseSnapshot")
+public class DatabaseChangeObserver: NSObject {
 
     @objc
     public static let databaseDidCommitInteractionChangeNotification = Notification.Name("databaseDidCommitInteractionChangeNotification")
 
     public static let kMaxIncrementalRowChanges = 200
 
-    private lazy var nonModelTables: Set<String> = Set([MediaGalleryRecord.databaseTableName, PendingReadReceiptRecord.databaseTableName])
+    private lazy var nonModelTables: Set<String> = Set([
+                                                        MediaGalleryRecord.databaseTableName,
+                                                        PendingReadReceiptRecord.databaseTableName
+    ])
 
-    // tldr; Instead, of protecting UIDatabaseObserver state with a nested DispatchQueue,
-    // which would break GRDB's SchedulingWatchDog, we use objc_sync
-    //
-    // Longer version:
-    // Our snapshot observers manage state, which must not be accessed concurrently.
-    // Using a serial DispatchQueue would seem straight forward, but...
-    //
-    // Some of our snapshot observers read from the database *while* accessing this
-    // state. Note that reading from the db must be done on GRDB's DispatchQueue.
-    private static var _hasUIDatabaseObserverLock = AtomicBool(false)
-
-    static var hasUIDatabaseObserverLock: Bool {
-        return _hasUIDatabaseObserverLock.get()
+    // We protect DatabaseChangeObserver state with an UnfairLock.
+    static var hasDatabaseChangeObserverLock: Bool {
+        hasDatabaseChangeObserverLockOnCurrentThread
     }
 
-    // Toggle to skip expensive observations resulting
-    // from a `touch`. Useful for large migrations.
-    // Should only be accessed within UIDatabaseObserver.serializedSync
-    public static var skipTouchObservations: Bool = false
+    @ThreadBacked(key: "hasDatabaseChangeObserverLockOnCurrentThread", defaultValue: false)
+    fileprivate static var hasDatabaseChangeObserverLockOnCurrentThread: Bool
 
-    private static let uiDatabaseObserverLock = UnfairLock()
+    private static let databaseChangeObserverLock = UnfairLock()
 
     public class func serializedSync(block: () -> Void) {
-        uiDatabaseObserverLock.withLock {
-            assert(!_hasUIDatabaseObserverLock.get())
-            _hasUIDatabaseObserverLock.set(true)
+        // UnfairLock is not recursive.
+        // In some cases serializedSync() might be re-entrant.
+        if hasDatabaseChangeObserverLockOnCurrentThread {
+            owsFailDebug("Re-entrant synchronization.")
             block()
-            _hasUIDatabaseObserverLock.set(false)
+            return
+        }
+
+        databaseChangeObserverLock.withLock {
+            owsAssertDebug(hasDatabaseChangeObserverLockOnCurrentThread == false)
+            hasDatabaseChangeObserverLockOnCurrentThread = true
+            owsAssertDebug(hasDatabaseChangeObserverLockOnCurrentThread == true)
+            block()
+            owsAssertDebug(hasDatabaseChangeObserverLockOnCurrentThread == true)
+            hasDatabaseChangeObserverLockOnCurrentThread = false
+            owsAssertDebug(hasDatabaseChangeObserverLockOnCurrentThread == false)
         }
     }
 
-    private var _snapshotDelegates: [Weak<UIDatabaseSnapshotDelegate>] = []
-    private var snapshotDelegates: [UIDatabaseSnapshotDelegate] {
-        return _snapshotDelegates.compactMap { $0.value }
+    private var _databaseChangeDelegates: [Weak<DatabaseChangeDelegate>] = []
+    private var databaseChangeDelegates: [DatabaseChangeDelegate] {
+        return _databaseChangeDelegates.compactMap { $0.value }
     }
 
-    func appendSnapshotDelegate(_ snapshotDelegate: UIDatabaseSnapshotDelegate) {
+    func appendDatabaseChangeDelegate(_ databaseChangeDelegate: DatabaseChangeDelegate) {
         let append = { [weak self] in
             guard let self = self else {
                 return
             }
-            self._snapshotDelegates = self._snapshotDelegates.filter { $0.value != nil} + [Weak(value: snapshotDelegate)]
+            self._databaseChangeDelegates = self._databaseChangeDelegates.filter { $0.value != nil} + [Weak(value: databaseChangeDelegate)]
         }
         if CurrentAppContext().isRunningTests {
             append()
@@ -101,14 +100,6 @@ public class UIDatabaseObserver: NSObject {
             // and registering for database changes too early.
             assert(AppReadiness.isAppReady)
             AppReadiness.runNowOrWhenAppWillBecomeReady(append)
-        }
-    }
-
-    // Block which will be called after all pending (committed) db changes
-    // have been flushed.
-    func add(snapshotFlushBlock: @escaping ObservedDatabaseChanges.CompletionBlock) {
-        UIDatabaseObserver.serializedSync {
-            pendingChanges.add(completionBlock: snapshotFlushBlock)
         }
     }
 
@@ -123,33 +114,17 @@ public class UIDatabaseObserver: NSObject {
     }
     #endif
 
-    private let pool: DatabasePool
-    private let checkpointingQueue: DatabaseQueue?
-
-    internal var latestSnapshot: DatabaseSnapshot {
-        didSet {
-            AssertIsOnMainThread()
-        }
-    }
-
-    private let hasPendingSnapshotUpdate = AtomicBool(false)
-    private var lastSnapshotUpdateDate: Date?
-
-    // This property should only be accessed on the main thread.
-    private var lastCheckpointDate: Date?
+    private let hasPendingUpdates = AtomicBool(false)
+    private var lastPublishUpdatesDate: Date?
 
     private var displayLink: CADisplayLink?
     private let displayLinkPreferredFramesPerSecond: Int = 20
     private var recentDisplayLinkDates = [Date]()
 
-    fileprivate var pendingChanges = ObservedDatabaseChanges(concurrencyMode: .uiDatabaseObserverSerialQueue)
+    fileprivate var pendingChanges = ObservedDatabaseChanges(concurrencyMode: .databaseChangeObserverSerialQueue)
     fileprivate var committedChanges = ObservedDatabaseChanges(concurrencyMode: .mainThread)
 
-    init(pool: DatabasePool, checkpointingQueue: DatabaseQueue?) throws {
-        self.pool = pool
-        self.checkpointingQueue = checkpointingQueue
-        self.latestSnapshot = try pool.makeSnapshot()
-
+    required override init() {
         super.init()
 
         NotificationCenter.default.addObserver(self,
@@ -178,6 +153,8 @@ public class UIDatabaseObserver: NSObject {
 
         guard CurrentAppContext().hasUI else {
             // The NSE never does uiReads, we can skip the display link.
+            //
+            // TODO: Review.
             return
         }
 
@@ -188,7 +165,7 @@ public class UIDatabaseObserver: NSObject {
             guard !CurrentAppContext().isInBackground() else {
                 return false
             }
-            guard self.hasPendingSnapshotUpdate.get() else {
+            guard self.hasPendingUpdates.get() else {
                 return false
             }
             return true
@@ -215,7 +192,7 @@ public class UIDatabaseObserver: NSObject {
 
         recentDisplayLinkDates.append(Date())
 
-        updateSnapshotIfNecessary()
+        publishUpdatesIfNecessary()
     }
 
     @objc
@@ -230,21 +207,19 @@ public class UIDatabaseObserver: NSObject {
         AssertIsOnMainThread()
         Logger.verbose("")
 
-        for delegate in snapshotDelegates {
-            delegate.uiDatabaseSnapshotDidUpdateExternally()
+        for delegate in databaseChangeDelegates {
+            delegate.databaseChangesDidUpdateExternally()
         }
     }
 }
 
-extension UIDatabaseObserver: TransactionObserver {
+extension DatabaseChangeObserver: TransactionObserver {
 
-    public func observes(eventsOfKind eventKind: DatabaseEventKind) -> Bool {
-        guard !eventKind.tableName.hasPrefix(GRDBFullTextSearchFinder.contentTableName) else {
-            // Ignore updates to the GRDB FTS table(s)
+    public func observes(eventWithTableName tableName: String) -> Bool {
+        guard !tableName.hasPrefix(GRDBFullTextSearchFinder.contentTableName) else {
             return false
         }
-
-        guard !nonModelTables.contains(eventKind.tableName) else {
+        guard !nonModelTables.contains(tableName) else {
             // Ignore updates to non-model tables
             return false
         }
@@ -252,9 +227,17 @@ extension UIDatabaseObserver: TransactionObserver {
         return true
     }
 
+    public func observes(eventsOfKind eventKind: DatabaseEventKind) -> Bool {
+        observes(eventWithTableName: eventKind.tableName)
+    }
+
+    public func observes(event: DatabaseEvent) -> Bool {
+        observes(eventWithTableName: event.tableName)
+    }
+
     // This should only be called by DatabaseStorage.
     func updateIdMapping(thread: TSThread, transaction: GRDBWriteTransaction) {
-        AssertHasUIDatabaseObserverLock()
+        AssertHasDatabaseChangeObserverLock()
 
         pendingChanges.append(thread: thread)
         pendingChanges.append(tableName: TSThread.table.tableName)
@@ -262,7 +245,7 @@ extension UIDatabaseObserver: TransactionObserver {
 
     // This should only be called by DatabaseStorage.
     func updateIdMapping(interaction: TSInteraction, transaction: GRDBWriteTransaction) {
-        AssertHasUIDatabaseObserverLock()
+        AssertHasDatabaseChangeObserverLock()
 
         pendingChanges.append(interaction: interaction)
         pendingChanges.append(tableName: TSInteraction.table.tableName)
@@ -270,7 +253,7 @@ extension UIDatabaseObserver: TransactionObserver {
 
     // This should only be called by DatabaseStorage.
     func updateIdMapping(attachment: TSAttachment, transaction: GRDBWriteTransaction) {
-        AssertHasUIDatabaseObserverLock()
+        AssertHasDatabaseChangeObserverLock()
 
         pendingChanges.append(attachment: attachment)
         pendingChanges.append(tableName: TSAttachment.table.tableName)
@@ -278,7 +261,7 @@ extension UIDatabaseObserver: TransactionObserver {
 
     // internal - should only be called by DatabaseStorage
     func didTouch(interaction: TSInteraction, transaction: GRDBWriteTransaction) {
-        AssertHasUIDatabaseObserverLock()
+        AssertHasDatabaseChangeObserverLock()
 
         pendingChanges.append(interaction: interaction)
         pendingChanges.append(tableName: TSInteraction.table.tableName)
@@ -298,7 +281,7 @@ extension UIDatabaseObserver: TransactionObserver {
         // Note: We don't actually use the `transaction` param, but touching must happen within
         // a write transaction in order for the touch machinery to notify it's observers
         // in the expected way.
-        AssertHasUIDatabaseObserverLock()
+        AssertHasDatabaseChangeObserverLock()
 
         pendingChanges.append(thread: thread)
         pendingChanges.append(tableName: TSThread.table.tableName)
@@ -306,25 +289,32 @@ extension UIDatabaseObserver: TransactionObserver {
 
     // Database observation operates like so:
     //
-    // * This class (UIDatabaseObserver) works closely with its "snapshot delegates"
-    //   (per-view snapshots/observers) to update the views in controlled, consistent way.
-    // * UIDatabaseObserver observes all database _changes_ and _commits_.
-    // * When a _change_ occurs:
-    //   * This is done off the main thread.
-    //   * UIDatabaseObserver informs all "snapshot delegates" of changes using snapshotTransactionDidChange.
-    //   * The "snapshot delegates" aggregate the changes.
+    // * This class (DatabaseChangeObserver) observes writes to the database
+    //   and publishes them to its "database changes delegates" (usually
+    //   per-view observers) updating the views in a controlled,
+    //   consistent way.
+    // * DatabaseChangeObserver observes all database _changes_ and _commits_.
+    // * When a _change_ (modification of database content in a write transaction) occurs:
+    //   * This might occur on any thread.
+    //   * The changes are aggregated in pendingChanges.
     // * When a _commit_ occurs:
-    //   * This is done off the main thread.
-    //   * UIDatabaseObserver informs all "snapshot delegates" to commit their _changes_ using snapshotTransactionDidCommit.
-    //     The "snapshot delegates" commit changes internally using DispatchQueue.main.async().
-    //   * UIDatabaseObserver enqueues a "snapshot update" using DispatchQueue.main.async().
-    // * When a "snapshot update" is performed:
+    //   * This might occur on any thread.
+    //   * The changes are integrated from pendingChanges into committedChanges
+    //   * An "publish updates" is enqueued. Updating views is expensive, so we throttle
+    //     publishing of updates so that if many writes occur, views only receive a single
+    //     "database did change" event, at the expense of some latency.
+    // * When we "publish updates":
     //   * This is done on the main thread.
-    //   * UIDatabaseObserver informs all "snapshot delegates" of the update using databaseSnapshotWillUpdate.
-    //   * UIDatabaseObserver updates the database snapshot.
-    //   * UIDatabaseObserver informs all "snapshot delegates" of the update using databaseSnapshotDidUpdate.
+    //   * All "database change delegates" receive databaseChangesWillUpdate.
+    //   * All "database change delegates" receive databaseChangesDidUpdate with the changes.
     public func databaseDidChange(with event: DatabaseEvent) {
-        UIDatabaseObserver.serializedSync {
+        // Check before serializedSync() to avoid recursively obtaining the
+        // unfairLock when touching.
+        guard observes(event: event) else {
+            return
+        }
+
+        DatabaseChangeObserver.serializedSync {
 
             pendingChanges.append(tableName: event.tableName)
 
@@ -353,9 +343,9 @@ extension UIDatabaseObserver: TransactionObserver {
 
     // See comment on databaseDidChange.
     public func databaseDidCommit(_ db: Database) {
-        UIDatabaseObserver.serializedSync {
+        DatabaseChangeObserver.serializedSync {
             let pendingChangesToCommit = self.pendingChanges
-            self.pendingChanges = ObservedDatabaseChanges(concurrencyMode: .uiDatabaseObserverSerialQueue)
+            self.pendingChanges = ObservedDatabaseChanges(concurrencyMode: .databaseChangeObserverSerialQueue)
 
             do {
                 // finalizePublishedState() finalizes the state we're about to
@@ -368,7 +358,6 @@ extension UIDatabaseObserver: TransactionObserver {
                 let interactionDeletedUniqueIds = pendingChangesToCommit.interactionDeletedUniqueIds
                 let attachmentDeletedUniqueIds = pendingChangesToCommit.attachmentDeletedUniqueIds
                 let collections = pendingChangesToCommit.collections
-                let completionBlocks = pendingChangesToCommit.completionBlocks
 
                 DispatchQueue.main.async {
                     self.committedChanges.append(interactionUniqueIds: interactionUniqueIds)
@@ -377,7 +366,6 @@ extension UIDatabaseObserver: TransactionObserver {
                     self.committedChanges.append(interactionDeletedUniqueIds: interactionDeletedUniqueIds)
                     self.committedChanges.append(attachmentDeletedUniqueIds: attachmentDeletedUniqueIds)
                     self.committedChanges.append(collections: collections)
-                    self.committedChanges.append(completionBlocks: completionBlocks)
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -402,54 +390,53 @@ extension UIDatabaseObserver: TransactionObserver {
                 return
             }
             // Enqueue the update.
-            self.hasPendingSnapshotUpdate.set(true)
+            self.hasPendingUpdates.set(true)
             self.ensureDisplayLink()
-            // Try to update immediately.
-            self.updateSnapshotIfNecessary()
+            // Try to publish updates immediately.
+            self.publishUpdatesIfNecessary()
         }
     }
 
     // See comment on databaseDidChange.
-    private func updateSnapshotIfNecessary() {
+    private func publishUpdatesIfNecessary() {
         AssertIsOnMainThread()
 
         guard !tsAccountManager.isTransferInProgress else {
-            Logger.info("Skipping snapshot update; transfer in progress.")
+            Logger.info("Skipping publishing of updates; transfer in progress.")
             return
         }
 
-        if let lastSnapshotUpdateDate = self.lastSnapshotUpdateDate {
-            let secondsSinceLastUpdate = abs(lastSnapshotUpdateDate.timeIntervalSinceNow)
+        if let lastPublishUpdatesDate = self.lastPublishUpdatesDate {
+            let secondsSinceLastUpdate = abs(lastPublishUpdatesDate.timeIntervalSinceNow)
             // Don't update UI more often than Nx/second.
-            guard secondsSinceLastUpdate >= targetUpdateInterval else {
-                // Don't update the snapshot yet; we've updated the snapshot recently.
+            guard secondsSinceLastUpdate >= targetPublishingOfUpdatesInterval else {
+                // Don't publish updates yet; we've published recently.
                 return
             }
         }
 
-        // We only want to update the snapshot if the flag is set.
-        guard hasPendingSnapshotUpdate.tryToClearFlag() else {
-            // If there's no new database changes, we don't need to update the snapshot.
+        // We only want to publish updates if the flag is set.
+        guard hasPendingUpdates.tryToClearFlag() else {
+            // If there's no new database changes, we don't need to publish updates.
             return
         }
         ensureDisplayLink()
 
-        // Update the snapshot now.
-        updateSnapshot()
+        publishUpdates()
     }
 
-    private var targetUpdateInterval: Double {
+    private var targetPublishingOfUpdatesInterval: Double {
         AssertIsOnMainThread()
         #if TESTABLE_BUILD
-        // Don't wait before updating snapshots in tests
-        // because some tests checks snapshots immediately
+        // Don't wait to publish updates in tests
+        // because some tests read immediately.
         if CurrentAppContext().isRunningTests { return 0 }
         #endif
         // We want the UI to feel snappy and responsive, which means
         // low latency in view updates.
         //
-        // This means updating the database snapshot (and hence the
-        // views) as frequently as possible.
+        // This means updating (and hence the views) as frequently
+        // as possible.
         //
         // However, when the app is under heavy load, constantly
         // updating the views is expensive and causes CPU contention,
@@ -457,8 +444,7 @@ extension UIDatabaseObserver: TransactionObserver {
         // feels less responsive.
         //
         // Therefore, the app should "back off" and slow the rate at
-        // which it updates database snapshots when it is under
-        // heavy load.
+        // which it updates when it is under heavy load.
         //
         // We measure load using a heuristics: Can the display link
         // maintain its preferred frame rate?
@@ -482,53 +468,42 @@ extension UIDatabaseObserver: TransactionObserver {
         // Select the alpha of our chosen heuristic.
         let alpha: Double = displayLinkAlpha
 
-        // These intervals control update frequency.
+        // These intervals control publishing of updates frequency.
         let fastUpdateInterval: TimeInterval = 1 / TimeInterval(5)
         let slowUpdateInterval: TimeInterval = 1 / TimeInterval(1)
         // Under light load, we want the fastest update frequency.
         // Under heavy load, we want the slowest update frequency.
-        let targetUpdateInterval = alpha.lerp(fastUpdateInterval, slowUpdateInterval)
-        return targetUpdateInterval
+        let targetPublishingOfUpdatesInterval = alpha.lerp(fastUpdateInterval, slowUpdateInterval)
+        return targetPublishingOfUpdatesInterval
     }
 
     // NOTE: This should only be used in exceptional circumstances,
     // e.g. after reloading the database due to a device transfer.
-    func forceUpdateSnapshot() {
+    func publishUpdatesImmediately() {
         AssertIsOnMainThread()
 
         Logger.info("")
 
-        updateSnapshot(canCheckpoint: false)
+        publishUpdates()
     }
 
+    // "Updating" entails publishing pending database changes to database change observers.
     // See comment on databaseDidChange.
-    private func updateSnapshot(canCheckpoint: Bool = true) {
+    private func publishUpdates() {
         AssertIsOnMainThread()
 
-        lastSnapshotUpdateDate = Date()
+        lastPublishUpdatesDate = Date()
 
-        Logger.verbose("databaseSnapshotWillUpdate")
-        for delegate in snapshotDelegates {
-            delegate.uiDatabaseSnapshotWillUpdate()
+        Logger.verbose("databaseChangesWillUpdate")
+        for delegate in databaseChangeDelegates {
+            delegate.databaseChangesWillUpdate()
         }
-
-        latestSnapshot.read { db in
-            do {
-                try self.fastForwardDatabaseSnapshot(db: db, canCheckpoint: canCheckpoint)
-            } catch {
-                owsFailDebug("\(error)")
-            }
-        }
-
-        // We post this notification sync so that the read model caches
-        // can discard their contents.
-        NotificationCenter.default.post(name: Self.didUpdateUIDatabaseSnapshotNotification, object: nil)
 
         defer {
             committedChanges = ObservedDatabaseChanges(concurrencyMode: .mainThread)
         }
 
-        Logger.verbose("databaseSnapshotDidUpdate")
+        Logger.verbose("databaseChangesDidUpdate")
 
         if let lastError = committedChanges.lastError {
             switch lastError {
@@ -538,152 +513,27 @@ extension UIDatabaseObserver: TransactionObserver {
             default:
                 owsFailDebug("unknown error: \(lastError)")
             }
-            for delegate in self.snapshotDelegates {
-                delegate.uiDatabaseSnapshotDidReset()
+            for delegate in self.databaseChangeDelegates {
+                delegate.databaseChangesDidReset()
             }
         } else {
-            for delegate in snapshotDelegates {
-                delegate.uiDatabaseSnapshotDidUpdate(databaseChanges: committedChanges)
+            for delegate in databaseChangeDelegates {
+                delegate.databaseChangesDidUpdate(databaseChanges: committedChanges)
             }
-        }
-
-        for completionBlock in committedChanges.completionBlocks {
-            completionBlock()
         }
     }
 
     public func databaseDidRollback(_ db: Database) {
         owsFailDebug("TODO: test this if we ever use it.")
-        // TODO: Make sure snapshot flush blocks work correctly in this case.
 
-        UIDatabaseObserver.serializedSync {
-            pendingChanges = ObservedDatabaseChanges(concurrencyMode: .uiDatabaseObserverSerialQueue)
+        DatabaseChangeObserver.serializedSync {
+            pendingChanges = ObservedDatabaseChanges(concurrencyMode: .databaseChangeObserverSerialQueue)
 
             #if TESTABLE_BUILD
             for delegate in databaseWriteDelegates {
                 delegate.databaseDidRollback(db: db)
             }
             #endif
-        }
-    }
-
-    // Currently GRDB offers no built in way to fast-forward a
-    // database snapshot.
-    // See: https://github.com/groue/GRDB.swift/issues/619
-    func fastForwardDatabaseSnapshot(db: Database, canCheckpoint: Bool = true) throws {
-        AssertIsOnMainThread()
-
-        // [1] end the old transaction from the old db state
-        try db.commit()
-
-        // [2] Checkpoint the WAL
-        if canCheckpoint {
-            checkpointIfNecessary()
-        }
-
-        // [3] open a new transaction from the current db state
-        try db.beginTransaction(.deferred)
-
-        // [4] do *any* read to acquire non-deferred read lock
-        _ = try Row.fetchCursor(db, sql: "SELECT rootpage FROM sqlite_master LIMIT 1").next()
-    }
-
-    private func checkpointIfNecessary() {
-        AssertIsOnMainThread()
-
-        guard let checkpointingQueue = checkpointingQueue else {
-            // We only checkpoint in the main app;
-            // checkpointingQueue will not be set in the app extensions.
-            assert(!CurrentAppContext().isMainApp)
-            return
-        }
-        assert(CurrentAppContext().isMainApp)
-
-        // Checkpointing is the process of integrating the WAL into the main database file.
-        // Without it, the WAL will grow indefinitely. A large WAL affects read performance.
-        //
-        // Checkpointing has several flavors: passive, full, restart, truncate.
-        //
-        // * Passive checkpoints abort immediately if there are any database
-        //   readers or writers. This makes them "cheap" in the sense that
-        //   they won't block the main thread for long.
-        //   However they only integrate WAL contents, they don't "restart" or
-        //   "truncate" so they don't inherently limit WAL growth. We use them
-        //   because they're cheap and they help our other checkpoints cheaper
-        //   by ensuring that most of the WAL is integrated at any given time.
-        // * Full/Restart/Truncate checkpoints will block using the busy-handler.
-        //   We use truncate checkpoints since they truncate the WAL file.
-        //   See GRDBStorage.buildConfiguration for our busy-handler (aka busyMode callback).
-        //   It aborts after ~50ms.
-        //   These checkpoints are more expensive and will block the main thread
-        //   while they do their work but will limit WAL growth.
-        //
-        // SQLite's default auto-checkpointing uses `passive` checkpointing, but because our
-        // DatabaseSnapshot maintains a long running read transaction, passive checkpointing can
-        // never successfully truncate the WAL (because there is at least the one read transaction
-        // using it).
-        //
-        // The only time the long-lived read transaction is *not* reading the database is
-        // *right here*, between committing the last transaction and starting the next one.
-        //
-        // Solution:
-        //
-        // * Perform passive checkpoints often to ensure WAL contents are mostly integrated
-        //   at any given time.
-        // * Perform truncate checkpoints sometimes to limit WAL size.
-        // * Limit checkpoint frequency by time so that heavy write activity won't bog down
-        //   the main thread.
-        // * Perform checkpoints using a dedicated GRDB DatabaseQueue so that checkpoints
-        //   don't block on writes. GRDB DatabasePool serializes writes on a queue that
-        //   doesn't honor the busy mode. This also makes the checkpoints very likely to succeed.
-        //
-        // See: https://www.sqlite.org/c3ref/wal_checkpoint_v2.html
-        // See: https://www.sqlite.org/wal.html
-        let shouldTryToCheckpoint = { () -> Bool in
-            guard !tsAccountManager.isTransferInProgress else {
-                return false
-            }
-
-            guard let lastCheckpointDate = self.lastCheckpointDate else {
-                return true
-            }
-            let maxCheckpointFrequency: TimeInterval = 0.25
-            guard abs(lastCheckpointDate.timeIntervalSinceNow) >= maxCheckpointFrequency else {
-                Logger.verbose("Skipping checkpoint due to frequency")
-                return false
-            }
-            return true
-        }()
-        guard shouldTryToCheckpoint else {
-            return
-        }
-
-        // Run truncate checkpoints after 1/N of writes.
-        let shouldDoTruncateCheckpoint = arc4random_uniform(10) == 0
-        let mode: Database.CheckpointMode = shouldDoTruncateCheckpoint ? .truncate : .passive
-        do {
-            try checkpoint(mode: mode,
-                           checkpointingQueue: checkpointingQueue)
-        } catch {
-            owsFailDebug("error \(error)")
-        }
-        lastCheckpointDate = Date()
-    }
-
-    func checkpoint(mode: Database.CheckpointMode,
-                    checkpointingQueue: DatabaseQueue) throws {
-        AssertIsOnMainThread()
-
-        let result = try GRDBDatabaseStorageAdapter.checkpoint(checkpointingQueue: checkpointingQueue, mode: mode)
-
-        let pageSize: Int32 = 4 * 1024
-        let walFileSizeBytes = result.walSizePages * pageSize
-        let maxWalFileSizeBytes = 4 * 1024 * 1024
-        if walFileSizeBytes > maxWalFileSizeBytes {
-            Logger.info("walFileSizeBytes: \(walFileSizeBytes).")
-            Logger.info("walSizePages: \(result.walSizePages), pagesCheckpointed: \(result.pagesCheckpointed).")
-        } else {
-            Logger.verbose("walSizePages: \(result.walSizePages), pagesCheckpointed: \(result.pagesCheckpointed).")
         }
     }
 }

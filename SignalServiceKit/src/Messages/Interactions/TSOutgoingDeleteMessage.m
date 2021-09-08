@@ -1,10 +1,10 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "TSOutgoingDeleteMessage.h"
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSOutgoingDeleteMessage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -44,8 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
                                                           transaction:(SDSAnyReadTransaction *)transaction
 {
     SSKProtoDataMessageDeleteBuilder *deleteBuilder =
-        [SSKProtoDataMessageDelete builder];
-    [deleteBuilder setTargetSentTimestamp:self.messageTimestamp];
+        [SSKProtoDataMessageDelete builderWithTargetSentTimestamp:self.messageTimestamp];
 
     NSError *error;
     SSKProtoDataMessageDelete *_Nullable deleteProto = [deleteBuilder buildAndReturnError:&error];
@@ -74,6 +73,11 @@ NS_ASSUME_NONNULL_BEGIN
                                                                                        transaction:transaction];
         [deletedMessage updateWithRecipientAddressStates:self.recipientAddressStates transaction:transaction];
     }
+}
+
+- (NSSet<NSString *> *)relatedUniqueIds
+{
+    return [[super relatedUniqueIds] setByAddingObjectsFromArray:@[ self.messageUniqueId ]];
 }
 
 @end

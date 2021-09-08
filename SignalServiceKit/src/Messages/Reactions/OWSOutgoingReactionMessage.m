@@ -1,9 +1,9 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSOutgoingReactionMessage.h"
 #import <SignalCoreKit/NSDate+OWS.h>
+#import <SignalServiceKit/OWSOutgoingReactionMessage.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -58,9 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     SSKProtoDataMessageReactionBuilder *reactionBuilder =
-    [SSKProtoDataMessageReaction builder];//WithEmoji:self.emoji timestamp:message.timestamp];
-    [reactionBuilder setEmoji:self.emoji];
-    [reactionBuilder setTargetSentTimestamp:message.timestamp];
+        [SSKProtoDataMessageReaction builderWithEmoji:self.emoji timestamp:message.timestamp];
     [reactionBuilder setRemove:self.isRemoving];
 
     SignalServiceAddress *_Nullable messageAuthor;
@@ -76,12 +74,12 @@ NS_ASSUME_NONNULL_BEGIN
         return nil;
     }
 
-//    if (messageAuthor.phoneNumber && !SSKFeatureFlags.phoneNumberSharing) {
-//        reactionBuilder.authorE164 = messageAuthor.phoneNumber;
-//    }
+    if (messageAuthor.phoneNumber && !SSKFeatureFlags.phoneNumberSharing) {
+        reactionBuilder.authorE164 = messageAuthor.phoneNumber;
+    }
 
     if (messageAuthor.uuidString) {
-        reactionBuilder.targetAuthorUuid = messageAuthor.uuidString;
+        reactionBuilder.authorUuid = messageAuthor.uuidString;
     } else {
         OWSAssertDebug(!SSKFeatureFlags.phoneNumberSharing);
     }
@@ -142,6 +140,11 @@ NS_ASSUME_NONNULL_BEGIN
     } else {
         [message removeReactionForReactor:localAddress transaction:transaction];
     }
+}
+
+- (NSSet<NSString *> *)relatedUniqueIds
+{
+    return [[super relatedUniqueIds] setByAddingObjectsFromArray:@[ self.messageUniqueId ]];
 }
 
 @end

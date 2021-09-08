@@ -85,12 +85,11 @@ public class GRDBThreadFinder: NSObject, ThreadFinder {
         let sql = """
             SELECT COUNT(*)
             FROM \(ThreadRecord.databaseTableName)
-            WHERE \(threadColumn: .shouldThreadBeVisible) = 1
-            AND \(threadColumn: .isArchived) = ?
+            \(archivedJoin(isArchived: isArchived))
+            AND \(threadColumn: .shouldThreadBeVisible) = 1
         """
-        let arguments: StatementArguments = [isArchived]
 
-        guard let count = try UInt.fetchOne(transaction.database, sql: sql, arguments: arguments) else {
+        guard let count = try UInt.fetchOne(transaction.database, sql: sql) else {
             owsFailDebug("count was unexpectedly nil")
             return 0
         }
@@ -103,30 +102,34 @@ public class GRDBThreadFinder: NSObject, ThreadFinder {
         let sql = """
             SELECT *
             FROM \(ThreadRecord.databaseTableName)
-            WHERE \(threadColumn: .shouldThreadBeVisible) = 1
-            AND \(threadColumn: .isArchived) = ?
+            \(archivedJoin(isArchived: isArchived))
+            AND \(threadColumn: .shouldThreadBeVisible) = 1
             ORDER BY \(threadColumn: .lastInteractionRowId) DESC
             """
-        let arguments: StatementArguments = [isArchived]
 
-        try ThreadRecord.fetchCursor(transaction.database, sql: sql, arguments: arguments).forEach { threadRecord in
+        try ThreadRecord.fetchCursor(transaction.database, sql: sql).forEach { threadRecord in
             block(try TSThread.fromRecord(threadRecord))
         }
+    }
+
+    private func archivedJoin(isArchived: Bool) -> String {
+        return """
+            INNER JOIN \(ThreadAssociatedData.databaseTableName) AS ad
+                ON ad.threadUniqueId = \(threadColumn: .uniqueId)
+            WHERE ad.isArchived = \(isArchived ? "1" : "0")
+        """
     }
 
     @objc
     public func visibleThreadIds(isArchived: Bool, transaction: GRDBReadTransaction) throws -> [String] {
         let sql = """
-        SELECT \(threadColumn: .uniqueId)
-        FROM \(ThreadRecord.databaseTableName)
-        WHERE \(threadColumn: .shouldThreadBeVisible) = 1
-        AND \(threadColumn: .isArchived) = ?
-        ORDER BY \(threadColumn: .lastInteractionRowId) DESC
+            SELECT \(threadColumn: .uniqueId)
+            FROM \(ThreadRecord.databaseTableName)
+            \(archivedJoin(isArchived: isArchived))
+            AND \(threadColumn: .shouldThreadBeVisible) = 1
+            ORDER BY \(threadColumn: .lastInteractionRowId) DESC
         """
-        let arguments: StatementArguments = [isArchived]
-        return try String.fetchAll(transaction.database,
-                                   sql: sql,
-                                   arguments: arguments)
+        return try String.fetchAll(transaction.database, sql: sql)
     }
 
     public func sortIndex(thread: TSThread, transaction: GRDBReadTransaction) throws -> UInt? {
@@ -239,6 +242,34 @@ public class GRDBThreadFinder: NSObject, ThreadFinder {
     }
 
     @objc
+    public class func shouldSetDefaultDisappearingMessageTimer(
+        thread: TSThread,
+        transaction: GRDBReadTransaction
+    ) -> Bool {
+        guard FeatureFlags.universalDisappearingMessages else { return false }
+
+        // We never set the default timer for group threads. Group thread timers
+        // are set during group creation.
+        guard !thread.isGroupThread else { return false }
+
+        // Make sure the universal timer is enabled.
+        guard OWSDisappearingMessagesConfiguration.fetchOrBuildDefaultUniversalConfiguration(
+            with: transaction.asAnyRead
+        ).isEnabled else {
+            return false
+        }
+
+        // Make sure there the current timer is disabled.
+        guard !thread.disappearingMessagesConfiguration(with: transaction.asAnyRead).isEnabled else {
+            return false
+        }
+
+        // Make sure there has been no user initiated interactions.
+        return !GRDBInteractionFinder(threadUniqueId: thread.uniqueId)
+            .hasUserInitiatedInteraction(transaction: transaction)
+    }
+
+    @objc
     public func threads(withThreadIds threadIds: Set<String>, transaction: GRDBReadTransaction) throws -> Set<TSThread> {
         guard !threadIds.isEmpty else {
             return []
@@ -255,5 +286,19 @@ public class GRDBThreadFinder: NSObject, ThreadFinder {
             threads.insert(thread)
         }
         return threads
+    }
+
+    @objc
+    public class func existsGroupThread(transaction: GRDBReadTransaction) -> Bool {
+        let sql = """
+        SELECT EXISTS(
+            SELECT 1
+            FROM \(ThreadRecord.databaseTableName)
+            WHERE \(threadColumn: .recordType) = ?
+            LIMIT 1
+        )
+        """
+        let arguments: StatementArguments = [SDSRecordType.groupThread.rawValue]
+        return try! Bool.fetchOne(transaction.database, sql: sql, arguments: arguments) ?? false
     }
 }

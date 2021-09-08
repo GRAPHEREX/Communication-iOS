@@ -2,7 +2,7 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "BaseModel.h"
+#import <SignalServiceKit/BaseModel.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +19,9 @@ typedef NS_CLOSED_ENUM(NSInteger, OWSInteractionType) {
     OWSInteractionType_TypingIndicator,
     OWSInteractionType_ThreadDetails,
     OWSInteractionType_UnreadIndicator,
-    OWSInteractionType_DateHeader
+    OWSInteractionType_DateHeader,
+    OWSInteractionType_UnknownThreadWarning,
+    OWSInteractionType_DefaultDisappearingMessageTimer
 };
 
 NSString *NSStringFromOWSInteractionType(OWSInteractionType value);
@@ -78,11 +80,8 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:receivedAtTimestamp
 @property (nonatomic, readonly) uint64_t sortId;
 @property (nonatomic, readonly) uint64_t receivedAtTimestamp;
 
-// This property is used to flag interactions that
-// require special handling in the conversation view.
-@property (nonatomic, readonly) BOOL isSpecialMessage;
-
 - (NSDate *)receivedAtDate;
+- (NSDate *)timestampDate;
 
 - (OWSInteractionType)interactionType;
 
@@ -92,7 +91,6 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:receivedAtTimestamp
 
 #pragma mark Utility Method
 
-- (uint64_t)timestampForLegacySorting;
 - (NSComparisonResult)compareForSorting:(TSInteraction *)other;
 
 // "Dynamic" interactions are not messages or static events (like
@@ -109,6 +107,19 @@ NS_DESIGNATED_INITIALIZER NS_SWIFT_NAME(init(grdbId:uniqueId:receivedAtTimestamp
 - (void)replaceReceivedAtTimestamp:(uint64_t)receivedAtTimestamp NS_SWIFT_NAME(replaceReceivedAtTimestamp(_:));
 - (void)replaceReceivedAtTimestamp:(uint64_t)receivedAtTimestamp transaction:(SDSAnyWriteTransaction *)transaction;
 #endif
+
+@end
+
+@interface TSInteraction (Subclass)
+
+// Timestamps are *almost* always immutable. The one exception is for placeholder interactions.
+// After a certain amount of time, a placeholder becomes ineligible for replacement. The would-be
+// replacement is just inserted natively.
+//
+// This breaks all sorts of assumptions we have of timestamps being unique. To workaround this,
+// we decrement the timestamp on a failed placeholder. This ensures that both the placeholder
+// error message and the would-be replacement can coexist.
+@property (nonatomic, assign) uint64_t timestamp;
 
 @end
 

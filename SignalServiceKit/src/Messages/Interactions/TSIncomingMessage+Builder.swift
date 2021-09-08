@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 import Foundation
@@ -19,6 +19,8 @@ public class TSIncomingMessageBuilder: TSMessageBuilder {
     @objc
     public var serverDeliveryTimestamp: UInt64 = 0
     @objc
+    public var serverGuid: String?
+    @objc
     public var wasReceivedByUD = false
 
     public required init(thread: TSThread,
@@ -35,6 +37,7 @@ public class TSIncomingMessageBuilder: TSMessageBuilder {
                          messageSticker: MessageSticker? = nil,
                          serverTimestamp: NSNumber? = nil,
                          serverDeliveryTimestamp: UInt64 = 0,
+                         serverGuid: String? = nil,
                          wasReceivedByUD: Bool = false,
                          isViewOnceMessage: Bool = false) {
 
@@ -44,8 +47,7 @@ public class TSIncomingMessageBuilder: TSMessageBuilder {
                    bodyRanges: bodyRanges,
                    attachmentIds: attachmentIds,
                    expiresInSeconds: expiresInSeconds,
-                   // expireStartedAt is always initialized to zero
-            // for incoming messages.
+                   // expireStartedAt is always initialized to zero for incoming messages.
             expireStartedAt: 0,
             quotedMessage: quotedMessage,
             contactShare: contactShare,
@@ -57,6 +59,7 @@ public class TSIncomingMessageBuilder: TSMessageBuilder {
         self.sourceDeviceId = sourceDeviceId
         self.serverTimestamp = serverTimestamp
         self.serverDeliveryTimestamp = serverDeliveryTimestamp
+        self.serverGuid = serverGuid
         self.wasReceivedByUD = wasReceivedByUD
     }
 
@@ -90,6 +93,7 @@ public class TSIncomingMessageBuilder: TSMessageBuilder {
                               messageSticker: MessageSticker?,
                               serverTimestamp: NSNumber?,
                               serverDeliveryTimestamp: UInt64,
+                              serverGuid: String?,
                               wasReceivedByUD: Bool,
                               isViewOnceMessage: Bool) -> TSIncomingMessageBuilder {
         return TSIncomingMessageBuilder(thread: thread,
@@ -106,6 +110,7 @@ public class TSIncomingMessageBuilder: TSMessageBuilder {
                                         messageSticker: messageSticker,
                                         serverTimestamp: serverTimestamp,
                                         serverDeliveryTimestamp: serverDeliveryTimestamp,
+                                        serverGuid: serverGuid,
                                         wasReceivedByUD: wasReceivedByUD,
                                         isViewOnceMessage: isViewOnceMessage)
     }
@@ -118,6 +123,7 @@ public class TSIncomingMessageBuilder: TSMessageBuilder {
             owsFailDebug("Don't build more than once.")
         }
         hasBuilt = true
+
         return TSIncomingMessage(incomingMessageWithBuilder: self)
     }
 }

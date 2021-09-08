@@ -178,13 +178,12 @@ public extension TSMessage {
                 return .invalidDelete
             }
 
-//            guard serverTimestamp - messageToDeleteServerTimestamp < kDayInMs else {
-//                owsFailDebug("Ignoring message delete sent more than a day after the original message")
-//                return .invalidDelete
-//            }
+            guard serverTimestamp - messageToDeleteServerTimestamp < kDayInMs else {
+                owsFailDebug("Ignoring message delete sent more than a day after the original message")
+                return .invalidDelete
+            }
 
             incomingMessageToDelete.markMessageAsRemotelyDeleted(transaction: transaction)
-            incomingMessageToDelete.anyRemove(transaction: transaction)
 
             return .success
         } else {
@@ -199,40 +198,5 @@ public extension TSMessage {
         DispatchQueue.main.async {
             Self.notificationsManager?.cancelNotifications(messageId: self.uniqueId)
         }
-    }
-}
-
-// MARK: -
-
-public extension TSInteraction {
-
-    @objc
-    var isGroupMigrationMessage: Bool {
-        guard let message = self as? TSInfoMessage else {
-            return false
-        }
-        guard message.messageType == .typeGroupUpdate else {
-            return false
-        }
-        guard let newGroupModel = message.newGroupModel else {
-            owsFailDebug("Missing newGroupModel.")
-            return false
-        }
-        return newGroupModel.wasJustMigratedToV2
-    }
-
-    @objc
-    var isGroupWasJustCreatedByLocalUserMessage: Bool {
-        guard let message = self as? TSInfoMessage else {
-            return false
-        }
-        guard message.messageType == .typeGroupUpdate else {
-            return false
-        }
-        guard let newGroupModel = message.newGroupModel else {
-            owsFailDebug("Missing newGroupModel.")
-            return false
-        }
-        return newGroupModel.wasJustCreatedByLocalUserV2
     }
 }

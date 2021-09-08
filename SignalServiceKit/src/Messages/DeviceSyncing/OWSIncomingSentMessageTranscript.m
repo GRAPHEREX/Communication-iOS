@@ -2,16 +2,16 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSIncomingSentMessageTranscript.h"
-#import "OWSContact.h"
-#import "OWSMessageManager.h"
-#import "TSContactThread.h"
-#import "TSGroupModel.h"
-#import "TSGroupThread.h"
-#import "TSOutgoingMessage.h"
-#import "TSQuotedMessage.h"
-#import "TSThread.h"
+#import <SignalServiceKit/OWSContact.h>
+#import <SignalServiceKit/OWSIncomingSentMessageTranscript.h>
+#import <SignalServiceKit/OWSMessageManager.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSContactThread.h>
+#import <SignalServiceKit/TSGroupModel.h>
+#import <SignalServiceKit/TSGroupThread.h>
+#import <SignalServiceKit/TSOutgoingMessage.h>
+#import <SignalServiceKit/TSQuotedMessage.h>
+#import <SignalServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,7 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation OWSIncomingSentMessageTranscript
 
-- (nullable instancetype)initWithProto:(SSKProtoSyncMessageSent *)sentProto transaction:(SDSAnyWriteTransaction *)transaction
+- (nullable instancetype)initWithProto:(SSKProtoSyncMessageSent *)sentProto
+                       serverTimestamp:(uint64_t)serverTimestamp
+                           transaction:(SDSAnyWriteTransaction *)transaction
 {
     self = [super init];
     if (!self) {
@@ -43,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
         return nil;
     }
     _timestamp = sentProto.timestamp;
+    _serverTimestamp = serverTimestamp;
     _expirationStartedAt = sentProto.expirationStartTimestamp;
     _expirationDuration = _dataMessage.expireTimer;
     _body = _dataMessage.body;
@@ -213,6 +216,12 @@ NS_ASSUME_NONNULL_BEGIN
         if (stickerError && ![MessageSticker isNoStickerError:stickerError]) {
             OWSFailDebug(@"stickerError: %@", stickerError);
         }
+
+        TSPaymentModels *_Nullable paymentModels = [TSPaymentModels parsePaymentProtosInDataMessage:_dataMessage
+                                                                                             thread:_thread];
+        _paymentRequest = paymentModels.request;
+        _paymentNotification = paymentModels.notification;
+        _paymentCancellation = paymentModels.cancellation;
     }
 
     if (sentProto.unidentifiedStatus.count > 0) {

@@ -62,11 +62,15 @@ public class ReactionManager: NSObject {
         assert(emoji.isSingleEmoji)
 
         let thread = message.thread(transaction: transaction)
-        guard thread.canSendToThread else {
+        guard thread.canSendReactionToThread else {
             throw OWSAssertionError("Cannot send to thread.")
         }
 
-        Logger.info("Sending reaction: \(emoji) isRemoving: \(isRemoving)")
+        if DebugFlags.internalLogging {
+            Logger.info("Sending reaction: \(emoji) isRemoving: \(isRemoving)")
+        } else {
+            Logger.info("Sending reaction, isRemoving: \(isRemoving)")
+        }
 
         guard let localAddress = tsAccountManager.localAddress else {
             throw OWSAssertionError("missing local address")
@@ -122,27 +126,36 @@ public class ReactionManager: NSObject {
     }
 
     @objc
-    class func processIncomingReaction(
+    public class func processIncomingReaction(
         _ reaction: SSKProtoDataMessageReaction,
         threadId: String,
         reactor: SignalServiceAddress,
         timestamp: UInt64,
         transaction: SDSAnyWriteTransaction
     ) -> ReactionProcessingResult {
-        guard reaction.emoji?.isSingleEmoji != nil else {
+        guard let emoji = reaction.emoji.strippedOrNil else {
+            owsFailDebug("Received invalid emoji")
+            return .invalidReaction
+        }
+        if DebugFlags.internalLogging {
+            let base64 = emoji.data(using: .utf8)?.base64EncodedString() ?? "?"
+            Logger.info("Processing reaction: \(emoji), \(base64)")
+            Logger.flush()
+        }
+        guard emoji.isSingleEmoji else {
             owsFailDebug("Received invalid emoji")
             return .invalidReaction
         }
 
-        guard let messageAuthor = reaction.targetAuthorUuid else {
+        guard let messageAuthor = reaction.authorAddress else {
             owsFailDebug("reaction missing author address")
             return .invalidReaction
         }
 
         guard let message = InteractionFinder.findMessage(
-            withTimestamp: reaction.targetSentTimestamp,
+            withTimestamp: reaction.timestamp,
             threadId: threadId,
-            author: SignalServiceAddress(uuidString: messageAuthor),
+            author: messageAuthor,
             transaction: transaction
         ) else {
             // This is potentially normal. For example, we could've deleted the message locally.
@@ -162,7 +175,7 @@ public class ReactionManager: NSObject {
         } else {
             let reaction = message.recordReaction(
                 for: reactor,
-                emoji: reaction.emoji!,
+                emoji: emoji,
                 sentAtTimestamp: timestamp,
                 receivedAtTimestamp: NSDate.ows_millisecondTimeStamp(),
                 transaction: transaction

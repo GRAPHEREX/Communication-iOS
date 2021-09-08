@@ -98,6 +98,16 @@ public class GRDBSchemaMigrator: NSObject {
         case addProfileBio
         case addWasIdentityVerified
         case storeMutedUntilDateAsMillisecondTimestamp
+        case addPaymentModels15
+        case addPaymentModels40
+        case fixPaymentModels
+        case addGroupMember
+        case createPendingViewedReceipts
+        case addViewedToInteractions
+        case createThreadAssociatedData
+        case addServerGuidToInteractions
+        case addMessageSendLog
+        case updatePendingReadReceipts
 
         // NOTE: Every time we add a migration id, consider
         // incrementing grdbSchemaVersionLatest.
@@ -133,10 +143,14 @@ public class GRDBSchemaMigrator: NSObject {
         case dataMigration_disableSharingSuggestionsForExistingUsers
         case dataMigration_removeOversizedGroupAvatars
         case dataMigration_scheduleStorageServiceUpdateForMutedThreads
+        case dataMigration_populateGroupMember
+        case dataMigration_cullInvalidIdentityKeySendingErrors
+        case dataMigration_moveToThreadAssociatedData
+        case dataMigration_markAvatarBuilderMegaphoneCompleteIfNecessary
     }
 
     public static let grdbSchemaVersionDefault: UInt = 0
-    public static let grdbSchemaVersionLatest: UInt = 20
+    public static let grdbSchemaVersionLatest: UInt = 26
 
     // An optimization for new users, we have the first migration import the latest schema
     // and mark any other migrations as "already run".
@@ -214,8 +228,6 @@ public class GRDBSchemaMigrator: NSObject {
                             ,"multipleAccountLabelText" TEXT NOT NULL
                             ,"recipientPhoneNumber" TEXT
                             ,"recipientUUID" TEXT
-                            ,"st_userID" TEXT
-                            ,"isDeleted": BOOLEAN NOT NULL DEFAULT 0
                         );
             """
                 try database.execute(sql: sql)
@@ -949,6 +961,310 @@ public class GRDBSchemaMigrator: NSObject {
             }
         }
 
+        migrator.registerMigration(MigrationId.addPaymentModels15.rawValue) { db in
+            do {
+                try db.alter(table: "model_TSInteraction") { (table: TableAlteration) -> Void in
+                    table.add(column: "paymentCancellation", .blob)
+                    table.add(column: "paymentNotification", .blob)
+                    table.add(column: "paymentRequest", .blob)
+                }
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.addPaymentModels40.rawValue) { db in
+            do {
+                // PAYMENTS TODO: Remove.
+                try db.execute(sql: "DROP TABLE IF EXISTS model_TSPaymentModel")
+                try db.execute(sql: "DROP TABLE IF EXISTS model_TSPaymentRequestModel")
+
+                try db.create(table: "model_TSPaymentModel") { table in
+                    table.autoIncrementedPrimaryKey("id")
+                        .notNull()
+                    table.column("recordType", .integer)
+                        .notNull()
+                    table.column("uniqueId", .text)
+                        .notNull()
+                        .unique(onConflict: .fail)
+                    table.column("addressUuidString", .text)
+                    table.column("createdTimestamp", .integer)
+                        .notNull()
+                    table.column("isUnread", .boolean)
+                        .notNull()
+                    table.column("mcLedgerBlockIndex", .integer)
+                        .notNull()
+                    table.column("mcReceiptData", .blob)
+                    table.column("mcTransactionData", .blob)
+                    table.column("memoMessage", .text)
+                    table.column("mobileCoin", .blob)
+                    table.column("paymentAmount", .blob)
+                    table.column("paymentFailure", .integer)
+                        .notNull()
+                    table.column("paymentState", .integer)
+                        .notNull()
+                    table.column("paymentType", .integer)
+                        .notNull()
+                    table.column("requestUuidString", .text)
+                }
+
+                try db.create(index: "index_model_TSPaymentModel_on_uniqueId", on: "model_TSPaymentModel", columns: ["uniqueId"])
+                try db.create(index: "index_model_TSPaymentModel_on_paymentState", on: "model_TSPaymentModel", columns: ["paymentState"])
+                try db.create(index: "index_model_TSPaymentModel_on_mcLedgerBlockIndex", on: "model_TSPaymentModel", columns: ["mcLedgerBlockIndex"])
+                try db.create(index: "index_model_TSPaymentModel_on_mcReceiptData", on: "model_TSPaymentModel", columns: ["mcReceiptData"])
+                try db.create(index: "index_model_TSPaymentModel_on_mcTransactionData", on: "model_TSPaymentModel", columns: ["mcTransactionData"])
+                try db.create(index: "index_model_TSPaymentModel_on_isUnread", on: "model_TSPaymentModel", columns: ["isUnread"])
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.fixPaymentModels.rawValue) { db in
+            // We released a build with an out-of-date schema that didn't reflect
+            // `addPaymentModels15`. To fix this, we need to run the column adds
+            // again to get all users in a consistent state. We can safely skip
+            // this migration if it fails.
+            do {
+                try db.alter(table: "model_TSInteraction") { (table: TableAlteration) -> Void in
+                    table.add(column: "paymentCancellation", .blob)
+                    table.add(column: "paymentNotification", .blob)
+                    table.add(column: "paymentRequest", .blob)
+                }
+            } catch {
+                // We can safely skip this if it fails.
+                Logger.info("Skipping re-add of interaction payment columns.")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.addGroupMember.rawValue) { db in
+            do {
+                try db.create(table: "model_TSGroupMember") { table in
+                    table.autoIncrementedPrimaryKey("id")
+                        .notNull()
+                    table.column("recordType", .integer)
+                        .notNull()
+                    table.column("uniqueId", .text)
+                        .notNull()
+                        .unique(onConflict: .fail)
+                    table.column("groupThreadId", .text)
+                        .notNull()
+                    table.column("phoneNumber", .text)
+                    table.column("uuidString", .text)
+                    table.column("lastInteractionTimestamp", .integer)
+                        .notNull().defaults(to: 0)
+                }
+
+                try db.create(index: "index_model_TSGroupMember_on_uniqueId",
+                              on: "model_TSGroupMember",
+                              columns: ["uniqueId"])
+                try db.create(index: "index_model_TSGroupMember_on_groupThreadId",
+                              on: "model_TSGroupMember",
+                              columns: ["groupThreadId"])
+                try db.create(index: "index_model_TSGroupMember_on_uuidString_and_groupThreadId",
+                              on: "model_TSGroupMember",
+                              columns: ["uuidString", "groupThreadId"],
+                              unique: true)
+                try db.create(index: "index_model_TSGroupMember_on_phoneNumber_and_groupThreadId",
+                              on: "model_TSGroupMember",
+                              columns: ["phoneNumber", "groupThreadId"],
+                              unique: true)
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.createPendingViewedReceipts.rawValue) { db in
+            do {
+                try db.create(table: "pending_viewed_receipts") { table in
+                    table.autoIncrementedPrimaryKey("id")
+                    table.column("threadId", .integer).notNull()
+                    table.column("messageTimestamp", .integer).notNull()
+                    table.column("authorPhoneNumber", .text)
+                    table.column("authorUuid", .text)
+                }
+                try db.create(index: "index_pending_viewed_receipts_on_threadId",
+                              on: "pending_viewed_receipts",
+                              columns: ["threadId"])
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.addViewedToInteractions.rawValue) { db in
+            do {
+                try db.alter(table: "model_TSInteraction") { (table: TableAlteration) -> Void in
+                    table.add(column: "viewed", .boolean)
+                }
+
+                try db.execute(sql: "UPDATE model_TSInteraction SET viewed = 0")
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.createThreadAssociatedData.rawValue) { db in
+            do {
+                try db.create(table: "thread_associated_data") { table in
+                    table.autoIncrementedPrimaryKey("id")
+                    table.column("threadUniqueId", .text)
+                        .notNull()
+                        .unique(onConflict: .fail)
+                    table.column("isArchived", .boolean)
+                        .notNull()
+                        .defaults(to: false)
+                    table.column("isMarkedUnread", .boolean)
+                        .notNull()
+                        .defaults(to: false)
+                    table.column("mutedUntilTimestamp", .integer)
+                        .notNull()
+                        .defaults(to: 0)
+                }
+
+                try db.create(index: "index_thread_associated_data_on_threadUniqueId",
+                              on: "thread_associated_data",
+                              columns: ["threadUniqueId"],
+                              unique: true)
+                try db.create(index: "index_thread_associated_data_on_threadUniqueId_and_isMarkedUnread",
+                              on: "thread_associated_data",
+                              columns: ["threadUniqueId", "isMarkedUnread"])
+                try db.create(index: "index_thread_associated_data_on_threadUniqueId_and_isArchived",
+                              on: "thread_associated_data",
+                              columns: ["threadUniqueId", "isArchived"])
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.addServerGuidToInteractions.rawValue) { db in
+            do {
+                try db.alter(table: "model_TSInteraction") { (table: TableAlteration) -> Void in
+                    table.add(column: "serverGuid", .text)
+                }
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.addMessageSendLog.rawValue) { db in
+            do {
+                // Records all sent payloads
+                // The sentTimestamp is the timestamp of the outgoing payload
+                try db.create(table: "MessageSendLog_Payload") { table in
+                    table.autoIncrementedPrimaryKey("payloadId")
+                        .notNull()
+                    table.column("plaintextContent", .blob)
+                        .notNull()
+                    table.column("contentHint", .integer)
+                        .notNull()
+                    table.column("sentTimestamp", .date)
+                        .notNull()
+                    table.column("uniqueThreadId", .text)
+                        .notNull()
+                }
+
+                // This table tracks a many-to-many relationship mapping
+                // TSInteractions to related payloads. This is tracked so
+                // when a given interaction is deleted, all related payloads
+                // can be queried and deleted.
+                //
+                // An interaction can have multiple payloads (e.g. the message,
+                // reactions, read receipts).
+                // A payload can have multiple associated interactions (e.g.
+                // a single receipt message marking multiple messages as read).
+                try db.create(table: "MessageSendLog_Message") { table in
+                    table.column("payloadId", .integer)
+                        .notNull()
+                    table.column("uniqueId", .text)
+                        .notNull()
+
+                    table.primaryKey(["payloadId", "uniqueId"])
+                    table.foreignKey(
+                        ["payloadId"],
+                        references: "MessageSendLog_Payload",
+                        columns: ["payloadId"],
+                        onDelete: .cascade,
+                        onUpdate: .cascade)
+                }
+
+                // Records all intended recipients for an intended payload
+                // A trigger will ensure that once all recipients have acked,
+                // the corresponding payload is deleted.
+                try db.create(table: "MessageSendLog_Recipient") { table in
+                    table.column("payloadId", .integer)
+                        .notNull()
+                    table.column("recipientUUID", .text)
+                        .notNull()
+                    table.column("recipientDeviceId", .integer)
+                        .notNull()
+
+                    table.primaryKey(["payloadId", "recipientUUID", "recipientDeviceId"])
+                    table.foreignKey(
+                        ["payloadId"],
+                        references: "MessageSendLog_Payload",
+                        columns: ["payloadId"],
+                        onDelete: .cascade,
+                        onUpdate: .cascade)
+                }
+
+                // This trigger ensures that once every intended recipient of
+                // a payload has responded with a delivery receipt that the
+                // payload is deleted.
+                try db.execute(sql: """
+                    CREATE TRIGGER MSLRecipient_deliveryReceiptCleanup
+                    AFTER DELETE ON MessageSendLog_Recipient
+                    WHEN 0 = (
+                        SELECT COUNT(*) FROM MessageSendLog_Recipient
+                        WHERE payloadId = old.payloadId
+                    )
+                    BEGIN
+                        DELETE FROM MessageSendLog_Payload
+                        WHERE payloadId = old.payloadId;
+                    END;
+                """)
+
+                // This trigger ensures that if a given interaction is deleted,
+                // all associated payloads are also deleted.
+                try db.execute(sql: """
+                    CREATE TRIGGER MSLMessage_payloadCleanup
+                    AFTER DELETE ON MessageSendLog_Message
+                    BEGIN
+                        DELETE FROM MessageSendLog_Payload WHERE payloadId = old.payloadId;
+                    END;
+                """)
+
+                // When we receive a decryption failure message, we need to look up
+                // the content proto based on the date sent
+                try db.create(
+                    index: "MSLPayload_sentTimestampIndex",
+                    on: "MessageSendLog_Payload",
+                    columns: ["sentTimestamp"]
+                )
+
+                // When deleting an interaction, we'll need to be able to lookup all
+                // payloads associated with that interaction.
+                try db.create(
+                    index: "MSLMessage_relatedMessageId",
+                    on: "MessageSendLog_Message",
+                    columns: ["uniqueId"]
+                )
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
+        migrator.registerMigration(MigrationId.updatePendingReadReceipts.rawValue) { db in
+            do {
+                try db.alter(table: "pending_read_receipts") { (table: TableAlteration) -> Void in
+                    table.add(column: "messageUniqueId", .text)
+                }
+                try db.alter(table: "pending_viewed_receipts") { (table: TableAlteration) -> Void in
+                    table.add(column: "messageUniqueId", .text)
+                }
+            } catch {
+                owsFail("Error: \(error)")
+            }
+        }
+
         // MARK: - Schema Migration Insertion Point
     }
 
@@ -1142,6 +1458,77 @@ public class GRDBSchemaMigrator: NSObject {
                 }
             }
         }
+
+        migrator.registerMigration(MigrationId.dataMigration_populateGroupMember.rawValue) { db in
+            let transaction = GRDBWriteTransaction(database: db)
+            defer { transaction.finalizeTransaction() }
+
+            let cursor = TSThread.grdbFetchCursor(
+                sql: "SELECT * FROM \(ThreadRecord.databaseTableName) WHERE \(threadColumn: .recordType) = \(SDSRecordType.groupThread.rawValue)",
+                transaction: transaction
+            )
+
+            while let thread = try cursor.next() {
+                guard let groupThread = thread as? TSGroupThread else {
+                    owsFail("Unexpected thread type \(thread)")
+                }
+                let interactionFinder = InteractionFinder(threadUniqueId: groupThread.uniqueId)
+                groupThread.groupMembership.fullMembers.forEach { address in
+                    // Group member addresses are low-trust, and the address cache has
+                    // not been populated yet at this point in time. We want to record
+                    // as close to a fully qualified address as we can in the database,
+                    // so defer to the address from the signal recipient (if one exists)
+                    let recipient = GRDBSignalRecipientFinder().signalRecipient(for: address, transaction: transaction)
+                    let memberAddress = recipient?.address ?? address
+
+                    let latestInteraction = interactionFinder.latestInteraction(from: memberAddress, transaction: transaction.asAnyWrite)
+                    let memberRecord = TSGroupMember(
+                        address: memberAddress,
+                        groupThreadId: groupThread.uniqueId,
+                        lastInteractionTimestamp: latestInteraction?.timestamp ?? 0
+                    )
+                    memberRecord.anyInsert(transaction: transaction.asAnyWrite)
+                }
+            }
+        }
+
+        migrator.registerMigration(MigrationId.dataMigration_cullInvalidIdentityKeySendingErrors.rawValue) { db in
+            let transaction = GRDBWriteTransaction(database: db)
+            defer { transaction.finalizeTransaction() }
+
+            let sql = """
+                DELETE FROM \(InteractionRecord.databaseTableName)
+                WHERE \(interactionColumn: .recordType) = ?
+            """
+            transaction.executeUpdate(sql: sql, arguments: [SDSRecordType.invalidIdentityKeySendingErrorMessage.rawValue])
+        }
+
+        migrator.registerMigration(MigrationId.dataMigration_moveToThreadAssociatedData.rawValue) { db in
+            let transaction = GRDBWriteTransaction(database: db)
+            defer { transaction.finalizeTransaction() }
+
+            TSThread.anyEnumerate(transaction: transaction.asAnyWrite) { thread, _ in
+                do {
+                    try ThreadAssociatedData(
+                        threadUniqueId: thread.uniqueId,
+                        isArchived: thread.isArchivedObsolete,
+                        isMarkedUnread: thread.isMarkedUnreadObsolete,
+                        mutedUntilTimestamp: thread.mutedUntilTimestampObsolete
+                    ).insert(transaction.database)
+                } catch {
+                    owsFail("Error \(error)")
+                }
+            }
+        }
+
+        migrator.registerMigration(MigrationId.dataMigration_markAvatarBuilderMegaphoneCompleteIfNecessary.rawValue) { db in
+            let transaction = GRDBWriteTransaction(database: db)
+            defer { transaction.finalizeTransaction() }
+
+            if Self.profileManager.localProfileAvatarData() != nil {
+                ExperienceUpgradeFinder.markAsComplete(experienceUpgradeId: .avatarBuilder, transaction: transaction)
+            }
+        }
     }
 }
 
@@ -1328,8 +1715,6 @@ private func createV1Schema(db: Database) throws {
         table.column("encryptionKey", .blob)
         table.column("serverId", .integer)
             .notNull()
-        table.column("credentionals", .text)
-        table.column("bucket", .text)
         table.column("sourceFilename", .text)
         table.column("cachedAudioDurationSeconds", .double)
         table.column("cachedImageHeight", .double)
@@ -1453,7 +1838,6 @@ private func createV1Schema(db: Database) throws {
             .notNull()
         table.column("recipientPhoneNumber", .text)
         table.column("recipientUUID", .text)
-        table.column("st_userID", .text)
     }
     try db.create(index: "index_model_SignalRecipient_on_uniqueId", on: "model_SignalRecipient", columns: ["uniqueId"])
 
@@ -1473,8 +1857,6 @@ private func createV1Schema(db: Database) throws {
             .notNull()
         table.column("recipientPhoneNumber", .text)
         table.column("recipientUUID", .text)
-        table.column("st_userID", .text)
-        table.column("isDeleted", .boolean)
     }
     try db.create(index: "index_model_SignalAccount_on_uniqueId", on: "model_SignalAccount", columns: ["uniqueId"])
 
@@ -1492,10 +1874,7 @@ private func createV1Schema(db: Database) throws {
         table.column("profileName", .text)
         table.column("recipientPhoneNumber", .text)
         table.column("recipientUUID", .text)
-        table.column("st_userID", .text)
         table.column("username", .text)
-        table.column("credentials", .text)
-        table.column("bucket", .text)
     }
     try db.create(index: "index_model_OWSUserProfile_on_uniqueId", on: "model_OWSUserProfile", columns: ["uniqueId"])
 

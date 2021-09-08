@@ -119,11 +119,11 @@ public class MessageSticker: MTLModel {
             throw StickerError.noSticker
         }
 
-        let packID: Data = stickerProto.packID!
-        let packKey: Data = stickerProto.packKey!
+        let packID: Data = stickerProto.packID
+        let packKey: Data = stickerProto.packKey
         let stickerID: UInt32 = stickerProto.stickerID
         let emoji: String? = stickerProto.emoji
-        let dataProto: SSKProtoAttachmentPointer = stickerProto.data!
+        let dataProto: SSKProtoAttachmentPointer = stickerProto.data
         let stickerInfo = StickerInfo(packId: packID, packKey: packKey, stickerId: stickerID)
 
         let attachment = try saveAttachment(dataProto: dataProto,

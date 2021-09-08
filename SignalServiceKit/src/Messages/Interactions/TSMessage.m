@@ -3,18 +3,18 @@
 //
 
 #import "TSMessage.h"
-#import "AppContext.h"
-#import "MIMETypeUtil.h"
-#import "OWSContact.h"
-#import "OWSDisappearingMessagesConfiguration.h"
-#import "TSAttachment.h"
-#import "TSAttachmentStream.h"
-#import "TSQuotedMessage.h"
-#import "TSThread.h"
 #import <SignalCoreKit/NSDate+OWS.h>
 #import <SignalCoreKit/NSString+OWS.h>
+#import <SignalServiceKit/AppContext.h>
+#import <SignalServiceKit/MIMETypeUtil.h>
+#import <SignalServiceKit/OWSContact.h>
+#import <SignalServiceKit/OWSDisappearingMessagesConfiguration.h>
 #import <SignalServiceKit/OWSDisappearingMessagesJob.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSAttachment.h>
+#import <SignalServiceKit/TSAttachmentStream.h>
+#import <SignalServiceKit/TSQuotedMessage.h>
+#import <SignalServiceKit/TSThread.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -70,7 +70,6 @@ static const NSUInteger OWSMessageSchemaVersion = 4;
 - (instancetype)initMessageWithBuilder:(TSMessageBuilder *)messageBuilder
 {
     self = [super initInteractionWithTimestamp:messageBuilder.timestamp thread:messageBuilder.thread];
-
     if (!self) {
         return self;
     }
@@ -512,23 +511,16 @@ static const NSUInteger OWSMessageSchemaVersion = 4;
     }
 
     if (self.isViewOnceMessage) {
-        if ([self isKindOfClass:TSOutgoingMessage.class]) {
+        if ([self isKindOfClass:TSOutgoingMessage.class] || mediaAttachment == nil) {
             return NSLocalizedString(@"PER_MESSAGE_EXPIRATION_NOT_VIEWABLE",
                 @"inbox cell and notification text for an already viewed view-once media message.");
+        } else if (mediaAttachment.isVideo) {
+            return NSLocalizedString(
+                @"PER_MESSAGE_EXPIRATION_VIDEO_PREVIEW", @"inbox cell and notification text for a view-once video.");
         } else {
-            if (mediaAttachment == nil) {
-                return NSLocalizedString(@"PER_MESSAGE_EXPIRATION_NOT_VIEWABLE",
-                    @"inbox cell and notification text for an already viewed view-once media message.");
-            } else {
-                if (mediaAttachment.isVideo) {
-                    return NSLocalizedString(@"PER_MESSAGE_EXPIRATION_VIDEO_PREVIEW",
-                        @"inbox cell and notification text for a view-once video.");
-                } else {
-                    OWSAssertDebug(mediaAttachment.isImage);
-                    return NSLocalizedString(@"PER_MESSAGE_EXPIRATION_PHOTO_PREVIEW",
-                        @"inbox cell and notification text for a view-once photo.");
-                }
-            }
+            OWSAssertDebug(mediaAttachment.isImage || mediaAttachment.isLoopingVideo || mediaAttachment.isAnimated);
+            return NSLocalizedString(
+                @"PER_MESSAGE_EXPIRATION_PHOTO_PREVIEW", @"inbox cell and notification text for a view-once photo.");
         }
     }
 
@@ -698,16 +690,6 @@ static const NSUInteger OWSMessageSchemaVersion = 4;
     return _expireStartedAt > 0 && _expiresInSeconds > 0;
 }
 
-- (uint64_t)timestampForLegacySorting
-{
-    if ([self shouldUseReceiptDateForSorting] && self.receivedAtTimestamp > 0) {
-        return self.receivedAtTimestamp;
-    } else {
-        OWSAssertDebug(self.timestamp > 0);
-        return self.timestamp;
-    }
-}
-
 - (BOOL)shouldUseReceiptDateForSorting
 {
     return YES;
@@ -781,8 +763,9 @@ static const NSUInteger OWSMessageSchemaVersion = 4;
 
 - (BOOL)hasRenderableContent
 {
-    return (
-        self.body.length > 0 || self.attachmentIds.count > 0 || self.contactShare != nil || self.messageSticker != nil);
+    // We DO NOT consider a message with just a linkPreview
+    // or quotedMessage to be renderable.
+    return (self.body.length > 0 || self.attachmentIds.count > 0 || self.contactShare != nil || self.messageSticker);
 }
 
 #pragma mark - View Once
@@ -825,6 +808,7 @@ static const NSUInteger OWSMessageSchemaVersion = 4;
     [self anyReloadWithTransaction:transaction ignoreMissing:YES];
     [self removeAllAttachmentsWithTransaction:transaction];
     [self removeAllMentionsWithTransaction:transaction];
+    [MessageSendLog deleteAllPayloadsForInteraction:self transaction:transaction];
 
     [self anyUpdateMessageWithTransaction:transaction
                                     block:^(TSMessage *message) {

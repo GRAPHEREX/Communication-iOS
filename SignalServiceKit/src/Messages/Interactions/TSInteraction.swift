@@ -50,10 +50,22 @@ extension TSInteraction {
 
         switch self {
         case let errorMessage as TSErrorMessage:
-            // Otherwise all group threads with the recipient will percolate to the top of the inbox, even though
-            // there was no meaningful interaction.
-            return errorMessage.errorType != .nonBlockingIdentityChange
-
+            switch errorMessage.errorType {
+            case .nonBlockingIdentityChange:
+                // Otherwise all group threads with the recipient will percolate to the top of the inbox, even though
+                // there was no meaningful interaction.
+                return false
+            case .decryptionFailure:
+                if let replaceableInteraction = errorMessage as? OWSRecoverableDecryptionPlaceholder {
+                    // Replaceable interactions may be temporarily hidden if we expect we'll be
+                    // able to recover
+                    return replaceableInteraction.isVisible
+                } else {
+                    return true
+                }
+            default:
+                return true
+            }
         case let infoMessage as TSInfoMessage:
             switch infoMessage.messageType {
             case .verificationStateChange,
@@ -70,6 +82,70 @@ extension TSInteraction {
 
         default:
             return true
+        }
+    }
+
+    /// Returns `true` if the receiver was inserted into the database by updating the placeholder
+    /// Returns `false` if the receiver needs to be inserted into the database.
+    private func updatePlaceholder(
+        from sender: SignalServiceAddress,
+        transaction: SDSAnyWriteTransaction
+    ) -> Bool {
+        let placeholders: [TSInteraction]
+        do {
+            placeholders = try InteractionFinder.interactions(
+                withTimestamp: timestamp,
+                filter: { candidate in
+                    guard let placeholder = candidate as? OWSRecoverableDecryptionPlaceholder else { return false }
+                    return placeholder.sender == sender && placeholder.timestamp == self.timestamp
+                },
+                transaction: transaction
+            )
+        } catch {
+            owsFailDebug("Failed to fetch placeholder interaction: \(error)")
+            return false
+        }
+
+        guard !placeholders.isEmpty else {
+            return false
+        }
+
+        Logger.info("Fetched placeholder with timestamp: \(timestamp) from sender: \(sender). Performing replacement...")
+        guard let placeholder = (placeholders.first as? OWSRecoverableDecryptionPlaceholder) else {
+            owsFailDebug("Unexpected interaction type")
+            return false
+        }
+
+        if placeholder.supportsReplacement {
+            placeholder.replaceWithInteraction(self, writeTx: transaction)
+            return true
+        } else {
+            // We've found the placeholder for the replacement message, but it is no longer eligible
+            // for replacement. We now want to preserve this placeholder as a permanent error message.
+            //
+            // In many places we assume interaction timestamps are unique for a thread. To workaround
+            // this expectation, we ever so slightly decrement the timestamp of the expired placeholder.
+            Logger.info("Placeholder not eligible for replacement. Updating timestamp")
+            placeholder.anyUpdate(transaction: transaction) { interaction in
+                (interaction as? OWSRecoverableDecryptionPlaceholder)?.decrementTimestamp()
+            }
+            return false
+        }
+    }
+
+    @objc
+    public func insertOrReplacePlaceholder(from sender: SignalServiceAddress, transaction: SDSAnyWriteTransaction) {
+        if updatePlaceholder(from: sender, transaction: transaction) {
+            Logger.info("Successfully replaced placeholder with interaction: \(timestamp)")
+        } else {
+            anyInsert(transaction: transaction)
+
+            // Replaced interactions will inherit the existing sortId
+            // Inserted interactions will be assigned a sortId from SQLite, but
+            // we need to fetch from the database.
+            owsAssertDebug(sortId == 0)
+            fillInMissingSortIdForJustInsertedInteraction(transaction: transaction)
+            owsAssertDebug(sortId > 0)
         }
     }
 }

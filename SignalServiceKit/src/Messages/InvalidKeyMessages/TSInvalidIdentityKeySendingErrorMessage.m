@@ -2,14 +2,14 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "TSInvalidIdentityKeySendingErrorMessage.h"
-#import "OWSFingerprint.h"
-#import "OWSIdentityManager.h"
 #import "PreKeyBundle+jsonDict.h"
-#import "TSContactThread.h"
-#import "TSOutgoingMessage.h"
 #import <SignalServiceKit/NSData+keyVersionByte.h>
+#import <SignalServiceKit/OWSFingerprint.h>
+#import <SignalServiceKit/OWSIdentityManager.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSContactThread.h>
+#import <SignalServiceKit/TSInvalidIdentityKeySendingErrorMessage.h>
+#import <SignalServiceKit/TSOutgoingMessage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -62,6 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
                        errorType:(TSErrorMessageType)errorType
                             read:(BOOL)read
                 recipientAddress:(nullable SignalServiceAddress *)recipientAddress
+                          sender:(nullable SignalServiceAddress *)sender
              wasIdentityVerified:(BOOL)wasIdentityVerified
                        messageId:(NSString *)messageId
                     preKeyBundle:(PreKeyBundle *)preKeyBundle
@@ -89,6 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
                          errorType:errorType
                               read:read
                   recipientAddress:recipientAddress
+                            sender:sender
                wasIdentityVerified:wasIdentityVerified];
 
     if (!self) {

@@ -250,7 +250,7 @@ extension SSKSessionStore: SessionStore {
                                deviceId: Int32(bitPattern: address.deviceId),
                                transaction: context.asTransaction)
     }
-    
+
     public func loadExistingSessions(
         for addresses: [ProtocolAddress],
         context: StoreContext
