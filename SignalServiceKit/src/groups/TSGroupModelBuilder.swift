@@ -8,6 +8,7 @@ public struct TSGroupModelBuilder: Dependencies {
 
     public var groupId: Data?
     public var name: String?
+    public var descriptionText: String?
     public var avatarData: Data?
     public var groupMembership = GroupMembership()
     public var groupAccess: GroupAccess?
@@ -17,6 +18,7 @@ public struct TSGroupModelBuilder: Dependencies {
     public var newGroupSeed: NewGroupSeed?
     public var avatarUrlPath: String?
     public var inviteLinkPassword: Data?
+    public var isAnnouncementsOnly: Bool = false
     public var isPlaceholderModel: Bool = false
     public var addedByAddress: SignalServiceAddress?
     public var wasJustMigrated: Bool = false
@@ -31,6 +33,7 @@ public struct TSGroupModelBuilder: Dependencies {
     private init(groupV2Snapshot: GroupV2Snapshot) throws {
         self.groupId = try groupsV2.groupId(forGroupSecretParamsData: groupV2Snapshot.groupSecretParamsData)
         self.name = groupV2Snapshot.title
+        self.descriptionText = groupV2Snapshot.descriptionText
         self.avatarData = groupV2Snapshot.avatarData
         self.groupMembership = groupV2Snapshot.groupMembership
         self.groupAccess = groupV2Snapshot.groupAccess
@@ -39,6 +42,7 @@ public struct TSGroupModelBuilder: Dependencies {
         self.groupSecretParamsData = groupV2Snapshot.groupSecretParamsData
         self.avatarUrlPath = groupV2Snapshot.avatarUrlPath
         self.inviteLinkPassword = groupV2Snapshot.inviteLinkPassword
+        self.isAnnouncementsOnly = groupV2Snapshot.isAnnouncementsOnly
         self.isPlaceholderModel = false
         self.wasJustMigrated = false
         self.wasJustCreatedByLocalUser = false
@@ -140,7 +144,7 @@ public struct TSGroupModelBuilder: Dependencies {
 
         var name: String?
         if let strippedName = self.name?.stripped,
-            strippedName.count > 0 {
+           strippedName.count > 0 {
             name = strippedName
         }
 
@@ -165,6 +169,12 @@ public struct TSGroupModelBuilder: Dependencies {
         case .V2:
             owsAssertDebug(addedByAddress == nil)
 
+            var descriptionText: String?
+            if let strippedDescriptionText = self.descriptionText?.stripped,
+               strippedDescriptionText.count > 0 {
+                descriptionText = strippedDescriptionText
+            }
+
             let groupAccess = buildGroupAccess(groupsVersion: groupsVersion)
             guard let groupSecretParamsData = groupSecretParamsData else {
                 throw OWSAssertionError("Missing groupSecretParamsData.")
@@ -176,6 +186,7 @@ public struct TSGroupModelBuilder: Dependencies {
             let droppedMembers = Array(Set(self.droppedMembers).subtracting(groupMembership.allMembersOfAnyKind))
             return TSGroupModelV2(groupId: groupId,
                                   name: name,
+                                  descriptionText: descriptionText,
                                   avatarData: avatarData,
                                   groupMembership: groupMembership,
                                   groupAccess: groupAccess,
@@ -183,6 +194,7 @@ public struct TSGroupModelBuilder: Dependencies {
                                   secretParamsData: groupSecretParamsData,
                                   avatarUrlPath: avatarUrlPath,
                                   inviteLinkPassword: inviteLinkPassword,
+                                  isAnnouncementsOnly: isAnnouncementsOnly,
                                   isPlaceholderModel: isPlaceholderModel,
                                   wasJustMigrated: wasJustMigrated,
                                   wasJustCreatedByLocalUser: wasJustCreatedByLocalUser,
@@ -279,7 +291,9 @@ public extension TSGroupModel {
             builder.groupSecretParamsData = v2.secretParamsData
             builder.avatarUrlPath = v2.avatarUrlPath
             builder.inviteLinkPassword = v2.inviteLinkPassword
+            builder.isAnnouncementsOnly = v2.isAnnouncementsOnly
             builder.droppedMembers = v2.droppedMembers
+            builder.descriptionText = v2.descriptionText
 
             // Do not copy transient properties:
             //

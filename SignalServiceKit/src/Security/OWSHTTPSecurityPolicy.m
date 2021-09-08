@@ -1,10 +1,9 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "OWSHTTPSecurityPolicy.h"
 #import <AssertMacros.h>
-#import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/OWSHTTPSecurityPolicy.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,11 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
     self = [[super class] defaultPolicy];
 
     if (self) {
-        NSMutableSet *certs = [NSMutableSet setWithCapacity:[TSConstants.sslPinningCertNames count]];
-        for (NSString* nextCertName in TSConstants.sslPinningCertNames) {
-            [certs addObject:[self.class certificateDataForService:nextCertName]];
-        }
-        self.pinnedCertificates = [NSSet setWithSet:certs];
+        self.pinnedCertificates = [NSSet setWithArray:@[
+            [self.class certificateDataForService:@"textsecure"]
+        ]];
     }
 
     return self;
@@ -35,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSData *)dataFromCertificateFileForService:(NSString *)service
 {
-    NSBundle *bundle = [NSBundle bundleForClass: self.class];
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
     NSString *path = [bundle pathForResource:service ofType:@"cer"];
 
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
@@ -104,7 +101,7 @@ _out:
 
 NSData *SSKTextSecureServiceCertificateData()
 {
-    return [OWSHTTPSecurityPolicy dataFromCertificateFileForService:[TSConstants.sslPinningCertNames firstObject]];
+    return [OWSHTTPSecurityPolicy dataFromCertificateFileForService:@"textsecure"];
 }
 
 @end

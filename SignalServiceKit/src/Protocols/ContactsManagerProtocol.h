@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 NS_ASSUME_NONNULL_BEGIN
@@ -13,8 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @class SignalServiceAddress;
 @class TSThread;
 @class UIImage;
-
-typedef NSString *ConversationColorName NS_STRING_ENUM;
 
 @protocol ContactsManagerProtocol <NSObject>
 
@@ -43,9 +41,6 @@ typedef NSString *ConversationColorName NS_STRING_ENUM;
 - (NSString *)shortDisplayNameForAddress:(SignalServiceAddress *)address
                              transaction:(SDSAnyReadTransaction *)transaction;
 
-- (ConversationColorName)conversationColorNameForAddress:(SignalServiceAddress *)address
-                                             transaction:(SDSAnyReadTransaction *)transaction;
-
 - (nullable NSPersonNameComponents *)nameComponentsForAddress:(SignalServiceAddress *)address;
 - (nullable NSPersonNameComponents *)nameComponentsForAddress:(SignalServiceAddress *)address
                                                   transaction:(SDSAnyReadTransaction *)transaction;
@@ -58,8 +53,11 @@ typedef NSString *ConversationColorName NS_STRING_ENUM;
 
 - (BOOL)isSystemContactWithPhoneNumber:(NSString *)phoneNumber NS_SWIFT_NAME(isSystemContact(phoneNumber:));
 - (BOOL)isSystemContactWithAddress:(SignalServiceAddress *)address NS_SWIFT_NAME(isSystemContact(address:));
-- (BOOL)isSystemContactWithSignalAccount:(NSString *)phoneNumber;
-- (BOOL)isSystemContactWithSignalAccount:(NSString *)phoneNumber transaction:(SDSAnyReadTransaction *)transaction;
+- (BOOL)isSystemContactWithSignalAccount:(SignalServiceAddress *)address
+    NS_SWIFT_NAME(isSystemContactWithSignalAccount(_:));
+- (BOOL)isSystemContactWithSignalAccount:(SignalServiceAddress *)address
+                             transaction:(SDSAnyReadTransaction *)transaction
+    NS_SWIFT_NAME(isSystemContactWithSignalAccount(_:transaction:));
 - (BOOL)hasNameInSystemContactsForAddress:(SignalServiceAddress *)address;
 - (BOOL)hasNameInSystemContactsForAddress:(SignalServiceAddress *)address
                               transaction:(SDSAnyReadTransaction *)transaction;

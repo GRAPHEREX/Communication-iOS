@@ -2,21 +2,21 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "TSGroupModel.h"
-#import "FunctionalUtil.h"
 #import "NSData+Image.h"
 #import "UIImage+OWS.h"
 #import <SignalCoreKit/NSData+OWS.h>
 #import <SignalCoreKit/NSString+OWS.h>
 #import <SignalCoreKit/Randomness.h>
+#import <SignalServiceKit/FunctionalUtil.h>
 #import <SignalServiceKit/SignalServiceKit-Swift.h>
+#import <SignalServiceKit/TSGroupModel.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 // Be careful tweaking this value. We currently store group avatars in the group model,
 // and a ton of these live in memory at any time. Avoid increasing this value until we have
 // a better solution.
-const NSUInteger kMaxAvatarSize = 3000 * 1000;
+const NSUInteger kMaxAvatarSize = 500 * 1000;
 const CGFloat kMaxAvatarDimension = 1024;
 const int32_t kGroupIdLengthV1 = 16;
 const int32_t kGroupIdLengthV2 = 32;
@@ -257,6 +257,12 @@ NSUInteger const TSGroupModelSchemaVersion = 1;
     [result appendFormat:@"addedByAddress: %@,\n", self.addedByAddress];
     [result appendString:@"]"];
     return [result copy];
+}
+
+// This method should only be used by the blocking manager.
+- (void)discardGroupAvatarForBlockingManager
+{
+    _groupAvatarData = nil;
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 NS_ASSUME_NONNULL_BEGIN
@@ -40,12 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)notifyUserForThreadlessErrorMessage:(ThreadlessErrorMessage *)errorMessage
                                 transaction:(SDSAnyWriteTransaction *)transaction;
 
+- (void)notifyInternalUsersOfErrorMessage:(NSString *)errorString;
+
 - (void)clearAllNotifications;
 
 - (void)cancelNotificationsForMessageId:(NSString *)uniqueMessageId NS_SWIFT_NAME(cancelNotifications(messageId:));
 - (void)cancelNotificationsForReactionId:(NSString *)uniqueReactionId NS_SWIFT_NAME(cancelNotifications(reactionId:));
-
-- (void)notifyUserForGRDBMigration;
 
 @end
 

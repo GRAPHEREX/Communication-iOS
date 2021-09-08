@@ -1,9 +1,10 @@
 //
-//  Copyright (c) 2020 Open Whisper Systems. All rights reserved.
+//  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class SDSAnyWriteTransaction;
 @class SSKProtoCallMessageAnswer;
 @class SSKProtoCallMessageBusy;
 @class SSKProtoCallMessageHangup;
@@ -11,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class SSKProtoCallMessageOffer;
 @class SSKProtoCallMessageOpaque;
 @class SSKProtoDataMessageGroupCallUpdate;
+@class SSKProtoEnvelope;
 @class SignalServiceAddress;
 @class TSGroupThread;
 
@@ -51,6 +53,13 @@ NS_ASSUME_NONNULL_BEGIN
                              forThread:(TSGroupThread *)groupThread
                serverReceivedTimestamp:(uint64_t)serverReceivedTimestamp
         NS_SWIFT_NAME(receivedGroupCallUpdateMessage(_:for:serverReceivedTimestamp:));
+
+- (BOOL)externallyHandleCallMessageWithEnvelope:(SSKProtoEnvelope *)envelope
+                                  plaintextData:(NSData *)plaintextData
+                                wasReceivedByUD:(BOOL)wasReceivedByUD
+                        serverDeliveryTimestamp:(uint64_t)serverDeliveryTimestamp
+                                    transaction:(SDSAnyWriteTransaction *)transaction
+    NS_SWIFT_NAME(externallyHandleCallMessage(envelope:plaintextData:wasReceivedByUD:serverDeliveryTimestamp:transaction:));
 
 @end
 

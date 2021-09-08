@@ -2,10 +2,11 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "RemoteAttestationSigningCertificate.h"
+#import <SignalServiceKit/RemoteAttestationSigningCertificate.h>
 #import <CommonCrypto/CommonCrypto.h>
 #import <SignalCoreKit/Cryptography.h>
 #import <SignalCoreKit/NSData+OWS.h>
+#import <SignalCoreKit/SignalCoreKit-Swift.h>
 #import <openssl/x509.h>
 
 NS_ASSUME_NONNULL_BEGIN

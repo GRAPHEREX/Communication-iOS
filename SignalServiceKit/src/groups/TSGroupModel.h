@@ -2,8 +2,8 @@
 //  Copyright (c) 2021 Open Whisper Systems. All rights reserved.
 //
 
-#import "ContactsManagerProtocol.h"
 #import <Mantle/MTLModel+NSCoding.h>
+#import <SignalServiceKit/ContactsManagerProtocol.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -66,6 +66,9 @@ typedef NS_CLOSED_ENUM(NSUInteger, TSGroupModelComparisonMode) {
 @property (nonatomic, readonly) NSString *groupNameOrDefault;
 
 + (NSData *)generateRandomV1GroupId;
+
+// This method should only be used by the blocking manager.
+- (void)discardGroupAvatarForBlockingManager;
 
 @end
 

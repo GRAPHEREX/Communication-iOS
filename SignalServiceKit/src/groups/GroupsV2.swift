@@ -29,6 +29,8 @@ public enum GroupsV2Error: Error {
     case groupDowngradeNotAllowed
     case missingGroupChangeProtos
     case unexpectedRevision
+    case groupBlocked
+    case newMemberMissingAnnouncementOnlyCapability
 }
 
 // MARK: -
@@ -65,7 +67,8 @@ public protocol GroupsV2: AnyObject {
     func hasProfileKeyCredential(for address: SignalServiceAddress,
                                  transaction: SDSAnyReadTransaction) -> Bool
 
-    func tryToEnsureProfileKeyCredentialsObjc(for addresses: [SignalServiceAddress]) -> AnyPromise
+    func tryToEnsureProfileKeyCredentialsObjc(for addresses: [SignalServiceAddress],
+                                              ignoreMissingProfiles: Bool) -> AnyPromise
 
     func masterKeyData(forGroupModel groupModel: TSGroupModelV2) throws -> Data
 
@@ -94,7 +97,8 @@ public protocol GroupsV2Swift: GroupsV2 {
     func createNewGroupOnService(groupModel: TSGroupModelV2,
                                  disappearingMessageToken: DisappearingMessageToken) -> Promise<Void>
 
-    func tryToEnsureProfileKeyCredentials(for addresses: [SignalServiceAddress]) -> Promise<Void>
+    func tryToEnsureProfileKeyCredentials(for addresses: [SignalServiceAddress],
+                                          ignoreMissingProfiles: Bool) -> Promise<Void>
 
     func fetchCurrentGroupV2Snapshot(groupModel: TSGroupModelV2) -> Promise<GroupV2Snapshot>
 
@@ -193,6 +197,8 @@ public protocol GroupsV2OutgoingChanges: AnyObject {
 
     func rotateInviteLinkPassword()
 
+    func setIsAnnouncementsOnly(_ isAnnouncementsOnly: Bool)
+
     func buildGroupChangeProto(currentGroupModel: TSGroupModelV2,
                                currentDisappearingMessageToken: DisappearingMessageToken) -> Promise<GroupsProtoGroupChangeActions>
 }
@@ -211,13 +217,18 @@ public enum GroupUpdateMode {
     // * Group update _should_ be throttled.
     case upToCurrentRevisionAfterMessageProcessWithThrottling
     // * Group update should continue until current revision.
+    // * Group update _should_ block on message processing.
+    // * Group update _should not_ be throttled.
+    case upToCurrentRevisionAfterMessageProcessWithoutThrottling
+    // * Group update should continue until current revision.
     // * Group update _should not_ block on message processing.
     // * Group update _should not_ be throttled.
     case upToCurrentRevisionImmediately
 
     public var shouldBlockOnMessageProcessing: Bool {
         switch self {
-        case .upToCurrentRevisionAfterMessageProcessWithThrottling:
+        case .upToCurrentRevisionAfterMessageProcessWithThrottling,
+             .upToCurrentRevisionAfterMessageProcessWithoutThrottling:
             return true
         default:
             return false
@@ -241,6 +252,15 @@ public enum GroupUpdateMode {
             return nil
         }
     }
+
+    public var shouldUpdateToCurrentRevision: Bool {
+        switch self {
+        case .upToSpecificRevisionImmediately:
+            return false
+        default:
+            return true
+        }
+    }
 }
 
 // MARK: -
@@ -248,6 +268,8 @@ public enum GroupUpdateMode {
 @objc
 public protocol GroupV2Updates: AnyObject {
     func tryToRefreshV2GroupUpToCurrentRevisionAfterMessageProcessingWithThrottling(_ groupThread: TSGroupThread)
+
+    func tryToRefreshV2GroupUpToCurrentRevisionAfterMessageProcessingWithoutThrottling(_ groupThread: TSGroupThread)
 
     func tryToRefreshV2GroupUpToSpecificRevisionImmediately(_ groupThread: TSGroupThread,
                                                             upToRevision: UInt32)
@@ -279,6 +301,7 @@ public protocol GroupV2Snapshot {
     var revision: UInt32 { get }
 
     var title: String { get }
+    var descriptionText: String? { get }
 
     var avatarUrlPath: String? { get }
     var avatarData: Data? { get }
@@ -292,6 +315,8 @@ public protocol GroupV2Snapshot {
     var profileKeys: [UUID: Data] { get }
 
     var inviteLinkPassword: Data? { get }
+
+    var isAnnouncementsOnly: Bool { get }
 }
 
 // MARK: -
@@ -366,6 +391,7 @@ public class GroupInviteLinkInfo: NSObject {
 @objc
 public class GroupInviteLinkPreview: NSObject {
     public let title: String
+    public let descriptionText: String?
     public let avatarUrlPath: String?
     public let memberCount: UInt32
     public let addFromInviteLinkAccess: GroupV2Access
@@ -373,12 +399,14 @@ public class GroupInviteLinkPreview: NSObject {
     public let isLocalUserRequestingMember: Bool
 
     public init(title: String,
+                descriptionText: String?,
                 avatarUrlPath: String?,
                 memberCount: UInt32,
                 addFromInviteLinkAccess: GroupV2Access,
                 revision: UInt32,
                 isLocalUserRequestingMember: Bool) {
         self.title = title
+        self.descriptionText = descriptionText
         self.avatarUrlPath = avatarUrlPath
         self.memberCount = memberCount
         self.addFromInviteLinkAccess = addFromInviteLinkAccess
@@ -390,6 +418,7 @@ public class GroupInviteLinkPreview: NSObject {
     public override func isEqual(_ object: Any?) -> Bool {
         guard let otherRecipient = object as? GroupInviteLinkPreview else { return false }
         return (title == otherRecipient.title &&
+                    descriptionText == otherRecipient.descriptionText &&
                     avatarUrlPath == otherRecipient.avatarUrlPath &&
                     memberCount == otherRecipient.memberCount &&
                     addFromInviteLinkAccess == otherRecipient.addFromInviteLinkAccess &&
@@ -515,11 +544,13 @@ public class MockGroupsV2: NSObject, GroupsV2Swift {
         owsFail("Not implemented.")
     }
 
-    public func tryToEnsureProfileKeyCredentialsObjc(for addresses: [SignalServiceAddress]) -> AnyPromise {
+    public func tryToEnsureProfileKeyCredentialsObjc(for addresses: [SignalServiceAddress],
+                                                     ignoreMissingProfiles: Bool) -> AnyPromise {
         owsFail("Not implemented.")
     }
 
-    public func tryToEnsureProfileKeyCredentials(for addresses: [SignalServiceAddress]) -> Promise<Void> {
+    public func tryToEnsureProfileKeyCredentials(for addresses: [SignalServiceAddress],
+                                                 ignoreMissingProfiles: Bool) -> Promise<Void> {
         owsFail("Not implemented.")
     }
 
@@ -676,6 +707,11 @@ public class MockGroupsV2: NSObject, GroupsV2Swift {
 public class MockGroupV2Updates: NSObject, GroupV2UpdatesSwift {
     @objc
     public func tryToRefreshV2GroupUpToCurrentRevisionAfterMessageProcessingWithThrottling(_ groupThread: TSGroupThread) {
+        owsFail("Not implemented.")
+    }
+
+    @objc
+    public func tryToRefreshV2GroupUpToCurrentRevisionAfterMessageProcessingWithoutThrottling(_ groupThread: TSGroupThread) {
         owsFail("Not implemented.")
     }
 
