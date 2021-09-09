@@ -1181,19 +1181,19 @@ extension MessageSender {
         let message = messageSend.message
         
         // if isVoIP send reqest for push
-        if let message = message as? OWSOutgoingCallMessage, let offerMessage = message.offerMessage {
-            let callType = offerMessage.unwrappedType
-            let isVideoCall = callType == .offerVideoCall
-            if let sender = messageSend.localAddress.uuidString ?? messageSend.localAddress.phoneNumber,
-               let destination = messageSend.address.uuidString ?? messageSend.address.phoneNumber {
-                let request = OWSRequestFactory.sendCallOfferVoipPush(destination, message: ["sender": sender, "callType": isVideoCall])
-                MessageSender.networkManager.makeRequest(request) { _, _ in
-                    OWSLogger.debug("VoIP push request was successfully send")
-                } failure: { _, _ in
-                    OWSLogger.debug("VoIP push request failed")
-                }
-            }
-        }
+//        if let message = message as? OWSOutgoingCallMessage, let offerMessage = message.offerMessage {
+//            let callType = offerMessage.unwrappedType
+//            let isVideoCall = callType == .offerVideoCall
+//            if let sender = messageSend.localAddress.uuidString ?? messageSend.localAddress.phoneNumber,
+//               let destination = messageSend.address.uuidString ?? messageSend.address.phoneNumber {
+//                let request = OWSRequestFactory.sendCallOfferVoipPush(destination, message: ["sender": sender, "callType": isVideoCall])
+//                MessageSender.networkManager.makeRequest(request) { _, _ in
+//                    OWSLogger.debug("VoIP push request was successfully send")
+//                } failure: { _, _ in
+//                    OWSLogger.debug("VoIP push request failed")
+//                }
+//            }
+//        }
 
         var push: String? = nil
         if message.body != nil || message.hasAttachments() {
