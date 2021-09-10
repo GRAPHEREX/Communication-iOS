@@ -1195,13 +1195,13 @@ extension MessageSender {
 //            }
 //        }
 
-        var push: String? = nil
-        if message.body != nil || message.hasAttachments() {
-            push = "{\\\"aps\\\" : { \\\"alert\\\" : \\\"New message\\\", \\\"sound\\\" : \\\"default\\\", \\\"mutable-content\\\" : 1 }}"
-        }
-        else if message.groupMetaMessage == .new {
-            push = "{\\\"aps\\\" : { \\\"alert\\\" : \\\"New group\\\", \\\"sound\\\" : \\\"default\\\", \\\"mutable-content\\\" : 1 }}"
-        }
+//        var push: String? = nil
+//        if message.body != nil || message.hasAttachments() {
+//            push = "{\\\"aps\\\" : { \\\"alert\\\" : \\\"New message\\\", \\\"sound\\\" : \\\"default\\\", \\\"mutable-content\\\" : 1 }}"
+//        }
+//        else if message.groupMetaMessage == .new {
+//            push = "{\\\"aps\\\" : { \\\"alert\\\" : \\\"New group\\\", \\\"sound\\\" : \\\"default\\\", \\\"mutable-content\\\" : 1 }}"
+//        }
         
         // We had better have a session after encrypting for this recipient!
         let session = try Self.sessionStore.loadSession(for: protocolAddress, context: transaction)!
@@ -1218,10 +1218,27 @@ extension MessageSender {
             "isOnline": message.isOnline
         ]
         
-        if let push = push {
-            dict["push"] = push
-        }
+        //if let push = push {
+        let pushType = getPushType(for: messageSend)
+        dict["pushType"] = pushType.typeForQuery
+        //}
         
         return dict as NSDictionary
+    }
+    
+    private func getPushType(for messageSend: OWSMessageSend) -> MessagePushType {
+        let message = messageSend.message
+        if let message = message as? OWSOutgoingCallMessage, let offerMessage = message.offerMessage {
+            let callType = offerMessage.unwrappedType
+            let isVideoCall = callType == .offerVideoCall
+            return isVideoCall ? .voipVideo : .voipAudio
+        }
+        
+        // TODO: Separate new group message logic
+        if message.body != nil || message.hasAttachments() || message.groupMetaMessage == .new {
+            return .push
+        }
+        
+        return .none
     }
 }
