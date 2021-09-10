@@ -7,6 +7,7 @@ import Foundation
 enum MessagePushType {
     case none
     case push
+    case pushGroup
     case voipAudio
     case voipVideo
     
@@ -16,6 +17,8 @@ enum MessagePushType {
             return "NONE"
         case .push:
             return "PUSH"
+        case .pushGroup:
+            return "PUSH_GROUP"
         case .voipAudio:
             return "VOIP_SOUND"
         case .voipVideo:
