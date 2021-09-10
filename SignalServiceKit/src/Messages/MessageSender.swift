@@ -1234,9 +1234,11 @@ extension MessageSender {
             return isVideoCall ? .voipVideo : .voipAudio
         }
         
-        // TODO: Separate new group message logic
-        if message.body != nil || message.hasAttachments() || message.groupMetaMessage == .new {
+        if message.body != nil || message.hasAttachments() {
             return .push
+        }
+        if message.groupMetaMessage == .new {
+            return .pushGroup
         }
         
         return .none
