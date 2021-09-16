@@ -178,7 +178,7 @@ final class CallKitCallUIAdaptee: NSObject, CallUIAdaptee, CXProviderDelegate {
 
                 completion(nil)
 
-                self.showCall(call)
+                //self.showCall(call)
                 self.callManager.addCall(call)
             }
         } else {
@@ -346,9 +346,9 @@ final class CallKitCallUIAdaptee: NSObject, CallUIAdaptee, CXProviderDelegate {
         }
         call.individualCall.localId = action.callUUID
 
-        if UIApplication.shared.applicationState != .active {
+        //if UIApplication.shared.applicationState != .active {
             self.showCall(call)
-        }
+        //}
         self.callService.individualCallService.handleAcceptCall(call)
         action.fulfill()
     }
