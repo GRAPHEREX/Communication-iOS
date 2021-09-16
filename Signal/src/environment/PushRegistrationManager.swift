@@ -93,6 +93,9 @@ public enum PushRegistrationError: Error {
             let callUpdate = CXCallUpdate()
             
             let callerAddress: SignalServiceAddress? = callerUuidOrPhoneNumber.flatMap {
+                guard $0 != "", !$0.isEmpty else {
+                    return nil
+                }
                 if PhoneNumber.tryParsePhoneNumber(fromE164: $0) != nil {
                     return SignalServiceAddress(phoneNumber: $0)
                 } else {
