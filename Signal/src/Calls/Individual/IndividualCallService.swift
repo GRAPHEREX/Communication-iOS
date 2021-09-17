@@ -1203,7 +1203,7 @@ import SignalMessaging
                     // Only "turn:" servers require authentication. Don't include the credentials to other ICE servers
                     // as 1.) they aren't used, and 2.) the non-turn servers might not be under our control.
                     // e.g. we use a public fallback STUN server.
-                    return RTCIceServer(urlStrings: [url], username: "test"/*turnServerInfo.username*/, credential: "5lAKyjiMVpXg"/*turnServerInfo.password*/)
+                    return RTCIceServer(urlStrings: [url], username: turnServerInfo.username, credential: turnServerInfo.password)
                 } else {
                     return RTCIceServer(urlStrings: [url])
                 }
