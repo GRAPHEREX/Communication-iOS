@@ -663,6 +663,15 @@ NSString *const kArchiveButtonPseudoGroup = @"kArchiveButtonPseudoGroup";
     [self updateBarButtonItems];
 
     [self applyTheme];
+    [self requestMicrophoneAccess];
+}
+
+- (void)requestMicrophoneAccess {
+    [self ows_askForMicrophonePermissions:^(BOOL micGranted) {
+        if (!micGranted) {
+            OWSLogWarn(@"proceeding, though mic permission denied.");
+        }
+    }];
 }
 
 - (void)applyDefaultBackButton

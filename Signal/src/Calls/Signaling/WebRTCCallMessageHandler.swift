@@ -40,29 +40,19 @@ public class WebRTCCallMessageHandler: NSObject, OWSCallMessageHandler {
         }
 
         let thread = TSContactThread.getOrCreateThread(contactAddress: caller)
-        guard let frontmostViewController = UIApplication.shared.frontmostViewControllerIgnoringAlerts else {
-            owsFailDebug("could not identify frontmostViewController")
-            return
-        }
-        
-        frontmostViewController.ows_askForMicrophonePermissions { granted in
-            guard granted else {
-                return frontmostViewController.ows_showNoMicrophonePermissionActionSheet()
-            }
             
-            self.callService.individualCallService.handleReceivedOffer(
-                thread: thread,
-                callId: offer.id,
-                sourceDevice: sourceDevice,
-                sdp: offer.sdp,
-                opaque: offer.opaque,
-                sentAtTimestamp: sentAtTimestamp,
-                serverReceivedTimestamp: serverReceivedTimestamp,
-                serverDeliveryTimestamp: serverDeliveryTimestamp,
-                callType: callType,
-                supportsMultiRing: supportsMultiRing
-            )
-        }
+        self.callService.individualCallService.handleReceivedOffer(
+            thread: thread,
+            callId: offer.id,
+            sourceDevice: sourceDevice,
+            sdp: offer.sdp,
+            opaque: offer.opaque,
+            sentAtTimestamp: sentAtTimestamp,
+            serverReceivedTimestamp: serverReceivedTimestamp,
+            serverDeliveryTimestamp: serverDeliveryTimestamp,
+            callType: callType,
+            supportsMultiRing: supportsMultiRing
+        )
     }
 
     public func receivedAnswer(_ answer: SSKProtoCallMessageAnswer, from caller: SignalServiceAddress, sourceDevice: UInt32, supportsMultiRing: Bool) {
