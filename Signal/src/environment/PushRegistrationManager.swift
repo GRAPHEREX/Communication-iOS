@@ -87,21 +87,13 @@ public enum PushRegistrationError: Error {
                       completion: @escaping () -> Void) {
         if type == .voIP {
             // Configure the call information data structures.
-            let callerUuidOrPhoneNumber = payload.dictionaryPayload["sender"] as? String
+            let callerUuid = payload.dictionaryPayload["sender"] as? String
+            let callerPhone = payload.dictionaryPayload["senderPhone"] as? String
             let isVideoCall = (Int(payload.dictionaryPayload["callType"] as? String ?? "0") ?? 0) != 0
                 
             let callUpdate = CXCallUpdate()
             
-            let callerAddress: SignalServiceAddress? = callerUuidOrPhoneNumber.flatMap {
-                guard $0 != "", !$0.isEmpty else {
-                    return nil
-                }
-                if PhoneNumber.tryParsePhoneNumber(fromE164: $0) != nil {
-                    return SignalServiceAddress(phoneNumber: $0)
-                } else {
-                    return SignalServiceAddress(uuidString: $0)
-                }
-            }
+            let callerAddress: SignalServiceAddress? = SignalServiceAddress(uuidString: callerUuid, phoneNumber: callerPhone)
             
             let isBlocked = checkIfCallerIsBlocked(caller: callerAddress)
             guard !isBlocked else {
