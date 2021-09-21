@@ -110,6 +110,11 @@ CREATE
             ,"creatorUuid" TEXT
             ,"joinedMemberUuids" BLOB
             ,"wasIdentityVerified" BOOLEAN
+            ,"paymentCancellation" BLOB
+            ,"paymentNotification" BLOB
+            ,"paymentRequest" BLOB
+            ,"viewed" BOOLEAN
+            ,"serverGuid" TEXT
         )
 ;
 
@@ -195,8 +200,6 @@ CREATE
             ,"contentType" TEXT NOT NULL
             ,"encryptionKey" BLOB
             ,"serverId" INTEGER NOT NULL
-            ,"credentionals" TEXT
-            ,"bucket" TEXT
             ,"sourceFilename" TEXT
             ,"cachedAudioDurationSeconds" DOUBLE
             ,"cachedImageHeight" DOUBLE
@@ -339,7 +342,6 @@ CREATE
             ,"profileName" TEXT
             ,"recipientPhoneNumber" TEXT
             ,"recipientUUID" TEXT
-            ,"st_userID" TEXT
             ,"username" TEXT
             ,"familyName" TEXT
             ,"isUuidCapable" BOOLEAN NOT NULL DEFAULT 0
@@ -347,8 +349,6 @@ CREATE
             ,"lastMessagingDate" DOUBLE
             ,"bio" TEXT
             ,"bioEmoji" TEXT
-            ,"credentials" TEXT
-            ,"bucket" TEXT
         )
 ;
 
@@ -565,8 +565,6 @@ CREATE
             ,"multipleAccountLabelText" TEXT NOT NULL
             ,"recipientPhoneNumber" TEXT
             ,"recipientUUID" TEXT
-            ,"st_userID" TEXT
-            ,"isDeleted" BOOLEAN NOT NULL DEFAULT 0
         )
 ;
 
@@ -859,6 +857,7 @@ CREATE
             ,"messageTimestamp" INTEGER NOT NULL
             ,"authorPhoneNumber" TEXT
             ,"authorUuid" TEXT
+            ,"messageUniqueId" TEXT
         )
 ;
 
@@ -964,5 +963,246 @@ CREATE
         ON "model_TSInteraction"("uniqueThreadId"
     ,"eraId"
     ,"recordType"
+)
+;
+
+CREATE
+    TABLE
+        IF NOT EXISTS "model_TSPaymentModel" (
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT
+            ,"recordType" INTEGER NOT NULL
+            ,"uniqueId" TEXT NOT NULL UNIQUE
+                ON CONFLICT FAIL
+            ,"addressUuidString" TEXT
+            ,"createdTimestamp" INTEGER NOT NULL
+            ,"isUnread" BOOLEAN NOT NULL
+            ,"mcLedgerBlockIndex" INTEGER NOT NULL
+            ,"mcReceiptData" BLOB
+            ,"mcTransactionData" BLOB
+            ,"memoMessage" TEXT
+            ,"mobileCoin" BLOB
+            ,"paymentAmount" BLOB
+            ,"paymentFailure" INTEGER NOT NULL
+            ,"paymentState" INTEGER NOT NULL
+            ,"paymentType" INTEGER NOT NULL
+            ,"requestUuidString" TEXT
+        )
+;
+
+CREATE
+    INDEX "index_model_TSPaymentModel_on_uniqueId"
+        ON "model_TSPaymentModel"("uniqueId"
+)
+;
+
+CREATE
+    INDEX "index_model_TSPaymentModel_on_paymentState"
+        ON "model_TSPaymentModel"("paymentState"
+)
+;
+
+CREATE
+    INDEX "index_model_TSPaymentModel_on_mcLedgerBlockIndex"
+        ON "model_TSPaymentModel"("mcLedgerBlockIndex"
+)
+;
+
+CREATE
+    INDEX "index_model_TSPaymentModel_on_mcReceiptData"
+        ON "model_TSPaymentModel"("mcReceiptData"
+)
+;
+
+CREATE
+    INDEX "index_model_TSPaymentModel_on_mcTransactionData"
+        ON "model_TSPaymentModel"("mcTransactionData"
+)
+;
+
+CREATE
+    INDEX "index_model_TSPaymentModel_on_isUnread"
+        ON "model_TSPaymentModel"("isUnread"
+)
+;
+
+CREATE
+    TABLE
+        IF NOT EXISTS "model_TSGroupMember" (
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
+            ,"recordType" INTEGER NOT NULL
+            ,"uniqueId" TEXT NOT NULL UNIQUE
+                ON CONFLICT FAIL
+            ,"groupThreadId" TEXT NOT NULL
+            ,"phoneNumber" TEXT
+            ,"uuidString" TEXT
+            ,"lastInteractionTimestamp" INTEGER NOT NULL DEFAULT 0
+        )
+;
+
+CREATE
+    INDEX "index_model_TSGroupMember_on_uniqueId"
+        ON "model_TSGroupMember"("uniqueId"
+)
+;
+
+CREATE
+    INDEX "index_model_TSGroupMember_on_groupThreadId"
+        ON "model_TSGroupMember"("groupThreadId"
+)
+;
+
+CREATE
+    UNIQUE INDEX "index_model_TSGroupMember_on_uuidString_and_groupThreadId"
+        ON "model_TSGroupMember"("uuidString"
+    ,"groupThreadId"
+)
+;
+
+CREATE
+    UNIQUE INDEX "index_model_TSGroupMember_on_phoneNumber_and_groupThreadId"
+        ON "model_TSGroupMember"("phoneNumber"
+    ,"groupThreadId"
+)
+;
+
+CREATE
+    TABLE
+        IF NOT EXISTS "pending_viewed_receipts" (
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT
+            ,"threadId" INTEGER NOT NULL
+            ,"messageTimestamp" INTEGER NOT NULL
+            ,"authorPhoneNumber" TEXT
+            ,"authorUuid" TEXT
+            ,"messageUniqueId" TEXT
+        )
+;
+
+CREATE
+    INDEX "index_pending_viewed_receipts_on_threadId"
+        ON "pending_viewed_receipts"("threadId"
+)
+;
+
+CREATE
+    TABLE
+        IF NOT EXISTS "thread_associated_data" (
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT
+            ,"threadUniqueId" TEXT NOT NULL UNIQUE
+                ON CONFLICT FAIL
+            ,"isArchived" BOOLEAN NOT NULL DEFAULT 0
+            ,"isMarkedUnread" BOOLEAN NOT NULL DEFAULT 0
+            ,"mutedUntilTimestamp" INTEGER NOT NULL DEFAULT 0
+        )
+;
+
+CREATE
+    UNIQUE INDEX "index_thread_associated_data_on_threadUniqueId"
+        ON "thread_associated_data"("threadUniqueId"
+)
+;
+
+CREATE
+    INDEX "index_thread_associated_data_on_threadUniqueId_and_isMarkedUnread"
+        ON "thread_associated_data"("threadUniqueId"
+    ,"isMarkedUnread"
+)
+;
+
+CREATE
+    INDEX "index_thread_associated_data_on_threadUniqueId_and_isArchived"
+        ON "thread_associated_data"("threadUniqueId"
+    ,"isArchived"
+)
+;
+
+CREATE
+    TABLE
+        IF NOT EXISTS "MessageSendLog_Payload" (
+            "payloadId" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
+            ,"plaintextContent" BLOB NOT NULL
+            ,"contentHint" INTEGER NOT NULL
+            ,"sentTimestamp" DATE NOT NULL
+            ,"uniqueThreadId" TEXT NOT NULL
+        )
+;
+
+CREATE
+    TABLE
+        IF NOT EXISTS "MessageSendLog_Message" (
+            "payloadId" INTEGER NOT NULL
+            ,"uniqueId" TEXT NOT NULL
+            ,PRIMARY KEY (
+                "payloadId"
+                ,"uniqueId"
+            )
+            ,FOREIGN KEY ("payloadId") REFERENCES "MessageSendLog_Payload"("payloadId"
+        )
+            ON DELETE
+                CASCADE
+                    ON UPDATE
+                        CASCADE
+)
+;
+
+CREATE
+    TABLE
+        IF NOT EXISTS "MessageSendLog_Recipient" (
+            "payloadId" INTEGER NOT NULL
+            ,"recipientUUID" TEXT NOT NULL
+            ,"recipientDeviceId" INTEGER NOT NULL
+            ,PRIMARY KEY (
+                "payloadId"
+                ,"recipientUUID"
+                ,"recipientDeviceId"
+            )
+            ,FOREIGN KEY ("payloadId") REFERENCES "MessageSendLog_Payload"("payloadId"
+        )
+            ON DELETE
+                CASCADE
+                    ON UPDATE
+                        CASCADE
+)
+;
+
+CREATE
+    TRIGGER MSLRecipient_deliveryReceiptCleanup AFTER DELETE
+                ON MessageSendLog_Recipient WHEN 0 = (
+                SELECT
+                        COUNT( * )
+                    FROM
+                        MessageSendLog_Recipient
+                    WHERE
+                        payloadId = old.payloadId
+            ) BEGIN DELETE
+                FROM
+                    MessageSendLog_Payload
+                WHERE
+                    payloadId = old.payloadId
+;
+
+END
+;
+
+CREATE
+    TRIGGER MSLMessage_payloadCleanup AFTER DELETE
+                ON MessageSendLog_Message BEGIN DELETE
+                FROM
+                    MessageSendLog_Payload
+                WHERE
+                    payloadId = old.payloadId
+;
+
+END
+;
+
+CREATE
+    INDEX "MSLPayload_sentTimestampIndex"
+        ON "MessageSendLog_Payload"("sentTimestamp"
+)
+;
+
+CREATE
+    INDEX "MSLMessage_relatedMessageId"
+        ON "MessageSendLog_Message"("uniqueId"
 )
 ;
