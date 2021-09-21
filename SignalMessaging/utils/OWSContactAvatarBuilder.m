@@ -264,7 +264,8 @@ NS_ASSUME_NONNULL_BEGIN
                                                       diameter:(CGFloat)diameter
 {
     UIImage *iconImage = [UIImage imageNamed: Theme.isDarkThemeEnabled ? @"note-112dark" : @"note-112"];
-    UIColor *backgroundColor = [OWSConversationColor conversationColorOrDefaultForColorName:conversationColorName].themeColor;
+    UIColor *backgroundColor = UIColor.lightGrayColor;
+    //[OWSConversationColor conversationColorOrDefaultForColorName:conversationColorName].themeColor;
 
     CGFloat circleWidth = diameter;
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(circleWidth, circleWidth), NO, 0.0);
