@@ -70,21 +70,21 @@ extension ConversationSettingsViewController {
                     self.didCallTap(address: contactThread.contactAddress, isVideo: true)
                 })
             ])
+            
+            options.append(ProfileOptionView(option: .gallery, action: { [weak self] in
+                guard let self = self else { return }
+                let types: [GalleryType] = contactThread.isNoteToSelf
+                    ? [.media, .files, .voice, .gifs]
+                    : [.media, .files, .voice, .groups, .gifs]
+                self.showMediaGallery(types: types)
+            }))
+            
+            options.append(ProfileOptionView(option: .send,
+                                             action: { [weak self] in
+                                                guard let self = self else { return }
+                                                self.showSendFromChat(recipientAddress: self.thread.recipientAddresses[0])
+                                             }))
         }
-        
-        options.append(ProfileOptionView(option: .gallery, action: { [weak self] in
-            guard let self = self else { return }
-            let types: [GalleryType] = contactThread.isNoteToSelf
-                ? [.media, .files, .voice, .gifs]
-                : [.media, .files, .voice, .groups, .gifs]
-            self.showMediaGallery(types: types)
-        }))
-        
-        options.append(ProfileOptionView(option: .send,
-                                         action: { [weak self] in
-                                            guard let self = self else { return }
-                                            self.showSendFromChat(recipientAddress: self.thread.recipientAddresses[0])
-                                         }))
         
         header.setup(
             fullName: threadName,

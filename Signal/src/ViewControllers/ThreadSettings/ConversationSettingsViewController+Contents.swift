@@ -119,6 +119,25 @@ extension ConversationSettingsViewController {
             }))
         }
         
+        if isNoteToSelf {
+            section.add(OWSTableItem(customCellBlock: { [weak self] in
+                guard let self = self else {
+                    owsFailDebug("Missing self")
+                    return OWSTableItem.newCell()
+                }
+                let title = NSLocalizedString("ATTACHMENT_KEYBOARD_GALLERY",
+                                              comment: "Table cell label in conversation settings which open chat media gallery")
+                return OWSTableItem.buildDisclosureCell(name: title,
+                                                        icon: .settingsGallery,
+                                                        accessibilityIdentifier: UIView.accessibilityIdentifier(in: self, name: "gallery"))
+            },
+            actionBlock: { [weak self] in
+                guard let self = self else { return }
+                let types: [GalleryType] = [.media, .files, .voice, .gifs]
+                self.showMediaGallery(types: types)
+            }))
+        }
+        
         if let contactThread = thread as? TSContactThread,
             contactsManagerImpl.supportsContactEditing && !hasExistingContact && !isNoteToSelf {
             section.add(OWSTableItem(customCellBlock: { [weak self] in
