@@ -795,10 +795,14 @@ public extension MessageSender {
 
         let requestMaker = RequestMaker(label: "Message Send",
                                         requestFactoryBlock: { (udAccessKey: SMKUDAccessKey?) in
-                                            OWSRequestFactory.submitMessageRequest(with: address,
+                                            var finalUDKey: SMKUDAccessKey? = udAccessKey
+                                            if message is OWSOutgoingCallMessage {
+                                                finalUDKey = nil
+                                            }
+                                            return OWSRequestFactory.submitMessageRequest(with: address,
                                                                                    messages: deviceMessages,
                                                                                    timeStamp: message.timestamp,
-                                                                                   udAccessKey: udAccessKey,
+                                                                                   udAccessKey: finalUDKey,
                                                                                    isOnline: message.isOnline)
                                         },
                                         udAuthFailureBlock: {
