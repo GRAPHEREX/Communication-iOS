@@ -316,14 +316,20 @@ final class CallKitCallUIAdaptee: NSObject, CallUIAdaptee, CXProviderDelegate {
         action.fulfill()
         self.provider.reportOutgoingCall(with: call.individualCall.localId, startedConnectingAt: nil)
 
-        // Update the name used in the CallKit UI for outgoing calls when the user prefers not to show names
-        // in ther notifications
-        if !showNamesOnCallScreen {
-            let update = CXCallUpdate()
-            update.localizedCallerName = NSLocalizedString("CALLKIT_ANONYMOUS_CONTACT_NAME",
-                                                           comment: "The generic name used for calls if CallKit privacy is enabled")
-            provider.reportCall(with: call.individualCall.localId, updated: update)
+        var calleeName = NSLocalizedString("CALLKIT_ANONYMOUS_CONTACT_NAME",
+                                           comment: "The generic name used for calls if CallKit privacy is enabled")
+        
+        if showNamesOnCallScreen {
+            let calleeAddress = call.individualCall.remoteAddress
+            let displayName = contactsManager.displayName(for: calleeAddress)
+            if (PhoneNumber.tryParsePhoneNumber(fromE164: displayName) == nil) && (UUID(uuidString: displayName) == nil) {
+                calleeName = displayName
+            }
         }
+        
+        let update = CXCallUpdate()
+        update.localizedCallerName = calleeName
+        provider.reportCall(with: call.individualCall.localId, updated: update)
     }
 
     private var waitingCallToBeFetchedBySocketRetryCount = 10
