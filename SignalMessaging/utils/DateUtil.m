@@ -395,14 +395,16 @@ static NSString *const DATE_FORMAT_WEEKDAY = @"EEEE";
 
     NSCalendar *calendar = [NSCalendar currentCalendar];
 
-    NSDateComponents *relativeDiffComponents =
-        [calendar components:NSCalendarUnitMinute | NSCalendarUnitHour fromDate:date toDate:nowDate options:0];
+//    Temporary disabled verbose "time ago" and always show just time
+    
+//    NSDateComponents *relativeDiffComponents =
+//        [calendar components:NSCalendarUnitMinute | NSCalendarUnitHour fromDate:date toDate:nowDate options:0];
 
-    NSInteger minutesDiff = MAX(0, [relativeDiffComponents minute]);
-    NSInteger hoursDiff = MAX(0, [relativeDiffComponents hour]);
-    if (hoursDiff < 1 && minutesDiff < 1) {
-        return NSLocalizedString(@"DATE_NOW", @"The present; the current time.");
-    }
+//    NSInteger minutesDiff = MAX(0, [relativeDiffComponents minute]);
+//    NSInteger hoursDiff = MAX(0, [relativeDiffComponents hour]);
+//    if (hoursDiff < 1 && minutesDiff < 1) {
+//        return NSLocalizedString(@"DATE_NOW", @"The present; the current time.");
+//    }
     
     return [[self timeFormatter] stringFromDate:date];
 
