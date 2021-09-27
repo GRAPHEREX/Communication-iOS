@@ -243,9 +243,12 @@ NSNotificationName const kNSNotificationNameIdentityStateDidChange = @"kNSNotifi
                 wasIdentityVerified = NO;
                 break;
             case OWSVerificationStateVerified:
+                verificationState = OWSVerificationStateVerified;
+                wasIdentityVerified = YES;
+                break;
             case OWSVerificationStateNoLongerVerified:
                 verificationState = OWSVerificationStateNoLongerVerified;
-                wasIdentityVerified = YES;
+                wasIdentityVerified = NO;
                 break;
         }
 
