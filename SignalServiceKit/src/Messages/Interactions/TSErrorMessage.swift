@@ -78,3 +78,14 @@ public class TSErrorMessageBuilder: TSMessageBuilder {
         return TSErrorMessage(errorMessageWithBuilder: self)
     }
 }
+
+extension TSErrorMessage {
+    public var isRenderedError: Bool {
+        switch errorType {
+        case .nonBlockingIdentityChange:
+            return false
+        default:
+            return true
+        }
+    }
+}

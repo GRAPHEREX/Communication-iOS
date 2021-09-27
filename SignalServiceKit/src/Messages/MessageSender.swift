@@ -325,11 +325,15 @@ public extension MessageSender {
                                     identityStore: identityManager,
                                     context: transaction)
         } catch SignalError.untrustedIdentity(_) {
-            handleUntrustedIdentityKeyError(accountId: accountId,
+            // We throw error only in case it wasn't handled in that function (i.e. saved and retrieved successfully)
+            if !handleUntrustedIdentityKeyError(accountId: accountId,
                                             recipientAddress: recipientAddress,
                                             preKeyBundle: preKeyBundle,
-                                            transaction: transaction)
-            throw MessageSenderError.untrustedIdentity
+                                            transaction: transaction) {
+                throw MessageSenderError.untrustedIdentity
+            } else {
+                return
+            }
         }
         if !sessionStore.containsActiveSession(forAccountId: accountId,
                                                deviceId: deviceId.int32Value,
@@ -341,7 +345,7 @@ public extension MessageSender {
     class func handleUntrustedIdentityKeyError(accountId: String,
                                                recipientAddress: SignalServiceAddress,
                                                preKeyBundle: SignalServiceKit.PreKeyBundle,
-                                               transaction: SDSAnyWriteTransaction) {
+                                               transaction: SDSAnyWriteTransaction) -> Bool {
         saveRemoteIdentity(recipientAddress: recipientAddress,
                            preKeyBundle: preKeyBundle,
                            transaction: transaction)
@@ -351,6 +355,9 @@ public extension MessageSender {
             hadUntrustedIdentityKeyError(recipientAddress: recipientAddress,
                                          currentIdentityKey: currentRecipientIdentityKey,
                                          preKeyBundle: preKeyBundle)
+            return true
+        } else {
+            return false
         }
     }
 

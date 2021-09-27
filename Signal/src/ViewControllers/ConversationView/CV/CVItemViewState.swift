@@ -436,6 +436,11 @@ struct CVItemModelBuilder: CVItemBuilding, Dependencies {
     var hasPlacedUnreadIndicator = false
 
     private mutating func addUnreadHeaderViewItemIfNecessary(item: ItemBuilder) {
+        // Don't add unread header view item to non-rendered errors
+        if let errorMessage = item.interaction as? TSErrorMessage,
+           !errorMessage.isRenderedError {
+            return
+        }
         let itemTimestamp = item.interaction.timestamp
         owsAssertDebug(itemTimestamp > 0)
 
