@@ -702,31 +702,33 @@ typedef enum : NSUInteger {
 
     // Most of these banners should hide themselves when the user scrolls
     if (!self.userHasScrolled) {
-        NSArray<SignalServiceAddress *> *noLongerVerifiedAddresses = [self noLongerVerifiedAddresses];
-        if (noLongerVerifiedAddresses.count > 0) {
-            NSString *message;
-            if (noLongerVerifiedAddresses.count > 1) {
-                message = NSLocalizedString(@"MESSAGES_VIEW_N_MEMBERS_NO_LONGER_VERIFIED",
-                    @"Indicates that more than one member of this group conversation is no longer verified.");
-            } else {
-                SignalServiceAddress *address = [noLongerVerifiedAddresses firstObject];
-                NSString *displayName = [self.contactsManager displayNameForAddress:address];
-                NSString *format
-                    = (self.isGroupConversation ? NSLocalizedString(@"MESSAGES_VIEW_1_MEMBER_NO_LONGER_VERIFIED_FORMAT",
-                           @"Indicates that one member of this group conversation is no longer "
-                           @"verified. Embeds {{user's name or phone number}}.")
-                                                : NSLocalizedString(@"MESSAGES_VIEW_CONTACT_NO_LONGER_VERIFIED_FORMAT",
-                                                    @"Indicates that this 1:1 conversation is no longer verified. Embeds "
-                                                    @"{{user's name or phone number}}."));
-                message = [NSString stringWithFormat:format, displayName];
-            }
-
-            UIView *banner = [ConversationViewController
-                createBannerWithTitleWithTitle:message
-                                   bannerColor:UIColor.ows_accentRedColor
-                                      tapBlock:^{ [weakSelf noLongerVerifiedBannerViewWasTapped]; }];
-            [banners addObject:banner];
-        }
+        // Hide no longer verified banner since we verifying automatically now
+        
+//        NSArray<SignalServiceAddress *> *noLongerVerifiedAddresses = [self noLongerVerifiedAddresses];
+//        if (noLongerVerifiedAddresses.count > 0) {
+//            NSString *message;
+//            if (noLongerVerifiedAddresses.count > 1) {
+//                message = NSLocalizedString(@"MESSAGES_VIEW_N_MEMBERS_NO_LONGER_VERIFIED",
+//                    @"Indicates that more than one member of this group conversation is no longer verified.");
+//            } else {
+//                SignalServiceAddress *address = [noLongerVerifiedAddresses firstObject];
+//                NSString *displayName = [self.contactsManager displayNameForAddress:address];
+//                NSString *format
+//                    = (self.isGroupConversation ? NSLocalizedString(@"MESSAGES_VIEW_1_MEMBER_NO_LONGER_VERIFIED_FORMAT",
+//                           @"Indicates that one member of this group conversation is no longer "
+//                           @"verified. Embeds {{user's name or phone number}}.")
+//                                                : NSLocalizedString(@"MESSAGES_VIEW_CONTACT_NO_LONGER_VERIFIED_FORMAT",
+//                                                    @"Indicates that this 1:1 conversation is no longer verified. Embeds "
+//                                                    @"{{user's name or phone number}}."));
+//                message = [NSString stringWithFormat:format, displayName];
+//            }
+//
+//            UIView *banner = [ConversationViewController
+//                createBannerWithTitleWithTitle:message
+//                                   bannerColor:UIColor.ows_accentRedColor
+//                                      tapBlock:^{ [weakSelf noLongerVerifiedBannerViewWasTapped]; }];
+//            [banners addObject:banner];
+//        }
 
         NSString *blockStateMessage = nil;
         if (self.isGroupConversation) {
@@ -1381,18 +1383,17 @@ typedef enum : NSUInteger {
 
 #pragma mark - Identity
 
-/**
- * Shows confirmation dialog if at least one of the recipient id's is not confirmed.
- *
- * returns YES if an alert was shown
- *          NO if there were no unconfirmed identities
- */
-- (BOOL)showSafetyNumberConfirmationIfNecessaryWithConfirmationText:(NSString *)confirmationText
-                                                         completion:(void (^)(BOOL didConfirmIdentity))completionHandler
+- (BOOL)confirmSafetyNumberIfNecessaryWithCompletion:(void (^)(BOOL didUpdateNumber))completionHandler
 {
-    return [SafetyNumberConfirmationSheet presentIfNecessaryWithAddresses:self.thread.recipientAddresses
-                                                         confirmationText:confirmationText
-                                                               completion:completionHandler];
+    for (SignalServiceAddress *nextAddress in self.thread.recipientAddresses) {
+        if ([self.identityManager untrustedIdentityForSendingToAddress:nextAddress] != nil) {
+            completionHandler(YES);
+            return YES;
+        }
+    }
+    
+    completionHandler(NO);
+    return NO;
 }
 
 #pragma mark - Calls
@@ -1686,25 +1687,27 @@ typedef enum : NSUInteger {
     } else {
         messageToSend = message;
     }
+    
+    // Disable changed numbers sheet since we accept keys automatically now
 
-    NSArray<SignalServiceAddress *> *recipientsWithChangedSafetyNumber =
-        [message failedRecipientAddressesWithErrorCode:OWSErrorCodeUntrustedIdentity];
-    if (recipientsWithChangedSafetyNumber.count > 0) {
-        // Show special safety number change dialog
-        SafetyNumberConfirmationSheet *sheet = [[SafetyNumberConfirmationSheet alloc]
-            initWithAddressesToConfirm:recipientsWithChangedSafetyNumber
-                      confirmationText:MessageStrings.sendButton
-                     completionHandler:^(BOOL didConfirm) {
-                         if (didConfirm) {
-                             DatabaseStorageAsyncWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
-                                 [self.messageSenderJobQueue addMessage:messageToSend.asPreparer
-                                                            transaction:transaction];
-                             });
-                         }
-                     }];
-        [self presentViewController:sheet animated:YES completion:nil];
-        return;
-    }
+//    NSArray<SignalServiceAddress *> *recipientsWithChangedSafetyNumber =
+//        [message failedRecipientAddressesWithErrorCode:OWSErrorCodeUntrustedIdentity];
+//    if (recipientsWithChangedSafetyNumber.count > 0) {
+//        // Show special safety number change dialog
+//        SafetyNumberConfirmationSheet *sheet = [[SafetyNumberConfirmationSheet alloc]
+//            initWithAddressesToConfirm:recipientsWithChangedSafetyNumber
+//                      confirmationText:MessageStrings.sendButton
+//                     completionHandler:^(BOOL didConfirm) {
+//                         if (didConfirm) {
+//                             DatabaseStorageAsyncWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
+//                                 [self.messageSenderJobQueue addMessage:messageToSend.asPreparer
+//                                                            transaction:transaction];
+//                             });
+//                         }
+//                     }];
+//        [self presentViewController:sheet animated:YES completion:nil];
+//        return;
+//    }
 
     ActionSheetController *actionSheet = [[ActionSheetController alloc] initWithTitle:nil
                                                                               message:message.mostRecentFailureText];
@@ -2913,15 +2916,14 @@ typedef enum : NSUInteger {
             return;
         }
 
-        BOOL didShowSNAlert =
-            [self showSafetyNumberConfirmationIfNecessaryWithConfirmationText:[SafetyNumberStrings confirmSendButton]
-                                                                   completion:^(BOOL didConfirmIdentity) {
-                                                                       if (didConfirmIdentity) {
-                                                                           [weakSelf tryToSendAttachments:attachments
-                                                                                              messageBody:messageBody];
-                                                                       }
-                                                                   }];
-        if (didShowSNAlert) {
+        BOOL didUpdateSafetyNumber =
+            [self confirmSafetyNumberIfNecessaryWithCompletion:^(BOOL didConfirmIdentity) {
+                                                                   if (didConfirmIdentity) {
+                                                                       [weakSelf tryToSendAttachments:attachments
+                                                                                          messageBody:messageBody];
+                                                                   }
+                                                               }];
+        if (didUpdateSafetyNumber) {
             return;
         }
 
@@ -3408,14 +3410,13 @@ typedef enum : NSUInteger {
     }
 
     BOOL didShowSNAlert =
-        [self showSafetyNumberConfirmationIfNecessaryWithConfirmationText:[SafetyNumberStrings confirmSendButton]
-                                                               completion:^(BOOL didConfirmIdentity) {
-                                                                   if (didConfirmIdentity) {
-                                                                       [weakSelf resetVerificationStateToDefault];
-                                                                       [weakSelf tryToSendTextMessage:messageBody
-                                                                                  updateKeyboardState:NO];
-                                                                   }
-                                                               }];
+        [self confirmSafetyNumberIfNecessaryWithCompletion: ^(BOOL didConfirmIdentity) {
+                                                               if (didConfirmIdentity) {
+                                                                   [weakSelf resetVerificationStateToDefault];
+                                                                   [weakSelf tryToSendTextMessage:messageBody
+                                                                              updateKeyboardState:NO];
+                                                               }
+                                                           }];
     if (didShowSNAlert) {
         return;
     }
