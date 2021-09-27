@@ -326,6 +326,10 @@ public class CVLoader: NSObject {
             rootComponent = CVComponentTypingIndicator(itemModel: itemModel,
                                                        typingIndicator: typingIndicator)
         case .systemMessage:
+            if let errorMessage = itemModel.interaction as? TSErrorMessage,
+               !errorMessage.isRenderedError {
+                return nil
+            }
             guard let systemMessage = itemModel.componentState.systemMessage else {
                 owsFailDebug("Missing systemMessage.")
                 return nil
