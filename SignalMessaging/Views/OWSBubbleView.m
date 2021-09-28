@@ -112,7 +112,12 @@ const CGFloat kOWSMessageCellCornerRadius_Small = 4;
 
     // We always need to inform the "bubble stroke view" (if any) if our
     // frame/bounds/center changes. Its contents are not in local coordinates.
-    [self updatePartnerViews];
+    if (@available(iOS 15, *)) {
+        // TODO: Check why iOS 15 is crashing on endless recursion if invoking [self updatePartnerViews]; here
+        // Just commented out this for now
+    } else {
+        [self updatePartnerViews];
+    }
 }
 
 - (void)setCenter:(CGPoint)center

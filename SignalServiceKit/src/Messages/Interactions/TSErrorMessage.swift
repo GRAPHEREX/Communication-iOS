@@ -82,7 +82,8 @@ public class TSErrorMessageBuilder: TSMessageBuilder {
 extension TSErrorMessage {
     public var isRenderedError: Bool {
         switch errorType {
-        case .nonBlockingIdentityChange:
+        case .nonBlockingIdentityChange,
+             .sessionRefresh:
             return false
         default:
             return true
