@@ -1378,12 +1378,16 @@ typedef enum : NSUInteger {
 {
     for (SignalServiceAddress *nextAddress in self.thread.recipientAddresses) {
         if ([self.identityManager untrustedIdentityForSendingToAddress:nextAddress] != nil) {
-            completionHandler(YES);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(YES);
+            });
             return YES;
         }
     }
     
-    completionHandler(NO);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        completionHandler(NO);
+    });
     return NO;
 }
 
