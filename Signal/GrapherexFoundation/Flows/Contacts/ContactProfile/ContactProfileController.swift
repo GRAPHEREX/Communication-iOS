@@ -27,38 +27,13 @@ final class ContactProfileController: OWSTableViewController2 {
     }
     
     private func updateRighBarButton() {
-        if canVerification() {
-            let icon: UIImage
-            if OWSIdentityManager.shared.verificationState(for: address) == .verified {
-                icon = Theme.iconImage(.verificationActive, alwaysTemplate: false).withRenderingMode(.alwaysOriginal)
-            }
-            else {
-                icon = Theme.iconImage(.verificationNonActive, alwaysTemplate: false).withRenderingMode(.alwaysOriginal)
-            }
-            navigationItem.rightBarButtonItem = .init(
-                image: icon,
-                style: .plain,
-                target: self,
-                action: #selector(showVerificationView))
-        } else {
-            navigationItem.rightBarButtonItem = nil
-        }
+        navigationItem.rightBarButtonItem = nil
     }
 }
 
 fileprivate extension ContactProfileController {
     func canVerification() -> Bool {
         return address.uuid != nil && OWSIdentityManager.shared.identityKey(for: address) != nil
-    }
-    
-    @objc func showVerificationView() {
-        guard let contactThread = thread as? TSContactThread else {
-            owsFailDebug("Invalid thread.")
-            return
-        }
-        let contactAddress = contactThread.contactAddress
-        assert(contactAddress.isValid)
-        FingerprintViewController.present(from: self, address: contactAddress)
     }
     
     func makeCells() {

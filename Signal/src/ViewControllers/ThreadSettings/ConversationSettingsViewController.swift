@@ -164,24 +164,7 @@ class ConversationSettingsViewController: OWSTableViewController2 {
     }
 
     func updateNavigationBar() {
-        if !thread.isNoteToSelf && thread.hasSafetyNumbers() && (thread.isGroupThread || thread.recipientAddresses[0].uuid != nil), let contactThread = thread as? TSContactThread {
-            
-            let icon: UIImage
-            if OWSIdentityManager.shared.verificationState(for: contactThread.contactAddress) == .verified {
-                icon = Theme.iconImage(.verificationActive, alwaysTemplate: false).withRenderingMode(.alwaysOriginal)
-            }
-            else {
-                icon = Theme.iconImage(.verificationNonActive, alwaysTemplate: false).withRenderingMode(.alwaysOriginal)
-            }
-            
-            navigationItem.rightBarButtonItem = .init(
-                image: icon,
-                style: .plain,
-                target: self,
-                action: #selector(showVerificationView))
-        } else {
-            navigationItem.rightBarButtonItem = nil
-        }
+        navigationItem.rightBarButtonItem = nil
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -191,9 +174,7 @@ class ConversationSettingsViewController: OWSTableViewController2 {
             showVerificationOnAppear = false
             if isGroupThread {
                 showAllGroupMembers()
-            } else {
-                showVerificationView()
-            }
+            } 
         }
     }
 
@@ -334,16 +315,6 @@ class ConversationSettingsViewController: OWSTableViewController2 {
                                             from: self) {
             self.updateTableContents()
         }
-    }
-
-    @objc func showVerificationView() {
-        guard let contactThread = thread as? TSContactThread else {
-            owsFailDebug("Invalid thread.")
-            return
-        }
-        let contactAddress = contactThread.contactAddress
-        assert(contactAddress.isValid)
-        FingerprintViewController.present(from: self, address: contactAddress)
     }
 
     func showSoundSettingsView() {

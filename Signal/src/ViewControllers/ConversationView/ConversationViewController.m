@@ -1141,15 +1141,6 @@ typedef enum : NSUInteger {
             name = [self.contactsManager displayNameForAddress:thread.contactAddress];
         }
         
-        if (!thread.isNoteToSelf && [thread hasSafetyNumbers] && (thread.isGroupThread || thread.recipientAddresses[0].uuid != nil)) {
-            if ([[OWSIdentityManager shared] verificationStateForAddress:thread.contactAddress] == OWSVerificationStateVerified) {
-                icon = [[Theme iconImage:ThemeIconVerificationActive alwaysTemplate:NO] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-            }
-            else {
-                icon = [[Theme iconImage:ThemeIconVerificationNonActive alwaysTemplate:NO] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
-            }
-        }
-        
         // If the user is in the system contacts, show a badge
 //        if ([self.contactsManager hasSignalAccountForAddress:thread.contactAddress]) {
 //            icon =
