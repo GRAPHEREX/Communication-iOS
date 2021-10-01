@@ -110,15 +110,15 @@ class MemberActionSheet: NSObject {
         addToGroupAction.leadingIcon = .settingsAddToGroup
         actionSheet.addAction(addToGroupAction)
 
-        let safetyNumberAction = ActionSheetAction(
-            title: NSLocalizedString("VERIFY_PRIVACY",
-                                     comment: "Label for button or row which allows users to verify the safety number of another user."),
-            accessibilityIdentifier: "MemberActionSheet.block"
-        ) { _ in
-            FingerprintViewController.present(from: fromViewController, address: self.address)
-        }
-        safetyNumberAction.leadingIcon = .settingsViewSafetyNumber
-        actionSheet.addAction(safetyNumberAction)
+//        let safetyNumberAction = ActionSheetAction(
+//            title: NSLocalizedString("VERIFY_PRIVACY",
+//                                     comment: "Label for button or row which allows users to verify the safety number of another user."),
+//            accessibilityIdentifier: "MemberActionSheet.block"
+//        ) { _ in
+//            FingerprintViewController.present(from: fromViewController, address: self.address)
+//        }
+//        safetyNumberAction.leadingIcon = .settingsViewSafetyNumber
+//        actionSheet.addAction(safetyNumberAction)
 
         let address = self.address
         if let groupViewHelper = self.groupViewHelper,
@@ -192,13 +192,14 @@ private class MemberHeader: UIStackView {
         var fetchedThread: TSContactThread?
         var fetchedDisplayName: String?
         var username: String?
-        var bioForDisplay: String?
+        // Temporary disabling bio
+        let bioForDisplay: String? = nil
 
         databaseStorage.read { transaction in
             fetchedThread = TSContactThread.getWithContactAddress(address, transaction: transaction)
             fetchedDisplayName = self.contactsManager.displayName(for: address, transaction: transaction)
             username = self.profileManagerImpl.username(for: address, transaction: transaction)
-            bioForDisplay = self.profileManagerImpl.profileBioForDisplay(for: address, transaction: transaction)
+            //bioForDisplay = self.profileManagerImpl.profileBioForDisplay(for: address, transaction: transaction)
         }
 
         // Only open a write transaction if we need to create a new thread record.

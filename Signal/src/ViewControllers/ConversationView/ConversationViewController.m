@@ -702,33 +702,6 @@ typedef enum : NSUInteger {
 
     // Most of these banners should hide themselves when the user scrolls
     if (!self.userHasScrolled) {
-        // Hide no longer verified banner since we verifying automatically now
-        
-//        NSArray<SignalServiceAddress *> *noLongerVerifiedAddresses = [self noLongerVerifiedAddresses];
-//        if (noLongerVerifiedAddresses.count > 0) {
-//            NSString *message;
-//            if (noLongerVerifiedAddresses.count > 1) {
-//                message = NSLocalizedString(@"MESSAGES_VIEW_N_MEMBERS_NO_LONGER_VERIFIED",
-//                    @"Indicates that more than one member of this group conversation is no longer verified.");
-//            } else {
-//                SignalServiceAddress *address = [noLongerVerifiedAddresses firstObject];
-//                NSString *displayName = [self.contactsManager displayNameForAddress:address];
-//                NSString *format
-//                    = (self.isGroupConversation ? NSLocalizedString(@"MESSAGES_VIEW_1_MEMBER_NO_LONGER_VERIFIED_FORMAT",
-//                           @"Indicates that one member of this group conversation is no longer "
-//                           @"verified. Embeds {{user's name or phone number}}.")
-//                                                : NSLocalizedString(@"MESSAGES_VIEW_CONTACT_NO_LONGER_VERIFIED_FORMAT",
-//                                                    @"Indicates that this 1:1 conversation is no longer verified. Embeds "
-//                                                    @"{{user's name or phone number}}."));
-//                message = [NSString stringWithFormat:format, displayName];
-//            }
-//
-//            UIView *banner = [ConversationViewController
-//                createBannerWithTitleWithTitle:message
-//                                   bannerColor:UIColor.ows_accentRedColor
-//                                      tapBlock:^{ [weakSelf noLongerVerifiedBannerViewWasTapped]; }];
-//            [banners addObject:banner];
-//        }
 
         NSString *blockStateMessage = nil;
         if (self.isGroupConversation) {
@@ -845,39 +818,6 @@ typedef enum : NSUInteger {
             [self.navigationController pushViewController:vc animated:YES];
         }
     }
-}
-
-- (void)noLongerVerifiedBannerViewWasTapped
-{
-    NSArray<SignalServiceAddress *> *noLongerVerifiedAddresses = [self noLongerVerifiedAddresses];
-    if (noLongerVerifiedAddresses.count < 1) {
-        return;
-    }
-    BOOL hasMultiple = noLongerVerifiedAddresses.count > 1;
-
-    ActionSheetController *actionSheet = [ActionSheetController new];
-
-    __weak ConversationViewController *weakSelf = self;
-    ActionSheetAction *verifyAction = [[ActionSheetAction alloc]
-        initWithTitle:(hasMultiple ? NSLocalizedString(@"VERIFY_PRIVACY_MULTIPLE",
-                           @"Label for button or row which allows users to verify the safety "
-                           @"numbers of multiple users.")
-                                   : NSLocalizedString(@"VERIFY_PRIVACY",
-                                       @"Label for button or row which allows users to verify the safety "
-                                       @"number of another user."))
-                style:ActionSheetActionStyleDefault
-              handler:^(ActionSheetAction *action) { [weakSelf showNoLongerVerifiedUI]; }];
-    [actionSheet addAction:verifyAction];
-
-    ActionSheetAction *dismissAction = [[ActionSheetAction alloc]
-                  initWithTitle:CommonStrings.dismissButton
-        accessibilityIdentifier:ACCESSIBILITY_IDENTIFIER_WITH_NAME(self, @"dismiss")
-                          style:ActionSheetActionStyleCancel
-                        handler:^(ActionSheetAction *action) { [weakSelf resetVerificationStateToDefault]; }];
-    [actionSheet addAction:dismissAction];
-
-    [self dismissKeyBoard];
-    [self presentActionSheet:actionSheet];
 }
 
 - (void)resetVerificationStateToDefault
@@ -1373,7 +1313,7 @@ typedef enum : NSUInteger {
 
 
 #pragma mark - Identity
-
+// This is added as a workaround after automatic confirmation of new keys have been implemented
 - (BOOL)confirmSafetyNumberIfNecessaryWithCompletion:(void (^)(BOOL didUpdateNumber))completionHandler
 {
     for (SignalServiceAddress *nextAddress in self.thread.recipientAddresses) {
@@ -1509,18 +1449,6 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - Actions
-
-- (void)showNoLongerVerifiedUI
-{
-    NSArray<SignalServiceAddress *> *noLongerVerifiedAddresses = [self noLongerVerifiedAddresses];
-    if (noLongerVerifiedAddresses.count > 1) {
-        [self showConversationSettingsAndShowVerification];
-    } else if (noLongerVerifiedAddresses.count == 1) {
-        // Pick one in an arbitrary but deterministic manner.
-        SignalServiceAddress *address = noLongerVerifiedAddresses.lastObject;
-        [self showFingerprintWithAddress:address];
-    }
-}
 
 - (void)showConversationSettings
 {
@@ -1682,27 +1610,6 @@ typedef enum : NSUInteger {
     } else {
         messageToSend = message;
     }
-    
-    // Disable changed numbers sheet since we accept keys automatically now
-
-//    NSArray<SignalServiceAddress *> *recipientsWithChangedSafetyNumber =
-//        [message failedRecipientAddressesWithErrorCode:OWSErrorCodeUntrustedIdentity];
-//    if (recipientsWithChangedSafetyNumber.count > 0) {
-//        // Show special safety number change dialog
-//        SafetyNumberConfirmationSheet *sheet = [[SafetyNumberConfirmationSheet alloc]
-//            initWithAddressesToConfirm:recipientsWithChangedSafetyNumber
-//                      confirmationText:MessageStrings.sendButton
-//                     completionHandler:^(BOOL didConfirm) {
-//                         if (didConfirm) {
-//                             DatabaseStorageAsyncWrite(self.databaseStorage, ^(SDSAnyWriteTransaction *transaction) {
-//                                 [self.messageSenderJobQueue addMessage:messageToSend.asPreparer
-//                                                            transaction:transaction];
-//                             });
-//                         }
-//                     }];
-//        [self presentViewController:sheet animated:YES completion:nil];
-//        return;
-//    }
 
     ActionSheetController *actionSheet = [[ActionSheetController alloc] initWithTitle:nil
                                                                               message:message.mostRecentFailureText];
