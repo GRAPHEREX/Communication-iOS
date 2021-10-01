@@ -110,15 +110,15 @@ class MemberActionSheet: NSObject {
         addToGroupAction.leadingIcon = .settingsAddToGroup
         actionSheet.addAction(addToGroupAction)
 
-        let safetyNumberAction = ActionSheetAction(
-            title: NSLocalizedString("VERIFY_PRIVACY",
-                                     comment: "Label for button or row which allows users to verify the safety number of another user."),
-            accessibilityIdentifier: "MemberActionSheet.block"
-        ) { _ in
-            FingerprintViewController.present(from: fromViewController, address: self.address)
-        }
-        safetyNumberAction.leadingIcon = .settingsViewSafetyNumber
-        actionSheet.addAction(safetyNumberAction)
+//        let safetyNumberAction = ActionSheetAction(
+//            title: NSLocalizedString("VERIFY_PRIVACY",
+//                                     comment: "Label for button or row which allows users to verify the safety number of another user."),
+//            accessibilityIdentifier: "MemberActionSheet.block"
+//        ) { _ in
+//            FingerprintViewController.present(from: fromViewController, address: self.address)
+//        }
+//        safetyNumberAction.leadingIcon = .settingsViewSafetyNumber
+//        actionSheet.addAction(safetyNumberAction)
 
         let address = self.address
         if let groupViewHelper = self.groupViewHelper,
