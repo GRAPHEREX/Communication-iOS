@@ -192,13 +192,14 @@ private class MemberHeader: UIStackView {
         var fetchedThread: TSContactThread?
         var fetchedDisplayName: String?
         var username: String?
-        var bioForDisplay: String?
+        // Temporary disabling bio
+        let bioForDisplay: String? = nil
 
         databaseStorage.read { transaction in
             fetchedThread = TSContactThread.getWithContactAddress(address, transaction: transaction)
             fetchedDisplayName = self.contactsManager.displayName(for: address, transaction: transaction)
             username = self.profileManagerImpl.username(for: address, transaction: transaction)
-            bioForDisplay = self.profileManagerImpl.profileBioForDisplay(for: address, transaction: transaction)
+            //bioForDisplay = self.profileManagerImpl.profileBioForDisplay(for: address, transaction: transaction)
         }
 
         // Only open a write transaction if we need to create a new thread record.
