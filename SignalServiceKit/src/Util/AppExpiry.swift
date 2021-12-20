@@ -132,8 +132,8 @@ public class AppExpiry: NSObject {
     @objc
     public static let AppExpiryDidChange = Notification.Name("AppExpiryDidChange")
 
-    // By default, we expire 90 days after the app was compiled.
-    private let defaultExpirationDate = CurrentAppContext().buildTime.addingTimeInterval(90 * kDayInterval)
+    // By default, we expire 400 days after the app was compiled.
+    private let defaultExpirationDate = CurrentAppContext().buildTime.addingTimeInterval(400 * kDayInterval)
 
     public var expirationDate: Date {
         let state = expirationState.get()
