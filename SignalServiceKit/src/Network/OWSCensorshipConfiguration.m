@@ -88,16 +88,18 @@ NSString *const OWSFrontingHost_Default = @"www.google.com";
     // If you want to use a domain front other than the default, specify the domain front
     // in OWSCountryMetadata, and ensure we have a Security Policy for that domain in
     // `securityPolicyForDomain:`
-    return @{
-        // Egypt
-        @"+20" : @"EG",
-        // Oman
-        @"+968" : @"OM",
-        // Qatar
-        @"+974" : @"QA",
-        // UAE
-        @"+971" : @"AE",
-    };
+//    return @{
+//        // Egypt
+//        @"+20" : @"EG",
+//        // Oman
+//        @"+968" : @"OM",
+//        // Qatar
+//        @"+974" : @"QA",
+//        // UAE
+//        @"+971" : @"AE",
+//    };
+    
+    return @{};
 }
 
 + (BOOL)isCensoredPhoneNumber:(NSString *)e164PhoneNumber
