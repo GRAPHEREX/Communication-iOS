@@ -113,7 +113,7 @@ public class FeatureFlags: BaseFlags {
     public static let linkedPhones = build.includes(.qa)
 
     @objc
-    public static let isUsingProductionService = true
+    public static let isUsingProductionService = false
 
     @objc
     public static let useOrphanDataCleaner = true
