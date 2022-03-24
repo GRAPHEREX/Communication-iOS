@@ -143,6 +143,7 @@ class ConversationInputTextView: MentionTextView {
 
     override var text: String! {
         didSet {
+            super.text = text
             updatePlaceholderVisibility()
             updateTextContainerInset()
         }
@@ -178,6 +179,12 @@ class ConversationInputTextView: MentionTextView {
         }
 
         super.paste(sender)
+        
+        // TODO: - Figure our the root cause. This is a dirty fix to problem: When pasting long multiline text it becomes transparent at some point (although scrollable and selectable). Adding and removing trailing whitespace seems to fix this
+        DispatchQueue.main.async {
+            self.text += " "
+            self.text.removeLast()
+        }
     }
 
     // MARK: - UITextViewDelegate
